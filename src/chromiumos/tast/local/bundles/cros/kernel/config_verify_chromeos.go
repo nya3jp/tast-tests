@@ -39,5 +39,16 @@ func ConfigVerifyChromeOS(ctx context.Context, s *testing.State) {
 	}
 
 	kcc := kernelcommon.NewKernelConfigCheck(ver, arch)
+
+	// Security; make sure the ChromeOS LSM is in use.
+	kcc.Builtin = append(kcc.Builtin, "SECURITY_CHROMIUMOS")
+
+	// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
+	kcc.Value["MMAP_NOEXEC_TAINT"] = "0"
+
+	if ver.IsOrLater(3, 18) {
+		kcc.Builtin = append(kcc.Builtin, "ESD_FS")
+	}
+
 	kcc.Test(conf, s)
 }

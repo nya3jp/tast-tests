@@ -40,5 +40,9 @@ func ConfigVerifyChromiumOS(ctx context.Context, s *testing.State) {
 	}
 
 	kcc := kernelcommon.NewKernelConfigCheck(ver, arch)
+
+	// "ESD_FS" is optional.
+	kcc.Optional = append(kcc.Optional, "ESD_FS")
+
 	kcc.Test(conf, s)
 }

@@ -130,8 +130,6 @@ func NewKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"USER_NS",
 		// Security; perform additional validation of credentials.
 		"DEBUG_CREDENTIALS",
-		// Security; make sure the ChromeOS LSM is in use.
-		"SECURITY_CHROMIUMOS",
 
 		// Binary formats.
 		"BINFMT_ELF",
@@ -183,9 +181,6 @@ func NewKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// compatibility with ARM binaries (even on x86) this needs to
 		// be 32k.
 		"DEFAULT_MMAP_MIN_ADDR": "32768",
-
-		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
-		"MMAP_NOEXEC_TAINT": "0",
 
 		// Magic sysrq: we allow it on by default, but *only* for the CrOS addition sysrq-x
 		// (dump and crash / SYSRQ_ENABLE_CROS_XKEY=0x1000).
@@ -254,7 +249,7 @@ func NewKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	}
 
 	if ver.IsOrLater(3, 18) {
-		Builtin = append(Builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS", "ESD_FS")
+		Builtin = append(Builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS")
 		Module = append(Module, "USB_F_FS")
 		Enabled = append(Enabled, "CONFIGFS_FS")
 		// Like FW_LOADER_USER_HELPER, these may be exploited by userspace.
