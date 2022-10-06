@@ -16,6 +16,24 @@
       "message": "I still don\u0027t undestand why do you need to make it so complicate? Can you simple compare the output?\n\n```\nif string(testOut) !\u003d string(expectedOut) {\n    ...\n} \n```\n\nIs the output for the 2 commands different? I ran the two command manually. The output seems the same to me.",
       "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d31e5d_37b5376d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-06T03:36:08Z",
+      "side": 1,
+      "message": "The output for `id --groups` can/does returns IDs in different orders.\n\n```\nlocalhost ~ # id --groups chronos \n1000 20162 20164 601 602 665357 7 18 27 222 1001 415 608 420 304 600 240 603 208 303\nlocalhost ~ # runuser -u chronos -- id --groups\n1000 7 18 27 208 222 240 303 304 415 420 600 601 602 603 608 1001 20162 20164 665357\n```",
+      "parentUuid": "b1eec766_fd5d24b1",
+      "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
