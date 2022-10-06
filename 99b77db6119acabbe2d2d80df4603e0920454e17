@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c197cf0_dc0adf85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-06T13:19:53Z",
+      "side": 1,
+      "message": "Hi Gabor, could you take another look?\nIt turns out that the older PS had an issue to increase flakiness ratio.\nPS5 should have its fix.",
+      "revId": "99b77db6119acabbe2d2d80df4603e0920454e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
