@@ -22,6 +22,75 @@
       },
       "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17401cee_d26cd85b",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-06T07:28:30Z",
+      "side": 1,
+      "message": "nice!",
+      "range": {
+        "startLine": 222,
+        "startChar": 13,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c358c1_af864017",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-06T07:28:30Z",
+      "side": 1,
+      "message": "let\u0027s also add cros-oobe@ here",
+      "range": {
+        "startLine": 224,
+        "startChar": 22,
+        "endLine": 224,
+        "endChar": 41
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f1d35d_351c3701",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-06T07:28:30Z",
+      "side": 1,
+      "message": "hm, but how we\u0027re gonna pass the command-line switch now? If it\u0027s gonna be too hard we might consider returning back to the js call instead.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
