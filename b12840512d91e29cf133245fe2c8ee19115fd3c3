@@ -50,6 +50,24 @@
       "message": "Should this be here? You don\u0027t use it anywhere in this patch.",
       "revId": "b12840512d91e29cf133245fe2c8ee19115fd3c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d348b7_1f0a4f73",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-06T08:05:05Z",
+      "side": 1,
+      "message": "I\u0027ve added it for completeness - since Security is a valid property and other properties have getters I\u0027ve added one.",
+      "parentUuid": "4c19fd4f_db44d7ab",
+      "revId": "b12840512d91e29cf133245fe2c8ee19115fd3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
