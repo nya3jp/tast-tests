@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051e1313_3c383b9a",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-06T04:26:05Z",
+      "side": 1,
+      "message": "Should this be two separate apps, rather than installing a second one? This will change all existing tests to use the web app",
+      "revId": "8eb48c5659c40b8f04a0ec1f574c57ba03242fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
