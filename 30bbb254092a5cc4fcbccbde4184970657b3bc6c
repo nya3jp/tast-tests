@@ -33,6 +33,69 @@
       "message": "LGTM",
       "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a92ab75_56c5ceea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-06T19:27:06Z",
+      "side": 1,
+      "message": "Some nit but LGTM.",
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80ea98b_157a1be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/freq.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-06T19:27:06Z",
+      "side": 1,
+      "message": "How about using math.MaxInt32 instead?",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45ead7f_ea30fe72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-06T19:27:06Z",
+      "side": 1,
+      "message": "Optional, I\u0027d use another letter than i for the inner loop to easier read the code.",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
