@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4f0a8b2a_7e4bb04b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f393531_34c78142",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c9ba576_2fe842a0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -230,6 +254,30 @@
       "writtenOn": "2022-09-13T07:45:04Z",
       "side": 1,
       "message": "style: I know this is a valid go-format, but it\u0027s a bit hard to read.\n\nCan you reformat this to:\n```\n\t\t\t[]a11y.SpeechExpectation{\n\t\t\t\ta11y.NewStringExpectation(\"LONG CLICK\"),\n\t\t\t\ta11y.NewStringExpectation(\"Button\"),\n\t\t\t\ta11y.NewStringExpectation(\"Press Search plus Shift plus Space to long click\")\n\t\t\t},\n```\n\nSame for the below.",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 185
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53771065_94afc34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7cd7d6_e2fa18e4",
       "range": {
         "startLine": 177,
         "startChar": 3,
