@@ -6,6 +6,7 @@ package accountmanager
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -13,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -81,6 +83,8 @@ type accountManagerTestFixture struct {
 	cr       *chrome.Chrome
 	arc      *arc.ARC
 	isLacros bool
+	// Marker for per-test log.
+	logMarker *logsaver.Marker
 }
 
 func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -107,6 +111,11 @@ func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 
+	logMarker, err := logsaver.NewMarker(cr.LogFilename())
+	if err != nil {
+		s.Error("Failed to start the log saver: ", err)
+	}
+
 	const playStorePackageName = "com.android.vending"
 	optinCtx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
 	defer cancel()
@@ -128,6 +137,13 @@ func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	}
 
 	chrome.Lock()
+
+	if logMarker != nil {
+		if err := logMarker.Save(filepath.Join(s.OutDir(), "chrome.fixture.log")); err != nil {
+			s.Error("Failed to store fixture log data: ", err)
+		}
+	}
+
 	f.cr = cr
 	f.arc = a
 	cr = nil
@@ -154,9 +170,24 @@ func (f *accountManagerTestFixture) Reset(ctx context.Context) error {
 }
 
 func (f *accountManagerTestFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.logMarker != nil {
+		s.Log("A log marker is already created but not cleaned up")
+		f.logMarker = nil
+	}
 
+	logMarker, err := logsaver.NewMarker(f.cr.LogFilename())
+	if err != nil {
+		s.Error("Failed to start the log saver: ", err)
+	} else {
+		f.logMarker = logMarker
+	}
 }
 
 func (f *accountManagerTestFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-
+	if f.logMarker != nil {
+		if err := f.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Error("Failed to store per-test log data: ", err)
+		}
+		f.logMarker = nil
+	}
 }
