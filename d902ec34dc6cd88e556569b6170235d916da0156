@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c170ea45_5cf2c3d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-06T18:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13516e11_8021ccbf",
+      "revId": "d902ec34dc6cd88e556569b6170235d916da0156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b21cac99_73cc087d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-06T05:23:02Z",
       "side": 1,
       "message": "this step seems a bit mysterious, could you leave a comment for why it\u0027s needed?",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 69
+      },
+      "revId": "d902ec34dc6cd88e556569b6170235d916da0156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20aaea8a_4ffb3870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-06T18:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21cac99_73cc087d",
       "range": {
         "startLine": 102,
         "startChar": 2,
