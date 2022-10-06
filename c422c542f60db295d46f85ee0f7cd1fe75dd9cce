@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2990d0b9_83181bcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T18:49:42Z",
+      "side": 1,
+      "message": "nitpicks.",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835f2e5f_9ab1ebba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T18:49:42Z",
+      "side": 1,
+      "message": "nitpick: . at the end of the comment",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468f3e3c_7e12ca7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T18:49:42Z",
+      "side": 1,
+      "message": "space for consistency for timeout, \"90 * time.Second\"",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13ca81b_da1f6238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T18:49:42Z",
+      "side": 1,
+      "message": "Does this print combine message if fails? else maybe Failed at ToggleOn(at 110) and similarly Failed at ToggleOff(at line 120) kind of message will ease debugging.",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed52601_e880af0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T18:49:42Z",
+      "side": 1,
+      "message": "Is this working? focusable and focused? earler some bug was around this. Ignore if you already verified",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
