@@ -41,7 +41,7 @@ var managedDelays = []time.Duration{10 * time.Second, 21 * time.Second, 26 * tim
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OptInAfterInterruption,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify ARC Provisioning completes even with interruptions by restarting Chrome",
 		Contacts: []string{
 			"arc-performance@google.com",
