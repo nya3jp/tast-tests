@@ -16,6 +16,24 @@
       "message": "Just wondering, any reason for this change?",
       "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef1606f_4927890a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-06T08:13:19Z",
+      "side": 1,
+      "message": "Conflict with FgsecMultiConnect.  Initially I was using `eapCert` which was defined in simple_connect.go, but then at some point I started getting submit hook errors that I\u0027m not allowed to use cross references between files.  So I\u0027ve added `cert1` here but then it conflicted with FgsecMultiConnect since Go does not have \"file scope\" and these two were on package scope.  Then I\u0027ve moved these vars to `init()` where they are being used only and I got another hook error that in `init()` I\u0027m allowed to use only `AddTest()` so I\u0027m left with using `certificate.TestCert1()` directly or having this var with \"unique\" name.  I\u0027ve chosen the latter and do some \"poor man\u0027s\" file scope prefixing.",
+      "parentUuid": "adf8e7c5_8d762796",
+      "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
