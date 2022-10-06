@@ -34,6 +34,24 @@
       "parentUuid": "8ab09857_51aeb69f",
       "revId": "4d833e60413c9fd3286d663116092f042e620e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a1e913_8f6385a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-06T00:52:55Z",
+      "side": 1,
+      "message": "I think some of those APIs already exist, but yes that\u0027s probably a good place for them if that\u0027s where the scan app OWNERS have requested them :)",
+      "parentUuid": "87ff7a81_a0401238",
+      "revId": "4d833e60413c9fd3286d663116092f042e620e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
