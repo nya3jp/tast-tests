@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3273d8_020d3da1",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-06T12:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7feda9cb_6a1dc3c4",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "fff9314f316bbe0665a688128eb03ec8bfa9dff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e18ee604_6e773812",
@@ -78,6 +102,24 @@
       "writtenOn": "2022-10-05T17:25:55Z",
       "side": 1,
       "message": "Should this really fail the test? Or can we simply discard the old log marker?",
+      "revId": "fff9314f316bbe0665a688128eb03ec8bfa9dff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002dcdaa_48ec43fa",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-06T12:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e18ee604_6e773812",
       "revId": "fff9314f316bbe0665a688128eb03ec8bfa9dff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
