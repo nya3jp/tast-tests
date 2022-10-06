@@ -87,6 +87,30 @@
       },
       "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6f63d6_1a2682a2",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-06T17:51:24Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t think that is done, or at least I haven\u0027t seen it yet :o",
+      "parentUuid": "cab4b478_e08df9f9",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
