@@ -182,6 +182,30 @@
       },
       "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ae904c_c2f25b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T06:32:27Z",
+      "side": 1,
+      "message": "I added the flag variable `matched` and turned off the flag when we found the missing expectation instead of `break` to check all missing expectations and list them up.\nI don\u0027t think this is very important, so I don\u0027t mind to remove both of this log and the variable `matched` if you want",
+      "parentUuid": "884e992f_cbcd4e07",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
