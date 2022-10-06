@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf24831_e37ff928",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-06T05:09:27Z",
+      "side": 1,
+      "message": "LGTM, but would suggest you also verify VM results (I don\u0027t think they show up on tastboard).\n\namd64-generic looks good (http://shortn/_HIHJE2jGpg), but I don\u0027t see any runs for betty, so might be good to do a manual check of those before promoting to make sure it doesn\u0027t get instantly kicked back down :)",
+      "revId": "a0052e208438121da244d0c59fbe732245dc0e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
