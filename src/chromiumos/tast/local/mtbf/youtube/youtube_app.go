@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -432,6 +433,37 @@ func (y *YtApp) IsPlaying() uiauto.Action {
 		testing.ContextLog(ctx, "Verify the video is playing")
 		return y.ensureVideoPlaying(ctx, playerView, playBtn)
 	}
+}
+
+// dumpAppInfo dumps Youtube app version name and code.
+func dumpAppInfo(ctx context.Context, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+	var versionName, versionCode string
+	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
+	if err == nil {
+		versionNamePrefix, versionCodePrefix := "versionName=", "versionCode="
+		output := string(out)
+		splitOutput := strings.Split(output, "\n")
+		for splitLine := range splitOutput {
+			if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
+				versionName = strings.Split(splitOutput[splitLine], "=")[1]
+			}
+			if strings.Contains(splitOutput[splitLine], versionCodePrefix) {
+				versionCodeLine := strings.Fields(splitOutput[splitLine])[0]
+				versionCode = strings.Split(versionCodeLine, "=")[1]
+			}
+			if versionCode != "" && versionName != "" {
+				break
+			}
+		}
+		if versionName == "" {
+			err = errors.Errorf("%s is not found in the output", versionNamePrefix)
+		}
+		if versionCode == "" {
+			err = errors.Errorf("%s is not found in the output", versionCodePrefix)
+		}
+	}
+	testing.ContextLogf(ctx, "Youtube app version: %s; Version code: %s", versionName, versionCode)
+	return versionName, err
 }
 
 func (y *YtApp) skipAds(ctx context.Context) error {
