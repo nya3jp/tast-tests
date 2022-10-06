@@ -206,6 +206,30 @@
       },
       "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50281223_183103db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T06:39:34Z",
+      "side": 1,
+      "message": "I think simpler is better, so could you remove both `matched` flag and the logging?",
+      "parentUuid": "91ae904c_c2f25b15",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
