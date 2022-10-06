@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3307b028_0d8df59f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T07:13:37Z",
+      "side": 1,
+      "message": "Based on the existing usage, does it make sense to keep the function as is and introduce a new AuthenticatePinAuthFactorWithReply function?\n\nAuthenticatePinAuthFactor would just call AuthenticatePinAuthFactorWithReply and drop the return value.",
+      "range": {
+        "startLine": 1031,
+        "startChar": 27,
+        "endLine": 1031,
+        "endChar": 52
+      },
+      "revId": "07b0e7a920572d71c4221135afa01ce48d4a0339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da238499_3dc5df6f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T07:13:37Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "07b0e7a920572d71c4221135afa01ce48d4a0339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
