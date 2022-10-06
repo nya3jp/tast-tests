@@ -340,17 +340,30 @@ func testConfigViaChrome(ctx context.Context, config *util.CrossVersionLoginConf
 	}
 
 	// Check password login.
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: authConfig.Password}), chrome.KeepState())
-	if err != nil {
-		return errors.Wrap(err, "failed to log in with password")
-	}
-	// TODO(b/237120336): Check cryptohome was not recreated, by reading some file
-	// that was previously put into the snapshot.
-	if err := cr.Close(ctx); err != nil {
-		return errors.Wrap(err, "failed to log out after password login")
+	for _, withAuthFactors := range []bool{false, true} {
+		opts := []chrome.Option{
+			chrome.FakeLogin(chrome.Creds{User: username, Pass: authConfig.Password}),
+			chrome.KeepState(),
+		}
+		errorContext := ""
+		if withAuthFactors {
+			opts = append(opts, chrome.EnableFeatures("UseAuthFactors"))
+			errorContext = " via AuthFactors"
+		} else {
+			opts = append(opts, chrome.DisableFeatures("UseAuthFactors"))
+		}
+		cr, err := chrome.New(ctx, opts...)
+		if err != nil {
+			return errors.Wrapf(err, "failed to log in with password%s", errorContext)
+		}
+		// TODO(b/237120336): Check cryptohome was not recreated, by reading some file
+		// that was previously put into the snapshot.
+		if err := cr.Close(ctx); err != nil {
+			return errors.Wrapf(err, "failed to log out after password login%s", errorContext)
+		}
+		// TODO(b/237120336): Check PIN login as well.
 	}
 
-	// TODO(b/237120336): Check PIN login as well.
 	return nil
 }
 
