@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b16140d_8461c5d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-06T18:29:48Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f696d520132a05b8286da5dfbea48f49072505ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230a24e5_eea2e859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-06T18:29:48Z",
+      "side": 1,
+      "message": "nit: move closer to use :)",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "f696d520132a05b8286da5dfbea48f49072505ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee97099_b1decfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-06T18:29:48Z",
+      "side": 1,
+      "message": "Do we need the backspace? `Ctrl+A` + `TypeAction(fileName)` is probably self explanatory enough given the existing comment where a new comment wouldn\u0027t be necessary :)",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "f696d520132a05b8286da5dfbea48f49072505ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
