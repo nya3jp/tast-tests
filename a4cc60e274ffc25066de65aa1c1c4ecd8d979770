@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09b553c_c26d81a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T18:13:49Z",
+      "side": 1,
+      "message": "Looks good, mostly some nits. I\u0027d also like for Nagi to take a peek at this when he gets a chance.",
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8590ba6_1b416767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T18:13:49Z",
+      "side": 1,
+      "message": "Can we just check this?",
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d1a621_6563f62c",
+        "filename": "src/chromiumos/tast/local/dbusutil/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T18:13:49Z",
+      "side": 1,
+      "message": "GetProperties feels like a bit of a funny name for this... if I saw this I might be confused about whether or not I have to use this to initialize the properties somehow. Maybe just GetMap?",
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67a55dc_195a9d1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/attenuated_signal_strength.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T18:13:49Z",
+      "side": 1,
+      "message": "any reason not to just pass this in as an argument?\n\nAlso, very micro nit but `s` might get a bit confusing for readers who expect that identifier to refer to a `*testing.State`.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
