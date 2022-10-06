@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f08b556_0c5547ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T08:00:44Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8141ad_18f649a2",
+        "filename": "android/ArcAccessibilityTest/res/layout/action_activity.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T08:00:44Z",
+      "side": 1,
+      "message": "Please use an updated style. (I recently enabled check https://crrev.com/c/3928425 so if you sync to ToT, maybe this gets warnings)",
+      "range": {
+        "startLine": 2,
+        "startChar": 5,
+        "endLine": 2,
+        "endChar": 65
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fa8266_4d79ec66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T08:00:44Z",
+      "side": 1,
+      "message": "nit: I\u0027m not an English native, but https://dictionary.cambridge.org/dictionary/english/containment seems like a bit different from what you mean?",
+      "range": {
+        "startLine": 37,
+        "startChar": 70,
+        "endLine": 37,
+        "endChar": 81
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37690f59_c1c40014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T08:00:44Z",
+      "side": 1,
+      "message": "no longer used",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
