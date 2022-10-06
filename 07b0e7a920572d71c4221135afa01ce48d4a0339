@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8e2abd_02ef9998",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-06T07:32:24Z",
+      "side": 1,
+      "message": "Ack - I think we should rather move in the direction when all callers should use the reply (by asserting various fields in it). I just didn\u0027t want to do it all at once, keeping the current CL more \"atomic\".",
+      "parentUuid": "3307b028_0d8df59f",
+      "range": {
+        "startLine": 1031,
+        "startChar": 27,
+        "endLine": 1031,
+        "endChar": 52
+      },
+      "revId": "07b0e7a920572d71c4221135afa01ce48d4a0339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da238499_3dc5df6f",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-06T07:13:37Z",
       "side": 1,
       "message": "nit: add newline before",
+      "revId": "07b0e7a920572d71c4221135afa01ce48d4a0339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4474a03_f1be0c53",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-06T07:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da238499_3dc5df6f",
       "revId": "07b0e7a920572d71c4221135afa01ce48d4a0339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
