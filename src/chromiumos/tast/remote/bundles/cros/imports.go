@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -49,6 +49,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/usbc"
 	_ "chromiumos/tast/remote/bundles/cros/wifi"
 	_ "chromiumos/tast/remote/bundles/cros/wilco"
+	_ "chromiumos/tast/remote/bundles/cros/wwcb"
 
 	_ "chromiumos/tast/remote/bundles/cros/factory/fixture"
 	_ "chromiumos/tast/remote/meta" // import fixture for meta tests

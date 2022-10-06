@@ -1,0 +1,54 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wwcb;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wwcb";
+
+
+// Chrome allows basic remote operations of Chrome.
+service WWCBService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Echo returns a string conbined with server name.
+  rpc Echo (StringRequest)
+      returns (StringResponse) {}
+
+  // Dock1PersistentStep3 checks external display status.
+  rpc Dock1PersistentStep3 (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Dock1PersistentStep4 opens two apps on external display.
+  rpc Dock1PersistentStep4 (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // VerifyAllWindowsOnDisplay verifies all windows on internal(false) or external(true) display.
+  rpc VerifyAllWindowsOnDisplay (BoolRequest) returns (google.protobuf.Empty) {}
+
+  // Dock1PersistentStep6 tests primary mode.
+  rpc Dock1PersistentStep6 (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Dock1PersistentStep8 tests mirror mode.
+  rpc Dock1PersistentStep8 (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message StringRequest {
+  string send_string = 1;
+}
+
+message StringResponse {
+  string return_string = 1;
+}
+
+message BoolRequest{
+  bool send_bool = 1;
+}
+
