@@ -16,6 +16,46 @@
       "message": "Hi vsavu@, please take another look because your vote was outdated and removed. I simplified this CL by splitting it into four. Xiqi and Li approved already (even though it doesn\u0027t show because the votes were removed after the refactoring).",
       "revId": "f2fddda8eabe0629df081896ddae32ae5498e9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3face184_40807718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T07:15:49Z",
+      "side": 1,
+      "message": "nit: cleanupCtx",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 14
+      },
+      "revId": "f2fddda8eabe0629df081896ddae32ae5498e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd484df9_12df4b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T07:15:49Z",
+      "side": 1,
+      "message": "nit: keep this at the top of the test",
+      "revId": "f2fddda8eabe0629df081896ddae32ae5498e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
