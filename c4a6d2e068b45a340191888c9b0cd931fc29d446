@@ -97,6 +97,30 @@
       },
       "revId": "c4a6d2e068b45a340191888c9b0cd931fc29d446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef311c4_cd8c43a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-06T17:46:23Z",
+      "side": 1,
+      "message": "What\u0027s ITU-T? In any case, I\u0027d a bug here. \nI\u0027d so something like:\n\n```\n// Tests related to HEVCPROFILE_MAIN_STILL_PICTURE are not supported in Chrome.\n// See ${link to bug} fur further info\n```",
+      "parentUuid": "92073486_4b6d824f",
+      "range": {
+        "startLine": 453,
+        "startChar": 42,
+        "endLine": 453,
+        "endChar": 72
+      },
+      "revId": "c4a6d2e068b45a340191888c9b0cd931fc29d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
