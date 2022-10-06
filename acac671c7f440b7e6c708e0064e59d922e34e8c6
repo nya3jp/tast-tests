@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a60de7_d3040639",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-10-06T21:02:37Z",
+      "side": 1,
+      "message": "no comma",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "acac671c7f440b7e6c708e0064e59d922e34e8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4193f138_21ba5c74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-10-06T21:02:37Z",
+      "side": 1,
+      "message": "Launch",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "acac671c7f440b7e6c708e0064e59d922e34e8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af20da27_c3739809",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-10-06T21:02:37Z",
+      "side": 1,
+      "message": "LGTM%nit",
+      "revId": "acac671c7f440b7e6c708e0064e59d922e34e8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
