@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2722bb9_6d7062da",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-06T22:46:24Z",
+      "side": 1,
+      "message": "It looks like there is a bunch of dead code here now (the code does not handle OldCryptohomeMountAPI anymore?)",
+      "revId": "a663d984916d40d39025191239ab6f66d9f2906a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
