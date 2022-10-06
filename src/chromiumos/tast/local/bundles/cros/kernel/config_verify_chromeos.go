@@ -50,5 +50,10 @@ func ConfigVerifyChromeOS(ctx context.Context, s *testing.State) {
 		kcc.Builtin = append(kcc.Builtin, "ESD_FS")
 	}
 
+	if ver.IsOrLater(4, 4) {
+		// Security; prevent overflows that can be checked at compile-time.
+		kcc.Builtin = append(kcc.Builtin, "FORTIFY_SOURCE")
+	}
+
 	kcc.Test(conf, s)
 }

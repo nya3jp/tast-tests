@@ -262,8 +262,6 @@ func NewKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// Security; make sure usermode helper is our tool for linux-4.4+.
 		Builtin = append(Builtin, "STATIC_USERMODEHELPER")
 		Value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
-		// Security; prevent overflows that can be checked at compile-time.
-		Builtin = append(Builtin, "FORTIFY_SOURCE")
 	} else {
 		// For kernels older than linux-4.4.
 		Builtin = append(Builtin, "EXT4_USE_FOR_EXT23")
