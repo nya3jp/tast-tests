@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/action"
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -84,22 +85,20 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	if err := openAndroidSettings(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to Open ARC Settings: ", err)
-	}
-
 	nonEduUserEmail := s.RequiredVar("arc.parentUser")
 	nonEduUserPass := s.RequiredVar("arc.parentPassword")
 	parentPassword := s.RequiredVar("arc.parentPassword")
 	s.Log("Add non-EDU ARC account and verify")
-	if err := addAndroidAccount(ctx, d, cr, tconn, parentPassword, nonEduUserEmail, nonEduUserPass); err != nil {
-		s.Fatal("Failed to Add Account: ", err)
+	if err := openAndroidSettingsAndAddAccount(ctx, d, cr, tconn, parentPassword, nonEduUserEmail, nonEduUserPass); err != nil {
+		s.Fatal("Failed to Open Android Settigns and Add Account: ", err)
 	}
 }
 
-// openAndroidSettings opens the ARC Settings Page from Chrome Settings.
-func openAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+// openAndroidSettingsAndAddAccount opens the Android settings and
+// adds a second ARC account from ARC Settings->Accounts Screen.
+func openAndroidSettingsAndAddAccount(ctx context.Context, arcDevice *androidui.Device, cr *chrome.Chrome, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
 	ui := uiauto.New(tconn)
+
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "apps", ui.Exists(playStoreButton)); err != nil {
 		return errors.Wrap(err, "failed to launch apps settings page")
@@ -108,23 +107,34 @@ func openAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	if err := uiauto.Combine("Open Android Settings",
 		ui.FocusAndWait(playStoreButton),
 		ui.LeftClick(playStoreButton),
-		ui.LeftClick(nodewith.Name("Manage Android preferences").Role(role.Link)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to open ARC settings page")
 	}
-	return nil
-}
 
-// addAndroidAccount adds a second ARC account from ARC Settings->Accounts Screen.
-func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, cr *chrome.Chrome, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
-	ui := uiauto.New(tconn)
+	// TODO: The retry section will be removed after the issue below gets fixed
+	// https://bugs.chromium.org/p/chromium/issues/detail?id=1222744
+	if err := uiauto.Retry(3, func(ctx context.Context) error {
 
-	if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
-		return errors.Wrap(err, "failed to open Add account dialog from ARC")
-	}
+		if err := uiauto.Combine("Close the An error occurred pop-up",
+			action.IfSuccessThen(
+				ui.WaitUntilExists(nodewith.Name("An error occurred").Role(role.Heading)),
+				ui.LeftClick(nodewith.Name("Close").HasClass("ImageButton").Role(role.Button)),
+			),
+			ui.LeftClick(nodewith.Name("Manage Android preferences").Role(role.Link)),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to close the An error occurred pop-up")
+		}
 
-	if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
-		return errors.Wrap(err, "failed entering geller account details in add school acount flow")
+		if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Add account dialog from ARC")
+		}
+
+		if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
+			return errors.Wrap(err, "failed entering geller account details in add school acount flow")
+		}
+		return nil
+	})(ctx); err != nil {
+		return errors.Wrap(err, "failed to click add account in settings and entering geller account details")
 	}
 
 	if err := ui.WaitUntilExists(nodewith.Name("Can’t add account").Role(role.Heading))(ctx); err != nil {
