@@ -51,6 +51,47 @@
       "parentUuid": "5557c231_d3ea8d27",
       "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde25177_addb2604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T14:20:13Z",
+      "side": 1,
+      "message": "Agreed. Maybe the test could start out with manually clearing the SMS list just to make sure problems don\u0027t leak in from other tests or from broken behavior elsewhere, but there should be a test somewhere for the deletion behavior (if not in this test).",
+      "parentUuid": "2ca99292_f2bb0565",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9698471_bf68406a",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T14:20:13Z",
+      "side": 1,
+      "message": "`smsSent`?",
+      "range": {
+        "startLine": 199,
+        "startChar": 26,
+        "endLine": 199,
+        "endChar": 37
+      },
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
