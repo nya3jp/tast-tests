@@ -39,6 +39,30 @@
       },
       "revId": "e3a2aa33e4c364877e7b249c37f76b739d0ee9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8f98fc_d68e117f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_oboetester_glitch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-06T15:39:48Z",
+      "side": 1,
+      "message": "Ah, we usually import another package \"chromiumos/tast/local/audio\", so I used `arcaudio` here at first, but that package is not used in the end.\n\nI changed the name to the default \"audio\". Thanks!",
+      "parentUuid": "c7cb5850_ff29717b",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "e3a2aa33e4c364877e7b249c37f76b739d0ee9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
