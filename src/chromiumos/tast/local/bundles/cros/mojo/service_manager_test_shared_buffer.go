@@ -24,7 +24,7 @@ func init() {
 			"chromeos-mojo-service-manager@google.com",
 			"chungsheng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"mojo_service_manager"},
 		Timeout:      1 * time.Minute,
 	})
