@@ -281,7 +281,7 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 		results, err := tastrun.ParseResultsJSON(resultsDir)
 		s.Log("Check test results: ", resultsDir)
 		if err != nil {
-			s.Fatal("Failed to get results for tests")
+			s.Error("Failed to get results for tests")
 		}
 		var failedTests []string
 		var skippedTests []string
@@ -299,13 +299,13 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 		skippedTest := len(skippedTests)
 		failedTest := len(failedTests)
 		if skippedTest == totalTests {
-			s.Fatalf("All %d test(s) in iteration %d have been skipped", totalTests, i)
+			s.Errorf("All %d test(s) in iteration %d have been skipped", totalTests, i)
 		}
 		if skippedTest > 0 {
 			s.Logf("Skipped %d test(s) in iteration %d: %v", skippedTest, i, skippedTests)
 		}
 		if failedTest > 0 {
-			s.Fatalf("Failed to complete %d test(s) in iteration %d: %v", failedTest, i, failedTests)
+			s.Errorf("Failed to complete %d test(s) in iteration %d: %v", failedTest, i, failedTests)
 		}
 	}
 }
