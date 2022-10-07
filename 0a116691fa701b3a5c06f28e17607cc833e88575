@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24f93d9_383a1f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-07T10:43:43Z",
+      "side": 1,
+      "message": "Sorry for the delay, we spent some time confirming b/249164846, which seems to be fixed for now, therefore, we reopen this CL.\n\nPlease review, thanks!",
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
