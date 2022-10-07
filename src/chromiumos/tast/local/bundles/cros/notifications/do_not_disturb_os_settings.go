@@ -21,6 +21,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	notificationTitle          = "notificationTitle"
+	waitForNotificationTimeout = 30 * time.Second
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DoNotDisturbOSSettings,
@@ -53,7 +58,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(waitForNotificationTimeout)
 
 	// Setup a browser.
 	bt := s.Param().(browser.Type)
@@ -87,9 +92,6 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 		s.Error("Do Not Disturb toggle is OFF when it should be ON")
 	}
 
-	const notificationTitle = "notificationTitle"
-	const waitForNotificationTimeout = 30 * time.Second
-
 	// Confirm that notification doesn't show when DND is toggled on.
 	if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD NOT SHOW"); err != nil {
 		s.Fatal("Failed to create test notification")
@@ -98,7 +100,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed waiting for %v: %v", notificationTitle, err)
 	}
 	notification := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
-	if err := ui.EnsureGoneFor(notification, 15*time.Second)(ctx); err != nil {
+	if err := ui.EnsureGoneFor(notification, waitForNotificationTimeout)(ctx); err != nil {
 		s.Fatal("Notification was not suppressed")
 	}
 
