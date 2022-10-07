@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91f53a2_7f75af7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-07T22:12:53Z",
+      "side": 1,
+      "message": "I believe we discussed this but the distinction here is not chromeos vs chromiumos, it\u0027s chromiumos vs upstream so let\u0027s name things as such.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "09d68fb7970cf5db6525cf660820f915f4c9d264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ed4e4e_2c8bed86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-07T22:12:53Z",
+      "side": 1,
+      "message": "We\u0027re not shipping 3.18 anymore, this should be \u003e\u003d4.4.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "09d68fb7970cf5db6525cf660820f915f4c9d264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
