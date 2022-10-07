@@ -59,6 +59,12 @@ type MetricConfig struct {
 
 	// The direction of the histogram.
 	direction perf.Direction
+
+	// Some metrics are "out-of-test", i.e. they are generated before
+	// test is started. This way the regular "mectrics difference"
+	// before and after the test will be empty. To collect these metrics we
+	// need to fetch absolute metics values.
+	outOfTest bool
 }
 
 // NewSmoothnessMetricConfig creates a new MetricConfig instance for collecting
@@ -66,21 +72,28 @@ type MetricConfig struct {
 // smoothness metrics will be aggregated into the "AnimationSmoothness" entry at
 // the end.
 func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter}
+	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, outOfTest: false}
 }
 
 // NewLatencyMetricConfig creates a new MetricConfig instance for collecting
 // input latency data for the given histogram name. The whole data of all input
 // latency metrics will be aggregated into the "InputLatency" entry at the end.
 func NewLatencyMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter}
+	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, outOfTest: false}
 }
 
 // NewCustomMetricConfig creates a new MetricConfig for the given histogram
 // name, unit, and direction. The data are reported as-is but
 // not aggregated with other histograms.
 func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction}
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, outOfTest: false}
+}
+
+// NewOutOfTestCustomMetricConfig creates a new ConstomMetricConfig with outOfTest fag
+// set for the given histogram name, unit, and direction. The data are reported
+// as-is but not aggregated with other histograms.
+func NewOutOfTestCustomMetricConfig(histogramName, unit string, direction perf.Direction) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, outOfTest: true}
 }
 
 type record struct {
@@ -480,6 +493,30 @@ func (r *Recorder) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// filterOutOfTestMetricNames returns metric names having |outOfTest| metric
+// config flag value equal to |outOfTestFlagValue|.
+func (r *Recorder) filterOutOfTestMetricNames(outOfTestFlagValue bool, bt browser.Type) ([]string, error) {
+	metrics, ok := r.records[bt]
+	if !ok {
+		return nil, errors.Errorf("no expected metrics for the given browser %q", bt)
+	}
+	result := make([]string, 0)
+	for name, record := range metrics {
+		if record.config.outOfTest == outOfTestFlagValue {
+			result = append(result, name)
+		}
+	}
+	return result, nil
+}
+
+func (r *Recorder) getInTestMetricNames(bt browser.Type) ([]string, error) {
+	return r.filterOutOfTestMetricNames(false, bt)
+}
+
+func (r *Recorder) getOutOfTestMetricNames(bt browser.Type) ([]string, error) {
+	return r.filterOutOfTestMetricNames(true, bt)
+}
+
 // startRecording starts to record CUJ data.
 //
 // In:
@@ -580,9 +617,15 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 
 	// Start metrics recording per browser.
 	r.mr = make(map[browser.Type]*metrics.Recorder)
-	for bt, names := range r.names {
+	for bt := range r.names {
 		var err error
-		r.mr[bt], err = metrics.StartRecorder(ctx, r.tconns[bt], names...)
+		// Watch in-test metrics only.
+		inTestMetrics, err := r.getInTestMetricNames(bt)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get in-test metric names")
+		}
+
+		r.mr[bt], err = metrics.StartRecorder(ctx, r.tconns[bt], inTestMetrics...)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to start metrics recorder for browser %v", bt)
 		}
@@ -633,12 +676,25 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	tHists := make(map[browser.Type][]*metrics.Histogram)
 	for bt, rr := range r.mr {
 		tconn := r.tconns[bt]
-		h, err := rr.Histogram(runCtx, tconn)
+		inTestHistograms, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrapf(err, "failed to collect metrics from browser %v", bt)
 		}
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(h))
-		tHists[bt] = append(tHists[bt], h...)
+		// Out of test metrics must be collected separately.
+		outOfTestMetrics, err := r.getOutOfTestMetricNames(bt)
+		if err != nil {
+			return errors.Wrap(err, "failed to get out-of-test metric names")
+		}
+
+		outOfTestHistograms, err := metrics.GetHistograms(runCtx, tconn, outOfTestMetrics)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch out-of-test metrics")
+		}
+
+		testing.ContextLogf(ctx, "The following diff metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(inTestHistograms))
+		testing.ContextLogf(ctx, "The following out-of-test metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(outOfTestHistograms))
+		tHists[bt] = append(tHists[bt], inTestHistograms...)
+		tHists[bt] = append(tHists[bt], outOfTestHistograms...)
 	}
 	// Reset recorders and context.
 	r.mr = nil
