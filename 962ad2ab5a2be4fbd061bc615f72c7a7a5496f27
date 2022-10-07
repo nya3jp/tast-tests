@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e43f0bbd_b56342d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T03:04:46Z",
+      "side": 1,
+      "message": "I guess TAST disallow us to use testing.State in chromiumos/tast/local/kernel.\n\nLint error I got:\n\n        src/chromiumos/tast/local/kernel/config_verify_common.go:374:60: \u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\n\n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "parentUuid": "46d0c1e0_6ffc706b",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
