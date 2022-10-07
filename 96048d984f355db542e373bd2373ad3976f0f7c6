@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f04dd0f_92197404",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:12:21Z",
+      "side": 1,
+      "message": "Try it on a nocturne with the keyboard detached. That should default to tablet mode.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ed52ff2_15ad0e13",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-10-07T21:41:29Z",
       "side": 1,
       "message": "Please review, thanks!",
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8bbe44c_0716ca85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:12:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you can assume that MeetCUJ always runs in clamshell mode. See this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003d5deb88905c8f66621af6777d8facc147318edb83;l\u003d577\n\nMouse input in tablet mode may work because it is a convenient way to use the emulator. However you should avoid mouse input in tablet mode because it is not a real user workflow.",
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e067032a_fc809961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:12:21Z",
+      "side": 1,
+      "message": "`time.Until(end) \u003e 36*time.Second`",
+      "range": {
+        "startLine": 851,
+        "startChar": 7,
+        "endLine": 851,
+        "endChar": 41
+      },
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4ad2c2_6cbb339b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:12:21Z",
+      "side": 1,
+      "message": "remove the `s`",
+      "range": {
+        "startLine": 880,
+        "startChar": 32,
+        "endLine": 880,
+        "endChar": 33
+      },
       "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
