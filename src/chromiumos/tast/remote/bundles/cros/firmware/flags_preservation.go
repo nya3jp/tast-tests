@@ -85,10 +85,19 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 	originalCrossystemMap := createCsMap(csOriginal)
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
 	defer cancel()
 
 	defer func(ctx context.Context) {
+		// Run a cold reset first to ensure DUT connected.
+		s.Log("Cold resetting DUT at the end of test")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
+		}
+		s.Log("Waiting for reconnection to DUT")
+		if err := h.WaitConnect(ctx); err != nil {
+			s.Fatal("Unable to reconnect to DUT: ", err)
+		}
 		s.Log("Restoring crossystem values to the original settings")
 		if err := setTargetCsVals(ctx, s, h, originalCrossystemMap); err != nil {
 			s.Fatal("Failed to restore crossystem values to the original settings: ", err)
@@ -137,21 +146,53 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to reboot DUT by servo: ", err)
 			}
 		case "powerCycleByPressingPowerKey":
-			s.Logf("Power-cycling DUT by pressing power button for %s", h.Config.HoldPwrButtonPowerOff)
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
-				s.Fatal("Failed to set a keypress control by servo: ", err)
+			// pressPowerBtn sends a press on the power button and waits for DUT to reach G3.
+			pressPowerBtn := func(pressDur time.Duration) error {
+				s.Logf("Power-cycling DUT by pressing power button for %s", pressDur)
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(pressDur)); err != nil {
+					return errors.Wrap(err, "failed to press power through servo")
+				}
+				s.Log("Waiting for power state to become G3")
+				if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*time.Minute, "G3"); err != nil {
+					return errors.Wrap(err, "failed to get powerstate at G3")
+				}
+				return nil
 			}
-
-			s.Log("Waiting for power state to become G3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3"); err != nil {
-				s.Fatal("Failed to get powerstates at G3: ", err)
+			// checkPowerState checks for the power state value.
+			checkPowerState := func() string {
+				s.Log("Checking for the DUT's power state")
+				state, err := h.Servo.GetECSystemPowerState(ctx)
+				if err != nil {
+					s.Log("Error getting power state: ", err)
+					return "unknown"
+				}
+				return state
 			}
-
+			// Retry powering off DUT with a longer press if the duration was less than
+			// 10 seconds on the power button, and the DUT remained at S0.
+			powerOff := h.Config.HoldPwrButtonPowerOff
+			for powerOff <= 10*time.Second {
+				err := pressPowerBtn(powerOff)
+				if err == nil {
+					break
+				}
+				powerState := checkPowerState()
+				if powerState != "S0" || powerOff == 10*time.Second {
+					s.Fatal("Failed to power off DUT: ", err)
+				}
+				powerOff += 1 * time.Second
+			}
 			s.Log("Pressing on the power button to power on DUT")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
 				s.Fatal("Failed to perform a tap on the power button: ", err)
 			}
 		case "powerCycleByRemovingBattery":
+			// Opening CCD prior to battery cutoff would help some DUTs in waking
+			// when ac is re-attached.
+			if err := openCCD(ctx, h); err != nil {
+				s.Fatal("CCD not opened: ", err)
+			}
+
 			// Explicitly log servo type and dut connection type for debugging purposes.
 			s.Log("Logging servo type and dut connection type")
 			var validInfo = []string{"servoType", "dutConnectionType"}
