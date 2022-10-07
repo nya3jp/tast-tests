@@ -70,6 +70,30 @@
       },
       "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c0ef78_7dd7bdf5",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-10-07T03:28:50Z",
+      "side": 1,
+      "message": "It looks like the slider ticks try to use round numbers of 0.1, 0.2, 0.5, and 1 GiB, which I didn\u0027t realise: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/crostini/crostini_disk.cc;l\u003d329\n\nBut since 0.1 and 0.2 GiB aren\u0027t an integer number of bytes there must already be rounding going on. Even if there is a unique mapping from display label back to size in bytes, I wouldn\u0027t expect to get it right myself.\n\nI would suggest always using the actual size and ignoring the label. Alternatively, compute what the label should be from the true size and check that it matches.",
+      "parentUuid": "d109dd8a_ffb35d4d",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
