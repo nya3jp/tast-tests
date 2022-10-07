@@ -175,6 +175,24 @@
       "parentUuid": "8f42435e_d2adc8e9",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a0553f_b7114645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T03:39:31Z",
+      "side": 1,
+      "message": "Not sure I understand. I don\u0027t see any s.Log or s.Logf. Anyway, you can use testing.ContextLog in the library.",
+      "parentUuid": "f40437ff_480b7534",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
