@@ -388,6 +388,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6125040_7a5a3c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T04:52:50Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t get you.  What\u0027s the difference (except the exported vs. un-exported)?\n\nAFAIK, it doesn\u0027t help for the lint error: move func ReadKernelConfig in config_verify_common.go to a shared package.",
+      "parentUuid": "b00503ac_f1d7e05e",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
