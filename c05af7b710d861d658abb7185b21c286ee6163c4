@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c569da0_6fc1eb09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-07T21:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951f8570_d2d7776f",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "c05af7b710d861d658abb7185b21c286ee6163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ffdaa78_91ab7f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-07T21:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae94abba_0f5882e9",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "c05af7b710d861d658abb7185b21c286ee6163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "391f923f_b072942a",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60bedb43_ae5acb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-07T21:38:58Z",
+      "side": 1,
+      "message": "That\u0027s our standard procedure for verifying that the feedback opens, we use it in all tests that do it. I saw these links fail to load once, due to a seemingly unrelated bug in the test.",
+      "parentUuid": "391f923f_b072942a",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "c05af7b710d861d658abb7185b21c286ee6163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac33c166_dbeffc60",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-07T21:23:05Z",
       "side": 1,
       "message": "Please move this number to a const with a descriptive name",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "c05af7b710d861d658abb7185b21c286ee6163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04744e8_8e7c549b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-07T21:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac33c166_dbeffc60",
       "range": {
         "startLine": 93,
         "startChar": 17,
