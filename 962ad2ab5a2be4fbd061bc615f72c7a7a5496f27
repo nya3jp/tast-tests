@@ -193,6 +193,24 @@
       "parentUuid": "f40437ff_480b7534",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3615f75c_c83610cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T03:51:18Z",
+      "side": 1,
+      "message": "It uses s.Errorf().\n\nFurthermore, it has no `ctx` to use testing.ContextLog().",
+      "parentUuid": "04a0553f_b7114645",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
