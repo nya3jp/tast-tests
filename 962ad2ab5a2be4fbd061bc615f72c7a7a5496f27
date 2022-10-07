@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46d0c1e0_6ffc706b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T02:43:41Z",
+      "side": 1,
+      "message": "\u003e Why don\u0027t you put it in \"chromiumos/tast/local/kernel\"?\n\nOh...I see.  (I overlooked the \"bundles\" path).   Let me try if it is feasible to put there.",
+      "parentUuid": "911ceca6_1c5ced9d",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
