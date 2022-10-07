@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76217ae9_b6438b92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-07T13:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7111f95_7885132c",
+      "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc84588_4a500971",
@@ -101,6 +119,24 @@
       "writtenOn": "2022-10-06T17:30:34Z",
       "side": 1,
       "message": "Will this interfere with future connectAP calls? (i.e. should this be Fatal instead of Error?)",
+      "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e33c0bd_6bf02876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-07T13:48:58Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  But I like your other suggestion about removing state and returning errors from `connectAP` so went along this route.",
+      "parentUuid": "4bc84588_4a500971",
       "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
