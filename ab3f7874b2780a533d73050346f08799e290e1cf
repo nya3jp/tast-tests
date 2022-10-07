@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2449771f_a56b4873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:56:25Z",
+      "side": 1,
+      "message": "only one space",
+      "range": {
+        "startLine": 862,
+        "startChar": 13,
+        "endLine": 862,
+        "endChar": 15
+      },
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a132def8_ae7b9862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:56:25Z",
+      "side": 1,
+      "message": "Do this part with `pc.Drag` because it ensures that the mouse button is released even if there is a failure during the drag. MeetCUJ already has `pc`:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003d5deb88905c8f66621af6777d8facc147318edb83;l\u003d582",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 61
+      },
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21e5e80_b4d14371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T22:56:25Z",
+      "side": 1,
+      "message": "remove blank line",
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
