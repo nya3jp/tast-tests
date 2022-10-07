@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47776542_3734e9b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-07T19:45:32Z",
+      "side": 1,
+      "message": "I looked into cleaning up through DriveFS, and I don\u0027t think it\u0027s more reliable.\n1) We have to parse the screencast title from the screencast item to find the directory in the file system to delete. This is prone to failure just like clicking on the three-dot menu.\n2) Deleting through DriveFS requires sync, but the test account may log out before sync completes. Deleting through the three-dot menu communicates directly to the Drive server.\n3) We want to test deletion through the three-dot menu because that\u0027s our feature.\n\nThe current deletion mechanism isn\u0027t flaky. Even if we can find a deletion mechanism that seemingly always works, I would feel more comfortable deleting multiple screencast items per test instead of just one. Not blowing up Drive quota is a higher priority.",
+      "parentUuid": "966b3cf8_df846518",
+      "revId": "ef2e7baf02f3a8388db54fb400f677494064e489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e75c346_cb61a6c9",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-07T16:53:18Z",
       "side": 1,
       "message": "nit: Could you add a comment that this is a random number to experiment fixing flaky test?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "ef2e7baf02f3a8388db54fb400f677494064e489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c9e2a1_7337e1f1",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-07T19:45:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e75c346_cb61a6c9",
       "range": {
         "startLine": 205,
         "startChar": 0,
