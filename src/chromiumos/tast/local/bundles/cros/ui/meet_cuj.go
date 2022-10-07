@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -365,7 +366,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Determines the meet call duration. Use the meet duration specified in
 	// test param if there is one. Otherwise, default to 10 minutes.
-	meetTimeout := 10 * time.Minute
+	meetTimeout := 1 * time.Minute
 	if meet.duration != 0 {
 		meetTimeout = meet.duration
 	}
@@ -580,6 +581,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to detect it is in tablet-mode or not: ", err)
 	}
 	var pc pointer.Context
+	var mw *input.MouseEventWriter
 	if inTabletMode {
 		// If it is in tablet mode, ensure it it in landscape orientation.
 		// TODO(crbug/1135239): test portrait orientation as well.
@@ -610,6 +612,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to turn all windows into maximized state: ", err)
 		}
 		pc = pointer.NewMouse(tconn)
+
+		mw, err = input.Mouse(ctx)
+		if err != nil {
+			s.Fatal("Failed to create a mouse: ", err)
+		}
+		defer mw.Close()
 	}
 	defer pc.Close()
 
@@ -697,11 +705,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		collaborationRE = regexp.MustCompile(`\bJamboard\b`)
 	}
 
+	var collaborationWindow *ash.Window
 	if meet.split {
 		if collaborationRE == nil {
 			s.Fatal("Need a collaboration window for split view")
 		}
-		collaborationWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
+		collaborationWindow, err = ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
 		if err != nil {
 			s.Fatal("Failed to find the collaboration window: ", err)
 		}
@@ -840,7 +849,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			// Wait for 5 seconds, type notes for 12.4 seconds then until the time is
 			// elapsed (3 times by default). Wait before the first typing to reduce
 			// the overlap between typing and joining the meeting.
-			for end.Sub(time.Now()).Seconds() > 18 {
+			for time.Until(end) > 36*time.Second {
 				if err := uiauto.Combine(
 					"sleep and type",
 					action.Sleep(5*time.Second),
@@ -849,6 +858,73 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 					return err
 				}
 			}
+
+			// Toggle the Google Docs file menu button for press and
+			// release metrics.
+			waitUntilStable := ui.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)
+			fileMenu := nodewith.Name("File").HasClass("menu-button")
+			if !inTabletMode {
+				if err := ui.MouseMoveTo(fileMenu, 500*time.Millisecond)(ctx); err != nil {
+					s.Log("Failed to move mouse to Google Doc's file menu: ", err)
+				}
+			}
+			if err := action.Combine(
+				"toggle the Google Doc's file menu",
+				// Open file menu.
+				pc.Click(fileMenu),
+				waitUntilStable,
+
+				// Close file menu.
+				pc.Click(fileMenu),
+				waitUntilStable,
+			)(ctx); err != nil {
+				return err
+			}
+
+			// Get the Google Docs window again to properly retrieve
+			// the split-screen bounds.
+			docsWindow, err := ash.GetWindow(ctx, tconn, collaborationWindow.ID)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the Google Docs window")
+			}
+
+			// Highlight text on Google Docs to get mouse drag metrics.
+			docsBounds := docsWindow.TargetBounds
+			if !inTabletMode {
+				if err := mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond)(ctx); err != nil {
+					s.Log("Failed to move mouse to center of Google Docs window: ", err)
+				}
+			}
+			if err := pc.Drag(
+				docsBounds.CenterPoint(),
+				pc.DragTo(docsBounds.TopLeft(), 500*time.Millisecond),
+				pc.DragTo(docsBounds.BottomRight(), time.Second),
+				pc.DragTo(docsBounds.CenterPoint(), 500*time.Millisecond),
+			)(ctx); err != nil {
+				return err
+			}
+
+			if inTabletMode {
+				x := docsBounds.CenterX()
+				topSwipePoint := coords.NewPoint(x, docsBounds.Height/4)
+				bottomSwipePoint := coords.NewPoint(x, docsBounds.Height*3/4)
+
+				// Scroll with 1-finger swipe.
+				if err := pc.Drag(bottomSwipePoint,
+					pc.DragTo(topSwipePoint, time.Second),
+					pc.DragTo(bottomSwipePoint, time.Second),
+				)(ctx); err != nil {
+					return errors.Wrap(err, "failed to scroll with 1-finger swipe")
+				}
+			} else {
+				// Scroll with mouse wheel.
+				for _, scrollDown := range []bool{true, false} {
+					if err := inputsimulations.RepeatMouseScroll(ctx, mw, scrollDown, 50*time.Millisecond, 30); err != nil {
+						return errors.Wrap(err, "failed to repeat mouse scroll")
+					}
+				}
+			}
+
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
 				return errors.Wrap(err, "failed to hit alt-tab and focus back to Meet tab")
 			}
