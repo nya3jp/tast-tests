@@ -59,6 +59,13 @@ type MetricConfig struct {
 
 	// The direction of the histogram.
 	direction perf.Direction
+
+	// There are two special classes of metrics that are reported outside
+	// of test scenarios: BootTime.* and ShutdownTime.*. This way the
+	// regular "metrics difference" will be empty for these because
+	// usually Chrome will load these before a test is started.
+	// To collect these metrics we need to fetch absolute metrics values.
+	bootAndShutdown bool
 }
 
 // NewSmoothnessMetricConfig creates a new MetricConfig instance for collecting
@@ -66,21 +73,28 @@ type MetricConfig struct {
 // smoothness metrics will be aggregated into the "AnimationSmoothness" entry at
 // the end.
 func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter}
+	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, bootAndShutdown: false}
 }
 
 // NewLatencyMetricConfig creates a new MetricConfig instance for collecting
 // input latency data for the given histogram name. The whole data of all input
 // latency metrics will be aggregated into the "InputLatency" entry at the end.
 func NewLatencyMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter}
+	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, bootAndShutdown: false}
 }
 
 // NewCustomMetricConfig creates a new MetricConfig for the given histogram
 // name, unit, and direction. The data are reported as-is but
 // not aggregated with other histograms.
 func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction}
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, bootAndShutdown: false}
+}
+
+// NewBootAndShutdownCustomMetricConfig creates a new MetricConfig with
+// bootAndShutdown flag set, for the given histogram name, unit, and direction.
+// The data are reported as-is but not aggregated with other histograms.
+func NewBootAndShutdownCustomMetricConfig(histogramName, unit string, direction perf.Direction) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, bootAndShutdown: true}
 }
 
 type record struct {
@@ -502,6 +516,30 @@ func (r *Recorder) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// filterBootAndShutdownMetricNames returns metric names having |bootAndShutdown| metric
+// config flag value equal to |bootAndShutdownFlagValue|.
+func (r *Recorder) filterBootAndShutdownMetricNames(bootAndShutdownFlagValue bool, bt browser.Type) ([]string, error) {
+	metrics, ok := r.records[bt]
+	if !ok {
+		return nil, errors.Errorf("no expected metrics for the given browser %q", bt)
+	}
+	var result []string
+	for name, record := range metrics {
+		if record.config.bootAndShutdown == bootAndShutdownFlagValue {
+			result = append(result, name)
+		}
+	}
+	return result, nil
+}
+
+func (r *Recorder) getInTestMetricNames(bt browser.Type) ([]string, error) {
+	return r.filterBootAndShutdownMetricNames(false, bt)
+}
+
+func (r *Recorder) getBootAndShutdownMetricNames(bt browser.Type) ([]string, error) {
+	return r.filterBootAndShutdownMetricNames(true, bt)
+}
+
 // startRecording starts to record CUJ data.
 //
 // In:
@@ -608,9 +646,13 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 
 	// Start metrics recording per browser.
 	r.mr = make(map[browser.Type]*metrics.Recorder)
-	for bt, names := range r.names {
-		var err error
-		r.mr[bt], err = metrics.StartRecorder(ctx, r.tconns[bt], names...)
+	for bt := range r.names {
+		// Watch in-test metrics only.
+		inTestMetrics, err := r.getInTestMetricNames(bt)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get in-test metric names")
+		}
+		r.mr[bt], err = metrics.StartRecorder(ctx, r.tconns[bt], inTestMetrics...)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to start metrics recorder for browser %v", bt)
 		}
@@ -667,12 +709,25 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	tHists := make(map[browser.Type][]*metrics.Histogram)
 	for bt, rr := range r.mr {
 		tconn := r.tconns[bt]
-		h, err := rr.Histogram(runCtx, tconn)
+		inTestHistograms, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrapf(err, "failed to collect metrics from browser %v", bt)
 		}
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(h))
-		tHists[bt] = append(tHists[bt], h...)
+		// Boot and shutdown metrics must be collected separately.
+		bootAndShutdownMetrics, err := r.getBootAndShutdownMetricNames(bt)
+		if err != nil {
+			return errors.Wrap(err, "failed to get boot and shutdown metric names")
+		}
+
+		bootAndShutdownHistograms, err := metrics.GetHistograms(runCtx, tconn, bootAndShutdownMetrics)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch boot and shutdown metrics")
+		}
+
+		testing.ContextLogf(ctx, "The following in-test metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(inTestHistograms))
+		testing.ContextLogf(ctx, "The following boot and shutdown metrics are collected from %q: %v", bt+"-Chrome", histsWithSamples(bootAndShutdownHistograms))
+		tHists[bt] = append(tHists[bt], inTestHistograms...)
+		tHists[bt] = append(tHists[bt], bootAndShutdownHistograms...)
 	}
 	// Reset recorders and context.
 	r.mr = nil
