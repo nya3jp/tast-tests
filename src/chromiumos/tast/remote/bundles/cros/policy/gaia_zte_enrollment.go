@@ -36,6 +36,11 @@ func init() {
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService"},
 		Timeout:      7 * time.Minute,
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// ZTE Enrollment.
+			Value: "screenplay-6f0905f0-9ecd-4974-b4a1-7e4b828b5dc2",
+		}},
 		Params: []testing.Param{
 			{
 				Name: "autopush",
