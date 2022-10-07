@@ -14,9 +14,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalFiles,
-		Desc:     "Helper test that uses data and output files",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
+		Func:         LocalFiles,
+		Desc:         "Helper test that uses data and output files",
+		Contacts:     []string{"tast-owners@google.com", "nya@chromium.org"},
+		BugComponent: "b:1034625",
 		Data: []string{
 			"local_files_internal.txt",
 			"local_files_external.txt",

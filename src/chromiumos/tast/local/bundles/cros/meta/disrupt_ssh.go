@@ -17,9 +17,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DisruptSSH,
-		Desc:     "Terminates the current SSH connection",
-		Contacts: []string{"tast-owners@google.com"},
+		Func:         DisruptSSH,
+		Desc:         "Terminates the current SSH connection",
+		Contacts:     []string{"tast-owners@google.com"},
+		BugComponent: "b:1034625",
 		// This test always fails.
 	})
 }

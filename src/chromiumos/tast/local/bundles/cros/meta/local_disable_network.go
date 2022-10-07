@@ -22,10 +22,11 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalDisableNetwork,
-		Desc:     "Disable network temporary and then reenable it",
-		Contacts: []string{"seewaifu@google.com", "tast-owners@google.com"},
-		Timeout:  time.Minute * 4,
+		Func:         LocalDisableNetwork,
+		Desc:         "Disable network temporary and then reenable it",
+		Contacts:     []string{"tast-owners@google.com", "seewaifu@google.com"},
+		BugComponent: "b:1034625",
+		Timeout:      time.Minute * 4,
 	})
 }
 

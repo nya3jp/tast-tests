@@ -14,10 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalVars,
-		Desc:     "Helper test that inspects a runtime variable",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
-		VarDeps:  []string{"meta.LocalVars.var"},
+		Func:         LocalVars,
+		Desc:         "Helper test that inspects a runtime variable",
+		Contacts:     []string{"tast-owners@google.com", "nya@chromium.org"},
+		BugComponent: "b:1034625",
+		VarDeps:      []string{"meta.LocalVars.var"},
 		// This test is called by remote tests in the meta package.
 	})
 }
