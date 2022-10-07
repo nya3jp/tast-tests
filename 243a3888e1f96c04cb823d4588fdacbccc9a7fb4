@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a5bb39_3d5f4288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-07T05:43:04Z",
+      "side": 1,
+      "message": "This test checks only descriptions of a custom action and not id because id is converted between Android side and chromium side so we don\u0027t have expectation on chromium side id",
+      "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
