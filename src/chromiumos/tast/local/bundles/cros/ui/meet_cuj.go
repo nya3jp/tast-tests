@@ -210,8 +210,8 @@ func init() {
 			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
 		}, {
 			// Even bigger meeting.
-			Name:      "49p",
-			Timeout:   defaultTestTimeout,
+			Name:    "49p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -220,8 +220,8 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
-			Name:      "lacros_49p",
-			Timeout:   defaultTestTimeout,
+			Name:    "lacros_49p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -271,8 +271,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// 49p with vp8 video codec.
-			Name:      "49p_vp8",
-			Timeout:   defaultTestTimeout,
+			Name:    "49p_vp8",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -921,8 +921,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			webRTCInternalsPV, err := reportWebRTCInternals(dump, meet.num, meet.present)
 			if err != nil {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
+			} else {
+				pv.Merge(webRTCInternalsPV)
 			}
-			pv.Merge(webRTCInternalsPV)
 		}
 	}
 
