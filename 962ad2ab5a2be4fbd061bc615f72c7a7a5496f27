@@ -364,6 +364,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b00503ac_f1d7e05e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-07T04:41:37Z",
+      "side": 1,
+      "message": "Try this pattern:\n\nin Common.go\n\ntype kernelConfigCheck struct {\n\tbuiltin []string\n}\n\nfunc (c *kernelConfigCheck) readKernelConfig(ctx context.Context) (map[string]string, error) {\n\n}\n\nfunc NewKernelConfigCheck(...) *kernelConfigCheck {\n    return \u0026kernelConfigCheck{\n     builtin: []string{\n\t\t// Validity checks; should be present in builds as builtins.\n\t\t\"INET\",    \n\t}\n}\n\nfunc (c *kernelConfigCheck) test(conf map[string]string, s *testing.State) {\n ...\n}",
+      "parentUuid": "0ec2666c_865c997e",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
