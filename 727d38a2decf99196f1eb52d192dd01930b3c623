@@ -46,6 +46,30 @@
       },
       "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d109dd8a_ffb35d4d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-07T03:13:35Z",
+      "side": 1,
+      "message": "Ah, I got your point. When the size \u003e 100 GB, the size on text label will be rounded up. E.g., if the size is 104.5 GB, the label shows 105 GB.\n\nLet me fix that.",
+      "parentUuid": "eab0b1f2_a64f9b54",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
