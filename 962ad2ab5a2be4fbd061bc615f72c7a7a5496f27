@@ -292,6 +292,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da44ca56_6f408b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-07T04:14:09Z",
+      "side": 1,
+      "message": "can you paste the complete error log if you still have it ?",
+      "parentUuid": "92da3d70_0d46f4e7",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
