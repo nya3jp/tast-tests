@@ -39,7 +39,7 @@ dhcp-option=option:dns-server,{{.dns}}
 
 // Paths in chroot.
 const (
-	dnsmasqPath   = "/usr/local/sbin/dnsmasq"
+	dnsmasqPath   = "/usr/sbin/dnsmasq"
 	confPath      = "/tmp/dnsmasq.conf"
 	logPath       = "/tmp/dnsmasq.log"
 	leaseFilePath = "/tmp/dnsmasq.leases"
