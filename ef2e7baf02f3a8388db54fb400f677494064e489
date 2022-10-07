@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966b3cf8_df846518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-10-07T16:53:18Z",
+      "side": 1,
+      "message": "As discussed offline, it is a little hacky that we need to do this.\n\nI would explore a more reliable way to clean up screencasts (i.e: clean up through DriveFS) while giving this a try.",
+      "revId": "ef2e7baf02f3a8388db54fb400f677494064e489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e75c346_cb61a6c9",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-10-07T16:53:18Z",
+      "side": 1,
+      "message": "nit: Could you add a comment that this is a random number to experiment fixing flaky test?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "ef2e7baf02f3a8388db54fb400f677494064e489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
