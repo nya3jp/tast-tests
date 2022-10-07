@@ -52,6 +52,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c931e73_c8af636a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T00:59:09Z",
+      "side": 1,
+      "message": "android/ lgtm",
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63b3eac_2727998d",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputSineActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T00:59:09Z",
+      "side": 1,
+      "message": "optional nit: `(int) TimeUnit.SECONDS.toMillis(4)` to make it more clear.",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d80ea98b_157a1be4",
