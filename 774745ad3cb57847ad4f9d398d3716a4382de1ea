@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c8e377_653dd5b0",
+        "filename": "android/ArcAccessibilityTest/res/layout/action_activity.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-07T05:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa8141ad_18f649a2",
+      "range": {
+        "startLine": 2,
+        "startChar": 5,
+        "endLine": 2,
+        "endChar": 65
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2fa8266_4d79ec66",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9012b1_62daeeb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-07T05:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2fa8266_4d79ec66",
+      "range": {
+        "startLine": 37,
+        "startChar": 70,
+        "endLine": 37,
+        "endChar": 81
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37690f59_c1c40014",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-06T08:00:44Z",
       "side": 1,
       "message": "no longer used",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "774745ad3cb57847ad4f9d398d3716a4382de1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad7e021_ea5a881b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-07T05:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37690f59_c1c40014",
       "range": {
         "startLine": 61,
         "startChar": 27,
