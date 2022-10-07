@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d094a5_d21c1f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79ef97a_fa42872a",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf30d5db_ef86288e",
@@ -81,6 +105,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc8a7e2_5b2e208b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf30d5db_ef86288e",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295c83e6_8e106454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbda46fc_20bb59ec",
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56aae5cc_c92de003",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-10-04T14:13:49Z",
       "side": 1,
       "message": "testUrl*",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd1fb97_09c6d19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56aae5cc_c92de003",
       "range": {
         "startLine": 179,
         "startChar": 1,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c984588c_039164ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f037b8_01d68d0e",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 92
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb32ac1_52d44b26",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ee76ea_c9d4d6c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdb32ac1_52d44b26",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 76
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7edb8c10_378d2493",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-10-04T14:13:49Z",
       "side": 1,
       "message": "Can we move it to the printing test as they are only used there?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67fe3676_f1f560d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:12:46Z",
+      "side": 1,
+      "message": "My idea was to move it here in order to make the test more readable. You don\u0027t need PrintingBlockPolicy/PrintingWarnPolicy in order to understand the test and the function is global anyways IIUC. But I don\u0027t mind to move it back.",
+      "parentUuid": "7edb8c10_378d2493",
       "range": {
         "startLine": 134,
         "startChar": 0,
