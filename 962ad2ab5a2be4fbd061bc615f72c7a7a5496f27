@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "911ceca6_1c5ced9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T02:39:54Z",
+      "side": 1,
+      "message": "lint (when repo upload) told me I should use a subpackage for the share code (see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code).",
+      "parentUuid": "24071045_7d1bec93",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-07T00:59:32Z",
       "side": 1,
       "message": "Should you add your name to it, too?",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1a2c44_89ee09be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T02:39:54Z",
+      "side": 1,
+      "message": "NACK, I am not creating a new test case.  This is copy from the original code.",
+      "parentUuid": "fc5d295c_d434c124",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
