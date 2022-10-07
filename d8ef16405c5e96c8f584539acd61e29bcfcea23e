@@ -100,6 +100,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffd4bb11_fb018f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-07T01:46:51Z",
+      "side": 1,
+      "message": "I think this is unnecessary. See below.",
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c494684_76d40e50",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
         "patchSetId": 3
@@ -111,6 +128,30 @@
       "writtenOn": "2022-10-06T23:11:42Z",
       "side": 1,
       "message": "nit: I wonder if it\u0027s worth ensuring the environment is clean before starting this test case? One edge case that *might* happen is someone reuses the same fixture and chrome starts with the browser already running, then you might end up with 2 tabs instead? Should you have a function at the start that ensures nothing is there?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96cec15c_334d72fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-07T01:46:51Z",
+      "side": 1,
+      "message": "The fixture guarantees there\u0027s no open browser when a test starts. See ResetState use in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/familylink/fixture.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d354",
+      "parentUuid": "1c494684_76d40e50",
       "range": {
         "startLine": 84,
         "startChar": 1,
