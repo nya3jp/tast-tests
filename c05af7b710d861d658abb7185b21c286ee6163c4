@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67456215_21b3afb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-07T23:04:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60bedb43_ae5acb64",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "c05af7b710d861d658abb7185b21c286ee6163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac33c166_dbeffc60",
