@@ -46,6 +46,30 @@
       },
       "revId": "4a66e553e46ea642cb22351f5f0247284bca4dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358b7421_c3309b1a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-07T07:09:08Z",
+      "side": 1,
+      "message": "You\u0027re right, those are not. outOfTest seems very wordy. I don\u0027t know if anyone has better ideas",
+      "parentUuid": "2ce708e7_2d1df21d",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "4a66e553e46ea642cb22351f5f0247284bca4dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
