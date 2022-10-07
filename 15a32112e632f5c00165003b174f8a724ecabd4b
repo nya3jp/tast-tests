@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f1848e_a1bc6c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-07T22:11:51Z",
+      "side": 1,
+      "message": "let\u0027s instead launch another app that\u0027s not pinned (e.g. launch files app, and unpin it)\n\nI think it makes it easier to follow the test flow if we test interactions on a single app icon.",
+      "revId": "15a32112e632f5c00165003b174f8a724ecabd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
