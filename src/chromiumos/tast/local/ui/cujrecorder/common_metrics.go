@@ -132,3 +132,14 @@ func AnyChromeCommonMetricConfigs() []MetricConfig {
 		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.Hide"),
 	}
 }
+
+// WebRTCMetrics returns WebRTC common metrics which are required to be collected by conference CUJ tests.
+func WebRTCMetrics() []MetricConfig {
+	return []MetricConfig{
+		NewCustomMetricConfig("WebRTC.Video.DecodedFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.RenderFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DecodeTimeInMs", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.SentWidthInPixels", "pixels", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.SentFramesPerSecond", "fps", perf.BiggerIsBetter),
+	}
+}
