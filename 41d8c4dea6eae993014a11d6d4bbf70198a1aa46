@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9922ef7a_6993c694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f1a999d_8e171ff0",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "631a68bc_5fa4d1c0",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-10-04T21:27:25Z",
       "side": 1,
       "message": "nit: I would put this immediately after `const slidesScrollTimeout \u003d 10 * time.Minute`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "299a30d4_61972d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631a68bc_5fa4d1c0",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda53be9_5e78510a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af4bb1de_645fe758",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eebdc373_c680af4d",
@@ -117,6 +189,54 @@
       "writtenOn": "2022-10-04T20:55:09Z",
       "side": 1,
       "message": "End with a period.",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d329991_6927954f",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebdc373_c680af4d",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f1610c_f01466f3",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebdc373_c680af4d",
       "range": {
         "startLine": 23,
         "startChar": 38,
@@ -281,6 +401,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc055c01_7f0ead28",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3ec8f5b_21dfd606",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b99001_581e8775",
@@ -294,6 +432,54 @@
       "writtenOn": "2022-10-04T21:27:25Z",
       "side": 1,
       "message": "Here is how I would do it:\n\n\t// GetTestDocURL randomly chooses blah blah blah\n\tfunc GetTestDocURL() (string, error) {\n\t\treturn getDriveURL(\"document\", []string{\n\t\t\t\"1Q4xCQd2aVxwpIugEuGdVmWoNbdxkhc-ENTW9-frBMnQ\",\n\t\t\t\"169goDwL3s5nX-BxY0-qA2-DAtx9EKzQliaDa6dpKCV8\",\n\t\t\t\"1NB5Wbv0PuxT8zo-GT_uIyJZCY7FEvbWxBUnAX_vHta4\",\n\t\t\t\"1tE6oaSW875m2SMqMUEcnEcVcbt5cUCH75bfmeRGQ26o\",\n\t\t\t\"1pBorP7vprR8n4_QYizTURzl8BgaubYPuwfK2FoouH60\",\n\t\t\t\"1YprStoKZUweQ_zr0RuiAQKLOsf816p6j5mEPYokQUDU\",\n\t\t\t\"1uYRh_HMB8EJuU54UJlG-pwVUeCMRG3IsNsPhNRMHyic\",\n\t\t\t\"1_LeaFWWJQ4Y_6qETCESpRk_FeSbbLCWdyQ-LPaAkziw\",\n\t\t\t\"1DNU22wEApL5QNTLc7Gmy9uix8JwsdGGvRlE58Pj2Opc\",\n\t\t\t\"1IX0Nikx155xrY5vLIFbEME_BUrx-0cOWZWRLljbtmQc\",\n\t\t})\n\t}\n\n\t// GetTestDocCommentURL is like GetTestDocURL, but blah blah blah\n\tfunc GetTestDocCommentURL() (string, error) {\n\t\t...\n\t}\n\n\t// GetTestSlidesURL randomly chooses blah blah blah\n\tfunc GetTestSlidesURL() (string, error) {\n\t\treturn getDriveURL(\"presentation\", []string{\n\t\t\t\"11-mh-vzb-ZEocqoafgU-KA1F1eql-p1K5kHYpbcLf3k\",\n\t\t\t\"1Jx_JHIWcrBSAF_PIrcFISQreGhprRm2gveQixOZEQio\",\n\t\t\t\"1yPZ0b6FpDTyUY92XjDQhC1KVmPw5U0mC1a0cY31-BuU\",\n\t\t\t\"1r7eOX9X3HOZRA_8s--Ay-kfKifZlmAGuZX6iI7qjReU\",\n\t\t\t\"1N4dKIoMKZBYVgdIRcp3fE-NH1g9nnMRbySKxs56ctX8\",\n\t\t\t\"1uev_ZfU6PgjPFMUCZOIJr0rxBdswzSG-8GYOJe6i90Y\",\n\t\t\t\"1P1fIp81hhVbWd5ZRw5v2U1eii3pebhTyXl2DQijbSBo\",\n\t\t\t\"16vRzSKAwx_QFV75H1t3GUrlq5EPit3Y5yNx_yWLZ3j8\",\n\t\t\t\"1-aSSvvDdnugUUfygj-opVUltSpZwJLae4IqiGTiMRc8\",\n\t\t\t\"1LmLydzA4tSYB6A1czpO1sUCWlMZ7QSp6CgtGOKRptBI\",\n\t\t})\n\t}\n\t\n\t// GetTestSheetsURL randomly chooses blah blah blah\n\tfunc GetTestSheetsURL() (string, error) {\n\t\treturn getDriveURL(\"spreadsheets\", []string{\n\t\t\t\"1Ij1sou7HIcydmLPR-s3xSe-cmap2H7lFhCErHX-HBmU\",\n\t\t\t\"1sKoKExkl_mpLF-HVz34Y0lpEIvaVFZzhB3FUpkJqY80\",\n\t\t\t\"1SVgMhg48r6LoZgXDbyNeG8_ZnVd1ZboYSMN2rWtQJ6c\",\n\t\t\t\"1IeiKPacIP4j6Wi1VbAyPGftEZlnr1hVNZRGwI8cjoyk\",\n\t\t\t\"16zIJDAn4zhKGH1sPKky7i6pXD7_yJSjzwbmG4jWYAJ4\",\n\t\t\t\"1TKUNSOINXg1mMM0_XkQ4oFXAd3CD--O_YyUv93U_Kio\",\n\t\t\t\"1hotZ9nrPEDzaBTzEfEayX5QwvGxarXoxNMG7x3CXzlM\",\n\t\t\t\"1r4Y1ASgTe-4-TBF93fXKMG3BR6hHBuKqi6FjFV9FeLw\",\n\t\t\t\"1OpqvOCdW-bQZTv_XXbb96UNAnFFN4P242Ae-pF1OE70\",\n\t\t\t\"1U9EJ9TXWnDH2CsBjR0t0jXpj2JK7HDcX9kE7J6V0vEY\",\n\t\t})\n\t}\n\n\t// getDriveURL randomly chooses blah blah blah\n\tfunc getDriveURL(fileType string, ids []string) (string, error) {\n\t\t...\n\t}",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23b663a_d6dd6b59",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b99001_581e8775",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d767e4df_3695c8df",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T01:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b99001_581e8775",
       "range": {
         "startLine": 15,
         "startChar": 0,
