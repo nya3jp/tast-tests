@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ac54bf1e_2003dac5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T20:30:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca5592e_bcb8cd77",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "9c5357255eb237d4f5361836505e9275b2e2f1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3b2ada0e_026dc3c9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-07T19:37:18Z",
       "side": 1,
       "message": "The comment should have an almost blank line (just `//`) to be consistent with the comments on `GetTestDocURL` and `GetTestSlidesURL`.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "9c5357255eb237d4f5361836505e9275b2e2f1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2656e51_b7bb7a63",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T20:30:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05fe5747_6ce42150",
       "range": {
         "startLine": 59,
         "startChar": 0,
