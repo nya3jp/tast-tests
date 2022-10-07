@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6762a23_67da5110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-07T18:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835f2e5f_9ab1ebba",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468f3e3c_7e12ca7f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-06T18:49:42Z",
       "side": 1,
       "message": "space for consistency for timeout, \"90 * time.Second\"",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f374507_8e14146c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-07T18:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468f3e3c_7e12ca7f",
       "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfc6e3a_155bd85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-07T18:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13ca81b_da1f6238",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aed52601_e880af0e",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-06T18:49:42Z",
       "side": 1,
       "message": "Is this working? focusable and focused? earler some bug was around this. Ignore if you already verified",
+      "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55933644_6dd1ec5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_setting_on_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-07T18:37:41Z",
+      "side": 1,
+      "message": "This works and I have verified it",
+      "parentUuid": "aed52601_e880af0e",
       "revId": "c422c542f60db295d46f85ee0f7cd1fe75dd9cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
