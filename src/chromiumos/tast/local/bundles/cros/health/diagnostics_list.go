@@ -33,8 +33,8 @@ func DiagnosticsList(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get diag routines: ", err)
 	}
 
-	// There are 9 routines supported on all devices.
-	if len(routines) < 9 {
-		s.Fatalf("Unexpected number of routines, got %d (%v); want >=9", len(routines), routines)
+	// There are routines supported on all devices.
+	if len(routines) == 0 {
+		s.Fatal("Unexpected number of routines, got 0; want >0")
 	}
 }
