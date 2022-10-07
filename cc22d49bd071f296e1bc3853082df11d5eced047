@@ -34,6 +34,24 @@
       "parentUuid": "e471a8b3_161e94cb",
       "revId": "cc22d49bd071f296e1bc3853082df11d5eced047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383f4b44_8e27bc1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-07T03:19:39Z",
+      "side": 0,
+      "message": "We\u0027ve always just used this alias in the past (see all other stable tests in this directory). The group is active and if you send an email to the group, you will get a timely response (possibly faster than directly pinging the oncall).\n\nIn any case, the link to the rotation is here: https://rotations.corp.google.com/rotation/5777312787202048",
+      "parentUuid": "f2fc1b0b_dc3b17cc",
+      "revId": "cc22d49bd071f296e1bc3853082df11d5eced047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

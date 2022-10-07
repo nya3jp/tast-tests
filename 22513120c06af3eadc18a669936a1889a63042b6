@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e232e2_d0e41514",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-07T03:19:39Z",
+      "side": 1,
+      "message": "rm",
+      "revId": "22513120c06af3eadc18a669936a1889a63042b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
