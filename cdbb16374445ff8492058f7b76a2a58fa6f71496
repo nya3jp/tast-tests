@@ -16,6 +16,23 @@
       "message": "ping. thanks.",
       "revId": "cdbb16374445ff8492058f7b76a2a58fa6f71496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef18186d_4736e885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-07T08:43:04Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "cdbb16374445ff8492058f7b76a2a58fa6f71496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
