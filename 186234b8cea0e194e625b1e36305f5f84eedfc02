@@ -16,6 +16,115 @@
       "message": "Yury, would you be the right person to review this? if not, could you please point us to someone suitable?",
       "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7c1e14_c1c74560",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T19:06:58Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed27e16_3d2818ec",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T19:06:58Z",
+      "side": 1,
+      "message": "optional nit: Write `else if` so that if you fail to create the arc log directory, you don\u0027t reset the outDir field of the ARC object to point to the probably nonexistent directory.",
+      "range": {
+        "startLine": 526,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 3
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efb90a0_8a174314",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T19:06:58Z",
+      "side": 1,
+      "message": "remove repeated word",
+      "range": {
+        "startLine": 527,
+        "startChar": 19,
+        "endLine": 527,
+        "endChar": 21
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74229355_c968fade",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T19:06:58Z",
+      "side": 1,
+      "message": "remove repeated word",
+      "range": {
+        "startLine": 565,
+        "startChar": 20,
+        "endLine": 565,
+        "endChar": 22
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d80669e_b455d45c",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T19:06:58Z",
+      "side": 1,
+      "message": "optional nit: `successfully`",
+      "range": {
+        "startLine": 567,
+        "startChar": 37,
+        "endLine": 567,
+        "endChar": 38
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
