@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9612f59_4b222eff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-07T23:07:22Z",
+      "side": 1,
+      "message": "Responded on chat.. There is a bug in AuthSession where it does not let you delete the AuthFactor that was used to authenticate AuthSession.",
+      "parentUuid": "8bfddb5d_e0d5e6d6",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7825dfaa_45794983",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
         "patchSetId": 1
