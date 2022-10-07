@@ -9494,39 +9494,6 @@ func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
 }
 
 // ****************************************************************************
-// 463. DeviceLocalAccountManagedSessionEnabled
-// This policy can be modified without rebooting.
-// ****************************************************************************
-type DeviceLocalAccountManagedSessionEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *DeviceLocalAccountManagedSessionEnabled) Name() string {
-	return "DeviceLocalAccountManagedSessionEnabled"
-}
-func (p *DeviceLocalAccountManagedSessionEnabled) Scope() Scope          { return ScopeUser }
-func (p *DeviceLocalAccountManagedSessionEnabled) Status() Status        { return p.Stat }
-func (p *DeviceLocalAccountManagedSessionEnabled) UntypedV() interface{} { return p.Val }
-func (p *DeviceLocalAccountManagedSessionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *DeviceLocalAccountManagedSessionEnabled) SetProto(m *protoreflect.Message) {
-	SetUserProto(m, p.Name(), p.Val)
-}
-func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
 // 464. WebRtcEventLogCollectionAllowed
 // This policy can be modified without rebooting.
 // ****************************************************************************
@@ -22654,7 +22621,6 @@ func (p *OsColorMode) Equal(iface interface{}) bool {
 // ****************************************************************************
 // 991. OnFileTransferEnterpriseConnector
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type OnFileTransferEnterpriseConnector struct {
 	Stat Status
@@ -22892,7 +22858,6 @@ func (p *KerberosDefaultConfiguration) Equal(iface interface{}) bool {
 // ****************************************************************************
 // 1003. DeviceLoginScreenContextAwareAccessSignalsAllowlist
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type DeviceLoginScreenContextAwareAccessSignalsAllowlist struct {
 	Stat Status
@@ -22917,6 +22882,37 @@ func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) SetProto(m *protor
 }
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1004. PrefixedStorageInfoEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type PrefixedStorageInfoEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *PrefixedStorageInfoEnabled) Name() string          { return "PrefixedStorageInfoEnabled" }
+func (p *PrefixedStorageInfoEnabled) Scope() Scope          { return ScopeUser }
+func (p *PrefixedStorageInfoEnabled) Status() Status        { return p.Stat }
+func (p *PrefixedStorageInfoEnabled) UntypedV() interface{} { return p.Val }
+func (p *PrefixedStorageInfoEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *PrefixedStorageInfoEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *PrefixedStorageInfoEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -23045,6 +23041,337 @@ func (p *LacrosDataBackwardMigrationMode) SetProto(m *protoreflect.Message) {
 }
 func (p *LacrosDataBackwardMigrationMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1013. StrictMimetypeCheckForWorkerScriptsEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type StrictMimetypeCheckForWorkerScriptsEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Name() string {
+	return "StrictMimetypeCheckForWorkerScriptsEnabled"
+}
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Scope() Scope          { return ScopeUser }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Status() Status        { return p.Stat }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) UntypedV() interface{} { return p.Val }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1014. RecoveryFactorBehavior
+// This policy has a default value of False.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type RecoveryFactorBehavior struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *RecoveryFactorBehavior) Name() string          { return "RecoveryFactorBehavior" }
+func (p *RecoveryFactorBehavior) Scope() Scope          { return ScopeUser }
+func (p *RecoveryFactorBehavior) Status() Status        { return p.Stat }
+func (p *RecoveryFactorBehavior) UntypedV() interface{} { return p.Val }
+func (p *RecoveryFactorBehavior) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *RecoveryFactorBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *RecoveryFactorBehavior) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1015. CalendarIntegrationEnabled
+// This policy has a default value of False.
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type CalendarIntegrationEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *CalendarIntegrationEnabled) Name() string          { return "CalendarIntegrationEnabled" }
+func (p *CalendarIntegrationEnabled) Scope() Scope          { return ScopeUser }
+func (p *CalendarIntegrationEnabled) Status() Status        { return p.Stat }
+func (p *CalendarIntegrationEnabled) UntypedV() interface{} { return p.Val }
+func (p *CalendarIntegrationEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *CalendarIntegrationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *CalendarIntegrationEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1016. DeviceReportXDREvents
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeviceReportXDREvents struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceReportXDREvents) Name() string          { return "DeviceReportXDREvents" }
+func (p *DeviceReportXDREvents) Scope() Scope          { return ScopeDevice }
+func (p *DeviceReportXDREvents) Status() Status        { return p.Stat }
+func (p *DeviceReportXDREvents) UntypedV() interface{} { return p.Val }
+func (p *DeviceReportXDREvents) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceReportXDREvents) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_report_xdr_events", "enabled", p.Val)
+}
+func (p *DeviceReportXDREvents) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1017. TrashEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type TrashEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *TrashEnabled) Name() string          { return "TrashEnabled" }
+func (p *TrashEnabled) Scope() Scope          { return ScopeUser }
+func (p *TrashEnabled) Status() Status        { return p.Stat }
+func (p *TrashEnabled) UntypedV() interface{} { return p.Val }
+func (p *TrashEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *TrashEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *TrashEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1018. ShoppingListEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type ShoppingListEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ShoppingListEnabled) Name() string          { return "ShoppingListEnabled" }
+func (p *ShoppingListEnabled) Scope() Scope          { return ScopeUser }
+func (p *ShoppingListEnabled) Status() Status        { return p.Stat }
+func (p *ShoppingListEnabled) UntypedV() interface{} { return p.Val }
+func (p *ShoppingListEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ShoppingListEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *ShoppingListEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1019. DeskAPIThirdPartyAccessEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeskAPIThirdPartyAccessEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeskAPIThirdPartyAccessEnabled) Name() string          { return "DeskAPIThirdPartyAccessEnabled" }
+func (p *DeskAPIThirdPartyAccessEnabled) Scope() Scope          { return ScopeUser }
+func (p *DeskAPIThirdPartyAccessEnabled) Status() Status        { return p.Stat }
+func (p *DeskAPIThirdPartyAccessEnabled) UntypedV() interface{} { return p.Val }
+func (p *DeskAPIThirdPartyAccessEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeskAPIThirdPartyAccessEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *DeskAPIThirdPartyAccessEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1021. DefaultHandlersForFileExtensions
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DefaultHandlersForFileExtensions struct {
+	Stat Status
+	Val  []*DefaultHandlersForFileExtensionsValue
+}
+
+type DefaultHandlersForFileExtensionsValue struct {
+	FileExtensions []string `json:"file_extensions,omitempty"`
+	PolicyId       string   `json:"policy_id"`
+}
+
+func (p *DefaultHandlersForFileExtensions) Name() string          { return "DefaultHandlersForFileExtensions" }
+func (p *DefaultHandlersForFileExtensions) Scope() Scope          { return ScopeUser }
+func (p *DefaultHandlersForFileExtensions) Status() Status        { return p.Stat }
+func (p *DefaultHandlersForFileExtensions) UntypedV() interface{} { return p.Val }
+func (p *DefaultHandlersForFileExtensions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*DefaultHandlersForFileExtensionsValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*DefaultHandlersForFileExtensionsValue", m)
+	}
+	return v, nil
+}
+func (p *DefaultHandlersForFileExtensions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *DefaultHandlersForFileExtensions) Equal(iface interface{}) bool {
+	v, ok := iface.([]*DefaultHandlersForFileExtensionsValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1022. IsolatedWebAppInstallForceList
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type IsolatedWebAppInstallForceList struct {
+	Stat Status
+	Val  []*IsolatedWebAppInstallForceListValue
+}
+
+type IsolatedWebAppInstallForceListValue struct {
+	UpdateManifestUrl string `json:"update_manifest_url"`
+	WebBundleId       string `json:"web_bundle_id"`
+}
+
+func (p *IsolatedWebAppInstallForceList) Name() string          { return "IsolatedWebAppInstallForceList" }
+func (p *IsolatedWebAppInstallForceList) Scope() Scope          { return ScopeUser }
+func (p *IsolatedWebAppInstallForceList) Status() Status        { return p.Stat }
+func (p *IsolatedWebAppInstallForceList) UntypedV() interface{} { return p.Val }
+func (p *IsolatedWebAppInstallForceList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*IsolatedWebAppInstallForceListValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*IsolatedWebAppInstallForceListValue", m)
+	}
+	return v, nil
+}
+func (p *IsolatedWebAppInstallForceList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *IsolatedWebAppInstallForceList) Equal(iface interface{}) bool {
+	v, ok := iface.([]*IsolatedWebAppInstallForceListValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1023. DeskAPIThirdPartyAllowlist
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeskAPIThirdPartyAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *DeskAPIThirdPartyAllowlist) Name() string          { return "DeskAPIThirdPartyAllowlist" }
+func (p *DeskAPIThirdPartyAllowlist) Scope() Scope          { return ScopeUser }
+func (p *DeskAPIThirdPartyAllowlist) Status() Status        { return p.Stat }
+func (p *DeskAPIThirdPartyAllowlist) UntypedV() interface{} { return p.Val }
+func (p *DeskAPIThirdPartyAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *DeskAPIThirdPartyAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *DeskAPIThirdPartyAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
