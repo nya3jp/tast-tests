@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"arc-app-dev@google.com, ttefera@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Fixture:      "arcBootedWithDarkMode",
+		Fixture:      "arcBooted",
 		Timeout:      chrome.GAIALoginTimeout + arcpkg.BootTimeout + 120*time.Second,
 	})
 }
