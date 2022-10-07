@@ -538,6 +538,24 @@
       "parentUuid": "b88ebe21_f933479e",
       "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b32fb1_23a44308",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T06:46:19Z",
+      "side": 1,
+      "message": "Ah, good point. It won\u0027t, the linter won\u0027t allow you to use it anyway.",
+      "parentUuid": "7e840a16_570a8be8",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
