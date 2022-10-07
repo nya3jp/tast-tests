@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0d6179_f1414204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-07T10:48:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6815d46b_5daa881a",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 78
+      },
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5248f5cf_919c38a9",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fdc029e_4557e07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-07T10:48:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5248f5cf_919c38a9",
+      "range": {
+        "startLine": 37,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd4bb11_fb018f0d",
@@ -111,6 +159,24 @@
       "writtenOn": "2022-10-07T01:46:51Z",
       "side": 1,
       "message": "I think this is unnecessary. See below.",
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf15ef0e_1d0e147d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-07T10:48:34Z",
+      "side": 1,
+      "message": "Cleanup removed in latest PS",
+      "parentUuid": "ffd4bb11_fb018f0d",
       "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
