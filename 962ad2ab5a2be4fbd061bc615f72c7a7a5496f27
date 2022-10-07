@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0db84773_141a366d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T03:29:58Z",
+      "side": 1,
+      "message": "Please see my suggestion of changing function signature. Thanks.",
+      "parentUuid": "e43f0bbd_b56342d1",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
@@ -120,6 +138,23 @@
       "side": 1,
       "message": "NACK, I am not creating a new test case.  This is copy from the original code.",
       "parentUuid": "fc5d295c_d434c124",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f42435e_d2adc8e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T03:29:58Z",
+      "side": 1,
+      "message": "How about changing this to \n\nfunc (c *kernelConfigCheck) Test(conf map[string]string) error\n\nThen, you can make this file as a library.",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
