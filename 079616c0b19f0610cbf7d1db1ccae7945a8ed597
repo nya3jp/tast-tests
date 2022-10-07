@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f17b77_54d44659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T00:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba130bc_e766454d",
+      "range": {
+        "startLine": 275,
+        "startChar": 31,
+        "endLine": 275,
+        "endChar": 37
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08be939e_901f2852",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60244ea_d9d9f705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T00:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08be939e_901f2852",
+      "range": {
+        "startLine": 278,
+        "startChar": 64,
+        "endLine": 278,
+        "endChar": 70
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78bea01d_12f1bdd6",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-06T22:30:35Z",
       "side": 1,
       "message": "nit: comma",
+      "range": {
+        "startLine": 296,
+        "startChar": 48,
+        "endLine": 296,
+        "endChar": 56
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab585195_e992fdec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T00:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bea01d_12f1bdd6",
       "range": {
         "startLine": 296,
         "startChar": 48,
