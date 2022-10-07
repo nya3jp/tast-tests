@@ -180,6 +180,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ceadaf6_e74ac8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-07T04:04:40Z",
+      "side": 1,
+      "message": "which CL invokes ConfigVerifyChromeOS? since now there is name change.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ba5bfcf_313bb5a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
