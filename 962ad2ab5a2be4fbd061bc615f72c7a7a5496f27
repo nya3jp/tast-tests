@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5f1faa4_93e025cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-07T04:03:21Z",
+      "side": 1,
+      "message": "Since it is just two kernel config tests use the common, I think it is better to keep all three files in the same path, and in the same package (kernel). This is easy for browser the code.",
+      "parentUuid": "0db84773_141a366d",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
@@ -156,6 +174,29 @@
       "side": 1,
       "message": "NACK, I am not creating a new test case.  This is copy from the original code.",
       "parentUuid": "fc5d295c_d434c124",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba5bfcf_313bb5a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-07T04:03:21Z",
+      "side": 1,
+      "message": "Please keep the package as kernel, then you don\u0027t need to make those members public.\n\nCreating a new package doesn\u0027t offer a lot of value here. It is called only by kernel test package.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
