@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8286b4_3737abcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T00:15:24Z",
+      "side": 1,
+      "message": "Plesae run \"fast_build -T\" to verify of running of Tast unit tests is fine. Thanks.",
+      "revId": "b738c11319025fa70c87167cd50ff4714aa3b9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
