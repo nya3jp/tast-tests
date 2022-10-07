@@ -16,6 +16,24 @@
       "message": "rm",
       "revId": "22513120c06af3eadc18a669936a1889a63042b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3113a6c_487a4f2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-07T17:42:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79e232e2_d0e41514",
+      "revId": "22513120c06af3eadc18a669936a1889a63042b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
