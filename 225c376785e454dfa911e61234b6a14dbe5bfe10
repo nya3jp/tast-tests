@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8205f110_15a6fdd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "\u003e Requires crrev.com/c/3879748 to be pushed into test builds to pass the\nCQ.\n\nYou should add the UPREV CL as this CL\u0027s Cq-Depend after the UPREV is landed so that this CL can be reverted if the UPREV CL is reverted for whatever reason.",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db64380_a41c3127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "Do you need a hardware dependency on InternalKeyboard?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56ce2a2_d45012fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "Do you consider convertible as tablet or laptop? Or you want it to run for both?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313800a1_842c16be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "Should have a hardware dependency on  touchscreen and internal display?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1b5d53_d5735d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "Why do you need this check? I thought EnsureTabletModeEnabled take care of both true and false.",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5de4b20_7331bcaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "https://engdoc.corp.google.com/eng/doc/tott/episodes/553.md?cl\u003dhead\n\n```\nif !tableMode {\n    return\n}\n```",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e255da_44324f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T02:53:41Z",
+      "side": 1,
+      "message": "How about grouping related action with uiauto.Combine?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
