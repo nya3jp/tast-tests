@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -210,8 +211,8 @@ func init() {
 			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
 		}, {
 			// Even bigger meeting.
-			Name:      "49p",
-			Timeout:   defaultTestTimeout,
+			Name:    "49p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -220,8 +221,8 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
-			Name:      "lacros_49p",
-			Timeout:   defaultTestTimeout,
+			Name:    "lacros_49p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -271,8 +272,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// 49p with vp8 video codec.
-			Name:      "49p_vp8",
-			Timeout:   defaultTestTimeout,
+			Name:    "49p_vp8",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -619,6 +620,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a mouse: ", err)
+	}
+	defer mw.Close()
+
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 
@@ -697,11 +704,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		collaborationRE = regexp.MustCompile(`\bJamboard\b`)
 	}
 
+	var collaborationWindow *ash.Window
 	if meet.split {
 		if collaborationRE == nil {
 			s.Fatal("Need a collaboration window for split view")
 		}
-		collaborationWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
+		collaborationWindow, err = ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
 		if err != nil {
 			s.Fatal("Failed to find the collaboration window: ", err)
 		}
@@ -840,7 +848,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			// Wait for 5 seconds, type notes for 12.4 seconds then until the time is
 			// elapsed (3 times by default). Wait before the first typing to reduce
 			// the overlap between typing and joining the meeting.
-			for end.Sub(time.Now()).Seconds() > 18 {
+			for time.Until(end) > 36*time.Second {
 				if err := uiauto.Combine(
 					"sleep and type",
 					action.Sleep(5*time.Second),
@@ -849,6 +857,65 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 					return err
 				}
 			}
+
+			// Perform some mouse actions to collect mouse input
+			// latency  metrics on clamshell devices.
+			if !inTabletMode {
+				waitUntilStable := ui.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)
+
+				// Toggle the Google Docs file menu button for press and
+				// release metrics.
+				fileMenu := nodewith.Name("File").HasClass("menu-button")
+				if err := action.Combine(
+					"toggle the Google Doc's file menu",
+					// Open file menu.
+					ui.MouseMoveTo(fileMenu, 500*time.Millisecond),
+					ui.LeftClick(fileMenu),
+					waitUntilStable,
+
+					// Close file menu.
+					ui.LeftClick(fileMenu),
+					waitUntilStable,
+				)(ctx); err != nil {
+					return err
+				}
+
+				// Get the Google Docs window again to properly retrieve
+				// the split-screen bounds.
+				docsWindow, err := ash.GetWindow(ctx, tconn, collaborationWindow.ID)
+				if err != nil {
+					return errors.Wrap(err, "failed to get the Google Docs window")
+				}
+
+				// Highlight text on Google Docs to get mouse drag metrics.
+				docsBounds := docsWindow.TargetBounds
+				if err := action.Combine(
+					"drag to highlight text in Google Docs",
+					// Click at the center of the Google Doc.
+					mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond),
+					waitUntilStable,
+					func(ctx context.Context) error { return mw.Press() },
+
+					// Drag the mouse to highlight the text
+					mouse.Move(tconn, docsBounds.TopLeft(), 500*time.Millisecond),
+					mouse.Move(tconn, docsBounds.BottomRight(), time.Second),
+					mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond),
+
+					// End the drag.
+					func(ctx context.Context) error { return mw.Release() },
+				)(ctx); err != nil {
+					return err
+				}
+
+				// Scroll the document down and up for mouse wheel metrics.
+				for _, scrollDown := range []bool{true, false} {
+					if err := inputsimulations.RepeatMouseScroll(ctx, mw, scrollDown, 50*time.Millisecond, 30); err != nil {
+						return errors.Wrap(err, "failed to repeat mouse scroll")
+					}
+				}
+
+			}
+
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
 				return errors.Wrap(err, "failed to hit alt-tab and focus back to Meet tab")
 			}
