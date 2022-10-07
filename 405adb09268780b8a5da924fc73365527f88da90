@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4816d303_19b6cb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/uinames/uinames.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-07T00:48:44Z",
+      "side": 1,
+      "message": "You may want to edit this so instead of just exporting the strings, you also export the nodewith objects\n\nAddPrinterManuallyDialogFinder \u003d nodewith.Role(role.Dialog).Name(AddPrinterManuallyName)\n\nThen to use it:\nAddPrinterManuallyDialogFinder.Ancestor(ossettings.WindowFinder)",
+      "revId": "405adb09268780b8a5da924fc73365527f88da90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
