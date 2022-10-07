@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e471a8b3_161e94cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-07T00:31:01Z",
+      "side": 0,
+      "message": "If removing yourself, could you please add someone else who will be the owner of this file from now on.\nIf not, can you please add a link to the wifi oncall rotation, so we can easily talk to a specific person if we need to contact someone about this test quickly.",
+      "revId": "cc22d49bd071f296e1bc3853082df11d5eced047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
