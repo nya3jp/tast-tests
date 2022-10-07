@@ -25,6 +25,8 @@ func TestModifyVersionString(t *testing.T) {
 		{"01234567890123456789012345678901", []byte("nocturne_fp_v2.0.7304-441100b93\x00"), []byte{}, true},
 		// suffix exactly fits
 		{"0123456789012345678901234567890", []byte("nocturne_fp_v2.0.7304-441100b93\x00"), []byte("0123456789012345678901234567890\x00"), false},
+		// null terminators in string
+		{".dev", []byte("nami_fp_v2.2.144-7a08e07eb\x00\x00\x00\x00\x00\x00"), []byte("nami_fp_v2.2.144-7a08e07eb.dev\x00\x00"), false},
 	} {
 		actualVersion, err := createVersionStringWithSuffix(tc.suffix, tc.version)
 		if err != nil && !tc.expectErr {
