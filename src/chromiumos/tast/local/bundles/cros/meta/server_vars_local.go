@@ -14,9 +14,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ServerVarsLocal,
-		Desc:     "Demonstrate how to get server variable values in local tests",
-		Contacts: []string{"seewaifu@chromium.org", "tast-owners@google.com"},
+		Func:         ServerVarsLocal,
+		Desc:         "Demonstrate how to get server variable values in local tests",
+		Contacts:     []string{"tast-owners@google.com", "seewaifu@chromium.org"},
+		BugComponent: "b:1034625",
 	})
 }
 

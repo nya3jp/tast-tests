@@ -12,9 +12,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalFail,
-		Desc:     "Always fails",
-		Contacts: []string{"tast-owners@google.com"},
+		Func:         LocalFail,
+		Desc:         "Always fails",
+		Contacts:     []string{"tast-owners@google.com"},
+		BugComponent: "b:1034625",
 	})
 }
 

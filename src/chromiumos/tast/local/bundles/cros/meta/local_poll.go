@@ -14,9 +14,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalPoll,
-		Desc:     "Intentionally fails due to timeout",
-		Contacts: []string{"tast-owners@google.com"},
+		Func:         LocalPoll,
+		Desc:         "Intentionally fails due to timeout",
+		Contacts:     []string{"tast-owners@google.com"},
+		BugComponent: "b:1034625",
 	})
 }
 

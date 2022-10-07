@@ -12,10 +12,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalRemoteFixture,
-		Desc:     "Tests local tests can depend on remote fixtures",
-		Contacts: []string{"oka@chromium.org", "tast-owners@google.com"},
-		Fixture:  "metaRemote",
+		Func:         LocalRemoteFixture,
+		Desc:         "Tests local tests can depend on remote fixtures",
+		Contacts:     []string{"tast-owners@google.com", "oka@chromium.org"},
+		BugComponent: "b:1034625",
+		Fixture:      "metaRemote",
 	})
 }
 
