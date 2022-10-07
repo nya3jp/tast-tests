@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec52f7ee_1dba3405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2022-10-07T19:58:53Z",
+      "side": 1,
+      "message": "You have been added to this review because you are listed as a contact for at least one test in this package.  Please +2 this CL if the information is correct and you still want to be updated for changes/issues related to the test(s).\n\nPlease also double check that the Buganizer component listed is where bugs related to the test should be filed.",
+      "revId": "534cd96c63b9e07fc21712a42cb47edcbe386cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
