@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4acde18_7d6afc79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-07T23:53:53Z",
+      "side": 1,
+      "message": "Do you mind fixing perf.go:190 to check if the val \u003d\u003d nil? \nOthers might be bothered by this issue as well.\n\nThanks",
+      "revId": "45be5527ffbbac4e37ea093f4840217dbd604aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
