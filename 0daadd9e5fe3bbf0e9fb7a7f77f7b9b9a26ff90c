@@ -16,6 +16,24 @@
       "message": "Please run tast unit test before CQ+2: fast_build.sh -T\n\nThanks.",
       "revId": "0daadd9e5fe3bbf0e9fb7a7f77f7b9b9a26ff90c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d4e483_b39d84ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-07T20:08:17Z",
+      "side": 1,
+      "message": "sure. unit tests passed.",
+      "parentUuid": "043ede5c_d2a84842",
+      "revId": "0daadd9e5fe3bbf0e9fb7a7f77f7b9b9a26ff90c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
