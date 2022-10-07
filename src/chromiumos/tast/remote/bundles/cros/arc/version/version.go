@@ -8,6 +8,7 @@ package version
 import (
 	"context"
 	"regexp"
+	"strconv"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -19,10 +20,16 @@ type BuildDescriptor struct {
 	Official bool
 	// ab/buildID
 	BuildID string
+	// build version in case build is official e.g 9138603
+	BuildVersion int
 	// build type e.g. user, userdebug
 	BuildType string
 	// cpu abi e.g. x86_64, x86, arm
 	CPUAbi string
+	// version release e.g. 9, 11
+	VersionRelease int
+	// ChromeOS milestone e.g 108
+	Milestone int
 }
 
 // GetBuildDescriptorRemotely gets ARC build properties from the device, parses for build ID, ABI,
@@ -41,6 +48,12 @@ func GetBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	}
 	buildPropStr := string(buildProp)
 
+	lsbRelease, err := dut.Conn().CommandContext(ctx, "cat", "/etc/lsb-release").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to lsb-release remotely")
+	}
+	lsbReleaseStr := string(lsbRelease)
+
 	mCPUAbi := regexp.MustCompile(`(\n|^)ro.product.cpu.abi=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
 	if mCPUAbi == nil {
 		return nil, errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
@@ -58,6 +71,35 @@ func GetBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 		return nil, errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
+	mVersionRelease := regexp.MustCompile(`(\n|^)ro.build.version.release=(\d+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mVersionRelease == nil {
+		return nil, errors.Errorf("ro.build.version.release is not found in %q", buildPropStr)
+	}
+
+	versionRelease, err := strconv.Atoi(mVersionRelease[2])
+	if err != nil {
+		return nil, errors.Errorf("could not parse ro.build.version.release=%s: %q", mVersionRelease[2], err)
+	}
+
+	mMilestone := regexp.MustCompile(`(\n|^)CHROMEOS_RELEASE_CHROME_MILESTONE=(\d+)(\n|$)`).FindStringSubmatch(lsbReleaseStr)
+	if mMilestone == nil {
+		return nil, errors.Errorf("CHROMEOS_RELEASE_CHROME_MILESTONE is not found in %q", lsbReleaseStr)
+	}
+
+	milestone, err := strconv.Atoi(mMilestone[2])
+	if err != nil {
+		return nil, errors.Errorf("could not parse CHROMEOS_RELEASE_CHROME_MILESTONE=%s: %q", mMilestone[2], err)
+	}
+
+	buildVersion := 0
+	official := regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2])
+	if official {
+		buildVersion, err = strconv.Atoi(mBuildID[2])
+		if err != nil {
+			return nil, errors.Errorf("could not parse ro.build.version.incremental=%s: %q", mBuildID[2], err)
+		}
+	}
+
 	abiMap := map[string]string{
 		"armeabi-v7a": "arm",
 		"arm64-v8a":   "arm64",
@@ -71,10 +113,13 @@ func GetBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	}
 
 	desc := BuildDescriptor{
-		Official:  regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
-		BuildID:   mBuildID[2],
-		BuildType: mBuildType[2],
-		CPUAbi:    abi,
+		Official:       official,
+		BuildID:        mBuildID[2],
+		BuildVersion:   buildVersion,
+		BuildType:      mBuildType[2],
+		CPUAbi:         abi,
+		VersionRelease: versionRelease,
+		Milestone:      milestone,
 	}
 
 	return &desc, nil
