@@ -94,6 +94,30 @@
       },
       "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2668e90e_bbeeaa70",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-07T04:17:01Z",
+      "side": 1,
+      "message": "As discussed offline, added a gap to allow a 1GB gap when comparing these two labels, and a TODO(b/251693057) to remove the gap when these two labels match.",
+      "parentUuid": "f5c0ef78_7dd7bdf5",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
