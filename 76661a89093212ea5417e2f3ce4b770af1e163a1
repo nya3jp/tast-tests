@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f99a400_5fdfe2bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T00:22:56Z",
+      "side": 1,
+      "message": "Please run tast unit tests: fast_build.sh -T before commit. Thanks.",
+      "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1eec766_fd5d24b1",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "The output for `id --groups` can/does returns IDs in different orders.\n\n```\nlocalhost ~ # id --groups chronos \n1000 20162 20164 601 602 665357 7 18 27 222 1001 415 608 420 304 600 240 603 208 303\nlocalhost ~ # runuser -u chronos -- id --groups\n1000 7 18 27 208 222 240 303 304 415 420 600 601 602 603 608 1001 20162 20164 665357\n```",
       "parentUuid": "b1eec766_fd5d24b1",
+      "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79decc8a_15a16dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T00:22:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22d31e5d_37b5376d",
       "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
