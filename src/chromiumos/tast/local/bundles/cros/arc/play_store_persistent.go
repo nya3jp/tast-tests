@@ -41,7 +41,7 @@ func init() {
 			Val:               browser.TypeAsh,
 		}, {
 			Name:              "lacros",
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Val:               browser.TypeLacros,
 		}, {
 			Name:              "vm",
