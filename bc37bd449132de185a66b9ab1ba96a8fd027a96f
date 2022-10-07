@@ -16,6 +16,24 @@
       "message": "Can this issue be reproduced consistently by running wmp.DesksTemplatesLaunch? Rest of the tests might not be. Hence this query to understand.",
       "revId": "bc37bd449132de185a66b9ab1ba96a8fd027a96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e1b569_b51ce7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-07T15:11:14Z",
+      "side": 1,
+      "message": "Yes, it consistently fails for wmp.DesksTemplatesLaunch (additional details here: https://b.corp.google.com/issues/247877155#comment6). A portion of the other tests I ran come from cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2764940 (which is what changed this from apps.Playstore.Id to com.vending.android). The `optin` functions are used in a lot of places so I did spot checks on its different use cases.",
+      "parentUuid": "760603ef_2fbf0300",
+      "revId": "bc37bd449132de185a66b9ab1ba96a8fd027a96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
