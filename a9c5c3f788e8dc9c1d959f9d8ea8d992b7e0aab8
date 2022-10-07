@@ -16,6 +16,23 @@
       "message": "Please wait for team member technical review before submitting.",
       "revId": "a9c5c3f788e8dc9c1d959f9d8ea8d992b7e0aab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917477c7_51d8228d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-07T15:31:58Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a9c5c3f788e8dc9c1d959f9d8ea8d992b7e0aab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
