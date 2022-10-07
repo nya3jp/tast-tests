@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f3cc65_e9c84827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a818ca0_1339c32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "nit: end comments with .",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac6051f_36c6138c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "nit: file a bug and add a TODO to fix this",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41b03ef_f3c404f3",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4af257_e3904720",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938d8802_8489e146",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "Please do this in this CL. See here for an example to add a extraOptsFunc:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0170dcb7_a4810623",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e6a6ca1_03652ad6",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T07:01:31Z",
+      "side": 1,
+      "message": "Please remove",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
