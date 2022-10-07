@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272daa19_46f9c847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-07T00:07:38Z",
+      "side": 1,
+      "message": "Lets remove mainline for now until its going to be green on tast.",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4050f916_baf2dd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-07T00:07:38Z",
+      "side": 1,
+      "message": "Intel or no hwdep here instead use hardware_probe inside of the test.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85a4674_741e0f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-07T00:07:38Z",
+      "side": 1,
+      "message": "Maybe move into a graphicsIdleOnlyFixture.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

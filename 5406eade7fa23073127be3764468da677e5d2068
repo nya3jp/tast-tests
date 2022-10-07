@@ -467,6 +467,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0bf7297_6b5b121b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-07T00:07:38Z",
+      "side": 1,
+      "message": "checks",
+      "range": {
+        "startLine": 371,
+        "startChar": 7,
+        "endLine": 371,
+        "endChar": 12
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "959e666b_cf7c1910",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
         "patchSetId": 1
