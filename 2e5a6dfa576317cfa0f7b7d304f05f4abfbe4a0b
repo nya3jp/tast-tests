@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "963c5673_08737ac3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T00:35:03Z",
+      "side": 1,
+      "message": "Sorry, your review just beat me to fixing it. Fixed now.",
+      "parentUuid": "91f41be0_2c1971b7",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "2e5a6dfa576317cfa0f7b7d304f05f4abfbe4a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ee856022_979ecce3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -55,6 +79,30 @@
       "writtenOn": "2022-10-07T00:32:18Z",
       "side": 1,
       "message": "nit: comma",
+      "range": {
+        "startLine": 285,
+        "startChar": 46,
+        "endLine": 285,
+        "endChar": 47
+      },
+      "revId": "2e5a6dfa576317cfa0f7b7d304f05f4abfbe4a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e2c786_fb34e048",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T00:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8071eb1_5db14771",
       "range": {
         "startLine": 285,
         "startChar": 46,
