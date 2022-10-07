@@ -26,6 +26,7 @@ var h2644kFilesFromBugs = map[string]string{
 
 var vp9FilesFromBugs = map[string]string{
 	"177839888": "test_vectors/vp9/files_from_bugs/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24.ivf",
+	"251040563": "test_vectors/vp9/files_from_bugs/b_251040563_webrtc_libvpx.vp9.ivf",
 }
 
 var av1FilesFromBugs = map[string]string{

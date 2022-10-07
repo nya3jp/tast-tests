@@ -799,6 +799,17 @@ func init() {
 				},
 			},
 			{
+				Name:              "vp9_files_from_bugs_251040563",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+				ExtraData:         appendJSONFiles([]string{"test_vectors/vp9/files_from_bugs/b_251040563_webrtc_libvpx.vp9.ivf"}),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    []string{"test_vectors/vp9/files_from_bugs/b_251040563_webrtc_libvpx.vp9.ivf"},
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
 				Name:              "av1_files_from_bugs_235138734",
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
