@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7dada04_e89e3e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-10-07T04:16:33Z",
+      "side": 0,
+      "message": "From tastboard I can only see zork-kernel-next boards failing. I thought those are non-critical builds?",
+      "parentUuid": "9593233d_46ea723c",
+      "revId": "4c6585b5216ac699b8b338c9e1a913cbed228c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fee53a1_e2abe5f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
         "patchSetId": 2
