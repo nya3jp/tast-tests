@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fca6b3a0_c426a601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T22:45:41Z",
+      "side": 1,
+      "message": "I agree -- I changed it so it only runs the mouse input code in clamshell mode. wdyt?",
+      "parentUuid": "b8bbe44c_0716ca85",
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e067032a_fc809961",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
@@ -71,6 +89,30 @@
       "writtenOn": "2022-10-07T22:12:21Z",
       "side": 1,
       "message": "`time.Until(end) \u003e 36*time.Second`",
+      "range": {
+        "startLine": 851,
+        "startChar": 7,
+        "endLine": 851,
+        "endChar": 41
+      },
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685a809d_b891396c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T22:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e067032a_fc809961",
       "range": {
         "startLine": 851,
         "startChar": 7,
@@ -94,6 +136,30 @@
       "writtenOn": "2022-10-07T22:12:21Z",
       "side": 1,
       "message": "remove the `s`",
+      "range": {
+        "startLine": 880,
+        "startChar": 32,
+        "endLine": 880,
+        "endChar": 33
+      },
+      "revId": "96048d984f355db542e373bd2373ad3976f0f7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0021ac_b5c24364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T22:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4ad2c2_6cbb339b",
       "range": {
         "startLine": 880,
         "startChar": 32,
