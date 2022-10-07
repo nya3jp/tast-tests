@@ -35,6 +35,7 @@ type Conference interface {
 	BackgroundChange(ctx context.Context) error
 	Presenting(ctx context.Context, application googleApplication) error
 	End(ctx context.Context) error
+	CloseConference(ctx context.Context) error
 	SetBrowser(br *browser.Browser)
 	GetParticipants(ctx context.Context) (int, error)
 	LostNetworkCount() int

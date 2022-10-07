@@ -35,6 +35,7 @@ type ZoomConference struct {
 	kb                         *input.KeyboardEventWriter
 	ui                         *uiauto.Context
 	uiHandler                  cuj.UIActionHandler
+	zoomConn                   *chrome.Conn
 	displayAllParticipantsTime time.Duration
 	tabletMode                 bool
 	roomType                   RoomType
@@ -58,15 +59,14 @@ var zoomWebArea = nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 // Join joins a new conference room.
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := conf.ui
-	openZoomAndSignIn := func(ctx context.Context) error {
+	openZoomAndSignIn := func(ctx context.Context) (err error) {
 		// Set newWindow to true to launch zoom in the first Chrome tab.
-		conn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, cuj.ZoomURL, true)
+		conf.zoomConn, err = conf.uiHandler.NewChromeTab(ctx, conf.br, cuj.ZoomURL, true)
 		if err != nil {
 			return errors.Wrap(err, "failed to open the zoom website")
 		}
-		defer conn.Close()
 
-		if err := webutil.WaitForQuiescence(ctx, conn, mediumUITimeout); err != nil {
+		if err := webutil.WaitForQuiescence(ctx, conf.zoomConn, mediumUITimeout); err != nil {
 			// Occasionally, there is a timeout when loading the Zoom website on Lacros, but the page actually
 			// has display elements. So print the error message instead of return error.
 			testing.ContextLogf(ctx, "Failed to wait for %q to be loaded and achieve quiescence: %q", room, err)
@@ -95,7 +95,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 
 		if err := ui.Exists(nodewith.Name("MY ACCOUNT").Role(role.Link))(ctx); err != nil {
 			testing.ContextLog(ctx, "Start to sign in")
-			if err := conn.Navigate(ctx, cuj.ZoomSignInURL); err != nil {
+			if err := conf.zoomConn.Navigate(ctx, cuj.ZoomSignInURL); err != nil {
 				return err
 			}
 			account := nodewith.Name(conf.account).First()
@@ -112,7 +112,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		} else {
 			testing.ContextLog(ctx, "It has been signed in")
 		}
-		if err := conn.Navigate(ctx, room); err != nil {
+		if err := conf.zoomConn.Navigate(ctx, room); err != nil {
 			return err
 		}
 		return nil
@@ -503,9 +503,20 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 	return nil
 }
 
-// End ends the conference.
+// End closes all windows in the end.
 func (conf *ZoomConference) End(ctx context.Context) error {
 	return cuj.CloseAllWindows(ctx, conf.tconn)
+}
+
+// CloseConference closes the conference.
+func (conf *ZoomConference) CloseConference(ctx context.Context) error {
+	if err := conf.zoomConn.CloseTarget(ctx); err != nil {
+		return errors.Wrap(err, "failed to close target")
+	}
+	if err := conf.zoomConn.Close(); err != nil {
+		return errors.Wrap(err, "failed to close connection")
+	}
+	return nil
 }
 
 var _ Conference = (*ZoomConference)(nil)

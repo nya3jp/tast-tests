@@ -35,6 +35,7 @@ type GoogleMeetConference struct {
 	kb                         *input.KeyboardEventWriter
 	ui                         *uiauto.Context
 	uiHandler                  cuj.UIActionHandler
+	meetConn                   *chrome.Conn
 	displayAllParticipantsTime time.Duration
 	tabletMode                 bool
 	extendedDisplay            bool
@@ -66,13 +67,13 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 	meetAccount := conf.account
 	conf.room = room
 
-	openConference := func(ctx context.Context) error {
+	openConference := func(ctx context.Context) (err error) {
 		// Set newWindow to true to launch Google Meet in the first Chrome tab.
-		conn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, room, true)
+		conf.meetConn, err = conf.uiHandler.NewChromeTab(ctx, conf.br, room, true)
 		if err != nil {
 			return CheckSignedOutError(ctx, tconn, errors.Wrap(err, "failed to create chrome connection to join the conference"))
 		}
-		if err := webutil.WaitForQuiescence(ctx, conn, longUITimeout); err != nil {
+		if err := webutil.WaitForQuiescence(ctx, conf.meetConn, longUITimeout); err != nil {
 			return CheckSignedOutError(ctx, tconn, errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room))
 		}
 		return cuj.MaximizeBrowserWindow(ctx, tconn, conf.tabletMode, meetTitle)
@@ -810,9 +811,20 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 	return nil
 }
 
-// End ends the conference.
+// End closes all windows in the end.
 func (conf *GoogleMeetConference) End(ctx context.Context) error {
 	return cuj.CloseAllWindows(ctx, conf.tconn)
+}
+
+// CloseConference closes the conference.
+func (conf *GoogleMeetConference) CloseConference(ctx context.Context) error {
+	if err := conf.meetConn.CloseTarget(ctx); err != nil {
+		return errors.Wrap(err, "failed to close target")
+	}
+	if err := conf.meetConn.Close(); err != nil {
+		return errors.Wrap(err, "failed to close connection")
+	}
+	return nil
 }
 
 // SetBrowser sets browser to chrome or lacros.

@@ -95,6 +95,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
+	if err := recorder.AddCollectedMetrics(tconn, bt, cujrecorder.WebRTCMetrics()...); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 	if traceConfigPath != "" {
 		recorder.EnableTracing(outDir, traceConfigPath)
 	}
@@ -158,7 +161,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 				return err
 			}
 		}
-
+		if !isNoRoom {
+			// Close conference to collect metrics.
+			if err := conf.CloseConference(ctx); err != nil {
+				return errors.Wrap(err, "failed to close conference")
+			}
+		}
 		// Wait for meetTimeout expires in goroutine and get GPU result.
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
