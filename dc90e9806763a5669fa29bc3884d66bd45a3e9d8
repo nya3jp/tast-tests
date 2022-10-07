@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db1379a_08a9ba15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-07T04:31:09Z",
+      "side": 1,
+      "message": "As noted in the comment right above this, binding the kernel driver triggers hpsd to be started due to our udev rule.",
+      "parentUuid": "0cf7ddd0_e6449e99",
+      "revId": "dc90e9806763a5669fa29bc3884d66bd45a3e9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27cfdbcf_ba4dc324",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-07T04:20:26Z",
       "side": 1,
       "message": "It will fail if it doesn\u0027t start within 250ms. Is such short timeout deliberate?",
+      "revId": "dc90e9806763a5669fa29bc3884d66bd45a3e9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f1587b_c21b74ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-07T04:31:09Z",
+      "side": 1,
+      "message": "Good question! It was deliberate yesterday... but now that I look at it with fresh eyes today I am wondering where I got this 250ms from. I think this should be either 0 or more like 1 second. I will double check it and fix it up.",
+      "parentUuid": "27cfdbcf_ba4dc324",
       "revId": "dc90e9806763a5669fa29bc3884d66bd45a3e9d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
