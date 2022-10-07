@@ -13,10 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LocalFreeze,
-		Desc:     "Always freezes",
-		Contacts: []string{"tast-owners@google.com"},
-		Timeout:  time.Second,
+		Func:         LocalFreeze,
+		Desc:         "Always freezes",
+		Contacts:     []string{"tast-owners@google.com"},
+		BugComponent: "b:1034625",
+		Timeout:      time.Second,
 	})
 }
 

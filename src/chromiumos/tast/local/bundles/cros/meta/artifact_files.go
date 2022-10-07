@@ -13,11 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ArtifactFiles,
-		Desc:     "Demonstrates how to use artifact data files",
-		Contacts: []string{"nya@chromium.org", "tast-owners@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{"artifact_files_partial_metadata_json"},
+		Func:         ArtifactFiles,
+		Desc:         "Demonstrates how to use artifact data files",
+		Contacts:     []string{"tast-owners@chromium.org", "nya@chromium.org"},
+		BugComponent: "b:1034625",
+		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"artifact_files_partial_metadata_json"},
 	})
 }
 
