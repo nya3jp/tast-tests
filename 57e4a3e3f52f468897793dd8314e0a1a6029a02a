@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f39e36_83e42aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91133f4_2d9d44bf",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90eaa45_3995ef3b",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "If you\u0027d like to dump all targets, then could you write the code so explicitly? (I.e., list all targets, and dump URLs, outside of the matchers).",
       "parentUuid": "7acb39a4_34ef859d",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c099b452_2472dd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Replaced as asked. \n\nIf the test breaks the maintainer will have to re-add then. I have to admit that I wonder why we are so keen on getting all the err messages printed out (which I have so far not seen outputting any useful information ever) while rejecting useful information for maintenance. But - it\u0027s your call.",
+      "parentUuid": "f9f67c0f_04aa5379",
       "range": {
         "startLine": 199,
         "startChar": 1,

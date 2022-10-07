@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "821fdb93_70bad085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done.\n\nI wonder however how the log will this way ever show that the thing timed out.",
+      "parentUuid": "c842c3a1_90a10fff",
+      "range": {
+        "startLine": 234,
+        "startChar": 22,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb7961a_f20ea157",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-07T14:37:52Z",
       "side": 1,
       "message": "could you not ignore here, and close the conn?",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 3
+      },
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d386e5e9_6d64e4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb7961a_f20ea157",
       "range": {
         "startLine": 242,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8db1807_ba1761c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37079257_4c623c7b",
+      "range": {
+        "startLine": 251,
+        "startChar": 44,
+        "endLine": 251,
+        "endChar": 50
+      },
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "477dd37e_71ddd66f",
@@ -100,6 +172,24 @@
       "writtenOn": "2022-10-07T14:37:52Z",
       "side": 1,
       "message": "ditto",
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0421880a_280ec228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477dd37e_71ddd66f",
       "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "730d1eab_3bbc930f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Changed all logging, fatal, .. strings into small letters.\n\nThen got then informed upon upload that fatal and Log have to be in big letters, so changed them back.",
+      "parentUuid": "f521b637_bceeebb2",
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8184840e_b94e2fdf",
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f190f78c_0ca1a1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8184840e_b94e2fdf",
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6013121b_9b0ae6ab",
@@ -151,6 +277,24 @@
       "writtenOn": "2022-10-07T14:37:52Z",
       "side": 1,
       "message": "ditto to close",
+      "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59c36a0_61925ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T21:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6013121b_9b0ae6ab",
       "revId": "d599b389b1796eed3f0e522a5afd33547d2e792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
