@@ -121,6 +121,24 @@
       "parentUuid": "31362563_54418f5d",
       "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db204aff_2233b6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-07T07:06:38Z",
+      "side": 1,
+      "message": "Thanks, now I got that this will match only once because the first node that could have PCI is the motherboard (which we assume there is only one instance) and the children IDs of its descendants are unique.\n\nI would suggest either of these options just in case:\n1. if match for the second time (maybe when having multiple motherboard devices?), return error\n2. return (successfully) right after verifying the required information successfully",
+      "parentUuid": "49a4927c_bb1fe747",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
