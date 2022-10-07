@@ -16,6 +16,92 @@
       "message": "This test checks only descriptions of a custom action and not id because id is converted between Android side and chromium side so we don\u0027t have expectation on chromium side id",
       "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed989f9_5bc2cff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T05:54:17Z",
+      "side": 1,
+      "message": "Thank you!!",
+      "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04b8da8_c9cde29a",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T05:54:17Z",
+      "side": 1,
+      "message": "This may conflict with existing ids. Let\u0027s define the id in xml file (e.g. in res/values/ids.xml)",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15170f7b_a9635051",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T05:54:17Z",
+      "side": 1,
+      "message": "nit: \"descriptions\", aligning to js api.",
+      "range": {
+        "startLine": 333,
+        "startChar": 37,
+        "endLine": 333,
+        "endChar": 43
+      },
+      "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48987eab_44bed539",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-07T05:54:17Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 351,
+        "startChar": 68,
+        "endLine": 351,
+        "endChar": 71
+      },
+      "revId": "243a3888e1f96c04cb823d4588fdacbccc9a7fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
