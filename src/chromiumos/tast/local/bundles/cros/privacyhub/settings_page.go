@@ -74,7 +74,7 @@ func SettingsPage(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	ui := uiauto.New(tconn)
-	privacyMenu := nodewith.Name("Privacy Hub")
+	privacyMenu := nodewith.Name("Privacy controls")
 	if featureOn {
 		if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(privacyMenu)(ctx); err != nil {
 			s.Fatal("Failed to find Privacy Hub in OS setting page: ", err)
