@@ -46,6 +46,30 @@
       },
       "revId": "9f55d0fa27c891c7a4a796382a9df786b7eebedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b05232_4ddaa5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_access.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-07T00:36:39Z",
+      "side": 1,
+      "message": "Given our out-of-band convo, I think this was cleared up.",
+      "parentUuid": "ea129e29_07555759",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "9f55d0fa27c891c7a4a796382a9df786b7eebedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
