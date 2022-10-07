@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f52d4c5_56a360b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "Should we add a note saying this also adds support for metrics after the test has ended? i.e: \"Shutdown\"",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b466106_15d40413",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "Maybe add a note that \"out-of-test\" metrics include metrics after the test finishes as well?",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ed95a3_e4e5528f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "`mectrics` -\u003e `metrics`",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311aa1fe_1494ef67",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "misspelling:\n`Custom` `flag`",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8075bd80_22333b28",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "nit: I\u0027ve been told to use `var result []string` to initialize empty list",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198fc57d_8535310b",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-07T17:27:30Z",
+      "side": 1,
+      "message": "We don\u0027t need to define `err` here, right?",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
