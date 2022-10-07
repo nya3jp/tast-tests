@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a7e1b6_559cceb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-07T06:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "624f3b56_33239105",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86b4eb7f_1fa8face",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ff0d42_ae9606be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-07T06:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b4eb7f_1fa8face",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31362563_54418f5d",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-06T09:06:06Z",
       "side": 1,
       "message": "Should the test pass when multiple matching nodes were found?",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a4927c_bb1fe747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-07T06:13:06Z",
+      "side": 1,
+      "message": "We\u0027ll get ID as \u0027sata\u0027 only one time, iff DUT has SATA storage and in that children block we are checking for required information.",
+      "parentUuid": "31362563_54418f5d",
       "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
