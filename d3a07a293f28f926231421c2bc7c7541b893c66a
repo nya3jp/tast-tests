@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ff70b5_2522355f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T06:55:17Z",
+      "side": 1,
+      "message": "nit: move to the previous line",
+      "revId": "d3a07a293f28f926231421c2bc7c7541b893c66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fdf965_ab0b898e",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-07T06:55:17Z",
+      "side": 1,
+      "message": "Why can\u0027t you bind the result of the call to a []string directly?\n\nIf this.standardActions is not an actual array, you could perform the conversion in js directly. IMO switching between languages like this makes it easy to introduce subtle bugs.",
+      "revId": "d3a07a293f28f926231421c2bc7c7541b893c66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
