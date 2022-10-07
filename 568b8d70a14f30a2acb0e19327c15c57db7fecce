@@ -1,6 +1,167 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f80bb7_43ca26df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "This is not a \"new test\", but just change the behavior on some existing tests\n\nSo I would say \"Stop checking existence of charon after a test\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f61981c_8a922171",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "just \"vpn\": use the go package name as the prefix here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574a44a2_720a65a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "break the lines at 72 chars in commit message",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6137632f_a2f5533e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "This is a not a \"timeout\", but a \"poll\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236898c4_aa2aa510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "it\u0027s not clear which one \"the new patch\" means here.\n\nI would just say, \"The removed code is no longer needed after crrev.com/xxxx because...\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616f863a_a8c848fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "This TEST is not needed, since this patch does not change shill package.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77a15b9_87e7c912",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-07T04:55:04Z",
+      "side": 1,
+      "message": "Could you also run unit tests for tast (run `../platform/tast/fast_build.sh -T` in chroot) and mention that here? Thanks!\n\nSee the TEST line in https://crrev.com/c/3936062 for example.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5f334187_6f380f79",
