@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "212bc272_271b53b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "816d52cc_95b4301f",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49ab8dd7_03da51cd",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-10-04T14:37:03Z",
       "side": 1,
       "message": "in this case, I think table-driven test with s.Run is better to manage the test results.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07047c7_c5027b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Not sure which improvement this would bring. I\u0027d guess that by using the current form we support sharding and randomizing of order? Besides - there are various sections in there (e.g. produce App in Ash, Navigation fails in different ways, etc.).\n\nAs such the tests are not really fulfilling \"with very slight differences\" as was pointed out?",
+      "parentUuid": "49ab8dd7_03da51cd",
       "range": {
         "startLine": 63,
         "startChar": 2,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7acb39a4_34ef859d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "I would like to also show if a window was found at all - this way a maintenance / debugging is much better.\n\nLet me know if you still want to get this changed.",
+      "parentUuid": "a90eaa45_3995ef3b",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0b11f90_12ee213b",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 11
@@ -117,6 +189,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "Something is wrong here. Your poll function never returns a regular error, so Poll will only run it once.\n\nIf \"wins \u003d\u003d 1 \u0026\u0026 title \u003d\u003d params.appTitleInAsh\" is the expected condition in the success case, then you should return nil in line 232 and a regular error (not PollBreak) in line 234.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44446727_c7e346f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0b11f90_12ee213b",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be23289_62decfe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a2eb032_54a831e8",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 236,
+        "endChar": 6
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e22a74_1bde81e7",
@@ -161,6 +275,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf58794_ae602807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e22a74_1bde81e7",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad3fc3b9_c46f93e6",
@@ -174,6 +306,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "There\u0027s no need to check \"conn \u003d\u003d nil\".",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c02c5a_0e8f7ff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3fc3b9_c46f93e6",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +368,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de430f6_d17b91ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c021d4c0_e16006e2",
+      "range": {
+        "startLine": 254,
+        "startChar": 63,
+        "endLine": 254,
+        "endChar": 96
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67a72ca_ed21877c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Ouch. Thanks for pointing this out...",
+      "parentUuid": "998dbf88_517def21",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5af68d65_b5755fbd",
@@ -231,6 +423,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "See comment on the other Poll usage above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6bcad8_bd922e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af68d65_b5755fbd",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -252,6 +462,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7d7454_13cf8932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8c766bf_9d79b36b",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e387deff_a9d01ded",
@@ -265,6 +493,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "See comment on the other Poll usage above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720bb407_73b443d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e387deff_a9d01ded",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -286,6 +532,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7b7c24_a1239fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8221f95a_6b59ca96",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5695504c_a2ac98ae",
@@ -299,6 +563,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "Please print err.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98afa492_443bff35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5695504c_a2ac98ae",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -320,6 +602,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3818927_e78d73ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f350bd36_751a0b12",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b91b3020_982c1719",
@@ -333,6 +633,24 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "\"There should have been at least one suitable target\"",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fdab73_e591dfba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done\n\nBut: If you have a second, I would like to understand why \"Error\" in this context is unwanted?",
+      "parentUuid": "b91b3020_982c1719",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -354,6 +672,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5fb951_a33f47b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813a6d7c_e346d69c",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cbabef8_c05c69d5",
@@ -371,6 +707,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75a8a44_fdb8ee34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cbabef8_c05c69d5",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "584f7866_dd66be5f",
@@ -384,6 +738,30 @@
       "writtenOn": "2022-10-04T14:37:03Z",
       "side": 1,
       "message": "a",
+      "range": {
+        "startLine": 368,
+        "startChar": 42,
+        "endLine": 368,
+        "endChar": 44
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986954de_82939647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "584f7866_dd66be5f",
       "range": {
         "startLine": 368,
         "startChar": 42,
@@ -417,6 +795,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47520b2f_7efc4e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done.\n\n[Note: IMHO the resulting name isn\u0027t clear anymore and sounds ambiguous. Besides \"isBlack\" is *not* a getter, it could be a complicated attribute check.]",
+      "parentUuid": "1b7d85d9_d31a7054",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 7
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04ccb19e_1471dee3",
@@ -430,6 +832,24 @@
       "writtenOn": "2022-10-04T14:37:03Z",
       "side": 1,
       "message": "ditto: \"navigationBlocked\"",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9195eb_fd65e54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-07T02:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ccb19e_1471dee3",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
