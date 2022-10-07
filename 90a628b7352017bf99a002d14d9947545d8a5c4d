@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa28227_7469b790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-07T01:01:53Z",
+      "side": 1,
+      "message": "I still don\u0027t like the idea of changing behavior based on kernel version during a run. However, I understand the current code has already coded this way. Refactoring is not within the scope.",
+      "revId": "90a628b7352017bf99a002d14d9947545d8a5c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
