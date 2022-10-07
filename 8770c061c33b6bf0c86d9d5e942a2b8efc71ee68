@@ -16,6 +16,57 @@
       "message": "Could you please review the changes?",
       "revId": "8770c061c33b6bf0c86d9d5e942a2b8efc71ee68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cbec08_8ff035c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-07T09:23:24Z",
+      "side": 1,
+      "message": "LGTM % minor nits",
+      "revId": "8770c061c33b6bf0c86d9d5e942a2b8efc71ee68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237ba4b7_502aa1bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-07T09:23:24Z",
+      "side": 1,
+      "message": "nit: comments should end with . at the end.",
+      "revId": "8770c061c33b6bf0c86d9d5e942a2b8efc71ee68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58edec0_d8e6d813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-07T09:23:24Z",
+      "side": 1,
+      "message": "nit: comments should end with . at the end.",
+      "revId": "8770c061c33b6bf0c86d9d5e942a2b8efc71ee68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
