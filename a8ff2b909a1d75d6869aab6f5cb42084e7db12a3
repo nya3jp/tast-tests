@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea1f468_e22c61f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-07T00:41:02Z",
+      "side": 1,
+      "message": "We require it to be stable for the past 20 runs. Looks like you\u0027re at 17. Please wait until there\u0027s 20, then you can hit submit.\n\nhttps://tastboard.corp.google.com/test?testname\u003dServiceManagerTest",
+      "revId": "a8ff2b909a1d75d6869aab6f5cb42084e7db12a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
