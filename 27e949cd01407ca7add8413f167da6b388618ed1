@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f10290b_a7c0ef62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "No trailing punctuation.\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85989dd5_4528ca59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`cujrecorder:`\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f52d4c5_56a360b1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -14,6 +60,75 @@
       "writtenOn": "2022-10-07T17:27:30Z",
       "side": 1,
       "message": "Should we add a note saying this also adds support for metrics after the test has ended? i.e: \"Shutdown\"",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62012d1b_9852e6fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`a`",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5e0750_20c286a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`or after the test has ended`",
+      "range": {
+        "startLine": 9,
+        "startChar": 66,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f64b405_54ca9a51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "Remove the words `of these`",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 41
+      },
       "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +163,52 @@
       "writtenOn": "2022-10-07T17:27:30Z",
       "side": 1,
       "message": "`mectrics` -\u003e `metrics`",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42c579a_3a821072",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`or after the test has ended`",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc8476d_b9f10466",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`metrics`",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 33
+      },
       "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +260,29 @@
       "writtenOn": "2022-10-07T17:27:30Z",
       "side": 1,
       "message": "We don\u0027t need to define `err` here, right?",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492607a7_61e344ae",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-07T20:13:18Z",
+      "side": 1,
+      "message": "`Out-of-test`",
+      "range": {
+        "startLine": 683,
+        "startChar": 5,
+        "endLine": 683,
+        "endChar": 16
+      },
       "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
