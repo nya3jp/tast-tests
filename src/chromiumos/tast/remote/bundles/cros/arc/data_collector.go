@@ -11,6 +11,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -23,12 +25,18 @@ import (
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
 	vmEnabled bool
 	// if set, collected data will be upload to cloud.
 	upload bool
+	// if set, this verifies others uploads and creates pin to version if needed.
+	uprevBranch bool
+	// set of CPU Abis required to uprev pin to the next version. If caches for
+	// some ABI are missing uprev is skipped.
+	requiredCPUAbisForBranchUprev []string
 	// if set, keep local data in this directory.
 	dataDir string
 }
@@ -129,34 +137,79 @@ func init() {
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:   false,
+				upload:      true,
+				uprevBranch: false,
+				dataDir:     "",
 			},
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled: true,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:   true,
+				upload:      true,
+				uprevBranch: false,
+				dataDir:     "",
 			},
 		}, {
 			Name:              "local",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:   false,
+				upload:      false,
+				uprevBranch: false,
+				dataDir:     "/tmp/data_collector",
 			},
 		}, {
 			Name:              "vm_local",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled: true,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:   true,
+				upload:      false,
+				uprevBranch: false,
+				dataDir:     "/tmp/data_collector",
+			},
+		}, {
+			// branch_uprev versions are designed to provide caches uprev functionality
+			// on release branches. For the main branch, uprev is done automatically by
+			// passing PFQ where data collector is scheduled for execution. Release
+			// branches don't have PFQ running and these configurations provide a
+			// workaround. This passes DataCollector as usual and as a result caches
+			// for the particular version are uploaded. However, this itself does not
+			// bring caches to the official build once this is generated post-factum.
+			// Instead we use here pin caches functionality to force using caches for
+			// particular version at specific branch. This should not be the problem
+			// for the release branch once it has only minor changes. As a result, for
+			// release branch builds, the most recent version of caches would be used.
+			// Note, pin does not distinguish CPU ABI caches os uprev happens only in
+			// case all possible CPU ABI caches are generated.
+			// Limit the run for several key models only once caches are model
+			// agnostic.
+			Name:              "branch_uprev",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline", "sona", "morphius", "krane")),
+			Val: testParam{
+				vmEnabled:                     false,
+				upload:                        true,
+				uprevBranch:                   true,
+				requiredCPUAbisForBranchUprev: []string{"x86_64", "arm64"},
+				dataDir:                       "/tmp/data_collector",
+			},
+		}, {
+			Name:              "vm_branch_uprev",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("gimble", "kohaku", "eve", "hoglin")),
+			Val: testParam{
+				vmEnabled:   true,
+				upload:      true,
+				uprevBranch: true,
+				// ARCVM does not have arm64 on branch.
+				// TODO(khmel): Include arm64 once we have first ARM device branched.
+				requiredCPUAbisForBranchUprev: []string{"x86_64"},
+				dataDir:                       "/tmp/data_collector",
 			},
 		}},
 		VarDeps: []string{"arc.perfAccountPool"},
@@ -418,6 +471,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
 	}
+
+	if param.uprevBranch {
+		if err = maybeUprevBranch(ctx, desc, s.OutDir(), param.requiredCPUAbisForBranchUprev); err != nil {
+			s.Fatal("Failed to uprev branch: ", err)
+		}
+	}
 }
 
 func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDir, androidVersion string, du *dataUploader) error {
@@ -456,5 +515,82 @@ func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDi
 		s.Fatalf("Failed to upload %q: %v", ttsCache, err)
 	}
 
+	return nil
+}
+
+func maybeUprevBranch(ctx context.Context, desc *version.BuildDescriptor, outDir string, requiredCPUAbis []string) error {
+	testing.ContextLog(ctx, "Trying to uprev branch")
+
+	if !desc.Official {
+		testing.ContextLogf(ctx, "Build %s is not official. Branch is not uprev-ed", desc.BuildID)
+		return nil
+	}
+
+	androidBranch := ""
+	switch desc.VersionRelease {
+	case 9:
+		androidBranch = "pi"
+	case 11:
+		androidBranch = "rvc"
+	default:
+		testing.ContextLogf(ctx, "Android branch %d is not support. Branch is not uprev-ed", desc.VersionRelease)
+		return nil
+	}
+
+	// Read existing pin if possible
+	pinName := fmt.Sprintf("git_%s-arc-m%d_pin_version", androidBranch, desc.Milestone)
+	// Note, this is URL and not file path.
+	pinURL := fmt.Sprintf("%s/%s", runtimeArtifactsRoot, pinName)
+	existingPinVersion := 0
+
+	// gsutil stat would return 1 for a non-existent object.
+	if err := exec.Command(gsUtil, "stat", pinURL).Run(); err == nil {
+		// Existing pin for this branch is found. Check this version is newer.
+		out, err := exec.Command(gsUtil, "cat", pinURL).CombinedOutput()
+		if err != nil {
+			return errors.Wrapf(err, "failed to read branch pin %q", pinURL)
+		}
+
+		mVersion := regexp.MustCompile(`(\d+)\n?$`).FindStringSubmatch(string(out))
+		if mVersion == nil {
+			return errors.Wrapf(err, "existing pin version %q from %q is invalid", string(out), pinURL)
+		}
+
+		existingPinVersion, err = strconv.Atoi(mVersion[1])
+		if err != nil {
+			return errors.Wrapf(err, "could not parse existing pin version %q from %q", string(out), pinURL)
+		}
+
+		if existingPinVersion >= desc.BuildVersion {
+			testing.ContextLogf(ctx, "Pin %q has version %d. This build has version %d. Uprev is not needed", pinURL, existingPinVersion, desc.BuildVersion)
+			return nil
+		}
+
+	} else {
+		testing.ContextLogf(ctx, "Branch pin %q does not exist", pinURL)
+	}
+
+	// Make sure all caches are available for uprev.
+	for _, abi := range requiredCPUAbis {
+		gmsCoreURL := fmt.Sprintf("%s/gms_core_cache_%s_user_%d.tar", runtimeArtifactsRoot, abi, desc.BuildVersion)
+		if err := exec.Command(gsUtil, "stat", gmsCoreURL).Run(); err != nil {
+			testing.ContextLogf(ctx, "Required cache %q does not exist. Branch is not yet ready for uprev", gmsCoreURL)
+			return nil
+		}
+		testing.ContextLogf(ctx, "Required cache %q exists", gmsCoreURL)
+	}
+
+	// Create local copy of pin.
+	localPinPath := filepath.Join(outDir, pinName)
+	if err := ioutil.WriteFile(localPinPath, []byte(fmt.Sprintf("%d\n", desc.BuildVersion)), 0644); err != nil {
+		return errors.Wrapf(err, "failed to create pin locally %q", localPinPath)
+	}
+
+	// Upload it remotely.
+	if err := exec.Command(gsUtil, "copy", localPinPath, pinURL).Run(); err != nil {
+		return errors.Wrapf(err, "failed to upload pin remotely %q", pinURL)
+	}
+
+	testing.ContextLogf(ctx, "Branch %d is pinned to %d. Pin URL: %q", desc.Milestone, desc.BuildVersion, pinURL)
 	return nil
 }
