@@ -24,6 +24,14 @@ var h2644kFilesFromBugs = map[string]string{
 	"22704778": "test_vectors/h264/files_from_bugs/b_227047778_mtk_8195_artifacts.h264",
 }
 
+var vp9FilesFromBugs = map[string]string{
+	"177839888": "test_vectors/vp9/files_from_bugs/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24.ivf",
+}
+
+var av1FilesFromBugs = map[string]string{
+	"235138734": "test_vectors/av1/files_from_bugs/b_235138734_test-25fps-one-to-four-tiles.av1.ivf",
+}
+
 type paramData struct {
 	Name         string
 	SoftwareDeps string
@@ -59,12 +67,6 @@ func TestChromeStackDecoderVerificationParams(t *testing.T) {
 	perBuildAttrs := []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"}
 	params := []paramData{
 		{
-			Name:          "av1_files_from_bugs",
-			Attr:          perBuildAttrs,
-			SoftwareDeps:  `[]string{caps.HWDecodeAV1}`,
-			VideoFiles:    "av1FilesFromBugs",
-			ValidatorType: "decoding.MD5",
-		}, {
 			Name:          "av1_common",
 			Attr:          perBuildAttrs,
 			SoftwareDeps:  `[]string{caps.HWDecodeAV1}`,
@@ -159,12 +161,6 @@ func TestChromeStackDecoderVerificationParams(t *testing.T) {
 			VideoFiles:    "vp8IntraSegmentFiles",
 			ValidatorType: "decoding.MD5",
 		}, {
-			Name:          "vp9_files_from_bugs",
-			Attr:          perBuildAttrs,
-			SoftwareDeps:  `[]string{caps.HWDecodeVP9}`,
-			VideoFiles:    "vp9FilesFromBugs",
-			ValidatorType: "decoding.MD5",
-		}, {
 			Name:          "vp9_0_group1_buf",
 			Attr:          perBuildAttrs,
 			SoftwareDeps:  `[]string{caps.HWDecodeVP9}`,
@@ -218,7 +214,8 @@ func TestChromeStackDecoderVerificationParams(t *testing.T) {
 		},
 	}
 
-	// h264 is the only codec that has a strong need for specific faulty cases so we create one test case per bug.
+	// generate test case for each files_from_bugs so that we can easily find
+	// a decoder fails decoding a specific bug file.
 	params = append(params, genFilesFromBugs(paramData{
 		Name:          "h264_files_from_bugs",
 		Attr:          perBuildAttrs,
@@ -231,6 +228,18 @@ func TestChromeStackDecoderVerificationParams(t *testing.T) {
 		SoftwareDeps:  `[]string{caps.HWDecodeH264_4K, "proprietary_codecs"}`,
 		ValidatorType: "decoding.MD5",
 	}, h2644kFilesFromBugs)...)
+	params = append(params, genFilesFromBugs(paramData{
+		Name:          "vp9_files_from_bugs",
+		Attr:          perBuildAttrs,
+		SoftwareDeps:  `[]string{caps.HWDecodeVP9}`,
+		ValidatorType: "decoding.MD5",
+	}, vp9FilesFromBugs)...)
+	params = append(params, genFilesFromBugs(paramData{
+		Name:          "av1_files_from_bugs",
+		Attr:          perBuildAttrs,
+		SoftwareDeps:  `[]string{caps.HWDecodeAV1}`,
+		ValidatorType: "decoding.MD5",
+	}, av1FilesFromBugs)...)
 
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},
