@@ -50,6 +50,13 @@ func init() {
 			// Credentials sync - successful password change.
 			Value: "screenplay-1b766b3e-874a-49dd-be9d-5c63994970e3",
 		}},
+		Params: []testing.Param{{
+			Name: "auth_factor_experiment_on",
+			Val:  []chrome.Option{chrome.EnableFeatures("UseAuthFactors")},
+		}, {
+			Name: "auth_factor_experiment_off",
+			Val:  []chrome.Option{chrome.DisableFeatures("UseAuthFactors")},
+		}},
 	})
 }
 
@@ -57,6 +64,8 @@ func ChangePassword(ctx context.Context, s *testing.State) {
 	var fakeCreds chrome.Creds
 	var gaiaCreds chrome.Creds
 	var normalizedUser string
+
+	testParamOpts := s.Param().([]chrome.Option)
 
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
@@ -74,7 +83,7 @@ func ChangePassword(ctx context.Context, s *testing.State) {
 		fakeCreds.Pass = "fake" + fakeCreds.Pass
 		cr, err := chrome.New(
 			ctx,
-			chrome.FakeLogin(fakeCreds))
+			append(testParamOpts, chrome.FakeLogin(fakeCreds))...)
 		if err != nil {
 			s.Fatal("Failed to create a user: ", err)
 		}
@@ -93,11 +102,11 @@ func ChangePassword(ctx context.Context, s *testing.State) {
 	func() {
 		cr, err := chrome.New(
 			ctx,
-			chrome.GAIALogin(gaiaCreds),
-			chrome.DontWaitForCryptohome(),
-			chrome.KeepState(),
-			chrome.RemoveNotification(false), // By default it waits for the user session.
-			chrome.DontSkipOOBEAfterLogin())
+			append(testParamOpts, chrome.GAIALogin(gaiaCreds),
+				chrome.DontWaitForCryptohome(),
+				chrome.KeepState(),
+				chrome.RemoveNotification(false), // By default it waits for the user session.
+				chrome.DontSkipOOBEAfterLogin())...)
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
@@ -132,9 +141,9 @@ func ChangePassword(ctx context.Context, s *testing.State) {
 	// Login again with the updated password.
 	cr, err := chrome.New(
 		ctx,
-		chrome.NoLogin(),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-		chrome.KeepState(),
+		append(testParamOpts, chrome.NoLogin(),
+			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chrome.KeepState())...,
 	)
 	if err != nil {
 		s.Fatal("Chrome start failed: ", err)

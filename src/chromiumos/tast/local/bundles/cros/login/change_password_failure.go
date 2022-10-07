@@ -41,12 +41,21 @@ func init() {
 			// Credentials sync - password change failure.
 			Value: "screenplay-e48269d3-5309-4db0-aafa-ffdce9a79dbf",
 		}},
+		Params: []testing.Param{{
+			Name: "auth_factor_experiment_on",
+			Val:  []chrome.Option{chrome.EnableFeatures("UseAuthFactors")},
+		}, {
+			Name: "auth_factor_experiment_off",
+			Val:  []chrome.Option{chrome.DisableFeatures("UseAuthFactors")},
+		}},
 	})
 }
 
 func ChangePasswordFailure(ctx context.Context, s *testing.State) {
 	var fakeCreds chrome.Creds
 	var gaiaCreds chrome.Creds
+
+	testParamOpts := s.Param().([]chrome.Option)
 
 	// Isolate the step to leverage `defer` pattern.
 	func() {
@@ -61,7 +70,7 @@ func ChangePasswordFailure(ctx context.Context, s *testing.State) {
 		fakeCreds.Pass = "fake" + fakeCreds.Pass
 		cr, err := chrome.New(
 			ctx,
-			chrome.FakeLogin(fakeCreds))
+			append(testParamOpts, chrome.FakeLogin(fakeCreds))...)
 		if err != nil {
 			s.Fatal("Failed to create a user: ", err)
 		}
@@ -76,11 +85,11 @@ func ChangePasswordFailure(ctx context.Context, s *testing.State) {
 	func() {
 		cr, err := chrome.New(
 			ctx,
-			chrome.GAIALogin(gaiaCreds),
-			chrome.DontWaitForCryptohome(),
-			chrome.KeepState(),
-			chrome.RemoveNotification(false), // By default it waits for the user session.
-			chrome.DontSkipOOBEAfterLogin())
+			append(testParamOpts, chrome.GAIALogin(gaiaCreds),
+				chrome.DontWaitForCryptohome(),
+				chrome.KeepState(),
+				chrome.RemoveNotification(false), // By default it waits for the user session.
+				chrome.DontSkipOOBEAfterLogin())...)
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
@@ -109,18 +118,18 @@ func ChangePasswordFailure(ctx context.Context, s *testing.State) {
 	}()
 
 	// Verify we can not login with the old password.
-	loginWithCreds(ctx, s, fakeCreds, false)
+	loginWithCreds(ctx, s, testParamOpts, fakeCreds, false)
 
 	// Verify we can login with the new password.
-	loginWithCreds(ctx, s, gaiaCreds, true)
+	loginWithCreds(ctx, s, testParamOpts, gaiaCreds, true)
 }
 
-func loginWithCreds(ctx context.Context, s *testing.State, creds chrome.Creds, successExpected bool) {
+func loginWithCreds(ctx context.Context, s *testing.State, testParamOpts []chrome.Option, creds chrome.Creds, successExpected bool) {
 	cr, err := chrome.New(
 		ctx,
-		chrome.NoLogin(),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-		chrome.KeepState(),
+		append(testParamOpts, chrome.NoLogin(),
+			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chrome.KeepState())...,
 	)
 	if err != nil {
 		s.Fatal("Chrome start failed: ", err)
