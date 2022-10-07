@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcb7675_f16aaede",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-07T09:12:44Z",
+      "side": 1,
+      "message": "after *ARC apps* are closed",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "7a4338ca57c7e72e1686b066fcae3f2efab0ff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a3ee0f0_14485c2b",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-10-07T05:56:32Z",
       "side": 1,
       "message": "Please take a look~",
+      "revId": "7a4338ca57c7e72e1686b066fcae3f2efab0ff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def95011_17febf64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-07T09:12:44Z",
+      "side": 1,
+      "message": "LGTM with a nit 😊",
       "revId": "7a4338ca57c7e72e1686b066fcae3f2efab0ff03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
