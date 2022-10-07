@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d3c584a_cb3f5842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T03:54:41Z",
+      "side": 1,
+      "message": "I referenced https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code:\n\n\u003e see e.g. the chromecrash package within the ui package, used by the ui.ChromeCrashLoggedIn and ui.ChromeCrashNotLoggedIn tests.\n\nThe chromecrash is also in local/bundles/*:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/main/src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go\n\nThus, I thought the kernelcommon location is acceptable.",
+      "parentUuid": "0db84773_141a366d",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5d295c_d434c124",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
