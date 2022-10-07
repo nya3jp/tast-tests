@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f20bc92_b2b64d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "These comments are already punctuated with a period, unless I\u0027m missing where you\u0027re pointing to?",
+      "parentUuid": "a0f3cc65_e9c84827",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a818ca0_1339c32d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-07T07:01:31Z",
       "side": 1,
       "message": "nit: end comments with .",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "926be9a4_312fd0ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a818ca0_1339c32d",
       "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed21524_40e45954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac6051f_36c6138c",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d41b03ef_f3c404f3",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-07T07:01:31Z",
       "side": 1,
       "message": "nit: end with a .",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82af92be_3d9f0f75",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41b03ef_f3c404f3",
       "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2905e600_df854d48",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c4af257_e3904720",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "938d8802_8489e146",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-10-07T07:01:31Z",
       "side": 1,
       "message": "Please do this in this CL. See here for an example to add a extraOptsFunc:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da5238d_fc4b8a4d",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer to do this in a followup CL if that\u0027s okay with you.\n\nBehavior to click through the consolidated consent screen was added in crev/c/3811495 for a different test, so adding it here would require:\n- extracting that code out to a helper method\n- conditionally calling it in this fixture\u0027s SetUp() based on options passed into the FixtureImpl\n- Adding a separate empty test to exercise the separate OOBE setup behavior\n\nIMO that would be trying to cram too much unrelated stuff into this one CL, which I\u0027d rather keep (somewhat) focused.",
+      "parentUuid": "938d8802_8489e146",
       "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2199176_836c252f",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0170dcb7_a4810623",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e6a6ca1_03652ad6",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-10-07T07:01:31Z",
       "side": 1,
       "message": "Please remove",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2a261c_4e200e23",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-07T19:23:48Z",
+      "side": 1,
+      "message": "Whoops, good catch! Done.",
+      "parentUuid": "1e6a6ca1_03652ad6",
       "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
