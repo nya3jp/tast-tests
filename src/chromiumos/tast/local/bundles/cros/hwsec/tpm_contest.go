@@ -27,7 +27,7 @@ func init() {
 		// failing and/or untested on other platforms.
 		SoftwareDeps: []string{"tpm2", "protected_content", "amd_cpu"},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      3 * time.Minute,
+		Timeout:      6 * time.Minute,
 	})
 }
 
