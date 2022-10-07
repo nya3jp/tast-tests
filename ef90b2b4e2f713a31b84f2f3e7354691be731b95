@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7080544_0029140f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-07T22:54:07Z",
+      "side": 1,
+      "message": "nit: reflow the commit message to 80 columns?",
+      "range": {
+        "startLine": 9,
+        "startChar": 66,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "ef90b2b4e2f713a31b84f2f3e7354691be731b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "01f1afd4_7df91592",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-10-07T02:23:16Z",
       "side": 1,
       "message": "PTAL again.",
+      "revId": "ef90b2b4e2f713a31b84f2f3e7354691be731b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "969b6e5d_f874602f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-07T22:54:07Z",
+      "side": 1,
+      "message": "Still LGTM!",
       "revId": "ef90b2b4e2f713a31b84f2f3e7354691be731b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
