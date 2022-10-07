@@ -13,9 +13,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PowerOff,
-		Desc:     "Shut down a DUT to simulate a DUT losing connectivity",
-		Contacts: []string{"seewaifu@google.com"},
+		Func:         PowerOff,
+		Desc:         "Shut down a DUT to simulate a DUT losing connectivity",
+		Contacts:     []string{"tast-owners@google.com", "seewaifu@google.com"},
+		BugComponent: "b:1034625",
 	})
 }
 

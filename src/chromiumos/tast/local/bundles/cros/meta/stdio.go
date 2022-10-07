@@ -14,10 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Stdio,
-		Desc:     "Ensures that accessing stdin/stdout does not harm test execution",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "group:meta"},
+		Func:         Stdio,
+		Desc:         "Ensures that accessing stdin/stdout does not harm test execution",
+		Contacts:     []string{"tast-owners@google.com", "nya@chromium.org"},
+		BugComponent: "b:1034625",
+		Attr:         []string{"group:mainline", "group:meta"},
 	})
 }
 
