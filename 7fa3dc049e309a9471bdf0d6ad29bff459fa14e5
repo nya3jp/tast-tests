@@ -16,6 +16,23 @@
       "message": "I fixed the merge conflicts from crrev.com/c/3929548 landing.",
       "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452e3930_819ccc68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-07T21:00:10Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
