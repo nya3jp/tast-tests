@@ -73,6 +73,23 @@
       "message": "+2 for Tast Review",
       "revId": "2361fc88b7dc0318f05942be7690c200bc9ea769",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6654910_5ad27601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2022-10-07T09:17:08Z",
+      "side": 1,
+      "message": "Could you please review the changes?",
+      "revId": "2361fc88b7dc0318f05942be7690c200bc9ea769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
