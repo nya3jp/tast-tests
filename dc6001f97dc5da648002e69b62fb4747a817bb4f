@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cba7c85_a789396f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-07T20:30:31Z",
+      "side": 1,
+      "message": "This method name doesn\u0027t make sense any more as the \"Manage Android Preferences\" has been moved into addAndroidAccount method to add a hacky fix for https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1222744.",
+      "revId": "dc6001f97dc5da648002e69b62fb4747a817bb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1576a3b_4d0261ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-07T20:30:31Z",
+      "side": 1,
+      "message": "Lets merge above 2 methods.",
+      "revId": "dc6001f97dc5da648002e69b62fb4747a817bb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f424bb_b33d8d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-07T20:30:31Z",
+      "side": 1,
+      "message": "Better to Capture this with a TODO to remove once https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1222744 is fixed.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 104
+      },
+      "revId": "dc6001f97dc5da648002e69b62fb4747a817bb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
