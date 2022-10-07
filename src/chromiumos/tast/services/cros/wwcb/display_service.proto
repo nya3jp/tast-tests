@@ -1,0 +1,38 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wwcb;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wwcb";
+
+
+// Chrome allows basic remote operations of Chrome.
+service DisplayService {
+  // SetMirrorDisplay sets the mirror display settings.
+  rpc SetMirrorDisplay (QueryRequest) returns (google.protobuf.Empty){}
+
+  // SetPrimaryDisplay sets the internal or external display as primary mode.
+  rpc SetPrimaryDisplay (QueryRequest) returns (google.protobuf.Empty){}
+
+  // SwitchWindowToDisplay finds the window with given title then switch it to the expected display.
+  rpc SwitchWindowToDisplay(QueryRequest) returns (google.protobuf.Empty) {} 
+
+  // VerifyWindowOnDisplay finds the window with given title then verify it is showing on the expected display or not.
+  rpc VerifyWindowOnDisplay(QueryRequest) returns (google.protobuf.Empty) {} 
+
+  // VerifyDisplayCount verifies the given  display count to compare with the current numbers of display that system detected.
+  rpc VerifyDisplayCount(QueryRequest) returns (google.protobuf.Empty) {} 
+}
+
+message QueryRequest{
+  int32 display_index = 1;
+  int32 display_count = 2;
+  bool enable = 3;
+  string window_title = 4;
+}
+
