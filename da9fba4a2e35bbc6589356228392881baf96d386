@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a12e46_710f254a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-07T06:55:26Z",
+      "side": 1,
+      "message": "The code isn\u0027t 100% pretty, but it\u0027s good enough for a first round of review.",
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad9673e_43e78294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-07T06:55:26Z",
+      "side": 1,
+      "message": "This sub test and the `Params` don\u0027t play well together.\n\nIn the console when running it only shows 2 tests:\n```\n$ tast run 127.0.0.1:2222 filemanager.UIPerf.* \n...\n--------------------------------------------------------------------------------\nfilemanager.UIPerf.directory_list [ PASS ] \nfilemanager.UIPerf.list_apps      [ PASS ] \n--------------------------------------------------------------------------------\n```",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 7
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
