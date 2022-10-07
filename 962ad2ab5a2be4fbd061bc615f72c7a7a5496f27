@@ -157,6 +157,24 @@
       "message": "How about changing this to \n\nfunc (c *kernelConfigCheck) Test(conf map[string]string) error\n\nThen, you can make this file as a library.",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40437ff_480b7534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-07T03:32:51Z",
+      "side": 1,
+      "message": "However, it needs `s` to print something.",
+      "parentUuid": "8f42435e_d2adc8e9",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
