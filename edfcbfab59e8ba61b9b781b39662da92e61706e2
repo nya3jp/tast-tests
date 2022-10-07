@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01077337_6d4f502f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-07T01:49:56Z",
+      "side": 1,
+      "message": "nit: We may want to avoid calling parameterized tests \"sub tests\" because there is a different concept called \"sub tests\" in Tast.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#common-testing-patterns",
+      "revId": "edfcbfab59e8ba61b9b781b39662da92e61706e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
