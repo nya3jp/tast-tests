@@ -126,7 +126,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	}
 
 	// Create some chrome apps that are already installed.
-	appsList := []apps.App{apps.Camera, apps.Files, apps.Help, apps.PlayStore}
+	appsList := []apps.App{apps.Camera, apps.FilesSWA, apps.Help, apps.PlayStore}
 
 	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {

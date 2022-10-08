@@ -191,7 +191,7 @@ func VerifyShelfAlignment(ctx context.Context, s *testing.State) {
 	}
 
 	// Pin the Files app then verify the shelf app icon alignment again.
-	if err := ash.PinApps(ctx, tconn, []string{apps.Files.ID}); err != nil {
+	if err := ash.PinApps(ctx, tconn, []string{apps.FilesSWA.ID}); err != nil {
 		s.Fatal("Failed to pin Files to shelf when the shelf alignment is ShelfAlignmentBottom")
 	}
 	if err := ash.VerifyShelfAppAlignment(ctx, tconn, ash.ShelfAlignmentBottom); err != nil {
@@ -199,7 +199,7 @@ func VerifyShelfAlignment(ctx context.Context, s *testing.State) {
 	}
 
 	// Unpin the Files app.
-	if err := ash.UnpinApps(ctx, tconn, []string{apps.Files.ID}); err != nil {
+	if err := ash.UnpinApps(ctx, tconn, []string{apps.FilesSWA.ID}); err != nil {
 		s.Fatal("Failed to unpin Files when the shelf alignment is ShelfAlignmentBottom")
 	}
 

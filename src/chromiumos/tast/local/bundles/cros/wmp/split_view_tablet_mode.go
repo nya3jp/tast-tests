@@ -142,7 +142,7 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 
 	numWindows := 4
 	// Launch four windows: two chrome windows and two chrome apps.
-	appsList := []apps.App{apps.Files, apps.PlayStore}
+	appsList := []apps.App{apps.FilesSWA, apps.PlayStore}
 
 	if err := ash.CreateWindows(ctx, tconn, cr, "", numWindows-len(appsList)); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
