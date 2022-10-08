@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82688e30_9b4b07dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-08T02:34:55Z",
+      "side": 1,
+      "message": "I apologize, it is indeed same, the function already uses this pattern.\n\nI really don\u0027t think this should be a new package, do you mind merge the chromeos chromium and common to the same file ? this might be avoid the warning, I hope.",
+      "parentUuid": "a6125040_7a5a3c56",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
