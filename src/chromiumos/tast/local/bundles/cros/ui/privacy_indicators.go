@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -25,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrivacyIndicators,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the privacy indicators view show up when entering Google Meet",
 		Contacts:     []string{"leandre@chromium.org", "cros-status-area-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -34,7 +35,15 @@ func init() {
 			"ui.PrivacyIndicators.meet_code",
 		},
 		Timeout: 3 * time.Minute,
-		Fixture: "chromeLoggedInWithCalendarEvents",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedInWithCalendarEvents",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacrosLoggedInWithCalendarEvents",
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -45,6 +54,12 @@ func PrivacyIndicators(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to the test API connection: ", err)
@@ -54,7 +69,7 @@ func PrivacyIndicators(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	meetConn, err := cr.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
+	meetConn, err := br.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
