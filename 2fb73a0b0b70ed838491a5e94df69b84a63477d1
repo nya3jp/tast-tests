@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f321930c_e2ed95d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-08T06:16:52Z",
+      "side": 1,
+      "message": "Good idea, raised b/252046043 to track this issue with Fibocom.",
+      "parentUuid": "fd3e06f5_13f74382",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9698471_bf68406a",
         "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
         "patchSetId": 1
