@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "674f64d0_6f242db6",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-08T01:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed27e16_3d2818ec",
+      "range": {
+        "startLine": 526,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 3
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9efb90a0_8a174314",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-10-07T19:06:58Z",
       "side": 1,
       "message": "remove repeated word",
+      "range": {
+        "startLine": 527,
+        "startChar": 19,
+        "endLine": 527,
+        "endChar": 21
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72f8eaa_a59a1b3c",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-08T01:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efb90a0_8a174314",
       "range": {
         "startLine": 527,
         "startChar": 19,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8317df55_5ab281c6",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-08T01:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74229355_c968fade",
+      "range": {
+        "startLine": 565,
+        "startChar": 20,
+        "endLine": 565,
+        "endChar": 22
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d80669e_b455d45c",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-10-07T19:06:58Z",
       "side": 1,
       "message": "optional nit: `successfully`",
+      "range": {
+        "startLine": 567,
+        "startChar": 37,
+        "endLine": 567,
+        "endChar": 38
+      },
+      "revId": "186234b8cea0e194e625b1e36305f5f84eedfc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb5627f_e948c468",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-08T01:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d80669e_b455d45c",
       "range": {
         "startLine": 567,
         "startChar": 37,
