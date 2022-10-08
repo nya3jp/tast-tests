@@ -66,7 +66,7 @@ func HotseatScalable(ctx context.Context, s *testing.State) {
 	}
 	defer resetPinState(cleanupCtx)
 
-	app := apps.Files
+	app := apps.FilesSWA
 
 	if err := ash.PinApps(ctx, tconn, []string{app.ID}); err != nil {
 		s.Fatal("Failed to pin apps to the shelf: ", err)

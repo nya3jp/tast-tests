@@ -124,7 +124,7 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 	defer closeBrowser(cleanupCtx)
 	defer conn.Close()
 
-	app := apps.Files
+	app := apps.FilesSWA
 	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 		s.Fatalf("Failed to launch %s: %s", app.Name, err)
 	}
