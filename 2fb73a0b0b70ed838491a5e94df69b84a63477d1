@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68e39d0b_9f64cc9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-08T05:27:41Z",
+      "side": 1,
+      "message": "Hi Aleksander, I have updated the test to first delete the existing messages and then run the test. This should cover most of the test failures.\n\nOn L850, I did see one failure, where even after deleting the messages, no new messages were being delivered till the modem was restarted (using gpio pin). I was not able to repro it on other modems. Let me see if I can add a check for L850 and restart the modem.",
+      "parentUuid": "e4ff0a66_17793940",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9698471_bf68406a",
         "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
         "patchSetId": 1
