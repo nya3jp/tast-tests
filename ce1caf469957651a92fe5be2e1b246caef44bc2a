@@ -16,6 +16,236 @@
       "message": "PTAL\nTY",
       "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65591c7_75f3dd20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "nit: for uprev to pin to...",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d1a971_d80883b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "nit: ABIs",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4d9749_f30c8fb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "nit: Some ABIs missing uprev are skipped.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c77d69_7fdb583c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "This is called uprev now (PFQ is deprecated I thought).",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3733cc_92e3ada0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "Is this a TODO?",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 15
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979cff7e_6f681d8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "nit: Can we define these lists in the file\u0027s `const (` section?  This way if the list grows, it doesn\u0027t have to make this line really long.",
+      "range": {
+        "startLine": 192,
+        "startChar": 42,
+        "endLine": 192,
+        "endChar": 81
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed4a4de9_7a4a6e91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "Please use a bug to track TODO.",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e33f4ce_3f02e2fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "Does it cause any issue if we just `arm64` but the condition will not be applicable until the first devices fit the criteria?   If so, I was thinking we can simplify and remove the TODO altogether.",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb20efa3_d8c12e40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "nit: supported.",
+      "range": {
+        "startLine": 536,
+        "startChar": 53,
+        "endLine": 536,
+        "endChar": 60
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0fb704_8751d6f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-08T06:06:00Z",
+      "side": 1,
+      "message": "very nit: missing period.",
+      "range": {
+        "startLine": 540,
+        "startChar": 25,
+        "endLine": 540,
+        "endChar": 33
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
