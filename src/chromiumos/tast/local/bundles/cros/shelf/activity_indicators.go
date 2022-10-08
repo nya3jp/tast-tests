@@ -191,7 +191,7 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 	if err = files.Close(ctx); err != nil {
 		s.Fatal("Failed to close the Files app: ", err)
 	}
-	if err := ash.WaitForAppClosed(ctx, tconn, apps.Files.ID); err != nil {
+	if err := ash.WaitForAppClosed(ctx, tconn, apps.FilesSWA.ID); err != nil {
 		s.Fatal("Failed to wait for Files app to close: ", err)
 	}
 
