@@ -250,6 +250,30 @@
       },
       "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a92ac7_4fa6c116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-09T20:19:43Z",
+      "side": 1,
+      "message": "Nope. Happy with George\u0027s observations! Thanks",
+      "parentUuid": "eba41fd8_86c9852d",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
