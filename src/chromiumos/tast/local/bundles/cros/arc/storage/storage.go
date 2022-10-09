@@ -87,11 +87,11 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		s.Fatal("Failed to install ArcFileReaderTest app: ", err)
 	}
 
-	testFileLocation := filepath.Join(config.DirPath, config.FileName)
-	_, err := os.Stat(testFileLocation)
-	fileNotExist := errors.Is(err, os.ErrNotExist)
-
 	if config.CreateTestFile {
+		testFileLocation := filepath.Join(config.DirPath, config.FileName)
+		_, err := os.Stat(testFileLocation)
+		fileNotExist := errors.Is(err, os.ErrNotExist)
+
 		if fileNotExist {
 			testing.ContextLog(ctx, "Setting up a test file")
 			if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
@@ -111,6 +111,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	if err != nil {
 		s.Fatal("Failed to open Files App: ", err)
 	}
+	defer files.Close(ctx)
 
 	if err := openWithReaderApp(ctx, files, config); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
