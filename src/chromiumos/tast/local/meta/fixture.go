@@ -8,7 +8,12 @@ package meta
 import (
 	"context"
 	"path/filepath"
+	"reflect"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
+	"chromiumos/tast/framework/protocol"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +28,13 @@ func init() {
 			"fixture_data_external.txt",
 		},
 		Impl: dataFileFixture{},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     "metaLocalFixtureDUTFeature",
+		Desc:     "Demonstrate how to access DUT Features in fixtures",
+		Contacts: []string{"seewaifu@chromium.org", "tast-owner@google.com"},
+		Data:     []string{},
+		Impl:     &dutFeatureFixture{},
 	})
 }
 
@@ -46,3 +58,39 @@ func (dataFileFixture) Reset(ctx context.Context) error {
 func (dataFileFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
 func (dataFileFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 func (dataFileFixture) TearDown(ctx context.Context, s *testing.FixtState)     {}
+
+type dutFeatureFixture struct {
+	feature *protocol.DUTFeatures
+}
+
+func (dff *dutFeatureFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	dff.feature = s.Features("")
+	return dff.feature
+}
+func (dff *dutFeatureFixture) Reset(ctx context.Context) error {
+	return nil
+}
+func (dff *dutFeatureFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	feature := s.Features("")
+	allowUnexported := func(reflect.Type) bool { return true }
+	if diff := cmp.Diff(feature, dff.feature, cmpopts.EquateEmpty(), cmp.Exporter(allowUnexported)); diff != "" {
+		s.Logf("Got unexpected feature in PreTest (-got +want): %s", diff)
+		s.Fatal("Got unexpected feature in PreTest")
+	}
+}
+func (dff *dutFeatureFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	feature := s.Features("")
+	allowUnexported := func(reflect.Type) bool { return true }
+	if diff := cmp.Diff(feature, dff.feature, cmpopts.EquateEmpty(), cmp.Exporter(allowUnexported)); diff != "" {
+		s.Logf("Got unexpected feature in PostTest (-got +want): %s", diff)
+		s.Fatal("Got unexpected feature in PostTest")
+	}
+}
+func (dff *dutFeatureFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	feature := s.Features("")
+	allowUnexported := func(reflect.Type) bool { return true }
+	if diff := cmp.Diff(feature, dff.feature, cmpopts.EquateEmpty(), cmp.Exporter(allowUnexported)); diff != "" {
+		s.Logf("Got unexpected feature in TearDown (-got +want): %s", diff)
+		s.Fatal("Got unexpected feature in TearDown")
+	}
+}
