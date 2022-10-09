@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3b2dc9_da3533e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "56f80bb7_43ca26df",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70542313_28339ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f61981c_8a922171",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574a44a2_720a65a9",
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb51f89_877167a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574a44a2_720a65a9",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4af7045_dddeb1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6137632f_a2f5533e",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "236898c4_aa2aa510",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-07T04:55:04Z",
       "side": 1,
       "message": "it\u0027s not clear which one \"the new patch\" means here.\n\nI would just say, \"The removed code is no longer needed after crrev.com/xxxx because...\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d998106e_5eba00ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236898c4_aa2aa510",
       "range": {
         "startLine": 11,
         "startChar": 14,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad8ed43_8ea4b1c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "616f863a_a8c848fe",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f77a15b9_87e7c912",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-10-07T04:55:04Z",
       "side": 1,
       "message": "Could you also run unit tests for tast (run `../platform/tast/fast_build.sh -T` in chroot) and mention that here? Thanks!\n\nSee the TEST line in https://crrev.com/c/3936062 for example.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "568b8d70a14f30a2acb0e19327c15c57db7fecce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372688a8_5eb2997f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f77a15b9_87e7c912",
       "range": {
         "startLine": 15,
         "startChar": 0,
