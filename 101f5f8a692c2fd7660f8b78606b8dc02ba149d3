@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5db5e18_6cb108fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-09T07:48:45Z",
+      "side": 1,
+      "message": "Changed the code.\nFirst, modified the code not to have repeated parts in connection.go(L258), and fixed some formats for consistency with original parts.\nSecond, updated the comment for WGIPv4, WGIPv6, WGIPv4AndIPv6 fields in Config struct.\nFinally, changed the test IP addresses to more common ones.\nPlease check this version.",
+      "revId": "101f5f8a692c2fd7660f8b78606b8dc02ba149d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
