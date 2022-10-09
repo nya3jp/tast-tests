@@ -117,9 +117,13 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 	if err := uiauto.UserAction(
 		"VK typing input",
 		uiauto.Combine(`input and verify login password`,
-			vkbCtx.TapKeys([]string{"x", "2"}),                      // pwd: x2
-			vkbCtx.TapNode(leftShiftKey),                            // Shifted VK
-			vkbCtx.TapKey("Z"),                                      // pwd: x2Z
+			vkbCtx.TapKeys([]string{"x", "2"}), // pwd: x2
+			// Shifted VK. Retry a couple times as it is a bit flaky in Tablet mode.
+			// Refer to b/249997453.
+			ui.RetryUntil(
+				vkbCtx.TapNode(leftShiftKey),
+				vkbCtx.WithTimeout(3*time.Second).WaitUntilShiftStatus(vkb.ShiftStateShifted)),
+			vkbCtx.TapKey("Z"), // pwd: x2Z
 			vkbCtx.TapKeysIgnoringCase([]string{"g", "space", "m"}), // pwd: x2Zg m
 			ui.DoDefault(nodewith.Name("Show password")),
 			ud.WaitUntilExists(passwordText),
