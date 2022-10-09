@@ -45,6 +45,15 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *VirtualKeyboardConte
 	}
 }
 
+// WithTimeout creates a new VKB context with customized timeout.
+func (vkbCtx *VirtualKeyboardContext) WithTimeout(timeout time.Duration) *VirtualKeyboardContext {
+	return &VirtualKeyboardContext{
+		ui:    vkbCtx.ui.WithTimeout(timeout),
+		tconn: vkbCtx.tconn,
+		cr:    vkbCtx.cr,
+	}
+}
+
 // localStorageKey defines the key used in virtual keyboard local storage.
 type localStorageKey string
 
