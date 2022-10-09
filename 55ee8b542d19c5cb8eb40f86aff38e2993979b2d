@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a7b10e_d392e2ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-09T03:20:44Z",
+      "side": 1,
+      "message": "This CL add two tests to make sure fixture can access DUT features. Please review. Thanks.",
+      "revId": "55ee8b542d19c5cb8eb40f86aff38e2993979b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
