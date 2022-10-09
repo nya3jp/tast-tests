@@ -247,6 +247,14 @@ func (c *Client) SetFullscreenVideoWithTimeout(ctx context.Context, fullscreenVi
 	return nil
 }
 
+// PowerSupplyChange notifies resourced to update the power preference.
+func (c *Client) PowerSupplyChange(ctx context.Context) error {
+	if err := c.obj.Call(ctx, "PowerSupplyChange").Err; err != nil {
+		return errors.Wrap(err, "failed to call method PowerSupplyChange")
+	}
+	return nil
+}
+
 // NewClient makes a new D-Bus wrapper object for communicating with Resource
 // Manager.
 func NewClient(ctx context.Context) (*Client, error) {
