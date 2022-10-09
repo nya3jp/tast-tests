@@ -236,6 +236,15 @@ func checkSetFullscreenVideo(ctx context.Context, rm *resourced.Client) (resErr 
 	return nil
 }
 
+func checkPowerSupplyChange(ctx context.Context, rm *resourced.Client) (resErr error) {
+	// Check PowerSupplyChange method can be called successfully.
+	if err := rm.PowerSupplyChange(ctx); err != nil {
+		return errors.Wrap(err, "failed to call power supply change")
+	}
+
+	return nil
+}
+
 func Resourced(ctx context.Context, s *testing.State) {
 	rm, err := resourced.NewClient(ctx)
 	if err != nil {
@@ -266,6 +275,10 @@ func Resourced(ctx context.Context, s *testing.State) {
 
 		if err := checkSetFullscreenVideo(ctx, rm); err != nil {
 			s.Fatal("Checking SetFullscreenVideoWithTimeout failed: ", err)
+		}
+
+		if err := checkPowerSupplyChange(ctx, rm); err != nil {
+			s.Fatal("Checking PowerSupplyChange failed: ", err)
 		}
 
 		return
