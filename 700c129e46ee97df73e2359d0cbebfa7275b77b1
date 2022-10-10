@@ -16,6 +16,24 @@
       "message": "BTW: I agree that OpenContextMenu() is better than RightClickFile().",
       "revId": "700c129e46ee97df73e2359d0cbebfa7275b77b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34d9f37_fba80304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-10-10T01:01:50Z",
+      "side": 1,
+      "message": "The crazy guy who did the code originally ignored this good suggestion ;-)\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2849827/2/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go#171",
+      "parentUuid": "7f5f0834_6c425250",
+      "revId": "700c129e46ee97df73e2359d0cbebfa7275b77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
