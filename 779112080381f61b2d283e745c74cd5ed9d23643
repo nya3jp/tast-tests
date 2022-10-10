@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906033dc_9d0f3312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Overall this is already looking pretty good, great job diving right into Tast-- especially since you had to do a lot more than adding a test! Please let me know if you have any questions on any of the comments below :)",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06734e2_2dc741ca",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Consider removing this method and instead passing `\u0026ChromeOobeHidDetection{}` for `Impl:` above.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883a7661_947eda18",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Remove since this feature flag is enabled by default and is currently being removed from the codebase.",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2db39d_59461644",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "I did not actually see where `FixtData` was defined, but I think we can simplify this by just returning `f` (which is of type `ChromeOobeHidDetection`) since that is our desired fixture data. A similar example can be seen at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bluetooth/fixture.go;l\u003d103-109;drc\u003dd1e821539e7fa632a4ef4e30214f37129e6e4536.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60673444_594692df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Consider rewording to be \"non-applicable devices.\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 69,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb436e89_564c489b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Could we add a comment above this test that mentions what it does? While I know this is a more simple case I think that this might be required for exported symbols (i.e. functions/types/variables that start with capital letters).",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c86531e_05087e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Could we update this to be `bluetooth.ChromeOobeHidDetection` (or `oobe.ChromeOobeHidDetection` once the files are moved) since that is the type/struct we use to implement the fixture?",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15984802_2b5d791f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Consider extracting this into a helper method e.g. `IsWelcomeScreenVisible`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 90
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13bcd3ca_c6d10f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T16:56:01Z",
+      "side": 1,
+      "message": "Nit: Remove extra line.",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
