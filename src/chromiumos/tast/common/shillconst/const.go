@@ -353,14 +353,22 @@ const (
 const (
 	ErrorMatchingServiceNotFound = "Matching service was not found"
 	ErrorModemNotStarted         = "Modem not started"
-	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.IncorrectPin.
-	ErrorIncorrectPin = "IncorrectPin"
-	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.IncorrectPassword.
+	// For invalid pin errors without error code
+	// QMI : failed to enter pin /device/rmnet_data0: Couldn't enable PIN...
+	// MBIM: failed to enter pin /device/wwan0: Failure
+	ErrorPinFailure = "failed to enter pin"
+	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.IncorrectPassword
+	// and org.chromium.flimflam.Error.IncorrectPin
+	// QMI : Message=Couldn't verify PIN: QMI protocol error (12): 'IncorrectPin'
+	// MBIM: Message=Incorrect password
+	ErrorIncorrectPin      = "IncorrectPin"
 	ErrorIncorrectPassword = "Incorrect password"
-	ErrorPinFailure        = "Failure"
-	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.SimPuk.
-	ErrorPukRequired = "SIM PUK required"
+	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.SimPuk
+	// and org.chromium.flimflam.Error.PinBlocked
+	// QMI : Message=Couldn't verify PIN: QMI protocol error (35): 'PinBlocked'
+	// MBIM: Message=SIM PUK required
 	ErrorPinBlocked  = "PinBlocked"
+	ErrorPukRequired = "SIM PUK required"
 )
 
 // Passpoint credentials property names.

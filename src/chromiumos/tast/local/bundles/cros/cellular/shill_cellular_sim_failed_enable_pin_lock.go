@@ -52,22 +52,22 @@ func ShillCellularSimFailedEnablePinLock(ctx context.Context, s *testing.State) 
 		s.Fatal("Unable to find PUK code for ICCID : ", iccid)
 	}
 
-	s.Log("Attempting to enable SIM lock with incorrect pin")
-	// Check if pin is not enabled and try to set incorrect pin.
-	if helper.IsSimLockEnabled(ctx) && helper.IsSimPinLocked(ctx) {
-		// Disable and remove pin.
-		if err = helper.Device.RequirePin(ctx, currentPin, false); err != nil {
-			s.Fatal("Failed to disable lock: ", err)
+	// Check if SIM is locked
+	if helper.IsSimLockEnabled(ctx) || helper.IsSimPukLocked(ctx) {
+		// Unlock and disable pin lock.
+		if err = helper.ClearSIMLock(ctx, currentPin, currentPuk); err != nil {
+			s.Fatal("Failed to clear PIN/PUK lock: ", err)
 		}
 	}
 
+	s.Log("Attempting to enable SIM lock with incorrect pin")
 	badPin, err := helper.BadPin(ctx, currentPin)
 	if err != nil {
 		s.Fatal("Failed to generate random pin based on current pin")
 	}
 	// Shorten deadline to leave time for cleanup
 	cleanupCtx := ctx
-	cleanupCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	err = helper.Device.RequirePin(ctx, badPin, true)
@@ -82,31 +82,28 @@ func ShillCellularSimFailedEnablePinLock(ctx context.Context, s *testing.State) 
 	}
 	s.Log("Bad pin used to lock device: ", badPin)
 
-	if strings.Contains(err.Error(), shillconst.ErrorIncorrectPin) ||
-		strings.Contains(err.Error(), shillconst.ErrorPinFailure) {
-		s.Log("Got expected pin lock error for incorrect pin")
+	defer func(ctx context.Context) {
+		// Unlock and disable pin lock.
+		if err = helper.ClearSIMLock(ctx, currentPin, currentPuk); err != nil {
+			s.Fatal("Failed to clear PIN/PUK lock: ", err)
+		}
+	}(cleanupCtx)
+
+	if strings.Contains(err.Error(), shillconst.ErrorPinFailure) {
+		s.Log("Got expected pin lock error for incorrect pin: ", err)
 	} else {
 		// Unlock dut and raise error.
 		helper.Device.RequirePin(ctx, badPin, false)
 		s.Fatal("Failed to get expected error with incorrect pin: ", err)
 	}
 
-	enabled := helper.IsSimLockEnabled(ctx)
-	if enabled {
-		s.Log("SIM lock got enabled by incorrect pin: ", badPin)
-	}
-
-	// ResetModem needed for sim power reset to reflect locked type values.
+	// ResetModem needed on Fibocom modems to read SIM lock status
 	if _, err := helper.ResetModem(ctx); err != nil {
 		s.Log("Failed to reset modem: ", err)
 	}
 
-	// Reverse pin lock status with badpin if still locked.
-	locked := helper.IsSimPinLocked(ctx)
-	pukLocked := helper.IsSimPukLocked(ctx)
-	if enabled || locked || pukLocked {
-		// Disable pin lock and unlock.
-		err = helper.Device.RequirePin(ctx, badPin, false)
-		s.Fatal("Cellular device able to get locked by an incorrect pin: ", err)
+	enabled := helper.IsSimPukLocked(ctx)
+	if enabled {
+		s.Log("SIM got PUK locked by incorrect pin: ", badPin)
 	}
 }
