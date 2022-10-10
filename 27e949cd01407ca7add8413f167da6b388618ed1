@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea839b39_9bcabf84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85989dd5_4528ca59",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24cf4cb_f13751c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f10290b_a7c0ef62",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f52d4c5_56a360b1",
@@ -110,6 +158,72 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e305ea50_d0dd9955",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5e0750_20c286a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 66,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cef25f_5ed84d3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f52d4c5_56a360b1",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dbd06e_a3879260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62012d1b_9852e6fc",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f64b405_54ca9a51",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8062cf1_7b1d894b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f64b405_54ca9a51",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b466106_15d40413",
@@ -146,6 +284,24 @@
       "writtenOn": "2022-10-07T17:27:30Z",
       "side": 1,
       "message": "Maybe add a note that \"out-of-test\" metrics include metrics after the test finishes as well?",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a4cf53_1b9c401c",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b466106_15d40413",
       "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +346,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa58f8cd_4c7173a9",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a42c579a_3a821072",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a6332d_dc69c3ff",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ed95a3_e4e5528f",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dc8476d_b9f10466",
@@ -203,6 +401,30 @@
       "writtenOn": "2022-10-07T20:13:18Z",
       "side": 1,
       "message": "`metrics`",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965f0449_08ddb628",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc8476d_b9f10466",
       "range": {
         "startLine": 66,
         "startChar": 27,
@@ -230,6 +452,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe647b1_ce213999",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "311aa1fe_1494ef67",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8075bd80_22333b28",
@@ -243,6 +483,24 @@
       "writtenOn": "2022-10-07T17:27:30Z",
       "side": 1,
       "message": "nit: I\u0027ve been told to use `var result []string` to initialize empty list",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458c234a_99b79f1c",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8075bd80_22333b28",
       "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +522,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40be223_7be33451",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198fc57d_8535310b",
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "492607a7_61e344ae",
@@ -277,6 +553,30 @@
       "writtenOn": "2022-10-07T20:13:18Z",
       "side": 1,
       "message": "`Out-of-test`",
+      "range": {
+        "startLine": 683,
+        "startChar": 5,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be6176d_7202e39a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-10T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492607a7_61e344ae",
       "range": {
         "startLine": 683,
         "startChar": 5,
