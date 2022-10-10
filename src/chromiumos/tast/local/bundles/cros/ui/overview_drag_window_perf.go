@@ -345,10 +345,10 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
-	// Ensures that the display zoom factor is 90% (allowing for rounding error) or
+	// Ensures that the display zoom factor is 80% (allowing for rounding error) or
 	// less, to ensure that the work area length is at least twice the minimum length
 	// of a browser window, so that browser windows can be snapped in split view.
-	const zoomMaximum = 0.90000005
+	const zoomMaximum = 0.80000005
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
