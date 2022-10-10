@@ -56,10 +56,14 @@ var (
 		"00101":  carrierAmarisoft,
 		"001010": carrierAmarisoft,
 		"23415":  carrierVodafoneUK,
+		"23430":  carrierEEUK,
 		"310260": carrierTmobile,
 		"310280": carrierAtt,
 		"310410": carrierAtt,
 		"311480": carrierVerizon,
+		"44011":  carrierRakuten,
+		"44020":  carrierSoftbank,
+		"44051":  carrierKDDI,
 	}
 
 	carrierAPNs = map[carrier][]KnownAPN{
@@ -71,6 +75,7 @@ var (
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv6", attach: attachTrue, ipType: ipv6}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4v6", attach: attachTrue, ipType: ipv4v6}},
 		},
+		// US
 		carrierTmobile: []KnownAPN{
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "fast.t-mobile.com", attach: attachTrue, ipType: ipv4v6}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "fast.t-mobile.com", ipType: ipv4v6}},
@@ -83,6 +88,23 @@ var (
 		carrierVerizon: []KnownAPN{
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "vzwinternet", attach: attachTrue, ipType: ipv4v6}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "vzwinternet"}},
+		},
+		// Japan
+		carrierKDDI: []KnownAPN{
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "au.au-net.ne.jp", attach: attachTrue, ipType: ipv4v6, username: "user@au.au-net.ne.jp", password: "au", auth: chap}},
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "uno.au-net.ne.jp", attach: attachTrue, ipType: ipv4v6, username: "685840734641020@uno.au-net.ne.jp", password: "KpyrR6BP", auth: chap}},
+		},
+		carrierRakuten: []KnownAPN{
+			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "rakuten.jp", attach: attachTrue, ipType: ipv4v6}},
+		},
+		carrierSoftbank: []KnownAPN{
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "plus.acs.jp.v6", attach: attachTrue, ipType: ipv4v6, username: "ym", password: "ym", auth: chap}},
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "cmn.mgx", attach: attachTrue, ipType: ipv4v6, username: "cmn@mgx", password: "mgx", auth: pap}},
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "plus.4g", attach: attachTrue, ipType: ipv4v6, username: "plus", password: "4g", auth: chap}},
+		},
+		// UK
+		carrierEEUK: []KnownAPN{
+			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "everywhere", ipType: ipv4v6, username: "eesecure", password: "secure", auth: pap}},
 		},
 		carrierVodafoneUK: []KnownAPN{
 			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "wap.vodafone.co.uk", ipType: ipv4v6, username: "wap", password: "wap"}},
