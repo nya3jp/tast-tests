@@ -86,7 +86,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
-		if err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
+		if _, err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("%s did not become visible: %s", app.Name, err)
 		}
 	}

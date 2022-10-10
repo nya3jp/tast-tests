@@ -212,7 +212,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the chrome app")
 	}
 
-	if err := ash.WaitForAppWindow(ctx, tconn, chromeApp.ID); err != nil {
+	if _, err := ash.WaitForAppWindow(ctx, tconn, chromeApp.ID); err != nil {
 		s.Fatal("Chrome app did not become visible: ", err)
 	}
 
@@ -234,7 +234,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("App %s never opened: %v", appName, err)
 	}
 
-	if err := ash.WaitForAppWindow(ctx, tconn, appID); err != nil {
+	if _, err := ash.WaitForAppWindow(ctx, tconn, appID); err != nil {
 		s.Fatalf("App %s did not become visible: %v", appName, err)
 	}
 
