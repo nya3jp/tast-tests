@@ -222,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c8c5b6_0d65b238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "No changes were made in regards to this comment, will keep in mind for future CLs.",
+      "parentUuid": "739929ed_3ce2b3e2",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e72b5ab_f79566b4",

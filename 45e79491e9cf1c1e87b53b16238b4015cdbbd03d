@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea6ef80_54b30c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "be29bfa1_a08d6558",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dac6051f_36c6138c",

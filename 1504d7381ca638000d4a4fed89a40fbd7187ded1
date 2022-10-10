@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c29648_1b7e886a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Yes it could, we definitely have Demo Mode running on Chromebases - not so sure about other form factors though.\n\nI believe this is just an arbitrary name given to the apps\u0027 main iframe element by the 3rd party agency that helped us build the chrome apps - it\u0027s not visible to end users.\n\nI can look into renaming it for Tast purposes, but I\u0027d rather try and find a solution that actually asserts behavior and appearance of the UI - we\u0027ve had issues where the app launches but e.g. the video doesn\u0027t play. And with us migrating off of Chrome Apps to System Web Apps, it\u0027d be nice to make implementation-independent assertions.",
+      "parentUuid": "947e95e4_61f07ffb",
+      "range": {
+        "startLine": 65,
+        "startChar": 50,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dada3ec_e6601e90",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-10-10T07:26:54Z",
       "side": 1,
       "message": "nit: end with a .",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e67ad0_08055f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dada3ec_e6601e90",
       "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "949fad9c_50cc4ef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b0fba2_927ef443",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a1c9dc1_9646d9bd",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a1ff79_ce967bdc",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Done, renamed to PostDemoModeOOBE (fixture.PostOOBE seemed a little too nondescript). \n\nSo the fixture naming convention is to describe the state that a device is in when starting the test, as opposed to what the fixture actually does? Makes sense to me with e.g. ChromeLoggedIn",
+      "parentUuid": "4a1c9dc1_9646d9bd",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e5f4d9_f374bd4c",
@@ -122,6 +200,24 @@
       "writtenOn": "2022-10-10T17:27:21Z",
       "side": 1,
       "message": "You can guard it with a statement: \n```\nvar _ testing.FixtureImpl \u003d fixtureImpl{}\n```\n\nSee https://yaqs.corp.google.com/eng/q/4325428166135906304",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac76a231_3dd8d086",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-10T19:14:10Z",
+      "side": 1,
+      "message": "Done (note it had to be `var _ testing.FixtureImpl \u003d \u0026fixtureImpl{}`).\n\nSo if I understand your suggestion correctly, this change demonstrates that fixtureImpl implements testing.FixtureImpl with code instead of comments, which is potentially better for IDEs / godocs?",
+      "parentUuid": "53e5f4d9_f374bd4c",
       "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
