@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -37,7 +38,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppWindowOnShelf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the window instances when opening a chrome app in a new window / tab",
 		Contacts: []string{
 			"wcwang@chromium.org",
@@ -46,19 +47,29 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWith100FakeAppsNoAppSort",
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{TabletMode: false},
+			Name:    "clamshell_mode",
+			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
+			Val:     launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "tablet_mode",
+			Fixture:           "chromeLoggedInWith100FakeAppsNoAppSort",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}, {
+			Name:              "clamshell_mode_lacros",
+			Fixture:           "lacrosWith100FakeAppsNoAppSort",
+			Val:               launcher.TestCase{TabletMode: false},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
 
 func AppWindowOnShelf(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -66,9 +77,21 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	// Set up the browser. Note that it will open an extra new tab for Lacros.
+	// TODO(crbug.com/1373723) Check if keeping a new Lacros window open is necessary to launch the fake apps from Launcher.
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not determine the correct browser app to use: ", err)
+	}
+	bt := browser.TypeAsh
+	if browserApp.ID == apps.LacrosID {
+		bt = browser.TypeLacros
+	}
+	br, _ /* closeBrowser */, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	// defer closeBrowser(cleanupCtx)
 
 	tabletMode := s.Param().(launcher.TestCase).TabletMode
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
@@ -108,15 +131,10 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open app in a new tab for the first time: ", err)
 	}
 
-	chromeBrowser, err := apps.ChromeOrChromium(ctx, tconn)
+	// Wait for the browser window to open.
+	appWindow, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, browserApp.Name)
 	if err != nil {
-		s.Fatal("Could not determine the correct Chrome app to use: ", err)
-	}
-
-	// Wait for the chrome window to open.
-	appWindow, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, chromeBrowser.Name)
-	if err != nil {
-		s.Fatal("Could not find the opened chrome browser that contains the fake app instance: ", err)
+		s.Fatal("Could not find the opened browser that contains the fake app instance: ", err)
 	}
 	if err := ash.SetWindowStateAndWait(ctx, tconn, appWindow.ID, ash.WindowStateMinimized); err != nil {
 		s.Fatal("Could not minimize the opened browser window: ", err)
@@ -166,18 +184,23 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open app in a new tab for the second time: ", err)
 	}
 
-	if _, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, chromeBrowser.Name); err != nil {
-		s.Fatal("Could not find the opened chrome browser that contains the fake app instance: ", err)
+	if _, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, browserApp.Name); err != nil {
+		s.Fatal("Could not find the opened browser that contains the fake app instance: ", err)
 	}
 
 	// Check the number of tabs.
-	tabs, err := browser.CurrentTabs(ctx, tconn)
+	tabs, err := br.CurrentTabs(ctx)
 	if err != nil {
 		s.Fatal("Unable to retrieve tabs: ", err)
 	}
-
-	if len(tabs) != 2 {
-		s.Fatalf("Wrong number of open tabs. The number of tabs should be %d but %d is opened", 2, len(tabs))
+	expectedTabs := 2
+	expectedAppInstances := 4
+	if bt == browser.TypeLacros {
+		expectedTabs = 3         // +1 for the extra window opened during setup.
+		expectedAppInstances = 2 // -2 for unknown reasons. For Lacros only apps opened in new windows count unlike ash-chrome counting both tabs and windows.
+	}
+	if len(tabs) != expectedTabs {
+		s.Fatalf("Wrong number of open tabs. The number of tabs should be %d but %d is opened", expectedTabs, len(tabs))
 	}
 
 	if tabletMode {
@@ -204,8 +227,8 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the chrome app instances: ", err)
 	}
 
-	if len(instances) != 4 {
-		s.Fatalf("Wrong number of open instances. The number of instances should be %d but %d is opened", 4, len(instances))
+	if len(instances) != expectedAppInstances {
+		s.Fatalf("Wrong number of open instances. The number of instances should be %d but %d is opened", expectedAppInstances, len(instances))
 	}
 }
 
