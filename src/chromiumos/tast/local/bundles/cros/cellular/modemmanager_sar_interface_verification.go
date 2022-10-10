@@ -10,37 +10,25 @@ import (
 
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ModemmanagerSARInterfaceVerification,
-		Desc:     "Verifies that modemmanager SAR interface enable, disable succeeds",
-		Contacts: []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_sim_active"},
-		Fixture:  "cellular",
-		Timeout:  5 * time.Minute,
+		Func:         ModemmanagerSARInterfaceVerification,
+		Desc:         "Verifies that modemmanager SAR interface enable, disable succeeds",
+		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
+		Attr:         []string{"group:cellular", "cellular_sim_active"},
+		HardwareDeps: hwdep.D(hwdep.CellularSoftwareDynamicSar()),
+		Fixture:      "cellular",
+		Timeout:      5 * time.Minute,
 	})
 }
 
 // ModemmanagerSARInterfaceVerification Test
 func ModemmanagerSARInterfaceVerification(ctx context.Context, s *testing.State) {
-
-	// Check if device uses modemmanager/sw sar
-	mmSAREnabled, err := crosconfig.Get(ctx, "/power", "use-modemmanager-for-dynamic-sar")
-	if err != nil && !crosconfig.IsNotFound(err) {
-		s.Fatal("cros_config /power use-modemmanager-for-dynamic-sar failed: ", err)
-	}
-
-	s.Log("mmSAREnabled :", mmSAREnabled)
-
-	if mmSAREnabled != "1" {
-		return
-	}
-
 	modem, err := modemmanager.NewModemWithSim(ctx)
 	if err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
