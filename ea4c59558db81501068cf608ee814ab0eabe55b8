@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8ced65_54d8f623",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-10T21:15:29Z",
+      "side": 1,
+      "message": "`Battery()` makes sense to check within `NoBatteryBootSupported()`, but `ChromeEC()` is not related to the battery. I\u0027m going to leave it, since we use the EC to perform the `ectool batterycutoff` command.",
+      "parentUuid": "98a57199_893ce01d",
+      "revId": "ea4c59558db81501068cf608ee814ab0eabe55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa29ec7_686e2828",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-21T00:56:11Z",
       "side": 1,
       "message": "maybe we should add something like hwdep.SupportsLowBatteryBoot()",
+      "revId": "ea4c59558db81501068cf608ee814ab0eabe55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4591c1b5_98948814",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-10T21:15:29Z",
+      "side": 1,
+      "message": "This is in progress with the following CLs:\n\n1. https://crrev.com/c/3938863\n2. https://crrev.com/c/3935661",
+      "parentUuid": "5aa29ec7_686e2828",
       "revId": "ea4c59558db81501068cf608ee814ab0eabe55b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
