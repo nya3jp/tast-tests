@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcff423_5e975da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-10T18:08:35Z",
+      "side": 1,
+      "message": "LGTM with nit",
+      "revId": "cb6f59bc02468f1ca7b2e0a4bd5b61923556301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf165a8_f6b12eeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-10T18:08:35Z",
+      "side": 1,
+      "message": "nit: TODO Style\n\nhttps://g3doc.corp.google.com/devtools/cymbal/clang_tidy/g3doc/checks/google-readability-todo.md?cl\u003dhead\n\nRecommend format like TODO(crbug.com/1222744):",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "cb6f59bc02468f1ca7b2e0a4bd5b61923556301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
