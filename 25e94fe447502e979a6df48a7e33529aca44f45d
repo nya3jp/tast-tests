@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ae42c4_b2aa1cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-10T17:23:07Z",
+      "side": 1,
+      "message": "Few nits otherwise looks good as a tast owner. Please have someone with knowledge of the area also review.",
+      "revId": "25e94fe447502e979a6df48a7e33529aca44f45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b1001c0_1e8add46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/copy_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-10T17:23:07Z",
+      "side": 1,
+      "message": "nit: you only use this, and usbSpeed once, so I think it\u0027s OK to put inline in the function or make a const.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "25e94fe447502e979a6df48a7e33529aca44f45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b6edeb_82ba71c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/copy_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-10T17:23:07Z",
+      "side": 1,
+      "message": "nit: \"; got: %d, want: %d\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 54,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "25e94fe447502e979a6df48a7e33529aca44f45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7880e895_6e624075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/copy_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-10T17:23:07Z",
+      "side": 1,
+      "message": "nit: ...\"doesn\u0027t match; want: %q, got: %q\"",
+      "revId": "25e94fe447502e979a6df48a7e33529aca44f45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f420933e_d489d6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/copy_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-10T17:23:07Z",
+      "side": 1,
+      "message": "nit: same as above for got/want format",
+      "range": {
+        "startLine": 114,
+        "startChar": 35,
+        "endLine": 114,
+        "endChar": 50
+      },
+      "revId": "25e94fe447502e979a6df48a7e33529aca44f45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
