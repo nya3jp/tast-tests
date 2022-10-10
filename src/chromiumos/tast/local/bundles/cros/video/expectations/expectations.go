@@ -177,9 +177,9 @@ const (
 // Comments and SinceBuild are informational.
 type Expectation struct {
 	Expectation  Type            `yaml:"expectation"`
-	Tickets      []string        `yaml:"tickets"` // I.e. [ "b/123", "crbug.com/456"]
-	Comments     string          `yaml:"comments"`
-	SinceBuild   string          `yaml:"since_build"` // I.e. "R107" or "R107-15144.0.0"
+	Tickets      []string        `yaml:"tickets,omitempty"` // I.e. [ "b/123", "crbug.com/456"]
+	Comments     string          `yaml:"comments,omitempty"`
+	SinceBuild   string          `yaml:"since_build,omitempty"` // I.e. "R107" or "R107-15144.0.0"
 	ctx          context.Context // Used internally for context logging
 	hasTastError bool            // Used to track the test error state without expectations being applied
 }
