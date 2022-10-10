@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf49f31_fe58e399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-10T07:32:49Z",
+      "side": 1,
+      "message": "lgtm with a question",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947e95e4_61f07ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-10T07:32:49Z",
+      "side": 1,
+      "message": "could it be different form factors? Like chromebase, chromebit, chromebox?",
+      "range": {
+        "startLine": 65,
+        "startChar": 50,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dada3ec_e6601e90",
