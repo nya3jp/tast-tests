@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "128f70a3_81e60fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272daa19_46f9c847",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4050f916_baf2dd9b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef66c61_93118cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Use video_cards_intel instead.",
+      "parentUuid": "4050f916_baf2dd9b",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e85a4674_741e0f2d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-07T00:07:38Z",
       "side": 1,
       "message": "Maybe move into a graphicsIdleOnlyFixture.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "07c397a15d82785ab3bcae1adc4733ffbb0eff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5a7a2c_249df1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85a4674_741e0f2d",
       "range": {
         "startLine": 65,
         "startChar": 0,

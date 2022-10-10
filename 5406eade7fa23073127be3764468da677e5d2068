@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa6b0ce_5cfc3270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f212d21_35484e78",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ec5943_a880588f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-06T05:05:59Z",
       "side": 1,
       "message": "This should be Intel.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6b9965_0cb9970b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ec5943_a880588f",
       "range": {
         "startLine": 51,
         "startChar": 30,
@@ -82,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0275892_552e558a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6b305e_05c9a8f4",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6fb1eed_c3950306",
@@ -95,6 +161,24 @@
       "writtenOn": "2022-10-06T05:05:59Z",
       "side": 1,
       "message": "Notice we still need at least 2 versions of this test, one with ARC disabled and one default. I don\u0027t think we need versions for crostini/borealis as they should not start on their own.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe0f19c_eeb95c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6fb1eed_c3950306",
       "revId": "5406eade7fa23073127be3764468da677e5d2068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -274,6 +358,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90d88df_b46c76ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73f6cb91_a54b2d9f",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1fd415_98aa1477",
@@ -287,6 +389,24 @@
       "writtenOn": "2022-10-06T05:05:59Z",
       "side": 1,
       "message": "Ok, but obviously Intel.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b26669_4f201f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1fd415_98aa1477",
       "revId": "5406eade7fa23073127be3764468da677e5d2068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -308,6 +428,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28324b0f_e3187d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc0c24a0_749d5616",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "040293e7_b37b8984",
@@ -321,6 +459,24 @@
       "writtenOn": "2022-10-06T05:05:59Z",
       "side": 1,
       "message": "Please copy full original comment:\n\nOn systems which have i915, check that we can get all gem objects to become idle (i.e. the i915_gem_active list or i915_gem_objects client/process gem object counts need to go to 0);",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48156c8_aa8f0675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040293e7_b37b8984",
       "revId": "5406eade7fa23073127be3764468da677e5d2068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -478,6 +634,30 @@
       "writtenOn": "2022-10-07T00:07:38Z",
       "side": 1,
       "message": "checks",
+      "range": {
+        "startLine": 371,
+        "startChar": 7,
+        "endLine": 371,
+        "endChar": 12
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee1d908_d0defeff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-10T23:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0bf7297_6b5b121b",
       "range": {
         "startLine": 371,
         "startChar": 7,
