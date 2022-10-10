@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81fcccca_cf1b14d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-10T10:43:16Z",
+      "side": 1,
+      "message": "Please describe any changes in the cl.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "6612aaf15a2110659e1ef8626b1a57b3823463cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8962c715_8590e607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/frontline_worker_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-10T10:43:16Z",
+      "side": 1,
+      "message": "Browser type should be associated with fixture definition. This Val seems duplicated.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "6612aaf15a2110659e1ef8626b1a57b3823463cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
