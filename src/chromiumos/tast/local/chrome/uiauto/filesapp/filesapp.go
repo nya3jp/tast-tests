@@ -252,7 +252,16 @@ func (f *FilesApp) OpenFile(fileName string) uiauto.Action {
 }
 
 // RightClickFile returns a function that executes right click on a file to open its context menu.
+// TODO(joelhockey): delete function once all callers are migrated to OpenContextMenu().
 func (f *FilesApp) RightClickFile(fileName string) uiauto.Action {
+	return f.OpenContextMenu(fileName)
+}
+
+// OpenContextMenu returns a function that selects a file, then executes right click to open its context menu.
+func (f *FilesApp) OpenContextMenu(fileName string) uiauto.Action {
+	// Select file to ensure context menu items are calculated and menu is sized
+	// before it is shown and positioned.
+	f.SelectFile(fileName)
 	return f.RightClick(file(fileName))
 }
 
@@ -277,8 +286,7 @@ func (f *FilesApp) ClickMoreMenuItem(menuItems ...string) uiauto.Action {
 // This method will not select context menu for items in the navigation tree.
 func (f *FilesApp) ClickContextMenuItem(fileName string, menuItems ...string) uiauto.Action {
 	var steps []uiauto.Action
-	// Open Context menu.
-	steps = append(steps, f.RightClick(file(fileName)))
+	steps = append(steps, f.OpenContextMenu(fileName))
 	// Iterate over the menu items and click them.
 	for _, menuItem := range menuItems {
 		steps = append(steps, f.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem)))
@@ -292,7 +300,7 @@ func (f *FilesApp) ClickContextMenuItem(fileName string, menuItems ...string) ui
 func (f *FilesApp) ClickContextMenuItemRegex(fileName string, menuItems ...string) uiauto.Action {
 	var steps []uiauto.Action
 	// Open Context menu.
-	steps = append(steps, f.RightClick(file(fileName)))
+	steps = append(steps, f.OpenContextMenu(fileName))
 	// Iterate over the menu items and click them.
 	for _, menuItem := range menuItems {
 		steps = append(steps, f.LeftClick(nodewith.NameRegex(regexp.MustCompile(menuItem)).Role(role.MenuItem)))
