@@ -700,6 +700,11 @@ func (h *Helper) ClearSIMLock(ctx context.Context, pin, puk string) error {
 		if len(puk) == 0 {
 			return errors.New("ClearSIMLock needs PUK code to unlock SIM")
 		}
+		retriesLeft, err := h.GetRetriesLeft(ctx)
+		if err != nil || retriesLeft < 2 {
+			return errors.New("provided PUK code seems invalid. " +
+				"SIM is PUK locked with only once chance to unlock!")
+		}
 		if err := h.Device.UnblockPin(ctx, puk, pin); err != nil {
 			return errors.Wrap(err, "failed to UnblockPin")
 		}
@@ -707,21 +712,18 @@ func (h *Helper) ClearSIMLock(ctx context.Context, pin, puk string) error {
 
 	// Clear pin lock, this can also happen after puk unlocked.
 	if h.IsSimPinLocked(ctx) {
-		errStr := ""
 		if err := h.Device.EnterPin(ctx, pin); err != nil {
-			errStr = err.Error()
-			testing.ContextLog(ctx, "at enterpin in clearsimlock "+errStr)
-		}
-		if errStr != "" && !strings.Contains(errStr, shillconst.ErrorIncorrectPin) {
-			// Do max unlock tries and do puk unlock.
+			testing.ContextLog(ctx, "at enterpin in clearsimlock "+err.Error())
+
+			// Block SIM with PUK lock and set new PIN code
 			if err := h.PukLockSim(ctx, pin); err != nil {
-				return errors.Wrap(err, "failed to PukLockSim with pin in ClearSIMLock")
+				return errors.Wrap(err, "failed to lock SIM card with PukLockSim")
 			}
 			if err := h.Device.UnblockPin(ctx, puk, pin); err != nil {
-				return errors.Wrap(err, "failed to clear with UnblockPin")
+				return errors.Wrap(err, "failed to clear PUK lock with UnblockPin")
 			}
 			if err := h.Device.EnterPin(ctx, pin); err != nil {
-				return errors.Wrap(err, "failed to clear pin lock with EnterPin")
+				return errors.Wrap(err, "failed to unlock SIM card with EnterPin")
 			}
 		}
 	}
@@ -731,9 +733,7 @@ func (h *Helper) ClearSIMLock(ctx context.Context, pin, puk string) error {
 		return errors.Wrap(err, "failed to clear pin lock with RequirePin")
 	}
 
-	testing.ContextLog(ctx, "clearsimlock disabled pin is: ", pin)
-	h.ResetModem(ctx)
-	testing.ContextLog(ctx, "reset modem after clearing sim pin or puk lock")
+	testing.ContextLog(ctx, "clearsimlock disabled locks with pin: ", pin)
 
 	return nil
 }
@@ -824,19 +824,20 @@ func (h *Helper) PukLockSim(ctx context.Context, currentPin string) error {
 	}
 	locked = false
 	retriesCnt := 0
-	// Max incorrect retries for pin to be puk locked are 3, change to constant.
-	// TODO(b/216176362): Unexpected RetriesLeft value(999) after modem reset on fibocomm modem.
-	for retriesCnt < 3 {
+	// Max incorrect retries before SIM card becomes PUK locked is usually 3
+	for retriesCnt < 10 && locked == false {
+		retriesCnt++
 		if err := h.EnterIncorrectPin(ctx, currentPin); err != nil {
-			return errors.Wrap(err, "incorrect pin entries failed")
+			testing.ContextLog(ctx, "Failed to enter incorrect pin: ", err.Error())
+			continue
 		}
-		if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
+		if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning,
+			false, defaultTimeout); err != nil {
 			return errors.Wrap(err, "expected scanning to become false, got true")
 		}
-		retriesCnt++
+		locked = h.IsSimPukLocked(ctx)
 	}
 
-	locked = h.IsSimPukLocked(ctx)
 	if !locked {
 		return errors.New("expected sim to be puk-locked")
 	}
@@ -852,10 +853,8 @@ func (h *Helper) EnterIncorrectPin(ctx context.Context, currentPin string) error
 		return errors.Wrap(err, "failed to generate bad pin")
 	}
 
-	// TODO(b/216167098): Incorrect enterpin call returning unexpected error in 3rd try on Octopus.
-	// Fails on fibocomm modems as not getting one of the expected error.
 	if err = h.Device.EnterPin(ctx, badPin); err == nil {
-		return errors.Wrap(err, "failed to send bad pin: "+badPin)
+		return errors.Wrap(err, "random PIN was accepted by SIM card: "+badPin)
 	}
 
 	// For flimflam errors with org.chromium.flimflam.Error.IncorrectPin.

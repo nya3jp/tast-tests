@@ -87,10 +87,10 @@ func ShillCellularSimPukLock(ctx context.Context, s *testing.State) {
 	}
 	pinLocked := helper.IsSimPinLocked(ctx)
 	if pinLocked {
-		s.Log("Pin-lock got unlocked while unlocking the puk-lock: ", err)
+		s.Log("Pin-lock got locked while unlocking the puk-lock: ", err)
 	}
 	enabled := helper.IsSimLockEnabled(ctx)
 	if !enabled {
-		s.Fatal("SIM lock got disabled when attemping to unlock a pin-locked sim: ", err)
+		s.Fatal("SIM lock got disabled when attemping to unlock a puk-locked sim: ", err)
 	}
 }
