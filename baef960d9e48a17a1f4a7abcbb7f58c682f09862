@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d654c0_17740408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/data/canvas.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "Put a comment in here as to what this is meant to do in an overall fashion, a reader shouldn\u0027t have to read the code to figure it out.",
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "280483d2_506c68b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touchpad_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "This test is hard to read, with a mixture of high and low level actions in the main test function and actions whose names do not convey what they are intended to do.\n\nFrom what I understand the top level function should read something like:\n\nNewServer()\nassertTouchpadEventOccursDuringCanvasDraw()\nslpS0 :\u003d readSlpS0()\npackageCState :\u003d readPackageCState()\nSuspendStressTest(10)\nassertTouchpadEventOccursDuringCanvasDraw()\nif (slpS0 \u003d\u003d readSlpS0()) {\n...\n}\nif(packageCState \u003d\u003d readPackageCState()) {\n...\n}\n\nCan you make it moer like this, or at least comment/log the main steps so that it is easier to follow?",
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d359b7_a33e7e55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touchpad_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "It is not clear what this function does without reading the code.  Try to find a better name (even if it is a long one).",
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d4f52e_6f7a8c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touchpad_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure having an inline function just to hide the error handling buys you anything here.  You only use it twice and it is more complicated than just not having it.",
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdecf1f_2ecf3b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touchpad_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "name of this type don\u0027t tell me at all what the assertion is.  If you want to write a separate assertion function, please name it with a verb as well, eg. in this case:\n\nassertSLPCounterChanged()",
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205e7873_ce38c23b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touchpad_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-10-10T20:59:01Z",
+      "side": 1,
+      "message": "It feels like making this generic would be more clear:\n\nfunc scanUntilMatch(ctx, scanner, regexp){...}",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 18
+      },
+      "revId": "baef960d9e48a17a1f4a7abcbb7f58c682f09862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
