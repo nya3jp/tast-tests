@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66888d2b_81a00efb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65591c7_75f3dd20",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70aa5ecf_894d1cb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d1a971_d80883b6",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4d9749_f30c8fb1",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-08T06:06:00Z",
       "side": 1,
       "message": "nit: Some ABIs missing uprev are skipped.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303027e9_423683c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f4d9749_f30c8fb1",
       "range": {
         "startLine": 38,
         "startChar": 4,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c677933_5202e26a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "PFQ is still valid for main branch",
+      "parentUuid": "75c77d69_7fdb583c",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3733cc_92e3ada0",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9535425_7efd61f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "no, this is similar to PFQ runs where we have set of boards.",
+      "parentUuid": "ac3733cc_92e3ada0",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 15
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979cff7e_6f681d8d",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-08T06:06:00Z",
       "side": 1,
       "message": "nit: Can we define these lists in the file\u0027s `const (` section?  This way if the list grows, it doesn\u0027t have to make this line really long.",
+      "range": {
+        "startLine": 192,
+        "startChar": 42,
+        "endLine": 192,
+        "endChar": 81
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef86661_095e69de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "arrays are not const by nature. it is hard to place to const section.",
+      "parentUuid": "979cff7e_6f681d8d",
       "range": {
         "startLine": 192,
         "startChar": 42,
@@ -202,6 +346,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49847c93_1c2a61df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "If we define arm64 this would break uprev branch releases, which is primary goal of this CL. Setting arm64 would cause to wait arm64 version on the branch but it will never by satisfied.",
+      "parentUuid": "5e33f4ce_3f02e2fc",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17efc8fa_887a61ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4a4de9_7a4a6e91",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb20efa3_d8c12e40",
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49667a0_3e785d0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb20efa3_d8c12e40",
+      "range": {
+        "startLine": 536,
+        "startChar": 53,
+        "endLine": 536,
+        "endChar": 60
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0fb704_8751d6f6",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-10-08T06:06:00Z",
       "side": 1,
       "message": "very nit: missing period.",
+      "range": {
+        "startLine": 540,
+        "startChar": 25,
+        "endLine": 540,
+        "endChar": 33
+      },
+      "revId": "ce1caf469957651a92fe5be2e1b246caef44bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4dfa98_55bb1230",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-10T16:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac0fb704_8751d6f6",
       "range": {
         "startLine": 540,
         "startChar": 25,
