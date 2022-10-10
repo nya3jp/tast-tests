@@ -229,4 +229,20 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// lacrosWith100FakeAppsNoAppSort is similar to "chromeLoggedInWith100FakeAppsNoAppSort" fixture but with lacros enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosWith100FakeAppsNoAppSort",
+		Desc:     "Lacros Chrome loading 100 fake apps with app sorting disabled but keepalive enabled",
+		Contacts: []string{"jamescook@chromium.org", "hyungtaekim@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(
+				KeepAlive(true), // Opening fake apps from the Launcher depend on appservice that needs KeepAlive on.
+				ChromeOptions(chrome.DisableFeatures("LauncherAppSort"))).Opts()
+		}),
+		Parent:          "install100LacrosApps",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
