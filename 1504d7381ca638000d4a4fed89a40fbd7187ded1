@@ -90,6 +90,40 @@
       "message": "nit: end with a .",
       "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1c9dc1_9646d9bd",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-10T17:27:21Z",
+      "side": 1,
+      "message": "The fixture walks through the OOBE flow after the device is TPM reset. Right? How about naming the fixture as \"PostOOBE\"?",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e5f4d9_f374bd4c",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-10T17:27:21Z",
+      "side": 1,
+      "message": "You can guard it with a statement: \n```\nvar _ testing.FixtureImpl \u003d fixtureImpl{}\n```\n\nSee https://yaqs.corp.google.com/eng/q/4325428166135906304",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
