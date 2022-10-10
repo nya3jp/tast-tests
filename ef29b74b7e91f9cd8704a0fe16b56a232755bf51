@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a1dd3e_a4974b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-10T04:58:14Z",
+      "side": 0,
+      "message": "Why did you remove this? This is what sets the actual metrics and saves them for the dashboard.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "ef29b74b7e91f9cd8704a0fe16b56a232755bf51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
