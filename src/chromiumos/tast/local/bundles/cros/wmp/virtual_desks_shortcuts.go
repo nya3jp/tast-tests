@@ -149,7 +149,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
 		s.Fatal("Browser did not appear in shelf after launch: ", err)
 	}
-	if err := ash.WaitForAppWindow(ctx, tconn, browserApp.ID); err != nil {
+	if _, err := ash.WaitForAppWindow(ctx, tconn, browserApp.ID); err != nil {
 		s.Fatal("Browser did not become visible: ", err)
 	}
 	if !findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
