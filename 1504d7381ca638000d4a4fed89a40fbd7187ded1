@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4456c25a_a061ae29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:26:54Z",
+      "side": 1,
+      "message": "Waiting for the other reviewers as well",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dada3ec_e6601e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:26:54Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b0fba2_927ef443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:26:54Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
