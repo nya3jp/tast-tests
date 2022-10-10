@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06ac416e_8a81253c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-10T18:32:22Z",
+      "side": 1,
+      "message": "I will add it as a separate CL, since the timeout is absent in many tests in this folder. How long should the timeout be?",
+      "parentUuid": "8fe8da62_af479f83",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "eea24ae67c076701183271609a2d671ff3425ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac6521c4_5d89e997",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-10T16:18:23Z",
       "side": 1,
       "message": "Can we make the code reusable and avoid duplicated code in LaunchFeedbackFromXXX?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "eea24ae67c076701183271609a2d671ff3425ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdfe3a9_25a4533a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-10-10T18:32:22Z",
+      "side": 1,
+      "message": "Will do in a followup CL because this code is used in multiple tests.",
+      "parentUuid": "ac6521c4_5d89e997",
       "range": {
         "startLine": 66,
         "startChar": 0,
