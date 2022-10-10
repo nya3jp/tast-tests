@@ -7,7 +7,7 @@ package ui
 import (
 	"context"
 	"fmt"
-	"sort"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -354,11 +354,15 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 	if zoomInitial := info.DisplayZoomFactor; zoomInitial > zoomMaximum {
-		i := sort.Search(len(info.AvailableDisplayZoomFactors), func(i int) bool { return info.AvailableDisplayZoomFactors[i] > zoomMaximum })
-		if i == 0 {
-			s.Fatalf("Lowest available display zoom factor is %f; want 80%% (allowing for rounding error) or less", info.AvailableDisplayZoomFactors[0])
+		zoomForTest := math.Inf(-1)
+		for _, zoom := range info.AvailableDisplayZoomFactors {
+			if zoom <= zoomMaximum && zoom > zoomForTest {
+				zoomForTest = zoom
+			}
 		}
-		zoomForTest := info.AvailableDisplayZoomFactors[i-1]
+		if math.IsInf(zoomForTest, -1) {
+			s.Fatal("A display zoom factor of 80% or less is not available")
+		}
 		if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomForTest}); err != nil {
 			s.Fatalf("Failed to set display zoom factor to %f: %v", zoomForTest, err)
 		}
