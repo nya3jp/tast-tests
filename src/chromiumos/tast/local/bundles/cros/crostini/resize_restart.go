@@ -140,7 +140,7 @@ func verifyResults(ctx context.Context, st *settings.Settings, cont *vm.Containe
 			return errors.Errorf("failed to verify disk size after resizing, got %d, want approximately %d", contSize, size)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to verify the disk size of the container after resizing")
 	}
 
