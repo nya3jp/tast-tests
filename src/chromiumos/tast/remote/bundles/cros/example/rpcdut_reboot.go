@@ -17,10 +17,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        RPCDUTReboot,
-		Desc:        "Demonstrates how RPCDUT maintains an RPC connection across DUT reboots",
-		Contacts:    []string{"hesling@chromium.org"},
-		Attr:        []string{"group:mainline", "informational"},
+		Func: RPCDUTReboot,
+		Desc: "Demonstrates how RPCDUT maintains an RPC connection across DUT reboots",
+		Contacts: []string{
+			"hesling@chromium.org",
+			"chromeos-fingerprint@google.com",
+		},
+		Attr:        []string{"group:mainline"},
 		ServiceDeps: []string{dutfs.ServiceName},
 	})
 }
