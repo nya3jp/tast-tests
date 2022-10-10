@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d72b90_f44c937a",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-10T19:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8dfc7e6_8b41bdcc",
+      "revId": "08db1fbfaad910b923ccfbc96b21adbd00d035c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ffe1df2_d18ed14d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-10T07:15:07Z",
       "side": 1,
       "message": "I\u0027d go with a higher number. Maybe 20? IMO the storage cost is lower than the engineering cost of debugging flakes.\n\nnit: choose a more descriptive name. Maybe numberOfScreencastItems to keep.\nnit: make it a consts\n\nYou could also make it a global at the top of the file to make it easier to find.",
+      "revId": "08db1fbfaad910b923ccfbc96b21adbd00d035c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1d75f1_83768349",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-10T19:28:16Z",
+      "side": 1,
+      "message": "Done. Increased the number to 20. Renamed to numScreencastItemsToKeep and made const. I made it global right above DeleteScreencastItems(). I want to keep the const close to where it is used instead of at the top of the file.",
+      "parentUuid": "1ffe1df2_d18ed14d",
       "revId": "08db1fbfaad910b923ccfbc96b21adbd00d035c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
