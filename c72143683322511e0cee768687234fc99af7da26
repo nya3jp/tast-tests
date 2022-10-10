@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685d9a72_0415ac54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "Nice work.",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d89677_2ebd6809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/starfish/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "Does this need to go in its own package or should these just be part of the cellular package?",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd46f26c_3d5ece1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/starfish/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "might need to update this desc if you plan on keeping a starfish smoke test around",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a5cedc_31be2bcb",
+        "filename": "src/chromiumos/tast/local/starfish/serial_interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "remember to remove commented-out log lines before submitting for real",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2d016c_5659363f",
+        "filename": "src/chromiumos/tast/local/starfish/serial_interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "what does this string read as? (also, what is it actually used for?)",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8a2fab_c14b16e7",
+        "filename": "src/chromiumos/tast/local/starfish/serial_interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "nit: space between // and bytes",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead73d4f_9e933bad",
+        "filename": "src/chromiumos/tast/local/starfish/starfish.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "nit: SFRegion. See https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572675da_0fc83713",
+        "filename": "src/chromiumos/tast/local/starfish/starfish.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "nit: SFRXX, same for the next couple of lines (or maybe RegionXX would be more readable?)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aad169e_f04af133",
+        "filename": "src/chromiumos/tast/local/starfish/starfish.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "Any reason not to make this a factory constructor function instead of a method? If this always needs to be called before doing anything else then I don\u0027t think it makes a ton of sense to make people (or other code e.g. in NewHelper) to split it into two steps.",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed99a73e_8d5effcc",
+        "filename": "src/chromiumos/tast/local/starfish/starfish.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "any reason not to use `fmt.Sprintf(\"sim connect %d\", n+1)` instead?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58949d7b_418feb0c",
+        "filename": "src/chromiumos/tast/local/starfish/starfish_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "I assume this is mostly just a sort of smoke test for now?",
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7286727_df380bcc",
+        "filename": "src/chromiumos/tast/local/starfish/starfish_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "What is this block trying to do?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50c6b0b_8de1e50e",
+        "filename": "src/chromiumos/tast/local/starfish/starfish_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-10T19:28:09Z",
+      "side": 1,
+      "message": "this bit seems confusing. Can we get better names for `l` and `a` or better log messages (or both)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "c72143683322511e0cee768687234fc99af7da26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
