@@ -16,6 +16,46 @@
       "message": "Sorry for the delay, we spent some time confirming b/249164846, which seems to be fixed for now, therefore, we reopen this CL.\n\nPlease review, thanks!",
       "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7965afd1_9f0123c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T15:28:05Z",
+      "side": 1,
+      "message": "Thank you for all of your help figuring out the issues related to the Settings button Alfred! One more question for you on that whenever you have a moment :)",
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddfb3a2_a115bb3b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-10T15:28:05Z",
+      "side": 1,
+      "message": "I think that making this helper method click the ethernet button may cause issues with other tests that depend on the network Settings being opened when logged in, but not opened to the ethernet page. Are we able to leave this as-is since we should be able to click the Settings button when logged out now even with the revamp enabled?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
