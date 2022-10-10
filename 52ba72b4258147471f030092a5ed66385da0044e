@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2992c41_6ab8e628",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-10T23:27:07Z",
+      "side": 1,
+      "message": "Unrelated to this change, @josienordrum@google.com, can you remind me why we need disable `biod` and/or the updater when flashing different firmware? It would be good to add a comment in the code.",
+      "range": {
+        "startLine": 128,
+        "startChar": 34,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "52ba72b4258147471f030092a5ed66385da0044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
