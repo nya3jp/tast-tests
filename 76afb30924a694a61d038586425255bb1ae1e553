@@ -46,6 +46,30 @@
       },
       "revId": "76afb30924a694a61d038586425255bb1ae1e553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d6e0bb_05952ae1",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-10-10T22:20:32Z",
+      "side": 1,
+      "message": "I think both are useful. There\u0027s a chance that we could crash before the async part of GetParamsAndEnabled kicks off, or after GetParamsAndEnabled returns but before the run loop finishes.",
+      "parentUuid": "169bfdcb_e4e146c1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "76afb30924a694a61d038586425255bb1ae1e553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
