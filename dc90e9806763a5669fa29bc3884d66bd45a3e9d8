@@ -86,6 +86,24 @@
       "parentUuid": "27cfdbcf_ba4dc324",
       "revId": "dc90e9806763a5669fa29bc3884d66bd45a3e9d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c46d448_15d8e3c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-10T03:36:07Z",
+      "side": 1,
+      "message": "The answer to this specific question is that it\u0027s nacking during stage1 signature verification which is normally 850ms, but because WP is off it nacks for only a very brief amount of time (perhaps \u003c1ms).\n\nHowever while I was fixing up this polling loop and testing this out, I realised that to make this test fully reliable I would need to re-implement all the different polling and delays and error handling that we already have in hpsd. Otherwise this test will never get promoted out of informational.\n\nBut having this hugely complicated pile of logic here, using the hps command to mimic hpsd, isn\u0027t really serving any useful purpose. Particularly since the hps command shares most of its code with hpsd anyway, so we can be pretty confident that if hpsd works then so does hps.\n\nSo I\u0027m going to just abandon this.",
+      "parentUuid": "58f1587b_c21b74ee",
+      "revId": "dc90e9806763a5669fa29bc3884d66bd45a3e9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
