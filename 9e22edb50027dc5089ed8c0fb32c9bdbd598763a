@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325736e6_1c44b2f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-10T00:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076afd44_1ffc8a3a",
+      "revId": "9e22edb50027dc5089ed8c0fb32c9bdbd598763a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06110ae0_83ac7b9f",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Correct, that is my understanding.",
       "parentUuid": "06110ae0_83ac7b9f",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "9e22edb50027dc5089ed8c0fb32c9bdbd598763a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d23589e_d5a0f238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-10T00:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff7efcc_8102e129",
       "range": {
         "startLine": 48,
         "startChar": 0,
