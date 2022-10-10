@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97087a01_614ffc83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "This has not been done. The period is still there at the end of the subject line.",
+      "parentUuid": "e24cf4cb_f13751c5",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "27e949cd01407ca7add8413f167da6b388618ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f52d4c5_56a360b1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3

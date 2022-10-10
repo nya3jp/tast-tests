@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1310ee8d_211517f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "Wrap at 72 characters.\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4283ff80_9ccd1183",
@@ -14,6 +37,168 @@
       "writtenOn": "2022-10-10T22:55:06Z",
       "side": 1,
       "message": "please wait for others. Adding Xiyuan as well for review",
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc12b64_c756929f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "\u003e \"Shutodwn\" is a possible misspelling of \"Shutdown\".\n\nPlease fix.",
+      "parentUuid": "eeffb746_f16c6996",
+      "range": {
+        "startLine": 64,
+        "startChar": 39,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9567ba_c8006339",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "`MetricConfig` because this is just the name of the `struct`",
+      "range": {
+        "startLine": 93,
+        "startChar": 54,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd31df97_8f2dcb95",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5f4c75_3eb3d9a7",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "`boot and shutdown`",
+      "range": {
+        "startLine": 685,
+        "startChar": 42,
+        "endLine": 685,
+        "endChar": 53
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a655d51_3803cfb2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "`boot and shutdown`",
+      "range": {
+        "startLine": 690,
+        "startChar": 44,
+        "endLine": 690,
+        "endChar": 55
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb2937a_60a89bb3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "`in-test`",
+      "range": {
+        "startLine": 693,
+        "startChar": 42,
+        "endLine": 693,
+        "endChar": 46
+      },
+      "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b7e0e9_98eaf798",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T23:57:09Z",
+      "side": 1,
+      "message": "`boot and shutdown`",
+      "range": {
+        "startLine": 694,
+        "startChar": 42,
+        "endLine": 694,
+        "endChar": 53
+      },
       "revId": "8675643e33c665c77140ec12be3433884c5aad8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
