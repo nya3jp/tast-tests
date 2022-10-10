@@ -34,6 +34,41 @@
       "parentUuid": "e70a9afb_27c09634",
       "revId": "e30853caa21ae63f24eb4995ca53622724986ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab67b3d_458c9e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-10T00:51:28Z",
+      "side": 1,
+      "message": "Hi Ben, can you PTAL, since `This informational test passed in last 20+ builds`.",
+      "revId": "e30853caa21ae63f24eb4995ca53622724986ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18b583d_5347c93c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-10T00:51:28Z",
+      "side": 1,
+      "message": "Boom, looks like `This informational test passed in last 20+ builds`!",
+      "parentUuid": "7c20feef_a4eca2a1",
+      "revId": "e30853caa21ae63f24eb4995ca53622724986ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
