@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6809bdbd_f9c5a8e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523383
+      },
+      "writtenOn": "2022-10-10T15:43:08Z",
+      "side": 1,
+      "message": "It appears we are disabling the wrong test. I think it should be the one in data_leak_prevention_rules_list_screenshot.go?",
+      "revId": "887b110c7c9d530777202640d901e8bb772c7ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
