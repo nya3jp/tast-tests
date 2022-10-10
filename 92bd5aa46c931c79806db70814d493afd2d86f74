@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e281cff3_4162c036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-10T04:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab8cdd9_f2c5b31f",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "92bd5aa46c931c79806db70814d493afd2d86f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d928180_389c8d6e",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-07T07:06:38Z",
       "side": 1,
       "message": "I am not very familiar with this area, but looks like the ID will be changed like \"pci:0\" and \"pci:1\" when there are multiple buses. Similar thing happens for sata as well, IIUC.\nDoes this test need to handle such devices, or OK with the current form as it\u0027s dedicated for a certain device?",
+      "revId": "92bd5aa46c931c79806db70814d493afd2d86f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836e78d0_09381b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-10T04:48:40Z",
+      "side": 1,
+      "message": "Since it\u0027s dedicated for a certain device, I guess we\u0027re OK with the current form.",
+      "parentUuid": "4d928180_389c8d6e",
       "revId": "92bd5aa46c931c79806db70814d493afd2d86f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
