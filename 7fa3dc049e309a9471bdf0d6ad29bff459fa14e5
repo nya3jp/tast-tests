@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ca2062_37d682ab",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-10T22:25:02Z",
+      "side": 1,
+      "message": "Done, renamed to chromeFlags.",
+      "parentUuid": "0dfa6d60_1c0ffeb5",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "637d3b6a_6983c6d3",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9ee71e_096e47d0",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-10T22:25:02Z",
+      "side": 1,
+      "message": "Done. I noticed that the FakeDMSFixture::TearDown() already calls Stop() [1], so I removed this code here and in FamilyLinkFixture::TearDown().\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/fakedms.go;l\u003d102?q\u003daddfixture%20fakedms",
+      "parentUuid": "637d3b6a_6983c6d3",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387df048_a59c2722",
@@ -99,6 +135,24 @@
       "writtenOn": "2022-10-10T07:24:39Z",
       "side": 1,
       "message": "This should be handled by the PersistentProjectorEDU fixture. The FakeDMS fixture reset also resets the blob. You could just drop the entire block.",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "995472da_a9f41221",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-10T22:25:02Z",
+      "side": 1,
+      "message": "Done, removed this block here and in familylink/fixture.go.",
+      "parentUuid": "387df048_a59c2722",
       "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
