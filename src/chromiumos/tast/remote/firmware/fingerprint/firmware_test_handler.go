@@ -68,12 +68,13 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	}
 
 	// Disable rootfs verification. It's necessary in order to disable
-	// FP updater and biod upstart job if board needs reboot after flashing.
+	// FP updater and biod upstart job if board needs reboot after flashing
+	// or test flashes non-production firmware.
 	rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 	}
-	if !rootfsIsWritable && t.needsRebootAfterFlashing {
+	if !rootfsIsWritable && (t.needsRebootAfterFlashing || (t.firmwareFile.KeyType != KeyTypeMp)) {
 		testing.ContextLog(ctx, "Making rootfs writable")
 		// Since MakeRootfsWritable will reboot the device, we must call
 		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
@@ -87,7 +88,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		if err := t.d.RPCDial(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to redial rpc")
 		}
-	} else if rootfsIsWritable && !t.needsRebootAfterFlashing {
+	} else if rootfsIsWritable && !(t.needsRebootAfterFlashing || (t.firmwareFile.KeyType != KeyTypeMp)) {
 		testing.ContextLog(ctx, "WARNING: The rootfs is writable")
 	}
 
