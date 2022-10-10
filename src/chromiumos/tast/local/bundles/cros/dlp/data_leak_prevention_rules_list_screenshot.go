@@ -97,7 +97,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:    "ash_blocked",
 			Fixture: fixture.ChromePolicyLoggedIn,
@@ -123,9 +123,8 @@ func init() {
 				browserType:           browser.TypeAsh,
 			},
 		}, {
-			Name:      "ash_warn_proceeded",
-			ExtraAttr: []string{"informational"},
-			Fixture:   fixture.ChromePolicyLoggedIn,
+			Name:    "ash_warn_proceeded",
+			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "warn_proceded",
 				url:                   "https://www.example.com/",
@@ -136,9 +135,8 @@ func init() {
 				browserType:           browser.TypeAsh,
 			},
 		}, {
-			Name:      "ash_warn_cancelled",
-			ExtraAttr: []string{"informational"},
-			Fixture:   fixture.ChromePolicyLoggedIn,
+			Name:    "ash_warn_cancelled",
+			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:        "warn_cancelled",
 				url:         "https://www.example.com/",
@@ -148,7 +146,6 @@ func init() {
 			},
 		}, {
 			Name:              "lacros_blocked",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
@@ -162,7 +159,6 @@ func init() {
 			},
 		}, {
 			Name:              "lacros_allowed",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
@@ -176,7 +172,6 @@ func init() {
 			},
 		}, {
 			Name:              "lacros_warn_proceeded",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
@@ -190,7 +185,6 @@ func init() {
 			},
 		}, {
 			Name:              "lacros_warn_cancelled",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
