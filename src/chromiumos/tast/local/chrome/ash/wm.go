@@ -891,13 +891,10 @@ func WaitForAnyWindowWithoutTitle(ctx context.Context, tconn *chrome.TestConn, t
 	})
 }
 
-// WaitForAppWindow waits for the window associated with the given app ID to be visible.
+// WaitForAppWindow finds the first window associated with the given app ID to be visible.
 // It is useful to call this after ash.WaitForApp checking shelf behaviors for the app or apps.Launch.
-func WaitForAppWindow(ctx context.Context, tconn *chrome.TestConn, appID string) error {
-	if err := WaitForCondition(ctx, tconn, func(w *Window) bool {
+func WaitForAppWindow(ctx context.Context, tconn *chrome.TestConn, appID string) (*Window, error) {
+	return WaitForAnyWindow(ctx, tconn, func(w *Window) bool {
 		return w.AppID == appID && w.IsVisible
-	}, defaultPollOptions); err != nil {
-		return errors.Wrapf(err, "failed to wait for app to be visible for ID: %v", appID)
-	}
-	return nil
+	})
 }
