@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4daa80e9_25077267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-10T23:38:55Z",
+      "side": 1,
+      "message": "It depends how long the specific tests need. It doesn\u0027t have be to very accurate. The underlying rational is that you should not rely on the default timeout which is 3 minutes IIRC.",
+      "parentUuid": "06ac416e_8a81253c",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "eea24ae67c076701183271609a2d671ff3425ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac6521c4_5d89e997",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
         "patchSetId": 4
