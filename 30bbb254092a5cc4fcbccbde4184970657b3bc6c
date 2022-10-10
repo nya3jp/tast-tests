@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "724a2f4e_fd4a1e6b",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputSineActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-10T04:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63b3eac_2727998d",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d80ea98b_157a1be4",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcca43b_ee1f5f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/freq.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-10T04:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d80ea98b_157a1be4",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d45ead7f_ea30fe72",
@@ -128,6 +176,30 @@
       "writtenOn": "2022-10-06T19:27:06Z",
       "side": 1,
       "message": "Optional, I\u0027d use another letter than i for the inner loop to easier read the code.",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "30bbb254092a5cc4fcbccbde4184970657b3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804e9537_4eb3ce45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-10T04:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d45ead7f_ea30fe72",
       "range": {
         "startLine": 247,
         "startChar": 7,
