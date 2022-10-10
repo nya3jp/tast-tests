@@ -39,6 +39,29 @@
       },
       "revId": "eea24ae67c076701183271609a2d671ff3425ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6521c4_5d89e997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-10-10T16:18:23Z",
+      "side": 1,
+      "message": "Can we make the code reusable and avoid duplicated code in LaunchFeedbackFromXXX?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "eea24ae67c076701183271609a2d671ff3425ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
