@@ -251,12 +251,6 @@ func (f *FilesApp) OpenFile(fileName string) uiauto.Action {
 	return f.DoubleClick(file(fileName))
 }
 
-// RightClickFile returns a function that executes right click on a file to open its context menu.
-// TODO(joelhockey): delete function once all callers are migrated to OpenContextMenu().
-func (f *FilesApp) RightClickFile(fileName string) uiauto.Action {
-	return f.OpenContextMenu(fileName)
-}
-
 // OpenContextMenu returns a function that selects a file, then executes right click to open its context menu.
 func (f *FilesApp) OpenContextMenu(fileName string) uiauto.Action {
 	// Select file to ensure context menu items are calculated and menu is sized
