@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29152d89_d8644024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-10T11:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe26442_3eacff1f",
+      "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4ed259c_b884c0e8",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-09-19T13:19:34Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af7cbfc_3e910152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-10T11:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ed259c_b884c0e8",
       "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +145,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9f7638_9a42a1af",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-10T11:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a20d1b4b_f2af57d0",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31737e07_b5620104",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-10T11:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a071ead_c3532bbb",
+      "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bb92f4e_a5ac9bee",
@@ -122,6 +200,24 @@
       "writtenOn": "2022-09-19T13:19:34Z",
       "side": 1,
       "message": "nit: add\nName: \"host_allowed\"\notherwise the test for host allowed will be just shown as policy.DeviceTrust in our test results.",
+      "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb5b880_52de56d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-10T11:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb92f4e_a5ac9bee",
       "revId": "67364b8a39b41df7d5f69cddbae3f3da38c4cfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
