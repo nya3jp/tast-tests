@@ -50,6 +50,57 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfa6d60_1c0ffeb5",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:24:39Z",
+      "side": 1,
+      "message": "nit: This needs a more descriptive name. Maybe chromeFlags?",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637d3b6a_6983c6d3",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:24:39Z",
+      "side": 1,
+      "message": "This should be done by the parent fixture. It will break future tests otherwise.",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387df048_a59c2722",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-10T07:24:39Z",
+      "side": 1,
+      "message": "This should be handled by the PersistentProjectorEDU fixture. The FakeDMS fixture reset also resets the blob. You could just drop the entire block.",
+      "revId": "7fa3dc049e309a9471bdf0d6ad29bff459fa14e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
