@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8ae103_2d1d62b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-10T15:47:14Z",
+      "side": 1,
+      "message": "Added a check for the `NetworkTechnology` at the beginning.",
+      "parentUuid": "b8590ba6_1b416767",
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93d1a621_6563f62c",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a324ff88_ffefe7b1",
+        "filename": "src/chromiumos/tast/local/dbusutil/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-10T15:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d1a621_6563f62c",
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f67a55dc_195a9d1c",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-10-06T18:13:49Z",
       "side": 1,
       "message": "any reason not to just pass this in as an argument?\n\nAlso, very micro nit but `s` might get a bit confusing for readers who expect that identifier to refer to a `*testing.State`.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "a4cc60e274ffc25066de65aa1c1c4ecd8d979770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c61a573_feaf376c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/attenuated_signal_strength.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-10T15:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67a55dc_195a9d1c",
       "range": {
         "startLine": 162,
         "startChar": 5,
