@@ -16,6 +16,24 @@
       "message": "Do you mind fixing perf.go:190 to check if the val \u003d\u003d nil? \nOthers might be bothered by this issue as well.\n\nThanks",
       "revId": "45be5527ffbbac4e37ea093f4840217dbd604aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f710ce_00e0650c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-10T20:30:05Z",
+      "side": 1,
+      "message": "CL:3943728",
+      "parentUuid": "e4acde18_7d6afc79",
+      "revId": "45be5527ffbbac4e37ea093f4840217dbd604aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
