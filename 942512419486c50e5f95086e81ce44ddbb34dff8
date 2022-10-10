@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c610d4_8c102843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-10T16:51:44Z",
+      "side": 1,
+      "message": "Glad to see we can remove the workaround to make the test cleaner.",
+      "revId": "942512419486c50e5f95086e81ce44ddbb34dff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
