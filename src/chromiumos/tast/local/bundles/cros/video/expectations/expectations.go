@@ -19,9 +19,9 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +31,8 @@ const expectationsDirectory = "/usr/local/graphics/expectations"
 // debugLogging is a runtime variable to enable more debugging logs about the
 // use of expectations files. When set to "true" to, it turns on log messages
 // from the debugLog and debugLogf functions. Usage is:
-//     tast run -var=expectations.DebugLogging=true <DUT> <test name pattern>
+//
+//	tast run -var=expectations.DebugLogging=true <DUT> <test name pattern>
 var debugLogging = testing.RegisterVarString(
 	"expectations.DebugLogging",
 	"false",
@@ -119,11 +120,12 @@ func generateTestExpectationsFilename(ctx context.Context, testExpectationDirect
 			name = convertBuildToBoard(name)
 		}
 	case gpuChipsetFile:
-		stdout, _, err := testexec.CommandContext(ctx, "/usr/local/graphics/hardware_probe").SeparatedOutput(testexec.DumpLogOnError)
+		gpu, err := graphics.GPUFamilies(ctx)
 		if err != nil {
 			return name, errors.Wrap(err, "failed to get GPU chipset")
 		}
-		name = strings.TrimSpace(string(stdout))
+		// We use the first GPU found for expectation.
+		name = gpu[0]
 	case allDevicesFile:
 		return fmt.Sprintf("%s/%s.%s", testExpectationDirectory, theFileType, expectationsFileExtension), err
 	default:
