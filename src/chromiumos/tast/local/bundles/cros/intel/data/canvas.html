@@ -1,0 +1,49 @@
+<!-- Copyright 2022 The ChromiumOS Authors
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body encoding='utf8'>
+    <canvas id='canvas' />
+    <script type='text/javascript'>
+        let canvas = document.getElementById('canvas');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        const context = canvas.getContext('2d');
+        let isDrawing = false;
+        function drawStart(event) {
+            if (isDrawing) return;
+            context.beginPath();
+            context.moveTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+            isDrawing = true;
+        }
+        function drawMove(event) {
+            if (!isDrawing) return;
+            context.lineTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+            context.stroke();
+        }
+        function drawEnd(event) {
+            drawMove(event);
+            isDrawing = false;
+        }
+        function touchStart(event) { drawStart(event.touches[0]) }
+        function touchMove(event) { drawMove(event.touches[0]); event.preventDefault(); }
+        function touchEnd(event) { drawEnd(event.changedTouches[0]) }
+
+        canvas.addEventListener('touchstart', touchStart);
+        canvas.addEventListener('touchmove', touchMove, false);
+        canvas.addEventListener('touchend', touchEnd, false);
+
+        canvas.addEventListener('mousedown', drawStart, false);
+        canvas.addEventListener('mousemove', drawMove, false);
+        canvas.addEventListener('mouseup', drawEnd, false);
+    </script>
+</body>
+
+</html>
