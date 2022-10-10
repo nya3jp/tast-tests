@@ -73,6 +73,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be29bfa1_a08d6558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-10T17:04:10Z",
+      "side": 1,
+      "message": "How about documenting why this flag is needed? It may help others when they look for example (e.g. when they use the fixture but keeps hitting issue).",
+      "revId": "45e79491e9cf1c1e87b53b16238b4015cdbbd03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dac6051f_36c6138c",
         "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
         "patchSetId": 8
