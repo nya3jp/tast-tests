@@ -68,6 +68,42 @@
       "message": "I\u0027m still working on a fix, but I guess if it\u0027s blocking other teams, then we can revert it, and I\u0027ll create another CL with all the fixes and reland everything together.",
       "revId": "eac18c9c85adb1062690f1b40a73b3ffffccfaf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad08adc0_8763cc2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2022-10-11T09:09:31Z",
+      "side": 1,
+      "message": "Thank you for commenting and working on this! Let us revert the CL first, since we\u0027d like to fix the CrOS health (and unblock LKGM) asap.",
+      "parentUuid": "a5495e82_1a4104aa",
+      "revId": "eac18c9c85adb1062690f1b40a73b3ffffccfaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbc70a2_12ace3e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2022-10-11T09:09:31Z",
+      "side": 1,
+      "message": "Thank you for confirmation. I thought it might need a time since the author in EMEA. But actually the owner kindly commented. Let\u0027s proceed the revert.\n\nJust for information, we can trigger new LKGM release if necessary (see the gardener guide)",
+      "parentUuid": "f2c4b7c5_b1325474",
+      "revId": "eac18c9c85adb1062690f1b40a73b3ffffccfaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
