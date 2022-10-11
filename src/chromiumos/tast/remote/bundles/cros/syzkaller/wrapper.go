@@ -137,8 +137,8 @@ func init() {
 		},
 		SoftwareDeps: []string{"pstore", "reboot"},
 		// This wrapper runs syzkaller against the DUT for a duration of 30 minutes before
-		// stopping. The overall test duration is 32 minutes.
-		Timeout: syzkallerRunDuration + 2*time.Minute,
+		// stopping. The overall test duration is 40 minutes.
+		Timeout: syzkallerRunDuration + 10*time.Minute,
 		Attr:    []string{"group:syzkaller"},
 		Data:    []string{"testing_rsa", "periodic.json"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
