@@ -453,7 +453,7 @@ func saveCoverage(ctx context.Context, cred, outDir, board, kernelCommit string)
 
 	testing.ContextLog(ctx, "Retrieving rawcoverage to ", coverFile)
 	coverURL := fmt.Sprintf("http://%v:%v/rawcover32", syzManagerHost, syzManagerPort)
-	if err := testexec.CommandContext(ctx, "wget", coverURL, "-O", coverFile).Run(); err != nil {
+	if err := testexec.CommandContext(ctx, "wget", coverURL, "-O", coverFile).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to retrieve rawcover")
 	}
 
