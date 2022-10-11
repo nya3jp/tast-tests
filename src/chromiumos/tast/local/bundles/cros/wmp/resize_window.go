@@ -39,6 +39,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Resize different windows by dragging 4 corners and 4 sides",
 		Contacts: []string{
+			"alfred.yu@cienet.com",
 			"lance.wang@cienet.com",
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
@@ -88,6 +89,8 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the connection to the test API: ", err)
 	}
 
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
 	var appList []*wmputils.ResizeApp
 	if !isArc {
 		// Install CWS app: Text.
@@ -114,7 +117,7 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 				Name:         chromeApp.Name,
 				ID:           chromeApp.ID,
 				IsArcApp:     false,
-				WindowFinder: nodewith.HasClass("NonClientView").NameContaining(chromeApp.Name),
+				WindowFinder: nodewith.HasClass("BrowserFrame").NameContaining(chromeApp.Name),
 			}, {
 				Name:         apps.Files.Name,
 				ID:           apps.FilesSWA.ID,
