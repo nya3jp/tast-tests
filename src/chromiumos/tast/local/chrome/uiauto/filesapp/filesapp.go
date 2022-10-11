@@ -375,8 +375,24 @@ func (f *FilesApp) DeleteFileOrFolder(kb *input.KeyboardEventWriter, fileName st
 	return uiauto.Combine(fmt.Sprintf("DeleteFileOrFolder(%s)", fileName),
 		f.SelectFile(fileName),
 		kb.AccelAction("Alt+Backspace"),
-		f.LeftClick(nodewith.Name("Delete").ClassName("cr-dialog-ok").Role(role.Button)),
 		f.WaitUntilFileGone(fileName),
+	)
+}
+
+// DeleteMultipleFilesOrFolders returns a function that deletes multiple files or folders.
+// The parent folder must currently be open for this to work.
+// Consider using OpenPath to do this.
+func (f *FilesApp) DeleteMultipleFilesOrFolders(kb *input.KeyboardEventWriter, targets ...string) uiauto.Action {
+	actions := make([]uiauto.Action, len(targets))
+	for i, files := range targets {
+		actions[i] = f.WaitUntilFileGone(files)
+	}
+	waitUnitAllTargetsGone := uiauto.Combine("verify all targets are gone", actions...)
+
+	return uiauto.Combine(fmt.Sprintf("DeleteMultipleFilesOrFolders(%s)", targets),
+		f.SelectMultipleFiles(kb, targets...),
+		kb.AccelAction("Alt+Backspace"),
+		waitUnitAllTargetsGone,
 	)
 }
 

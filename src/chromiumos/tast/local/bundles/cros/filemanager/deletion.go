@@ -6,7 +6,6 @@ package filemanager
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -17,11 +16,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/sysutil"
@@ -41,7 +37,7 @@ const testFile = "files_app_test.png"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Deletion,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensure deletion of files & folders work fine",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
@@ -65,7 +61,7 @@ func init() {
 
 // Deletion deletes files and folders from Downloads & My files.
 func Deletion(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -217,27 +213,16 @@ func waitUntilFileDeleted(path string) action.Action {
 }
 
 func processForDeletion(ctx context.Context, res *deletionTestResource, targets *map[deletionTargetType]*deletionTargetDetail) error {
-	actions := make([]uiauto.Action, 0)
 	targetsName := make([]string, 0)
 	for _, detail := range *targets {
 		if detail.skipDeletion {
 			continue
 		}
 		targetsName = append(targetsName, detail.name)
-		actions = append(actions, res.filesApp.WaitUntilFileGone(detail.name))
-		actions = append(actions, waitUntilFileDeleted(detail.name))
 	}
-	verifyTargetsAreGone := uiauto.Combine("verify all targets are gone", actions...)
 
 	testing.ContextLog(ctx, "Trying to delete targets: ", targetsName)
-	deleteBtn := nodewith.Name("Delete").HasClass("cr-dialog-ok").Role(role.Button)
-	return uiauto.Combine(fmt.Sprintf("select and delete targets: %v", targetsName),
-		res.filesApp.SelectMultipleFiles(res.kb, targetsName...),
-		res.kb.AccelAction("Alt+Backspace"),
-		res.filesApp.LeftClick(deleteBtn),
-		res.filesApp.WaitUntilGone(deleteBtn),
-		verifyTargetsAreGone,
-	)(ctx)
+	return res.filesApp.DeleteMultipleFilesOrFolders(res.kb, targetsName...)(ctx)
 }
 
 func cleanUp(ctx context.Context, targets *map[deletionTargetType]*deletionTargetDetail) {
