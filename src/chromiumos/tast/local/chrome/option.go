@@ -334,22 +334,22 @@ func ARCEnabled() Option {
 	}
 }
 
-// HugePagesEnabled returns an Option that can be passed to New to enable huge pages within a
-// session's ARCVM instance. Has no effect on boards running Android P or if ARCEnabled is not
-// also passed to New.
-func HugePagesEnabled() Option {
-	return func(cfg *config.MutableConfig) error {
-		cfg.ARCUseHugePages = true
-		return nil
-	}
-}
-
 // ARCSupported returns an Option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
 // session with real GAIA account.
 // In this case ARC is not launched by default and is required to be launched by user policy or from UI.
 func ARCSupported() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.ARCMode = config.ARCSupported
+		return nil
+	}
+}
+
+// HugePagesEnabled returns an Option that can be passed to New to enable huge pages within a
+// session's ARCVM instance. Has no effect on boards running Android P or if ARCEnabled is not
+// also passed to New.
+func HugePagesEnabled() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.ARCUseHugePages = true
 		return nil
 	}
 }

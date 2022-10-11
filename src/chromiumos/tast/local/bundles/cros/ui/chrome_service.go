@@ -69,6 +69,17 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 		opts = append(opts, chrome.DisableFeatures("LacrosSupport"))
 	}
 
+	switch req.GetArcMode() {
+	case pb.ArcMode_ARC_MODE_UNSPECIFIED:
+		// Do nothing.
+	case pb.ArcMode_ARC_MODE_DISABLED:
+		opts = append(opts, chrome.ARCDisabled())
+	case pb.ArcMode_ARC_MODE_ENABLED:
+		opts = append(opts, chrome.ARCEnabled())
+	case pb.ArcMode_ARC_MODE_SUPPORTED:
+		opts = append(opts, chrome.ARCSupported())
+	}
+
 	// By default, this will always create a new chrome session even when there is an existing one.
 	// This gives full control of the lifecycle to the end users.
 	// Users can use TryReuseSessions if they want to potentially reuse the session.
