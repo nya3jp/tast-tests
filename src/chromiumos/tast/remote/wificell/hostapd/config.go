@@ -630,6 +630,9 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	configure("interface", iface)
 	configure("channel", strconv.Itoa(c.Channel))
 
+	// Required for OpenWRT. Otherwise, default regulatory region is DFS-UNSET.
+	configure("country_code", "US")
+
 	hwMode, err := c.hwMode()
 	if err != nil {
 		return "", err
@@ -662,7 +665,6 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("ignore_broadcast_ssid", "1")
 	}
 	if c.SpectrumManagement {
-		configure("country_code", "US")          // Required for ieee80211d
 		configure("ieee80211d", "1")             // Required for local_pwr_constraint
 		configure("local_pwr_constraint", "0")   // No local constraint
 		configure("spectrum_mgmt_required", "1") // Requires local_pwr_constraint
