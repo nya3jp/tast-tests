@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daaee9bc_5a09d615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T19:01:10Z",
+      "side": 1,
+      "message": "I am not sure if I follow. We should avoid duplicate code unless some special circumstance. This is not. We should have something like ConfigVerify.chromeos and ConfigVerify.chromiumos",
+      "parentUuid": "d2150939_3242a21c",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24071045_7d1bec93",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 8
