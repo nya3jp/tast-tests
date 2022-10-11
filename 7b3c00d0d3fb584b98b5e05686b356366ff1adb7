@@ -52,6 +52,23 @@
       "parentUuid": "df754209_58e1da01",
       "revId": "7b3c00d0d3fb584b98b5e05686b356366ff1adb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb54895a_7916c608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-11T03:00:22Z",
+      "side": 1,
+      "message": "Failure except experimental boards are arc boot error, that is not found in CQ.\nSo, this should be safe, but we have to keep our eyes on the status for a while.",
+      "revId": "7b3c00d0d3fb584b98b5e05686b356366ff1adb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
