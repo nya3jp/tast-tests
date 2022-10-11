@@ -16,6 +16,24 @@
       "message": "APAC Gardeners, could you give an approval? I also assume this breaks LKGM.",
       "revId": "eac18c9c85adb1062690f1b40a73b3ffffccfaf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c4b7c5_b1325474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2022-10-11T02:00:18Z",
+      "side": 1,
+      "message": "we were hoping to get confirmation on this one from the cl authors.\n\nThis cl seems ease enough to revert/reland so we\u0027ll do this speculatively\n\nnoting that an lkgm for *after this revert lands* would need to be generated",
+      "parentUuid": "971a30fd_e2e341b8",
+      "revId": "eac18c9c85adb1062690f1b40a73b3ffffccfaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
