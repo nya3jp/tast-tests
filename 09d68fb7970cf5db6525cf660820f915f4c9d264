@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e7eda60_87fb263d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-11T03:04:11Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t get you.  This is copyright header copied from other files.",
+      "parentUuid": "e91f53a2_7f75af7c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "09d68fb7970cf5db6525cf660820f915f4c9d264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ed4e4e_2c8bed86",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-07T22:12:53Z",
       "side": 1,
       "message": "We\u0027re not shipping 3.18 anymore, this should be \u003e\u003d4.4.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "09d68fb7970cf5db6525cf660820f915f4c9d264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2374e1bb_c5fd554e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-11T03:04:11Z",
+      "side": 1,
+      "message": "NACK, the code was moved from existing test case.  If changing it from 3.18 to 4.4 makes sense, we should create an independent CL for the purpose.",
+      "parentUuid": "a2ed4e4e_2c8bed86",
       "range": {
         "startLine": 49,
         "startChar": 0,
