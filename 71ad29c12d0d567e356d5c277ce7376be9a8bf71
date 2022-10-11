@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50b8584_da64a011",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "nit: for consistency, don\u0027t add a period to the end of the first statement",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4c51bc_b4b40322",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "nit: `via different methods that results`? Sorry, wording a bit weird",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ef6177_36139c73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need to add -verbose \n`tast run \u003cDUT\u003e wmp.screenCaptureModes` (or \u003cIP\u003e is fine) would be consistent with most of our tests",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "88a3b8f6_478b0b4e",
@@ -31,6 +82,40 @@
       "writtenOn": "2022-10-11T18:32:54Z",
       "side": 1,
       "message": "LGTM % below",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87f5d67_6bac7c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "Do you mind taking a look at the comments to see if its less than 72 char? some comments here look weirdly long and strange on gerrit",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77c198e_34b27fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "I\u0027m worried about how specific this is. wdyt about `.NameStartingWith(\"Drag to select area\")`\n\nDo you need the `ClassName(\"Label\")`? I would presume only 1 node with that name should appear.",
       "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +162,23 @@
         "endLine": 114,
         "endChar": 24
       },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5767c76_e20216d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:35:46Z",
+      "side": 1,
+      "message": "`WaitUntilGone` will return true immediately probably, even if a  wrong label shows up, because there\u0027s no delay between doing the shortcut and checking for the label.\n\nCan you use `ac.EnsureGoneFor`?",
       "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
