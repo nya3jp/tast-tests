@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7677ef06_3b9d3546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-11T09:21:31Z",
+      "side": 1,
+      "message": "This is cheating because in principle we are interested in a hardware dependency. But I guess Tast isn\u0027t making this easy.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "ad87e0970cc236fc7bc0a6e8667a0030cc168b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
