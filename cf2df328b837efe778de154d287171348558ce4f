@@ -16,6 +16,23 @@
       "message": "greenjustin@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "cf2df328b837efe778de154d287171348558ce4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d7d6ca_849fc445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-11T23:59:21Z",
+      "side": 1,
+      "message": "The predecessor CL was picked up. Justin, does this LGTY?",
+      "revId": "cf2df328b837efe778de154d287171348558ce4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
