@@ -6,7 +6,6 @@ package wmp
 
 import (
 	"context"
-	"image"
 	"os"
 	"path/filepath"
 	"time"
@@ -15,10 +14,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/wmp"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
@@ -69,7 +66,7 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	testing.ContextLog(ctx, "Launch 'Screen capture' and capture screenshot")
-	if err := wmp.CaptureScreenshot(tconn, wmp.FullScreen)(ctx); err != nil {
+	if err := wmp.CaptureScreenshot(tconn, wmp.FullScreenshot)(ctx); err != nil {
 		s.Fatal("Failed to capture screenshot: ", err)
 	}
 	defer func(ctx context.Context) {
@@ -79,7 +76,7 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	testing.ContextLog(ctx, "Check the existence and the size of the screenshot")
-	if err := checkScreenshot(ctx, tconn, downloadsPath); err != nil {
+	if err := wmp.CheckScreenshot(ctx, tconn, downloadsPath); err != nil {
 		s.Fatal("Failed to verify the screenshot: ", err)
 	}
 }
@@ -98,64 +95,6 @@ func deleteAllScreenshots(downloadsPath string) error {
 		if err := os.Remove(f); err != nil {
 			return errors.Wrap(err, "failed to delete the screenshot")
 		}
-	}
-
-	return nil
-}
-
-// checkScreenshot checks the screenshot's existence.
-// And then verifies its size is the same as the size of the full screen by decoding the screenshot.
-func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, downloadsPath string) error {
-	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the primary display info")
-	}
-
-	displayMode, err := displayInfo.GetSelectedMode()
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the display mode")
-	}
-
-	orientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the display orientation")
-	}
-
-	expectedFullScreenshotSize := coords.NewSize(displayMode.WidthInNativePixels, displayMode.HeightInNativePixels)
-	// The screen ui orientation might be different from the DUT's default orientation setting.
-	// If the orientation angle is 90 or 270 degrees,
-	// swap the width and height value to match the current screen ui orientation.
-	if orientation.Angle == 90 || orientation.Angle == 270 {
-		expectedFullScreenshotSize.Width, expectedFullScreenshotSize.Height = expectedFullScreenshotSize.Height, expectedFullScreenshotSize.Width
-	}
-
-	files, err := filepath.Glob(filepath.Join(downloadsPath, screenshotPattern))
-	if err != nil {
-		return errors.Wrapf(err, "the pattern %q is malformed", screenshotPattern)
-	}
-
-	if len(files) == 0 {
-		return errors.New("screenshot not found")
-	} else if len(files) > 1 {
-		return errors.Errorf("unexpected screeshot count, want 1, got %d", len(files))
-	}
-
-	// Expecting only one screenshot exist.
-	imgFile := files[0]
-
-	reader, err := os.Open(imgFile)
-	if err != nil {
-		return errors.Wrap(err, "failed to open the screenshot")
-	}
-	defer reader.Close()
-
-	image, _, err := image.DecodeConfig(reader)
-	if err != nil {
-		return errors.Wrap(err, "failed to decode the screenshot")
-	}
-
-	if image.Width != expectedFullScreenshotSize.Width || image.Height != expectedFullScreenshotSize.Height {
-		return errors.Errorf("screenshot size mismatched: want %s, got (%d x %d)", expectedFullScreenshotSize, image.Width, image.Height)
 	}
 
 	return nil
