@@ -100,8 +100,15 @@ func ImmersiveMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
+
+	// Not all Chromebooks have the same layout for the function keys.
+	layout, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to get keyboard mapping: ", err)
+	}
+
 	defer kb.Close()
-	if err = kb.Accel(ctx, "F4"); err != nil {
+	if err = kb.Accel(ctx, layout.ZoomToggle); err != nil {
 		s.Fatal("Failed to press F4: ", err)
 	}
 
