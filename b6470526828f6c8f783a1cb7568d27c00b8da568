@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1283ab_edda7cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-11T02:32:19Z",
+      "side": 1,
+      "message": "It looks like these two packages share a lot of common code -- does it make sense to move them to a util package or a base common struct?",
+      "revId": "b6470526828f6c8f783a1cb7568d27c00b8da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c384319_81b08afe",
