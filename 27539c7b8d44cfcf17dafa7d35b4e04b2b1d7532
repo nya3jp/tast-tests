@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e633083_09901d5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "Try doing the following to standardize the commit message\n\n1. Don\u0027t add a period after the first line\n2. Prefix is `tast-tests`\n3. You don\u0027t need the ticks ` in the `TEST\u003d`\n4. use \u003cDUT\u003e instead of localhost:2222, because people can port forward their test device to port they want",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a6e06171_0bf27fe2",
@@ -14,6 +31,159 @@
       "writtenOn": "2022-10-11T22:35:18Z",
       "side": 1,
       "message": "can you do a prelim review plz Navin? thank you!!!",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a58c968_28ea3f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this? Do you think so?",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b86587_9a8e109b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "Can we do this in a loop? Have a list of conns?",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6a596d_6a0f3235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "use `s.Fatalf` to include the url you\u0027re opening. it might make sense to set the url `http://google.com` in a variable and then include it with `%s` in the failure msg.",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d17912af_c9d92980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "This comment should just be relevant to the code directly below it, so probably just `Get primary display info`. \n\nAlthough saying `Get primary display info` right above `display.GetPrimaryInfo` seems like a useless comment, so imo we should remove it altogether.",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a5ba1e_da8ed2a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "This should be below the comment `//Drag the first tab...`, to be consistent with how you did it for `secondTab`.",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165dadef_00298a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "I would move this comment right above `pc.Drag` (L118)",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c25b2eb_f824ea70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "You don\u0027t need to redefine this finder, since it\u0027s exactly the same as before. A finder is just more like a query that\u0027s \"found\" once we call a function with it -- its not found at the time of definition.",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7205044a_1169c463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "nit: maybe add an empty line before this? a bit more consistent with how you did it above.",
+      "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea87002c_991cd90e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T23:05:02Z",
+      "side": 1,
+      "message": "we like to use `action.Sleep` as opposed to `uiauto.Sleep`. `action` is something defined within the `uiauto` package anyways, so its functionally exactly the same.",
       "revId": "27539c7b8d44cfcf17dafa7d35b4e04b2b1d7532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
