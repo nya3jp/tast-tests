@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2150939_3242a21c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-11T02:49:17Z",
+      "side": 1,
+      "message": "The CL separates the testcases.  The following CLs in the relation chain change the test content (e.g. https://crrev.com/c/3895462 and https://crrev.com/c/3898160).",
+      "parentUuid": "d2ce1632_bb41656a",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24071045_7d1bec93",
@@ -441,6 +459,30 @@
       "side": 1,
       "message": "I apologize, it is indeed same, the function already uses this pattern.\n\nI really don\u0027t think this should be a new package, do you mind merge the chromeos chromium and common to the same file ? this might be avoid the warning, I hope.",
       "parentUuid": "a6125040_7a5a3c56",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ee56c9_7a4eaafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-11T02:49:17Z",
+      "side": 1,
+      "message": "I guess that is what previous patchsets (e.g. PS#5, PS#6, PS#7) did?  Do you want me to revert back to previous patchset?",
+      "parentUuid": "82688e30_9b4b07dc",
       "range": {
         "startLine": 6,
         "startChar": 8,
