@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b0f6c9_58683e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7966e952_f3690cb4",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f22dfe7_dda46ac0",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-05T17:07:08Z",
       "side": 1,
       "message": "Do these values ever get changed? If not, it would make more sense to define them as `const` instead of `var`",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1bf1f70_95dde436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f22dfe7_dda46ac0",
       "range": {
         "startLine": 30,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29289afa_87ec68bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "891dbe1f_a11a3a88",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beab0337_5d809f19",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-05T16:42:44Z",
       "side": 1,
       "message": "delete this too, just checking for proxyconfig here",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83aeee28_360bdfeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beab0337_5d809f19",
       "range": {
         "startLine": 177,
         "startChar": 27,
