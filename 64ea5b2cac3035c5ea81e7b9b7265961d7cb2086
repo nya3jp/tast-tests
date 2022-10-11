@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cd8f68_451d2bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-11T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba00a3f_d9aa21c2",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "64ea5b2cac3035c5ea81e7b9b7265961d7cb2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a244e2aa_83528a3c",
