@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409bae96_d0f2f5b3",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-11T17:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "077d33a7_7fc9edc1",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "ec6fc317b98a9e5063b678d8db43335a2cdcb12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a92f1abb_f23b259e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-21T23:48:44Z",
       "side": 1,
       "message": "let\u0027s remove this since we do retry in readFirstLine",
+      "range": {
+        "startLine": 274,
+        "startChar": 8,
+        "endLine": 274,
+        "endChar": 55
+      },
+      "revId": "ec6fc317b98a9e5063b678d8db43335a2cdcb12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c98eba_13c6cf8b",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-11T17:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92f1abb_f23b259e",
       "range": {
         "startLine": 274,
         "startChar": 8,
