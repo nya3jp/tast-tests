@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a27364d_9c123944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-11T18:03:42Z",
+      "side": 1,
+      "message": "Added an empty line to line 578 and re-worded the comments below. The comment on line 577 was intended to make a block that indicates that the lines below are all about testing dragging pinned apps. Hopefully the change makes it look easier to understand.",
+      "parentUuid": "7378316a_62ead5bc",
+      "revId": "9b42b24107b5d7f9b2ab917520704e20944a3d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c87cbd8_b108f785",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00688823_ec62a788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-11T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c87cbd8_b108f785",
+      "revId": "9b42b24107b5d7f9b2ab917520704e20944a3d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94fa02f0_6eebce6f",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-07T23:34:38Z",
       "side": 1,
       "message": "ditto.",
+      "revId": "9b42b24107b5d7f9b2ab917520704e20944a3d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75b458a_f7181e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-11T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94fa02f0_6eebce6f",
       "revId": "9b42b24107b5d7f9b2ab917520704e20944a3d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
