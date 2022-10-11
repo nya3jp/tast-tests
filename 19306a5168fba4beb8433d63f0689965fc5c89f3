@@ -16,6 +16,40 @@
       "message": "Thanks for reviewing, Toni!\nAdd tast-owners@ for owner review.",
       "revId": "19306a5168fba4beb8433d63f0689965fc5c89f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0e29f7_68d776b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T18:52:25Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look. Also, please run Tast unit test: fast_build.h -T\n\nThen, add this line to commit log\n\nTEST\u003dtast unit tests passed.\n\nThanks.",
+      "revId": "19306a5168fba4beb8433d63f0689965fc5c89f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35d47c7_7eed0103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T18:52:25Z",
+      "side": 1,
+      "message": "Does this block of new code repeat 4  times? If so, I think it will be better to have a function take care of it.",
+      "revId": "19306a5168fba4beb8433d63f0689965fc5c89f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
