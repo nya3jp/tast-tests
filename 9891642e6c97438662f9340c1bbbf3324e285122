@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7815115_efa2417b",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:24:48Z",
+      "side": 1,
+      "message": "Is this true even while we\u0027re executing infinite loop? I\u0027m wondering if we really need this variable as a member.",
+      "range": {
+        "startLine": 38,
+        "startChar": 92,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83a340d_fa143284",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:24:48Z",
+      "side": 1,
+      "message": "same here, can this be a local variable of onCreate()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cdf720_cb8c7244",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:24:48Z",
+      "side": 1,
+      "message": "nit: maybe giving a different name makes future debugging easier.",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801b668e_e6634a04",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:24:48Z",
+      "side": 1,
+      "message": "Does this work in Android 12 and later? https://developer.android.com/about/versions/12/behavior-changes-12#foreground-service-launch-restrictions\n(I\u0027m not very familiar with this Android change. I\u0027m asking just in case)",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
