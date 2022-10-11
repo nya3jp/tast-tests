@@ -33,6 +33,23 @@
       "message": "Please run tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit test passed.",
       "revId": "534cd96c63b9e07fc21712a42cb47edcbe386cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424cd171_5cabb477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-10-11T00:17:36Z",
+      "side": 1,
+      "message": "Great to see this metadata implemented finally!",
+      "revId": "534cd96c63b9e07fc21712a42cb47edcbe386cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
