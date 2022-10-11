@@ -80,6 +80,30 @@
       },
       "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eadad26_261c5d2d",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-11T00:37:52Z",
+      "side": 1,
+      "message": "I uploaded new version , which is now less code (less functions) and also I removed \"Probe\" from function names because all of them will be probing anyway. So function names are now shorter! This is amazing :)",
+      "parentUuid": "b57d59ce_406b344e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 1
+      },
+      "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
