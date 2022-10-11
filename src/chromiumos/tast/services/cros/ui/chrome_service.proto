@@ -88,6 +88,9 @@ message NewRequest {
   // If |lacros| is unset or lacros.Mode is set to MODE_DISABLED, Lacros
   // browser will not be enabled.
   Lacros lacros = 11;
+
+  // Describes the availability of ARC, e.g. enabled / disabled.
+  ArcMode arc_mode = 12;
 }
 
 // LoginMode describes the user mode for the login.
@@ -120,4 +123,12 @@ message Lacros {
     SELECTION_OMAHA = 2;
   }
   Selection selection = 2;
+}
+
+// ArcMode describes how ARC is supported.
+enum ArcMode {
+  ARC_MODE_UNSPECIFIED = 0;
+  ARC_MODE_DISABLED = 1;
+  ARC_MODE_ENABLED = 2;
+  ARC_MODE_SUPPORTED = 3;
 }
