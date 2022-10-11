@@ -22,11 +22,11 @@ import (
 const (
 	// These need to stay in sync with /vendor/google_arc/packages/system/ArcHostVpn
 
-	// ARCVPNPackage is the package name of the ARC-side fake VPN
-	ARCVPNPackage = "org.chromium.arc.hostvpn"
+	// Pkg is the package name of the ARC-side fake VPN
+	Pkg = "org.chromium.arc.hostvpn"
 
-	// ARCVPNService is the name of the Android Service that runs the ARC-side fake VPN
-	ARCVPNService = "ArcHostVpnService"
+	// Svc is the name of the Android Service that runs the ARC-side fake VPN
+	Svc = "org.chromium.arc.hostvpn.ArcHostVpnService"
 )
 
 // SetUpHostVPN creates a base VPN config, then calls SetUpHostVPNWithConfig
@@ -74,13 +74,13 @@ func SetARCVPNEnabled(ctx context.Context, a *arc.ARC, enabled bool) error {
 	return nil
 }
 
-// CheckARCVPNState confirms if ArcHostVpnService is running in the 'expectedRunning' state.
-func CheckARCVPNState(ctx context.Context, a *arc.ARC, expectedRunning bool) error {
-	testing.ContextLog(ctx, "Check the state of ArcHostVpnService")
+// WaitForARCServiceState checks if the Android service is running in the `expectedRunning` state.
+func WaitForARCServiceState(ctx context.Context, a *arc.ARC, pkg, svc string, expectedRunning bool) error {
+	testing.ContextLogf(ctx, "Check the state of %s/%s", pkg, svc)
 
 	// Poll since it might take some time for the service to start/stop
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := a.Command(ctx, "dumpsys", "activity", "services", ARCVPNPackage+"/."+ARCVPNService)
+		cmd := a.Command(ctx, "dumpsys", "activity", "services", pkg+"/"+svc)
 		o, err := cmd.Output(testexec.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "failed to execute 'dumpsys activity services' commmand")

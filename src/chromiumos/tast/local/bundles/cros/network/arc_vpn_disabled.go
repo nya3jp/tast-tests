@@ -54,8 +54,8 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 	}
 	// Currently, ARC VPN is disabled by default.
 	// TODO(b/147256449): Explicitly disable ARC VPN once the feature becomes enabled-by-defalt
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService not supposed to be running: ", err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
+		s.Fatalf("%s not supposed to be running: %v", arcvpn.Svc, err)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)

@@ -63,8 +63,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService: ", err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.Svc, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
@@ -75,8 +75,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if err := crashARCVPN(ctx, a); err != nil {
 		s.Fatal("Failed to crash ArcHostVpnService: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
+		s.Fatalf("%s should be stopped, but isn't: %v", arcvpn.Svc, err)
 	}
 	// VPN should still be reachable even without ArcHostVpnService
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
@@ -98,13 +98,13 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 // doesn't exercise normal ArcNetworkService->ArcHostVpnService service disconnection flows.
 func crashARCVPN(ctx context.Context, a *arc.ARC) error {
 	testing.ContextLog(ctx, "Stopping ArcHostVpnService")
-	cmd := a.Command(ctx, "am", "force-stop", arcvpn.ARCVPNPackage)
+	cmd := a.Command(ctx, "am", "force-stop", arcvpn.Pkg)
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to execute 'am force-stop' commmand")
 	}
 
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		return errors.Wrap(err, "ArcHostVpnService expected to be stopped, but was running")
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
+		return errors.Wrapf(err, "%s expected to be stopped, but was running", arcvpn.Svc)
 	}
 	return nil
 }
