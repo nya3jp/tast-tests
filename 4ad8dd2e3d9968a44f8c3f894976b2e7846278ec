@@ -16,6 +16,24 @@
       "message": "This error should be something like \"Failed to set ProxyConfig: \", err.",
       "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9314873a_99234089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-10-11T16:57:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "84d79cf6_0eea5fab",
+      "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
