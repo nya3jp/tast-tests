@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,9 +28,28 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(bryaKernelnextModels()...)),
+		}, {
+			// Android fails to boot on brya-kernelnext for this test.
+			// b/254873528.
+			Name:              "vmunstable",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(bryaKernelnextModels()...)),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
+}
+
+func bryaKernelnextModels() []string {
+	return []string{
+		"anahera",
+		"felwinter",
+		"gimble",
+		"kano",
+		"primus",
+		"redrix",
+		"taeko",
+	}
 }
 
 func SELinuxProcessesARC(ctx context.Context, s *testing.State) {
