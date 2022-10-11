@@ -21,7 +21,7 @@ func init() {
 		Func:         ColdbootDocsCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Capture Google Docs CUJ metrics after cold booting the system",
-		Contacts:     []string{"tvignatti@igalia.com", "lacros-team@google.com"},
+		Contacts:     []string{"hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
