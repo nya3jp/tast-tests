@@ -968,10 +968,12 @@ func (s *Servo) RequireCCD(ctx context.Context) error {
 		return errors.Wrapf(err, "servo %s is not CCD", servoType)
 	}
 	if s.isDualV4 {
-		if err = s.SetActiveDUTController(ctx, DUTControllerCCD); err != nil {
-			if err = s.SetActiveDUTController(ctx, DUTControllerCCDGSC); err != nil {
-				return errors.Wrap(err, "failed to set active dut controller")
-			}
+		controller := DUTControllerCCD
+		if strings.Contains(servoType, string(DUTControllerCCDGSC)) {
+			controller = DUTControllerCCDGSC
+		}
+		if err = s.SetActiveDUTController(ctx, controller); err != nil {
+			return errors.Wrap(err, "failed to set active dut controller")
 		}
 	}
 	return nil
