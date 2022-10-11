@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4be07c7_5edb7133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-11T23:04:32Z",
+      "side": 1,
+      "message": "I\u0027d suggest to make the error msg consistent. Usually it is in this format: failed to do .... I notice that most of the error msg are in this format and some of them are not. Please change them into the same format. Unified format of error msg would save reading time when debugging.",
+      "range": {
+        "startLine": 142,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 21
+      },
+      "revId": "b18a757b5dd3aff2b1068a22d3ea4269269740d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c356579f_160cdd75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-11T23:04:32Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 81,
+        "startChar": 64,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "b18a757b5dd3aff2b1068a22d3ea4269269740d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
