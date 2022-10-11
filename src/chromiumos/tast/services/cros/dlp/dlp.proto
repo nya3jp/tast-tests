@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package tast.cros.dlp;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/dlp";
+
+message EnrollAndLoginRequest {
+  string username = 1;
+  string password = 2;
+  string dmserver_url = 3;
+  string reporting_server_url = 4;
+  string enabled_features = 5;
+  bool enable_lacros = 6;
+}
+
+enum BrowserType {
+  ASH = 0;
+  LACROS = 1;
+}
+
+// The mode of the applied restriction.
+enum Mode {
+  BLOCK = 0;
+  REPORT = 1;
+  WARN_CANCEL = 2;
+  WARN_PROCEED = 3;
+  ALLOW = 4;
+}
+
+message ActionRequest {
+  BrowserType browser_type = 1;
+  Mode mode = 2;
+}
+
+// DataLeakPreventionService provides RPC methods to run data leak prevention related operations.
+service DataLeakPreventionService {
+  rpc EnrollAndLogin(EnrollAndLoginRequest) returns (google.protobuf.Empty) {}
+  rpc StopChrome(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc ClipboardCopyPaste(ActionRequest) returns (google.protobuf.Empty) {}
+}
+
