@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c37a08a_20787fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T18:55:57Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "f054d9d2_0f7da8b7",
+      "revId": "4c6585b5216ac699b8b338c9e1a913cbed228c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fee53a1_e2abe5f6",
