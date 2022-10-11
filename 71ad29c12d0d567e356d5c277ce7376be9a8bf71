@@ -16,6 +16,109 @@
       "message": "Ahmed, Navin: Could you help review? THanks!",
       "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41032a4_edc4df48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-11T18:32:54Z",
+      "side": 1,
+      "message": "LGTM % below",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853c897e_73c4f56d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-11T18:32:54Z",
+      "side": 1,
+      "message": "No need for this wait before left click. `LeftClick()` implicitly waits until the element exists.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9d2b97_025f693f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-11T18:32:54Z",
+      "side": 1,
+      "message": "What does this `esc` do? There\u0027s no capture mode here.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ef07cb_986fd283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-11T18:32:54Z",
+      "side": 1,
+      "message": "Please add a comment above to be consistent with the above steps.",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68eed75b_b9850fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-11T18:32:54Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
