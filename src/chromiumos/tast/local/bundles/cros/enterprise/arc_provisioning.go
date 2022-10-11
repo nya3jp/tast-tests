@@ -48,8 +48,6 @@ func init() {
 			loginPoolVar,
 			packagesVar,
 		},
-		// "no_qemu" is added for excluding betty from the target board list.
-		// TODO(b/191102176): Remove "no_qemu" after making the test pass on betty.
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
@@ -172,8 +170,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			// TODO(b/242902484): Switch to exit when unstable variant is removed.
-			return retry("start ARC by policy", err)
+			return exit("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
 
@@ -187,8 +184,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		if err := waitForProvisioning(ctx, a, attempts); err != nil {
-			// TODO(b/242902484): Switch to exit when unstable variant is removed.
-			return retry("wait for provisioning", err)
+			return exit("wait for provisioning", err)
 		}
 
 		cleanupCtx := ctx
