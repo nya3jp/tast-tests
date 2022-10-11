@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "327cc2b8_5817511e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-10-11T09:21:14Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThe fix implemented in crrev.com/c/3909077 only slightly reduced flakiness of the test. This CL tries to fix another problem identified on my local DUT. Please take a look!",
+      "revId": "cc2767913ff8fc9f979b2456fc2eb831675cda14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
