@@ -225,10 +225,12 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	}
 
 	// b/246799978 causes the ARC app window to have the wrong bounds. Do a split
-	// view resize to update the bounds. Just a tap on the divider is sufficient.
-	// TODO(b/246799978): Remove this workaround when the bug is fixed.
-	if err := tapDivider(ctx); err != nil {
-		return errors.Wrap(err, "failed to tap divider")
+	// view resize to update the bounds. There are no plans to fix b/246799978.
+	if err := pc.Drag(
+		splitViewDragPoints[0],
+		pc.DragTo(splitViewDragPoints[0].Add(coords.NewPoint(20, 0)), duration),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag divider just a little bit")
 	}
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
