@@ -187,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccae7eab_d64b9b46",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-11T06:04:55Z",
+      "side": 1,
+      "message": "Yes. Fixture name should describe the state the fixture want to bring. In this case the device has passed the OOBE flow after TPM reset. The current name LGTM.",
+      "parentUuid": "b8a1ff79_ce967bdc",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e5f4d9_f374bd4c",
@@ -218,6 +236,24 @@
       "side": 1,
       "message": "Done (note it had to be `var _ testing.FixtureImpl \u003d \u0026fixtureImpl{}`).\n\nSo if I understand your suggestion correctly, this change demonstrates that fixtureImpl implements testing.FixtureImpl with code instead of comments, which is potentially better for IDEs / godocs?",
       "parentUuid": "53e5f4d9_f374bd4c",
+      "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e612c111_a97ba168",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-11T06:04:55Z",
+      "side": 1,
+      "message": "Thanks for the fix. The statement makes the Golang compiler check if the struct implements the interface.  You can still keep the comment as is as the statement is not trivial for people who are not familiar with Golang.",
+      "parentUuid": "ac76a231_3dd8d086",
       "revId": "1504d7381ca638000d4a4fed89a40fbd7187ded1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
