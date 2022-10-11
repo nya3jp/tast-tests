@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd477de7_a33bfabc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:12:17Z",
+      "side": 1,
+      "message": "nits: `ShutownTime` -\u003e `ShutdownTime.*` (spelling + consistency with BootTime)\n\nAlso, similar to Avery\u0027s comment and since you\u0027re already here, `BootTimes.*`-\u003e`BootTime.*`",
+      "revId": "0de642b74275d19439a9c45b432b9afbe0a2e5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "127fa5a2_9517dd44",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-10-11T16:34:04Z",
       "side": 1,
       "message": "lgtm",
+      "revId": "0de642b74275d19439a9c45b432b9afbe0a2e5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6851f949_ff981a96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T20:12:17Z",
+      "side": 1,
+      "message": "lgtm % nit",
       "revId": "0de642b74275d19439a9c45b432b9afbe0a2e5b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
