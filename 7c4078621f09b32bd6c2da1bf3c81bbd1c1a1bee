@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97eb4d7a_4160bdd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-11T19:00:41Z",
+      "side": 1,
+      "message": "Many thanks Hidehiko! Addressed!\n\nGeorg, could you please have another look? Thanks!",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

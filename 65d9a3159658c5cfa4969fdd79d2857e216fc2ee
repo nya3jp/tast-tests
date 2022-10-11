@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "709aae73_ee348145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-11T19:00:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6bb63cb3_9ff79594",
+      "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c66322_8900a174",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-10-11T12:23:12Z",
       "side": 1,
       "message": "could you check returned error?\n\nDitto for below.",
+      "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2444bb47_b633c218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-11T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c66322_8900a174",
       "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
