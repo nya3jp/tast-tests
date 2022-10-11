@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9be7c360_f66d49da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-11T11:04:33Z",
+      "side": 1,
+      "message": "nit: the subject line should have a prefix. either `tast-tests:` or the main package that was edited in the CL, like `a11y:`.",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b37ea8_02fab408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-11T11:04:33Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46ac62f9_11f9562f",
         "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
         "patchSetId": 4
@@ -37,6 +71,69 @@
       "writtenOn": "2022-10-11T08:31:40Z",
       "side": 1,
       "message": "please update as suggested in https://crrev.com/c/3891525/11",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d30b08_22ac9f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-11T11:04:33Z",
+      "side": 1,
+      "message": "nit: it can go into one line.",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bfeb98_6c93f375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-11T11:04:33Z",
+      "side": 1,
+      "message": "nit: `match; got %s, want %s`",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74522ec_4ca309d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-11T11:04:33Z",
+      "side": 1,
+      "message": "nit: `Custom`",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 11
+      },
       "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
