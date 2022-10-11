@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994a805c_8dd3187b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_basic_sms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-10-11T12:56:31Z",
+      "side": 1,
+      "message": "The connect step shouldn\u0027t be explicitly required. The modem should be enabled (and so automatically registered in the network) but doesn\u0027t need to be in connected state.\n\nThis is assuming that the step to send the SMS via Google Voice UI is done using a default route which is not WWAN.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "b0ab0ccdcf6c9a2be76c9055aeecac3b1a17f289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdfe1ec_e8eb61e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-10-11T12:56:31Z",
+      "side": 1,
+      "message": "As in the other case, the connect shouldn\u0027t be a requirement for the test I think",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "b0ab0ccdcf6c9a2be76c9055aeecac3b1a17f289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
