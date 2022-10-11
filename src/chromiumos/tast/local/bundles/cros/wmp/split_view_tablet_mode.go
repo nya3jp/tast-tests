@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -45,8 +46,9 @@ func init() {
 			Name: "landscape",
 			Val:  false,
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		VarDeps: []string{"ui.gaiaPoolDefault"},
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.Touchscreen()),
 	})
 }
 
