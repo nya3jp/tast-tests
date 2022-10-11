@@ -28,8 +28,6 @@ const (
 	ChromePolicyLoggedInIsolatedApp = "chromePolicyLoggedInIsolatedApp"
 	// ChromePolicyLoggedInFeatureJourneys is a fixture name.
 	ChromePolicyLoggedInFeatureJourneys = "chromePolicyLoggedInFeatureJourneys"
-	// ChromePolicyLoggedInFeatureChromeLabs is a fixture name.
-	ChromePolicyLoggedInFeatureChromeLabs = "chromePolicyLoggedInFeatureChromeLabs"
 	// ChromeEnrolledLoggedIn is a fixture name.
 	ChromeEnrolledLoggedIn = "chromeEnrolledLoggedIn"
 	// ChromeEnrolledLoggedInARC is a fixture name.
@@ -52,8 +50,6 @@ const (
 	LacrosPrimaryPolicyLoggedIn = "lacrosPrimaryPolicyLoggedIn"
 	// LacrosPolicyLoggedInFeatureJourneys is a fixture name.
 	LacrosPolicyLoggedInFeatureJourneys = "lacrosPolicyLoggedInFeatureJourneys"
-	// LacrosPolicyLoggedInFeatureChromeLabs is a fixture name.
-	LacrosPolicyLoggedInFeatureChromeLabs = "lacrosPolicyLoggedInFeatureChromeLabs"
 	// LacrosPolicyLoggedInRealUser is a fixture name.
 	LacrosPolicyLoggedInRealUser = "lacrosPolicyLoggedInRealUser"
 	// LacrosAdminDeskTemplatesLoggedIn is a fixture name.
