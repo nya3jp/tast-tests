@@ -253,10 +253,12 @@ func (f *FilesApp) OpenFile(fileName string) uiauto.Action {
 
 // OpenContextMenu returns a function that selects a file, then executes right click to open its context menu.
 func (f *FilesApp) OpenContextMenu(fileName string) uiauto.Action {
-	// Select file to ensure context menu items are calculated and menu is sized
-	// before it is shown and positioned.
-	f.SelectFile(fileName)
-	return f.RightClick(file(fileName))
+	// Select file to ensure context menu items are calculated and menu is
+	// sized before it is shown and positioned.
+	return uiauto.Combine(fmt.Sprintf("OpenContextMenu(%s)", fileName),
+		f.SelectFile(fileName),
+		f.RightClick(file(fileName)),
+	)
 }
 
 // OpenQuickView returns a function that opens the QuickView menu for a file.
