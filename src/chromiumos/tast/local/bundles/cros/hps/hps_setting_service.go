@@ -26,7 +26,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/upstart"
 	pb "chromiumos/tast/services/cros/hps"
 	"chromiumos/tast/testing"
 )
@@ -52,11 +51,7 @@ type SettingService struct {
 func (hss *SettingService) WaitForDbus(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	dbusName := "org.chromium.Hps"
 	dbusPath := "/org/chromium/Hps"
-	job := "hpsd"
 
-	if err := upstart.RestartJob(ctx, job); err != nil {
-		return nil, errors.Wrapf(err, "failed to start %s", job)
-	}
 	_, _, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to connect to %s", dbusName)
