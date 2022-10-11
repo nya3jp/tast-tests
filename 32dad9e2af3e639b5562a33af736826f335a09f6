@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b212a22_35939636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-11T00:05:37Z",
+      "side": 1,
+      "message": "t",
+      "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b96b80_9d77b809",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-25T04:55:51Z",
       "side": 1,
       "message": "Do we need to have separate Write() and ProbeAndWrite() functions? \n\nI think Write() will still need to probe for the chip right?\n\n(likewise for other functions with two variants, e.g. ProbeAndRead() etc)",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 1
+      },
+      "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57d59ce_406b344e",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-11T00:05:37Z",
+      "side": 1,
+      "message": "My initial list of methods came from researching of what existing Tast tests are doing. And there are a bunch of tests which only run read or write, without probing.\nHowever, I was not a big fan of having such sibling functions like Write and ProbeAndWrite, also thinking more about it, it shouldn\u0027t harm to explicitly do the probing before writing.\nWe can declare that the library always does probing before any other operation. Also if probing fails, there is not much else can be done anyway, so probably it\u0027s fair to say that operation failed.\n\nLet me re-do things and I will upload new version.",
+      "parentUuid": "62b96b80_9d77b809",
       "range": {
         "startLine": 113,
         "startChar": 0,
