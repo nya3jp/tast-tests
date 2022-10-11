@@ -16,6 +16,24 @@
       "message": "nit: end with a .",
       "revId": "61f596edfb450bb02702dafc561e43e625d2564f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70360e81_287cb849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/chrome_apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-11T16:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ac9f51_7a0757aa",
+      "revId": "61f596edfb450bb02702dafc561e43e625d2564f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
