@@ -28,7 +28,7 @@ func init() {
 		Func:         DocsCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Runs Google Docs CUJ against both ash-chrome and lacros-chrome",
-		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
+		Contacts:     []string{"hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      chrome.GAIALoginTimeout + 20*time.Minute,

@@ -28,7 +28,7 @@ func init() {
 		Func:         ColdbootStartupPerf,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Captures startup metrics for Lacros after cold booting the system",
-		Contacts:     []string{"tvignatti@igalia.com", "lacros-team@google.com"},
+		Contacts:     []string{"hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},

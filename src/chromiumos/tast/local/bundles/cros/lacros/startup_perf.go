@@ -60,7 +60,7 @@ func init() {
 		Func:         StartupPerf,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Captures startup metrics for Lacros configurations and modes",
-		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
+		Contacts:     []string{"hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 10*time.Minute,
