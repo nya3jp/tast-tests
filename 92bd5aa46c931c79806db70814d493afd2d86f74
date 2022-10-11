@@ -85,6 +85,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "063b170e_3a2f54f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-11T04:02:46Z",
+      "side": 1,
+      "message": "optional: I suggest briefly describing it more specifically in the Desc of the test data, or source code comment, like `Verifies SATA Storage support (for device X)` or `Verifies that a single SATA Storage exists and is recognized by the system` because the storage package itself looks more generic.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/storage/doc.go",
+      "parentUuid": "836e78d0_09381b9f",
+      "revId": "92bd5aa46c931c79806db70814d493afd2d86f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5be10793_3756253b",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
         "patchSetId": 6
