@@ -66,7 +66,14 @@ type InputEvent struct {
 
 // WrappedEncryptedData mirrors the wrappedEncryptedData JSON field.
 type WrappedEncryptedData struct {
-	MetricData *MetricData `json:"metricData"`
+	MetricData     *MetricData     `json:"metricData"`
+	DlpPolicyEvent *DlpPolicyEvent `json:"dlpPolicyEvent"`
+}
+
+// DlpPolicyEvent mirrors the dlpPolicyEvent JSON field.
+type DlpPolicyEvent struct {
+	Restriction string `json:"restriction"`
+	Mode        string `json:"mode"`
 }
 
 // MetricData mirrors the metricData JSON field.
