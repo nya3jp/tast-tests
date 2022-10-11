@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d75dee_c8929662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6529841b_b9d6004a",
+      "revId": "16175d169e9d55b471c4eb88b081bcad0998538f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd0094f0_042adf10",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-11T17:00:50Z",
       "side": 1,
       "message": "Similar to the previous CL in the chain, this should be:\n`s.Fatal(\"Failed to set CheckPortal: \", err)`",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 69
+      },
+      "revId": "16175d169e9d55b471c4eb88b081bcad0998538f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0437f0b5_5c2011a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T19:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd0094f0_042adf10",
       "range": {
         "startLine": 197,
         "startChar": 3,
