@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -51,7 +52,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Chromeslate)),
 			Val:               false,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 20 * time.Minute,
 	})
 }
 
@@ -108,7 +109,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 				return errors.New("charger was not removed")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 1 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to check for charger after stopping power suply")
 		}
 		s.Log("Charger is removed")
@@ -152,7 +153,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	confirmBoot := func(ctx context.Context, wakeByAC bool) error {
 		// Wait for a connection to the DUT.
 		s.Log("Wait for SSH to DUT")
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 3*time.Minute)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 6*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
@@ -218,7 +219,10 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		if *ecSoftwareWPEnabled {
 			s.Log("Disabling ec software write protect")
 			if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "disable").Run(ssh.DumpLogOnError); err != nil {
-				s.Fatal("Failed to disable ec write protect: ", err)
+				s.Log("Error in running 'ectool flashprotect disable', got error: ", err)
+				if err := verifyECSoftwareWPStatus(ctx, s, "disabled"); err != nil {
+					s.Fatal("While verifying EC wp state: ", err)
+				}
 			}
 		}
 	}(cleanupCtx, &hardwareWPEnabled, &apSoftwareWPEnabled, &ecSoftwareWPEnabled)
@@ -228,14 +232,17 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	for _, programmer := range []string{"ec", "host"} {
 		wpStatus, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", programmer, "--wp-status").Output(ssh.DumpLogOnError)
 		if err != nil {
-			s.Fatal("Failed to check for ec write protection: ", err)
+			s.Fatalf("Failed to check for %s write protection: %v", programmer, err)
 		}
 		if reWPEnabled := regexp.MustCompile(`WP: write protect is enabled`); !reWPEnabled.Match(wpStatus) {
 			s.Logf("Enabling %s software write protect", programmer)
 			switch programmer {
 			case "ec":
 				if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
-					s.Fatal("Failed to enable EC software write protect: ", err)
+					s.Log("Error in running 'ectool flashprotect enable', got error: ", err)
+					if err := verifyECSoftwareWPStatus(ctx, s, "enabled"); err != nil {
+						s.Fatal("While verifying EC wp state: ", err)
+					}
 				}
 				ecSoftwareWPEnabled = true
 			case "host":
@@ -334,5 +341,21 @@ func wakeDUTS0(ctx context.Context, h *firmware.Helper) error {
 	if err := h.WaitForPowerStates(retryCtx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
 		return errors.Wrap(err, "unable to get power state at S0")
 	}
+	return nil
+}
+
+// verifyECSoftwareWPStatus checks that the ec write protection status is the
+// expected value using flashrom. Some DUTs, such as Nautilus and Nautiluslte,
+// failed the ectool command, but their wp status from flashrom showed otherwise.
+func verifyECSoftwareWPStatus(ctx context.Context, s *testing.State, expected string) error {
+	out, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "ec", "--wp-status").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to collect the ec write protection status with flashrom")
+	}
+	re := fmt.Sprintf("(write protect is %s)", expected)
+	if reWPEnabled := regexp.MustCompile(re); !reWPEnabled.MatchString(string(out)) {
+		return errors.Wrapf(err, "EC software write protect not %s, got output: %s", expected, string(out))
+	}
+	testing.ContextLog(ctx, "WARNING: ectool returned a non-zero exit, but the wp status changed as expected")
 	return nil
 }
