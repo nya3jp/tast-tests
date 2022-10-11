@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ac62f9_11f9562f",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:31:40Z",
+      "side": 1,
+      "message": "`R.id.custom_action`",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1386246_ae14021e",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-11T08:31:40Z",
+      "side": 1,
+      "message": "please update as suggested in https://crrev.com/c/3891525/11",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
