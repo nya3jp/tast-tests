@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type params struct {
@@ -35,6 +36,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"crossystem"},
 		Vars:         []string{"firmware.skipFlashUSB"},
+		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Fixture:      fixture.DevMode,
 		Params: []testing.Param{{
 			Val: &params{
@@ -161,7 +163,7 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 			with ctrl+D would allow boot to continue into dev mode and
 			from main storage.
 	*/
-
+	devModeKeypressDelay := 2 * time.Second
 	done := make(chan bool, 1)
 	defer func() {
 		close(done)
@@ -201,20 +203,45 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to sleep for %s to wait for firmware screen: %v", h.Config.FirmwareScreen, err)
 		}
 
+		dutAtFwScreen := false
 		if goRoutineRequired {
+			index := 0
 			s.Log("Pressing <up> key in the background")
-			go func() {
+			go func(dutAtFwScreen *bool) {
 				for {
 					if err := func() error {
 						if err := h.Servo.RunECCommand(ctx, holdUp); err != nil {
 							return errors.Wrapf(err, "failed to press and hold %s key", pressedKey)
 						}
 						// Delay for 2 seconds to ensure that the press was effective.
-						if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-							return errors.Wrap(err, "failed to sleep for 2 seconds")
+						if err := testing.Sleep(ctx, devModeKeypressDelay); err != nil {
+							return errors.Wrapf(err, "failed to sleep for %s seconds", devModeKeypressDelay)
 						}
 						if err := h.Servo.RunECCommand(ctx, releaseUp); err != nil {
 							return errors.Wrapf(err, "failed to release %s key", pressedKey)
+						}
+						// Delay for 2 seconds to ensure that release was effective.
+						if err := testing.Sleep(ctx, devModeKeypressDelay); err != nil {
+							return errors.Wrapf(err, "failed to sleep for %s seconds", devModeKeypressDelay)
+						}
+
+						// Pressing the up key would ensure an extended stay at the
+						// firmware screen, beyond the default timeout of 30 secs.
+						// Start pressing and testing shortcuts in the background
+						// during the extended period.
+						if *dutAtFwScreen {
+							if index < len(steps.testedShortCuts) {
+								s.Logf("Pressing key %q", steps.testedShortCuts[index])
+								if err := h.Servo.KeypressWithDuration(ctx, steps.testedShortCuts[index], servo.DurTab); err != nil {
+									return errors.Wrapf(err, "failed to press %s", steps.testedShortCuts[index])
+								}
+
+								s.Logf("Sleeping for %s seconds", devModeKeypressDelay)
+								if err := testing.Sleep(ctx, devModeKeypressDelay); err != nil {
+									return errors.Wrapf(err, "failed to sleep for %s seconds", devModeKeypressDelay)
+								}
+								index++
+							}
 						}
 						return nil
 					}(); err != nil && !errors.Is(err, context.Canceled) {
@@ -227,7 +254,7 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 					default:
 					}
 				}
-			}()
+			}(&dutAtFwScreen)
 
 			// The default timeout at the firmware screen is 30 seconds.
 			// Check that pressing the <up> key has worked around this timeout,
@@ -243,26 +270,27 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 				s.Fatal("Unexpected error in waiting for DUT to reconnect: ", err)
 			}
 			s.Log("DUT is still at dev screen")
-		}
 
-		for _, shortcut := range steps.testedShortCuts {
-			s.Logf("Testing shortcuts %q", shortcut)
-			if err := h.Servo.KeypressWithDuration(ctx, shortcut, servo.DurTab); err != nil {
-				s.Fatalf("Failed to press %s: %v", shortcut, err)
+			// Trigger the shortcuts to be tested.
+			dutAtFwScreen = true
+		} else {
+			// For DUTs using KeyboardDevSwitcher, pressing a space key would allow
+			// an extended stay at the firmware screen. If ctrl+D worked, pressing
+			// a space key here would not have any effects, and DUT would
+			// eventually boot to ChromeOS. But, if ctrl+D did not work, the space
+			// key would stop the boot up process, and DUT would end up disconnected.
+			for _, shortcut := range steps.testedShortCuts {
+				s.Logf("Testing shortcuts %q", shortcut)
+				if err := h.Servo.KeypressWithDuration(ctx, shortcut, servo.DurTab); err != nil {
+					s.Fatalf("Failed to press %s: %v", shortcut, err)
+				}
+
+				s.Logf("Sleeping %s (KeypressDelay)", devModeKeypressDelay)
+				if err := testing.Sleep(ctx, devModeKeypressDelay); err != nil {
+					s.Fatalf("Failed to sleep for %s seconds: %v", devModeKeypressDelay, err)
+				}
 			}
 
-			s.Log("Sleeping for 2 second")
-			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-				s.Fatal("Failed to sleep for 2 seconds: ", err)
-			}
-		}
-
-		// For DUTs using KeyboardDevSwitcher, pressing a space key would allow
-		// an extended stay at the firmware screen. If ctrl+D worked, pressing
-		// a space key here would not have any effects, and DUT would
-		// eventually boot to ChromeOS. But, if ctrl+D did not work, the space
-		// key would stop the boot up process, and DUT would end up disconnected.
-		if !goRoutineRequired {
 			s.Log(ctx, "Pressing SPACE key to keep DUT in dev screen")
 			if err := h.Servo.PressKey(ctx, " ", servo.DurTab); err != nil {
 				s.Fatal("Failed to press SPACE to stop in dev screen: ", err)
