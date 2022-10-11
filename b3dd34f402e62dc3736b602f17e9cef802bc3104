@@ -22,6 +22,30 @@
       },
       "revId": "b3dd34f402e62dc3736b602f17e9cef802bc3104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ea6b49_ab465abc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-11T21:03:36Z",
+      "side": 1,
+      "message": "Even with this advice, I still have had no luck reproducing the problem. The following lease didn\u0027t help:\n\n\tamusbach@amusbach:~/chromium/src$ crosfleet dut lease -board volteer -minutes 25\n\tVerifying the provided DUT dimensions...\n\tFound 609 DUT(s) (609 busy) matching the provided DUT dimensions\n\tRequesting 25 minute lease at https://ci.chromium.org/ui/p/chromeos/builders/test_runner/dut_leaser/b8800569037289452913\n\tWaiting to confirm DUT lease request validation and print leased DUT details...\n\t(To skip this step, pass the -exit-early flag on future DUT lease commands)\n\tLeased chromeos2-row3-rack2-host37 until 11 Oct 22 14:09 PDT\n\n\tDUT_HOSTNAME\u003dchromeos2-row3-rack2-host37\n\tMODEL\u003ddrobit\n\tBOARD\u003dvolteer\n\tSERVO_HOSTNAME\u003dchromeos2-row3-rack2-labstation3\n\tSERVO_PORT\u003d9996\n\tSERVO_SERIAL\u003dSERVOV4P1-S-2107251626\n\n\tVisit http://go/chromeos-lab-duts-ssh for up-to-date docs on SSHing to a leased DUT\n\tVisit http://go/my-crosfleet to track all of your crosfleet-launched tasks\n\nI don\u0027t think the failure could be because of the app getting killed. Usually that looks like these:\n\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2022-10-05\u0026last_date\u003d2022-10-11\u0026test\u003d%5Etast%5C.ui%5C.WindowArrangementCUJ%5C.tablet_mode_vm%24\u0026reason\u003dcrashed\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "parentUuid": "ac7070c9_4a6c7303",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "b3dd34f402e62dc3736b602f17e9cef802bc3104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
