@@ -16,6 +16,24 @@
       "message": "Hi David,\n\nCan you please share the CQ failure logs?",
       "revId": "ed03a64c5b0f1597d0904f7c2f87fb0f66338c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6abd74e9_28584cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-11T16:49:48Z",
+      "side": 1,
+      "message": "They all look to be transient errors, unrelated to your CL.",
+      "parentUuid": "82b700d9_27a79ae1",
+      "revId": "ed03a64c5b0f1597d0904f7c2f87fb0f66338c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
