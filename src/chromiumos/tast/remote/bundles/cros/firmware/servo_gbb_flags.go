@@ -134,12 +134,13 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	if programmer == "" {
 		s.Fatalf("servoFlashCmds does not have programmer configured: %+v", servoFlashCmds)
 	}
-	s.Logf("Programmer is %s", programmer)
 
 	ccdSerial, err := h.Servo.GetCCDSerial(ctx)
 	if err != nil {
 		s.Fatal("Failed to get servo serials: ", err)
 	}
+	programmer = fmt.Sprintf(programmer, ccdSerial)
+	s.Logf("Programmer is %s", programmer)
 
 	if err = h.RequireBiosServiceClient(ctx); err != nil {
 		s.Fatal("Requiring BiosServiceClient: ", err)
@@ -159,7 +160,6 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	s.Log("Reading fw image over CCD")
 	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
 	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOn)
-	programmer = fmt.Sprintf(programmer, ccdSerial)
 	img, err := bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection, servoFlashCmds.FlashExtraFlagsFlashrom)
 	if err != nil {
 		s.Error("Could not read firmware: ", err)
