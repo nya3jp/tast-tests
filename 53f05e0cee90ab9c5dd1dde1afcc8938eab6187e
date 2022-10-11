@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b42e9df_d738d725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-11T06:21:50Z",
+      "side": 1,
+      "message": "FrontlineWorkerCUJ is now broken. Need to wait for the following revert CL fixes.\n\n3942450: Revert \"tast: Use C++ policy testserver\" | https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3942450",
+      "revId": "53f05e0cee90ab9c5dd1dde1afcc8938eab6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
