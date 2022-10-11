@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8341734c_cf9a41be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-11T02:19:09Z",
+      "side": 1,
+      "message": "\"This\" in this context should mean \"this patch\". Since this patch does not add a new test but just modifies the existing tests, \"this is the tast test\" might be confusing.\n\nI would just remove this sentence since the following two sentences   basically express the same meaning.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "0f5726dac55428d6adf65c2cc5819dcabc594a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbb0699b_9657a3af",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -19,6 +42,29 @@
         "startChar": 48,
         "endLine": 10,
         "endChar": 55
+      },
+      "revId": "0f5726dac55428d6adf65c2cc5819dcabc594a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a3649c_a7b30919",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-11T02:19:09Z",
+      "side": 1,
+      "message": "Again, this is a \"patch\" but not a \"test\", I would say \"This patch removes...\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
       },
       "revId": "0f5726dac55428d6adf65c2cc5819dcabc594a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
