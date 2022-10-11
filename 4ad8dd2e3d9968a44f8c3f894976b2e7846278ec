@@ -52,6 +52,24 @@
       "parentUuid": "9314873a_99234089",
       "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f6f13c_9d01cbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-10-11T19:34:12Z",
+      "side": 1,
+      "message": "Same here, I think this got added to the next CL. Still gonna LGTM.",
+      "parentUuid": "61dc90c7_c178a6c6",
+      "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
