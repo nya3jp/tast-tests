@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddddfec1_83b2657f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-11T05:17:30Z",
+      "side": 1,
+      "message": "\"This patch does not have\" sounds a little strange.\nWe could say either \"This patch removes...\" (this is an action, the subject is the patch) or \"After this patch, the test no longer has\" (this is a status, the subject is the test, similar to your previous version).\nIn this context, I would prefer the former one.",
+      "parentUuid": "12ea8f7e_1c5d65ed",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "0f5726dac55428d6adf65c2cc5819dcabc594a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80178472_507409a8",
