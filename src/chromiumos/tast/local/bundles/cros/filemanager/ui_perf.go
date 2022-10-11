@@ -31,7 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UIPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "UI performance metrics for Files app",
 		Contacts: []string{
 			"benreich@chromium.org",
