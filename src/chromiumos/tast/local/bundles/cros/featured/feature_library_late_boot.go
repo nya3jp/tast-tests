@@ -43,7 +43,7 @@ func init() {
 			"kendraketsui@google.com",
 			"mutexlox@google.com",
 			"cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "experiment_enabled_without_params",
