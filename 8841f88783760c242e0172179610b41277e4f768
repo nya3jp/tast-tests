@@ -16,6 +16,24 @@
       "message": "It would also be nice to change servod to accept \"ccd_gsc\" even on cr50.",
       "revId": "8841f88783760c242e0172179610b41277e4f768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97394540_d4b7fb64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-11T20:25:51Z",
+      "side": 1,
+      "message": "That\u0027s the plan. Maybe DUTControllerCCD should be ccd_gsc and we should make DUTControllerCCDCr50 \"ccd_cr50\", since that\u0027s the string that will be phased out.",
+      "parentUuid": "9ae8840f_e6529fde",
+      "revId": "8841f88783760c242e0172179610b41277e4f768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
