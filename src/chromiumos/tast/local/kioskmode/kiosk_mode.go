@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -397,14 +396,6 @@ func WaitForCrxInCache(ctx context.Context, id string) error {
 // example when cancelling a Kiosk launch.
 func (k *Kiosk) restartChromeNoCloseWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
 	k.cr = nil
-
-	testing.ContextLog(ctx, "Restarting ui")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		if err := startChromeClearPolicies(ctx, k.fdms, fixtures.Username, fixtures.Password); err != nil {
-			return nil, errors.Wrap(err, "could not finish cleanup")
-		}
-		return nil, errors.Wrap(err, "failed to restart ui")
-	}
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
