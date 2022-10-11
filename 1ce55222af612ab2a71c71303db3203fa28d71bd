@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf49f2eb_b1198c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Any reason not to use fixtures like other tests?",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b7817a_4f8f9815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Make it in two lines instead of wrapping it.",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12047750_bba9f697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Probably can simplify as:\n\n```\nif element.GetKey() \u003d\u003d \"feedbackUserCtlConsent\" {\n  feedbackUserCtlConsentValue \u003d element.GetValue()\n  break\n}\n```",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70996f1_318b9c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Try to make this line into two lines.",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf5cf8b_a771baba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Try to make this line into two lines.",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363d0f11_d5d384b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-10-11T21:22:12Z",
+      "side": 1,
+      "message": "Try to make this line into two lines.",
+      "revId": "1ce55222af612ab2a71c71303db3203fa28d71bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
