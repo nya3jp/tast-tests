@@ -33,6 +33,24 @@
       "message": "Was the bug before that we were getting both renderer processes regardless of browserType?",
       "revId": "950d21170bbf851efdb7733a1ed50830d571a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2998529_217db997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-11T17:59:55Z",
+      "side": 1,
+      "message": "yes. (I\u0027d say it wasn\u0027t quite a bug when I *wrote* the test, since we were tagging both sets of renderers. But now the expectation changed.)",
+      "parentUuid": "e90bd942_16ffa0ed",
+      "revId": "950d21170bbf851efdb7733a1ed50830d571a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
