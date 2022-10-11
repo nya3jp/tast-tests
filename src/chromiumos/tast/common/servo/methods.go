@@ -223,8 +223,8 @@ type DUTController string
 // Parameters that can be passed to SetActiveDUTController().
 const (
 	DUTControllerC2D2       DUTController = "c2d2"
-	DUTControllerCCD        DUTController = "ccd_cr50"
-	DUTControllerCCDGSC     DUTController = "ccd_gsc"
+	DUTControllerCCDCr50    DUTController = "ccd_cr50"
+	DUTControllerCCD        DUTController = "ccd_gsc"
 	DUTControllerServoMicro DUTController = "servo_micro"
 )
 
@@ -968,10 +968,12 @@ func (s *Servo) RequireCCD(ctx context.Context) error {
 		return errors.Wrapf(err, "servo %s is not CCD", servoType)
 	}
 	if s.isDualV4 {
-		if err = s.SetActiveDUTController(ctx, DUTControllerCCD); err != nil {
-			if err = s.SetActiveDUTController(ctx, DUTControllerCCDGSC); err != nil {
-				return errors.Wrap(err, "failed to set active dut controller")
-			}
+		controller := DUTControllerCCDCr50
+		if strings.Contains(servoType, string(DUTControllerCCD)) {
+			controller = DUTControllerCCD
+		}
+		if err = s.SetActiveDUTController(ctx, controller); err != nil {
+			return errors.Wrap(err, "failed to set active dut controller")
 		}
 	}
 	return nil
