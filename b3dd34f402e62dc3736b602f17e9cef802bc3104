@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7070c9_4a6c7303",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-11T19:29:18Z",
+      "side": 1,
+      "message": "Have you tried lease a device from skylab and repro it? It fails massively on stainless so I suspect it would be not too hard to lease a device to fail the test. \nAlso could the failure be because of the app getting killed https://screenshot.googleplex.com/4PjG5pidhmCzo5h?",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "b3dd34f402e62dc3736b602f17e9cef802bc3104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
