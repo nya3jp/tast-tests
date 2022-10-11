@@ -22,6 +22,30 @@
       },
       "revId": "b656dd5ee9107fd55078eef49094b170dcc19301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0049cc0d_e043de37",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-11T05:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441b463e_8be2fa4b",
+      "range": {
+        "startLine": 439,
+        "startChar": 5,
+        "endLine": 439,
+        "endChar": 18
+      },
+      "revId": "b656dd5ee9107fd55078eef49094b170dcc19301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
