@@ -100,6 +100,7 @@ func ModemfwdFallbackToRootfsFailedToInstallDlc(ctx context.Context, s *testing.
 
 	// modemfwd is initially stopped in the fixture SetUp
 	if err := modemfwd.StartAndWaitForQuiescence(ctx); err != nil {
+		err := cellular.TagKnownBugOnBoard(ctx, err, "b/253087349", []string{"herobrine"})
 		s.Fatal("modemfwd failed during initialization: ", err)
 	}
 }
