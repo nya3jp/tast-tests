@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71923ca9_a28dd5c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Do you mind adding a small descriptor of what your test does?",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f131a3f1_e801cdf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "You don\u0027t need to include -verbose\n\nAlso, can you test on the lacros variant? Then change this line to \n\n`tast run \u003cIP\u003e wmp.WindowCaptionButton*`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ceae48_12d9eecb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Sorry there\u0027s so many comments :) I just wanted to make sure you got some consistency-based comments so future CLs are even better!",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e2d5a9_5f5d42d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "`const timeout \u003d 30 * time.Second`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a5da7c_39b7fb1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "You probably only need a couple seconds. `ctxutil.Shorten(ctx, 2*time.Second)` \n\nYou might want to test that out to see, but I\u0027m pretty sure 15 is overkill...",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5c1290_847760fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "optional nit: maybe add an empty line before `tconn, err`? This will match the golang structure of setting up a variable like `tconn`, and immediately after checking the error value.",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1162d83d_75103757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit: `Open either an ash-chrome or lacros-chrome browser window.`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd86b3c6_667c3f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit, error message I\u0027d expect for golang consistency: `unexpected number of browser windows: got %d, expected 1`\n\nEither way, this `s.Fatal` is incorrect b/c err will be an error message, but after `but got: ` I\u0027d expect a number.\n\nYou could really just use `ash.GetAllWindows` and check the len of windows. That\u0027ll give you how many windows are actually open (it might actually be 0)",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8932907c_681ec47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Comment seems to be in a weird place? It\u0027s not related to line 95.",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc27f1f_41281bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit: capitalize chrome everywhere?",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f72ab9_7f9d707c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Can you update the error messages to be in the following style:\n\n`unexpected Chrome window state: got %v, expected %v` \n\nAlso, use `%v` instead of `%s` for `bw` because I think `bw` is a struct not a string?",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7330d9e_864dc2fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Can you add a comment saying this is under the assumption that the chrome icon is the first icon in the shelf?",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49a5ee8_984d6ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit: newline after defer",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e7f93b_bf607b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit: lowercase \"maximize\" \n\nThis string is used in the potential error message, and the error messages should be lowercased.",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5704cfb5_12e4f88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Can you do `kb.AccelAction(\"Alt+\u003d\")`? It should do the same as `PressAction` + `ReleaseAction`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fe7540_df27b2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "I assume you expected to use only one of these comments?",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f9f15c_d03613c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "nit: same comment as before for standardizing the error messages\n\"unexpected number of open windows; got blah, expected blah`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65cabea5_e5fe22f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-11T21:43:52Z",
+      "side": 1,
+      "message": "Technically a more accurate error msg would be `Unexpected open window, expected FileApp window but got bw.Title`",
+      "revId": "10e2a15fbf6b3802fc90849f38849f8baa01dbe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
