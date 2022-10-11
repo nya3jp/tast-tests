@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7b720e_ab627dc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50b8584_da64a011",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c4c51bc_b4b40322",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2387879c_2d0d763b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4c51bc_b4b40322",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9ef6177_36139c73",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-11T20:35:46Z",
       "side": 1,
       "message": "nit: You don\u0027t need to add -verbose \n`tast run \u003cDUT\u003e wmp.screenCaptureModes` (or \u003cIP\u003e is fine) would be consistent with most of our tests",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71f25c0_4520e0a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9ef6177_36139c73",
       "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07fb189_e82fff7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87f5d67_6bac7c39",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c77c198e_34b27fef",
@@ -122,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faf25dfe_18f080af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "i can do that but its really hard to predict how the label will change if it does.\n\ndone removed lbabel",
+      "parentUuid": "c77c198e_34b27fef",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c897e_73c4f56d",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
         "patchSetId": 1
@@ -133,6 +223,30 @@
       "writtenOn": "2022-10-11T18:32:54Z",
       "side": 1,
       "message": "No need for this wait before left click. `LeftClick()` implicitly waits until the element exists.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5e3ad9_3e0eaae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853c897e_73c4f56d",
       "range": {
         "startLine": 86,
         "startChar": 2,
@@ -166,6 +280,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c864ed_c300aede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9d2b97_025f693f",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5767c76_e20216d7",
@@ -179,6 +317,24 @@
       "writtenOn": "2022-10-11T20:35:46Z",
       "side": 1,
       "message": "`WaitUntilGone` will return true immediately probably, even if a  wrong label shows up, because there\u0027s no delay between doing the shortcut and checking for the label.\n\nCan you use `ac.EnsureGoneFor`?",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4171b041_3aa268a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5767c76_e20216d7",
       "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -200,6 +356,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54c45c2_458cb114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ef07cb_986fd283",
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68eed75b_b9850fc5",
@@ -213,6 +387,30 @@
       "writtenOn": "2022-10-11T18:32:54Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "71ad29c12d0d567e356d5c277ce7376be9a8bf71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877868ba_263f5ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-11T21:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68eed75b_b9850fc5",
       "range": {
         "startLine": 139,
         "startChar": 0,
