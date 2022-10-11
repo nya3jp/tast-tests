@@ -33,6 +33,40 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "b49ae3278f14493aaa2a1542d218f1e69fde294a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a4650e_259a8240",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-11T21:58:03Z",
+      "side": 1,
+      "message": "Might be good to add a check that ensures `FixtData` implements `HasChrome` and `HasFakeDMS` interfaces, to provide some compile-time safety against changes to those interfaces since they\u0027re managed in other packages:\n```\nvar _ chrome.HasChrome \u003d FixtData{}\nvar _ fakedms.HasFakeDMS \u003d FixtData{}\n```\nhttps://go.dev/doc/faq#guarantee_satisfies_interface",
+      "revId": "b49ae3278f14493aaa2a1542d218f1e69fde294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f7b2ae_c30ec44a",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-11T21:58:03Z",
+      "side": 1,
+      "message": "ditto here",
+      "revId": "b49ae3278f14493aaa2a1542d218f1e69fde294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
