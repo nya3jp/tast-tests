@@ -63,8 +63,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService: ", err)
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.ARCVPNService, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
@@ -75,8 +75,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if err := crashARCVPN(ctx, a); err != nil {
 		s.Fatal("Failed to crash ArcHostVpnService: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, false); err != nil {
+		s.Fatalf("%s should be stopped, but isn't: %v", arcvpn.ARCVPNService, err)
 	}
 	// VPN should still be reachable even without ArcHostVpnService
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
@@ -103,8 +103,8 @@ func crashARCVPN(ctx context.Context, a *arc.ARC) error {
 		return errors.Wrap(err, "failed to execute 'am force-stop' commmand")
 	}
 
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		return errors.Wrap(err, "ArcHostVpnService expected to be stopped, but was running")
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, false); err != nil {
+		return errors.Wrapf(err, "%s expected to be stopped, but was running", arcvpn.ARCVPNService)
 	}
 	return nil
 }

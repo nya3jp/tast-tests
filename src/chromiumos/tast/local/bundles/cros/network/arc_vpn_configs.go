@@ -88,8 +88,8 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if _, err := conn.Connect(ctx); err != nil {
 		return errors.Wrap(err, "failed to connect to VPN server")
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		return errors.Wrap(err, "failed to start ArcHostVpnService")
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, true); err != nil {
+		return errors.Wrapf(err, "failed to start %s", arcvpn.ARCVPNService)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to ping from host %s", conn.Server.OverlayIP)
@@ -138,8 +138,8 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if err := conn.Disconnect(ctx); err != nil {
 		return errors.Wrap(err, "failed to disconnect VPN")
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		return errors.Wrap(err, "ArcHostVpnService should be stopped, but isn't")
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, false); err != nil {
+		return errors.Wrapf(err, "%s should be stopped, but isn't", arcvpn.ARCVPNService)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		return errors.Errorf("expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)

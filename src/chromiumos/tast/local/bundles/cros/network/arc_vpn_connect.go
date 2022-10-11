@@ -65,8 +65,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService: ", err)
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.ARCVPNService, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
@@ -79,8 +79,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if err := conn.Disconnect(ctx); err != nil {
 		s.Error("Failed to disconnect VPN: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, false); err != nil {
+		s.Fatalf("%s should be stopped, but isn't: %v", arcvpn.ARCVPNService, err)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)
@@ -90,8 +90,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if err := waitForConnect(ctx, conn); err != nil {
 		s.Fatal("Failed to reconnect to VPN: ", err)
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService on reconnection: ", err)
+	if err := arcvpn.CheckARCServiceState(ctx, a, arcvpn.ARCVPNPackage, arcvpn.ARCVPNService, true); err != nil {
+		s.Fatalf("Failed to start %s on reconnection: %v", arcvpn.ARCVPNService, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
