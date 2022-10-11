@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544a2725_002d797f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-11T20:12:55Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t impact any existing Tast code. The structure definition is not currently being used to Marshall() YAML anywhere. The CL unblocks re-use of the existing expectation structure for writing expectations files.",
+      "revId": "58e5eb3efb6977ee6c3d3afe897f567d7980cc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
