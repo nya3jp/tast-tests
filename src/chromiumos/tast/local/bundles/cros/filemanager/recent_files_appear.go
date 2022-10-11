@@ -30,7 +30,7 @@ const testImage = "files_app_test.png"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RecentFilesAppear,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check the edited files are shown in Recent tab",
 		Contacts: []string{
 			"tim.chang@cienet.com",

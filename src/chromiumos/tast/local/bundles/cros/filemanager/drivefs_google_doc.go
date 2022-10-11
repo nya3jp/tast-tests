@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DrivefsGoogleDoc,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify that a google doc created via Drive API syncs to DriveFS",
 		Contacts: []string{
 			"austinct@chromium.org",
