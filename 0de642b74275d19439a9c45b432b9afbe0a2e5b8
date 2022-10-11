@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "426c2ce1_56ee7dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-11T23:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd477de7_a33bfabc",
+      "revId": "0de642b74275d19439a9c45b432b9afbe0a2e5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "127fa5a2_9517dd44",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -82,6 +100,30 @@
       "writtenOn": "2022-10-11T16:01:11Z",
       "side": 1,
       "message": "`BootTime` (with no `s`)",
+      "range": {
+        "startLine": 64,
+        "startChar": 23,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "0de642b74275d19439a9c45b432b9afbe0a2e5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c5c2f5_4af8cd67",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-11T23:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "114f50ef_38912d36",
       "range": {
         "startLine": 64,
         "startChar": 23,
