@@ -29,19 +29,19 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Params:       []testing.Param{
-			/* Disabled due to <1% pass rate over 30 days. See b/246818645
+		Params: []testing.Param{
+			// /* Disabled due to <1% pass rate over 30 days. See b/246818645
 			{
 				Name: "reverse_on",
 				Val:  true,
-			}
-			*/
-			/* Disabled due to <1% pass rate over 30 days. See b/246818645
+			},
+			// */
+			// /* Disabled due to <1% pass rate over 30 days. See b/246818645
 			{
 				Name: "reverse_off",
 				Val:  false,
-			}
-			*/
+			},
+			// */
 		},
 	})
 }
@@ -60,7 +60,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	tpw, err := input.Trackpad(ctx)
 	if err != nil {
@@ -216,9 +216,24 @@ func swipeTwice(ctx context.Context, tconn *chrome.TestConn, tpw *input.Trackpad
 
 // swipeToEnterOverview performs the swiping up with 3 fingers to enter Overview and validates that Overview is entered.
 func swipeToEnterOverview(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter) error {
-	if err := trackpad.Swipe(ctx, tconn, tpw, trackpad.UpSwipe, 3); err != nil {
+	mtw, err := tpw.NewMultiTouchWriter(3)
+	if err != nil {
+		errors.Wrap(err, "failed to swipe up with 3 fingers")
+	}
+
+	fingerHorizontalSpacing := tpw.Width() / 4
+	fingerVerticalSpacing := input.TouchCoord(0)
+	fingerNum := 3
+
+	var startX, startY, endX, endY input.TouchCoord
+	startX, startY, endX, endY = tpw.Width()/4, 1, tpw.Width()/2, tpw.Height()-1
+	scrollDelay := 1 * time.Second / 2
+
+	if err := mtw.Swipe(ctx, startX, startY, endX, endY, fingerHorizontalSpacing,
+		fingerVerticalSpacing, fingerNum, scrollDelay); err != nil {
 		return errors.Wrap(err, "failed to swipe up with 3 fingers")
 	}
+	mtw.End()
 
 	if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 5*time.Second); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
