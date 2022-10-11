@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8ae549_c98c28b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T23:54:56Z",
+      "side": 1,
+      "message": "I just have one opinion. I don\u0027t know UI testing enough to make a more concrete suggestion. Please take a look. Thanks.",
+      "revId": "416c067489cc56dc51cee4e80df768dd8cfc26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e89a2cf_01d7394a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-11T23:54:56Z",
+      "side": 1,
+      "message": "It is just an opinion. I don\u0027t know UI test enough to say it is right or wrong. From my experience, tests with an assumption of a particular orders of icons of pinned apps are prone to failures. There are a lot of possible causes such as different UI for different models, UI changes, ... \n\nTherefore, I suggest not to assume a particular order. Just make sure they exist.",
+      "revId": "416c067489cc56dc51cee4e80df768dd8cfc26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
