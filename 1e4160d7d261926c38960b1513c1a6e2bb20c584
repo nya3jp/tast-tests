@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e899e20_ebdcda3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pin_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-11T20:22:12Z",
+      "side": 1,
+      "message": "Any reason we need to change this comment? We\u0027re doing the reset on all modems regardless of whether or not they\u0027re from Fibocom",
+      "revId": "1e4160d7d261926c38960b1513c1a6e2bb20c584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
