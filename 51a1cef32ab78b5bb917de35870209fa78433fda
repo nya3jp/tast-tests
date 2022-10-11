@@ -22,6 +22,30 @@
       },
       "revId": "51a1cef32ab78b5bb917de35870209fa78433fda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af4c43d_bc88e5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-10-11T20:49:01Z",
+      "side": 1,
+      "message": "Line 27 is in the params struct (22-28)",
+      "parentUuid": "e2dd4cca_93437907",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "51a1cef32ab78b5bb917de35870209fa78433fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
