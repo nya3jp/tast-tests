@@ -16,6 +16,57 @@
       "message": "Addressed. Please have another look",
       "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239d602e_728fedb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-11T12:23:12Z",
+      "side": 1,
+      "message": "LGTM with comments. Defer to Georg.",
+      "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb63cb3_9ff79594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-11T12:23:12Z",
+      "side": 1,
+      "message": "in case of logs, the style recommends to start with a capital letter. (unlike error messages)\n\nDitto for below.",
+      "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c66322_8900a174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-11T12:23:12Z",
+      "side": 1,
+      "message": "could you check returned error?\n\nDitto for below.",
+      "revId": "65d9a3159658c5cfa4969fdd79d2857e216fc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
