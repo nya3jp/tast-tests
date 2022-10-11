@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24be9b7_dee8a052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-11T23:21:20Z",
+      "side": 1,
+      "message": "I prefer using channels that are non-DFS everywhere to enforcing a certain regdom for all tests, especially since these tests don\u0027t have anything to do with the channel that we\u0027ve arbitrarily chosen for them. lmk if you disagree",
+      "revId": "44b7f6478ba7e9bb55ce8d6a819b22098d349bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
