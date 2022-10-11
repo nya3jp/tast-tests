@@ -16,6 +16,92 @@
       "message": "ta",
       "revId": "862a3c3ded7c8b69073b41c6ed5097f74e02b6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd45806f_c731b430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-11T18:52:28Z",
+      "side": 1,
+      "message": "Hi Rajat, thanks for submitting this test. Here is my feedback. I think we\u0027ll also need to add one of the code-owners to review.",
+      "revId": "862a3c3ded7c8b69073b41c6ed5097f74e02b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbb7f4d_0220992b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typec_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-11T18:52:28Z",
+      "side": 1,
+      "message": "This is only true in \"complete mode\" right? If so, the description should say that. Something like \"Processes login and will also enable data peripheral access setting when in complete mode.\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "862a3c3ded7c8b69073b41c6ed5097f74e02b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72db3db_b3a14769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typec_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-11T18:52:28Z",
+      "side": 1,
+      "message": "Can you add \"informational\" here? Example on L23 (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/typec/physical_location.go)",
+      "range": {
+        "startLine": 21,
+        "startChar": 37,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "862a3c3ded7c8b69073b41c6ed5097f74e02b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6234aa45_78e456be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typec_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-11T18:52:28Z",
+      "side": 1,
+      "message": "nit: Capitalize Chrome",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "862a3c3ded7c8b69073b41c6ed5097f74e02b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
