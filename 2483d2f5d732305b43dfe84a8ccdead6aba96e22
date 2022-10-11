@@ -16,6 +16,92 @@
       "message": "Thanks for reviewing!",
       "revId": "2483d2f5d732305b43dfe84a8ccdead6aba96e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c20c2bb_363a9558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-11T19:19:53Z",
+      "side": 1,
+      "message": "LGTM. Thanks for working on this.",
+      "revId": "2483d2f5d732305b43dfe84a8ccdead6aba96e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda5e726_fe5608f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-11T19:19:53Z",
+      "side": 1,
+      "message": "Nit: it transitions from the uploading to the uploaded state",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 93
+      },
+      "revId": "2483d2f5d732305b43dfe84a8ccdead6aba96e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ab9f13_ab6bff0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-11T19:19:53Z",
+      "side": 1,
+      "message": "Nit: take a very long time",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "2483d2f5d732305b43dfe84a8ccdead6aba96e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cfd068_65bcb725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-11T19:19:53Z",
+      "side": 1,
+      "message": "Nit: Failed to wait for uploading to finish",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "2483d2f5d732305b43dfe84a8ccdead6aba96e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
