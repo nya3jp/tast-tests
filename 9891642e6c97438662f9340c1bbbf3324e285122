@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71446d5e_0fd3d66e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-11T13:45:11Z",
+      "side": 1,
+      "message": "That\u0027s a nice example of how to use a test App from tast. \n\n+cc Chuwei and Prerana who might want to reuse/extend this App to add testing for proxy config over an Android VPN and Android VPN split exclude.",
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7815115_efa2417b",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-10-11T08:24:48Z",
       "side": 1,
       "message": "Is this true even while we\u0027re executing infinite loop? I\u0027m wondering if we really need this variable as a member.",
+      "range": {
+        "startLine": 38,
+        "startChar": 92,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb5ff61_646e240e",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-11T13:45:11Z",
+      "side": 1,
+      "message": "We definitely need to hold a reference to the java object that \"owns\" the file descriptor. Or alternatively use some sort of release() function to keep the fd safe from getting closed on an object GC.\n\nIf I look at the code, the fd is created and used in two different functions so it seems necessary to keep it as a member variable.",
+      "parentUuid": "d7815115_efa2417b",
       "range": {
         "startLine": 38,
         "startChar": 92,
