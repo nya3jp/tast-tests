@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6529841b_b9d6004a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-10-11T16:35:40Z",
+      "side": 1,
+      "message": "We should make the param a boolean and convert it if needed in the test.",
+      "revId": "16175d169e9d55b471c4eb88b081bcad0998538f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
