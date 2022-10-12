@@ -27,15 +27,27 @@ import (
 // multiresize summons a multiresizer and drags it like drag, but with all
 // drag points adjusted for the location of the multiresizer.
 func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, duration time.Duration, dragPoints ...coords.Point) error {
-	if err := action.Combine(
-		"hover mouse where windows meet",
-		mouse.Move(tconn, dragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
-		mouse.Move(tconn, dragPoints[0], duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to summon multiresizer")
+	// Move the mouse near the first drag point until the multiresize widget appears.
+	multiresizer := nodewith.Role("window").ClassName("MultiWindowResizeController")
+	for hoverOffset := -5; ; hoverOffset++ {
+		if err := mouse.Move(tconn, dragPoints[0].Add(coords.NewPoint(hoverOffset, hoverOffset)), 100*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move mouse")
+		}
+
+		multiresizerExists, err := ui.IsNodeFound(ctx, multiresizer)
+		if err != nil {
+			return errors.Wrap(err, "failed to check for multiresizer")
+		}
+		if multiresizerExists {
+			break
+		}
+
+		if hoverOffset == 5 {
+			return errors.New("never found multiresize widget")
+		}
 	}
 
-	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
+	multiresizerBounds, err := ui.ImmediateLocation(ctx, multiresizer)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the multiresizer location")
 	}
