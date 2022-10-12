@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46190745_a1c5deab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-12T06:05:34Z",
+      "side": 1,
+      "message": "I think the better way is to exonerate the affected tests (you may also need to add other tests caused by FsCorruption) on jacuzzi(modifying https://source.corp.google.com/chromeos_internal/src/config-internal/test/exoneration/test_exoneration.star) see http://go/exoneration-guide#how-do-i-exonerate-tests\n\nThis helps:\n1, keep the test running in CQ on other boards.\n2, kepp the tests running on jacuzzi as non-critical and providing data for investigation.",
+      "revId": "ba28e0e7cdfd63668787359187c11e9a7314c813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
