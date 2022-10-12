@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1fc9e2b_31536b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-12T22:45:39Z",
+      "side": 1,
+      "message": "nit: It might be useful to document your calculation here so that the next person updating the test understands why the timeout is the way it is.",
+      "revId": "254d13b38f07a5a4162444ba7638b46fe31b5e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
