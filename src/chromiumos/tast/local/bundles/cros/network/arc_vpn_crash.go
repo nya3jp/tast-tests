@@ -66,11 +66,11 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
 		s.Fatalf("Failed to start %s: %v", arcvpn.Svc, err)
 	}
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 10*time.Second); err != nil {
+		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIPv4, err)
 	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping from ARC %s: %v", conn.Server.OverlayIP, err)
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIPv4); err != nil {
+		s.Fatalf("Failed to ping from ARC %s: %v", conn.Server.OverlayIPv4, err)
 	}
 	if err := crashARCVPN(ctx, a); err != nil {
 		s.Fatal("Failed to crash ArcHostVpnService: ", err)
@@ -79,8 +79,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to stop %s: %v", arcvpn.Svc, err)
 	}
 	// VPN should still be reachable even without ArcHostVpnService
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 10*time.Second); err != nil {
+		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIPv4, err)
 	}
 	// arc0/eth0 are hardcoded in ARC as the iface of our fake ethernet network that VPN traffic
 	// will fall back to if there's an issue with the ARC VPN.
@@ -89,8 +89,8 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if arcVersion == "p" {
 		network = "arc0"
 	}
-	if err := arc.ExpectPingSuccess(ctx, a, network, conn.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping %s from ARC over %q: %v", conn.Server.OverlayIP, network, err)
+	if err := arc.ExpectPingSuccess(ctx, a, network, conn.Server.OverlayIPv4); err != nil {
+		s.Fatalf("Failed to ping %s from ARC over %q: %v", conn.Server.OverlayIPv4, network, err)
 	}
 }
 
