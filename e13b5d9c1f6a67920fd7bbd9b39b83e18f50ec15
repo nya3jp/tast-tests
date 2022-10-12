@@ -39,6 +39,30 @@
       },
       "revId": "e13b5d9c1f6a67920fd7bbd9b39b83e18f50ec15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6506fc_e3b343c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-12T17:06:45Z",
+      "side": 1,
+      "message": "I think ash-chrome behavior is closer to what\u0027s expected, but let me have a look at lacros code - the behavior change may have been intentional.",
+      "parentUuid": "e9ecc56c_8fe14a34",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "e13b5d9c1f6a67920fd7bbd9b39b83e18f50ec15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
