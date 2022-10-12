@@ -16,6 +16,52 @@
       "message": "yichenz: Could you help review? THanks!",
       "revId": "2c0c7d9cc4409b5b2d25c792e6fcf7842f967466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4768d544_d935c1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T22:57:31Z",
+      "side": 1,
+      "message": "use HasClass instead https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d597?q\u003duiauto%20classname\u0026ss\u003dchromiumos",
+      "range": {
+        "startLine": 143,
+        "startChar": 32,
+        "endLine": 143,
+        "endChar": 41
+      },
+      "revId": "2c0c7d9cc4409b5b2d25c792e6fcf7842f967466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ef9947_9c91696d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T22:57:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 167,
+        "startChar": 29,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "2c0c7d9cc4409b5b2d25c792e6fcf7842f967466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
