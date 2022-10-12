@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4ad528_ddd2241a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-12T01:23:03Z",
+      "side": 1,
+      "message": "Critical means that failures will block anyone attempting to submit code. Just because the failures have nothing to do with this particular test doesn\u0027t mean it won\u0027t have an adverse affect on everyone else trying to submit code.",
+      "revId": "502adc1e7dcdb9bfa696a59bfdc3a8146bb68c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
