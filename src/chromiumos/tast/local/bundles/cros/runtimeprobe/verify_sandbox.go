@@ -36,9 +36,6 @@ func init() {
 			Val: verifySandboxTestParams{
 				probeConfig: probeConfig{[]probeStatement{
 					probeStatement{"edid"},
-					probeStatement{"generic_battery"},
-					probeStatement{"generic_network"},
-					probeStatement{"generic_storage"},
 					probeStatement{"input_device"},
 					probeStatement{"tcpc"},
 					probeStatement{"usb_camera"},
@@ -52,9 +49,25 @@ func init() {
 				}}},
 			ExtraSoftwareDeps: []string{"amd64"},
 		}, {
-			// These probe functions are unstable and need to be fixed on each device
-			// after collects info from informational test results.
-			Name: "unstable",
+			Name: "battery",
+			Val: verifySandboxTestParams{
+				probeConfig: probeConfig{[]probeStatement{
+					probeStatement{"generic_battery"},
+				}}},
+		}, {
+			Name: "network",
+			Val: verifySandboxTestParams{
+				probeConfig: probeConfig{[]probeStatement{
+					probeStatement{"generic_network"},
+				}}},
+		}, {
+			Name: "storage",
+			Val: verifySandboxTestParams{
+				probeConfig: probeConfig{[]probeStatement{
+					probeStatement{"generic_storage"},
+				}}},
+		}, {
+			Name: "gpu",
 			Val: verifySandboxTestParams{
 				probeConfig: probeConfig{[]probeStatement{
 					probeStatement{"gpu"},
