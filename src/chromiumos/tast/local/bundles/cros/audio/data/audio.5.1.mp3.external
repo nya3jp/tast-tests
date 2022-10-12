@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/audio/sample_5.1_channel_20221011.mp3",
+  "size": 2815092,
+  "sha256sum": "68922186f0065ca511e6440a047b58963d5f3983503c4dcac943406ac8795177"
+}

@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
@@ -68,8 +67,6 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 	wavFilePath2 := filepath.Join(downloadsPath, wavFileName2)
 	defer os.Remove(wavFilePath2)
 
-	expectedAudioNode := "INTERNAL_SPEAKER"
-
 	kb, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -79,36 +76,6 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 	// Close audio player window as cleanup.
 	defer kb.Accel(ctx, "Ctrl+W")
 
-	// Get Current active node.
-	cras, err := audio.NewCras(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Cras object: ", err)
-	}
-
-	var deviceName, deviceType string
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Get current audio output device info.
-		deviceName, deviceType, err = cras.SelectedOutputDevice(ctx)
-		if err != nil {
-			s.Fatal("Failed to get the selected audio device: ", err)
-		}
-		if deviceType != expectedAudioNode {
-			if err := cras.SetActiveNodeByType(ctx, expectedAudioNode); err != nil {
-				return errors.Wrapf(err, "failed to select active device %s", expectedAudioNode)
-			}
-			deviceName, deviceType, err = cras.SelectedOutputDevice(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to get the selected audio device")
-			}
-			if deviceType != expectedAudioNode {
-				return errors.Wrapf(err, "failed to set the audio node type: got %q; want %q", deviceType, expectedAudioNode)
-			}
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Failed to set audio node: ", err)
-	}
-
 	if err := generateWAVAudioFile(ctx, rawFilePath1, wavFilePath1); err != nil {
 		s.Fatal("Failed to create WAV audio file: ", err)
 	}
@@ -117,14 +84,15 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create WAV audio file: ", err)
 	}
 
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch the Files App: ", err)
+	}
+	defer files.Close(ctx)
+
 	iter := 3
 	for i := 1; i <= iter; i++ {
 		s.Logf("Iteration: %d/%d", i, iter)
-		files, err := filesapp.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch the Files App: ", err)
-		}
-		defer files.Close(ctx)
 
 		if err := files.OpenDownloads()(ctx); err != nil {
 			s.Fatal("Failed to open Downloads folder in files app: ", err)
@@ -154,18 +122,18 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to left click open button: ", err)
 		}
 
-		// Verify whether audio is routing through internal-speaker or not.
-		if err := verifyFirstRunningDevice(ctx, deviceName); err != nil {
-			s.Fatal("Failed to route audio through onboard speaker: ", err)
+		// Verify whether audio is playing or not.
+		if _, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream); err != nil {
+			s.Fatal("Failed to play audio: ", err)
 		}
 
 		if err := performAudioControls(ctx, ui, kb, wavFileName1, wavFileName2); err != nil {
 			s.Fatal("Failed to preform audio player various controls: ", err)
 		}
 
-		// Verify whether audio is routing through internal-speaker or not.
-		if err := verifyFirstRunningDevice(ctx, deviceName); err != nil {
-			s.Fatal("Failed to route audio through onboard speaker: ", err)
+		// Verify whether audio is playing or not.
+		if _, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream); err != nil {
+			s.Fatal("Failed to play audio: ", err)
 		}
 
 		// Closing the audio player.
@@ -196,20 +164,6 @@ func generateWAVAudioFile(ctx context.Context, rawFilePath, wavFilePath string) 
 		return errors.Wrap(err, "failed to remove audio raw file")
 	}
 	return nil
-}
-
-// verifyFirstRunningDevice verifies whether audio is running through deviceName.
-func verifyFirstRunningDevice(ctx context.Context, deviceName string) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		devName, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream)
-		if err != nil {
-			return errors.Wrap(err, "failed to detect running output device")
-		}
-		if deviceName != devName {
-			return errors.Errorf("failed to route the audio through expected audio node: got %q; want %q", devName, deviceName)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 250 * time.Millisecond})
 }
 
 // audioPlayerControls performs various controls of audio player during playback.
@@ -378,5 +332,16 @@ func performAudioControls(ctx context.Context, ui *uiauto.Context, kb *input.Key
 	if err := performVolumeControls(ctx, kb); err != nil {
 		return errors.Wrap(err, "failed to perform audio volume controls")
 	}
+
+	collapsePlaylistButton := nodewith.Name("Collapse play queue").Role(role.Button)
+	if err := audioPlayerControls(ctx, ui, collapsePlaylistButton); err != nil {
+		return errors.Wrap(err, "failed to collapse playlist")
+	}
+
+	expandPlaylistButton := nodewith.Name("Expand play queue").Role(role.Button)
+	if err := audioPlayerControls(ctx, ui, expandPlaylistButton); err != nil {
+		return errors.Wrap(err, "failed to expand playlist")
+	}
+
 	return nil
 }
