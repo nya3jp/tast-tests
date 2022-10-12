@@ -356,8 +356,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		newTabTitle    = "New Tab"
 	)
 
-	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
-
 	meet := s.Param().(meetTest)
 	if meet.docs && meet.jamboard {
 		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
@@ -788,17 +786,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if !meet.docs && !meet.jamboard {
 				return errors.New("need a Google Docs or Jamboard tab to present")
 			}
+
 			// Start presenting the tab.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := ui.Exists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err == nil {
-					return nil
-				}
-				if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
-					return errors.Wrap(err, "failed to start to present a tab")
-				}
-				return errors.New("presentation hasn't started yet")
-			}, &pollOpts); err != nil {
-				return errors.Wrap(err, "failed to start presentation")
+			if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
+				return errors.Wrap(err, "failed to start to present a tab")
+			}
+
+			if err := ui.WaitUntilExists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err != nil {
+				return errors.Wrap(err, "failed to find the screen-sharing popup")
 			}
 
 			presentTabTitle := "Untitled document"
@@ -918,7 +913,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
 				s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 			}
-			webRTCInternalsPV, err := reportWebRTCInternals(dump, meet.num, meet.present)
+			webRTCInternalsPV, err := reportWebRTCInternals(dump, meet.num, meetingCode, meet.present)
 			if err != nil {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			} else {
@@ -1086,7 +1081,7 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 }
 
 // reportWebRTCInternals reports info from a WebRTC internals dump to performance metrics.
-func reportWebRTCInternals(dump []byte, numBots int, present bool) (*perf.Values, error) {
+func reportWebRTCInternals(dump []byte, numBots int, meetingCode string, present bool) (*perf.Values, error) {
 	var webRTC webrtcinternals.Dump
 	if err := json.Unmarshal(dump, &webRTC); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshal WebRTC internals dump")
@@ -1099,13 +1094,19 @@ func reportWebRTCInternals(dump []byte, numBots int, present bool) (*perf.Values
 		expectedScreenshareConns = 1
 	}
 
-	if numConns := len(webRTC.PeerConnections); numConns != expectedConns {
-		return nil, errors.Errorf("unexpected number of peer connections: got %d; want %d", numConns, expectedConns)
-	}
-
 	numScreenshareConns := 0
+	numPeerConns := 0
 	pv := perf.NewValues()
 	for connID, peerConn := range webRTC.PeerConnections {
+		// Only record peer connections that are related to our
+		// currently open Meet window. This is to make our tests more
+		// robust, by ignoring any peer connections that are hanging
+		// around from previous tests.
+		if !strings.Contains(peerConn.URL, meetingCode) {
+			continue
+		}
+		numPeerConns++
+
 		byType := peerConn.Stats.BuildIndex()
 		inTotalCount, inScreenshareCount, err := reportVideoStreams(pv, byType["inbound-rtp"], "framesReceived", ".Inbound", "bot%02d")
 		if err != nil {
@@ -1134,6 +1135,10 @@ func reportWebRTCInternals(dump []byte, numBots int, present bool) (*perf.Values
 		if inTotalCount != expectedInTotalCount {
 			return nil, errors.Errorf("unexpected number of inbound-rtp video streams in peer connection %v; got %d, want %d", connID, inTotalCount, expectedInTotalCount)
 		}
+	}
+
+	if numPeerConns != expectedConns {
+		return nil, errors.Errorf("unexpected number of peer connections; got %d, want %d", numPeerConns, expectedConns)
 	}
 
 	if numScreenshareConns != expectedScreenshareConns {
