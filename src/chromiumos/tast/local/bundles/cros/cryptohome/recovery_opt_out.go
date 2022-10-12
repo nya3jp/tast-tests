@@ -45,6 +45,8 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 		userPassword                          = "secret"
 		passwordLabel                         = "online-password"
 		recoveryLabel                         = "test-recovery"
+		userGaiaID                            = "123456789"
+		deviceUserID                          = "123-456-AA-BB"
 		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 
@@ -112,7 +114,7 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 	}
 
 	// Add a recovery auth factor to the user.
-	if err := client.AddRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, mediatorPubKey); err != nil {
+	if err := client.AddRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, mediatorPubKey, userGaiaID, deviceUserID); err != nil {
 		s.Fatal("Failed to add a recovery auth factor: ", err)
 	}
 

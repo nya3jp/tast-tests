@@ -389,8 +389,13 @@ func (c *cryptohomeBinary) addPinAuthFactor(ctx context.Context, authSessionID, 
 }
 
 // addRecoveryAuthFactor calls "cryptohome --action=add_auth_factor --recovery_mediator_pub_key=mediatorPubKeyHex".
-func (c *cryptohomeBinary) addRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) ([]byte, error) {
-	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--recovery_mediator_pub_key=" + mediatorPubKeyHex}
+func (c *cryptohomeBinary) addRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID string) ([]byte, error) {
+	args := []string{"--action=add_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--recovery_mediator_pub_key=" + mediatorPubKeyHex,
+		"--recovery_user_gaia_id=" + userGaiaID,
+		"--recovery_device_user_id=" + deviceUserID}
 	return c.call(ctx, args...)
 }
 
@@ -419,11 +424,13 @@ func (c *cryptohomeBinary) updatePasswordAuthFactor(ctx context.Context, authSes
 }
 
 // updateRecoveryAuthFactor calls "cryptohome --action=update_auth_factor --recovery_mediator_pub_key=mediatorPubKeyHex".
-func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) ([]byte, error) {
+func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID string) ([]byte, error) {
 	args := []string{"--action=update_auth_factor",
 		"--auth_session_id=" + authSessionID,
 		"--key_label=" + label,
-		"--recovery_mediator_pub_key=" + mediatorPubKeyHex}
+		"--recovery_mediator_pub_key=" + mediatorPubKeyHex,
+		"--recovery_user_gaia_id=" + userGaiaID,
+		"--recovery_device_user_id=" + deviceUserID}
 	return c.call(ctx, args...)
 }
 

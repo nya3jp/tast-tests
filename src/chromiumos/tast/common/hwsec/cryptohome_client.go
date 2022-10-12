@@ -1094,8 +1094,8 @@ func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, 
 }
 
 // AddRecoveryAuthFactor creates a recovery auth factor for the user.
-func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
-	_, err := u.binary.addRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
+func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID string) error {
+	_, err := u.binary.addRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID)
 	return err
 }
 
@@ -1119,8 +1119,8 @@ func (u *CryptohomeClient) UpdatePasswordAuthFactor(ctx context.Context, authSes
 }
 
 // UpdateRecoveryAuthFactor updates the recovery auth factor for the user.
-func (u *CryptohomeClient) UpdateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
-	_, err := u.binary.updateRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
+func (u *CryptohomeClient) UpdateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID string) error {
+	_, err := u.binary.updateRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex, userGaiaID, deviceUserID)
 	return err
 }
 
