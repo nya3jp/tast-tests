@@ -60,6 +60,11 @@ func WindowCycleAllDesks(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	if err := ash.CleanUpDesks(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove desks: ", err)
+	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
+
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Ensure there is no window open before test starts.

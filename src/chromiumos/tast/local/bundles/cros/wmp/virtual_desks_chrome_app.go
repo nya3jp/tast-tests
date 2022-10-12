@@ -55,6 +55,11 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	if err := ash.CleanUpDesks(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove desks: ", err)
+	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
+
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	_, name, cleanUp, err := policyutil.InstallPwaAppByPolicy(ctx, tconn, cr, fdms, s.DataFileSystem())

@@ -83,6 +83,14 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(templateJSON)
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	if err := ash.CleanUpDesks(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove desks: ", err)
+	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
 	if _, err := apps.PrimaryBrowser(ctx, tconn); err != nil {
 		s.Fatal("Could not find the primary browser app info: ", err)
 	}

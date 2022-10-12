@@ -50,6 +50,11 @@ func VirtualDesksTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	if err := ash.CleanUpDesks(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove desks: ", err)
+	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
+
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	// Ensure there is no window open before test starts.

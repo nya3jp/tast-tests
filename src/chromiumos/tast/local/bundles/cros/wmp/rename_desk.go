@@ -56,6 +56,11 @@ func RenameDesk(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	if err := ash.CleanUpDesks(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove desks: ", err)
+	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
+
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_rename_desk")
 
 	// Enters overview mode.
@@ -92,7 +97,6 @@ func RenameDesk(ctx context.Context, s *testing.State) {
 	}
 
 	// Test 2: Add a new desk. The corresponding desk name view should be focused and can be edited.
-	defer ash.CleanUpDesks(cleanupCtx, tconn)
 	zeroAddDeskButton := nodewith.ClassName("ZeroStateIconButton")
 	desk2NameView := nodewith.ClassName("DeskNameView").Name("Desk 2")
 	desk2Name := "Dog"
