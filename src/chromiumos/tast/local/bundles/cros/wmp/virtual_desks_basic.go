@@ -62,8 +62,6 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	// Ensure there is no window open before test starts.
 	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
 		s.Fatal("Failed to ensure no window is open: ", err)
@@ -83,7 +81,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not find browser app info: ", err)
 	}
-	for _, app := range []apps.App{browserApp, apps.Files} {
+	for _, app := range []apps.App{browserApp, apps.FilesSWA} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
@@ -97,6 +95,8 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	// Creates new desk.
 	addDeskButton := nodewith.ClassName("ZeroStateIconButton")
@@ -140,7 +140,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Drags Files App into the new desk.
-	filesAppWindowView := nodewith.ClassName("NativeAppWindowViews").Name("Files - My files")
+	filesAppWindowView := nodewith.ClassName("BrowserFrame").Name("Files - My files")
 	filesAppWindowViewLoc, err := ac.Location(ctx, filesAppWindowView)
 	if err != nil {
 		s.Fatal("Failed to get the location of the Files app: ", err)
@@ -164,7 +164,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Delete the new desk.
-	closeDeskButton := nodewith.ClassName("CloseButton").Ancestor(newDeskMiniView)
+	closeDeskButton := nodewith.ClassName("CloseButton").NameStartingWith("Combine").Ancestor(newDeskMiniView)
 	if err := uiauto.Combine(
 		"Delete a new desk",
 		ac.DoDefault(closeDeskButton),
