@@ -33,7 +33,7 @@ func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled, useAndroidAccoun
 	defaultNearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("GwpAsanMalloc", "GwpAsanPartitionAlloc"),
 		chrome.DisableFeatures("SplitSettingsSync"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
+		chrome.ExtraArgs("--nearby-share-certificate-validity-period-hours=4", "--nearby-share-num-private-certificates=1", "--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
 	}
 	if arcEnabled {
 		defaultNearbyOpts = append(defaultNearbyOpts, chrome.ARCEnabled(), chrome.EnableFeatures("ArcNearbySharing"), chrome.ExtraArgs(arc.DisableSyncFlags()...))
