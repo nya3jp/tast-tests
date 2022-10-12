@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da877d8_d1331fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T18:01:06Z",
+      "side": 1,
+      "message": "LGTM with a couple final nits :)",
+      "revId": "312a4f17916f9de54ebc7bc556d5d463f902cc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12a18fb_16bdefa9",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T18:01:06Z",
+      "side": 1,
+      "message": "I think we also will need a \"doc.go\" file added to this directory, but that file can be just a copy of this. A \"doc.go\" file is meant to be an easy way for readers to learn what a package is for, and they are added by convention. For an example see this one for Bluetooth [1].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bluetooth/doc.go",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "312a4f17916f9de54ebc7bc556d5d463f902cc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af162c62_efe1e564",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T18:01:06Z",
+      "side": 1,
+      "message": "Nit: Consider removing this comment since this information is mostly included in the function documentation.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "312a4f17916f9de54ebc7bc556d5d463f902cc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92703600_48fe23d4",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T18:01:06Z",
+      "side": 1,
+      "message": "Nit: Condense into a single line,\n\n    return oobeConn.WaitForExprFailOnErr(ctx, \"OobeAPI.screens.WelcomeScreen.isVisible()\")",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "312a4f17916f9de54ebc7bc556d5d463f902cc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

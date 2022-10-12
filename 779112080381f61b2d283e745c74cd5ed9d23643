@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5283144_ed6efb8a",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T18:01:06Z",
+      "side": 1,
+      "message": "Haha yes I have definitely had the same thing happen to me, one thing you can do as a sanity check is rebase your change in a separate patchset as your other changes, and then you can diff against the rebase to confirm nothing wonky happened :)",
+      "parentUuid": "602e77cc_77253e4b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60673444_594692df",
