@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8988ac1_4fdfd65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/pwa_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "I may or may not be influenced by Wenbo, I cannot confirm nor deny.\n\nHe suggested to use DOM references starting with `$`.",
+      "parentUuid": "506390d0_7882ffd5",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1043ae44_c3e2f1e3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "nit: remove this",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b737553_433f6fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/pwa_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1043ae44_c3e2f1e3",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6630bcbf_1e7690f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/pwa_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62cccf04_1a6d3828",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "430a87b2_94bfe70f",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "this should be `LacrosVariantNeeded` now we know about the issue with the autotestPrivate API not working in lacros",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddb8981_5d37d68c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Ok I changed, but I have no idea what I\u0027m doing. 😐",
+      "parentUuid": "430a87b2_94bfe70f",
       "range": {
         "startLine": 49,
         "startChar": 24,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259422ed_21caf9b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44d685e_f961d483",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 94
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49392568_573bd656",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "nit: remove this",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2eebef_45c605b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49392568_573bd656",
       "range": {
         "startLine": 118,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc270bf_8ac47d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "I\u0027ve created 2 fixtures, one that only opens the Files app and the other one that installs the PWAs and opens the Files app.\n\nThis makes tests slightly simpler, specially the part to grab the data from the fixture, because I initially I created fixture only for the PWAs, but then re-used the Chrome instance form the fixture, but this would only work when there was a fixture.",
+      "parentUuid": "1ea0cdf7_d48735fd",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ec3ab5_b4d18889",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "This seems highly test specific, WDYT about moving all this into a Fixture and having params on the fixture to keep a lot of this setup abstracted away from the actual test logic.",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9452d821_7559db01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6ec3ab5_b4d18889",
       "range": {
         "startLine": 148,
         "startChar": 4,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770db6cb_1ce9d3f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2fb5b0f_db79fc6d",
+      "range": {
+        "startLine": 159,
+        "startChar": 24,
+        "endLine": 159,
+        "endChar": 27
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e573280b_a4e86faa",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8615c0dc_8160b390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Tks, it seems to work well and anecdotally faster.",
+      "parentUuid": "e573280b_a4e86faa",
+      "range": {
+        "startLine": 171,
+        "startChar": 10,
+        "endLine": 171,
+        "endChar": 21
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ca9319_17354b6e",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "What about `directory_list` ?",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 78
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3525613e_f9ce92b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ca9319_17354b6e",
       "range": {
         "startLine": 190,
         "startChar": 4,
@@ -318,6 +582,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03c9d37_280adad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "As we discussed offline, in the worst case, the dashboard has a break in the old tests history, but this isn\u0027t a big dela.",
+      "parentUuid": "3d1a75db_55db0bda",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 7
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e6f88fa_8dd3e78a",
@@ -331,6 +619,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "nit: remove this",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 92
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b356d215_5dd7fdd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6f88fa_8dd3e78a",
       "range": {
         "startLine": 200,
         "startChar": 4,
@@ -364,6 +676,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee284d3_8fc215e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7dd0349_c4b7f7ad",
+      "range": {
+        "startLine": 306,
+        "startChar": 33,
+        "endLine": 306,
+        "endChar": 36
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2688b8c8_53cabe7d",
@@ -377,6 +713,30 @@
       "writtenOn": "2022-10-10T04:58:14Z",
       "side": 1,
       "message": "I wonder if the test should open the Files app instead of re-using the same window.",
+      "range": {
+        "startLine": 315,
+        "startChar": 2,
+        "endLine": 316,
+        "endChar": 93
+      },
+      "revId": "da9fba4a2e35bbc6589356228392881baf96d386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c898ca1_0ca2efb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-12T07:09:24Z",
+      "side": 1,
+      "message": "This means a bit more code duplicated, because every test will have to open the Files app. This duplication isn\u0027t a big deal, but avoiding it is mildly good. 😊\n\nMaybe let\u0027s defer this decision for the next test that we add, so we can see a clear pattern/trend.\n\nI tried to move this to the fixture, but there is already too late, because the test files/directories is already removed and the dropdown menu is already mis-positioned and gets on the way. :-/",
+      "parentUuid": "2688b8c8_53cabe7d",
       "range": {
         "startLine": 315,
         "startChar": 2,
