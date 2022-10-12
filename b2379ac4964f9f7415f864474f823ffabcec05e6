@@ -22,6 +22,30 @@
       },
       "revId": "b2379ac4964f9f7415f864474f823ffabcec05e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efd2edc_2522e041",
+        "filename": "src/chromiumos/tast/local/mgs/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-12T01:59:40Z",
+      "side": 1,
+      "message": "I tried to follow the fixture implementation in \"src/chromiumos/tast/local/policyutil/fixtures\" which also uses FakeDMS, so instead of returning an error, I used `panic` directly.\nDo you suggest I should follow the writing test instructions?",
+      "parentUuid": "63a4cba5_a5c89ee4",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "b2379ac4964f9f7415f864474f823ffabcec05e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
