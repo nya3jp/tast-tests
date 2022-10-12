@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9779858f_6c55c399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-12T16:35:01Z",
+      "side": 0,
+      "message": "We will keep a separate betty variant since betty is unstable.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 77
+      },
+      "revId": "dc620436d680b7aef2318dde6da7c9b8232bb794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
