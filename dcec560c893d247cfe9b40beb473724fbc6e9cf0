@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cbe7fbb_8b70a273",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1501107
+      },
+      "writtenOn": "2022-10-12T18:03:35Z",
+      "side": 1,
+      "message": "Added a new error in case retriesLeft is 0.",
+      "parentUuid": "5ecefaa4_934da699",
+      "range": {
+        "startLine": 704,
+        "startChar": 19,
+        "endLine": 704,
+        "endChar": 34
+      },
+      "revId": "dcec560c893d247cfe9b40beb473724fbc6e9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67225a73_24eb1d43",
         "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-11T20:26:54Z",
       "side": 1,
       "message": "nit: one",
+      "range": {
+        "startLine": 706,
+        "startChar": 33,
+        "endLine": 706,
+        "endChar": 37
+      },
+      "revId": "dcec560c893d247cfe9b40beb473724fbc6e9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416cebe3_1aa30d34",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1501107
+      },
+      "writtenOn": "2022-10-12T18:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67225a73_24eb1d43",
       "range": {
         "startLine": 706,
         "startChar": 33,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d45043e_604009f0",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1501107
+      },
+      "writtenOn": "2022-10-12T18:03:35Z",
+      "side": 1,
+      "message": "I\u0027m not good at GO. Changed it as per your suggestion.",
+      "parentUuid": "dd818cc8_3b0953cc",
+      "revId": "dcec560c893d247cfe9b40beb473724fbc6e9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d914c88_8fbe0a9c",
         "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
         "patchSetId": 1
@@ -94,6 +160,30 @@
       "writtenOn": "2022-10-10T23:12:13Z",
       "side": 1,
       "message": "This can be any number like 5 right!, 10 pulling towards puk max retries value.",
+      "range": {
+        "startLine": 828,
+        "startChar": 18,
+        "endLine": 828,
+        "endChar": 20
+      },
+      "revId": "dcec560c893d247cfe9b40beb473724fbc6e9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839f73f4_0a9f8862",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1501107
+      },
+      "writtenOn": "2022-10-12T18:03:35Z",
+      "side": 1,
+      "message": "Yes, it can be any value, loop will end as soon as the SIM is locked. Sending incorrect pin when the SIM is PUK locked shouldn\u0027t decrease number of attempts to unlock PUK.",
+      "parentUuid": "3d914c88_8fbe0a9c",
       "range": {
         "startLine": 828,
         "startChar": 18,
