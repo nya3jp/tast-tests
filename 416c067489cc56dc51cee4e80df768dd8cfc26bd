@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa946a4a_e5929cf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-12T19:52:09Z",
+      "side": 1,
+      "message": "Thanks for reviewing Toni and Seewai!",
+      "revId": "416c067489cc56dc51cee4e80df768dd8cfc26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e89a2cf_01d7394a",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "I think the order of apps after pinning/unpinning is a reasonable thing to validate in this test. Especially after dragging app icons. I don\u0027t think this cl adds any extra assumptions on default order of pinned apps, and it didn\u0027t seem to be an issue. We could potentially relax assumption on order of Files and Settings app, but I\u0027d suggest doing this if we start seeing issues with the test.",
       "parentUuid": "03202c4c_71834dc0",
+      "revId": "416c067489cc56dc51cee4e80df768dd8cfc26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7638eb21_c5613955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-12T19:52:09Z",
+      "side": 1,
+      "message": "Thanks for all the comments. I\u0027ll leave this at it is and submit the change.",
+      "parentUuid": "55f1a9c5_05cea033",
       "revId": "416c067489cc56dc51cee4e80df768dd8cfc26bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
