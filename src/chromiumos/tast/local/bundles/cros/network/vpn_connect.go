@@ -190,7 +190,8 @@ func init() {
 			Name: "wireguard",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type: vpn.TypeWireGuard,
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv4,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
@@ -198,17 +199,9 @@ func init() {
 			Name: "wireguard_psk",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:     vpn.TypeWireGuard,
-					AuthType: vpn.AuthTypePSK,
-				},
-			},
-			ExtraSoftwareDeps: []string{"wireguard"},
-		}, {
-			Name: "wireguard_two_peers",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:       vpn.TypeWireGuard,
-					WGTwoPeers: true,
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv4,
+					AuthType:           vpn.AuthTypePSK,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
@@ -216,8 +209,39 @@ func init() {
 			Name: "wireguard_generate_key",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:         vpn.TypeWireGuard,
-					WGAutoGenKey: true,
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv4,
+					WGAutoGenKey:       true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_ipv4",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv4,
+					WGTwoPeers:         true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_ipv6",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv6,
+					WGTwoPeers:         true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_ipv4_ipv6",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:               vpn.TypeWireGuard,
+					OverlayAddressType: vpn.IPv4AndIPv6,
+					WGTwoPeers:         true,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
@@ -263,18 +287,24 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIP, err)
-	}
-
-	if conn.SecondServer != nil {
-		if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.SecondServer.OverlayIP, "chronos", 10*time.Second); err != nil {
-			s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIP, err)
+	if config.OverlayAddressType == vpn.IPv4 || config.OverlayAddressType == vpn.IPv4AndIPv6 {
+		if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 100000*time.Minute); err != nil {
+			s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIPv4, err)
+		}
+		if conn.SecondServer != nil {
+			if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.SecondServer.OverlayIPv4, "chronos", 10*time.Second); err != nil {
+				s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIPv4, err)
+			}
 		}
 	}
-
-	// IPv6 should be blackholed.
-	if err := routing.ExpectPingFailure(ctx, "2001:db8::1", "chronos"); err != nil {
-		s.Fatal("IPv6 ping should fail: ", err)
+	if config.OverlayAddressType == vpn.IPv6 || config.OverlayAddressType == vpn.IPv4AndIPv6 {
+		if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv6, "chronos", 10*time.Second); err != nil {
+			s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIPv6, err)
+		}
+		if conn.SecondServer != nil {
+			if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.SecondServer.OverlayIPv6, "chronos", 10*time.Second); err != nil {
+				s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIPv6, err)
+			}
+		}
 	}
 }
