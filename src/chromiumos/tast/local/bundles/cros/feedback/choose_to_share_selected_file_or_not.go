@@ -36,6 +36,7 @@ func init() {
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
+		Fixture:      "chromeLoggedInWithOsFeedbackSaveReportToLocalForE2ETesting",
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{fa.PngFile},
 		SoftwareDeps: []string{"chrome"},
@@ -53,17 +54,11 @@ func init() {
 // ChooseToShareSelectedFileOrNot verifies user can choose to share selected file
 // or not by checking or unchecking the attach file checkbox.
 func ChooseToShareSelectedFileOrNot(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	s.Log("Setting up chrome")
-	cr, err := chrome.New(ctx, chrome.EnableFeatures(
-		"OsFeedback", "OsFeedbackSaveReportToLocalForE2ETesting"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

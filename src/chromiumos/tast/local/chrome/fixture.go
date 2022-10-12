@@ -241,6 +241,18 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithOsFeedbackSaveReportToLocalForE2ETesting",
+		Desc:     "Logged into a user session with OS Feedback and OsFeedbackSaveReportToLocalForE2ETesting enabled",
+		Contacts: []string{"wangdanny@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("OsFeedback", "OsFeedbackSaveReportToLocalForE2ETesting")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
