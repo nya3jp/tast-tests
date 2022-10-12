@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2de106ae_abad95ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-12T03:36:46Z",
+      "side": 1,
+      "message": "It took me some time to find this comment. \n\nhttps://partnerissuetracker.corp.google.com/issues/183476559#comment2",
+      "parentUuid": "7884038f_8024fcf5",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f0b6f02_24b124ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
         "patchSetId": 1
@@ -90,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab6222fe_20e9482f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-12T03:36:46Z",
+      "side": 1,
+      "message": "we\u0027re using the same names as specified by the above comment.",
+      "parentUuid": "4f0b6f02_24b124ed",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "542679a0_7ebcfa60",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
         "patchSetId": 1
@@ -101,6 +137,24 @@
       "writtenOn": "2022-08-19T14:55:14Z",
       "side": 1,
       "message": "Please give this param a more descriptive name.",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8054d3c8_856a4869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-12T03:36:46Z",
+      "side": 1,
+      "message": "we\u0027re using the same names as specified by the above comment.",
+      "parentUuid": "542679a0_7ebcfa60",
       "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +220,30 @@
       "side": 1,
       "message": "I just wanted to make sure this check should be part of the test rather than e.g. a SoftwareDep or similar.",
       "parentUuid": "5596a105_dc6ef43c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253db08c_d9c3b346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-12T03:36:46Z",
+      "side": 1,
+      "message": "I think there\u0027s some misunderstanding. \nWe\u0027re checking if the board is Hardware acceleration enabled or disabled check as part of the test in L160, also there are no SoftwareDep for doing this check right now.",
+      "parentUuid": "5f0230e0_3f4a16da",
       "range": {
         "startLine": 68,
         "startChar": 0,
