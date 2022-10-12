@@ -30,10 +30,12 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify feedback report contains user email",
 		Contacts: []string{
+			"wangdanny@google.com",
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
+		Fixture:      "chromeLoggedInWithOsFeedbackSaveReportToLocalForE2ETesting",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
@@ -49,17 +51,11 @@ func init() {
 
 // ReportContainsEmail verifies feedback report contains user email.
 func ReportContainsEmail(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	s.Log("Setting up chrome")
-	cr, err := chrome.New(ctx, chrome.EnableFeatures(
-		"OsFeedback", "OsFeedbackSaveReportToLocalForE2ETesting"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
