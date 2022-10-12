@@ -88,6 +88,24 @@
       "parentUuid": "82ac0b82_468c3f3a",
       "revId": "44b7f6478ba7e9bb55ce8d6a819b22098d349bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519f14f3_c7d3889b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-12T20:39:00Z",
+      "side": 1,
+      "message": "After looking at the test fixture code again, it looks like the gale router is forced to the US reg domain during the init step. src/platform/tast-tests/src/chromiumos/tast/remote/wificell/router/legacy/router.go line 155\n\n```\n\tif err :\u003d r.iwr.SetRegulatoryDomain(shortCtx, \"US\"); err !\u003d nil {\n\t\tr.Close(shortCtx)\n\t\treturn nil, errors.Wrap(err, \"failed to set regulatory domain to US\")\n\t}\n```\n\nJared has tested doing something similar for openwrt which works (and thus we won\u0027t need to modify hostapd arbitrarily and I can abandon this cl). \n\nThis doesn\u0027t address the concern about non-US regulatory coverage however. It looks like we have a coverage gap, but this coverage gap is discussed in a doc I message you offline about.",
+      "parentUuid": "baf0946c_e602efff",
+      "revId": "44b7f6478ba7e9bb55ce8d6a819b22098d349bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
