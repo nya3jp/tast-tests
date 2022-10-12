@@ -16,18 +16,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const deviceTrustEnrollmentTimeout = 7 * time.Minute
+const deviceTrustInsessionEnrollmentTimeout = 7 * time.Minute
 
-type userParam struct {
+type userParamInsession struct {
 	poolID        string
 	loginPossible bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DeviceTrustLoginScreen,
+		Func:         DeviceTrustInsession,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Checks that Device Trust is working on login screen with a fake IdP",
+		Desc:         "Checks that Device Trust is working insession with a fake IdP",
 		Contacts: []string{
 			"lmasopust@google.com",
 			"rodmartin@google.com",
@@ -47,18 +47,17 @@ func init() {
 			"group:mainline", "informational",
 		},
 		VarDeps: []string{
-			"ui.signinProfileTestExtensionManifestKey",
 			tape.ServiceAccountVar,
 		},
 		Params: []testing.Param{{
 			Name: "host_allowed",
-			Val: userParam{
+			Val: userParamInsession{
 				poolID:        tape.DeviceTrustEnabled,
 				loginPossible: true,
 			},
 		}, {
 			Name: "host_not_allowed",
-			Val: userParam{
+			Val: userParamInsession{
 				poolID:        tape.DeviceTrustDisabled,
 				loginPossible: false,
 			},
@@ -67,8 +66,8 @@ func init() {
 	})
 }
 
-func DeviceTrustLoginScreen(ctx context.Context, s *testing.State) {
-	param := s.Param().(userParam)
+func DeviceTrustInsession(ctx context.Context, s *testing.State) {
+	param := s.Param().(userParamInsession)
 	poolID := param.poolID
 
 	// Shorten deadline to leave time for cleanup.
@@ -97,7 +96,7 @@ func DeviceTrustLoginScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create tape client: ", err)
 	}
 
-	timeout := int32(deviceTrustEnrollmentTimeout.Seconds())
+	timeout := int32(deviceTrustInsessionEnrollmentTimeout.Seconds())
 	// Create an account manager and lease a test account for the duration of the test.
 	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false /*lock*/, tape.WithTimeout(timeout), tape.WithPoolID(poolID))
 	if err != nil {
@@ -118,9 +117,9 @@ func DeviceTrustLoginScreen(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	res, err := service.LoginWithFakeIdP(ctx, &enterpriseconnectors.LoginWithFakeIdPRequest{SigninProfileTestExtensionManifestKey: s.RequiredVar("ui.signinProfileTestExtensionManifestKey")})
+	res, err := service.ConnectToFakeIdP(ctx, &enterpriseconnectors.ConnectToFakeIdPRequest{User: acc.Username, Pass: acc.Password})
 	if err != nil {
-		s.Fatal("Remote call LoginWithFakeIdP() failed: ", err)
+		s.Fatal("Remote call ConnectToFakeIdP() failed: ", err)
 	}
 
 	if res.Succesful != param.loginPossible {
