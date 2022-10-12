@@ -184,9 +184,9 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 		}
 		return nil
 	}
-	p, err := tf.LegacyPcap()
+	p, err := tf.StandardPcap()
 	if err != nil {
-		return "", errors.Wrap(err, "unable to get legacy pcap device")
+		return "", errors.Wrap(err, "unable to get standard pcap device")
 	}
 	return CollectPcapForAction(fullCtx, p, name, ch, nil, action)
 }
