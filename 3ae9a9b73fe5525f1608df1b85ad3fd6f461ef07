@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253b9900_b8c2f94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "nit: too long, break it to two lines",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 156
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13d39f2_6ffba793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "\"Failed to ensure only browser window open: \"",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ec93c2_b8b78879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "remove it?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 24
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3087504f_1926a8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "remove it",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 79
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daad3da3_07cf05d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "lets move this line to right after \"defer bw.CloseWindow(cleanupCtx, tconn)\"",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 75
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a43500_6c148255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "uiTimeout",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ece0ce_1eebb7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "remove it",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2631625d_9137c028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "think lowercase is preferred, scrolling",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 12
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ed999a_217460e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T19:30:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "3ae9a9b73fe5525f1608df1b85ad3fd6f461ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
