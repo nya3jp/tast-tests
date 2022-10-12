@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb9d48d_e3c8537c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "906033dc_9d0f3312",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b06734e2_2dc741ca",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-10T16:56:01Z",
       "side": 1,
       "message": "Nit: Consider removing this method and instead passing `\u0026ChromeOobeHidDetection{}` for `Impl:` above.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea0d46e_22db8302",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b06734e2_2dc741ca",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a87959_ce642bd9",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "883a7661_947eda18",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f2db39d_59461644",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-10T16:56:01Z",
       "side": 1,
       "message": "I did not actually see where `FixtData` was defined, but I think we can simplify this by just returning `f` (which is of type `ChromeOobeHidDetection`) since that is our desired fixture data. A similar example can be seen at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bluetooth/fixture.go;l\u003d103-109;drc\u003dd1e821539e7fa632a4ef4e30214f37129e6e4536.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602e77cc_77253e4b",
+        "filename": "src/chromiumos/tast/local/bluetooth/hid_detection_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done. I guess I missed that fixtData got removed when I rebased. I have to remember to test again after a rebase always 😅",
+      "parentUuid": "7f2db39d_59461644",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f12241_88c9e6b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60673444_594692df",
+      "range": {
+        "startLine": 20,
+        "startChar": 69,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb436e89_564c489b",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5880b1_29917400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb436e89_564c489b",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c86531e_05087e87",
@@ -140,6 +272,30 @@
       "writtenOn": "2022-10-10T16:56:01Z",
       "side": 1,
       "message": "Could we update this to be `bluetooth.ChromeOobeHidDetection` (or `oobe.ChromeOobeHidDetection` once the files are moved) since that is the type/struct we use to implement the fixture?",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512d3683_fad7ad16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c86531e_05087e87",
       "range": {
         "startLine": 41,
         "startChar": 22,
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b34d5e0_2f7ee4a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15984802_2b5d791f",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 90
+      },
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13bcd3ca_c6d10f9d",
@@ -186,6 +366,24 @@
       "writtenOn": "2022-10-10T16:56:01Z",
       "side": 1,
       "message": "Nit: Remove extra line.",
+      "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab67c7c_545dd3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13bcd3ca_c6d10f9d",
       "revId": "779112080381f61b2d283e745c74cd5ed9d23643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

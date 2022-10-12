@@ -16,6 +16,24 @@
       "message": "Since this test and the others feel more OOBE/HID detection than Bluetooth could we move this test into the oobe [1] directory, and then make an oobe directory under [2] and move the fixture file there?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/oobe/\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/",
       "revId": "f31f49f97d9adc58a7318dde93ac03bac546d293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69052a44_a91c6f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/oobe_hid_non_applicable_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-10-12T17:29:22Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7e7cea35_da5da0e7",
+      "revId": "f31f49f97d9adc58a7318dde93ac03bac546d293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
