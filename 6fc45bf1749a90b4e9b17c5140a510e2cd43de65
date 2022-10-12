@@ -16,6 +16,23 @@
       "message": "note: just reordered as ARC{Disabled,Enabled,Supported} is a group, while this is not.",
       "revId": "6fc45bf1749a90b4e9b17c5140a510e2cd43de65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a97995_4d66e14d",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-12T02:58:04Z",
+      "side": 1,
+      "message": "nit: Maybe \"Describes the availability of arc, e.g. enabled / disabled.\"",
+      "revId": "6fc45bf1749a90b4e9b17c5140a510e2cd43de65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
