@@ -127,16 +127,17 @@ func (x *LoginWithFakeIdPRequest) GetSigninProfileTestExtensionManifestKey() str
 	return ""
 }
 
-type LoginWithFakeIdPResponse struct {
+type ConnectToFakeIdPRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Succesful bool `protobuf:"varint,1,opt,name=succesful,proto3" json:"succesful,omitempty"`
+	User string `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Pass string `protobuf:"bytes,2,opt,name=pass,proto3" json:"pass,omitempty"`
 }
 
-func (x *LoginWithFakeIdPResponse) Reset() {
-	*x = LoginWithFakeIdPResponse{}
+func (x *ConnectToFakeIdPRequest) Reset() {
+	*x = ConnectToFakeIdPRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_device_trust_service_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -144,13 +145,13 @@ func (x *LoginWithFakeIdPResponse) Reset() {
 	}
 }
 
-func (x *LoginWithFakeIdPResponse) String() string {
+func (x *ConnectToFakeIdPRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LoginWithFakeIdPResponse) ProtoMessage() {}
+func (*ConnectToFakeIdPRequest) ProtoMessage() {}
 
-func (x *LoginWithFakeIdPResponse) ProtoReflect() protoreflect.Message {
+func (x *ConnectToFakeIdPRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_device_trust_service_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -162,12 +163,66 @@ func (x *LoginWithFakeIdPResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LoginWithFakeIdPResponse.ProtoReflect.Descriptor instead.
-func (*LoginWithFakeIdPResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ConnectToFakeIdPRequest.ProtoReflect.Descriptor instead.
+func (*ConnectToFakeIdPRequest) Descriptor() ([]byte, []int) {
 	return file_device_trust_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *LoginWithFakeIdPResponse) GetSuccesful() bool {
+func (x *ConnectToFakeIdPRequest) GetUser() string {
+	if x != nil {
+		return x.User
+	}
+	return ""
+}
+
+func (x *ConnectToFakeIdPRequest) GetPass() string {
+	if x != nil {
+		return x.Pass
+	}
+	return ""
+}
+
+type FakeIdPResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Succesful bool `protobuf:"varint,1,opt,name=succesful,proto3" json:"succesful,omitempty"`
+}
+
+func (x *FakeIdPResponse) Reset() {
+	*x = FakeIdPResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_device_trust_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FakeIdPResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FakeIdPResponse) ProtoMessage() {}
+
+func (x *FakeIdPResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_device_trust_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FakeIdPResponse.ProtoReflect.Descriptor instead.
+func (*FakeIdPResponse) Descriptor() ([]byte, []int) {
+	return file_device_trust_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *FakeIdPResponse) GetSuccesful() bool {
 	if x != nil {
 		return x.Succesful
 	}
@@ -193,24 +248,35 @@ var file_device_trust_service_proto_rawDesc = []byte{
 	0x65, 0x73, 0x74, 0x4b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x25, 0x73, 0x69,
 	0x67, 0x6e, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x54, 0x65, 0x73, 0x74, 0x45,
 	0x78, 0x74, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74,
-	0x4b, 0x65, 0x79, 0x22, 0x38, 0x0a, 0x18, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68,
-	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x1c, 0x0a, 0x09, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x66, 0x75, 0x6c, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x08, 0x52, 0x09, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x66, 0x75, 0x6c, 0x32, 0xf1, 0x01,
-	0x0a, 0x12, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x54, 0x72, 0x75, 0x73, 0x74, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x12, 0x51, 0x0a, 0x06, 0x45, 0x6e, 0x72, 0x6f, 0x6c, 0x6c, 0x12, 0x2d,
-	0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72,
-	0x70, 0x72, 0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e,
-	0x45, 0x6e, 0x72, 0x6f, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x87, 0x01, 0x0a, 0x10, 0x4c, 0x6f, 0x67, 0x69,
-	0x6e, 0x57, 0x69, 0x74, 0x68, 0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x12, 0x37, 0x2e, 0x74,
-	0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x70, 0x72,
-	0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e, 0x4c, 0x6f,
-	0x67, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f,
+	0x4b, 0x65, 0x79, 0x22, 0x41, 0x0a, 0x17, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x54, 0x6f,
+	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12,
+	0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x73,
+	0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x70, 0x61, 0x73, 0x73, 0x22, 0x2f, 0x0a, 0x0f, 0x46, 0x61, 0x6b, 0x65, 0x49, 0x64,
+	0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x75, 0x63,
+	0x63, 0x65, 0x73, 0x66, 0x75, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x73, 0x75,
+	0x63, 0x63, 0x65, 0x73, 0x66, 0x75, 0x6c, 0x32, 0xe7, 0x02, 0x0a, 0x12, 0x44, 0x65, 0x76, 0x69,
+	0x63, 0x65, 0x54, 0x72, 0x75, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x51,
+	0x0a, 0x06, 0x45, 0x6e, 0x72, 0x6f, 0x6c, 0x6c, 0x12, 0x2d, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e,
+	0x63, 0x72, 0x6f, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x70, 0x72, 0x69, 0x73, 0x65, 0x63,
+	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e, 0x45, 0x6e, 0x72, 0x6f, 0x6c, 0x6c,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22,
+	0x00, 0x12, 0x7e, 0x0a, 0x10, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x46, 0x61,
+	0x6b, 0x65, 0x49, 0x64, 0x50, 0x12, 0x37, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f,
 	0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x70, 0x72, 0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e,
 	0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68,
+	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f,
+	0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72,
+	0x70, 0x72, 0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e,
+	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x7e, 0x0a, 0x10, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x54, 0x6f, 0x46, 0x61,
+	0x6b, 0x65, 0x49, 0x64, 0x50, 0x12, 0x37, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f,
+	0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x70, 0x72, 0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e,
+	0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x54, 0x6f,
+	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f,
+	0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x65, 0x72,
+	0x70, 0x72, 0x69, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x2e,
 	0x46, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x50, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
 	0x00, 0x42, 0x34, 0x5a, 0x32, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f,
 	0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72,
@@ -230,20 +296,23 @@ func file_device_trust_service_proto_rawDescGZIP() []byte {
 	return file_device_trust_service_proto_rawDescData
 }
 
-var file_device_trust_service_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_device_trust_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_device_trust_service_proto_goTypes = []interface{}{
-	(*EnrollRequest)(nil),            // 0: tast.cros.enterpriseconnectors.EnrollRequest
-	(*LoginWithFakeIdPRequest)(nil),  // 1: tast.cros.enterpriseconnectors.LoginWithFakeIdPRequest
-	(*LoginWithFakeIdPResponse)(nil), // 2: tast.cros.enterpriseconnectors.LoginWithFakeIdPResponse
-	(*emptypb.Empty)(nil),            // 3: google.protobuf.Empty
+	(*EnrollRequest)(nil),           // 0: tast.cros.enterpriseconnectors.EnrollRequest
+	(*LoginWithFakeIdPRequest)(nil), // 1: tast.cros.enterpriseconnectors.LoginWithFakeIdPRequest
+	(*ConnectToFakeIdPRequest)(nil), // 2: tast.cros.enterpriseconnectors.ConnectToFakeIdPRequest
+	(*FakeIdPResponse)(nil),         // 3: tast.cros.enterpriseconnectors.FakeIdPResponse
+	(*emptypb.Empty)(nil),           // 4: google.protobuf.Empty
 }
 var file_device_trust_service_proto_depIdxs = []int32{
 	0, // 0: tast.cros.enterpriseconnectors.DeviceTrustService.Enroll:input_type -> tast.cros.enterpriseconnectors.EnrollRequest
 	1, // 1: tast.cros.enterpriseconnectors.DeviceTrustService.LoginWithFakeIdP:input_type -> tast.cros.enterpriseconnectors.LoginWithFakeIdPRequest
-	3, // 2: tast.cros.enterpriseconnectors.DeviceTrustService.Enroll:output_type -> google.protobuf.Empty
-	2, // 3: tast.cros.enterpriseconnectors.DeviceTrustService.LoginWithFakeIdP:output_type -> tast.cros.enterpriseconnectors.LoginWithFakeIdPResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: tast.cros.enterpriseconnectors.DeviceTrustService.ConnectToFakeIdP:input_type -> tast.cros.enterpriseconnectors.ConnectToFakeIdPRequest
+	4, // 3: tast.cros.enterpriseconnectors.DeviceTrustService.Enroll:output_type -> google.protobuf.Empty
+	3, // 4: tast.cros.enterpriseconnectors.DeviceTrustService.LoginWithFakeIdP:output_type -> tast.cros.enterpriseconnectors.FakeIdPResponse
+	3, // 5: tast.cros.enterpriseconnectors.DeviceTrustService.ConnectToFakeIdP:output_type -> tast.cros.enterpriseconnectors.FakeIdPResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -280,7 +349,19 @@ func file_device_trust_service_proto_init() {
 			}
 		}
 		file_device_trust_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginWithFakeIdPResponse); i {
+			switch v := v.(*ConnectToFakeIdPRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_device_trust_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FakeIdPResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -298,7 +379,7 @@ func file_device_trust_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_device_trust_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -325,7 +406,8 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DeviceTrustServiceClient interface {
 	Enroll(ctx context.Context, in *EnrollRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	LoginWithFakeIdP(ctx context.Context, in *LoginWithFakeIdPRequest, opts ...grpc.CallOption) (*LoginWithFakeIdPResponse, error)
+	LoginWithFakeIdP(ctx context.Context, in *LoginWithFakeIdPRequest, opts ...grpc.CallOption) (*FakeIdPResponse, error)
+	ConnectToFakeIdP(ctx context.Context, in *ConnectToFakeIdPRequest, opts ...grpc.CallOption) (*FakeIdPResponse, error)
 }
 
 type deviceTrustServiceClient struct {
@@ -345,9 +427,18 @@ func (c *deviceTrustServiceClient) Enroll(ctx context.Context, in *EnrollRequest
 	return out, nil
 }
 
-func (c *deviceTrustServiceClient) LoginWithFakeIdP(ctx context.Context, in *LoginWithFakeIdPRequest, opts ...grpc.CallOption) (*LoginWithFakeIdPResponse, error) {
-	out := new(LoginWithFakeIdPResponse)
+func (c *deviceTrustServiceClient) LoginWithFakeIdP(ctx context.Context, in *LoginWithFakeIdPRequest, opts ...grpc.CallOption) (*FakeIdPResponse, error) {
+	out := new(FakeIdPResponse)
 	err := c.cc.Invoke(ctx, "/tast.cros.enterpriseconnectors.DeviceTrustService/LoginWithFakeIdP", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceTrustServiceClient) ConnectToFakeIdP(ctx context.Context, in *ConnectToFakeIdPRequest, opts ...grpc.CallOption) (*FakeIdPResponse, error) {
+	out := new(FakeIdPResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.enterpriseconnectors.DeviceTrustService/ConnectToFakeIdP", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -357,7 +448,8 @@ func (c *deviceTrustServiceClient) LoginWithFakeIdP(ctx context.Context, in *Log
 // DeviceTrustServiceServer is the server API for DeviceTrustService service.
 type DeviceTrustServiceServer interface {
 	Enroll(context.Context, *EnrollRequest) (*emptypb.Empty, error)
-	LoginWithFakeIdP(context.Context, *LoginWithFakeIdPRequest) (*LoginWithFakeIdPResponse, error)
+	LoginWithFakeIdP(context.Context, *LoginWithFakeIdPRequest) (*FakeIdPResponse, error)
+	ConnectToFakeIdP(context.Context, *ConnectToFakeIdPRequest) (*FakeIdPResponse, error)
 }
 
 // UnimplementedDeviceTrustServiceServer can be embedded to have forward compatible implementations.
@@ -367,8 +459,11 @@ type UnimplementedDeviceTrustServiceServer struct {
 func (*UnimplementedDeviceTrustServiceServer) Enroll(context.Context, *EnrollRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Enroll not implemented")
 }
-func (*UnimplementedDeviceTrustServiceServer) LoginWithFakeIdP(context.Context, *LoginWithFakeIdPRequest) (*LoginWithFakeIdPResponse, error) {
+func (*UnimplementedDeviceTrustServiceServer) LoginWithFakeIdP(context.Context, *LoginWithFakeIdPRequest) (*FakeIdPResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginWithFakeIdP not implemented")
+}
+func (*UnimplementedDeviceTrustServiceServer) ConnectToFakeIdP(context.Context, *ConnectToFakeIdPRequest) (*FakeIdPResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConnectToFakeIdP not implemented")
 }
 
 func RegisterDeviceTrustServiceServer(s *grpc.Server, srv DeviceTrustServiceServer) {
@@ -411,6 +506,24 @@ func _DeviceTrustService_LoginWithFakeIdP_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceTrustService_ConnectToFakeIdP_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConnectToFakeIdPRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceTrustServiceServer).ConnectToFakeIdP(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.enterpriseconnectors.DeviceTrustService/ConnectToFakeIdP",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceTrustServiceServer).ConnectToFakeIdP(ctx, req.(*ConnectToFakeIdPRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _DeviceTrustService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.enterpriseconnectors.DeviceTrustService",
 	HandlerType: (*DeviceTrustServiceServer)(nil),
@@ -422,6 +535,10 @@ var _DeviceTrustService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoginWithFakeIdP",
 			Handler:    _DeviceTrustService_LoginWithFakeIdP_Handler,
+		},
+		{
+			MethodName: "ConnectToFakeIdP",
+			Handler:    _DeviceTrustService_ConnectToFakeIdP_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

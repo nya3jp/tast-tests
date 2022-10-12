@@ -53,7 +53,7 @@ func (service *DeviceTrustService) Enroll(ctx context.Context, req *pb.EnrollReq
 }
 
 // LoginWithFakeIdP uses the fake user credentials to get a SAML redirection to a Fake IdP, where the Device Trust attestation flow is tested.
-func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req *pb.LoginWithFakeIdPRequest) (res *pb.LoginWithFakeIdPResponse, retErr error) {
+func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req *pb.LoginWithFakeIdPRequest) (res *pb.FakeIdPResponse, retErr error) {
 	var fakeCreds chrome.Creds
 	fakeCreds.User = "tast-test-device-trust@managedchrome.com"
 
@@ -82,7 +82,39 @@ func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req
 		return nil, errors.Wrap(err, "Device Trust failed")
 	}
 
-	return &pb.LoginWithFakeIdPResponse{Succesful: loginPossible}, nil
+	return &pb.FakeIdPResponse{Succesful: loginPossible}, nil
+}
+
+// ConnectToFakeIdP does a real GAIA login and connects to a Fake IdP inside a session, where the Device Trust attestation flow is tested.
+func (service *DeviceTrustService) ConnectToFakeIdP(origCtx context.Context, req *pb.ConnectToFakeIdPRequest) (res *pb.FakeIdPResponse, retErr error) {
+	cr, err := chrome.New(
+		origCtx,
+		chrome.KeepEnrollment(),
+		chrome.DMSPolicy("https://crosman-alpha.sandbox.google.com/devicemanagement/data/api"),
+		chrome.GAIALogin(chrome.Creds{User: req.User, Pass: req.Pass}),
+		chrome.EnableFeatures("DeviceTrustConnectorEnabled"),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "Chrome login failed")
+	}
+
+	tconn, err := cr.TestAPIConn(origCtx)
+	if err != nil {
+		return nil, errors.Wrap(err, "creating login test API connection failed")
+	}
+
+	conn, err := cr.NewConn(origCtx, "https://cbe-integrationtesting-sandbox.uc.r.appspot.com/")
+	if err != nil {
+		return nil, errors.Wrap(err, "connecting to url failed")
+	}
+	defer conn.Close()
+
+	loginPossible, err := testFakeIdP(origCtx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "Device Trust failed")
+	}
+
+	return &pb.FakeIdPResponse{Succesful: loginPossible}, nil
 }
 
 const defaultUITimeout = 20 * time.Second
