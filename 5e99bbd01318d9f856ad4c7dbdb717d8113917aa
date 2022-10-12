@@ -16,6 +16,69 @@
       "message": "Hi Ben Please review this CL. Thanks!",
       "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7235d7_b8754c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-12T23:18:28Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1face008_9db98caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-12T23:18:28Z",
+      "side": 1,
+      "message": "nit: This is a lot of time to reserve for cleanup, can you add a comment why it requires so much time?",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b6d814_16f77af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-12T23:18:28Z",
+      "side": 1,
+      "message": "Not sure if you\u0027ve seen the work we\u0027ve done in the `drivefs` package but we\u0027ve found it to massively less flaky to remove stuff by relying on the DriveAPI instead of manually clicking, it is also a lot faster.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
