@@ -57,7 +57,14 @@ type Config struct {
 	// WGAutoGenKey indicates whether letting shill generate the private key for
 	// the client side.
 	WGAutoGenKey bool
-
+	// IPType defines the type of a list selected by the user for
+	// the overlay IP address. If IPTypeIPv4, the list contains one IPv4 address.
+	// If IPTypeIPv6, it contains multiple IPv6 addresses. If IPTypeIPv4AndIPv6,
+	// it contains one IPv4 address and multiple IPv6 addresses (one IPv4 address and
+	// the first IPv6 address in the list are configured for the overlay IP addresses
+	// and trigger to make each IP address configuration property. Wireguard supports
+	// the dual stack).
+	IPType IPType
 	// CertVals contains necessary values to setup a cert-based VPN service. This
 	// is only used by cert-based VPNs (e.g., L2TP/IPsec-cert, OpenVPN, etc.).
 	CertVals CertVals
@@ -76,6 +83,18 @@ const (
 	AuthTypeCert = "cert"
 	AuthTypeEAP  = "eap"
 	AuthTypePSK  = "psk"
+)
+
+// IPType defines IP address type of overlay IP address.
+type IPType int
+
+const (
+	// IPTypeIPv4 address is used for overlay IP address.
+	IPTypeIPv4 IPType = iota
+	// IPTypeIPv6 address is used for overlay IP address.
+	IPTypeIPv6
+	// IPTypeIPv4AndIPv6 is used for supporting the dual stack.
+	IPTypeIPv4AndIPv6
 )
 
 // Connection represents a VPN connection can be used in the test.
@@ -197,7 +216,7 @@ func (c *Connection) Connect(ctx context.Context) (bool, error) {
 	if connected, err := c.connectService(ctx); err != nil || !connected {
 		return false, err
 	}
-	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.UnderlayIP, c.Server.OverlayIP)
+	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.UnderlayIP, c.Server.OverlayIPv4)
 	return true, nil
 }
 
@@ -367,7 +386,7 @@ func (c *Connection) createProperties() error {
 func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error) {
 	var serverAddress string
 	if c.config.UnderlayIPIsOverlayIP {
-		serverAddress = c.Server.OverlayIP
+		serverAddress = c.Server.OverlayIPv4
 	} else {
 		serverAddress = c.Server.UnderlayIP
 	}
@@ -498,12 +517,19 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	var peers []map[string]string
 	if c.Server != nil {
 		peer := map[string]string{
-			"PublicKey":  wgServerPublicKey,
-			"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
-			"AllowedIPs": "0.0.0.0/0",
+			"PublicKey": wgServerPublicKey,
+			"Endpoint":  c.Server.UnderlayIP + ":" + wgServerListenPort,
 		}
 		if c.config.AuthType == AuthTypePSK {
 			peer["PresharedKey"] = wgPresharedKey
+		}
+		switch c.config.IPType {
+		case IPTypeIPv4:
+			peer["AllowedIPs"] = "0.0.0.0/0"
+		case IPTypeIPv6:
+			peer["AllowedIPs"] = "::/0"
+		case IPTypeIPv4AndIPv6:
+			peer["AllowedIPs"] = "0.0.0.0/0,::/0"
 		}
 		if c.config.WGTwoPeers {
 			// Do not set "default route" if we have two peers.
@@ -522,7 +548,7 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	}
 
 	staticIPConfig := map[string]interface{}{
-		"Address": wgClientOverlayIP,
+		"Address": wgClientOverlayIPv4,
 	}
 	properties := map[string]interface{}{
 		"Name":            "test-vpn-wg",
@@ -535,6 +561,17 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	}
 	if !c.config.WGAutoGenKey {
 		properties["WireGuard.PrivateKey"] = wgClientPrivateKey
+	}
+	switch c.config.IPType {
+	case IPTypeIPv4:
+		wgClientOverlayIPv4List := []string{wgClientOverlayIPv4}
+		properties["WireGuard.IPAddress"] = wgClientOverlayIPv4List
+	case IPTypeIPv6:
+		wgClientOverlayIPv6List := []string{wgClientOverlayIPv6}
+		properties["WireGuard.IPAddress"] = wgClientOverlayIPv6List
+	case IPTypeIPv4AndIPv6:
+		wgClientOverlayIPv4AndIPv6List := []string{wgClientOverlayIPv4, wgClientOverlayIPv6}
+		properties["WireGuard.IPAddress"] = wgClientOverlayIPv4AndIPv6List
 	}
 	return properties
 }
