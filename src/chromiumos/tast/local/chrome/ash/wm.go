@@ -817,9 +817,12 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 	if err != nil {
 		return errors.Wrap(err, "failed to get all windows")
 	}
-	// Do nothing if there are no visible windows. Homescreen should be there already.
+	// Do nothing if there are no visible windows and overview is not showing.
+	// Homescreen should be there already.
 	if len(windows) == 0 {
-		return nil
+		if err := WaitForOverviewState(ctx, tconn, Shown, time.Second); err != nil {
+			return nil
+		}
 	}
 
 	startX := width / 2
