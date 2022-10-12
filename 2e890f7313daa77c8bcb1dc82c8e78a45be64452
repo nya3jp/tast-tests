@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369b7c0b_d8ebf54a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T20:37:08Z",
+      "side": 1,
+      "message": "we need approvals from tast-owners",
+      "revId": "2e890f7313daa77c8bcb1dc82c8e78a45be64452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e8c7eb_0c9dfbce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T20:37:08Z",
+      "side": 1,
+      "message": "nit: put this at the beginning of the test and run gofmt\n```\nconst (\n\tuiTimeout  \u003d 5 * time.Second\n\tswipeSpeed \u003d 10 * time.Millisecond\n\tdelay      \u003d 2 * time.Second\n)\n```",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "2e890f7313daa77c8bcb1dc82c8e78a45be64452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
