@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdbaa86_07c684d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T05:46:51Z",
+      "side": 1,
+      "message": "Lacros needs additional Chrome options besides the LacrosSupport feature. Take a look at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d105\n\nThis CL might also be helpful:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3859302\n\nSee especially the use of browserfixt.NewChrome.",
+      "revId": "79580c48b8700bc65aa6e244a698ca0071fa7f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
