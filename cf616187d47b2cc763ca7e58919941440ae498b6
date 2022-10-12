@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e73f82a_86ae729a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-12T06:23:41Z",
+      "side": 1,
+      "message": "These devices start to pass the test since R108-15157.0.0.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-09-29\u0026last_date\u003d2022-10-12\u0026master_builder_name\u003d%5Emaster-release%24%7C-\u0026branch\u003d%5Emain%24%7C-\u0026test\u003d%5Etast%5C.audio%5C.ALSAConformance.unstable%24\u0026board\u003d%5Ekevin%24%7C%5Escarlet%24\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dtrue",
+      "revId": "cf616187d47b2cc763ca7e58919941440ae498b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
