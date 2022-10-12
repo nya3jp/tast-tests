@@ -44,7 +44,7 @@ func init() {
 				Name:              "check_key_press",
 				Val:               checkKeyPresses,
 				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
-				ExtraAttr:         []string{"firmware_unstable"},
+				ExtraAttr:         []string{"firmware_ec"},
 			},
 			{
 				Name: "open_lid_to_boot",
@@ -55,7 +55,7 @@ func init() {
 			{
 				Name:      "close_lid_to_shutdown",
 				Val:       shutdownWithLid,
-				ExtraAttr: []string{"firmware_ec"},
+				ExtraAttr: []string{"firmware_unstable"},
 			},
 			{
 				// powerd_dbus_suspend is not very stable so leaving this in unstable.
