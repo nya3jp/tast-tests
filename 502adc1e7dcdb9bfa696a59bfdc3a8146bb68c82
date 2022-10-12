@@ -16,6 +16,24 @@
       "message": "Critical means that failures will block anyone attempting to submit code. Just because the failures have nothing to do with this particular test doesn\u0027t mean it won\u0027t have an adverse affect on everyone else trying to submit code.",
       "revId": "502adc1e7dcdb9bfa696a59bfdc3a8146bb68c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25fddcfe_5e0c25bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-12T17:36:53Z",
+      "side": 1,
+      "message": "So what is the suggestion here? These failures make any test that depend on having Android running fail. Are you marking all of those tests as informational as well? It doesn\u0027t appear to be the case.\n\nPlease advice what the path forward here is for failures that this test has no ability to control for. Because the alternative is to make this test trivially pass when Android doesn\u0027t boot, but I don\u0027t think that\u0027s what we want to do.",
+      "parentUuid": "5f4ad528_ddd2241a",
+      "revId": "502adc1e7dcdb9bfa696a59bfdc3a8146bb68c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
