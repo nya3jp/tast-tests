@@ -245,17 +245,36 @@ func setWriteProtect(ctx context.Context, h *firmware.Helper, target wpTarget, e
 	}
 
 	if target == targetBIOS {
-		// Disable hardware wp for now so flashrom cmd can run.
-		if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
-			return errors.Wrap(err, "failed to disable firmware write protect")
+		// Make sure hardware wp is disabled for now so flashrom cmd can run.
+		if out, err := h.Servo.GetString(ctx, servo.FWWPState); err != nil || out != string(servo.FWWPStateOff) {
+			// If fw wp is enabled or unknown, disable and reboot so ap wp can be changed.
+			if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+				return errors.Wrap(err, "failed to disable firmware write protect")
+			}
+		}
+
+		// Make sure fwwpstate is set and reconnect dut to ssh and biosserviceclient.
+		if err := performModeAwareReboot(ctx, h); err != nil {
+			return errors.Wrap(err, "failed to perform mode aware reboot")
+		}
+
+		if err := h.WaitConnect(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to the DUT")
+		}
+
+		if err := h.RequireBiosServiceClient(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to the bios service on the DUT")
 		}
 
 		if _, err := h.BiosServiceClient.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{Enable: enable}); err != nil {
 			return errors.Wrapf(err, "failed to %s AP write protection", enableStr)
 		}
 
-		if err := h.Servo.SetFWWPState(ctx, fwwpState); err != nil {
-			return errors.Wrapf(err, "failed to %s firmware write protect", enableStr)
+		if enable {
+			// If !enable, fwwp is already disabled from earlier.
+			if err := h.Servo.SetFWWPState(ctx, fwwpState); err != nil {
+				return errors.Wrapf(err, "failed to %s firmware write protect", enableStr)
+			}
 		}
 
 	} else {
