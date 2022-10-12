@@ -90,6 +90,14 @@ func init() {
 				maxErrorBootCount: 1,
 			},
 		}, {
+			Name:              "unmanaged_virtio_blk_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				browserType:       browser.TypeAsh,
+				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
+			},
+		}, {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
