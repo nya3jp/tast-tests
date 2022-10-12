@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87501a57_a48ee2ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "No need for the \"tast-tests: \" prefix, as this is gonna be a commit in the tast-tests repository.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f102bc_7c315d6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "This command only tests the Ash variant. To test both variants you need something like wmp.TabletModeBasicWindowControl*",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b658bd09_e9e29198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed (if there are open windows when the test starts that is a bug).",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f06d4aec_964809d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "You can just use browserfixt.SetUp.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9316783_ff61efec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "The name \"connBlank\" suggests a blank page but you\u0027re opening Youtube.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d488a5_480f2804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "This will actually always open the page in Ash, never in Lacros. Given the checks further down I expect that the lacros variant of your test currently fails.\n\nInstead of cr.NewConn you should use br.NewConn where br is obtained by browserfixt.SetUp (see previous comment) or by browserfixt.Connect (if you launch manually as you currently do). Please take a look at the go/lacros-tast-porting guide.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dfbbaf_16eca675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a823cf_5bf19285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T23:54:41Z",
+      "side": 1,
+      "message": "Nit: remove empty line to group the code with the defer command.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
