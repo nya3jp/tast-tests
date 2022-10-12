@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -132,6 +132,11 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"cros_healthd", "cros_healthd", "cros_healthd", mntNS | restrictCaps | noNewPrivs | seccomp}, // main cros_healthd daemon
 		{"featured", "root", "root", 0},
 		{"cr50-disable-sl", "root", "root", 0},
+
+		// Processes running with CAP_SYS_ADMIN.
+		{"spaced", "spaced", "spaced", restrictCaps},
+		{"cros-disks", "cros-disks", "cros-disks", restrictCaps},
+		{"dnsproxyd", "dns-proxy", "dns-proxy", restrictCaps},
 
 		// These processes run as root in the ARC container.
 		{"app_process", "android-root", "android-root", pidNS | mntNS},
@@ -331,7 +336,6 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 		if reqs == nil {
 			// Processes running as root must always be listed in the baseline.
-			// We ignore unlisted non-root processes on the assumption that they've already done some sandboxing.
 			if info.Euid == 0 {
 				s.Errorf("Unexpected %q process %v (%v) running as root", info.Name, pid, info.Exe)
 				// These failures often correspond to short-lived root processes that are only present
@@ -348,6 +352,17 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 				s.Error("An exclusion list entry for this process would look like:")
 				s.Errorf("%q", info.Name)
 			}
+			// Processes running with CAP_SYS_ADMIN must always be listed in the baseline.
+			if info.Ecaps&(1<<sandboxing.CapSysAdmin) > 0 {
+				s.Errorf("Unexpected %q process %v (%v) with CAP_SYS_ADMIN capability", info.Name, pid, info.Exe)
+				s.Error("A baseline entry for this process would look like:")
+				// {"spaced", "spaced", "spaced", restrictCaps},
+				s.Errorf("{%q, %q, %q, restrictCaps}", info.Name, info.Username, info.Username)
+				s.Error("An exclusion list entry for this process would look like:")
+				s.Errorf("%q", info.Name)
+			}
+			// Ignore unlisted non-root, non-CAP_SYS_ADMIN processes on the
+			// assumption that they've already done some sandboxing.
 			continue
 		}
 
