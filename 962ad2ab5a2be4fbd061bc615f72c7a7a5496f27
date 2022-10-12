@@ -585,6 +585,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64dc92ea_c902ea39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-12T06:20:33Z",
+      "side": 1,
+      "message": "Sorry, I m also new here, so I will trust your try here.\n\nkernel.ConfigVerify.chromeos_kernelci\nimplies that this is a subset of kernel.COnfigVerify,\n\nDoes it make sense to have \nkernel.ConfigVerify.ChromeOS\nkernel.ConfigVerify.ChromiumOS \nin the same file ?\n\nIs there existing pattern like above ?",
+      "parentUuid": "ac6dfefa_6852116c",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
