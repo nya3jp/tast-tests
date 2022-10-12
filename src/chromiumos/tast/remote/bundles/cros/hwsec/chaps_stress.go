@@ -31,7 +31,7 @@ func init() {
 		},
 		// Note: This is not in mainline because it takes too long to run.
 		Attr:         []string{"group:hwsec", "hwsec_weekly"},
-		SoftwareDeps: []string{"chrome", "tpm2"},
+		SoftwareDeps: []string{"chrome", "tpm"},
 		Timeout:      20 * time.Minute,
 	})
 }
