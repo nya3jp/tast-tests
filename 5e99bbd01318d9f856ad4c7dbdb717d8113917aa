@@ -79,6 +79,30 @@
       },
       "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437cb6d3_43e70569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-12T23:44:10Z",
+      "side": 1,
+      "message": "Thanks for the pointer. Our deletion mechanism also talks to the DriveAPI while testing our own feature, to ensure that users can delete their screencasts.",
+      "parentUuid": "a8b6d814_16f77af9",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
