@@ -12,6 +12,7 @@ import (
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/ctxutil"
 	fwUtils "chromiumos/tast/remote/bundles/cros/firmware/utils"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -30,7 +31,7 @@ func init() {
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      20 * time.Minute,
+		Timeout:      60 * time.Minute,
 		Vars:         []string{"firmware.skipFlashUSB"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
@@ -64,25 +65,28 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating mode switcher: ", err)
 	}
 
+	cleanupContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Minute)
+	defer cancel()
 	s.Log("Backup firmware A/B signatures")
 	FWSignABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Sign A region: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWSignABkp.Path).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete FW Sign A backup: ", err)
 		}
-	}()
+	}(cleanupContext)
 	FWSignBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Sign B region: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWSignBBkp.Path).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete FW Sign B backup: ", err)
 		}
-	}()
+	}(cleanupContext)
 
 	s.Log("Copy backup files to the Host")
 	FWSignADst, err := ioutil.TempFile("", "FWSignABackup")
@@ -123,7 +127,7 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 	}
 
 	// Restore FW Signatures
-	defer func() {
+	defer func(ctx context.Context) {
 		// Disable wp so backup can be restored.
 		if err := fwUtils.SetFWWriteProtect(ctx, h, false); err != nil {
 			s.Fatal("Failed to set FW write protect state: ", err)
@@ -181,7 +185,7 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to match mainfw_type: got %q, want %q", mainFWType, bootModeName)
 		}
 
-	}()
+	}(cleanupContext)
 
 	s.Log("Corrupt Firmware A Sign")
 	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
