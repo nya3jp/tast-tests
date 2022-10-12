@@ -46,6 +46,30 @@
       },
       "revId": "ad87e0970cc236fc7bc0a6e8667a0030cc168b2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f541806_f12076f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-12T17:43:43Z",
+      "side": 1,
+      "message": "So I filed b/253254780 for reven. At the moment I am leaning towards defining long lists of hwdeps models for Intel and AMD etc. because this is the correct Tast way from all I can tell.",
+      "parentUuid": "e46981b7_973e6de2",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "ad87e0970cc236fc7bc0a6e8667a0030cc168b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
