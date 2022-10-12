@@ -91,18 +91,25 @@ func ImmersiveMode(ctx context.Context, s *testing.State) {
 	bt := s.Param().(browser.Type)
 	bw, err := wmputils.EnsureOnlyBrowserWindowOpen(ctx, tconn, bt)
 	if err != nil {
-		s.Fatal("Expected the window to be fullscreen but got: ", err)
+		s.Fatal("Failed to ensure one browser window: ", err)
 	}
 	defer bw.CloseWindow(closeCtx, tconn)
 
-	// Press F4 to trigger immersive mode.
+	// Press the zoom toggle key to trigger immersive mode.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kb.Close()
-	if err = kb.Accel(ctx, "F4"); err != nil {
-		s.Fatal("Failed to press F4: ", err)
+
+	// Not all Chromebooks have the same layout for the function keys.
+	layout, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to get keyboard mapping: ", err)
+	}
+
+	if err = kb.Accel(ctx, layout.ZoomToggle); err != nil {
+		s.Fatal("Failed to press the immersive mode shortcut: ", err)
 	}
 
 	// Check the chrome window is in immersive mode.
