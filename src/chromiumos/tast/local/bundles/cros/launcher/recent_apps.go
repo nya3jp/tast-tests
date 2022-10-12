@@ -117,20 +117,31 @@ func RecentApps(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// Wait for system web apps to finish installation to ensure the launcher
-	// gets opened, and recent apps get initialized after system apps have been
-	// installed. Otherwise, some system apps may get dropped from the recent apps view.
-	// Although we invoke waitForSystemWebAppsInstall on SetUpLauncherTest, the
-	// launcher shows before waiting for the apps to stabilize.
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
-		s.Fatal("Failed to wait for system web apps to be installed: ", err)
-	}
-
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
+
+	// Some system apps may get dropped from the recent apps view if they are not installed when
+	// we open the launcher. Although we invoke waitForSystemWebAppsInstall on SetUpLauncherTest,
+	// the launcher shows before waiting for the apps to stabilize. Reopen the launcher to trigger
+	// an update for recent apps.
+	if tabletMode {
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			s.Fatal("Failed to enter overview: ", err)
+		}
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to exit overview: ", err)
+		}
+	} else {
+		if err := launcher.HideLauncher(tconn, !tabletMode)(ctx); err != nil {
+			s.Fatal("Failed to close launcher: ", err)
+		}
+		if err := launcher.ShowLauncher(tconn, !tabletMode)(ctx); err != nil {
+			s.Fatal("Failed to open launcher: ", err)
+		}
+	}
 
 	// Recent apps always show the first time with default suggestions.
 	recentApps := nodewith.ClassName("RecentAppsView")
@@ -140,11 +151,13 @@ func RecentApps(ctx context.Context, s *testing.State) {
 
 	// Hide the launcher and install an app to trigger an update for Recent Apps on the next open.
 	if tabletMode {
-		if err := launcher.HideTabletModeLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to hide the launcher in tablet: ", err)
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			s.Fatal("Failed to enter overview: ", err)
 		}
-	} else if err := launcher.CloseBubbleLauncher(tconn)(ctx); err != nil {
-		s.Fatal("Failed to close the bubble launcher: ", err)
+	} else {
+		if err := launcher.HideLauncher(tconn, !tabletMode)(ctx); err != nil {
+			s.Fatal("Failed to close launcher: ", err)
+		}
 	}
 
 	var appName string
@@ -184,8 +197,17 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		appID = cwsapp.id
 	}
 
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
+	// Show launcher again.
+	if tabletMode {
+		// In tablet mode, it is possible that overview is showing.
+		// In this case, exit overview to show app list.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to exit overview: ", err)
+		}
+	} else {
+		if err := launcher.ShowLauncher(tconn, !tabletMode)(ctx); err != nil {
+			s.Fatal("Failed to open launcher: ", err)
+		}
 	}
 
 	if err := ui.Exists(recentApps)(ctx); err != nil {
@@ -216,7 +238,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome app did not become visible: ", err)
 	}
 
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+	if err := launcher.ShowLauncher(tconn, !tabletMode)(ctx); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
 	}
 
@@ -238,7 +260,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("App %s did not become visible: %v", appName, err)
 	}
 
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+	if err := launcher.ShowLauncher(tconn, !tabletMode)(ctx); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
 	}
 
