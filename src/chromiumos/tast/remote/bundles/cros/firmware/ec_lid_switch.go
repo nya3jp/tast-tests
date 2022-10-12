@@ -72,6 +72,7 @@ const (
 	lidDelay  time.Duration = 1 * time.Second
 	wakeDelay time.Duration = 10 * time.Second
 	noDelay   time.Duration = lidDelay // Just wait for lid state to change, no additional delay.
+	bootDelay time.Duration = 15 * time.Second
 )
 
 func ECLidSwitch(ctx context.Context, s *testing.State) {
@@ -156,6 +157,10 @@ func suspendAndWakeWithLid(ctx context.Context, h *firmware.Helper, delay time.D
 }
 
 func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Duration) (reterr error) {
+	// WA to clean system state for lid misfunction if harmless. Root cause is still unknown.
+	if err := h.DUT.Reboot(ctx); err != nil {
+		return errors.Wrap(err, "failed to reboot DUT")
+	}
 	// Log variables from powerd files to monitor unexpected settings.
 	logCmd := `d="/var/lib/power_manager"; for f in $(ls -A $d); do echo "$f: $(cat $d/$f)"; done`
 	out, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", logCmd).Output(ssh.DumpLogOnError)
@@ -163,6 +168,11 @@ func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Du
 		return errors.Wrap(err, "failed to read files in /var/lib/power_manager")
 	}
 	testing.ContextLog(ctx, "Files in /var/lib/power_manager: ", string(out))
+
+	// Delay a few seconds to ensure no lid state change from system.
+	if err := testing.Sleep(ctx, bootDelay); err != nil {
+		return err
+	}
 
 	if err := h.Servo.CloseLid(ctx); err != nil {
 		return err
