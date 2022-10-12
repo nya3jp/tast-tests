@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2474cf50_cac7cef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Please have another look!",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1510e082_d83777a4",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6327cee9_ff3227a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1510e082_d83777a4",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff2d7b1_abebd6e8",
@@ -48,6 +83,24 @@
       "writtenOn": "2022-10-12T02:58:46Z",
       "side": 1,
       "message": "Are you intentionally not making this a \"mainline\" test?\nIf it was unintended, you need to add this line:\n\t\tAttr:         []string{\"group:mainline\", \"informational\"},\n\nUnfortunately I can\u0027t tell you the difference between mainline and non-mainline. I suspect that mainline tests are run by more builders.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d3e691_cc04d741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff2d7b1_abebd6e8",
       "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd3b5c71_6b2368c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "I get the feeling that ResetState might be a far more heavy weight than what we need. All needed is closing the windows. This was the suggestion of Hyung Tae Kim and in this particular case I would like to be rather on the low overhead side of things as the test might get much more extended with more pages later on.",
+      "parentUuid": "e4591105_c095c908",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef735afc_00a9e022",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 14
@@ -100,6 +171,30 @@
       "writtenOn": "2022-10-12T02:42:46Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 202,
+        "startChar": 47,
+        "endLine": 202,
+        "endChar": 50
+      },
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323e8682_ee6b3c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef735afc_00a9e022",
       "range": {
         "startLine": 202,
         "startChar": 47,
@@ -127,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ee50ee_cecf81ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done!\n\nIn my view, this is a constructor, and it is used in 4 places, and it is essential to get overridden by something which states what windows were found at which time (which is invaluable for maintenance). But fine.",
+      "parentUuid": "0872b174_b7bf1738",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf075ad_fa680b0f",
@@ -140,6 +253,24 @@
       "writtenOn": "2022-10-12T02:42:46Z",
       "side": 1,
       "message": "return uiauto.Combine(...)",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a78d604_b1bdb288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bf075ad_fa680b0f",
       "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +292,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02803ab3_96cc8089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done.\n\nAs the testing state could not be used here (comment from earlier) I had to bubble the error up and check it in each invocation instead.",
+      "parentUuid": "989fa738_8aee9ff2",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9859db31_bd15ab25",
@@ -178,6 +327,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259390f6_4d989a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9859db31_bd15ab25",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06f64fe9_c1ec2f6f",
@@ -191,6 +358,24 @@
       "writtenOn": "2022-10-12T02:42:46Z",
       "side": 1,
       "message": "See above.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "505cd3ca_983d59f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-10-12T20:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f64fe9_c1ec2f6f",
       "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
