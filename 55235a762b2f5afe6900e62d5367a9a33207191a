@@ -16,6 +16,29 @@
       "message": "Jeff, I have rollbacked to PS#7 and changed the commit message a bit.\n\nPlease help to review again for the whole relation chain (3 CLs).  Thanks.",
       "revId": "55235a762b2f5afe6900e62d5367a9a33207191a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9d9b97_78bdf73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-12T15:17:31Z",
+      "side": 1,
+      "message": "change it to chromiumos ? what does kernelci mean ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "55235a762b2f5afe6900e62d5367a9a33207191a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
