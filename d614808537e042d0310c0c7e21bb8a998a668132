@@ -16,6 +16,24 @@
       "message": "Can you provide more details why this fix is required. A bug, a test result link or a statement?",
       "revId": "d614808537e042d0310c0c7e21bb8a998a668132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188720ea_19c51fad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-12T10:26:22Z",
+      "side": 1,
+      "message": "It might get the cell value of \"H1\" (Copy to document) from the `getCellValue`, it will get the cell value of \"B1\" (5147) that we expect on the second retry.\n```\n2022-09-12T16:45:39.910861Z [16:45:38.163] Writing cell \"A3\" value: 100\n2022-09-12T16:45:39.910928Z [16:45:38.164] Start action to select cell \"A3\"\n2022-09-12T16:45:41.788064Z [16:45:40.041] Start action to select cell \"B1\"\n2022-09-12T16:45:43.738829Z [16:45:41.991] Getting cell \"B1\" value: Copy to document\n2022-09-12T16:45:43.742711Z [16:45:41.994] Retry failed attempt 1: failed to convert type to integer: strconv.Atoi: parsing \"Copy to document\": invalid syntax\n2022-09-12T16:45:43.742871Z [16:45:41.995] Start action to select cell \"B1\"\n2022-09-12T16:45:46.167143Z [16:45:44.420] Getting cell \"B1\" value: 5147\n2022-09-12T16:45:46.167335Z [16:45:44.420] Retry succeed in attempt 2\n```",
+      "parentUuid": "d4254803_2585e621",
+      "revId": "d614808537e042d0310c0c7e21bb8a998a668132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
