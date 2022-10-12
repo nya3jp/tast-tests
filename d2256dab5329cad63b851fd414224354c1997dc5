@@ -1,0 +1,355 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2570b967_457dde71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way Theo! This is already looking pretty good, just have a few questions+comments whenever you have a moment. Please let me know if you have any questions! :)",
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c572c350_6d9d4edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Consider adding a comment here and below that describes why we have to special-case getting the test connection when not logged in.",
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1a6b78_66a2995d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_ui_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Could we add a TODO above this since andrewdear@ is moving this functionality into an OOBE helper method [1]?\n\n    // TODO(b/246649651): Separate this logic into a helper method for other OOBE\n    // tests to use.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3939948/comment/15984802_2b5d791f/",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 90
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e7b0dd_062d0c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_ui_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Remove extra line.",
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3150241d_cade5a44",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: `signinProfileTestExtensionId` to be consistent with other camel-cased names.",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 29
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38694702_ffe036c7",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Is this variable required for these OOBE tests? If so, what do you think of updating this to be something like\n\n    var signinProfileTestExtensionID string\n    if tf.features.EnableHidScreenOnOobe {\n      if signinProfileTestExtensionID, ok :\u003d s.Var(fixtureVarSigninKey); !ok {\n        s.Fatal(\"Failed to get sign-in key variable required for OOBE tests\")\n      }\n    }",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 29
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760944d2_6c77e95a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: `crUiSvc`, same as above :)",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceffd559_17a14eaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "\u003e \"Disconnet\" is a possible misspelling of \"Disconnect\".\n\nPlease fix.",
+      "parentUuid": "886e4f13_787cc209",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e1f147_f6e559e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "A lot of these strings seem like they might be re-used across many other OOBE tests. What do you think of extracting these out and into a shared location (potentially into the same/similar file as mentioned in the comment below for `emulateMouseDevice`)?",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81de3379_4fb7d870",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Are we able to poll [1] the paired (or maybe connected [2]?) state of the peer, or perhaps just rely on the timeout from `WaitUntilExists`, instead of using a sleep here? If this functionality is already missing it seems like it might be worth adding a small helper method that waits for a peer to pair?\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3844659/8/src/chromiumos/tast/local/chrome/uiauto/automation.go#546\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_kit.go;l\u003d388-393;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15491946_02c28fd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: `continue`",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26225223_a97ff171",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "This functionality seems like it might end up being very useful for other tests as well, thank you for extracting it out into a helper here! What do you think of moving this into a separate file so that it can be shared with other tests? Potentially we could add a `bluetooth.go` in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/bluetooth/ and have this and other utilities live there?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e771c80a_aefe1dea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Could we move this method up above the test to line 41 since it is a local helper? Also it may be worth considering renaming this to something like `checkNodeExists` or `checkNodeWithNameExists` to make it clear we don\u0027t return anything here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 13
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c201dc24_a748f94a",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Please add documentation for this member and the `signin_profile_test_extension_id` member below.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ab660e_b144fb72",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Remove extra space here and below.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5611abf_0d9beefd",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_ui_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-12T17:52:19Z",
+      "side": 1,
+      "message": "Nit: Remove extra space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
