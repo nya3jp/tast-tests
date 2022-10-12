@@ -124,7 +124,6 @@ var perfTestsExtraData = map[string][]string{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"fs_corruption.go":               10 * time.Minute,
 	"oom_event.go":                   10 * time.Minute,
 	"app_gedit_install_uninstall.go": 12 * time.Minute,
 }
@@ -153,6 +152,7 @@ func TestExpensiveParams(t *testing.T) {
 
 var restartTests = map[string]time.Duration{
 	"backup_restore.go":        10 * time.Minute,
+	"fs_corruption.go":         10 * time.Minute,
 	"resize_backup_restore.go": 15 * time.Minute,
 }
 
