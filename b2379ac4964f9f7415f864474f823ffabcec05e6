@@ -70,6 +70,30 @@
       },
       "revId": "b2379ac4964f9f7415f864474f823ffabcec05e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8b4135_4909f18e",
+        "filename": "src/chromiumos/tast/local/mgs/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-12T09:02:32Z",
+      "side": 1,
+      "message": "Many thanks to your suggestion!",
+      "parentUuid": "866f7519_a9640d38",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "b2379ac4964f9f7415f864474f823ffabcec05e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
