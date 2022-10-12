@@ -69,12 +69,16 @@ func AdaptiveCharging(ctx context.Context, s *testing.State) {
 	// doesn't disable the feature.
 	timeFullDir := "/var/lib/power_manager/charge_history/time_full_on_ac/"
 	timeAcDir := "/var/lib/power_manager/charge_history/time_on_ac/"
+	chargeEventsDir := "/var/lib/power_manager/charge_history/charge_events/"
 	storedTimeFullDir := createFakeChargeHistory(s, timeFullDir)
 	defer os.Rename(storedTimeFullDir, timeFullDir)
 	defer os.RemoveAll(timeFullDir)
 	storedTimeAcDir := createFakeChargeHistory(s, timeAcDir)
 	defer os.Rename(storedTimeAcDir, timeAcDir)
 	defer os.RemoveAll(timeAcDir)
+	storedChargeEventsDir := createFakeChargeHistory(s, chargeEventsDir)
+	defer os.Rename(storedChargeEventsDir, chargeEventsDir)
+	defer os.RemoveAll(chargeEventsDir)
 
 	if err := upstart.EnsureJobRunning(ctx, "powerd"); err != nil {
 		s.Fatal("Failed to restart powerd: ", err)
