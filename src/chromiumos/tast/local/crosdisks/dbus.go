@@ -33,9 +33,9 @@ const (
 	MountErrorInvalidPath        MountError = 4
 	MountErrorPathNotMounted     MountError = 6
 	MountErrorMountProgramFailed MountError = 12
-	MountErrorNeedPassword       MountError = 13
-	MountErrorInProgress         MountError = 14
-	MountErrorCancelled          MountError = 15
+	MountErrorNeedPassword       MountError = 117
+	MountErrorInProgress         MountError = 118
+	MountErrorCancelled          MountError = 119
 	MountErrorInvalidDevicePath  MountError = 100
 )
 
