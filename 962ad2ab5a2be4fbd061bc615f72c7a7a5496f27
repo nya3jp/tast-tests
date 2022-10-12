@@ -633,6 +633,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9df2f9d5_84b0ff10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-12T06:53:53Z",
+      "side": 1,
+      "message": "kernel.ConfigVerify.original is confusing to someone new to this testcase.\nkernel.ConfigVerify.ChromeOS will be clearer in the long run. \n\nIf you don\u0027t want to make the name change for the kernel.ConfigVerify in this CL, perhaps due to some dependency reason, you can make that name change in followup CL.",
+      "parentUuid": "18683cdb_1431a848",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f42435e_d2adc8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
         "patchSetId": 8
