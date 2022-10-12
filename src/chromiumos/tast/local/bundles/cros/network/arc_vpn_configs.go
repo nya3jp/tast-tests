@@ -91,11 +91,11 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
 		return errors.Wrapf(err, "failed to start %s", arcvpn.Svc)
 	}
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		return errors.Wrapf(err, "failed to ping from host %s", conn.Server.OverlayIP)
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 10*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to ping from host %s", conn.Server.OverlayIPv4)
 	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
-		return errors.Wrapf(err, "failed to ping %s from ARC over 'vpn'", conn.Server.OverlayIP)
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIPv4); err != nil {
+		return errors.Wrapf(err, "failed to ping %s from ARC over 'vpn'", conn.Server.OverlayIPv4)
 	}
 	cmd := a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
 	o, err := cmd.Output(testexec.DumpLogOnError)
@@ -141,8 +141,8 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
 		return errors.Wrapf(err, "failed to stop %s", arcvpn.Svc)
 	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
-		return errors.Errorf("failed to verify %s was unreachable from ARC over 'vpn'", conn.Server.OverlayIP)
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIPv4); err == nil {
+		return errors.Errorf("expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIPv4)
 	}
 
 	return nil
