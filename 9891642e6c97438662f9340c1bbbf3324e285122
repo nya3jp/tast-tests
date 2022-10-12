@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "210eeee4_ad19980a",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-12T01:10:07Z",
+      "side": 1,
+      "message": "Currently \"mFd\" is created in `setUpVpnService()` and consumed in `infiniteLoop()`.\nSo, I\u0027d make `setUpVpnService()` return the fd, and make `infiniteLoop()` get the fd as an argument. I think the java object can be kept referenced with this.\n\nI understand the current approach works, so it\u0027s fine to keep the current one, but in general, fewer non-final member variables is preferred (e.g. go/java-practices/mutability#minimize)",
+      "parentUuid": "7cb5ff61_646e240e",
+      "range": {
+        "startLine": 38,
+        "startChar": 92,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a83a340d_fa143284",
         "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
         "patchSetId": 2
