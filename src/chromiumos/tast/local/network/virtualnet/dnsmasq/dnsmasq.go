@@ -48,24 +48,57 @@ const (
 
 type dnsmasq struct {
 	env *env.Env
-	// subnet is the subnet that is used to define the gateway address and the range of DHCP addresses.
+
 	subnet          *net.IPNet
 	resolvedHost    string
 	resolveHostToIP net.IP
-	// dns defines the addresses for external DNS servers.
-	dns        []string
-	cmd        *testexec.Cmd
-	enableDNS  bool
-	enableDHCP bool
+	dns             []string
+	enableDNS       bool
+
+	cmd *testexec.Cmd
 }
 
-// New creates a new dnsmasq object. enableDNS enables the DNS functionality. It supports
-// resolving resolvedHost to resolveHostToIP. If resolvedHost is not set, it matches any domain
-// in dnsmasq configuration. If resolveHostToIP is not set, resolvedHost is resolved to the
-// gateway. dns contains the DNS server list which will be broadcasted by DHCP. The returned
-// object can be passed to Env.StartServer(), its lifetime will be managed by the Env object.
-func New(enableDHCP, enableDNS bool, subnet *net.IPNet, dns []string, resolvedHost string, resolveHostToIP net.IP) *dnsmasq {
-	return &dnsmasq{enableDHCP: enableDHCP, enableDNS: enableDNS, subnet: subnet, dns: dns, resolvedHost: resolvedHost, resolveHostToIP: resolveHostToIP}
+// Option is a type of function to configure dnsmasq.
+type Option = func(*dnsmasq)
+
+// WithDHCPServer enables DHCPv4 server function in dnsmasq. subnet specifies
+// the DHCP range, and the first address in subnet will be used as the gateway
+// address. This option will be mapped to dhcp-range option in dnsmasq.
+func WithDHCPServer(subnet *net.IPNet) Option {
+	return func(d *dnsmasq) {
+		d.subnet = subnet
+	}
+}
+
+// WithDHCPNameServers configures the external DNS server lists which will be
+// broadcast as a DHCP option.
+func WithDHCPNameServers(dns []string) Option {
+	return func(d *dnsmasq) {
+		d.dns = dns
+	}
+}
+
+// WithResolveHost will enables the DNS server function in dnsmasq, which will
+// response the DNS request to resolve host to ip. If host is empty, all hosts
+// will be resolved to ip. If ip is nil, host will be resolved to the gateway
+// address is DHCP server function is enabled, or loopback address (127.0.0.1)
+// otherwise.
+func WithResolveHost(host string, ip net.IP) Option {
+	return func(d *dnsmasq) {
+		d.enableDNS = true
+		d.resolvedHost = host
+		d.resolveHostToIP = ip
+	}
+}
+
+// New creates a new dnsmasq object. The returned object can be passed to
+// Env.StartServer(), its lifetime will be managed by the Env object.
+func New(opts ...Option) *dnsmasq {
+	d := &dnsmasq{}
+	for _, opt := range opts {
+		opt(d)
+	}
+	return d
 }
 
 // Start starts the dnsmasq process.
@@ -79,11 +112,7 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	}
 
 	var gateway net.IP
-	if d.enableDHCP {
-		if d.subnet == nil {
-			return errors.New("failed to start dnsmasq with DHCP: empty subnet")
-		}
-
+	if d.subnet != nil {
 		ip := d.subnet.IP.To4()
 		if ip == nil {
 			return errors.Errorf("given subnet %s is not invalid", d.subnet.String())

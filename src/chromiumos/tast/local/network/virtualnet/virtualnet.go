@@ -90,7 +90,11 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(opts.EnableDHCP, opts.EnableDNS, v4Subnet, opts.IPv4DNSServers, opts.ResolvedHost, opts.ResolveHostToIP)
+		dnsmasq := dnsmasq.New(
+			dnsmasq.WithDHCPServer(v4Subnet),
+			dnsmasq.WithDHCPNameServers(opts.IPv4DNSServers),
+			dnsmasq.WithResolveHost(opts.ResolvedHost, opts.ResolveHostToIP),
+		)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
