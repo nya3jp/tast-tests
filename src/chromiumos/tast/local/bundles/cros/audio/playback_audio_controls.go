@@ -117,14 +117,15 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create WAV audio file: ", err)
 	}
 
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch the Files App: ", err)
+	}
+	defer files.Close(ctx)
+
 	iter := 3
 	for i := 1; i <= iter; i++ {
 		s.Logf("Iteration: %d/%d", i, iter)
-		files, err := filesapp.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch the Files App: ", err)
-		}
-		defer files.Close(ctx)
 
 		if err := files.OpenDownloads()(ctx); err != nil {
 			s.Fatal("Failed to open Downloads folder in files app: ", err)
@@ -378,5 +379,16 @@ func performAudioControls(ctx context.Context, ui *uiauto.Context, kb *input.Key
 	if err := performVolumeControls(ctx, kb); err != nil {
 		return errors.Wrap(err, "failed to perform audio volume controls")
 	}
+
+	collapsePlaylistButton := nodewith.Name("Collapse play queue").Role(role.Button)
+	if err := audioPlayerControls(ctx, ui, collapsePlaylistButton); err != nil {
+		return errors.Wrap(err, "failed to collapse playlist")
+	}
+
+	expandPlaylistButton := nodewith.Name("Expand play queue").Role(role.Button)
+	if err := audioPlayerControls(ctx, ui, expandPlaylistButton); err != nil {
+		return errors.Wrap(err, "failed to expand playlist")
+	}
+
 	return nil
 }

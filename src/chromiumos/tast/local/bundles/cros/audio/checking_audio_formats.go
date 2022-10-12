@@ -33,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
-		Data:         []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav"},
+		Data:         []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav", "audio.mp3", "audio.5.1.mp3"},
 		Fixture:      "chromeLoggedIn",
 	})
 }
@@ -55,8 +55,8 @@ func CheckingAudioFormats(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get user's Download path: ", err)
 	}
 
-	audioFiles := []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav"}
-	audioFileRe := regexp.MustCompile(`^audio.(wav|m4a|ogg|flac)$`)
+	audioFiles := []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav", "audio.mp3", "audio.5.1.mp3"}
+	audioFileRe := regexp.MustCompile(`^audio.(wav|m4a|ogg|flac|mp3|5.1.mp3)$`)
 
 	for _, file := range audioFiles {
 		if err := fsutil.CopyFile(s.DataPath(file), path.Join(downloadsPath, file)); err != nil {
