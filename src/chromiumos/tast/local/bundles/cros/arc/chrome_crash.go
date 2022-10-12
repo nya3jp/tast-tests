@@ -22,20 +22,14 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrash,
-		LacrosStatus: testing.LacrosVariantNeeded,
-		Desc:         "Test chrome crash handling on login screen",
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test ash chrome crash handling of ARC",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               false,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name: "vm",
-			Val:  false,
-			// TODO(hashimoto): Enable this once mini-ARCVM is re-enabled. b/181279632
-			// ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "logged_in",
 			Val:               true,
@@ -89,7 +83,7 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			_, err := arc.InitPID()
 			return err
-		}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: arc.BootTimeout}); err != nil {
 			s.Fatal("Failed to wait for Android init process: ", err)
 		}
 	}
@@ -119,7 +113,7 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 			return errors.New("init still exists")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: arc.BootTimeout}); err != nil {
 		s.Fatal("Failed to wait for restarted Android init process: ", err)
 	}
 }
