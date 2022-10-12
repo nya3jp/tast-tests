@@ -22,6 +22,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// defaultUITimeout is the default timeout for UI interactions.
+const defaultUITimeout = 20 * time.Second
+const sandboxDMServer = "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api"
+const deviceTrustFeature = "DeviceTrustConnectorEnabled"
+
+// URL of a fake IdP, which is hosted and maintained by cbe-device-trust-eng@google.com
+const fakeIdPURL = "https://cbe-integrationtesting-sandbox.uc.r.appspot.com/"
+
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
@@ -43,7 +51,7 @@ func (service *DeviceTrustService) Enroll(ctx context.Context, req *pb.EnrollReq
 	var opts []chrome.Option
 
 	opts = append(opts, chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.User, Pass: req.Pass}))
-	opts = append(opts, chrome.DMSPolicy("https://crosman-alpha.sandbox.google.com/devicemanagement/data/api"))
+	opts = append(opts, chrome.DMSPolicy(sandboxDMServer))
 	opts = append(opts, chrome.NoLogin())
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -55,38 +63,70 @@ func (service *DeviceTrustService) Enroll(ctx context.Context, req *pb.EnrollReq
 }
 
 // LoginWithFakeIdP uses the fake user credentials to get a SAML redirection to a Fake IdP, where the Device Trust attestation flow is tested.
-func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req *pb.LoginWithFakeIdPRequest) (res *pb.LoginWithFakeIdPResponse, retErr error) {
+func (service *DeviceTrustService) LoginWithFakeIdP(ctx context.Context, req *pb.LoginWithFakeIdPRequest) (res *pb.FakeIdPResponse, retErr error) {
 	var fakeCreds chrome.Creds
 	fakeCreds.User = "tast-test-device-trust@managedchrome.com"
 
 	cr, err := chrome.New(
-		origCtx,
+		ctx,
 		chrome.KeepEnrollment(),
-		chrome.DMSPolicy("https://crosman-alpha.sandbox.google.com/devicemanagement/data/api"),
+		chrome.DMSPolicy(sandboxDMServer),
 		chrome.LoadSigninProfileExtension(req.SigninProfileTestExtensionManifestKey),
 		chrome.SAMLLogin(fakeCreds),
-		chrome.EnableFeatures("DeviceTrustConnectorEnabled"),
+		chrome.EnableFeatures(deviceTrustFeature),
 	)
 	if err != nil {
 		return nil, errors.Wrap(err, "Chrome login failed")
 	}
+	defer cr.Close(ctx)
 
-	defer takeScreenshotOnError(origCtx, cr, func() bool { return retErr != nil }, "deviceTrustLogin")
+	defer takeScreenshotOnError(ctx, cr, func() bool { return retErr != nil }, "deviceTrustLogin")
 
-	tconn, err := cr.SigninProfileTestAPIConn(origCtx)
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating login test API connection failed")
 	}
 
-	loginPossible, err := testFakeIdP(origCtx, tconn)
+	loginPossible, err := testFakeIdP(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "Device Trust failed")
 	}
 
-	return &pb.LoginWithFakeIdPResponse{Succesful: loginPossible}, nil
+	return &pb.FakeIdPResponse{Succesful: loginPossible}, nil
 }
 
-const defaultUITimeout = 20 * time.Second
+// ConnectToFakeIdP does a real GAIA login and connects to a Fake IdP inside a session, where the Device Trust inline attestation flow is tested.
+func (service *DeviceTrustService) ConnectToFakeIdP(ctx context.Context, req *pb.ConnectToFakeIdPRequest) (res *pb.FakeIdPResponse, retErr error) {
+	cr, err := chrome.New(
+		ctx,
+		chrome.KeepEnrollment(),
+		chrome.DMSPolicy(sandboxDMServer),
+		chrome.GAIALogin(chrome.Creds{User: req.User, Pass: req.Pass}),
+		chrome.EnableFeatures(deviceTrustFeature),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "Chrome login failed")
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "creating test API connection failed")
+	}
+
+	conn, err := cr.NewConn(ctx, fakeIdPURL)
+	if err != nil {
+		return nil, errors.Wrap(err, "connecting to URL failed")
+	}
+	defer conn.Close()
+
+	loginPossible, err := testFakeIdP(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "Device Trust failed")
+	}
+
+	return &pb.FakeIdPResponse{Succesful: loginPossible}, nil
+}
 
 // activateDeviceTrustViaSettings changes the settings of the fake IdP server, so that it expects a Device Trust attestation flow to happen before it allows the user to pass through to the actual login screen.
 func activateDeviceTrustViaSettings(ctx context.Context, ui *uiauto.Context) error {
