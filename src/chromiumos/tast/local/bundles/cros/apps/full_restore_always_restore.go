@@ -51,7 +51,7 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 	for i := 0; i < iterationCount; i++ {
 		testing.ContextLogf(ctx, "Running: iteration %d/%d", i+1, iterationCount)
 
-		if err := openBrowser(ctx, s.Param().(browser.Type)); err != nil {
+		if err := openBrowser(ctx, s.Param().(browser.Type), s); err != nil {
 			s.Fatal("Failed to open browser: ", err)
 		}
 
@@ -61,7 +61,7 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 	}
 }
 
-func openBrowser(ctx context.Context, bt browser.Type) error {
+func openBrowser(ctx context.Context, bt browser.Type, s *testing.State) error {
 	// TODO(crbug.com/1318180): at the moment for Lacros, we're not getting SetUpWithNewChrome
 	// close closure because when used it'd close all resources, including targets and wouldn't let
 	// the session to proper restore later. As a short term workaround we're closing Lacros
@@ -94,7 +94,7 @@ func openBrowser(ctx context.Context, bt browser.Type) error {
 	}
 
 	if err := uiauto.Combine("set 'Always restore' Settings",
-		uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.PopUpButton)),
+		uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.ComboBoxSelect)),
 		uiauto.New(tconn).LeftClick(nodewith.Name("Always restore").Role(role.ListBoxOption)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to set 'Always restore' Settings")
 	}

@@ -112,13 +112,14 @@ func FullRestoreOpenSettings(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for quick setting: ", err)
 		}
 
-		restoreButton := nodewith.Name("Restore").Role(role.Button)
+		notificationDialog := nodewith.HasClass("AshNotificationView").NameStartingWith("Restore apps?")
+		restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(notificationDialog)
 		if err := ui.LeftClick(restoreButton)(ctx); err != nil {
 			s.Fatal("Failed to click notification RESTORE button: ", err)
 		}
 
 		if err := ui.WaitUntilGone(restoreButton)(ctx); err != nil {
-			s.Fatal("Failed to wait for notification to close: ", err)
+			s.Fatal("Failed to wait for notification to 111 close: ", err)
 		}
 
 		if _, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == ash.WindowTypeBrowser }); err != nil {
