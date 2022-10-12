@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ad80ec_65e0f707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T12:55:18Z",
+      "side": 1,
+      "message": "Great, thanks for the info.",
+      "parentUuid": "2de106ae_abad95ba",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0b6f02_24b124ed",
@@ -124,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb36197b_ac76db31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T12:55:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab6222fe_20e9482f",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "542679a0_7ebcfa60",
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "we\u0027re using the same names as specified by the above comment.",
       "parentUuid": "542679a0_7ebcfa60",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43968087_d4e52b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T12:55:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8054d3c8_856a4869",
       "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -244,6 +298,30 @@
       "side": 1,
       "message": "I think there\u0027s some misunderstanding. \nWe\u0027re checking if the board is Hardware acceleration enabled or disabled check as part of the test in L160, also there are no SoftwareDep for doing this check right now.",
       "parentUuid": "5f0230e0_3f4a16da",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba271ac_f449ece1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T12:55:18Z",
+      "side": 1,
+      "message": "Right, the question I\u0027m trying to ask is:\n\n1. whether we explicitly expect that all boards support HW acceleration, and so not having it enabled should be considered an actual failure, or\n2. we may have some circumstances where boards don\u0027t have it enabled, and we should just not be scheduling the test at all.\n\nIf it\u0027s #1 then this is correct as-is. If it\u0027s #2 then we might end up with spurious red tests polluting the results.",
+      "parentUuid": "253db08c_d9c3b346",
       "range": {
         "startLine": 68,
         "startChar": 0,
