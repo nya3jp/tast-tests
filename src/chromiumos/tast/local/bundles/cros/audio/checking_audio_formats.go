@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/audio/audionode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/cryptohome"
@@ -33,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
-		Data:         []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav"},
+		Data:         []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav", "audio.mp3", "audio.5.1.mp3"},
 		Fixture:      "chromeLoggedIn",
 	})
 }
@@ -49,14 +48,13 @@ func CheckingAudioFormats(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	const expectedAudioNode = "INTERNAL_SPEAKER"
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user's Download path: ", err)
 	}
 
-	audioFiles := []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav"}
-	audioFileRe := regexp.MustCompile(`^audio.(wav|m4a|ogg|flac)$`)
+	audioFiles := []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav", "audio.mp3", "audio.5.1.mp3"}
+	audioFileRe := regexp.MustCompile(`^audio.(wav|m4a|ogg|flac|mp3|5.1.mp3)$`)
 
 	for _, file := range audioFiles {
 		if err := fsutil.CopyFile(s.DataPath(file), path.Join(downloadsPath, file)); err != nil {
@@ -102,19 +100,12 @@ func CheckingAudioFormats(ctx context.Context, s *testing.State) {
 			s.Fatal("Error while waiting during sample time: ", err)
 		}
 
-		audioDeviceName, err := audionode.SetAudioNode(ctx, expectedAudioNode)
-		if err != nil {
-			s.Fatal("Failed to set the Audio node: ", err)
-		}
-
 		devName, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream)
 		if err != nil {
 			s.Fatal("Failed to detect running output device: ", err)
 		}
 
-		if audioDeviceName != devName {
-			s.Fatalf("Failed to route the audio through expected audio node: got %q; want %q", devName, audioDeviceName)
-		}
+		s.Log("Audio device:", devName)
 
 		// Closing the audio player.
 		if kb.Accel(ctx, "Ctrl+W"); err != nil {
