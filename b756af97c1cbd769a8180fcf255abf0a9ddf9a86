@@ -16,6 +16,29 @@
       "message": "Hi Oleh, can you please have a look at the change? Thanks in advance!",
       "revId": "b756af97c1cbd769a8180fcf255abf0a9ddf9a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159e135a_e9decc8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-12T13:59:57Z",
+      "side": 1,
+      "message": "I noticed that sometimes it fails to perform the GAIA login. Sometimes the username is not pasted, other times the username is pasted but the next button is not pressed.",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "b756af97c1cbd769a8180fcf255abf0a9ddf9a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
