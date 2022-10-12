@@ -164,6 +164,11 @@ func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Du
 	}
 	testing.ContextLog(ctx, "Files in /var/lib/power_manager: ", string(out))
 
+	// Delay a few seconds to ensure no lid state change from system.
+	if err := testing.Sleep(ctx, wakeDelay); err != nil {
+		return err
+	}
+
 	if err := h.Servo.CloseLid(ctx); err != nil {
 		return err
 	}
