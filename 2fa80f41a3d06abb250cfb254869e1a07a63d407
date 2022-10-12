@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2acc8a0_96b39738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "Write `var mw *input.MouseEventWriter` here.",
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75980a2f_35d35d9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "Put this here so `mw` is nil in tablet mode:\n\n\tvar err error\n\tmw, err \u003d input.Mouse(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to create a mouse: \", err)\n\t}\n\tdefer mw.Close()",
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcded69_dea9a3a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "Just to better represent a real user:\n\n\tif !inTabletMode {\n\t\tif err :\u003d ui.MouseMoveTo(fileMenu, 500*time.Millisecond)(ctx); err !\u003d nil {\n\t\t\ts.Log(\"Failed to move mouse to Google Doc\u0027s file menu: \", err)\n\t\t}\n\t}",
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7a656d_f1f118c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "Just to better represent a real user:\n\n\tif !inTabletMode {\n\t\tif err :\u003d mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond); err !\u003d nil {\n\t\t\ts.Log(\"Failed to move mouse to center of Google Docs window: \", err)\n\t\t}\n\t}",
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d7cf21_69da1f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "optional nit: Write `x :\u003d docsBounds.CenterX()` and use `x` twice instead of repeating `docsBounds.CenterX()`",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 898,
+        "endChar": 84
+      },
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5df59e8_2046cc36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "`*3/4` will result in better rounding, because the rounding happens with the `/` operation.",
+      "range": {
+        "startLine": 898,
+        "startChar": 79,
+        "endLine": 898,
+        "endChar": 83
+      },
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712ef04c_92e46acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-12T23:09:15Z",
+      "side": 1,
+      "message": "Instead of using `uiauto.Combine`, how about just:\n\n\tpc.Drag(bottomSwipePoint,\n\t\tpc.DragTo(topSwipePoint, time.Second),\n\t\tpc.DragTo(bottomSwipePoint, time.Second),\n\t)",
+      "range": {
+        "startLine": 901,
+        "startChar": 14,
+        "endLine": 905,
+        "endChar": 5
+      },
+      "revId": "2fa80f41a3d06abb250cfb254869e1a07a63d407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
