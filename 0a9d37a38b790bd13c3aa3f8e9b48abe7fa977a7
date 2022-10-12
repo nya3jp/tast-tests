@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9febc84_85c78ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-12T16:04:39Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "0a9d37a38b790bd13c3aa3f8e9b48abe7fa977a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b5cda4_92699c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-12T16:04:39Z",
+      "side": 1,
+      "message": "The `var err` can be declared in the same place as `procs` to reduce duplication and improve readability",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "0a9d37a38b790bd13c3aa3f8e9b48abe7fa977a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
