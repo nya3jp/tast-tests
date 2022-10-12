@@ -16,6 +16,148 @@
       "message": "Many thanks Hidehiko! Addressed!\n\nGeorg, could you please have another look? Thanks!",
       "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1510e082_d83777a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "I think you need to list \"lacros\" here.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a145480d_db3dee07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "Alternatively you could call chrome.ResetState right before or after testURLRedirect (L156). That closes all Ash and Lacros windows (it even kills Lacros if needed and deletes its user data dir).",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef735afc_00a9e022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 202,
+        "startChar": 47,
+        "endLine": 202,
+        "endChar": 50
+      },
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0872b174_b7bf1738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "Nit: I\u0027d find the code clearer if we can eliminate this variable in this scope and just use chrome.MatchTargetURL(params.url) directly in the relevant cases.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf075ad_fa680b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "return uiauto.Combine(...)",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989fa738_8aee9ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "Hmm don\u0027t we want the test to fail when err !\u003d nil?",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9859db31_bd15ab25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "Please use ash.BrowserTypeMatch(browser.TypeLacros).\nIf that doesn\u0027t work then I\u0027d like to understand why.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f64fe9_c1ec2f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "7c4078621f09b32bd6c2da1bf3c81bbd1c1a1bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

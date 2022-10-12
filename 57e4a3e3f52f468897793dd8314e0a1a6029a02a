@@ -272,6 +272,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d33865_76065388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "The error messages typically contain the call stack which is valuable information.",
+      "parentUuid": "c099b452_2472dd01",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0b11f90_12ee213b",
@@ -747,6 +771,24 @@
       "side": 1,
       "message": "Done\n\nBut: If you have a second, I would like to understand why \"Error\" in this context is unwanted?",
       "parentUuid": "b91b3020_982c1719",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1080efc7_9d752b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-12T02:42:46Z",
+      "side": 1,
+      "message": "s.Fatal(\"foo\") will produce a line like\n2022-10-12T02:41:11.206082Z [02:41:10.414] Error at basic.go:58: foo\n\nSo \"Error\" is already part of the log.",
+      "parentUuid": "f7fdab73_e591dfba",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
