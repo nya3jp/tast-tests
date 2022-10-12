@@ -250,6 +250,19 @@ func setWriteProtect(ctx context.Context, h *firmware.Helper, target wpTarget, e
 			return errors.Wrap(err, "failed to disable firmware write protect")
 		}
 
+		// Make sure fwwpstate is set and reconnect dut to ssh and biosserviceclient.
+		if err := performModeAwareReboot(ctx, h); err != nil {
+			return errors.Wrap(err, "failed to perform mode aware reboot")
+		}
+
+		if err := h.WaitConnect(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to the DUT")
+		}
+
+		if err := h.RequireBiosServiceClient(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to the bios service on the DUT")
+		}
+
 		if _, err := h.BiosServiceClient.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{Enable: enable}); err != nil {
 			return errors.Wrapf(err, "failed to %s AP write protection", enableStr)
 		}
