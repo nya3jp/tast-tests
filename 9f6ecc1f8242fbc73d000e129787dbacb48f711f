@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243a158c_7565a4d5",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T17:56:59Z",
+      "side": 1,
+      "message": "Is there any circumstance where we want to run this outside of `NewHelperWithConnectedCellular`? If not, we can mark this as not exported (via rename to `connectAndCheck`).",
+      "range": {
+        "startLine": 1258,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 61
+      },
+      "revId": "9f6ecc1f8242fbc73d000e129787dbacb48f711f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
