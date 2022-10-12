@@ -34,6 +34,24 @@
       "parentUuid": "bd213621_be83e0da",
       "revId": "0af5a68aa28d05eee1ff2b55f6fc371d7d1f9bd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21eaee7b_29da0ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-12T16:50:12Z",
+      "side": 1,
+      "message": "if you are OK with this CL, could we land it quick first to green some bots? if the other CL comes along fast we an abandon. Ill defer the choice to your team, but let me get a +2 from tast owner. (i won\u0027t submit until your +1)",
+      "parentUuid": "594828cc_dd280f12",
+      "revId": "0af5a68aa28d05eee1ff2b55f6fc371d7d1f9bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
