@@ -52,6 +52,24 @@
       "parentUuid": "5e346f2d_4fd7966e",
       "revId": "44b7f6478ba7e9bb55ce8d6a819b22098d349bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ac0b82_468c3f3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-12T00:40:37Z",
+      "side": 1,
+      "message": "I\u0027m still hesitant to go through with only limiting our channels on DFS-UNSET to channels 36-48. This precedent will carry to throughput tests as well (we are actively porting them over and they will also use openwrt), and I think there are non-zero amount of issues in our stack that have had channel specific issues.\n\nHere\u0027s a bug that affected specific channels that was detected on a (no-IR) channel with respect to openwrt to illustrate my concern in a coverage reduction https://b.corp.google.com/issues/170832071 (this is a throughput test). By only testing low band 5ghz, we lose out on coverage of mid and high band 5ghz channels which may behave differently.\n\nI think that if we\u0027re running tests in the US, it\u0027s permissible to have our reg domain also be set to US. Presumably, other ramifications such as tx power will be more representative of the US test environment as well.",
+      "parentUuid": "4755c165_0b29a956",
+      "revId": "44b7f6478ba7e9bb55ce8d6a819b22098d349bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
