@@ -59,6 +59,28 @@ func AdaptiveCharging(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// After enabled the AdaptiveCharging feature flag, the setting to enable
+	// the feature should be enabled by default.
+	cr, err := chrome.New(ctx,
+		chrome.EnableFeatures("AdaptiveCharging"),
+		chrome.ARCDisabled())
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	srvo, err := servo.NewDirect(ctx, s.RequiredVar("servo"))
+	if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer srvo.Close(cleanupCtx)
+
+	// Putting battery within testable range where the Adaptive Charging
+	// notification will show.
+	if err := charge.EnsureBatteryWithinRange(ctx, cr, srvo, 80.0, 95.0); err != nil {
+		s.Fatalf("Failed to ensure battery percentage within %d%% to %d%%: %v", 80, 95, err)
+	}
+
 	// Stop powerd while we're changing directories that it touches.
 	if err := upstart.StopJob(ctx, "powerd"); err != nil {
 		s.Fatal("Failed to stop powerd: ", err)
@@ -84,22 +106,6 @@ func AdaptiveCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart powerd: ", err)
 	}
 
-	srvo, err := servo.NewDirect(ctx, s.RequiredVar("servo"))
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	defer srvo.Close(cleanupCtx)
-
-	// After enabled the AdaptiveCharging feature flag, the setting to enable
-	// the feature should be enabled by default.
-	cr, err := chrome.New(ctx,
-		chrome.EnableFeatures("AdaptiveCharging"),
-		chrome.ARCDisabled())
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Chrome Test API Connection: ", err)
@@ -110,12 +116,6 @@ func AdaptiveCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start fake Adaptive Charging ML service: ", err)
 	}
 	defer f.StopService()
-
-	// Putting battery within testable range where the Adaptive Charging
-	// notification will show.
-	if err := charge.EnsureBatteryWithinRange(ctx, cr, srvo, 80.0, 95.0); err != nil {
-		s.Fatalf("Failed to ensure battery percentage within %d%% to %d%%: %v", 80, 95, err)
-	}
 
 	for _, param := range []struct {
 		// the subtest name
