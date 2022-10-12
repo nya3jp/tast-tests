@@ -106,7 +106,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.exportCrostini)", "backup.tar.gz"); err != nil {
 		s.Fatal("Running autotestPrivate.exportCrostini failed: ", err)
 	}
-	defer os.Remove(filepath.Join("/home/user", ownerID, "Downloads/backup.tar.gz"))
+	defer os.Remove(filepath.Join("/home/user", ownerID, "MyFiles/Downloads/backup.tar.gz"))
 
 	// Delete the test file in the container.
 	if err := crostini.RemoveContainerFile(ctx, cont, testFileName); err != nil {
