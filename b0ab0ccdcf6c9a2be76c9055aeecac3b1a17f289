@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f06357b_34aa54bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_basic_sms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T17:55:41Z",
+      "side": 1,
+      "message": "Unless we are explicitly turning off other technologies (i.e. with `RunTestOnCellularInterface` or equivalent) then ethernet should still be active during this test, and will be used as the primary technology/default service.",
+      "parentUuid": "994a805c_8dd3187b",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "b0ab0ccdcf6c9a2be76c9055aeecac3b1a17f289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cdfe1ec_e8eb61e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
         "patchSetId": 2
