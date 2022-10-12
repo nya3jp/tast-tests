@@ -99,6 +99,8 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
 	// Creates new desk.
 	addDeskButton := nodewith.ClassName("ZeroStateIconButton")
 	newDeskNameView := nodewith.ClassName("DeskNameView").Name("Desk 2")
@@ -141,7 +143,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Drags Files App into the new desk.
-	filesAppWindowView := nodewith.ClassName("BrowserFrame").Name("Files - My files")
+	filesAppWindowView := nodewith.HasClass("BrowserFrame").Name("Files - My files")
 	filesAppWindowViewLoc, err := ac.Location(ctx, filesAppWindowView)
 	if err != nil {
 		s.Fatal("Failed to get the location of the Files app: ", err)
@@ -165,7 +167,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Delete the new desk.
-	closeDeskButton := nodewith.ClassName("CloseButton").Ancestor(newDeskMiniView).First()
+	closeDeskButton := nodewith.HasClass("CloseButton").NameStartingWith("Combine").Ancestor(newDeskMiniView)
 	if err := uiauto.Combine(
 		"Delete a new desk",
 		ac.DoDefault(closeDeskButton),
