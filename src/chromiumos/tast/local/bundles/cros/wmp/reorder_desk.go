@@ -87,6 +87,7 @@ func ReorderDesk(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Enters overview mode.
