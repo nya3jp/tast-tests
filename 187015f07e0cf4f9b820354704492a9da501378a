@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4ad32a_03cd5497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-12T00:20:15Z",
+      "side": 1,
+      "message": "Thanks for the prompt patch. What about filemanager.Deletion?",
+      "revId": "187015f07e0cf4f9b820354704492a9da501378a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
