@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d509fc_4fecc229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-12T18:01:00Z",
+      "side": 1,
+      "message": "Hi Tast Owners, Aga and Kyle have already approved this CL but I rebased to catch a change that landed yesterday (parental_controls_link.go), and now all the approvals have disappeared. Please take another look since Kyle is now OOO.",
+      "revId": "ca8bf9dd7e14702a68fff679328fbf090e887bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
