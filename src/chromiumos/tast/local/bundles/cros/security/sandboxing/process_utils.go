@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,6 +18,9 @@ import (
 
 	"chromiumos/tast/errors"
 )
+
+// CapSysAdmin is the index of the CAP_SYS_ADMIN capability in linux/capability.h.
+const CapSysAdmin = 21
 
 // Exclusions contains names (from the "Name:" field in /proc/<pid>/status) of processes to ignore
 // in sandboxing-related test. These processes are either transient, not present on production images,
@@ -118,6 +121,7 @@ type ProcSandboxInfo struct {
 	Cmdline            string          // space-separated command line
 	Ppid               int32           // parent PID
 	Euid, Egid         uint32          // effective UID and GID
+	Username           string          // username
 	PidNS, MntNS       int64           // PID and mount namespace IDs (-1 if unknown)
 	Ecaps              uint64          // effective capabilities
 	NoNewPrivs         bool            // no_new_privs is set (see "minijail -N")
@@ -157,6 +161,14 @@ func GetProcSandboxInfo(proc *process.Process) (*ProcSandboxInfo, error) {
 		saveErr(errors.Wrap(err, "failed to get GIDs"))
 	} else {
 		info.Egid = uint32(gids[1])
+	}
+
+	// Not every user id matches an actual username, so failing to obtain the
+	// username is not fatal.
+	if username, err := proc.Username(); err != nil {
+		info.Username = string(info.Euid)
+	} else {
+		info.Username = username
 	}
 
 	// Namespace data appears to sometimes be missing for (exiting?) processes: https://crbug.com/936703
