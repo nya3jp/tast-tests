@@ -87,6 +87,24 @@
       "parentUuid": "426a6ee1_e951dc93",
       "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1687a13b_bf921023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-10-12T01:39:02Z",
+      "side": 1,
+      "message": "Sure. I am working on that.\nBut I think that servo issue need to be fixed in remote test.\nSo when all stuff are done, it will be uploaded to another CL.\nAm I right? Or is there any problem?",
+      "parentUuid": "eca3372b_c4baa665",
+      "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
