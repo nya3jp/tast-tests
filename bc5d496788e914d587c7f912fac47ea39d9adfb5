@@ -354,6 +354,30 @@
       },
       "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ffc80ce_03fcf873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-12T17:53:32Z",
+      "side": 1,
+      "message": "Great, thanks.",
+      "parentUuid": "95337eb7_4c303109",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
