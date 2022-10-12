@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2f0462_0f9524e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-12T13:01:45Z",
+      "side": 1,
+      "message": "Thank you for the reviews. Please check this version.\nMade the new patch to conbine two patches, and squashed the first patch that was chained to the second one.\nAfter that, removed the IPv4AndIPv6 flag and modified some parts related to it.",
+      "revId": "7bd2a046f79a8dc47548a01985577f70b6770990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

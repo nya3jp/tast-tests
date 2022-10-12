@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36b555b9_998e1a97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-12T13:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff30dd3b_9d50a12b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "101f5f8a692c2fd7660f8b78606b8dc02ba149d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e5db5e18_6cb108fd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a725199_1675ad8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-12T13:01:45Z",
+      "side": 1,
+      "message": "Thanks. `IPv4AndIPv6` can be removed. If this flag isn\u0027t defined, we can check if IPv6 addresses should be configured by checking only `WGIPv6` (don\u0027t need to check both `WGIPv6` and `WGIPv4AndIPv6`).",
+      "parentUuid": "c0d06750_f9a82f5e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "101f5f8a692c2fd7660f8b78606b8dc02ba149d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d25f2af8_bb4ee104",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-11T03:38:17Z",
       "side": 1,
       "message": "This is not a valid prefix (the last 64 bits of address are not all-zero).",
+      "range": {
+        "startLine": 335,
+        "startChar": 43,
+        "endLine": 335,
+        "endChar": 60
+      },
+      "revId": "101f5f8a692c2fd7660f8b78606b8dc02ba149d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe60ea7_d2532741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-12T13:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25f2af8_bb4ee104",
       "range": {
         "startLine": 335,
         "startChar": 43,
