@@ -112,7 +112,8 @@ func FullRestoreOpenSettings(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for quick setting: ", err)
 		}
 
-		restoreButton := nodewith.Name("Restore").Role(role.Button)
+		notificationDialog := nodewith.HasClass("AshNotificationView").NameStartingWith("Restore apps?")
+		restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(notificationDialog)
 		if err := ui.LeftClick(restoreButton)(ctx); err != nil {
 			s.Fatal("Failed to click notification RESTORE button: ", err)
 		}
