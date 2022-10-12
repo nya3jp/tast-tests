@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceda9f26_bd962cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "oops. Done.",
+      "parentUuid": "8293a827_dca114d9",
+      "range": {
+        "startLine": 36,
+        "startChar": 42,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8113c7e_7616f34f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-12T01:11:28Z",
       "side": 1,
       "message": "all screen capture files",
+      "range": {
+        "startLine": 45,
+        "startChar": 68,
+        "endLine": 45,
+        "endChar": 77
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32295042_57d5d678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8113c7e_7616f34f",
       "range": {
         "startLine": 45,
         "startChar": 68,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ccc3720_63b81562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a45d41_eebfc281",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daa4cebb_27e13e9b",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-12T01:11:28Z",
       "side": 1,
       "message": "ctx is not used in the defer function body?",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f14f31_1a71eeed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "Removed. Thanks for catching it!",
+      "parentUuid": "daa4cebb_27e13e9b",
       "range": {
         "startLine": 80,
         "startChar": 12,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee062be3_d2a9a0d2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "Actually this function is now not needed since I later use StartFullScreenRecording and EndScreenRecording instead so that I can start another capture mode session during recording. Remove this function.",
+      "parentUuid": "a5fa39f0_3a11f21f",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33686592_53d1b914",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-12T01:11:28Z",
       "side": 1,
       "message": "end screen recording",
+      "range": {
+        "startLine": 98,
+        "startChar": 38,
+        "endLine": 98,
+        "endChar": 70
+      },
+      "revId": "552a0eac5bce1f10ff8f534dfe9851e88e032793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1df268b_9eb3e66d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "The function is removed.",
+      "parentUuid": "33686592_53d1b914",
       "range": {
         "startLine": 98,
         "startChar": 38,

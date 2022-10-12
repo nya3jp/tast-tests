@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12fcb211_fa1af72f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-12T17:39:00Z",
+      "side": 1,
+      "message": "Hi Yichen, I\u0027ve addressed your comments, can you take another look at the CL please? Thanks!",
+      "revId": "2b94e0e8e43bac0e248cf6f4c41c473413632000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
