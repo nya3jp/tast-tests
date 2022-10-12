@@ -15,12 +15,18 @@ message LoginWithFakeIdPRequest {
   string signinProfileTestExtensionManifestKey = 1;
 }
 
-message LoginWithFakeIdPResponse {
+message ConnectToFakeIdPRequest {
+  string user = 1;
+  string pass = 2;
+}
+
+message FakeIdPResponse {
   bool succesful = 1;
 }
 
 // DeviceTrustService provides RPC methods to run device trust related operations
 service DeviceTrustService {
   rpc Enroll(EnrollRequest) returns (google.protobuf.Empty) {}
-  rpc LoginWithFakeIdP(LoginWithFakeIdPRequest) returns (LoginWithFakeIdPResponse) {}
+  rpc LoginWithFakeIdP(LoginWithFakeIdPRequest) returns (FakeIdPResponse) {}
+  rpc ConnectToFakeIdP(ConnectToFakeIdPRequest) returns (FakeIdPResponse) {}
 }
