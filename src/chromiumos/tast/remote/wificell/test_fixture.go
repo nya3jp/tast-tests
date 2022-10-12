@@ -1296,54 +1296,18 @@ func (tf *TestFixture) StandardRouterWithBridgeAndVethSupport() (router.Standard
 	return r, nil
 }
 
-// LegacyRouter returns the Router as a legacy.Router.
-func (tf *TestFixture) LegacyRouter() (*legacy.Router, error) {
-	r, ok := tf.Router().(*legacy.Router)
-	if !ok {
-		return nil, errors.New("router is not a legacy router")
-	}
-	return r, nil
-}
-
-// AxRouter returns the Router as an ax.Router.
-func (tf *TestFixture) AxRouter() (*ax.Router, error) {
-	r, ok := tf.Router().(*ax.Router)
-	if !ok {
-		return nil, errors.New("router is not an ax router")
-	}
-	return r, nil
-}
-
-// OpenWrtRouter returns the Router as an openwrt.Router.
-func (tf *TestFixture) OpenWrtRouter() (*openwrt.Router, error) {
-	r, ok := tf.Router().(*openwrt.Router)
-	if !ok {
-		return nil, errors.New("router is not an OpenWrt router")
-	}
-	return r, nil
-}
-
 // Pcap returns the pcap device in the fixture.
 func (tf *TestFixture) Pcap() router.Base {
 	return tf.pcap
 }
 
-// LegacyPcap returns the Pcap as a legacy.Router.
-func (tf *TestFixture) LegacyPcap() (*legacy.Router, error) {
-	p, ok := tf.Pcap().(*legacy.Router)
+// StandardPcap returns the Pcap as a router.Standard.
+func (tf *TestFixture) StandardPcap() (router.Standard, error) {
+	r, ok := tf.Pcap().(router.Standard)
 	if !ok {
-		return nil, errors.New("pcap is not a legacy router")
+		return nil, errors.New("pcap is not a standard router")
 	}
-	return p, nil
-}
-
-// OpenWrtPcap returns the Pcap as an openwrt.Router.
-func (tf *TestFixture) OpenWrtPcap() (*openwrt.Router, error) {
-	p, ok := tf.Pcap().(*openwrt.Router)
-	if !ok {
-		return nil, errors.New("pcap is not an OpenWrt router")
-	}
-	return p, nil
+	return r, nil
 }
 
 // Attenuator returns the Attenuator object in the fixture.

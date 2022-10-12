@@ -275,9 +275,9 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	if tf.Router().RouterType() != support.AxT {
 		s.Fatal("Test fixture router is not an AX router")
 	}
-	rt, err := tf.AxRouter()
-	if err != nil {
-		s.Fatal("Failed to get ax router: ", err)
+	rt, ok := tf.Router().(*ax.Router)
+	if !ok {
+		s.Fatal("router is not an ax router")
 	}
 	if axType == ax.Unknown {
 		axType, err = rt.ResolveAXDeviceType(ctx)
