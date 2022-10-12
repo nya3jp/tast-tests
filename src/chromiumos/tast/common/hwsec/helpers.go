@@ -448,3 +448,12 @@ func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func(con
 		return nil
 	}), nil
 }
+
+// DisableUserSecretStash disables the UserSecretStash experiment by making sure
+// that the flag file checked by cryptohomed does not exist.
+func (h *CmdTPMClearHelper) DisableUserSecretStash(ctx context.Context) error {
+	if _, err := h.cmdRunner.Run(ctx, "rm", "-f", ussFlagFile); err != nil {
+		return errors.Wrap(err, "failed to remove the UserSecretStash flag file")
+	}
+	return nil
+}
