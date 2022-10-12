@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dffebfe_ff7859a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-12T21:37:08Z",
+      "side": 1,
+      "message": "Thanks for the quick code review, Yichen! I addressed your comments and please take another look when you are available 😊",
+      "revId": "5f25c306bc89e48acfd5120f633f3231a307c525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
