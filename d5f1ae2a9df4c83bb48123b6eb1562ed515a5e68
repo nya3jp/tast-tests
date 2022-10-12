@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9427fd4_cf3264f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T17:54:37Z",
+      "side": 1,
+      "message": "Use `action.Sleep` -- it does the same thing",
+      "revId": "d5f1ae2a9df4c83bb48123b6eb1562ed515a5e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ee3515_7c8475e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T17:54:37Z",
+      "side": 1,
+      "message": "I think this is backwards (string first, err second)",
+      "revId": "d5f1ae2a9df4c83bb48123b6eb1562ed515a5e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51d6a46_8ec9ca1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T17:54:37Z",
+      "side": 1,
+      "message": "Can you check if we need a sleep at all? If so pls leave a comment on why",
+      "revId": "d5f1ae2a9df4c83bb48123b6eb1562ed515a5e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
