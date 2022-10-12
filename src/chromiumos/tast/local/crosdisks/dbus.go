@@ -33,10 +33,10 @@ const (
 	MountErrorInvalidPath        MountError = 4
 	MountErrorPathNotMounted     MountError = 6
 	MountErrorMountProgramFailed MountError = 12
-	MountErrorNeedPassword       MountError = 117
-	MountErrorInProgress         MountError = 118
-	MountErrorCancelled          MountError = 119
-	MountErrorInvalidDevicePath  MountError = 100
+	MountErrorInvalidDevicePath  MountError = 13
+	MountErrorNeedPassword       MountError = 17
+	MountErrorInProgress         MountError = 18
+	MountErrorCancelled          MountError = 19
 )
 
 func (e MountError) Error() string {
