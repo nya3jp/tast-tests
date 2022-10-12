@@ -39,6 +39,30 @@
       },
       "revId": "0a9d37a38b790bd13c3aa3f8e9b48abe7fa977a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d04d71_a5a20c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-12T17:57:55Z",
+      "side": 1,
+      "message": "`procs` actually *needs* to be available in the outer scope, but `err` does not. I intentionally chose this nesting to avoid letting `err` live beyond its intention. Is the reduced duplication still a better tradeoff?",
+      "parentUuid": "a8b5cda4_92699c6e",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "0a9d37a38b790bd13c3aa3f8e9b48abe7fa977a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
