@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfecf842_2dfaeace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-12T22:44:06Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edba48f_e5678f40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-12T22:44:06Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we should be wrapping err here, given it is known that err \u003d\u003d nil at this point in the code.",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 28
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a3e612_e183d66f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-12T22:44:06Z",
+      "side": 1,
+      "message": "nit: This nested construction is a bit difficult to read, I think it would be clearer to unnest it as follows:\n\n```\nvar pinAuthFactor ...\nfor _, authFactor :\u003d range ... {\n   if authFactor.AuthFactor.Type \u003d\u003d .....TYPE_PIN {\n      pinAuthFactor \u003d authFactor;\n      break;\n   }\n}\nif pinAuthFactor !\u003d nil {\n  for _ .... AvailableIntents {\n     if ... authIntent \u003d\u003d AUTH_INTENT_DECRYPT {\n         return error....\n     }\n  }\n}\nreturn nil\n```",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e0e326_1fd002d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-12T22:44:06Z",
+      "side": 1,
+      "message": "clar: Is it valid if no PIN-based auth factor is found, or is it an error? Given the method name, I would expect it to be an error.",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
