@@ -44,6 +44,8 @@ func UpdateRecovery(ctx context.Context, s *testing.State) {
 		testFile        = "file"
 		testFileContent = "content"
 		shadow          = "/home/.shadow"
+		userGaiaID      = "123456789"
+		deviceUserID    = "123-456-AA-BB"
 	)
 
 	ctxForCleanUp := ctx
@@ -162,7 +164,7 @@ func UpdateRecovery(ctx context.Context, s *testing.State) {
 	}
 
 	// Add a recovery auth factor to the user.
-	if err := client.AddRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, mediatorPubKey); err != nil {
+	if err := client.AddRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, mediatorPubKey, userGaiaID, deviceUserID); err != nil {
 		s.Fatal("Failed to add a recovery auth factor: ", err)
 	}
 
@@ -178,7 +180,7 @@ func UpdateRecovery(ctx context.Context, s *testing.State) {
 	}
 
 	// Update recovery auth factor.
-	if err := client.UpdateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel /*label*/, mediatorPubKey); err != nil {
+	if err := client.UpdateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel /*label*/, mediatorPubKey, userGaiaID, deviceUserID); err != nil {
 		s.Fatal("Failed to update recovery factor: ", err)
 	}
 
