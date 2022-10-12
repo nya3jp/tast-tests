@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacca0b7_53a5a896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_cbi_eeprom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-12T21:59:28Z",
+      "side": 1,
+      "message": "TAST is trying to remove this, please use SkipOnModel",
+      "range": {
+        "startLine": 30,
+        "startChar": 70,
+        "endLine": 30,
+        "endChar": 84
+      },
+      "revId": "c423b1a8d95fa23f72c334ce05c70daa53690849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e745726b_1af92a80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_cbi_eeprom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-12T21:59:28Z",
+      "side": 1,
+      "message": "herobrine is new and doesn\u0027t have a firmware branch yet. I suspect this list is way too big. I\u0027m not sure how to get the correct list other than looking at the boards that fail the test, and checking them one by one.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 13
+      },
+      "revId": "c423b1a8d95fa23f72c334ce05c70daa53690849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
