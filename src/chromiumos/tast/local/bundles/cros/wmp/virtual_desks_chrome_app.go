@@ -161,6 +161,15 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 
 	TestPWABtn := nodewith.ClassName("ash/ShelfAppButton").Name("Test PWA")
 
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	}
+	// 2 chrome windows and 1 PWA window are created with previous procedure.
+	if len(ws) != 3 {
+		s.Fatalf("Unexpected number of windows found; wanted %v, got %v", 3, len(ws))
+	}
+	// Click Test PWA shelf button, this will bring back to first desk.
 	if err := uiauto.Combine(
 		"click Test PWA shelf button",
 		ac.LeftClick(TestPWABtn),
@@ -168,16 +177,23 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to click the Test PWA button: ", err)
 	}
-
-	// Check no new window are created even after clicked Test PWA button from desk 2.
-	// TODO(crbug.com/1261206): Need autotest api to check which desk is the current active desk.
-	ws, err := ash.GetAllWindows(ctx, tconn)
+	// Check which desk is the current active desk.
+	info, err := ash.GetDesksInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to check no new window is created: ", err)
+		s.Fatal("Failed to get the desk info: ", err)
 	}
-	// 2 windows are created with previous procedure, ensure no new window is created.
-	if len(ws) != 2 {
-		s.Fatalf("Unexpected number of windows found; wanted %v, got %v", 2, len(ws))
+	activeDesk := info.ActiveDeskIndex
+	// Compare the actual active desk to the expected active desk.
+	if activeDesk != 0 {
+		s.Fatalf("Unexpected active desk: desk %d is active, expected desk 0 to be active", activeDesk)
+	}
+	currWs, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	}
+	// Ensure no new window is created.
+	if len(currWs) != len(ws) {
+		s.Fatalf("Unexpected number of windows found; wanted %v, got %v", len(ws), len(currWs))
 	}
 
 	// Enters overview mode.
