@@ -43,6 +43,7 @@ func GlobalActionsMenu(ctx context.Context, s *testing.State) {
 	}
 
 	powerButtonMenu := nodewith.ClassName("PowerButtonMenuScreenView")
+	testing.Sleep(ctx, time.Second)
 	if err := ui.WaitUntilExists(powerButtonMenu)(ctx); err != nil {
 		s.Fatal("Failed to find PowerButtonMenuScreenView: ", err)
 	}
