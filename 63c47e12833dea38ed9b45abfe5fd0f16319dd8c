@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316f235e_08285af1",
+        "filename": "src/chromiumos/tast/local/graphics/hardware_probe.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-12T07:15:17Z",
+      "side": 1,
+      "message": "My only concern is that if you have GPUFamilies why do you need GPUFamily if you can call families and just checked the 0th index.",
+      "revId": "63c47e12833dea38ed9b45abfe5fd0f16319dd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
