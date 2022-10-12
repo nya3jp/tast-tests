@@ -65,6 +65,12 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 10*time.Minute,
 		Params: []testing.Param{{
+			Name:              "rootfs_only",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val: testParameters{
+				browser.TypeLacros, lacros.Rootfs, lacros.LacrosOnly,
+			},
+		}, {
 			Name:              "rootfs_primary",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val: testParameters{
