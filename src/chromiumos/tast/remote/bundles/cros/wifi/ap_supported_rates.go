@@ -121,11 +121,11 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get pcap freqency options: ", err)
 	}
-	legacyPcap, err := tf.LegacyPcap()
+	standardPcap, err := tf.StandardPcap()
 	if err != nil {
-		s.Fatal("Unable to get legacy pcap: ", err)
+		s.Fatal("Unable to get standard pcap: ", err)
 	}
-	pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyPcap, "connect", ap.Config().Channel, freqOpts, testAction)
+	pcapPath, err := wifiutil.CollectPcapForAction(ctx, standardPcap, "connect", ap.Config().Channel, freqOpts, testAction)
 	if err != nil {
 		s.Fatal("Failed to collect pcap or perform action: ", err)
 	}
