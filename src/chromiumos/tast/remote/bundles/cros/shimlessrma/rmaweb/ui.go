@@ -197,14 +197,8 @@ func (uiHelper *UIHelper) WriteProtectEnabledPageOperation(ctx context.Context) 
 
 // FirmwareInstallationPageOperation handles all operations on Firmware Installation Page.
 func (uiHelper *UIHelper) FirmwareInstallationPageOperation(ctx context.Context) error {
-	if err := uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxHost); err != nil {
-		return err
-	}
-
-	return action.Combine("Firmware Installation page operation",
-		uiHelper.waitForPageToLoad("Install complete", timeInSecondToLoadPage),
-		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
-	)(ctx)
+	// Firmware Installation page auto-transitions once complete so only update the USB state here.
+	return uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxHost)
 }
 
 // DeviceInformationPageOperation handles all operations on device information Page.
