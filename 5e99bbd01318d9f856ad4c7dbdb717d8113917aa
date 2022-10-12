@@ -103,6 +103,30 @@
       },
       "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336cd820_13921563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-12T23:55:30Z",
+      "side": 1,
+      "message": "Maybe I\u0027m misreading this? Is this the same method [1] ? What I meant is we actually use the DriveAPI golang SDK [2] to remove files by ID and in our cleanup we clean up all files older than 1 hour instead of going through drivefs -\u003e drive API via UI interactions.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/projector/projector.go;l\u003d209-243;drc\u003d01a7031612e13e6513956a867bd7751a1c2d4521\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/drivefs/drive_api.go;l\u003d140-143;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "parentUuid": "437cb6d3_43e70569",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
