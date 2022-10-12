@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "994db4d0_4dafb903",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-12T20:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8e58b1_62a7951d",
+      "revId": "ee37b55a88827e4b6787ad96d2966a9b5c3e81bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ad2849a_e60756cf",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e06f2b8_2737785e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-12T20:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ad2849a_e60756cf",
+      "revId": "ee37b55a88827e4b6787ad96d2966a9b5c3e81bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "213cb2ed_03e09bdf",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-12T17:43:58Z",
       "side": 1,
       "message": "You don\u0027t need to do `uiauto.Combine` if you just have 1 action. you can just do\n\n```\nif err :\u003d kb.Accel(\"Alt+\u003d\"); err !\u003d nil {\n...\n}\n```",
+      "revId": "ee37b55a88827e4b6787ad96d2966a9b5c3e81bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5d4940_da756373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-12T20:19:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "213cb2ed_03e09bdf",
       "revId": "ee37b55a88827e4b6787ad96d2966a9b5c3e81bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
