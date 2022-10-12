@@ -17,12 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Parameteters that control test behavior.
-type addRemoveFactorsEphemeralParams struct {
-	// Specifies whether to use user secret stash.
-	useUserSecretStash bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AddRemoveFactorsEphemeral,
@@ -37,15 +31,11 @@ func init() {
 		// whether the UserSecretStash is enabled in cryptohome, we have two
 		// separate sub-tests to actually verify this in both cases.
 		Params: []testing.Param{{
-			Name: "with_vk",
-			Val: addRemoveFactorsEphemeralParams{
-				useUserSecretStash: false,
-			},
+			Name:    "with_vk",
+			Fixture: "vkAuthSessionFixture",
 		}, {
-			Name: "with_uss",
-			Val: addRemoveFactorsEphemeralParams{
-				useUserSecretStash: true,
-			},
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
 		}},
 	})
 }
@@ -60,7 +50,6 @@ func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
 		pinLabel      = "luggage-pin"
 	)
 
-	userParam := s.Param().(addRemoveFactorsEphemeralParams)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -96,15 +85,6 @@ func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for preparation: ", err)
 	}
 	defer client.RemoveVault(ctxForCleanUp, ownerName)
-
-	// Enable the UserSecretStash experiment if USS is specified.
-	if userParam.useUserSecretStash {
-		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-		if err != nil {
-			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-		}
-		defer cleanupUSSExperiment(ctx)
-	}
 
 	// Create and mount the ephemeral user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, true, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
