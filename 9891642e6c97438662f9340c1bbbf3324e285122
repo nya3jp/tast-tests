@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34a53b9_c0115b4a",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-12T04:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210eeee4_ad19980a",
+      "range": {
+        "startLine": 38,
+        "startChar": 92,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a83a340d_fa143284",
@@ -119,6 +143,30 @@
       "writtenOn": "2022-10-11T08:24:48Z",
       "side": 1,
       "message": "same here, can this be a local variable of onCreate()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f52d17c_9a6fe3dc",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-12T04:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83a340d_fa143284",
       "range": {
         "startLine": 42,
         "startChar": 20,
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d85ad2_1c455d12",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-12T04:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89cdf720_cb8c7244",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "801b668e_e6634a04",
@@ -165,6 +237,30 @@
       "writtenOn": "2022-10-11T08:24:48Z",
       "side": 1,
       "message": "Does this work in Android 12 and later? https://developer.android.com/about/versions/12/behavior-changes-12#foreground-service-launch-restrictions\n(I\u0027m not very familiar with this Android change. I\u0027m asking just in case)",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "9891642e6c97438662f9340c1bbbf3324e285122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84984765_1b4e564f",
+        "filename": "android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-12T04:56:48Z",
+      "side": 1,
+      "message": "Checked on a brya-arc-t and the pending tast test seems to pass with it. I think the notification that we\u0027re creating enables the service to be run in the foreground.",
+      "parentUuid": "801b668e_e6634a04",
       "range": {
         "startLine": 71,
         "startChar": 8,
