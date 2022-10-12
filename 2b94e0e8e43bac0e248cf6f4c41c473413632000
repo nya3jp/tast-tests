@@ -16,6 +16,52 @@
       "message": "Hi Yichen, I\u0027ve addressed your comments, can you take another look at the CL please? Thanks!",
       "revId": "2b94e0e8e43bac0e248cf6f4c41c473413632000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed71f7b_c5ade05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T18:30:39Z",
+      "side": 1,
+      "message": "remove ctx, s.Log(\"Launch \u0027Screen capture\u0027 and start recording\"), e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/login_perf.go;l\u003d227?q\u003ds.Log\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Fui%2F",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "2b94e0e8e43bac0e248cf6f4c41c473413632000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c6dfaa_f528ca5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/screenshot_while_recording.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-12T18:30:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "2b94e0e8e43bac0e248cf6f4c41c473413632000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
