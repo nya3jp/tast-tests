@@ -104,7 +104,7 @@ func VPNSourceRouting(ctx context.Context, s *testing.State) {
 	if ok, err := conn.Connect(ctx); !ok || err != nil {
 		s.Fatal("Failed to create vpn connection: ", err)
 	}
-	vaddr := conn.Server.OverlayIP
+	vaddr := conn.Server.OverlayIPv4
 
 	test := func(user, goodIP, badIP string) {
 		if err := routing.ExpectPingSuccessWithTimeout(ctx, goodIP, user, 10*time.Second); err != nil {
