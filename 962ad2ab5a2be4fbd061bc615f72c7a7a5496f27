@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1d775b_47a4ed84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-12T07:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daaee9bc_5a09d615",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24071045_7d1bec93",
@@ -214,6 +232,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ad149d_b48ff026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-12T07:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf3fcf6a_3aac6717",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5d295c_d434c124",
@@ -286,6 +322,30 @@
       "side": 1,
       "message": "`tast run $DUT kernel.ConfigVerifyChromeOS`.",
       "parentUuid": "8ceadaf6_e74ac8d6",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5c00df_e2ab2550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify_chromeos.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-12T07:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc20f885_3d9e9a84",
       "range": {
         "startLine": 30,
         "startChar": 5,
@@ -655,6 +715,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6901f42_3bbd326c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-12T07:15:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9df2f9d5_84b0ff10",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f42435e_d2adc8e9",
@@ -722,6 +806,24 @@
       "side": 1,
       "message": "It uses s.Errorf().\n\nFurthermore, it has no `ctx` to use testing.ContextLog().",
       "parentUuid": "04a0553f_b7114645",
+      "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e85ae0_43456917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernelcommon/config_verify_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-12T07:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3615f75c_c83610cb",
       "revId": "962ad2ab5a2be4fbd061bc615f72c7a7a5496f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
