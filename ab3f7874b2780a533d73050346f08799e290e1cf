@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a432786e_3f12b62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T21:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2449771f_a56b4873",
+      "range": {
+        "startLine": 862,
+        "startChar": 13,
+        "endLine": 862,
+        "endChar": 15
+      },
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a132def8_ae7b9862",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917be898_b31cc115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T21:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a132def8_ae7b9862",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 61
+      },
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b21e5e80_b4d14371",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-10-07T22:56:25Z",
       "side": 1,
       "message": "remove blank line",
+      "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbbb40f_3086ff3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-12T21:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21e5e80_b4d14371",
       "revId": "ab3f7874b2780a533d73050346f08799e290e1cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
