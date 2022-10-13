@@ -8,6 +8,7 @@ import (
 	"context"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -81,31 +82,42 @@ func BrightnessQueries(ctx context.Context, s *testing.State) {
 // Returns the backlight_tool brightness percentage after the query.
 // query contains the Assistant query string.
 // predicate is a function containing the expected condition for the post-query brightness setting.
-// 	After the brightness query is sent to the Assistant, the function polls for the predicate
-// 	to return true when called with the current backlight_tool brightness percentage.
-// 	For example, suppose the backlight_tool brightness is 50.0 before calling brightnessCheck.
-// 	Then, if the brightnessCheck query is "turn brightness up", we expect the brightness to be
-// 	greater than 50.0 after the query. The predicate is used to pass in this expected condition to brightnessCheck.
-// 	To check that the brightness increased from 50.0, an appropriate predicate would be:
-//  	func(actual float64) bool {
-//  		return actual > 50.0
-//  	}
+//
+// After the brightness query is sent to the Assistant, the function polls for the predicate
+// to return true when called with the current backlight_tool brightness percentage.
+// For example, suppose the backlight_tool brightness is 50.0 before calling brightnessCheck.
+// Then, if the brightnessCheck query is "turn brightness up", we expect the brightness to be
+// greater than 50.0 after the query. The predicate is used to pass in this expected condition to brightnessCheck.
+// To check that the brightness increased from 50.0, an appropriate predicate would be:
+//
+//	func(actual float64) bool {
+//		return actual > 50.0
+//	}
 func brightnessCheck(ctx context.Context, tconn *chrome.TestConn, query string, predicate func(actual float64) bool) (float64, error) {
 	if _, err := assistant.SendTextQuery(ctx, tconn, query); err != nil {
 		return 0, errors.Wrap(err, "failed to get Assistant query response")
 	}
 
 	// Check brightness value with backlight_tool
+	last := -1.0
 	if err := testing.Poll(ctx, func(context.Context) error {
 		current, err := brightness(ctx)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
+
+		// Brightness change happens gradually. Wait until it gets stabilized.
+		stabilized := last == current
+		last = current
+		if !stabilized {
+			return errors.Errorf("brightness did not get stabilized yet: current: %v, last: %v", current, last)
+		}
+
 		if !predicate(current) {
 			return errors.Errorf("brightness did not change yet; brightness: %v", current)
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Interval: 300 * time.Millisecond}); err != nil {
 		return 0, errors.Wrap(err, "brightness setting not increased by query")
 	}
 
