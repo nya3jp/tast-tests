@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5f6489_9ae2f90e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:07:03Z",
+      "side": 1,
+      "message": "There are some build failures, e.g.:\n\nsrc/chromiumos/tast/local/bundles/crosint/multivm/game_mode.go:126:74: cannot use pre.Chrome (variable of type *chrome.Chrome) as type *\"chromiumos/tast/local/chrome/browser\".Browser in argument to memoryuser.FillChromeOSMemory",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
