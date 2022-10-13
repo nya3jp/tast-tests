@@ -63,6 +63,24 @@
       "message": "The right to solve this problem is to introduce a software_dep that reflects whether a build has an upstream kernel, and have this test not run when the build has an upstream kernel.",
       "revId": "aa401a644960704c85a168742cbd227d9793f308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44cb865_a8cbb3c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-13T04:16:43Z",
+      "side": 1,
+      "message": "I\u0027m going to remove the sticky CR-2 because the series has migrated to use softwaredeps.",
+      "parentUuid": "3dba359b_3a08a155",
+      "revId": "aa401a644960704c85a168742cbd227d9793f308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
