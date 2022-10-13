@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4c9c68_e02f7c88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-13T20:35:20Z",
+      "side": 1,
+      "message": "Thank you for your patience while figuring out this last question, please let me know if anything is unclear! :)",
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ddfb3a2_a115bb3b",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "Thank you Chad!\nAccording to our latest email thread with you, the conclusion is leave this `revampEnabled` until the `Quick Settings revamp` is fully launched.\n\nPlease let us know if you have further opinions, much appreciated!",
       "parentUuid": "8ddfb3a2_a115bb3b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4878e6_d630c4d0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-13T20:35:20Z",
+      "side": 1,
+      "message": "Apologies, I think there might be some confusion here! I was thinking that since we can click the `networkSettingsButton` even when the revamp is enabled (https://chromium-review.googlesource.com/c/chromium/src/+/3930924) we could leave this snippet as\n\n\tif revampEnabled {\n\t\treturn uiauto.Combine(\"click the Network settings\",\n\t\t\tui.LeftClick(networkSettingsButton),\n\t\t\tui.WaitUntilGone(NetworkDetailedViewRevamp),\n\t\t)(ctx)\n\t}\n\nWould this be possible, or do we still need this to click the Ethernet network?",
+      "parentUuid": "6b166ff8_90233695",
       "range": {
         "startLine": 73,
         "startChar": 0,
