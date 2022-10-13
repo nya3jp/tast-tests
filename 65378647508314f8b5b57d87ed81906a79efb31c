@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4d84dd_e302393c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "nit: at most 50 characters\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6497f5ac_a1ad144b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "No trailing punctuation.\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "98f57532_2534f2f4",
@@ -14,6 +60,287 @@
       "writtenOn": "2022-10-12T21:40:43Z",
       "side": 1,
       "message": "Hi Avery, could you review this please? It is very similar to the CUJ test https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go. Thank you.",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd75ca5_7a79a93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "Make four test variants: clamshell, tablet, clamshell_lacros, and tablet_lacros. It will be easy to create clamshell variants, because the code `nodewith.Role(role.Tab).First()` (which you have already written for tab strip thumbnails) will also work for the browser tabs in clamshell mode (if only you update the code comments and error messages to not talk about thumbnails specifically). In the clamshell variants, just use `pointer.NewMouse` instead of `pointer.NewTouch`, and skip the part where you bring up the tab strip.",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c50e0e1_19d4eeb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "Lacros Chrome tabs should be draggable to split screen too. If anything, that\u0027s more important, because Lacros is the future.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b262c7e8_ee2e47ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "// Reserve five seconds for the cleanup deferred above.\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337af0f3_ba1b36b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "nit: `https://www.google.com/`",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2f4e1f_59392cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "nit: `s.Fatalf(\"Failed to open new tab with url %q: %v\", url, err)`",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c07bba_8835c903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`defer pc.Close()`",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c4c266_8533ce39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`ClassName` is deprecated. Use `HasClass`.\n\nSee: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d596",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4ed124_fdf6f79b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "I don\u0027t think it will happen in this simple test. Please remove the workaround (both here and for `leftTabRect`) and see if the test still passes.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 75
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662a41a8_bc29eea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`// The second tab from the original window is now the first tab in the left window.`",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892b7c21_12afd276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`secondTabRect`",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b0a00e_b939c402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`sleep`",
+      "range": {
+        "startLine": 118,
+        "startChar": 71,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbefa3e_b9b6c37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "`second tab`",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c91f2b_a4a8cad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T16:58:49Z",
+      "side": 1,
+      "message": "Write this as two calls to one function.\n\n\tfunc dragToSnap(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, snapX, expectedNumWindows int, snappedState ash.WindowStateType) error {\n\t\ttabRect, err :\u003d uiauto.New(tconn).Location(ctx, nodewith.Role(role.Tab).First())\n\t\tif err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to get the tab thumbnail\")\n\t\t}\n\t\t\n\t\t...\n\t}",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
       "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
