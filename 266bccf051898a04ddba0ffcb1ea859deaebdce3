@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb50aeee_9e710288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-13T02:01:38Z",
+      "side": 1,
+      "message": "I am ok with this change, but please resolve Jorge\u0027s comment. Thanks.",
+      "revId": "266bccf051898a04ddba0ffcb1ea859deaebdce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
