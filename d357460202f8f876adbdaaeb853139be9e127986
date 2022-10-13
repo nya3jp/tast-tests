@@ -141,6 +141,30 @@
       },
       "revId": "d357460202f8f876adbdaaeb853139be9e127986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1b2cee_87c12223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-13T23:32:28Z",
+      "side": 1,
+      "message": "I think your concerns make sense. Given the collateral for the larger testing.Poll loop and the loss of signal for transitory ping flake, poll to success may cause more problems than they solve.\n\nCombined with the fact that there is a plan to have a more succinct way to get a signal from the fw ready state and adjust this function once that happens, I think we can move forward with the current implementation.",
+      "parentUuid": "a39ca844_b0fc6f3a",
+      "range": {
+        "startLine": 2541,
+        "startChar": 0,
+        "endLine": 2541,
+        "endChar": 36
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
