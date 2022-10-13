@@ -296,6 +296,8 @@ const (
 	ClipboardCopyPaste int = iota
 	// Printing identifies a printing action.
 	Printing
+	// Screenshot identifies a screenshot action.
+	Screenshot
 )
 
 // retrieveEvents returns events having a timestamp greater than `testStartTime` with the given `clientID` and satisfying `correctEventType(restriction, mode)`.
@@ -365,7 +367,7 @@ func validateEvents(reportingEnabled bool, mode dlp.Mode, blockEvents, reportEve
 	}
 
 	if len(blockEvents) != expectedBlockEvents || len(reportEvents) != expectedReportEvents || len(warnEvents) != expectedWarnEvents || len(warnProceedEvents) != expectedWarnProceedEvents {
-		return errors.Errorf("Expecting %d BLOCK, %d REPORT, %d WARN, and %d WARN_PROCEED events. Got %d BLOCK, %d REPORT, %d WARN, and % WARN_PROCEED events instead",
+		return errors.Errorf("Expecting %d BLOCK, %d REPORT, %d WARN, and %d WARN_PROCEED events. Got %d BLOCK, %d REPORT, %d WARN, and %d WARN_PROCEED events instead",
 			expectedBlockEvents, expectedReportEvents, expectedWarnEvents, expectedWarnProceedEvents,
 			len(blockEvents), len(reportEvents), len(reportEvents), len(warnProceedEvents))
 	}
@@ -451,6 +453,12 @@ func DlpActionReporting(ctx context.Context, s *testing.State, action int) error
 	case Printing:
 		restriction = "PRINTING"
 		service.Print(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case Screenshot:
+		restriction = "SCREENSHOT"
+		service.Screenshot(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
