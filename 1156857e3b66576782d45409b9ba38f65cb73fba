@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "1156857e3b66576782d45409b9ba38f65cb73fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44010834_4f7ee224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-13T07:54:47Z",
+      "side": 1,
+      "message": "nit: reflow comment to either be in one line or fit into 80 character.",
+      "revId": "1156857e3b66576782d45409b9ba38f65cb73fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
