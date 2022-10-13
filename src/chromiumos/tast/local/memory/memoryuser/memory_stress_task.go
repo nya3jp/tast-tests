@@ -13,30 +13,22 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/testing"
 )
 
 // MemoryStressUnit creates a Chrome tab that allocates memory like the
 // platform.MemoryStressBasic test.
 type MemoryStressUnit struct {
-	url        string
-	conn       *chrome.Conn
-	cooldown   time.Duration
-	background bool
+	url      string
+	conn     *chrome.Conn
+	cooldown time.Duration
 }
 
 // Run creates a Chrome tab that allocates memory, then waits for the provided
 // cooldown.
-func (st *MemoryStressUnit) Run(ctx context.Context, cr *chrome.Chrome) error {
-	var conn *chrome.Conn
-	var err error
-
-	if st.background {
-		conn, err = cr.NewBackgroundConn(ctx, st.url)
-	} else {
-		conn, err = cr.NewConn(ctx, st.url)
-	}
-
+func (st *MemoryStressUnit) Run(ctx context.Context, br *browser.Browser) error {
+	conn, err := br.NewConn(ctx, st.url)
 	if err != nil {
 		return errors.New("failed to open MemoryStressUnit page")
 	}
@@ -56,13 +48,12 @@ func (st *MemoryStressUnit) Run(ctx context.Context, cr *chrome.Chrome) error {
 }
 
 // Close closes the memory stress allocation tab.
-func (st *MemoryStressUnit) Close(ctx context.Context, cr *chrome.Chrome) error {
+func (st *MemoryStressUnit) Close(ctx context.Context, br *browser.Browser) error {
 	if st.conn == nil {
 		return nil
 	}
 	st.conn.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get TestAPIConn to close %q", st.url)
 	}
@@ -80,20 +71,20 @@ func (st *MemoryStressUnit) Close(ctx context.Context, cr *chrome.Chrome) error 
 
 // StillAlive uses Chrome's debug tools to determine if a tab has been killed.
 // It has not been killed if it is still a target for debugging.
-func (st *MemoryStressUnit) StillAlive(ctx context.Context, cr *chrome.Chrome) bool {
-	available, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(st.url))
+func (st *MemoryStressUnit) StillAlive(ctx context.Context, br *browser.Browser) bool {
+	available, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL(st.url))
 	return err == nil && available
 }
 
 // FillChromeOSMemory launches memory stress tabs until one is killed, filling
 // up memory in ChromeOS.
-func FillChromeOSMemory(ctx context.Context, dataFileSystem http.FileSystem, cr *chrome.Chrome, unitMiB int, ratio float32) (func(context.Context) error, error) {
+func FillChromeOSMemory(ctx context.Context, dataFileSystem http.FileSystem, br *browser.Browser, unitMiB int, ratio float32) (func(context.Context) error, error) {
 	server := NewMemoryStressServer(dataFileSystem)
 	var units []*MemoryStressUnit
 	cleanup := func(ctx context.Context) error {
 		var res error
 		for _, unit := range units {
-			if err := unit.Close(ctx, cr); err != nil {
+			if err := unit.Close(ctx, br); err != nil {
 				testing.ContextLogf(ctx, "Failed to close MemoryStressUnit: %s", err)
 				if res == nil {
 					res = err
@@ -105,13 +96,13 @@ func FillChromeOSMemory(ctx context.Context, dataFileSystem http.FileSystem, cr 
 	}
 	for i := 0; ; i++ {
 		const tabOpenCooldown = 2 * time.Second
-		unit := server.NewMemoryStressUnit(unitMiB, ratio, tabOpenCooldown, false)
+		unit := server.NewMemoryStressUnit(unitMiB, ratio, tabOpenCooldown)
 		units = append(units, unit)
-		if err := unit.Run(ctx, cr); err != nil {
+		if err := unit.Run(ctx, br); err != nil {
 			return cleanup, errors.Wrapf(err, "failed to run MemoryStressUnit %q", unit.url)
 		}
 		for _, unit := range units {
-			if !unit.StillAlive(ctx, cr) {
+			if !unit.StillAlive(ctx, br) {
 				testing.ContextLogf(ctx, "FillChromeOSMemory started %d units of %d MiB before first kill", len(units), unitMiB)
 				return cleanup, nil
 			}
@@ -142,17 +133,17 @@ func (st *MemoryStressTask) NeedVM() bool {
 // Run creates a Chrome tab that allocates memory, then waits for the provided
 // cooldown.
 func (st *MemoryStressTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	return st.MemoryStressUnit.Run(ctx, testEnv.cr)
+	return st.MemoryStressUnit.Run(ctx, testEnv.br)
 }
 
 // Close closes the memory stress allocation tab.
 func (st *MemoryStressTask) Close(ctx context.Context, testEnv *TestEnv) {
-	st.MemoryStressUnit.Close(ctx, testEnv.cr)
+	st.MemoryStressUnit.Close(ctx, testEnv.br)
 }
 
 // StillAlive returns false if the tab has been discarded, or was never opened.
 func (st *MemoryStressTask) StillAlive(ctx context.Context, testEnv *TestEnv) bool {
-	return st.MemoryStressUnit.StillAlive(ctx, testEnv.cr)
+	return st.MemoryStressUnit.StillAlive(ctx, testEnv.br)
 }
 
 // MemoryStressServer is an http server that hosts the html and js needed to
@@ -180,15 +171,13 @@ func NewMemoryStressServer(dataFileSystem http.FileSystem) *MemoryStressServer {
 // allocMiB - The amount of memory the tab will allocate.
 // ratio    - How compressible the allocated memory will be.
 // cooldown - How long to wait after allocating before returning.
-// background - if true the tab is opened as a background tab.
-func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, cooldown time.Duration, background bool) *MemoryStressUnit {
+func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressUnit {
 	url := fmt.Sprintf("%s/%s?alloc=%d&ratio=%.3f&id=%d", s.server.URL, AllocPageFilename, allocMiB, ratio, s.nextID)
 	s.nextID++
 	return &MemoryStressUnit{
-		url:        url,
-		conn:       nil,
-		cooldown:   cooldown,
-		background: background,
+		url:      url,
+		conn:     nil,
+		cooldown: cooldown,
 	}
 }
 
@@ -197,7 +186,7 @@ func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, co
 // ratio    - How compressible the allocated memory will be.
 // cooldown - How long to wait after allocating before returning.
 func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressTask {
-	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, cooldown, false)}
+	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, cooldown)}
 }
 
 // Close shuts down the http server.
