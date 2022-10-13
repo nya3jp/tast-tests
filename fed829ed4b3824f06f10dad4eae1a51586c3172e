@@ -22,6 +22,47 @@
       },
       "revId": "fed829ed4b3824f06f10dad4eae1a51586c3172e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e4713e_0d01cf30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-13T19:44:46Z",
+      "side": 1,
+      "message": "Yes, this should also not occur.",
+      "parentUuid": "7b8c53a6_98d280ef",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "fed829ed4b3824f06f10dad4eae1a51586c3172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf83b3c3_0afc5d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-13T19:44:46Z",
+      "side": 1,
+      "message": "Yes, we should see some",
+      "revId": "fed829ed4b3824f06f10dad4eae1a51586c3172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
