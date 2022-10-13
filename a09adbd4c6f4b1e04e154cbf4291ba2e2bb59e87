@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a723e5_d64c5f49",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-13T03:55:43Z",
+      "side": 1,
+      "message": "sorry I should have noticed in the previous comment, but this can be undefined",
+      "range": {
+        "startLine": 322,
+        "startChar": 64,
+        "endLine": 322,
+        "endChar": 77
+      },
+      "revId": "a09adbd4c6f4b1e04e154cbf4291ba2e2bb59e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
