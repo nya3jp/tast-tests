@@ -34,6 +34,24 @@
       "parentUuid": "eac06521_65e2eb5f",
       "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47cdedbf_b1701bbe",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-13T17:15:50Z",
+      "side": 1,
+      "message": "let\u0027s try google chat. if it becomes uninstallable, we can change it",
+      "parentUuid": "b2b12c4f_080e5c53",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
