@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb75e89_7d293208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-10-13T14:10:43Z",
+      "side": 1,
+      "message": "Thanks a lot Gabor for taking a look at the flaky test!",
+      "revId": "26967e10bc7cef42dfda5f333bb4667c1b610e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d1bebc_2bfb417b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-10-13T14:10:43Z",
+      "side": 1,
+      "message": "nit: Replace \"stop polling\" by \"retry\" (or similar) in this comment :)",
+      "revId": "26967e10bc7cef42dfda5f333bb4667c1b610e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
