@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "efb7a77a_d4d4fb82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-13T02:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1face008_9db98caf",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a8b6d814_16f77af9",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
         "patchSetId": 3
