@@ -70,6 +70,24 @@
       "parentUuid": "61dc90c7_c178a6c6",
       "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f3c1d0_94af49da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-10-13T22:19:28Z",
+      "side": 1,
+      "message": "We should go ahead and fix the wording in this CL since this introduces it. Git can be a bit vexing, I can help with that if you have questions.",
+      "parentUuid": "e7f6f13c_9d01cbe0",
+      "revId": "4ad8dd2e3d9968a44f8c3f894976b2e7846278ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
