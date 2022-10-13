@@ -62,6 +62,9 @@ type Helper struct {
 	// BiosServiceClient provides bios related services such as GBBFlags manipulation.
 	BiosServiceClient fwpb.BiosServiceClient
 
+	// CgptServiceClient provides cgpt related services such as reading CGPT table.
+	CgptServiceClient fwpb.CgptServiceClient
+
 	// Board contains the DUT's board, as reported by the Platform RPC.
 	// Currently, this is based on /etc/lsb-release's CHROMEOS_RELEASE_BOARD.
 	Board string
@@ -293,6 +296,18 @@ func (h *Helper) RequireRPCUtils(ctx context.Context) error {
 		return errors.Wrap(err, "requiring RPC client")
 	}
 	h.RPCUtils = fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
+	return nil
+}
+
+// RequireCgptServiceClient creates a firmware.CgptServiceClient, unless one already exists.
+func (h *Helper) RequireCgptServiceClient(ctx context.Context) error {
+	if h.CgptServiceClient != nil {
+		return nil
+	}
+	if err := h.RequireRPCClient(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC client")
+	}
+	h.CgptServiceClient = fwpb.NewCgptServiceClient(h.RPCClient.Conn)
 	return nil
 }
 

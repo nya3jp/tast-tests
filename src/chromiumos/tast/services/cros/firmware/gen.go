@@ -6,6 +6,7 @@
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. bios_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. fp_updater_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. serial_port_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. cgpt_service.proto
 
 package firmware
 
