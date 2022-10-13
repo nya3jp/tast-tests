@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e588d07b_33ffa00a",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-13T04:24:25Z",
+      "side": 1,
+      "message": "I made a new version, thank you so much for the comment!",
+      "parentUuid": "e40ac4c0_babd5a26",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476e6409_3894b9a5",
