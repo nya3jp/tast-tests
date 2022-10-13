@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5994b885_2fe02139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "Thanks! lgtm with minor comments",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4373af_85e6c452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "This is the intended use case for PollBreak. It happens that you have access to s here, so using s.Fatal should work too, though it\u0027s not idiomatic.",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6187d19_41d866c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b58c30_96cc9948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32b5c19_2f12526d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd61e79_e47088e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "Nit for clarity: nil",
+      "range": {
+        "startLine": 410,
+        "startChar": 30,
+        "endLine": 410,
+        "endChar": 33
+      },
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31bdfdd_85a3d17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T00:04:30Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "05037d8ded54aa068f5bb201d8085765a8ec15dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
