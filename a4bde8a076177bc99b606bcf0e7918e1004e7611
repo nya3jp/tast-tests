@@ -16,6 +16,23 @@
       "message": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go:16:2: import of chromiumos/tast/local/bundles/cros/video/expectations is only allowed from chromiumos/tast/local/bundles/*/video or its descendant\n\nI am not sure what I should do about it?\nIt seems to work fine locally",
       "revId": "a4bde8a076177bc99b606bcf0e7918e1004e7611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0acc3b_7888cfd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-10-13T15:30:03Z",
+      "side": 1,
+      "message": "I think I should also add a dependency to `graphics-expectations` in `opencl-cts` ebuild, right?",
+      "revId": "a4bde8a076177bc99b606bcf0e7918e1004e7611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
