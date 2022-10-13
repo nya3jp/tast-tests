@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6623260_a8cd3ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-13T08:24:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2e6296_3903bdc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/checking_audio_formats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-13T08:24:47Z",
+      "side": 1,
+      "message": "According to the guidelines we should avoid verbose log messages:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 33
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6d8d0b_fa448c29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-13T08:24:47Z",
+      "side": 1,
+      "message": "verbose logging",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38011a4_92ea6906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-13T08:24:47Z",
+      "side": 1,
+      "message": "verbose logging",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
