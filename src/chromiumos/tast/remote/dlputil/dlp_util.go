@@ -300,6 +300,8 @@ const (
 	ClipboardCopyPaste Action = iota
 	// Printing identifies a printing action.
 	Printing
+	// Screenshot identifies a screenshot action.
+	Screenshot
 )
 
 func (action Action) String() string {
@@ -308,6 +310,8 @@ func (action Action) String() string {
 		return "CLIPBOARD"
 	case Printing:
 		return "PRINTING"
+	case Screenshot:
+		return "SCREENSHOT"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}
@@ -470,6 +474,11 @@ func DlpActionReporting(ctx context.Context, s *testing.State, action Action) er
 		})
 	case Printing:
 		service.Print(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case Screenshot:
+		service.Screenshot(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
