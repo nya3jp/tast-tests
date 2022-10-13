@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1ab9e3_531c7a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec13721b_28df9015",
+      "range": {
+        "startLine": 65,
+        "startChar": 88,
+        "endLine": 65,
+        "endChar": 107
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d00506fe_f13d8f3c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-13T16:54:50Z",
       "side": 1,
       "message": "No need for `WaitUntilExists()`. `LeftClick()` implicitly waits for the node to exist first.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e4a8f1_4638dc71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00506fe_f13d8f3c",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -112,6 +160,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15d6f178_f40260c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "If the night light is turned on, we expect to see \"Night Light is on\". Or we can make it clear when we see \"Night Light is off\", we return the error \"After clicking the pod button, it still shows \\\"Night light is off\\\"\"?",
+      "parentUuid": "fb4543e1_5a383b8f",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 67
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23e75f1_126d8494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f164b3e3_fc5bbc85",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bf47971_332dd21c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-13T16:54:50Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 43
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a34b52b_a634c3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf47971_332dd21c",
       "range": {
         "startLine": 105,
         "startChar": 2,
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3999100_659fb44d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Oh, yes! We can simply add 24 hours to end time if it is earlier than the start time. Thanks for the suggestion!",
+      "parentUuid": "499328d5_ba98b986",
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c2f8125_1c8d0566",
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc763e03_3209af65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Following Ahmed\u0027s comment, I would just add 24 hours to the end time if it is earlier than the start time.",
+      "parentUuid": "2c2f8125_1c8d0566",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07f0b25b_cc590f9b",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-10-13T16:45:35Z",
       "side": 1,
       "message": "see comment above",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e01eb33_0cedd6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. After changing the implementation, we no longer need this variable.",
+      "parentUuid": "07f0b25b_cc590f9b",
       "range": {
         "startLine": 153,
         "startChar": 2,
@@ -221,6 +407,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "607b3ad9_50879cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "May I call it extractTimeFromString, since the given string may include information other than time?",
+      "parentUuid": "91fb5a65_879ab95a",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a565d74e_d1d3e7f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
         "patchSetId": 2
@@ -232,6 +442,30 @@
       "writtenOn": "2022-10-13T16:45:35Z",
       "side": 1,
       "message": "nit: I\u0027d just return -1, 0, 1\n\nor return the difference in minutes",
+      "range": {
+        "startLine": 192,
+        "startChar": 87,
+        "endLine": 192,
+        "endChar": 142
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc220113_9305df55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a565d74e_d1d3e7f6",
       "range": {
         "startLine": 192,
         "startChar": 87,
@@ -278,6 +512,54 @@
       "writtenOn": "2022-10-13T16:54:50Z",
       "side": 1,
       "message": "Please document what `includeEnd` means.",
+      "range": {
+        "startLine": 206,
+        "startChar": 58,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44f61c4_9db981e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "Since we changed the implementation, we no longer need this argument.",
+      "parentUuid": "d95fb532_edd89ea1",
+      "range": {
+        "startLine": 206,
+        "startChar": 58,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8977ed_eed51422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-13T17:53:18Z",
+      "side": 1,
+      "message": "We no longer need this argument if we add 24 hours to end time when it is earlier than start time.",
+      "parentUuid": "cdf9c69c_fe8fe17c",
       "range": {
         "startLine": 206,
         "startChar": 58,
