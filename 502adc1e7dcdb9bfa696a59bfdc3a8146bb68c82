@@ -34,6 +34,24 @@
       "parentUuid": "5f4ad528_ddd2241a",
       "revId": "502adc1e7dcdb9bfa696a59bfdc3a8146bb68c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d33675_5b5e276b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-13T00:28:13Z",
+      "side": 1,
+      "message": "I just consulted with another coworker. It appears I was wrong about the policy, and it\u0027s fine to have tests that fail occasionally because of the fixture.\n\nHowever, it\u0027s consistently failing on brya-kernelnext. Can you please split it into an informational and critical test, with the brya-kernelnext remaining as informational and all the other boards promoted to critical.",
+      "parentUuid": "25fddcfe_5e0c25bd",
+      "revId": "502adc1e7dcdb9bfa696a59bfdc3a8146bb68c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
