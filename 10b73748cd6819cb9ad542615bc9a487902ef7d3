@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37d7ad09_4fb1bfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dual_stack_with_static.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-13T12:53:04Z",
+      "side": 1,
+      "message": "You have to rewrite `s.Fatal` and `s.Error` calls as well. But good question, I don\u0027t know about any advantage of `s.Log` over `testing.ContextLog`. But I will ask around.",
+      "parentUuid": "38a8bbdc_79e41cdd",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "10b73748cd6819cb9ad542615bc9a487902ef7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6107e219_17edd2bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dual_stack_with_static.go",
         "patchSetId": 2
