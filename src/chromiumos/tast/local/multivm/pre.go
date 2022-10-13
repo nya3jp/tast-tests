@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -16,7 +17,14 @@ import (
 
 // DefaultChromeOptions defines the default options for creating Chrome.
 var DefaultChromeOptions = ChromeOptions{
-	Timeout: chrome.LoginTimeout,
+	Timeout:     chrome.LoginTimeout,
+	BrowserType: browser.TypeAsh,
+}
+
+// LacrosChromeOptions creates Lacros Chrome.
+var LacrosChromeOptions = ChromeOptions{
+	Timeout:     chrome.LoginTimeout,
+	BrowserType: browser.TypeLacros,
 }
 
 // DefaultARCOptions defines the default options for starting ARC VM.
@@ -40,6 +48,18 @@ func NoVMStarted() testing.Precondition {
 	return noVMStartedPre
 }
 
+var noVMLacrosStartedPre = NewMultiVMPrecondition(
+	"multivm_no_vm_lacros",
+	NewStateManager(
+		LacrosChromeOptions,
+	))
+
+// NoVMLacrosStarted returns a Precondition that logs into Lacros Chrome without
+// starting any VMs.
+func NoVMLacrosStarted() testing.Precondition {
+	return noVMLacrosStartedPre
+}
+
 var arcCrostiniStartedPre = NewMultiVMPrecondition(
 	"multivm_arc_crostini",
 	NewStateManager(
@@ -54,6 +74,20 @@ func ArcCrostiniStarted() testing.Precondition {
 	return arcCrostiniStartedPre
 }
 
+var arcCrostiniLacrosStartedPre = NewMultiVMPrecondition(
+	"multivm_arc_crostini_lacros",
+	NewStateManager(
+		LacrosChromeOptions,
+		DefaultARCOptions,
+		DefaultCrostiniOptions,
+	))
+
+// ArcCrostiniLacrosStarted returns a Precondition that logs into Lacros Chrome
+// and starts ARCVM an Crostini.
+func ArcCrostiniLacrosStarted() testing.Precondition {
+	return arcCrostiniLacrosStartedPre
+}
+
 var arcStartedPre = NewMultiVMPrecondition(
 	"multivm_arc",
 	NewStateManager(
@@ -64,6 +98,19 @@ var arcStartedPre = NewMultiVMPrecondition(
 // ArcStarted returns a Precondition that logs into Chrome and starts ARCVM.
 func ArcStarted() testing.Precondition {
 	return arcStartedPre
+}
+
+var arcLacrosStartedPre = NewMultiVMPrecondition(
+	"multivm_arc_lacros",
+	NewStateManager(
+		LacrosChromeOptions,
+		DefaultARCOptions,
+	))
+
+// ArcLacrosStarted returns a Precondition that logs into Lacros Chrome and
+// starts ARCVM.
+func ArcLacrosStarted() testing.Precondition {
+	return arcLacrosStartedPre
 }
 
 var crostiniStartedPre = NewMultiVMPrecondition(
@@ -77,6 +124,19 @@ var crostiniStartedPre = NewMultiVMPrecondition(
 // Crostini.
 func CrostiniStarted() testing.Precondition {
 	return crostiniStartedPre
+}
+
+var crostiniLacrosStartedPre = NewMultiVMPrecondition(
+	"multivm_crostini_lacros",
+	NewStateManager(
+		LacrosChromeOptions,
+		DefaultCrostiniOptions,
+	))
+
+// CrostiniLacrosStarted returns a Precondition that logs into Lacros Chrome and
+// starts Crostini.
+func CrostiniLacrosStarted() testing.Precondition {
+	return crostiniLacrosStartedPre
 }
 
 var arcCrostiniStartedWithDNSProxyPre = NewMultiVMPrecondition(
