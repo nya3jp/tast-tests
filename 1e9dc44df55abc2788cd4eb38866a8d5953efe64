@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a0a5d3_48a896fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-13T04:18:57Z",
+      "side": 1,
+      "message": "Jorge, I removed the sticky CR-2 from you.\n\nBecause:\n- Some of the review comments have been addressed in the latest series.\n- Some of the review comments aren\u0027t applicable to the latest patchset.\n\nLet me know if you have further concerns.",
+      "revId": "1e9dc44df55abc2788cd4eb38866a8d5953efe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
