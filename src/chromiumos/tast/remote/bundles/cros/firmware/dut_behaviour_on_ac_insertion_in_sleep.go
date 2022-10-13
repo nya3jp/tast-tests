@@ -25,8 +25,9 @@ func init() {
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 	})
 }
