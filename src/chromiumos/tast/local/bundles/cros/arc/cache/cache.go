@@ -252,10 +252,13 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		return errors.Wrapf(err, "failed to generate %q for %q", LayoutTxt, chimeraPath)
 	}
 
-	// Packages cache
+	// Packages cache.
+	// Note, packages cache in binary format RVC+.
+	// Use helper to automatically decode it.
 	src := filepath.Join(androidDataDir, packagesPath)
+	packagesXML, err := a.ReadXMLFile(ctx, src)
 	packagesPathLocal := filepath.Join(outputDir, PackagesCacheXML)
-	if err := fsutil.CopyFile(src, packagesPathLocal); err != nil {
+	if err := ioutil.WriteFile(packagesPathLocal, packagesXML, 0644); err != nil {
 		return err
 	}
 
@@ -267,12 +270,7 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 	}
 
 	// Extract GMS Core location and create manifest for this directory.
-	b, err := a.ReadXMLFile(ctx, packagesPathLocal)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read %q", packagesPathLocal)
-	}
-
-	gmsCorePath := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+codePath=\"(\S+)\".+>`).FindStringSubmatch(string(b))
+	gmsCorePath := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+codePath=\"(\S+)\".+>`).FindStringSubmatch(string(packagesXML))
 	if gmsCorePath == nil {
 		return errors.Wrapf(err, "failed to parse %q", packagesPathLocal)
 	}
