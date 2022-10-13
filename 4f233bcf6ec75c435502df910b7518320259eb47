@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6175db0e_3738de7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-13T07:47:38Z",
+      "side": 1,
+      "message": "Ack, thanks!\n\nI think 10 seconds should be more than enough. The ARC-specific cleanups are setting an adb flag and uninstalling an APK, both of which should be fairly quick",
+      "parentUuid": "30b1a632_4a893ba3",
+      "range": {
+        "startLine": 46,
+        "startChar": 43,
+        "endLine": 46,
+        "endChar": 57
+      },
+      "revId": "4f233bcf6ec75c435502df910b7518320259eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4594bb59_90588767",
