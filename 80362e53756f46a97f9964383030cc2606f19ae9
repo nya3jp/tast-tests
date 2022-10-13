@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6679b5c_63dc3d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "`cleanupCtx`",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 89,
+        "endChar": 18
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220f0019_28066505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "You can get rid of this now that you have added `cleanupCtx`.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3d6509_1ea7c66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "`tap`",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbdaf6d_cf4b3535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "This comment does not make sense in a function that is used for both drags.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 84
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a13442_a85ee899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "We try to avoid `testing.Sleep` because it either waits longer than necessary or doesn\u0027t wait long enough. Use `testing.Poll`, `ash.WaitWindowFinishAnimating`, or `ash.WaitForCondition`.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd747e7_3d73b4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "Remove the blank line.",
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005d3682_d48fe0ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-13T21:34:03Z",
+      "side": 1,
+      "message": "The `err` variable is not relevant here. Just write `errors.New(\"failed to snap the tab\")`",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 51
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
