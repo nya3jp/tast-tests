@@ -33,6 +33,24 @@
       "message": "LGTM for tast-owners, you still need to verify if the test is correct.",
       "revId": "6c9f2e723704404de30df910f6d629ee1ec93bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561c0c53_07841c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543303
+      },
+      "writtenOn": "2022-10-13T18:04:32Z",
+      "side": 1,
+      "message": "Verified that `tast run dut camera.CCAUIDocumentScanning*` will pass either the flag is enabled or disabled by default.",
+      "parentUuid": "9bfca9bb_f7ad5cc7",
+      "revId": "6c9f2e723704404de30df910f6d629ee1ec93bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
