@@ -150,13 +150,14 @@ const (
 
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
-	conn        *chrome.Conn
-	cr          *chrome.Chrome
-	scriptPaths []string
-	outDir      string // Output directory to save the execution result
-	appLauncher testutil.AppLauncher
-	appWindow   *testutil.AppWindow
-	cameraType  testutil.UseCameraType
+	conn           *chrome.Conn
+	untrustedConns []*chrome.Conn
+	cr             *chrome.Chrome
+	scriptPaths    []string
+	outDir         string // Output directory to save the execution result
+	appLauncher    testutil.AppLauncher
+	appWindow      *testutil.AppWindow
+	cameraType     testutil.UseCameraType
 }
 
 // ErrJS represents an error occurs when executing JavaScript.
@@ -202,7 +203,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		}
 	}
 
-	conn, appWindow, err := testutil.LaunchApp(ctx, cr, tb, appLauncher)
+	conn, untrustedConns, appWindow, err := testutil.LaunchApp(ctx, cr, tb, appLauncher)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed when launching app")
 	}
@@ -238,7 +239,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
+	app := &App{conn, untrustedConns, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
@@ -1461,33 +1462,46 @@ func (a *App) CheckMojoConnection(ctx context.Context) error {
 // OutputCodeCoverage stops the profiling and output the code coverage information to the output
 // directory.
 func (a *App) OutputCodeCoverage(ctx context.Context) error {
-	reply, err := a.conn.StopProfiling(ctx)
-	if err != nil {
-		return err
-	}
-
-	coverageData, err := json.Marshal(reply)
-	if err != nil {
-		return err
-	}
-
-	coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
-	if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
-		if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
+	outputSingleCoverage := func(conn *chrome.Conn) error {
+		reply, err := conn.StopProfiling(ctx)
+		if err != nil {
 			return err
 		}
-	} else if err != nil {
-		return err
-	}
 
-	for idx := 0; ; idx++ {
-		coverageFilePath := filepath.Join(coverageDirPath, fmt.Sprintf("coverage-%d.json", idx))
-		if _, err := os.Stat(coverageFilePath); os.IsNotExist(err) {
-			if err := ioutil.WriteFile(coverageFilePath, coverageData, 0644); err != nil {
+		coverageData, err := json.Marshal(reply)
+		if err != nil {
+			return err
+		}
+
+		coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
+		if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
+			if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
 				return err
 			}
-			break
 		} else if err != nil {
+			return err
+		}
+
+		for idx := 0; ; idx++ {
+			coverageFilePath := filepath.Join(coverageDirPath, fmt.Sprintf("coverage-%d.json", idx))
+			if _, err := os.Stat(coverageFilePath); os.IsNotExist(err) {
+				if err := ioutil.WriteFile(coverageFilePath, coverageData, 0644); err != nil {
+					return err
+				}
+				break
+			} else if err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+	err := outputSingleCoverage(a.conn)
+	if err != nil {
+		return err
+	}
+	for _, conn := range a.untrustedConns {
+		err := outputSingleCoverage(conn)
+		if err != nil {
 			return err
 		}
 	}

@@ -26,6 +26,7 @@ var (
 		// Set the fps to 30 to avoid OverconstrainedError.
 		"--use-fake-device-for-media-stream=fps=30")
 	chromeWithFakeCamera = chrome.NewPrecondition("chrome_fake_camera", fakeCameraOptions)
+	untrustedPageURL     = "chrome-untrusted://camera-app/views/untrusted_script_loader.html"
 )
 
 // ChromeWithFakeCamera returns a precondition that Chrome is already logged in with fake camera.
@@ -39,35 +40,50 @@ type AppLauncher struct {
 }
 
 // LaunchApp launches the camera app and handles the communication flow between tests and app.
-func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLauncher AppLauncher) (*chrome.Conn, *AppWindow, error) {
+func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLauncher AppLauncher) (*chrome.Conn, []*chrome.Conn, *AppWindow, error) {
 	appWindow, err := tb.AppWindow(ctx)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to register app window")
+		return nil, nil, nil, errors.Wrap(err, "failed to register app window")
 	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
-	conn, err := func() (*chrome.Conn, error) {
+	conn, untrustedConns, err := func() (*chrome.Conn, []*chrome.Conn, error) {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 		if err := appLauncher.LaunchApp(ctx, tconn); err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 
 		windowURL, err := appWindow.WaitUntilWindowBound(ctx)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 
 		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 		conn.StartProfiling(ctx)
+
+		untrustedTargets, err := cr.FindTargets(ctx, chrome.MatchTargetURL(untrustedPageURL))
+		if err != nil {
+			return nil, nil, err
+		}
+		var untrustedConns []*chrome.Conn
+		for _, target := range untrustedTargets {
+			untrustedConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetID(target.TargetID))
+			if err != nil {
+				return nil, nil, err
+			}
+			untrustedConn.StartProfiling(ctx)
+			untrustedConns = append(untrustedConns, untrustedConn)
+		}
+
 		if err := appWindow.NotifyReady(ctx); err != nil {
 			if closeErr := conn.CloseTarget(ctx); closeErr != nil {
 				testing.ContextLog(ctx, "Failed to close app: ", closeErr)
@@ -75,17 +91,17 @@ func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLaunch
 			if closeErr := conn.Close(); closeErr != nil {
 				testing.ContextLog(ctx, "Failed to close app connection: ", closeErr)
 			}
-			return nil, err
+			return nil, nil, err
 		}
-		return conn, nil
+		return conn, untrustedConns, nil
 	}()
 	if err != nil {
 		if releaseErr := appWindow.Release(cleanupCtx); releaseErr != nil {
 			testing.ContextLog(cleanupCtx, "Failed to release app window: ", releaseErr)
 		}
-		return nil, nil, err
+		return nil, nil, nil, err
 	}
-	return conn, appWindow, nil
+	return conn, untrustedConns, appWindow, nil
 }
 
 // RefreshApp refreshes the camera app and rebuilds the communication flow between tests and app.
