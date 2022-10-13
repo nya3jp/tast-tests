@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e99e850_9950fbcc",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-13T01:12:16Z",
+      "side": 1,
+      "message": "These will now be unavailable as variable names across the entire `filemanager` package, consider moving them to a more local scope instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf48f1f_51590cdf",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-13T01:12:16Z",
+      "side": 1,
+      "message": "nit: let\u0027s get your name in here as well 😄",
+      "range": {
+        "startLine": 34,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 86
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34575d59_9f91ef15",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-13T01:12:16Z",
+      "side": 1,
+      "message": "Generally with this it\u0027s better to have the same fixture, then switch on parameters supplied, similar to how you were doing in the original test but just moved to here, e.g.\n```\ntype fixtureFilesApp struct {\n  cr       *chrome.Chrome\n  filesApp *filesapp.FilesApp\n  numPwas  int\n}\n```\n\nThen in your fixture you if an if condition that installs the desired number of apps if the number is \u003e 0, e.g.\n\n```\nif f.numPwas \u003e 0 {\n  .. Do PWA installation here ..\n}\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec63a7d5_94858e5e",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-13T01:12:16Z",
+      "side": 1,
+      "message": "Might want to at least log this error, it might help in debugging efforts if a rogue window is still present.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
