@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bfca9bb_f7ad5cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-13T13:00:14Z",
+      "side": 1,
+      "message": "Btw, if this CL lands before the Chrome got upreved, the tests will fail. Is it correct?",
+      "revId": "6c9f2e723704404de30df910f6d629ee1ec93bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
