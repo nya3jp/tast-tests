@@ -59,7 +59,7 @@ func ModemFWManifestVerification(ctx context.Context, s *testing.State) {
 		// rootfs path
 		modemFirmwarePaths := []string{cellular.GetModemFirmwarePath()}
 
-		if device.GetDlcId() != "" {
+		if device.GetDlc() != nil && device.GetDlc().GetDlcId() != "" {
 			if dutVariantErr != nil {
 				s.Fatalf("Failed to get device variant: %s", dutVariantErr)
 			}
@@ -70,22 +70,24 @@ func ModemFWManifestVerification(ctx context.Context, s *testing.State) {
 			// images since the DLCs are purged.  It works on test images because the modem
 			// DLCs have the DLC_PRELOAD flag in their ebuilds.
 			if dutVariant != device.Variant {
-				dlc.Install(ctx, device.DlcId, "")
+				dlc.Install(ctx, device.Dlc.DlcId, "")
 			}
-			state, err := dlc.GetDlcState(ctx, device.DlcId)
+			state, err := dlc.GetDlcState(ctx, device.Dlc.DlcId)
 			// Verify that the DLC exists in the dlcservice manifest
 			if err != nil {
-				s.Fatalf("Failed to get state info for DLC %q: %q", device.DlcId, err)
+				s.Fatalf("Failed to get state info for DLC %q: %q", device.Dlc.DlcId, err)
 			}
 			if state.RootPath == "" {
-				s.Fatalf("Failed to get mount path for DLC %q", device.DlcId)
+				s.Fatalf("Failed to get mount path for DLC %q", device.Dlc.DlcId)
 			}
 			// Append the DLC mount path for verification.
 			// Until DLC is fully proven to work 100% for modemfwd, we keep a copy of all
 			// modem FWs in the rootfs, so we need to verify that the files are in both locations.
 			// When it's time to remove those images from the roofs, only one path will be needed,
 			// and the DLC path will override the rootfs path.
-			modemFirmwarePaths = append(modemFirmwarePaths, state.RootPath)
+			if !device.GetDlc().GetIsDlcEmpty() {
+				modemFirmwarePaths = append(modemFirmwarePaths, state.RootPath)
+			}
 		}
 
 		for _, modemFirmwarePath := range modemFirmwarePaths {

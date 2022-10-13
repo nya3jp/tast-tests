@@ -94,7 +94,9 @@ func GetDlcIDForVariant(ctx context.Context) (string, error) {
 	}
 	for _, device := range manifest.Device {
 		if dutVariant == device.Variant {
-			return device.GetDlcId(), nil
+			if device.GetDlc() != nil {
+				return device.GetDlc().GetDlcId(), nil
+			}
 		}
 	}
 	return "", errors.Errorf("variant %q does not contain a DlcId", dutVariant)

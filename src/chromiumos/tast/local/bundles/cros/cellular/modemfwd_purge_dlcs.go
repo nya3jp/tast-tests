@@ -49,11 +49,11 @@ func ModemfwdPurgeDlcs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse the firmware manifest: ", err)
 	}
 
-	// modemfwd will unistall the unused DLCs after 2 minutes.
+	// modemfwd will uninstall the unused DLCs after 2 minutes.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		for _, device := range manifest.Device {
-			if device.GetDlcId() != "" {
-				fsiPath := filepath.Join(dlc.FactoryInstallDir, device.GetDlcId())
+			if device.GetDlc() != nil && device.GetDlc().GetDlcId() != "" {
+				fsiPath := filepath.Join(dlc.FactoryInstallDir, device.GetDlc().GetDlcId())
 				if _, err := os.Stat(fsiPath); !os.IsNotExist(err) {
 					return errors.Wrapf(err, "directory %q was not deleted by dlcservice", fsiPath)
 				}
