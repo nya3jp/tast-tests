@@ -25,7 +25,7 @@ func init() {
 		Func:         DarkMode,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ArcSystemUIService changes Settings.Secure",
-		Contacts:     []string{"arc-app-dev@google.com, ttefera@google.com"},
+		Contacts:     []string{"arc-app-dev@google.com", "ttefera@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
