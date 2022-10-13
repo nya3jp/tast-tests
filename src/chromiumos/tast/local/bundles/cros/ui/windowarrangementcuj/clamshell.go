@@ -24,8 +24,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// multiresize summons a multiresizer and drags it like drag, but with all
-// drag points adjusted for the location of the multiresizer.
+// multiresize summons a multiresizer and drags it like dragAndRestore, but
+// with all drag points adjusted for the location of the multiresizer.
 func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, duration time.Duration, dragPoints ...coords.Point) error {
 	// Move the mouse near the first drag point until the multiresize widget appears.
 	multiresizer := nodewith.Role("window").ClassName("MultiWindowResizeController")
