@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/framework/protocol"
 	"chromiumos/tast/local/arc"
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -241,6 +243,7 @@ func VerboseLogging() chrome.Option {
 // OOBEScreen contains set of actions for an OOBE screen.
 type OOBEScreen struct {
 	oobeAPIName  string
+	shouldSkip   func(ctx context.Context, oobeScreen *OOBEScreen, oobeCtx *OOBEContext) (bool, error)
 	preCondition func(ctx context.Context, oobescreen *OOBEScreen, oobeCtx *OOBEContext) error
 	action       func(ctx context.Context, oobescreen *OOBEScreen, oobeCtx *OOBEContext) error
 }
@@ -268,6 +271,13 @@ var (
 	WelcomeScreen = OOBEScreen{
 		oobeAPIName:  "WelcomeScreen",
 		preCondition: isVisible,
+		action:       clickNext,
+	}
+	// EulaScreen goes through EULA screen with clicking continue button.
+	EulaScreen = OOBEScreen{
+		oobeAPIName:  "EulaScreen",
+		shouldSkip:   shouldSkip,
+		preCondition: isReadyForTesting,
 		action:       clickNext,
 	}
 	// UserCreationScreen goes through a user creation screen with clicking next.
@@ -300,7 +310,26 @@ var (
 	}
 	// PinSetupScreen goes through PIN setup screen with skipping it.
 	PinSetupScreen = OOBEScreen{
-		oobeAPIName:  "PinSetupScreen",
+		oobeAPIName: "PinSetupScreen",
+		shouldSkip: func(ctx context.Context, _ *OOBEScreen, oobeCtx *OOBEContext) (bool, error) {
+			// PinSetupScreen appears only if LE credentials is supported or in tablet mode.
+			cmdRunner := hwseclocal.NewCmdRunner()
+			cryptohomeClient := hwsec.NewCryptohomeClient(cmdRunner)
+			supportsLECredentials, err := cryptohomeClient.SupportsLECredentials(ctx)
+			if err != nil {
+				return true, errors.Wrap(err, "failed to get whether a DUT supports LE credentials or not")
+			}
+			if supportsLECredentials {
+				return false, nil
+			}
+
+			tabletMode, err := ash.TabletModeEnabled(ctx, oobeCtx.TConn)
+			if err != nil {
+				return true, errors.Wrap(err, "failed to get whether a DUT is in tablet mode or not")
+			}
+
+			return !tabletMode, nil
+		},
 		preCondition: isVisible,
 		action: func(ctx context.Context, _ *OOBEScreen, oobeCtx *OOBEContext) error {
 			return clickButtonWithName(ctx, oobeCtx, "Skip")
@@ -309,6 +338,7 @@ var (
 	// FingerprintScreen goes through fingerprint screen with skipping it.
 	FingerprintScreen = OOBEScreen{
 		oobeAPIName:  "FingerprintScreen",
+		shouldSkip:   shouldSkip,
 		preCondition: isVisible,
 		action: func(ctx context.Context, _ *OOBEScreen, oobeCtx *OOBEContext) error {
 			return clickButtonWithName(ctx, oobeCtx, "Skip")
@@ -368,6 +398,25 @@ var (
 		},
 	}
 )
+
+// SkipOrGoThroughOOBEScreen skips the OOBE screen if shouldSkip function of it returns true.
+func SkipOrGoThroughOOBEScreen(ctx context.Context, oobeScreen *OOBEScreen, oobeCtx *OOBEContext) error {
+	if oobeScreen.shouldSkip == nil {
+		return errors.Errorf("no shouldSkip function is defined in %s", oobeScreen.oobeAPIName)
+	}
+
+	skip, err := oobeScreen.shouldSkip(ctx, oobeScreen, oobeCtx)
+	if err != nil {
+		return errors.Errorf("failed to evalulate whether to skip %s or not", oobeScreen.oobeAPIName)
+	}
+
+	if skip {
+		testing.ContextLogf(ctx, "Skipping %s as shouldSkip returned true", oobeScreen.oobeAPIName)
+		return nil
+	}
+
+	return GoThroughOOBEScreen(ctx, oobeScreen, oobeCtx)
+}
 
 // GoThroughOOBEScreen goes through an OOBE screen with a provided oobeScreen.
 func GoThroughOOBEScreen(ctx context.Context, oobeScreen *OOBEScreen, oobeCtx *OOBEContext) error {
