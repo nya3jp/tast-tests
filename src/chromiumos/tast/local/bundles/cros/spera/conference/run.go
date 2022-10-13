@@ -94,7 +94,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-	if err := recorder.AddCollectedMetrics(tconn, bt, cujrecorder.WebRTCMetrics()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, bt, cujrecorder.WebRTCMetrics()...); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if traceConfigPath != "" {
