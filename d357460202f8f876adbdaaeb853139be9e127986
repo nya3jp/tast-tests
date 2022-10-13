@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1b87bfa_fd4a8f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2539,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-13T21:31:07Z",
+      "side": 1,
+      "message": "I do not understand what you mean by \"Counting towards FW reset/ping once\". The idea is, when reset is done on Qcom chipsets, then it does not trigger an explicit disconnect and connect and this causes assertIdleAndConnect to fail. The additional time is given so that the FW can get the initiatialization completed. Other chipsets RTK and MTK undergo explicit disconnection and connection.\n\nFor Intel, the behavior is interesting, we can check with Intel about how the impletmentation is in the FW. But chipsets can have different behavior and our test need to align to those.",
+      "parentUuid": "9f54dd64_f0f76e9e",
+      "range": {
+        "startLine": 2539,
+        "startChar": 74,
+        "endLine": 2539,
+        "endChar": 83
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac72d12_cfe1d2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
         "patchSetId": 8
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Can we then instead have a testing.Poll loop on the ping test so that it keeps attempting the whole ping test until no packet loss is experienced (until a timeout) and not have a sleep at all?\n\nThe only consideration with this mechanism is that it may hide any transitory ping flake, but that\u0027s debatably a good thing as it may remove a lot of test flake too.",
       "parentUuid": "4a489e94_ef8be3cb",
+      "range": {
+        "startLine": 2541,
+        "startChar": 0,
+        "endLine": 2541,
+        "endChar": 36
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39ca844_b0fc6f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-13T21:31:07Z",
+      "side": 1,
+      "message": "I am not sure if we should actually do this because:\n- there can be real ping issues which will get ignored by this logic.\n- The implementation is common and will affect other chipsets as well.\n- This will add additional complexity for specific behavior of the driver. Ideally, I want to handle this in the driver. Something like driver notifies once the FW gets back into ready state. THis can be through sysfs node. Also, this current approach is already done for ath11k and we have a TODO to handle this in driver and so I do think it makes much sense to add new level complexity around pingOnce which can have risks.\n\nThoughts?",
+      "parentUuid": "781c22d7_574359db",
       "range": {
         "startLine": 2541,
         "startChar": 0,
