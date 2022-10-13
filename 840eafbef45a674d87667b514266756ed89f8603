@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09e45f1d_3f6f8998",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-13T23:46:51Z",
+      "side": 1,
+      "message": "we can probably enable this well",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5030b081_75006250",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-13T23:46:51Z",
+      "side": 1,
+      "message": "we should also add a check for error code -- if we are expecting the pin lockout at a particular attempt (which we should be) -- let\u0027s check that that error gets through",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 111
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4edba48f_e5678f40",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
         "patchSetId": 10
