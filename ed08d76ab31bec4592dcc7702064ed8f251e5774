@@ -16,6 +16,23 @@
       "message": "Hi Ricardo,\ncan you help us take a look at this CL? I\u0027ve already added some comments, but we need a code owner to review. \n\nI\u0027m adding you because I saw you recently reviewed another typec tast update from Intel here (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3832060). But if you think there is someone else who should take a look, please let me know.\n\nThanks,\nJameson",
       "revId": "ed08d76ab31bec4592dcc7702064ed8f251e5774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217a2def_8d14cfca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:23:50Z",
+      "side": 1,
+      "message": "+2\n\nnext time add tast-owners@google.com as reviewer\n\nhttp://go/tast-reviews",
+      "revId": "ed08d76ab31bec4592dcc7702064ed8f251e5774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
