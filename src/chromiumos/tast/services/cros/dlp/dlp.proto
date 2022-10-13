@@ -39,5 +39,6 @@ service DataLeakPreventionService {
   rpc StopChrome(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc ClipboardCopyPaste(ActionRequest) returns (google.protobuf.Empty) {}
   rpc Print(ActionRequest) returns (google.protobuf.Empty) {}
+  rpc Screenshot(ActionRequest) returns (google.protobuf.Empty) {}
 }
 

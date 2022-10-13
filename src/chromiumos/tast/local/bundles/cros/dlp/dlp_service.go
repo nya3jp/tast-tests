@@ -28,7 +28,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	pb "chromiumos/tast/services/cros/dlp"
 	"chromiumos/tast/testing"
 )
@@ -259,21 +261,70 @@ func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.Act
 		return &empty.Empty{}, errors.Wrap(err, "failed to type printing hotkey")
 	}
 
-	// Connect to Test API.
-	tconn, err := service.chrome.TestAPIConn(ctx)
-	if err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to connect to test API")
+	// Take a screenshot using hotkey (Ctrl+F5)
+	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to type screenshot hotkey")
 	}
 
-	// Check that the printing dialog appears if and only if printing the page is allowed.
-	ui := uiauto.New(tconn)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, service.chrome.NormalizedUser())
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to retrieve user's Download path")
+	}
+	// Clean up previous screenshots.
+	if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to remove screenshots")
+	}
 
-	// Finder for the print dialog.
-	var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
+	return &empty.Empty{}, nil
 
-	// Check that the behavior of the printing dialog.
-	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(printDialog)(ctx); err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to find the printing dialog")
+}
+
+// Screenshot takes a screenshot.
+func (service *DataLeakPreventionService) Screenshot(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	if err := createHTMLTextPage(filepath.Join(baseDir, textFilename)); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while creating the HTML text page")
+	}
+
+	br, closeBrowser, err := setupBrowser(ctx, service.chrome, req.BrowserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while setting up the browser")
+	}
+	defer closeBrowser(ctx)
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	// Take a screenshot using hotkey (Ctrl+F5)
+	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to type screenshot hotkey")
+	}
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, service.chrome.NormalizedUser())
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to retrieve user's Download path")
+	}
+	// Clean up previous screenshots.
+	if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to remove screenshots")
 	}
 
 	return &empty.Empty{}, nil

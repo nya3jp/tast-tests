@@ -21,6 +21,8 @@ const (
 	ClipboardCopyPaste Action = iota
 	// Printing identifies a printing action.
 	Printing
+	// Screenshot identifies a screenshot action.
+	Screenshot
 )
 
 // String returns a string representation of `Action`.
@@ -30,6 +32,8 @@ func (action Action) String() string {
 		return "CLIPBOARD"
 	case Printing:
 		return "PRINTING"
+	case Screenshot:
+		return "SCREENSHOT"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}
