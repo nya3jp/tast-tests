@@ -10,6 +10,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -20,6 +23,7 @@ type ChromeOptions struct {
 	EnableFeatures []string // extra Chrome features to enable
 	ExtraArgs      []string // passed to Chrome on initialization
 	Timeout        time.Duration
+	BrowserType    browser.Type
 }
 
 // VMOptions describes how to start a VM.
@@ -171,7 +175,7 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 
 		testing.ContextLog(ctx, "Creating Chrome")
 		var err error
-		s.cr, err = chrome.New(ctx, opts...)
+		s.cr, err = browserfixt.NewChrome(ctx, s.crOptions.BrowserType, lacrosfixt.NewConfig(), opts...)
 		if err != nil {
 			return errors.Wrap(err, "failed to create Chrome")
 		}
