@@ -296,6 +296,8 @@ const (
 	ClipboardCopyPaste int = iota
 	// Printing identifies a printing action.
 	Printing
+	// Screenshot identifies a screenshot action.
+	Screenshot
 )
 
 // retrieveEvents returns events having a timestamp greater than `testStartTime` with the given `clientID` and satisfying `correctEventType(restriction, mode)`.
@@ -451,6 +453,12 @@ func DlpActionReporting(ctx context.Context, s *testing.State, action int) error
 	case Printing:
 		restriction = "PRINTING"
 		service.Print(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case Screenshot:
+		restriction = "SCREENSHOT"
+		service.Screenshot(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
