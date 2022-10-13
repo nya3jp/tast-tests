@@ -33,6 +33,24 @@
       "message": "Nit: Please add a comment to explain why we need to get the keyboard layout.",
       "revId": "9075adde3d0f2687d9bf62dd19b0cb803f1d49ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645980a9_b2779e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T17:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a154f03d_4e5a7f7f",
+      "revId": "9075adde3d0f2687d9bf62dd19b0cb803f1d49ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
