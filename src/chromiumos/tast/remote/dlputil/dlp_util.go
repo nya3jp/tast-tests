@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/reportingutil"
 	dlp "chromiumos/tast/services/cros/dlp"
+	"chromiumos/tast/testing"
 )
 
 // RestrictionBlockReportingEnabledUsername is the path to the secret username having block restriction level for all components and reporting enabled.
@@ -60,6 +61,229 @@ const RestrictionAllowReportingDisabledUsername = "dlp.restriction_level_allow_r
 
 // RestrictionAllowReportingDisabledPassword is the path to the secret password having allow restriction level for all components and reporting disabled.
 const RestrictionAllowReportingDisabledPassword = "dlp.restriction_level_allow_reporting_disabled_password"
+
+// TestParams contains parameters for testing different DLP configurations.
+type TestParams struct {
+	Username         string          // username for Chrome enrollment
+	Password         string          // password for Chrome enrollment
+	Mode             dlp.Mode        // mode of the applied restriction
+	BrowserType      dlp.BrowserType // which browser the test should use
+	ReportingEnabled bool            // test should expect reporting to be enabled
+}
+
+// TestParameters contains the different configurations we want to test.
+var TestParameters = []testing.Param{
+	{
+		Name: "ash_block_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionBlockReportingEnabledUsername,
+			Password:         RestrictionBlockReportingEnabledPassword,
+			Mode:             dlp.Mode_BLOCK,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: true,
+		},
+	},
+	{
+		Name: "ash_block_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionBlockReportingDisabledUsername,
+			Password:         RestrictionBlockReportingDisabledPassword,
+			Mode:             dlp.Mode_BLOCK,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: false,
+		},
+	},
+	{
+		Name: "lacros_block_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionBlockReportingEnabledUsername,
+			Password:         RestrictionBlockReportingEnabledPassword,
+			Mode:             dlp.Mode_BLOCK,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: true,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "lacros_block_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionBlockReportingDisabledUsername,
+			Password:         RestrictionBlockReportingDisabledPassword,
+			Mode:             dlp.Mode_BLOCK,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: false,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "ash_warn_cancel_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingEnabledUsername,
+			Password:         RestrictionWarnReportingEnabledPassword,
+			Mode:             dlp.Mode_WARN_CANCEL,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: true,
+		},
+	},
+	{
+		Name: "ash_warn_cancel_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingDisabledUsername,
+			Password:         RestrictionWarnReportingDisabledPassword,
+			Mode:             dlp.Mode_WARN_CANCEL,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: false,
+		},
+	},
+	{
+		Name: "lacros_warn_cancel_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingEnabledUsername,
+			Password:         RestrictionWarnReportingEnabledPassword,
+			Mode:             dlp.Mode_WARN_CANCEL,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: true,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "lacros_warn_cancel_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingDisabledUsername,
+			Password:         RestrictionWarnReportingDisabledPassword,
+			Mode:             dlp.Mode_WARN_CANCEL,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: false,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "ash_warn_proceed_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingEnabledUsername,
+			Password:         RestrictionWarnReportingEnabledPassword,
+			Mode:             dlp.Mode_WARN_PROCEED,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: true,
+		},
+	},
+	{
+		Name: "ash_warn_proceed_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingDisabledUsername,
+			Password:         RestrictionWarnReportingDisabledPassword,
+			Mode:             dlp.Mode_WARN_PROCEED,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: false,
+		},
+	},
+	{
+		Name: "lacros_warn_proceed_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingEnabledUsername,
+			Password:         RestrictionWarnReportingEnabledPassword,
+			Mode:             dlp.Mode_WARN_PROCEED,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: true,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "lacros_warn_proceed_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionWarnReportingDisabledUsername,
+			Password:         RestrictionWarnReportingDisabledPassword,
+			Mode:             dlp.Mode_WARN_PROCEED,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: false,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "ash_report_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionReportReportingEnabledUsername,
+			Password:         RestrictionReportReportingEnabledPassword,
+			Mode:             dlp.Mode_REPORT,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: true,
+		},
+	},
+	{
+		Name: "ash_report_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionReportReportingDisabledUsername,
+			Password:         RestrictionReportReportingDisabledPassword,
+			Mode:             dlp.Mode_REPORT,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: false,
+		},
+	},
+	{
+		Name: "lacros_report_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionReportReportingEnabledUsername,
+			Password:         RestrictionReportReportingEnabledPassword,
+			Mode:             dlp.Mode_REPORT,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: true,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "lacros_report_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionReportReportingDisabledUsername,
+			Password:         RestrictionReportReportingDisabledPassword,
+			Mode:             dlp.Mode_REPORT,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: false,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "ash_allow_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionAllowReportingEnabledUsername,
+			Password:         RestrictionAllowReportingEnabledPassword,
+			Mode:             dlp.Mode_ALLOW,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: true,
+		},
+	},
+	{
+		Name: "ash_allow_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionAllowReportingDisabledUsername,
+			Password:         RestrictionAllowReportingDisabledPassword,
+			Mode:             dlp.Mode_ALLOW,
+			BrowserType:      dlp.BrowserType_ASH,
+			ReportingEnabled: false,
+		},
+	},
+	{
+		Name: "lacros_allow_reporting_enabled",
+		Val: TestParams{
+			Username:         RestrictionAllowReportingEnabledUsername,
+			Password:         RestrictionAllowReportingEnabledPassword,
+			Mode:             dlp.Mode_ALLOW,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: true,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+	{
+		Name: "lacros_allow_reporting_disabled",
+		Val: TestParams{
+			Username:         RestrictionAllowReportingDisabledUsername,
+			Password:         RestrictionAllowReportingDisabledPassword,
+			Mode:             dlp.Mode_ALLOW,
+			BrowserType:      dlp.BrowserType_LACROS,
+			ReportingEnabled: false,
+		},
+		ExtraSoftwareDeps: []string{"lacros"},
+	},
+}
 
 // retrieveEvents returns events having a timestamp greater than `testStartTime` with the given `clientID` and satisfying `correctEventType`.
 func retrieveEvents(ctx context.Context, customerID, APIKey, clientID string, testStartTime time.Time, correctEventType func(reportingutil.InputEvent, string) bool, modeText string) ([]reportingutil.InputEvent, error) {

@@ -22,9 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DlpClipboardReporting,
+		Func:         DlpPrintingReporting,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test whether clipboard copy and paste events are correctly reported for every restriction level",
+		Desc:         "Test whether printing events are correctly reported for every restriction level",
 		Contacts: []string{
 			"accorsi@google.com", // Test author
 			"chromeos-dlp@google.com",
@@ -64,17 +64,17 @@ func init() {
 	})
 }
 
-// dlpPolicyEventClipboard identifies clipboard events.
-func dlpPolicyEventClipboard(event reportingutil.InputEvent, modeText string) bool {
+// dlpPolicyEventPrinting identifies printing events.
+func dlpPolicyEventPrinting(event reportingutil.InputEvent, modeText string) bool {
 	if w := event.WrappedEncryptedData; w != nil {
-		if d := w.DlpPolicyEvent; d != nil && d.Restriction == "CLIPBOARD" && (d.Mode == modeText || len(d.Mode) == 0) {
+		if d := w.DlpPolicyEvent; d != nil && d.Restriction == "PRINTING" && (d.Mode == modeText || len(d.Mode) == 0) {
 			return true
 		}
 	}
 	return false
 }
 
-func DlpClipboardReporting(ctx context.Context, s *testing.State) {
+func DlpPrintingReporting(ctx context.Context, s *testing.State) {
 	params := s.Param().(dlputil.TestParams)
 
 	username := s.RequiredVar(params.Username)
@@ -128,8 +128,8 @@ func DlpClipboardReporting(ctx context.Context, s *testing.State) {
 	// We are going to filter the events also based on the test time.
 	testStartTime := time.Now()
 
-	// Perform a copy and paste action.
-	service.ClipboardCopyPaste(ctx, &dlp.ActionRequest{
+	// Perform a printing action.
+	service.Print(ctx, &dlp.ActionRequest{
 		BrowserType: params.BrowserType,
 		Mode:        params.Mode,
 	})
@@ -139,7 +139,7 @@ func DlpClipboardReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	blockEvents, reportEvents, warnEvents, warnProceedEvents, err := dlputil.RetrieveEvents(ctx, customerID, APIKey, c.ClientId, testStartTime, dlpPolicyEventClipboard)
+	blockEvents, reportEvents, warnEvents, warnProceedEvents, err := dlputil.RetrieveEvents(ctx, customerID, APIKey, c.ClientId, testStartTime, dlpPolicyEventPrinting)
 	if err != nil {
 		s.Fatal("Failed to retrieve events: ", err)
 	}
