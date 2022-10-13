@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770eeb4c_8fbcbf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T18:33:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15d6f178_f40260c5",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 67
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bf47971_332dd21c",
