@@ -344,6 +344,13 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
+	// Start the final resize from the right bound of the ARC app window, subject to b/252556380.
+	// TODO(b/252556380): Remove this when the bug is fixed.
+	w, err = ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARC app window info")
+	}
+	splitViewDragPoints[0].X = w.BoundsInRoot.Right()
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an empty overview grid")
 	if err := dragAndRestore(ctx, tconn, pc, duration, splitViewDragPoints...); err != nil {

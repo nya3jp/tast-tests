@@ -307,9 +307,9 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 // through the others in order, and ending back at the first given point. Before
 // ending the drag, dragAndRestore tries to wait until every window has the same
 // bounds as before the drag (as expected because the drag is a closed loop). If
-// that wait times out, then the drag is ended anyway. The wait is repeated after
-// the drag is ended, and if there is a window bounds change that does not even
-// revert after the drag is completed, dragAndRestore returns a non-nil error.
+// b/252556380 is detected, this function logs a warning but returns a nil
+// error. If b/249124255 is detected, this function logs a warning and also
+// returns a non-nil error.
 func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, duration time.Duration, p ...coords.Point) error {
 	if len(p) < 2 {
 		return errors.Errorf("expected at least two drag points, got %v", p)
@@ -320,19 +320,20 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 		return errors.Wrap(err, "failed to get windows")
 	}
 
+	windowGone := false
 	verifyBounds := func(ctx context.Context) error {
 		for _, wInitial := range wsInitial {
 			wNow, err := ash.GetWindow(ctx, tconn, wInitial.ID)
-			if err != nil {
+			if windowGone = err != nil; windowGone {
 				return errors.Wrapf(err, "failed to look up %q window by ID %d (the app probably crashed)", wInitial.Title, wInitial.ID)
 			}
 			if !wNow.BoundsInRoot.Equals(wInitial.BoundsInRoot) {
-				return errors.Errorf("%q window bounds not restored; changed from %v to %v", wNow.Title, wInitial.BoundsInRoot, wNow.BoundsInRoot)
+				return errors.Errorf("%q window bounds not restored; changed from %v to %v (maybe b/252556380)", wNow.Title, wInitial.BoundsInRoot, wNow.BoundsInRoot)
 			}
 		}
 		return nil
 	}
-	verifyBoundsTimeout := &testing.PollOptions{Timeout: 10 * time.Second}
+	verifyBoundsTimeout := &testing.PollOptions{Timeout: 3 * time.Second}
 
 	var dragSteps []uiauto.Action
 	for i := 1; i < len(p); i++ {
@@ -340,7 +341,7 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 	dragSteps = append(dragSteps, pc.DragTo(p[0], duration), func(ctx context.Context) error {
 		if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
-			testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag (see https://crbug.com/1297297): ", err)
+			testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag: ", err)
 		}
 		return nil
 	})
@@ -349,7 +350,11 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 
 	if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
-		return errors.Wrap(err, "failed to wait for expected window bounds after ending drag (which should never happen, regardless of https://crbug.com/1297297)")
+		testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds after ending drag: ", err)
+	}
+
+	if windowGone {
+		return errors.New("a window that existed before the drag was not found after the drag (maybe b/249124255)")
 	}
 
 	return nil
