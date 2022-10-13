@@ -20,8 +20,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// A struct containing parameters for different clipboard tests.
-type clipboardTestParams struct {
+// A struct containing parameters for different printing tests.
+type printingTestParams struct {
 	username         string          // username for Chrome enrollment
 	password         string          // password for Chrome enrollment
 	mode             dlp.Mode        // mode of the applied restriction
@@ -31,9 +31,9 @@ type clipboardTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DlpClipboardReporting,
+		Func:         DlpPrintingReporting,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test whether clipboard copy and paste events are correctly reported for every restriction level",
+		Desc:         "Test whether printing events are correctly reported for every restriction level",
 		Contacts: []string{
 			"accorsi@google.com", // Test author
 			"chromeos-dlp@google.com",
@@ -72,7 +72,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "ash_block_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionBlockReportingEnabledUsername,
 					password:         dlputil.RestrictionBlockReportingEnabledPassword,
 					mode:             dlp.Mode_BLOCK,
@@ -82,7 +82,7 @@ func init() {
 			},
 			{
 				Name: "ash_block_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionBlockReportingDisabledUsername,
 					password:         dlputil.RestrictionBlockReportingDisabledPassword,
 					mode:             dlp.Mode_BLOCK,
@@ -92,7 +92,7 @@ func init() {
 			},
 			{
 				Name: "lacros_block_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionBlockReportingEnabledUsername,
 					password:         dlputil.RestrictionBlockReportingEnabledPassword,
 					mode:             dlp.Mode_BLOCK,
@@ -103,7 +103,7 @@ func init() {
 			},
 			{
 				Name: "lacros_block_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionBlockReportingDisabledUsername,
 					password:         dlputil.RestrictionBlockReportingDisabledPassword,
 					mode:             dlp.Mode_BLOCK,
@@ -114,7 +114,7 @@ func init() {
 			},
 			{
 				Name: "ash_warn_cancel_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingEnabledUsername,
 					password:         dlputil.RestrictionWarnReportingEnabledPassword,
 					mode:             dlp.Mode_WARN_CANCEL,
@@ -124,7 +124,7 @@ func init() {
 			},
 			{
 				Name: "ash_warn_cancel_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingDisabledUsername,
 					password:         dlputil.RestrictionWarnReportingDisabledPassword,
 					mode:             dlp.Mode_WARN_CANCEL,
@@ -134,7 +134,7 @@ func init() {
 			},
 			{
 				Name: "lacros_warn_cancel_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingEnabledUsername,
 					password:         dlputil.RestrictionWarnReportingEnabledPassword,
 					mode:             dlp.Mode_WARN_CANCEL,
@@ -145,7 +145,7 @@ func init() {
 			},
 			{
 				Name: "lacros_warn_cancel_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingDisabledUsername,
 					password:         dlputil.RestrictionWarnReportingDisabledPassword,
 					mode:             dlp.Mode_WARN_CANCEL,
@@ -156,7 +156,7 @@ func init() {
 			},
 			{
 				Name: "ash_warn_proceed_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingEnabledUsername,
 					password:         dlputil.RestrictionWarnReportingEnabledPassword,
 					mode:             dlp.Mode_WARN_PROCEED,
@@ -166,7 +166,7 @@ func init() {
 			},
 			{
 				Name: "ash_warn_proceed_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingDisabledUsername,
 					password:         dlputil.RestrictionWarnReportingDisabledPassword,
 					mode:             dlp.Mode_WARN_PROCEED,
@@ -176,7 +176,7 @@ func init() {
 			},
 			{
 				Name: "lacros_warn_proceed_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingEnabledUsername,
 					password:         dlputil.RestrictionWarnReportingEnabledPassword,
 					mode:             dlp.Mode_WARN_PROCEED,
@@ -187,7 +187,7 @@ func init() {
 			},
 			{
 				Name: "lacros_warn_proceed_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionWarnReportingDisabledUsername,
 					password:         dlputil.RestrictionWarnReportingDisabledPassword,
 					mode:             dlp.Mode_WARN_PROCEED,
@@ -198,7 +198,7 @@ func init() {
 			},
 			{
 				Name: "ash_report_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionReportReportingEnabledUsername,
 					password:         dlputil.RestrictionReportReportingEnabledPassword,
 					mode:             dlp.Mode_REPORT,
@@ -208,7 +208,7 @@ func init() {
 			},
 			{
 				Name: "ash_report_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionReportReportingDisabledUsername,
 					password:         dlputil.RestrictionReportReportingDisabledPassword,
 					mode:             dlp.Mode_REPORT,
@@ -218,7 +218,7 @@ func init() {
 			},
 			{
 				Name: "lacros_report_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionReportReportingEnabledUsername,
 					password:         dlputil.RestrictionReportReportingEnabledPassword,
 					mode:             dlp.Mode_REPORT,
@@ -229,7 +229,7 @@ func init() {
 			},
 			{
 				Name: "lacros_report_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionReportReportingDisabledUsername,
 					password:         dlputil.RestrictionReportReportingDisabledPassword,
 					mode:             dlp.Mode_REPORT,
@@ -240,7 +240,7 @@ func init() {
 			},
 			{
 				Name: "ash_allow_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionAllowReportingEnabledUsername,
 					password:         dlputil.RestrictionAllowReportingEnabledPassword,
 					mode:             dlp.Mode_ALLOW,
@@ -250,7 +250,7 @@ func init() {
 			},
 			{
 				Name: "ash_allow_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionAllowReportingDisabledUsername,
 					password:         dlputil.RestrictionAllowReportingDisabledPassword,
 					mode:             dlp.Mode_ALLOW,
@@ -260,7 +260,7 @@ func init() {
 			},
 			{
 				Name: "lacros_allow_reporting_enabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionAllowReportingEnabledUsername,
 					password:         dlputil.RestrictionAllowReportingEnabledPassword,
 					mode:             dlp.Mode_ALLOW,
@@ -271,7 +271,7 @@ func init() {
 			},
 			{
 				Name: "lacros_allow_reporting_disabled",
-				Val: clipboardTestParams{
+				Val: printingTestParams{
 					username:         dlputil.RestrictionAllowReportingDisabledUsername,
 					password:         dlputil.RestrictionAllowReportingDisabledPassword,
 					mode:             dlp.Mode_ALLOW,
@@ -284,18 +284,18 @@ func init() {
 	})
 }
 
-// dlpPolicyEventClipboard identifies clipboard events.
-func dlpPolicyEventClipboard(event reportingutil.InputEvent, modeText string) bool {
+// dlpPolicyEventPrinting identifies clipboard events.
+func dlpPolicyEventPrinting(event reportingutil.InputEvent, modeText string) bool {
 	if w := event.WrappedEncryptedData; w != nil {
-		if d := w.DlpPolicyEvent; d != nil && d.Restriction == "CLIPBOARD" && (d.Mode == modeText || len(d.Mode) == 0) {
+		if d := w.DlpPolicyEvent; d != nil && d.Restriction == "PRINTING" && (d.Mode == modeText || len(d.Mode) == 0) {
 			return true
 		}
 	}
 	return false
 }
 
-func DlpClipboardReporting(ctx context.Context, s *testing.State) {
-	params := s.Param().(clipboardTestParams)
+func DlpPrintingReporting(ctx context.Context, s *testing.State) {
+	params := s.Param().(printingTestParams)
 
 	username := s.RequiredVar(params.username)
 	password := s.RequiredVar(params.password)
@@ -348,8 +348,8 @@ func DlpClipboardReporting(ctx context.Context, s *testing.State) {
 	// We are going to filter the events also based on the test time.
 	testStartTime := time.Now()
 
-	// Perform a copy and paste action.
-	service.ClipboardCopyPaste(ctx, &dlp.ActionRequest{
+	// Perform a printing action.
+	service.Print(ctx, &dlp.ActionRequest{
 		BrowserType: params.browserType,
 		Mode:        params.mode,
 	})
@@ -359,7 +359,7 @@ func DlpClipboardReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	blockEvents, reportEvents, warnEvents, warnProceedEvents, err := dlputil.RetrieveEvents(ctx, customerID, APIKey, c.ClientId, testStartTime, dlpPolicyEventClipboard)
+	blockEvents, reportEvents, warnEvents, warnProceedEvents, err := dlputil.RetrieveEvents(ctx, customerID, APIKey, c.ClientId, testStartTime, dlpPolicyEventPrinting)
 	if err != nil {
 		s.Fatal("Failed to retrieve events: ", err)
 	}
