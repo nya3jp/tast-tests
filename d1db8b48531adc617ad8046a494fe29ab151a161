@@ -16,6 +16,24 @@
       "message": "I wonder if we should try selecting a smaller app instead?",
       "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b12c4f_080e5c53",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-10-13T01:46:18Z",
+      "side": 1,
+      "message": "Hi Toni,\n\nWe use VLC and add 5 more minutes for this case because:\n1. We can assure VLC won\u0027t be a built-in application in any board (a built-in application can\u0027t be uninstalled).\n2. We add 5 more minutes according to this CL (this case install Google Chat): https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3625814\n\nAccording to our investigation,\nthe size of VLC: 34.05 MB\nthe size of Google Chat: 2.84 MB\n\nWe can\u0027t assure Google Chat will not become a built-in application in the future.\nShould we use other apps like Google Chat to replace the VLC app?",
+      "parentUuid": "eac06521_65e2eb5f",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
