@@ -292,13 +292,8 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 	args := s.Param().(*testArgsForECWakeOnCharge)
 	defer func(ctx context.Context, args *testArgsForECWakeOnCharge) {
-		s.Log("Cold resetting DUT at the end of test")
-		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
-		}
-		s.Log("Waiting for reconnection to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
-			s.Fatal("Unable to reconnect to DUT: ", err)
+		if err := h.EnsureDUTBooted(ctx); err != nil {
+			s.Fatal("Failed to ensure DUT booted: ", err)
 		}
 		if args.hasLid {
 			if err := h.Servo.OpenLid(ctx); err != nil {
