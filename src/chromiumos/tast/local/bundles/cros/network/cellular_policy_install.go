@@ -33,7 +33,7 @@ func init() {
 		Desc:         "Test that managed eSIM profile can correctly be installed from device policy and the profile can not be removed or renamed",
 		Contacts: []string{
 			"jiajunz@google.com",
-			"cros-connectivity@google.com@google.com",
+			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},

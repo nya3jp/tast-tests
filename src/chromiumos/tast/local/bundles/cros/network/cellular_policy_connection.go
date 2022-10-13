@@ -35,7 +35,7 @@ func init() {
 		Desc:         "Test that managed eSIM profile can be connected and disconnected and restrict managed only cellular network works properly",
 		Contacts: []string{
 			"jiajunz@google.com",
-			"cros-connectivity@google.com@google.com",
+			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_prod_esim"},
