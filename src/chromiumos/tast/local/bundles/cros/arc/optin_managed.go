@@ -19,9 +19,7 @@ import (
 )
 
 const (
-	playstorePackageName    = "com.android.vending"
-	timeoutWaitForPlayStore = 5 * time.Minute
-	loginPoolVar            = "arc.managedAccountPool"
+	loginPoolVar = "arc.managedAccountPool"
 )
 
 func init() {
@@ -44,16 +42,27 @@ func init() {
 			"play_store",
 		},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
+		}, {
+			Name:              "betty",
+			ExtraSoftwareDeps: []string{"android_p", "qemu"},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
+		}, {
+			Name:              "vm_betty",
+			ExtraSoftwareDeps: []string{"android_vm", "qemu"},
 		}},
 		Timeout: 6 * time.Minute,
 	})
 }
 
 func OptinManaged(ctx context.Context, s *testing.State) {
+	const (
+		bootTimeout         = 4 * time.Minute
+		provisioningTimeout = 3 * time.Minute
+	)
+
 	// Actual username and password are read from vars/arc.yaml.
 	creds, err := chrome.PickRandomCreds(s.RequiredVar(loginPoolVar))
 	if err != nil {
@@ -76,15 +85,19 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	s.Log("Performing optin")
+	s.Log("Waiting for managed provisioning")
 
-	// Verify that ARC opt-in is successful, by trying to open Play Store and checking that its window is shown.
-	conn, err := cr.TestAPIConn(ctx)
+	a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 	if err != nil {
-		s.Fatal("Failed to create Test API Conn: ", err)
+		s.Fatal("Failed to start ARC by policy: ", err)
 	}
-	if err := optin.LaunchAndWaitForPlayStore(ctx, conn, cr, timeoutWaitForPlayStore); err != nil {
-		s.Fatal("Optin failed: ", err)
+	defer a.Close(ctx)
+
+	if err := a.WaitForProvisioning(ctx, provisioningTimeout); err != nil {
+		if err := optin.DumpLogCat(ctx, ""); err != nil {
+			s.Logf("WARNING: Failed to dump logcat: %s", err)
+		}
+		s.Fatal("Managed provisioning failed: ", err)
 	}
 }
 
