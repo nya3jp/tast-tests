@@ -126,10 +126,10 @@ func ShillCellularCustomApn(ctx context.Context, s *testing.State) {
 		if err = helper.SetAPN(ctx, knownAPN.APNInfo); err != nil {
 			s.Fatal("Unable to set the custom APN: ", err)
 		}
-		// b/249592531: Because Reattach can be triggered based on the current value and previous |attach|
-		// value, it's hard to calculate when the current service will be destroyed and recreated.
-		// A 2 second delay is enough to ensure that the service is destroyed when a Reattach is triggered.
-		testing.Sleep(ctx, 2*time.Second)
+		// b/249592531: Reattach gets triggered every time on this test because |ResetShill| clears the default profile,
+		// deleting the previous value of UseAttachApn. If the new APN is an attach APN, the Reattach is triggered a second time.
+		// A 5 second delay is enough to ensure that the service is destroyed when a Reattach is triggered.
+		testing.Sleep(ctx, 5*time.Second)
 		// Because of Reattach, the service changes when an attach APN is changed.
 		service, err := helper.FindServiceForDevice(ctx)
 		if err != nil {
