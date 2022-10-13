@@ -127,6 +127,30 @@
       },
       "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c638cd67_5be083f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-13T00:15:21Z",
+      "side": 1,
+      "message": "Our Screencast app talks to the Drive server directly when you click the \"delete\" button, and we want to ensure this feature works. You can\u0027t tell that from looking at DeleteScreencastItems().\n\nHowever, I agree that the drivefs package is probably a more robust and faster way to do this cleanup. We\u0027ll consider migrating DeleteScreencastItems() in the future.",
+      "parentUuid": "336cd820_13921563",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "5e99bbd01318d9f856ad4c7dbdb717d8113917aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
