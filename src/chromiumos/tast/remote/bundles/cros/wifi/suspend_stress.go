@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
 )
 
@@ -220,12 +222,27 @@ func SuspendStress(ctx context.Context, s *testing.State) {
 
 	testcases := s.Param().([]suspendStressParam)
 	for i, tc := range testcases {
-		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.suspendCount, tc.apOps, tc.secConfFac)
+		s.Logf("Testcase #%d", i)
+		// We want control over capturer start/stop so we don't use fixture with
+		// pcap but spawn it here and use manually.
+		pcapDevice, ok := tf.Pcap().(support.Capture)
+		if !ok {
+			s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterType())
 		}
-		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
-			// Stop if one of the subtest's parameter set fails the test.
-			return
+
+		pcapConf, err := hostapd.NewConfig(tc.apOps...)
+		freqOpts, err := pcapConf.PcapFreqOptions()
+		if err != nil {
+			s.Fatal("Failed to get Freq Opts: ", err)
+		}
+		_, err = wifiutil.CollectPcapForAction(ctx, pcapDevice, fmt.Sprintf("testcase-%d", i), pcapConf.Channel, freqOpts,
+			func(ctx context.Context) error {
+				// Expect failure if we are running pure FT test and the DUT is not supporting SME.
+				testOnce(ctx, s, tc.suspendCount, tc.apOps, tc.secConfFac)
+				return nil
+			})
+		if err != nil {
+			s.Fatal("Failed to collect pcap or perform action: ", err)
 		}
 	}
 }
