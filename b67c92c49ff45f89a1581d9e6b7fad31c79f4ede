@@ -97,6 +97,30 @@
       },
       "revId": "b67c92c49ff45f89a1581d9e6b7fad31c79f4ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6978edd8_bec05b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-13T02:49:02Z",
+      "side": 1,
+      "message": "Thanks, that makes sense. Good to know that!",
+      "parentUuid": "b7159ad9_3ba2be90",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 97
+      },
+      "revId": "b67c92c49ff45f89a1581d9e6b7fad31c79f4ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
