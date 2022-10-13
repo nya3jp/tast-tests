@@ -60,7 +60,7 @@ const retryTimes = 3
 // Run runs the QuickCheckCUJ2 test. The lock is the function that suspends or locks
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
 // inside metrics recorder.
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool, bt browser.Type) *perf.Values {
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode, minimum bool, bt browser.Type) *perf.Values {
 	password := cr.Creds().Pass // Required to unlock screen.
 
 	// Ensure display on to record ui performance correctly.
@@ -256,6 +256,13 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			{url: cuj.GooglePhotosURL},
 		}}
 
+		if minimum {
+			tabsInfo = [][]*tabInfo{{
+				{url: cuj.GoogleNewsURL},
+				{url: cuj.GooglePhotosURL},
+			}}
+		}
+
 		// Open tabs.
 		for _, tabs := range tabsInfo {
 			for tabIdx, tab := range tabs {
@@ -308,7 +315,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			switchFunc := uiActionHandler.SwitchToAppWindowByIndex(chromeApp.Name, idxWindow)
 			switchDesc := "windows"
 			for idxTab, tab := range tabs {
-				if idxTab != 0 {
+				if idxTab != 0 || minimum {
 					switchFunc = uiActionHandler.SwitchToChromeTabByIndex(idxTab)
 					switchDesc = "tabs"
 				}

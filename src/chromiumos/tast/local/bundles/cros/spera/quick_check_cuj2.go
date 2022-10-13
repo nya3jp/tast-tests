@@ -26,6 +26,7 @@ type quickCheckParam struct {
 	tier        cuj.Tier
 	scenario    quickcheckcuj.PauseMode
 	browserType browser.Type
+	minimum     bool
 }
 
 func init() {
@@ -52,6 +53,15 @@ func init() {
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Lock,
+				},
+			}, {
+				Name:    "basic_minimum_unlock",
+				Fixture: "loggedInAndKeepState",
+				Timeout: 5 * time.Minute,
+				Val: quickCheckParam{
+					tier:     cuj.Basic,
+					scenario: quickcheckcuj.Lock,
+					minimum:  true,
 				},
 			}, {
 				Name:              "basic_lacros_unlock",
@@ -160,7 +170,7 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 	param := s.Param().(quickCheckParam)
 	scenario := param.scenario
 
-	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode, param.browserType)
+	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode, param.minimum, param.browserType)
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to saving perf data: ", err)
 	}
