@@ -16,6 +16,23 @@
       "message": "Jorge, I removed the sticky CR-2 from you.\n\nBecause:\n- Some of the review comments have been addressed in the latest series.\n- Some of the review comments aren\u0027t applicable to the latest patchset.\n\nLet me know if you have further concerns.",
       "revId": "1e9dc44df55abc2788cd4eb38866a8d5953efe64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e04ded_82ca9344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-13T04:21:59Z",
+      "side": 1,
+      "message": "Seewai, please help to CR+1 if the patch makes sense to you.",
+      "revId": "1e9dc44df55abc2788cd4eb38866a8d5953efe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
