@@ -232,6 +232,7 @@ func DEQPOutcomeIsFailure(s string) bool {
 // error occurs, i.e., an error that suggests problems with the DEQP output.
 //
 // The returned stats map might look something like
+//
 //	"pass": 3
 //	"fail": 1
 //
