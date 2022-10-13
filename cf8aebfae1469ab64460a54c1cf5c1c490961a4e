@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d13584_620790b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-13T15:04:57Z",
+      "side": 1,
+      "message": "Hi Aya, can you please have a look at the CL?\nThe code is mainly based on data_leak_prevention_rules_list_screenshot.go and adapted for remote tests.",
+      "revId": "cf8aebfae1469ab64460a54c1cf5c1c490961a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
