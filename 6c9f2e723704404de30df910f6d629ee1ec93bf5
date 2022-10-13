@@ -16,6 +16,23 @@
       "message": "Btw, if this CL lands before the Chrome got upreved, the tests will fail. Is it correct?",
       "revId": "6c9f2e723704404de30df910f6d629ee1ec93bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0286eea6_c1a1c435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-13T17:08:07Z",
+      "side": 1,
+      "message": "LGTM for tast-owners, you still need to verify if the test is correct.",
+      "revId": "6c9f2e723704404de30df910f6d629ee1ec93bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
