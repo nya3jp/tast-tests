@@ -136,10 +136,31 @@ func AnyChromeCommonMetricConfigs() []MetricConfig {
 // WebRTCMetrics returns WebRTC common metrics which are required to be collected by conference CUJ tests.
 func WebRTCMetrics() []MetricConfig {
 	return []MetricConfig{
+		NewCustomMetricConfig("WebRTC.Video.BandwidthLimitedResolutionInPercent", "percent", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.BandwidthLimitedResolutionsDisabled", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.CpuLimitedResolutionInPercent", "percent", perf.SmallerIsBetter),
 		NewCustomMetricConfig("WebRTC.Video.DecodedFramesPerSecond", "fps", perf.BiggerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.RenderFramesPerSecond", "fps", perf.BiggerIsBetter),
 		NewCustomMetricConfig("WebRTC.Video.DecodeTimeInMs", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.SentWidthInPixels", "pixels", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Capturer", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Encoder", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.EncoderQueue", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Ratelimiter", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Receiver", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.InputFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.NumberResolutionDownswitchesPerMinute", "count_per_minute", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.QualityLimitedResolutionDownscales", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.QualityLimitedResolutionInPercent", "percent", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.RenderFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.BandwidthLimitedResolutionInPercent", "percent", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.BandwidthLimitedResolutionsDisabled", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.InputFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.QualityLimitedResolutionDownscales", "count", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.QualityLimitedResolutionInPercent", "percent", perf.SmallerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.SentFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.Screenshare.SentToInputFpsRatioPercent", "percent", perf.BiggerIsBetter),
 		NewCustomMetricConfig("WebRTC.Video.SentFramesPerSecond", "fps", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.SentToInputFpsRatioPercent", "percent", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.SentWidthInPixels", "pixels", perf.BiggerIsBetter),
+		NewCustomMetricConfig("WebRTC.Video.TimeInHdPercentage", "percent", perf.BiggerIsBetter),
 	}
 }
