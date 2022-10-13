@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce4fda1_3ccc37ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-10-13T17:55:47Z",
+      "side": 1,
+      "message": "you probably need a circular Cq-depend with the CL that modifies the proto, because if this is submitted partially, it will break ToT.",
+      "revId": "c9d69459e1931bb87327fc427805b7b9530951bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
