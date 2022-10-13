@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca457f9_d5b0d64c",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-13T05:41:34Z",
+      "side": 1,
+      "message": "Meh, this is a bit annoying, is there a way to share some consts across multiple functions without going to the whole package?\n\nI\u0027ve moved the pwa tittle which was only used in 1 func.",
+      "parentUuid": "6e99e850_9950fbcc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf48f1f_51590cdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-13T01:12:16Z",
       "side": 1,
       "message": "nit: let\u0027s get your name in here as well 😄",
+      "range": {
+        "startLine": 34,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 86
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d91c59_7ecce657",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-13T05:41:34Z",
+      "side": 1,
+      "message": "I\u0027m scared! I wanted to put somebody capable, instead of myself. :",
+      "parentUuid": "9cf48f1f_51590cdf",
       "range": {
         "startLine": 34,
         "startChar": 63,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f3f6f2_6af54e2c",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-13T05:41:34Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "34575d59_9f91ef15",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec63a7d5_94858e5e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-13T01:12:16Z",
       "side": 1,
       "message": "Might want to at least log this error, it might help in debugging efforts if a rogue window is still present.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "769bb838fa068df823cd0c0ce61c0c4da057706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0bf8b5_87f612ec",
+        "filename": "src/chromiumos/tast/local/filemanager/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-10-13T05:41:34Z",
+      "side": 1,
+      "message": "Good point. However I\u0027ll leave the test continue because this shouldn\u0027t cause an error.",
+      "parentUuid": "ec63a7d5_94858e5e",
       "range": {
         "startLine": 102,
         "startChar": 1,
