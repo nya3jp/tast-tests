@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a647784_9d7474f9",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-13T01:47:17Z",
+      "side": 1,
+      "message": "Maybe we can rewrite js code line 322 to `funttion(){return this.customActions.map(a \u003d\u003e a.description)}`",
+      "parentUuid": "c1386246_ae14021e",
+      "revId": "ef175e909acde3c183c1bd88f73f8b23c9656063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2d30b08_22ac9f68",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
