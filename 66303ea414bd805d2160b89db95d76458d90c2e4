@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8559dabc_6fe04400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1105b7ab_8a5964fd",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f1e0b25_4a8fd10b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-13T17:14:47Z",
       "side": 1,
       "message": "nit: \"navigate\"?",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 55
+      },
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec8c9e1_1d8430b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f1e0b25_4a8fd10b",
       "range": {
         "startLine": 86,
         "startChar": 45,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ba21bb_b047d2cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "We usually use `DoDefault` on the `CheckBox` or `Link`, this element is a `ListBox` and we use `LeftClickUntil` to guarantee we can open it and select the option.\nHere is another place we use it: https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go;l\u003d105-110",
+      "parentUuid": "dcf5f509_6995062d",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9afffdfa_ffe69c3c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-13T17:14:47Z",
       "side": 1,
       "message": "Any reason to add a timeout to this one?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819ed419_3b4e0bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "We add the time out to guarantee we can open the `ListBox`. https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d736-754;drc\u003d31fedce1b55695a68f6bc3836628a8f38a0fbcdb?q\u003dLeftClick%20lang:go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "parentUuid": "9afffdfa_ffe69c3c",
       "range": {
         "startLine": 98,
         "startChar": 4,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6357e5ee_26f9dce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "We only need to change two configs.",
+      "parentUuid": "035bbc50_fe3d6a66",
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90285d04_e40d79fb",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e8a163_5366d5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "There is only one variable so it should be fine.",
+      "parentUuid": "90285d04_e40d79fb",
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04fb22b3_0e97855d",
@@ -140,6 +272,24 @@
       "writtenOn": "2022-10-13T17:14:47Z",
       "side": 1,
       "message": "nit: \"Expected feedbackUserCtlConst does not exist; got: %s, want: %s\" may be more in line with how errors are typically reported and be a bit easier to read.",
+      "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce03a60_85332848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_feedback_user_ctl_consent_value.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-13T20:20:50Z",
+      "side": 1,
+      "message": "There is only one variable so it should be fine.",
+      "parentUuid": "04fb22b3_0e97855d",
       "revId": "66303ea414bd805d2160b89db95d76458d90c2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
