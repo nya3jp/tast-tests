@@ -195,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6ef1704_f9683c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-13T18:04:42Z",
+      "side": 1,
+      "message": "Sorry, I was not clear. I just want move line 96 - 147 up one scope. \n\nSince the entire block is for \"tabletMode\", a return can move the block up.\n\nhttps://engdoc.corp.google.com/eng/doc/tott/episodes/553.md?cl\u003dhead",
+      "parentUuid": "1319708d_75690487",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e255da_44324f73",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
         "patchSetId": 4
@@ -224,6 +242,24 @@
       "side": 1,
       "message": "I believe it\u0027s easier to read fail logs when all steps are written explicitly bevause uiauto.Combine will show you just the number of step where the sequence failed, so I would leave like this. What do you think?",
       "parentUuid": "94e255da_44324f73",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c423f9a_0f5606a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-13T18:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2150bc8_bf80907c",
       "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
