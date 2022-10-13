@@ -16,6 +16,29 @@
       "message": "PTAL. Thank you!",
       "revId": "d3a391e70619fd1ee1467b1467ccf9f378deb412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ebc83d_3eface33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1536317
+      },
+      "writtenOn": "2022-10-13T23:56:07Z",
+      "side": 1,
+      "message": "This will poll every 300ms, but when does it timeout? Is there a default timeout somewhere?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "d3a391e70619fd1ee1467b1467ccf9f378deb412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
