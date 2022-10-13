@@ -16,6 +16,69 @@
       "message": "Sorry I am OOO but for some reason the status was not set.\nForwarding to another reviewer.",
       "revId": "7eafa1b2070bd56cea740c7542df89c9521ed25b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bece37_b5d6e4f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-13T21:46:26Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "7eafa1b2070bd56cea740c7542df89c9521ed25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b8b15c_54c2f9af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-13T21:46:26Z",
+      "side": 1,
+      "message": "Please move the address and description to the `const` section",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 66
+      },
+      "revId": "7eafa1b2070bd56cea740c7542df89c9521ed25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b474890_9517e2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-13T21:46:26Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 37
+      },
+      "revId": "7eafa1b2070bd56cea740c7542df89c9521ed25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
