@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2b825c_c4a2b3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "No, I don\u0027t think so as we don\u0027t require it for other laptop-mode related tests in OOBE.",
+      "parentUuid": "3db64380_a41c3127",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56ce2a2_d45012fd",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-07T02:53:41Z",
       "side": 1,
       "message": "Do you consider convertible as tablet or laptop? Or you want it to run for both?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f0f692_27dcebd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "Both.",
+      "parentUuid": "a56ce2a2_d45012fd",
       "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a096482e_36ebe88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "No, it\u0027s not needed here.",
+      "parentUuid": "313800a1_842c16be",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a1b5d53_d5735d4e",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-07T02:53:41Z",
       "side": 1,
       "message": "Why do you need this check? I thought EnsureTabletModeEnabled take care of both true and false.",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af247b08_d1284367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1b5d53_d5735d4e",
       "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1319708d_75690487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "This if/else splits remaining test steps between tablet/laptop modes as they don\u0027t intersect, so I guess\n```\nif !tabletMode {\n    return\n}\n```\nis not needed here, I can move this logic into two functions and call them depending on which mode we test to make it more clear. What do you think?",
+      "parentUuid": "d5de4b20_7331bcaf",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e255da_44324f73",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
         "patchSetId": 4
@@ -116,6 +206,24 @@
       "writtenOn": "2022-10-07T02:53:41Z",
       "side": 1,
       "message": "How about grouping related action with uiauto.Combine?",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2150bc8_bf80907c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-13T16:07:29Z",
+      "side": 1,
+      "message": "I believe it\u0027s easier to read fail logs when all steps are written explicitly bevause uiauto.Combine will show you just the number of step where the sequence failed, so I would leave like this. What do you think?",
+      "parentUuid": "94e255da_44324f73",
       "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
