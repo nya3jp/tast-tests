@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a431636c_e4b47033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "Nice test, Dan! Thank you so much! 😊",
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec13721b_28df9015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "This name seems unrelated to the current test.",
+      "range": {
+        "startLine": 65,
+        "startChar": 88,
+        "endLine": 65,
+        "endChar": 107
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d00506fe_f13d8f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "No need for `WaitUntilExists()`. `LeftClick()` implicitly waits for the node to exist first.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f164b3e3_fc5bbc85",
@@ -20,6 +83,69 @@
         "endLine": 86,
         "endChar": 3
       },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4543e1_5a383b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "Is this error message accurate?",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 67
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf47971_332dd21c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 43
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499328d5_ba98b986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "If `endTime` is earlier than `startTime`, I think we consider `endTime` as the same time on the next day.\n\nThis may simplify the following logic so we can use the same code path for both cases.",
       "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -129,6 +255,29 @@
       "writtenOn": "2022-10-13T16:45:35Z",
       "side": 1,
       "message": "nit: describe what\u0027s the purpose of `includeEnd`... not clear what it does",
+      "range": {
+        "startLine": 206,
+        "startChar": 58,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf9c69c_fe8fe17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-13T16:54:50Z",
+      "side": 1,
+      "message": "Please document what `includeEnd` means.",
       "range": {
         "startLine": 206,
         "startChar": 58,
