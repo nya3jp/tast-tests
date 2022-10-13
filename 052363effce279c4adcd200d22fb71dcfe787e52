@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9319cadb_6aaaf4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-10-13T18:12:52Z",
+      "side": 1,
+      "message": "Not in the scope of this CL, but I wonder if we should make this library:https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go shared between the normal test and the CUJ test?",
+      "revId": "052363effce279c4adcd200d22fb71dcfe787e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
