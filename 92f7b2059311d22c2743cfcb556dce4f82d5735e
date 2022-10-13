@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26105291_8a69bada",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1446669
+      },
+      "writtenOn": "2022-10-13T23:38:20Z",
+      "side": 1,
+      "message": "Why is the first result being discarded (maybe add the reasoning in the comment also)?",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 28
+      },
+      "revId": "92f7b2059311d22c2743cfcb556dce4f82d5735e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbb67da_5727dc3e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1446669
+      },
+      "writtenOn": "2022-10-13T23:38:20Z",
+      "side": 1,
+      "message": "Do we want to run multiple tuning mode tests + 1 single mode run or are they mutually exclusive (i.e: put this in an else block)?",
+      "range": {
+        "startLine": 741,
+        "startChar": 1,
+        "endLine": 743,
+        "endChar": 0
+      },
+      "revId": "92f7b2059311d22c2743cfcb556dce4f82d5735e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
