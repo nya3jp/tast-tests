@@ -173,16 +173,25 @@ func init() {
 		TearDownTimeout: tearDownTimeout,
 	})
 
+	// TODO(b/223089758): Remove this fixture and use ccaTestBridgeReadyWithFakeCamera once multi-page doc scan fully lands.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "ccaTestBridgeReadyForMultiPageDocScan",
-		Desc:     "Set up test bridge for CCA and chrome for testing multi-page document scanning",
-		Contacts: []string{"chuhsuan@chromium.org"},
-		Data:     []string{"cca_ui.js"},
-		Impl: &fixture{
-			fakeCamera: true,
-			fakeScene:  true,
-			features:   []feature{multiPageDocScan},
-		},
+		Name:            "ccaTestBridgeReadyWithMultiPageDocScan",
+		Desc:            "Set up test bridge for CCA and chrome for testing multi-page document scanning",
+		Contacts:        []string{"chuhsuan@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{fakeCamera: true, fakeScene: true, enableFeatures: []feature{multiPageDocScan}},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
+
+	// TODO(b/223089758): Remove this fixture once multi-page doc scan fully lands.
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithMultiPageDocScanDisabled",
+		Desc:            "Set up test bridge for CCA and chrome for testing single-page document scanning",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{fakeCamera: true, fakeScene: true, disableFeatures: []feature{multiPageDocScan}},
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
@@ -279,7 +288,8 @@ type fixture struct {
 	launchCCAInCameraBox   bool
 	forceEnableAutoFraming bool
 	debugParams            DebugParams
-	features               []feature
+	enableFeatures         []feature
+	disableFeatures        []feature
 	screenRecorder         *uiauto.ScreenRecorder
 }
 
@@ -294,8 +304,11 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
 
 	var chromeOpts []chrome.Option
-	for _, f := range f.features {
+	for _, f := range f.enableFeatures {
 		chromeOpts = append(chromeOpts, chrome.EnableFeatures(string(f)))
+	}
+	for _, f := range f.disableFeatures {
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures(string(f)))
 	}
 
 	// Always enable doc scan DLC flag for testing.
