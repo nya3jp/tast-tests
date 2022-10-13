@@ -16,6 +16,98 @@
       "message": "Hi Yichen, could you take a look at this fix?",
       "revId": "79c4f23abd2aeb54ec2eacc5a7b2c6378c1c1d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b05db1_4faa7b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-13T00:10:43Z",
+      "side": 1,
+      "message": "get the window list",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 38
+      },
+      "revId": "79c4f23abd2aeb54ec2eacc5a7b2c6378c1c1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649319e9_8840fc34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-13T00:10:43Z",
+      "side": 1,
+      "message": "desks info",
+      "range": {
+        "startLine": 183,
+        "startChar": 29,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "79c4f23abd2aeb54ec2eacc5a7b2c6378c1c1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83a90d8_7a3c7cf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-13T00:10:43Z",
+      "side": 1,
+      "message": "get the window list",
+      "range": {
+        "startLine": 192,
+        "startChar": 21,
+        "endLine": 192,
+        "endChar": 38
+      },
+      "revId": "79c4f23abd2aeb54ec2eacc5a7b2c6378c1c1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126bd82e_170b5a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-13T00:10:43Z",
+      "side": 1,
+      "message": "len(ws), len(currWs)",
+      "range": {
+        "startLine": 196,
+        "startChar": 68,
+        "endLine": 196,
+        "endChar": 78
+      },
+      "revId": "79c4f23abd2aeb54ec2eacc5a7b2c6378c1c1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
