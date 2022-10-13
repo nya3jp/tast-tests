@@ -52,6 +52,9 @@ func init() {
 		Func:         CacheValidation,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Validates that caches match for both modes when pre-generated packages cache is enabled and disabled",
+		// Warning!
+		// Contact owners of this test first prior to altering its configuration.
+		// This provides viable information about release branch health.
 		Contacts: []string{
 			"khmel@google.com",
 			"arc-performance@google.com",
@@ -65,17 +68,13 @@ func init() {
 			Val: testParamCacheValidation{
 				vmEnabled: false,
 			},
-		},
-		/* Disabled due to <1% pass rate over 30 days. See b/241943132
-		{
+		}, {
 			Name:              "r",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParamCacheValidation{
 				vmEnabled: true,
 			},
-		}
-		*/
-		},
+		}},
 		Timeout: 10 * time.Minute,
 	})
 }
@@ -163,6 +162,12 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(tempDir)
 
+	// Keep resources needed for failure investigation.
+	artifactsDir := filepath.Join(s.OutDir(), "artifacts")
+	if err := os.Mkdir(artifactsDir, os.ModePerm); err != nil {
+		s.Fatal(errors.Wrap(err, "failed to created artifacts dir"))
+	}
+
 	url, err := generateJarURL(ctx, d, param.vmEnabled)
 	if err != nil {
 		s.Fatal("Failed to generate jar URL: ", err)
@@ -210,9 +215,9 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 		var subDir string
 		if cacheEnabled {
-			subDir = filepath.Join(tempDir, "withCache")
+			subDir = filepath.Join(artifactsDir, "withCache")
 		} else {
-			subDir = filepath.Join(tempDir, "withoutCache")
+			subDir = filepath.Join(artifactsDir, "withoutCache")
 		}
 
 		if err := os.Mkdir(subDir, os.ModePerm); err != nil {
@@ -298,7 +303,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Validating TTS cache")
-	withoutCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, tempDir, false)
+	withoutCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, artifactsDir, false)
 
 	if pregenTTSCacheFile == "" {
 		s.Log("Pregenerated TTS cache doesn't exist, skipping TTS cache validation")
@@ -311,7 +316,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 			s.Error("Error validating TTS pregenerated cache against generated cache with no cache setup: ", err)
 		}
 
-		withCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, tempDir, true)
+		withCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, artifactsDir, true)
 
 		if !initializedFromCache {
 			s.Error("TTS engine should be initialized from cache when cache setup is enabled")
