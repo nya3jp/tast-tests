@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 )
 
 // CanaryType is an enum listing up the available canaries of
@@ -36,25 +37,45 @@ type Canary interface {
 
 // TabCanary is a canary implemented with a chrome tab.
 type TabCanary struct {
-	cr     *chrome.Chrome
-	server *MemoryStressServer
-	unit   *MemoryStressUnit
+	br        *browser.Browser
+	server    *MemoryStressServer
+	unit      *MemoryStressUnit
+	focus     *browser.Conn
+	protected bool
 }
 
 // Run opens a chrome tab.
 func (c *TabCanary) Run(ctx context.Context) error {
-	return c.unit.Run(ctx, c.cr)
+	if err := c.unit.Run(ctx, c.br); err != nil {
+		return err
+	}
+	// Open a new tab so that the canary is not focused. Tab manager will never
+	// kill the focused tab.
+	var opts []browser.CreateTargetOption
+	if c.protected {
+		// If we want the canary to be PROTECTED_BACKGROUND priority, we want
+		// to leave it visible, so make the focus capturing tab in a new window.
+		opts = append(opts, browser.WithNewWindow())
+	}
+
+	focus, err := c.br.NewConn(ctx, "", opts...)
+	if err != nil {
+		return errors.Wrap(err, "failed to open a blank tab to ")
+	}
+	c.focus = focus
+	return nil
 }
 
 // Close closes the chrome tab and the test server for it.
 func (c *TabCanary) Close(ctx context.Context) {
 	c.server.Close()
-	c.unit.Close(ctx, c.cr)
+	c.unit.Close(ctx, c.br)
+	c.focus.CloseTarget(ctx)
 }
 
 // StillAlive checks if the underlying chrome tab is still alive.
 func (c *TabCanary) StillAlive(ctx context.Context) bool {
-	return c.unit.StillAlive(ctx, c.cr)
+	return c.unit.StillAlive(ctx, c.br)
 }
 
 // String returns a string name of the canary.
@@ -63,16 +84,17 @@ func (c *TabCanary) String() string {
 }
 
 // NewTabCanary creates a new TabCanary.
-// ctx 		- The context the test is running on.
-// allocMib	- The amount of memory allocated to the canary.
-// ratio	- How compressible the allocated memory will be.
-// s		- FileSystem to initilalize the memory stress server.
-// cr		- Chrome to open the tab on.
-func NewTabCanary(ctx context.Context, allocMiB int, ratio float32, s http.FileSystem, cr *chrome.Chrome) Canary {
+// ctx       - The context the test is running on.
+// allocMib  - The amount of memory allocated to the canary.
+// ratio     - How compressible the allocated memory will be.
+// s         - FileSystem to initilalize the memory stress server.
+// br        - Browser to open the tab on.
+// protected - If true, the canary will be the forground tab of a non-focused window. Otherwise, it will be a background tab in the focused window.
+func NewTabCanary(ctx context.Context, allocMiB int, ratio float32, s http.FileSystem, br *browser.Browser, protected bool) Canary {
 	server := NewMemoryStressServer(s)
 	// Use background=true
-	unit := server.NewMemoryStressUnit(allocMiB, ratio, 2*time.Second, true)
-	return &TabCanary{cr, server, unit}
+	unit := server.NewMemoryStressUnit(allocMiB, ratio, 2*time.Second)
+	return &TabCanary{br, server, unit, nil, protected}
 }
 
 // AppCanary is a canary implemented with an ARC test app.

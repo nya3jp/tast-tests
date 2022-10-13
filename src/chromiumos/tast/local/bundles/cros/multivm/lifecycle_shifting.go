@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
@@ -23,12 +24,13 @@ import (
 
 type lifecycleShiftingParam struct {
 	inHost, inCrostini, inARC bool
+	browserType               browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LifecycleShifting,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Create many Apps, Tabs, Processes in turn across multiple VMs, and see how many can stay alive",
 		Contacts:     []string{"cwd@google.com", "cros-platform-kernel-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -38,8 +40,17 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
-			Val:               &lifecycleShiftingParam{inARC: true, inHost: true},
+			Val:               &lifecycleShiftingParam{inARC: true, inHost: true, browserType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData: []string{
+				memoryuser.AllocPageFilename,
+				memoryuser.JavascriptFilename,
+			},
+		}, {
+			Name:              "arc_host_lacros",
+			Pre:               multivm.ArcLacrosStarted(),
+			Val:               &lifecycleShiftingParam{inARC: true, inHost: true, browserType: browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
@@ -47,7 +58,7 @@ func init() {
 		}, {
 			Name:              "crostini_host",
 			Pre:               multivm.CrostiniStarted(),
-			Val:               &lifecycleShiftingParam{inCrostini: true, inHost: true},
+			Val:               &lifecycleShiftingParam{inCrostini: true, inHost: true, browserType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData: []string{
 				crostini.GetContainerMetadataArtifact("buster", false),
@@ -195,6 +206,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	rp := &memoryuser.RunParameters{
 		UseARC:             preARC != nil,
 		ExistingChrome:     pre.Chrome,
+		BrowserType:        param.browserType,
 		ExistingARC:        preARC,
 		ExistingPerfValues: p,
 	}

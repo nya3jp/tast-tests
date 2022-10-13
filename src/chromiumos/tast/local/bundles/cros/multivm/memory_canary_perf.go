@@ -18,6 +18,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/multivm"
@@ -27,6 +29,7 @@ import (
 type canaryHealthPerfParam struct {
 	canary           memoryuser.CanaryType
 	allocationTarget memoryuser.AllocationTarget
+	browserType      browser.Type
 }
 
 const iterationsVar = "multivm.MemoryCanaryPerf.iterations"
@@ -34,7 +37,7 @@ const iterationsVar = "multivm.MemoryCanaryPerf.iterations"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryCanaryPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "How much memory can we allocate before the specified canary dies",
 		Contacts: []string{
 			"kokiryu@chromium.org",
@@ -45,7 +48,7 @@ func init() {
 		Params: []testing.Param{{
 			Name: "tab_host",
 			Pre:  multivm.NoVMStarted(),
-			Val:  &canaryHealthPerfParam{memoryuser.Tab, memoryuser.Host},
+			Val:  &canaryHealthPerfParam{memoryuser.Tab, memoryuser.Host, browser.TypeAsh},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
@@ -53,7 +56,7 @@ func init() {
 		}, {
 			Name:              "app_host",
 			Pre:               multivm.ArcStarted(),
-			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Host},
+			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Host, browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
@@ -62,8 +65,30 @@ func init() {
 		}, {
 			Name:              "app_arc",
 			Pre:               multivm.ArcStarted(),
-			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Arc},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Arc, browser.TypeAsh},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+		}, {
+			Name: "tab_host_lacros",
+			Pre:  multivm.NoVMLacrosStarted(),
+			Val:  &canaryHealthPerfParam{memoryuser.Tab, memoryuser.Host, browser.TypeLacros},
+			ExtraData: []string{
+				memoryuser.AllocPageFilename,
+				memoryuser.JavascriptFilename,
+			},
+		}, {
+			Name:              "app_host_lacros",
+			Pre:               multivm.ArcLacrosStarted(),
+			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Host, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			ExtraData: []string{
+				memoryuser.AllocPageFilename,
+				memoryuser.JavascriptFilename,
+			},
+		}, {
+			Name:              "app_arc_lacros",
+			Pre:               multivm.ArcLacrosStarted(),
+			Val:               &canaryHealthPerfParam{memoryuser.App, memoryuser.Arc, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 		}},
 		Vars: []string{
 			iterationsVar,
@@ -114,7 +139,7 @@ const canaryCompressionRatio = 0.
 const singleAllocatorMiB = 50
 const allocatorComplessionRatio = 0.67
 
-func stressCanary(ctx context.Context, s *testing.State, param *canaryHealthPerfParam, cr *chrome.Chrome, a *arc.ARC) (int64, time.Duration, error) {
+func stressCanary(ctx context.Context, s *testing.State, param *canaryHealthPerfParam, cr *chrome.Chrome, br *browser.Browser, a *arc.ARC) (int64, time.Duration, error) {
 	originalSoftLimit, originalHardLimit, err := getCurrentOpenFileLimit(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the open file limit: ", err)
@@ -131,7 +156,7 @@ func stressCanary(ctx context.Context, s *testing.State, param *canaryHealthPerf
 	var canary memoryuser.Canary
 	switch param.canary {
 	case memoryuser.Tab:
-		canary = memoryuser.NewTabCanary(ctx, canaryAllocatedMiB, canaryCompressionRatio, s.DataFileSystem(), cr)
+		canary = memoryuser.NewTabCanary(ctx, canaryAllocatedMiB, canaryCompressionRatio, s.DataFileSystem(), br, false)
 	case memoryuser.App:
 		canary, err = memoryuser.NewAppCanary(ctx, canaryAllocatedMiB, canaryCompressionRatio, cr, a)
 		if err != nil {
@@ -178,6 +203,11 @@ func MemoryCanaryPerf(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*canaryHealthPerfParam)
 	preARC := multivm.ARCFromPre(pre)
+	br, cleanupBr, err := browserfixt.SetUp(ctx, pre.Chrome.Chrome(), param.browserType)
+	if err != nil {
+		s.Fatal("Failed to get Browser: ", err)
+	}
+	defer cleanupBr(ctx)
 
 	iterationsStr, ok := s.Var(iterationsVar)
 	var iterations int
@@ -200,7 +230,7 @@ func MemoryCanaryPerf(ctx context.Context, s *testing.State) {
 	var totalTime time.Duration = 0
 
 	for i := 0; i < iterations; i++ {
-		mib, time, err := stressCanary(ctx, s, param, pre.Chrome, preARC)
+		mib, time, err := stressCanary(ctx, s, param, pre.Chrome, br, preARC)
 		if err != nil {
 			s.Fatal("Error in the canary stress test: ", err)
 		}
