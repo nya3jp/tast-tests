@@ -16,6 +16,23 @@
       "message": "Update of tast tests to account for the new onboarding metadata parameters. It can be landed before the actual client code change (if so flags will be simply ignored). PTAL - thanks!",
       "revId": "7737a9db290a927e967570709cd03220fbe96497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d691e8f_c47911e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-13T14:27:28Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "7737a9db290a927e967570709cd03220fbe96497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
