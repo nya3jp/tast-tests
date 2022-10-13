@@ -16,9 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DlpClipboardReporting,
+		Func:         DlpPrintingReporting,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test whether clipboard copy and paste events are correctly reported for every restriction level",
+		Desc:         "Test whether printing events are correctly reported for every restriction level",
 		Contacts: []string{
 			"accorsi@google.com", // Test author
 			"chromeos-dlp@google.com",
@@ -58,8 +58,8 @@ func init() {
 	})
 }
 
-func DlpClipboardReporting(ctx context.Context, s *testing.State) {
+func DlpPrintingReporting(ctx context.Context, s *testing.State) {
 
-	dlputil.DlpActionReporting(ctx, s, dlputil.ClipboardCopyPaste)
+	dlputil.DlpActionReporting(ctx, s, dlputil.Printing)
 
 }
