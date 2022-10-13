@@ -16,6 +16,23 @@
       "message": "yichenz: could you also review this one? thnaks!",
       "revId": "e11f5066a4e29cee49f504a02a089917d85fe7ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b61b765_1ff2595c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-13T00:05:42Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "e11f5066a4e29cee49f504a02a089917d85fe7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
