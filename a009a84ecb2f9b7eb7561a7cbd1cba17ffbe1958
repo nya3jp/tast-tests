@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbb0859c_e291b5c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:17:28Z",
+      "side": 1,
+      "message": "\u003e \"Broswer\" is a possible misspelling of \"Browser\".\n\nPlease fix.",
+      "parentUuid": "f9296e01_453c7f83",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f5f6489_9ae2f90e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +38,86 @@
       "writtenOn": "2022-10-13T07:07:03Z",
       "side": 1,
       "message": "There are some build failures, e.g.:\n\nsrc/chromiumos/tast/local/bundles/crosint/multivm/game_mode.go:126:74: cannot use pre.Chrome (variable of type *chrome.Chrome) as type *\"chromiumos/tast/local/chrome/browser\".Browser in argument to memoryuser.FillChromeOSMemory",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e64198b_18d2fa28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:17:28Z",
+      "side": 1,
+      "message": "Just some minor comments so far.",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8b7a2f_96a802cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:17:28Z",
+      "side": 1,
+      "message": "I think the Lacros variants should declare \"lacros\" as ExtraSoftwareDeps.",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f85cbb_057051a6",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:17:28Z",
+      "side": 1,
+      "message": "BrowserType",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 19
+      },
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde273e7_782a2ada",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-13T07:17:28Z",
+      "side": 1,
+      "message": "You can omit the mode, it defaults to LacrosOnly.",
+      "range": {
+        "startLine": 179,
+        "startChar": 87,
+        "endLine": 179,
+        "endChar": 124
+      },
       "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
