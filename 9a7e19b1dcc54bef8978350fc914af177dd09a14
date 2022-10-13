@@ -16,6 +16,23 @@
       "message": "Will verify when testbed is fixed.",
       "revId": "9a7e19b1dcc54bef8978350fc914af177dd09a14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70a4770_71ec97a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-13T16:42:54Z",
+      "side": 1,
+      "message": "LGTM once verified",
+      "revId": "9a7e19b1dcc54bef8978350fc914af177dd09a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
