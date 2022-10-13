@@ -28,6 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Alt+Tab and Alt+Shift+Tab functionality for cycling windows for each desk",
 		Contacts: []string{
+			"hongyulong@chromium.org",
 			"chromeos-sw-engprod@google.com",
 			"chromeos-wmp@google.com",
 		},
@@ -99,8 +100,8 @@ func WindowCyclePerDesk(ctx context.Context, s *testing.State) {
 		if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
 			s.Fatal("Failed to launch browser: ", err)
 		}
-		if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
-			s.Fatal("Browser did not appear in shelf after launch: ", err)
+		if _, err := ash.WaitForAnyWindow(ctx, tconn, func(w *ash.Window) bool { return w.OnActiveDesk && w.IsVisible && !w.IsAnimating }); err != nil {
+			s.Fatal("Failed to open and wait for browser window on active desk: ", err)
 		}
 	}
 
