@@ -33,6 +33,24 @@
       "message": "I think I should also add a dependency to `graphics-expectations` in `opencl-cts` ebuild, right?",
       "revId": "a4bde8a076177bc99b606bcf0e7918e1004e7611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97eb297b_86d2001f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-13T20:55:55Z",
+      "side": 1,
+      "message": "Oh. Interesting. I didn\u0027t realize that there is a [tast linter](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/cmd/tast-lint/internal/check/forbidden_bundle_imports.go;l\u003d35-75\n) requirement to avoid using packages outside of the parent directory hierarchy.\n\nWe need to move the expectations package somewhere else for you to use it. I\u0027m taking a look and will file myself a ticket.\n\nThanks for finding this!",
+      "parentUuid": "c4e1363f_7224a615",
+      "revId": "a4bde8a076177bc99b606bcf0e7918e1004e7611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
