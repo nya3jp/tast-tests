@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "49f8d3c4_893e4eb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc2f854_a3a73148",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "12668a92_862c6dfa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2e194f1_adac5e32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "done the first\n\nany ideas for the 2nd, happy to try but i thought a bit and coudln\u0027t come up with something different..",
+      "parentUuid": "694fba12_80bf8096",
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4a0c986_06001a30",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
         "patchSetId": 5
@@ -71,6 +113,30 @@
       "writtenOn": "2022-10-13T17:27:55Z",
       "side": 1,
       "message": "`kw` for \"keyboard writer\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1b9375_fdb23b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a0c986_06001a30",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce4204d_b54971ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ac4630_1c350e2d",
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "602316e9_7581944d",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-10-13T17:27:55Z",
       "side": 1,
       "message": "`// Ensure that capture mode is not left active after the test completes.`",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9001990_1cff1c9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602316e9_7581944d",
       "range": {
         "startLine": 73,
         "startChar": 1,
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9811d6_ff764ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c3af450_ed39229d",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 22
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6253d5be_01956466",
@@ -157,6 +289,30 @@
       "writtenOn": "2022-10-13T17:27:55Z",
       "side": 1,
       "message": "nit: `\"Esc\"`",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 22
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72011d0b_5b6daaa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6253d5be_01956466",
       "range": {
         "startLine": 109,
         "startChar": 17,
@@ -190,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3bb4f8_0ce23b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3780729_8d6c2229",
+      "range": {
+        "startLine": 115,
+        "startChar": 26,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "923593c0_912133a5",
@@ -203,6 +383,30 @@
       "writtenOn": "2022-10-13T17:27:55Z",
       "side": 1,
       "message": "nit: `\"Esc\"`",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "c92c2599130847e6c568042fc11d2ca108f55a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b46727_e34ac7c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_mode_entry_points.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-13T20:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "923593c0_912133a5",
       "range": {
         "startLine": 141,
         "startChar": 17,
