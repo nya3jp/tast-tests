@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b718421_5e20f062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c572c350_6d9d4edb",
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b1a6b78_66a2995d",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69beaf1c_93e0ebbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_ui_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b1a6b78_66a2995d",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 90
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e7b0dd_062d0c76",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "Nit: Remove extra line.",
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8294214f_34ee89b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_ui_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e7b0dd_062d0c76",
       "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +181,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71721cfb_e42a82b9",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Unfortunately doing it this way would result in an error, saying signinProfileTestExtensionID is defined but not used",
+      "parentUuid": "38694702_ffe036c7",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 29
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b18398_c03dd13e",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "unfortunately i have to keep it this way because of go presumbit checks 😞.",
+      "parentUuid": "3150241d_cade5a44",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 29
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "760944d2_6c77e95a",
@@ -134,6 +242,30 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "Nit: `crUiSvc`, same as above :)",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d50d90_2e9c3113",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "unfortunately i have to keep it this way because of go presumbit checks 😞",
+      "parentUuid": "760944d2_6c77e95a",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -168,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d6f36a_1ce7b4e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceffd559_17a14eaf",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e1f147_f6e559e4",
@@ -181,6 +337,30 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "A lot of these strings seem like they might be re-used across many other OOBE tests. What do you think of extracting these out and into a shared location (potentially into the same/similar file as mentioned in the comment below for `emulateMouseDevice`)?",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa8f8a1_cd548bf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e1f147_f6e559e4",
       "range": {
         "startLine": 60,
         "startChar": 29,
@@ -214,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18f87c3_1d404485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Sure thing decided to rely on waituntilexists",
+      "parentUuid": "81de3379_4fb7d870",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15491946_02c28fd2",
@@ -227,6 +431,30 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "Nit: `continue`",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf55161_d3f744b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15491946_02c28fd2",
       "range": {
         "startLine": 102,
         "startChar": 27,
@@ -260,6 +488,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "343a946c_60797cbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Sure thing!",
+      "parentUuid": "26225223_a97ff171",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e771c80a_aefe1dea",
@@ -273,6 +525,30 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "Nit: Could we move this method up above the test to line 41 since it is a local helper? Also it may be worth considering renaming this to something like `checkNodeExists` or `checkNodeWithNameExists` to make it clear we don\u0027t return anything here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 13
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5953e6_7163abba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e771c80a_aefe1dea",
       "range": {
         "startLine": 122,
         "startChar": 5,
@@ -306,6 +582,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efaf52d7_61c2bfdf",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c201dc24_a748f94a",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ab660e_b144fb72",
@@ -329,6 +629,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be652d3b_4d7335aa",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ab660e_b144fb72",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5611abf_0d9beefd",
@@ -342,6 +666,30 @@
       "writtenOn": "2022-10-12T17:52:19Z",
       "side": 1,
       "message": "Nit: Remove extra space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "d2256dab5329cad63b851fd414224354c1997dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ecf846_c65da04e",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_ui_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5611abf_0d9beefd",
       "range": {
         "startLine": 21,
         "startChar": 4,

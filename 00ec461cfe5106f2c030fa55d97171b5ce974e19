@@ -67,6 +67,24 @@
       "message": "Don\u0027t use empty response. Use a response with success and failure.\n\nIf failure, the response should have a UITreePath. If there is an error do something like this\n\n```\n\tcl, err :\u003d rpc.Dial(ctx, s.DUT(), s.RPCHint())\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to dial to DUT for remote file system: \", err)\n\t}\n\tdefer cl.Close(ctx)\n\n\tfs :\u003d dutfs.NewClient(cl.Conn)\n\n\tout, err :\u003d fs.ReadFile(ctx, rspn.GetUITreePath())\n\tif err !\u003d nil {\n\t\ts.Fatalf(\"Failed to get UI tree file %s: %v\", rspn.GetUITreePath(), err)\n\t}\n\t\n\tuiTreePath :\u003d filepath.Join(s.OutDir(), \"ui_tree.txt\")\n\tif err :\u003d ioutil.WriteFile(uiTreePath, out, 0644); err !\u003d nil {\n\t    s.Fatalf(\"File write ui tree file %s: %v\", uiTreePath)\n\t}\n\t\n```",
       "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c140564_612a5ea6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-13T20:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "449d8774_5afe282a",
+      "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
