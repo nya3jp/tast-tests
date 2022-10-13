@@ -1,0 +1,5 @@
+{
+  "sha256sum": "068fbe6d37a085faa78e39959df24e128396b72f00d91168f3ac39e3f2b268f6",
+  "size": 4074,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/files_from_bugs/b_246477160__video_wont_play_kukui_20221022.h264.json"
+}

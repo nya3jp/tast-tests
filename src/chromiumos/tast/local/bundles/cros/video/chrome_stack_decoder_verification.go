@@ -778,6 +778,17 @@ func init() {
 				},
 			},
 			{
+				Name:              "h264_files_from_bugs_246477160",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+				ExtraData:         appendJSONFiles([]string{"test_vectors/h264/files_from_bugs/b_246477160__video_wont_play_kukui.h264"}),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    []string{"test_vectors/h264/files_from_bugs/b_246477160__video_wont_play_kukui.h264"},
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
 				Name:              "h264_4k_files_from_bugs_22704778",
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},

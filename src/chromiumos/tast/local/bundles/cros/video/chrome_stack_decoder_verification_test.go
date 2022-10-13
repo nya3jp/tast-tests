@@ -18,6 +18,7 @@ var h264FilesFromBugs = map[string]string{
 	"172838252": "test_vectors/h264/files_from_bugs/b_172838252_pixelated_video_on_rk3399.h264",
 	"174733646": "test_vectors/h264/files_from_bugs/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
 	"210895987": "test_vectors/h264/files_from_bugs/b_210895987_still-colors-360p.h264",
+	"246477160": "test_vectors/h264/files_from_bugs/b_246477160__video_wont_play_kukui.h264",
 }
 
 var h2644kFilesFromBugs = map[string]string{
