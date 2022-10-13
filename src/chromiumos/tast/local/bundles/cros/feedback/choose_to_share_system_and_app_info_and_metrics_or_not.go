@@ -8,11 +8,13 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	fpb "chromiumos/tast/local/bundles/cros/feedback/proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -22,13 +24,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const metrics = "histograms.zip"
+const histograms = "histograms.zip"
+const systemLogs = "system_logs.zip"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChooseToShareMetricsOrNot,
+		Func:         ChooseToShareSystemAndAppInfoAndMetricsOrNot,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify user can share metrics or not",
+		Desc:         "Verify user can share system and app info and metrics or not",
 		Contacts: []string{
 			"wangdanny@google.com",
 			"zhangwenyu@google.com",
@@ -40,17 +43,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "share_metrics",
+			Name: "share_system_and_app_info_and_metrics",
 			Val:  true,
 		}, {
-			Name: "not_share_metrics",
+			Name: "not_share_system_and_app_info_or_metrics",
 			Val:  false,
 		}},
 	})
 }
 
-// ChooseToShareMetricsOrNot verifies user can choose to share metrics or not.
-func ChooseToShareMetricsOrNot(ctx context.Context, s *testing.State) {
+// ChooseToShareSystemAndAppInfoAndMetricsOrNot verifies user can choose to share system and app info and metrics or not.
+func ChooseToShareSystemAndAppInfoAndMetricsOrNot(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
@@ -72,7 +75,7 @@ func ChooseToShareMetricsOrNot(ctx context.Context, s *testing.State) {
 	}()
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-	shareMetrics := s.Param().(bool)
+	shareData := s.Param().(bool)
 
 	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
@@ -81,7 +84,7 @@ func ChooseToShareMetricsOrNot(ctx context.Context, s *testing.State) {
 	}
 
 	// Uncheck the share diagnostic data checkbox if needed.
-	if !shareMetrics {
+	if !shareData {
 		checkboxContainer := nodewith.Name("Send system and app info and metrics").Role(
 			role.GenericContainer).Ancestor(feedbackRootNode)
 		checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxContainer)
@@ -119,16 +122,31 @@ func ChooseToShareMetricsOrNot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read report content: ", err)
 	}
 
-	actualContent := strings.ToValidUTF8(string(content), "")
+	report := &fpb.ExtensionSubmit{}
+	if err = proto.Unmarshal(content, report); err != nil {
+		s.Fatal("Failed to parse report: ", err)
+	}
 
-	// Verify feedback report contains metrics based on user selection.
-	if shareMetrics {
-		if !strings.Contains(actualContent, metrics) {
-			s.Fatalf("Expected metrics %s does not exist", metrics)
+	// Verify if system_log.zip and histograms.zip are in the report.
+	histogramsExists := false
+	systemLogsExists := false
+	productSpecificBinaryData := report.GetProductSpecificBinaryData()
+	for _, element := range productSpecificBinaryData {
+		if element.GetName() == histograms {
+			histogramsExists = true
+		}
+		if element.GetName() == systemLogs {
+			systemLogsExists = true
+		}
+	}
+
+	if shareData {
+		if !histogramsExists || !systemLogsExists {
+			s.Fatal("Failed to share system and app info and metrics")
 		}
 	} else {
-		if strings.Contains(actualContent, metrics) {
-			s.Fatalf("Unexpected metrics %s does exist", metrics)
+		if histogramsExists || systemLogsExists {
+			s.Fatal("Failed to not share system and app info and metrics")
 		}
 	}
 }
