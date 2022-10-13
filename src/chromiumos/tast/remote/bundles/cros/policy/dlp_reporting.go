@@ -144,25 +144,48 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
 			{
-				Name: "ash_print_report_reporting_enabled",
+				Name: "ash_printing_report_reporting_enabled",
 				Val: testParams{
 					Username:         restrictionReportReportingEnabledUsername,
 					Password:         restrictionReportReportingEnabledPassword,
 					Mode:             dlp.Mode_REPORT,
 					BrowserType:      dlp.BrowserType_ASH,
 					ReportingEnabled: true,
-					Action:           dlputil.Print,
+					Action:           dlputil.Printing,
 				},
 			},
 			{
-				Name: "lacros_print_report_reporting_enabled",
+				Name: "lacros_printing_report_reporting_enabled",
 				Val: testParams{
 					Username:         restrictionReportReportingEnabledUsername,
 					Password:         restrictionReportReportingEnabledPassword,
 					Mode:             dlp.Mode_REPORT,
 					BrowserType:      dlp.BrowserType_LACROS,
 					ReportingEnabled: true,
-					Action:           dlputil.Print,
+					Action:           dlputil.Printing,
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name: "ash_screenshot_report_reporting_enabled",
+				Val: testParams{
+					Username:         restrictionReportReportingEnabledUsername,
+					Password:         restrictionReportReportingEnabledPassword,
+					Mode:             dlp.Mode_REPORT,
+					BrowserType:      dlp.BrowserType_ASH,
+					ReportingEnabled: true,
+					Action:           dlputil.Screenshot,
+				},
+			},
+			{
+				Name: "lacros_screenshot_report_reporting_enabled",
+				Val: testParams{
+					Username:         restrictionReportReportingEnabledUsername,
+					Password:         restrictionReportReportingEnabledPassword,
+					Mode:             dlp.Mode_REPORT,
+					BrowserType:      dlp.BrowserType_LACROS,
+					ReportingEnabled: true,
+					Action:           dlputil.Screenshot,
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
@@ -232,8 +255,13 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
-	case Printing:
+	case dlputil.Printing:
 		service.Print(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case dlputil.Screenshot:
+		service.Screenshot(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})

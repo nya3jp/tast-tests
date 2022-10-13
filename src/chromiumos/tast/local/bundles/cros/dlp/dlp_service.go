@@ -30,7 +30,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	pb "chromiumos/tast/services/cros/dlp"
 	"chromiumos/tast/testing"
 )
@@ -239,12 +241,6 @@ func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context
 // Print performs a print action.
 func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
 
-	keyboard, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
-	}
-	defer keyboard.Close()
-
 	browserType := browser.TypeAsh
 	if req.BrowserType == pb.BrowserType_LACROS {
 		browserType = browser.TypeLacros
@@ -276,6 +272,12 @@ func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.Act
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
 	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
 
 	// Test printing using hotkey (Ctrl + P).
 	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
@@ -320,6 +322,77 @@ func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.Act
 		if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle("Printing is blocked")); err != nil {
 			return &empty.Empty{}, errors.Wrap(err, "failed to wait for notification with title 'Printing is blocked'")
 		}
+	}
+
+	return &empty.Empty{}, nil
+
+}
+
+// Screenshot takes a screenshot.
+func (service *DataLeakPreventionService) Screenshot(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	browserType := browser.TypeAsh
+	if req.BrowserType == pb.BrowserType_LACROS {
+		browserType = browser.TypeLacros
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, service.chrome, browserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open the browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Create an html page with some text.
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	textContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Random Text 1</title></head><body>Sample text about random things.</body></html>")
+	if err := os.WriteFile(baseDir+"/"+textFilename, textContent, 0644); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed write a file")
+	}
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	// Take a screenshot using hotkey (Ctrl+F5)
+	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to type screenshot hotkey")
+	}
+
+	if req.Mode == pb.Mode_WARN_PROCEED {
+		// Hit Enter, which is equivalent to clicking on the "Capture anyway" button.
+		if err := keyboard.Accel(ctx, "Enter"); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to hit Enter")
+		}
+	} else if req.Mode == pb.Mode_WARN_CANCEL {
+		// Hit Esc, which is equivalent to clicking on the "Cancel" button.
+		if err := keyboard.Accel(ctx, "Esc"); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to hit Esc")
+		}
+	}
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, service.chrome.NormalizedUser())
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to retrieve user's Download path")
+	}
+	// Clean up previous screenshots.
+	if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to remove screenshots")
 	}
 
 	return &empty.Empty{}, nil
