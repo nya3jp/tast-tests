@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c47a204_2c4f159b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "I have added the lacros variant, but I don\u0027t think adding clamshell test variants is relevant here since the functionality of dragging a tab and entering split view is completely different, i.e. no tab strip and the left window doesn\u0027t automatically get snapped left when the right tab is snapped right. In addition, the test description https://testtracker.googleplex.com/testplans/testcase/detail/5033599?id\u003d65123\u0026revision\u003d18 specifically requests for tablet tests. A separate test could be added for clamshell in the future, but this seems out of scope for this test.",
+      "parentUuid": "4fd75ca5_7a79a93b",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c50e0e1_19d4eeb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
         "patchSetId": 4
@@ -94,6 +112,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "Lacros Chrome tabs should be draggable to split screen too. If anything, that\u0027s more important, because Lacros is the future.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d5260f_662d8629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c50e0e1_19d4eeb8",
       "range": {
         "startLine": 27,
         "startChar": 16,
@@ -121,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baeb61d2_fe130130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b262c7e8_ee2e47ad",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "337af0f3_ba1b36b3",
@@ -134,6 +194,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "nit: `https://www.google.com/`",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5377b0f_ec0eb682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337af0f3_ba1b36b3",
       "range": {
         "startLine": 57,
         "startChar": 9,
@@ -167,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa78c69b_529a8d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2f4e1f_59392cf5",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c07bba_8835c903",
@@ -184,6 +292,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fc7262_e417106d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c07bba_8835c903",
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3c4c266_8533ce39",
@@ -197,6 +323,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "`ClassName` is deprecated. Use `HasClass`.\n\nSee: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d596",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303f65d8_5ffc0890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c4c266_8533ce39",
       "range": {
         "startLine": 77,
         "startChar": 46,
@@ -230,6 +380,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29022aa0_47b72a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4ed124_fdf6f79b",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 75
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "662a41a8_bc29eea6",
@@ -243,6 +417,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "`// The second tab from the original window is now the first tab in the left window.`",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c57117_f2fd534c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662a41a8_bc29eea6",
       "range": {
         "startLine": 112,
         "startChar": 1,
@@ -276,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa9e4e2_83154466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "892b7c21_12afd276",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b0a00e_b939c402",
@@ -289,6 +511,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "`sleep`",
+      "range": {
+        "startLine": 118,
+        "startChar": 71,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01075ae6_aef97104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b0a00e_b939c402",
       "range": {
         "startLine": 118,
         "startChar": 71,
@@ -322,6 +568,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73b98e4_30d1e03e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdbefa3e_b9b6c37e",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c91f2b_a4a8cad0",
@@ -335,6 +605,30 @@
       "writtenOn": "2022-10-13T16:58:49Z",
       "side": 1,
       "message": "Write this as two calls to one function.\n\n\tfunc dragToSnap(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, snapX, expectedNumWindows int, snappedState ash.WindowStateType) error {\n\t\ttabRect, err :\u003d uiauto.New(tconn).Location(ctx, nodewith.Role(role.Tab).First())\n\t\tif err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to get the tab thumbnail\")\n\t\t}\n\t\t\n\t\t...\n\t}",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "65378647508314f8b5b57d87ed81906a79efb31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa511c2_e75ac2bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T21:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c91f2b_a4a8cad0",
       "range": {
         "startLine": 88,
         "startChar": 0,
