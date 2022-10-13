@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89f0019_b209e066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-13T17:23:12Z",
+      "side": 1,
+      "message": "Chrome CL is included in 108.0.5355.0 and included in ChromeOS in 15182.0.0.\n\nLanding this.",
+      "revId": "f619c47993f5b77f0e33d576aab9f21ac01058f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
