@@ -101,6 +101,25 @@ func init() {
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
+			{
+				Name: "ash_screenshot",
+				Val: testParams{
+					Username:    restrictionReportReportingEnabledUsername,
+					Password:    restrictionReportReportingEnabledPassword,
+					BrowserType: dlp.BrowserType_ASH,
+					Action:      dlputil.Screenshot,
+				},
+			},
+			{
+				Name: "lacros_screenshot",
+				Val: testParams{
+					Username:    restrictionReportReportingEnabledUsername,
+					Password:    restrictionReportReportingEnabledPassword,
+					BrowserType: dlp.BrowserType_LACROS,
+					Action:      dlputil.Screenshot,
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
 		},
 	})
 }
@@ -168,6 +187,10 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 		})
 	case dlputil.Printing:
 		service.Print(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+		})
+	case dlputil.Screenshot:
+		service.Screenshot(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 		})
 	}
