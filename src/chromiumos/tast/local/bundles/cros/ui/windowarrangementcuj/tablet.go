@@ -23,6 +23,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// dragDivider calls dragAndRestore with the first drag point adjusted for b/252556380.
+// Note: If you pass in the drag points as splitViewDragPoints... where
+// splitViewDragPoints is a variable outside this function, then that variable will be
+// modified with the adjusted first drag point, as in https://go.dev/play/p/7yjqvm7-2eV
+// TODO(b/252556380): Remove this when the bug is fixed.
+func dragDivider(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, duration time.Duration, splitViewDragPoints ...coords.Point) error {
+	if len(splitViewDragPoints) < 2 {
+		return errors.Errorf("expected at least two drag points, got %v", splitViewDragPoints)
+	}
+
+	dividerBounds, err := ui.Location(ctx, nodewith.Role(role.Window).HasClass("SplitViewDivider"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get split view divider bounds")
+	}
+
+	splitViewDragPoints[0] = dividerBounds.CenterPoint()
+	return dragAndRestore(ctx, tconn, pc, duration, splitViewDragPoints...)
+}
+
 // exerciseSplitViewResize assumes two snapped windows and a second desk (but the
 // first desk is the active one). Then exerciseSplitViewResize does the following:
 // 1. Drag the divider.
@@ -30,6 +49,7 @@ import (
 // 3. Drag the divider.
 // 4. Drag the overview window to the second desk.
 // 5. Drag the divider.
+// Note: The note on dragDivider also applies to exerciseSplitViewResize.
 func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, enterOverview action.Action, splitViewDragPoints ...coords.Point) error {
 	const (
 		slow              = 2 * time.Second
@@ -39,7 +59,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 1. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between two snapped windows")
-	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
+	if err := dragDivider(ctx, tconn, ui, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between two snapped windows")
 	}
 
@@ -50,7 +70,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 3. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between an overview window and a snapped window")
-	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
+	if err := dragDivider(ctx, tconn, ui, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between overview window and snapped window")
 	}
 
@@ -86,7 +106,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 5. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between an empty overview grid and a snapped window")
-	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
+	if err := dragDivider(ctx, tconn, ui, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between empty overview grid and snapped window")
 	}
 
@@ -214,7 +234,12 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 
 	// Swap the windows so that enterOverview will put the browser
 	// window in overview and leave the ARC window snapped.
-	tapDivider := pc.ClickAt(splitViewDragPoints[0])
+	dividerBounds, err := ui.Location(ctx, nodewith.Role(role.Window).HasClass("SplitViewDivider"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get split view divider bounds")
+	}
+	dividerCenter := dividerBounds.CenterPoint()
+	tapDivider := pc.ClickAt(dividerCenter)
 	if err := action.Combine("double tap the divider", tapDivider, uiauto.Sleep(doubleTapInterval), tapDivider)(ctx); err != nil {
 		return errors.Wrap(err, "failed to swap snapped windows")
 	}
@@ -227,8 +252,8 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	// b/246799978 causes the ARC app window to have the wrong bounds. Do a split
 	// view resize to update the bounds. There are no plans to fix b/246799978.
 	if err := pc.Drag(
-		splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[0].Add(coords.NewPoint(20, 0)), duration),
+		dividerCenter,
+		pc.DragTo(dividerCenter.Add(coords.NewPoint(20, 0)), duration),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag divider just a little bit")
 	}
