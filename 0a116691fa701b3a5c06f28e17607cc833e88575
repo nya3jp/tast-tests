@@ -56,6 +56,30 @@
       },
       "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b166ff8_90233695",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-13T09:59:33Z",
+      "side": 1,
+      "message": "Thank you Chad!\nAccording to our latest email thread with you, the conclusion is leave this `revampEnabled` until the `Quick Settings revamp` is fully launched.\n\nPlease let us know if you have further opinions, much appreciated!",
+      "parentUuid": "8ddfb3a2_a115bb3b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
