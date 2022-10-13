@@ -22,6 +22,30 @@
       },
       "revId": "52ba72b4258147471f030092a5ed66385da0044e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7329a778_e129fbd7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-10-13T17:17:51Z",
+      "side": 1,
+      "message": "We reboot to initialize entropy and if fwupdater is enabled, it will reflash the FPMCU.",
+      "parentUuid": "b2992c41_6ab8e628",
+      "range": {
+        "startLine": 128,
+        "startChar": 34,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "52ba72b4258147471f030092a5ed66385da0044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
