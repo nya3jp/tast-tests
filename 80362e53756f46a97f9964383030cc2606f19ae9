@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "797f25cc_7ba8fafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T22:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6679b5c_63dc3d16",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 89,
+        "endChar": 18
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220f0019_28066505",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-13T21:34:03Z",
       "side": 1,
       "message": "You can get rid of this now that you have added `cleanupCtx`.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b95ecd8_8034f842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T22:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220f0019_28066505",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a9a485_74b37dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T22:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3d6509_1ea7c66f",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fbdaf6d_cf4b3535",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-13T21:34:03Z",
       "side": 1,
       "message": "This comment does not make sense in a function that is used for both drags.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 84
+      },
+      "revId": "80362e53756f46a97f9964383030cc2606f19ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e807b4a7_72724bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-13T22:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fbdaf6d_cf4b3535",
       "range": {
         "startLine": 116,
         "startChar": 0,
