@@ -51,6 +51,24 @@
       "message": "Hi Aya, can you please take a look at the CL? Thanks!",
       "revId": "1288eb9b6e8067c7f05af6529e451b55223220b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d759ddf7_4e07c0bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-13T13:50:14Z",
+      "side": 1,
+      "message": "Most of the code is not new but taken and adapted from:\n- https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go;l\u003d1?q\u003ddata_leak\u0026sq\u003d",
+      "parentUuid": "3e9af718_c15cfb80",
+      "revId": "1288eb9b6e8067c7f05af6529e451b55223220b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
