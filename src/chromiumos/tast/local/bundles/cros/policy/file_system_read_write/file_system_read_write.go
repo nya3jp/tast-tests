@@ -100,7 +100,7 @@ func triggerFilePicker(ctx context.Context, conn *chrome.Conn, ui *uiauto.Contex
 			// The error message is non-empty, thus opening the file picker has failed; stop polling.
 			return nil
 		}, &testing.PollOptions{Timeout: shortTimeout}); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to wait for the file picker to either open or fail to open"))
+			return errors.Wrap(err, "failed to wait for the file picker to either open or fail to open")
 		}
 
 		if errorMessage == "User activation is required to show a file picker." {
