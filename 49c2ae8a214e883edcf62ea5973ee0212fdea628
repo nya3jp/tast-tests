@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e47326b_a5fd1e5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "Looks good! Just some nits",
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf49d7b_a141a1bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"",
+      "range": {
+        "startLine": 105,
+        "startChar": 52,
+        "endLine": 105,
+        "endChar": 60
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f8ac3a_432eb701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 52,
+        "endLine": 118,
+        "endChar": 60
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee96ee84_5750ed08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 52,
+        "endLine": 132,
+        "endChar": 60
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d2aec9_34d8e764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 52,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f220be2c_09df9a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"",
+      "range": {
+        "startLine": 173,
+        "startChar": 52,
+        "endLine": 173,
+        "endChar": 60
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be29937b_f5a60001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\" (also you can just put 1 directly in this log message instead of using `%s ... 1`)",
+      "range": {
+        "startLine": 186,
+        "startChar": 55,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc31cd8_ad2c543d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-13T19:34:45Z",
+      "side": 1,
+      "message": "nit: \"want\"\n\nAlso, it might be prudent to actually put `bw.ID` in this message so we know what we\u0027re actually comparing against. (If the window titles have spaces and other stuff, you can use the format specifier %q to quote them automatically.)",
+      "range": {
+        "startLine": 189,
+        "startChar": 44,
+        "endLine": 189,
+        "endChar": 52
+      },
+      "revId": "49c2ae8a214e883edcf62ea5973ee0212fdea628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
