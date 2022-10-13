@@ -6,9 +6,12 @@ package mojo
 
 // ESimManagerJS is javascript code that initializes the eSIM manager object and defines
 // some additional functions.
-const ESimManagerJS = `function() {
+const ESimManagerJS = `
+async function() {
+	const esimManagerMojoModule = await import('chrome://resources/mojo/chromeos/ash/services/cellular_setup/public/mojom/esim_manager.mojom-webui.js');
+
 	return {
-		manager: ash.cellularSetup.mojom.ESimManager.getRemote(),
+		manager: esimManagerMojoModule.ESimManager.getRemote(),
 
 		async getAvailableEuiccEids() {
 			const res = [];
@@ -109,5 +112,5 @@ const ESimManagerJS = `function() {
 			const profile = await this.getProfile_(iccid);
 			return (await profile.setProfileNickname(name)).result
 		}
-    }
+  }
 }`
