@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6e526c_85a77f64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87501a57_a48ee2ed",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58f102bc_7c315d6e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-12T23:54:41Z",
       "side": 1,
       "message": "This command only tests the Ash variant. To test both variants you need something like wmp.TabletModeBasicWindowControl*",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aec3f13_b8d83bcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58f102bc_7c315d6e",
       "revId": "7323f512ddea9149421dc2d04893de889743f999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ca5125_925cb061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b658bd09_e9e29198",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f06d4aec_964809d3",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-12T23:54:41Z",
       "side": 1,
       "message": "You can just use browserfixt.SetUp.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b26943_9ab95c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06d4aec_964809d3",
       "revId": "7323f512ddea9149421dc2d04893de889743f999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8985cc_c5832c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9316783_ff61efec",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4898aba_35119915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d488a5_480f2804",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dfbbaf_16eca675",
@@ -132,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7758062b_a7a89e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02dfbbaf_16eca675",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a823cf_5bf19285",
@@ -145,6 +283,24 @@
       "writtenOn": "2022-10-12T23:54:41Z",
       "side": 1,
       "message": "Nit: remove empty line to group the code with the defer command.",
+      "revId": "7323f512ddea9149421dc2d04893de889743f999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c590b54a_12a42474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-13T23:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9a823cf_5bf19285",
       "revId": "7323f512ddea9149421dc2d04893de889743f999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
