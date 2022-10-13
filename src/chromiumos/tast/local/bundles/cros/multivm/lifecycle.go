@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
@@ -22,12 +23,13 @@ import (
 
 type lifecycleParam struct {
 	inHost, inARC, inCrostini bool
+	browserType               browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Lifecycle,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Create many Apps, Tabs, Processes across multiple VMs, and see how many can stay alive",
 		Contacts:     []string{"cwd@google.com", "cros-platform-kernel-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -37,20 +39,34 @@ func init() {
 		Params: []testing.Param{{
 			Name: "host",
 			Pre:  multivm.NoVMStarted(),
-			Val:  &lifecycleParam{inHost: true},
+			Val:  &lifecycleParam{inHost: true, browserType: browser.TypeAsh},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
 			},
 		}, {
+			Name: "host_lacros",
+			Pre:  multivm.NoVMLacrosStarted(),
+			Val:  &lifecycleParam{inHost: true, browserType: browser.TypeLacros},
+			ExtraData: []string{
+				memoryuser.AllocPageFilename,
+				memoryuser.JavascriptFilename,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
 			Name:              "arc",
 			Pre:               multivm.ArcStarted(),
-			Val:               &lifecycleParam{inARC: true},
+			Val:               &lifecycleParam{inARC: true, browserType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "arc_lacros",
+			Pre:               multivm.ArcLacrosStarted(),
+			Val:               &lifecycleParam{inARC: true, browserType: browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 		}, {
 			Name: "crostini",
 			Pre:  multivm.CrostiniStarted(),
-			Val:  &lifecycleParam{inCrostini: true},
+			Val:  &lifecycleParam{inCrostini: true, browserType: browser.TypeAsh},
 			ExtraData: []string{
 				crostini.GetContainerMetadataArtifact("buster", false),
 				crostini.GetContainerRootfsArtifact("buster", false),
@@ -60,7 +76,7 @@ func init() {
 		}, {
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
-			Val:               &lifecycleParam{inARC: true, inHost: true},
+			Val:               &lifecycleParam{inARC: true, inHost: true, browserType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
@@ -69,7 +85,7 @@ func init() {
 		}, {
 			Name:              "host_with_bg_arc",
 			Pre:               multivm.ArcStarted(),
-			Val:               &lifecycleParam{inHost: true},
+			Val:               &lifecycleParam{inHost: true, browserType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
@@ -190,6 +206,7 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	rp := &memoryuser.RunParameters{
 		UseARC:             preARC != nil,
 		ExistingChrome:     pre.Chrome,
+		BrowserType:        param.browserType,
 		ExistingARC:        preARC,
 		ExistingPerfValues: p,
 	}

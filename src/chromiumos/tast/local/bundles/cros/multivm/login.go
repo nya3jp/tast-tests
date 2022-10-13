@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Login,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests Chrome Login with different VMs running",
 		Contacts:     []string{"cwd@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -38,6 +38,10 @@ func init() {
 			Pre:               multivm.ArcStarted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
+			Name:              "arc_lacros",
+			Pre:               multivm.ArcLacrosStarted(),
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+		}, {
 			Name:              "arc_p",
 			Pre:               multivm.ArcStarted(),
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -47,6 +51,10 @@ func init() {
 			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 			ExtraHardwareDeps: crostini.CrostiniStable,
 			ExtraSoftwareDeps: []string{"vm_host"},
+		}, {
+			Name:              "novm_lacros",
+			Pre:               multivm.NoVMLacrosStarted(),
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
