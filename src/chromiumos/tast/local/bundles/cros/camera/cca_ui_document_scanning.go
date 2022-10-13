@@ -32,7 +32,7 @@ func init() {
 		Data:         []string{"document_3264x2448.mjpeg"},
 		Params: []testing.Param{{
 			// TODO(b/223089758): Remove old single-page doc scan test once multi-page doc scan fully lands.
-			Fixture: "ccaTestBridgeReadyWithFakeCamera",
+			Fixture: "ccaTestBridgeReadyWithMultiPageDocScanDisabled",
 			Val: []documentScanSubTest{
 				{
 					name: "testPDF",
@@ -47,7 +47,7 @@ func init() {
 			},
 		}, {
 			Name:    "multi_page",
-			Fixture: "ccaTestBridgeReadyForMultiPageDocScan",
+			Fixture: "ccaTestBridgeReadyWithMultiPageDocScan",
 			Val: []documentScanSubTest{
 				{
 					name: "testSavePhoto",
@@ -69,7 +69,7 @@ func init() {
 		}, {
 			// TODO(b/223089758): Remove old single-page doc scan test once multi-page doc scan fully lands.
 			Name:    "manual_crop",
-			Fixture: "ccaTestBridgeReadyWithFakeCamera",
+			Fixture: "ccaTestBridgeReadyWithMultiPageDocScanDisabled",
 			Val: []documentScanSubTest{
 				{
 					name: "testFixCropArea",
@@ -80,7 +80,7 @@ func init() {
 			},
 		}, {
 			Name:    "manual_crop_multi_page",
-			Fixture: "ccaTestBridgeReadyForMultiPageDocScan",
+			Fixture: "ccaTestBridgeReadyWithMultiPageDocScan",
 			Val: []documentScanSubTest{
 				{
 					name: "testFixCropArea",
