@@ -162,24 +162,16 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 	for _, app := range []struct {
-		apkName       string
-		pkgName       string
-		fromPlayStore bool
+		apkName string
+		pkgName string
 	}{
-		{wm.APKNameArcWMTestApp24, wm.Pkg24, true},
-		{wm.APKNameArcWMTestApp24Maximized, wm.Pkg24InMaximizedList, true},
-		{wm.ResizeLockApkName, wm.ResizeLockTestPkgName, true},
-		{wm.ResizeLock2ApkName, wm.ResizeLock2PkgName, true},
-		{wm.ResizeLock3ApkName, wm.ResizeLock3PkgName, true},
+		{wm.APKNameArcWMTestApp24, wm.Pkg24},
+		{wm.ResizeLockApkName, wm.ResizeLockTestPkgName},
+		{wm.ResizeLock2ApkName, wm.ResizeLock2PkgName},
+		{wm.ResizeLock3ApkName, wm.ResizeLock3PkgName},
 	} {
-		if app.fromPlayStore {
-			if err := a.Install(ctx, arc.APKPath(app.apkName), adb.InstallOptionFromPlayStore); err != nil {
-				s.Fatal("Failed to install app from PlayStore: ", err)
-			}
-		} else {
-			if err := a.Install(ctx, arc.APKPath(app.apkName)); err != nil {
-				s.Fatal("Failed to install app from outside of PlayStore: ", err)
-			}
+		if err := a.Install(ctx, arc.APKPath(app.apkName), adb.InstallOptionFromPlayStore); err != nil {
+			s.Fatal("Failed to install app from PlayStore: ", err)
 		}
 		defer a.Uninstall(ctxDefer, app.pkgName)
 	}
@@ -308,7 +300,11 @@ func testResizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *a
 
 // testAppFromOutsideOfPlayStore verifies that an resize-lock-eligible app installed from outside of PlayStore is not resize locked even if it's newly-installed.
 func testAppFromOutsideOfPlayStore(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, s *testing.State, testName string) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24InMaximizedList, wm.APKNameArcWMTestApp24Maximized, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */, s, testName)
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24PhoneSize)); err != nil {
+		s.Fatal("Failed to install app from outside of PlayStore: ", err)
+	}
+	defer a.Uninstall(ctx, wm.Pkg24InPhoneSizeList)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24InPhoneSizeList, wm.APKNameArcWMTestApp24PhoneSize, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */, s, testName)
 }
 
 // testTablet verifies that tablet conversion properly updates the resize lock state of an app.
