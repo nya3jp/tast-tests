@@ -224,8 +224,8 @@ func clickRestoreButtonNormalStatus(ctx context.Context, cr *chrome.Chrome, tcon
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "click_normal_restore")
 
-	alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
-	restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(alertDialog)
+	notificationDialog := nodewith.HasClass("AshNotificationView").NameStartingWith("Restore apps?")
+	restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(notificationDialog)
 	if err := uiauto.Combine("restore playstore",
 		// Click Restore on the restore alert.
 		ui.LeftClick(restoreButton))(ctx); err != nil {
@@ -239,7 +239,7 @@ func clickRestoreButtonCrashedStatus(ctx context.Context, cr *chrome.Chrome, tco
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "click_crash_restore")
 
 	// Full text is "Your *Chromebook* restarted unexpectedly".
-	alertDialog := nodewith.NameStartingWith("Your").Role(role.AlertDialog)
+	alertDialog := nodewith.HasClass("AshNotificationView").NameStartingWith("Your").Role(role.AlertDialog)
 	restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(alertDialog)
 
 	if err := uiauto.Combine("restore playstore",
