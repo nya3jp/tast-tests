@@ -26,6 +26,15 @@ func init() {
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
+		Params: []testing.Param{{
+			// Apply static IP when the network is idle.
+			Val: false,
+		}, {
+			// Apply static IP when the network is connecting.
+			Name:      "apply_when_connecting",
+			Val:       true,
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
@@ -34,6 +43,8 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	disconnectBeforeApply := s.Param().(bool)
 
 	testEnv := routing.NewTestEnv()
 	if err := testEnv.SetUp(ctx); err != nil {
@@ -45,8 +56,8 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	// Start a virtualnet with neither IPv4 nor IPv6. Disconnect it at first, and
-	// configure static IP on the router side.
+	// Start a virtualnet with neither IPv4 nor IPv6, and configure static IP on
+	// the router side.
 	testNetworkOpts := virtualnet.EnvOptions{
 		Priority:   routing.HighPriority,
 		NameSuffix: routing.TestSuffix,
@@ -55,13 +66,6 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 	}
 	if err := testEnv.CreateNetworkEnvForTest(ctx, testNetworkOpts); err != nil {
 		s.Fatal("Failed to create network for test: ", err)
-	}
-	testing.ContextLog(ctx, "Disconnecting the test service")
-	if err := testEnv.TestService.Disconnect(ctx); err != nil {
-		s.Fatal("Failed to disconnect the test service: ", err)
-	}
-	if err := testEnv.TestService.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle, 5*time.Second); err != nil {
-		s.Fatal("Failed to wait for the test service idle: ", err)
 	}
 
 	// The allocated subnet has a /24 prefix.
@@ -74,6 +78,16 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 	routerIPv4Addr := net.IPv4(ipv4Addr[0], ipv4Addr[1], ipv4Addr[2], 1)
 	if err := testEnv.TestRouter.ConfigureInterface(ctx, testEnv.TestRouter.VethInName, routerIPv4Addr, ipv4Subnet); err != nil {
 		s.Fatal("Failed to configure IPv4 inside test router: ", err)
+	}
+
+	if disconnectBeforeApply {
+		testing.ContextLog(ctx, "Disconnecting the test service")
+		if err := testEnv.TestService.Disconnect(ctx); err != nil {
+			s.Fatal("Failed to disconnect the test service: ", err)
+		}
+		if err := testEnv.TestService.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait for the test service idle: ", err)
+		}
 	}
 
 	// Configure static IP config on shill service.
@@ -96,14 +110,14 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	// Connect the service, and its state should become Online.
-	// TODO(b/235330956): The current code verifies that configuring static IP
-	// when the service is idle. We also want to verify that configuring static IP
-	// when the service is connecting should make the service becoming connected,
-	// but currently this is not the case due to b/235330956.
-	if err := testEnv.TestService.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect the test service: ", err)
+	if disconnectBeforeApply {
+		testing.ContextLog(ctx, "Connect to the test service")
+		if err := testEnv.TestService.Connect(ctx); err != nil {
+			s.Fatal("Failed to connect the test service: ", err)
+		}
 	}
+
+	testing.ContextLog(ctx, "Waiting for test service online")
 	if err := testEnv.TestService.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 5*time.Second); err != nil {
 		s.Fatal("Failed to wait for the test service online: ", err)
 	}
