@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f164b3e3_fc5bbc85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "nit, optional:\n\nYou can add a log message here like:\n\n    s.Log(\"Night Light Name: %s\", nightLightIconButtonInfo.Name)",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2f8125_1c8d0566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "nit: midNight -\u003e midnight (it is just one word)\n\nor just say: \"time24hs\", and for `earlyMorning` just say `time00hs` or something like that",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f0b25b_cc590f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "see comment above",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fb5a65_879ab95a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "nit: remove \"get\" \n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters\n\n\nor since you are converting time, perhaps call it `convertStringToTime` ... or similar",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a565d74e_d1d3e7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "nit: I\u0027d just return -1, 0, 1\n\nor return the difference in minutes",
+      "range": {
+        "startLine": 192,
+        "startChar": 87,
+        "endLine": 192,
+        "endChar": 142
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95fb532_edd89ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_schedule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-13T16:45:35Z",
+      "side": 1,
+      "message": "nit: describe what\u0027s the purpose of `includeEnd`... not clear what it does",
+      "range": {
+        "startLine": 206,
+        "startChar": 58,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "98188c7688d2a6521ee136fb0123d6eee9be39b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
