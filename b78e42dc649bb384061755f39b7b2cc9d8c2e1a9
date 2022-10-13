@@ -33,6 +33,23 @@
       "message": "LGTM for hwsec.",
       "revId": "b78e42dc649bb384061755f39b7b2cc9d8c2e1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ff5c34_b366f375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-13T14:31:04Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "b78e42dc649bb384061755f39b7b2cc9d8c2e1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
