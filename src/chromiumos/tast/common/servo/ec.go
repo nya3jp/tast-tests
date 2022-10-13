@@ -222,15 +222,8 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 			return err
 		}
 	case "console":
-		reHibernate := `\[\S+((?i)[^\n\r]*(?i)hibernating|hibernate)]`
-		out, err := s.RunECCommandGetOutput(ctx, "hibernate", []string{reHibernate})
-		if err != nil {
+		if err := s.RunECCommand(ctx, "hibernate"); err != nil {
 			return errors.Wrap(err, "failed to run EC command: hibernate")
-		}
-		if out != nil {
-			testing.ContextLogf(ctx, "Found message: %q", out[0][0])
-		} else {
-			testing.ContextLog(ctx, "Did not find message about DUT hibernating")
 		}
 	}
 
