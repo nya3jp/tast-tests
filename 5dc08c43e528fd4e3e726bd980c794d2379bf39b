@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7e73be_4cff3518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-13T20:28:38Z",
+      "side": 1,
+      "message": "ejcaruso@ Thank you for the review. I uploaded a new patchset, could you please help take a look?",
+      "revId": "5dc08c43e528fd4e3e726bd980c794d2379bf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
