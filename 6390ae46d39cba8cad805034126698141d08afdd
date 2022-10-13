@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4790b35_0f54e36e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-13T01:41:45Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "6390ae46d39cba8cad805034126698141d08afdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6e6135_75b7bd71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-13T01:41:45Z",
+      "side": 1,
+      "message": "nit: how about just `cleanupCtx`? This name is much more common in our code base now.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "6390ae46d39cba8cad805034126698141d08afdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
