@@ -33,6 +33,24 @@
       "message": "nit: Maybe \"Describes the availability of arc, e.g. enabled / disabled.\"",
       "revId": "6fc45bf1749a90b4e9b17c5140a510e2cd43de65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2438cdcd_ba1aa958",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-13T12:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a97995_4d66e14d",
+      "revId": "6fc45bf1749a90b4e9b17c5140a510e2cd43de65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
