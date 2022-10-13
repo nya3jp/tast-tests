@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3347edbb_d2bcd3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-13T18:05:39Z",
+      "side": 1,
+      "message": "This is a better link:\nhttps://g3doc.corp.google.com/company/teams/go-community/gotip/episodes/1.md?cl\u003dhead",
+      "parentUuid": "e6ef1704_f9683c6b",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e255da_44324f73",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
         "patchSetId": 4
