@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
@@ -25,23 +26,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchHelpContent,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Suggested help content is updated as user enters issue description",
 		Contacts: []string{
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
-		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name:    "ash",
+			Fixture: "chromeLoggedInWithOsFeedback",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:    "lacros",
+			Fixture: "lacrosOsFeedback",
+			Val:     browser.TypeLacros,
+		}},
 	})
 }
 
 // SearchHelpContent verifies the suggested help content will be updated as user
 // enters issue description.
 func SearchHelpContent(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -110,8 +119,15 @@ func SearchHelpContent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open help link: ", err)
 	}
 
-	if err = ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
-		s.Fatal("Could not find app in shelf after launch: ", err)
+	bt := s.Param().(browser.Type)
+
+	// Verify browser is opened.
+	id := apps.Chrome.ID
+	if bt != browser.TypeAsh {
+		id = apps.LacrosID
+	}
+	if err = ash.WaitForApp(ctx, tconn, id, time.Minute); err != nil {
+		s.Fatal("Could not find browser in shelf after launch: ", err)
 	}
 }
 
