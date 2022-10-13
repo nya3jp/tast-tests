@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba62c2bc_2e29a913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-10-13T00:32:15Z",
+      "side": 1,
+      "message": "CLs to add the switches are landing in crrev.com/c/3939977 and crrev.com/c/3947543.",
+      "revId": "b8c272f6a4a9ad2f41b12bc6094e257874c6f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
