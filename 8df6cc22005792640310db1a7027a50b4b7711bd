@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ec254c_f6bce7d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/checking_audio_formats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-13T08:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2e6296_3903bdc2",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 33
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a6d8d0b_fa448c29",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e8958b_2f1a788d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-13T08:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a6d8d0b_fa448c29",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f38011a4_92ea6906",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-13T08:24:47Z",
       "side": 1,
       "message": "verbose logging",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "8df6cc22005792640310db1a7027a50b4b7711bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5a74f0_49ecec0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-13T08:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f38011a4_92ea6906",
       "range": {
         "startLine": 139,
         "startChar": 3,
