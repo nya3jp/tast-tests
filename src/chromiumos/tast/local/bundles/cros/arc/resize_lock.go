@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type resizeLockTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device, *chrome.Chrome, *input.KeyboardEventWriter, *testing.State, string) error
@@ -79,6 +80,16 @@ var testCases = []resizeLockTestCase{
 	},
 }
 
+// For the models with a small display, when toggling from Phone to Tablet, ARC falls back to maximize the app since the requested bounds from Chrome
+// is too large for the display. Therefore, we skip testing toggling between Phone and Tablet for the models in the small display models list.
+// TODO(b/253544751): Use a proper way to handle models with a small display.
+var smallDisplayModelsListMap = []string{
+	"krane",
+	"foob",
+	"foob360",
+	"quackingstick",
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ResizeLock,
@@ -88,6 +99,17 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(smallDisplayModelsListMap...)),
+				Val:               true, // Tests toggling between Phone and Tablet
+			},
+			{
+				Name:              "skip_toggle_phone_tablet",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(smallDisplayModelsListMap...)),
+				Val:               false, // Skips testing toggling between Phone and Tablet
+			},
+		},
 	})
 }
 
@@ -581,16 +603,14 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrapf(err, "failed to close the compat-mode dialog of %s via %s", activity.ActivityName(), method)
 	}
 
-	for _, test := range []struct {
+	type toggleResizeLockModeTestsParams struct {
 		currentMode wm.ResizeLockMode
 		nextMode    wm.ResizeLockMode
 		action      wm.ConfirmationDialogAction
-	}{
+	}
+	toggleResizeLockModeTests := []toggleResizeLockModeTestsParams{
 		// Check the cancel button does nothing.
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionCancel},
-		// Toggle between Phone and Tablet.
-		{wm.PhoneResizeLockMode, wm.TabletResizeLockMode, wm.DialogActionNoDialog},
-		{wm.TabletResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
 		// Toggle between Phone and Resizable without "Don't ask me again" checked.
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionConfirm},
 		{wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
@@ -598,7 +618,16 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionConfirmWithDoNotAskMeAgainChecked},
 		{wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionNoDialog},
-	} {
+	}
+	if s.Param().(bool) { // Skipping the toggling between Phone and Tablet for arc.ResizeLock.skip_toggle_phone_tablet
+		toggleResizeLockModeTests = append([]toggleResizeLockModeTestsParams{
+			// Toggle between Phone and Tablet.
+			{wm.PhoneResizeLockMode, wm.TabletResizeLockMode, wm.DialogActionNoDialog},
+			{wm.TabletResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
+		}, toggleResizeLockModeTests...)
+	}
+
+	for _, test := range toggleResizeLockModeTests {
 		if err := wm.ToggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action, method, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from %s to %s", wm.ResizeLockApkName, test.currentMode, test.nextMode)
 		}
