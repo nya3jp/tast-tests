@@ -51,7 +51,8 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 
 	defer ash.CleanUpDesks(cleanupCtx, tconn)
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+
+	if perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create a new desk")
@@ -66,9 +67,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.Desks.AnimationSmoothness.DeskActivation",
 		"Ash.Desks.AnimationSmoothness.DeskRemoval")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

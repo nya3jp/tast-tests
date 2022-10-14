@@ -107,7 +107,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
@@ -117,9 +117,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.DragWindowFromShelf.PresentationTime",
 		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency")),
-		perfutil.StoreLatency)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreLatency); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

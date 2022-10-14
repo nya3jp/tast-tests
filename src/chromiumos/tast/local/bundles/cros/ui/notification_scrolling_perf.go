@@ -185,7 +185,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	messageCenter := nodewith.ClassName("UnifiedMessageCenterView")
 
 	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, scroll up and down the notification list, then close it",
 			ac.LeftClick(statusArea),
@@ -204,9 +204,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.MessageCenter.Scroll.PresentationTime",
 		"Ash.MessageCenter.Scroll.PresentationTime.MaxLatency")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

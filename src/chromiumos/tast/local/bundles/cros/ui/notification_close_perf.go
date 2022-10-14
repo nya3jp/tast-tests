@@ -173,7 +173,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 	// Create 12 notifications (3 groups of 4 different notifications) with 3 ARC notifications if applicable,
 	// close them all via either the ClearAll button or one at a time, and record performance metrics.
 	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		ids := make([]string, n*len(notificationTypes))
 		for i := 0; i <= n-1; i++ {
 			for idx, t := range notificationTypes {
@@ -300,9 +300,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		histogramName)),
-		perfutil.StoreAllWithHeuristics(""))
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		perfutil.StoreAllWithHeuristics("")); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

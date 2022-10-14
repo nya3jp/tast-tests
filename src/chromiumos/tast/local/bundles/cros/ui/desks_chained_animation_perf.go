@@ -59,7 +59,7 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		defer ash.CleanUpDesks(cleanupCtx, tconn)
 	}
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Starting at desk 1, activate desk 4 by activating each adjacent desk until we reach it.
 		if err = ash.ActivateAdjacentDesksToTargetIndex(ctx, tconn, 3); err != nil {
 			return errors.Wrap(err, "failed to activate the fourth desk")
@@ -71,9 +71,7 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.Desks.AnimationSmoothness.DeskActivation")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

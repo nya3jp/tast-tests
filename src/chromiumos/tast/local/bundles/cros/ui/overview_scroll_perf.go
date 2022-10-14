@@ -80,12 +80,16 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("It does not appear to be in the overview mode: ", err)
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to enter overview mode: ", err)
 	}
-	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
+	defer func() {
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to exit overview mode: ", err)
+		}
+	}()
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Scroll from the top right of the screen to the top middle (1/4 of the
 		// screen width). The destination position should match with the next swipe
 		// to make the same amount of scrolling.
@@ -108,13 +112,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, "Ash.Overview.Scroll.PresentationTime.TabletMode")), perfutil.StoreLatency)
-
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("It does not appear to be in the overview mode: ", err)
-	}
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+	}, "Ash.Overview.Scroll.PresentationTime.TabletMode")), perfutil.StoreLatency); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

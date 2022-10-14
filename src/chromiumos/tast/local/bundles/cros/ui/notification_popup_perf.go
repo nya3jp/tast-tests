@@ -75,7 +75,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 
 	// This includes adding notifications to show popup fade in and move up animation,
 	// then remove notification in reverse order (newer then older) to show fade out and move down animation.
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for _, id := range ids {
 			if err := browser.ClearNotification(ctx, bTconn, id); err != nil {
 				return errors.Wrapf(err, "failed to clear notification (id: %s): ", id)
@@ -91,10 +91,8 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.NotificationPopup.AnimationSmoothness")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }
 

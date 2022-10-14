@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/errors"
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -57,19 +58,17 @@ func TabLoadingAnimationPerf(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		conn, err := cr.NewConn(ctx, server.URL+"/tab_loading_test.html")
 		if err != nil {
-			s.Fatal("Failed to open a testing page: ", err)
+			return errors.Wrap(err, "failed to open a testing page")
 		}
 		defer conn.Close()
 		defer conn.CloseTarget(ctx)
 		return nil
 	},
 		"Chrome.Tabs.AnimationSmoothness.TabLoading")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }
