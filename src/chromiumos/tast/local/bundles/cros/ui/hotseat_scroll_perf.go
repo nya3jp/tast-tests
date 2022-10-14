@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HotseatScrollPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Records the animation smoothness for shelf scroll animation",
 		Contacts: []string{
 			"andrewxu@chromium.org",
