@@ -10,15 +10,18 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
+	configpb "go.chromium.org/chromiumos/config/go/api"
 
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/errors"
+	frameworkprotocol "chromiumos/tast/framework/protocol"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/reportingutil"
 	"chromiumos/tast/rpc"
 	dlp "chromiumos/tast/services/cros/dlp"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // RestrictionBlockReportingEnabledUsername is the path to the secret username having block restriction level for all components and reporting enabled.
@@ -302,6 +305,8 @@ const (
 	Printing
 	// Screenshot identifies a screenshot action.
 	Screenshot
+	// PrivacyScreen identifies a privacy screen enforcement.
+	PrivacyScreen
 )
 
 // String returns a string representation of `Action`.
@@ -313,6 +318,8 @@ func (action Action) String() string {
 		return "PRINTING"
 	case Screenshot:
 		return "SCREENSHOT"
+	case PrivacyScreen:
+		return "EPRIVACY"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}
@@ -361,6 +368,26 @@ func retrieveEvents(ctx context.Context, customerID, APIKey, clientID string, te
 
 }
 
+func privacyScreen() (bool, error) {
+
+	c := hwdep.PrivacyScreen()
+
+	dc := &frameworkprotocol.DeprecatedDeviceConfig{}
+	features := &configpb.HardwareFeatures{
+		PrivacyScreen: &configpb.HardwareFeatures_PrivacyScreen{
+			Present: configpb.HardwareFeatures_PRESENT,
+		},
+	}
+
+	satisfied, _, err := c.Satisfied(&frameworkprotocol.HardwareFeatures{HardwareFeatures: features, DeprecatedDeviceConfig: dc})
+	if err != nil {
+		return false, errors.Wrap(err, "error while evaluating condition")
+	}
+
+	return satisfied, nil
+
+}
+
 // validateEvents checks whether events array contains the correct events according to `reportingEnabled` and `mode`.
 func validateEvents(reportingEnabled bool, mode dlp.Mode, action Action, blockEvents, reportEvents, warnEvents, warnProceedEvents []reportingutil.InputEvent) error {
 
@@ -371,11 +398,21 @@ func validateEvents(reportingEnabled bool, mode dlp.Mode, action Action, blockEv
 
 	var expectedEvents *[]reportingutil.InputEvent
 
+	hasPrivacyScreen, err := privacyScreen()
+	if err != nil {
+		return errors.Wrap(err, "failed to check if privacy screen is available")
+	}
+
 	if reportingEnabled {
 		switch mode {
 		case dlp.Mode_BLOCK:
 			expectedEvents = &blockEvents
-			expectedBlockEvents = 1
+			// If the device has a privacy screen, we will get an additional event when performing an action different from `PrivacyScreen`, which simply opens a web page to trigger the privacy screen.
+			if hasPrivacyScreen && action != PrivacyScreen {
+				expectedBlockEvents = 2
+			} else {
+				expectedBlockEvents = 1
+			}
 		case dlp.Mode_REPORT:
 			expectedEvents = &reportEvents
 			expectedReportEvents = 1
@@ -398,8 +435,17 @@ func validateEvents(reportingEnabled bool, mode dlp.Mode, action Action, blockEv
 			len(blockEvents), len(reportEvents), len(reportEvents), len(warnProceedEvents))
 	}
 
-	if (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction != Action.String(action) {
-		return errors.Errorf("Expecting %v restriction, got %v instead", Action.String(action), (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction)
+	if hasPrivacyScreen && mode == dlp.Mode_BLOCK {
+		if (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction != Action.String(PrivacyScreen) {
+			return errors.Errorf("Expecting %v restriction, got %v instead", Action.String(PrivacyScreen), (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction)
+		}
+		if (*expectedEvents)[1].WrappedEncryptedData.DlpPolicyEvent.Restriction != Action.String(action) {
+			return errors.Errorf("Expecting %v restriction, got %v instead", Action.String(action), (*expectedEvents)[1].WrappedEncryptedData.DlpPolicyEvent.Restriction)
+		}
+	} else {
+		if (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction != Action.String(action) {
+			return errors.Errorf("Expecting %v restriction, got %v instead", Action.String(action), (*expectedEvents)[0].WrappedEncryptedData.DlpPolicyEvent.Restriction)
+		}
 	}
 
 	if mode == dlp.Mode_WARN_PROCEED {
@@ -480,6 +526,11 @@ func ValidateActionReporting(ctx context.Context, s *testing.State, action Actio
 		})
 	case Screenshot:
 		service.Screenshot(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case PrivacyScreen:
+		service.PrivacyScreen(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
