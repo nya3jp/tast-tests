@@ -1,17 +1,17 @@
 mno {
   data {
-    uuid : "d433d22c-02ac-43b5-b2b3-91f96c4b2d7a"
-    country : "us"
+    uuid: "d433d22c-02ac-43b5-b2b3-91f96c4b2d7a"
+    country: "us"
     localized_name {
-      name : "Cros Cellular Network"
+      name: "Cros Cellular Network"
     }
-    mccmnc : "00101"
+    mccmnc: "00101"
     mobile_apn {
-      apn : "callbox-ipv4"
+      apn: "callbox-ipv4"
       ip_type: IPV4
     }
     mobile_apn {
-      apn : "callbox-ipv6"
+      apn: "callbox-ipv6"
       ip_type: IPV6
     }
   }
