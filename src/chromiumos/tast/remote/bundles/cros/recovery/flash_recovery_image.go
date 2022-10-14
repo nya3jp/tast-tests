@@ -1,0 +1,67 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package recovery
+
+import (
+	"context"
+
+	"chromiumos/tast/common/servo"
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: FlashRecoveryImage,
+		Desc: "Verifies that recovery images can be flashed on to DUTs",
+		Contacts: []string{
+			"seancarpenter@chromium.org",
+			"my-team@chromium.org",
+		},
+		Data: []string{firmware.ConfigFile},
+		// Attr:         []string{"group:firmware", "firmware_experimental"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Vars:         []string{"servo"},
+	})
+}
+
+// FlashRecoveryImage verifies that a recovery image can be flashed via Servo on
+// to a DUT
+func FlashRecoveryImage(ctx context.Context, s *testing.State) {
+	r := reporters.New(s.DUT())
+	board, err := r.Board(ctx)
+	if err != nil {
+		s.Fatal("Failed to report board: ", err)
+	}
+	model, err := r.Model(ctx)
+	if err != nil {
+		s.Fatal("Failed to report model: ", err)
+	}
+	s.Logf("Reported board=%s, model=%s", board, model)
+
+	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigFile), board, model)
+	if err != nil {
+		s.Fatal("Failed to create config: ", err)
+	}
+	s.Log("This DUT's mode-switcher type is: ", cfg.ModeSwitcherType)
+
+	// Set up Servo
+	dut := s.DUT()
+	servoSpec, _ := s.Var("servo")
+	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
+	if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer pxy.Close(ctx)
+
+	// Get the DUT's ec_board via Servo
+	ecBoard, err := pxy.Servo().GetString(ctx, servo.ECBoard)
+	if err != nil {
+		s.Fatal("Getting ec_board control from servo: ", err)
+	}
+	s.Log("EC Board: ", ecBoard)
+}
