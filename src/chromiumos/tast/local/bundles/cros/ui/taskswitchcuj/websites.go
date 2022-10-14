@@ -22,7 +22,6 @@ import (
 var simpleWebsites = []string{
 	"https://bugs.chromium.org/p/chromium/issues/list",
 	"https://crosvideo.appspot.com/?codec=h264_60&loop=true&mute=true",
-	"https://webglsamples.org/aquarium/aquarium.html?numFish=1000",
 }
 
 // openChromeTabs opens Chrome tabs and returns the number of windows

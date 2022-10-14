@@ -668,58 +668,60 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Zoomed browser window to 75%")
 
-	var collaborationRE *regexp.Regexp
-	if meet.docs {
-		docsURL := defaultDocsURL
-		if docsURLOverride, ok := s.Var("ui.MeetCUJ.doc"); ok {
-			docsURL = docsURLOverride
-		}
-
-		// Create another browser window and open a Google Docs file.
-		docsConn, err := cs.NewConn(ctx, docsURL, browser.WithNewWindow())
-		if err != nil {
-			s.Fatal("Failed to open the google docs website: ", err)
-		}
-		defer docsConn.Close()
-		s.Log("Creating a Google Docs window")
-		collaborationRE = regexp.MustCompile(`\bDocs\b`)
-	} else if meet.jamboard {
-		// Create another browser window and open a new Jamboard file.
-		jamboardConn, err := cs.NewConn(ctx, jamboardURL, browser.WithNewWindow())
-		if err != nil {
-			s.Fatal("Failed to open the jamboard website: ", err)
-		}
-		defer jamboardConn.Close()
-		s.Log("Creating a Jamboard window")
-		if err := ui.LeftClick(nodewith.Name("New Jam").Role(role.Button))(ctx); err != nil {
-			s.Fatal("Failed to click the new jam button: ", err)
-		}
-		collaborationRE = regexp.MustCompile(`\bJamboard\b`)
-	}
-
-	if meet.split {
-		if collaborationRE == nil {
-			s.Fatal("Need a collaboration window for split view")
-		}
-		collaborationWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
-		if err != nil {
-			s.Fatal("Failed to find the collaboration window: ", err)
-		}
-
-		if err := ash.SetWindowStateAndWait(ctx, tconn, collaborationWindow.ID, ash.WindowStateLeftSnapped); err != nil {
-			s.Fatal("Failed to snap the collaboration window to the left: ", err)
-		}
-		if err := ash.SetWindowStateAndWait(ctx, tconn, meetWindow.ID, ash.WindowStateRightSnapped); err != nil {
-			s.Fatal("Failed to snap the Meet window to the right: ", err)
-		}
-	} else {
-		if err := meetWindow.ActivateWindow(ctx, tconn); err != nil {
-			s.Fatal("Failed to activate the Meet window: ", err)
-		}
-	}
-
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		// Open up the collab window inside the recorder to collect
+		// PageLoad.PaintTiming.NavigationToFirstContentfulPaint.
+		var collaborationRE *regexp.Regexp
+		if meet.docs {
+			docsURL := defaultDocsURL
+			if docsURLOverride, ok := s.Var("ui.MeetCUJ.doc"); ok {
+				docsURL = docsURLOverride
+			}
+
+			// Create another browser window and open a Google Docs file.
+			docsConn, err := cs.NewConn(ctx, docsURL, browser.WithNewWindow())
+			if err != nil {
+				s.Fatal("Failed to open the google docs website: ", err)
+			}
+			defer docsConn.Close()
+			s.Log("Creating a Google Docs window")
+			collaborationRE = regexp.MustCompile(`\bDocs\b`)
+		} else if meet.jamboard {
+			// Create another browser window and open a new Jamboard file.
+			jamboardConn, err := cs.NewConn(ctx, jamboardURL, browser.WithNewWindow())
+			if err != nil {
+				s.Fatal("Failed to open the jamboard website: ", err)
+			}
+			defer jamboardConn.Close()
+			s.Log("Creating a Jamboard window")
+			if err := ui.LeftClick(nodewith.Name("New Jam").Role(role.Button))(ctx); err != nil {
+				s.Fatal("Failed to click the new jam button: ", err)
+			}
+			collaborationRE = regexp.MustCompile(`\bJamboard\b`)
+		}
+
+		if meet.split {
+			if collaborationRE == nil {
+				s.Fatal("Need a collaboration window for split view")
+			}
+			collaborationWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
+			if err != nil {
+				s.Fatal("Failed to find the collaboration window: ", err)
+			}
+
+			if err := ash.SetWindowStateAndWait(ctx, tconn, collaborationWindow.ID, ash.WindowStateLeftSnapped); err != nil {
+				s.Fatal("Failed to snap the collaboration window to the left: ", err)
+			}
+			if err := ash.SetWindowStateAndWait(ctx, tconn, meetWindow.ID, ash.WindowStateRightSnapped); err != nil {
+				s.Fatal("Failed to snap the Meet window to the right: ", err)
+			}
+		} else {
+			if err := meetWindow.ActivateWindow(ctx, tconn); err != nil {
+				s.Fatal("Failed to activate the Meet window: ", err)
+			}
+		}
+
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close all notifications")
@@ -888,6 +890,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := inputsimulations.MoveMouseFor(ctx, tconn, meetTimeout); err != nil {
 			return errors.Wrap(err, "failed to simulate mouse movement")
 		}
+
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
 		}
