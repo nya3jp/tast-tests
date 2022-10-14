@@ -7,6 +7,7 @@ package deskscuj
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
@@ -95,6 +96,10 @@ func getOverviewWorkflow(tconn *chrome.TestConn, ac *uiauto.Context, setOverview
 
 			if err := mouse.Click(tconn, desksInfo[toDesk].Location.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
 				return errors.Wrapf(err, "failed to click on the desk preview for desk %d", toDesk)
+			}
+
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to exit overview mode")
 			}
 
 			return nil
