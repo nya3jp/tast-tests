@@ -48,6 +48,8 @@ const (
 const (
 	// LacrosPolicyLoggedIn is a fixture name.
 	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
+	// LacrosPolicyLoggedInWithKeepAlive is a fixture name.
+	LacrosPolicyLoggedInWithKeepAlive = "lacrosPolicyLoggedInWithKeepAlive"
 	// LacrosPrimaryPolicyLoggedIn is a fixture name.
 	LacrosPrimaryPolicyLoggedIn = "lacrosPrimaryPolicyLoggedIn"
 	// LacrosPolicyLoggedInFeatureJourneys is a fixture name.
