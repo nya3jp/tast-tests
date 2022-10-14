@@ -303,10 +303,6 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		return retErr != nil
 	}, fmt.Sprintf("play_store_%d.png", runID))
 
-	if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
-		return err
-	}
-
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize UI Automator")
@@ -314,24 +310,40 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 	defer d.Close(ctx)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-			return errors.New("Play Store is empty")
+		// if GMS Core updates after launch, it can cause Play Store to be closed so we have to
+		// launch it again.
+		act, err := launchAssetBrowserActivity(ctx, tconn, a)
+		if err != nil {
+			return err
 		}
+		defer act.Close()
 
-		if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
-			return testing.PollBreak(err)
-		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if running, err := act.IsRunning(ctx); err != nil {
+				return testing.PollBreak(err)
+			} else if !running {
+				return testing.PollBreak(errors.New("Play Store closed"))
+			}
 
-		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
-			return errors.Wrap(err, "Play Store UI screen not shown")
-		}
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return errors.New("Play Store is empty")
+			}
 
-		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
+			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
+				return testing.PollBreak(err)
+			}
+
+			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
+				return errors.Wrap(err, "Play Store UI screen not shown")
+			}
+
+			return nil
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Interval: 1 * time.Second})
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
-func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) (*arc.Activity, error) {
 	const (
 		playStorePackage     = "com.android.vending"
 		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
@@ -340,11 +352,11 @@ func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *
 	testing.ContextLog(ctx, "Starting Asset Browser activity")
 	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
 	if err != nil {
-		return errors.Wrap(err, "failed to create new activity")
+		return nil, errors.Wrap(err, "failed to create new activity")
 	}
 	if err := act.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed starting Play Store")
+		return nil, errors.Wrap(err, "failed starting Play Store")
 	}
 
-	return nil
+	return act, nil
 }
