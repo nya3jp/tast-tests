@@ -8,10 +8,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perfutil"
@@ -29,11 +32,24 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func HotseatDrag(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -50,7 +66,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsw, err := input.Touchscreen(ctx)
@@ -69,11 +85,15 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	const numWindows = 1
-	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
-		s.Fatal("Failed to open browser windows: ", err)
+	// Open a browser window depending on the given browser type.
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), ui.PerftestURL)
+	if err != nil {
+		s.Fatal("Failed to open browser window: ", err)
 	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
 
+	// Note that ash-chrome `cr` and `tconn` is passed in to take traces and metrics from ash-chrome.
 	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
