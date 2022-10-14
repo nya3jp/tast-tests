@@ -5,22 +5,23 @@
 package cuj
 
 import (
+	"context"
 	"encoding/binary"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 )
 
 // GetTestDocURL returns a Google Doc link according to the following:
-// 1. The link returned is the same for all devices with the same sku.
-// 2. The link is random across all skus.
+// 1. The link returned is the same for all devices with the same model.
+// 2. The link is random across all models.
 //
 // The link is a copy of the following document:
 // https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit
-func GetTestDocURL() (string, error) {
-	return getDriveURL("document", []string{
+func GetTestDocURL(ctx context.Context) (string, error) {
+	return getDriveURL(ctx, "document", []string{
 		"1Q4xCQd2aVxwpIugEuGdVmWoNbdxkhc-ENTW9-frBMnQ",
 		"169goDwL3s5nX-BxY0-qA2-DAtx9EKzQliaDa6dpKCV8",
 		"1NB5Wbv0PuxT8zo-GT_uIyJZCY7FEvbWxBUnAX_vHta4",
@@ -39,8 +40,8 @@ func GetTestDocURL() (string, error) {
 //
 // The link is a copy of the following document:
 // https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit
-func GetTestSlidesURL() (string, error) {
-	return getDriveURL("presentation", []string{
+func GetTestSlidesURL(ctx context.Context) (string, error) {
+	return getDriveURL(ctx, "presentation", []string{
 		"11-mh-vzb-ZEocqoafgU-KA1F1eql-p1K5kHYpbcLf3k",
 		"1Jx_JHIWcrBSAF_PIrcFISQreGhprRm2gveQixOZEQio",
 		"1yPZ0b6FpDTyUY92XjDQhC1KVmPw5U0mC1a0cY31-BuU",
@@ -59,8 +60,8 @@ func GetTestSlidesURL() (string, error) {
 //
 // The link is a copy of the following document:
 // https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit
-func GetTestSheetsURL() (string, error) {
-	return getDriveURL("spreadsheets", []string{
+func GetTestSheetsURL(ctx context.Context) (string, error) {
+	return getDriveURL(ctx, "spreadsheets", []string{
 		"1Ij1sou7HIcydmLPR-s3xSe-cmap2H7lFhCErHX-HBmU",
 		"1sKoKExkl_mpLF-HVz34Y0lpEIvaVFZzhB3FUpkJqY80",
 		"1SVgMhg48r6LoZgXDbyNeG8_ZnVd1ZboYSMN2rWtQJ6c",
@@ -76,19 +77,24 @@ func GetTestSheetsURL() (string, error) {
 
 // getDriveURL constructs a drive link in the following format:
 // https://docs.google.com/<|fileType|>/d/<random id from |ids|>/edit
-// The "random id from ids" is deterministic for each sku, and random
-// across all skus. For example, the same board should open up the same
-// link each time that it runs the test, but each sku should have an
-// equal chance of opening up any of the available links.
-func getDriveURL(fileType string, ids []string) (string, error) {
-	skuNumberBytes, err := ioutil.ReadFile("/sys/firmware/vpd/ro/sku_number")
+// The "random id from ids" is deterministic for each model, and random
+// across all models. For example, the same board should open up the
+// same link each time that it runs the test, but each model should
+// have an equal chance of opening up any of the available links.
+func getDriveURL(ctx context.Context, fileType string, ids []string) (string, error) {
+	model, err := crosconfig.Get(ctx, "/", "name")
 	if err != nil {
-		return "", errors.Wrap(err, "failed to read sku_number VPD field")
+		return "", errors.Wrap(err, "could not find model name")
 	}
 
-	// Seed the random number generator with the sku ID, to ensure each
-	// sku gets the same document on each run.
-	rand.Seed(int64(binary.BigEndian.Uint64(skuNumberBytes)))
+	// Seed the random number generator with the model name, to ensure
+	// each model gets the same document on each run. Append extra
+	// characters at the end of the model name to ensure that the
+	// string is greater than 8 characters, since
+	// binary.BigEndian.Uint64 only works for byte arrays with a length
+	// greater or equal to 8. Some model names, like "elm" are too
+	// short, and will cause the function to panic.
+	rand.Seed(int64(binary.BigEndian.Uint64([]byte(model + "********"))))
 
 	return fmt.Sprintf("https://docs.google.com/%s/d/%s/edit", fileType, ids[rand.Intn(len(ids))]), nil
 }
@@ -96,8 +102,8 @@ func getDriveURL(fileType string, ids []string) (string, error) {
 // GetTestDocCommentURL is like GetTestDocURL, but returns a link to a
 // comment near the bottom of the document. This is useful for loading
 // the entire document by scrolling to the bottom (or close enough).
-func GetTestDocCommentURL() (string, error) {
-	doc, err := GetTestDocURL()
+func GetTestDocCommentURL(ctx context.Context) (string, error) {
+	doc, err := GetTestDocURL(ctx)
 	if err != nil {
 		return "", err
 	}

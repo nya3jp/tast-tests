@@ -35,7 +35,7 @@ func openChromeTabs(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.
 	const numExtraWebsites = 5
 
 	// Also open a large slide deck for RAM pressure.
-	slidesURL, err := cuj.GetTestSlidesURL()
+	slidesURL, err := cuj.GetTestSlidesURL(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get Google Slides URL")
 	}
