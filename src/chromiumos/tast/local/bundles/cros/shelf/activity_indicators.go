@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -30,6 +33,11 @@ const (
 	pwaApp    activityIndicatorAppType = "pwaApp"
 	arcApp    activityIndicatorAppType = "arcApp"
 )
+
+type activityIndicatorTestParam struct {
+	testAppType activityIndicatorAppType
+	bt          browser.Type
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,44 +54,55 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Data:         []string{"web_app_install_force_list_index.html", "web_app_install_force_list_manifest.json", "web_app_install_force_list_service-worker.js", "web_app_install_force_list_icon-192x192.png", "web_app_install_force_list_icon-512x512.png"},
-		Params: []testing.Param{
-			{
-				Name: "chrome_app",
-				Val:  chromeApp,
-			},
-			{
-				Name:    "pwa_app",
-				Val:     pwaApp,
-				Fixture: fixture.ChromePolicyLoggedIn,
-			},
-			{
-				Name:    "arc_app",
-				Val:     arcApp,
-				Fixture: "arcBooted",
-			},
-		},
+		Params: []testing.Param{{
+			Name: "chrome_app",
+			Val:  activityIndicatorTestParam{chromeApp, browser.TypeAsh},
+		}, {
+			Name:    "pwa_app",
+			Val:     activityIndicatorTestParam{pwaApp, browser.TypeAsh},
+			Fixture: fixture.ChromePolicyLoggedIn,
+		}, {
+			Name:    "arc_app",
+			Val:     activityIndicatorTestParam{arcApp, browser.TypeAsh},
+			Fixture: "arcBooted",
+		}, {
+			Name:              "chrome_app_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               activityIndicatorTestParam{chromeApp, browser.TypeLacros},
+		}, {
+			Name:              "pwa_app_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               activityIndicatorTestParam{pwaApp, browser.TypeLacros},
+			Fixture:           fixture.LacrosPolicyLoggedInWithKeepAlive,
+		}, {
+			Name:              "arc_app_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               activityIndicatorTestParam{arcApp, browser.TypeLacros},
+			Fixture:           "lacrosWithArcBooted",
+		}},
 	})
 }
 
 // ActivityIndicators verifies that shelf apps which are active have an activity indicator shown.
 // Tests activity indicators for chrome browser, pwa, and arc apps.
 func ActivityIndicators(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-
-	testAppType := s.Param().(activityIndicatorAppType)
+	testAppType := s.Param().(activityIndicatorTestParam).testAppType
+	bt := s.Param().(activityIndicatorTestParam).bt
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	var cr *chrome.Chrome
 	switch testAppType {
 	case chromeApp:
 		var err error
-		cr, err = chrome.New(ctx)
+		cr, err = browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig())
 		if err != nil {
-			s.Fatal("Failed to start chrome: ", err)
+			s.Fatalf("Failed to start %v browser: %v", bt, err)
 		}
+		defer cr.Close(cleanupCtx)
 	case pwaApp:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	case arcApp:
@@ -100,11 +119,12 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 	// Install the paramaterized app type and get the appIDToLaunch
 	switch testAppType {
 	case chromeApp:
-		chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+		// Get the expected browser.
+		browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 		if err != nil {
-			s.Fatal("Could not find the Chrome app: ", err)
+			s.Fatal("Could not find the browser app info: ", err)
 		}
-		appIDToLaunch = chromeApp.ID
+		appIDToLaunch = browserApp.ID
 	case pwaApp:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 		var cleanUp func(ctx context.Context) error
@@ -113,7 +133,6 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to install PWA: ", err)
 		}
 		appIDToLaunch = pwaAppID
-
 		defer cleanUp(cleanupCtx)
 	case arcApp:
 		const apk = "ArcInstallAppWithAppListSortedTest.apk"

@@ -34,6 +34,24 @@ func init() {
 		Parent:          fixture.PersistentLacros,
 	})
 
+	// LacrosPolicyLoggedInWithKeepAlive is similar to LacrosPolicyLoggedIn, but sets Lacros keep-alive.
+	// Do not use this unless you are explicitly testing the keep-alive feature or features that depend on it.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.LacrosPolicyLoggedInWithKeepAlive,
+		Desc:     "Fixture for a running FakeDMS with lacros with KeepAlive",
+		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return lacrosfixt.NewConfig(lacrosfixt.KeepAlive(true)).Opts()
+			},
+		},
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.PersistentLacros,
+	})
+
 	// TODO(crbug.com/1360034): Remove this fixture.
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.LacrosPrimaryPolicyLoggedIn,
