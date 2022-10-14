@@ -23,12 +23,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Parameteters that control test behavior.
-type addRemoveFactorsParams struct {
-	// Specifies whether to use user secret stash.
-	useUserSecretStash bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AddRemoveFactors,
@@ -39,15 +33,11 @@ func init() {
 		},
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "with_vk",
-			Val: addRemoveFactorsParams{
-				useUserSecretStash: false,
-			},
+			Name:    "with_vk",
+			Fixture: "vkAuthSessionFixture",
 		}, {
-			Name: "with_uss",
-			Val: addRemoveFactorsParams{
-				useUserSecretStash: true,
-			},
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
 		}},
 	})
 }
@@ -106,7 +96,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		keySizeBits    = 2048
 	)
 
-	userParam := s.Param().(addRemoveFactorsParams)
+	fixture := s.FixtValue().(*cryptohome.AuthSessionFixture)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -181,15 +171,6 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		authConfig = hwsec.NewChallengeAuthConfig(userName, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, hwsec.SmartCardAlgorithms)
 	}
 
-	// Enable the UserSecretStash experiment if USS is specified.
-	if userParam.useUserSecretStash {
-		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-		if err != nil {
-			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-		}
-		defer cleanupUSSExperiment(ctx)
-	}
-
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
@@ -240,7 +221,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		expectedAllSupported = append(expectedAllSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD)
 		expectedNoKioskSupported = append(expectedNoKioskSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD)
 	}
-	if userParam.useUserSecretStash {
+	if fixture.UssEnabled {
 		expectedAllSupported = append(expectedAllSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_CRYPTOHOME_RECOVERY)
 		expectedNoKioskSupported = append(expectedNoKioskSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_CRYPTOHOME_RECOVERY)
 	}
