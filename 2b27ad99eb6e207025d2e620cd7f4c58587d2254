@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4ed0a9_ef5e977d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e2cc6f5_18c53362",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "004048e7_3f64fe13",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110799f0_e5bf2ff8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Rewritten",
+      "parentUuid": "004048e7_3f64fe13",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39dff137_44daef80",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "comma should be before the parameter comment",
+      "range": {
+        "startLine": 98,
+        "startChar": 60,
+        "endLine": 98,
+        "endChar": 76
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bad896c_189441e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "This is how gofmt formats these (if I change it, it changes it back).",
+      "parentUuid": "39dff137_44daef80",
       "range": {
         "startLine": 98,
         "startChar": 60,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3616f740_301afff7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "But both are present? The function adds Password2Label but Password1Label is already there, it\u0027s part of the base setup.",
+      "parentUuid": "d8939fc1_a728264a",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93b6cfef_a0cad2a9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
         "patchSetId": 1
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "Call invalidateAuthSession on the first AuthSession.",
+      "range": {
+        "startLine": 155,
+        "startChar": 23,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd86441_a69b9f97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "It should already be invalidated, after every StartAuthSession success I set up a `defer client.InvalidateAuthSession(ctx, authSessionID)`. This is why I\u0027m using these little closures all over the place in the test, it\u0027s so that I can start sessions, do some stuff with them, and then have them get automatically invalidated at the end of the block.\n\n```\nerr \u003d func() error {\n    authSessionId, err \u003d :\u003d client.StartAuthSession(...)\n    if err !\u003d nil {\n        return errors.Wrap(err, \"failed to start auth session\")\n    }\n    defer client.InvalidateAuthSession(ctx, authSessionID)\n    // ...\n    // Do a bunch of stuff with the session\n    // ...\n}\nif err !\u003d nil {\n    // Something during the session failed, wrap and return it\n}\n```",
+      "parentUuid": "93b6cfef_a0cad2a9",
       "range": {
         "startLine": 155,
         "startChar": 23,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8717b15f_a0f6b8a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "gofmt",
+      "parentUuid": "cb63e187_7fc98379",
+      "range": {
+        "startLine": 163,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 75
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c402428f_da88ca7a",
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b97cffb_af6f6212",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Changed the parameter name to be more descriptive and added /*shouldBeMounted\u003d*/ to all the call sites.",
+      "parentUuid": "c402428f_da88ca7a",
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7922fa_d082c08c",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "comma in the wrong place",
+      "range": {
+        "startLine": 264,
+        "startChar": 86,
+        "endLine": 264,
+        "endChar": 88
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf23854_dd6740e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "gofmt",
+      "parentUuid": "da7922fa_d082c08c",
       "range": {
         "startLine": 264,
         "startChar": 86,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f2e936c_604d0146",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57eb2f8e_7b7d3c2e",
+      "range": {
+        "startLine": 282,
+        "startChar": 61,
+        "endLine": 282,
+        "endChar": 127
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a8de8c8_47ed9fc2",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "Comment in the wrong place?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 55
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355c4397_341a3a57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "4a8de8c8_47ed9fc2",
       "range": {
         "startLine": 286,
         "startChar": 1,
@@ -265,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5163a908_bcffb2f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "No, it\u0027s doing another session to try and authenticate after changing the password, to verify that the old password that was replaced no longer works.",
+      "parentUuid": "0837eaff_dd044ef3",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 130
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d414f44c_89432cbc",
@@ -278,6 +536,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "I think this should be PreparePersistentVault",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 62
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab8e39e_9b1f4059",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Oof, no that\u0027s replaced by the code below and just a redundant left behind call. I wrote this by starting with the original keys-and-mount test and then rewriting all the old APIs into new ones, but I guess I missed removing an old bit here.",
+      "parentUuid": "d414f44c_89432cbc",
       "range": {
         "startLine": 304,
         "startChar": 0,
@@ -313,6 +595,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cec07f8_73735638",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "In general I could probably merge a few of the sessions, but in general I was trying to preserve the old test flow as much as possible which mostly involved \"do thing, check state, do thing, check state\" and so a lot of the \"do thing\" steps ended up being their own little session.",
+      "parentUuid": "84c40eab_6899f01a",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d1184_6d7b9cd6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
         "patchSetId": 1
@@ -324,6 +630,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "comma in wrong place",
+      "range": {
+        "startLine": 318,
+        "startChar": 74,
+        "endLine": 318,
+        "endChar": 76
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52c77d8_792852d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "gofmt",
+      "parentUuid": "727d1184_6d7b9cd6",
       "range": {
         "startLine": 318,
         "startChar": 74,
@@ -359,6 +689,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d7e45d7_5fbcd570",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "I mean it does use verify-only checks, but I suppose there\u0027s no way to prove that this is how they\u0027re run on the backend. However, I\u0027m not sure that\u0027s really a good enough reason to remove it?",
+      "parentUuid": "52e8a78d_c980fd44",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe3aea2_09e32f06",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
         "patchSetId": 1
@@ -370,6 +724,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "I suggest CryptohomeAuthFactorValidity. Factor is not obvious to everyone",
+      "range": {
+        "startLine": 399,
+        "startChar": 15,
+        "endLine": 399,
+        "endChar": 21
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f165b0_0ae5b420",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "Okay, done, and renamed file to match.",
+      "parentUuid": "afe3aea2_09e32f06",
       "range": {
         "startLine": 399,
         "startChar": 15,
@@ -393,6 +771,30 @@
       "writtenOn": "2022-10-14T20:44:07Z",
       "side": 1,
       "message": "Is the TPM ownership not taken at this point?\nIf this is the case I wonder how we run these tests, do we set the USE flag for TPM_INSECURE_FALLBACK?. (Since scrypt AuthBlock doesn\u0027t support creation of the new keys)",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ebeaa11_fadcc2a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-14T22:17:17Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure, TBH I really just took the existing test and adapted it to the new APIs.",
+      "parentUuid": "a15d82e4_2868300c",
       "range": {
         "startLine": 469,
         "startChar": 0,
