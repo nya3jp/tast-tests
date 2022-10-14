@@ -16,7 +16,10 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -26,10 +29,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type splitViewTabletModeTestParam struct {
+	portrait bool
+	bt       browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitViewTabletMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "In tablet mode, checks split view works properly",
 		Contacts: []string{
 			"cattalyya@chromium.org",
@@ -40,10 +48,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Params: []testing.Param{{
 			Name: "portrait",
-			Val:  true,
+			Val:  splitViewTabletModeTestParam{true, browser.TypeAsh},
 		}, {
 			Name: "landscape",
-			Val:  false,
+			Val:  splitViewTabletModeTestParam{false, browser.TypeAsh},
+		}, {
+			Name:              "portrait_lacros",
+			Val:               splitViewTabletModeTestParam{true, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:              "landscape_lacros",
+			Val:               splitViewTabletModeTestParam{false, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
@@ -61,13 +77,16 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	bt := s.Param().(splitViewTabletModeTestParam).bt
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -90,7 +109,7 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 	defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 
 	// Rotate the screen if it is a portrait test.
-	portrait := s.Param().(bool)
+	portrait := s.Param().(splitViewTabletModeTestParam).portrait
 	portraitByDefault := info.Bounds.Height > info.Bounds.Width
 
 	rotations := []display.RotationAngle{display.Rotate0, display.Rotate90, display.Rotate180, display.Rotate270}
@@ -140,11 +159,15 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	numWindows := 4
-	// Launch four windows: two chrome windows and two chrome apps.
+	// Launch four windows: two browser windows and two chrome apps.
+	const numWindows = 4
 	appsList := []apps.App{apps.FilesSWA, apps.PlayStore}
-
-	if err := ash.CreateWindows(ctx, tconn, cr, "", numWindows-len(appsList)); err != nil {
+	numBrowserWindowsToOpen := numWindows - len(appsList)
+	if bt == browser.TypeLacros {
+		// For Lacros browserfixt.SetUp already opens an extra blank window, so create one less new windows.
+		numBrowserWindowsToOpen--
+	}
+	if err := ash.CreateWindows(ctx, tconn, br, "", numBrowserWindowsToOpen); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
 
@@ -154,6 +177,9 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		}
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
+		}
+		if _, err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
+			s.Fatalf("%s did not become visible: %s", app, err)
 		}
 	}
 
@@ -172,7 +198,7 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 2 * time.Second}); err != nil {
 		s.Fatalf("Failed to wait for all %d windows to be opened and maximized", numWindows)
 	}
 
