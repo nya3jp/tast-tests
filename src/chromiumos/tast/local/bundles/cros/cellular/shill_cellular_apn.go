@@ -112,7 +112,13 @@ func ShillCellularApn(ctx context.Context, s *testing.State) {
 	if errs != nil {
 		s.Fatal("Failed to reset shill: ", err)
 	}
-
+	// b/253665498: Reattach gets triggered on this test because |ResetShill| clears the default
+	// profile and Cellular.UseAttachAPN gets erased.
+	// Disable cellular and re-enable it again so the test starts after the first ReAttach has completed,
+	// and there is no longer a need to trigger a new ReAttach.
+	if _, err = helper.Disable(ctx); err != nil {
+		s.Fatal("Failed to disable cellular: ", err)
+	}
 	if _, err = helper.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable cellular: ", err)
 	}
