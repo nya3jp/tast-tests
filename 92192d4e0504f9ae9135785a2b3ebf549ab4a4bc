@@ -16,6 +16,24 @@
       "message": "Please move that TODO up to the lacros variant parameter (line 49).",
       "revId": "92192d4e0504f9ae9135785a2b3ebf549ab4a4bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c848d5_9eafa084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-14T17:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33761798_de99b360",
+      "revId": "92192d4e0504f9ae9135785a2b3ebf549ab4a4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
