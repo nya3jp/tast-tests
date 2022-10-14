@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -66,10 +67,17 @@ func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 
 	const name = "Test PWA"
-	id, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 1*time.Minute)
+	id, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 30*time.Second)
 	if err != nil {
-		cleanUp(ctx)
-		return "", "", nil, errors.Wrap(err, "failed to wait until the PWA is installed")
+		testing.ContextLog(ctx, "Failed to install the PWA, refresh policythen try again")
+		if err := Refresh(ctx, tconn); err != nil {
+			cleanUp(ctx)
+			return "", "", nil, errors.Wrap(err, "failed to refresh policy for the PWA")
+		}
+		if id, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 30*time.Second); err != nil {
+			cleanUp(ctx)
+			return "", "", nil, errors.Wrap(err, "failed to wait until the PWA is installed")
+		}
 	}
 
 	return id, name, cleanUp, nil
