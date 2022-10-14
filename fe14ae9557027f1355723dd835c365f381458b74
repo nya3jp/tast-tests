@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c99213a2_b53b3132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-14T17:17:01Z",
+      "side": 1,
+      "message": "The package/update install process may not be complete. It takes some time for an apk to install/update. Launching it during that fail.",
+      "parentUuid": "4a07d39f_e2fb934f",
+      "revId": "fe14ae9557027f1355723dd835c365f381458b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b9d6d1b_eab45a2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-14T17:10:42Z",
       "side": 1,
       "message": "From the context and comment, this should be Play Store (What is \"asset browser\"?). How about that we change the function signature to reflect that?",
+      "revId": "fe14ae9557027f1355723dd835c365f381458b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828020e2_a7974c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-14T17:17:01Z",
+      "side": 1,
+      "message": "Asset Browser is specific activity in the Play Store that shows apps available to install. So the method is named to reflect launching that activity.",
+      "parentUuid": "7b9d6d1b_eab45a2d",
       "revId": "fe14ae9557027f1355723dd835c365f381458b74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
