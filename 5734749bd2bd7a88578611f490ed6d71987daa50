@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9787c8d1_cf69c5d3",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-10-14T01:58:13Z",
+      "side": 1,
+      "message": "you can probably defer to another CL, but we really need a manatee variant on all critical tests, to be ran informational, before we can turn them back to critical and remove !manatee from vm_host condition.\n\n\nIf you split it to three steps it\u0027s going to be like\n\n- add initial informational test\n- promote informational test to critical after 3 weeks\n\n(can be in parallel)\n\n- add manatee variant informational tests\n- after 3 weeks, remove the manatee variant informational tests and  remove !manatee from vm_host condition (to mark manatee as critical)",
+      "parentUuid": "87ed676d_e07d8f1a",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 96
+      },
+      "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43a82ce9_f0b09bec",
         "filename": "src/chromiumos/tast/local/crostini/params.go",
         "patchSetId": 2
