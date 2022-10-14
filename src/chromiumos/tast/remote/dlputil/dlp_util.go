@@ -302,6 +302,8 @@ const (
 	Printing
 	// Screenshot identifies a screenshot action.
 	Screenshot
+	// PrivacyScreen identifies a privacy screen enforcement.
+	PrivacyScreen
 )
 
 // String returns a string representation of `Action`.
@@ -313,6 +315,8 @@ func (action Action) String() string {
 		return "PRINTING"
 	case Screenshot:
 		return "SCREENSHOT"
+	case PrivacyScreen:
+		return "EPRIVACY"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}
@@ -480,6 +484,11 @@ func ValidateActionReporting(ctx context.Context, s *testing.State, action Actio
 		})
 	case Screenshot:
 		service.Screenshot(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case PrivacyScreen:
+		service.PrivacyScreen(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
