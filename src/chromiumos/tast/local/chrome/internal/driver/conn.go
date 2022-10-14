@@ -54,6 +54,11 @@ func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 	}, nil
 }
 
+// ActivateTarget activates (focuses) the target.
+func (c *Conn) ActivateTarget(ctx context.Context) error {
+	return c.co.ActivateTarget(ctx)
+}
+
 // Close closes the connection to the target and frees related resources.
 // Tests should typically defer calls to this method and ignore the returned error.
 // This method does not close the web content itself; see CloseTarget for that.

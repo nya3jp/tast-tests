@@ -71,6 +71,16 @@ func (s *Session) NewConn(ctx context.Context, id target.ID) (conn *Conn, retErr
 	}, nil
 }
 
+// ActivateTarget activates (focuses) the target.
+func (c *Conn) ActivateTarget(ctx context.Context) error {
+	args := &target.ActivateTargetArgs{TargetID: c.targetID}
+	if err := c.cl.Target.ActivateTarget(ctx, args); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // Close releases the resources associated with the connection.
 func (c *Conn) Close() error {
 	// TODO(crbug.com/1020484): Return the error from rpcc.Conn.Close.
