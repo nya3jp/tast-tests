@@ -16,6 +16,40 @@
       "message": "+tbarzic for test author\u0027s review\n+hidehiko, edcourtney for tast owner\u0027s review",
       "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9943d3a7_5f3f3c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-14T20:19:36Z",
+      "side": 1,
+      "message": "test changes itself seem fine",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36eeee30_f428a256",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-14T20:19:36Z",
+      "side": 1,
+      "message": "should we just call this before waiting for app install - though, I\u0027m not sure what it\u0027s actually fixing, should ServeAndVerify ensure the policy is refreshed already? Do we instead need a waiter for the policy status set by ServeAndVerify?\n\n(as written, this feels like a roundabout way to do polling, but I might be missing something)",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
