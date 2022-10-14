@@ -30,20 +30,39 @@ func init() {
 		SetUpTimeout:    fixtureSetUpTimeout,
 		ResetTimeout:    fixtureResetTimeout,
 		TearDownTimeout: fixtureTearDownTimeout,
-		Impl: &authSessionFixture{
+		Impl: &fixtureImpl{
 			ussFlag: true,
+		},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "vkAuthSessionFixture",
+		Desc: "Disable the USS flag experiement flag for Auth Session",
+		Contacts: []string{
+			"lziest@google.com",
+			"cryptohome-core@google.com",
+		},
+		SetUpTimeout:    fixtureSetUpTimeout,
+		ResetTimeout:    fixtureResetTimeout,
+		TearDownTimeout: fixtureTearDownTimeout,
+		Impl: &fixtureImpl{
+			ussFlag: false,
 		},
 	})
 }
 
 type cleanupFunc func(context.Context) error
 
-type authSessionFixture struct {
+type fixtureImpl struct {
 	ussFlag        bool
 	ussFlagCleanup cleanupFunc
 }
 
-func (f *authSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+// AuthSessionFixture provides data on how the session has been configured by the fixture.
+type AuthSessionFixture struct {
+	UssEnabled bool
+}
+
+func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
@@ -69,11 +88,22 @@ func (f *authSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		if err != nil {
 			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 		}
+	} else {
+		// Disable the UserSecretStash experiment for the duration of the test
+		// ensuring that the flag file that enables it does not exist.
+		//
+		// This mode has no cleanup as this is the "default" state.
+		err := helper.DisableUserSecretStash(ctx)
+		if err != nil {
+			s.Error("Failed to clean up the USS flag during setup: ", err)
+		}
 	}
-	return nil
+	return &AuthSessionFixture{
+		UssEnabled: f.ussFlag,
+	}
 }
 
-func (f *authSessionFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := UnmountAll(ctx); err != nil {
 		s.Error("Failed to unmount all: ", err)
 	}
@@ -85,13 +115,13 @@ func (f *authSessionFixture) TearDown(ctx context.Context, s *testing.FixtState)
 	}
 }
 
-func (f *authSessionFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+func (f *fixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
-func (f *authSessionFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+func (f *fixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
-func (f *authSessionFixture) Reset(ctx context.Context) error {
+func (f *fixtureImpl) Reset(ctx context.Context) error {
 	// Clean up obsolete state, in case there's any.
 	if err := UnmountAll(ctx); err != nil {
 		return err
