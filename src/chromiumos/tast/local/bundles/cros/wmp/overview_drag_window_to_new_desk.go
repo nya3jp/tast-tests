@@ -38,7 +38,12 @@ func init() {
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Send window to another desk.
+			Value: "screenplay-655469b9-efb0-4595-aba4-7d91d265b3dd",
+		}},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",

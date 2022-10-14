@@ -40,6 +40,11 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Close the desk.
+			Value: "screenplay-ddf72b6c-7951-4336-9c83-e1db13628c16",
+		}},
 		Params: []testing.Param{{
 			Val: browser.TypeAsh,
 		}, {
