@@ -16,6 +16,24 @@
       "message": "Nit: Pull this out into the const section above with the loginPoolVar?",
       "revId": "2fbfba181215a397db1f4014002663f0d689e7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4917c2_6fe7469f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-14T01:55:22Z",
+      "side": 1,
+      "message": "I want to avoid introducing package level constants since this package is shared with other tests.",
+      "parentUuid": "022f2296_0a1d271d",
+      "revId": "2fbfba181215a397db1f4014002663f0d689e7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
