@@ -39,7 +39,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm", "no_kernel_upstream"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Setup workspace templates.
+			Value: "screenplay-655469b9-efb0-4595-aba4-7d91d265b3dd",
+		}},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{{
 			Val: browser.TypeAsh,
 		}, {
