@@ -105,6 +105,24 @@
       "message": "audio.DeviceRecord has been failing in \"zork-\"? I think you need to skip on \"zork-.\"\n\nhttps://tastboard.corp.google.com/test/audio.DeviceRecord",
       "revId": "4c6585b5216ac699b8b338c9e1a913cbed228c86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145e2c82_c69c22e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-14T03:38:30Z",
+      "side": 0,
+      "message": "zork-kernel-next are non-critical builds so we dont skip them.",
+      "parentUuid": "9fee53a1_e2abe5f6",
+      "revId": "4c6585b5216ac699b8b338c9e1a913cbed228c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
