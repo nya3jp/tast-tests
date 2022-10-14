@@ -80,11 +80,11 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 6*time.Second)
 	defer cancel()
 
-	conn, cleanup, err := arcvpn.SetUpHostVPNWithConfig(ctx, cleanupCtx, config)
+	conn, cleanup, err := arcvpn.SetUpHostVPNWithConfig(ctx, config)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup host VPN")
 	}
-	defer cleanup()
+	defer cleanup(cleanupCtx)
 	if _, err := conn.Connect(ctx); err != nil {
 		return errors.Wrap(err, "failed to connect to VPN server")
 	}
