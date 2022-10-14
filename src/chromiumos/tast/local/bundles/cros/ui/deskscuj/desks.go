@@ -85,12 +85,12 @@ func openDesk(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, ur
 func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.ConnSource, kw *input.KeyboardEventWriter, mw *input.MouseEventWriter, tpw *input.TrackpadEventWriter, tw *input.TouchEventWriter) ([]action.Action, int, error) {
 	const notes = "The quick brown fox jumps over the lazy dog in the afternoon on Saturday!"
 
-	docsURL, err := cuj.GetTestDocURL()
+	docsURL, err := cuj.GetTestDocURL(ctx)
 	if err != nil {
 		return nil, 0, errors.Wrap(err, "failed to get Google Doc URL")
 	}
 
-	slidesURL, err := cuj.GetTestSlidesURL()
+	slidesURL, err := cuj.GetTestSlidesURL(ctx)
 	if err != nil {
 		return nil, 0, errors.Wrap(err, "failed to get Google Slides URL")
 	}

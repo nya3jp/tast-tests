@@ -61,7 +61,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		individualScrollTimeout = overallScrollTimeout / 4
 	)
 
-	sheetURL, err := cuj.GetTestSheetsURL()
+	sheetURL, err := cuj.GetTestSheetsURL(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Google Sheets URL: ", err)
 	}
