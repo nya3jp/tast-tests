@@ -46,6 +46,30 @@
       },
       "revId": "c5831ed81a73a0cadd59e1fdb7af548cba19f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b9b20d_7a4e6753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T20:13:54Z",
+      "side": 1,
+      "message": "Done. Thanks! +sammiequon for test owner\u0027s review",
+      "parentUuid": "e81bde5c_ad3c979c",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "c5831ed81a73a0cadd59e1fdb7af548cba19f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
