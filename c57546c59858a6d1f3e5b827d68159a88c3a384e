@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48310f03_a2b11e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T17:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a2df19_74a40f48",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "c57546c59858a6d1f3e5b827d68159a88c3a384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8021cf_2747dec8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-14T00:24:25Z",
       "side": 1,
       "message": "Use parentheses if you mixed up \u0026\u0026 and ||.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "c57546c59858a6d1f3e5b827d68159a88c3a384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdefbbf8_d93723d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T17:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8021cf_2747dec8",
       "range": {
         "startLine": 41,
         "startChar": 4,
@@ -87,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "539b4c44_e40d7f92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T17:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c279d249_ff878b59",
+      "revId": "c57546c59858a6d1f3e5b827d68159a88c3a384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8030c537_8e3f1291",
@@ -100,6 +166,30 @@
       "writtenOn": "2022-10-14T00:24:25Z",
       "side": 1,
       "message": "Let\u0027s reverse the logic to fail first.\n\nif xxx {\n    s.Fatal\n}\n\n// PASS",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "c57546c59858a6d1f3e5b827d68159a88c3a384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736a1538_2483d928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T17:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8030c537_8e3f1291",
       "range": {
         "startLine": 45,
         "startChar": 1,
