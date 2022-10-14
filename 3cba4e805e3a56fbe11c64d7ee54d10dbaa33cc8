@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e44da00_c13f2620",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T20:36:54Z",
+      "side": 1,
+      "message": "+gabormagda for the policy related question in the comment",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d5a443_d8117012",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T20:36:54Z",
+      "side": 1,
+      "message": "nit: policy then",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 72
+      },
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36eeee30_f428a256",
@@ -48,6 +88,24 @@
       "writtenOn": "2022-10-14T20:19:36Z",
       "side": 1,
       "message": "should we just call this before waiting for app install - though, I\u0027m not sure what it\u0027s actually fixing, should ServeAndVerify ensure the policy is refreshed already? Do we instead need a waiter for the policy status set by ServeAndVerify?\n\n(as written, this feels like a roundabout way to do polling, but I might be missing something)",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf2363e_2e06df83",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T20:36:54Z",
+      "side": 1,
+      "message": "As said in the CL description, for lacros it fails to load the PWA app on lacros sometimes (flaky \u003e20%) for unknown reasons. and it\u0027s a workaround to address this flake.\n\nBtw, I\u0027m not very familiar with policy test APIs.\nAt a glance to ServeAndVerify I think it does \u0027Refresh\u0027 internally but not wait for it to take effect as you pointed out.\nIt would be great if anyone who knows can help with this.\n+gabormagda\n\nIf it takes longer to fix it for the Lacros PWA app, I\u0027ll be able to comment out the \u0027pwa_app_lacros\u0027 variant and leave a TODO for that and move on with other variants in this CL.",
+      "parentUuid": "36eeee30_f428a256",
       "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
