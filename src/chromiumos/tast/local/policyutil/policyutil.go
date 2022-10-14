@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -51,12 +52,6 @@ func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chro
 		},
 	}
 
-	// Update policies.
-	if err := ServeAndVerify(ctx, fdms, cr, policies); err != nil {
-		server.Close()
-		return "", "", nil, errors.Wrap(err, "failed to update policies")
-	}
-
 	cleanUp := func(ctx context.Context) error {
 		server.Close()
 		if err := ResetChrome(ctx, fdms, cr); err != nil {
@@ -66,10 +61,26 @@ func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 
 	const name = "Test PWA"
-	id, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 1*time.Minute)
-	if err != nil {
+	var id string
+	var err error
+	// TODO(b/254067263): Ensure the policy is refreshed for app installation
+	// particularly on Lacros when ServeAndVerify returns.
+	// Remove this polling if it makes sense once the flake is addressed.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Update policies.
+		if err := ServeAndVerify(ctx, fdms, cr, policies); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to update policies"))
+		}
+		testing.ContextLog(ctx, "Waiting for the PWA to be installed")
+		id, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 30*time.Second)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to wait until the PWA is installed, try again")
+			return errors.Wrap(err, "failed to wait until the PWA is installed")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
 		cleanUp(ctx)
-		return "", "", nil, errors.Wrap(err, "failed to wait until the PWA is installed")
+		return "", "", nil, errors.Wrap(err, "failed to update policies")
 	}
 
 	return id, name, cleanUp, nil
