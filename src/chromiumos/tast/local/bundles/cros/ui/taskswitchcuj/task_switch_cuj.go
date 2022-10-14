@@ -231,7 +231,18 @@ func Run(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to launch apps")
 		}
-		numWindows := numAppWindows + numBrowserWindows
+
+		// Open another Chrome tab so we can save the tab connection.
+		// We will use this tab connection to navigate away from the
+		// page to ensure collection of
+		// PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		extraURL := "https://webglsamples.org/aquarium/aquarium.html?numFish=1000"
+		extraTab, err := cuj.NewTabByURL(ctx, cs, true, extraURL)
+		if err != nil {
+			return errors.Wrapf(err, "failed to open %s", extraURL)
+		}
+
+		numWindows := numAppWindows + numBrowserWindows + 1
 
 		// Initialize task switch workflows only after launching Chrome
 		// tabs and applications, because switching by Hotseat requires
@@ -324,6 +335,11 @@ func Run(ctx context.Context, s *testing.State) {
 			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 				s.Logf("Failed to wait for the window to stabilize after running workflow %s: %v", taskSwitcher.name, err)
 			}
+		}
+
+		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		if err := extraTab.Conn.Navigate(ctx, "chrome://version"); err != nil {
+			return errors.Wrap(err, "failed to navigate to chrome://version")
 		}
 
 		return nil
