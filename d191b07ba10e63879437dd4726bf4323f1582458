@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80ce8b9_2c18b647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-10-14T08:25:57Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nA small fix in image.go that is preventing APROBootabilityPerformance test from running.\n\nThank you.",
+      "revId": "d191b07ba10e63879437dd4726bf4323f1582458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
