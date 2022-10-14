@@ -16,6 +16,24 @@
       "message": "Clarification: Are these the ash-chrome metrics regardless of the types of primary browsers whether lacros-chrome or ash-chrome? Did I get this right?\n\nInterestingly, either `cr` or `br` for tracing here makes the test passed with some numbers without any error.\n+Toni, Eliot any thoughts?",
       "revId": "93455267b6308e65caa50bc87623ec335194163b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb221a47_4f155ef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-14T23:13:52Z",
+      "side": 1,
+      "message": "yeah, those metrics are recorded in ash-chrome.\n\nI think that the test passes with br, and cr is because it\u0027s waiting for histograms that are colleced in perfutil.RunAndWaitAll, which does not depend on br. So I assume using br would likely not break test, but would not save the intended trace file.",
+      "parentUuid": "3ad09325_68718f90",
+      "revId": "93455267b6308e65caa50bc87623ec335194163b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
