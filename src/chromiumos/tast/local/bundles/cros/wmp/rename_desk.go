@@ -27,6 +27,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests the behavior of renaming desks",
 		Contacts: []string{
+			"yongshun@chromium.org",
 			"zxdan@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",

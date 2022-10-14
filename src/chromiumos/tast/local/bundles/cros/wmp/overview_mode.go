@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that overview mode works correctly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"sammiequon@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
@@ -79,7 +79,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not find browser app info: ", err)
 	}
-	for _, app := range []apps.App{apps.Files, browserApp} {
+	for _, app := range []apps.App{apps.FilesSWA, browserApp} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to launch %s: %s", app.Name, err)
 		}

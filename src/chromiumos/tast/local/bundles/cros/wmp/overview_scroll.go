@@ -125,8 +125,8 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Create some chrome apps that are already installed.
-	appsList := []apps.App{apps.Camera, apps.Files, apps.Help, apps.PlayStore}
+	// Create some apps that are already installed.
+	appsList := []apps.App{apps.Camera, apps.FilesSWA, apps.Help, apps.PlayStore}
 
 	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
@@ -145,7 +145,8 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	}
 
 	// Create enough chrome windows so that we have 16 total windows.
-	// However, as browserfixt.SetUp already opens an extra blank window for lacros-chrome, create one less new windows for lacros than ash-chrome.
+	// However, as browserfixt.SetUp already opens an extra blank window for lacros-chrome, create one less new windows
+	// for lacros than ash-chrome.
 	numChromeWindows := numWindows - len(appsList)
 	if bt == browser.TypeLacros {
 		numChromeWindows--
@@ -171,6 +172,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up the touch context: ", err)
 	}
+	defer tc.Close()
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {

@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -107,6 +108,7 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, rotations[rotIndex]); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 	}
 
 	// Obtain the latest display info after rotating the display.
@@ -124,12 +126,12 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 	defer closeBrowser(cleanupCtx)
 	defer conn.Close()
 
-	app := apps.Files
-	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-		s.Fatalf("Failed to launch %s: %s", app.Name, err)
+	if _, err := filesapp.Launch(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch the Files app: ", err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, app.ID, 10*time.Second); err != nil {
-		s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
+
+	if err := ash.WaitForApp(ctx, tconn, apps.FilesSWA.ID, 10*time.Second); err != nil {
+		s.Fatalf("Files app did not appear in shelf after launch: %s", err)
 	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)

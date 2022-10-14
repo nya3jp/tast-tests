@@ -31,7 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that immersive mode works correctly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"conniekxu@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
