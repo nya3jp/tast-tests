@@ -513,6 +513,13 @@ func chromeVirtualKeyboardRotationTest(
 		info = &infos[0]
 	}
 
+	// Restore the original rotation once the test finishes.
+	originalAngle, err := display.RotationToAngle(info.Rotation)
+	if err != nil {
+		s.Fatal("Failed to get original rotation: ", err)
+	}
+	defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, originalAngle)
+
 	// Make sure to have 0 degrees rotation before testing.
 	if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0); err != nil {
 		s.Fatal("Failed to set 0 degrees rotation: ", err)
