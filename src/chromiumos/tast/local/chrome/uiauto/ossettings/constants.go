@@ -118,8 +118,11 @@ var networkFinder = nodewith.Name("Network").Role(role.Link).Ancestor(WindowFind
 // mobileButton is the finder for the Mobile Data page button UI in network page.
 var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
 
-// AddCellularButton is the finder for the Add Cellular button in cellular network list
+// AddCellularButton is the finder for the Add Cellular button in cellular network list.
 var AddCellularButton = nodewith.NameStartingWith("Add Cellular").Role(role.Button)
+
+// UnlockButton is the finder for the Unlock button in cellular network list or settings home page.
+var UnlockButton = nodewith.NameContaining("Unlock").Role(role.Button)
 
 // Elements in "Cellular detail page"
 var (
@@ -149,6 +152,9 @@ var (
 
 	// EnterButton is the finder for the Enter button in the SIM lock dialog UI.
 	EnterButton = nodewith.Role(role.Button).Name("Enter")
+
+	// CancelButton is the finder for the Cancel button in the SIM lock dialog UI.
+	CancelButton = nodewith.NameContaining("Cancel").Role(role.Button)
 
 	// VisibilityButton is the finder for the show PIN button in the SIM lock dialog UI.
 	VisibilityButton = nodewith.Role(role.Button).HasClass("icon-visibility")
