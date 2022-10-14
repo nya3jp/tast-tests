@@ -72,6 +72,7 @@ type vpdInfo struct {
 	ActivateDate *string `json:"activate_date"`
 	SKUNumber    *string `json:"sku_number"`
 	ModelName    *string `json:"model_name"`
+	OEMName      *string `json:"oem_name"`
 }
 
 type dmiInfo struct {
@@ -205,6 +206,9 @@ func expectedVPDInfo(ctx context.Context) (*vpdInfo, error) {
 		return nil, err
 	}
 	if r.ModelName, err = utils.ReadOptionalStringFile(path.Join(ro, "model_name")); err != nil {
+		return nil, err
+	}
+	if r.OEMName, err = utils.ReadOptionalStringFile(path.Join(ro, "oem_name")); err != nil {
 		return nil, err
 	}
 	if r.Region, err = utils.ReadOptionalStringFile(path.Join(ro, "region")); err != nil {
