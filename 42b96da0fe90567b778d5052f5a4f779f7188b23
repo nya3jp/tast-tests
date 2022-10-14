@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585556a6_c763fb1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-14T03:41:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d1baa34_8797d276",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "42b96da0fe90567b778d5052f5a4f779f7188b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34d3af80_8922dd89",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-14T03:30:22Z",
       "side": 1,
       "message": "arcvpn.SetUpHostVPN(ctx, ctx)\n\notherwise it will use up to cleanup ctx, then no actual time reserved for cleanup.",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "42b96da0fe90567b778d5052f5a4f779f7188b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784ed05c_cc495447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-14T03:41:47Z",
+      "side": 1,
+      "message": "Sorry, not sure I understand. arcvpn.SetUpHostVpn[WithConfig] uses the first, shortened `ctx` param to do the actual work. And the longer `cleanupCtx` is used in case there\u0027s some error and we can use up to the reserved time to clean up VPN connection? Or I might be misunderstanding something here?",
+      "parentUuid": "34d3af80_8922dd89",
       "range": {
         "startLine": 56,
         "startChar": 48,
