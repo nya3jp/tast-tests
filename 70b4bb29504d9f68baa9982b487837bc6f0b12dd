@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644863e9_4369ef13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 25
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73476943_9e517bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`for deadline :\u003d time.Now().Add(10 * time.Second); time.Now().Before(deadline); {`",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 46
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3018ce9_57ca5c8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "retL, err :\u003d lacros.Connect(ctx, tconn)\n\tif err \u003d\u003d nil {\n\t\treturn retL, nil\n\t}\n\ttesting.ContextLog(ctx, \"Failed to connect to Lacros: \", err)",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2d14e7_9791fcde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`if err :\u003d testing.Sleep(ctx, 10*time.Millisecond); err !\u003d nil {`",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 18
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc24a8f5_a8ca55bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`return nil, errors.Wrap(err, \"failed to wait for lacros-chrome test connection\")`",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 9
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4d21a3_54cd6537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`return nil, errors.New(\"timed out retrying connection to Lacros\")`",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 18
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f79d05_d0f81e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "nit: You might as well include `i` in the error message. It just might be helpful to know how many iterations succeeded before the failure.",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 76
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ca2e43_7f01ce14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "tconn, err :\u003d cr.TestAPIConn(ctx)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8303b84_d0ed5201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`if err :\u003d ash.CreateWindows(ctx, tconn, cr, url, n); err !\u003d nil {`",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3eede3_acf32f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`return testing.Sleep(ctx, 3*time.Second)`",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 11
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e318d1_66a73566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`initializes` (not capitalized, because it\u0027s not quite the beginning of the sentence)",
+      "range": {
+        "startLine": 368,
+        "startChar": 27,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e26b08b_5a81e49e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "No need for this.",
+      "range": {
+        "startLine": 507,
+        "startChar": 6,
+        "endLine": 507,
+        "endChar": 17
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c0a839_b1b70871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`return`",
+      "range": {
+        "startLine": 513,
+        "startChar": 7,
+        "endLine": 513,
+        "endChar": 12
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2301bdb3_8d9dd67d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "`nil`",
+      "range": {
+        "startLine": 515,
+        "startChar": 13,
+        "endLine": 515,
+        "endChar": 16
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -387,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a788c8_40f18f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b898a74_6c6be0f2",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 14
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "674e483d_dcd277ca",
@@ -424,6 +448,30 @@
       "side": 1,
       "message": "It does not seem to work for two reasons.\n\n`ash.ConnSource` does not have `TestAPIConn()` method.\n`Chrome.TestAPIConn()` and `Lacros.TestAPIConn()` are totally different functions and there is no common interface between Chrome and Lacros. This code fails with:\n```\n(type ash.ConnSource has no field or method TestAPIConn)\n```\n(I removed `browserTestAPIConn` method.)\n\nAnother reasons is that `ash.CreateWindows()` is not stable for Lacros. This method expects that window list is not modified by third party during the run. Lacros may create \"new browser window\" on itself, so result is randomly becomes +1 window and `ash.CreateWindows()` checks fail.",
       "parentUuid": "674e483d_dcd277ca",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 11
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c207f6_c6dd79b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "881376d2_0aa40f35",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -1575,6 +1623,30 @@
       "side": 1,
       "message": "This is tricky as these histograms use different (Maximum instead of Average) aggregation.\n\nRelpaced `if` with a map.",
       "parentUuid": "05b5bfd3_081f9143",
+      "range": {
+        "startLine": 640,
+        "startChar": 9,
+        "endLine": 640,
+        "endChar": 303
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92fb9f4_aa6b19eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:54:33Z",
+      "side": 1,
+      "message": "Maybe I was not clear. This is what I mean:\n\n\tif heuristicsHistogramsMap[hist.Name] {\n\t\tstoreHeuristicsHistograms(ctx, pv, []*metrics.Histogram{hist})\n\t} else {\n\t\tvalueName :\u003d fmt.Sprintf(\"%s%s.%s.%dwindows\", hist.Name, suffix, arcMode, currentWindows)\n\t\tif hist.Name \u003d\u003d ensureWorkVisibleHistogram {\n\t\t\treportMaxHistogramValue(ctx, pv, hist, \"microsecond\", valueName)\n\t\t} else {\n\t\t\treportMaxHistogramValue(ctx, pv, hist, \"millisecond\", valueName)\n\t\t}\n\t}",
+      "parentUuid": "c1f1247a_a099a210",
       "range": {
         "startLine": 640,
         "startChar": 9,
