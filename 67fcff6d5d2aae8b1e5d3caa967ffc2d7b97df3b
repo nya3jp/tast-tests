@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38925f3d_f966dea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T01:50:04Z",
+      "side": 1,
+      "message": "Add tast-owners to start the code-owner review.",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e38976d_af3c6c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_canary_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T01:50:04Z",
+      "side": 1,
+      "message": "It doesn\u0027t have to be done in this CL, but we will need Lacros variants for all the tests that use a chrome tab for a canary.\n\nSee https://crrev.com/c/3951569 for an example. (but I\u0027m still working on it)",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
