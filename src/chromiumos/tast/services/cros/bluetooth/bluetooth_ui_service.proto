@@ -1,0 +1,44 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.bluetooth;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/bluetooth";
+
+service BluetoothUIService {
+  rpc Initialize(InitializeRequest) returns (google.protobuf.Empty) {}
+
+  rpc Enable(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc PollForAdapterState(PollForAdapterStateRequest) returns (google.protobuf.Empty) {}
+
+  rpc Devices(google.protobuf.Empty) returns (DevicesResponse) {}
+
+  rpc StartDiscovery(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StopDiscovery(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc Reset(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message DeviceInfo {
+  string address = 1;
+  string name = 2;
+}
+
+message InitializeRequest {
+  bool floss = 1;
+}
+
+message PollForAdapterStateRequest {
+  bool state = 1;
+}
+
+message DevicesResponse {
+  repeated DeviceInfo device_infos = 1;
+}
