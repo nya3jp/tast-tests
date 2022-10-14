@@ -16,6 +16,46 @@
       "message": "yichenz, could you review this? Let me know if you want to remain secondary contact on any. Thanks!",
       "revId": "8a3b81640031bfb017ebde165c826ba36764eee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11d407f_ac7e497f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-14T22:00:14Z",
+      "side": 1,
+      "message": "LGTM with nit, thanks!",
+      "revId": "8a3b81640031bfb017ebde165c826ba36764eee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d2d93f_5390820b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-14T22:00:14Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Files app did not appear in shelf after launch: \", err)",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "8a3b81640031bfb017ebde165c826ba36764eee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
