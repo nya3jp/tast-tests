@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c28e5d_80b01fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T18:16:17Z",
+      "side": 1,
+      "message": "\u003e \"occurances\" is a possible misspelling of \"occurrences\".\n\nPlease fix.",
+      "parentUuid": "31eee961_d9562215",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "c9ac53f62cec72610a25c7240f5994f9f0934c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9ae2f4_3db52d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-14T18:16:17Z",
+      "side": 1,
+      "message": "\u003e \"occurance\" is a possible misspelling of \"occurrence\".\n\nPlease fix.",
+      "parentUuid": "a0c5e2e3_fb17d278",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "c9ac53f62cec72610a25c7240f5994f9f0934c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
