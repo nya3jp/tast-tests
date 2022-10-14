@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecba9a1c_3da0d0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T06:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb0859c_e291b5c6",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f5f6489_9ae2f90e",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f12103_99550848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T06:09:06Z",
+      "side": 1,
+      "message": "Yes, I forgot to add Lacros variants to the game mode test. Fixed in https://crrev.com/i/5033822",
+      "parentUuid": "3f5f6489_9ae2f90e",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8b7a2f_96a802cb",
@@ -72,6 +114,24 @@
       "writtenOn": "2022-10-13T07:17:28Z",
       "side": 1,
       "message": "I think the Lacros variants should declare \"lacros\" as ExtraSoftwareDeps.",
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229cb8e5_34546a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T06:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8b7a2f_96a802cb",
       "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5883e2_29fa9632",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T06:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f85cbb_057051a6",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 19
+      },
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fde273e7_782a2ada",
@@ -112,6 +196,30 @@
       "writtenOn": "2022-10-13T07:17:28Z",
       "side": 1,
       "message": "You can omit the mode, it defaults to LacrosOnly.",
+      "range": {
+        "startLine": 179,
+        "startChar": 87,
+        "endLine": 179,
+        "endChar": 124
+      },
+      "revId": "a009a84ecb2f9b7eb7561a7cbd1cba17ffbe1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f04d1d2_b27fd050",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-14T06:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde273e7_782a2ada",
       "range": {
         "startLine": 179,
         "startChar": 87,
