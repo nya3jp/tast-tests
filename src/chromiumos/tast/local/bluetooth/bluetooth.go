@@ -14,4 +14,13 @@ type Bluetooth interface {
 	Enable(ctx context.Context) error
 	PollForAdapterState(ctx context.Context, exp bool) error
 	PollForEnabled(ctx context.Context) error
+	Devices(ctx context.Context) ([]DeviceInfo, error)
+	StartDiscovery(ctx context.Context) error
+	StopDiscovery(ctx context.Context) error
+	Reset(ctx context.Context) error
+}
+
+type DeviceInfo struct {
+	address string
+	name	string
 }

@@ -28,3 +28,23 @@ func (f *Floss) PollForAdapterState(ctx context.Context, exp bool) error {
 func (f *Floss) PollForEnabled(ctx context.Context) error {
 	return PollForEnabled(ctx)
 }
+
+// Devices returns information on the devices known to Floss.
+func (f *Floss) Devices(ctx context.Context) ([]*DeviceInfo, error) {
+	return []*DeviceInfo{}, nil
+}
+
+// StartDiscovery starts a discovery session.
+func (f *Floss) StartDiscovery(ctx context.Context) error {
+	return nil
+}
+
+// StopDiscovery stops the current discovery session.
+func (f *Floss) StopDiscovery(ctx context.Context) error {
+	return nil
+}
+
+// Reset removes all connected and paired devices and ensures the adapter is powered.
+func (f *Floss) Reset(ctx context.Context) error {
+	return nil
+}
