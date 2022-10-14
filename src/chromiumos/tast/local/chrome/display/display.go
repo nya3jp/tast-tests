@@ -320,3 +320,11 @@ func RotateToLandscape(ctx context.Context, tconn *chrome.TestConn) (func(contex
 		return nil
 	}, nil
 }
+
+// RotationToAngle converts Info.Rotation value to RotationAngle.
+func RotationToAngle(rot int) (RotationAngle, error) {
+	if val, ok := intToRotationAngle[rot]; ok {
+		return val, nil
+	}
+	return RotateAny, errors.Errorf("invalid rotation angle %d", rot)
+}
