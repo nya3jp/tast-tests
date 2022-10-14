@@ -71,6 +71,12 @@ func (s *Session) NewConn(ctx context.Context, id target.ID) (conn *Conn, retErr
 	}, nil
 }
 
+// ActivateTarget activates (focuses) the target.
+func (c *Conn) ActivateTarget(ctx context.Context) error {
+	args := &target.ActivateTargetArgs{TargetID: c.targetID}
+	return c.cl.Target.ActivateTarget(ctx, args)
+}
+
 // Close releases the resources associated with the connection.
 func (c *Conn) Close() error {
 	// TODO(crbug.com/1020484): Return the error from rpcc.Conn.Close.
@@ -232,6 +238,7 @@ func (c *Conn) ReleaseAllObjects(ctx context.Context) error {
 // on how they occur. This function tries to return a single-line string that contains the original error.
 //
 // Eval: throw new Error("foo"):
+//
 //	.Text:                  "Uncaught"
 //	.Error:                 "runtime.ExceptionDetails: Uncaught exception at 0:0: Error: foo\n  <stack>"
 //	.Exception.Description: "Error: foo\n  <stack>"
