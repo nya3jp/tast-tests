@@ -16,8 +16,9 @@ var (
 	// should be builtin i.e. MODULE = y
 	isBuiltin = []string{}
 	// should be enabled i.e. MODULE = y or MODULE = m
+	isEnabled = []string{}
 	//  should be disabled.
-	isDissabled = []string{
+	isDisabled = []string{
 		"DRM_KMS_FB_HELPER",
 		"FB",
 		"FB_CFB_COPYAREA",
@@ -31,7 +32,6 @@ var (
 		"FB_SYS_IMAGEBLIT",
 		"FB_VIRTUAL",
 	}
-	isEnabled = []string{}
 	// should be a module i.e. MODULE = m
 	isModule = []string{}
 )
@@ -46,7 +46,7 @@ func init() {
 		Contacts: []string{"syedfaaiz@google.com",
 			"chromeos-gfx@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{},
 		Fixture:      "chromeGraphics",
 		Timeout:      5 * time.Minute,
 	})
@@ -58,46 +58,29 @@ func KernelConfig(ctx context.Context, s *testing.State) {
 		s.Fatal("an error occured : ", err)
 	}
 	// check if any builtin config is not configured
-	missingBuiltinModules := make([]string, 0)
 	for _, configKey := range isBuiltin {
-		if kernelConfigMap[configKey] != "y" {
-			missingBuiltinModules = append(missingBuiltinModules, configKey)
+		if _, exists := kernelConfigMap[configKey]; exists && kernelConfigMap[configKey] != "y" {
+			s.Error("Error, kernel is missing the following configuration: ", configKey)
 		}
-	}
-	if len(missingBuiltinModules) > 0 {
-		s.Fatal("Error, kernel is missing the following configuration(s): ", missingBuiltinModules)
 	}
 	// check if any unwanted config is enabled.
-	unwantedConfig := make([]string, 0)
-	for _, configKey := range isDissabled {
+	for _, configKey := range isDisabled {
 		if _, exists := kernelConfigMap[configKey]; exists && kernelConfigMap[configKey] != "n" {
-			s.Log(kernelConfigMap[configKey])
-			unwantedConfig = append(unwantedConfig, configKey)
+			s.Error("Error, kernel should not have the following configuration: ", configKey)
 		}
-	}
-	if len(unwantedConfig) > 0 {
-		s.Fatal("Error, kernel should not have the following configuration(s): ", unwantedConfig)
 	}
 	// check if any config is not enabled
-	unEnabledModules := make([]string, 0)
 	for _, configKey := range isEnabled {
-		if kernelConfigMap[configKey] != "y" && kernelConfigMap[configKey] != "m" {
-			unEnabledModules = append(unEnabledModules, configKey)
+		if _, exists := kernelConfigMap[configKey]; exists && kernelConfigMap[configKey] != "y" &&
+			kernelConfigMap[configKey] != "m" {
+			s.Error("Error, kernel should have the following configuration enabled:", configKey)
 		}
-	}
-	if len(unEnabledModules) > 0 {
-		s.Fatal("Error, kernel should have the following configuration(s) enabled: ", unEnabledModules)
 	}
 	// check if any module is not enabled
-	missingModules := make([]string, 0)
 	for _, configKey := range isModule {
-		if kernelConfigMap[configKey] != "m" {
-			missingModules = append(missingModules, configKey)
+		if _, exists := kernelConfigMap[configKey]; exists && kernelConfigMap[configKey] != "m" {
+			s.Error("Error, kernel is missing the following module: ", configKey)
 		}
 	}
-	if len(missingModules) > 0 {
-		s.Fatal("Error, kernel is missing the following module(s): ", missingModules)
-	}
-
 	return
 }
