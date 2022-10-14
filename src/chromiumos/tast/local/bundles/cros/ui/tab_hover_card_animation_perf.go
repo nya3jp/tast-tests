@@ -8,9 +8,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -26,18 +29,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabHoverCardAnimationPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the animation smoothness of tab hover card animation",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
-		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
+		Timeout: 4 * time.Minute,
 	})
 }
 
 func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -55,8 +71,18 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// Open two browser windows.
+	var conn *browser.Conn
+	var br *browser.Browser
+	var closeBrowser func(ctx context.Context) error
 	for i := 0; i < 2; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL)
+		if i == 0 {
+			if conn, br, closeBrowser, err = browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), ui.PerftestURL); err == nil {
+				defer closeBrowser(cleanupCtx)
+			}
+		} else {
+			conn, err = br.NewConn(ctx, ui.PerftestURL)
+		}
 		if err != nil {
 			s.Fatalf("Failed to open %d-th tab: %v", i, err)
 		}
@@ -80,6 +106,8 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find tabs: ", err)
 	}
 
+	// TODO(TBD): `cr` and `tconn` from ash-chrome should be passed to perfutil since the metrics are recorded in ash-chrome.
+	// However, any combos of (`cr` || `br`) * (`tconn` || `btconn`) don't report any data for these metrics for the lacros variant test.
 	runner := perfutil.NewRunner(cr.Browser())
 	for _, data := range []struct {
 		tab    uiauto.NodeInfo
