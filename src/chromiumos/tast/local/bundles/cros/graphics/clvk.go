@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/graphics/expectations"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
 )
@@ -55,6 +56,18 @@ func Clvk(ctx context.Context, s *testing.State) {
 	// Allow to see clvk error and warn messages directly in test logFile.
 	os.Setenv("CLVK_LOG", "2")
 
+	expectation, err := expectations.GetTestExpectation(ctx, s.TestName())
+	if err != nil {
+		s.Fatal("Failed to load test expectation: ", err)
+	}
+	// Schedules a post-test expectations handling. If the test is expected to
+	// fail, but did not, then this generates an error.
+	defer func() {
+		if err := expectation.HandleFinalExpectation(); err != nil {
+			s.Error("Unmet expectation: ", err)
+		}
+	}()
+
 	const testPath = "/usr/local/opencl"
 	testExec := filepath.Join(testPath, test.exe)
 	logFile := filepath.Join(s.OutDir(), filepath.Base(test.exe)+".txt")
@@ -64,10 +77,13 @@ func Clvk(ctx context.Context, s *testing.State) {
 		).Run(ctx); err != nil && report != nil {
 			passedTests := report.PassedTestNames()
 			failedTests := report.FailedTestNames()
-			s.Errorf("Passed %d tests, failed %d tests (%s)",
-				len(passedTests), len(failedTests), failedTests)
+			if expErr := expectation.ReportErrorf("Passed %d tests, failed %d tests (%s) - %v", len(passedTests), len(failedTests), failedTests, err); expErr != nil {
+				s.Error("Unexpected error: ", expErr)
+			}
 		} else if err != nil && report == nil {
-			s.Fatal("Failed to run api_tests: ", err)
+			if expErr := expectation.ReportError(err); expErr != nil {
+				s.Error("Unexpected error: ", expErr)
+			}
 		}
 	} else {
 		f, err := os.Create(logFile)
@@ -80,7 +96,9 @@ func Clvk(ctx context.Context, s *testing.State) {
 		cmd.Stdout = f
 		cmd.Stderr = f
 		if err = cmd.Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to run ", testExec, ": ", err)
+			if expErr := expectation.ReportError(err); expErr != nil {
+				s.Error("Unexpected error: ", expErr)
+			}
 		}
 	}
 }
