@@ -218,7 +218,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	if traceConfigPath != "" {
 		recorder.EnableTracing(outDir, traceConfigPath)
 	}
-	run := func(ctx context.Context, videoSource VideoSrc) error {
+	run := func(ctx context.Context, videoSource VideoSrc) (retErr error) {
 		var videoApp VideoApp
 		switch appName {
 		case YoutubeWeb:
@@ -236,7 +236,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		defer func(ctx context.Context) {
 			if appName == YoutubeWeb {
 				// Before closing the youtube site outside the recorder, dump the UI tree to capture a screenshot.
-				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return true }, cr, "ui_dump")
+				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 				if bt == browser.TypeLacros {
 					// For lacros, leave a new tab to keep the browser alive for further testing.
 					if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, bTconn); err != nil {
