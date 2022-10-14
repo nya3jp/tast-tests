@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad3ed7bc_dcde7876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2539,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-14T05:36:11Z",
+      "side": 1,
+      "message": "Resolving to merge. Important CL to make the test green.",
+      "parentUuid": "a1b87bfa_fd4a8f8c",
+      "range": {
+        "startLine": 2539,
+        "startChar": 74,
+        "endLine": 2539,
+        "endChar": 83
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac72d12_cfe1d2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
         "patchSetId": 8
