@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b102f1_6a515c7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-14T00:00:01Z",
+      "side": 1,
+      "message": "Thank you! PTAL.",
+      "revId": "d3a391e70619fd1ee1467b1467ccf9f378deb412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1ebc83d_3eface33",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-10-13T23:56:07Z",
       "side": 1,
       "message": "This will poll every 300ms, but when does it timeout? Is there a default timeout somewhere?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "d3a391e70619fd1ee1467b1467ccf9f378deb412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc443342_81fdc48c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-14T00:00:01Z",
+      "side": 1,
+      "message": "Yes, the default is 1 min.\n\nhttps://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/cros/cmd/cros-tool-runner/internal/common/poll.go;l\u003d43;drc\u003d1f35ece552e4fd1784d173b59b5af5db2fd8751e",
+      "parentUuid": "b1ebc83d_3eface33",
       "range": {
         "startLine": 120,
         "startChar": 4,
