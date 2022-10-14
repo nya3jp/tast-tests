@@ -93,6 +93,30 @@
       },
       "revId": "42b96da0fe90567b778d5052f5a4f779f7188b23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9489bb7b_099f7ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_to_arc_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-14T06:01:45Z",
+      "side": 1,
+      "message": "Wait. I think it is weird, you passed 2 contexts to this function. \n\narcvpn.SetUpHostVPN is not well defined. If should be just as below:\n\nconn, cleanup, err :\u003d arcvpn.SetUpHostVPN(ctx)\ndefer cleanup(cleanupCtx)\n\nAt http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go?l\u003d48\n\nfunc SetUpHostVPNWithConfig(ctx, context.Context, config vpn.Config) (*vpn.Connection, func(ctx context.Context) error, error) {\n\tconn, err :\u003d vpn.NewConnection(ctx, config)\n\tif err !\u003d nil {\n\t\treturn nil, nil, errors.Wrap(err, \"failed to create connection object\")\n\t}\n\tif err :\u003d conn.SetUp(ctx); err !\u003d nil {\n\t\treturn nil, nil, errors.Wrap(err, \"failed to setup VPN\")\n\t}\n\treturn conn, func(ctx context.Context) error { return conn.Cleanup(ctx) }, nil\n}",
+      "parentUuid": "784ed05c_cc495447",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "42b96da0fe90567b778d5052f5a4f779f7188b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
