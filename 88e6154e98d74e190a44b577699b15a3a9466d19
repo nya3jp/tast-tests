@@ -51,6 +51,24 @@
       "parentUuid": "49da01f7_c55591d7",
       "revId": "88e6154e98d74e190a44b577699b15a3a9466d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39507c4d_be534d8f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T17:27:18Z",
+      "side": 1,
+      "message": "Done. PTAL",
+      "parentUuid": "b6a61e3e_6b013942",
+      "revId": "88e6154e98d74e190a44b577699b15a3a9466d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
