@@ -70,6 +70,24 @@
       "parentUuid": "47cdedbf_b1701bbe",
       "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88db09a7_a2b1d751",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-14T02:46:37Z",
+      "side": 1,
+      "message": "I\u0027d leave it as it was - if the test keeps flaking out with a smaller app, we can up the timeout",
+      "parentUuid": "3f755a22_3abad576",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
