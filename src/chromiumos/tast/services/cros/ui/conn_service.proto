@@ -1,0 +1,86 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ConnService provides functions for interacting with conn directly.
+service ConnService {
+  // NewConn opens a new tab with the provided url and creates a new Conn for it.
+  rpc NewConn(NewConnRequest) returns (NewConnResponse) {}
+
+  // NewConnForTarget creates a new Conn for an existing tab matching the url provided.
+  rpc NewConnForTarget(NewConnForTargetRequest) returns (NewConnResponse) {}
+
+  // Close calls conn.Close.
+  rpc Close(CloseRequest) returns (google.protobuf.Empty) {}
+
+  // CloseAll closes all conns.
+  rpc CloseAll(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ActivateTarget calls conn.ActivateTarget to bring focus to the tab/window.
+  rpc ActivateTarget(ActivateTargetRequest) returns (google.protobuf.Empty) {}
+
+  // Navigate calls conn.Navigate to navigate the tab to the url.
+  rpc Navigate(NavigateRequest) returns (google.protobuf.Empty) {}
+
+  // Eval evaluates expr on the given page. See Conn.Eval for details.
+  rpc Eval(ConnEvalRequest) returns (google.protobuf.Value) {}
+
+  // Call calls the javascript fn with given args. See Conn.Call for details
+  rpc Call(ConnCallRequest) returns (google.protobuf.Value) {}
+
+  // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+  // Errors returned by Eval are treated the same as expr == false unless fail_on_err is true.
+  rpc WaitForExpr(ConnWaitForExprRequest) returns (google.protobuf.Empty) {}
+}
+
+message NewConnRequest {
+  string url = 1;
+}
+
+message NewConnResponse {
+  uint32 id = 1;
+}
+
+message NewConnForTargetRequest {
+  string url = 1;
+}
+
+message CloseRequest {
+  uint32 id = 1;
+}
+
+message ActivateTargetRequest {
+  uint32 id = 1;
+}
+
+message NavigateRequest {
+  uint32 id = 1;
+  string url =2;
+}
+
+message ConnEvalRequest {
+  uint32 id = 1;
+  string expr = 2;
+}
+
+message ConnCallRequest {
+  uint32 id = 1;
+  string fn = 2;
+  repeated google.protobuf.Value args = 3;
+}
+
+message ConnWaitForExprRequest {
+  uint32 id = 1;
+  string expr = 2;
+  uint32 timeout_secs = 3;
+  bool fail_on_err = 4;
+}
