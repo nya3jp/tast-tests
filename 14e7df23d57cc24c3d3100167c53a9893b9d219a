@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d087ee4_3449855d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T18:38:53Z",
+      "side": 1,
+      "message": "CQ failures don\u0027t seem to be related to this change, but b/253580973. Waiting for it to be resolved.",
+      "revId": "14e7df23d57cc24c3d3100167c53a9893b9d219a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
