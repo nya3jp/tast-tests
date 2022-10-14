@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -40,6 +40,7 @@ func init() {
 			"ui.wpr_http_addr",
 			"ui.wpr_https_addr",
 		},
+		Data: []string{tabswitchcuj.ZipFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic",
@@ -173,5 +174,6 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel = ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
+
 	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode, p.browserType)
 }
