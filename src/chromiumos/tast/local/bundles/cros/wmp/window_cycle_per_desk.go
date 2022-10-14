@@ -34,6 +34,11 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "no_kernel_upstream"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Navigate to a window in the current desk.
+			Value: "screenplay-56a6ba3c-d691-4eb7-a487-ca25effa4288",
+		}},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
 		}, {

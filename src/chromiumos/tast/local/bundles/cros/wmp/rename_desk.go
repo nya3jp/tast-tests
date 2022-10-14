@@ -32,7 +32,12 @@ func init() {
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Rename desks.
+			Value: "screenplay-88d0d385-f273-448a-912f-54ae1093959a",
+		}},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 	})

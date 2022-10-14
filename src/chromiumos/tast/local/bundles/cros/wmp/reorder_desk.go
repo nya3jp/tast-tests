@@ -51,7 +51,12 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Drag desk to reorder.
+			Value: "screenplay-f64b4ed7-ca0e-4ea4-85b9-99254079ebde",
+		}},
+		Fixture: "chromeLoggedIn",
 		Params: []testing.Param{
 			{
 				Name: "mouse",
