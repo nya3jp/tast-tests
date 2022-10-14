@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
@@ -132,7 +133,6 @@ func Run(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up desks: ", err)
 	}
-	numDesks := len(onVisitActions)
 
 	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
 	if err != nil {
@@ -152,7 +152,25 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		activeDesk := numDesks - 1
+		// Open a window within recorder.Run to ensure we collect
+		// PageLoad.PaintTiming.NavigationToFirstContentfulPaint.
+		slidesURL, err := cuj.GetTestSlidesURL()
+		if err != nil {
+			return errors.Wrap(err, "failed to get Google Slides URL")
+		}
+
+		slidesConn, err := cuj.NewTabByURL(ctx, cs, true, slidesURL)
+		if err != nil {
+			return errors.Wrap(err, "failed to open a Google Slides presentation")
+		}
+		expectedNumWindows++
+
+		info, err := ash.GetDesksInfo(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the active desk index")
+		}
+		activeDesk := info.ActiveDeskIndex
+
 		for _, deskSwitcher := range []deskSwitchWorkflow{
 			getKeyboardSearchBracketWorkflow(tconn, kw),
 			getKeyboardSearchNumberWorkflow(tconn, kw),
@@ -213,6 +231,12 @@ func Run(ctx context.Context, s *testing.State) {
 
 			s.Logf("Switched desk by %s %d times", deskSwitcher.name, cycles)
 		}
+
+		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		if err := slidesConn.Conn.Navigate(ctx, "chrome://version"); err != nil {
+			return errors.Wrap(err, "failed to navigate to chrome://version")
+		}
+
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
