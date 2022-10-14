@@ -52,6 +52,24 @@
       "parentUuid": "b2b12c4f_080e5c53",
       "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f755a22_3abad576",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-10-14T02:03:41Z",
+      "side": 1,
+      "message": "Thank you for your reply, and should we keep 10 minutes here? or we change it back to 5 minutes?",
+      "parentUuid": "47cdedbf_b1701bbe",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
