@@ -290,7 +290,8 @@ func WriteImageFromMultiSectionFile(ctx context.Context, path string, sec ImageS
 	case EmptyImageSection:
 		frArgs = append(frArgs, "-w", path)
 	default:
-		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", sec, path), "-w")
+		// This specific syntax is required to flash a single section from a file with multiple sections on it.
+		frArgs = append(frArgs, "-i", string(sec), "-w", path)
 	}
 
 	if err := testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
