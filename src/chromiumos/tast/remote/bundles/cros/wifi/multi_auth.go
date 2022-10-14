@@ -6,11 +6,27 @@ package wifi
 
 import (
 	"context"
+	"fmt"
 
+	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
+)
+
+type multiAuthParam struct {
+	name0 string
+	cfg0  security.ConfigFactory
+	name1 string
+	cfg1  security.ConfigFactory
+}
+
+// EAP certs/keys for EAP tests.
+var (
+	multiAuthCert = certificate.TestCert1()
 )
 
 func init() {
@@ -27,59 +43,85 @@ func init() {
 }
 
 func MultiAuth(ctx context.Context, s *testing.State) {
-	tf := s.FixtValue().(*wificell.TestFixture)
+	testOnce := func(ctx context.Context, s *testing.State, name0 string, cfg0 security.ConfigFactory, name1 string, cfg1 security.ConfigFactory) {
+		tf := s.FixtValue().(*wificell.TestFixture)
 
-	apOpts := []hostapd.Option{hostapd.SSID(hostapd.RandomSSID("TAST_TEST_MultiAuth")), hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}
-	wpaCfg := wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP))
+		apOpts := []hostapd.Option{hostapd.SSID(hostapd.RandomSSID("TAST_TEST_MultiAuth")), hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}
 
-	s.Log("Configuring AP 0 (Open)")
-	ap0, err := tf.ConfigureAP(ctx, apOpts, nil)
-	if err != nil {
-		s.Fatal("Failed to configure AP 0: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.DeconfigAP(ctx, ap0); err != nil {
-			s.Error("Failed to deconfig AP 0: ", err)
+		s.Logf("Configuring AP 0 (%s)", name0)
+		ap0, err := tf.ConfigureAP(ctx, apOpts, cfg0)
+		if err != nil {
+			s.Fatal("Failed to configure AP 0: ", err)
 		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap0)
-	defer cancel()
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap0); err != nil {
+				s.Error("Failed to deconfig AP 0: ", err)
+			}
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap0)
+		defer cancel()
 
-	s.Log("Configuring AP 1 (WPA)")
-	ap1, err := tf.ConfigureAP(ctx, apOpts, wpaCfg)
-	if err != nil {
-		s.Fatal("Failed to configure AP 1: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.DeconfigAP(ctx, ap1); err != nil {
-			s.Error("Failed to deconfig AP 1: ", err)
+		s.Logf("Configuring AP 1 (%s)", name1)
+		ap1, err := tf.ConfigureAP(ctx, apOpts, cfg1)
+		if err != nil {
+			s.Fatal("Failed to configure AP 1: ", err)
 		}
-	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
-	defer cancel()
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap1); err != nil {
+				s.Error("Failed to deconfig AP 1: ", err)
+			}
+		}(ctx)
+		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+		defer cancel()
 
-	s.Log("Connecting to AP 0")
-	if _, err := tf.ConnectWifiAP(ctx, ap0); err != nil {
-		s.Fatal("Failed to connect to AP 0: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.CleanDisconnectWifi(ctx); err != nil {
-			s.Error("Failed to disconnect WiFi: ", err)
+		s.Log("Connecting to AP 0")
+		if _, err := tf.ConnectWifiAP(ctx, ap0); err != nil {
+			s.Fatal("Failed to connect to AP 0: ", err)
 		}
-	}(ctx)
-	ctx, cancel = tf.ReserveForDisconnect(ctx)
-	defer cancel()
-	s.Log("Verifying connection to AP 0")
-	if err := tf.VerifyConnection(ctx, ap0); err != nil {
-		s.Fatal("Failed to verify connection: ", err)
+		defer func(ctx context.Context) {
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
+				s.Error("Failed to disconnect WiFi: ", err)
+			}
+		}(ctx)
+		ctx, cancel = tf.ReserveForDisconnect(ctx)
+		defer cancel()
+		s.Log("Verifying connection to AP 0")
+		if err := tf.VerifyConnection(ctx, ap0); err != nil {
+			s.Fatal("Failed to verify connection: ", err)
+		}
+
+		s.Log("Connecting to AP 1")
+		if _, err := tf.ConnectWifiAP(ctx, ap1); err != nil {
+			s.Fatal("Failed to connect to AP 1: ", err)
+		}
+		s.Log("Verifying connection to AP 1")
+		if err := tf.VerifyConnection(ctx, ap1); err != nil {
+			s.Fatal("Failed to verify connection: ", err)
+		}
 	}
 
-	s.Log("Connecting to AP 1")
-	if _, err := tf.ConnectWifiAP(ctx, ap1); err != nil {
-		s.Fatal("Failed to connect to AP 1: ", err)
+	testcases := []multiAuthParam{
+		{
+			name0: "Open",
+			cfg0:  nil,
+			name1: "WPA",
+			cfg1:  wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
+		},
+		{
+
+			name0: "Open",
+			cfg0:  wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
+			name1: "WPA-EAP",
+			cfg1:  wpaeap.NewConfigFactory(multiAuthCert.CACred.Cert, multiAuthCert.ServerCred, wpaeap.ClientCACert(multiAuthCert.CACred.Cert), wpaeap.ClientCred(multiAuthCert.ClientCred)),
+		},
 	}
-	s.Log("Verifying connection to AP 1")
-	if err := tf.VerifyConnection(ctx, ap1); err != nil {
-		s.Fatal("Failed to verify connection: ", err)
+	for i, tc := range testcases {
+		subtest := func(ctx context.Context, s *testing.State) {
+			testOnce(ctx, s, tc.name0, tc.cfg0, tc.name1, tc.cfg1)
+		}
+		if !s.Run(ctx, fmt.Sprintf("Testcase #%d (%s vs %s)", i, tc.name0, tc.name1), subtest) {
+			// Stop if one of the subtest's parameter set fails the test.
+			return
+		}
 	}
 }
