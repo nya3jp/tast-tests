@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/graphics/expectations"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
 )
@@ -55,6 +56,12 @@ func Clvk(ctx context.Context, s *testing.State) {
 	// Allow to see clvk error and warn messages directly in test logFile.
 	os.Setenv("CLVK_LOG", "2")
 
+	expectation, err := expectations.GetTestExpectation(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to load test expectation: ", err)
+	}
+	defer expectation.HandleFinalExpectation(s)
+
 	const testPath = "/usr/local/opencl"
 	testExec := filepath.Join(testPath, test.exe)
 	logFile := filepath.Join(s.OutDir(), filepath.Base(test.exe)+".txt")
@@ -64,15 +71,14 @@ func Clvk(ctx context.Context, s *testing.State) {
 		).Run(ctx); err != nil && report != nil {
 			passedTests := report.PassedTestNames()
 			failedTests := report.FailedTestNames()
-			s.Errorf("Passed %d tests, failed %d tests (%s)",
-				len(passedTests), len(failedTests), failedTests)
+			expectation.Errorf(s, "Passed %d tests, failed %d tests (%s) - %v", len(passedTests), len(failedTests), failedTests, err)
 		} else if err != nil && report == nil {
-			s.Fatal("Failed to run api_tests: ", err)
+			expectation.Fatal(s, "Failed to run api_tests: ", err)
 		}
 	} else {
 		f, err := os.Create(logFile)
 		if err != nil {
-			s.Fatal("Failed to create a log file: ", err)
+			expectation.Fatal(s, "Failed to create a log file: ", err)
 		}
 		defer f.Close()
 
@@ -80,7 +86,7 @@ func Clvk(ctx context.Context, s *testing.State) {
 		cmd.Stdout = f
 		cmd.Stderr = f
 		if err = cmd.Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to run ", testExec, ": ", err)
+			expectation.Fatal(s, "Failed to run ", testExec, ": ", err)
 		}
 	}
 }
