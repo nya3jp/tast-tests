@@ -270,5 +270,7 @@ func init() {
 }
 
 func DlpScreenshotReporting(ctx context.Context, s *testing.State) {
+
 	dlputil.ValidateActionReporting(ctx, s, dlputil.Screenshot)
+
 }
