@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e83a560_9d9df34e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:45:41Z",
+      "side": 1,
+      "message": "Any other fingerprint tests that would have the same problem?",
+      "revId": "be72c94bf1cd7c1b35c657648b30bc72d1fd174f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
