@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a07d39f_e2fb934f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-14T17:10:42Z",
+      "side": 1,
+      "message": "10 sec feels a bit long. Anything bad can happen if we choose a shorter interval?",
+      "revId": "fe14ae9557027f1355723dd835c365f381458b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9d6d1b_eab45a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-14T17:10:42Z",
+      "side": 1,
+      "message": "From the context and comment, this should be Play Store (What is \"asset browser\"?). How about that we change the function signature to reflect that?",
+      "revId": "fe14ae9557027f1355723dd835c365f381458b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
