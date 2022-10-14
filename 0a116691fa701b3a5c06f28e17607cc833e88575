@@ -121,6 +121,30 @@
       },
       "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713da856_574cf54c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-14T11:10:25Z",
+      "side": 1,
+      "message": "Fixed, no need to click the Ethernet network, sorry for the misunderstanding.",
+      "parentUuid": "ee4878e6_d630c4d0",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "0a116691fa701b3a5c06f28e17607cc833e88575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
