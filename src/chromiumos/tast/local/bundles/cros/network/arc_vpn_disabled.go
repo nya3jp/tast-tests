@@ -40,11 +40,11 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 
 	a := s.FixtValue().(*arc.PreData).ARC
 
-	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx, cleanupCtx)
+	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx)
 	if err != nil {
 		s.Fatal("Failed to setup host VPN: ", err)
 	}
-	defer cleanup()
+	defer cleanup(cleanupCtx)
 
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
