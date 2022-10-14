@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -8,11 +8,26 @@ package bluez
 
 import (
 	"context"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/testing"
 )
 
 // BlueZ provides an implementation of the Bluetooth interface used by
 // Bluetooth tests so that we can ensure coverage using BlueZ.
 type BlueZ struct {
+}
+
+func getAdapter(ctx context.Context) (*Adapter, error) {
+	adapters, err := Adapters(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Bluetooth adapters")
+	}
+	if len(adapters) != 1 {
+		return nil, errors.Errorf("expected 1 adapter, got %d adapters", len(adapters))
+	}
+	return adapters[0], nil
 }
 
 // Enable powers on the adapter.
@@ -28,4 +43,75 @@ func (b *BlueZ) PollForAdapterState(ctx context.Context, exp bool) error {
 // PollForEnabled polls the bluetooth adapter state until the adapter is powered on.
 func (b *BlueZ) PollForEnabled(ctx context.Context) error {
 	return PollForBTEnabled(ctx)
+}
+
+// Devices returns information on the devices known to BlueZ.
+func (b *BlueZ) Devices(ctx context.Context) ([]*bluetooth.DeviceInfo, error) {
+	devices, err := Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+	var deviceInfos = make([]*bluetooth.DeviceInfo, len(devices))
+	for i, device := range devices {
+		address, err := device.Address(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get the address of the device")
+		}
+		name, err := device.Name(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get the name of the device with address: ", address)
+		}
+		deviceInfos[i] = &bluetooth.DeviceInfo{
+			Address: address,
+			Name:    name,
+		}
+	}
+	return deviceInfos, nil
+}
+
+// StartDiscovery starts discovery.
+func (b *BlueZ) StartDiscovery(ctx context.Context) error {
+	adapter, err := getAdapter(ctx)
+	if err != nil {
+		return err
+	}
+	return adapter.StartDiscovery(ctx)
+}
+
+// StopDiscovery stops discovery.
+func (b *BlueZ) StopDiscovery(ctx context.Context) error {
+	adapter, err := getAdapter(ctx)
+	if err != nil {
+		return err
+	}
+	return adapter.StopDiscovery(ctx)
+}
+
+// Reset removes all connected and paired devices and ensures the adapter is powered.
+func (b *BlueZ) Reset(ctx context.Context) error {
+	adapter, err := getAdapter(ctx)
+	if err != nil {
+		return err
+	}
+	if discovering, err := adapter.Discovering(ctx); err != nil {
+		return errors.Wrap(err, "failed to determine if the adapter is discovering")
+	} else if discovering {
+		if err = adapter.StopDiscovery(ctx); err != nil {
+			return err
+		}
+	}
+	devices, err := Devices(ctx)
+	if err != nil {
+		return err
+	}
+	for _, device := range devices {
+		adapter.RemoveDevice(ctx, device.Path())
+	}
+	if err = Enable(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable Bluetooth")
+	}
+	if err = PollForBTEnabled(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for Bluetooth to become enabled")
+	}
+	return nil
 }
