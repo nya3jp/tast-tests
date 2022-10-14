@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c45b5bc_8452cf6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-14T00:51:42Z",
+      "side": 1,
+      "message": "Please run tast unit test before CQ+2: fast_build.sh -T \n\nThen add this line to commit log.\n\nTEST\u003dtast unit test passed.\n\nThanks",
+      "revId": "1e1829c4598ba8f855b516f5bcd50aa8db0c1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
