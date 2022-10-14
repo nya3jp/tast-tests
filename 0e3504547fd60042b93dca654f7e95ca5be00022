@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b32d86b_11b3ecf5",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T20:58:08Z",
+      "side": 1,
+      "message": "nit: `than`",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "0e3504547fd60042b93dca654f7e95ca5be00022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd3977f_333bdb9a",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T20:58:08Z",
+      "side": 1,
+      "message": "I think this will only use the first eight bytes, so for example it wouldn\u0027t distinguish between nautilus and nautiluslte. I suggest doing this instead:\n\nhttps://stackoverflow.com/questions/13582519/how-to-generate-hash-number-of-a-string-in-go",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 40
+      },
+      "revId": "0e3504547fd60042b93dca654f7e95ca5be00022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
