@@ -34,6 +34,11 @@ func init() {
 		// Disabled due to <1% pass rate over 30 days. See b/241943747
 		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Switch desks.
+			Value: "screenplay-353dbfd4-4666-4e1f-be6c-7a210f95069d",
+		}},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
 			Val:     browser.TypeAsh,
