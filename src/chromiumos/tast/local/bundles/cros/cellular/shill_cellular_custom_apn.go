@@ -62,6 +62,10 @@ func ShillCellularCustomApn(ctx context.Context, s *testing.State) {
 	clearAttachCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer func(ctx context.Context) {
+		// b/253685780: This test sets a bad attach APN on purpose, so we need to fix the attach APN on
+		// vilboz since clearing the attach APN is not possible in that variant.
+		cellular.CheckIfVilbozVerizonAndFixAttachAPN(ctx)
+
 		if err := modemmanager.SetInitialEpsBearerSettings(ctx, modem3gpp, map[string]interface{}{"apn": ""}); err != nil {
 			testing.ContextLog(ctx, "Failed to clear the initial EPS bearer settings: ", err)
 		}
