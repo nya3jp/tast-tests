@@ -253,7 +253,7 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 			defer conn2.Close()
 
 			// Check which cookies got created.
-			conn3, err := br.NewConn(ctx, "chrome://settings/siteData")
+			conn3, err := br.NewConn(ctx, "chrome://settings/content/all")
 			if err != nil {
 				s.Fatal("Failed to connect to the browser: ", err)
 			}
@@ -263,7 +263,7 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 			localhostText := nodewith.NameStartingWith("localhost").Role(role.StaticText)
 			ipButton := nodewith.NameStartingWith("127.0.0.1").Role(role.Button)
 			expandButton := nodewith.NameStartingWith("127.0.0.1").Role(role.Button).ClassName("icon-expand-more")
-			removeAllButton := nodewith.Name("Remove All").Role(role.Button)
+			removeAllButton := nodewith.Name("Clear All Data").Role(role.Button)
 			confirmRemoveAllButton := nodewith.Name("Clear all").Role(role.Button)
 
 			// The removeAllButton is labeled "Clear all data" for non-Google Chromium
