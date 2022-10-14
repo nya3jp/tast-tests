@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967c525d_c78c6383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-14T23:11:08Z",
+      "side": 1,
+      "message": "Hi, Ahmed and tast-test owner! Could you help me review this cl? Thanks!!",
+      "revId": "cb751fc4fc85ea1b9be3c1940f9be0138065b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
