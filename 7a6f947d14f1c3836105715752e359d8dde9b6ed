@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70282f9_0a444dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-14T07:17:11Z",
+      "side": 1,
+      "message": "Is a crostini+lacros variant not important?",
+      "revId": "7a6f947d14f1c3836105715752e359d8dde9b6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d8a952_cd29cd68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-14T07:17:11Z",
+      "side": 1,
+      "message": "lacros",
+      "revId": "7a6f947d14f1c3836105715752e359d8dde9b6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f5a66aa_69137785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-14T07:17:11Z",
+      "side": 1,
+      "message": "lacros",
+      "revId": "7a6f947d14f1c3836105715752e359d8dde9b6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbc0029_cd0e3837",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-14T07:17:11Z",
+      "side": 1,
+      "message": "Please add a comment that tconn is for Ash.",
+      "revId": "7a6f947d14f1c3836105715752e359d8dde9b6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbdad65_f0ecc9c0",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-14T07:17:11Z",
+      "side": 1,
+      "message": "Why is this a pointer?",
+      "revId": "7a6f947d14f1c3836105715752e359d8dde9b6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
