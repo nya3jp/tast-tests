@@ -44,11 +44,11 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 
 	a := s.FixtValue().(*arc.PreData).ARC
 
-	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx, cleanupCtx)
+	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx)
 	if err != nil {
 		s.Fatal("Failed to setup host VPN: ", err)
 	}
-	defer cleanup()
+	defer cleanup(cleanupCtx)
 
 	// Check that if ArcHostVpnService is stopped unexpectedly (simulating some sort
 	// of error), the host VPN is still reachable from within ARC.
