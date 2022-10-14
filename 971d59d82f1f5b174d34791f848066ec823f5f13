@@ -16,6 +16,46 @@
       "message": "Still LGTM :)",
       "revId": "971d59d82f1f5b174d34791f848066ec823f5f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7b533d_e8891ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_non_applicable_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-14T15:12:49Z",
+      "side": 1,
+      "message": "is this going to run in any suites or just manually?",
+      "revId": "971d59d82f1f5b174d34791f848066ec823f5f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a74330a_32fc4cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_non_applicable_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-14T15:12:49Z",
+      "side": 1,
+      "message": "shouldn\u0027t this just be in the regular HardwareDeps for the test?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "971d59d82f1f5b174d34791f848066ec823f5f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
