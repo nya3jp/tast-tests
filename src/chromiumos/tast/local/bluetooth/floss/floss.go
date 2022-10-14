@@ -7,6 +7,8 @@ package floss
 
 import (
 	"context"
+
+	"chromiumos/tast/local/bluetooth"
 )
 
 // Floss provides an implementation of the Bluetooth interface used by
@@ -27,4 +29,24 @@ func (f *Floss) PollForAdapterState(ctx context.Context, exp bool) error {
 // PollForEnabled polls the bluetooth adapter state until the adapter is enabled.
 func (f *Floss) PollForEnabled(ctx context.Context) error {
 	return PollForEnabled(ctx)
+}
+
+// Devices returns information on the devices known to Floss.
+func (f *Floss) Devices(ctx context.Context) ([]*bluetooth.DeviceInfo, error) {
+	return []*bluetooth.DeviceInfo{}, nil
+}
+
+// StartDiscovery starts a discovery session.
+func (f *Floss) StartDiscovery(ctx context.Context) error {
+	return nil
+}
+
+// StopDiscovery stops the current discovery session.
+func (f *Floss) StopDiscovery(ctx context.Context) error {
+	return nil
+}
+
+// Reset removes all connected and paired devices and ensures the adapter is powered.
+func (f *Floss) Reset(ctx context.Context) error {
+	return nil
 }
