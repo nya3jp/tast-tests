@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5123faff_9105b4a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T17:09:35Z",
+      "side": 1,
+      "message": "+tbarzic for test author\u0027s review\n+hidehiko, edcourtney for tast owner\u0027s review",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
