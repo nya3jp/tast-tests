@@ -197,13 +197,15 @@ func (r *Runner) RunMultiple(ctx context.Context, name string, scenario Scenario
 	return nil
 }
 
-// RunMultiple is a utility to create a new runner, conduct runs multiple times,
-// and returns the recorded values.
-func RunMultiple(ctx context.Context, br *browser.Browser, scenario ScenarioFunc, store StoreFunc) *Values {
+// RunMultipleAndSave is a utility to create a new runner, conduct runs multiple times,
+// and save the recorded values.
+func RunMultipleAndSave(ctx context.Context, outDir string, br *browser.Browser, scenario ScenarioFunc, store StoreFunc) error {
 	r := NewRunner(br)
 	if err := r.RunMultiple(ctx, "", scenario, store); err != nil {
-		return nil
+		return err
 	}
-
-	return r.Values()
+	if err := r.Values().Save(ctx, outDir); err != nil {
+		return errors.Wrap(err, "failed to save results")
+	}
+	return nil
 }
