@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 	"chromiumos/tast/testing/wlan"
 )
 
@@ -21,6 +22,17 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		Attr: []string{"group:mainline", "group:wificell", "wificell_func", "wificell_dut_validation", "group:firmware", "firmware_ec", "group:labqual"},
+		Params: []testing.Param{
+			{
+				// This test only runs on devices which do not use VPD SAR tables.
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiNoVpdSar()),
+			},
+			{
+				// This test only runs on devices which use VPD SAR tables.
+				Name:              "vpd",
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiVpdSar()),
+			},
+		},
 	})
 }
 
