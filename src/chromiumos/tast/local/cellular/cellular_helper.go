@@ -16,10 +16,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -97,6 +99,8 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 		}
 	}
 
+	CheckIfVilbozVerizonAndFixAttachAPN(ctx)
+
 	// Start collecting DBus logs
 	if err := helper.CaptureDBusLogs(ctx); err != nil {
 		testing.ContextLog(ctx, "Warning: Unable to start DBus log capture: ", err)
@@ -131,6 +135,25 @@ func NewHelperWithLabels(ctx context.Context, labels []string) (*Helper, error) 
 	}
 
 	return helper, nil
+}
+
+// CheckIfVilbozVerizonAndFixAttachAPN checks if the device is a vilboz with a verizon SIM card,
+// and tries to fix the attach APN if that's the case. This is needed because there are 2 bugs
+// in the modem FW that prevent clearing the attach APN(b/253685780).
+func CheckIfVilbozVerizonAndFixAttachAPN(ctx context.Context) {
+	if modem, err := modemmanager.NewModem(ctx); err == nil {
+		if variant, err := GetDeviceVariant(ctx); err == nil && variant == "vilboz" {
+			if operatorID, err := modem.GetOperatorIdentifier(ctx); err == nil && operatorID == "311480" {
+				if modem3gpp, err := modem.GetModem3gpp(ctx); err == nil {
+					testing.ContextLog(ctx, "Verizon Vilboz device: Try fixing the attach APN")
+					if err := modemmanager.SetInitialEpsBearerSettings(ctx, modem3gpp, map[string]interface{}{"apn": "vzwinternet", "ip-type": mmconst.BearerIPFamilyIPv4v6}); err != nil {
+						testing.ContextLog(ctx, "Failed to set initial EPS bearer settings: ", err)
+					}
+				}
+			}
+
+		}
+	}
 }
 
 // WaitForEnabledState polls for the specified enable state for cellular.

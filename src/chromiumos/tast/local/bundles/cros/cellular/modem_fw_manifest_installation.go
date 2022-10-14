@@ -168,4 +168,8 @@ func cleanUp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop modemfwd: ", err)
 	}
 	s.Log("modemfwd has started successfully")
+
+	// b/253685780: This test flashes a new FW image, and on vilboz, the FW always gets reset
+	// to 'fast.t-mobile.com' even if the SIM card is a verizon SIM card.
+	cellular.CheckIfVilbozVerizonAndFixAttachAPN(ctx)
 }
