@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d366ace_82fb3b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "New",
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2cc6f5_18c53362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "nit: are",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004048e7_3f64fe13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "it is difficult to understand this sentence",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dff137_44daef80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "comma should be before the parameter comment",
+      "range": {
+        "startLine": 98,
+        "startChar": 60,
+        "endLine": 98,
+        "endChar": 76
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8939fc1_a728264a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "It is confusing that this function adds only Password2Label but Password1Label is also checked, after successful authentication.",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b6cfef_a0cad2a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "Call invalidateAuthSession on the first AuthSession.",
+      "range": {
+        "startLine": 155,
+        "startChar": 23,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb63e187_7fc98379",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "this comment belongs to \u0027false\u0027 I believe",
+      "range": {
+        "startLine": 163,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 75
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c402428f_da88ca7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "please add explanation for what \u0027true\u0027 means",
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7922fa_d082c08c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "comma in the wrong place",
+      "range": {
+        "startLine": 264,
+        "startChar": 86,
+        "endLine": 264,
+        "endChar": 88
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57eb2f8e_7b7d3c2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "adding parameter comments as wrong_password, correct_password would help reading",
+      "range": {
+        "startLine": 282,
+        "startChar": 61,
+        "endLine": 282,
+        "endChar": 127
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8de8c8_47ed9fc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "Comment in the wrong place?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 55
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0837eaff_dd044ef3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "No need to start AuthSession again, if the intent is to update a second factor",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 130
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d414f44c_89432cbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "I think this should be PreparePersistentVault",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 62
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c40eab_6899f01a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "No need to start a new AuthSession I believe",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727d1184_6d7b9cd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "comma in wrong place",
+      "range": {
+        "startLine": 318,
+        "startChar": 74,
+        "endLine": 318,
+        "endChar": 76
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e8a78d_c980fd44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "I see this duplication is intentional but I don\u0027t think this makes sense since we cant\u0027 check whether this takes the lightsec path or not.",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe3aea2_09e32f06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "I suggest CryptohomeAuthFactorValidity. Factor is not obvious to everyone",
+      "range": {
+        "startLine": 399,
+        "startChar": 15,
+        "endLine": 399,
+        "endChar": 21
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15d82e4_2868300c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-14T20:44:07Z",
+      "side": 1,
+      "message": "Is the TPM ownership not taken at this point?\nIf this is the case I wonder how we run these tests, do we set the USE flag for TPM_INSECURE_FALLBACK?. (Since scrypt AuthBlock doesn\u0027t support creation of the new keys)",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
