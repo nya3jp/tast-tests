@@ -1,0 +1,51 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ConnService provides functions for interacting with conn directly.
+service ConnService {
+    rpc Open(OpenRequest) returns (google.protobuf.Value) {}
+
+    rpc Close(CloseRequest) returns (google.protobuf.Empty) {}
+
+    rpc Eval(ConnEvalRequest) returns (google.protobuf.Value) {}
+
+    rpc Call(ConnCallRequest) returns (google.protobuf.Value) {}
+
+    rpc WaitForExpr(ConnWaitForExprRequest) returns (google.protobuf.Empty) {}
+  }
+
+  message OpenRequest {
+    string url = 1;
+  }
+
+  message CloseRequest {
+    string id = 1;
+  }
+  
+  message ConnEvalRequest {
+    string id = 1;
+    string expr = 2;
+  }
+
+  message ConnCallRequest {
+    string id = 1;
+    string fn = 2;
+    repeated google.protobuf.Value args = 3;
+  }
+  
+  message ConnWaitForExprRequest {
+    string id = 1;
+    string expr = 2;
+    uint32 timeout_secs = 3;
+    bool fail_on_err = 4;
+  }
