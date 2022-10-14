@@ -86,7 +86,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enable tablet mode")
 		}
@@ -103,13 +103,12 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
 			return errors.Wrap(err, "failed to wait for top window animation")
 		}
+
 		return nil
 	},
 		"Ash.TabletMode.AnimationSmoothness.Enter",
 		"Ash.TabletMode.AnimationSmoothness.Exit")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

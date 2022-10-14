@@ -77,7 +77,8 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Snap the window to the left.
 		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateLeftSnapped); err != nil {
 			return err
@@ -100,9 +101,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 
 		return nil
 	},
-		"Ash.Window.AnimationSmoothness.Snap")), perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		"Ash.Window.AnimationSmoothness.Snap")), perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

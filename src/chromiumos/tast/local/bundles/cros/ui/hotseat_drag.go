@@ -94,10 +94,13 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 
 	// Note that ash-chrome `cr` and `tconn` is passed in to take traces and metrics from ash-chrome.
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil || len(ws) == 0 {
+		if err != nil {
 			s.Fatal("Failed to obtain the window list: ", err)
+		}
+		if len(ws) == 0 {
+			s.Fatal("Failed to find any windows")
 		}
 
 		startX := tsw.Width() / 2
@@ -123,9 +126,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	},
 		"Ash.HotseatTransition.Drag.PresentationTime",
 		"Ash.HotseatTransition.Drag.PresentationTime.MaxLatency")),
-		perfutil.StoreLatency)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreLatency); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

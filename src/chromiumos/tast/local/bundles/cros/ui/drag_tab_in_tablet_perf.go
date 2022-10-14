@@ -148,7 +148,7 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 	firstTabLocation, _ := ac.Location(ctx, firstTab)
 	tabList := nodewith.Role(role.TabList).First()
 	tabListLocation, _ := ac.Location(ctx, tabList)
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine("drag and move a tab",
 			// Drag the first tab in the tab strip around work area, then snap back to the tab strip.
 			pc.Drag(firstTabLocation.CenterPoint(),
@@ -166,9 +166,7 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.TabDrag.PresentationTime.TabletMode",
 		"Ash.TabDrag.PresentationTime.MaxLatency.TabletMode")),
-		perfutil.StoreLatency)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed to save perf data: ", err)
+		perfutil.StoreLatency); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

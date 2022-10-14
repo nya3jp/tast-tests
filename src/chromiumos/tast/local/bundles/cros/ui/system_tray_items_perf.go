@@ -67,11 +67,11 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 	recordTakenLabel := nodewith.HasClass("Label").Name("Screen recording taken")
 	popupNotification := nodewith.Role(role.Window).HasClass("ash/message_center/MessagePopup")
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Take video recording so that the shelf pod bounces up, then click on the shelf pod for it to fade out,
 		// (at the same time notification counter tray item will do show animation), then we close the notification
 		// for tray item to perform hide animation.
-		if err := uiauto.Combine(
+		return uiauto.Combine(
 			"perform screen recording, then close the notification",
 			// Enter screen capture mode.
 			kb.AccelAction("Ctrl+Shift+"+topRow.SelectTask),
@@ -88,18 +88,13 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 			// Opening too many "Files" app window might cause the system hang on some device.
 			// Thus, we close that window on every iteration.
 			kb.AccelAction("Ctrl+W"),
-		)(ctx); err != nil {
-			return err
-		}
-		return nil
+		)(ctx)
 	},
 		"Ash.StatusArea.TrayBackgroundView.BounceIn",
 		"Ash.StatusArea.TrayBackgroundView.Hide",
 		"Ash.StatusArea.TrayItemView.Show",
 		"Ash.StatusArea.TrayItemView.Hide")),
-		perfutil.StoreSmoothness)
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		perfutil.StoreSmoothness); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

@@ -89,7 +89,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	// still use fingerSpacing * 4, just to keep new performance data consistent with old performance data.
 	fingerDistance := fingerSpacing * 4
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Do a big swipe going right. This will continuously shift to the next desk on the right.
 		// Note: The swipe should end at tpw.Width()-1-fingerDistance because a finger at tpw.Width() is
 		// off the trackpad. However, fingerDistance is already more than it should be, so this works out.
@@ -115,9 +115,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 		"Ash.Desks.AnimationSmoothness.DeskEndGesture",
 		"Ash.Desks.PresentationTime.UpdateGesture",
 		"Ash.Desks.PresentationTime.UpdateGesture.MaxLatency")),
-		perfutil.StoreAllWithHeuristics(""))
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		perfutil.StoreAllWithHeuristics("")); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }

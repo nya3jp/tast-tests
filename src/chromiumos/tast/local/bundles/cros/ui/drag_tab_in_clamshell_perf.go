@@ -108,7 +108,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	start := tabRect.CenterPoint()
 
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	if err := perfutil.RunMultipleAndSave(ctx, s.OutDir(), cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		return uiauto.Combine("drag and move a tab",
 			mouse.Drag(tconn, start, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
@@ -120,9 +120,8 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.TabDrag.PresentationTime.ClamshellMode",
 		"Ash.TabDrag.PresentationTime.MaxLatency.ClamshellMode")),
-		perfutil.StoreLatency)
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Error("Failed to save perf data: ", err)
+		perfutil.StoreLatency); err != nil {
+		s.Fatal("Failed to run or save: ", err)
 	}
 }
 
