@@ -275,7 +275,7 @@ type NewRequest struct {
 	// If |lacros| is unset or lacros.Mode is set to MODE_DISABLED, Lacros
 	// browser will not be enabled.
 	Lacros *Lacros `protobuf:"bytes,11,opt,name=lacros,proto3" json:"lacros,omitempty"`
-	// How ARC is supported.
+	// Describes the availability of ARC, e.g. enabled / disabled.
 	ArcMode ArcMode `protobuf:"varint,12,opt,name=arc_mode,json=arcMode,proto3,enum=tast.cros.browser.ArcMode" json:"arc_mode,omitempty"`
 }
 
