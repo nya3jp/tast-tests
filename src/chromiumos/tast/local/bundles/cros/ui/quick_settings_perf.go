@@ -111,7 +111,7 @@ func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 
 	// This includes toggle the Status Area button to record input latency of showing Quick Settings/notification centre
 	// and toggle the collapsed state of the system tray to record animation smoothness.
-	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	perfutil.RunMultipleAndSave(ctx, s, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, collapse and expand it, then close it",
 			ac.LeftClick(statusArea),
@@ -132,8 +132,4 @@ func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
 		"Ash.Window.AnimationSmoothness.Hide")),
 		perfutil.StoreAllWithHeuristics(""))
-
-	if err := pv.Save(ctx, s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
-	}
 }
