@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad09325_68718f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-14T20:51:37Z",
+      "side": 1,
+      "message": "Clarification: Are these the ash-chrome metrics regardless of the types of primary browsers whether lacros-chrome or ash-chrome? Did I get this right?\n\nInterestingly, either `cr` or `br` for tracing here makes the test passed with some numbers without any error.\n+Toni, Eliot any thoughts?",
+      "revId": "93455267b6308e65caa50bc87623ec335194163b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
