@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4654a1be_8832612e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:25:42Z",
+      "side": 1,
+      "message": "nit: `.lacros`",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3d0668_b43b910d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:25:42Z",
+      "side": 1,
+      "message": "Remove the word `is` here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155dcfb3_93eb77c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:25:42Z",
+      "side": 1,
+      "message": "`Use`",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e2d886_b4d0d50e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:25:42Z",
+      "side": 1,
+      "message": "nit: `.lacros`",
+      "range": {
+        "startLine": 16,
+        "startChar": 35,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ffeb216c_41cf67d5",
@@ -48,6 +140,23 @@
       "writtenOn": "2022-10-13T23:25:19Z",
       "side": 1,
       "message": "Thanks hongyou!\n\navery, can you do tast-owner review? THanks!",
+      "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3221921f_9b16a460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-14T23:25:42Z",
+      "side": 1,
+      "message": "lgtm with commit message adjustments",
       "revId": "af0e8e4b1ad30d5af3847ebc49e89993d2ed5919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
