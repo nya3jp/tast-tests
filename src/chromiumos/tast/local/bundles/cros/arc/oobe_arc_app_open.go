@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -117,13 +118,20 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer a.Close(ctx)
 
 	statusArea := nodewith.HasClass("ash/StatusAreaWidgetDelegate")
-	s.Log("Waiting for notification")
-	_, err = ash.WaitForNotification(ctx, tconn, 20*time.Minute, ash.WaitTitle("Setup complete"))
+
+	s.Log("Waiting for setup complete notification")
+	_, err = ash.WaitForNotification(ctx, tconn, 20*time.Minute, ash.WaitTitle("Setup complete"), ash.WaitMessageContains("Installed 6 out of 6 applications"))
 	if err != nil {
+		s.Log("Haven't found setup complete notification, will try to see if it's in notification UI")
 		if err := ui.LeftClick(statusArea)(ctx); err != nil {
 			s.Log("Failed to click status area : ", err)
 		}
-		s.Fatal("Failed waiting for Setup complete notification: ", err)
+		uda := uidetection.NewDefault(tconn).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+
+		setupCompleteNotification := uidetection.TextBlock([]string{"Setup", "complete"})
+		if err := uda.WithTimeout(5 * time.Second).WaitUntilExists(setupCompleteNotification)(ctx); err != nil {
+			s.Fatal("Failed waiting for Setup complete notification: ", err)
+		}
 	}
 
 	s.Log("Waiting to check if app is installed before launching the app")
