@@ -54,6 +54,11 @@ func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 	}, nil
 }
 
+// ActivateTarget activates (focuses) the target.
+func (c *Conn) ActivateTarget(ctx context.Context) error {
+	return c.co.ActivateTarget(ctx)
+}
+
 // Close closes the connection to the target and frees related resources.
 // Tests should typically defer calls to this method and ignore the returned error.
 // This method does not close the web content itself; see CloseTarget for that.
@@ -130,36 +135,36 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 //
 // Examples:
 //
-//   // 1)  Calling a function. ret will be set to 30.
-//   var ret int
-//   if err := c.Call(ctx, &ret, "function(a, b) { return a + b; }", 10, 20); err != nil {
-//      ...
+//	// 1)  Calling a function. ret will be set to 30.
+//	var ret int
+//	if err := c.Call(ctx, &ret, "function(a, b) { return a + b; }", 10, 20); err != nil {
+//	   ...
 //
-//   // 2) Calling async function. ret will be set whether the given app is shown.
-//   tconn, err := cr.TestAPIConn()
-//   ...
-//   var ret bool
-//   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
-//     ...
+//	// 2) Calling async function. ret will be set whether the given app is shown.
+//	tconn, err := cr.TestAPIConn()
+//	...
+//	var ret bool
+//	if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
+//	  ...
 //
-//   // 3) Serialize structure. Move the mouse to (100, 200) immediately.
-//   loc := struct {
-//     X double `json:"x"`
-//     Y double `json:"y"`
-//   } {
-//     X: 100,
-//     Y: 200,
-//   }
-//   if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMove)", &loc, 0 /* ms */); err != nil {
-//     ...
+//	// 3) Serialize structure. Move the mouse to (100, 200) immediately.
+//	loc := struct {
+//	  X double `json:"x"`
+//	  Y double `json:"y"`
+//	} {
+//	  X: 100,
+//	  Y: 200,
+//	}
+//	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMove)", &loc, 0 /* ms */); err != nil {
+//	  ...
 //
-//   // 4) Deserialize structure. Output can be JSON deserialized value.
-//   var ret struct {
-//     Provisioned bool `json:"provisioned"`
-//     TOSNeeded bool `json:"tosNeeded"`
-//   }
-//   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.getArcState)"); err != nil {
-//     ...
+//	// 4) Deserialize structure. Output can be JSON deserialized value.
+//	var ret struct {
+//	  Provisioned bool `json:"provisioned"`
+//	  TOSNeeded bool `json:"tosNeeded"`
+//	}
+//	if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.getArcState)"); err != nil {
+//	  ...
 func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) error {
 	// Either objectId or executionContextId should be specified to invoke Runtime.callFunctionOn.
 	// Thus, take the "this" first, then call the method on the object.
