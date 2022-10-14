@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9f566e_fbba8caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-14T00:16:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "389ea4f0_035d69e1",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7212fcab_47b556ff",
