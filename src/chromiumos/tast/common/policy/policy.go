@@ -1,12 +1,13 @@
 // Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
 // Package policy contains utilities for representing and using policies.
 package policy
 
 import (
 	"encoding/json"
+
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 // Policy is an interface for a more specific policy type.  All the
@@ -15,26 +16,18 @@ type Policy interface {
 	// Name returns the name of the policy as it shows up in chrome://policy.
 	// The name is an inherent property of the policy.
 	Name() string
-
-	// Field returns the groupname.fieldname of the device policy, or "" for
-	// non device policies. The field is an inherent property of the policy.
-	Field() string
-
 	// Scope returns the Scope of this policy, e.g. whether it is a user or
 	// device policy. A Scope is an inherent property of the policy.
 	Scope() Scope
-
 	// Status returns a Status, e.g. whether the policy is set, unset, or
 	// suggested.
 	Status() Status
-
 	// UntypedV returns the value of the policy as an interface{} type.
 	// It is used to marshal policies into JSON when acting through this
 	// interface and the specific type is unknown. Any caller who knows the
 	// specific policy type should directly access the value rather than using
 	// this function.
 	UntypedV() interface{}
-
 	// UnmarshalAs unmarshals a JSON string as this policy's value type,
 	// returning either the (interface{} typed) value or an error.
 	//
@@ -44,7 +37,6 @@ type Policy interface {
 	// sensitive. The value saved by this interface will be a struct, but the
 	// value in the JSON string read from the DUT will be the string "********".
 	UnmarshalAs(json.RawMessage) (interface{}, error)
-
 	// Equal takes an interface{} typed policy value from the DUT (expected to
 	// be the output of UnmarshalAs) and returns whether the input matches the
 	// value stored in this policy interface.
@@ -55,6 +47,8 @@ type Policy interface {
 	// interface will have the password while the input value will have
 	// "********". Those two strings are considered equal in this example.
 	Equal(interface{}) bool
+	// SetProto sets the proto value of the policy.
+	SetProto(*protoreflect.Message)
 }
 
 // Scope is a property of the policy and indicates whether it is a User or

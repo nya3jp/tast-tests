@@ -50,6 +50,7 @@ import (
 
 \t"github.com/google/go-cmp/cmp"
 \t"github.com/google/go-cmp/cmp/cmpopts"
+\t"google.golang.org/protobuf/reflect/protoreflect"
 
 \t"chromiumos/tast/errors"
 )
@@ -68,12 +69,14 @@ type {self.name} struct {{
 }}
 {self.additional_structs}
 func (p *{self.name}) Name() string      {{ return "{self.name}" }}
-func (p *{self.name}) Field() string     {{ return "{self.device_field}" }}
 func (p *{self.name}) Scope() Scope      {{ return {self.scope} }}
 func (p *{self.name}) Status() Status    {{ return p.Stat }}
 func (p *{self.name}) UntypedV() interface{{}} {{ return p.Val }}
 func (p *{self.name}) UnmarshalAs(m json.RawMessage) (interface{{}}, error) {{
 {self.unmarshal}
+}}
+func (p *{self.name}) SetProto(m *protoreflect.Message) {{
+{self.proto_setter}
 }}
 func (p *{self.name}) Equal(iface interface{{}}) bool {{
 {self.eq}
@@ -434,6 +437,8 @@ class Policy(object):
     self.scope, self.device_field = self.get_scope_and_field(
         self.name, p, device_field_lookup)
 
+    self.proto_setter = self.get_proto_setter(self.name, p, self.device_field)
+
     # schema: The JSON schema for this policy's value.
     if 'schema' not in p:
       raise_key_error('schema', p)
@@ -451,6 +456,15 @@ class Policy(object):
     self.unmarshal = None
     # code: All code (other than reference value code) that needs to be added.
     self.code = None
+
+  @staticmethod
+  def get_proto_setter(name, p, device_field):
+    """Return the proto value of the policy given its name."""
+    if p.get('device_only', False):
+      policy_name, _, field_name = device_field.partition('.')
+      return 'SetDeviceProto(m, "%s", "%s", p.Val)' % (policy_name, field_name)
+    else:
+      return 'SetUserProto(m, p.Name(), p.Val)'
 
   @staticmethod
   def get_scope_and_field(name, p, lookup):
