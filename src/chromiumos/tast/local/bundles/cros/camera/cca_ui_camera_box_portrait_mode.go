@@ -41,6 +41,8 @@ func CCAUICameraBoxPortraitMode(ctx context.Context, s *testing.State) {
 	if err := prepareChart(ctx, s.RequiredVar("chart"), s.DataPath("testing_rsa"), s.DataPath("human_face_scene.jpg")); err != nil {
 		s.Fatal("Failed to prepare chart: ", err)
 	}
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveScreenshotWhenFail: true})
+
 	app := s.FixtValue().(cca.FixtureData).App()
 	facing := s.Param().(cca.Facing)
 
