@@ -6,6 +6,8 @@ package platform
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -34,8 +36,18 @@ func init() {
 }
 
 func verifyTrackEventPid(ctx context.Context, s *testing.State, sess *tracing.Session) {
-	// The temporary file of trace data is no longer needed when returned.
-	defer sess.RemoveTraceResultFile()
+	ok := false
+	defer func() {
+		// Remove the trace data on test successful, or save to test output dir for inspection on test failure.
+		if ok {
+			sess.RemoveTraceResultFile()
+		} else {
+			err := os.Rename(sess.TraceResultFile.Name(), filepath.Join(s.OutDir(), "perfetto-trace.pb"))
+			if err != nil {
+				s.Log("Failed to save the trace result: ", err)
+			}
+		}
+	}()
 
 	if err := sess.Stop(); err != nil {
 		s.Fatal("Failed to stop tracing: ", err)
@@ -60,6 +72,7 @@ func verifyTrackEventPid(ctx context.Context, s *testing.State, sess *tracing.Se
 	if pid, err := strconv.Atoi(res[1][1]); err != nil || pid <= 0 {
 		s.Fatalf("Failed to verify PID of track events: malformed query result: %q", res)
 	}
+	ok = true
 }
 
 // PerfettoTrackEventsPidNS tests tracing PID-namespaced processes.
