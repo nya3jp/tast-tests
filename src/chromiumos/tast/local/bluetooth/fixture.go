@@ -8,8 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth/bluez"
-	"chromiumos/tast/local/bluetooth/floss"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -35,32 +33,6 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl:            chromeLoggedInWithFeatures([]string{"Floss"}, []string{}),
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "bluetoothEnabledWithBlueZ",
-		Desc: "Logs into Chrome with Floss disabled, and enables Bluetooth during set up and tear down",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &bluez.BlueZ{}},
-		Parent:          "chromeLoggedInWithBlueZ",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "bluetoothEnabledWithFloss",
-		Desc: "Logs into Chrome with Floss enabled, and enables Bluetooth during set up and tear down",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &floss.Floss{}},
-		Parent:          "chromeLoggedInWithFloss",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,

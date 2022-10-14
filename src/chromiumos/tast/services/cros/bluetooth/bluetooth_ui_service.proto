@@ -1,0 +1,56 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.bluetooth;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/bluetooth";
+
+service BluetoothUIService {
+  // Initialize is used to choose the Bluetooth implementation that should be
+  // used.
+  rpc Initialize(InitializeRequest) returns (google.protobuf.Empty) {}
+
+  // Enable starts the default adapter.
+  rpc Enable(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // PollForAdapterState polls the bluetooth adapter state until expected state
+  // is received or a timeout occurs.
+  rpc PollForAdapterState(PollForAdapterStateRequest) returns (google.protobuf.Empty) {}
+
+  // Devices returns information on the devices known to the Bluetooth adapter.
+  rpc Devices(google.protobuf.Empty) returns (DevicesResponse) {}
+
+  // StartDiscovery starts a discovery session.
+  rpc StartDiscovery(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // StopDiscovery stops the current discovery session.
+  rpc StopDiscovery(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Reset removes all connected and paired devices and ensures the adapter is
+  // powered.
+  rpc Reset(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// DeviceInfo is a simple object used to group information on a particular
+// Bluetooth peripheral.
+message DeviceInfo {
+  string address = 1;
+  string name = 2;
+}
+
+message InitializeRequest {
+  bool use_floss = 1;
+}
+
+message PollForAdapterStateRequest {
+  bool expected_state = 1;
+}
+
+message DevicesResponse {
+  repeated DeviceInfo device_infos = 1;
+}

@@ -8,9 +8,11 @@ import (
 	"context"
 	"time"
 
+	"google.golang.org/protobuf/types/known/emptypb"
+
 	cbt "chromiumos/tast/common/chameleon/devices/common/bluetooth"
 	"chromiumos/tast/remote/bluetooth"
-	bts "chromiumos/tast/services/cros/bluetooth"
+	bluetoothService "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
 )
 
@@ -26,10 +28,19 @@ func init() {
 		// TODO(b/245584709): Need to make new btpeer test attributes.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.bluetooth.BTTestService"},
+		ServiceDeps:  []string{"tast.cros.bluetooth.BluetoothUIService"},
 		Fixture:      "chromeLoggedInWith2BTPeers",
 		Timeout:      time.Second * 30,
 	})
+}
+
+func deviceWithAddressExists(address string, deviceInfos []*bluetoothService.DeviceInfo) bool {
+	for _, deviceInfo := range deviceInfos {
+		if deviceInfo.Address == address {
+			return true
+		}
+	}
+	return false
 }
 
 // DiscoverEmulatedBTPeerDevices tests that btpeers can be set to emulate a
@@ -37,7 +48,7 @@ func init() {
 func DiscoverEmulatedBTPeerDevices(ctx context.Context, s *testing.State) {
 	fv := s.FixtValue().(*bluetooth.FixtValue)
 
-	// Discover btpeer1 as a keyboard.
+	// Initialize one Bluetooth peer as a keyboard and make it discoverable.
 	keyboardDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[0].BluetoothKeyboardDevice())
 	if err != nil {
 		s.Fatal("Failed to configure btpeer1 as a keyboard device: ", err)
@@ -45,13 +56,8 @@ func DiscoverEmulatedBTPeerDevices(ctx context.Context, s *testing.State) {
 	if keyboardDevice.DeviceType() != cbt.DeviceTypeKeyboard {
 		s.Fatalf("Attempted to emulate btpeer device as a %s, but the actual device type is %s", cbt.DeviceTypeKeyboard, keyboardDevice.DeviceType())
 	}
-	if _, err := fv.BTS.DiscoverDevice(ctx, &bts.DiscoverDeviceRequest{
-		Device: keyboardDevice.BTSDevice(),
-	}); err != nil {
-		s.Fatalf("DUT failed to discover btpeer1 as %s: %v", keyboardDevice.String(), err)
-	}
 
-	// Discover btpeer2 as a mouse.
+	// Initialize another Bluetooth peer as a mouse and make it discoverable.
 	mouseDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[1].BluetoothMouseDevice())
 	if err != nil {
 		s.Fatal("Failed to configure btpeer2 as a mouse device: ", err)
@@ -59,17 +65,25 @@ func DiscoverEmulatedBTPeerDevices(ctx context.Context, s *testing.State) {
 	if mouseDevice.DeviceType() != cbt.DeviceTypeMouse {
 		s.Fatalf("Attempted to emulate btpeer device as a %s, but the actual device type is %s", cbt.DeviceTypeMouse, mouseDevice.DeviceType())
 	}
-	if _, err := fv.BTS.DiscoverDevice(ctx, &bts.DiscoverDeviceRequest{
-		Device: mouseDevice.BTSDevice(),
-	}); err != nil {
-		s.Fatalf("DUT failed to discover btpeer1 as %s: %v", mouseDevice.String(), err)
+
+	if _, err = fv.BluetoothUIService.StartDiscovery(ctx, &emptypb.Empty{}); err != nil {
+		s.Fatal("Failed to start discovery: ", err)
 	}
 
-	// Confirm that btpeer1 is also still discoverable as a keyboard, since both
-	// peers should be usable at the same time.
-	if _, err := fv.BTS.DiscoverDevice(ctx, &bts.DiscoverDeviceRequest{
-		Device: keyboardDevice.BTSDevice(),
-	}); err != nil {
-		s.Fatalf("DUT failed to still discover btpeer1 as %s: %v", keyboardDevice.String(), err)
+	res, err := fv.BluetoothUIService.Devices(ctx, &emptypb.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get devices: ", err)
+	}
+
+	// Check that both the keyboard and the mouse are discoverable.
+	if !deviceWithAddressExists(keyboardDevice.LocalBluetoothAddress(), res.DeviceInfos) {
+		s.Fatal("Failed to discover the keyboard")
+	}
+	if !deviceWithAddressExists(mouseDevice.LocalBluetoothAddress(), res.DeviceInfos) {
+		s.Fatal("Failed to discover the mouse")
+	}
+
+	if _, err = fv.BluetoothUIService.StopDiscovery(ctx, &emptypb.Empty{}); err != nil {
+		s.Fatal("Failed to stop discovery: ", err)
 	}
 }
