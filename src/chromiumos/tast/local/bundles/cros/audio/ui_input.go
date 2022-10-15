@@ -43,6 +43,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      4 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
 			{
@@ -239,7 +240,7 @@ func testInputMute(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 }
 
 func UIInput(ctx context.Context, s *testing.State) {
-	const cleanupTime = 10 * time.Second
+	const cleanupTime = 60 * time.Second
 
 	// system-tray-mic-gain is enabled as default on R86+ images.
 	cr := s.PreValue().(*chrome.Chrome)
@@ -247,6 +248,11 @@ func UIInput(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	// Reserve time to remove input file and unload ALSA loopback at the end of the test.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	// Set up the keyboard, which is used to increment/decrement the slider.
 	// TODO(b/187793602): use better slider automation controls if possible, instead of keyboard controls.
@@ -256,21 +262,30 @@ func UIInput(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := quicksettings.Show(ctx, tconn); err != nil {
-		s.Fatal("Failed to show Quick Settings: ", err)
-	}
-	defer quicksettings.Hide(ctx, tconn)
-
-	// Defer this after deferring quicksettings.Hide to make sure quicksettings is still open when we
-	// get the failure info.
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
 	// Load ALSA loopback module.
 	unload, err := audio.LoadAloop(ctx)
 	if err != nil {
 		s.Fatal("Failed to load ALSA loopback module: ", err)
 	}
-	defer unload(ctx)
+	defer unload(cleanupCtx)
+
+	// Defer call to DumpUITree for debugging before unloading the ALSA loopback module.
+	defer func(ctx context.Context) {
+		if err := quicksettings.Show(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to show the quicksettings on defer: ", err)
+		}
+		if err := quicksettings.OpenAudioSettings(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to show the audio setting on defer: ", err)
+		}
+		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+		if err := quicksettings.Hide(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to hide the quicksettings on defer: ", err)
+		}
+	}(cleanupCtx)
+
+	if err := audio.SetupLoopback(ctx, cr); err != nil {
+		s.Fatal("Failed to SetupLoopback: ", err)
+	}
 
 	testControl := s.Param().(testControl)
 
@@ -289,28 +304,9 @@ func UIInput(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(audioInput.Path)
 
-	// Reserve time to remove input file and unload ALSA loopback at the end of the test.
-	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	// Select ALSA loopback output and input nodes as active nodes by UI.
-	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Playback"); err != nil {
-		s.Fatal("Failed to select ALSA loopback output: ", err)
-	}
-
-	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
-	// is still opened while it is actually fading out, and failed to select Loopback Capture.
-	// Call Hide() and Show() to reset the quicksettings menu first.
-	quicksettings.Hide(shortCtx, tconn)
-	quicksettings.Show(shortCtx, tconn)
-
-	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Capture"); err != nil {
-		s.Fatal("Failed to select ALSA loopback input: ", err)
-	}
-
 	if testControl == gainSlider {
-		testInputGain(shortCtx, s, tconn, kb, audioInput)
+		testInputGain(ctx, s, tconn, kb, audioInput)
 	} else { // muteButton
-		testInputMute(shortCtx, s, tconn, audioInput)
+		testInputMute(ctx, s, tconn, audioInput)
 	}
 }
