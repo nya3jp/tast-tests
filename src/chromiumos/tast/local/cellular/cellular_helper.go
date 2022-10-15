@@ -1199,24 +1199,13 @@ func (h *Helper) PrintSIMInfo(ctx context.Context) {
 
 // GetHostInfoLabels reads the labels from autotest_host_info_labels
 func (h *Helper) GetHostInfoLabels(ctx context.Context, labels []string) error {
-
-	dims := make(LabelMap)
-	for _, label := range labels {
-		val := strings.SplitN(label, ":", 2)
-		switch len(val) {
-		case 1:
-			dims[val[0]] = append(dims[val[0]], "")
-		case 2:
-			dims[val[0]] = append(dims[val[0]], val[1])
-		}
-	}
 	h.Labels = labels
 	h.PrintHostInfoLabels(ctx)
-	h.modemInfo = GetModemInfoFromHostInfoLabels(ctx, dims)
-	h.simInfo = GetSIMInfoFromHostInfoLabels(ctx, dims)
-	h.carrierName = GetCellularCarrierFromHostInfoLabels(ctx, dims)
+	h.modemInfo = GetModemInfoFromHostInfoLabels(ctx, labels)
+	h.simInfo = GetSIMInfoFromHostInfoLabels(ctx, labels)
+	h.carrierName = GetCellularCarrierFromHostInfoLabels(ctx, labels)
 	testing.ContextLog(ctx, "Carrier Name : ", h.carrierName)
-	h.devicePools = GetDevicePoolFromHostInfoLabels(ctx, dims)
+	h.devicePools = GetDevicePoolFromHostInfoLabels(ctx, labels)
 	testing.ContextLog(ctx, "Pools : ", h.devicePools)
 	return nil
 }

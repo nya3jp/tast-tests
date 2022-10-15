@@ -124,17 +124,32 @@ func getLastStringValue(d LabelMap, key string) (string, bool) {
 	return "", false
 }
 
+func getLabelMap(labels []string) LabelMap {
+	dims := make(LabelMap)
+	for _, label := range labels {
+		val := strings.SplitN(label, ":", 2)
+		switch len(val) {
+		case 1:
+			dims[val[0]] = append(dims[val[0]], "")
+		case 2:
+			dims[val[0]] = append(dims[val[0]], val[1])
+		}
+	}
+	return dims
+}
+
 // GetCellularCarrierFromHostInfoLabels return the current carrier name from host_info_labels, else return empty string
-func GetCellularCarrierFromHostInfoLabels(ctx context.Context, d LabelMap) string {
-	if c, ok := getLastStringValue(d, "carrier"); ok {
+func GetCellularCarrierFromHostInfoLabels(ctx context.Context, labels []string) string {
+	if c, ok := getLastStringValue(getLabelMap(labels), "carrier"); ok {
 		return c
 	}
 	return ""
 }
 
 // GetDevicePoolFromHostInfoLabels return the current device pool name from host_info_labels, else return empty string
-func GetDevicePoolFromHostInfoLabels(ctx context.Context, d LabelMap) []string {
+func GetDevicePoolFromHostInfoLabels(ctx context.Context, labels []string) []string {
 	var pools []string
+	d := getLabelMap(labels)
 	for _, v := range d["pool"] {
 		pools = append(pools, v)
 	}
@@ -162,9 +177,9 @@ func EnsureUptime(ctx context.Context, duration time.Duration) error {
 }
 
 // GetModemInfoFromHostInfoLabels populate Modem info from host_info_labels
-func GetModemInfoFromHostInfoLabels(ctx context.Context, d LabelMap) *ModemInfo {
+func GetModemInfoFromHostInfoLabels(ctx context.Context, labels []string) *ModemInfo {
 	var modemInfo ModemInfo
-
+	d := getLabelMap(labels)
 	if c, ok := getLastStringValue(d, "modem_type"); ok {
 		modemInfo.Type = c
 	}
@@ -185,7 +200,8 @@ func GetModemInfoFromHostInfoLabels(ctx context.Context, d LabelMap) *ModemInfo 
 }
 
 // GetSIMInfoFromHostInfoLabels populate SIM info from host_info_labels
-func GetSIMInfoFromHostInfoLabels(ctx context.Context, d LabelMap) []*SIMInfo {
+func GetSIMInfoFromHostInfoLabels(ctx context.Context, labels []string) []*SIMInfo {
+	d := getLabelMap(labels)
 	numSim := len(d["sim_slot_id"])
 	simInfo := make([]*SIMInfo, numSim)
 
