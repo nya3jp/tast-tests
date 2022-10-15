@@ -591,6 +591,12 @@ func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 
 // MicEnabled checks if the microphone is enabled (unmuted).
 func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer cleanup(ctx)
+
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return false, err
 	}
@@ -617,6 +623,12 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 // ToggleMic toggles the microphone's enabled state by clicking the microphone icon adjacent to the slider.
 // If the microphone is already in the desired state, this will do nothing.
 func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return err
 	}
@@ -633,6 +645,12 @@ func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
 
 // SelectAudioOption selects the audio input or output device with the given name from the audio settings page.
 func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, device string) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return err
 	}
