@@ -15,6 +15,8 @@ import (
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
@@ -26,14 +28,22 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenRotationPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation smoothness of screen rotation in tablet mode",
 		Contacts:     []string{"chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
-		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
+		Timeout: 3 * time.Minute,
 	})
 }
 
@@ -68,11 +78,28 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	defer display.SetDisplayRotationSync(closeCtx, tconn, dispInfo.ID, display.Rotate0)
 
 	defer ash.SetOverviewModeAndWait(closeCtx, tconn, false)
+
+	bt := s.Param().(browser.Type)
+	url := ui.PerftestURL
 	currentWindows := 0
+	// Use `cr` from ash-chrome for the metrics that are recorded in ash-chrome.
 	runner := perfutil.NewRunner(cr.Browser())
 	// Run the screen rotation in overview mode with 2 or 8 windows.
+	var br *browser.Browser
 	for _, windows := range []int{2, 8} {
-		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
+		// Open the first window using browserfixt to get a Browser instance, then use the browser instance to open the others.
+		if currentWindows == 0 {
+			var conn *browser.Conn
+			var closeBrowser func(ctx context.Context) error
+			conn, br, closeBrowser, err = browserfixt.SetUpWithURL(ctx, cr, bt, url)
+			if err != nil {
+				s.Fatal("Failed to open chrome: ", err)
+			}
+			defer closeBrowser(closeCtx)
+			defer conn.Close()
+			currentWindows++
+		}
+		if err := ash.CreateWindows(ctx, tconn, br, url, windows-currentWindows); err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
 		currentWindows = windows
@@ -81,6 +108,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 
+		// Use `tconn` from ash-chrome for the metrics that are recorded in ash-chrome.
 		suffix := fmt.Sprintf("%dwindows", windows)
 		runner.RunMultiple(ctx, suffix, uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
