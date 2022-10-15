@@ -34,6 +34,24 @@
       "parentUuid": "f5c7e3b1_585ce1df",
       "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a40d2b_237c09f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-15T05:30:25Z",
+      "side": 1,
+      "message": "Interestingly passing `cr` and `tconn` from ash-chrome to perftuil doesn\u0027t collect any metrics for Lacros, but just zero.\nDo you see this test needs to collect metrics for Lacros? If yes, can you or someone on your team confirm how to collect them? Thanks,",
+      "parentUuid": "8c1bdbd2_ec3e38e5",
+      "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
