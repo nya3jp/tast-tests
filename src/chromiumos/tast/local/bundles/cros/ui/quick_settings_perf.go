@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickSettingsPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures animation smoothness of quick settings expand and collapse animations",
 		Contacts:     []string{"amehfooz@chromium.org", "leandre@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
