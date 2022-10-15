@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "924a217a_61e26180",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-15T00:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9296aa_0ae0d658",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "7f46e7f809cb890be9e68db74d7e3136917c4af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87890b58_042edcfe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-15T00:17:33Z",
       "side": 1,
       "message": "nit: This word `the` can fit on the previous line.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "7f46e7f809cb890be9e68db74d7e3136917c4af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde222c4_1e6d380d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-15T00:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87890b58_042edcfe",
       "range": {
         "startLine": 13,
         "startChar": 0,
