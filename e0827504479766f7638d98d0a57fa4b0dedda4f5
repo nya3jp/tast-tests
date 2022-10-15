@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2257015c_93a66abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-15T00:12:30Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "e0827504479766f7638d98d0a57fa4b0dedda4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f64d9b_e14bcd92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-15T00:12:30Z",
+      "side": 1,
+      "message": "This does not represent how `ash.WaitForCondition` is intended to be used. Just use `testing.Poll` like so:\n\n\ttesting.Poll(ctx, func(ctx context.Context) {\n\t\tws, err :\u003d ash.GetAllWindows(ctx, tconn)\n\t\tif err !\u003d nil {\n\t\t\treturn testing.PollBreak(errors.Wrap(err, \"failed to get windows\"))\n\t\t}\n\t\tif len(ws) !\u003d expectedNumWindows {\n\t\t\treturn errors.Errorf(\"unexpected number of windows; got %d, want %d\", len(ws), expectedNumWindows)\n\t\t}\n\t\treturn nil\n\t}, \u0026testing.PollOptions{Timeout: 10 * time.Second, Interval: 5 * time.Second})",
+      "range": {
+        "startLine": 147,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 79
+      },
+      "revId": "e0827504479766f7638d98d0a57fa4b0dedda4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
