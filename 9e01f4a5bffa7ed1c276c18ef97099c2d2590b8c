@@ -16,6 +16,24 @@
       "message": "+yichenz for test owner\u0027s review. I was trying to help migrate your test to lacros, but this CL doesn\u0027t seem to be able to get data for the given metrics on lacros for unknown reasons. \n+edcoutney for any advice on tast.\n\nAny clarification/help would be appreciated. Thanks,",
       "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1bdbd2_ec3e38e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-15T01:50:31Z",
+      "side": 1,
+      "message": "I\u0027m not too famililar with lacros, but it seems these two metrics are only recorded in ash? \n[1]https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/views/tabs/tab_hover_card_metrics.cc;l\u003d62?q\u003dChrome.Tabs.AnimationSmoothness.HoverCard.FadeIn\n[2]https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/views/tabs/tab_hover_card_metrics.cc;l\u003d142;drc\u003d21a4c84dd469bfdc9f27375133dc309b62101ef8;bpv\u003d1;bpt\u003d1",
+      "parentUuid": "f5c7e3b1_585ce1df",
+      "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
