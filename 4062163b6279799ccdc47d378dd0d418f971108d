@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec0edca_c17d04a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-15T00:36:34Z",
+      "side": 1,
+      "message": "Need a line ending here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 71,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "4062163b6279799ccdc47d378dd0d418f971108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
