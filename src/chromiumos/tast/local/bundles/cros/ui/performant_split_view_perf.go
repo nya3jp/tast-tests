@@ -18,7 +18,10 @@ import (
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -29,10 +32,15 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testParam struct {
+	enableFeatures bool
+	bt             browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PerformantSplitViewPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures smoothness of resizing split view windows with and without performant split view enabled",
 		Contacts:     []string{"dandersson@chromium.org", "sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -40,13 +48,20 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"heavy_resize.html"},
 		Params: []testing.Param{{
-			Name:    "flag_disabled",
-			Val:     false,
-			Timeout: 5 * time.Minute,
+			Val: testParam{true, browser.TypeAsh},
 		}, {
-			Val:     true,
-			Timeout: 5 * time.Minute,
+			Name: "flag_disabled",
+			Val:  testParam{false, browser.TypeAsh},
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               testParam{true, browser.TypeLacros},
+		}, {
+			Name:              "flag_disabled_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               testParam{false, browser.TypeLacros},
 		}},
+		Timeout: 5 * time.Minute,
 	})
 }
 
@@ -67,13 +82,14 @@ func PerformantSplitViewPerf(ctx context.Context, s *testing.State) {
 	url := server.URL + "/heavy_resize.html"
 
 	var opt chrome.Option
-	if s.Param().(bool) {
+	if s.Param().(testParam).enableFeatures {
 		opt = chrome.EnableFeatures("PerformantSplitViewResizing")
 	} else {
 		opt = chrome.DisableFeatures("PerformantSplitViewResizing")
 	}
 
-	cr, err := chrome.New(ctx, opt)
+	bt := s.Param().(testParam).bt
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), opt)
 	if err != nil {
 		s.Fatal("Failed to init: ", err)
 	}
@@ -165,12 +181,22 @@ func PerformantSplitViewPerf(ctx context.Context, s *testing.State) {
 	}
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
-	currentWindows := 0
 	runner := perfutil.NewRunner(cr.Browser())
+
+	// Open the first window using browserfixt to get a browser instance and control its lifecycle outside of the subtest loop.
+	// Then use the browser instance to open the others inside the loop.
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, url)
+	if err != nil {
+		s.Fatal("Failed to open chrome: ", err)
+	}
+	currentWindows := 1
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
+
 	var id0 int
 	for i, testCase := range testCases {
 		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
-			if err := ash.CreateWindows(ctx, tconn, cr, url, testCase.numWindows-currentWindows); err != nil {
+			if err := ash.CreateWindows(ctx, tconn, br, url, testCase.numWindows-currentWindows); err != nil {
 				s.Fatal("Failed to open windows: ", err)
 			}
 			currentWindows = testCase.numWindows
@@ -214,6 +240,7 @@ func PerformantSplitViewPerf(ctx context.Context, s *testing.State) {
 			// status. Still this is not a problem, as RunAndWaitAll function will
 			// wait for the metrics for the divider animation which is generated
 			// after the divider animation finishes.
+			// Use ash-chrome `tconn` for the metrics that are recorded in Ash.
 			runner.RunMultiple(ctx, testCase.name, uiperf.Run(s,
 				perfutil.RunAndWaitAll(tconn,
 					uiauto.Combine("drag resizing the splitview",
