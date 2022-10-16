@@ -26,7 +26,7 @@ const testKey = "bootlockbox_testkey"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootLockbox,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Boot lockbox read/store test",
 		Contacts:     []string{"xzhou@chromium.org", "victorhsieh@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
