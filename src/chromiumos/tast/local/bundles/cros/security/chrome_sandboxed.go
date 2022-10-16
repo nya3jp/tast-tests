@@ -10,13 +10,15 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeSandboxed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify Chrome's sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
@@ -24,23 +26,33 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
+		Timeout: 1 * time.Minute,
 	})
 }
 
 func ChromeSandboxed(ctx context.Context, s *testing.State) {
 	const (
-		url      = "chrome://sandbox"
+		url      = "chrome://sandbox/"
 		text     = "You are adequately sandboxed."
 		waitExpr = "document.getElementsByTagName('p')[0].textContent"
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, url)
+	cr := s.FixtValue().(*chrome.Chrome)
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
 	if err != nil {
 		s.Fatal("Failed to create a new connection: ", err)
 	}
+	defer closeBrowser(ctx)
 	defer conn.Close()
 
 	{
