@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -16,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddPersonFlow,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that you can add a Unicorn user through the Add Person flow",
 		Contacts: []string{
 			"tobyhuang@chromium.org",
@@ -26,7 +27,15 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "familyLinkUnicornLoginNonOwner",
+		Params: []testing.Param{{
+			Fixture: "familyLinkUnicornLoginNonOwner",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "familyLinkUnicornLoginNonOwnerWithLacros",
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -40,4 +49,6 @@ func AddPersonFlow(ctx context.Context, s *testing.State) {
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
 	}
+
+	// TODO(b/254131536): Check that the unicorn account added has been propagated to web page.
 }
