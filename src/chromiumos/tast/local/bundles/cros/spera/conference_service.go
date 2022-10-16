@@ -267,39 +267,28 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 	if meet.BondEnabled {
 		for { // Using for loop for the sake of breaking out of the block.
-			var bondConn *bond.Client
-			var bondMeetingCode string
-
 			// Connect.
-			bondConn, err = bond.NewClient(ctx, bond.WithCredsJSON(meet.BondCreds))
+			bondConn, err := bond.NewClient(ctx, bond.WithCredsJSON(meet.BondCreds), bond.WithExternalEndpoint())
 			if err != nil {
-				testing.ContextLogf(ctx, "BOND API: Failed to connect: %+v", err)
+				testing.ContextLogf(ctx, "BOND API2: Failed to connect: %+v", err)
 				break
 			}
 			defer bondConn.Close()
 
-			// Create room.
-			bondMeetingCode, err = bondConn.CreateConference(ctx)
-			if err != nil {
-				testing.ContextLogf(ctx, "BOND API: Failed to create conference: %+v", err)
-				break
-			}
-			testing.ContextLogf(ctx, "BOND API: Created a conference: %+v", bondMeetingCode)
-
-			// Add bots.
+			// Create room with bots.
 			botsDuration := 60 * time.Minute // one hour long by default.
 			deadline, ok := ctx.Deadline()
 			if ok {
 				botsDuration = deadline.Add(90 * time.Second).Sub(time.Now())
 			}
 			numBots := conference.GoogleMeetRoomParticipants[roomType] - 1 // one of participants is the test itself
-			_, numFailures, err := bondConn.AddBots(ctx, bondMeetingCode, numBots, botsDuration)
-			defer bondConn.RemoveAllBots(ctx, bondMeetingCode)
+			bondMeetingCode, numFailures, err := bondConn.CreateConferenceWithBots(ctx, numBots, botsDuration)
+			defer bondConn.RemoveAllBotsFromConference(ctx, bondMeetingCode)
 			if err != nil || numFailures > 0 {
-				testing.ContextLogf(ctx, "BOND API: %d bots failed to connect. Error: %+v", numFailures, err)
+				testing.ContextLogf(ctx, "BOND API2: %d bots failed to connect. Error: %+v", numFailures, err)
 				break
 			}
-			testing.ContextLogf(ctx, "BOND API: Added %d bots for the duration of %v", numBots, botsDuration)
+			testing.ContextLogf(ctx, "BOND API2: Created conference: %+v and added %d bots for the duration of %v", bondMeetingCode, numBots, botsDuration)
 
 			// Make the room created by BOND the first one to try.
 			meet.URLs = append([]string{fmt.Sprintf("https://meet.google.com/%s", bondMeetingCode)}, meet.URLs...)

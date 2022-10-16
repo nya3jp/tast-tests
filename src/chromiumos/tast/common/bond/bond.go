@@ -23,7 +23,11 @@ import (
 )
 
 const (
-	endpoint         = "https://bond-pa.sandbox.googleapis.com"
+	// InternalEndpoint - for internal use.
+	InternalEndpoint = "https://bond-pa.sandbox.googleapis.com"
+	// ExternalEndpoint - for external use.
+	ExternalEndpoint = "https://botsondemand.googleapis.com"
+
 	hangoutEndpoints = "https://hangouts.googleapis.com/hangouts/v1_meetings/"
 	meetingEndpoints = "https://preprod-meetings.googleapis.com"
 
@@ -34,6 +38,7 @@ const (
 
 type newClientOption struct {
 	credsJSON []byte
+	endpoint  string
 }
 
 // NewClientOption is an option to customize creating a new client.
@@ -47,9 +52,31 @@ func WithCredsJSON(jsonData []byte) NewClientOption {
 	}
 }
 
+// WithEndpoint specifies a customized endpoint.
+func WithEndpoint(endpoint string) NewClientOption {
+	return func(opt *newClientOption) {
+		opt.endpoint = endpoint
+	}
+}
+
+// WithInternalEndpoint specifies the internal endpoint InternalEndpoint.
+func WithInternalEndpoint() NewClientOption {
+	return func(opt *newClientOption) {
+		opt.endpoint = InternalEndpoint
+	}
+}
+
+// WithExternalEndpoint specifies the external endpoint ExternalEndpoint.
+func WithExternalEndpoint() NewClientOption {
+	return func(opt *newClientOption) {
+		opt.endpoint = ExternalEndpoint
+	}
+}
+
 // Client is a client to send Bond API requests.
 type Client struct {
-	client *http.Client
+	client   *http.Client
+	endpoint string
 }
 
 // NewClient creates a new instance of Client.
@@ -58,17 +85,27 @@ func NewClient(ctx context.Context, opts ...NewClientOption) (*Client, error) {
 	for _, opt := range opts {
 		opt(&option)
 	}
+
 	if len(option.credsJSON) == 0 {
 		var err error
 		if option.credsJSON, err = ioutil.ReadFile(defaultCredPath); err != nil {
 			return nil, errors.Wrap(err, "failed to read the credential file")
 		}
 	}
+
 	creds, err := google.CredentialsFromJSON(ctx, option.credsJSON, scope)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create the credentials")
 	}
-	return &Client{client: oauth2.NewClient(ctx, creds.TokenSource)}, nil
+
+	var endpoint string
+	if option.endpoint != "" {
+		endpoint = option.endpoint
+	} else {
+		endpoint = InternalEndpoint
+	}
+
+	return &Client{client: oauth2.NewClient(ctx, creds.TokenSource), endpoint: endpoint}, nil
 }
 
 // Close closes the all unused connections.
@@ -122,11 +159,13 @@ func (c *Client) AvailableWorkers(ctx context.Context) (int, error) {
 		NumOfAvailableWorkers int `json:"numOfAvailableWorkers"`
 	}
 	resp := availableWorkersResponse{}
-	if err := c.sendWithRetry(ctx, http.MethodGet, endpoint+"/v1/workers:count", nil, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodGet, c.endpoint+"/v1/workers:count", nil, &resp); err != nil {
 		return 0, err
 	}
 	return resp.NumOfAvailableWorkers, nil
 }
+
+// Set of methods for internal BOND API:
 
 // CreateConference creates a new conference and returns its meeting code.
 func (c *Client) CreateConference(ctx context.Context) (string, error) {
@@ -144,7 +183,7 @@ func (c *Client) CreateConference(ctx context.Context) (string, error) {
 		},
 	}
 	resp := conferenceResponse{}
-	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conferences:create", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/conferences:create", req, &resp); err != nil {
 		return "", err
 	}
 	return resp.Conference.ConferenceCode, nil
@@ -159,7 +198,7 @@ func (c *Client) ExecuteScript(ctx context.Context, script, meetingCode string) 
 		},
 	}
 	resp := map[string]interface{}{}
-	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
 		return err
 	}
 	if success, ok := resp["success"]; ok && success.(bool) {
@@ -256,7 +295,7 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 		"use_random_video_file_for_playback": true,
 	}
 	resp := addBotsResponse{}
-	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
 		return nil, 0, err
 	}
 	return resp.BotIDs, resp.NumberOfFailures, nil
@@ -267,7 +306,7 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 // list of IDs of bots that were not found.
 func (c *Client) RemoveAllBots(ctx context.Context, meetingCode string) (failedIDs, notFoundIDs []int, err error) {
 	type botState struct {
-		BotId int `json:"botId"`
+		BotID int `json:"botId"`
 	}
 	type removeAllBotsResponse struct {
 		NotFound []botState `json:"notFound"`
@@ -281,17 +320,65 @@ func (c *Client) RemoveAllBots(ctx context.Context, meetingCode string) (failedI
 		"remove_all": true,
 	}
 	resp := removeAllBotsResponse{}
-	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:remove", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/conference/"+meetingCode+"/bots:remove", req, &resp); err != nil {
 		return nil, nil, err
 	}
 
 	var failedBotIDs []int
 	for _, state := range resp.Failed {
-		failedBotIDs = append(failedBotIDs, state.BotId)
+		failedBotIDs = append(failedBotIDs, state.BotID)
 	}
 	var notFoundBotIDs []int
 	for _, state := range resp.NotFound {
-		notFoundBotIDs = append(notFoundBotIDs, state.BotId)
+		notFoundBotIDs = append(notFoundBotIDs, state.BotID)
 	}
 	return failedBotIDs, notFoundBotIDs, nil
+}
+
+// Set of methods accessible externally:
+// https://developers.google.com/bots-on-demand/reference/rest/v1/createConferenceWithBots/create.html
+
+// CreateConferenceWithBots creates a new conference and adds bots. Returns its meeting code and number of failed bots.
+// https://developers.google.com/bots-on-demand/reference/rest/v1/createConferenceWithBots/create
+func (c *Client) CreateConferenceWithBots(ctx context.Context, numBots int, ttl time.Duration) (string, int, error) {
+	req := map[string]interface{}{
+		"numOfBots": numBots,
+		"ttlSecs":   ttl / time.Second,
+	}
+	type response struct {
+		ConferenceCode string   `json:"conferenceCode"`
+		ErrorMessages  []string `json:"errorMessages"`
+	}
+	resp := response{}
+
+	err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/createConferenceWithBots", req, &resp)
+
+	var nFailures int
+	if resp.ErrorMessages != nil {
+		nFailures = len(resp.ErrorMessages)
+		testing.ContextLogf(ctx, "CreateConferenceWithBots failed to create some bots: %#v", resp)
+	} else {
+		nFailures = 0
+	}
+	return resp.ConferenceCode, nFailures, err
+}
+
+// RemoveAllBotsFromConference removes all bots from a conference. Returns number of failed bots.
+// https://developers.google.com/bots-on-demand/reference/rest/v1/removeAllBotsFromConference/removeAllBotsFromConference.html
+func (c *Client) RemoveAllBotsFromConference(ctx context.Context, conferenceCode string) (int, error) {
+	type response struct {
+		ErrorMessages []string `json:"errorMessages"`
+	}
+	resp := response{}
+
+	err := c.sendWithRetry(ctx, http.MethodPost, c.endpoint+"/v1/removeAllBotsFromConference/"+conferenceCode, nil, &resp)
+
+	var nFailures int
+	if resp.ErrorMessages != nil {
+		nFailures = len(resp.ErrorMessages)
+		testing.ContextLogf(ctx, "RemoveAllBotsFromConference failed to remove some bots: %#v", resp)
+	} else {
+		nFailures = 0
+	}
+	return nFailures, err
 }
