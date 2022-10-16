@@ -18,13 +18,21 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GellerLogin,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if Geller login is working",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
-		Fixture:      "familyLinkGellerLogin",
+		Params: []testing.Param{{
+			Fixture: "familyLinkGellerLogin",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "familyLinkGellerLoginWithLacros",
+			Val:               browser.TypeLacros,
+		}},
 		VarDeps: []string{
 			"family.gellerEmail",
 		},
@@ -41,8 +49,7 @@ func GellerLogin(ctx context.Context, s *testing.State) {
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
 	}
-	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.gellerEmail"), s.OutDir()); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.gellerEmail"), s.OutDir()); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
