@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeSandboxed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify Chrome's sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
