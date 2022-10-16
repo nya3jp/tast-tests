@@ -30,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SharedFilesystemState,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Reports on the state of the ChromeOS shared filesystem and fails if an unexpected mount is found when not logged in",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
@@ -45,12 +45,18 @@ func init() {
 // SharedFilesystemState test will fail if you are adding a new shared mount to
 // the init mount namespace. If this is the case, follow these steps:
 // 1. Confirm that it is necessary and prepare reasoning for why this mount must
-//    be shared and in the init mount namespace.
+//
+//	be shared and in the init mount namespace.
+//
 // 2. Add the mount to the appropriate list below (based on whether it exists in
-//    ARCVM/ARC++ and whether it exists when the user is logged in or not).
+//
+//	ARCVM/ARC++ and whether it exists when the user is logged in or not).
+//
 // 3. Add short reasoning as a comment above the mount, then add a more detailed
-//    explanation in
-//    https://chrome-internal.googlesource.com/chromeos/docs/+/HEAD/security/shared_filesystem_state.md
+//
+//	explanation in
+//	https://chrome-internal.googlesource.com/chromeos/docs/+/HEAD/security/shared_filesystem_state.md
+//
 // 4. Add nvaa@ or another chromeos-security@ engineer as a reviewer on the CL.
 func SharedFilesystemState(ctx context.Context, s *testing.State) {
 	// Names of processes whose children should be ignored. These processes themselves are also ignored.

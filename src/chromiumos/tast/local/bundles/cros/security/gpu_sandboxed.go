@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GPUSandboxed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify GPU sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
