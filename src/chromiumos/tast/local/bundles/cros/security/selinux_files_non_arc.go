@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFilesNonARC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		Func: SELinuxFilesNonARC,
+		// TODO(b/254328916): Make sure we also cover the rootfs chrome binary in lacros variant tests.
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks SELinux labels on Chrome-specific files on devices that don't support ARC",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
