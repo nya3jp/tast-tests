@@ -25,7 +25,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that window drag and drop works correctly and smoothly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"sophiewen@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
