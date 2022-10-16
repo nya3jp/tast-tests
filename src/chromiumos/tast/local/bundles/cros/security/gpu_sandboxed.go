@@ -9,13 +9,15 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GPUSandboxed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify GPU sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
@@ -23,22 +25,32 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "gpu_sandboxing"},
-		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
+		Timeout: 1 * time.Minute,
 	})
 }
 
 func GPUSandboxed(ctx context.Context, s *testing.State) {
 	const (
-		url      = "chrome://gpu"
+		url      = "chrome://gpu/"
 		waitExpr = "browserBridge.isSandboxedForTesting()"
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, url)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
 	if err != nil {
 		s.Fatal("Failed to create a new connection: ", err)
 	}
+	defer closeBrowser(ctx)
 	defer conn.Close()
 
 	ectx, cancel := context.WithTimeout(ctx, 30*time.Second)
