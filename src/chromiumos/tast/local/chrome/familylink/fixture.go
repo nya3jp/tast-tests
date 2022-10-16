@@ -106,6 +106,25 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornLoginNonOwnerWithLacros",
+		Desc:     "Supervised Family Link user login with Unicorn account as second user on device",
+		Contacts: []string{"galenemco@chromium.org", "hyungtaekim@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false),
+		Vars: []string{
+			"ui.gaiaPoolDefault",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "familyLinkGellerLogin",
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
