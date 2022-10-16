@@ -248,6 +248,7 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 }
 
 // VerifyUserSignedIntoBrowserAsChild creates and opens the browser, then checks that the provided email is signed in and recognized as a child user.
+// Note that `cr` and `tconn` passed in should be from ash-chrome.
 func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, email, outDir string) (err error) {
 	testing.ContextLog(ctx, "Verifying user is signed in as a child in the browser")
 
