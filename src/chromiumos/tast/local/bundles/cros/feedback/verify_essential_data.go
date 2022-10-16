@@ -24,17 +24,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	case1 = "share_email_and_check_consent_checkbox"
-	case2 = "share_email_and_uncheck_consent_checkbox"
-	case3 = "dont_share_email"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifyFeedbackUserCtlConsentValue,
+		Func:         VerifyEssentialData,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify feedbackUserCtlConsent value in the report",
+		Desc:         "Verify description and screenshot values in the report",
 		Contacts: []string{
 			"wangdanny@google.com",
 			"zhangwenyu@google.com",
@@ -46,21 +40,20 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "share_email_and_check_consent_checkbox",
-			Val:  case1,
+			Name: "include_screenshot",
+			Val:  true,
 		}, {
-			Name: "share_email_and_uncheck_consent_checkbox",
-			Val:  case2,
-		}, {
-			Name: "dont_share_email",
-			Val:  case3,
+			Name: "not_include_screenshot",
+			Val:  false,
 		}},
 	})
 }
 
-// VerifyFeedbackUserCtlConsentValue verifies the feedbackUserCtlConsent value
-// in the report in different conditions.
-func VerifyFeedbackUserCtlConsentValue(ctx context.Context, s *testing.State) {
+// VerifyEssentialData verifies if description and screenshot are
+// in the report in different conditions. Description should always be
+// included in the report and screenshot should be included in the report
+// when the screenshot checkbox is checked.
+func VerifyEssentialData(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
@@ -77,14 +70,14 @@ func VerifyFeedbackUserCtlConsentValue(ctx context.Context, s *testing.State) {
 	// Clean up in both beginning and the end.
 	cleanUp := func() {
 		if err := os.RemoveAll(feedbackapp.ReportPath); err != nil {
-			s.Log("Failed to remove feedback report: ", err)
+			s.Error("Failed to remove feedback report: ", err)
 		}
 	}
 	cleanUp()
 	defer cleanUp()
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-	configValue := s.Param().(string)
+	includeScreenshot := s.Param().(bool)
 
 	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
@@ -92,26 +85,15 @@ func VerifyFeedbackUserCtlConsentValue(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch feedback app and navigate to share data page: ", err)
 	}
 
-	emailDropdown := nodewith.Name("Select email").Role(role.ListBox)
-	dontIncludeEmailOption := nodewith.Name("anonymous user").Role(role.ListBoxOption)
-	checkboxContainer := nodewith.Name("Allow Google to email you about this issue").Role(role.GenericContainer)
-	consentCheckbox := nodewith.Role(role.CheckBox).Ancestor(checkboxContainer)
-
-	// Set up configs if needed.
-	if configValue == case3 {
-		if err := uiauto.Combine("choose not to include Email",
-			ui.LeftClickUntil(emailDropdown, ui.WithTimeout(
-				2*time.Second).WaitUntilExists(dontIncludeEmailOption)),
-			ui.LeftClick(dontIncludeEmailOption),
+	// Check the screenshot checkbox if needed.
+	if includeScreenshot {
+		checkbox := nodewith.Role(role.CheckBox).Ancestor(feedbackRootNode).First()
+		if err := uiauto.Combine("Verify checkbox is unchecked and click it",
+			ui.WaitUntilExists(checkbox.Attribute("checked", "false")),
+			ui.DoDefault(checkbox),
+			ui.WaitUntilExists(checkbox.Attribute("checked", "true")),
 		)(ctx); err != nil {
-			s.Fatal("Failed to choose not include Email: ", err)
-		}
-	} else if configValue == case1 {
-		if err := uiauto.Combine("share email and check consent checkbox",
-			ui.DoDefault(consentCheckbox),
-			ui.WaitUntilExists(consentCheckbox.Attribute("checked", "true")),
-		)(ctx); err != nil {
-			s.Fatal("Failed to share email and check consent checkbox: ", err)
+			s.Fatal("Failed to change the checkbox state: ", err)
 		}
 	}
 
@@ -146,26 +128,20 @@ func VerifyFeedbackUserCtlConsentValue(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse report: ", err)
 	}
 
-	// Loop through the report array to get the feedbackUserCtlConsent value.
-	feedbackUserCtlConsentValue := ""
-	productSpecificData := report.GetWebData().GetProductSpecificData()
-	for _, element := range productSpecificData {
-		if element.GetKey() == "feedbackUserCtlConsent" {
-			feedbackUserCtlConsentValue = element.GetValue()
-			break
-		}
-	}
+	// Get description and screenshot to verify their values.
+	reportDescription := report.GetCommonData().GetDescription()
+	reportScreenshot := report.GetScreenshot()
 
-	// Verify feedbackUserCtlConsent value in the feedback report.
-	if configValue == case3 || configValue == case2 {
-		if feedbackUserCtlConsentValue != "false" {
-			s.Fatalf("Expected feedbackUserCtlConsent: false does not exist; got %s", feedbackUserCtlConsentValue)
-		}
-	} else if configValue == case1 {
-		if feedbackUserCtlConsentValue != "true" {
-			s.Fatalf("Expected feedbackUserCtlConsent: true does not exist; got %s", feedbackUserCtlConsentValue)
+	if reportDescription != feedbackapp.IssueText {
+		s.Fatal("Failed to get correct report description")
+	}
+	if includeScreenshot {
+		if reportScreenshot == nil {
+			s.Fatal("Failed to include the screenshot in the report")
 		}
 	} else {
-		s.Fatal("Expected feedbackUserCtlConsent does not exist")
+		if reportScreenshot != nil {
+			s.Fatal("Failed to not include the screenshot in the report")
+		}
 	}
 }
