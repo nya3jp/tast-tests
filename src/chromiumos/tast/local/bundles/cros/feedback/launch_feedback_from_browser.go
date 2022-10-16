@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OpenFeedbackFromBrowser,
+		Func:         LaunchFeedbackFromBrowser,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "User is able to open feedback app from browser",
 		Contacts: []string{
@@ -46,9 +46,9 @@ func init() {
 
 const settingLinkAddress = "chrome://settings/help"
 
-// OpenFeedbackFromBrowser verifies the user is able to open
+// LaunchFeedbackFromBrowser verifies the user is able to open
 // feedback app from browser.
-func OpenFeedbackFromBrowser(ctx context.Context, s *testing.State) {
+func LaunchFeedbackFromBrowser(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	bt := s.Param().(browser.Type)
 
