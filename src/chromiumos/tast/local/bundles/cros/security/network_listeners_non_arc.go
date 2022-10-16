@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkListenersNonARC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks TCP listeners on non-ARC systems",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
