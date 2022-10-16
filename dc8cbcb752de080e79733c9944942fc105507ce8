@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bc7571_b8f12e66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523383
+      },
+      "writtenOn": "2022-10-16T15:22:28Z",
+      "side": 1,
+      "message": "Needed for R102 release this week. Lots of failures, mainly on volteer:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild_version\u0026first_date\u003d2022-09-19\u0026last_date\u003d2022-10-16\u0026test\u003dtast.platform.DumpVPDLog\u0026build\u003dR102\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "revId": "dc8cbcb752de080e79733c9944942fc105507ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
