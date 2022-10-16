@@ -35,7 +35,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that partial screen video record works correctly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"afakhry@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
