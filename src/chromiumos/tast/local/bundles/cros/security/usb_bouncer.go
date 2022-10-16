@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         USBBouncer,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that usb_bouncer works as intended",
 		SoftwareDeps: []string{"chrome", "usbguard"},
 		Contacts: []string{
