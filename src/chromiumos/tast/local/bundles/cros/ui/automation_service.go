@@ -207,6 +207,40 @@ func (svc *AutomationService) WaitUntilExists(ctx context.Context, req *pb.WaitU
 	return &empty.Empty{}, nil
 }
 
+// MousePress left clicks and holds on the node. The press needs to be released by caller.
+func (svc *AutomationService) MousePress(ctx context.Context, req *pb.MousePressRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	finder, err := toFinder(req.Finder)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.MousePress(finder)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed calling MousePress with finder: %v", finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
+// MouseRelease releases left click.
+func (svc *AutomationService) MouseRelease(ctx context.Context) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.MouseRelease()(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed calling MouseRelease")
+	}
+	return &empty.Empty{}, nil
+}
+
 func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Context, error) {
 	cr := svc.sharedObject.Chrome
 	if cr == nil {
