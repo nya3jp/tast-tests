@@ -39,6 +39,30 @@
       },
       "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99100952_4aef496c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T16:41:34Z",
+      "side": 1,
+      "message": "It wasn\u0027t clear to me whether this needs to be fixed in production since droger@ said \"I don\u0027t think it would be good user experience to block all page loads in Chrome when an account is added to the OS.\". Does it make better sense if lacros team can bring this up to make a product decision?\n\nI\u0027ll be able to add crbug.com/1322246 as a TODO and update the bug for now, so it would be helpful if you can fill in to the bug if there is anything that needs to be clarified from the product\u0027s perspective. Thanks,",
+      "parentUuid": "f6edd288_ca3ff2dd",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
