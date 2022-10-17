@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c266112f_c4fd8436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T07:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37bcf5f9_5e35b0f1",
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b7a9e6_81bec6bf",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-07T15:41:45Z",
       "side": 1,
       "message": "This approach is the source of flakiness.\nInstead, could you wait for some condition that indicates verification is done?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec09c57_54a10800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T07:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b7a9e6_81bec6bf",
       "range": {
         "startLine": 85,
         "startChar": 3,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ce571e_1927b94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T07:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3eca07_21cafe3b",
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ccb88c0_64916e19",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-09-07T15:41:45Z",
       "side": 1,
       "message": "comparing floating point values by \u003d\u003d often causes flakiness due to FP error, unless the bit patterns are specified.\nShould we have some (reasonably small enougH) error tolerance?",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d20bd0_a8941de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T07:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ccb88c0_64916e19",
       "range": {
         "startLine": 173,
         "startChar": 5,
