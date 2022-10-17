@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92434d7f_3ff703e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-17T20:47:45Z",
+      "side": 1,
+      "message": "The content of CTM is a hex code which can contain both number and character. Change the content pattern to [\\d|\\w]+.",
+      "revId": "377cda41ce58d27e833d128a852e6a269c314683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
