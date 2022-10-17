@@ -59,17 +59,14 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 			return err
 		}
 
-		if cfg.RemoveNotification() {
-			// Clear all notifications after logging in so none will be shown at the beginning of tests.
-			// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
-			tconn, err := sess.TestAPIConn(ctx, true)
-			if err != nil {
-				return err
-			}
-			if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
-				return errors.Wrap(err, "failed to clear notifications")
-			}
+		if cfg.LoginMode() == config.SAMLLogin {
+			return nil
 		}
+
+		if err := FinishUserLogin(ctx, cfg, sess); err != nil {
+			return errors.Wrap(err, "failed to finish user login")
+		}
+
 		return nil
 	case config.GuestLogin:
 		if err := logInAsGuest(ctx, cfg, sess); err != nil {
@@ -81,6 +78,32 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 	default:
 		return errors.Errorf("unknown login mode: %v", cfg.LoginMode())
 	}
+}
+
+// FinishUserLogin handles the necessary steps after a successful login.
+func FinishUserLogin(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	if cfg.WaitForCryptohome() {
+		if err := waitForCryptohome(ctx, cfg); err != nil {
+			return errors.Wrap(err, "waiting for cryptohome failed")
+		}
+	}
+
+	if cfg.SkipOOBEAfterLogin() {
+		ctx, st := timing.Start(ctx, "wait_for_oobe_dismiss")
+		err := WaitForOOBEConnectionToBeDismissed(ctx, sess)
+		st.End()
+		if err != nil {
+			return errors.Wrap(err, "waiting for OOBE to be dismissed failed")
+		}
+	}
+
+	if cfg.RemoveNotification() {
+		if err := removeNotifications(ctx, sess); err != nil {
+			return errors.Wrap(err, "failed to remove notifications")
+		}
+	}
+
+	return nil
 }
 
 // WaitForOOBEConnection establishes a connection to an OOBE page.
