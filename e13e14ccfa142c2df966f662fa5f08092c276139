@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6ba66f_082b27e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_auth_factor_validity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-10-17T13:43:51Z",
+      "side": 1,
+      "message": "nit/optional (could go in another CL): It seems like it\u0027s a pattern to StartAuthSession then defer InvalidateAuthSession. I think it might be possible to create a helper that takes a function, whereby the helper will StartAuthSession and Invalidate at the return.",
+      "revId": "e13e14ccfa142c2df966f662fa5f08092c276139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a5c461_094251f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_auth_factor_validity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-10-17T13:43:51Z",
+      "side": 1,
+      "message": "nit/optional: Maybe \"testing mount failure of removed factor failed\"? Technical it could be failed to start auth session or still able to authenticate.",
+      "range": {
+        "startLine": 251,
+        "startChar": 26,
+        "endLine": 251,
+        "endChar": 70
+      },
+      "revId": "e13e14ccfa142c2df966f662fa5f08092c276139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e97783_c614e6a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_auth_factor_validity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-10-17T13:43:51Z",
+      "side": 1,
+      "message": "nit/optional: Possibly separate this out?",
+      "revId": "e13e14ccfa142c2df966f662fa5f08092c276139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
