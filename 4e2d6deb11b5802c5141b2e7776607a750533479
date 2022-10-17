@@ -16,6 +16,52 @@
       "message": "+jorgelo for test owner\u0027s review\n+hidehiko for lacros tast owner\u0027s review",
       "revId": "4e2d6deb11b5802c5141b2e7776607a750533479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2587d188_346cfabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/chrome_sandboxed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-17T21:13:38Z",
+      "side": 1,
+      "message": "Where does this come from?",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "4e2d6deb11b5802c5141b2e7776607a750533479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e5e3dc_ff412c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-17T21:13:38Z",
+      "side": 1,
+      "message": "Where does this come from?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "4e2d6deb11b5802c5141b2e7776607a750533479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
