@@ -102,6 +102,8 @@ func SAMLLogin(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.LoginMode = config.SAMLLogin
 		cfg.Creds = creds
+		cfg.WaitForCryptohome = false
+		cfg.RemoveNotification = false
 		return nil
 	}
 }
