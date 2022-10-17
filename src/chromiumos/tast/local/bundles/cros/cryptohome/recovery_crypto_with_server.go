@@ -7,6 +7,7 @@ package cryptohome
 import (
 	"bytes"
 	"context"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -106,6 +107,7 @@ func RecoveryCryptoWithServer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to fetch epoch: ", err)
 	}
+	s.Log("The epoch is: ", hex.EncodeToString(epoch))
 	if err := testTool.SaveCustomEpoch(epoch); err != nil {
 		s.Fatal("Failed to save custom epoch: ", err)
 	}
@@ -125,6 +127,7 @@ func RecoveryCryptoWithServer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to mediate the request: ", err)
 	}
+	s.Log("The recovery response is: ", hex.EncodeToString(response))
 	if err := testTool.SaveCustomResponse(response); err != nil {
 		s.Fatal("Failed to save custom response: ", err)
 	}
