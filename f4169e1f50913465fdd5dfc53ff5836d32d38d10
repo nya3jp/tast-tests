@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f781a7_12358272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bee34ce_629b1f35",
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "140c2701_b2ec61c8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-22T08:34:31Z",
       "side": 1,
       "message": "Defer setting rotation to display.Rotate0 angle. The same for the recording video.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81541520_9c56796d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140c2701_b2ec61c8",
       "range": {
         "startLine": 89,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e933166_671221a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0963fb4_507f7315",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be363f09_03e31d10",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ab52e9_40501137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be363f09_03e31d10",
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5094ec_a1c19c32",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-09-22T17:18:46Z",
       "side": 1,
       "message": "Please use a table-driven format here\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9982b2d9_3e1d0345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5094ec_a1c19c32",
       "range": {
         "startLine": 116,
         "startChar": 1,
