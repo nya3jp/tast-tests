@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,6 +11,10 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"net/http"
+	"net/http/httptest"
+	"os"
+	"path"
 	"regexp"
 	"strings"
 	"time"
@@ -18,6 +22,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -86,6 +91,12 @@ const (
 	pinterest    webType = "Pinterest"
 	youtube      webType = "Youtube"
 	netflix      webType = "Netflix"
+	localPage    webType = "localPage"
+)
+
+// The path of local static web pages
+const (
+	ZipFile = "SperaTest/SperaTest.zip"
 )
 
 // webPageInfo records a Chrome page's information, including the current browsing page
@@ -376,7 +387,7 @@ var allTargets = []struct {
 }
 
 // generateTabSwitchTargets sets all web targets according to the input Level.
-func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
+func generateTabSwitchTargets(s *testing.State, caseLevel Level) ([]*chromeWindow, error) {
 	winNum := 1
 	tabNum := 0
 	switch caseLevel {
@@ -431,6 +442,49 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 			}
 		}
 	}
+
+	// test code
+	newServer := httptest.NewServer(http.FileServer(http.Dir(path.Join(os.TempDir(), "SperaTest"))))
+
+	testTargets := []struct {
+		url  string
+		info *webPageInfo
+	}{
+		{"https://cloud.google.com/", newPageInfo(Basic, wikipedia, `/docs`, `/docs`)},
+		{"https://play.google.com/store/games", newPageInfo(Basic, wikipedia, `/about/play-pass`, `/about/play-pass`)},
+		{"https://www.google.com/books/edition/_/mIbTDwAAQBAJ?hl=en&gbpv=0", newPageInfo(Basic, wikipedia, `/books/edition/_/mIbTDwAAQBAJ?hl=en&newbks=0`, `/books/edition/_/mIbTDwAAQBAJ?hl=en&newbks=0`)},
+		{"https://www.google.com/finance/", newPageInfo(Basic, wikipedia, `/quote/GOOGL:NASDAQ`, `/quote/GOOGL:NASDAQ`)},
+		{"https://support.google.com/ ", newPageInfo(Basic, wikipedia, `/chrome`, `/chrome`)},
+		{"https://news.google.com/", newPageInfo(Basic, wikipedia, `/topics`, `/topics`)},
+		{"https://shopping.google.com/", newPageInfo(Basic, wikipedia, `/`, `/`)},
+		{"https://store.google.com/?hl=en-US", newPageInfo(Basic, wikipedia, `/category/connected_home`, `/category/connected_home`)},
+		{"https://www.google.com/nonprofits/offerings/youtube-nonprofit-program/", newPageInfo(Basic, wikipedia, `/success-stories`, `/success-stories`)},
+		{"https://workspace.google.com/intl/en/enterprise/", newPageInfo(Basic, wikipedia, `/pricing`, `/pricing`)},
+	}
+
+	localTestTargets := []struct {
+		url  string
+		info *webPageInfo
+	}{
+		{path.Join(newServer.URL, "GoogleCloud.html"), newPageInfo(Basic, wikipedia, `/GoogleCloud_Docs`, `/GoogleCloud`)},
+		{path.Join(newServer.URL, "GooglePlay.html"), newPageInfo(Basic, wikipedia, `/GooglePlay_Pass`, `/GooglePlay_Pass`)},
+		{path.Join(newServer.URL, "GoogleBooks.html"), newPageInfo(Basic, wikipedia, `/GoogleBooks_Classic`, `/GoogleBooks_Classic`)},
+		{path.Join(newServer.URL, "GoogleFinance.html"), newPageInfo(Basic, wikipedia, `/GoogleFinance_GOOGL`, `/GoogleFinance`)},
+		{path.Join(newServer.URL, "GoogleHelp.html"), newPageInfo(Basic, wikipedia, `/GoogleHelp_Chromebook`, `/GoogleHelp`)},
+		{path.Join(newServer.URL, "GoogleNews.html"), newPageInfo(Basic, wikipedia, `/GoogleNews_World`, `/GoogleNews`)},
+		{path.Join(newServer.URL, "GoogleShopping.html"), newPageInfo(Basic, wikipedia, `/GoogleShopping_Chromebook`, `/GoogleShopping_Chromebook`)},
+		{path.Join(newServer.URL, "GoogleStore.html"), newPageInfo(Basic, wikipedia, `/GoogleStore_SmartHome`, `/GoogleStore_SmartHome`)},
+		{path.Join(newServer.URL, "GooglePrivacy.html"), newPageInfo(Basic, wikipedia, `/GooglePrivacy_Overview`, `/GooglePrivacy_Overview`)},
+		{path.Join(newServer.URL, "GoolgeNonprofits_YouTube.html"), newPageInfo(Basic, wikipedia, `/GoolgeNonprofits_Stories`, `/GoolgeNonprofits_Stories`)},
+
+		// Google workspace can cause strange behaviors for LCP metric, so have to remove it.
+		//{path.Join(newServer.URL, "GoogleWorkspace_EnterpriseApplicationSoftware.html"), newPageInfo(Basic, wikipedia, `/GoogleWorkspace_Pricing`, `/GoogleWorkspace_Pricing`)},
+	}
+
+	// Use local web sites or google web sites to replace external web sites.
+	targets = testTargets
+	targets = localTestTargets
+
 	idx := 0
 	windows := make([]*chromeWindow, winNum)
 	for i := range windows {
@@ -499,7 +553,20 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
 
-	windows, err := generateTabSwitchTargets(caseLevel)
+	// Test code: unzip static web pages to data dir
+	os.RemoveAll(os.TempDir())
+	// if err := os.MkdirAll(destDir, 0755); err != nil {
+	// 	s.Fatal("Failed to create destDir : ", err)
+	// }
+
+	if err := testexec.CommandContext(ctx, "unzip", s.DataPath(ZipFile), "-d", os.TempDir()).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to unzip : ", err)
+	}
+
+	s.Logf("The temp dir is %s", os.TempDir())
+	// Test code
+
+	windows, err := generateTabSwitchTargets(s, caseLevel)
 	if err != nil {
 		s.Fatal("Failed to generate tab targets: ", err)
 	}
