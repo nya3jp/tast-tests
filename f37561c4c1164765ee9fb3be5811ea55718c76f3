@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5441bea9_dbfaa607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-17T18:08:52Z",
+      "side": 1,
+      "message": "change it to `return errors.Wrap` since they are inside the recorder.",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 11
+      },
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
