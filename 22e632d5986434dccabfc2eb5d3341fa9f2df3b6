@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b6e29d_58bfc7a6",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82a1299_837f4baf",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb88e67d_eacc33f1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e655156_94deade2",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb88e67d_eacc33f1",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e403b233_a167c5c6",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-17T00:03:23Z",
       "side": 1,
       "message": "ditto g3 links",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 0
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993b6132_1ee8a2ec",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e403b233_a167c5c6",
       "range": {
         "startLine": 342,
         "startChar": 0,
