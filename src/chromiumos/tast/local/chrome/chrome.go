@@ -726,6 +726,18 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 	return nil
 }
 
+// WaitForCryptohome waits for user's encrypted home directory to be mounted and
+// informs about occured errors
+func (c *Chrome) WaitForCryptohome(ctx context.Context) error {
+	return login.WaitForCryptohome(ctx, &c.cfg)
+}
+
+// RemoveNotifications clears all notifications after logging in so none will be
+// shown at the beginning of tests.
+func (c *Chrome) RemoveNotifications(ctx context.Context) error {
+	return login.RemoveNotifications(ctx, c.sess)
+}
+
 // IsTargetAvailable checks if there is any matched target.
 func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
 	targets, err := c.FindTargets(ctx, tm)
