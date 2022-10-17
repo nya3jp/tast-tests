@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -31,17 +32,19 @@ var (
 
 // TaskManager holds the resources required to operate on the Task Manager.
 type TaskManager struct {
-	ui  *uiauto.Context
-	kb  *input.KeyboardEventWriter
-	app apps.App
+	tconn *chrome.TestConn
+	ui    *uiauto.Context
+	kb    *input.KeyboardEventWriter
+	app   apps.App
 }
 
 // New returns an instance of TaskManager.
 func New(tconn *chrome.TestConn, kb *input.KeyboardEventWriter) *TaskManager {
 	return &TaskManager{
-		ui:  uiauto.New(tconn),
-		kb:  kb,
-		app: apps.TaskManager,
+		tconn: tconn,
+		ui:    uiauto.New(tconn),
+		kb:    kb,
+		app:   apps.TaskManager,
 	}
 }
 
@@ -54,8 +57,20 @@ func (tm *TaskManager) Open(ctx context.Context) error {
 	return tm.ui.WaitUntilExists(rootFinder)(ctx)
 }
 
-// WaitUntilStable waits task manager UI to become stable.
+// WaitUntilStable waits task manager ui to become stable.
 func (tm *TaskManager) WaitUntilStable(ctx context.Context) error {
+	// Process's ui location and state might be unstable if it is originally offscreen or invisible.
+	// Maximize task manager window to show as many processes as possible as a workaround.
+	w, err := ash.FindOnlyWindow(ctx, tm.tconn, func(w *ash.Window) bool {
+		return w.AppID == tm.app.ID
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to find Task Manager window")
+	}
+	if err := ash.SetWindowStateAndWait(ctx, tm.tconn, w.ID, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "failed to maximize Task Manager")
+	}
+
 	processRows := nodewith.HasClass("AXVirtualView").Role(role.Row).State(state.Multiselectable, true)
 	const threshold = 3
 	var contentsLoaded int
@@ -130,7 +145,7 @@ func (tm *TaskManager) SelectProcess(nameInTaskManager string) uiauto.Action {
 				// The taskmanager won't ever be stable, and the focused node might switch back to the previous one automatically.
 				// It is necessary to use a threshold to examine if the taskmanager has scrolled to the bottom.
 				if count >= threshold {
-					return testing.PollBreak(errors.New("scrolled to bottome"))
+					return testing.PollBreak(errors.New("scrolled to bottom"))
 				}
 				count++
 			} else {

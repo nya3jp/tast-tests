@@ -69,7 +69,7 @@ func DefaultUIAndFunctionality(ctx context.Context, s *testing.State) {
 		taskManager: taskmanager.New(tconn, kb),
 		processes: []taskmanager.Process{
 			taskmanager.NewChromeTabProcess("https://www.cbc.ca/lite/trending-news"),
-			taskmanager.NewChromeTabProcess("https://www.nytimes.com/timeswire"),
+			taskmanager.NewChromeTabProcess("https://translate.google.com/?hl=en"),
 			taskmanager.NewChromeTabProcess("https://help.netflix.com/en"),
 			taskmanager.NewChromeTabProcess("http://lite.cnn.com/en"),
 			taskmanager.NewChromeTabProcess("https://news.ycombinator.com/news"),

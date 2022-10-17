@@ -7,7 +7,6 @@ package taskmanager
 import (
 	"context"
 	"math/rand"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -179,9 +178,6 @@ func newPluginTest() *pluginTest {
 		newPluginTab("https://twitter.com/i/flow/signup",
 			"https://accounts.google.com/", nodewith.Name("Sign up with Google").Role(role.Button),
 		),
-		newPluginTab("https://www.virtualspirits.com",
-			"https://youtube.com/", nodewith.NameRegex(regexp.MustCompile("^VirtualSpirits.*YouTube")).Role(role.RootWebArea),
-		),
 		newPluginTab("https://www.oreilly.com",
 			"https://driftt.com/", nodewith.NameStartingWith("Chat message from O'Reilly Bot:").Role(role.Button),
 		),
@@ -209,7 +205,7 @@ func (pt *pluginTest) terminateAndVerify(ctx context.Context, res *endProcessTes
 	}
 
 	if err := res.tconn.Call(ctx, nil, "async (id) => tast.promisify(chrome.tabs.update)(id, {active: true})", tab.ID); err != nil {
-		return errors.Wrap(err, "failed to focuse on the target tab")
+		return errors.Wrap(err, "failed to focus on the target tab")
 	}
 
 	return res.ui.WaitUntilGone(tab.pluginNode)(ctx)
