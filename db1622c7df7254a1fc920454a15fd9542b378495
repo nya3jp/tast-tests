@@ -46,6 +46,30 @@
       },
       "revId": "db1622c7df7254a1fc920454a15fd9542b378495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5909c1d9_88bc9e06",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T07:50:10Z",
+      "side": 1,
+      "message": "bundles/cros/ui/perf/perf.go is under bundles, which can be depended by only by tests in the same category, while the support library is not, so it is recommended to have stricter API boundaries.",
+      "parentUuid": "21af242d_cf461049",
+      "range": {
+        "startLine": 202,
+        "startChar": 45,
+        "endLine": 202,
+        "endChar": 63
+      },
+      "revId": "db1622c7df7254a1fc920454a15fd9542b378495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
