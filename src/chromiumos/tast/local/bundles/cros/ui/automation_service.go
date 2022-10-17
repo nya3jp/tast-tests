@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -203,6 +204,56 @@ func (svc *AutomationService) WaitUntilExists(ctx context.Context, req *pb.WaitU
 	}
 	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed calling WaitUntilExists with finder: %v", finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
+func mouseButton(button pb.MouseButton) mouse.Button {
+	switch button {
+	case pb.MouseButton_LEFT_BUTTON:
+		return mouse.LeftButton
+	case pb.MouseButton_RIGHT_BUTTON:
+		return mouse.RightButton
+	case pb.MouseButton_MIDDLE_BUTTON:
+		return mouse.MiddleButton
+	case pb.MouseButton_BACK_BUTTON:
+		return mouse.BackButton
+	case pb.MouseButton_FORWARD_BUTTON:
+		return mouse.ForwardButton
+	}
+	return mouse.LeftButton
+}
+
+// MousePress left clicks and holds on the node. The press needs to be released by caller.
+func (svc *AutomationService) MousePress(ctx context.Context, req *pb.MousePressRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	finder, err := toFinder(req.Finder)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.MousePress(mouseButton(req.MouseButton), finder)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed calling MousePress with finder: %v", finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
+// MouseRelease releases left click.
+func (svc *AutomationService) MouseRelease(ctx context.Context, req *pb.MouseReleaseRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.MouseRelease(mouseButton(req.MouseButton))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed calling MouseRelease")
 	}
 	return &empty.Empty{}, nil
 }
