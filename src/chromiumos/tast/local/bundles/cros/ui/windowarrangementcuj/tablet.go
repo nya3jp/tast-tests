@@ -134,7 +134,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	defer cleanUp(ctx, action.Named(
 		"maximize the window",
 		func(ctx context.Context) error {
-			ws, err := ash.GetAllWindows(ctx, tconn)
+			ws, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get windows")
 			}
@@ -161,7 +161,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	), &retErr)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ws, err := ash.GetAllWindows(ctx, tconn)
+		ws, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to obtain the window list")
 		}

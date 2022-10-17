@@ -179,17 +179,6 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 	tabPIP := tab.NameContaining("/pip.html - ")
 	tabNoPIP := tab.NameRegex(regexp.MustCompile("/pip.html$"))
 
-	// There is no PIP video in the Lacros variants of WindowArrangementCUJ.
-	// TODO(crbug/1232492): Remove this after fix.
-	isTabPIPFound, err := ui.IsNodeFound(ctx, tabPIP)
-	if err != nil {
-		return errors.Wrap(err, "failed to check if the tab with the PIP video can be found")
-	}
-	if !isTabPIPFound {
-		tabPIP = tab.Nth(1)
-		tabNoPIP = tab.First()
-	}
-
 	firstTabRect, err := ui.Location(ctx, tabNoPIP)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the location of the first tab")
@@ -207,7 +196,7 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 		return errors.Wrap(err, "failed to drag one browser tab to the other")
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
+	ws, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the window list")
 	}
@@ -244,7 +233,7 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 		return errors.Errorf("expected at least two drag points, got %v", p)
 	}
 
-	wsInitial, err := ash.GetAllWindows(ctx, tconn)
+	wsInitial, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get windows")
 	}
@@ -278,4 +267,24 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 
 	return nil
+}
+
+// getAllWindowsWorkingAroundB252552657 calls ash.GetAllWindows and filters out
+// PIP windows because they are not supposed to be returned by ash.GetAllWindows
+// in the first place (see b/252552657#comment7).
+// TODO(b/252552657): When the bug is fixed, remove this and update callers to
+// use ash.GetAllWindows directly.
+func getAllWindowsWorkingAroundB252552657(ctx context.Context, tconn *chrome.TestConn) ([]*ash.Window, error) {
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+
+	var filtered []*ash.Window
+	for _, w := range ws {
+		if w.State != ash.WindowStatePIP {
+			filtered = append(filtered, w)
+		}
+	}
+	return filtered, nil
 }

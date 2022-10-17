@@ -89,7 +89,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
 
 	// Get the browser window.
-	ws, err := ash.GetAllWindows(ctx, tconn)
+	ws, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the window list")
 	}
@@ -186,7 +186,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	), &retErr)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ws, err := ash.GetAllWindows(ctx, tconn)
+		ws, err := getAllWindowsWorkingAroundB252552657(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to obtain the window list")
 		}
