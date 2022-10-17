@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247e94df_964c183d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-17T01:06:42Z",
+      "side": 1,
+      "message": "we probably should not set the default of `MousePress` to leftButton, though it is commonly used with leftButton. It is better to refer to `MouseClickAtLocation` to handle both leftclick and rightclick. `MouseRelease` also needs to be updated accordingly, or only use names with prefix `LeftXXX`",
+      "range": {
+        "startLine": 652,
+        "startChar": 19,
+        "endLine": 652,
+        "endChar": 29
+      },
+      "revId": "622d3e3a27ef4cf74b42caa32b8590933bf9b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
