@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82a1299_837f4baf",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-10-17T00:03:23Z",
+      "side": 1,
+      "message": "maybe \"InternalEndpoint\" and \"ExternalEndpoint\"?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb88e67d_eacc33f1",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-10-17T00:03:23Z",
+      "side": 1,
+      "message": "please don\u0027t include g3 links here, as this file is publicly visible.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e403b233_a167c5c6",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-10-17T00:03:23Z",
+      "side": 1,
+      "message": "ditto g3 links",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 0
+      },
+      "revId": "22e632d5986434dccabfc2eb5d3341fa9f2df3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
