@@ -46,6 +46,30 @@
       },
       "revId": "86fb26e4122738001b2919ecc6971505013bdcc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ee1a9b_8f2c4ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-17T22:59:43Z",
+      "side": 0,
+      "message": "Interesting.\nAh.. I just noticed this is a test from kernel team\u0027s. So you are right that moving to a specific package is better.\n\nAs these functions are support packages used by multiple test, I\u0027d say move the function to src/chromiumos/tast/local/ instead of src/chromiumos/tast/local/bundles/...\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location",
+      "parentUuid": "34675dc4_8f1e9db8",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "86fb26e4122738001b2919ecc6971505013bdcc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17730ee4_0f22a083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/kernel_utils/kernel_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-17T22:59:43Z",
+      "side": 1,
+      "message": "You don\u0027t have to export the function IIRC.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "2beb5e3bffe3a862a532f3a4faab99c312d6bf65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
