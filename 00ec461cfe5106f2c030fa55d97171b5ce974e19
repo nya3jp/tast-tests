@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5bbb66_b0e10762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-17T16:06:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8721896c_03db7205",
+      "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faed937f_ef4e749c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66fb605d_160397d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-17T16:06:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "faed937f_ef4e749c",
+      "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf6d573_82a48635",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-21T17:47:54Z",
       "side": 1,
       "message": "Change the response to add a \"UITreeFilePath\" if ui_tree.",
+      "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1ab7f4_66e65fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-17T16:06:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cf6d573_82a48635",
       "revId": "00ec461cfe5106f2c030fa55d97171b5ce974e19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
