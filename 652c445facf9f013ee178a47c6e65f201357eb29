@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a48f05_58027b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1ac219_d523b294",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34964a32_6efbaa02",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-27T15:04:29Z",
       "side": 1,
       "message": "see below",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4a1a77_7fccbae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34964a32_6efbaa02",
       "range": {
         "startLine": 73,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0581912_01a6bb70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b720ec8a_7b8c3b96",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a10d5898_624ef54b",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d5873a_a43686c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10d5898_624ef54b",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cda4848_04cf3015",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-27T15:04:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1a6df5_b66d7bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-17T09:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cda4848_04cf3015",
       "range": {
         "startLine": 109,
         "startChar": 2,
