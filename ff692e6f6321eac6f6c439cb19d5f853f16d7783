@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e14925_c863ce0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:20:15Z",
+      "side": 1,
+      "message": "Bypassing CQ because of flaky `tast.pita` failures which are unrelated to the CL. Coordinated with infra oncall @andrescj",
+      "revId": "ff692e6f6321eac6f6c439cb19d5f853f16d7783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
