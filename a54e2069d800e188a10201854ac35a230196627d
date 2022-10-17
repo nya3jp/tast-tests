@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a5563f_dd2f9142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/add_person_flow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T23:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4dcaa8_2406bf9e",
+      "revId": "a54e2069d800e188a10201854ac35a230196627d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bca6d01_db8fc00c",
