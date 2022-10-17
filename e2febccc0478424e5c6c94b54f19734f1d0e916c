@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24335ae_7657a1d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T14:50:59Z",
+      "side": 1,
+      "message": "(oops, overlooked shadow review... Sorry, Georg).",
+      "revId": "e2febccc0478424e5c6c94b54f19734f1d0e916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
