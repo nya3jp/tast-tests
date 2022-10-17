@@ -108,6 +108,24 @@
       "parentUuid": "36eeee30_f428a256",
       "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3002fa_843f096f",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-17T02:15:37Z",
+      "side": 1,
+      "message": "Do we want to add a test that has workarounds for bugs in lacros? Seems better if the test can catch bugs to me. WDYT?",
+      "parentUuid": "2bf2363e_2e06df83",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
