@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1daa55_17cf33c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-17T23:16:54Z",
+      "side": 1,
+      "message": "Thanks for the suggestion and code review Nikolai!",
+      "revId": "2e3dadf55b733bc42b605c567962e07cb5cfac23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80247d0_68314fda",
@@ -48,6 +65,54 @@
       "writtenOn": "2022-10-14T04:18:14Z",
       "side": 1,
       "message": "The `check{FullScreen,PartialScreen,Window}Screenshot` functions seem to have duplicated code for getting the image config and checking the size matches, could that all can be inlined here? \n\nI.e. get the expected window bounds via `getCaptureSurfaceFullScreenBounds(ctx, tconn)/...` in each switch case and validate it after the switch.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 20
+      },
+      "revId": "2e3dadf55b733bc42b605c567962e07cb5cfac23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2840bb4a_41efcd86",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-17T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80247d0_68314fda",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 20
+      },
+      "revId": "2e3dadf55b733bc42b605c567962e07cb5cfac23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b315d945_972de17a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-17T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80247d0_68314fda",
       "range": {
         "startLine": 209,
         "startChar": 0,
