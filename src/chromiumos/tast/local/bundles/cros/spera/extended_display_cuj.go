@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf/youtube"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -116,7 +117,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 	// Unset mirrored display so two displays can show different information.
-	if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+	if err := typecutils.SetMirrorDisplay(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to unset mirror display: ", err)
 	}
 	// Make sure there are two displays on DUT.

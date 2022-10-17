@@ -31,6 +31,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/local/ui/cujrecorder"
 	pb "chromiumos/tast/services/cros/spera"
 	"chromiumos/tast/testing"
@@ -212,7 +213,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		if req.ExtendedDisplay {
 			// Unset mirrored display so two displays can show different information.
-			if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+			if err := typecutils.SetMirrorDisplay(ctx, tconn, false); err != nil {
 				return errors.Wrap(err, "failed to unset mirror display")
 			}
 			// Make sure there are two displays on DUT.

@@ -129,7 +129,7 @@ func SetMirrorDisplay(ctx context.Context, tconn *chrome.TestConn, set bool) err
 	}
 	defer settings.Close(ctx)
 
-	if err := ui.LeftClickUntil(displayFinder, ui.WithTimeout(3*time.Second).WaitUntilGone(displayFinder))(ctx); err != nil {
+	if err := ui.DoDefaultUntil(displayFinder, ui.WithTimeout(3*time.Second).WaitUntilGone(displayFinder))(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch display page")
 	}
 
