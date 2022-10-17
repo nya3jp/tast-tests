@@ -33,8 +33,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:    "floss_disabled",
-			Fixture: "bluetoothEnabledWithBlueZ",
+			Name:      "floss_disabled",
+			ExtraAttr: []string{"group:intel-gating"},
+			Fixture:   "bluetoothEnabledWithBlueZ",
 		}, {
 			Name:    "floss_enabled",
 			Fixture: "bluetoothEnabledWithFloss",

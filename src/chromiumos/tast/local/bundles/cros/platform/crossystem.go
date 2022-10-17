@@ -25,7 +25,7 @@ func init() {
 			"tast-users@chromium.org",
 		},
 		SoftwareDeps: []string{"crossystem"},
-		Attr:         []string{"group:mainline", "group:labqual"},
+		Attr:         []string{"group:mainline", "group:labqual", "group:intel-gating"},
 	})
 }
 
