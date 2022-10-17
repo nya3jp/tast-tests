@@ -16,6 +16,24 @@
       "message": "might be easier to check for `err !\u003d nil` and return early for this and some of the ones inside the block here",
       "revId": "aa1a97bb5f6e71ebb90f316ce5d7546a4c3fd8f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ed1747_c0b9c00b",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-10-17T19:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bfac030_97ffd891",
+      "revId": "aa1a97bb5f6e71ebb90f316ce5d7546a4c3fd8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
