@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/bundles/cros/video/expectations"
+	"chromiumos/tast/local/graphics/expectations"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
