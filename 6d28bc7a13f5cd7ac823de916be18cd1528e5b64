@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f737ef_d30a6dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_color_temperature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-17T20:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898f07eb_aa12a9fb",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "6d28bc7a13f5cd7ac823de916be18cd1528e5b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ba527f7_19c01c2a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T19:56:51Z",
       "side": 1,
       "message": "value",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "6d28bc7a13f5cd7ac823de916be18cd1528e5b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc04372_b4edbfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_color_temperature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-10-17T20:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba527f7_19c01c2a",
       "range": {
         "startLine": 149,
         "startChar": 4,
