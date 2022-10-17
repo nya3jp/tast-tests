@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d3e257_51707fde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T08:24:11Z",
+      "side": 1,
+      "message": "Defer to Shik.",
+      "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6edd288_ca3ff2dd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T08:24:11Z",
+      "side": 1,
+      "message": "Thank you for explanation.\n\nCould you add TODO to fix product side (with filing a bug if needed)?",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
