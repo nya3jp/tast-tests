@@ -33,6 +33,23 @@
       "message": "LGTM from ARC perspective 👍",
       "revId": "ef718510722cb3c5e20b640fbfced980eaed4dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac01e58_c924a648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-17T08:10:56Z",
+      "side": 1,
+      "message": "Tast owners, please take a look~",
+      "revId": "ef718510722cb3c5e20b640fbfced980eaed4dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
