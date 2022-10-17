@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898f07eb_aa12a9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_color_temperature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-17T19:56:51Z",
+      "side": 1,
+      "message": "I think \"24\" doesn\u0027t necessarily have to be there.\n\nOn my machine, it looks like:\n\n```\n23 CTM:\n    flags: blob\n    blobs:\n    \n    value:\n        000..000\n        ....\n24 GAMMA_LUT:\n    ....\n```",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "6d28bc7a13f5cd7ac823de916be18cd1528e5b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba527f7_19c01c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/night_light_color_temperature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-10-17T19:56:51Z",
+      "side": 1,
+      "message": "value",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "6d28bc7a13f5cd7ac823de916be18cd1528e5b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
