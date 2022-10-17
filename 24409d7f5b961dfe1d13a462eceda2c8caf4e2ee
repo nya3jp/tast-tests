@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bf3e2d_2ae5bf2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-10-17T08:32:15Z",
+      "side": 1,
+      "message": "Why making this change? Their values are same but isn\u0027t `c.serverEnv` easier to understand here?",
+      "range": {
+        "startLine": 284,
+        "startChar": 46,
+        "endLine": 284,
+        "endChar": 67
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab7620d_99c99af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-10-17T08:32:15Z",
+      "side": 1,
+      "message": "Does this work for dual stack case?",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
