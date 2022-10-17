@@ -97,7 +97,6 @@ func init() {
 			Name:              "vp9_hw_svc_l3t3_key",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 1280, 720, "L3T3_KEY", true),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "vp8_hw_multi_vp9_3x3",
@@ -245,25 +244,21 @@ func init() {
 		}, {
 			Name:              "vp9_svc_l2t3_270p_sw",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 480, 270, "L3T3_KEY", false),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabledAndSWEncoding",
 		}, {
 			Name:              "vp9_svc_l2t3_270p_hw",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 480, 270, "L3T3_KEY", true),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "vp9_svc_l2t3_360p_sw",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 640, 360, "L3T3_KEY", false),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabledAndSWEncoding",
 		}, {
 			Name:              "vp9_svc_l2t3_360p_hw",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 640, 360, "L3T3_KEY", true),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}},
