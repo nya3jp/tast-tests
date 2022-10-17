@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b56b26_c14c6df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-17T17:26:12Z",
+      "side": 1,
+      "message": "LGTM, but I am not familiar with charging testing, will need someone to look",
+      "revId": "f0d45af66d9d7f81642ef1d2d7cd906b819f946c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
