@@ -35,6 +35,7 @@ func init() {
 			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			// return []chrome.Option{chrome.DisableFeatures("EnableDnsProxy"), chrome.ARCEnabled(), chrome.UnRestrictARCCPU()}, nil
 			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,

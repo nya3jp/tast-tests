@@ -54,8 +54,8 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 	}
 	// Currently, ARC VPN is disabled by default.
 	// TODO(b/147256449): Explicitly disable ARC VPN once the feature becomes enabled-by-defalt
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
-		s.Fatalf("Failed to stop %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
+		s.Fatalf("Failed to stop %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		s.Fatalf("Failed to verify %s was unreachable from ARC over 'vpn'", conn.Server.OverlayIP)

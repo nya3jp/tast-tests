@@ -18,8 +18,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HostToARCVPN,
-		Desc:     "Switch from a host VPN to an ARC VPN",
+		Func:     ARCToHostVPN,
+		Desc:     "Switch from an ARC VPN to a host VPN",
 		Contacts: []string{"cassiewang@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "arcBooted",
@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-func HostToARCVPN(ctx context.Context, s *testing.State) {
+func ARCToHostVPN(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a
 	// few seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
@@ -40,13 +40,6 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	a := s.FixtValue().(*arc.PreData).ARC
-
-	// Set up and connect to host VPN.
-	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx)
-	if err != nil {
-		s.Fatal("Failed to setup host VPN: ", err)
-	}
-	defer cleanup(cleanupCtx)
 
 	if err := arcvpn.SetARCVPNEnabled(ctx, a, true); err != nil {
 		s.Fatal("Failed to enable ARC VPN: ", err)
@@ -56,18 +49,13 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to disable ARC VPN: ", err)
 		}
 	}()
-	if _, err := conn.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to VPN server: ", err)
+
+	// Set up host VPN.
+	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx)
+	if err != nil {
+		s.Fatal("Failed to setup host VPN: ", err)
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
-		s.Fatalf("Failed to start %s: %v", arcvpn.FacadeVPNSvc, err)
-	}
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
-	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn.Server.OverlayIP, err)
-	}
+	defer cleanup(cleanupCtx)
 
 	// Install and start the test app.
 	testing.ContextLog(ctx, "Installing ArcVpnTest.apk")
@@ -91,11 +79,6 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ArcVpnTest app activity: ", err)
 	}
 
-	// Make sure the host is disconnected.
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
-		s.Fatalf("Failed to stop %s: %v", arcvpn.FacadeVPNSvc, err)
-	}
-
 	// Make sure our test app is connected.
 	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.VPNTestAppPkg, arcvpn.VPNTestAppSvc, true); err != nil {
 		s.Fatalf("Failed to start %s: %v", arcvpn.VPNTestAppSvc, err)
@@ -105,4 +88,28 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, arcvpn.TunIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping %s from host: %v", arcvpn.TunIP, err)
 	}
+
+	// Connect to host VPN.
+	if _, err := conn.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to VPN server: ", err)
+	}
+
+	// Make sure our test app is disconnected.
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.VPNTestAppPkg, arcvpn.VPNTestAppSvc, false); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.VPNTestAppSvc, err)
+	}
+
+	// Facade ARC vpn is connected.
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.FacadeVPNSvc, err)
+	}
+
+	// Host and ARC traffic are routed correctly.
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
+		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
+	}
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
+		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn.Server.OverlayIP, err)
+	}
+
 }

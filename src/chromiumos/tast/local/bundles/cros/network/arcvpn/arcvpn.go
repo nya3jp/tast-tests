@@ -20,14 +20,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// These need to stay in sync with /vendor/google_arc/packages/system/ArcHostVpn
 const (
-	// These need to stay in sync with /vendor/google_arc/packages/system/ArcHostVpn
+	FacadeVPNPkg = "org.chromium.arc.hostvpn"
+	FacadeVPNSvc = "org.chromium.arc.hostvpn.ArcHostVpnService"
+)
 
-	// Pkg is the package name of the ARC-side fake VPN
-	Pkg = "org.chromium.arc.hostvpn"
-
-	// Svc is the name of the Android Service that runs the ARC-side fake VPN
-	Svc = "org.chromium.arc.hostvpn.ArcHostVpnService"
+// These need to stay in sync with
+// //platform/tast-tests/android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java
+const (
+	VPNTestAppAPK = "ArcVpnTest.apk"
+	VPNTestAppPkg = "org.chromium.arc.testapp.arcvpn"
+	VPNTestAppAct = "org.chromium.arc.testapp.arcvpn.MainActivity"
+	VPNTestAppSvc = "org.chromium.arc.testapp.arcvpn.ArcTestVpnService"
+	TunIP         = "192.168.2.2"
 )
 
 // SetUpHostVPN creates a base VPN config, then calls SetUpHostVPNWithConfig

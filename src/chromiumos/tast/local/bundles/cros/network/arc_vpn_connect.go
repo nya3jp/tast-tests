@@ -65,8 +65,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
-		s.Fatalf("Failed to start %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
@@ -79,8 +79,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if err := conn.Disconnect(ctx); err != nil {
 		s.Error("Failed to disconnect VPN: ", err)
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
-		s.Fatalf("Failed to stop %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
+		s.Fatalf("Failed to stop %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		s.Fatalf("Failed to verify %s was unreachable from ARC over 'vpn'", conn.Server.OverlayIP)
@@ -90,8 +90,8 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	if err := waitForConnect(ctx, conn); err != nil {
 		s.Fatal("Failed to reconnect to VPN: ", err)
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
-		s.Fatalf("Failed to start %s on reconnection: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
+		s.Fatalf("Failed to start %s on reconnection: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
