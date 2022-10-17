@@ -46,6 +46,30 @@
       },
       "revId": "4b5ed53ac3c8a21b496628dff7d7a932216cdc80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8600f807_23389dc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-10-17T14:19:02Z",
+      "side": 1,
+      "message": "Or if it calls into https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/dut/dut.go;drc\u003d2ac88269f2abdb355daf7fcdb48119bd2636b1e7;l\u003d239 , it already has WaitConnect in reboot.",
+      "parentUuid": "525d0498_aad2399b",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "4b5ed53ac3c8a21b496628dff7d7a932216cdc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
