@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7822d219_8315cdcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-17T03:32:21Z",
+      "side": 1,
+      "message": "I was thinking about this. However, since proto has make the input as enum. It will automatically reject the value not in enum. So what get through from the proto should always be valid. That\u0027s why I removed the error check. WDYT.",
+      "parentUuid": "cb2b02dc_a1348611",
+      "range": {
+        "startLine": 211,
+        "startChar": 40,
+        "endLine": 211,
+        "endChar": 53
+      },
+      "revId": "926ccbf69a64b3cf70a2532812d1ea83343b60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ba1f68e_5df79515",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-17T03:26:02Z",
       "side": 1,
       "message": "nit: also add the mouseButton info in the error message.",
+      "range": {
+        "startLine": 241,
+        "startChar": 14,
+        "endLine": 241,
+        "endChar": 46
+      },
+      "revId": "926ccbf69a64b3cf70a2532812d1ea83343b60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d66b16b_3e662578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-17T03:32:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9ba1f68e_5df79515",
       "range": {
         "startLine": 241,
         "startChar": 14,
