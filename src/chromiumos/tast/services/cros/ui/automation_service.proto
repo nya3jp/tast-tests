@@ -40,12 +40,25 @@ service AutomationService {
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
 
+  // MousePress presses a mouse button and holds it on the node. The press needs to be released by caller.
+  rpc MousePress(MousePressRequest) returns (google.protobuf.Empty) {}
+
+  // MouseRelease releases the certain mouse button.
+  rpc MouseRelease(MouseReleaseRequest) returns (google.protobuf.Empty) {}
+
   // CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
   rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse) {}
 }
 
 message LeftClickRequest {
   Finder finder = 1;
+}
+message MousePressRequest {
+  MouseButton mouse_button = 1;
+  Finder finder = 2;
+}
+message MouseReleaseRequest {
+  MouseButton mouse_button = 1;
 }
 message RightClickRequest {
   Finder finder = 1;
@@ -229,6 +242,16 @@ enum ClickType {
   CLICK_TYPE_LEFT_CLICK = 1;
   CLICK_TYPE_RIGHT_CLICK = 2;
   CLICK_TYPE_DOUBLE_CLICK = 3;
+}
+
+// MouseButton describes mouse button types as defined in
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?l=90
+enum MouseButton {
+  LEFT_BUTTON = 0;
+  RIGHT_BUTTON = 1;
+  MIDDLE_BUTTON = 2;
+  BACK_BUTTON = 3;
+  FORWARD_BUTTON = 4;
 }
 
 // Checked describes tri-state values of a checkbox or radio button.
