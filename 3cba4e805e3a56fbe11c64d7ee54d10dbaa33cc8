@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab69901d_39675adc",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T17:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d5a443_d8117012",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 72
+      },
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36eeee30_f428a256",
@@ -195,6 +219,24 @@
       "side": 1,
       "message": "Where exactly is the race condition here?\nJust setting the policy does guarantee that the PWA is installed, as the installation needs time.\nAs I see Lacros should not be involved here. So when `ServeAndVerify` is called in line 56, the policy should be there on the device.\nWhat happened when you did not add this extra `Refresh` call?",
       "parentUuid": "a16d3329_d8557768",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65812dce_016ceb55",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T17:40:34Z",
+      "side": 1,
+      "message": "Thanks all for your comments!\n\nFiled b/254067263 so that we can discuss further with details and repro steps. Btw, if it is safe to get this workaround in (until a long term solution is proposed/implemented), can we leave a TODO and move on with this CL if it is better than none as Eliot suggested? Any advice would be appreciated.",
+      "parentUuid": "e2b36b5f_da813853",
       "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
