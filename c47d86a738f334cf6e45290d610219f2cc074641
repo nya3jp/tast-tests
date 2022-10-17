@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac1e6f6_ed622e5b",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T01:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4ba494_31b34ffe",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "c47d86a738f334cf6e45290d610219f2cc074641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a428c4b7_a948c7db",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T01:00:41Z",
       "side": 1,
       "message": "Sinde the following comment about external api ends with :, please use it here as well.",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "c47d86a738f334cf6e45290d610219f2cc074641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2058db1_09083e6c",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T01:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a428c4b7_a948c7db",
       "range": {
         "startLine": 168,
         "startChar": 39,
