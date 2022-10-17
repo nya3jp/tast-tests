@@ -39,9 +39,18 @@ service AutomationService {
 
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+
+  // MousePress left clicks and holds on the node. The press needs to be released by caller.
+  rpc MousePress(MousePressRequest) returns (google.protobuf.Empty) {}
+
+  // MouseRelease releases left click.
+  rpc MouseRelease(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message LeftClickRequest {
+  Finder finder = 1;
+}
+message MousePressRequest {
   Finder finder = 1;
 }
 message RightClickRequest {

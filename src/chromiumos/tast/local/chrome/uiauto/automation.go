@@ -648,6 +648,26 @@ func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) Action {
 	}
 }
 
+// MousePress left clicks and holds on the node. The press needs to be released by caller.
+func (ac *Context) MousePress(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		loc, err := ac.Location(ctx, finder)
+		if err != nil {
+			return err
+		}
+
+		return NamedCombine("Move mouse to node and press",
+			mouse.Move(ac.tconn, loc.CenterPoint(), 0),
+			mouse.Press(ac.tconn, mouse.LeftButton),
+		)(ctx)
+	}
+}
+
+// MouseRelease releases left click.
+func (ac *Context) MouseRelease() Action {
+	return mouse.Release(ac.tconn, mouse.LeftButton)
+}
+
 // MouseClickAtLocation returns a function that clicks on the specified location.
 // This returns a function to make it chainable in ui.Run.
 func (ac *Context) MouseClickAtLocation(ct clickType, loc coords.Point) Action {
