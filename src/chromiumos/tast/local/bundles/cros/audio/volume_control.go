@@ -53,7 +53,8 @@ func init() {
 				expectedAudioNode: "INTERNAL_SPEAKER",
 			},
 		}, {
-			Name: "with_audio",
+			Name:      "with_audio",
+			ExtraAttr: []string{"group:intel-gating"},
 			Val: volumeControlParam{
 				tier:              withAudio,
 				expectedAudioNode: "INTERNAL_SPEAKER",
