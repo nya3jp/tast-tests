@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
@@ -228,6 +229,96 @@ func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context
 	case pb.Mode_REPORT, pb.Mode_ALLOW:
 		if err := clipboard.CheckPastedContent(ctx, ui, copiedString); err != nil {
 			return &empty.Empty{}, errors.Wrap(err, "failed to verify pasted content")
+		}
+	}
+
+	return &empty.Empty{}, nil
+
+}
+
+// Print performs a print action.
+func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	browserType := browser.TypeAsh
+	if req.BrowserType == pb.BrowserType_LACROS {
+		browserType = browser.TypeLacros
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, service.chrome, browserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open the browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Create an html page with some text.
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	textContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Random Text 1</title></head><body>Sample text about random things.</body></html>")
+	if err := os.WriteFile(baseDir+"/"+textFilename, textContent, 0644); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed write a file")
+	}
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	// Test printing using hotkey (Ctrl + P).
+	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to type printing hotkey")
+	}
+
+	if req.Mode == pb.Mode_WARN_PROCEED {
+		if err := keyboard.Accel(ctx, "Enter"); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to hit Enter")
+		}
+	} else if req.Mode == pb.Mode_WARN_CANCEL {
+		if err := keyboard.Accel(ctx, "Esc"); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to hit Esc")
+		}
+	}
+
+	// Connect to Test API.
+	tconn, err := service.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to connect to test API")
+	}
+
+	// Check that the printing dialog appears if and only if printing the page is allowed.
+	ui := uiauto.New(tconn)
+
+	// Finder for the print dialog.
+	var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
+
+	// Check that the behavior of the printing dialog.
+	if req.Mode == pb.Mode_ALLOW || req.Mode == pb.Mode_WARN_PROCEED {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(printDialog)(ctx); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to find the printing dialog")
+		}
+	} else {
+		if err := ui.EnsureGoneFor(printDialog, 5*time.Second)(ctx); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "should not show the printing dialog")
+		}
+	}
+
+	// Confirm that the notification only appeared if expected.
+	if req.Mode == pb.Mode_BLOCK {
+		if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle("Printing is blocked")); err != nil {
+			return &empty.Empty{}, errors.Wrap(err, "failed to wait for notification with title 'Printing is blocked'")
 		}
 	}
 
