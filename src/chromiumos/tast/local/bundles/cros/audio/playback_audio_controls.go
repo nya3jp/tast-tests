@@ -8,16 +8,22 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/audio/audionode"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
@@ -29,7 +35,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackAudioControls,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verifies local audio playback through default app and perform various audio player controls",
+		Desc:         "Verifies local audio playback through default app and exercise various audio player controls",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -51,6 +57,67 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Set up capture (aloop) module.
+	unload, err := audio.LoadAloop(ctx)
+	if err != nil {
+		s.Fatal("Failed to load ALSA loopback module: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Wait for no stream before unloading aloop as unloading while there is a stream
+		// will cause the stream in ARC to be in an invalid state.
+		if err := crastestclient.WaitForNoStream(ctx, 5*time.Second); err != nil {
+			s.Error("Wait for no stream error: ", err)
+		}
+		unload(ctx)
+	}(cleanupCtx)
+
+	// Select ALSA loopback output and input nodes as active nodes by UI.
+	// Call Hide() and Show() to reset the Quick Settings menu first.
+	if err := quicksettings.Hide(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide Quick Settings menu: ", err)
+	}
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		s.Fatal("Failed to show Quick Settings menu: ", err)
+	}
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
+		s.Fatal("Failed to select ALSA loopback output: ", err)
+	}
+
+	// Ensure landscape orientation. Gallery app has different UI if its size is
+	// in portrait, and the play queue buttons don't exist.
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain primary display info: ", err)
+	}
+	if orientation.Type == display.OrientationPortraitPrimary {
+		if err = display.SetDisplayRotationSync(ctx, tconn, displayInfo.ID, display.Rotate90); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, displayInfo.ID, display.Rotate0)
+	}
+
+	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
+	// is still opened while it is actually fading out, and failed to select Loopback Capture.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	if err := quicksettings.Hide(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide Quick Settings menu: ", err)
+	}
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		s.Fatal("Failed to show Quick Settings menu: ", err)
+	}
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
+		s.Fatal("Failed to select ALSA loopback input: ", err)
 	}
 
 	// First audio file name and path variables.
@@ -127,7 +194,20 @@ func PlaybackAudioControls(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to play audio: ", err)
 		}
 
-		if err := performAudioControls(ctx, ui, kb, wavFileName1, wavFileName2); err != nil {
+		// Maximize window on first iteration, to ensure all buttons exist.
+		if i == 1 {
+			window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+				return strings.HasPrefix(w.Title, "Gallery - ")
+			})
+			if err != nil {
+				s.Fatal("Failed to find the Gallery app window: ", err)
+			}
+			if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
+				s.Fatal("Failed to maximize the Gallery app window: ", err)
+			}
+		}
+
+		if err := exerciseAudioControls(ctx, ui, kb, wavFileName1, wavFileName2); err != nil {
 			s.Fatal("Failed to preform audio player various controls: ", err)
 		}
 
@@ -186,8 +266,8 @@ func presentPlayingAudioFile(ctx context.Context, ui *uiauto.Context, audioFileN
 	return nil
 }
 
-// performVolumeControls performs volume controls through keyboard keypress.
-func performVolumeControls(ctx context.Context, kb *input.KeyboardEventWriter) error {
+// exerciseVolumeControls exercises volume controls through keyboard keypress.
+func exerciseVolumeControls(ctx context.Context, kb *input.KeyboardEventWriter) error {
 	vh, err := audionode.NewVolumeHelper(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the volumeHelper")
@@ -266,9 +346,9 @@ func performVolumeControls(ctx context.Context, kb *input.KeyboardEventWriter) e
 	return nil
 }
 
-// performAudioControls performs various audio player controls using UI and
+// exerciseAudioControls exercises various audio player controls using UI and
 // volume controls using keyboard.
-func performAudioControls(ctx context.Context, ui *uiauto.Context, kb *input.KeyboardEventWriter, wavFileName1, wavFileName2 string) error {
+func exerciseAudioControls(ctx context.Context, ui *uiauto.Context, kb *input.KeyboardEventWriter, wavFileName1, wavFileName2 string) error {
 	stepForwardButton := nodewith.Name("Step forward").Role(role.Button)
 	if err := audioPlayerControls(ctx, ui, stepForwardButton); err != nil {
 		return errors.Wrap(err, "failed to step forward audio playback")
@@ -329,18 +409,40 @@ func performAudioControls(ctx context.Context, ui *uiauto.Context, kb *input.Key
 		return errors.Wrapf(err, "failed to skip previous and play %s audio file", wavFileName1)
 	}
 
-	if err := performVolumeControls(ctx, kb); err != nil {
-		return errors.Wrap(err, "failed to perform audio volume controls")
+	if err := exerciseVolumeControls(ctx, kb); err != nil {
+		return errors.Wrap(err, "failed to exercise audio volume controls")
 	}
 
-	collapsePlaylistButton := nodewith.Name("Collapse play queue").Role(role.Button)
-	if err := audioPlayerControls(ctx, ui, collapsePlaylistButton); err != nil {
-		return errors.Wrap(err, "failed to collapse playlist")
+	if err := exercisePlayQueueControls(ctx, ui); err != nil {
+		return errors.Wrap(err, "failed to exercise play queue controls")
 	}
 
-	expandPlaylistButton := nodewith.Name("Expand play queue").Role(role.Button)
-	if err := audioPlayerControls(ctx, ui, expandPlaylistButton); err != nil {
-		return errors.Wrap(err, "failed to expand playlist")
+	return nil
+}
+
+// exercisePlayQueueControls exercises various play queue controls.
+func exercisePlayQueueControls(ctx context.Context, ui *uiauto.Context) error {
+	collapsePlayQueueButton := nodewith.Name("Collapse play queue").Role(role.Button)
+	expandPlayQueueButton := nodewith.Name("Expand play queue").Role(role.Button)
+
+	// Check the initial state of the play queue to determine whether to collapse
+	// or expand first.
+	if isFound, err := ui.IsNodeFound(ctx, collapsePlayQueueButton); err != nil {
+		return errors.Wrap(err, `failed to check if "Collapse play queue" button is found`)
+	} else if !isFound {
+		if err := audioPlayerControls(ctx, ui, expandPlayQueueButton); err != nil {
+			return errors.Wrap(err, "failed to expand playlist")
+		}
+		if err := audioPlayerControls(ctx, ui, collapsePlayQueueButton); err != nil {
+			return errors.Wrap(err, "failed to collapse playlist")
+		}
+	} else {
+		if err := audioPlayerControls(ctx, ui, collapsePlayQueueButton); err != nil {
+			return errors.Wrap(err, "failed to collapse playlist")
+		}
+		if err := audioPlayerControls(ctx, ui, expandPlayQueueButton); err != nil {
+			return errors.Wrap(err, "failed to expand playlist")
+		}
 	}
 
 	return nil
