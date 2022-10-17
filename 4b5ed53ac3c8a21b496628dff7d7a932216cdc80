@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc4d465_5c150acb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-17T11:08:39Z",
+      "side": 1,
+      "message": "can you add a WaitConnect call after the reboot to make sure the ssh connection is back up before the next commands so they don\u0027t time out?",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "4b5ed53ac3c8a21b496628dff7d7a932216cdc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
