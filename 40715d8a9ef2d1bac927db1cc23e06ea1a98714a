@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb3ecb06_cdc78022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "my initial scan",
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9a3e53_dab2b278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "no Attrs? Do you plan to run this only manually\u003e? If so, could you explicitly comment it?",
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54425993_365dd33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "params are same? do you plan to add more?",
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f68f2ec_8af79363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "not skipping but actually let the test fail.",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8155b4a5_d2f98e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "should we try to restore this at the end of the test?",
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fd9772_5c0bc5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "Is fileInfo a path relative to cwd? If so, FilePathInSavedDIr looks weird. Otherwise, this defer looks weird. Could you check the specs?\n\ncheck the length of fileInfo, too?",
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70219dd_6c2d7c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-17T09:34:51Z",
+      "side": 1,
+      "message": "else is uneeded.",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 7
+      },
+      "revId": "40715d8a9ef2d1bac927db1cc23e06ea1a98714a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
