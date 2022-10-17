@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "883d846f_5bae4fe3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-10-17T20:11:35Z",
+      "side": 1,
+      "message": "It looks like we are demoting the error to a log?",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "79c7dc1558a64605522c5256080ef2d83de4748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aa911ac3_1a3bdd74",
@@ -31,6 +54,47 @@
       "writtenOn": "2022-10-11T22:28:14Z",
       "side": 1,
       "message": "This may be a bit wordy.\n\nMaybe `\"Unable to load %s expectations due to the underlying error: %v\", theFileType, err`?",
+      "revId": "79c7dc1558a64605522c5256080ef2d83de4748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5c5213_780555b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-10-17T20:11:35Z",
+      "side": 1,
+      "message": "nit: board\u0027s or device\u0027s?",
+      "range": {
+        "startLine": 231,
+        "startChar": 52,
+        "endLine": 231,
+        "endChar": 59
+      },
+      "revId": "79c7dc1558a64605522c5256080ef2d83de4748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241a7393_0a51b736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-10-17T20:11:35Z",
+      "side": 1,
+      "message": "I like that the original log specifies that the error has to with identifying an attribute, because I think (?) the shorter message could be interpreted just as being unable to find the file. Maybe if we want shorter:\n `\"Could not load expectations due to failure to identify device\u0027s %s: %v\", theFileType, err`?\n \nJust an idea!",
+      "parentUuid": "0128d02c_2aac17da",
       "revId": "79c7dc1558a64605522c5256080ef2d83de4748b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
