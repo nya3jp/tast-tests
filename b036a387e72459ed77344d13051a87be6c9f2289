@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce18e759_7756584b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-10-17T21:09:47Z",
+      "side": 1,
+      "message": "LGTM, Adding Aga who can approve.",
+      "revId": "b036a387e72459ed77344d13051a87be6c9f2289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72582e05_a84a3223",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-10-17T21:09:47Z",
+      "side": 1,
+      "message": "Nit: could you add yourself or galenemco@chromium.org as the contact here?",
+      "revId": "b036a387e72459ed77344d13051a87be6c9f2289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
