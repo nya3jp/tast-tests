@@ -39,6 +39,30 @@
       },
       "revId": "01e01bc5a376400a8b7f055327dd6c03276d88d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebfa2a2_ef7389d6",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T01:25:54Z",
+      "side": 1,
+      "message": "Ah sorry I didn\u0027t pay attention to this. I usually use chromium.org account, uploaded https://crrev.com/c/3958877 for changing it.\nThanks!",
+      "parentUuid": "1cae9735_1e804e0c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "01e01bc5a376400a8b7f055327dd6c03276d88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
