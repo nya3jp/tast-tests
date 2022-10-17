@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3da7d9_7ad7f377",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Adds Pinweaver test support for USS",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e45f1d_3f6f8998",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-10-13T23:46:51Z",
       "side": 1,
       "message": "we can probably enable this well",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ed2f6c_bd96a804",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e45f1d_3f6f8998",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb84c615_8833ae6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5030b081_75006250",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 111
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4edba48f_e5678f40",
@@ -77,6 +142,30 @@
       "writtenOn": "2022-10-12T22:44:06Z",
       "side": 1,
       "message": "nit: I don\u0027t think we should be wrapping err here, given it is known that err \u003d\u003d nil at this point in the code.",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 28
+      },
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860d2afc_6bf56c42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4edba48f_e5678f40",
       "range": {
         "startLine": 480,
         "startChar": 11,
@@ -104,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6e2b2d_e5266c48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a3e612_e183d66f",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e0e326_1fd002d6",
@@ -117,6 +224,24 @@
       "writtenOn": "2022-10-12T22:44:06Z",
       "side": 1,
       "message": "clar: Is it valid if no PIN-based auth factor is found, or is it an error? Given the method name, I would expect it to be an error.",
+      "revId": "840eafbef45a674d87667b514266756ed89f8603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7485d4a3_7e985427",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-17T20:14:33Z",
+      "side": 1,
+      "message": "Yeah, if there is no PIN auth factor in general it should now give an error.",
+      "parentUuid": "74e0e326_1fd002d6",
       "revId": "840eafbef45a674d87667b514266756ed89f8603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
