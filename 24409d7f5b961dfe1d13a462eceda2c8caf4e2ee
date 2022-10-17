@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3099dd70_2c8c7f99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "`!WGIPv4 \u0026\u0026 !WGIPv6` is not a valid case.\nThere are two ways to solve (mitigate) this issue:\n- Add a check and return err for this case.\n- Change this to a enum (i.e., WGIPType, which will contain 3 values). Note that there is no built-in enum type in golang, you can try to use the `iota` in go for that. See [1] for an example.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/dns/dns.go;l\u003d42?q\u003ddns.go\u0026ss\u003dchromiumos",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7bf3e2d_2ae5bf2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
         "patchSetId": 6
@@ -26,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d71f2091_05565149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "It\u0027s better to also set this property based on WGIPv4 and WGIPv6.",
+      "range": {
+        "startLine": 511,
+        "startChar": 17,
+        "endLine": 511,
+        "endChar": 34
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f3cac2_692f981a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to pass this in to set up the server: the server side can always be dual-stack. We can only change the client-side setup in different tests.",
+      "range": {
+        "startLine": 563,
+        "startChar": 93,
+        "endLine": 563,
+        "endChar": 100
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ab7620d_99c99af5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 6
@@ -41,6 +110,122 @@
         "startLine": 580,
         "startChar": 0,
         "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a0c927_bdda05fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "+1\nMaybe we need another server.OverlayIPv6 for this",
+      "parentUuid": "4ab7620d_99c99af5",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2d7b33_45fbbddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "This is not related to this patch, but we can remove this branch know since they are the same. I think I forgot to do this when I did the refactor. Please feel free to include this in your patch or create another patch for this if you want.",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 613,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5b5d74_29514111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "I suppose this test is same with wireguard_ipv4 now? maybe we can just remove it?",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 44
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5e672b_be75f8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "We only verify ping with `conn.Server.OverlayIP` now. We need to add the code to verify the IPv6 address as well for the dual stack setup.",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5180224_ebd506ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-17T11:37:24Z",
+      "side": 1,
+      "message": "Also update the expectation here when IPv6 is enabled.",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 310,
         "endChar": 2
       },
       "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
