@@ -161,6 +161,24 @@
       "parentUuid": "1b3002fa_843f096f",
       "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16d3329_d8557768",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-17T08:12:06Z",
+      "side": 1,
+      "message": "+1 to what Gabor mentioned.\n\nWe could introduce another ServeAndVerifyOnLacros (the same way we have ServeAndVerifyOnLoginScreen). It would guarantee that the policy was propagated to lacros.\n\nCurrently Lacros needs to read policies from Ash after they are set, which is not instantaneous.",
+      "parentUuid": "e4f5a95a_e7bc2323",
+      "revId": "3cba4e805e3a56fbe11c64d7ee54d10dbaa33cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
