@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf6cef5_12fab0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-17T23:16:05Z",
+      "side": 1,
+      "message": "Does this file need to be checked in if the parameters are already generated?",
+      "revId": "3c0bb1956e73e4e599d268cb211b9529bad52692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
