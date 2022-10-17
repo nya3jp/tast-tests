@@ -35,9 +35,8 @@ func init() {
 func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
-	unicornParentUser := s.RequiredVar("family.parentEmail")
-	unicornParentPass := s.RequiredVar("family.parentPassword")
 	nonEduUser := s.RequiredVar("family.parentEmail")
 	nonEduPass := s.RequiredVar("family.parentPassword")
 
@@ -47,7 +46,7 @@ func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	s.Log("Launching the in-session Edu Coexistence flow")
 	// Passing parent credentials instead of Edu should fail.
-	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, unicornParentUser, unicornParentPass, nonEduUser, nonEduPass, false /*verifyEduSecondaryAddSuccess*/); err != nil {
+	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, childCreds.ParentUser, childCreds.ParentPass, nonEduUser, nonEduPass, false /*verifyEduSecondaryAddSuccess*/); err != nil {
 		s.Fatal("Failed to go through the in-session Edu Coexistence flow: ", err)
 	}
 
