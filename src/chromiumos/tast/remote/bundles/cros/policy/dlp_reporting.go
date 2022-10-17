@@ -82,6 +82,25 @@ func init() {
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
+			{
+				Name: "ash_print",
+				Val: testParams{
+					Username:    restrictionReportReportingEnabledUsername,
+					Password:    restrictionReportReportingEnabledPassword,
+					BrowserType: dlp.BrowserType_ASH,
+					Action:      dlputil.Printing,
+				},
+			},
+			{
+				Name: "lacros_print",
+				Val: testParams{
+					Username:    restrictionReportReportingEnabledUsername,
+					Password:    restrictionReportReportingEnabledPassword,
+					BrowserType: dlp.BrowserType_LACROS,
+					Action:      dlputil.Printing,
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
 		},
 	})
 }
@@ -145,6 +164,10 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 	switch params.Action {
 	case dlputil.ClipboardCopyPaste:
 		service.ClipboardCopyPaste(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+		})
+	case dlputil.Printing:
+		service.Print(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 		})
 	}
