@@ -108,7 +108,7 @@ func PowerOntoDUT(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
 			return errors.Wrap(err, "failed to wait connect DUT")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Minute})
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 30 * time.Second})
 }
 
 // PowerOnDutWithRetry performs power normal press to wake DUT. Retries if it fails.
