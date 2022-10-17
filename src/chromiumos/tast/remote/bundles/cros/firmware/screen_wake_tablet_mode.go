@@ -104,6 +104,8 @@ var convertibleKeyboardScanned = []string{
 	"kohaku",
 	"voxel",
 	"blooguard",
+	"jelboz360",
+	"copano",
 }
 
 func init() {
@@ -113,6 +115,7 @@ func init() {
 		Desc:         "Check that tablet mode allows waking screen from additional triggers",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_detachable"},
+		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.graphics.ScreenshotService", "tast.cros.inputs.TouchpadService", "tast.cros.inputs.TouchscreenService"},
 		Fixture:      fixture.NormalMode,
@@ -585,11 +588,14 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
 				}
+				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+					return errors.Wrap(err, "error in sleeping for 1 second")
+				}
 				if state != "S0ix" && state != "S3" {
 					return errors.New("power state is " + state)
 				}
 				return nil
-			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second}); err != nil {
+			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 2 * time.Minute}); err != nil {
 				return errors.Wrap(err, "error in waiting for power state to be S0ix or S3")
 			}
 			s.Log("Wait for a few seconds before opening DUT's lid")
