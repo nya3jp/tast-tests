@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "546ae405_36ad2904",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25a8c80_7cf28e97",
+      "range": {
+        "startLine": 26,
+        "startChar": 36,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "3694cfdc4e3a81147235f4a632e3df5bc8169d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8171b85_2d10866b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T00:40:28Z",
       "side": 1,
       "message": "I\u0027d suggest to make the comment clear that the func is assigning a pre-defined InternalEndpoint.",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "3694cfdc4e3a81147235f4a632e3df5bc8169d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fda713e_a041aae7",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8171b85_2d10866b",
       "range": {
         "startLine": 62,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dd99ce_c862b2a9",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6ed3b4_ccc5d07f",
+      "range": {
+        "startLine": 69,
+        "startChar": 38,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "3694cfdc4e3a81147235f4a632e3df5bc8169d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90501041_c32b391f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-17T00:40:28Z",
       "side": 1,
       "message": "What is this for? CreateConference is the internal bond api? Please make it clearer.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "3694cfdc4e3a81147235f4a632e3df5bc8169d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f84c1f_d57fee0b",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-10-17T00:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90501041_c32b391f",
       "range": {
         "startLine": 168,
         "startChar": 3,
