@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c883ecc_cfb13e0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-17T20:03:23Z",
+      "side": 1,
+      "message": "Out of curiosity, does such a configuration carry any risk? I don\u0027t think this configuration scenario should fail in the context of wifi.SetTXPower, but I think it\u0027s a concerning scenario.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "da96e60576908202f08f9d10d9e86b700ca512d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5d100c93_4f7a4088",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-10-14T23:06:28Z",
       "side": 1,
       "message": "Requesting review from Nicolas because he has context, and Billy because he has Tast domain expertise.",
+      "revId": "da96e60576908202f08f9d10d9e86b700ca512d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64dc098_726905a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-17T20:03:23Z",
+      "side": 1,
+      "message": "LGTM.",
       "revId": "da96e60576908202f08f9d10d9e86b700ca512d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
