@@ -7,11 +7,11 @@ package policyutil
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
@@ -94,15 +94,15 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 }
 
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run command over SSH: ", err)
-	} else if string(out) != "1\n" {
-		s.Fatalf("Invalid output when running command over SSH: got %q; want %q", string(out), "1")
+	if !s.DUT().Connected(ctx) {
+		s.Fatal("Failed DUT connection check at the beginning")
 	}
 
-	vpdError := checkVPDState(ctx, s.DUT())
-	if vpdError != nil {
-		s.Log("VPD broken, trying to enroll anyway: ", vpdError)
+	vpdOK := true
+	if err := checkVPDState(ctx, s.DUT()); err != nil {
+		// TODO(b/253326688): Change Log to Error when VPD restoration works again.
+		vpdOK = false
+		s.Log("VPD broken, trying to enroll anyway: ", err)
 	}
 
 	ok := false
@@ -115,130 +115,56 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}()
 
-	tries := 0
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	// TODO(crbug.com/1187473): use a temporary directory.
+	e.fdmsDir = fakedms.EnrollmentFakeDMSDir
+
+	// Collect errors of enrollment attempts and raise them even in case of a Fatal error.
+	var errs []error
+	defer func() {
+		for _, err := range errs {
+			if !ok {
+				s.Error("Failed to enroll: ", err)
+			} else {
+				s.Log("Failed enrolling attempt: ", err)
+			}
+		}
+	}()
+
+	for tries := 1; tries < 5; tries++ {
 		// Make sure we have enough time to perform enrollment.
 		// This helps differentiate real issues from timeout hitting different components.
 		if deadline, ok := ctx.Deadline(); !ok {
-			return testing.PollBreak(errors.Errorf("missing deadline for context %v", ctx))
+			s.Fatal("missing deadline for context: ", ctx)
 		} else if diff := deadline.Sub(time.Now()); diff < enrollmentRunTimeout {
-			return testing.PollBreak(errors.Errorf("not enought time to perform setup and enrollment: have %s; need %s", diff, enrollmentRunTimeout))
+			s.Fatalf("not enought time to perform setup and enrollment: have %s; need %s", diff, enrollmentRunTimeout)
 		}
 
-		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
-		} else if string(out) != "1\n" {
-			return testing.PollBreak(errors.Errorf("invalid output when running command over SSH: got %q; want %q", string(out), "1"))
-		}
-
-		tries = tries + 1
 		s.Logf("Attempting enrollment, try %d", tries)
+		attemptDir := path.Join(s.OutDir(), fmt.Sprintf("Attempt_%d", tries))
 
-		ctx, cancel := context.WithTimeout(ctx, enrollmentRunTimeout)
+		enrollCtx, cancel := context.WithTimeout(ctx, enrollmentRunTimeout)
 		defer cancel()
 
-		if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
-			return errors.Wrap(err, "failed to reset TPM")
+		if err := EnsureTPMAndSystemStateAreReset(enrollCtx, s.DUT(), s.RPCHint()); err != nil {
+			s.Fatal("Failed to reset TPM: ", err)
 		}
 
 		// Check connection state after reboot.
-		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
-		} else if string(out) != "1\n" {
-			return testing.PollBreak(errors.Errorf("invalid output when running command over SSH: got %q; want %q", string(out), "1"))
+		if !s.DUT().Connected(ctx) {
+			s.Fatal("Failed DUT connection check after reboot")
 		}
 
-		// TODO(crbug.com/1187473): use a temporary directory.
-		e.fdmsDir = fakedms.EnrollmentFakeDMSDir
-
-		cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-		if err != nil {
-			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		if err := enroll(enrollCtx, attemptDir, s.DUT(), s.RPCHint(), e.fdmsDir, vpdOK); err != nil {
+			errs = append(errs, err)
+		} else {
+			// When the enrollment is successful, there is no need to retry again.
+			break
 		}
-		defer cl.Close(ctx)
-
-		policyClient := pspb.NewPolicyServiceClient(cl.Conn)
-
-		if _, err := policyClient.CreateFakeDMSDir(ctx, &pspb.CreateFakeDMSDirRequest{
-			Path: e.fdmsDir,
-		}); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to create FakeDMS directory"))
-		}
-
-		enrollOK := false
-
-		defer func() {
-			if !enrollOK {
-				if _, err := policyClient.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
-					Path: e.fdmsDir,
-				}); err != nil {
-					if ctx.Err() != nil {
-						s.Error("Failed to remove FakeDMS directory: ", err)
-					} else {
-						s.Log("Failed to remove FakeDMS directory: ", err)
-					}
-				}
-			}
-		}()
-
-		// Always dump the logs.
-		defer func(ctx context.Context) {
-			triesStr := strconv.Itoa(tries)
-
-			attemptDir := path.Join(s.OutDir(), "Attempt_"+triesStr)
-
-			if err := os.Mkdir(attemptDir, 0777); err != nil {
-				s.Log("Failed to create attempt dir: ", err)
-			}
-
-			chromeDir := path.Join(attemptDir, "Chrome")
-			if err := os.Mkdir(chromeDir, 0777); err != nil {
-				s.Log("Failed to create Chrome dir: ", err)
-			}
-
-			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), "/var/log/chrome/chrome", filepath.Join(chromeDir, "chrome.log"), linuxssh.DereferenceSymlinks); err != nil {
-				s.Log("Failed to dump Chrome log: ", err)
-			}
-
-			fdmsDir := path.Join(attemptDir, "FakeDMS")
-			if err := os.Mkdir(fdmsDir, 0777); err != nil {
-				s.Log("Failed to create FakeDMS dir: ", err)
-			}
-
-			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), e.fdmsDir, fdmsDir, linuxssh.DereferenceSymlinks); err != nil {
-				s.Log("Failed to dump FakeDMS dir: ", err)
-			}
-		}(ctx)
-
-		pJSON, err := json.Marshal(policy.NewBlob())
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
-			PolicyJson: pJSON,
-			FakedmsDir: e.fdmsDir,
-			SkipLogin:  true,
-		}); err != nil {
-			if vpdError != nil {
-				return testing.PollBreak(errors.Wrap(err, "VPD broken, likely cause of enrollment failure"))
-			}
-
-			return errors.Wrap(err, "failed to enroll using Chrome")
-		}
-
-		if _, err := policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-			return errors.Wrap(err, "failed to stop Chrome and FakeDMS")
-		}
-
-		enrollOK = true
-
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Minute}); err != nil {
-		s.Fatal("Failed to enroll with retries: ", err)
 	}
 
-	ok = true
+	if len(errs) == 0 {
+		ok = true
+	}
 
 	return nil
 }
@@ -266,3 +192,84 @@ func (e *enrolledFixt) TearDown(ctx context.Context, s *testing.FixtState) {
 func (*enrolledFixt) Reset(ctx context.Context) error                        { return nil }
 func (*enrolledFixt) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
 func (*enrolledFixt) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+
+func enroll(ctx context.Context, attemptDir string, dut *dut.DUT, rpcHint *testing.RPCHint, fdmsDir string, vpdOK bool) (retErr error) {
+	cl, err := rpc.Dial(ctx, dut, rpcHint)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(ctx)
+
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
+
+	if _, err := policyClient.CreateFakeDMSDir(ctx, &pspb.CreateFakeDMSDirRequest{
+		Path: fdmsDir,
+	}); err != nil {
+		return errors.Wrap(err, "failed to create FakeDMS directory")
+	}
+
+	ok := false
+	defer func() {
+		if !ok {
+			if _, err := policyClient.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
+				Path: fdmsDir,
+			}); err != nil {
+				if retErr != nil {
+					retErr = errors.Wrap(err, "failed to remove FakeDMS directory")
+				} else {
+					testing.ContextLog(ctx, "Failed to remove FakeDMS directory: ", err)
+				}
+			}
+		}
+	}()
+
+	// Always dump the logs.
+	defer func(ctx context.Context) {
+		if err := os.Mkdir(attemptDir, 0777); err != nil {
+			testing.ContextLog(ctx, "Failed to create attempt dir: ", err)
+		}
+
+		chromeDir := path.Join(attemptDir, "Chrome")
+		if err := os.Mkdir(chromeDir, 0777); err != nil {
+			testing.ContextLog(ctx, "Failed to create Chrome dir: ", err)
+		}
+
+		if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/chrome/chrome", filepath.Join(chromeDir, "chrome.log"), linuxssh.DereferenceSymlinks); err != nil {
+			testing.ContextLog(ctx, "Failed to dump Chrome log: ", err)
+		}
+
+		fdmsDirHost := path.Join(attemptDir, "FakeDMS")
+		if err := os.Mkdir(fdmsDirHost, 0777); err != nil {
+			testing.ContextLog(ctx, "Failed to create FakeDMS dir: ", err)
+		}
+
+		if err := linuxssh.GetFile(ctx, dut.Conn(), fdmsDir, fdmsDirHost, linuxssh.DereferenceSymlinks); err != nil {
+			testing.ContextLog(ctx, "Failed to dump FakeDMS dir: ", err)
+		}
+	}(ctx)
+
+	pJSON, err := json.Marshal(policy.NewBlob())
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal policy blob")
+	}
+
+	if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
+		PolicyJson: pJSON,
+		FakedmsDir: fdmsDir,
+		SkipLogin:  true,
+	}); err != nil {
+		if !vpdOK {
+			return errors.Wrap(err, "VPD broken, likely cause of enrollment failure")
+		}
+
+		return errors.Wrap(err, "failed to enroll using Chrome")
+	}
+
+	if _, err := policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to stop Chrome and FakeDMS")
+	}
+
+	ok = true
+
+	return nil
+}
