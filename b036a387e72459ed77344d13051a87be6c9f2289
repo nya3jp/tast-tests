@@ -33,6 +33,24 @@
       "message": "Nit: could you add yourself or galenemco@chromium.org as the contact here?",
       "revId": "b036a387e72459ed77344d13051a87be6c9f2289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797a74b2_5b261c56",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T21:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72582e05_a84a3223",
+      "revId": "b036a387e72459ed77344d13051a87be6c9f2289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
