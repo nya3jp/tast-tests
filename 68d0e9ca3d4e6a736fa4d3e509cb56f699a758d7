@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6348dcb_8bc153cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-10-17T03:18:33Z",
+      "side": 1,
+      "message": "Please follow the line limit to make the commit msg more readable.",
+      "revId": "68d0e9ca3d4e6a736fa4d3e509cb56f699a758d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e66d44_192e78b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-10-17T03:18:33Z",
+      "side": 1,
+      "message": "Just curious why not check them during the running time or when the test fails?",
+      "revId": "68d0e9ca3d4e6a736fa4d3e509cb56f699a758d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
