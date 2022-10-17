@@ -22,6 +22,30 @@
       },
       "revId": "622d3e3a27ef4cf74b42caa32b8590933bf9b911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4f9bba_29126679",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-17T02:23:30Z",
+      "side": 1,
+      "message": "Done. PTAL",
+      "parentUuid": "247e94df_964c183d",
+      "range": {
+        "startLine": 652,
+        "startChar": 19,
+        "endLine": 652,
+        "endChar": 29
+      },
+      "revId": "622d3e3a27ef4cf74b42caa32b8590933bf9b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
