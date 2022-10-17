@@ -278,6 +278,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cecb1d2_24fd2895",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T22:23:28Z",
+      "side": 1,
+      "message": "Yeah, sorry I forgot to ack this one. Yes it makes sense",
+      "parentUuid": "fd95f31f_d28e452e",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93b6cfef_a0cad2a9",
@@ -751,6 +775,30 @@
       "side": 1,
       "message": "Okay, I collapsed some of the sessions here together.",
       "parentUuid": "9d1c4cb0_7ca7dec6",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e67d76_b05e6536",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T22:23:28Z",
+      "side": 1,
+      "message": "thanks.",
+      "parentUuid": "29e1d3d4_f6b4215a",
       "range": {
         "startLine": 308,
         "startChar": 0,
