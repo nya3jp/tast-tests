@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d232f6_5f09aa79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-17T16:52:08Z",
+      "side": 1,
+      "message": "nit: add a comment on why this does not apply other parameterized tests for ToggleBluetoothFromBluetoothSettings",
+      "revId": "c75e13bbfd32e02f74c518963bd467345a8166ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
