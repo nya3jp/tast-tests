@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e0c8b2_6371fdf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T20:55:06Z",
+      "side": 1,
+      "message": "Does it also fail ,false /*ephemeral*/, ?",
+      "parentUuid": "1bad896c_189441e3",
+      "range": {
+        "startLine": 98,
+        "startChar": 60,
+        "endLine": 98,
+        "endChar": 76
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8939fc1_a728264a",
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "It should already be invalidated, after every StartAuthSession success I set up a `defer client.InvalidateAuthSession(ctx, authSessionID)`. This is why I\u0027m using these little closures all over the place in the test, it\u0027s so that I can start sessions, do some stuff with them, and then have them get automatically invalidated at the end of the block.\n\n```\nerr \u003d func() error {\n    authSessionId, err \u003d :\u003d client.StartAuthSession(...)\n    if err !\u003d nil {\n        return errors.Wrap(err, \"failed to start auth session\")\n    }\n    defer client.InvalidateAuthSession(ctx, authSessionID)\n    // ...\n    // Do a bunch of stuff with the session\n    // ...\n}\nif err !\u003d nil {\n    // Something during the session failed, wrap and return it\n}\n```",
       "parentUuid": "93b6cfef_a0cad2a9",
+      "range": {
+        "startLine": 155,
+        "startChar": 23,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a583a587_bd0566c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T20:55:06Z",
+      "side": 1,
+      "message": "I see the closures. Looks good.",
+      "parentUuid": "bfd86441_a69b9f97",
       "range": {
         "startLine": 155,
         "startChar": 23,
@@ -619,6 +667,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d1c4cb0_7ca7dec6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T20:55:06Z",
+      "side": 1,
+      "message": "I think it makes sense to merge testMountState and PreparePersistentMount:\nStartAuthSession-Authenticate-TestMount-Mount-TestMount.\nOld APIs do the authentication before each operation but with the AuthSession flow this shouldn\u0027t be necessary. So, I think no need to do a 1:1 translation from old to new APIs for each case. On the other hand no need to merge all of the AuthSessions in this test since during real use cases these operations will be carried out in different AuthSessions.",
+      "parentUuid": "4cec07f8_73735638",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d1184_6d7b9cd6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
         "patchSetId": 1
@@ -701,6 +773,30 @@
       "side": 1,
       "message": "I mean it does use verify-only checks, but I suppose there\u0027s no way to prove that this is how they\u0027re run on the backend. However, I\u0027m not sure that\u0027s really a good enough reason to remove it?",
       "parentUuid": "52e8a78d_c980fd44",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9caffd09_8ce2e9ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T20:55:06Z",
+      "side": 1,
+      "message": "I didn\u0027t notice testauthenticate sends the verifyOnly intent. I think (after reading the last patchset) it makes sense: mount, try lightsec auth, remount, try lightsec auth.",
+      "parentUuid": "4d7e45d7_5fbcd570",
       "range": {
         "startLine": 362,
         "startChar": 0,
@@ -795,6 +891,30 @@
       "side": 1,
       "message": "I\u0027m not entirely sure, TBH I really just took the existing test and adapted it to the new APIs.",
       "parentUuid": "a15d82e4_2868300c",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 2
+      },
+      "revId": "2b27ad99eb6e207025d2e620cd7f4c58587d2254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35b85e4_414e1c41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_factor_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-17T20:55:06Z",
+      "side": 1,
+      "message": "I\u0027ll follow up on this with yich@ separately.",
+      "parentUuid": "2ebeaa11_fadcc2a2",
       "range": {
         "startLine": 469,
         "startChar": 0,
