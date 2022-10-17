@@ -201,22 +201,18 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(conns.TestConn)
 
-	// Only show pip window for ash-chrome.
-	// TODO(crbug/1232492): Remove this after fix.
-	if testParam.BrowserType == browser.TypeAsh {
-		// The second tab enters the system PiP mode.
-		webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-		pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
-		if err := action.Combine(
-			"focus the PIP button (to ensure it is in view) and left-click on it",
-			ui.FocusAndWait(pipButton),
-			ui.LeftClick(pipButton),
-		)(ctx); err != nil {
-			s.Fatal("Failed to click the pip button: ", err)
-		}
-		if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
-			s.Fatal("Failed to wait for quiescence: ", err)
-		}
+	// The second tab enters the system PiP mode.
+	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+	pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
+	if err := action.Combine(
+		"focus the PIP button (to ensure it is in view) and left-click on it",
+		ui.FocusAndWait(pipButton),
+		ui.LeftClick(pipButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click the pip button: ", err)
+	}
+	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
+		s.Fatal("Failed to wait for quiescence: ", err)
 	}
 
 	// Lacros specific setup.
