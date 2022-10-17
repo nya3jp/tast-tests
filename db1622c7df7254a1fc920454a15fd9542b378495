@@ -70,6 +70,30 @@
       },
       "revId": "db1622c7df7254a1fc920454a15fd9542b378495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08301ea9_23e03dea",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-17T08:05:40Z",
+      "side": 1,
+      "message": "Ah, got it.",
+      "parentUuid": "5909c1d9_88bc9e06",
+      "range": {
+        "startLine": 202,
+        "startChar": 45,
+        "endLine": 202,
+        "endChar": 63
+      },
+      "revId": "db1622c7df7254a1fc920454a15fd9542b378495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
