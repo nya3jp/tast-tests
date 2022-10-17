@@ -16,6 +16,24 @@
       "message": "I assume this is just for development and we aren\u0027t going to be hardcoding this in production? (i.e we\u0027ll be grabbing this from labels or something like that?)",
       "revId": "38a74cd3d1025c6f6e711b62452aa868a4ce39b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ada0928_a2195471",
+        "filename": "src/chromiumos/tast/local/starfish/starfish.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-10-17T18:11:13Z",
+      "side": 1,
+      "message": "Yes, this CL is for testing basic interactions right now.",
+      "parentUuid": "5198ee78_93c52362",
+      "revId": "38a74cd3d1025c6f6e711b62452aa868a4ce39b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
