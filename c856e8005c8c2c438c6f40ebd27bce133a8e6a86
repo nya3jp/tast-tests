@@ -50,6 +50,24 @@
       "message": "I think you should return `errors.Wrapf` here instead of finishing the test with `s.Fatal`.",
       "revId": "c856e8005c8c2c438c6f40ebd27bce133a8e6a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbecfc9_bf0865b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-17T06:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e997014_81552176",
+      "revId": "c856e8005c8c2c438c6f40ebd27bce133a8e6a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
