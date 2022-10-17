@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b75631_d1a1781a",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-17T08:47:04Z",
+      "side": 1,
+      "message": "I have stored them here since they will be reused in several other tests",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "af23dc7ca9b0bbe67a5f394c4d2f9f8c8edec998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bac36085_d30986eb",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-17T08:47:04Z",
+      "side": 1,
+      "message": "This same function will be used by several other tests with different `action` parameters",
+      "range": {
+        "startLine": 410,
+        "startChar": 5,
+        "endLine": 410,
+        "endChar": 23
+      },
+      "revId": "af23dc7ca9b0bbe67a5f394c4d2f9f8c8edec998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
