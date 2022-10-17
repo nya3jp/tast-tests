@@ -22,6 +22,30 @@
       },
       "revId": "f44444a1fd837a8a28026e4975153906d7516be5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b226c9_a8ab9ca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-17T12:42:58Z",
+      "side": 1,
+      "message": "Do you have a list on which model names are public?",
+      "parentUuid": "8d6fdfb5_8c7cadc5",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f44444a1fd837a8a28026e4975153906d7516be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
