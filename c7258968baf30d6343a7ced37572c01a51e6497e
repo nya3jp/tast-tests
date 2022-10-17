@@ -63,6 +63,30 @@
       },
       "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822e1f4b_94076b3e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T16:52:21Z",
+      "side": 1,
+      "message": "Filed crbug.com/1375314 for better tracking a long term solution. Thanks,",
+      "parentUuid": "99100952_4aef496c",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "c7258968baf30d6343a7ced37572c01a51e6497e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
