@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "002b24e0_725fec70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-10-17T12:14:42Z",
+      "side": 1,
+      "message": "\"tast\" seems redundant in tast-tests repo, but OK.",
+      "parentUuid": "c0c78239_9e384ac7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7037cb6_336c92df",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-06T18:19:54Z",
       "side": 1,
       "message": "Also, can you test -comnaniondut and -router for backword compatibility?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a62bbdc_a656f662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-10-17T12:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7037cb6_336c92df",
       "range": {
         "startLine": 23,
         "startChar": 5,
@@ -112,6 +160,24 @@
       "side": 1,
       "message": "This mimics behaviour of attenuator checks. In some cases (some cloudtop instances IIRC??) .cros is not in the search domain, we need to check it as well as purely auto-generated name. I can remove it if you insist.",
       "parentUuid": "e4244404_2942ab17",
+      "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211d2280_0c114ff8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-10-17T12:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0824c3_77f3db3a",
       "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
