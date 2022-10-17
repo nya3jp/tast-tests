@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c9fda6_9df28796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d48ff9_96833e86",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6d6e8e_21c1d00e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71db4f89_bad23de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6d6e8e_21c1d00e",
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e95d13b6_7109ecf1",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-10-17T19:57:19Z",
       "side": 1,
       "message": "The return type of FindString is string. No need to convert it again.\n\nhttps://pkg.go.dev/regexp#Regexp.FindString",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14549282_5e339be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e95d13b6_7109ecf1",
       "range": {
         "startLine": 56,
         "startChar": 12,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d780b70_d84e0485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6bd445_2cf16578",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84ff17ee_caa58991",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-10-17T19:57:19Z",
       "side": 1,
       "message": "delete.",
+      "range": {
+        "startLine": 63,
+        "startChar": 55,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b54414d_90dfec6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84ff17ee_caa58991",
       "range": {
         "startLine": 63,
         "startChar": 55,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c525cbe1_83887f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2cc07a9_ffdd4dcf",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15c19e0e_6c528d4a",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-10-17T19:57:19Z",
       "side": 1,
       "message": "Let\u0027s use a consistent format for GLES and EGL in line 47 and line 66.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "617ae710bd647846a62b871fe159b79c39ad3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe9323b_5dfa0d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-17T21:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c19e0e_6c528d4a",
       "range": {
         "startLine": 66,
         "startChar": 8,
