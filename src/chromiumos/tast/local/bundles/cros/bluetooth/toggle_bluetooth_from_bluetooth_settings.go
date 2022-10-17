@@ -30,11 +30,11 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:intel-gating"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:    "floss_disabled",
-			Fixture: "bluetoothEnabledWithBlueZ",
+			Name:      "floss_disabled",
+			Fixture:   "bluetoothEnabledWithBlueZ",
 		}, {
 			Name:    "floss_enabled",
 			Fixture: "bluetoothEnabledWithFloss",
