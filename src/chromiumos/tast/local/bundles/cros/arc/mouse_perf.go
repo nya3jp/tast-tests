@@ -22,8 +22,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test ARC mouse system performance",
 		Contacts:     []string{"arc-performance@google.com"},
-		// Disabled due to <1% pass rate over 30 days. See b/241943132
-		//Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
@@ -100,9 +99,10 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	// Check latency for mouse ACTION_MOVE events which are generated when moving mouse after left-button pressing down and holding.
 	s.Log("Injecting mouse press-down move events")
 	const (
-		numEvents = 100
-		waitMS    = 50
-		y         = 0
+		numEvents     = 100
+		numLeftClicks = 20
+		waitMS        = 50
+		y             = 0
 	)
 	eventTimes := make([]int64, 0, numEvents)
 	if err := m.Press(); err != nil {
@@ -141,44 +141,48 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Injecting mouse left-click events")
-	eventTimes = make([]int64, 0, numEvents)
 	ver, err := arc.SDKVersion()
 	if err != nil {
 		s.Fatal("Failed to get SDK version: ", err)
 	}
 	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP, and ACTION_BUTTON_RELEASE.
-	// On R, the framework also injects ACTION_HOVER_MOVE.
+	// On R, the framework also injects ACTION_HOVER_ENTER, ACTION_HOVER_MOVE, ACTION_HOVER_EXIT
 	// Check latency for these actions.
-	var leftClickNumEvents int
+	var numLeftClickGroupEvents int
 	if ver >= arc.SDKR {
-		leftClickNumEvents = 5
+		numLeftClickGroupEvents = 7
 	} else {
-		leftClickNumEvents = 4
+		numLeftClickGroupEvents = 4
 	}
-	for i := 0; i < numEvents; i += leftClickNumEvents {
+
+	numLeftClickEvents := numLeftClicks * numLeftClickGroupEvents
+	eventTimes = make([]int64, 0, numLeftClickEvents)
+	for i := 0; i < numLeftClicks; i++ {
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
+		}
+		lastEventTime := eventTimes[len(eventTimes)-1]
+		if ver >= arc.SDKR {
+			// ACTION_HOVER_ENTER, ACTION_HOVER_MOVE, ACTION_HOVER_EXIT are generated together.
+			eventTimes = append(eventTimes, lastEventTime, lastEventTime, lastEventTime)
 		}
 		// ACTION_DOWN and ACTION_BUTTON_PRESS are generated together.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
 		if err := m.Press(); err != nil {
 			s.Fatal("Unable to inject Press mouse event: ", err)
 		}
-
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
-		// ACTION_UP, ACTION_BUTTON_RELEASE, and ACTION_HOVER_MOVE are generated together.
-		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
-		if leftClickNumEvents == 5 {
-			eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
-		}
+		// ACTION_UP and ACTION_BUTTON_RELEASE.
+		lastEventTime = eventTimes[len(eventTimes)-1]
+		eventTimes = append(eventTimes, lastEventTime)
 		if err := m.Release(); err != nil {
 			s.Fatal("Unable to inject Release mouse event: ", err)
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numLeftClickEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
