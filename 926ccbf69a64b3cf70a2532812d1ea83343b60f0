@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b855c4c7_6eca6d00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-17T03:26:02Z",
+      "side": 1,
+      "message": "lgtm with nites",
+      "revId": "926ccbf69a64b3cf70a2532812d1ea83343b60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2b02dc_a1348611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-17T03:26:02Z",
+      "side": 1,
+      "message": "`(mouse.Button, error)` to return error if there is no match. It is better to honor the proto protocol (normally, an error is expected if the request is not in the right format/value), intead of giving a default for unknown input.",
+      "range": {
+        "startLine": 211,
+        "startChar": 40,
+        "endLine": 211,
+        "endChar": 53
+      },
+      "revId": "926ccbf69a64b3cf70a2532812d1ea83343b60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba1f68e_5df79515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-17T03:26:02Z",
+      "side": 1,
+      "message": "nit: also add the mouseButton info in the error message.",
+      "range": {
+        "startLine": 241,
+        "startChar": 14,
+        "endLine": 241,
+        "endChar": 46
+      },
+      "revId": "926ccbf69a64b3cf70a2532812d1ea83343b60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
