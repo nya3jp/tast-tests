@@ -11,7 +11,10 @@ import (
 
 // StableModels is a list of boards that stable enough and aim to run inputs tests in CQ.
 var StableModels = []string{
+	// VM models for testing.
 	"betty",
+	"reven", // ChromeOS Flex.
+
 	// Random boards on the top boards for VK list.
 	"bobba",
 	"bobba360",
