@@ -88,8 +88,8 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if _, err := conn.Connect(ctx); err != nil {
 		return errors.Wrap(err, "failed to connect to VPN server")
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
-		return errors.Wrapf(err, "failed to start %s", arcvpn.Svc)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
+		return errors.Wrapf(err, "failed to start %s", arcvpn.FacadeVPNSvc)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 10*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to ping from host %s", conn.Server.OverlayIPv4)
@@ -138,8 +138,8 @@ func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) err
 	if err := conn.Disconnect(ctx); err != nil {
 		return errors.Wrap(err, "failed to disconnect VPN")
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
-		return errors.Wrapf(err, "failed to stop %s", arcvpn.Svc)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
+		return errors.Wrapf(err, "failed to stop %s", arcvpn.FacadeVPNSvc)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIPv4); err == nil {
 		return errors.Errorf("expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIPv4)
