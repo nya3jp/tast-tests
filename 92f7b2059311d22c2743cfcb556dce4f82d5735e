@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "456ecac0_2d0dab4d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1550264
+      },
+      "writtenOn": "2022-10-17T17:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bad96c0_687be687",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 28
+      },
+      "revId": "92f7b2059311d22c2743cfcb556dce4f82d5735e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cbb67da_5727dc3e",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "they are mutually exclusive. We will early return at line 739 when RepeatCount \u003e 0, which can avoid running a single mode after the tuning mode. It will be semantically equivalent for putting the single mode to else or keeping it the current version. If we want to put the single mode to an else block, we will actually need to put line 741 to line 771 to else (all these lines handle the single mode), which might introduce too much diff not very related to our purpose here. Which way do you prefer? I will update accordingly in the next version!",
       "parentUuid": "1cbb67da_5727dc3e",
+      "range": {
+        "startLine": 741,
+        "startChar": 1,
+        "endLine": 743,
+        "endChar": 0
+      },
+      "revId": "92f7b2059311d22c2743cfcb556dce4f82d5735e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a1e80b_348c1444",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1550264
+      },
+      "writtenOn": "2022-10-17T17:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe2e70f9_b2958e49",
       "range": {
         "startLine": 741,
         "startChar": 1,
