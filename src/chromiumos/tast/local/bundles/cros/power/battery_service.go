@@ -105,7 +105,7 @@ func (b *BatteryService) DrainBattery(ctx context.Context, req *power.BatteryReq
 		return nil
 	}, &testing.PollOptions{
 		Interval: time.Minute,
-		Timeout:  20 * time.Minute,
+		Timeout:  40 * time.Minute,
 	}); err != nil {
 		return nil, errors.Wrapf(err, "failed to drain battery to %.2f%%", req.MaxPercentage)
 	}
