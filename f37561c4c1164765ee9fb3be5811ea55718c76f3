@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4778d4_229b409b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e13979_47308b62",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65002781_51a30050",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0d0650_a2b676bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65002781_51a30050",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 36
+      },
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71af4ef_c2084400",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-10-17T19:11:26Z",
       "side": 1,
       "message": "nit: Remove this blank line.",
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69461de5_297b65f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e71af4ef_c2084400",
       "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a8abf9_324fc25d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665ca64f_eece3fa2",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 11
+      },
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44edd5b2_8e6de72f",
@@ -124,6 +214,30 @@
       "writtenOn": "2022-10-17T19:11:26Z",
       "side": 1,
       "message": "optional nit: Just write `err` instead of creating a repetitious error message by repeating this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/cuj/tab_handler.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d95",
+      "range": {
+        "startLine": 242,
+        "startChar": 10,
+        "endLine": 242,
+        "endChar": 58
+      },
+      "revId": "f37561c4c1164765ee9fb3be5811ea55718c76f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d5b77f_83eb0a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-17T22:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44edd5b2_8e6de72f",
       "range": {
         "startLine": 242,
         "startChar": 10,
