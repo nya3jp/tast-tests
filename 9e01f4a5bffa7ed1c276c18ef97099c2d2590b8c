@@ -70,6 +70,24 @@
       "parentUuid": "b6a40d2b_237c09f9",
       "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892d71a9_b9cb8242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T15:52:55Z",
+      "side": 1,
+      "message": "Thanks Eliot and Yichecn for your thoughts.\n\n\u003e 1. Confirm hover cards should be enabled in lacros (almost certainly true since ash does it)\n\nYes it seems. I can see hover cards on lacros tabs.\n\n\u003e 2. Try enabling these metrics for lacros and see if they work properly\n\nCan you help route this to the right person/team? Any tracker to follow along?\nI have just updated this CL to collect those metrics from lacros for the lacros variants.",
+      "parentUuid": "435c72ed_d649ebc3",
+      "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
