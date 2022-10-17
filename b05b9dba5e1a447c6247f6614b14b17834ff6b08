@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9542fb_b6ea1acf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Please add more context/information on this change in the description. Outside of a high-level description of the test it would be helpful to mention the other interesting changes to the UI and Chrome services here :)",
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bcc6fa0_f7a4837e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way, really exciting to see this test that would have been a complicated manual test be automated! Please let me know if you have any questions on my comments :)",
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc48417_2bbcea36",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Nit: Let\u0027s add a comment for this member too please.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 27
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537d2409_e4dc08d9",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Are we able to condense this into a single line,\n\n    if signinProfileTestExtensionID, ok :\u003d s.Var(fixtureVarSigninKey); !ok {\n        ...\n    }",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 10
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdd0bf0_1d2395f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Do we need to specify attributes here to ensure we only run on devices that have two Bluetooth peers available?",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0c6176_a23300e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "The spacing for this line seems to misalign with the others-- do we need to `go fmt` this file?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153bdbc8_62081c4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Nit: Consider removing this and using the default timeout unless we want tests that take longer than this to fail.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8c3c57_5c712eb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Nit: Consider renaming to just `finder` since this is not specific to the \"searching for pointer\" node.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda163bd_3f87b1d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Do we need to unconditionally dump the UI tree here, or could we just dump it on error? If just on error is okay let\u0027s update this to something like\n\n    defer func() {\n        if !s.HasError {\n            return\n        }\n        if _, err :\u003d crUISvc.DumpUITree(ctx, \u0026emptypb.Empty{}); err !\u003d nil {\n            testing.ContextLog(ctx, \"Failed to dump UI tree: \", err)\n        }\n    }",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f46312b_3669f7e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Super-nit: End with period.",
+      "range": {
+        "startLine": 80,
+        "startChar": 29,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9538af16_82db6f58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Can we move this before the previous `if`, and then replace all other instances of `fv.BTPeers[0].BluetoothMouseDevice()` with `mouseDevice.rpc.\u003cMETHOD\u003e` since that will be a `BluezPeripheral` [1]?\n\n    mouseDevice.rpc.AdapterPowerOn(...)\n    mouseDevice.rpc.AdapterPowerOff(...)\n    mouseDevice.rpc.ResetStack(...)\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_bluez.go;l\u003d19;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28642e44_653f3582",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Do we need to do this in addition to the call to `Reset()` above? That method is supposed to put the peripheral into a pristine state, so it seems like we would be okay with leaving the adapter powered on?",
+      "range": {
+        "startLine": 131,
+        "startChar": 56,
+        "endLine": 131,
+        "endChar": 71
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad8cb70_d5751cde",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_ui_service.proto",
+        "patchSetId": 21
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T16:50:42Z",
+      "side": 1,
+      "message": "Nit: Remove extra space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
