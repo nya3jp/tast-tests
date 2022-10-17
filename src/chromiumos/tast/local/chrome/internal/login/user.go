@@ -51,72 +51,85 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	if cfg.WaitForCryptohome() {
-		mountType := cryptohome.Permanent
-		if cfg.EphemeralUser() {
-			mountType = cryptohome.Ephemeral
-		}
+	return nil
+}
 
-		// Shorten deadline to reserve time for reading the log.
-		shortenCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
-
-		if err = cryptohome.WaitForUserMountAndValidateType(shortenCtx, cfg.NormalizedUser(), mountType); err != nil {
-			if cfg.LoginMode() == config.GAIALogin {
-				// Backup the original error.
-				origErr := err
-
-				// Check the error message from the server side.
-				logReader, err := syslog.NewLineReader(ctx, syslog.ChromeLogFile, true, nil)
-				if err != nil {
-					return errors.Wrapf(origErr, "could not get Chrome log reader: %v", err)
-				}
-				defer logReader.Close()
-
-				for {
-					line, err := logReader.ReadLine()
-					if err != nil {
-						if err != io.EOF {
-							return errors.Wrapf(origErr, "failed to read file %v: %v", syslog.ChromeLogFile, err)
-						}
-
-						// Could not find server side authentication error.
-						// Return the error directly.
-						return origErr
-					}
-					if strings.HasSuffix(line, "Got authentication error\n") {
-						break
-					}
-				}
-
-				// Skip two lines after authentication error to identify the exact authentication error:
-				//   Got authentication error
-				//   net_error: net::OK (skip)
-				//   response body: { (skip)
-				//    "error": "rate_limit_exceeded"
-				//   }
-				for i := 0; i < 2; i++ {
-					if _, err := logReader.ReadLine(); err != nil {
-						return errors.Wrapf(origErr, "failed to skip the lines after authentication error: %v", err)
-					}
-				}
-
-				// Read the third line after the authentication error.
-				line, err := logReader.ReadLine()
-				if err != nil {
-					return errors.Wrapf(origErr, "failed to read the authentication error: %v", err)
-				}
-				authErr := strings.TrimSpace(line)
-				return errors.Errorf("authentication error: %v", authErr)
-			}
-			return err
-		}
+// waitForCryptohome waits for user's encrypted home directory to be mounted and
+// informs about occurred errors.
+func waitForCryptohome(ctx context.Context, cfg *config.Config) error {
+	mountType := cryptohome.Permanent
+	if cfg.EphemeralUser() {
+		mountType = cryptohome.Ephemeral
 	}
 
-	if cfg.SkipOOBEAfterLogin() {
-		ctx, st := timing.Start(ctx, "wait_for_oobe_dismiss")
-		defer st.End()
-		return waitForPageWithPrefixToBeDismissed(ctx, sess, oobePrefix)
+	// Shorten deadline to reserve time for reading the log.
+	shortenCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	if err := cryptohome.WaitForUserMountAndValidateType(shortenCtx, cfg.NormalizedUser(), mountType); err != nil {
+		if cfg.LoginMode() == config.GAIALogin || cfg.LoginMode() == config.SAMLLogin {
+			// Backup the original error.
+			origErr := err
+
+			// Check the error message from the server side.
+			logReader, err := syslog.NewLineReader(ctx, syslog.ChromeLogFile, true, nil)
+			if err != nil {
+				return errors.Wrapf(origErr, "could not get Chrome log reader: %v", err)
+			}
+			defer logReader.Close()
+
+			for {
+				line, err := logReader.ReadLine()
+				if err != nil {
+					if err != io.EOF {
+						return errors.Wrapf(origErr, "failed to read file %v: %v", syslog.ChromeLogFile, err)
+					}
+
+					// Could not find server side authentication error.
+					// Return the error directly.
+					return origErr
+				}
+				if strings.HasSuffix(line, "Got authentication error\n") {
+					break
+				}
+			}
+
+			// Skip two lines after authentication error to identify the exact authentication error:
+			//   Got authentication error
+			//   net_error: net::OK (skip)
+			//   response body: { (skip)
+			//    "error": "rate_limit_exceeded"
+			//   }
+			for i := 0; i < 2; i++ {
+				if _, err := logReader.ReadLine(); err != nil {
+					return errors.Wrapf(origErr, "failed to skip the lines after authentication error: %v", err)
+				}
+			}
+
+			// Read the third line after the authentication error.
+			line, err := logReader.ReadLine()
+			if err != nil {
+				return errors.Wrapf(origErr, "failed to read the authentication error: %v", err)
+			}
+			authErr := strings.TrimSpace(line)
+			return errors.Errorf("authentication error: %v", authErr)
+		}
+		return err
+	}
+
+	return nil
+}
+
+// removeNotifications clears all notifications after logging in so none will be
+// shown at the beginning of tests.
+func removeNotifications(ctx context.Context, sess *driver.Session) error {
+	// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
+	tconn, err := sess.TestAPIConn(ctx, true)
+	if err != nil {
+		return err
+	}
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+		return errors.Wrap(err, "failed to clear notifications")
 	}
 
 	return nil
