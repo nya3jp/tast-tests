@@ -20,6 +20,8 @@ type Action int
 const (
 	// ClipboardCopyPaste identifies a clipboard copy and paste action.
 	ClipboardCopyPaste Action = iota
+	// Printing identifies a printing action.
+	Printing
 )
 
 // String returns a string representation of `Action`.
@@ -27,6 +29,8 @@ func (action Action) String() string {
 	switch action {
 	case ClipboardCopyPaste:
 		return "CLIPBOARD"
+	case Printing:
+		return "PRINTING"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}

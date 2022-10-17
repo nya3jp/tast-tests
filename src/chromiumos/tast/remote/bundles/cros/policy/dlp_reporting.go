@@ -121,7 +121,7 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name: "ash_report_reporting_enabled",
+				Name: "ash_clipboard_copy_paste_report_reporting_enabled",
 				Val: testParams{
 					Username:         restrictionReportReportingEnabledUsername,
 					Password:         restrictionReportReportingEnabledPassword,
@@ -132,7 +132,7 @@ func init() {
 				},
 			},
 			{
-				Name: "lacros_report_reporting_enabled",
+				Name: "lacros_clipboard_copy_paste_report_reporting_enabled",
 				Val: testParams{
 					Username:         restrictionReportReportingEnabledUsername,
 					Password:         restrictionReportReportingEnabledPassword,
@@ -140,6 +140,29 @@ func init() {
 					BrowserType:      dlp.BrowserType_LACROS,
 					ReportingEnabled: true,
 					Action:           dlputil.ClipboardCopyPaste,
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name: "ash_print_report_reporting_enabled",
+				Val: testParams{
+					Username:         restrictionReportReportingEnabledUsername,
+					Password:         restrictionReportReportingEnabledPassword,
+					Mode:             dlp.Mode_REPORT,
+					BrowserType:      dlp.BrowserType_ASH,
+					ReportingEnabled: true,
+					Action:           dlputil.Print,
+				},
+			},
+			{
+				Name: "lacros_print_report_reporting_enabled",
+				Val: testParams{
+					Username:         restrictionReportReportingEnabledUsername,
+					Password:         restrictionReportReportingEnabledPassword,
+					Mode:             dlp.Mode_REPORT,
+					BrowserType:      dlp.BrowserType_LACROS,
+					ReportingEnabled: true,
+					Action:           dlputil.Print,
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
@@ -206,6 +229,11 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 	switch params.Action {
 	case dlputil.ClipboardCopyPaste:
 		service.ClipboardCopyPaste(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
+	case Printing:
+		service.Print(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
