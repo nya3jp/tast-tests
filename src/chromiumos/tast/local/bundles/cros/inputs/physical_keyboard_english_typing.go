@@ -28,7 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard can perform basic typing",
 		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "group:intel-gating"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),

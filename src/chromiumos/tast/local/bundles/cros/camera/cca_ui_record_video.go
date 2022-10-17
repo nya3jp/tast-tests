@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens CCA and verifies video recording related use cases",
 		Contacts:     []string{"kamchonlathorn@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera", "group:intel-gating"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Timeout:      5 * time.Minute,
 		Fixture:      "ccaTestBridgeReady",

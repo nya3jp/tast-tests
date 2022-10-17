@@ -33,7 +33,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
 		Params: []testing.Param{{
 			Name:      "internal_speaker",
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "informational", "group:intel-gating"},
 			Val:       "Speaker (internal)",
 		}, {
 			Name: "headphone",
