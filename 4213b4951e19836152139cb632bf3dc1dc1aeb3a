@@ -16,6 +16,24 @@
       "message": "We really should move this to be entirely outside of crostini and simply a VM image that runs enough to where we can check the state of the vulnerabilities file in sysfs.",
       "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb55245_16020c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities_crostini.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T21:46:09Z",
+      "side": 0,
+      "message": "Hi Stephen, I may not fully be understanding what you meant by that. Are you suggesting any specific change over here?",
+      "parentUuid": "1946532c_7d2a1b0a",
+      "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

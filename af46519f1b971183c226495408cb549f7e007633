@@ -50,6 +50,24 @@
       "message": "Why are these tests ash-specific?",
       "revId": "af46519f1b971183c226495408cb549f7e007633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31ae775_d6aad56a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T21:46:09Z",
+      "side": 1,
+      "message": "It wasn\u0027t clear to me what tests need lacros variant or not clearly, but I just put this up for what you suggested at http://b/253808823#comment4.\n\nPlease advise if you see anything here incorrectly marked in terms of the metadata for lacros migration. I\u0027ll keep this comment open to make sure all of your assessments are well addressed in this CL. Thanks,",
+      "parentUuid": "31843ad2_9872f59a",
+      "revId": "af46519f1b971183c226495408cb549f7e007633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
