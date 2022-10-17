@@ -108,7 +108,7 @@ func DisplayAllTabs(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to obtain the process name in task manager: ", err)
 			}
 			// The processes might be grouped. Such as the extension "Speedtest" in this test.
-			if err := ui.WaitUntilExists(taskmanager.FindProcess().NameStartingWith(name).First())(ctx); err != nil {
+			if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(taskmanager.FindProcess().NameStartingWith(name).First())(ctx); err != nil {
 				s.Fatalf("Failed to find process %q in task manager: %v", name, err)
 			}
 		}
