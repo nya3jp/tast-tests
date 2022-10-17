@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "71834f55_d8912198",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-17T20:22:56Z",
+      "side": 1,
+      "message": "It does carry some risk on \"old\" devices. Recent version of coreboot (see https://crrev.com/c/2765538) will ignore tables in VPD, so that\u0027s no longer a problem. But we could potentially have older devices out there with older branches of coreboot that have VPD entries and CBFS entries and VPD is the one that gets loaded. I think there was discussion to backport the deprecation of VPD back to older coreboot versions, but that\u0027s a bit risky. We could restart that effort maybe? Maybe get some field data to see if that actually happens?",
+      "parentUuid": "9c883ecc_cfb13e0d",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "da96e60576908202f08f9d10d9e86b700ca512d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5d100c93_4f7a4088",
