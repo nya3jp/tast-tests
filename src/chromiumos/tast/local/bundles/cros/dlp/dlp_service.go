@@ -91,41 +91,63 @@ func (service *DataLeakPreventionService) StopChrome(ctx context.Context, req *e
 	return &empty.Empty{}, lastErr
 }
 
+// createHTMLTextPage creates an HTML page with some text.
+func createHTMLTextPage(path string) error {
+	textContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Random Text</title></head><body>Sample text about random things.</body></html>")
+	if err := os.WriteFile(path, textContent, 0644); err != nil {
+		return errors.Wrap(err, "failed write a file")
+	}
+	return nil
+}
+
+// createHTMLTextAreaPage creates an HTML page with a text area element.
+func createHTMLTextAreaPage(path string) (*nodewith.Finder, error) {
+	inputContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Editable Text Box</title></head><body><textarea aria-label='textarea' rows='1' cols='100'></textarea></body></html>")
+	if err := os.WriteFile(path, inputContent, 0644); err != nil {
+		return nil, errors.Wrap(err, "failed write a file")
+	}
+	textAreaNode := nodewith.Name("textarea").Role(role.TextField).State(state.Editable, true).First()
+	return textAreaNode, nil
+}
+
+// setupBrowser returns a Browser instance for the given browser type and a closure to close the browser instance.
+func setupBrowser(ctx context.Context, chrome *chrome.Chrome, browserType pb.BrowserType) (*browser.Browser, func(ctx context.Context) error, error) {
+	bt := browser.TypeAsh
+	if browserType == pb.BrowserType_LACROS {
+		bt = browser.TypeLacros
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, chrome, bt)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to open the browser")
+	}
+
+	return br, closeBrowser, nil
+}
+
 // ClipboardCopyPaste performs a copy and paste action.
 func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
 
 	baseDir := "/tmp"
-
-	// Create an HTML page with some text.
 	textFilename := "text.html"
-	textContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Random Text 1</title></head><body>Sample text about random things.</body></html>")
-	if err := os.WriteFile(filepath.Join(baseDir, textFilename), textContent, 0644); err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed write a file")
+	if err := createHTMLTextPage(filepath.Join(baseDir, textFilename)); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while creating the HTML text page")
 	}
 
-	// Create an HTML page with an input box.
 	inputFilename := "input.html"
-	inputContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Editable Text Box</title></head><body><textarea aria-label='textarea' rows='1' cols='100'></textarea></body></html>")
-	if err := os.WriteFile(filepath.Join(baseDir, inputFilename), inputContent, 0644); err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed write a file")
+	textAreaNode, err := createHTMLTextAreaPage(filepath.Join(baseDir, inputFilename))
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while creating the HTML input page")
 	}
+
+	br, closeBrowser, err := setupBrowser(ctx, service.chrome, req.BrowserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while setting up the browser")
+	}
+	defer closeBrowser(ctx)
 
 	sourceServer := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
 	defer sourceServer.Close()
-
-	destServer := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
-	defer destServer.Close()
-
-	browserType := browser.TypeAsh
-	if req.BrowserType == pb.BrowserType_LACROS {
-		browserType = browser.TypeLacros
-	}
-
-	br, closeBrowser, err := browserfixt.SetUp(ctx, service.chrome, browserType)
-	if err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to open the browser")
-	}
-	defer closeBrowser(ctx)
 
 	sourceURL := sourceServer.URL + "/" + textFilename
 	sourceConn, err := br.NewConn(ctx, sourceURL)
@@ -165,6 +187,9 @@ func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context
 		return &empty.Empty{}, errors.Wrap(err, "failed to get clipboard content")
 	}
 
+	destServer := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer destServer.Close()
+
 	destURL := destServer.URL + "/" + inputFilename
 	destConn, err := br.NewConn(ctx, destURL)
 	if err != nil {
@@ -178,11 +203,10 @@ func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context
 
 	ui := uiauto.New(tconn)
 
-	textBoxNode := nodewith.Name("textarea").Role(role.TextField).State(state.Editable, true).First()
 	if err := uiauto.Combine("Pasting into text box",
-		ui.WaitUntilExists(textBoxNode.Visible()),
-		ui.LeftClick(textBoxNode),
-		ui.WaitUntilExists(textBoxNode.Focused()),
+		ui.WaitUntilExists(textAreaNode.Visible()),
+		ui.LeftClick(textAreaNode),
+		ui.WaitUntilExists(textAreaNode.Focused()),
 		keyboard.AccelAction("Ctrl+V"),
 	)(ctx); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to paste into text box")
@@ -194,4 +218,64 @@ func (service *DataLeakPreventionService) ClipboardCopyPaste(ctx context.Context
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// Print performs a print action.
+func (service *DataLeakPreventionService) Print(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	if err := createHTMLTextPage(filepath.Join(baseDir, textFilename)); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while creating the HTML text page")
+	}
+
+	br, closeBrowser, err := setupBrowser(ctx, service.chrome, req.BrowserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while setting up the browser")
+	}
+	defer closeBrowser(ctx)
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	// Test printing using hotkey (Ctrl + P).
+	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to type printing hotkey")
+	}
+
+	// Connect to Test API.
+	tconn, err := service.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to connect to test API")
+	}
+
+	// Check that the printing dialog appears if and only if printing the page is allowed.
+	ui := uiauto.New(tconn)
+
+	// Finder for the print dialog.
+	var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
+
+	// Check that the behavior of the printing dialog.
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(printDialog)(ctx); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to find the printing dialog")
+	}
+
+	return &empty.Empty{}, nil
+
 }
