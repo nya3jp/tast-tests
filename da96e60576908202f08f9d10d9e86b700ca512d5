@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb65180_89bd5862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-10-17T21:23:51Z",
+      "side": 1,
+      "message": "I\u0027m curious what field data we could possibly use to check this condition in the field? I don\u0027t think that any process other than coreboot knows where the SAR tables actually come from, and pulling the vpd data directly feels like a no-go as well for PII reasons. But yeah I\u0027m open to re-opening that effort, especially for a data gathering phase if there is a privacy-safe way to gather the data.\n\nI probably would not be in favor of backporting the coreboot changes unless we had solid examples of this occurring in the field. Note that it\u0027s only *really* a problem if the vpd tables are \"bad\" in some way, and we have tests that would catch  many cases of \"bad\" tables if they happened in the lab, which they haven\u0027t. This means that the issue would pretty much have to be exclusive to non-lab devices, which I don\u0027t think is particularly likely.\n\nIn any case, I think that\u0027s probably out of scope for this CL.",
+      "parentUuid": "71834f55_d8912198",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "da96e60576908202f08f9d10d9e86b700ca512d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5d100c93_4f7a4088",
