@@ -16,6 +16,23 @@
       "message": "Thanks for the quick review! PTAL~",
       "revId": "ef718510722cb3c5e20b640fbfced980eaed4dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c48a9a4_b5b47214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-17T07:50:03Z",
+      "side": 1,
+      "message": "LGTM from ARC perspective 👍",
+      "revId": "ef718510722cb3c5e20b640fbfced980eaed4dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
