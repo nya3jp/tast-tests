@@ -26,7 +26,7 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      7 * time.Minute,
+		Timeout:      9 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
