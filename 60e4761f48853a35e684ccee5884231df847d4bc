@@ -33,6 +33,29 @@
       "message": "Adding Harpreet to confirm the test is running in the correct group/pools!",
       "revId": "60e4761f48853a35e684ccee5884231df847d4bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277f1fc4_da62134b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-17T15:21:35Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to pass an unknown type here so that OpenNetworkDetailPage explicitly returns an error for that? Otherwise we might just have unexpected behavior.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "60e4761f48853a35e684ccee5884231df847d4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
