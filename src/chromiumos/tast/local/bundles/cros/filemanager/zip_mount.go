@@ -211,7 +211,9 @@ func testArchive(ctx context.Context, app *filesapp.FilesApp, archive string, wa
 
 	// Check contents of mounted archive.
 	for _, want := range wantContents {
-		label := nodewith.Name(want).Role(role.ListBoxOption)
+		// "Name" for file row is calculated by aria-labelledby, which uses the
+		// below format: <FileName> Size <FileSize> ...
+		label := nodewith.NameStartingWith(want + " Size ").Role(role.ListBoxOption)
 		if err := app.WithTimeout(5 * time.Second).WaitUntilExists(label)(ctx); err != nil {
 			return errors.Wrapf(err, "cannot see %q in mounted archive %q", want, archive)
 		}
