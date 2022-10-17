@@ -56,6 +56,30 @@
       },
       "revId": "60e4761f48853a35e684ccee5884231df847d4bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f0fd98_b08ce5c4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-17T20:10:59Z",
+      "side": 1,
+      "message": "SGTM, went ahead and started returning 0 (should this be `-1`?) and an error when an invalid value is passed in.",
+      "parentUuid": "277f1fc4_da62134b",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "60e4761f48853a35e684ccee5884231df847d4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
