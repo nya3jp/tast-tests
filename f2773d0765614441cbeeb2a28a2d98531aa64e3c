@@ -16,6 +16,23 @@
       "message": "PTAL.\nI noticed today that the tests don\u0027t run on brya because I don\u0027t list the cpu in SupportsVP9KSVCHWEncoding(). 😞",
       "revId": "f2773d0765614441cbeeb2a28a2d98531aa64e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482f0e02_06456792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-17T19:45:59Z",
+      "side": 1,
+      "message": "chrome_stack_decoder.go is still using SupportsVP9KSVCHWDecoding. Otherwise, LGTM.",
+      "revId": "f2773d0765614441cbeeb2a28a2d98531aa64e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
