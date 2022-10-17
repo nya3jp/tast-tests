@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4ba494_31b34ffe",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-17T01:00:41Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "c47d86a738f334cf6e45290d610219f2cc074641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a428c4b7_a948c7db",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-17T01:00:41Z",
+      "side": 1,
+      "message": "Sinde the following comment about external api ends with :, please use it here as well.",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "c47d86a738f334cf6e45290d610219f2cc074641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
