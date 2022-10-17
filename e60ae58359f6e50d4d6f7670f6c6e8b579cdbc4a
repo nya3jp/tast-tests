@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d790b270_5a63aba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-17T07:58:40Z",
+      "side": 0,
+      "message": "Is the old contact still working on the team? If yes, can you leave them in?",
+      "revId": "e60ae58359f6e50d4d6f7670f6c6e8b579cdbc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -16,6 +16,46 @@
       "message": "Thanks Sammie! then will land this one first.",
       "revId": "11506e67b42767bd026036a94f995105b139b98a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb21371_9f20fb69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-17T07:58:40Z",
+      "side": 1,
+      "message": "nit: use a more descriptive name\n\nMaybe browserType",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "11506e67b42767bd026036a94f995105b139b98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e6e79e_f828a8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-17T07:58:40Z",
+      "side": 1,
+      "message": "You should only cast once and use the casted struct in the test.\n\nparam :\u003d s.Param().(splitViewTabletModeTestParam)\n\nAlso do this earlier in the test.",
+      "revId": "11506e67b42767bd026036a94f995105b139b98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
