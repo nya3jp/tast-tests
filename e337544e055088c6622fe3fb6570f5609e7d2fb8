@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d4caf5_ae60cc1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-10-17T23:45:53Z",
+      "side": 1,
+      "message": "Nit: append all three timestamps with a single append call.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 65
+      },
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43c85e5_aaa91e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-10-17T23:45:53Z",
+      "side": 1,
+      "message": "Can this be moved above the new if block? Otherwise the `generated together` comment is a bit confusing.\n\nUnless it is down here to match the order that events are generated. In that case maybe add comments with the event that each timestamp is for.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 64
+      },
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
