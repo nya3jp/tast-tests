@@ -52,6 +52,24 @@
       "parentUuid": "8c1bdbd2_ec3e38e5",
       "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435c72ed_d649ebc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-17T02:19:46Z",
+      "side": 1,
+      "message": "The hover card sounds like it would be in lacros, not ash (assuming hover cards are even enabled in lacros). So, it needs to be measured from lacros. But, the metrics aren\u0027t enabled for lacros. Sounds like we need to:\n\n1. Confirm hover cards should be enabled in lacros (almost certainly true since ash does it)\n2. Try enabling these metrics for lacros and see if they work properly",
+      "parentUuid": "b6a40d2b_237c09f9",
+      "revId": "9e01f4a5bffa7ed1c276c18ef97099c2d2590b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
