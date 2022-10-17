@@ -62,10 +62,7 @@ func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req
 	cr, err := chrome.New(
 		origCtx,
 		chrome.KeepEnrollment(),
-		chrome.DontSkipOOBEAfterLogin(),
-		chrome.DontWaitForCryptohome(),
 		chrome.DMSPolicy("https://crosman-alpha.sandbox.google.com/devicemanagement/data/api"),
-		chrome.RemoveNotification(false),
 		chrome.LoadSigninProfileExtension(req.SigninProfileTestExtensionManifestKey),
 		chrome.SAMLLogin(fakeCreds),
 		chrome.EnableFeatures("DeviceTrustConnectorEnabled"),

@@ -741,6 +741,11 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 	return nil
 }
 
+// FinishUserLogin handles the necessary steps after a successful login (e.g. during SAML login tests).
+func (c *Chrome) FinishUserLogin(ctx context.Context) error {
+	return login.FinishUserLogin(ctx, &c.cfg, c.sess)
+}
+
 // IsTargetAvailable checks if there is any matched target.
 func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
 	targets, err := c.FindTargets(ctx, tm)
