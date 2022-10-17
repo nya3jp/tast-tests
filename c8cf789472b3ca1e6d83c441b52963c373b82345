@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0ac41f_af117f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-17T09:23:02Z",
+      "side": 1,
+      "message": "The CQ error is from here\n\n```\nsrc/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go:48:4: chromiumos/tast/testing.ContextLogf format % is missing verb at end of string\n```\n\nProbably want part should be `%s`",
+      "revId": "c8cf789472b3ca1e6d83c441b52963c373b82345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
