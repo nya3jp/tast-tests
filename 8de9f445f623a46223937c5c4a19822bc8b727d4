@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe22ea65_e348c1b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-17T22:30:11Z",
+      "side": 1,
+      "message": "Is this required by gofmt? This is messing up the formatting.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "8de9f445f623a46223937c5c4a19822bc8b727d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9ccd5b0c_c98df4f5",
@@ -14,6 +37,30 @@
       "writtenOn": "2022-10-17T21:46:09Z",
       "side": 1,
       "message": "Please see b/187787902 for this change.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "8de9f445f623a46223937c5c4a19822bc8b727d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993643a8_5b238a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-17T22:30:11Z",
+      "side": 1,
+      "message": "I would prefer to keep these changes separate.",
+      "parentUuid": "9ccd5b0c_c98df4f5",
       "range": {
         "startLine": 14,
         "startChar": 1,
