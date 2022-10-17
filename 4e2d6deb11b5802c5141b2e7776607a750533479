@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78f5df1a_c05db8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/chrome_sandboxed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T21:21:38Z",
+      "side": 1,
+      "message": "I can remove the timeout if it doesn\u0027t have to be specified.\n\nLooked at test history (https://tastboard.corp.google.com/test/security.ChromeSandboxed) I have seen tests likely end in \u003e1 minute. If I remember correctly, it defaults to 4 minutes. Please suggest.",
+      "parentUuid": "2587d188_346cfabc",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "4e2d6deb11b5802c5141b2e7776607a750533479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e5e3dc_ff412c21",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-17T21:13:38Z",
       "side": 1,
       "message": "Where does this come from?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "4e2d6deb11b5802c5141b2e7776607a750533479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2268ea70_c6786d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-17T21:21:38Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "57e5e3dc_ff412c21",
       "range": {
         "startLine": 38,
         "startChar": 2,
