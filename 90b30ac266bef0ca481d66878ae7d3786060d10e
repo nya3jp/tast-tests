@@ -22,6 +22,30 @@
       },
       "revId": "90b30ac266bef0ca481d66878ae7d3786060d10e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1722b54c_30e45f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-10-17T00:57:35Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "4daff468_fe35423b",
+      "range": {
+        "startLine": 33,
+        "startChar": 62,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "90b30ac266bef0ca481d66878ae7d3786060d10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
