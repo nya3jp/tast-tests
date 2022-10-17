@@ -34,6 +34,24 @@
       "parentUuid": "1946532c_7d2a1b0a",
       "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a1b09d_5816c939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities_crostini.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-17T22:26:32Z",
+      "side": 0,
+      "message": "See crrev/c/3961141\n\nI haven\u0027t come back to this topic because the test works as is today but I\u0027d like to make the test not depend on crostini, because it doesn\u0027t.",
+      "parentUuid": "4bb55245_16020c43",
+      "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
