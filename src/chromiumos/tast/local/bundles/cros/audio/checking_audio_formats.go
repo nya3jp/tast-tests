@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -47,6 +48,38 @@ func CheckingAudioFormats(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	// Set up capture (aloop) module.
+	unload, err := audio.LoadAloop(ctx)
+	if err != nil {
+		s.Fatal("Failed to load ALSA loopback module: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Wait for no stream before unloading aloop as unloading while there is a stream
+		// will cause the stream in ARC to be in an invalid state.
+		if err := crastestclient.WaitForNoStream(ctx, 5*time.Second); err != nil {
+			s.Error("Wait for no stream error: ", err)
+		}
+		unload(ctx)
+	}(cleanupCtx)
+
+	// Select ALSA loopback output and input nodes as active nodes by UI.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(ctx, tconn)
+	quicksettings.Show(ctx, tconn)
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
+		s.Fatal("Failed to select ALSA loopback output: ", err)
+	}
+
+	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
+	// is still opened while it is actually fading out, and failed to select Loopback Capture.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(ctx, tconn)
+	quicksettings.Show(ctx, tconn)
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
+		s.Fatal("Failed to select ALSA loopback input: ", err)
+	}
 
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
