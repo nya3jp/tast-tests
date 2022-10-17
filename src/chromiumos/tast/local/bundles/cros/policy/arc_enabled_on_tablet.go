@@ -159,7 +159,7 @@ func ArcEnabledOnTablet(ctx context.Context, s *testing.State) {
 			} else {
 				// Verify that ARC isn't available.
 				if err := checkAndDismissPlayStoreUnavailablePopup(ctx, uia); err != nil {
-					s.Fatal("Failed to check Play Store unavailable pop-up window")
+					s.Fatal("Failed to check Play Store unavailable pop-up window: ", err)
 				}
 			}
 		})
@@ -168,7 +168,7 @@ func ArcEnabledOnTablet(ctx context.Context, s *testing.State) {
 
 func checkAndDismissPlayStoreUnavailablePopup(ctx context.Context, uia *uiauto.Context) error {
 	// On tablet, a pop-up window will inform user that Play Store is not available.
-	popupUI := nodewith.Name("This app requires access to the Play Store").Role(role.TitleBar)
+	popupUI := nodewith.Name("This app requires access to the Play Store").Role(role.Window)
 	if err := uia.WithTimeout(3 * time.Second).WaitUntilExists(popupUI)(ctx); err != nil {
 		return errors.Wrap(err, "failed to see pop-up window")
 	}
@@ -177,7 +177,7 @@ func checkAndDismissPlayStoreUnavailablePopup(ctx context.Context, uia *uiauto.C
 	testing.Sleep(ctx, 1*time.Second)
 
 	// Click OK button to dismiss pop-up window.
-	button := nodewith.Name("OK").Role(role.Button)
+	button := nodewith.Name("OK").Role(role.Button).Ancestor(popupUI)
 	if err := uia.WithTimeout(3 * time.Second).LeftClick(button)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click OK on pop-up window")
 	}
