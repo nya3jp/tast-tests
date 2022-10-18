@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// LoginPoolVar is the account pool information
+const LoginPoolVar = "arc.managedAccountPool"
+
 // VerifyArcPolicyForceInstalled matches ArcPolicy FORCE_INSTALLED apps list with expected packages.
 func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, forceInstalledPackages []string) error {
 	dps, err := policyutil.PoliciesFromDUT(ctx, tconn)
@@ -69,4 +72,24 @@ func makeList(packages map[string]bool) []string {
 	}
 	sort.Strings(packagesList)
 	return packagesList
+}
+
+// CreateArcPolicyWithForceInstallApps creates a policy with specified packages as force installs.
+func CreateArcPolicyWithForceInstallApps(packages []string) *policy.ArcPolicy {
+	var forceInstalledApps []policy.Application
+	for _, packageName := range packages {
+		forceInstalledApps = append(forceInstalledApps, policy.Application{
+			PackageName: packageName,
+			InstallType: "FORCE_INSTALLED",
+		})
+	}
+	arcPolicy := &policy.ArcPolicy{
+		Val: &policy.ArcPolicyValue{
+			Applications:              forceInstalledApps,
+			PlayLocalPolicyEnabled:    true,
+			PlayEmmApiInstallDisabled: true,
+		},
+	}
+
+	return arcPolicy
 }
