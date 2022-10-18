@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe111540_06b0ed1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-18T18:04:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2341d33_da74767a",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2d14e7_9791fcde",
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "Done.\nBut I don\u0027t know how the requirement to `always start comment with the function name` is actually interpreted. I thought that the function name is a key and the remaining sentence is a description of that key for some automation tool.",
       "parentUuid": "09e318d1_66a73566",
+      "range": {
+        "startLine": 368,
+        "startChar": 27,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efbd1cf_064c7074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-18T18:04:43Z",
+      "side": 1,
+      "message": "The examples begin with `Request represents` and `Encode writes`, rather than `Request Represents` and `Encode Writes`, here:\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "d50f03d2_36eb9a7c",
       "range": {
         "startLine": 368,
         "startChar": 27,
