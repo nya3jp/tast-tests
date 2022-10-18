@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941bd572_fc5572e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T20:14:20Z",
+      "side": 1,
+      "message": "Wondering if we want to include the results of the GET to google.com in the error message or maybe if it would be worth doing a two-stage approach where we try to fetch google.com and then test with appspot if that succeeds, or just fail immediately if we can\u0027t get there. (Might also be good to replace google.com with one of the gstatic URLs we use for portal testing?)",
+      "revId": "5b7604212f57a6dad98ec954e519e89dd2bf48df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415c4549_b9330c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T20:14:20Z",
+      "side": 1,
+      "message": "nit: remove extra space",
+      "range": {
+        "startLine": 50,
+        "startChar": 68,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "5b7604212f57a6dad98ec954e519e89dd2bf48df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffb40a0_374cc1b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T20:14:20Z",
+      "side": 1,
+      "message": "nit: remove comma",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "5b7604212f57a6dad98ec954e519e89dd2bf48df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460227e4_decf01d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T20:14:20Z",
+      "side": 1,
+      "message": "nit: remove comma",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "5b7604212f57a6dad98ec954e519e89dd2bf48df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f983d06_a26948b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T20:14:20Z",
+      "side": 1,
+      "message": "Can we also include the HTTP status code in this log message? It might help us figure out if something is wrong.",
+      "revId": "5b7604212f57a6dad98ec954e519e89dd2bf48df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
