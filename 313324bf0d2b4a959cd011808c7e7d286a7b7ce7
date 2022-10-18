@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf1aef6_42e41da8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-10-18T20:51:30Z",
+      "side": 1,
+      "message": "nit: explain why it\u0027s necessary. Like why WPA-EAP is more secure than WPA-PSK.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "313324bf0d2b4a959cd011808c7e7d286a7b7ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bcc6d701_82c633bc",
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "Thanks, I add b/253660970 to hotlist WiFi Code Yellow. Shall we mark this test as unstable? I wonder some devices may fail this test.",
       "parentUuid": "bcc6d701_82c633bc",
+      "revId": "313324bf0d2b4a959cd011808c7e7d286a7b7ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868b901e_da26f50d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-10-18T20:51:30Z",
+      "side": 1,
+      "message": "+1 Mark it as unstable. And create a stablization task to track.",
+      "parentUuid": "fa7b1d41_f92d1ecd",
       "revId": "313324bf0d2b4a959cd011808c7e7d286a7b7ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
