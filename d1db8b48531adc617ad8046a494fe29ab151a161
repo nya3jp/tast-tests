@@ -88,6 +88,24 @@
       "parentUuid": "3f755a22_3abad576",
       "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9987bb1f_76f5de51",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-10-18T08:18:03Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "88db09a7_a2b1d751",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
