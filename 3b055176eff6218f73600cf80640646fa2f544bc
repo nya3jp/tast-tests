@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4283d2d_5e0cc1c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T22:47:04Z",
+      "side": 1,
+      "message": "`waiting for the desk animation to finish`",
+      "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e2fc9d9_8b0ebd94",
@@ -14,6 +31,74 @@
       "writtenOn": "2022-10-18T21:46:42Z",
       "side": 1,
       "message": "aamsaroop@ Hi Navin, I addressed all your comments, could you please help take a look again? Thank you!",
+      "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cadde4_98f52731",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T22:47:04Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19183c7_6ec845dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T22:47:04Z",
+      "side": 1,
+      "message": "nit: new line above",
+      "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe180f3c_cee5478d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T22:47:04Z",
+      "side": 1,
+      "message": "Based on all our debugging, I think it\u0027d be helpful to put the `swipeDirection` into the error message!",
+      "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4386a13b_36c00d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T22:47:04Z",
+      "side": 1,
+      "message": "nit: `unexepcted active desk: got %d, expected %d`",
       "revId": "3b055176eff6218f73600cf80640646fa2f544bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
