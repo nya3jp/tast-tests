@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f80a1d3_921a7bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T23:59:28Z",
+      "side": 1,
+      "message": "This is because of the presubmit check that denies trailing punctuation. But I feel that ellipsis is needed here.",
+      "parentUuid": "676edde3_77fa5e6d",
+      "range": {
+        "startLine": 217,
+        "startChar": 116,
+        "endLine": 217,
+        "endChar": 117
+      },
+      "revId": "2cb8f35a394856ef90ec8d3c7901dbc1c5b63917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7387d0f_42cc0bcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-18T18:04:43Z",
       "side": 1,
       "message": "nit: You could use `%s` or `%q`, but I do not think `%v` is particularly appropriate. There is nothing abstract about the type of `url`; it\u0027s simply a `string` parameter.",
+      "range": {
+        "startLine": 232,
+        "startChar": 60,
+        "endLine": 232,
+        "endChar": 62
+      },
+      "revId": "2cb8f35a394856ef90ec8d3c7901dbc1c5b63917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9203fc5d_0f1be9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T23:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7387d0f_42cc0bcf",
       "range": {
         "startLine": 232,
         "startChar": 60,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-18T18:04:43Z",
       "side": 1,
       "message": "This doesn\u0027t have to be so repetitious. How about:\n\n\tif heuristicsHistogramsMap[hist.Name] {\n\t\tstoreHeuristicsHistograms(ctx, pv, []*metrics.Histogram{hist})\n\t\tcontinue\n\t}\n\tswitch hist.Name {\n\tcase ensureWorkVisibleHistogram:\n\t\treportMaxHistogramValue(ctx, pv, hist, \"microsecond\", valueName)\n\tcase ensureWorkVisibleLowResHistogram, allBrowserWindowsCreated, allBrowserWindowsShown, allBrowserWindowsPresented, allShelfIconsLoaded, shelfLoginAnimationEnd, ashTastBootTimeLogin2:\n\t\treportMaxHistogramValue(ctx, pv, hist, \"millisecond\", valueName)\n\tdefault:\n\t\treturn errors.Errorf(\"unknown histogram %q\", hist.Name)\n\t}",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 8
+      },
+      "revId": "2cb8f35a394856ef90ec8d3c7901dbc1c5b63917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f48fd2_8f062041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T23:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1c6ac6_9077c912",
       "range": {
         "startLine": 659,
         "startChar": 0,
