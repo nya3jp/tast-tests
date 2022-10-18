@@ -47,28 +47,44 @@ func Smoke(ctx context.Context, s *testing.State) {
 	}
 
 	verifyNetworkConnectivity := func(ctx context.Context) error {
-		// This URL comes from src/third_party/autotest/files/client/cros/network.py.
-		// Code for the app is here: https://chromereviews.googleplex.com/2390012/
-		const hostName = "testing-chargen.appspot.com"
-		// This pattern also comes from src/third_party/autotest/files/client/cros/network.py
-		// and is undocumented.
-		const downloadBytes = 65536
-		fetchURL := fmt.Sprintf("http://%s/download?size=%d", hostName, downloadBytes)
-		s.Log("Fetch URL: ", fetchURL)
+		// try to download from google.com and testing-chargen.appspot.com, with retries
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			const googURL = "http://www.gstatic.com/generate_204"
+			googResp, err := http.Get(googURL)
+			if err != nil {
+				return errors.Wrapf(err, "error executing HTTP Get on %q", googURL)
+			}
+			defer googResp.Body.Close()
 
-		// Get data from |fetchURL| and confirm that the correct number of bytes are received.
-		resp, err := http.Get(fetchURL)
-		if err != nil {
-			return errors.Wrapf(err, "error fetching data from URL %q", fetchURL)
-		}
-		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return errors.Wrap(err, "error reading data")
-		}
-		bytesRead := len(body)
-		if bytesRead != downloadBytes {
-			return errors.Errorf("read wrong number of bytes: got %d, want %d", bytesRead, downloadBytes)
+			// This URL comes from src/third_party/autotest/files/client/cros/network.py.
+			// Code for the app is here: https://chromereviews.googleplex.com/2390012/
+			const hostName = "testing-chargen.appspot.com"
+			// This pattern also comes from src/third_party/autotest/files/client/cros/network.py
+			// and is undocumented.
+			const downloadBytes = 65536
+			fetchURL := fmt.Sprintf("http://%s/download?size=%d", hostName, downloadBytes)
+			s.Log("Fetch URL: ", fetchURL)
+
+			// Get data from |fetchURL| and confirm that the correct number of bytes are received.
+			resp, err := http.Get(fetchURL)
+			if err != nil {
+				return errors.Wrapf(err, "error fetching data from URL %q", fetchURL)
+			}
+			defer resp.Body.Close()
+			body, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				return errors.Wrapf(err, "error reading data, got HTTP status code %d", resp.StatusCode)
+			}
+			bytesRead := len(body)
+			if bytesRead != downloadBytes {
+				return errors.Errorf("read wrong number of bytes: got %d, want %d", bytesRead, downloadBytes)
+			}
+			return nil
+		}, &testing.PollOptions{
+			Timeout:  90 * time.Second,
+			Interval: 20 * time.Second,
+		}); err != nil {
+			return errors.Wrap(err, "unable to verify connectivity")
 		}
 		return nil
 	}
