@@ -105,9 +105,9 @@ var defaultCreds = Creds{
 //
 // creds is a string containing multiple credentials separated by newlines:
 //
-//	user1:pass1
-//	user2:pass2
-//	user3:pass3
+//	user1:pass1[:gaiaID1]
+//	user2:pass2[:gaiaID2]
+//	user3:pass3[:gaiaID3]
 //	...
 func ParseCreds(creds string) ([]Creds, error) {
 	// Note: Do not include creds in error messages to avoid accidental
@@ -118,14 +118,18 @@ func ParseCreds(creds string) ([]Creds, error) {
 		if len(line) == 0 || strings.HasPrefix(line, "#") {
 			continue
 		}
-		ps := strings.SplitN(line, ":", 2)
-		if len(ps) != 2 {
+		ps := strings.SplitN(line, ":", 3)
+		if len(ps) < 2 {
 			return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", i+1)
 		}
-		cs = append(cs, Creds{
+		c := Creds{
 			User: ps[0],
 			Pass: ps[1],
-		})
+		}
+		if len(ps) >= 2 {
+			c.GAIAID = ps[2]
+		}
+		cs = append(cs, c)
 	}
 	return cs, nil
 }
