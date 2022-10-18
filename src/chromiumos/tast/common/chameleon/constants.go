@@ -441,6 +441,7 @@ type AudioBusNumber int
 const (
 	AudioBus1 AudioBusNumber = 1
 	AudioBus2 AudioBusNumber = 2
+	USBOut AudioBusNumber = 9
 )
 
 // Int returns this PortID as an int.
