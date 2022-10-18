@@ -1,6 +1,47 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d8e347_53f1ed51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "\u003e \"incresing\" is a possible misspelling of \"increasing\".\n\nAlso \"Fis\" -\u003e \"Fix\" \n\nPlease fix :)",
+      "parentUuid": "e6646121_73bda57b",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc780277_85668459",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "Make sure the line is \u003c 72 characters, you can tell on gerrit that it\u0027s wrapping wrongly",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d2ad20d4_08f3341d",
@@ -14,6 +55,91 @@
       "writtenOn": "2022-10-18T18:31:08Z",
       "side": 1,
       "message": "ramsaroop@ Could you please help take a first look? Thank you.",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a71a3d_b1615ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "I\u0027ve been told to just say \"active desk\" instead of \"current active\".",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ce8950_59490b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "Can you include the desk index in the error message?",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9edb1631_88eeac17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "Since we call this a bunch, can we pass in `ui`  into this function?",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985962b8_28afd2df",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/trackpad/trackpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "optional nit: do you think it\u0027d be clearer to say `x1 \u003d x0`? IMO that might make it clearer that the x value doesn\u0027t change. \n\nSimilar comments to the other parts of the switch statement.",
+      "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d063290e_992b867b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/trackpad/trackpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T18:51:30Z",
+      "side": 1,
+      "message": "You use `tpw.Width() / 2` and `tpw.Height()/2` a ton -- can we maybe make a centerX and centerY variable before the switch?",
       "revId": "f15e27c20cd2389b271f407619cb00ec02669ce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
