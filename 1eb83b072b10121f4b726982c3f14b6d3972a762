@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57ab416_d249b5d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-18T17:29:06Z",
+      "side": 1,
+      "message": "How do we think about the files on disk? Do we need to depend on Lacros if we\u0027re just caring about files on disk?\n\nIf we want to check the rootfs version of Lacros, does the test need to know about Lacros?",
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab54e4bf_f729425f",
