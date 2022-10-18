@@ -70,6 +70,24 @@
       "parentUuid": "f9a1b09d_5816c939",
       "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d05312_79aef8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities_crostini.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-18T00:38:15Z",
+      "side": 0,
+      "message": "Sounds OK to me.",
+      "parentUuid": "8926476e_f32d9bad",
+      "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
