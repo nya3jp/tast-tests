@@ -56,7 +56,7 @@ func init() {
 func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	const slidesScrollTimeout = 10 * time.Minute
 
-	slidesURL, err := cuj.GetTestSheetsURL(ctx)
+	slidesURL, err := cuj.GetTestSlidesURL(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Google Slides URL: ", err)
 	}
