@@ -50,6 +50,114 @@
       "message": "Hi Xiyuan, could you please review this test before tast owners takes a look? Thank you so much!",
       "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbfa7d2_2b6dd678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "Could we use `ChromeLoggedIn` fixture? That would allow reuse existing user sessions so that tests run faster and less flaky due to login problems.\n\ne.g.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/snap_perf.go;rcl\u003df340bc8749d5f141e1540be6b20ce5301aac7b46;l\u003d34",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b2b4f4_57854227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "Check error.",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f62a76_51d9aa22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "The intention is to verify we are back to login screen but the code does not do that. `chrome.New` would restart chrome and we land on login screen because we have `chrome.NoLogin()`. So even if the sign-out button does not sign out, the code would be able to detect it.\n\nI don\u0027t think we need this. Verifying session_manager goes through \"stopped\" state is good enough IMHO.\n\nBelow a remote tast test for power mode and part of it simulates power button press and might be worth checking out.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5903e421_c62d3db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "Shutdown test is tricky. `dut.WaitUnreachable` probably only works in remote tast tests. In a local test, tast would lost ssh connection when DUT shuts down and would probably treat it as a failure.\n\nI have not written any remote tests before and not sure how to test UI features there. It might worth asking on tast-users@, or check with a tast owner.",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad33920e_2215c97f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "Helper functions should return the err and let the caller to handle it. The top level handler do `s.Fatal`.",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836254b2_740fdc69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T18:39:36Z",
+      "side": 1,
+      "message": "nit: Check error for Sleep too.",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
