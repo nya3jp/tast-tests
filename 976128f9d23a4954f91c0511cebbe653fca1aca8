@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03291026_c326989c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-18T00:45:03Z",
+      "side": 1,
+      "message": "This test is safe with 1 minute timeout.",
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fa56cf0_f75f8493",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
         "patchSetId": 8
@@ -36,6 +53,52 @@
         "startChar": 34,
         "endLine": 36,
         "endChar": 50
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d55193_c35a8931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-18T00:45:03Z",
+      "side": 1,
+      "message": "I am wondering if we have anything \u003c 3.1 now. Can you check for 3.1?\n\nIf there are still some devices under 3.2 we can do the same as in\nhttps://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/borealis/glversion.go",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc73d258_b9760cf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-18T00:45:03Z",
+      "side": 1,
+      "message": "In principle this is this\nhttps://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html#opnGl-usrSpc-0001-v01\n\nGPU user space drivers MUST support EGL 1.3 or later with the following EGL extensions: EGL_EXT_image_dma_buf_import, EGL_EXT_image_dma_buf_import_modifiers, EGL_KHR_surfaceless_context, EGL_KHR_fence_sync, OES_EGL_image_external\n\nBut we can file a new issue and add a TODO for now. I think the extensions show in the eglinfo. But I don\u0027t know how consistent across all devices.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 79
       },
       "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -77,6 +140,30 @@
       "writtenOn": "2022-10-17T23:26:45Z",
       "side": 1,
       "message": "I don\u0027t think it is the good way to compare a version as a float, e.g. 1.3 \u003e 1.17.\n\nDo you mind add a function in graphics package similar to GLESVersion as well?\neglMajor, _, err :\u003d graphics.EGLVersion(ctx)",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2471f303_c1044cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-18T00:45:03Z",
+      "side": 1,
+      "message": "I don\u0027t think it is true (1.3 \u003e 1.17). That assumes string comparison.\n\nBut lets do the same and fail anything under 1.3.",
+      "parentUuid": "4eaa64f5_013c6793",
       "range": {
         "startLine": 67,
         "startChar": 13,
