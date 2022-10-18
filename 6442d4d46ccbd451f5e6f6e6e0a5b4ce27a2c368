@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "588324f3_b3fb70eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "There are no vars actually.\nFixed.",
+      "parentUuid": "2d43d52f_5562d582",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6465342a_7d4fcefd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -1647,6 +1671,30 @@
       "side": 1,
       "message": "Maybe I was not clear. This is what I mean:\n\n\tif heuristicsHistogramsMap[hist.Name] {\n\t\tstoreHeuristicsHistograms(ctx, pv, []*metrics.Histogram{hist})\n\t} else {\n\t\tvalueName :\u003d fmt.Sprintf(\"%s%s.%s.%dwindows\", hist.Name, suffix, arcMode, currentWindows)\n\t\tif hist.Name \u003d\u003d ensureWorkVisibleHistogram {\n\t\t\treportMaxHistogramValue(ctx, pv, hist, \"microsecond\", valueName)\n\t\t} else {\n\t\t\treportMaxHistogramValue(ctx, pv, hist, \"millisecond\", valueName)\n\t\t}\n\t}",
       "parentUuid": "c1f1247a_a099a210",
+      "range": {
+        "startLine": 640,
+        "startChar": 9,
+        "endLine": 640,
+        "endChar": 303
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff68c96_7ba5ab3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "After an offline discussion I changed the code to use `switch` instead.",
+      "parentUuid": "f92fb9f4_aa6b19eb",
       "range": {
         "startLine": 640,
         "startChar": 9,

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd720d8e_ff53feb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "644863e9_4369ef13",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 25
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73476943_9e517bd0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "`for deadline :\u003d time.Now().Add(10 * time.Second); time.Now().Before(deadline); {`",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 46
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6341b3_78b34e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73476943_9e517bd0",
       "range": {
         "startLine": 213,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2341d33_da74767a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Using `err` from the outer scope allows to wrap it on timeout below.\nI.e. we can return \"last connection attempt failure\" on timeout.",
+      "parentUuid": "a3018ce9_57ca5c8d",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c2d14e7_9791fcde",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 9
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "`if err :\u003d testing.Sleep(ctx, 10*time.Millisecond); err !\u003d nil {`",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 18
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546a7159_f5844337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2d14e7_9791fcde",
       "range": {
         "startLine": 220,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b50b232_580ac21d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc24a8f5_a8ca55bc",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 9
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc4d21a3_54cd6537",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "`return nil, errors.New(\"timed out retrying connection to Lacros\")`",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 18
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce512f07_d95afe6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4d21a3_54cd6537",
       "range": {
         "startLine": 226,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4246dcfd_f2a9ae80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "This is nice idea!\nDone.",
+      "parentUuid": "66f79d05_d0f81e8b",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 76
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7ca2e43_7f01ce14",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "tconn, err :\u003d cr.TestAPIConn(ctx)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9764a95_a80e8978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ca2e43_7f01ce14",
       "range": {
         "startLine": 241,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979d44be_47815258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8303b84_d0ed5201",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b3eede3_acf32f58",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "`return testing.Sleep(ctx, 3*time.Second)`",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 11
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd89d25_ef856579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Ouch, this was left from the debugging.\nDone.",
+      "parentUuid": "1b3eede3_acf32f58",
       "range": {
         "startLine": 364,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50f03d2_36eb9a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done.\nBut I don\u0027t know how the requirement to `always start comment with the function name` is actually interpreted. I thought that the function name is a key and the remaining sentence is a description of that key for some automation tool.",
+      "parentUuid": "09e318d1_66a73566",
+      "range": {
+        "startLine": 368,
+        "startChar": 27,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e26b08b_5a81e49e",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "No need for this.",
+      "range": {
+        "startLine": 507,
+        "startChar": 6,
+        "endLine": 507,
+        "endChar": 17
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cb72e8_97a1ea7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e26b08b_5a81e49e",
       "range": {
         "startLine": 507,
         "startChar": 6,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f516f978_bf2678cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c0a839_b1b70871",
+      "range": {
+        "startLine": 513,
+        "startChar": 7,
+        "endLine": 513,
+        "endChar": 12
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2301bdb3_8d9dd67d",
@@ -313,6 +625,30 @@
       "writtenOn": "2022-10-14T23:54:33Z",
       "side": 1,
       "message": "`nil`",
+      "range": {
+        "startLine": 515,
+        "startChar": 13,
+        "endLine": 515,
+        "endChar": 16
+      },
+      "revId": "70b4bb29504d9f68baa9982b487837bc6f0b12dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c5e362_e215e2fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-18T02:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2301bdb3_8d9dd67d",
       "range": {
         "startLine": 515,
         "startChar": 13,
