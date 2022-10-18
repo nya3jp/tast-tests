@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f045873d_755f2472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3a124c_f3b77850",
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51eef24b_9430f13f",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-18T19:24:32Z",
       "side": 1,
       "message": "`errors.Wrap(err, \"failed to wait for tab to become new window\")`",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 12
+      },
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f4381c_fa308ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51eef24b_9430f13f",
       "range": {
         "startLine": 154,
         "startChar": 9,
