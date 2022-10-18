@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "330c8ab9_d86bf65d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "Can awe also mention that we removed the check on log upload and the reasoning behind it?",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ddf9a1f2_8743d2f7",
@@ -14,6 +31,120 @@
       "writtenOn": "2022-10-18T05:09:37Z",
       "side": 1,
       "message": "Hi, PTAL. Thanks!",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc1899d9_da35606b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "Shall we mention that the test also checks that the event is logged?",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a2b767_99854b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "Since we just setup the fake policy, the policy will always be what we expect it to be. If it isn\u0027t then it is a product bug so we can either remove this verification completely or we can change this to `exit`",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4aa8d6e_5f168d75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "Same comment as above applies here. Verifying the policy after faking it doesn\u0027t seem useful. It makes more sense if it was talking to the real DM Server and getting a real policy because the test would be insuring that it is starting off with the right environment/asumptions.",
+      "range": {
+        "startLine": 150,
+        "startChar": 19,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876783f6_ad39061e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "This can be retried since enterprise.ARCProvisioning already verifies force-installs",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ce8ee5_5e3f6ad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "If this method is not used anymore, can we remove it?",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc2a8da_c1b9e04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:01Z",
+      "side": 1,
+      "message": "Thank you for moving it to a shared module and re-using this.",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 40
+      },
       "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
