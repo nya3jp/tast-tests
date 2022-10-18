@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -248,14 +247,12 @@ func init() {
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L2T3"),
 			ExtraAttr:         []string{"graphics_perbuild"},
 			ExtraData:         encode.TestData(crowd540p),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
-			Name:              "vp9_540p_l3t3",
-			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L3T3"),
-			ExtraAttr:         []string{"graphics_perbuild"},
-			ExtraData:         encode.TestData(crowd540p),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
+			Name:      "vp9_540p_l3t3",
+			Val:       encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L3T3"),
+			ExtraAttr: []string{"graphics_perbuild"},
+			ExtraData: encode.TestData(crowd540p),
 			// Need caps.HWEncodeVP9OddDimension capability because the height at the bottom spatial layer is 540 / 4 = 135.
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWEncodeVP9OddDimension},
 		}, {
@@ -281,14 +278,12 @@ func init() {
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L2T3"),
 			ExtraAttr:         []string{"graphics_perbuild"},
 			ExtraData:         encode.TestData(crowd720p),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name:              "vp9_720p_l3t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L3T3"),
 			ExtraAttr:         []string{"graphics_perbuild"},
 			ExtraData:         encode.TestData(crowd720p),
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name:              "vp9_1080p",

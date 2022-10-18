@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -219,25 +218,21 @@ func init() {
 			Name:              "vp9_540p_l2t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, "L2T3"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraData:         encode.TestData(tulip540P),
 		}, {
 			Name:              "vp9_540p_l3t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, "L3T3"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraData:         encode.TestData(tulip540P),
 		}, {
 			Name:              "vp9_720p_l2t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, "L2T3"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "vp9_720p_l3t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, "L3T3"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			ExtraData:         encode.TestData(tulip720P),
 		}},
 	})

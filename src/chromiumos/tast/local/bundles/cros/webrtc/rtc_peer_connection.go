@@ -201,7 +201,6 @@ func init() {
 			Name:              "vp9_enc_svc_l3t3_key",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", svc: "L3T3_KEY"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}},
 	})
