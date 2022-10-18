@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bff607_b985f15d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-18T02:34:56Z",
+      "side": 1,
+      "message": "PTAL when you get a chance.\n\nI think this is a reasonable location since the expectations files are in /usr/local/graphics/expectations.\n\nRomaric, you would need to fix your CL\u0027s crrev.com/c/3953495 and crrev.com/c/3956914 if/when this lands.",
+      "revId": "e1ef7a87505b41f2e9bbf2ae6512c48fb5712c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
