@@ -26,8 +26,8 @@ import (
 // WindowStateType represents the different window state type in Ash.
 type WindowStateType string
 
-// As defined in ash::WindowStateType here:
-// https://cs.chromium.org/chromium/src/ash/public/cpp/window_state_type.h
+// As defined in chromeos::WindowStateType here:
+// https://cs.chromium.org/chromium/src/chromeos/ui/base/window_state_type.h
 const (
 	// Normal is actually used to represent both "Normal" and "Default".
 	WindowStateNormal       WindowStateType = "Normal"
@@ -37,6 +37,7 @@ const (
 	WindowStateLeftSnapped  WindowStateType = "LeftSnapped"
 	WindowStateRightSnapped WindowStateType = "RightSnapped"
 	WindowStatePIP          WindowStateType = "PIP"
+	WindowStateFloat        WindowStateType = "Floated"
 )
 
 // WMEventType represents the different WM Event type in Ash.
