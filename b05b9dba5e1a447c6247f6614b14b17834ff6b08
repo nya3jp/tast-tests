@@ -100,6 +100,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39df0378_fd4830d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-18T16:19:49Z",
+      "side": 1,
+      "message": "WDYT of renaming this test and the file to include \"bluetooth\", e.g. `OobeHidBluetoothMouseOnly`?",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cdd0bf0_1d2395f5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
         "patchSetId": 21
