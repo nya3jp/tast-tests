@@ -16,6 +16,138 @@
       "message": "PTAL, thanks!",
       "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba77aea0_c1b16a4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "LGTM but I am not sure I am able to verify the PKCS#11 logic. Should Pavol and Michael also take a look ?",
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de312d05_1c4a265d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "missing word ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5936b7e_d91a8d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "nit: be added where ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424c6f3e_b1769ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "How long approximately ? Does this depend on the board or only on the TPM generation ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae14394b_8d813111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "Should we still append the object if this branch does not execute and we don\u0027t fill the .id field ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 3
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4104024_d375c5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-18T03:44:03Z",
+      "side": 1,
+      "message": "Coudl we possibly do a map keyed by .id to check for existence ?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 29
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
