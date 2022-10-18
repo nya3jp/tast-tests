@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cab6b96_0021211d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-18T17:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cedd62a_31d49935",
+      "range": {
+        "startLine": 261,
+        "startChar": 68,
+        "endLine": 261,
+        "endChar": 71
+      },
+      "revId": "5f79b503b3313090f34575ee16741d458ae1e881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dafe6851_5f5c2ece",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-18T15:47:02Z",
       "side": 1,
       "message": "write the parsed packages cache XML content",
+      "range": {
+        "startLine": 265,
+        "startChar": 43,
+        "endLine": 265,
+        "endChar": 67
+      },
+      "revId": "5f79b503b3313090f34575ee16741d458ae1e881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c3afed5_48e3205e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-18T17:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dafe6851_5f5c2ece",
       "range": {
         "startLine": 265,
         "startChar": 43,
