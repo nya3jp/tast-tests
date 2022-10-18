@@ -123,7 +123,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string,
 		faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 
 		// Maximize the Google Docs window to delete Docs.
-		if err := cuj.MaximizeBrowserWindow(ctx, tconn, tabletMode, googleDocsTitle); err != nil {
+		if err := maximizeWindowSize(ctx, tabletMode, tconn, bTconn); err != nil {
 			testing.ContextLog(ctx, "Failed to maximize the Google Docs page")
 		}
 
@@ -263,25 +263,40 @@ func gamingProxyScenario(ctx context.Context, tconn *chrome.TestConn, kb *input.
 
 func putDocsWindowSideBySide(tabletMode bool, tconn, bTconn *chrome.TestConn) action.Action {
 	return func(ctx context.Context) error {
-		// Tablet mode can't set the window size, so no need to set it.
-		if tabletMode {
-			return nil
-		}
 		// Google Docs requires at least 320 px height to edit files correctly.
 		const expectedHeight = 320
-		// Obtain the latest display info after rotating the display.
-		info, err := display.GetInternalInfo(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to obtain internal display info")
-		}
-		if bTconn == nil {
-			bTconn = tconn
-		}
-		if err := setWindowSize(ctx, bTconn, expectedHeight, info.WorkArea.Width); err != nil {
-			return err
-		}
+		return setWindowSizeWithWorkArea(ctx, tabletMode, tconn, bTconn, expectedHeight, 0)
+	}
+}
+
+// maximizeWindowSize sets the last focused window to maximized size.
+func maximizeWindowSize(ctx context.Context, tabletMode bool, tconn, bTconn *chrome.TestConn) error {
+	return setWindowSizeWithWorkArea(ctx, tabletMode, tconn, bTconn, 0, 0)
+}
+
+// setWindowSizeWithWorkArea sets the last focused window with WorkArea size.
+// The default values ​​are the height and width of the workArea for the internal display.
+// For lacros windows, use the lacros TestConn. For ash, use the ash TestConn.
+func setWindowSizeWithWorkArea(ctx context.Context, tabletMode bool, tconn, bTconn *chrome.TestConn, expectedHeight, expectedWidth int) error {
+	// Tablet mode can't set the window size, so no need to set it.
+	if tabletMode {
 		return nil
 	}
+	// Obtain the latest display info after rotating the display.
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain internal display info")
+	}
+	if expectedHeight == 0 {
+		expectedHeight = info.WorkArea.Height
+	}
+	if expectedWidth == 0 {
+		expectedWidth = info.WorkArea.Width
+	}
+	if bTconn == nil {
+		bTconn = tconn
+	}
+	return setWindowSize(ctx, bTconn, expectedHeight, expectedWidth)
 }
 
 // setWindowSize sets the last focused window to specific size.
