@@ -56,16 +56,15 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros test API conn")
-		}
 	}
 	conf.SetBrowser(br)
 
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
+	}
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
@@ -92,7 +91,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if err := recorder.AddCollectedMetrics(tconn, bt, cujrecorder.WebRTCMetrics()...); err != nil {

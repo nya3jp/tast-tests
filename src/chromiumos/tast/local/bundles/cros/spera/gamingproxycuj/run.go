@@ -71,14 +71,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string,
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		defer l.Close(ctx)
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros test API conn")
-		}
 		br = l.Browser()
+	}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
 	}
 
 	// uiHandler will be assigned with different instances for clamshell and tablet mode.
@@ -105,7 +104,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string,
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if traceConfigPath != "" {

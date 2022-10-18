@@ -12,7 +12,7 @@ import (
 )
 
 // AddPerformanceCUJMetrics adds the metrics to the recorder for performance CUJ test.
-func AddPerformanceCUJMetrics(tconn, bTconn *chrome.TestConn, recorder *cujrecorder.Recorder) error {
+func AddPerformanceCUJMetrics(bt browser.Type, tconn, bTconn *chrome.TestConn, recorder *cujrecorder.Recorder) error {
 	ashMetrics := cujrecorder.AshCommonMetricConfigs()
 	lacrosMetrics := cujrecorder.CUJLacrosCommonMetricConfigs()
 	browserMetrics := cujrecorder.BrowserCommonMetricConfigs()
@@ -24,7 +24,7 @@ func AddPerformanceCUJMetrics(tconn, bTconn *chrome.TestConn, recorder *cujrecor
 	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, allMetrics...); err != nil {
 		errors.Wrap(err, "failed to add metrics for tconn")
 	}
-	if bTconn != nil {
+	if bt == browser.TypeLacros {
 		allMetrics = append(allMetrics, lacrosMetrics...)
 		if err := recorder.AddCollectedMetrics(bTconn, browser.TypeLacros, allMetrics...); err != nil {
 			errors.Wrap(err, "failed to add metrics for bTconn")
