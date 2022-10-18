@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f169a091_2acf75f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-10-18T22:56:39Z",
+      "side": 1,
+      "message": "Pushing this change for discussion.\n\nThe logic to result in tests failing if there is a log with \"ERROR\", even if the exit code is 0, was added in https://crrev.com/c/2773882. It looks like the intent of that change was to improve error logging for failed tests, rather than causing tests to fail due to certain error messages being output.\n\nSee the discussion in the BUG\u003d bug for a case where there are some ERROR logs, but the underlying tests are passing.",
+      "revId": "bc6e2fbafc7fd3da31d45b26eecac7d8ed7a0920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
