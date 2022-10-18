@@ -33,6 +33,24 @@
       "message": "nit: Declare a new `err` variable inside the polling function instead of writing to the `err` variable outside.\n\n\tvar err error\n\tws, err \u003d ash.GetAllWindows(ctx, tconn)",
       "revId": "022a53cb1e4fb6b74b3b95c20badb3e886aca6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "789ab175_882804d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T22:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "242ae193_56291177",
+      "revId": "022a53cb1e4fb6b74b3b95c20badb3e886aca6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
