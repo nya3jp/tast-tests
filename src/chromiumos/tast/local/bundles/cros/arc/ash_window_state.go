@@ -77,6 +77,7 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 		{ash.WMEventFullscreen, ash.WindowStateFullscreen},
 		{ash.WMEventSnapLeft, ash.WindowStateLeftSnapped},
 		{ash.WMEventSnapRight, ash.WindowStateRightSnapped},
+		{ash.WMEventFloat, ash.WindowStateFloated},
 	} {
 		s.Logf("Sending event %s to Settings app", test.wmEvent)
 
