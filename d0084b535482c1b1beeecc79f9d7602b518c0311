@@ -16,6 +16,23 @@
       "message": "Thanks Avery!",
       "revId": "d0084b535482c1b1beeecc79f9d7602b518c0311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ace695_2c7d66f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-18T17:25:39Z",
+      "side": 1,
+      "message": "Can we replace `s.FixtValue().(chrome.HasChrome).Chrome()` with `cr`?",
+      "revId": "d0084b535482c1b1beeecc79f9d7602b518c0311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
