@@ -254,10 +254,12 @@ func runTest(ctx context.Context, s *testing.State, exe string, args ...string) 
 	err = cmd.Run(testexec.DumpLogOnError)
 
 	f.Seek(0, 0)
-	errorLines := getErrorLog(f)
-	if errorLines != "" {
-		s.Error(errorLines)
-	} else if err != nil {
-		s.Errorf("Failed to run %s: %v", exe, err)
+	if err != nil {
+		errorLines := getErrorLog(f)
+		if errorLines != "" {
+			s.Error(errorLines)
+		} else {
+			s.Errorf("Failed to run %s: %v", exe, err)
+		}
 	}
 }
