@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48a14a47_8fb389bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-18T13:12:55Z",
+      "side": 1,
+      "message": "The other test had two methods `retry` and `retryAll` to distinguish between the stable/unstable variant. Since we only have one of the two here, we can just name this `retry` I think",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4a2b767_99854b6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
         "patchSetId": 1
