@@ -39,6 +39,30 @@
       },
       "revId": "b3520818dd892b0b56a46527952b186b2d9ea789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d13c37c_52327670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-10-18T23:27:28Z",
+      "side": 1,
+      "message": "Yeah I see what you mean. I\u0027ll make sure to be more specific that the 1 second is for the post task, and that the 2 seconds is to wait for the post task and the force close.",
+      "parentUuid": "9d6522b4_b6d1ebcb",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 21
+      },
+      "revId": "b3520818dd892b0b56a46527952b186b2d9ea789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
