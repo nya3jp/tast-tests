@@ -37,7 +37,6 @@ func init() {
 				probeConfig: probeConfig{[]probeStatement{
 					probeStatement{"edid"},
 					probeStatement{"input_device"},
-					probeStatement{"tcpc"},
 					probeStatement{"usb_camera"},
 				}}},
 		}, {
@@ -48,6 +47,12 @@ func init() {
 					probeStatement{"memory"},
 				}}},
 			ExtraSoftwareDeps: []string{"amd64"},
+		}, {
+			Name: "tcpc",
+			Val: verifySandboxTestParams{
+				probeConfig: probeConfig{[]probeStatement{
+					probeStatement{"tcpc"},
+				}}},
 		}, {
 			Name: "battery",
 			Val: verifySandboxTestParams{
