@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2d15cee_34f0769b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T20:11:18Z",
+      "side": 1,
+      "message": "As you may see the lacros metadata (eg, LacrosVariantNeeded or Unneeded) is just a description for tracking purpose, so changing it does not affect any migration.\n\nWe can mark those tests that you think need to check the lacros files as \u0027LacrosVariantNeeded\u0027 in this CL (please let me know what they are) and add actual lacros variant tests later in follow-ups. How does that sound?",
+      "parentUuid": "9cb4bf2a_b621de89",
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab54e4bf_f729425f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 3
