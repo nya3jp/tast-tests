@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"time"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
@@ -67,6 +68,14 @@ func ECUSBPorts(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to probe usb ports: ", err)
 	}
 
+	if err := h.DUT.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to sleep for 5 seconds: ", err)
+	}
+
 	s.Log("Check that ports are initially enabled")
 	if err := checkUSBAPortEnabled(ctx, h, enablePins, 1); err != nil {
 		s.Fatal("Expected USB Ports to be enabled: ", err)
@@ -89,9 +98,9 @@ func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, enablePins 
 		return errors.Wrap(err, "failed to close lid")
 	}
 
-	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
-		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
+	testing.ContextLog(ctx, "Check for G3 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+		return errors.Wrap(err, "failed to get G3 powerstate")
 	}
 
 	testing.ContextLog(ctx, "Check that ports have state 0")
