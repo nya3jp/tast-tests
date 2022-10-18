@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3200d9aa_25e4aa44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Thank you for the reviews. Please check this version.\nModified to support the dual stack case.\nAnd, changed the `WGIPv4` and `WGIPv6` (that are struct variables of type Config) to a enum to ensure that at least one overlay IP address is set.",
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3099dd70_2c8c7f99",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-10-17T11:37:24Z",
       "side": 1,
       "message": "`!WGIPv4 \u0026\u0026 !WGIPv6` is not a valid case.\nThere are two ways to solve (mitigate) this issue:\n- Add a check and return err for this case.\n- Change this to a enum (i.e., WGIPType, which will contain 3 values). Note that there is no built-in enum type in golang, you can try to use the `iota` in go for that. See [1] for an example.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/dns/dns.go;l\u003d42?q\u003ddns.go\u0026ss\u003dchromiumos",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eeba16a_93c29881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3099dd70_2c8c7f99",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8303654c_91bf7abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "It was unexpected change. I will take care of such mistakes.",
+      "parentUuid": "e7bf3e2d_2ae5bf2f",
+      "range": {
+        "startLine": 284,
+        "startChar": 46,
+        "endLine": 284,
+        "endChar": 67
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71f2091_05565149",
@@ -70,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e8d79a_e9374181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d71f2091_05565149",
+      "range": {
+        "startLine": 511,
+        "startChar": 17,
+        "endLine": 511,
+        "endChar": 34
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7f3cac2_692f981a",
@@ -83,6 +172,30 @@
       "writtenOn": "2022-10-17T11:37:24Z",
       "side": 1,
       "message": "I think we don\u0027t need to pass this in to set up the server: the server side can always be dual-stack. We can only change the client-side setup in different tests.",
+      "range": {
+        "startLine": 563,
+        "startChar": 93,
+        "endLine": 563,
+        "endChar": 100
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95da2409_168be2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f3cac2_692f981a",
       "range": {
         "startLine": 563,
         "startChar": 93,
@@ -140,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "841741c6_d9e3ba9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a0c927_bdda05fd",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef2d7b33_45fbbddd",
@@ -153,6 +290,30 @@
       "writtenOn": "2022-10-17T11:37:24Z",
       "side": 1,
       "message": "This is not related to this patch, but we can remove this branch know since they are the same. I think I forgot to do this when I did the refactor. Please feel free to include this in your patch or create another patch for this if you want.",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 613,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e41983b_671d422a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "This patch includes the change of if statement for `isSecondServer`.",
+      "parentUuid": "ef2d7b33_45fbbddd",
       "range": {
         "startLine": 608,
         "startChar": 2,
@@ -186,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07deb8a0_6f263e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5b5d74_29514111",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 44
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5e672b_be75f8b7",
@@ -209,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ab38aa_fbbea4dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5e672b_be75f8b7",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5180224_ebd506ae",
@@ -222,6 +431,30 @@
       "writtenOn": "2022-10-17T11:37:24Z",
       "side": 1,
       "message": "Also update the expectation here when IPv6 is enabled.",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 2
+      },
+      "revId": "24409d7f5b961dfe1d13a462eceda2c8caf4e2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce426427_34db4430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-18T09:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5180224_ebd506ae",
       "range": {
         "startLine": 307,
         "startChar": 1,
