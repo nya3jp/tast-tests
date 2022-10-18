@@ -72,6 +72,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6927d52e_a6bf32bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-18T20:41:51Z",
+      "side": 1,
+      "message": "Let\u0027s add comments to selinux_files_arc, selinux_files_non_arc, to make sure we also cover the rootfs chrome binary in a follow-up CL.",
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab54e4bf_f729425f",
