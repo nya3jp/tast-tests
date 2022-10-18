@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258ebd58_9db609d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-18T00:51:34Z",
+      "side": 1,
+      "message": "Let\u0027s move hide launcher into a local function (to avoid code duplication)",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "31606cf6003e737808b078575bd1c86ea2723a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fade3d3d_efcb7b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-18T00:51:34Z",
+      "side": 1,
+      "message": "I\u0027d consider making OpenProductivityLauncher work when overview is shown - e.g. swipe up even if there are no windows shown.",
+      "revId": "31606cf6003e737808b078575bd1c86ea2723a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
