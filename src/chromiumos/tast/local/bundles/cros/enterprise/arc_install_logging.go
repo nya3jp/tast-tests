@@ -5,23 +5,20 @@
 package enterprise
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/tape"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -39,7 +36,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      arcInstallLoggingTestTimeout,
-		VarDeps:      []string{tape.ServiceAccountVar},
+		VarDeps:      []string{tape.ServiceAccountVar, arcent.LoginPoolVar},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -71,77 +68,90 @@ const (
 )
 
 // ARCInstallLogging runs the install event logging test:
-// - login with managed account,
+// - login with managed account from an account pool,
 // - check that ARC is launched by user policy,
 // - check ArcEnabled is true and test app is set to force-installed by policy,
 // - check that the test app is installed,
-// - check that app installation log is uploaded from Chrome.
+// - verify all expected install events are logged.
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
-	const testPackage = "com.google.android.calculator"
-	const poolID = "arc_logging_test"
+	const (
+		testPackage = "com.google.android.calculator"
+		poolID      = "arc_logging_test"
+		maxAttempts = 2
+	)
 
-	// Shorten deadline to leave time for cleanup
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
-	defer cancel()
+	attempts := 1
 
-	// Create an account manager and lease a test account for the duration of the test.
-	accManager, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(arcInstallLoggingTestTimeout.Seconds())), tape.WithPoolID(tape.ArcLoggingTest))
-	if err != nil {
-		s.Fatal("Failed to create an account manager and lease an account: ", err)
+	// Indicates a failure in the core feature under test so the polling should stop.
+	exit := func(desc string, err error) error {
+		s.Fatalf("Failed to %s: %v", desc, err)
+		return nil
 	}
-	defer accManager.CleanUp(cleanupCtx)
 
-	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
+	// Indicates that the error is retryable and unrelated to core feature under test.
+	retry := func(desc string, err error) error {
+		if attempts < maxAttempts {
+			attempts++
+			err = errors.Wrap(err, "failed to "+desc)
+			s.Logf("%s. Retrying", err)
+			return err
+		}
+		return exit(desc, err)
+	}
+
+	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
+	if err != nil {
+		exit("get login creds", err)
+	}
+	login := chrome.GAIALogin(creds)
+
+	packages := []string{testPackage}
+	fdms, err := setupPolicyServerWithArcAppsAndEnableLogging(ctx, s.OutDir(), creds.User, packages)
+	if err != nil {
+		exit("setup fake policy server", err)
+	}
+	defer fdms.Stop(ctx)
+
+	// Login to Chrome and allow to launch ARC if allowed by user policy.
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
-	args := append(arc.DisableSyncFlags(), "--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests")
-	cr, err := chrome.New(
-		ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
-		chrome.ARCSupported(),
-		chrome.UnRestrictARCCPU(),
-		chrome.ProdPolicy(),
-		chrome.ExtraArgs(args...))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	args := append(arc.DisableSyncFlags(), "--arc-install-event-chrome-log-for-tests")
+	if err := testing.Poll(ctx, func(ctx context.Context) (retErr error) {
+		cr, err := chrome.New(
+			ctx,
+			login,
+			chrome.ARCSupported(),
+			chrome.UnRestrictARCCPU(),
+			chrome.DMSPolicy(fdms.URL),
+			chrome.ExtraArgs(args...))
+		if err != nil {
+			return retry("connect to Chrome", err)
+		}
+		defer cr.Close(ctx)
 
-	// Ensure that ARC is launched.
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC by user policy: ", err)
-	}
-	defer a.Close(ctx)
+		// Ensure that ARC is launched.
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			return retry("start ARC by policy", err)
+		}
+		defer a.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+		_, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			return retry("create test API connection", err)
+		}
 
-	// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
-	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
-		s.Fatal("Failed to verify ArcEnabled: ", err)
-	}
+		// Ensure that test app is force-installed by ARC policy.
+		if err := a.WaitForPackages(ctx, []string{testPackage}); err != nil {
+			return retry("force install packages: ", err)
+		}
 
-	if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, []string{testPackage}); err != nil {
-		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
-	}
-
-	// Ensure that test app is force-installed by ARC policy.
-	if err := a.WaitForPackages(ctx, []string{testPackage}); err != nil {
-		s.Fatal("Failed to force install packages: ", err)
-	}
-
-	// Check if required sequence appears in chrome log.
-	if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
-		s.Fatal("Required events not logged: ", err)
-	}
-
-	// Wait for chrome to upload logs to enterprise management server.
-	s.Log("Checking for chrome log upload status")
-	if err := waitForChromeLogUpload(ctx, cr, testPackage); err != nil {
-		s.Fatal("Chrome log not uploaded: ", err)
+		// Check if required sequence appears in chrome log.
+		if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
+			return exit("log required events: ", err)
+		}
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Install logging flow failed: ", err)
 	}
 }
 
@@ -222,34 +232,11 @@ func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, packageName str
 	}, &testing.PollOptions{Timeout: 60 * time.Second})
 }
 
-// readChromeLogFile reads content of serialized installation events log file.
-func readChromeLogFile(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
-	const logFilePath = "/app_push_install_log"
+func setupPolicyServerWithArcAppsAndEnableLogging(ctx context.Context, outDir, policyUser string, packages []string) (fdms *fakedms.FakeDMS, retErr error) {
+	arcPolicy := arcent.CreateArcPolicyWithForceInstallApps(packages)
+	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
+	arcInstallLoggingEnabledPolicy := &policy.ArcAppInstallEventLoggingEnabled{Val: true}
+	policies := []policy.Policy{arcEnabledPolicy, arcPolicy, arcInstallLoggingEnabledPolicy}
 
-	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
-	}
-
-	return ioutil.ReadFile(filepath.Join(rootCryptDir, logFilePath))
-}
-
-// waitForChromeLogUpload waits for chrome to upload logs to the server. After the logs are successfully uploaded contents of the log file will be cleared.
-func waitForChromeLogUpload(ctx context.Context, cr *chrome.Chrome, packageName string) error {
-	ctx, st := timing.Start(ctx, "wait_chrome_log_upload")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		chromeLog, err := readChromeLogFile(ctx, cr)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to read app_push_install_log"))
-		}
-
-		if bytes.Contains(chromeLog, []byte(packageName)) {
-			return errors.New("Chrome log not uploaded yet")
-		}
-
-		return nil
-	}, nil)
+	return policyutil.SetUpFakePolicyServer(ctx, outDir, policyUser, policies)
 }

@@ -29,7 +29,6 @@ import (
 )
 
 const (
-	loginPoolVar   = "arc.managedAccountPool"
 	packagesVar    = "enterprise.ARCProvisioning.packages"
 	withRetries    = true
 	withoutRetries = false
@@ -45,7 +44,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "play_store"},
 		Timeout:      15 * time.Minute,
 		VarDeps: []string{
-			loginPoolVar,
+			arcent.LoginPoolVar,
 			packagesVar,
 		},
 		Params: []testing.Param{
@@ -126,7 +125,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		return exit(desc, err)
 	}
 
-	creds, err := chrome.PickRandomCreds(s.RequiredVar(loginPoolVar))
+	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
 	if err != nil {
 		exit("get login creds", err)
 	}
@@ -217,30 +216,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 }
 
 func setupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string) (fdms *fakedms.FakeDMS, retErr error) {
-	arcPolicy := createArcPolicyWithForceInstallApps(packages)
+	arcPolicy := arcent.CreateArcPolicyWithForceInstallApps(packages)
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
 	policies := []policy.Policy{arcEnabledPolicy, arcPolicy}
 
 	return policyutil.SetUpFakePolicyServer(ctx, outDir, policyUser, policies)
-}
-
-func createArcPolicyWithForceInstallApps(packages []string) *policy.ArcPolicy {
-	var forceInstalledApps []policy.Application
-	for _, packageName := range packages {
-		forceInstalledApps = append(forceInstalledApps, policy.Application{
-			PackageName: packageName,
-			InstallType: "FORCE_INSTALLED",
-		})
-	}
-	arcPolicy := &policy.ArcPolicy{
-		Val: &policy.ArcPolicyValue{
-			Applications:              forceInstalledApps,
-			PlayLocalPolicyEnabled:    true,
-			PlayEmmApiInstallDisabled: true,
-		},
-	}
-
-	return arcPolicy
 }
 
 func enableVerboseLogging(ctx context.Context, a *arc.ARC) error {
