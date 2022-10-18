@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21516b58_557cf80b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "link to wg bug",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce54d36_f05c5f49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "remember to also run the tast unit tests (../fast_build.sh -T)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4874e65b_b5d4486d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "I just realized that this works because of type embedding [1]...\n\nI didn\u0027t find any style guide to forbid such usage, but personally I would try to avoid that since it might be a little confusing that embedding is not for promoting method (e.g., make the methods on the inside type also available on the outside type).\n\nGo also prefer shorter name when the context is clear, how about just `IPType` or `OverlayIPType`?\n\n\n[1] https://go.dev/ref/spec#Struct_types",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b26e5aa_f6d3da1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "I\u0027ll name this as `IPType` (i.e., no \"Overlay\") so maybe we can reuse this in the future for the underlay ip type (the values for them are the same).",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4cbc50_cdab8abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "Let\u0027s give this a prefix to make it clearer: e.g., `IPTypeIPv4`",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55979c25_a2eb6d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "We can remove this one since staticIPConfig is no longer use.\n\n(But we can have a separate test to verify that only setting this field for IPv4 still work during the migration, this could be separate patch)",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 2
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a6e8f7_ca9a127c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "How about / Is it possible to reuse the consts defined above?",
+      "range": {
+        "startLine": 351,
+        "startChar": 43,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82775d5e_8318391e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "better to move this under if-else branch below (`if isSecondServer`).",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 581,
+        "endChar": 41
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9da6257_5b1f01aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "else",
+      "range": {
+        "startLine": 591,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 19
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e44a7ae_ff0b26d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-18T12:21:27Z",
+      "side": 1,
+      "message": "nit: don\u0027t forget to update this value",
+      "range": {
+        "startLine": 291,
+        "startChar": 90,
+        "endLine": 291,
+        "endChar": 108
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
