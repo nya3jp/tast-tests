@@ -16,6 +16,63 @@
       "message": "Thanks Navin, Avery!",
       "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbdb76ba_79486001",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-18T19:24:32Z",
+      "side": 1,
+      "message": "optional nit: The code `s.Param().(browser.Type)` appears twice, so",
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3a124c_f3b77850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-18T19:24:32Z",
+      "side": 1,
+      "message": "optional nit: Also write `bt :\u003d s.Param().(browser.Type)` and use it on lines 59 and 74, to eliminate more code repetition.",
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51eef24b_9430f13f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-18T19:24:32Z",
+      "side": 1,
+      "message": "`errors.Wrap(err, \"failed to wait for tab to become new window\")`",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 12
+      },
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
