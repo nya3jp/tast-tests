@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2d31873_8dce20f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T19:04:10Z",
+      "side": 1,
+      "message": "Jorge, if we\u0027re just caring about files on disk but it doesn\u0027t have to be lacros specific files, we can simply go with `LacrosVariantUnneeded` except for two tests that need migration (ChromeSandboxed, GPUSandboxed). so, please let me know what your final assessment is.\n\nHidehiko, Di, please chime in if you have any insights to this.",
+      "parentUuid": "d57ab416_d249b5d9",
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab54e4bf_f729425f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 3
