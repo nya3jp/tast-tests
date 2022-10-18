@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a7d445a_21903e5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-10-18T01:39:26Z",
+      "side": 1,
+      "message": "Thanks. That\u0027s mistake. Reverted it.",
+      "parentUuid": "0c9823e9_f6276c2b",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "f2773d0765614441cbeeb2a28a2d98531aa64e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2bd1f342_b5eb33a4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
