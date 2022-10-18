@@ -16,6 +16,24 @@
       "message": "Nit: No need for \"tast-tests: \" prefix, as this is going to be a commit in the tast-tests repository.",
       "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6536ccad_f9dd4cce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T00:04:36Z",
+      "side": 1,
+      "message": "That\u0027s a surprise since I have been adding it to nearly all of my CLs and seen some people doing it too: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+log\n\nIs there any guideline of the CL description to follow along?\nOtherwise, I\u0027ll use the package name \u0027familylink\u0027 from now on.",
+      "parentUuid": "c800a4bb_91d95795",
+      "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
