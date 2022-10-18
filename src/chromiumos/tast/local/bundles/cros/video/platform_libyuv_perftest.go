@@ -52,7 +52,7 @@ func init() {
 // PlatformLibYUVPerftest runs a libyuv unit test with and without assembly
 // optimization to compare performance.
 func PlatformLibYUVPerftest(ctx context.Context, s *testing.State) {
-	env := []string{"LIBYUV_REPEAT=1000",
+	env := []string{"LIBYUV_REPEAT=10000",
 		"LIBYUV_WIDTH=640",
 		"LIBYUV_HEIGHT=360"}
 
