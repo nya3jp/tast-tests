@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05949b39_c5dccfcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-18T22:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258ebd58_9db609d9",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "31606cf6003e737808b078575bd1c86ea2723a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fade3d3d_efcb7b0d",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-18T00:51:34Z",
       "side": 1,
       "message": "I\u0027d consider making OpenProductivityLauncher work when overview is shown - e.g. swipe up even if there are no windows shown.",
+      "revId": "31606cf6003e737808b078575bd1c86ea2723a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0888bd34_f21eefdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-18T22:58:12Z",
+      "side": 1,
+      "message": "Done.\nShould I add a reviewer from WM team?",
+      "parentUuid": "fade3d3d_efcb7b0d",
       "revId": "31606cf6003e737808b078575bd1c86ea2723a96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
