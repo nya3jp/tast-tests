@@ -70,6 +70,42 @@
       "parentUuid": "4d07c317_89e2f9dd",
       "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f47a21_d32b3ac0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T14:54:25Z",
+      "side": 1,
+      "message": "sgtm. will use the package name next time.",
+      "parentUuid": "51229e7b_dae1b206",
+      "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451aedf7_ea1087ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T14:54:25Z",
+      "side": 1,
+      "message": "sgtm. will do next time.",
+      "parentUuid": "51229e7b_dae1b206",
+      "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
