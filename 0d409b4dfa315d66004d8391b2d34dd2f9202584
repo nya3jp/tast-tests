@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98747dc_2cb5ac81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-10-18T10:05:13Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nPlease have a look to this patch for BootBatteryCutoff test.\n\nThank you.",
+      "revId": "0d409b4dfa315d66004d8391b2d34dd2f9202584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
