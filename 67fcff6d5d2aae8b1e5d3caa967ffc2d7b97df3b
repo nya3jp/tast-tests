@@ -50,6 +50,40 @@
       "message": "It doesn\u0027t have to be done in this CL, but we will need Lacros variants for all the tests that use a chrome tab for a canary.\n\nSee https://crrev.com/c/3951569 for an example. (but I\u0027m still working on it)",
       "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d05eb58_e2ca40c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_canary_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-18T07:13:50Z",
+      "side": 1,
+      "message": "We should have options for background and foreground tabs.\n\nI think the existing code just leaves the window focused? which means it can\u0027t be killed.",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9614ddde_4b4c0fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_canary_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-18T07:13:50Z",
+      "side": 1,
+      "message": "default with s.Fatal, just in case we add one and forget to implement it.",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
