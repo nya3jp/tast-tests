@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9d538a_e1748cc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-18T00:12:40Z",
+      "side": 1,
+      "message": "Just want to check if you need me to review this code at this moment. If so, please move me to the reviewer list. \n\nCurrently, I am on the CC list. Also, if this code is ready to be reviewed, I think you should jonfan who the original author of https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/automation_service.go\n\nThanks.",
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bc48417_2bbcea36",
