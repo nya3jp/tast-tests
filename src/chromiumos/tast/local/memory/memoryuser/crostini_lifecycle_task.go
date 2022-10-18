@@ -82,6 +82,10 @@ func (t *CrostiniLifecycleUnit) Close(ctx context.Context) error {
 	if t.cmd == nil {
 		return nil
 	}
+	if t.cmd.ProcessState == nil {
+		return nil
+	}
+	// Only kill the allocator if it is running.
 	if err := t.cmd.Kill(); err != nil {
 		return errors.Wrap(err, "failed to kill Crostini lifecycle unit")
 	}
