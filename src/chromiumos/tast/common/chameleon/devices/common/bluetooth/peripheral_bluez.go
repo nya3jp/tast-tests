@@ -45,7 +45,7 @@ type BluezPeripheral interface {
 
 	// ResetStack calls the Chameleond RPC method of the same name.
 	// Restores the BT stack to a pristine state by restarting running services.
-	ResetStack(ctx context.Context, nextDeviceType bool) error
+	ResetStack(ctx context.Context, nextDeviceType string) error
 
 	// Init calls the Chameleond RPC method of the same name.
 	// Ensures the chip is in the correct state for the tests to be run.
@@ -169,7 +169,7 @@ func (c *CommonBluezPeripheral) SetBtdFlags(ctx context.Context, deviceType stri
 
 // ResetStack calls the Chameleond RPC method of the same name.
 // This implements BluezPeripheral.ResetStack, see that for more details.
-func (c *CommonBluezPeripheral) ResetStack(ctx context.Context, nextDeviceType bool) error {
+func (c *CommonBluezPeripheral) ResetStack(ctx context.Context, nextDeviceType string) error {
 	return c.RPC("ResetStack").Args(nextDeviceType).Call(ctx)
 }
 

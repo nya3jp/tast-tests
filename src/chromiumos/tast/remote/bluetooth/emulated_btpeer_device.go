@@ -61,7 +61,7 @@ func NewEmulatedBTPeerDevice(ctx context.Context, deviceRPC cbt.BluezPeripheral)
 func (d *EmulatedBTPeerDevice) initializeEmulatedBTPeerDevice(ctx context.Context) error {
 	testing.ContextLog(ctx, "Preparing device for use")
 
-	if err := d.rpc.Init(ctx, false); err != nil {
+	if err := d.rpc.Init(ctx, true); err != nil {
 		return errors.Wrap(err, "failed to initialize device")
 	}
 
