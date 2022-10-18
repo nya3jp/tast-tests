@@ -105,29 +105,33 @@ var defaultCreds = Creds{
 //
 // creds is a string containing multiple credentials separated by newlines:
 //
-//	user1:pass1
-//	user2:pass2
-//	user3:pass3
+//	user1:pass1[:gaiaID1]
+//	user2:pass2[:gaiaID2]
+//	user3:pass3[:gaiaID3]
 //	...
-func ParseCreds(creds string) ([]Creds, error) {
+func ParseCreds(credsText string) ([]Creds, error) {
 	// Note: Do not include creds in error messages to avoid accidental
 	// credential leaks in logs.
-	var cs []Creds
-	for i, line := range strings.Split(creds, "\n") {
+	var credsArray []Creds
+	for i, line := range strings.Split(credsText, "\n") {
 		line = strings.TrimSpace(line)
 		if len(line) == 0 || strings.HasPrefix(line, "#") {
 			continue
 		}
-		ps := strings.SplitN(line, ":", 2)
-		if len(ps) != 2 {
+		ps := strings.SplitN(line, ":", 3)
+		if len(ps) < 2 {
 			return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", i+1)
 		}
-		cs = append(cs, Creds{
+		creds := Creds{
 			User: ps[0],
 			Pass: ps[1],
-		})
+		}
+		if len(ps) >= 3 {
+			creds.GAIAID = ps[2]
+		}
+		credsArray = append(credsArray, creds)
 	}
-	return cs, nil
+	return credsArray, nil
 }
 
 // Config contains configurations for chrome.Chrome instance as requested by
