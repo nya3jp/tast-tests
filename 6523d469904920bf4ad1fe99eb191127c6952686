@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac2ee200_183341b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-18T21:23:08Z",
+      "side": 1,
+      "message": "Following the same comments used https://source.corp.google.com/search?q\u003d%22Gather%20Shill%20Device%20sim%20properties.%22 \nbut so that we can create the cellular helper, no?",
+      "parentUuid": "c094a4ae_f1360c5b",
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5229374_eec6df34",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-18T15:01:19Z",
       "side": 1,
       "message": "nit: PUK for consistency",
+      "range": {
+        "startLine": 60,
+        "startChar": 33,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db6316d_9ad210fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-18T21:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5229374_eec6df34",
       "range": {
         "startLine": 60,
         "startChar": 33,
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-18T02:25:19Z",
       "side": 1,
       "message": "can you add clearsimlock call if failed to unlock here.",
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d69dff_d857f4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-18T21:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c3c671_f0243398",
       "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
