@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3654859c_b4e6a7f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-18T11:01:43Z",
+      "side": 1,
+      "message": "Hmm, ythjkt looks like overwrite my CL accidentally?\nAnyways, no diff since my PS, so just submitting.",
+      "revId": "105a49b8c33eb983db1b45f3626b80014dde7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
