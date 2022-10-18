@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9177a20c_5e78770c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-18T03:53:56Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any too specific PKCS#11 impl here, so I believe Damien and you can review. But deferring to Damien (if Damien is comfortable reviewing the code) if Pavol and Michael should take a look.\n\nThis patch won\u0027t be uploaded until the shill + chrome side change are landed as well.",
+      "parentUuid": "ba77aea0_c1b16a4f",
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de312d05_1c4a265d",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
         "patchSetId": 1
@@ -106,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aec61e65_8fea8e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-18T03:53:56Z",
+      "side": 1,
+      "message": "Very short, you won\u0027t be able catch it manually, but because this is through code, there might be a race if we don\u0027t poll.\n\nI\u0027ll update the comment.",
+      "parentUuid": "424c6f3e_b1769ee2",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae14394b_8d813111",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
         "patchSetId": 1
@@ -117,6 +159,30 @@
       "writtenOn": "2022-10-18T03:44:03Z",
       "side": 1,
       "message": "Should we still append the object if this branch does not execute and we don\u0027t fill the .id field ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 3
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113e79bc_c5608c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-18T03:53:56Z",
+      "side": 1,
+      "message": "Either way works, but my thinking was that we also need to confirm that the Passpoint provisioning code are not adding any unnecessary objects (such as an object with no ID).\n\nAlso note as mentioned in other comment that the ID does not always exist.",
+      "parentUuid": "ae14394b_8d813111",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -140,6 +206,30 @@
       "writtenOn": "2022-10-18T03:44:03Z",
       "side": 1,
       "message": "Coudl we possibly do a map keyed by .id to check for existence ?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 29
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a69ce4_502ea04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-18T03:53:56Z",
+      "side": 1,
+      "message": "Unfortunately an object might not have an ID, so this does not work.",
+      "parentUuid": "b4104024_d375c5c7",
       "range": {
         "startLine": 159,
         "startChar": 1,
