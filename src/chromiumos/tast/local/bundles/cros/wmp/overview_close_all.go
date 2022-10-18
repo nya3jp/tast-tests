@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -135,7 +134,7 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Exits overview mode.
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to exit overview mode: ", err)
 	}
 
@@ -217,7 +216,7 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Exits overview mode.
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to exit overview mode: ", err)
 	}
 
@@ -230,13 +229,16 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find CloseAll toast: ", err)
 	}
 
-	// We give windows 1 second after the toast goes away for them to close down
-	// before we force close them, so we need to wait for a second.
+	// We force close windows with a posted task 1 second after the toast's
+	// destruction starts to close them asynchronously, so the windows may still
+	// be closing after 1 second. To account for this possible delay, we give the
+	// windows 2 seconds to fully close in case force closing a window takes extra
+	// time.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// There should be 0 existing windows after one second.
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to count windows: ", err)
+			return testing.PollBreak(errors.wrap(err, "failed to count windows"))
 		}
 		if len(ws) != 0 {
 			return errors.Errorf("unexpected number of windows: got %v, want 0", len(ws))
@@ -244,7 +246,7 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  1 * time.Second,
+		Timeout:  2 * time.Second,
 		Interval: 100 * time.Millisecond,
 	}); err != nil {
 		s.Fatal("Did not reach expected state: ", err)
