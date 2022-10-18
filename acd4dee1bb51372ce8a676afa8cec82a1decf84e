@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99b2858d_6f159bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-18T13:36:09Z",
+      "side": 1,
+      "message": "I did not find a way to access the local files. If I understood correctly, the field `testing.State` that is usually used to access those files cannot be accessed from a remote procedure call.",
+      "parentUuid": "3fa7fc2b_9379224c",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "acd4dee1bb51372ce8a676afa8cec82a1decf84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6bf7a71_253e290f",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 12
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-18T11:44:54Z",
       "side": 1,
       "message": "Can you add a comment explaining what this function does?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "acd4dee1bb51372ce8a676afa8cec82a1decf84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c33af1_0ea90c6f",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-18T13:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bf7a71_253e290f",
       "range": {
         "startLine": 303,
         "startChar": 0,
