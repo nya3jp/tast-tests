@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412b4bdc_627325d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-10-18T17:05:39Z",
+      "side": 1,
+      "message": "nit: I think that just using \"false\" inline would be more clear since we are just setting a Shill property.",
+      "revId": "f57ce74f29d427d7f49145eb4b4636962cbb4344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
