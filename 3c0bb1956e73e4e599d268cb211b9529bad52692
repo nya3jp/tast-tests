@@ -16,6 +16,24 @@
       "message": "Does this file need to be checked in if the parameters are already generated?",
       "revId": "3c0bb1956e73e4e599d268cb211b9529bad52692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ea2550_d071581d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-18T13:30:53Z",
+      "side": 1,
+      "message": "This is needed to verify there\u0027s no inconsistency between generated code and actual one.",
+      "parentUuid": "ecf6cef5_12fab0e4",
+      "revId": "3c0bb1956e73e4e599d268cb211b9529bad52692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
