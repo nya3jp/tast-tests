@@ -22,6 +22,30 @@
       },
       "revId": "6a0f3909cc4683d0fe1efc4addd2efb804cea4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e23f7f3_f44c2b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-10-18T18:10:46Z",
+      "side": 1,
+      "message": "Thanks for catching this! I meant to copy the tag that was above \"Drag desk to reorder\" which was \"Delete workspace template\".",
+      "parentUuid": "57f6c27e_8d84c458",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "6a0f3909cc4683d0fe1efc4addd2efb804cea4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
