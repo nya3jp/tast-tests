@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c80517_9031b719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-18T11:44:54Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "acd4dee1bb51372ce8a676afa8cec82a1decf84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa7fc2b_9379224c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-18T11:44:54Z",
+      "side": 1,
+      "message": "Why not the files that already exist?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "acd4dee1bb51372ce8a676afa8cec82a1decf84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bf7a71_253e290f",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-18T11:44:54Z",
+      "side": 1,
+      "message": "Can you add a comment explaining what this function does?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "acd4dee1bb51372ce8a676afa8cec82a1decf84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
