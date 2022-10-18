@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/trackpad"
@@ -36,18 +37,14 @@ func init() {
 			},
 		},
 		Params: []testing.Param{
-			/* Disabled due to <1% pass rate over 30 days. See b/246818645
 			{
 				Name: "reverse_on",
 				Val:  true,
-			}
-			*/
-			/* Disabled due to <1% pass rate over 30 days. See b/246818645
+			},
 			{
 				Name: "reverse_off",
 				Val:  false,
-			}
-			*/
+			},
 		},
 	})
 }
@@ -66,7 +63,9 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	ui := uiauto.New(tconn)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	tpw, err := input.Trackpad(ctx)
 	if err != nil {
@@ -97,7 +96,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to swipe down twice with 3 fingers: ", err)
 		}
 
-		if err := waitForSystemToast(ctx, tconn); err != nil {
+		if err := waitForSystemToast(ctx, ui); err != nil {
 			s.Fatal("Failed to show wrong overview gesture toast: ", err)
 		}
 	}
@@ -126,7 +125,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to swipe down twice with 3 fingers: ", err)
 		}
 
-		if err := waitForSystemToast(ctx, tconn); err != nil {
+		if err := waitForSystemToast(ctx, ui); err != nil {
 			s.Fatal("Failed to show wrong overview gesture toast: ", err)
 		}
 	}
@@ -156,7 +155,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to swipe left twice with 4 fingers: ", err)
 		}
 
-		if err := waitForSystemToast(ctx, tconn); err != nil {
+		if err := waitForSystemToast(ctx, ui); err != nil {
 			s.Fatal("Failed to show wrong switching desk gesture toast: ", err)
 		}
 	}
@@ -167,7 +166,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 		swipeDirection = trackpad.LeftSwipe
 	}
 
-	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, "Desk_Container_B"); err != nil {
+	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, 1); err != nil {
 		s.Fatal("Failed to switch to the right desk: ", err)
 	}
 	//-------------------------------------------------------
@@ -185,7 +184,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to swipe right twice with 4 fingers: ", err)
 		}
 
-		if err := waitForSystemToast(ctx, tconn); err != nil {
+		if err := waitForSystemToast(ctx, ui); err != nil {
 			s.Fatal("Failed to show wrong switching desk gesture toast: ", err)
 		}
 	}
@@ -196,7 +195,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 		swipeDirection = trackpad.RightSwipe
 	}
 
-	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, "Desk_Container_A"); err != nil {
+	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, 0); err != nil {
 		s.Fatal("Failed to switch to the left desk: ", err)
 	}
 }
@@ -246,28 +245,38 @@ func swipeToExitOverview(ctx context.Context, tconn *chrome.TestConn, tpw *input
 	return nil
 }
 
-// swipeToDesk performs swiping on given direction with 4 fingers to switch to the target desk with the given container name.
-func swipeToDesk(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter, swipeDirection trackpad.SwipeDirection, deskContainerName string) error {
+// swipeToDesk performs swiping on given direction with 4 fingers to switch to the target desk with the given desk index.
+func swipeToDesk(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter, swipeDirection trackpad.SwipeDirection, deskIndex int) error {
 	ac := uiauto.New(tconn)
 	if err := trackpad.Swipe(ctx, tconn, tpw, swipeDirection, 4); err != nil {
+		return errors.Wrapf(err, "failed to swipe to: %v", swipeDirection)
+	}
+
+	// Make sure the desk animiation is finished.
+	if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to swipe with 4 fingers")
 	}
 
-	if err := ac.WaitUntilExists(nodewith.ClassName(deskContainerName).State("invisible", false))(ctx); err != nil {
-		return errors.Wrapf(err, "failed to show desk %s", deskContainerName)
+	desksInfo, err := ash.GetDesksInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the desks info")
+	}
+
+	// Verify that the active desk after swipe is the desk we're looking for.
+	if desksInfo.ActiveDeskIndex != deskIndex {
+		return errors.Wrapf(err, "unexepcted active desk: got %d, want %d", desksInfo.ActiveDeskIndex, deskIndex)
 	}
 
 	return nil
 }
 
 // waitForSystemToast waits for the system toast showing up.
-func waitForSystemToast(ctx context.Context, tconn *chrome.TestConn) error {
-	ui := uiauto.New(tconn)
+func waitForSystemToast(ctx context.Context, ui *uiauto.Context) error {
 	// The system toast for trackpad gesture will show up for a while and then disappear.
 	if err := uiauto.Combine(
 		"wait for system toast",
-		ui.WaitUntilExists(nodewith.ClassName("ToastOverlay")),
-		ui.WaitUntilGone(nodewith.ClassName("ToastOverlay")),
+		ui.WaitUntilExists(nodewith.ClassName("SystemToastInnerLabel")),
+		ui.WaitUntilGone(nodewith.ClassName("SystemToastInnerLabel")),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to show the trackpad gesture toast")
 	}

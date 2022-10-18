@@ -30,11 +30,10 @@ const (
 // Swipe performs a swipe movement in the indicated direction with given number of touches.
 func Swipe(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter, swipeDirection SwipeDirection, touches int) error {
 	const (
-		swipeDistanceAsProportionOfPad = .4
-		swipeDuration                  = 250 * time.Millisecond
-		fingerSeparationHorizontal     = input.TouchCoord(5)
-		fingerSeparationVertical       = input.TouchCoord(0)
+		swipeDuration            = 250 * time.Millisecond
+		fingerSeparationVertical = input.TouchCoord(0)
 	)
+	fingerSeparationHorizontal := tpw.Width() / 16
 
 	if err := trackpadValid(ctx, tconn); err != nil {
 		return errors.Wrap(err, "trackpad cannot cannot be used")
@@ -46,26 +45,31 @@ func Swipe(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEvent
 	}
 	defer mtw.Close()
 
-	// Start swipe from the center of the trackpad.
-	x0 := input.TouchCoord(tpw.Width() / 2)
-	y0 := input.TouchCoord(tpw.Height() / 2)
+	var x0, y0, x1, y1 input.TouchCoord
+	centerX := input.TouchCoord(tpw.Width() / 2)
+	centerY := input.TouchCoord(tpw.Height() / 2)
 
-	// Estmate the horizontal and vertical swipe distance.
-	horizontalSwipeDistance := input.TouchCoord(float64(tpw.Width()) * swipeDistanceAsProportionOfPad)
-	verticalSwipeDistance := input.TouchCoord(float64(tpw.Height()) * swipeDistanceAsProportionOfPad)
-
-	// Calculate the end point.
-	x1 := x0
-	y1 := y0
 	switch swipeDirection {
 	case UpSwipe:
-		y1 = y0 - verticalSwipeDistance
+		x0 = centerX
+		x1 = x0
+		y0 = tpw.Height() - 1
+		y1 = 1
 	case DownSwipe:
-		y1 = y0 + verticalSwipeDistance
+		x0 = centerX
+		x1 = x0
+		y0 = 1
+		y1 = tpw.Height() - 1
 	case LeftSwipe:
-		x1 = x0 - horizontalSwipeDistance
+		y0 = centerY
+		y1 = y0
+		x0 = centerX
+		x1 = 1
 	case RightSwipe:
-		x1 = x0 + horizontalSwipeDistance
+		y0 = centerY
+		y1 = y0
+		x0 = 1
+		x1 = centerX
 	default:
 		return errors.Errorf("invalid swipe direction: %v", swipeDirection)
 	}
