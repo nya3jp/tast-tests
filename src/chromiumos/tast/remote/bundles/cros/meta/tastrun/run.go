@@ -51,6 +51,10 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 // flags contains subcommand-specific flags.
 // patterns contains a list of patterns matching tests.
 // stdout.txt and stderr.txt output files are written unconditionally.
+//
+// NOTE:
+// Exec does not report failing tests. Either check the results manually (see
+// ParseResultsJSON) or use the higher-level RunAndEvaluate instead of Exec.
 func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
 	cmd, err := NewCommand(ctx, s, subcmd, flags, patterns)
 	if err != nil {
@@ -98,4 +102,34 @@ func ParseResultsJSON(dir string) ([]TestResult, error) {
 		return nil, errors.Wrapf(err, "couldn't decode results from %v", rf.Name())
 	}
 	return results, nil
+}
+
+// RunAndEvaluate runs tests and checks the results, propagating any test failure. It returns (the names of) any skipped tests.
+func RunAndEvaluate(ctx context.Context, s *testing.State, flags, patterns []string, resultsDir string, allowSkippedTests bool) []string {
+	// Run tests.
+	flags = append(flags, "-resultsdir="+resultsDir)
+	if stdout, _, err := Exec(ctx, s, "run", flags, patterns); err != nil {
+		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
+		s.Errorf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
+	}
+
+	// Evaluate results.
+	results, err := ParseResultsJSON(resultsDir)
+	if err != nil {
+		s.Error("Failed to parse test results: ", err)
+	}
+	var skippedTests []string
+	for _, result := range results {
+		if len(result.Errors) != 0 {
+			s.Errorf("Test %s failed: %v", result.Name, result.Errors)
+		}
+		if result.SkipReason != "" {
+			s.Logf("Test %s was skipped: %s", result.Name, result.SkipReason)
+			skippedTests = append(skippedTests, result.Name)
+		}
+	}
+	if len(skippedTests) > 0 && !allowSkippedTests {
+		s.Errorf("Skipped %d test(s) in total: %v", len(skippedTests), skippedTests)
+	}
+	return skippedTests
 }

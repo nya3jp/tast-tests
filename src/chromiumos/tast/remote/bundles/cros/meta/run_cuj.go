@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"path/filepath"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/remote/bundles/cros/meta/tastrun"
@@ -266,46 +265,15 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 		resultsDir := filepath.Join(s.OutDir(), fmt.Sprintf("subtest_results_%d", i))
 
 		flags := []string{
-			"-resultsdir=" + resultsDir,
 			fmt.Sprintf("-retries=%d", retry),
 		}
 		if varsfile != "" {
 			flags = append(flags, fmt.Sprintf("-varsfile=%s", varsfile))
 		}
 
-		if stdout, _, err := tastrun.Exec(ctx, s, "run", flags, param.tests); err != nil {
-			lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
-			s.Errorf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
-		}
-
-		results, err := tastrun.ParseResultsJSON(resultsDir)
-		s.Log("Check test results: ", resultsDir)
-		if err != nil {
-			s.Error("Failed to get results for tests")
-		}
-		var failedTests []string
-		var skippedTests []string
-		for _, result := range results {
-			if len(result.Errors) != 0 {
-				s.Logf("Failed to execute test %s with test error: %v", result.Name, result.Errors)
-				failedTests = append(failedTests, result.Name)
-			}
-			if result.SkipReason != "" {
-				s.Logf("Test %s was skipped with reason: %s", result.Name, result.SkipReason)
-				skippedTests = append(skippedTests, result.Name)
-			}
-		}
-		totalTests := len(param.tests)
-		skippedTest := len(skippedTests)
-		failedTest := len(failedTests)
-		if skippedTest == totalTests {
-			s.Errorf("All %d test(s) in iteration %d have been skipped", totalTests, i)
-		}
-		if skippedTest > 0 {
-			s.Logf("Skipped %d test(s) in iteration %d: %v", skippedTest, i, skippedTests)
-		}
-		if failedTest > 0 {
-			s.Errorf("Failed to complete %d test(s) in iteration %d: %v", failedTest, i, failedTests)
+		skippedTests := tastrun.RunAndEvaluate(ctx, s, flags, param.tests, resultsDir, true)
+		if len(skippedTests) == len(param.tests) {
+			s.Errorf("All %d test(s) in iteration %d have been skipped", len(param.tests), i)
 		}
 	}
 }
