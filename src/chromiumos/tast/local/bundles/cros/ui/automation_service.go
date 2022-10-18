@@ -207,6 +207,25 @@ func (svc *AutomationService) WaitUntilExists(ctx context.Context, req *pb.WaitU
 	return &empty.Empty{}, nil
 }
 
+// WaitUntilGone waits until the node found by the input finder is gone.
+func (svc *AutomationService) WaitUntilGone(ctx context.Context, req *pb.WaitUntilGoneRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	finder, err := toFinder(req.Finder)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.WaitUntilGone(finder)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed calling WaitUntilGone with finder: %v", finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
 func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Context, error) {
 	cr := svc.sharedObject.Chrome
 	if cr == nil {

@@ -39,6 +39,9 @@ service AutomationService {
 
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+
+  // WaitUntilGone waits until the node found by the input finder is gone.
+  rpc WaitUntilGone(WaitUntilGoneRequest) returns (google.protobuf.Empty) {}
 }
 
 message LeftClickRequest {
@@ -64,6 +67,10 @@ message MouseClickAtLocationRequest {
 }
 
 message WaitUntilExistsRequest {
+  Finder finder = 1;
+}
+
+message WaitUntilGoneRequest {
   Finder finder = 1;
 }
 
