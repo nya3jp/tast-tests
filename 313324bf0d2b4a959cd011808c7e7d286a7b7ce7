@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc6d701_82c633bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-18T17:30:52Z",
+      "side": 1,
+      "message": "Just a pre review note: Thanks for taking this change. You have made this change as part of Code Yellow correct ? I have updated the bug number in the CY document as well.",
+      "revId": "313324bf0d2b4a959cd011808c7e7d286a7b7ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
