@@ -11,7 +11,6 @@ import (
 	"image/color"
 	"image/jpeg"
 	"os"
-	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/pci"
@@ -21,12 +20,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/externaldata"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -87,13 +84,11 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	}
 
 	red := color.RGBA{255, 0, 0, 255}
-	blurredRed := color.RGBA{77, 26, 29, 255}
 	expectedPercent := 85
 	// The background color in tablets is a bit different.
 	// Since the launcher is always open in tablet mode and the apps icons took some space, the expected percentage is reduce to 70%.
 	if tablet {
 		red = color.RGBA{165, 13, 14, 255}
-		blurredRed = color.RGBA{83, 32, 31, 255}
 		expectedPercent = 70
 	}
 
@@ -166,26 +161,6 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 			} else {
 				if err := ui.Gone(personalization.ChangeWallpaperButton)(ctx); err != nil {
 					s.Fatal("Failed to ensure that change wallpaper button is gone: ", err)
-				}
-			}
-
-			if param.wantImageCheck {
-				// Lock the screen and check blurred red percentage.
-				if err := lockscreen.Lock(ctx, tconn); err != nil {
-					s.Fatal("Failed to lock the screen: ", err)
-				}
-				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
-					s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
-				}
-				if err := wallpaper.ValidateBackground(cr, blurredRed, expectedPercent)(ctx); err != nil {
-					s.Error("Failed to validate wallpaper on lock screen: ", err)
-				}
-
-				if err := lockscreen.EnterPassword(ctx, tconn, fixtures.Username, fixtures.Password, kb); err != nil {
-					s.Fatal("Failed to unlock the screen: ", err)
-				}
-				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
-					s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
 				}
 			}
 		})
