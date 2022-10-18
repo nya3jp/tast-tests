@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab54e4bf_f729425f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T01:59:33Z",
+      "side": 1,
+      "message": "Clarification: `LacrosVariantUnneeded` or `LacrosVariantNeeded` if any lacros browser files need to be tested?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 70
+      },
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f4b179_5a98d5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_non_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T01:59:33Z",
+      "side": 1,
+      "message": "Clarification: LacrosVariantUnneeded or LacrosVariantNeeded if any lacros browser files need to be tested?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40d17bf_d0c3a729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T01:59:33Z",
+      "side": 1,
+      "message": "Clarification: `LacrosVariantUnneeded` or `LacrosVariantNeeded` if this needs to be tested with or w/o chrome options that enable Lacros?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "1eb83b072b10121f4b726982c3f14b6d3972a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
