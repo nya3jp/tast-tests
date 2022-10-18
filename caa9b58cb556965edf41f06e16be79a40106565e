@@ -55,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65bf811c_6545a1c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-10-18T07:02:03Z",
+      "side": 1,
+      "message": "I think we should be able to review it by ourselves 😊",
+      "parentUuid": "9177a20c_5e78770c",
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644879d3_7d1b6c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-10-18T07:02:03Z",
+      "side": 1,
+      "message": "LGTM to me, with the open comments ;)",
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de312d05_1c4a265d",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
         "patchSetId": 1
