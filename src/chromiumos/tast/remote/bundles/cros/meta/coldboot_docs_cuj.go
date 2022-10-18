@@ -82,7 +82,6 @@ func coldbootDocsCUJOnce(ctx context.Context, s *testing.State, i, iterations in
 	resultsDir := filepath.Join(s.OutDir(), fmt.Sprintf("subtest_results_%d", i))
 
 	flags := []string{
-		"-resultsdir=" + resultsDir,
 		"-var=lacros.DocsCUJ.iterations=1",
 	}
 
@@ -90,7 +89,6 @@ func coldbootDocsCUJOnce(ctx context.Context, s *testing.State, i, iterations in
 	if isReverse {
 		variantName = ".reverse"
 	}
-	if _, _, err := tastrun.Exec(ctx, s, "run", flags, []string{"lacros.DocsCUJ" + variantName}); err != nil {
-		s.Fatal("Failed to run tast: ", err)
-	}
+
+	_ = tastrun.RunAndEvaluate(ctx, s, flags, []string{"lacros.DocsCUJ" + variantName}, resultsDir, tastrun.SkipPolicyDisallowSkipping)
 }
