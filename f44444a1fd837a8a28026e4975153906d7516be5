@@ -46,6 +46,30 @@
       },
       "revId": "f44444a1fd837a8a28026e4975153906d7516be5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6481652f_0327f88e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-18T07:38:15Z",
+      "side": 1,
+      "message": "I found the model name in the repo, so it doesn\u0027t seem internal.",
+      "parentUuid": "64b226c9_a8ab9ca7",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f44444a1fd837a8a28026e4975153906d7516be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
