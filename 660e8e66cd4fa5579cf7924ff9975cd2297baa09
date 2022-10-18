@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1c0b54_1715f86a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T23:22:26Z",
+      "side": 1,
+      "message": "Sorry, I thought I discarded this comment. I wrote it before reading what the tests are doing.\n\nSince we are testing signing out (and shutdown), we have to do a manual `chrome.New`. The fixture only works for `closeMenuTest` case.",
+      "parentUuid": "95beaef1_d75b7603",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b2b4f4_57854227",
@@ -200,6 +218,24 @@
       "side": 1,
       "message": "Ack\n\nThe closest thing I\u0027ve found seems to be to check for the Chrome process to be terminated https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go;l\u003d164, but will wait for tast-owners\u0027 review.",
       "parentUuid": "5903e421_c62d3db9",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425d1bc8_8425a2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-18T23:22:26Z",
+      "side": 1,
+      "message": "My concern is that clicking \"Shut down\" button would really shuts down the device and it does not work with a local tast test.\n\nWhen you try this code, do you see the test pass and DUT would power on by itself?",
+      "parentUuid": "fceda309_2cce7dc0",
       "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
