@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fe0497_48b99f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-18T07:17:34Z",
+      "side": 1,
+      "message": "This code will conflict with https://crrev.com/c/3951569 because I switched the MemoryStressUnit to use a browser.Browser instead of chrome.Chrome.\n\nIf you land first, I\u0027ll have to update my CL, if I land first you\u0027ll have to update yours. I guess it\u0027s a race?",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e38976d_af3c6c55",
