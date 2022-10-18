@@ -67,6 +67,24 @@
       "message": "The err is not handled. Is it okay?",
       "revId": "5530bce5de9574bfc4273119ec5e273ef5992282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b42185f_2e6a85f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-18T15:31:14Z",
+      "side": 1,
+      "message": "Good catch. TY",
+      "parentUuid": "02fad29f_4268a2f9",
+      "revId": "5530bce5de9574bfc4273119ec5e273ef5992282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
