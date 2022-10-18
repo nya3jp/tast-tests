@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2783e56_b505676f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/video_capture_with_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-18T04:31:07Z",
+      "side": 1,
+      "message": "I see this quite frequently. Could we refactor this into something like app.EnsureFacing(facing)",
+      "revId": "c4b9abde5e6e471f919a35e36076f6d61099ae44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
