@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c094a4ae_f1360c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T15:01:19Z",
+      "side": 1,
+      "message": "What exactly do these labels have to do witih shill?",
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5229374_eec6df34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-18T15:01:19Z",
+      "side": 1,
+      "message": "nit: PUK for consistency",
+      "range": {
+        "startLine": 60,
+        "startChar": 33,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6c3c671_f0243398",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
         "patchSetId": 1
