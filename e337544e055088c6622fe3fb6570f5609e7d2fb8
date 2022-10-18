@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09069eb3_d3e6047f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-18T14:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab6e04c_7cc07fcf",
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81d4caf5_ae60cc1d",
@@ -111,6 +129,24 @@
       "writtenOn": "2022-10-18T08:05:50Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed36c671_88c7ab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-18T14:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40b8275_baa9056a",
       "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
