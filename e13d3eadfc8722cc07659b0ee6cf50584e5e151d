@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90ab211_4e5e57b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-18T16:31:46Z",
+      "side": 1,
+      "message": "Looks like there are conflicts in the merge. Please ping when the CL has been rebased. Thanks!",
+      "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d57c63_ca4c3136",
@@ -20,6 +37,23 @@
         "endLine": 211,
         "endChar": 29
       },
+      "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12700872_1feae467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-18T16:31:46Z",
+      "side": 1,
+      "message": "Attached but not connected?",
       "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
