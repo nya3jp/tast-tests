@@ -52,6 +52,24 @@
       "parentUuid": "6536ccad_f9dd4cce",
       "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51229e7b_dae1b206",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-18T02:47:11Z",
+      "side": 1,
+      "message": "\"tast-tests: \" seems unnecessary. If there\u0027s a specific package this is for, seems okay to specify.",
+      "parentUuid": "4d07c317_89e2f9dd",
+      "revId": "5f0cbabbebc52cbf08d06cc409cd27f69ae251ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
