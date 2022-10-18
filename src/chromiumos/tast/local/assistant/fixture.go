@@ -34,7 +34,8 @@ func ashNoNudgesExtraArg() chrome.Option {
 var (
 	chameleonHostname = testing.RegisterVarString(
 		"assistant.chameleon_host",
-		"localhost",
+		// "localhost",
+		"172.16.243.41",
 		"Hostname for Chameleon")
 
 	chameleonSSHPort = testing.RegisterVarString(

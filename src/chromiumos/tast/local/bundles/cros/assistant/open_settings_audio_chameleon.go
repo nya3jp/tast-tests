@@ -22,7 +22,7 @@ import (
 )
 
 const soundFile = "open_settings.raw"
-const busNumber = chameleon.AudioBus1
+const busNumber = chameleon.USBOut
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,7 +46,8 @@ func OpenSettingsAudioChameleon(ctx context.Context, s *testing.State) {
 	fixtData := s.FixtValue().(*assistant.AudioBoxFixtData)
 	cr := fixtData.Chrome
 	chameleond := fixtData.Chameleon
-	chameleonHostname := fixtData.ChameleonHostname
+	// chameleonHostname := fixtData.ChameleonHostname
+	chameleonHostname := "172.16.243.41"
 	chameleonSSHPort := fixtData.ChameleonSSHPort
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -69,17 +70,27 @@ func OpenSettingsAudioChameleon(ctx context.Context, s *testing.State) {
 	}
 
 	// Connect audio input and output endpoints through bus 1.
-	if err := chameleond.AudioBoardConnect(ctx, busNumber, chameleon.AudioBusEndpointFPGALineOut); err != nil {
-		s.Fatalf("Failed to connect audio bus %d to bus endpoint %q: %v", busNumber, chameleon.AudioBusEndpointFPGALineOut, err)
+	// if err := chameleond.AudioBoardConnect(ctx, busNumber, chameleon.AudioBusEndpointFPGALineOut); err != nil {
+	// 	s.Fatalf("Failed to connect audio bus %d to bus endpoint %q: %v", busNumber, chameleon.AudioBusEndpointFPGALineOut, err)
+	// }
+	// if err := chameleond.AudioBoardConnect(ctx, busNumber, chameleon.AudioBusEndpointPeripheralSpeaker); err != nil {
+	// 	s.Fatalf("Failed to connect audio bus %d to bus endpoint %q: %v", busNumber, chameleon.AudioBusEndpointPeripheralSpeaker, err)
+	// }
+	someDummyContext := chameleon.AudioDataFormat{
+		FileType: "wav",
+		SampleFormat: "S16_LE",
+		Channel: 2,
+		Rate: 48000,
 	}
-	if err := chameleond.AudioBoardConnect(ctx, busNumber, chameleon.AudioBusEndpointPeripheralSpeaker); err != nil {
-		s.Fatalf("Failed to connect audio bus %d to bus endpoint %q: %v", busNumber, chameleon.AudioBusEndpointPeripheralSpeaker, err)
+	if err := chameleond.SetUSBDriverPlaybackConfigs(ctx, &someDummyContext); err != nil {
+		s.Fatalf("Failed to set USB Driver Playback Config: %v", err)
 	}
-	defer func() {
-		if err := chameleond.AudioBoardClearRoutes(ctx, busNumber); err != nil {
-			s.Fatalf("Failed to clear audio routes for audio bus %d: %v", busNumber, err)
-		}
-	}()
+
+	// defer func() {
+	// 	if err := chameleond.AudioBoardClearRoutes(ctx, busNumber); err != nil {
+	// 		s.Fatalf("Failed to clear audio routes for audio bus %d: %v", busNumber, err)
+	// 	}
+	// }()
 
 	s.Log("Play audio to trigger assistant features")
 	analogAudioLineOutPortID, err := chameleond.FetchSupportedPortIDByType(ctx, chameleon.PortTypeAnalogAudioLineOut, 0)
