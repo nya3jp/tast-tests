@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e02a22c_a1f3678d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Thank you all for the code review!",
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d22a01a_162fc4da",
@@ -83,6 +100,30 @@
       "writtenOn": "2022-10-18T08:31:29Z",
       "side": 1,
       "message": "optional/style: I\u0027m not a fan of wrapping errors with messages that look like:\n\"failed to XYZ\".\n\nIt leads to errors which look like:\nFatal: failed to X: failed to Y: failed to Z: some error\n\nWhere the \"failed to\" just adds visual noise to something that is obviously already an error, and makes it harder to spot the interesting bit.\n\nIn this case, I would recommend wrapping with the message: \"taking full screenshot\".",
+      "range": {
+        "startLine": 118,
+        "startChar": 27,
+        "endLine": 118,
+        "endChar": 36
+      },
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "990dd899_66e4c836",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Thanks for the suggestions, I agree with you but to be consistent with other wmp error messages, I will leave as it is but will sync with other team members if we want to change them all.",
+      "parentUuid": "4d22a01a_162fc4da",
       "range": {
         "startLine": 118,
         "startChar": 27,
@@ -116,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1581c117_ff4c791f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0967d9_e64c76fe",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b985cfbb_fd4357b4",
@@ -129,6 +194,30 @@
       "writtenOn": "2022-10-18T08:31:29Z",
       "side": 1,
       "message": "Function names should not use a get prefix, unless the underlying concept uses the word \"get\" (e.g. an HTTP GET).\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ea29fb_9553832d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Got it! Thanks Patrick!",
+      "parentUuid": "b985cfbb_fd4357b4",
       "range": {
         "startLine": 243,
         "startChar": 5,
@@ -162,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a10f5c9_3bd5679c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03b693b1_8a869909",
+      "range": {
+        "startLine": 247,
+        "startChar": 25,
+        "endLine": 247,
+        "endChar": 28
+      },
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45363bed_b6a18a8f",
@@ -175,6 +288,30 @@
       "writtenOn": "2022-10-18T08:31:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 8
+      },
+      "revId": "6b192146324ae14e4791be19e7f5f6578255ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad69da9_0b7aba6a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-10-18T22:41:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45363bed_b6a18a8f",
       "range": {
         "startLine": 273,
         "startChar": 5,
