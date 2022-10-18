@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f6c27e_8d84c458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-10-18T16:42:16Z",
+      "side": 1,
+      "message": "This screenplay ID seems to correspond to \"Drag desk to reorder\" https://screenshot.googleplex.com/5LRiEWyg2U2FNTS\n\nShould this be tagged with `DeskTemplatesDelete` Tast test?\n\nLet\u0027s discuss the CUJs in https://docs.google.com/spreadsheets/d/1n3o6VXrUF5Uz14eB0zBBRtg0Skw3r6Sh1quKcKbw0yU/edit?resourcekey\u003d0-SOjFIcV3a_RdWwtLXl7DRw#gid\u003d1640666683 and see how to map CUJ with Tast tests.",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "6a0f3909cc4683d0fe1efc4addd2efb804cea4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
