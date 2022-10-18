@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
 )
@@ -62,6 +63,8 @@ func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.Sta
 	if err := uiauto.New(tconn).LeftClick(quicksettings.BluetoothDetailedViewPairNewDeviceButton)(ctx); err != nil {
 		s.Fatal("Failed to click the \"Pair new device\" button: ", err)
 	}
+
+	faillog.DumpUITreeOnError(ctx, s.OutDir(), true, tconn)
 
 	// Check if the Bluetooth pairing dialog was opened.
 	matcher := chrome.MatchTargetURL(bluetoothPairingDialogURL)
