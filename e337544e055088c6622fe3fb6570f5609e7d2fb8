@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fca74b7_b6486d16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-18T08:05:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab6e04c_7cc07fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-18T08:05:50Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81d4caf5_ae60cc1d",
@@ -60,6 +94,23 @@
         "endLine": 171,
         "endChar": 64
       },
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40b8275_baa9056a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-18T08:05:50Z",
+      "side": 1,
+      "message": "nit: missing .",
       "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
