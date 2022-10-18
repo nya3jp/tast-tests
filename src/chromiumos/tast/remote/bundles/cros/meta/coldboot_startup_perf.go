@@ -67,15 +67,12 @@ func coldbootStartupPerfOnce(ctx context.Context, s *testing.State, i, iteration
 	resultsDir := filepath.Join(s.OutDir(), fmt.Sprintf("subtest_results_%d", i))
 
 	flags := []string{
-		"-resultsdir=" + resultsDir,
 		"-var=lacros.StartupPerf.iterations=1",
 		"-var=lacros.StartupPerf.credentials=" + username + ":" + password,
 		"-var=skipInitialLogin=true",
 	}
 
-	if err := execStartupPerf(ctx, s, flags); err != nil {
-		s.Fatal("Failed to run tast: ", err)
-	}
+	execStartupPerf(ctx, s, flags, resultsDir)
 }
 
 func ColdbootStartupPerf(ctx context.Context, s *testing.State) {
@@ -100,9 +97,7 @@ func ColdbootStartupPerf(ctx context.Context, s *testing.State) {
 		"-var=skipRegularLogin=true",
 	}
 
-	if err := execStartupPerf(ctx, s, flags); err != nil {
-		s.Fatal("Failed to run tast: ", err)
-	}
+	execStartupPerf(ctx, s, flags, filepath.Join(s.OutDir(), "subtest_results_initial"))
 
 	for i := 0; i < iterations; i++ {
 		// Run the startup local test to actually get the metrics.
@@ -115,22 +110,20 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // execStartupPerf executes specific variants of the lacros.StartupPerf local test. The variant
 // chosen to run follows the same variant determined by suffix of the caller e.g.
 // meta.ColdbootStartupPerf.rootfs_primary calls lacros.StartupPerf.rootfs_primary.
-func execStartupPerf(ctx context.Context, s *testing.State, flags []string) error {
+func execStartupPerf(ctx context.Context, s *testing.State, flags []string, resultsDir string) {
 	variantName := strings.Split(s.TestName(), ".")[2]
-	if _, _, err := tastrun.Exec(ctx, s, "run", flags, []string{"lacros.StartupPerf." + variantName}); err != nil {
-		errors.Errorf("failed to run lacros.StartupPerf tast: %s", err)
-	}
-	return nil
+	_ = tastrun.RunAndEvaluate(ctx, s, flags, []string{"lacros.StartupPerf." + variantName}, resultsDir, tastrun.SkipPolicyDisallowSkipping)
 }
 
 // pickRandomCreds picks a random user and password from a list of credentials. Inspired by
 // remote_tests/ui/chrome_service_grpc.go.
 //
 // creds is a string containing multiple credentials separated by newlines:
-//  user1:pass1
-//  user2:pass2
-//  user3:pass3
-//  ...
+//
+//	user1:pass1
+//	user2:pass2
+//	user3:pass3
+//	...
 func pickRandomCreds(creds string) (string, string, error) {
 	// Pick a random line
 	lines := strings.Split(creds, "\n")
