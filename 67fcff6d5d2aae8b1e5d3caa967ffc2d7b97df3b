@@ -86,6 +86,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d904e5_512d5c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_canary_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-18T08:15:36Z",
+      "side": 1,
+      "message": "Replied in a following comment.",
+      "parentUuid": "6d05eb58_e2ca40c2",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9614ddde_4b4c0fed",
@@ -99,6 +117,41 @@
       "writtenOn": "2022-10-18T07:13:50Z",
       "side": 1,
       "message": "default with s.Fatal, just in case we add one and forget to implement it.",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a78a04_410f6ff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_canary_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-18T08:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9614ddde_4b4c0fed",
+      "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d5bce6_b269d691",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-18T08:15:36Z",
+      "side": 1,
+      "message": "This line is specifying `background\u003dtrue`, and `NewMemoryStressUnit` can switch whether the tab is background or not based on the flag, so the tab is background by default. If you want to switch the flag with the tast options I will implement it.",
       "revId": "67fcff6d5d2aae8b1e5d3caa967ffc2d7b97df3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
