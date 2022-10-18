@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f8b48d_ebef453d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T18:10:47Z",
+      "side": 1,
+      "message": "Thanks Navin, Avery!",
+      "revId": "5761b6ef1a530e19cb3b8004354f54ad773afa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e68eede4_cff038de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T18:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740da7f0_e27ff2a8",
+      "revId": "d0084b535482c1b1beeecc79f9d7602b518c0311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b08fbf_18029ff0",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-10-18T17:38:29Z",
       "side": 1,
       "message": "`testing.Poll` returns an `error` which needs to be checked. For example, see lines 95-108 here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d95",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 13
+      },
+      "revId": "d0084b535482c1b1beeecc79f9d7602b518c0311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bdaa23_dea224a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_chrome_tabs_tablet_mode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-18T18:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b08fbf_18029ff0",
       "range": {
         "startLine": 144,
         "startChar": 1,
