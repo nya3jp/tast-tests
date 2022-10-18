@@ -52,6 +52,24 @@
       "parentUuid": "4bb55245_16020c43",
       "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8926476e_f32d9bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities_crostini.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-18T00:30:16Z",
+      "side": 0,
+      "message": "Are you going to replace this test with crrev/c/3961141 moving it just to a `vm_host`? Is it okay if I could keep this CL focused on updating the lacros metadata to see whether it depends on lacros or not. If it helps I can leave a TODO for that.",
+      "parentUuid": "f9a1b09d_5816c939",
+      "revId": "4213b4951e19836152139cb632bf3dc1dc1aeb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
