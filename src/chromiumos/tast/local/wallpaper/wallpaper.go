@@ -133,7 +133,7 @@ func CloseWallpaperPicker() uiauto.Action {
 // WaitForWallpaperWithName checks that a text node exists inside the wallpaper app with the given name.
 // Requires the wallpaper app to be open.
 func WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {
-	wallpaperNameNode := nodewith.Name(fmt.Sprintf("Currently set %v", name)).Role(role.Heading).Ancestor(personalization.PersonalizationHubWindow)
+	wallpaperNameNode := nodewith.NameContaining(name).Role(role.Heading).Ancestor(personalization.PersonalizationHubWindow)
 	return ui.WaitUntilExists(wallpaperNameNode)
 }
 
