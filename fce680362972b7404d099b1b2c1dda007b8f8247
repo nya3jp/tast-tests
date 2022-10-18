@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "63e40eda_6d31dbec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330c8ab9_d86bf65d",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ddf9a1f2_8743d2f7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64867d71_291354a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1899d9_da35606b",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a14a47_8fb389bc",
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71812c88_6c8961d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a14a47_8fb389bc",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a2b767_99854b6e",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-18T13:12:01Z",
       "side": 1,
       "message": "Since we just setup the fake policy, the policy will always be what we expect it to be. If it isn\u0027t then it is a product bug so we can either remove this verification completely or we can change this to `exit`",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce62900_38098641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done - removed the verification.",
+      "parentUuid": "c4a2b767_99854b6e",
       "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a08f76_3a1c87ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done - removed the verification.",
+      "parentUuid": "c4aa8d6e_5f168d75",
+      "range": {
+        "startLine": 150,
+        "startChar": 19,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "876783f6_ad39061e",
@@ -126,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "177cbbe7_e74943d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "876783f6_ad39061e",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ce8ee5_5e3f6ad7",
@@ -139,6 +253,24 @@
       "writtenOn": "2022-10-18T13:12:01Z",
       "side": 1,
       "message": "If this method is not used anymore, can we remove it?",
+      "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75629514_be7263fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-10-18T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ce8ee5_5e3f6ad7",
       "revId": "fce680362972b7404d099b1b2c1dda007b8f8247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
