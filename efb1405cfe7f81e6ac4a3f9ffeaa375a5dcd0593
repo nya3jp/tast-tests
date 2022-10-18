@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a1ea4e_6fa017ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-18T02:38:22Z",
+      "side": 1,
+      "message": "Is there any reason that there is no bug number? \n\nPlease also run tast unit tests: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit tests passed.\n\nThanks.",
+      "revId": "efb1405cfe7f81e6ac4a3f9ffeaa375a5dcd0593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38decec0_4c9f5558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_click.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-18T02:38:22Z",
+      "side": 1,
+      "message": "Did you by-pass the linter? The correct one should be\n\n```\n// Copyright 2022 The Chromium OS Authors.\n```",
+      "revId": "efb1405cfe7f81e6ac4a3f9ffeaa375a5dcd0593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
