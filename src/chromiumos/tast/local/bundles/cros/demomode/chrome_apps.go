@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/demomode/fixture"
 	"chromiumos/tast/testing"
 )
@@ -67,17 +66,5 @@ func ChromeApps(ctx context.Context, s *testing.State) {
 	highlightsWindow := nodewith.Name("Google Retail Chromebook").First()
 	if err := ui.WaitUntilExists(highlightsWindow)(ctx); err != nil {
 		s.Fatal("Failed to wait until Highlights App exists: ", err)
-	}
-
-	s.Log("Waiting for the Attract Loop")
-	// Unfortunately both Chrome Apps share the same element name, so we have to
-	// identify the Attract Loop app by the fact that it's focused on startup
-	// (unlike the Highlights app).
-	//
-	// TODO(b/251847834): Find a way to differentiate these apps that doesn't rely
-	// on implementation quirks.
-	attractLoopView := nodewith.State(state.Focused, true).Name("Google Retail Chromebook")
-	if err := ui.WaitUntilExists(attractLoopView)(ctx); err != nil {
-		s.Fatal("Failed to wait until the Attract Loop exists: ", err)
 	}
 }
