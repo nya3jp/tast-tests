@@ -171,16 +171,14 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get browser start time: ", err)
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		defer l.Close(ctx)
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to create a TestConn instance for lacros: ", err)
-		}
 	}
-
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
+	}
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
@@ -223,7 +221,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {

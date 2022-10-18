@@ -79,7 +79,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, scenario CitrixScenario, p *Tes
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(browser.TypeAsh, tconn, nil, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 

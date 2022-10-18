@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -162,13 +162,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		defer l.Close(ctx)
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros test API conn")
-		}
+	}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
 	}
 	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
@@ -214,7 +213,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if params.traceConfigPath != "" {

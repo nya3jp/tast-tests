@@ -82,15 +82,14 @@ func Run(ctx context.Context, outDir, traceConfigPath string, cr *chrome.Chrome,
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros test API conn")
-		}
 		br = l.Browser()
 	}
 	defer cuj.CloseAllWindows(ctx, tconn)
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
+	}
 
 	options := cujrecorder.NewPerformanceCUJOptions()
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, options)
@@ -98,7 +97,7 @@ func Run(ctx context.Context, outDir, traceConfigPath string, cr *chrome.Chrome,
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if traceConfigPath != "" {

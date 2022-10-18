@@ -168,13 +168,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		defer l.Close(ctx)
 	}
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get lacros test API conn: ", err)
-		}
+	}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
 	}
 
 	if pauseMode == Lock {
@@ -214,7 +213,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {

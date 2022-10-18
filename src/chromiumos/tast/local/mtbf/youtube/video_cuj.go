@@ -166,15 +166,13 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}
 
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to create test API conn")
-		}
 	}
-
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
+	}
 	videoSources := basicVideoSrc
 	if tier == cuj.Premium {
 		videoSources = premiumVideoSrc
@@ -207,7 +205,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 	if traceConfigPath != "" {
@@ -267,7 +265,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				}
 			}(cleanupCtx)
 
-			return videoScenario(ctx, resources, param, bTconn, br, videoApp, videoSource, tabChecker)
+			return videoScenario(ctx, resources, param, br, videoApp, videoSource, tabChecker)
 		})
 	}
 
@@ -310,8 +308,8 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	return nil
 }
 
-func videoScenario(ctx context.Context, resources TestResources, param TestParams, bTconn *chrome.TestConn,
-	br *browser.Browser, videoApp VideoApp, videoSrc VideoSrc, tabChecker *cuj.TabCrashChecker) error {
+func videoScenario(ctx context.Context, resources TestResources, param TestParams, br *browser.Browser,
+	videoApp VideoApp, videoSrc VideoSrc, tabChecker *cuj.TabCrashChecker) error {
 
 	var (
 		appName         = param.App

@@ -527,13 +527,12 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 	s.Log("Browser start ms: ", browserStartTime)
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get lacros test API Conn: ", err)
-		}
+	}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
 	}
 	defer func(ctx context.Context) {
 		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
@@ -583,7 +582,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		s.Fatal("Failed to create a recorder, error: ", err)
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(bt, tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {
@@ -684,7 +683,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			// After tab switching, the current focused tab should be active again so
 			// reconnect should succeed.
 			if err := tab.reconnect(ctx, cr); err != nil {
-				return errors.Wrap(err, "cdp connection is invalid and failed to reconnrct")
+				return errors.Wrap(err, "cdp connection is invalid and failed to reconnect")
 			}
 
 			timeStart := time.Now()
