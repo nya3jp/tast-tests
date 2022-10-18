@@ -45,6 +45,8 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		userName       = "foo@bar.baz"
 		userPassword   = "secret"
 		passwordLabel  = "online-password"
+		backupPassword = "i-forgot-secret"
+		backupLabel    = "backup-password"
 		userPin        = "12345"
 		pinLabel       = "luggage-pin"
 		smartCardLabel = "smart-card-label"
@@ -141,16 +143,26 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	// Expected configured auth factors at different points in the test.
+	// Expected configured factors at the start and the end.
 	var expectedOnlyPassword = []*uda.AuthFactorWithStatus{{
 		AuthFactor: &uda.AuthFactor{
 			Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
 			Label: passwordLabel,
 		},
 	}}
+
+	// Expected configured factors. This will be updated during the test as
+	// factors are added. We can't define this as a fixed value up front because
+	// what factors get added depend on what factors are available.
 	expectedConfiguredFactors := expectedOnlyPassword
 
 	// Some individual factors for types that might be included, depending on the hardware.
+	var expectedBackup = &uda.AuthFactorWithStatus{
+		AuthFactor: &uda.AuthFactor{
+			Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
+			Label: backupLabel,
+		},
+	}
 	var expectedPin = &uda.AuthFactorWithStatus{
 		AuthFactor: &uda.AuthFactor{
 			Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN,
@@ -162,15 +174,6 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 			Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD,
 			Label: smartCardLabel,
 		},
-	}
-
-	// The final set of auth factors at the end of the test depends on whether or not PIN is supported.
-	expectedFinalConfiguredFactors := expectedOnlyPassword
-	if supportsPin {
-		expectedFinalConfiguredFactors = append(expectedFinalConfiguredFactors, expectedPin)
-	}
-	if supportsSmartCard {
-		expectedFinalConfiguredFactors = append(expectedFinalConfiguredFactors, expectedSmartCard)
 	}
 
 	// Expected supported auth factors at different points in the test.
@@ -195,7 +198,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		expectedNoKioskSupported = append(expectedNoKioskSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_CRYPTOHOME_RECOVERY)
 	}
 
-	// List the auth factors for the user. There should be no factors, configured, an maximum factors supported.
+	// List the auth factors for the user. There should be no factors, configured, and maximum factors supported.
 	listFactorsAtStartReply, err := client.ListAuthFactors(ctx, userName)
 	if err != nil {
 		s.Fatal("Failed to list auth factors before adding any factors: ", err)
@@ -228,16 +231,30 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Mismatch in supported auth factors after adding password (-got, +want): ", err)
 	}
 
+	// Add a second backup password auth factor to the user.
+	if err := client.AddAuthFactor(ctx, authSessionID, backupLabel, backupPassword); err != nil {
+		s.Fatal("Failed to add password auth factor: ", err)
+	}
+	expectedConfiguredFactors = append(expectedConfiguredFactors, expectedBackup)
+	listFactorsAfterAddBackupPasswordReply, err := client.ListAuthFactors(ctx, userName)
+	if err != nil {
+		s.Fatal("Failed to list auth factors after adding backup password: ", err)
+	}
+	if err := cryptohomecommon.ExpectAuthFactorsWithTypeAndLabel(
+		listFactorsAfterAddBackupPasswordReply.ConfiguredAuthFactorsWithStatus, expectedConfiguredFactors); err != nil {
+		s.Fatal("Mismatch in configured auth factors after adding backup password (-got, +want): ", err)
+	}
+	if err := cryptohomecommon.ExpectAuthFactorTypes(
+		listFactorsAfterAddBackupPasswordReply.SupportedAuthFactors, expectedNoKioskSupported); err != nil {
+		s.Fatal("Mismatch in supported auth factors after adding backup password (-got, +want): ", err)
+	}
+
 	if supportsPin {
 		// Add a PIN auth factor.
 		if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
 			s.Fatal("Failed to add PIN auth factor: ", err)
 		}
-
-		// Update configured auth factors base on what we expect to see.
 		expectedConfiguredFactors = append(expectedConfiguredFactors, expectedPin)
-
-		// List the auth factors for the user. There should be password and pin.
 		listFactorsAfterAddPinReply, err := client.ListAuthFactors(ctx, userName)
 		if err != nil {
 			s.Fatal("Failed to list auth factors after adding PIN: ", err)
@@ -252,17 +269,13 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// TODO(b/241016536) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
-	if supportsSmartCard {
+	// TODO(b/254274761) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
+	if supportsSmartCard && !fixture.UssEnabled {
 		// Add a Smart Card auth factor.
 		if err := client.AddSmartCardAuthFactor(ctx, authSessionID, smartCardLabel, authConfig); err != nil {
 			s.Fatal("Failed to add Smart Card auth factor: ", err)
 		}
-
-		// Update configured auth factors we expect to see.
 		expectedConfiguredFactors = append(expectedConfiguredFactors, expectedSmartCard)
-
-		// List the auth factors for the user. There should be password and pin.
 		listFactorsAfterAddSmartCardReply, err := client.ListAuthFactors(ctx, userName)
 		if err != nil {
 			s.Fatal("Failed to list auth factors after adding Smart Card: ", err)
@@ -277,6 +290,34 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Remove all the added factors, except for the original password.
+	if err := client.RemoveAuthFactor(ctx, authSessionID, backupLabel); err != nil {
+		s.Fatal("Failed to remove PIN backup password factor: ", err)
+	}
+	if supportsPin {
+		if err := client.RemoveAuthFactor(ctx, authSessionID, pinLabel); err != nil {
+			s.Fatal("Failed to remove PIN auth factor: ", err)
+		}
+	}
+	// TODO(b/254274761) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
+	if supportsSmartCard && !fixture.UssEnabled {
+		if err := client.RemoveAuthFactor(ctx, authSessionID, smartCardLabel); err != nil {
+			s.Fatal("Failed to remove Smart Card auth factor: ", err)
+		}
+	}
+	listFactorsAfterRemoveReply, err := client.ListAuthFactors(ctx, userName)
+	if err != nil {
+		s.Fatal("Failed to list auth factors after removing most factors: ", err)
+	}
+	if err := cryptohomecommon.ExpectAuthFactorsWithTypeAndLabel(
+		listFactorsAfterRemoveReply.ConfiguredAuthFactorsWithStatus, expectedOnlyPassword); err != nil {
+		s.Fatal("Mismatch in configured auth factors after removing most factors (-got, +want): ", err)
+	}
+	if err := cryptohomecommon.ExpectAuthFactorTypes(
+		listFactorsAfterRemoveReply.SupportedAuthFactors, expectedNoKioskSupported); err != nil {
+		s.Fatal("Mismatch in supported auth factors after removing most factors (-got, +want): ", err)
+	}
+
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults: ", err)
@@ -288,11 +329,11 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list auth factors after unmount: ", err)
 	}
 	if err := cryptohomecommon.ExpectAuthFactorsWithTypeAndLabel(
-		listFactorsAfterUnmount.ConfiguredAuthFactorsWithStatus, expectedFinalConfiguredFactors); err != nil {
-		s.Fatal("Mismatch in configured auth factors after adding unmount (-got, +want): ", err)
+		listFactorsAfterUnmount.ConfiguredAuthFactorsWithStatus, expectedOnlyPassword); err != nil {
+		s.Fatal("Mismatch in configured auth factors after unmount (-got, +want): ", err)
 	}
 	if err := cryptohomecommon.ExpectAuthFactorTypes(
 		listFactorsAfterUnmount.SupportedAuthFactors, expectedNoKioskSupported); err != nil {
-		s.Fatal("Mismatch in supported auth factors after adding unmount (-got, +want): ", err)
+		s.Fatal("Mismatch in supported auth factors after unmount (-got, +want): ", err)
 	}
 }
