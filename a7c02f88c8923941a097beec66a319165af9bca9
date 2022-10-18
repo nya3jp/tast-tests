@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60867bc3_0e75f867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any meaningful difference between two downloads and three downloads. Let\u0027s just use two since the third only serves to add additional runtime and increased chance of test flakiness",
+      "range": {
+        "startLine": 77,
+        "startChar": 60,
+        "endLine": 77,
+        "endChar": 75
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a62b55_e1a96512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "If we use the same server, I\u0027m not sure we need multiple unblock channels?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 83
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d3adf6_ddb3d526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Do we need a new server per download? Can we reuse the same server?",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 39
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728dc539_9067899b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Why is that?",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 85
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc398786_2610812f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Same question as above",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 35
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bb81e0_b2b41816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Why might the menu not appear immediately?",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 4
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b904edce_c5cd9e71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Can we merge the single and multiple cases together? They should do mostly the same thing",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 1
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0e685a_36a4030e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Same question as above",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 35
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32e3d07_21e923da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Can these be merged?",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 1
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761c7e6c_b3485562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure there is value in passing this in given its always the same finder",
+      "range": {
+        "startLine": 546,
+        "startChar": 43,
+        "endLine": 546,
+        "endChar": 64
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8794e27c_704f1ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "nit: SelectAllDownloadChips",
+      "range": {
+        "startLine": 546,
+        "startChar": 5,
+        "endLine": 546,
+        "endChar": 19
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fc1bee_3d6c08fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Are you sure that\u0027s not the pin/unpin button that just shows up when the chip is hovered over?",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 81
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dde2c9_3d5aeed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Can we use `ash.FindWindow()` and match against the window Title?",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 1
+      },
+      "revId": "a7c02f88c8923941a097beec66a319165af9bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
