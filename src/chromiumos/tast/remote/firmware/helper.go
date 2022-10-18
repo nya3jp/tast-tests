@@ -1123,9 +1123,63 @@ func (h *Helper) FormatUSB(ctx context.Context, usbdev string) error {
 	if usbdev == "" {
 		return errors.New("no USB key detected. Please run CheckUSBOnServoHost")
 	}
+	// From Stainless logs, one repetitive error was about not being able to open the USB.
+	// When we ssh'ed into their DUTs, it appeared that some USBs would drop connection
+	// after a short period of time. Run validateUSBConn to verify if the usb device disappears
+	// without any intervention.
+	defer func() error {
+		if err := h.Servo.SetString(ctx, "usb3_pwr_en", "on"); err != nil {
+			return errors.Wrap(err, "failed to power on USB")
+		}
+		return nil
+	}()
+	validateUSBConn := func() error {
+		testing.ContextLog(ctx, "Enabling USB connection to DUT")
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			return errors.Wrap(err, "failed to set USBMuxDUT")
+		}
+		testing.ContextLog(ctx, "Power cycling the USB")
+		if err := h.Servo.SetString(ctx, "usb3_pwr_en", "off"); err != nil {
+			return errors.Wrap(err, "failed to power off USB")
+		}
+		if err := h.Servo.SetString(ctx, "usb3_pwr_en", "on"); err != nil {
+			return errors.Wrap(err, "failed to power on USB")
+		}
+		testing.ContextLog(ctx, "Waiting for a short delay")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep")
+		}
+		// The bash commands would attempt steps as follows:
+		// 1. Save the lsusb result to a temporary file.
+		// 2. Sleep for 2 minutes.
+		// 3. Compare the current lsusb output with the previous file.
+		testing.ContextLog(ctx, "Attempting to validate USB connection")
+		workPath := "/tmp/lsusb.1"
+		checkUSBCmd := fmt.Sprintf(
+			"lsusb > %s && "+
+				"sleep 120s && "+
+				"echo $(lsusb | diff - %s -c | grep -h '^[+-][[:blank:]]') && "+
+				"rm %s",
+			workPath, workPath, workPath)
+		out, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", checkUSBCmd).Output(ssh.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to check for lsusb")
+		}
+		deviceDiff := strings.TrimSpace(string(out))
+		if strings.Contains(deviceDiff, "+") {
+			return errors.Errorf("Device %s disappeared after a short delay", strings.TrimPrefix(deviceDiff, "+ "))
+		}
+		return nil
+	}
 	testing.ContextLog(ctx, "Formatting the USB device")
 	if err := h.ServoProxy.RunCommand(ctx, true, "mkfs.vfat", "-I", usbdev); err != nil {
-		return errors.Wrap(err, "failed to format the usb device")
+		var usbConnVerified bool
+		if err := validateUSBConn(); err != nil {
+			testing.ContextLog(ctx, "Unable to verify USB connection on DUT: ", err)
+		} else {
+			usbConnVerified = true
+		}
+		return errors.Wrapf(err, "failed to format the usb device, usb connection verified: %t", usbConnVerified)
 	}
 	return nil
 }
