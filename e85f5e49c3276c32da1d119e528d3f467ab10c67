@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4dfd82f_3cdb7c51",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-18T11:11:31Z",
+      "side": 1,
+      "message": "I tried, and it looked really bad.\nBut I forgot to move the `var errs []error` part back here before this defer.",
+      "parentUuid": "ac5ddd85_2d32c7ca",
+      "revId": "e85f5e49c3276c32da1d119e528d3f467ab10c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4e09330_b697ee54",
         "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
         "patchSetId": 1
@@ -54,6 +72,54 @@
       "writtenOn": "2022-10-17T16:11:59Z",
       "side": 1,
       "message": "nit: move to the front",
+      "range": {
+        "startLine": 195,
+        "startChar": 82,
+        "endLine": 195,
+        "endChar": 92
+      },
+      "revId": "e85f5e49c3276c32da1d119e528d3f467ab10c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c807023_9c2c674d",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-18T11:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e09330_b697ee54",
+      "range": {
+        "startLine": 195,
+        "startChar": 101,
+        "endLine": 195,
+        "endChar": 115
+      },
+      "revId": "e85f5e49c3276c32da1d119e528d3f467ab10c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c1dce0c_82770e3a",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-18T11:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a384cc_fe72c825",
       "range": {
         "startLine": 195,
         "startChar": 82,
