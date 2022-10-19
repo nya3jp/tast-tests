@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc92fc9_4e2acfe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-19T00:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be5e69ed_ed319338",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 29
+      },
+      "revId": "401722b3cf6418666f6c0cfefb6b7354a863f17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3de013f_d481d2c4",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-10-18T23:06:44Z",
       "side": 1,
       "message": "Can we just remove this check and run swipe gesture unconditionally. And maybe add a wait for fullscreen all apps launcher state at the end.\n\n(e.g. test that calling DragToShowHomescreen does not hang if called when launcher is already shown, and that it closes search results UI if called when search is active)",
+      "revId": "401722b3cf6418666f6c0cfefb6b7354a863f17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e36dcd_37b2c904",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-19T00:47:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b3de013f_d481d2c4",
       "revId": "401722b3cf6418666f6c0cfefb6b7354a863f17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
