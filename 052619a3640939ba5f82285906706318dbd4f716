@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5e6aea_dca4041e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-19T17:17:22Z",
+      "side": 1,
+      "message": "You should probably be able to combine these two tests into one test by having params that specify `ExtraAttr`s with the sim type and have the string we want to check against in the value field for those params, if I\u0027m understanding right.",
+      "revId": "052619a3640939ba5f82285906706318dbd4f716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6c7d12_5d4067cf",
+        "filename": "src/chromiumos/tast/local/cellular/roaming_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-19T17:17:22Z",
+      "side": 1,
+      "message": "It\u0027s not necessarily true that this will connect to a *roaming* network specifically, right? Maybe ConfigureRoamingAndConnect?",
+      "revId": "052619a3640939ba5f82285906706318dbd4f716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
