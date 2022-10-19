@@ -151,6 +151,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b1c767b_c0a5c9b3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/cdputil/conn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-19T17:50:13Z",
+      "side": 1,
+      "message": "how about just using `return c.cl.Target.ActivateTarget(ctx, args)`?",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6de645_347f5fdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/conn_service_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-19T17:50:13Z",
+      "side": 1,
+      "message": "Please remove before final submission.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f45f547_b06a8d10",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-19T17:50:13Z",
+      "side": 1,
+      "message": "nit: trailing space.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6bd1517_e705fc99",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-19T17:50:13Z",
+      "side": 1,
+      "message": "nit: trailing space.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99826b21_c7d8066b",
         "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
         "patchSetId": 4
