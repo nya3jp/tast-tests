@@ -19,8 +19,9 @@ import (
 // parameters.
 func newRoutineParams(routine string) croshealthd.RoutineParams {
 	return croshealthd.RoutineParams{
-		Routine: routine,
-		Cancel:  false,
+		Routine:            routine,
+		Cancel:             false,
+		WearLevelThreshold: 50,
 	}
 }
 
