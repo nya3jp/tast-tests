@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950ddb9b_8cdd2375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-19T15:48:06Z",
+      "side": 1,
+      "message": "Can we start using the protobuf bindings? I believe we have cryptohome\u0027s protos compiled to Golang these days (`chromiumos/system_api/user_data_auth_proto` and `chromiumos/system_api/cryptohome_proto`).",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "ecc9442505bfc9f200b8d68a04ebb19e810b36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
