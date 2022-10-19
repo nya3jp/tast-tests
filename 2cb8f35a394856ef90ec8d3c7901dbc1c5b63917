@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efb5aef4_8539744c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-19T03:51:54Z",
+      "side": 1,
+      "message": "I disagree. This is similar to lines 185, 208, 218 here (although it is my own code):\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go;drc\u003d342a05393bc063140f11b1ebdf5123a8c2ba2780;l\u003d185",
+      "parentUuid": "1f80a1d3_921a7bad",
+      "range": {
+        "startLine": 217,
+        "startChar": 116,
+        "endLine": 217,
+        "endChar": 117
+      },
+      "revId": "2cb8f35a394856ef90ec8d3c7901dbc1c5b63917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7387d0f_42cc0bcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 10
