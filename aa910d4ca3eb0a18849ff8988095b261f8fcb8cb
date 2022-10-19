@@ -16,6 +16,24 @@
       "message": "FYI none of the tests that make use of this wrapper run in the CQ (yet, I am planning to add a baseline one soon), so passing the CQ is not enough to ensure the wrapper works, at least one of the tests need to be run manually :)",
       "revId": "aa910d4ca3eb0a18849ff8988095b261f8fcb8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af48a16_57b21e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1244248
+      },
+      "writtenOn": "2022-10-19T10:35:20Z",
+      "side": 1,
+      "message": "Thanks for the info!",
+      "parentUuid": "6b3ab2cd_9085e0f5",
+      "revId": "aa910d4ca3eb0a18849ff8988095b261f8fcb8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
