@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23471fab_8d340eb6",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T14:23:36Z",
+      "side": 1,
+      "message": "I think we\u0027d like to keep this as feature, rather than browser type. Instead, \"autotestPrivateSupported\" or something?",
+      "revId": "1543fc8919048ac87701d42c54c7f3d799950ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
