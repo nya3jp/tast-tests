@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4d67c2_0ca6809b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_all_desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T20:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767fd7b5_d7720cfb",
+      "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2505efe9_76b9c730",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-19T17:19:54Z",
       "side": 1,
       "message": "nit: will the err clear enough for engineer to understand the failure?",
+      "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7262c0ca_acc51026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_all_desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T20:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2505efe9_76b9c730",
       "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6969068d_00092214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T20:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dfed874_b7bce522",
+      "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d27bfe5_3c4d8617",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-19T18:16:03Z",
       "side": 1,
       "message": "do we need this wait here? since its per desk, there is no activation on alt+tab relase right? and the tests behind this don\u0027t seem to fail\n\nsleeping unless neccessary is not preferred since a sleep too short can lead to flakiness but a sleep too long will make tests run longer than needed",
+      "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe721e8b_eae7b597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T20:23:56Z",
+      "side": 1,
+      "message": "Thanks for the observations!",
+      "parentUuid": "3d27bfe5_3c4d8617",
       "revId": "6f0f790915c25dbe5b217b08879de82180f7ab93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
