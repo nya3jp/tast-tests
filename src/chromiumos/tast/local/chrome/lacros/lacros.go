@@ -35,7 +35,7 @@ type Lacros struct {
 
 // Browser returns a Browser instance.
 func (l *Lacros) Browser() *browser.Browser {
-	return browser.New(l.sess)
+	return browser.New(l.sess, false)
 }
 
 // StartTracing starts trace events collection for the selected categories. Android
@@ -181,5 +181,5 @@ func (l *Lacros) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // TestAPIConn returns a new chrome.TestConn instance for the lacros browser.
 // This must not be called after Close().
 func (l *Lacros) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
-	return l.sess.TestAPIConn(ctx)
+	return l.Browser().TestAPIConn(ctx)
 }
