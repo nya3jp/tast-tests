@@ -39,6 +39,30 @@
       },
       "revId": "70f94858a26c0f6fdbcc521e9680ea9212973032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93ed779_fe543c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/conference_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-19T10:35:07Z",
+      "side": 1,
+      "message": "Comments are still valid, the changes are just to unify the use of a common function to achieve the same action. `SetMirrorDisplay` sets DUT to mirror mode, set false(unset mirror display).",
+      "parentUuid": "6eeb995c_76f945cd",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "70f94858a26c0f6fdbcc521e9680ea9212973032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
