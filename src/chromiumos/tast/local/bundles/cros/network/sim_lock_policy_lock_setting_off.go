@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -102,7 +103,8 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get name: ", err)
 	}
 
-	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button).ClassName("subpage-arrow").First()
+	connectedProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Connected.*"))
+	var networkNameDetail = nodewith.NameContaining(networkName).ClassName("subpage-arrow").Role(role.Button).Ancestor(connectedProfile.First())
 
 	if err != nil {
 		s.Fatal("Failed to ensure sim unlocked: ", err)
@@ -148,6 +150,18 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open mobile data subpage: ", err)
 			}
 			ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+
+			refreshProfileText := nodewith.NameStartingWith("Refreshing profile list").Role(role.StaticText)
+			if err := app.WithTimeout(5 * time.Second).WaitUntilExists(refreshProfileText)(ctx); err == nil {
+				s.Log("Wait until refresh profile finishes")
+				if err := app.WithTimeout(5 * time.Minute).WaitUntilGone(refreshProfileText)(ctx); err != nil {
+					s.Fatal("Failed to wait until refresh profile complete: ", err)
+				}
+			}
+
+			if err := ui.WaitUntilExists(networkNameDetail)(ctx); err != nil {
+				s.Fatal("Could not find connected mobile network")
+			}
 
 			if err := uiauto.Combine("Go to detail page and expand advanced section",
 				ui.LeftClick(networkNameDetail),
