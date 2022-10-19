@@ -68,6 +68,23 @@
       "message": "Thanks for the fast review!",
       "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade64e4a_2401a95d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-19T00:11:30Z",
+      "side": 1,
+      "message": "Sync\u0027ed the codebase, the test can still pass locally. Retry the submit..",
+      "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
