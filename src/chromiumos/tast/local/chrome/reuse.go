@@ -130,7 +130,7 @@ func compareExtensions(cfg *config.Config) error {
 
 // compareUserLogin checks if the configured user has logged in.
 func compareUserLogin(ctx context.Context, sess *driver.Session, email string) error {
-	conn, err := sess.TestAPIConn(ctx)
+	conn, err := sess.TestAPIConn(ctx, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to establish Chrome connection")
 	}
@@ -155,7 +155,7 @@ func compareUserLogin(ctx context.Context, sess *driver.Session, email string) e
 
 // compareConfig compares the configuration between new and existing Chrome sessions.
 func compareConfig(ctx context.Context, sess *driver.Session, cfg *config.Config) error {
-	conn, err := sess.TestAPIConn(ctx)
+	conn, err := sess.TestAPIConn(ctx, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to establish Chrome connection")
 	}

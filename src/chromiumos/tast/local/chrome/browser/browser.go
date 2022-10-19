@@ -29,14 +29,15 @@ const (
 	TypeLacros Type = "lacros"
 )
 
-// Browser consists of just a Chrome session.
+// Browser consists of just a Chrome session and the type.
 type Browser struct {
 	sess *driver.Session
+	typ  Type
 }
 
 // New creates a new Browser instance from an existing Chrome session.
-func New(sess *driver.Session) *Browser {
-	return &Browser{sess}
+func New(sess *driver.Session, typ Type) *Browser {
+	return &Browser{sess, typ}
 }
 
 // CreateTargetOption is cpdutil.CreateTargetOption.
@@ -98,7 +99,11 @@ type TestConn = driver.TestConn
 
 // TestAPIConn returns a new TestConn instance.
 func (b *Browser) TestAPIConn(ctx context.Context) (*TestConn, error) {
-	return b.sess.TestAPIConn(ctx)
+	autotestPrivateEnabled := true
+	if b.typ == TypeLacros {
+		autotestPrivateEnabled = false
+	}
+	return b.sess.TestAPIConn(ctx, autotestPrivateEnabled)
 }
 
 // TraceOption is cpdutil.TraceOption.
