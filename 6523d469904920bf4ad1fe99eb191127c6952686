@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a542334_7466e663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-19T19:45:30Z",
+      "side": 1,
+      "message": "OK, it seems like we don\u0027t actually touch anything shill-related until L48 though, which is why I was wondering. I think that\u0027s a problem elsewhere as well so it can be cleaned up later.",
+      "parentUuid": "ac2ee200_183341b1",
+      "revId": "6523d469904920bf4ad1fe99eb191127c6952686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5229374_eec6df34",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
         "patchSetId": 1
