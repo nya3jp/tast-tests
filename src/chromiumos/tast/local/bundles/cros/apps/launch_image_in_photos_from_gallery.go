@@ -40,7 +40,6 @@ func init() {
 		Contacts: []string{
 			"backlight-swe@google.com",
 			"bugsnash@chromium.org",
-			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      8 * time.Minute,

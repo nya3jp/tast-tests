@@ -35,7 +35,6 @@ func init() {
 		Desc:         "Launch Gallery APP on opening supported files",
 		Contacts: []string{
 			"backlight-swe@google.com",
-			"shengjun@chromium.org",
 		},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
