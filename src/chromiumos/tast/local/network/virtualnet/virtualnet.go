@@ -200,15 +200,7 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 		}
 	}()
 
-	ipv4Subnet, err := pool.AllocNextIPv4Subnet()
-	if err != nil {
-		return nil, nil, nil, errors.Wrap(err, "failed to allocate v4 subnet")
-	}
-	ipv6Subnet, err := pool.AllocNextIPv6Subnet()
-	if err != nil {
-		return nil, nil, nil, errors.Wrap(err, "failed to allocate v6 subnet")
-	}
-	if err := server.ConnectToRouter(ctx, router, ipv4Subnet, ipv6Subnet); err != nil {
+	if err := server.ConnectToRouterWithPool(ctx, router, pool); err != nil {
 		return nil, nil, nil, errors.Wrap(err, "failed to connect server to router")
 	}
 
