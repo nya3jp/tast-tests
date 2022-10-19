@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc2c58a_dffc27e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-19T14:05:00Z",
+      "side": 1,
+      "message": "+cc acostinas@ who will certainly be happy to know DHCP WPAD has now tast coverage.",
+      "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5037375_cad95d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_web_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-19T14:05:00Z",
+      "side": 1,
+      "message": "nit: same comment as for classless routes, we could add in () the dhcp option 252 tested.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3f2021_b27b347f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_web_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-19T14:05:00Z",
+      "side": 1,
+      "message": "I am not completely sure if WPAD found PAC URLs are handled directly by Lacros or indirectly through Ash, but actually this might be worth checking with and without Lacros, although that would mean checking that Lacros has the correct settings which is completely out of scope here. Just some thoughts for some possible follow-up tast work.\n\nAndreea, any good suggestion to check if Ash and Lacros would pick up the WPAD PAC URL ? I believe WPAD is not automatically applied right ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
