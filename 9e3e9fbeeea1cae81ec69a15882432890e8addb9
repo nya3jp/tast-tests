@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b99c8f_0b0e5714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-19T23:40:47Z",
+      "side": 1,
+      "message": "Thanks for the feedback.\n\nThe fallthrough could certainly be surprising. Maybe the current behavior is best - fail the test and push the test triager to file a ticket to make sure the device is able to identify itself.\n\nThere is an intersection of two state dimensions:\n\nA. Whether the fileType identifier can be determined for a given type.\nB. Whether there is an expectation file for that particular type.\n\nWe cannot determine B if A is false.\n\nIf the model cannot be found using `cros_config` or the hardware probe cannot find the chipset, then the device is probably in early bringup. These requirements should probably be met before putting the devices into the lab.\n\nTo help with early bringup manual testing, your request to disable expectations via a runtime variable will help. I\u0027ll wait to move the graphics package (crrev.com/c/3961146) before adding the \"disable expectations\" runtime variable.\n\nAs for this CL, I think it is right to abandon it in favor of fixing the model finding code as needed. This means either by fixing `cros_config` on affected devices as they come up, or finding a more reliable means of determining the model.",
+      "parentUuid": "0b7ba31f_7b36e306",
+      "revId": "9e3e9fbeeea1cae81ec69a15882432890e8addb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab24f996_68ca1697",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-19T23:15:38Z",
       "side": 1,
       "message": "%s maybe for consistency? But why print theFileType twice?",
+      "range": {
+        "startLine": 231,
+        "startChar": 44,
+        "endLine": 231,
+        "endChar": 46
+      },
+      "revId": "9e3e9fbeeea1cae81ec69a15882432890e8addb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5530cfee_18892356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-19T23:40:47Z",
+      "side": 1,
+      "message": "Agreed about %s.\n\nI was printing the file type twice since the `continue` would allow for the code to fall through to another expectations file. From your other comment, I am also thinking that the fall through behavior would be confusing and surprising for users.",
+      "parentUuid": "ab24f996_68ca1697",
       "range": {
         "startLine": 231,
         "startChar": 44,
