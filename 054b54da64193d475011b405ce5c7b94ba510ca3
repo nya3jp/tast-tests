@@ -46,6 +46,30 @@
       },
       "revId": "054b54da64193d475011b405ce5c7b94ba510ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fcf17f_e8ed1b4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-19T18:50:36Z",
+      "side": 1,
+      "message": "+1\n\nIt\u0027s one thing to make tests get normal software/UI operations in order if needed for their test (Chrome started; logged in; open/close windows; reset daemon state), but it\u0027s another to know we\u0027re even running the right software at all. Verity-disable is an invasive operation which has wide-ranging impacts, and not all tests even *can* do this reasonably (no more local tests?).\n\nI\u0027d rather push on the test-runner/TLS/${whatever} side of things than encourage this patch.",
+      "parentUuid": "ddb367b0_5723d410",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "054b54da64193d475011b405ce5c7b94ba510ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
