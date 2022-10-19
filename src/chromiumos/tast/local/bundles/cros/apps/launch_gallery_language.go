@@ -27,7 +27,6 @@ func init() {
 		Desc:         "Launch Gallery APP in different system languages",
 		Contacts: []string{
 			"backlight-swe@google.com",
-			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
