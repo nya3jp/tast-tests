@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c71de13_b3d36863",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-19T01:31:01Z",
+      "side": 1,
+      "message": "nit: consider adding constants for this rather than boolean",
+      "range": {
+        "startLine": 108,
+        "startChar": 104,
+        "endLine": 108,
+        "endChar": 121
+      },
+      "revId": "c253555f1e5302ff48f7c1152514df18ac289a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
