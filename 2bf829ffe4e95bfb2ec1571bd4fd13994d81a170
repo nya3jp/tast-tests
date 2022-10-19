@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd6d024_1deea16a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516057
+      },
+      "writtenOn": "2022-10-19T20:03:24Z",
+      "side": 1,
+      "message": "Dry-run failing, chumping with sheriff approval",
+      "revId": "2bf829ffe4e95bfb2ec1571bd4fd13994d81a170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
