@@ -52,15 +52,13 @@ func init() {
 
 func UpdatePassword(ctx context.Context, s *testing.State) {
 	const (
-		userName                         = "foo@bar.baz"
-		oldUserPassword                  = "old secret"
-		newUserPassword                  = "new secret"
-		passwordLabel                    = "online-password"
-		wrongLabel                       = "wrong label"
-		testFile                         = "file"
-		testFileContent                  = "content"
-		cryptohomeAuthorizationKeyFailed = 3
-		cryptohomeErrorKeyNotFound       = 15
+		userName        = "foo@bar.baz"
+		oldUserPassword = "old secret"
+		newUserPassword = "new secret"
+		passwordLabel   = "online-password"
+		wrongLabel      = "wrong label"
+		testFile        = "file"
+		testFileContent = "content"
 	)
 
 	userParam := s.Param().(updatePasswordParams)
@@ -178,8 +176,9 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error for auth factor update: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code for auth factor update: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
+		s.Fatalf("Unexpected exit code for auth factor update: got %d; want %d",
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
 	}
 
 	// Unmount the user.
@@ -210,9 +209,9 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &authExitErr) {
 		s.Fatalf("Unexpected error for authentication with old password: got %q; want *hwsec.CmdExitError", err)
 	}
-	if authExitErr.ExitCode != cryptohomeAuthorizationKeyFailed {
+	if authExitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED) {
 		s.Fatalf("Unexpected exit code for authentication with old password: got %d; want %d",
-			authExitErr.ExitCode, cryptohomeAuthorizationKeyFailed)
+			authExitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED)
 	}
 
 	// Successfully authenticate with new password.

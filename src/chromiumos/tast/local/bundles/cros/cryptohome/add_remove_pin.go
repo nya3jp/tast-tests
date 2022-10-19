@@ -40,12 +40,11 @@ func init() {
 
 func AddRemovePIN(ctx context.Context, s *testing.State) {
 	const (
-		userName                   = "foo@bar.baz"
-		userPassword               = "secret"
-		userPIN                    = "123456"
-		passwordLabel              = "online-password"
-		pinLabel                   = "test-pin"
-		cryptohomeErrorKeyNotFound = 15
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		userPIN       = "123456"
+		passwordLabel = "online-password"
+		pinLabel      = "test-pin"
 	)
 
 	ctxForCleanUp := ctx
@@ -154,8 +153,9 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during authentication with PIN: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
+		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d",
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
 	}
 
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
@@ -171,8 +171,9 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during unlock with PIN: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code during unlock with PIN: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
+		s.Fatalf("Unexpected exit code during unlock with PIN: got %d; want %d",
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
 	}
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to invalidate AuthSession: ", err)
@@ -191,8 +192,9 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during authentication with pin: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
+		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d",
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
 	}
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to invalidate AuthSession: ", err)
