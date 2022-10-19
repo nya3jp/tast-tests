@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2a75b96_e17796d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-19T17:07:46Z",
+      "side": 1,
+      "message": "We stop `powerd` when doing things like power test. Otherwise, it should always be up and running. There is no need to restart it.",
+      "parentUuid": "755fc0da_ea433e7e",
+      "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "342a45af_332514d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
         "patchSetId": 4

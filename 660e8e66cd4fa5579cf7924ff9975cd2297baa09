@@ -260,6 +260,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96f5016f_20f88018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-19T17:07:46Z",
+      "side": 1,
+      "message": "It is interesting that DUT stays power-on after the test clicks \"Shut down\" on the power menu. That menu should turn off the device. Would the test be working as expected if that does not happen? In such case, the `shut_down` variant just verifies there is a \"Shut down\" menu in the power menu UI.\n\nAnd if it does turn off device, we would break subsequent tests running after `TabletModePowerOffMenu.shut_down` since IIUC tast framework does not re power on DUT.",
+      "parentUuid": "42191e28_f2f7f427",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad33920e_2215c97f",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
         "patchSetId": 3
