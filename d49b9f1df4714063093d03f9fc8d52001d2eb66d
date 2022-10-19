@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be2bd49_5b71c181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e25c26f2_12a859c4",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a39387_654c8d30",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df26d708_0f679da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "Removed \"chrome_internal\".\n\n\"arc\" is actually needed by `arc.NewWithTimeout` at runtime. Not listing it here will result in runtime error.",
+      "parentUuid": "71a39387_654c8d30",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc63e03a_f6efae51",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-10-19T19:27:41Z",
       "side": 1,
       "message": "Does the line 82 fail if this is not done?\n\nIf it is not necessary I recommend we remove this to avoid failures due to features we don\u0027t own/control.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0744af2_24689403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "Good point. Removed.",
+      "parentUuid": "cc63e03a_f6efae51",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "858665a2_d0b0de1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "This is to verify that the Play Store window shows up after launch. Since Play Store window should show up in demo mode, I feel it\u0027s necessary. And it\u0027s a different thing than things done below (to verify a particular app shows up).\n\nI should re-word the comment and log here a bit.",
+      "parentUuid": "640ce072_8ec25744",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6dd993_ddc9cca4",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae54c21_bb57751e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "I created b/254534084 for this purpose, to keep this CL simple.",
+      "parentUuid": "4a6dd993_ddc9cca4",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "887ff7e6_dd6ef86f",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-10-19T19:27:41Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be related to what we want to test. It is best to avoid interactions like this that can increase test flakiness.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 86
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032e33ae_ac1b2582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-19T22:41:16Z",
+      "side": 1,
+      "message": "OK. I am simplifying this to only deal with the situation where the choice prompt (Chrome vs Play Store) does show up.",
+      "parentUuid": "887ff7e6_dd6ef86f",
       "range": {
         "startLine": 100,
         "startChar": 0,
