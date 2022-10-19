@@ -30,7 +30,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks diacritics on long-press with physical keyboard typing",
 		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      2 * time.Minute,
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
@@ -38,12 +38,14 @@ func init() {
 			{
 				Fixture:           fixture.ClamshellNonVKWithDiacriticsOnPKLongpress,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithDiacriticsOnPKLongpress,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
