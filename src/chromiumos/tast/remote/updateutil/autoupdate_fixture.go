@@ -6,6 +6,7 @@ package updateutil
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -25,6 +26,7 @@ func init() {
 		},
 		Impl:            &autoupdateFixt{},
 		SetUpTimeout:    2 * time.Minute,
+		PreTestTimeout:  2 * time.Minute,
 		PostTestTimeout: 15 * time.Minute,
 		TearDownTimeout: 1 * time.Minute,
 		ServiceDeps: []string{
@@ -81,10 +83,32 @@ func (au *autoupdateFixt) SetUp(ctx context.Context, s *testing.FixtState) inter
 	return &FixtData{paygen}
 }
 
+// Pretest ensures that the test is run in the right version.
+// We confirm that the image of the device is the original one. Otherwise, it
+// means the device was left in a bad state and we should not run the test
+// with the wrong version.
+//
+// PreTest fails if the current version of the device does not correspond to
+// the original one.
+func (au *autoupdateFixt) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	s.Log("Running PreTest to make sure the image is the right one")
+
+	// Check the image version.
+	if version, err := ImageVersion(ctx, s.DUT(), s.RPCHint()); err != nil {
+		s.Fatal("Failed to read DUT image version before the test: ", err)
+	} else if version != au.originalVersion {
+		// We should not run the test in the wrong version.
+		s.Fatalf("The DUT image version before the test is not the original one; got %s, want %s", version, au.originalVersion)
+	} else {
+		s.Logf("The image version in the DUT is %s", version)
+	}
+}
+
 // PostTest ensures that the DUT has the original OS image for the upcoming test.
 // If there is a different image it tries to restore the original version
-//  - with a rollback first
-//  - by installing the the original image again.
+//   - with a rollback first
+//   - by installing the the original image again.
+//
 // PostTest fails if it cannot make sure the DUT has the original image.
 func (au *autoupdateFixt) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	checkTimeout := 1 * time.Minute
@@ -105,7 +129,7 @@ func (au *autoupdateFixt) PostTest(ctx context.Context, s *testing.FixtTestState
 	if version, err := ImageVersion(checkCtx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to read DUT image version after the test: ", err)
 	} else if version == au.originalVersion {
-		s.Log("No change in the OS image version after the test")
+		s.Logf("No change in the OS image version after the test; it is %s already", version)
 		return // There is no need to restore the image version.
 	} else {
 		s.Logf("Image version was not restored to %s after the test, it remained %s", au.originalVersion, version)
@@ -117,45 +141,64 @@ func (au *autoupdateFixt) PostTest(ctx context.Context, s *testing.FixtTestState
 	rollbackCtx, cancel := context.WithTimeout(ctx, rollbackTimeout)
 	defer cancel()
 
-	s.Log("Restoring the original image with rollback")
+	// Use "rootdev -s" to get and log the root partition before and after.
+	// The format is, for example: /dev/nvme0p3, /dev/mmcblk0p3, /dev/sda3.
+	// This information is used for debugging, so it is not necessary to convert
+	// the output into its corresponding index.
+	if rootPartition, err := s.DUT().Conn().CommandContext(ctx, "rootdev", "-s").Output(); err != nil {
+		// We do not return error because it is for informational purpouses.
+		s.Log("Failed to read DUT root partition")
+	} else {
+		s.Logf("Root partition before non-enterprise rollback is %s", strings.TrimSpace(string(rootPartition)))
+	}
+
+	// Non-enterprise rollback may fail if it is run too early (b/241391509).
+	s.Log("Restoring the original image with non-enterprise rollback")
 	if err := s.DUT().Conn().CommandContext(rollbackCtx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
 		s.Fatal("Failed to rollback the DUT: ", err)
 	}
 
 	// Reboot the DUT.
-	s.Log("Rebooting the DUT after the rollback")
+	s.Log("Rebooting the DUT after the  non-enterprise rollback")
 	if err := s.DUT().Reboot(rollbackCtx); err != nil {
-		s.Fatal("Failed to reboot the DUT after rollback: ", err)
+		s.Fatal("Failed to reboot the DUT after the non-enterprise rollback: ", err)
+	}
+
+	// Verify (non-enterprise) rollback worked.
+	if rootPartition, err := s.DUT().Conn().CommandContext(ctx, "rootdev", "-s").Output(); err != nil {
+		// We do not return error because it is for informational purpouses.
+		s.Log("Failed to read DUT root partition")
+	} else {
+		s.Logf("Root partition after non-enterprise rollback is %s", strings.TrimSpace(string(rootPartition)))
 	}
 
 	// Check the image version.
 	if version, err := ImageVersion(rollbackCtx, s.DUT(), s.RPCHint()); err != nil {
-		s.Fatal("Failed to read DUT image version after the rollback: ", err)
+		s.Fatal("Failed to read DUT image version after the non-enterprise rollback: ", err)
 	} else if version == au.originalVersion {
-		s.Log("No change in the OS image version after the test")
-		return // There is no need to restore the image version.
+		s.Logf("Non-enterprise rollback restored the image successfuly to %s", version)
+		return // The image has been restored, we can end the cleanup here.
 	} else {
-		s.Logf("Image version was not restored to %s after the test, it remained %s", au.originalVersion, version)
+		s.Logf("Image version is not the original after the restoration; got %s, want %s", version, au.originalVersion)
 	}
 
-	// Restore the DUT image with installation.
-	s.Log("Installing the original image to the DUT")
+	s.Log("Restoring the DUT image with installation")
 	err := UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), au.builderPath)
 	if err != nil {
 		s.Fatalf("Failed to restore DUT image to %q from GS: %v", au.builderPath, err)
 	}
 
 	// Reboot the DUT.
-	s.Log("Rebooting the DUT after the installing the original image")
+	s.Log("Rebooting the DUT after installing the original image")
 	if err := s.DUT().Reboot(ctx); err != nil {
-		s.Fatal("Failed to reboot the DUT after installing a new image: ", err)
+		s.Fatal("Failed to reboot the DUT after installing the original image: ", err)
 	}
 
 	// Check the image version.
 	if version, err := ImageVersion(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to read DUT image version after the image installation: ", err)
 	} else if version != au.originalVersion {
-		s.Fatalf("Failed to install image version; got %s, want %s", version, au.originalVersion)
+		s.Fatalf("Failed to install the original image version; got %s, want %s", version, au.originalVersion)
 	}
 }
 
@@ -176,5 +219,4 @@ func (au *autoupdateFixt) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 }
 
-func (*autoupdateFixt) Reset(ctx context.Context) error                       { return nil }
-func (*autoupdateFixt) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (*autoupdateFixt) Reset(ctx context.Context) error { return nil }
