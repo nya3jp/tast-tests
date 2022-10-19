@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df44ded1_6c60083e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-19T21:09:36Z",
+      "side": 1,
+      "message": "Don\u0027t put Code-Review +2 on your own CL.",
+      "revId": "624dc2dc18b68eea6cc3656ffd2bc18f449e6514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
