@@ -84,6 +84,10 @@ func RunDiagRoutine(ctx context.Context, params RoutineParams) (*RoutineResult, 
 	if params.Cancel {
 		diagParams = append(diagParams, "--force_cancel_at_percent=5")
 	}
+	// TODO(b/254388463): Add WearLevelThreshold to RoutineParams.
+	if params.Routine == RoutineNVMEWearLevel {
+		diagParams = append(diagParams, "--wear_level_threshold=50")
+	}
 	output, err := runDiag(ctx, diagParams)
 	if err != nil {
 		return nil, err
