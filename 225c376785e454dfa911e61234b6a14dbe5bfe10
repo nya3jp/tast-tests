@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5a3d837_d19f01d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-19T13:00:11Z",
+      "side": 1,
+      "message": "I moved bigger block (for the tablet-mode specific flow) one scope up and left laptop-only code inside the if block, what do you think?",
+      "parentUuid": "3347edbb_d2bcd3c5",
+      "revId": "225c376785e454dfa911e61234b6a14dbe5bfe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e255da_44324f73",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
         "patchSetId": 4
