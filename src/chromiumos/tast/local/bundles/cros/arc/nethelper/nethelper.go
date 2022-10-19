@@ -6,12 +6,13 @@
 // requests from various tests coming via network in context of ARC TAST test.
 // arc_eth0 on port 1235 is used as communication point. This helper currently
 // supports the following commands:
-//   * drop_caches - drops system caches, returns OK/FAILED.
-//   * receive_payload - receives payload from client, returns OK, ACK and payload.
-//   * get_total_memory_kb - gets total memory in KB from DUT, returns OK/FAILED and value.
+//   - drop_caches - drops system caches, returns OK/FAILED.
+//   - receive_payload - receives payload from client, returns OK, ACK and payload.
+//   - get_total_memory_kb - gets total memory in KB from DUT, returns OK/FAILED and value.
 //
 // Usage pattern is following:
-// 	conn, err := nethelper.Start(ctx)
+//
+//	conn, err := nethelper.Start(ctx)
 //	if err != nil {
 //		s.Fatal("Failed to start nethelper", err)
 //	}

@@ -182,6 +182,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		name:    "FileTest",
 		prefix:  "file_ext4",
 		subtest: "runExt4Test",
+		group:   "ext4_fs",
 	}, {
 		name:   "NetworkTest",
 		prefix: "network",
@@ -218,6 +219,8 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 
 	var scores []float64
+	var ioScores []float64
+
 	groups := make(map[string][]float64)
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
@@ -239,12 +242,24 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Obtain geometric mean of each group and append to top-level scores.
-	for _, group := range groups {
+	for groupName, group := range groups {
 		score, err := calcGeometricMean(group)
 		if err != nil {
 			s.Fatal("Failed to process geometric mean: ", err)
 		}
 		scores = append(scores, score)
+		if groupName == "ext4_fs" || groupName == "not_ext4_fs" {
+			ioScores = append(ioScores, score)
+		}
+	}
+
+	if len(ioScores) != 2 {
+		s.Fatalf("Invalid number of IO groups, got %d expected 2", len(ioScores))
+	}
+
+	ioScore, err := calcGeometricMean(ioScores)
+	if err != nil {
+		s.Fatal("Failed to process IO geometric mean: ", err)
 	}
 
 	// Calculate grand mean (geometric) of top-level scores which includes the
@@ -261,6 +276,13 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
 		}, totalScore)
+	finalPerfValues.Set(
+		perf.Metric{
+			Name:      "io_score",
+			Unit:      "MB_per_sec",
+			Direction: perf.BiggerIsBetter,
+			Multiple:  false,
+		}, ioScore)
 	s.Logf("Finished all tests with total score: %.2f", totalScore)
 
 	s.Log("Uploading perf metrics")
