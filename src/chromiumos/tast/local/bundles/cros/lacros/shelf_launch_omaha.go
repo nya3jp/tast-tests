@@ -50,6 +50,7 @@ func init() {
 // It reads lsb-release for the release channel info.
 // By the way, sometimes (when a new branch is not yet cut for a new milestone) both "canary" and "dev" are from trunk not in separate branches.
 // If so, the branch number will be used to distinguish between "canary" (with the number 0) and "dev" channel (>0).
+// TODO(b/254362091): Fix to return "beta" and "stable" branch.
 func chromeOSChannel() (string, error) {
 	lsb, err := lsbrelease.Load()
 	if err != nil {
@@ -88,7 +89,8 @@ func statefulLacrosChannels(osChannel string) ([]string, error) {
 	case "canary":
 		return []string{"canary"}, nil
 	case "dev":
-		return []string{"dev"}, nil
+		// Add "dev" OS + "canary" Lacros to detect version skew issues particularly when Ash/Lacros are starting to diverge after branch cut. See crbug.com/1375175.
+		return []string{"dev", "canary"}, nil
 	case "beta":
 		return []string{"beta", "dev"}, nil
 	case "stable":
