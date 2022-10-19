@@ -613,6 +613,9 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	h.dutUsbHasTastFiles = false
 	// On my computer with a servo v4, this takes 7 minutes.
 	if err = h.ServoProxy.RunCommand(ctx, true, "sh", "-c", fmt.Sprintf("wget -nv -O - %s | tar -JxOf - | dd of=%s bs=1M iflag=fullblock conv=nocreat,fsync", shutil.Escape(dataURL.String()), shutil.Escape(usbdev))); err != nil {
+		if err := h.validateUSBConn(ctx); err != nil {
+			return errors.Wrap(err, "failed while verifying usb connection to DUT")
+		}
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
 	testing.ContextLogf(ctx, "Successfully flashed %q from %q", usbdev, testImageURL)
@@ -1125,7 +1128,62 @@ func (h *Helper) FormatUSB(ctx context.Context, usbdev string) error {
 	}
 	testing.ContextLog(ctx, "Formatting the USB device")
 	if err := h.ServoProxy.RunCommand(ctx, true, "mkfs.vfat", "-I", usbdev); err != nil {
-		return errors.Wrap(err, "failed to format the usb device")
+		if err := h.validateUSBConn(ctx); err != nil {
+			return errors.Wrap(err, "failed while verifying usb connection to DUT")
+		}
+		return errors.Wrap(err, "failed to format the usb device, but usb connection verified")
+	}
+	return nil
+}
+
+// validateUSBConn checks for usb connection stability by comparing
+// the before and after outputs of 'lsusb' on DUT.
+func (h *Helper) validateUSBConn(ctx context.Context) error {
+	// From Stainless logs, one repetitive error was about not being able to open the USB.
+	// When we ssh'ed into their DUTs, it appeared that some USBs would drop connection
+	// after a short period of time. Run validateUSBConn to verify if the usb device disappears
+	// without any intervention.
+	defer func() error {
+		// Ensure that the usb is powered on at the end.
+		if err := h.Servo.SetString(ctx, "usb3_pwr_en", "on"); err != nil {
+			return errors.Wrap(err, "failed to power on USB")
+		}
+		return nil
+	}()
+	testing.ContextLog(ctx, "Enabling USB connection to DUT")
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+		return errors.Wrap(err, "failed to set USBMuxDUT")
+	}
+	testing.ContextLog(ctx, "Power cycling the USB")
+	if err := h.Servo.SetString(ctx, "usb3_pwr_en", "off"); err != nil {
+		return errors.Wrap(err, "failed to power off USB")
+	}
+	if err := h.Servo.SetString(ctx, "usb3_pwr_en", "on"); err != nil {
+		return errors.Wrap(err, "failed to power on USB")
+	}
+	testing.ContextLog(ctx, "Waiting for a short delay")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	// The bash commands would attempt steps as follows:
+	// 1. Save the lsusb result to a temporary file.
+	// 2. Sleep for 2 minutes.
+	// 3. Compare the current lsusb output with the previous file.
+	testing.ContextLog(ctx, "Attempting to validate USB connection")
+	workPath := "/tmp/lsusb.1"
+	checkUSBCmd := fmt.Sprintf(
+		"lsusb > %[1]s && "+
+			"sleep 120s && "+
+			"echo $(lsusb | diff - %[1]s -c | grep -h '^[+-][[:blank:]]') && "+
+			"rm %[1]s",
+		workPath)
+	out, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", checkUSBCmd).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to check for lsusb")
+	}
+	deviceDiff := strings.TrimSpace(string(out))
+	if strings.Contains(deviceDiff, "+") {
+		return errors.Errorf("Device %s disappeared after a short delay", strings.TrimPrefix(deviceDiff, "+ "))
 	}
 	return nil
 }
