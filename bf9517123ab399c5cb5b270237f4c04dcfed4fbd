@@ -16,6 +16,23 @@
       "message": "Dry-run failing, chumping with sheriff approval",
       "revId": "bf9517123ab399c5cb5b270237f4c04dcfed4fbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f10674_42490ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-19T17:32:01Z",
+      "side": 1,
+      "message": "Do we need this? This just makes this test informational",
+      "revId": "bf9517123ab399c5cb5b270237f4c04dcfed4fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
