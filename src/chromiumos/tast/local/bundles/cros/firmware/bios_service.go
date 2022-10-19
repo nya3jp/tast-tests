@@ -73,7 +73,7 @@ func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWSectionInf
 
 // RestoreImageSection restores image region from temporary file locally and restores fw with it.
 func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWSectionInfo) (*empty.Empty, error) {
-	if err := bios.WriteImageFromMultiSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+	if err := bios.WriteImageFromSingleSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
 	return &empty.Empty{}, nil
@@ -150,7 +150,7 @@ func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.FWSectionIn
 	}
 
 	// Write corrupted image with flashrom.
-	err = bios.WriteImageFromMultiSectionFile(ctx, corruptedImg, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+	err = bios.WriteImageFromSingleSectionFile(ctx, corruptedImg, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}

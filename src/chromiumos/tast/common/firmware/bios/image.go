@@ -294,8 +294,8 @@ func WriteImageFromMultiSectionFile(ctx context.Context, path string, sec ImageS
 		frArgs = append(frArgs, "-i", string(sec), "-w", path)
 	}
 
-	if err := testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "could not write image")
+	if out, err := testexec.CommandContext(ctx, "flashrom", frArgs...).Output(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "could not write image: %v", string(out))
 	}
 
 	return nil
@@ -444,21 +444,11 @@ func SetAPSoftwareWriteProtect(ctx context.Context, enable bool, args *WPArgs) e
 		wpCmd = append(wpCmd, "-i", regionStr, fmt.Sprintf("--wp-region=%s", regionName))
 	} else if enable {
 		// If enabling write protect with with no range or region, enable for largest available region.
-		out, err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-list").Output(testexec.DumpLogOnError)
+		maxRange, err := findMaxAPWPRange(ctx)
 		if err != nil {
-			return errors.Wrapf(err, "failed to read wp-list output: %v", string(out))
+			return errors.Wrap(err, "failed to get a range to attempt to write protect")
 		}
-
-		// Match output for "all" range e.g. `start=0x00000000 length=0x01000000 (all)`
-		maxRange := regexp.MustCompile(`start=(0[xX][0-9a-fA-F]+)\s*length=(0[xX][0-9a-fA-F]+)\s*\(all\)`)
-		if match := maxRange.FindSubmatch(out); match == nil {
-			return errors.Wrapf(err, "failed to find all range in --wp-list output: %v", string(out))
-		} else if len(match) < 3 {
-			return errors.Wrapf(err, "failed to parse --wp-list output: %v", match)
-		} else {
-			rangeStr = fmt.Sprintf("--wp-range=%s,%s", match[1], match[2])
-		}
-		wpCmd = append(wpCmd, rangeStr)
+		wpCmd = append(wpCmd, maxRange)
 	}
 
 	// wpCmd = append(wpCmd, rangeStr)
@@ -473,6 +463,92 @@ func SetAPSoftwareWriteProtect(ctx context.Context, enable bool, args *WPArgs) e
 		return errors.Errorf("expected wp status to be %q, but output was: %s", expState, string(out))
 	}
 	return nil
+}
+
+func findMaxAPWPRange(ctx context.Context) (string, error) {
+	rangeStr := ""
+	// --wp-list prints out a lot of possible ranges ordered in increasing size.
+	// We expect the full range to be the last item, labelled all but for some devices this is not available.
+	for i := 0; i < 3; i++ {
+		out, err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-list").CombinedOutput(testexec.DumpLogOnError)
+		if err != nil {
+			// CombinedOutput should include messages from stderr.
+			if strings.Contains(string(out), "could not determine what protection ranges") {
+				// Flashrom is unable to read --wp-list for ARM devices and raises this error.
+				// In this case, skip retrying and jump using FMAP values.
+				break
+			}
+			// IF failed to read --wp-list output for some other reason, then try again.
+			continue
+		}
+
+		// Match output for equal sign separated range. Output looks like: `start=0x00000000 length=0x01000000 (all)`.
+		// These ranges output in sorted order.
+		eqlSepRange := `start=(0[xX][0-9a-fA-F]+)\s*length=(0[xX][0-9a-fA-F]+)\s*\(([^\r\n]+)\)`
+		// Match output for colon separated range. Output looks like: `start: 0x000000, length: 0x1000000`.
+		// These ranges are unsorted, sort by size to find max.
+		colonSepRange := `start:\s*0[xX]([0-9a-fA-F]+),\s*length:\s*0[xX]([0-9a-fA-F]+)`
+		match := regexp.MustCompile(eqlSepRange).FindAllStringSubmatch(string(out), -1)
+		if match != nil {
+			// Look for the the "all" in `start=0x00000000 length=0x01000000 (all)`.
+			if match[len(match)-1][3] == "all" {
+				// If the "all" range is read, return immediately.
+				maxMatch := match[len(match)-1]
+				rangeStr = fmt.Sprintf("--wp-range=%s,%s", maxMatch[1], maxMatch[2])
+				return rangeStr, nil
+			}
+			// If "all" range isn't found, save second largest available but try again just to be sure.
+			maxMatch := match[len(match)-1]
+			rangeStr = fmt.Sprintf("--wp-range=%s,%s", maxMatch[1], maxMatch[2])
+		} else if match = regexp.MustCompile(colonSepRange).FindAllStringSubmatch(string(out), -1); match != nil {
+			sort.Slice(match, func(i, j int) bool {
+				start1, _ := strconv.ParseInt(match[i][1], 16, 32)
+				len1, _ := strconv.ParseInt(match[i][2], 16, 32)
+
+				start2, _ := strconv.ParseInt(match[j][1], 16, 32)
+				len2, _ := strconv.ParseInt(match[j][2], 16, 32)
+
+				return (len1 - start1) < (len2 - start2) // Sort in order of increasing size.
+			})
+			maxMatch := match[len(match)-1]
+			rangeStr = fmt.Sprintf("--wp-range=0x%s,0x%s", maxMatch[1], maxMatch[2])
+			return rangeStr, nil
+		}
+
+	}
+	if rangeStr != "" {
+		// If any valid range was found, return it, otherwise use FMAP.
+		// These ranges will definitely work for setting wp but FMAP ranges might not so it's better to use
+		// best available range from --wp-list than a potentially larger range from FMAP.
+		return rangeStr, nil
+	}
+
+	// If --wp-list couldn't provide a valid range/failed, use ranges from FMAP.
+	tmpFile, err := ioutil.TempFile("/var/tmp", "")
+	if err != nil {
+		return rangeStr, errors.Wrap(err, "creating tmpfile to read FMAP into")
+	}
+	defer os.Remove(tmpFile.Name())
+
+	// Check AP firmware WP range.
+	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", "-i", "FMAP:"+tmpFile.Name()).Run(testexec.DumpLogOnError); err != nil {
+		return rangeStr, errors.Wrap(err, "failed to read host fmap")
+	}
+
+	out, err := testexec.CommandContext(ctx, "fmap_decode", tmpFile.Name()).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return rangeStr, errors.Wrapf(err, "failed to decode the host fmap: %v", string(out))
+	}
+
+	// Parse the output to get the areaOffset and areaSize values for write protection.
+	// example output: `area_offset="0x00c00000" area_size="0x00400000" area_name="WP_RO"`
+	areaRange := regexp.MustCompile(`area_offset=\"(0[xX][0-9a-fA-F]+)\" area_size=\"(0[xX][0-9a-fA-F]+)\"\s*area_name=\"WP_RO\"`)
+	match := areaRange.FindStringSubmatch(string(out))
+	if match == nil {
+		return rangeStr, errors.Wrapf(err, "failed to parse WP_RO range in FMAP output: %v", string(out))
+	}
+	rangeStr = fmt.Sprintf("--wp-range=%s,%s", match[1], match[2])
+	return rangeStr, nil
 }
 
 // ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
