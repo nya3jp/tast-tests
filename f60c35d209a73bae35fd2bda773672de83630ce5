@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc810557_fdd98f26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-19T11:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b475158_17363e97",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "63071ef8_f1a4bfda",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d048337_1fda45a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-19T11:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6d1f4e4_3eccb9c8",
+      "range": {
+        "startLine": 93,
+        "startChar": 52,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b5df3bc_ae812868",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-19T10:21:36Z",
       "side": 1,
       "message": "This is not a login test API.",
+      "range": {
+        "startLine": 107,
+        "startChar": 41,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c1ec02_e46c26bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-19T11:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5df3bc_ae812868",
       "range": {
         "startLine": 107,
         "startChar": 41,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc62fef0_0e81b72f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-19T11:57:23Z",
+      "side": 1,
+      "message": "Are you sure about that? It is added to `Vars` and this is just like it is done in the other tast tests, which use the tape service.",
+      "parentUuid": "d85f3a53_18ab8a21",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 83
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c099c0d8_42aa5363",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-19T10:21:36Z",
       "side": 1,
       "message": "please use the got want pattern.",
+      "range": {
+        "startLine": 129,
+        "startChar": 46,
+        "endLine": 129,
+        "endChar": 63
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5ddd77_d2638ba5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-19T11:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c099c0d8_42aa5363",
       "range": {
         "startLine": 129,
         "startChar": 46,
