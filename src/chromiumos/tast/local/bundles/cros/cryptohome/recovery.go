@@ -45,11 +45,10 @@ func init() {
 
 func Recovery(ctx context.Context, s *testing.State) {
 	const (
-		userName                   = "foo@bar.baz"
-		userPassword               = "secret"
-		passwordLabel              = "online-password"
-		recoveryLabel              = "test-recovery"
-		cryptohomeErrorKeyNotFound = 15
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		passwordLabel = "online-password"
+		recoveryLabel = "test-recovery"
 	)
 
 	ctxForCleanUp := ctx
@@ -152,8 +151,8 @@ func Recovery(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error in authentication after factor removal: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
 		s.Fatalf("Unexpected exit code in authentication after factor removal: got %d; want %d",
-			exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
 	}
 }

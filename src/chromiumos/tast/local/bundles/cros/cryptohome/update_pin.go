@@ -53,13 +53,12 @@ func init() {
 
 func UpdatePin(ctx context.Context, s *testing.State) {
 	const (
-		userName                         = "foo@bar.baz"
-		userPassword                     = "secret"
-		oldUserPin                       = "123456"
-		newUserPin                       = "098765"
-		passwordLabel                    = "online-password"
-		pinLabel                         = "test-pin"
-		cryptohomeAuthorizationKeyFailed = 3
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		oldUserPin    = "123456"
+		newUserPin    = "098765"
+		passwordLabel = "online-password"
+		pinLabel      = "test-pin"
 	)
 
 	userParam := s.Param().(updatePinParams)
@@ -205,9 +204,9 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &authExitErr) {
 		s.Fatalf("Unexpected error for authentication with old pin: got %q; want *hwsec.CmdExitError", err)
 	}
-	if authExitErr.ExitCode != cryptohomeAuthorizationKeyFailed {
+	if authExitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED) {
 		s.Fatalf("Unexpected exit code for authentication with old pin: got %d; want %d",
-			authExitErr.ExitCode, cryptohomeAuthorizationKeyFailed)
+			authExitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED)
 	}
 
 	// Successfully authenticate with new pin.
