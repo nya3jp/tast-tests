@@ -11,11 +11,7 @@ const crosNetworkConfigJs = `
  * @fileoverview A wrapper file for the cros network config API.
  */
 async function() {
-  const networkConfigMojoModule = try {
-    await import('chrome://resources/mojo/chromeos/ash/services/network_config/public/mojom/cros_network_config.mojom-webui.js');
-  } catch (e) {
-    await import('chrome://resources/mojo/chromeos/services/network_config/public/mojom/cros_network_config.mojom-webui.js');
-  }
+  const networkConfigMojoModule = await import('chrome://resources/mojo/chromeos/services/network_config/public/mojom/cros_network_config.mojom-webui.js');
 
   return {
     crosNetworkConfig_: null,
