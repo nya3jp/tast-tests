@@ -22,6 +22,30 @@
       },
       "revId": "c981dd78a9d218be2200c857f93708929f0a49a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f74f15_b733e371",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-10-19T10:18:55Z",
+      "side": 0,
+      "message": "You\u0027re right, we have to check ctx. Thanks!",
+      "parentUuid": "d80aedcb_2c884a59",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "c981dd78a9d218be2200c857f93708929f0a49a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

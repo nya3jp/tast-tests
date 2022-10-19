@@ -39,6 +39,30 @@
       },
       "revId": "de931858a5f432239136b291067ddcc243375502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf4caee_f49b0f0f",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-10-19T10:18:55Z",
+      "side": 1,
+      "message": "We think it is better to keep the installation timeout original.\nIf InstallOrUpdateAppAndClose() falls, we think it should be rerun many times instead of just running one time with a long timeout.\nThank you for your advice.",
+      "parentUuid": "2e7d0ac4_0e77990b",
+      "range": {
+        "startLine": 69,
+        "startChar": 131,
+        "endLine": 69,
+        "endChar": 171
+      },
+      "revId": "de931858a5f432239136b291067ddcc243375502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
