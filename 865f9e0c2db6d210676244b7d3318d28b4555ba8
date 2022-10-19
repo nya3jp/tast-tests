@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7132d3a5_a17f7781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-19T10:08:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a10369_afe5880b",
+      "range": {
+        "startLine": 14,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "865f9e0c2db6d210676244b7d3318d28b4555ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "649423f3_3bb4d6dd",
@@ -42,6 +66,53 @@
         "startChar": 2,
         "endLine": 125,
         "endChar": 3
+      },
+      "revId": "865f9e0c2db6d210676244b7d3318d28b4555ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfa7f28_c3050990",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-19T10:08:49Z",
+      "side": 1,
+      "message": "Done (had to rename other variables to avoid collision)",
+      "parentUuid": "649423f3_3bb4d6dd",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "865f9e0c2db6d210676244b7d3318d28b4555ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddfc792_918c795b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-19T10:08:49Z",
+      "side": 1,
+      "message": "Oops - this should\u0027ve been \"3\". Fixed.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 17
       },
       "revId": "865f9e0c2db6d210676244b7d3318d28b4555ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
