@@ -32,7 +32,7 @@ func init() {
 		Func:         VirtualKeyboardMultitouch,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks typing on virtual keyboard with multiple simultaneous touches",
-		Contacts:     []string{"michellegc@google.com", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

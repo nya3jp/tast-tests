@@ -32,7 +32,7 @@ func init() {
 		Func:         VirtualKeyboardAutoShift,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that auto shift feature of virtual keyboard",
-		Contacts:     []string{"shengjun@chromium.org", "tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

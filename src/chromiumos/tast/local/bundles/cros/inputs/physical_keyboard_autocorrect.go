@@ -31,7 +31,7 @@ func init() {
 		Func:         PhysicalKeyboardAutocorrect,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard can perform typing with autocorrects",
-		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),

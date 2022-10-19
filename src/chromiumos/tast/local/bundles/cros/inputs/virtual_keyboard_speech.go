@@ -45,7 +45,7 @@ func init() {
 		Func:         VirtualKeyboardSpeech,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test voice input functionality on virtual keyboard",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SearchFlags:  util.IMESearchFlags(voiceTestIMEs),

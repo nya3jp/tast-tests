@@ -30,7 +30,7 @@ func init() {
 		Func:         VirtualKeyboardMultipaste,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test multipaste virtual keyboard functionality",
-		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),

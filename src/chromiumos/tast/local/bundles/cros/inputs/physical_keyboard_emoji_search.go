@@ -26,7 +26,7 @@ func init() {
 		Func:         PhysicalKeyboardEmojiSearch,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check that emoji search works well",
-		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools", "group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kefka")),

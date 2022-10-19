@@ -29,7 +29,7 @@ func init() {
 		Func:         PhysicalKeyboardLongpressDiacritics,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks diacritics on long-press with physical keyboard typing",
-		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      2 * time.Minute,

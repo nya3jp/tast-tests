@@ -31,7 +31,7 @@ func init() {
 		Func:         VirtualKeyboardJapaneseInputMode,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks switching between Romaji and Kana mode for Japanese inputs",
-		Contacts:     []string{"myy@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Fixture:      fixture.TabletVK,

@@ -29,7 +29,7 @@ func init() {
 		Func:         PhysicalKeyboardPinyinTyping,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Pinyin physical keyboard works",
-		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

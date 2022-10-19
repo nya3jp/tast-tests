@@ -30,7 +30,7 @@ func init() {
 		Func:         InputMethodShelf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that user can toggle shelf option and switch inut method",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod, ime.JapaneseWithUSKeyboard}),

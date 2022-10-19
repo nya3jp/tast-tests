@@ -45,7 +45,7 @@ func init() {
 		Func:         PhysicalKeyboardTypingPerf,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the physical keyboard typing performance",
-		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.PhysicalKeyboardPerfModels),

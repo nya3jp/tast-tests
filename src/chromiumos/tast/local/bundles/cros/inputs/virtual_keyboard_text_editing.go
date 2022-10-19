@@ -31,7 +31,7 @@ func init() {
 		Func:         VirtualKeyboardTextEditing,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the virtual keyboard can insert and delete text after clicking between different text fields",
-		Contacts:     []string{"michellegc@google.com", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
