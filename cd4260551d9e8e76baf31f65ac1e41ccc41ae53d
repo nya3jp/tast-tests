@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "760b0deb_09a73654",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1559057
+      },
+      "writtenOn": "2022-10-19T22:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5027db_29a5a56a",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89870222_b823d5d0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a070aa_e5c6c375",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1559057
+      },
+      "writtenOn": "2022-10-19T22:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89870222_b823d5d0",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6be32c40_25ad8dc0",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-19T22:36:44Z",
       "side": 1,
       "message": "make a more complete sentence, like `and verify results-chart.json has a nonzero value for Ash.Smoothness.PercentDroppedFrames_1sWindow.InSession2`\n\nAlso, make sure you know its `results-chart.json` and not `result-chart.json`",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17df6dc5_1c7a83db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1559057
+      },
+      "writtenOn": "2022-10-19T22:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be32c40_25ad8dc0",
       "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
