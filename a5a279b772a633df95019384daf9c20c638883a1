@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b35dde_662b5e5e",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-19T17:34:22Z",
+      "side": 1,
+      "message": "Let\u0027s return error first [1]\n\nif t.cmd.ProcessState \u003d\u003d nil {\n    return ...\n}\n...\n[1] go/go-style/decisions#indent-error-flow",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "a5a279b772a633df95019384daf9c20c638883a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
