@@ -126,6 +126,11 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
 	defer cancel()
 	defer func(ctx context.Context) {
+		s.Log("Make sure DUT is connected")
+		if err := h.WaitConnect(ctx); err != nil {
+			s.Fatal("Failed to connect to the DUT: ", err)
+		}
+
 		s.Log("Delete temp dir and contained files from DUT")
 		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", "-r", wpTmpDirPath).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete temp dir: ", err)
@@ -178,6 +183,11 @@ func testReadWrite(ctx context.Context, h *firmware.Helper, target wpTarget) (re
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Minute)
 	defer cancel()
 	defer func(ctx context.Context) {
+		testing.ContextLog(ctx, "Make sure DUT is connected")
+		if err := h.WaitConnect(ctx); err != nil {
+			reterr = errors.Wrap(err, "failed to connect to the DUT")
+		}
+
 		testing.ContextLog(ctx, "Disable Write Protect")
 		if err := setWriteProtect(ctx, h, target, false); err != nil {
 			reterr = errors.Wrap(err, "failed to set FW write protect state")
@@ -337,6 +347,11 @@ func testWPOverReboot(ctx context.Context, h *firmware.Helper, target wpTarget, 
 		return errors.Wrap(err, "failed to enable FW write protect state")
 	}
 	defer func() {
+		testing.ContextLog(ctx, "Make sure DUT is connected")
+		if err := h.WaitConnect(ctx); err != nil {
+			reterr = errors.Wrap(err, "failed to connect to the DUT")
+		}
+
 		testing.ContextLog(ctx, "reset write protect to disabled")
 		if err := setWriteProtect(ctx, h, target, false); err != nil {
 			reterr = errors.Wrap(err, "failed to disable FW write protect state")
@@ -489,5 +504,5 @@ func performModeAwareReboot(ctx context.Context, h *firmware.Helper) error {
 	}
 	testing.ContextLog(ctx, "Performing mode aware reboot")
 
-	return ms.ModeAwareReboot(ctx, firmware.ColdReset, firmware.SkipWaitConnect, firmware.AllowGBBForce)
+	return ms.ModeAwareReboot(ctx, firmware.ColdReset, firmware.AllowGBBForce)
 }
