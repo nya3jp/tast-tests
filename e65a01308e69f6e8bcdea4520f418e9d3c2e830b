@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3f8a92_0122bc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de029c46_dc2edcaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "nit: Is this better served as the test `Desc`?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102a50aa_6e3d7630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "nit: `cleanupCtx` is generally used",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0679826f_43535078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "missing `defer arc.Close()`?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 4
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df563a69_1b00a85f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "Should this selector be scoped a little better? I.e. are there other identifying elements to ensure the wrong element isn\u0027t found?",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8c21dc_1fe6de25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "This comment is a bit confusing to me - is it OK to fail if the prompt doesn\u0027t appear (which is what\u0027s happening now) or should that set of steps be optional?",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13db6e90_61c5ce7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "Same as above, is it possible to scope this to the prompt in any way?",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28be7da6_37efb89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-19T23:19:35Z",
+      "side": 1,
+      "message": "Missing `: \", err)` at the end",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
