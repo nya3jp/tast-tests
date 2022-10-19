@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "de931858a5f432239136b291067ddcc243375502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7d0ac4_0e77990b",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T02:20:35Z",
+      "side": 1,
+      "message": "Just a question, according to the comment in playstore.go, the default timeout is 90 seconds by default, so it seems to me this patch also extends the timeout expect for replacing the app with a smaller one. Which one does matter? (should we also mention this in the commit message?)",
+      "range": {
+        "startLine": 69,
+        "startChar": 131,
+        "endLine": 69,
+        "endChar": 171
+      },
+      "revId": "de931858a5f432239136b291067ddcc243375502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
