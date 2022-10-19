@@ -564,6 +564,10 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 					return nil
 				}
 
+				dialog := nodewith.Name("Caption languages & translation").Role(role.Dialog)
+				gotItButton := nodewith.Name("Got it").Role(role.Button).Ancestor(dialog)
+				skipPopupDialog := uiauto.IfSuccessThen(ui.Exists(gotItButton),
+					ui.LeftClickUntil(gotItButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(gotItButton)))
 				slider := nodewith.Name("Tiles").Role(role.Slider).First()
 				clickSliderToMax := func(ctx context.Context) error {
 					sliderLocation, err := ui.Location(ctx, slider)
@@ -590,6 +594,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 				}
 
 				return ui.Retry(retryTimes, uiauto.Combine("set tiles",
+					skipPopupDialog,
 					ui.LeftClick(slider),
 					ui.WithInterval(shortUITimeout).RetryUntil(clickSliderToMax, isMaxTiles),
 				))(ctx)
