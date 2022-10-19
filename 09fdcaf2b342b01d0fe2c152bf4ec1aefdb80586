@@ -16,6 +16,24 @@
       "message": "Do you need to make sure the file does not exist before the test?",
       "revId": "09fdcaf2b342b01d0fe2c152bf4ec1aefdb80586",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e15aed4_4e2dcb87",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-10-19T17:28:50Z",
+      "side": 1,
+      "message": "From my testing, it seems that chrome.New() will always have an empty downloads folder. However, it is probably best to avoid assumptions so I\u0027ve added another call to DeleteAllRecordings() at the beginning of the test. Thanks!",
+      "parentUuid": "e0bfd092_b2561a6a",
+      "revId": "09fdcaf2b342b01d0fe2c152bf4ec1aefdb80586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
