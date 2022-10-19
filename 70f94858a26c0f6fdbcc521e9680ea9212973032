@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1683ce_73d6baae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-19T10:29:08Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "70f94858a26c0f6fdbcc521e9680ea9212973032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eeb995c_76f945cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/conference_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-19T10:29:08Z",
+      "side": 1,
+      "message": "nit: Should the comment be adjusted too?\nThe same in other places.",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "70f94858a26c0f6fdbcc521e9680ea9212973032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
