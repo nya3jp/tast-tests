@@ -20,6 +20,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/testing"
 )
 
@@ -563,6 +564,21 @@ func (e *Env) ConnectToRouter(ctx context.Context, router *Env, ipv4Subnet, ipv6
 	}
 
 	return nil
+}
+
+// ConnectToRouterWithPool connects this Env to router. This function works same
+// as ConnectToRouter(), except for using pool as parameter instead of v4 and v6
+// subnets.
+func (e *Env) ConnectToRouterWithPool(ctx context.Context, router *Env, pool *subnet.Pool) error {
+	ipv4Subnet, err := pool.AllocNextIPv4Subnet()
+	if err != nil {
+		return errors.Wrap(err, "failed to allocate v4 subnet")
+	}
+	ipv6Subnet, err := pool.AllocNextIPv6Subnet()
+	if err != nil {
+		return errors.Wrap(err, "failed to allocate v6 subnet")
+	}
+	return e.ConnectToRouter(ctx, router, ipv4Subnet, ipv6Subnet)
 }
 
 // ConfigureInterface configures |addr| on |ifname|, and adds a route to point
