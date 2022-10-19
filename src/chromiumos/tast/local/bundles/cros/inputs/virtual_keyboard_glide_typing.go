@@ -36,16 +36,14 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		// TODO(b/243336476): Remove informational
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(3 * time.Minute),
 		Params: []testing.Param{
 			{
-				Name:    "tablet_docked",
-				Fixture: fixture.TabletVK,
-				// TODO(b/243336476): Remove informational
-				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				Name:      "tablet_docked",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
@@ -53,10 +51,9 @@ func init() {
 				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
-				Name:    "tablet_floating",
-				Fixture: fixture.TabletVK,
-				// TODO(b/243336476): Remove informational
-				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				Name:      "tablet_floating",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
@@ -64,10 +61,9 @@ func init() {
 				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
 			{
-				Name:    "clamshell_a11y_docked",
-				Fixture: fixture.ClamshellVK,
-				// TODO(b/243336476): Remove informational
-				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				Name:      "clamshell_a11y_docked",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
@@ -75,10 +71,9 @@ func init() {
 				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
-				Name:    "clamshell_a11y_floating",
-				Fixture: fixture.ClamshellVK,
-				// TODO(b/243336476): Remove informational
-				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				Name:      "clamshell_a11y_floating",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUS,
@@ -92,7 +87,7 @@ func init() {
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
@@ -103,7 +98,7 @@ func init() {
 					floatLayout: true,
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
 				},
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
@@ -114,7 +109,7 @@ func init() {
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
@@ -125,7 +120,7 @@ func init() {
 					floatLayout: true,
 					inputMethod: ime.EnglishUS,
 				},
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
