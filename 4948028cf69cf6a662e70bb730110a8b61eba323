@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86be82b_6adc23ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "Close to the finish line!",
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efc3b2d_7dfbff70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "\"Verifies the OpenGL API requirements\",  // See https://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html#opnGl-usrSpc-0001-v01",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0130e510_7159d936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "3.1",
+      "range": {
+        "startLine": 61,
+        "startChar": 34,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f1eae4_cc7f0eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "if glMajor \u003c 3 || glMajor \u003d\u003d 3 \u0026\u0026 glMinor \u003d\u003d 0",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e883ed_1316c13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "3.1",
+      "range": {
+        "startLine": 63,
+        "startChar": 40,
+        "endLine": 63,
+        "endChar": 41
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911c699a_35a87041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "Correct.",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8882b04_675800ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:51:13Z",
+      "side": 1,
+      "message": "We need 1.3 now, see\nhttps://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html#opnGl-usrSpc-0001-v01\n\nAlso I am not sure what the if statement is doing.\nif eglMajor \u003c 1 || eglMajor \u003d\u003d 1 \u0026\u0026 eglMinor \u003c 3",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 91
+      },
+      "revId": "4948028cf69cf6a662e70bb730110a8b61eba323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
