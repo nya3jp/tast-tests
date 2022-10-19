@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e357f7d8_0e964413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-10-19T07:45:55Z",
+      "side": 1,
+      "message": "Should we remove some `XXXX.0.0` versions?\nI think most of them would be covered by the higher versions.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 37
+      },
+      "revId": "c6a552489d03b2a4d2f3572d5d362739d4f48ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
