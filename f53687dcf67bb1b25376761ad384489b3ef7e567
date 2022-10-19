@@ -16,6 +16,29 @@
       "message": "Hi, could you ptal at the test logic? 😊",
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d86c3c_6130e63e",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-19T08:59:08Z",
+      "side": 1,
+      "message": "@alexanderhartl@google.com WDYT if we extend this method to allow passing the SAML login implementation, and then move `handleMicrosoftLogin()` from chrome_saml.go to this file?\n\nThen we could do something like\n```\ncr, err :\u003d chrome.New(\n\t\tctx,\n\t\tchrome.SAMLLogin(chrome.Creds{...}, chrome.HandleMicrosoftLogin(...)))\n```\n\n(the method would be called [here](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3871029/6/src/chromiumos/tast/local/chrome/internal/login/gaia.go#196) instead of early return)\n\nand then we would not need to call `WaitForCryptohome`, `WaitForOOBEConnectionToBeDismissed`, `RemoveNotifications` directly in the test - it will be easier to write new tests that depend on SAML.\n\nWould something like this work / make sense?\nAlternatively, we could just move the shared login code into a fixture when we will have more SAML tests.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
