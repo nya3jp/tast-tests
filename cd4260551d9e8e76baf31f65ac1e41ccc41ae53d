@@ -67,6 +67,23 @@
       "message": "Please review the changes. Thank you!",
       "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3731f5_48f14a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-19T22:40:20Z",
+      "side": 1,
+      "message": "lgtm with addressing Navin\u0027s comments",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
