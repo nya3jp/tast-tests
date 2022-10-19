@@ -70,18 +70,22 @@ func Crosh(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 	// Run shell, verify prompt, exit.
+	croshPrompt := nodewith.Name("crosh>").Role(role.StaticText)
+	shellPrompt := nodewith.Name("chronos@localhost").Role(role.StaticText)
 	ui := uiauto.New(tconn)
 	err = uiauto.Combine("run crosh shell",
 		ui.LeftClick(nodewith.Name("crosh").Role(role.Window).ClassName("BrowserFrame")),
-		ui.WaitUntilExists(nodewith.Name("crosh>").Role(role.StaticText)),
+		ui.WaitUntilExists(croshPrompt),
 		kb.TypeAction("shell"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Name("chronos@localhost").Role(role.StaticText)),
+		ui.WaitUntilExists(shellPrompt),
 		kb.TypeAction("exit"),
 		kb.AccelAction("Enter"),
+		ui.WaitUntilGone(shellPrompt),
+		ui.WaitUntilExists(croshPrompt),
 		kb.TypeAction("exit"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilGone(nodewith.Name("crosh>").Role(role.StaticText)),
+		ui.WaitUntilGone(croshPrompt),
 	)(ctx)
 	if err != nil {
 		s.Fatal("Failed: ", err)
