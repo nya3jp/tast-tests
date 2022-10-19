@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25c26f2_12a859c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "Could you add yourself in the contacts since test stability and promotion to Critical takes time so there is follow-up work expected.",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a39387_654c8d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "arc is included in definition of [play_store](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d171;drc\u003df239fdfbde00b36bb7aad74b403f584fe14314c5)\n\nI think chrome_internal may not be necessary since ARC TOS will be where ARC is.",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc63e03a_f6efae51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "Does the line 82 fail if this is not done?\n\nIf it is not necessary I recommend we remove this to avoid failures due to features we don\u0027t own/control.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640ce072_8ec25744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "It is not clear what this block is for? Is it necessary?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6dd993_ddc9cca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "UnicornBlockedApps test also goes to details page of an app and verifies that install button is disabled. Can we extract the code from that test and put it in a shared package and use it here and there?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go;l\u003d120;drc\u003dd8ec84eb902ff58d1e31137a85039be6e812bac8",
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887ff7e6_dd6ef86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-19T19:27:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be related to what we want to test. It is best to avoid interactions like this that can increase test flakiness.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 86
+      },
+      "revId": "d49b9f1df4714063093d03f9fc8d52001d2eb66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
