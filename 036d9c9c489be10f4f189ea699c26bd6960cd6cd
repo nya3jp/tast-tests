@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec8c7dc_84f040fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T16:59:22Z",
+      "side": 1,
+      "message": "Is it okay to do it in a separate CL to keep this just for lacros variants? I can put up something for it in a follow up.",
+      "parentUuid": "d44c0ec1_9db63b2b",
+      "revId": "036d9c9c489be10f4f189ea699c26bd6960cd6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2747b6_2c727a68",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-19T16:06:47Z",
       "side": 1,
       "message": "Is there a better matcher here? Sometimes the test might be used to login to some managed account under organization domain names.",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 73
+      },
+      "revId": "036d9c9c489be10f4f189ea699c26bd6960cd6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0979cede_868ad6cc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T16:59:22Z",
+      "side": 1,
+      "message": "What would it be like? Yes, I can come up with a better matcher to make sure the accounts used here are included.",
+      "parentUuid": "ae2747b6_2c727a68",
       "range": {
         "startLine": 48,
         "startChar": 61,
