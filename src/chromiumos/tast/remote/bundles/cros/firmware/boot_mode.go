@@ -237,11 +237,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 			opts = append(opts, firmware.AssumeGBBFlagsCorrect)
 		}
 
-		if tc.checkToNoGoodScreen {
-			opts = append(opts, firmware.CheckToNoGoodScreen)
-		}
-
-		if tc.checkToBrokenScreen {
+		if tc.checkToBrokenScreen || tc.checkToNoGoodScreen {
 			// Call h.CheckUSBOnServoHost before booting from usb device again
 			// in order to get the usbdev and pass it to CheckBrokenScreen.
 			usbdev, err = h.CheckUSBOnServoHost(ctx)
@@ -249,8 +245,14 @@ func BootMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to check the usb key: ", err)
 			}
 			s.Log("USB path: ", usbdev)
+			if tc.checkToNoGoodScreen {
+				opts = append(opts, firmware.CheckToNoGoodScreen)
+				// An invalid USB is required to check for the NOGOOD screen.
+				if err := h.FormatUSB(ctx, usbdev); err != nil {
+					s.Fatal("Failed to format the USB: ", err)
+				}
+			}
 		}
-
 		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
 		if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
 			s.Fatalf("Error during transition from %s to %s: %v", pv.BootMode, tc.bootToMode, err)

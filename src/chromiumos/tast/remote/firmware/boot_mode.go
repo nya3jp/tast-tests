@@ -767,10 +767,6 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 		if err != nil {
 			return errors.Wrap(err, "failed to check the USB on servo host")
 		}
-		// An invalid USB is required to check for the NOGOOD screen.
-		if err := h.FormatUSB(ctx, usbdev); err != nil {
-			return errors.Wrap(err, "failed to format the USB")
-		}
 		// Enable USB connection to DUT.
 		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
 			return errors.Wrap(err, "failed to set 'usb3_mux_sel:dut_sees_usbkey'")
