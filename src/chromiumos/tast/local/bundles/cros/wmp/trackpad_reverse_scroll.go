@@ -29,7 +29,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Params:       []testing.Param{
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-ac83aef4-5602-49b7-8ef8-088f6660d52a",
+			},
+		},
+		Params: []testing.Param{
 			/* Disabled due to <1% pass rate over 30 days. See b/246818645
 			{
 				Name: "reverse_on",
