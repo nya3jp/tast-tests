@@ -34,7 +34,7 @@ func init() {
 		Func:         PhysicalKeyboardEmojiSuggestion,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks emoji suggestions with physical keyboard typing",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),

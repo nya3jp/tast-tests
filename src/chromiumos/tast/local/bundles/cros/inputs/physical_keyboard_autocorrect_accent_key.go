@@ -29,9 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard with accent keys can perform typing with autocorrects",
 		Contacts: []string{
-			"vivian.tsai@cienet.com", // Author
-			"shengjun@google.com",    // PoC
-			"cienet-development@googlegroups.com",
+			"essential-inputs-gardener-oncall@google.com", // PoC
 			"essential-inputs-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "group:input-tools"},

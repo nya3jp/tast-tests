@@ -28,7 +28,7 @@ func init() {
 		Func:         VirtualKeyboardKioskRestrictFeatures,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that restrict features functionality of extension API works in kiosk mode",
-		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),

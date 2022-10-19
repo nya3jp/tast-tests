@@ -28,7 +28,7 @@ func init() {
 		Func:         PhysicalKeyboardNumpad,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that numpad keys work",
-		Contacts:     []string{"mehrab@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

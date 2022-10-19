@@ -29,7 +29,7 @@ func init() {
 		Func:         VirtualKeyboardEnglishSettings,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the input settings works in Chrome",
-		Contacts:     []string{"essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		// TODO(b/243336476): Remove informational
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

@@ -31,7 +31,7 @@ func init() {
 		Func:         VirtualKeyboardAccent,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that long pressing keys pop up accent window",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),

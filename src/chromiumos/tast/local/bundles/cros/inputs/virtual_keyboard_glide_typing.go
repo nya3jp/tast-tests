@@ -34,7 +34,7 @@ func init() {
 		Func:         VirtualKeyboardGlideTyping,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test handwriting input functionality on virtual keyboard",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		// TODO(b/243336476): Remove informational
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},

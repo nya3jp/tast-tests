@@ -27,7 +27,7 @@ func init() {
 		Func:         PhysicalKeyboardEnglishTyping,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard can perform basic typing",
-		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

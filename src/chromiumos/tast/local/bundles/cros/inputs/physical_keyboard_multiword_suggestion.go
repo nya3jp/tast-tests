@@ -29,7 +29,7 @@ func init() {
 		Func:         PhysicalKeyboardMultiwordSuggestion,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks on device multiword suggestions with physical keyboard typing",
-		Contacts:     []string{"curtismcmullan@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:ml_service", "ml_service_ondevice_text_suggestions"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		SoftwareDeps: []string{"chrome", "chrome_internal", "ondevice_text_suggestions"},

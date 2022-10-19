@@ -26,7 +26,7 @@ func init() {
 		Func:         InputMethodManagement,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that user can manage input methods in OS settings",
-		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),

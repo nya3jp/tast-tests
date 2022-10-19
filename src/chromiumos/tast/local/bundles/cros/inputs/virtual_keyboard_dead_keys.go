@@ -40,7 +40,7 @@ func init() {
 		Func:         VirtualKeyboardDeadKeys,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
-		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,

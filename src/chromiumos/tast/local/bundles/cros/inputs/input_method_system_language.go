@@ -33,6 +33,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launching ChromeOS in different languages defaults input method",
 		Contacts: []string{
+			"essential-inputs-gardener-oncall@google.com",
 			"essential-inputs-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "group:input-tools"},

@@ -27,7 +27,7 @@ func init() {
 		Func:         PhysicalKeyboardAltgr,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that user can lock altgr modifier key on physical keyboard",
-		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.Swedish}),

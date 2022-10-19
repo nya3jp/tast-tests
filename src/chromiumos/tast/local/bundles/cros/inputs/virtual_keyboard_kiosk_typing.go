@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardKioskTyping,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that user can type in virtual keyboard in kiosk mode",
-		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),

@@ -26,9 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify that spell check works while typing the word removed from customize spell check",
 		Contacts: []string{
-			"cj.tsai@cienet.com",  // Author
-			"shengjun@google.com", // PoC
-			"cienet-development@googlegroups.com",
+			"essential-inputs-gardener-oncall@google.com",
 			"essential-inputs-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},

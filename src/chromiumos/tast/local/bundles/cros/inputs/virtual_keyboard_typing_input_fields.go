@@ -47,7 +47,7 @@ func init() {
 		Func:         VirtualKeyboardTypingInputFields,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual keyboard works on different input fields",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
 		// TODO(b/243336476): Remove Informational
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SearchFlags:  util.IMESearchFlags(inputFieldTestIMEs),
