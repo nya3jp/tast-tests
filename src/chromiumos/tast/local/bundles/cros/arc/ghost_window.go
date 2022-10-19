@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -35,6 +36,11 @@ var fullrestoreGwTests = []gwTestParams{
 	{"fullrestorePlayStoreInTabletMode", testLaunchFromFullRestorePlayStoreInTabletMode},
 }
 
+var generalLaunchGwTests = []gwTestParams{
+	{"shelfLaunchPlayStore", testShelfLaunchPlayStore},
+	{"launcherLaunchPlayStore", testLauncherLaunchPlayStore},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GhostWindow,
@@ -46,11 +52,20 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{{
+			Name:              "general",
+			Val:               generalLaunchGwTests,
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name: "general_r",
+			Val:  generalLaunchGwTests,
+			// Temporarily restrict it only for ARC R, not T or above version.
+			ExtraSoftwareDeps: []string{"android_vm_r"},
+		}, {
 			Name:              "fullrestore",
 			Val:               fullrestoreGwTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "fullrestore_vm",
+			Name: "fullrestore_r",
 			Val:  fullrestoreGwTests,
 			// Temporarily restrict it only for ARC R, not T or above version.
 			ExtraSoftwareDeps: []string{"android_vm_r"},
@@ -197,6 +212,69 @@ func testLaunchFromFullRestorePlayStoreInTabletMode(ctx context.Context, s *test
 
 	if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch ghost window: ", err)
+	}
+}
+
+func testShelfLaunchPlayStore(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Test ghost window in logout case.
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	if err := ash.WaitForShelf(ctx, tconn, 30*time.Second); err != nil {
+		s.Fatal("Shelf did not appear after logging in: ", err)
+	}
+
+	// Launch from shelf require th app exist on the shelf, or pinned on the shelf.
+	if err := ash.PinApp(ctx, tconn, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to pin PlayStore to the shelf: ", err)
+	}
+
+	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.PlayStore.Name, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to launch PlayStore from shelf: ", err)
+	}
+
+	// Make sure ARC Ghost Window of PlayStore has popup.
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to wait for Ghost Window of PlayStore: ", err)
+	}
+}
+
+func testLauncherLaunchPlayStore(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Test ghost window in logout case.
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
+		s.Fatal("Failed to launch PlayStore from launcher: ", err)
+	}
+
+	// Make sure ARC Ghost Window of PlayStore has popup.
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to wait for Ghost Window of PlayStore: ", err)
 	}
 }
 
