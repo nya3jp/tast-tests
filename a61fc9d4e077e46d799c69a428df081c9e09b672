@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec12eb1f_960c16db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T20:20:30Z",
+      "side": 1,
+      "message": "Thank you Xiyuan!",
+      "revId": "a61fc9d4e077e46d799c69a428df081c9e09b672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
