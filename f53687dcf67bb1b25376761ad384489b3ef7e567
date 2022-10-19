@@ -39,6 +39,30 @@
       },
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603ee2c5_5ac30fa0",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-19T11:03:28Z",
+      "side": 1,
+      "message": "Moving that logic out of the test would be good.\nI like the solution of adding it directly to the chrome package more than putting it into a fixture.\nIdeally the fixture and test should only contain code that is related to the test flow itself and everything else is placed in some libraries.",
+      "parentUuid": "49d86c3c_6130e63e",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
