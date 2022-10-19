@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7ba31f_7b36e306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T23:15:38Z",
+      "side": 1,
+      "message": "I think it is probably not ok to demote this. Because then it will go from model to board and then chipset and load an inconsistent file from run to run. This will cause flakes. Whatever we use to identify, it needs to be able to do so rock solidly. At least in a lab setting, where we get random devices. For bringup on a desk it might be ok. I don\u0027t have a good answer, so if you want to land go ahead, but maybe with a TODO and an open issue for tracking?\n\nNot urgent: it seems we are loading the expectations on every parameterized test? Mabye that can\u0027t be avoided. But could they be cached? Slightly worried about slowing down Romaric\u0027s 1500 tests.",
+      "revId": "9e3e9fbeeea1cae81ec69a15882432890e8addb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab24f996_68ca1697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T23:15:38Z",
+      "side": 1,
+      "message": "%s maybe for consistency? But why print theFileType twice?",
+      "range": {
+        "startLine": 231,
+        "startChar": 44,
+        "endLine": 231,
+        "endChar": 46
+      },
+      "revId": "9e3e9fbeeea1cae81ec69a15882432890e8addb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
