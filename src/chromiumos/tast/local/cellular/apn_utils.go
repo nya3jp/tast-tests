@@ -57,6 +57,7 @@ var (
 		"001010": carrierAmarisoft,
 		"23415":  carrierVodafoneUK,
 		"310260": carrierTmobile,
+		"311882": carrierTmobile,
 		"310280": carrierAtt,
 		"310410": carrierAtt,
 		"311480": carrierVerizon,
