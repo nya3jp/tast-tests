@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b83d59e_11fb1163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-19T16:39:35Z",
+      "side": 1,
+      "message": "hideLauncher hides the launcher without opening any app windows, which may impact recent apps scores. In tablet mode, it does so by showing overview UI.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 0
+      },
+      "revId": "0258f5c453f272b7d0d9203612c4419814858f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4493e22_058780cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-19T16:39:35Z",
+      "side": 1,
+      "message": "I\u0027 drop the part of comment referencing clamshell mode.",
+      "revId": "0258f5c453f272b7d0d9203612c4419814858f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
