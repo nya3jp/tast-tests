@@ -39,6 +39,48 @@
       "message": "I\u0027 drop the part of comment referencing clamshell mode.",
       "revId": "0258f5c453f272b7d0d9203612c4419814858f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1d511e_90af1c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-19T20:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4493e22_058780cc",
+      "revId": "0258f5c453f272b7d0d9203612c4419814858f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c643044_eebd2fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-10-19T20:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b83d59e_11fb1163",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 0
+      },
+      "revId": "0258f5c453f272b7d0d9203612c4419814858f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
