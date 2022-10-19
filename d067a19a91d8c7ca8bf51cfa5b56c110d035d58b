@@ -16,6 +16,24 @@
       "message": "Hi John, as the VK tech lead, can you please help review this CL and suggest who should be the best PoC of each test case?",
       "revId": "d067a19a91d8c7ca8bf51cfa5b56c110d035d58b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b51c09_bd44158b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-19T02:38:43Z",
+      "side": 1,
+      "message": "Discussed offline, using E14s gardener oncall as primary contact.",
+      "parentUuid": "5ec9d525_c722f589",
+      "revId": "d067a19a91d8c7ca8bf51cfa5b56c110d035d58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
