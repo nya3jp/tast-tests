@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c245536_89d66cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03291026_c326989c",
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fa56cf0_f75f8493",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-17T23:26:45Z",
       "side": 1,
       "message": "Let\u0027s not rely on grepping the first occurrences but looking for \"EGL API version\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 34,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d5b334_a8124978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa56cf0_f75f8493",
       "range": {
         "startLine": 36,
         "startChar": 34,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74837d18_b12d4fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d55193_c35a8931",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc73d258_b9760cf0",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef717f0_1e309b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc73d258_b9760cf0",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 79
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c41275_359cc5c6",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-10-17T23:26:45Z",
       "side": 1,
       "message": "No need to get err here.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 14
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54070b4e_9f639430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c41275_359cc5c6",
       "range": {
         "startLine": 59,
         "startChar": 4,
@@ -164,6 +278,30 @@
       "side": 1,
       "message": "I don\u0027t think it is true (1.3 \u003e 1.17). That assumes string comparison.\n\nBut lets do the same and fail anything under 1.3.",
       "parentUuid": "4eaa64f5_013c6793",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "976128f9d23a4954f91c0511cebbe653fca1aca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30459a8_ea3dd10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_api_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-19T06:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2471f303_c1044cc5",
       "range": {
         "startLine": 67,
         "startChar": 13,
