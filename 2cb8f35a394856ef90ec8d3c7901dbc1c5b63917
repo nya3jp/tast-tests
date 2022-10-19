@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19839510_34884da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-19T04:21:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb5aef4_8539744c",
+      "range": {
+        "startLine": 217,
+        "startChar": 116,
+        "endLine": 217,
+        "endChar": 117
+      },
+      "revId": "2cb8f35a394856ef90ec8d3c7901dbc1c5b63917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7387d0f_42cc0bcf",
