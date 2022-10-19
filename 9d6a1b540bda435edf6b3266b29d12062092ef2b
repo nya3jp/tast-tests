@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cce5bdc_2669d40d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcad3a45_7fd4b779",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d9594f_ec8524bc",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-19T13:24:32Z",
       "side": 1,
       "message": "nit: could you declare variable at latest timing? E.g., move this to L75?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab753ee_ac515c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d9594f_ec8524bc",
       "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1d7e970_c7958afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "I have tried for crostini and arc, which cannot use HasChrome.",
+      "parentUuid": "acb35db1_d0bcbc6d",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c359e59_67fdbc72",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 3
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-19T13:24:32Z",
       "side": 1,
       "message": "why do you need a new chrome instance, unlike others?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28590112_2ed0c6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "ChromeApp can support HasChrome.",
+      "parentUuid": "8c359e59_67fdbc72",
       "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +154,24 @@
       "writtenOn": "2022-10-19T13:24:32Z",
       "side": 1,
       "message": "nit: const appName \u003d ...",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4acd4c67_171d83f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a6f9e6_6b6ba4f7",
       "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "877eef10_394ed9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c8788e_16b8e739",
+      "range": {
+        "startLine": 142,
+        "startChar": 10,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32e43e95_b06aa242",
@@ -122,6 +236,24 @@
       "writtenOn": "2022-10-19T13:24:32Z",
       "side": 1,
       "message": "nit: maybe \"Activate\"?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6eb4db_9c2184f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e43e95_b06aa242",
       "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa923d1_911d6f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ecf8532_830fa91c",
+      "range": {
+        "startLine": 164,
+        "startChar": 9,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91231c68_34d0a870",
@@ -162,6 +318,24 @@
       "writtenOn": "2022-10-19T13:24:32Z",
       "side": 1,
       "message": "Can DoDefault work?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0be4930_2f469537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91231c68_34d0a870",
       "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -180,6 +354,30 @@
       "side": 1,
       "message": "\u003e \"currect\" is a possible misspelling of \"correct\" or \"current\".\n\nPlease fix.",
       "parentUuid": "4e56e0b2_15c656f3",
+      "range": {
+        "startLine": 222,
+        "startChar": 66,
+        "endLine": 222,
+        "endChar": 73
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178d9af1_910329c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-19T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b90ad9b_17e3e475",
       "range": {
         "startLine": 222,
         "startChar": 66,
