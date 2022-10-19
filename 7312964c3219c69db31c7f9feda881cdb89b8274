@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1503da1_4e7afbe2",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-19T21:04:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the wear leveling be from cros_config, and if not present then use a default option.\nLet\u0027s fix the bug once and for all.",
+      "revId": "7312964c3219c69db31c7f9feda881cdb89b8274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ae98b7_ff9b036e",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-19T21:04:20Z",
+      "side": 1,
+      "message": "IMHO, 50 is too low, the device is still safe. 90 or 99 is a proper threshold.",
+      "revId": "7312964c3219c69db31c7f9feda881cdb89b8274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
