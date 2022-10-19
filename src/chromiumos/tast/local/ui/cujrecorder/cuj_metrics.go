@@ -13,6 +13,7 @@ import "chromiumos/tast/common/perf"
 func CUJAshCommonMetricConfigs() []MetricConfig {
 	return append(AshCommonMetricConfigs(),
 		// Smoothness.
+		NewCustomMetricConfig("Ash.Smoothness.PercentDroppedFrames_1sWindow.InSession2", "percent", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Graphics.Smoothness.MaxPercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
 		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenAllApps"),
 		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenSearch"),
