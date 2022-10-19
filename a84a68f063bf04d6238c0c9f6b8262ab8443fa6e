@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ae658a_0402c50b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "Since this patch also affects other tests, let\u0027s also run VPNConnect.* at least.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d58c21c_bb3aa956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "nit: reformat the comment",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ba00ad_483a138f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "Need to update this part since it\u0027s no longer only for WG now (\"list\" can be confusing for other types).\n\nI think we can just say \"IPType specifies the overlay IP type of the VPN service.\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cc743d_b2af8d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "\"Currently VPNs expect for WireGuard only supports IPv4\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 64,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9456eb1_a1c5399a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "Let\u0027s also output the IPv6 address when it is available",
+      "range": {
+        "startLine": 219,
+        "startChar": 110,
+        "endLine": 219,
+        "endChar": 121
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c713cb9_f457dde0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "(Not related to your patch) I think we can use Error here and below. Fatal will stop the execution, but we can run all the ping verification even if there is a failure.",
+      "range": {
+        "startLine": 292,
+        "startChar": 5,
+        "endLine": 292,
+        "endChar": 11
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7488715b_8e24ed5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "sorry my bad, let\u0027s use either `../platform/tast/fast_build.sh -T` or `fast_build.sh` to avoid confusion for future readers.",
+      "parentUuid": "bce54d36_f05c5f49",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4874e65b_b5d4486d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
         "patchSetId": 8
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Thanks. Is it a problem that the struct variable `IPType (or OverlayIPType)` in Config does not have the type declaration field? If that is the case, how about writing like `IPType(variable name in struct) IPtype(type of that variable)` in the struct Config? \nOr, is it better to make the method to set IPType and return it (sorry I don\u0027t get the meaning of \"method\" in your review)?",
       "parentUuid": "4874e65b_b5d4486d",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "d5da1fa377106208969b6478c9ac3091aa771758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1fd651_4b0c8940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-19T03:58:10Z",
+      "side": 1,
+      "message": "Yes, the current code looks fine now. Thanks!",
+      "parentUuid": "63869878_47105670",
       "range": {
         "startLine": 67,
         "startChar": 1,
