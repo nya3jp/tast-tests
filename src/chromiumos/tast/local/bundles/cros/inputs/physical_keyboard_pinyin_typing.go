@@ -46,7 +46,7 @@ func init() {
 				Name:             "traditional",
 				Fixture:          fixture.ClamshellNonVK,
 				Val:              ime.ChineseTraditionalPinyin,
-				ExtraAttr:        []string{"informational", "group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
 				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseTraditionalPinyin}),
 			},
 			{
