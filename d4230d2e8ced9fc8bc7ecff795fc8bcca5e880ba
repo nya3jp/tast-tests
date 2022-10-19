@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a82f468_dc4fcbdd",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-19T07:32:24Z",
+      "side": 1,
+      "message": "nit: ok (there\u0027s only one here now  😊)",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9bcddc_2ae32bf6",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-19T07:32:24Z",
+      "side": 1,
+      "message": "nit: remove newline to be consistent with the function above",
+      "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

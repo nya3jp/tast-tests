@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4f6b81_3c7d2f99",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-19T07:32:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4dfd82f_3cdb7c51",
+      "revId": "e85f5e49c3276c32da1d119e528d3f467ab10c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e09330_b697ee54",
