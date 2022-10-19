@@ -31,7 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
-		Contacts:     []string{"essential-inputs-team@google.com"},
+		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		VarDeps:      []string{"inputs.signinProfileTestExtensionManifestKey"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),

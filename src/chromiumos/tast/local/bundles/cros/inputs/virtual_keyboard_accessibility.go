@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
