@@ -196,19 +196,19 @@ func (s *Session) CloseTarget(ctx context.Context, id TargetID) error {
 // lazily created, and this function will block until the extension is loaded or
 // ctx's deadline is reached. The caller should not close the returned
 // connection; it will be closed automatically by Close.
-func (s *Session) TestAPIConn(ctx context.Context) (*TestConn, error) {
-	return s.testAPIConnFor(ctx, &s.testExtConn, extension.TestExtensionID)
+func (s *Session) TestAPIConn(ctx context.Context, autotestPrivateSupported bool) (*TestConn, error) {
+	return s.testAPIConnFor(ctx, &s.testExtConn, extension.TestExtensionID, autotestPrivateSupported)
 }
 
 // SigninProfileTestAPIConn is the same as TestAPIConn, but for the signin
 // profile test extension.
 func (s *Session) SigninProfileTestAPIConn(ctx context.Context) (*TestConn, error) {
-	return s.testAPIConnFor(ctx, &s.signinExtConn, extension.SigninProfileTestExtensionID)
+	return s.testAPIConnFor(ctx, &s.signinExtConn, extension.SigninProfileTestExtensionID, false)
 }
 
 // testAPIConnFor builds a test API connection to the extension specified by
 // extID.
-func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID string) (*TestConn, error) {
+func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID string, autotestPrivateSupported bool) (*TestConn, error) {
 	if *extConn != nil {
 		return &TestConn{conn: *extConn}, nil
 	}
@@ -231,8 +231,10 @@ func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID stri
 		return nil, errors.Wrap(err, "tast API is unavailable")
 	}
 
-	if err := (*extConn).Eval(ctx, "chrome.autotestPrivate.initializeEvents()", nil); err != nil {
-		return nil, errors.Wrap(err, "failed to initialize test API events")
+	if autotestPrivateSupported {
+		if err := (*extConn).Eval(ctx, "chrome.autotestPrivate.initializeEvents()", nil); err != nil {
+			return nil, errors.Wrap(err, "failed to initialize test API events")
+		}
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
