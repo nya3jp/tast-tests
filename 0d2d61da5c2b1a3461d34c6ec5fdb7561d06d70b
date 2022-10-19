@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912f8e09_ddaef92a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-19T13:58:53Z",
+      "side": 1,
+      "message": "nit: maybe also mention the DHCP option 121 in ().",
+      "range": {
+        "startLine": 25,
+        "startChar": 87,
+        "endLine": 25,
+        "endChar": 116
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace13486_5a407f7e",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-19T13:58:53Z",
+      "side": 1,
+      "message": "So just checking: the format is prefix1\",\"gateway1\",\"prefix2\",\"gateway2\",\"... ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 27,
+        "endLine": 179,
+        "endChar": 45
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
