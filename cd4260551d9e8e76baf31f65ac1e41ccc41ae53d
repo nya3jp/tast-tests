@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5027db_29a5a56a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-19T22:36:44Z",
+      "side": 1,
+      "message": "nit: `Collect new Ash smoothness metric`\n\nYou technically didn\u0027t \"add\" the metric, whoever created the metric and populated it did.",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89870222_b823d5d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-19T22:36:44Z",
+      "side": 1,
+      "message": "Make this line \u003c 72 characters.",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be32c40_25ad8dc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-19T22:36:44Z",
+      "side": 1,
+      "message": "make a more complete sentence, like `and verify results-chart.json has a nonzero value for Ash.Smoothness.PercentDroppedFrames_1sWindow.InSession2`\n\nAlso, make sure you know its `results-chart.json` and not `result-chart.json`",
+      "revId": "cd4260551d9e8e76baf31f65ac1e41ccc41ae53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c6f11e3b_f943ca57",
