@@ -47,7 +47,11 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
-		Timeout: 4 * time.Minute,
+		// This test
+		// - starts 16 subtests, each of which can realistically take up to 20 seconds and
+		// - reserves 10 seconds for cleanup.
+		// -> at least 5.5min should be allocated as timeout.
+		Timeout: 6 * time.Minute,
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.DeveloperToolsAvailability{}, pci.VerifiedFunctionalityUI),
 		},
