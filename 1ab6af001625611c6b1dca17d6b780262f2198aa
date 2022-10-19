@@ -16,6 +16,177 @@
       "message": "Hi Hidehiko and Jonathan,\n\nCan you review this patch please?\n\nThank you,\nYuta",
       "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f760fa4_c2db7fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "Thank you for making the change!",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3a72d9_8650ed67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "can we use int as id?",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d255e982_7b435cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "could you file a tracking bug and link it from here?\n\nClarification: any concern on multi threading?",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ae33f7_1aa1b301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "worth trying to close all conns when chrome is shutdown.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fc3ae5_999e8694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "nil for error. Ditto for all below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb1fe17a_d72209d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "you can do this just before L111, so you do not need delete twice.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b3c13d_1e689bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "we often don\u0027t use getter prefix in tast/go. connByID",
+      "range": {
+        "startLine": 173,
+        "startChar": 24,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99826b21_c7d8066b",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "nit: looks wrong indent?",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce018675_aad21a28",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:54:43Z",
+      "side": 1,
+      "message": "conceptually this will be identical with NewConnResponse?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
