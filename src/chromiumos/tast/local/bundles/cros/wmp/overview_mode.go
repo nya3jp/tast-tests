@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that overview mode works correctly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"sammiequon@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},

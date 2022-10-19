@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that gestures for hotseat, home, back and overview works correctly",
 		Contacts: []string{
-			"yichenz@chromium.org",
+			"sophiewen@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},

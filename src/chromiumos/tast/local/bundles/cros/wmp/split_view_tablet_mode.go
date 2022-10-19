@@ -40,7 +40,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "In tablet mode, checks split view works properly",
 		Contacts: []string{
-			"sammiequon@chromium.org",
+			"zxdan@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
@@ -94,8 +94,6 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain internal display info: ", err)
@@ -106,8 +104,6 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 
 	// Rotate the screen if it is a portrait test.
 	portrait := param.portrait
@@ -126,7 +122,10 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, rotations[rotIndex]); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 	}
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Obtain the latest display info after rotating the display.
 	info, err = display.GetInternalInfo(ctx, tconn)
@@ -160,7 +159,7 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Launch four windows: two browser windows and two chrome apps.
+	// Launch four windows: two chrome windows, the files app (SWA app) and the playstore app (ARC app).
 	const numWindows = 4
 	appsList := []apps.App{apps.FilesSWA, apps.PlayStore}
 	numBrowserWindowsToOpen := numWindows - len(appsList)
