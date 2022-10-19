@@ -111,8 +111,10 @@ func WindowCyclePerDesk(ctx context.Context, s *testing.State) {
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 5); err != nil {
 		s.Fatal("Failed to activate desk 5: ", err)
 	}
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for active desk animation to be completed")
+	// TODO(b/246782864): Use a proper wait for the desk animation.
+	// Make sure the desk animiation is finished.
+	if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait desk animation finished: ", err)
 	}
 
 	// Get the keyboard
