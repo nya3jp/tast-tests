@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f5d9be_b8b6354e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-19T09:17:39Z",
+      "side": 1,
+      "message": "Thank you for investigating!\n\nThe DRM logs are full of bogus error messages. I was hoping we could clean them up inside of the drmtest sources. You made a convincing argument in the issue that \n\nadd_plane_fb():atomictest.c:452:check plane-\u003ebo failed\n\nshould just be\n// We allow minigbm to not support all combinations.\nif (!plane-\u003ebo) return 0;\n\nAnd probably \n\nERROR:init_plane():atomictest.c:479:failed with error: -1\n\n\tCHECK_RESULT(add_plane_fb(ctx, plane));\n\treturn 0;\n\t\nshould just be\n        return add_plane_fb(ctx, plane);\n        \n        \nI think there are more instances where people use the error macros for convenience, but don\u0027t really mean it.\n\nI am not a fan, but I would prefer to just blindly collect all these error messages and again blindly change the drm sources to not spew error if clearly the tests are meant to pass even though they spew \"error\" left and right. That is confusing to any reader of the sources or any reader of the logs.",
+      "revId": "6cd943bad2b64352f1c4a7b7fe92880b435b805f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
