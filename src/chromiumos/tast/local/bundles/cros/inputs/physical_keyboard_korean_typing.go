@@ -39,7 +39,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "lacros",
