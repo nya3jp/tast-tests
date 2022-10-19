@@ -58,6 +58,7 @@ var (
 		"23415":  carrierVodafoneUK,
 		"23430":  carrierEEUK,
 		"310260": carrierTmobile,
+		"311882": carrierTmobile,
 		"310280": carrierAtt,
 		"310410": carrierAtt,
 		"311480": carrierVerizon,
