@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37e9225_831fb74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-19T14:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d4caf5_ae60cc1d",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 65
+      },
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b43c85e5_aaa91e3c",
@@ -106,6 +130,30 @@
       "writtenOn": "2022-10-17T23:45:53Z",
       "side": 1,
       "message": "Can this be moved above the new if block? Otherwise the `generated together` comment is a bit confusing.\n\nUnless it is down here to match the order that events are generated. In that case maybe add comments with the event that each timestamp is for.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 64
+      },
+      "revId": "e337544e055088c6622fe3fb6570f5609e7d2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef4faa7_e05f005a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-19T14:15:09Z",
+      "side": 1,
+      "message": "I think it should be here in order to match sequence of events.\nEvent time is produced by WaitForNextEventTime so the sequence looks good.",
+      "parentUuid": "b43c85e5_aaa91e3c",
       "range": {
         "startLine": 170,
         "startChar": 2,
