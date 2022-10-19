@@ -41,13 +41,12 @@ func init() {
 
 func RecoveryOptOut(ctx context.Context, s *testing.State) {
 	const (
-		userName                              = "foo@bar.baz"
-		userPassword                          = "secret"
-		passwordLabel                         = "online-password"
-		recoveryLabel                         = "test-recovery"
-		userGaiaID                            = "123456789"
-		deviceUserID                          = "123-456-AA-BB"
-		cryptohomeErrorAuthorizationKeyFailed = 3
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		passwordLabel = "online-password"
+		recoveryLabel = "test-recovery"
+		userGaiaID    = "123456789"
+		deviceUserID  = "123-456-AA-BB"
 	)
 
 	ctxForCleanUp := ctx
@@ -174,8 +173,8 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error in authentication after factor removal: got %q; want *hwsec.CmdExitError", err)
 	}
-	if exitErr.ExitCode != cryptohomeErrorAuthorizationKeyFailed {
+	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED) {
 		s.Fatalf("Unexpected exit code in authentication after factor removal: got %d; want %d",
-			exitErr.ExitCode, cryptohomeErrorAuthorizationKeyFailed)
+			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED)
 	}
 }
