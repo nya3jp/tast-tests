@@ -28,7 +28,6 @@ func init() {
 		Desc:         "Help app can be launched offline with bundled content",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"shengjun@chromium.org", // Test author
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

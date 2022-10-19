@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Help app should be launched after OOBE",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"shengjun@chromium.org",
 		},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

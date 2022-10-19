@@ -28,7 +28,6 @@ func init() {
 		Desc:         "Launch Help App on a managed device",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"shengjun@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{

@@ -27,7 +27,6 @@ func init() {
 		Desc:         "Launch Help APP in different system languages",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

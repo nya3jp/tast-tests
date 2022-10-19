@@ -26,7 +26,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app can be found and launched from the launcher",
 		Contacts: []string{
-			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
