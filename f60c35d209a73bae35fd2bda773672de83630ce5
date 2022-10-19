@@ -16,6 +16,98 @@
       "message": "ptal",
       "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d1f4e4_3eccb9c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T10:21:36Z",
+      "side": 1,
+      "message": "`ctx` is enough here. If you want, you can edit `LoginWithFakeIdP` as well.",
+      "range": {
+        "startLine": 93,
+        "startChar": 52,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5df3bc_ae812868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T10:21:36Z",
+      "side": 1,
+      "message": "This is not a login test API.",
+      "range": {
+        "startLine": 107,
+        "startChar": 41,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85f3a53_18ab8a21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T10:21:36Z",
+      "side": 1,
+      "message": "If you are using it in `RequiredVar`, it should be a `VarDeps`.",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 83
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c099c0d8_42aa5363",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T10:21:36Z",
+      "side": 1,
+      "message": "please use the got want pattern.",
+      "range": {
+        "startLine": 129,
+        "startChar": 46,
+        "endLine": 129,
+        "endChar": 63
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
