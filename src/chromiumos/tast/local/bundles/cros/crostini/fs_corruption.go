@@ -384,7 +384,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	// Restart everything before finishing so the precondition will be in a good state.
 	defer func() {
 		if err := launchAndReleaseTerminal(cleanupCtx, tconn); err != nil {
-			s.Error("Failed to restart crostini terminal: ", err)
+			s.Log("Failed to restart crostini terminal: ", err)
 		}
 	}()
 
