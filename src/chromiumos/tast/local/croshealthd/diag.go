@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -73,8 +74,11 @@ type RoutineResult struct {
 // RoutineParams are different configuration options for running a diagnostic
 // routine.
 type RoutineParams struct {
-	Routine string // The name of the routine to run
-	Cancel  bool   // Boolean flag to cancel the routine
+	Routine            string // The name of the routine to run
+	Cancel             bool   // Boolean flag to cancel the routine
+	WearLevelThreshold int    // Threshold for RoutineNVMEWearLevel. The param
+	// will only be used if the corresponding field in
+	// cros-config is missing.
 }
 
 // RunDiagRoutine runs the specified routine based on `params`. Returns a
@@ -83,6 +87,22 @@ func RunDiagRoutine(ctx context.Context, params RoutineParams) (*RoutineResult, 
 	diagParams := []string{"--action=run_routine", fmt.Sprintf("--routine=%s", params.Routine)}
 	if params.Cancel {
 		diagParams = append(diagParams, "--force_cancel_at_percent=5")
+	}
+	if params.Routine == RoutineNVMEWearLevel {
+		// Replace the default value in params.WearLevelThreshold with the
+		// correspodning field found in cros-config.
+		thresholdStr, err := crosconfig.Get(ctx, "/cros-healthd/routines/nvme-wear-level", "wear-level-threshold")
+		if err != nil && !crosconfig.IsNotFound(err) {
+			return nil, errors.Wrap(err, "failed to invoke cros_config for wear-level-threshold")
+		}
+		if !crosconfig.IsNotFound(err) {
+			threshold, err := strconv.Atoi(thresholdStr)
+			if err != nil {
+				return nil, errors.Wrapf(err, "Unable to parse wear-level-threshold in cros_config %q to int", thresholdStr)
+			}
+			params.WearLevelThreshold = threshold
+		}
+		diagParams = append(diagParams, fmt.Sprintf("--wear_level_threshold=%d", params.WearLevelThreshold))
 	}
 	output, err := runDiag(ctx, diagParams)
 	if err != nil {
