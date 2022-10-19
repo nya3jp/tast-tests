@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcad3a45_7fd4b779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "As you are using web browser, Lacros variant is needed.",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d9594f_ec8524bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "nit: could you declare variable at latest timing? E.g., move this to L75?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb35db1_d0bcbc6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "can fixture suppore HasChrome? Ditto for arc.PreData.",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c359e59_67fdbc72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "why do you need a new chrome instance, unlike others?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a6f9e6_6b6ba4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "nit: const appName \u003d ...",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c8788e_16b8e739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "4 ( 2, 3, 4, 5 inclusive) ?",
+      "range": {
+        "startLine": 142,
+        "startChar": 10,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e43e95_b06aa242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "nit: maybe \"Activate\"?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ecf8532_830fa91c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "nit \":\u003d\" ditto for below.",
+      "range": {
+        "startLine": 164,
+        "startChar": 9,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91231c68_34d0a870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "Can DoDefault work?",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b90ad9b_17e3e475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:24:32Z",
+      "side": 1,
+      "message": "\u003e \"currect\" is a possible misspelling of \"correct\" or \"current\".\n\nPlease fix.",
+      "parentUuid": "4e56e0b2_15c656f3",
+      "range": {
+        "startLine": 222,
+        "startChar": 66,
+        "endLine": 222,
+        "endChar": 73
+      },
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
