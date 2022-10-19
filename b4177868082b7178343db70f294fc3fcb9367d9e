@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ffb112_978ef521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-19T21:17:30Z",
+      "side": 1,
+      "message": "Yes I will have a follow up CL for this",
+      "parentUuid": "5350e838_79751e73",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 148
+      },
+      "revId": "b4177868082b7178343db70f294fc3fcb9367d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8961ad_196c74ce",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-19T19:45:30Z",
       "side": 1,
       "message": "Normally I\u0027d prefer returning errors from helper functions and then passing those to Fatal in the caller instead of closing over the `*testing.State` but YMMV since this function is only called from the test body and not passed around",
+      "revId": "b4177868082b7178343db70f294fc3fcb9367d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01169bb3_c39423bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/unlock_pin_locked_sim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-19T21:17:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d8961ad_196c74ce",
       "revId": "b4177868082b7178343db70f294fc3fcb9367d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
