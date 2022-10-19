@@ -20,6 +20,7 @@ import (
 	tdreq "chromiumos/tast/common/testdevicerequirements"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/updateutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/services/cros/platform"
@@ -43,8 +44,13 @@ func init() {
 		Desc:         "Boot performance test",
 		Contacts:     []string{"chinglinyu@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},
-		SoftwareDeps: []string{"chrome"},
+		ServiceDeps: []string{
+			"tast.cros.arc.PerfBootService",
+			"tast.cros.platform.BootPerfService",
+			"tast.cros.security.BootLockboxService",
+			"tast.cros.autoupdate.UpdateService",
+			"tast.cros.autoupdate.NebraskaService"},
+		SoftwareDeps: []string{"reboot", "chrome", "auto_update_stable"},
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
 		Timeout: 25 * time.Minute,
@@ -64,8 +70,19 @@ func assertRootfsVerification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read kernel cmdline")
 	}
 
-	if !strings.Contains(string(cmdline), "dm_verity.dev_wait=1") {
-		s.Fatal("Rootfs verification is off")
+	if strings.Contains(string(cmdline), "dm_verity.dev_wait=1") {
+		return
+	}
+
+	builderPath, err := updateutil.ImageBuilderPath(ctx, d, s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to get image builder path: ", err)
+	}
+
+	// Update the DUT.
+	s.Log("Reimage to restore rootfs verification")
+	if err := updateutil.UpdateFromGS(ctx, d, s.OutDir(), s.RPCHint(), builderPath); err != nil {
+		s.Fatal("Failed to reimage DUT: ", err)
 	}
 }
 
