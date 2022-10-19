@@ -211,7 +211,7 @@ func init() {
 		Desc:     "Logged into a user session with OS Feedback enabled",
 		Contacts: []string{"michaelcheco@google.com"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("OsFeedback")}, nil
+			return []Option{EnableFeatures("OsFeedback", "SkipSendingFeedbackReportInTastTests")}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -247,7 +247,7 @@ func init() {
 		Desc:     "Logged into a user session with OS Feedback and OsFeedbackSaveReportToLocalForE2ETesting enabled",
 		Contacts: []string{"wangdanny@google.com"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("OsFeedback", "OsFeedbackSaveReportToLocalForE2ETesting")}, nil
+			return []Option{EnableFeatures("OsFeedback", "SkipSendingFeedbackReportInTastTests", "OsFeedbackSaveReportToLocalForE2ETesting")}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
