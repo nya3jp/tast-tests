@@ -24,8 +24,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const ghostWindowPlayStorePkgName = "com.android.vending"
-const ghostWindowARCSettingsPkgName = "com.android.settings"
+type gwTestParams struct {
+	name string
+	fn   func(context.Context, *testing.State)
+}
+
+var fullrestoreGwTests = []gwTestParams{
+	{"fullrestorePlayStore", testLaunchFromFullRestoreSingalPlayStore},
+	{"fullrestorePlayStoreAndSetting", testLaunchFromFullRestorePlayStoreAndAndroidSetting},
+	{"fullrestorePlayStoreInTabletMode", testLaunchFromFullRestorePlayStoreInTabletMode},
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,9 +46,12 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{{
+			Name:              "fullrestore",
+			Val:               fullrestoreGwTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
+			Name: "fullrestore_vm",
+			Val:  fullrestoreGwTests,
 			// Temporarily restrict it only for ARC R, not T or above version.
 			ExtraSoftwareDeps: []string{"android_vm_r"},
 		}},
@@ -48,128 +59,144 @@ func init() {
 }
 
 func GhostWindow(ctx context.Context, s *testing.State) {
+	for _, test := range s.Param().([]gwTestParams) {
+		s.Run(ctx, test.name, test.fn)
+	}
+}
+
+// testLaunchFromFullRestoreSingalPlayStore test restore single PlayStore task.
+func testLaunchFromFullRestoreSingalPlayStore(ctx context.Context, s *testing.State) {
 	// Reserve 10 seconds for clean-up tasks.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Test restore single PlayStore task.
-	{
-		// Test ghost window in logout case.
-		cr, err := loginChrome(ctx, s, nil)
-		if err != nil {
-			s.Fatal("Failed to optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
+	// Test ghost window in logout case.
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
-		creds := cr.Creds()
-		if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
-			s.Fatal("Failed to initial optin: ", err)
-		}
-
-		// Stop Chrome after window info saved.
-		waitForWindowInfoSaved(ctx)
-		if err := upstart.RestartJob(ctx, "ui"); err != nil {
-			s.Fatal("Failed to log out: ", err)
-		}
-
-		// Re-login.
-		cr, err = loginChrome(ctx, s, &creds)
-		if err != nil {
-			s.Fatal("Failed to re-optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
-
-		if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
-			s.Fatal("Failed to launch ghost window: ", err)
-		}
+	creds := cr.Creds()
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
 	}
 
-	// Test restore PlayStore and Android Setting tasks.
-	{
-		// Test ghost window in logout case.
-		cr, err := loginChrome(ctx, s, nil)
-		if err != nil {
-			s.Fatal("Failed to optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
-
-		creds := cr.Creds()
-		if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
-			s.Fatal("Failed to initial optin: ", err)
-		}
-
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to create Test API connection: ", err)
-		}
-
-		if err := launchAndroidSettings(ctx, cr, tconn); err != nil {
-			s.Fatal("Failed to launch ARC setting: ", err)
-		}
-
-		// Stop Chrome after window info saved.
-		waitForWindowInfoSaved(ctx)
-		if err := upstart.RestartJob(ctx, "ui"); err != nil {
-			s.Fatal("Failed to log out: ", err)
-		}
-
-		// Re-login
-		cr, err = loginChrome(ctx, s, &creds)
-		if err != nil {
-			s.Fatal("Failed to re-optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
-
-		if err := verifyGhostWindow(ctx, s, cr, false, apps.AndroidSettings.ID); err != nil {
-			s.Fatal("Failed to launch ghost window: ", err)
-		}
+	// Stop Chrome after window info saved.
+	waitForWindowInfoSaved(ctx)
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out: ", err)
 	}
 
-	// Test restore single PlayStore task in tablet mode.
-	{
-		// Test ghost window in logout case.
-		cr, err := loginChrome(ctx, s, nil)
-		if err != nil {
-			s.Fatal("Failed to optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
+	// Re-login.
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to re-optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to create Test API connection: ", err)
-		}
-		tabletModeStatus, err := ash.TabletModeEnabled(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get tablet mode status: ", err)
-		}
-		defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
+	if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to launch ghost window: ", err)
+	}
 
-		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-			s.Fatal("Failed to change device to tablet mode: ", err)
-		}
+}
 
-		creds := cr.Creds()
-		if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
-			s.Fatal("Failed to initial optin: ", err)
-		}
+// testLaunchFromFullRestorePlayStoreAndAndroidSetting test restore PlayStore and Android Setting tasks.
+func testLaunchFromFullRestorePlayStoreAndAndroidSetting(ctx context.Context, s *testing.State) {
+	// Reserve 10 seconds for clean-up tasks.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
-		// Stop Chrome after window info saved.
-		waitForWindowInfoSaved(ctx)
-		if err := upstart.RestartJob(ctx, "ui"); err != nil {
-			s.Fatal("Failed to log out: ", err)
-		}
+	// Test ghost window in logout case.
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
-		// Re-login.
-		cr, err = loginChrome(ctx, s, &creds)
-		if err != nil {
-			s.Fatal("Failed to re-optin: ", err)
-		}
-		defer cr.Close(cleanupCtx)
+	creds := cr.Creds()
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
+	}
 
-		if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
-			s.Fatal("Failed to launch ghost window: ", err)
-		}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	if err := launchAndroidSettings(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to launch ARC setting: ", err)
+	}
+
+	// Stop Chrome after window info saved.
+	waitForWindowInfoSaved(ctx)
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out: ", err)
+	}
+
+	// Re-login
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to re-optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	if err := verifyGhostWindow(ctx, s, cr, false, apps.AndroidSettings.ID); err != nil {
+		s.Fatal("Failed to launch ghost window: ", err)
+	}
+
+}
+
+// testLaunchFromFullRestorePlayStoreInTabletMode test restore single PlayStore task in tablet mode.
+func testLaunchFromFullRestorePlayStoreInTabletMode(ctx context.Context, s *testing.State) {
+	// Reserve 10 seconds for clean-up tasks.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Test ghost window in logout case.
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	tabletModeStatus, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode status: ", err)
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
+
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to change device to tablet mode: ", err)
+	}
+
+	creds := cr.Creds()
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
+	}
+
+	// Stop Chrome after window info saved.
+	waitForWindowInfoSaved(ctx)
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out: ", err)
+	}
+
+	// Re-login.
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to re-optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to launch ghost window: ", err)
 	}
 }
 
@@ -258,6 +285,8 @@ func waitForWindowInfoSaved(ctx context.Context) {
 }
 
 func optinAndLaunchPlayStore(ctx context.Context, cr *chrome.Chrome) error {
+	const ghostWindowPlayStorePkgName = "com.android.vending"
+
 	// Optin to Play Store.
 	testing.ContextLog(ctx, "Opting into Play Store")
 	maxAttempts := 1
@@ -290,6 +319,8 @@ func optinAndLaunchPlayStore(ctx context.Context, cr *chrome.Chrome) error {
 
 // launchAndroidSettings opens the ARC Settings Page from Chrome Settings.
 func launchAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	const ghostWindowARCSettingsPkgName = "com.android.settings"
+
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
 	settingPage, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "apps", ui.Exists(playStoreButton))
