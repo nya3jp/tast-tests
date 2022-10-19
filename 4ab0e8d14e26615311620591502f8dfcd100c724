@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ed45dc_c0d3f399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-19T04:43:00Z",
+      "side": 1,
+      "message": "Thank you!\n\nNow this has to wait for chrome uprev.",
+      "revId": "4ab0e8d14e26615311620591502f8dfcd100c724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
