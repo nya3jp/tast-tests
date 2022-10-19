@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f3733e_f3d4238c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T17:51:35Z",
+      "side": 1,
+      "message": "Great, can you take this? You can certainly provide a better reason to keep unpromoted information tests running. Thanks,",
+      "parentUuid": "45c26843_7b63f115",
+      "revId": "036d9c9c489be10f4f189ea699c26bd6960cd6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2747b6_2c727a68",
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "For Chrome/ChromeOS team I think most people use managedchrome.com for testing. Maybe NameRegex() with a @{domain-like-regex} would be more generic here?",
       "parentUuid": "0979cede_868ad6cc",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 73
+      },
+      "revId": "036d9c9c489be10f4f189ea699c26bd6960cd6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea11068_f010c63f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T17:51:35Z",
+      "side": 1,
+      "message": "Thanks for confirming that. I\u0027ll be sending a patchset to cover that domain too.",
+      "parentUuid": "dfd611b5_8c3579b2",
       "range": {
         "startLine": 48,
         "startChar": 61,
