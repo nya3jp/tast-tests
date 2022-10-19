@@ -48,7 +48,7 @@ func init() {
 			// Note that if the data could not used on other boards in the future,
 			// we would need to split them to different test sets.
 			ExtraSoftwareDeps: []string{"no_tpm_dynamic"},
-			Timeout:           20 * time.Minute,
+			Timeout:           30 * time.Minute,
 			Val: []string{
 				"R88-13597.108.0-custombuild20220717_betty_20220719",
 				"R89-13729.85.0-custombuild20220715_betty_20220719",
@@ -135,7 +135,7 @@ func init() {
 		}, {
 			Name:              "tpm_dynamic",
 			ExtraSoftwareDeps: []string{"tpm_dynamic"},
-			Timeout:           10 * time.Minute,
+			Timeout:           20 * time.Minute,
 			Val: []string{
 				"R96-14268.0.0_reven-vmtest_20220712",
 				"R96-14268.94.0-custombuild20220715_reven-vmtest_20220719",
