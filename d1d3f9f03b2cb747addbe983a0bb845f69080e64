@@ -16,6 +16,29 @@
       "message": "Please review my changes",
       "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41c8d57_687abbd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_full_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-10-19T22:00:02Z",
+      "side": 1,
+      "message": "How does screenplay work with parameterized tests?",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
