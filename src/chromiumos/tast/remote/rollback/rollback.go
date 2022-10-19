@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"strconv"
-	"strings"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
@@ -216,65 +215,6 @@ func ClearRollbackAndSystemData(ctx context.Context, dut *dut.DUT, rpcHint *test
 
 	if err := SimulatePowerwash(ctx, dut, rpcHint); err != nil {
 		return errors.Wrap(err, "failed to simulate powerwash")
-	}
-
-	return nil
-}
-
-// RestoreOriginalImage makes sure that the device is left in the same state
-// as it was before the test started by rolling back to the original version if
-// needed.
-func RestoreOriginalImage(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, originalVersion string) error {
-	// Check the image version. Roll back if it is not the original one or image
-	// version can not be read.
-	version, err := updateutil.ImageVersion(ctx, dut, rpcHint)
-	if err != nil {
-		return errors.Wrap(err, "failed to read DUT image version")
-	}
-
-	if version == originalVersion {
-		testing.ContextLogf(ctx, "No need to restore original image because the version is %s already", version)
-		return nil
-	}
-
-	testing.ContextLog(ctx, "Restoring the original device image")
-	// Non-enterprise rollback is not restoring the image when the command is
-	// called from this help method (b/241391509).
-	// Use "rootdev -s" to get and log the root partition before and after.
-	// The format is, for example: /dev/nvme0p3, /dev/mmcblk0p3, /dev/sda3.
-	// This information is used for debugging, so it is not necessary to convert
-	// the output into its corresponding index.
-	if rootPartition, err := dut.Conn().CommandContext(ctx, "rootdev", "-s").Output(); err != nil {
-		// We do not return error because it is for informational purpouses.
-		testing.ContextLog(ctx, "Failed to read DUT root partition")
-	} else {
-		testing.ContextLogf(ctx, "Root partition before non-enterprise rollback is %s", strings.TrimSpace(string(rootPartition)))
-	}
-
-	if err := dut.Conn().CommandContext(ctx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
-		return errors.Wrap(err, "failed to rollback the DUT")
-	}
-
-	testing.ContextLog(ctx, "Rebooting the DUT after the non-enterprise rollback")
-	if err := dut.Reboot(ctx); err != nil {
-		return errors.Wrap(err, "failed to reboot the DUT after the non-enterprise rollback")
-	}
-
-	// Verify (non-enterprise) rollback.
-	if rootPartition, err := dut.Conn().CommandContext(ctx, "rootdev", "-s").Output(); err != nil {
-		// We do not return error because it is for informational purpouses.
-		testing.ContextLog(ctx, "Failed to read DUT root partition")
-	} else {
-		testing.ContextLogf(ctx, "Root partition after non-enterprise rollback is %s", strings.TrimSpace(string(rootPartition)))
-	}
-
-	version, err = updateutil.ImageVersion(ctx, dut, rpcHint)
-	if err != nil {
-		return errors.Wrap(err, "failed to read DUT image version after the non-enterprise rollback")
-	}
-	testing.ContextLogf(ctx, "The DUT image version after rollback is %s", version)
-	if version != originalVersion {
-		return errors.Errorf("Image version is not the original after the restoration; got %s, want %s", version, originalVersion)
 	}
 
 	return nil
