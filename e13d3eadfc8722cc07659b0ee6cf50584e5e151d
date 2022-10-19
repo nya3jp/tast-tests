@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "758cdecf_3a4d31e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-19T18:37:00Z",
+      "side": 1,
+      "message": "Ok, rebased, PTAL when you get a chance",
+      "parentUuid": "a90ab211_4e5e57b3",
+      "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84d57c63_ca4c3136",
         "filename": "src/chromiumos/tast/common/shillconst/const.go",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-10T19:14:33Z",
       "side": 1,
       "message": "nit: `CellularNetworkTechnologyLTE`",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 29
+      },
+      "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f85a5ec_b7b61b4f",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-19T18:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d57c63_ca4c3136",
       "range": {
         "startLine": 211,
         "startChar": 1,
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-18T16:31:46Z",
       "side": 1,
       "message": "Attached but not connected?",
+      "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c254b992_ed26eb56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-19T18:37:00Z",
+      "side": 1,
+      "message": "This still reports the signal information even if it\u0027s attached but not connected. It can have some issues at very low levels (\u003c10% or so), but that\u0027s to be expected.",
+      "parentUuid": "12700872_1feae467",
       "revId": "e13d3eadfc8722cc07659b0ee6cf50584e5e151d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
