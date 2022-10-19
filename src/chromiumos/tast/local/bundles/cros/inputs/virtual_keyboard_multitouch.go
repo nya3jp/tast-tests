@@ -33,7 +33,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks typing on virtual keyboard with multiple simultaneous touches",
 		Contacts:     []string{"essential-inputs-gardener-oncall@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
@@ -46,6 +46,7 @@ func init() {
 				Name:              "lacros",
 				Fixture:           fixture.LacrosTabletVKWithMultitouch,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
