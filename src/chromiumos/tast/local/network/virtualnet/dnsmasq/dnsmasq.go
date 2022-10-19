@@ -35,6 +35,9 @@ address={{.address}}
 {{if .dns}}
 dhcp-option=option:dns-server,{{.dns}}
 {{end}}
+{{if .classless_static_routes}}
+dhcp-option=121,{{.classless_static_routes}}
+{{end}}
 `
 
 // Paths in chroot.
@@ -46,14 +49,22 @@ const (
 	dnsPort       = "53"
 )
 
+// Route represents a classless static route.
+type Route struct {
+	Prefix  *net.IPNet
+	Gateway net.IP
+}
+
 type dnsmasq struct {
 	env *env.Env
 
-	subnet          *net.IPNet
-	resolvedHost    string
-	resolveHostToIP net.IP
-	dns             []string
-	enableDNS       bool
+	subnet                *net.IPNet
+	classlessStaticRoutes []Route
+	resolvedHost          string
+	resolveHostToIP       net.IP
+	dns                   []string
+	enableDNS             bool
+	ifname                string
 
 	cmd *testexec.Cmd
 }
@@ -75,6 +86,22 @@ func WithDHCPServer(subnet *net.IPNet) Option {
 func WithDHCPNameServers(dns []string) Option {
 	return func(d *dnsmasq) {
 		d.dns = dns
+	}
+}
+
+// WithDHCPClasslessStaticRoutes configures the classless static routes in DHCP
+// (option 121).
+func WithDHCPClasslessStaticRoutes(routes []Route) Option {
+	return func(d *dnsmasq) {
+		d.classlessStaticRoutes = routes
+	}
+}
+
+// WithInterface specifies the interface which dnsmasq should be running on. By
+// default, the in-interface of the associated Env with be used.
+func WithInterface(ifname string) Option {
+	return func(d *dnsmasq) {
+		d.ifname = ifname
 	}
 }
 
@@ -105,9 +132,13 @@ func New(opts ...Option) *dnsmasq {
 func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	d.env = env
 
+	if d.ifname == "" {
+		d.ifname = d.env.VethInName
+	}
+
 	// Prepare config file.
 	confVals := map[string]string{
-		"ifname": d.env.VethInName,
+		"ifname": d.ifname,
 		"port":   "0", // disable DNS
 	}
 
@@ -132,9 +163,22 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		confVals["gateway"] = gateway.String()
 
 		// Install gateway address and routes.
-		if err := d.env.ConfigureInterface(ctx, d.env.VethInName, gateway, d.subnet); err != nil {
+		if err := d.env.ConfigureInterface(ctx, d.ifname, gateway, d.subnet); err != nil {
 			return errors.Wrap(err, "failed to configure IPv4 in netns")
 		}
+	}
+
+	if len(d.classlessStaticRoutes) > 0 {
+		if d.subnet == nil {
+			return errors.New("classless static route option is set but DHCP is not enabled")
+		}
+		var routes []string
+		for _, r := range d.classlessStaticRoutes {
+			prefix := r.Prefix.String()
+			gateway := r.Gateway.String()
+			routes = append(routes, prefix+","+gateway)
+		}
+		confVals["classless_static_routes"] = strings.Join(routes, ",")
 	}
 
 	if len(d.dns) > 0 {
