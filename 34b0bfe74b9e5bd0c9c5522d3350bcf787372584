@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d1f254_48797410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-19T23:32:18Z",
+      "side": 1,
+      "message": "Can we use a fixture like chromeLoggedIn?",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "34b0bfe74b9e5bd0c9c5522d3350bcf787372584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32bbdf2_9f2b7258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-19T23:32:18Z",
+      "side": 1,
+      "message": "It is generally \"Failed to ...\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "34b0bfe74b9e5bd0c9c5522d3350bcf787372584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4201a014_45983fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-19T23:32:18Z",
+      "side": 1,
+      "message": "Is this guaranteed outside the menu, especially in a tablet mode? What about calculate the position and size of the menu and chose a position from that?",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "34b0bfe74b9e5bd0c9c5522d3350bcf787372584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
