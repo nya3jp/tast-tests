@@ -6,12 +6,13 @@
 // requests from various tests coming via network in context of ARC TAST test.
 // arc_eth0 on port 1235 is used as communication point. This helper currently
 // supports the following commands:
-//   * drop_caches - drops system caches, returns OK/FAILED.
-//   * receive_payload - receives payload from client, returns OK, ACK and payload.
-//   * get_total_memory_kb - gets total memory in KB from DUT, returns OK/FAILED and value.
+//   - drop_caches - drops system caches, returns OK/FAILED.
+//   - receive_payload - receives payload from client, returns OK, ACK and payload.
+//   - get_total_memory_kb - gets total memory in KB from DUT, returns OK/FAILED and value.
 //
 // Usage pattern is following:
-// 	conn, err := nethelper.Start(ctx)
+//
+//	conn, err := nethelper.Start(ctx)
 //	if err != nil {
 //		s.Fatal("Failed to start nethelper", err)
 //	}
@@ -44,6 +45,8 @@ const (
 	tcCmd        = "tc"
 	iptablesCmd  = "/sbin/iptables"
 	ip6tablesCmd = "/sbin/ip6tables"
+
+	debugTraffic = false
 )
 
 var (
@@ -215,7 +218,9 @@ func listenForClients(ctx context.Context, listener net.Listener) {
 			testing.ContextLogf(ctx, "Stop listening %s", err)
 			return
 		}
-		testing.ContextLogf(ctx, "Connection is ready %s<->%s", conn.LocalAddr().String(), conn.RemoteAddr().String())
+		if debugTraffic {
+			testing.ContextLogf(ctx, "Connection is ready %s<->%s", conn.LocalAddr().String(), conn.RemoteAddr().String())
+		}
 		go handleClient(ctx, conn)
 	}
 }
@@ -244,7 +249,9 @@ func handleClient(ctx context.Context, conn net.Conn) {
 		message, err := r.ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
-				testing.ContextLogf(ctx, "Connection is closed %s", conn.RemoteAddr().String())
+				if debugTraffic {
+					testing.ContextLogf(ctx, "Connection is closed %s", conn.RemoteAddr().String())
+				}
 				return
 			}
 			testing.ContextLogf(ctx, "Connection is broken %s: %s", conn.RemoteAddr().String(), err)
@@ -267,7 +274,7 @@ func handleClient(ctx context.Context, conn net.Conn) {
 			if result, err := handleReceivePayload(conn, r, ack); err != nil {
 				testing.ContextLogf(ctx, "Failed to receive payload from %s: %s", conn.RemoteAddr().String(), err)
 				return
-			} else if result > 0 {
+			} else if result > 0 && debugTraffic {
 				testing.ContextLogf(ctx, "Received %d bytes payload from %s", result, conn.RemoteAddr().String())
 			}
 		case cmdGetTotalMemoryKB:
@@ -277,7 +284,7 @@ func handleClient(ctx context.Context, conn net.Conn) {
 				testing.ContextLogf(ctx, "Failed to respond %q to %s, %s", response, conn.RemoteAddr().String(), err)
 				return
 			}
-			if result == okResponse {
+			if result == okResponse && debugTraffic {
 				testing.ContextLogf(ctx, "Sent total memory value of %dKB to %s", value, conn.RemoteAddr().String())
 			}
 		default:
