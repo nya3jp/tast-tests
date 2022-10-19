@@ -164,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa03aa0a_355f71f4",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-19T16:21:47Z",
+      "side": 1,
+      "message": "Thank you for trying this out :)",
+      "parentUuid": "7b6735f0_7a37bec3",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 10
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39df0378_fd4830d0",
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2cdd0bf0_1d2395f5",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "b05b9dba5e1a447c6247f6614b14b17834ff6b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81140be1_3237e424",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_mouse_only.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-19T16:21:47Z",
+      "side": 1,
+      "message": "I am not certain, but do we also need \"informational\" here since this should not block CQ?",
+      "parentUuid": "d6210110_3b99e3c2",
       "range": {
         "startLine": 28,
         "startChar": 16,
