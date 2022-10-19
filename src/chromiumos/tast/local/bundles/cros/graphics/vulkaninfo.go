@@ -26,7 +26,7 @@ func init() {
 			"pwang@chromium.org",
 			"chromeos-gfx@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational", "group:graphics", "graphics_perbuild"},
+		Attr: []string{"group:mainline", "group:graphics", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"vulkan"},
