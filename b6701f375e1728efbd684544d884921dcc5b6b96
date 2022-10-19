@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e580cd3e_9bb92336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T01:07:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf8ac49_7e047ec0",
+      "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c69ab66b_996f8197",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-18T23:22:26Z",
       "side": 1,
       "message": "Session manager daemon should be running before tast starts. I suspect this wait for `started` would fail.",
+      "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91ded26_59d93d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T01:07:54Z",
+      "side": 1,
+      "message": "I think this was necessary when using the `chromeLoggedIn` fixture for signout, because it would fail to start due to an `login failed: OOBE not dismissed` error otherwise. But it is no longer needed if we are using `chrome.New`.",
+      "parentUuid": "c69ab66b_996f8197",
       "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "755fc0da_ea433e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T01:07:54Z",
+      "side": 1,
+      "message": "Could you clarify where we are restarting `powerd` please?",
+      "parentUuid": "147f7d1a_26b97b3b",
+      "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "342a45af_332514d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
         "patchSetId": 4
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-18T23:22:26Z",
       "side": 1,
       "message": "Check error.",
+      "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "962b4727_8c3e9bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T01:07:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342a45af_332514d2",
       "revId": "b6701f375e1728efbd684544d884921dcc5b6b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -242,6 +242,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42191e28_f2f7f427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-19T01:07:54Z",
+      "side": 1,
+      "message": "The test does pass and my DUT seems to power on. But I looked into it and it seems that `s.DUT()` is nil for this test, which is why `dut.WaitUnreachable` passes. Since that doesn\u0027t seem to verify this test I will remove it and check with tast-users.",
+      "parentUuid": "425d1bc8_8425a2be",
+      "revId": "660e8e66cd4fa5579cf7924ff9975cd2297baa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad33920e_2215c97f",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
         "patchSetId": 3
