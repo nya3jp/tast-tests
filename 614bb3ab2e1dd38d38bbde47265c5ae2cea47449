@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3722174e_371e269b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-19T13:48:50Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "614bb3ab2e1dd38d38bbde47265c5ae2cea47449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
