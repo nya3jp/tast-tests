@@ -16,6 +16,40 @@
       "message": "Thank you Xiyuan!",
       "revId": "a61fc9d4e077e46d799c69a428df081c9e09b672",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb283a3d_01d808f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-19T20:30:54Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "a61fc9d4e077e46d799c69a428df081c9e09b672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93bf2ea_271ee706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-19T20:30:54Z",
+      "side": 1,
+      "message": "nit: End with `.`.",
+      "revId": "a61fc9d4e077e46d799c69a428df081c9e09b672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
