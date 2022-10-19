@@ -82,9 +82,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Error("Failed to clean rollback data after test: ", err)
 		}
 
-		if err := rollback.RestoreOriginalImage(ctx, s.DUT(), s.RPCHint(), deviceInfo.Version); err != nil {
-			s.Error("Failed to restore original image after test: ", err)
-		}
+		// We rely on the autoupdate fixture to restore the original image after the
+		// test (b/241391509).
 	}(cleanupCtx)
 
 	// The target milestone depends on the parameter of the test.
