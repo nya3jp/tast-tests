@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171f5956_dd97d52f",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T08:21:51Z",
+      "side": 1,
+      "message": "Yep, it is nicer this way.",
+      "parentUuid": "7a82f468_dc4fcbdd",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae9bcddc_2ae32bf6",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-10-19T07:32:24Z",
       "side": 1,
       "message": "nit: remove newline to be consistent with the function above",
+      "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7197996_3f6dd667",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-19T08:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9bcddc_2ae32bf6",
       "revId": "d4230d2e8ced9fc8bc7ecff795fc8bcca5e880ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
