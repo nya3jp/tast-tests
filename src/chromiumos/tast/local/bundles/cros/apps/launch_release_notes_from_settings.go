@@ -28,7 +28,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app release notes can be launched from Settings",
 		Contacts: []string{
-			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

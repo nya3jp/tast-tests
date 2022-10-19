@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Help app can be launched in browser menu",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"shengjun@chromium.org", // original test author
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      fixture.LoggedIn,
