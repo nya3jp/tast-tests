@@ -177,7 +177,7 @@ func (c *Chrome) Chrome() *Chrome { return c }
 
 // Browser returns a Browser instance.
 func (c *Chrome) Browser() *browser.Browser {
-	return browser.New(c.sess)
+	return browser.New(c.sess, true)
 }
 
 // Creds returns credentials used to log into a session.
@@ -672,7 +672,7 @@ var ErrTestConnUndefinedOut = cdputil.ErrUndefinedOut
 // ctx's deadline is reached. The caller should not close the returned
 // connection; it will be closed automatically by Close.
 func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
-	return c.sess.TestAPIConn(ctx)
+	return c.Browser().TestAPIConn(ctx)
 }
 
 // SigninProfileTestAPIConn is the same as TestAPIConn, but for the signin
