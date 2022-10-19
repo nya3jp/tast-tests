@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpcups_lidil_out_20221019.bin",
+    "size": 287619,
+    "sha256sum": "a7a2f1922b16289a3e30ad2ba856c0bf8af28e2b48df0e60b7cfeb7df7dcace0"
+}

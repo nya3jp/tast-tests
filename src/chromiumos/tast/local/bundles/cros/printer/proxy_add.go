@@ -171,7 +171,7 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"},
 			}, {
-				Name: "hp_pclm",
+				Name: "hp_hpcups_hbpl1",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_hp_printer_pclm.ppd.gz",
 					PrintFile:    "to_print.pdf",
@@ -179,13 +179,114 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"},
 			}, {
-				Name: "hp_ljcolor",
+				Name: "hp_hpcups_lidil",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_lidil.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_lidil_out.bin",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_lidil.ppd.gz", "printer_add_hp_hpcups_lidil_out.bin"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_ljcolor",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_hp_ljcolor.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_hp_printer_ljcolor_out.pcl",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"},
+			}, {
+				Name: "hp_hpcups_ljfastraster",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_ljfastraster.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_ljfastraster_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_ljfastraster.ppd.gz", "printer_add_hp_hpcups_ljfastraster_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_ljjetready",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_ljjetready.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_ljjetready_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_ljjetready.ppd.gz", "printer_add_hp_hpcups_ljjetready_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_ljmono",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_ljmono.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_ljmono_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_ljmono.ppd.gz", "printer_add_hp_hpcups_ljmono_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_ljzjstream",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_ljzjstream.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_ljzjstream_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_ljzjstream.ppd.gz", "printer_add_hp_hpcups_ljzjstream_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_ljzxstream",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_ljzxstream.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_ljzxstream_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_ljzxstream.ppd.gz", "printer_add_hp_hpcups_ljzxstream_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_pcl3",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_pcl3.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_pcl3_out.pcl",
+				},
+				ExtraData:         []string{"to_print.pdf", "printer_add_hp_hpcups_pcl3.ppd.gz", "printer_add_hp_hpcups_pcl3_out.pcl"},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"amd64"},
+			}, {
+				Name: "hp_hpcups_pcl3gui",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_pcl3gui.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_pcl3gui_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_pcl3gui.ppd.gz", "printer_add_hp_hpcups_pcl3gui_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_pcl3gui2",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_pcl3gui2.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_pcl3gui2_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpcups_pcl3gui2.ppd.gz", "printer_add_hp_hpcups_pcl3gui2_out.pcl"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "hp_hpcups_quickconnect",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpcups_quickconnect.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpcups_quickconnect_out.bin",
+				},
+				ExtraData:         []string{"to_print.pdf", "printer_add_hp_hpcups_quickconnect.ppd.gz", "printer_add_hp_hpcups_quickconnect_out.bin"},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"amd64"},
+			}, {
+				Name: "hp_hpps",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_hp_hpps.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_hpps_out.ps",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_hpps.ppd.gz", "printer_add_hp_hpps_out.ps"},
+				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{

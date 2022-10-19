@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpcups_ljmono_20221019.ppd.gz",
+    "size": 3193,
+    "sha256sum": "bb4a01459461de13df307dde7fe6977f9697fde782c0e27e7cdeeb89da330bdf"
+}

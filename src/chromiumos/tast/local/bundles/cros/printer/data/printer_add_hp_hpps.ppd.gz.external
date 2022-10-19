@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpps_20221019.ppd.gz",
+    "size": 12124,
+    "sha256sum": "9cec353280ac7bafb3e0d41693fa2a0bebdf5ed6d80596f686d5ce9aae8198d4"
+}

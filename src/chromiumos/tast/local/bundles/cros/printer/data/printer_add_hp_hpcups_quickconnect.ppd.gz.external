@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpcups_quickconnect_20221019.ppd.gz",
+    "size": 1764,
+    "sha256sum": "b00c24e3e3eef7ff61102f641366ffccd90c99e966310d2699673f803e75d255"
+}

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Run "TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test add_test.go"
-// to regenerate parameters for add.go, proxy_add.go.
+// Run "TAST_GENERATE_UPDATE=1 ~/chromium/src/platform/tast/tools/go.sh test add_test.go" inside the chroot
+// from the directory containing this file to regenerate parameters for add.go, proxy_add.go.
 
 package printer
 
@@ -18,13 +18,25 @@ import (
 // printing and the other that does not.
 type base struct {
 	PrintFile, Name, PPDFile, ExpectedFile string
-	ExtraAttr, Options                     []string
+	ExtraAttr, ExtraSoftwareDeps, Options  []string
 }
 
 // test adds non-informational parametrized tests (one proxy, one regular)
 // that use "to_print.pdf" for printing.
 func test(name, ppdFile, expectedFile string, options ...string) base {
 	return base{PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
+}
+
+// iTest adds informational parametrized tests (one proxy, one regular)
+// that use "to_print.pdf" for printing.
+func iTest(name, ppdFile, expectedFile string, options ...string) base {
+	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
+}
+
+// x86Test adds informational parametrized tests (one proxy, one regular)
+// that use "to_print.pdf" for printing and require amd64.
+func x86Test(name, ppdFile, expectedFile string, options ...string) base {
+	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", ExtraSoftwareDeps: []string{"amd64"}, Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
 // test2 adds non-informational parametrized tests (one proxy, one regular)
@@ -47,6 +59,9 @@ func TestAddParams(t *testing.T) {
         ExtraData: []string{ {{ .PrintFile | fmt }}, {{ .PPDFile | fmt }}, {{ .ExpectedFile | fmt }} },
         {{ if .ExtraAttr }}
         ExtraAttr: {{ .ExtraAttr | fmt }},
+        {{ end }}
+        {{ if .ExtraSoftwareDeps }}
+        ExtraSoftwareDeps: {{ .ExtraSoftwareDeps | fmt }},
         {{ end }}
 }, {{ end }}`, []base{
 		// Collate
@@ -74,8 +89,21 @@ func TestAddParams(t *testing.T) {
 		test("epson_color", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_color_golden.bin", "print-color-mode=color"),
 		test("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
 		test("generic", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"),
-		test("hp_pclm", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
-		test("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
+		test("hp_hpcups_hbpl1", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
+		iTest("hp_hpcups_lidil", "printer_add_hp_hpcups_lidil.ppd.gz", "printer_add_hp_hpcups_lidil_out.bin"),
+		test("hp_hpcups_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
+		iTest("hp_hpcups_ljfastraster", "printer_add_hp_hpcups_ljfastraster.ppd.gz", "printer_add_hp_hpcups_ljfastraster_out.pcl"),
+		iTest("hp_hpcups_ljjetready", "printer_add_hp_hpcups_ljjetready.ppd.gz", "printer_add_hp_hpcups_ljjetready_out.pcl"),
+		iTest("hp_hpcups_ljmono", "printer_add_hp_hpcups_ljmono.ppd.gz", "printer_add_hp_hpcups_ljmono_out.pcl"),
+		iTest("hp_hpcups_ljzjstream", "printer_add_hp_hpcups_ljzjstream.ppd.gz", "printer_add_hp_hpcups_ljzjstream_out.pcl"),
+		iTest("hp_hpcups_ljzxstream", "printer_add_hp_hpcups_ljzxstream.ppd.gz", "printer_add_hp_hpcups_ljzxstream_out.pcl"),
+		// TODO(b/236843006): Remove the amd64 restriction once ARM output differences are resolved.
+		x86Test("hp_hpcups_pcl3", "printer_add_hp_hpcups_pcl3.ppd.gz", "printer_add_hp_hpcups_pcl3_out.pcl"),
+		iTest("hp_hpcups_pcl3gui", "printer_add_hp_hpcups_pcl3gui.ppd.gz", "printer_add_hp_hpcups_pcl3gui_out.pcl"),
+		iTest("hp_hpcups_pcl3gui2", "printer_add_hp_hpcups_pcl3gui2.ppd.gz", "printer_add_hp_hpcups_pcl3gui2_out.pcl"),
+		// TODO(b/236843006): Remove the amd64 restriction once ARM output differences are resolved.
+		x86Test("hp_hpcups_quickconnect", "printer_add_hp_hpcups_quickconnect.ppd.gz", "printer_add_hp_hpcups_quickconnect_out.bin"),
+		iTest("hp_hpps", "printer_add_hp_hpps.ppd.gz", "printer_add_hp_hpps_out.ps"),
 		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
 		test("nec", "printer_nec_npdl.ppd", "printer_add_nec_golden.bin"),

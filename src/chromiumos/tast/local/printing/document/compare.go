@@ -47,6 +47,8 @@ var cleanRegex = regexp.MustCompile(
 		`|%%\+ .*` +
 		// Removes time metadata for PCLm Jobs.
 		`|% *job-start-time: .*` +
+		`|@PJL COMMENT="Job Start Time:.*` +
+		`|@PJL COMMENT=".*; \d{2}-\d{2}-\d{4}"` +
 		// Removes PDF xref objects (they contain byte offsets).
 		`|\d{10} \d{5} [fn] *` +
 		// Removes the byte offset of a PDF xref object.
@@ -55,10 +57,11 @@ var cleanRegex = regexp.MustCompile(
 		// time-specific values.
 		`|@PJL SET JOBTIME = .*` +
 		`|@PJL PRINTLOG ITEM = 2,.*` +
-		// For HP jobs, JobAcct4,JobAcc5 & DMINFO contain
+		// For HP jobs, JobAcct4,JobAcc5, DMINFO, and TIMESTAMP contain
 		// time-specific values.
 		`|@PJL SET JOBATTR="JobAcct[45]=.*` +
 		`|@PJL DMINFO ASCIIHEX=".*` +
+		`|@PJL SET TIMESTAMP=[0-9]+` +
 		// For Ricoh jobs, the SET DATE/TIME values are time-specific.
 		`|@PJL SET DATE=".*` +
 		`|@PJL SET TIME=".*)[\r\n])` +
@@ -103,8 +106,9 @@ var cleanRegex = regexp.MustCompile(
 // between the IDs.
 //
 // For example, in the given FontDescriptor field:
-//   <</BaseFont/WDZDNS+Symbola/FontDescriptor 23 0 R/Type/Font
-//   The "WDZDNS" ID will be removed.
+//
+//	<</BaseFont/WDZDNS+Symbola/FontDescriptor 23 0 R/Type/Font
+//	The "WDZDNS" ID will be removed.
 var cleanBaseFontRegex = regexp.MustCompile(
 	`(/BaseFont/)([A-Z]{6}\+)([a-zA-Z,]+/FontDescriptor)`)
 
@@ -112,8 +116,9 @@ var cleanBaseFontRegex = regexp.MustCompile(
 // different form of the FontDescriptor fields.
 //
 // For example, in the given FontDescriptor field:
-//   <</Type/FontDescriptor/FontName/ZQPAHQ+Webdings/FontBBox[0 -200 1000 799]/Flags 4
-//   The "ZQPAHQ" ID will be removed.
+//
+//	<</Type/FontDescriptor/FontName/ZQPAHQ+Webdings/FontBBox[0 -200 1000 799]/Flags 4
+//	The "ZQPAHQ" ID will be removed.
 var cleanFontNameRegex = regexp.MustCompile(
 	`(/FontName/)([A-Z]{6}\+)([a-zA-Z,]+/FontBBox)`)
 
