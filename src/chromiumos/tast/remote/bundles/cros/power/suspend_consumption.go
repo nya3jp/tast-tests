@@ -29,6 +29,10 @@ const (
 	varDuration = "duration"
 	varNoGsc    = "no_gsc"
 
+	// Allow for a secondary servo instance to be instantiated for additive rail
+	// level measurements
+	varPwrServo = "pwr_servo"
+
 	reconnectTimeout = 20 * time.Second
 
 	gsc1V8Rail = "pp1800_gsc_z1"
@@ -45,8 +49,8 @@ func init() {
 		},
 		Attr:    []string{"group:firmware"},
 		Fixture: fixture.NormalMode,
-		Timeout: defaultDuration + 5*time.Minute, // Ensure we have enough time for test setup/teardown
-		Vars:    []string{varDuration, varNoGsc}, // Duration is in seconds
+		Timeout: defaultDuration + 5*time.Minute,              // Ensure we have enough time for test setup/teardown
+		Vars:    []string{varDuration, varNoGsc, varPwrServo}, // Duration is in seconds
 		Params: []testing.Param{{
 			Name: "s0ix",
 			Val:  suspend.StateS0ix,
@@ -59,6 +63,14 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
+	}
+
+	// if optional pwrServo exists, use this for rail measurements
+	if pwrServoParam, ok := s.Var(varPwrServo); ok {
+		err := h.RequirePwrMeasureServo(ctx, pwrServoParam)
+		if err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
 	}
 
 	duration := defaultDuration
@@ -84,7 +96,6 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 	if duration > defaultDuration {
 		s.Fatalf("Duration cannot exceed %d seconds", int(defaultDuration.Seconds()))
 	}
-
 	s.Logf("Suspend duration %d seconds", int(duration.Seconds()))
 
 	// Disconnect AC power since we're using the battery rail to measure consumption

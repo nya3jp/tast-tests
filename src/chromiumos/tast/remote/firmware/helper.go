@@ -39,23 +39,26 @@ import (
 // Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.fixture:
 //
 // import (
+//
 //	...
 //	"chromiumos/tast/remote/firmware/fixture"
+//
 // )
 //
-// func init() {
-//	testing.AddTest(&testing.Test{
-//		...
-//              Fixture: fixture.NormalMode,
-//	})
-// }
+//	func init() {
+//		testing.AddTest(&testing.Test{
+//			...
+//	             Fixture: fixture.NormalMode,
+//		})
+//	}
 //
-// func MyTest(ctx context.Context, s *testing.State) {
-// 	h := s.FixtValue().(*fixture.Value).Helper
+//	func MyTest(ctx context.Context, s *testing.State) {
+//		h := s.FixtValue().(*fixture.Value).Helper
 //
-// 	if err := h.RequireServo(ctx); err != nil {
-// 		s.Fatal("Failed to init servo: ", err)
-// 	}
+//		if err := h.RequireServo(ctx); err != nil {
+//			s.Fatal("Failed to init servo: ", err)
+//		}
+//
 // ...
 // }
 type Helper struct {
@@ -103,7 +106,9 @@ type Helper struct {
 	RPCUtils fwpb.UtilsServiceClient
 
 	// Servo allows us to send commands to a servo device.
-	Servo *servo.Servo
+	// PwrMeasureServo allos
+	Servo           *servo.Servo
+	PwrMeasureServo *servo.Servo
 
 	// servoHostPort is the address and port of the machine acting as the servo host, normally provided via the "servo" command-line variable.
 	servoHostPort string
@@ -111,7 +116,9 @@ type Helper struct {
 	keyDir        string
 
 	// ServoProxy wraps the Servo object, and communicates with the servod instance.
-	ServoProxy *servo.Proxy
+	// PwrMeasureServoProxy is an optional Servo that is used only for secondary power measurement
+	ServoProxy           *servo.Proxy
+	PwrMeasureServoProxy *servo.Proxy
 
 	// RPM is a remote power management client. Only valid in the test lab.
 	RPM *rpm.RPM
@@ -402,11 +409,27 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	return nil
 }
 
+// RequirePwrMeasureServo creates a servo.Servo for power measurement only, unless one already exists.
+func (h *Helper) RequirePwrMeasureServo(ctx context.Context, servoConfig string) error {
+	if h.PwrMeasureServoProxy != nil {
+		return nil
+	}
+	pxy, err := servo.NewProxy(ctx, servoConfig, h.keyFile, h.keyDir)
+	if err != nil {
+		return errors.Wrap(err, "connecting to servo")
+	}
+	h.PwrMeasureServoProxy = pxy
+	h.PwrMeasureServo = pxy.Servo()
+	return nil
+}
+
 // CloseServo closes the connection to the servo, use RequireServo to open it again.
 func (h *Helper) CloseServo(ctx context.Context) error {
 	defer func() {
 		h.ServoProxy = nil
 		h.Servo = nil
+		h.PwrMeasureServoProxy = nil
+		h.PwrMeasureServo = nil
 		h.RPM = nil
 	}()
 	var err error
@@ -417,6 +440,9 @@ func (h *Helper) CloseServo(ctx context.Context) error {
 	}
 	if h.ServoProxy != nil {
 		h.ServoProxy.Close(ctx)
+	}
+	if h.PwrMeasureServoProxy != nil {
+		h.PwrMeasureServoProxy.Close(ctx)
 	}
 	return err
 }
@@ -804,9 +830,10 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 // When testlab is disabled, OpenCCDNoTestlab would be called,
 // which might take up to 8 minutes.
 // Args:
-// 	 ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
-//	 resetCCD: If true, reset ccd to factory mode after open.
-//	 ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
+//
+//	ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
+//	resetCCD: If true, reset ccd to factory mode after open.
+//	ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
 func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool) error {
 	// Get CCD current status.
 	ccdLevel, err := h.GetCCDLevel(ctx)

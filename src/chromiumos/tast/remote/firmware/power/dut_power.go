@@ -16,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 )
@@ -27,8 +28,8 @@ const (
 
 // DutPowerContext manages power measurements taken through dut-power
 type DutPowerContext struct {
-	h   *firmware.Helper
-	ctx context.Context
+	ctx           context.Context
+	servoInstance *servo.Proxy
 }
 
 type measurement struct {
@@ -36,10 +37,16 @@ type measurement struct {
 }
 
 // NewDutPowerContext creates a DutPowerContext
-func NewDutPowerContext(ctx context.Context, h *firmware.Helper) *DutPowerContext {
+func NewDutPowerContext(ctx context.Context, helper *firmware.Helper) *DutPowerContext {
+	if helper.PwrMeasureServoProxy != nil {
+		return &DutPowerContext{
+			ctx:           ctx,
+			servoInstance: helper.PwrMeasureServoProxy,
+		}
+	}
 	return &DutPowerContext{
-		h:   h,
-		ctx: ctx,
+		ctx:           ctx,
+		servoInstance: helper.ServoProxy,
 	}
 }
 
@@ -48,6 +55,12 @@ func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
 	summaries, err := p.MeasureAllSummaries(duration)
 	if err != nil {
 		return nil, err
+	}
+
+	// Clear any files from a previous run
+	if err := p.servoInstance.RunCommand(p.ctx, false, "rm", "-rf", dutPowerOutputDir); err != nil {
+		e := fmt.Sprintf("failed to clear tmp files on proxy: %s", err)
+		return nil, errors.New(e)
 	}
 
 	for _, name := range []string{
@@ -71,11 +84,11 @@ func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
 //
 // Returns a map of summary name (e.g. "onboard" for onboard_summary.json) to
 // a map of metrics name (e.g. "ppdut5") to mean value.
-func (p *DutPowerContext) MeasureAllSummaries(duration time.Duration) (map[string]map[string]float32, error) {
+func (p *DutPowerContext) MeasureAllSummaries() (map[string]map[string]float32, error) {
 	// Run dut-power on the servod host to get our measurements
 	time := strconv.Itoa(int(duration.Seconds()))
 
-	output, err := p.h.ServoProxy.OutputCommand(p.ctx, false, dutPowerCmd, "-t", time, "--save-json")
+	err := p.servoInstance.RunCommand(p.ctx, false, dutPowerCmd, "-p", strconv.Itoa(p.servoInstance.GetPort()), "-o", dutPowerOutputDir, "-t", time, "--save-json")
 	if err != nil {
 		e := fmt.Sprintf("failed to run dut-power: %s", err)
 		return nil, errors.New(e)
@@ -114,7 +127,7 @@ func (p *DutPowerContext) MeasureAllSummaries(duration time.Duration) (map[strin
 }
 
 func (p *DutPowerContext) readRemoteFile(remotePath, localPath string) ([]byte, error) {
-	if err := p.h.ServoProxy.GetFile(p.ctx, false, remotePath, localPath); err != nil {
+	if err := p.servoInstance.GetFile(p.ctx, false, remotePath, localPath); err != nil {
 		return nil, err
 	}
 
