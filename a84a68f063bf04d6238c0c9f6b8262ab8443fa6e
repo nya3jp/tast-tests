@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17661cba_e10b7bf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ae658a_0402c50b",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d58c21c_bb3aa956",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-19T03:58:10Z",
       "side": 1,
       "message": "nit: reformat the comment",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d927ec_d1e3da72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d58c21c_bb3aa956",
       "range": {
         "startLine": 60,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c66be78_0320558e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ba00ad_483a138f",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95cc743d_b2af8d27",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-19T03:58:10Z",
       "side": 1,
       "message": "\"Currently VPNs expect for WireGuard only supports IPv4\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 64,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b319b2_76080dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95cc743d_b2af8d27",
       "range": {
         "startLine": 65,
         "startChar": 64,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39ff707_bf1641a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9456eb1_a1c5399a",
+      "range": {
+        "startLine": 219,
+        "startChar": 110,
+        "endLine": 219,
+        "endChar": 121
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8697771e_33a8c2ce",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95acb0a_9fd81536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8697771e_33a8c2ce",
+      "range": {
+        "startLine": 219,
+        "startChar": 10,
+        "endLine": 219,
+        "endChar": 24
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c713cb9_f457dde0",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-10-19T03:58:10Z",
       "side": 1,
       "message": "(Not related to your patch) I think we can use Error here and below. Fatal will stop the execution, but we can run all the ping verification even if there is a failure.",
+      "range": {
+        "startLine": 292,
+        "startChar": 5,
+        "endLine": 292,
+        "endChar": 11
+      },
+      "revId": "a84a68f063bf04d6238c0c9f6b8262ab8443fa6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dea9407_1f3ce7d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-19T15:41:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c713cb9_f457dde0",
       "range": {
         "startLine": 292,
         "startChar": 5,
