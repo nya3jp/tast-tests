@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpcups_pcl3_20221019.ppd.gz",
+    "size": 3142,
+    "sha256sum": "fe4ab2f15dff59504f0aba8619a85c58a0a7ebf8e73479a34975223d9bd8394f"
+}

@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_hpcups_ljfastraster_20221019.ppd.gz",
+    "size": 3075,
+    "sha256sum": "d6098e398c78b0422b48545f092d865414cf42b5439ba5cb31c1d33f4c197ed0"
+}
