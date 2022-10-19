@@ -38,6 +38,9 @@ dhcp-option=option:dns-server,{{.dns}}
 {{if .classless_static_routes}}
 dhcp-option=121,{{.classless_static_routes}}
 {{end}}
+{{if .wpad}}
+dhcp-option=252,{{.wpad}}
+{{end}}
 `
 
 // Paths in chroot.
@@ -65,6 +68,7 @@ type dnsmasq struct {
 	dns                   []string
 	enableDNS             bool
 	ifname                string
+	wpad                  string
 
 	cmd *testexec.Cmd
 }
@@ -94,6 +98,14 @@ func WithDHCPNameServers(dns []string) Option {
 func WithDHCPClasslessStaticRoutes(routes []Route) Option {
 	return func(d *dnsmasq) {
 		d.classlessStaticRoutes = routes
+	}
+}
+
+// WithDHCPWPAD configures the Web Proxy Auto-Discovery (WPAD) field in DHCP
+// (option 252).
+func WithDHCPWPAD(wpad string) Option {
+	return func(d *dnsmasq) {
+		d.wpad = wpad
 	}
 }
 
@@ -183,6 +195,13 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 
 	if len(d.dns) > 0 {
 		confVals["dns"] = strings.Join(d.dns, ",")
+	}
+
+	if len(d.wpad) > 0 {
+		if d.subnet == nil {
+			return errors.New("WPAD option is set but DHCP is not enabled")
+		}
+		confVals["wpad"] = d.wpad
 	}
 
 	var resolvedIP, resolvedHost string
