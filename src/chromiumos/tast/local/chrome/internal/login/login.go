@@ -62,7 +62,7 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 		if cfg.RemoveNotification() {
 			// Clear all notifications after logging in so none will be shown at the beginning of tests.
 			// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
-			tconn, err := sess.TestAPIConn(ctx)
+			tconn, err := sess.TestAPIConn(ctx, true)
 			if err != nil {
 				return err
 			}
