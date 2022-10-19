@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9004d131_52a234ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T22:07:33Z",
+      "side": 1,
+      "message": "Any pointers to help reviewers understand this change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827368ed_3a924f18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-19T22:07:33Z",
+      "side": 1,
+      "message": "nit:\nTEST\u003dtast run wmp.FullScreenshot wmp.RecordFullScreen ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 100
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4ee63e41_3b8a7097",
