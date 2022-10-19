@@ -224,6 +224,9 @@ func ClearRollbackAndSystemData(ctx context.Context, dut *dut.DUT, rpcHint *test
 // RestoreOriginalImage makes sure that the device is left in the same state
 // as it was before the test started by rolling back to the original version if
 // needed.
+// We rely on the autoupdate fixture now (b/241391509) but we need to keep the
+// method around to make sure we do not break the test after rolling back to
+// previous versions.
 func RestoreOriginalImage(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, originalVersion string) error {
 	// Check the image version. Roll back if it is not the original one or image
 	// version can not be read.
@@ -238,8 +241,6 @@ func RestoreOriginalImage(ctx context.Context, dut *dut.DUT, rpcHint *testing.RP
 	}
 
 	testing.ContextLog(ctx, "Restoring the original device image")
-	// Non-enterprise rollback is not restoring the image when the command is
-	// called from this help method (b/241391509).
 	// Use "rootdev -s" to get and log the root partition before and after.
 	// The format is, for example: /dev/nvme0p3, /dev/mmcblk0p3, /dev/sda3.
 	// This information is used for debugging, so it is not necessary to convert
