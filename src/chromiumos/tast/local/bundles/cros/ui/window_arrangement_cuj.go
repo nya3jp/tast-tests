@@ -37,7 +37,7 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for window arrangements",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
-		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
 		Timeout:      30 * time.Minute,
@@ -48,8 +48,7 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
-				Fixture:           "loggedInToCUJUser",
-				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture: "loggedInToCUJUser",
 			},
 			{
 				Name: "tablet_mode",
@@ -57,8 +56,7 @@ func init() {
 					BrowserType: browser.TypeAsh,
 					Tablet:      true,
 				},
-				Fixture:           "loggedInToCUJUser",
-				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture: "loggedInToCUJUser",
 			},
 			{
 				Name: "lacros",
@@ -66,32 +64,7 @@ func init() {
 					BrowserType: browser.TypeLacros,
 				},
 				Fixture:           "loggedInToCUJUserLacros",
-				ExtraSoftwareDeps: []string{"android_p", "lacros"},
-			},
-			{
-				Name: "clamshell_mode_vm",
-				Val: windowarrangementcuj.TestParam{
-					BrowserType: browser.TypeAsh,
-				},
-				Fixture:           "loggedInToCUJUser",
-				ExtraSoftwareDeps: []string{"android_vm"},
-			},
-			{
-				Name: "tablet_mode_vm",
-				Val: windowarrangementcuj.TestParam{
-					BrowserType: browser.TypeAsh,
-					Tablet:      true,
-				},
-				Fixture:           "loggedInToCUJUser",
-				ExtraSoftwareDeps: []string{"android_vm"},
-			},
-			{
-				Name: "lacros_vm",
-				Val: windowarrangementcuj.TestParam{
-					BrowserType: browser.TypeLacros,
-				},
-				Fixture:           "loggedInToCUJUserLacros",
-				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -170,7 +143,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"))
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.BrowserTestConn, conns.ARC, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.BrowserTestConn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
@@ -287,11 +260,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var f func(ctx context.Context) error
 	if !tabletMode {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunClamShell(ctx, closeCtx, conns.TestConn, ui, pc, conns.StartARCApp, conns.StopARCApp)
+			return windowarrangementcuj.RunClamShell(ctx, closeCtx, conns.TestConn, ui, pc)
 		}
 	} else {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunTablet(ctx, closeCtx, conns.TestConn, ui, pc, conns.StartARCApp, conns.StopARCApp)
+			return windowarrangementcuj.RunTablet(ctx, closeCtx, conns.TestConn, ui, pc)
 		}
 	}
 
