@@ -214,6 +214,30 @@
       },
       "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88dfcc2_98133bd8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-10-20T20:18:44Z",
+      "side": 1,
+      "message": "I see. I feel like at the very least we need to be asserting a certain phy mode. It really doesn\u0027t make sense to be taking throughput measurements when the underlying data rate could be +- an order of magnitude. Is that possible?",
+      "parentUuid": "b448f919_1a983c78",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
