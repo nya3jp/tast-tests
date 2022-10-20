@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // SavedDeskType enum distinguishes sved desk type
@@ -68,6 +69,15 @@ func CleanUpDesks(ctx context.Context, tconn *chrome.TestConn) error {
 	for success := true; success; {
 		if err := tconn.Call(ctx, &success, "tast.promisify(chrome.autotestPrivate.removeActiveDesk)"); err != nil {
 			return errors.Wrap(err, "failed to remove desk")
+		}
+		// In overview mode, there is no desk removal animation to wait for, and so
+		// chrome.autotestPrivate.removeActiveDesk returns immediately, but we
+		// still need to allow at least a brief moment for the desk removal to be
+		// fully processed. If we just call chrome.autotestPrivate.removeActiveDesk
+		// in a tight loop in overview mode, it may repeatedly return true forever.
+		// See b/253687177.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait a second")
 		}
 	}
 	return nil
