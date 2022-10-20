@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c1489b_bbf484b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-20T02:15:22Z",
+      "side": 1,
+      "message": "Note:\nThe tab created by this test is now on the protected background state. We need to add the non-protected background state in future CLs.",
+      "revId": "c7911da1ba17c32e88cc48e6c618e2ac9f4e8c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
