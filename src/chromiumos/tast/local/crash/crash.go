@@ -257,6 +257,33 @@ func GetDaemonStoreConsentDirs(ctx context.Context) ([]string, error) {
 	return ret, nil
 }
 
+// VerifyMetaFileRefs verifies that all "upload_file_" refs in the meta file, as well as the "payload",
+// specify valid file paths.
+func VerifyMetaFileRefs(metaPath string) error {
+	contents, err := os.ReadFile(metaPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read meta file")
+	}
+	dir := filepath.Dir(metaPath)
+	lines := strings.Split(string(contents), "\n")
+	for _, l := range lines {
+		if strings.HasPrefix(l, "payload=") || strings.HasPrefix(l, "upload_file_") {
+			parts := strings.Split(l, "=")
+			if len(parts) != 2 {
+				return errors.Errorf("invalid format for .meta file: %s", l)
+			}
+			f := parts[1]
+			if strings.HasPrefix(f, "/") {
+				return errors.Errorf("unexpected absolute path in meta file: %s", f)
+			}
+			if _, err := os.Stat(filepath.Join(dir, f)); err != nil {
+				return errors.Wrapf(err, "could not stat %s", f)
+			}
+		}
+	}
+	return nil
+}
+
 // RegexesNotFound is an error type, used to indicate that
 // WaitForCrashFiles didn't find matches for all of the regexs.
 type RegexesNotFound struct {
@@ -414,6 +441,10 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 									matchThisFile = false
 									break
 								}
+							}
+							// Also, verify that all files referenced in the meta file are valid.
+							if err := VerifyMetaFileRefs(f); err != nil {
+								return testing.PollBreak(errors.Wrapf(err, "meta file %s has invalid file refs", f))
 							}
 						}
 					}
