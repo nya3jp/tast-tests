@@ -41,7 +41,7 @@ func CaptureModeEntryPoints(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Force stylus to be compatible with the device.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-enable-stylus-tools"))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-enable-stylus-tools", "--ash-enable-palette-on-all-displays"))
 	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
