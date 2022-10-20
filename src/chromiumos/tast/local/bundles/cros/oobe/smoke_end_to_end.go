@@ -38,25 +38,16 @@ func init() {
 			"ui.gaiaPoolDefault",
 		},
 		Timeout: chrome.GAIALoginTimeout + 5*time.Minute,
+		Fixture: "chromeLoggedInWithOobeDeferredLogin",
 	})
 }
 
 func SmokeEndToEnd(ctx context.Context, s *testing.State) {
-	options := []chrome.Option{
-		chrome.DontSkipOOBEAfterLogin(),
-		chrome.DeferLogin(),
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-	}
-	cr, err := chrome.New(ctx, options...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, time.Second*10)
 	defer cancel()
-	defer cr.Close(cleanupCtx)
 
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
 		s.Fatal("Failed to create OOBE connection: ", err)
@@ -257,12 +248,58 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		if err := oobeConn.Eval(ctx, "OobeAPI.screens.AssistantScreen.getSkipButtonName()", &assistantSkipButton); err != nil {
 			s.Fatal("Failed to get assistant next button name: ", err)
 		}
+		var previousUserFlowShown bool
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.AssistantScreen.isPreviousUserFlowShown()", &previousUserFlowShown); err != nil {
+			s.Fatal("Failed to get which assitant flow we currently show: ", err)
+		}
+		if previousUserFlowShown {
+			s.Log("Showing assistant flow for the existing assistant user")
+		} else {
+			s.Log("Showing assistant flow for a new assistant user")
+		}
 		skipButton := nodewith.Role(role.Button).Name(assistantSkipButton)
-		if err := ui.LeftClickUntil(skipButton, ui.Gone(skipButton))(ctx); err != nil {
+		if err := uiauto.Combine("click skip on the assistant screen",
+			ui.WaitUntilExists(skipButton),
+			ui.LeftClick(skipButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to click assistant skip button: ", err)
+		}
+		if previousUserFlowShown {
+			if err := uiauto.Combine("click skip on the assistant screen for the existing assistant user",
+				ui.WaitUntilExists(skipButton),
+				ui.LeftClick(skipButton),
+			)(ctx); err != nil {
+				s.Fatal("Failed to click assistant skip button: ", err)
+			}
 		}
 	}
 
+	shouldSkipSmartPrivacyProtection := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.SmartPrivacyProtectionScreen.shouldSkip()", &shouldSkipSmartPrivacyProtection); err != nil {
+		s.Fatal("Failed to evaluate whether to skip smart privacy protection screen: ", err)
+	}
+
+	if shouldSkipSmartPrivacyProtection {
+		s.Log("Skipping the smart privacy protection screen")
+	} else {
+		s.Log("Waiting for the smart privacy protection screen")
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SmartPrivacyProtectionScreen.isReadyForTesting()"); err != nil {
+			s.Fatal("Failed to wait for the smart privacy protection screen to be visible: ", err)
+		}
+		var smartPrivacyNoThanksButtonName string
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.SmartPrivacyProtectionScreen.getNoThanksButtonName()", &smartPrivacyNoThanksButtonName); err != nil {
+			s.Fatal("Failed to get smart privacy protection no thanks button name: ", err)
+		}
+		noThanks := nodewith.Role(role.Button).Name(smartPrivacyNoThanksButtonName)
+		if err := uiauto.Combine("click no thanks on the smart privacy protection screen",
+			ui.WaitUntilExists(noThanks),
+			ui.LeftClick(noThanks),
+		)(ctx); err != nil {
+			s.Fatal("Failed to click smart privacy protection no thanks button: ", err)
+		}
+	}
+
+	s.Log("Waiting for the theme selection screen")
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.ThemeSelectionScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the theme selection screen to be visible: ", err)
 	}
