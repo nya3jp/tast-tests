@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5940c5c2_e94a8174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-20T05:58:49Z",
+      "side": 1,
+      "message": "Curious Questions: \n\n- Where did the spec for these events come from?  \n- Is there a way to dump the event types to see the sequence?",
+      "range": {
+        "startLine": 149,
+        "startChar": 37,
+        "endLine": 149,
+        "endChar": 93
+      },
+      "revId": "f019be28c18a6821c7e1d10ef487a739931875dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572def5e_29220445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-20T05:58:49Z",
+      "side": 1,
+      "message": "Are these numbers expected to change in the future?  Anyway to make this less hardcoded so if they do keep changing it won\u0027t break the test?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "f019be28c18a6821c7e1d10ef487a739931875dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
