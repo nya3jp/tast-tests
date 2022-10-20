@@ -350,6 +350,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			return err
 		}
 
+		if err := inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+			return errors.Wrap(err, "failed to do Ash workflows")
+		}
+
 		// 1. Multi-tasking with Google Docs by opening a large Docs file and scrolling through the file.
 		// ================================================================================
 
@@ -397,6 +401,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to navigate to chrome://version")
 		}
 
+		if err := inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+			return errors.Wrap(err, "failed to do Ash workflows")
+		}
+
 		// 2. Multi-tasking with Google Slides by opening a large Slides file and going through the deck.
 		// ================================================================================
 
@@ -428,6 +436,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to navigate to chrome://version")
 		}
 
+		if err := inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+			return errors.Wrap(err, "failed to do Ash workflows")
+		}
+
 		// 3. Multi-tasking with Gmail by opening the inbox and scrolling down.
 		// ================================================================================
 
@@ -452,6 +464,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
 		if err := gmailConn.Navigate(ctx, "chrome://version"); err != nil {
 			return errors.Wrap(err, "failed to navigate to chrome://version")
+		}
+
+		if err := inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+			return errors.Wrap(err, "failed to do Ash workflows")
 		}
 
 		return nil
