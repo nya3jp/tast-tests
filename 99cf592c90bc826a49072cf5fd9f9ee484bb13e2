@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4066d509_c2682746",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T16:29:14Z",
+      "side": 1,
+      "message": "Victor, if ServerAndVerify fails it will clean up (server.Close and ResetChrome) as compared to the legacy code just doing (server.Close). Do you think it is fine? Please let me know if ResetChrome should not be called for any reasons in this edge case. I can follow up in a patchset.",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "99cf592c90bc826a49072cf5fd9f9ee484bb13e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
