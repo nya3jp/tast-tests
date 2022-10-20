@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1894b88f_a1df7483",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-20T07:22:40Z",
+      "side": 1,
+      "message": "Thanks, good to know!",
+      "parentUuid": "881cfd0b_65f6c6d2",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 83
+      },
+      "revId": "f60c35d209a73bae35fd2bda773672de83630ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c099c0d8_42aa5363",
