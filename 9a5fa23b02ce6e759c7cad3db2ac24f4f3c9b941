@@ -56,6 +56,30 @@
       },
       "revId": "9a5fa23b02ce6e759c7cad3db2ac24f4f3c9b941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca982194_a1af21c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_mouse_only.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-20T18:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142f1ab1_0e71316e",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "9a5fa23b02ce6e759c7cad3db2ac24f4f3c9b941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
