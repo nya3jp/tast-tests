@@ -27,7 +27,7 @@ func init() {
 		// boot up, even though they are detachables. We're checking for params that
 		// could potentially serve as a filter to identify DUT's mode switcher type.
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.FormFactor(hwdep.Detachable)),
-		Fixture:      fixture.DevModeGBB,
+		Fixture:      fixture.DevMode,
 		Timeout:      30 * time.Minute,
 	})
 }
@@ -61,6 +61,10 @@ func ToNormConfirmed(ctx context.Context, s *testing.State) {
 		opts := []firmware.ModeSwitchOption{firmware.CheckToNormConfirmed}
 		if err := ms.RebootToMode(ctx, fwCommon.BootModeNormal, opts...); err != nil {
 			s.Fatal("Failed to boot to normal mode: ", err)
+		}
+		// Add a short delay to ensure power button released from RebootToMode.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Fatalf("Failed to sleep before testing trigger %s: %v", trigger, err)
 		}
 		switch trigger {
 		case "ctrlU":
