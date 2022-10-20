@@ -33,7 +33,7 @@ type extendedDisplayCUJParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtendedDisplayCUJ,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test video entertainment with extended display",
 		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
