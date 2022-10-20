@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure how this would fix the root cause though. Ultimately, the problem seems to be that opening and playing the youtube video is flaky. This is done independently of the screensaver rendering, so I don\u0027t see why there\u0027s reason to believe the youtube video will be more reliable for float_on_by vs slideshow with art_gallery?\n\nRegardless of what the test tracker says, the media string has to work for all ambient mode themes (including the slideshow theme with art_gallery). It seems to me we need to investigate the root cause of the flakiness in starting the youtube video.",
       "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f7ae21_473b58c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-10-20T03:21:24Z",
+      "side": 1,
+      "message": "If so, we could\n1) contact the Youtube API provider to fix the flakiness, or\n2) write our own Youtube playing helper function.\nIMO, `videoApp.OpenAndPlayVideo` is too specific. Some operations like pausing a video, etc. are out of scope for our test case.\n\nRef: https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/mtbf/youtube/youtube_web.go;l\u003d68?q\u003dyoutube.NewYtWeb\u0026ss\u003dchromiumos",
+      "parentUuid": "27d77cdc_77ed2a1c",
+      "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
