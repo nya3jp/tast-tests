@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
@@ -19,10 +18,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/lacros/versionutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -40,62 +41,23 @@ func init() {
 		Contacts:     []string{"hyungtaekim@chromium.org", "chromeos-sw-engprod@google.com", "lacros-tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		HardwareDeps: hwdep.D(hwdep.Model( // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-			"kasumi", "vilboz" /* amd64 */, "krane" /* arm */)),
-		Timeout: 4 * time.Minute,
+		// Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+		HardwareDeps: hwdep.D(hwdep.Model("kasumi", "vilboz" /* amd64 */, "krane" /* arm */)),
+		Timeout:      4 * time.Minute,
 	})
 }
 
-// chromeOSChannel returns the channel that the OS image is released from. eg. "canary", "dev", "beta", "stable"
-// It reads lsb-release for the release channel info.
-// By the way, sometimes (when a new branch is not yet cut for a new milestone) both "canary" and "dev" are from trunk not in separate branches.
-// If so, the branch number will be used to distinguish between "canary" (with the number 0) and "dev" channel (>0).
-func chromeOSChannel() (string, error) {
+// chromeOSVersion returns a string representation of the current OS version. eg. "12345.0.0"
+func chromeOSVersion() (string, error) {
 	lsb, err := lsbrelease.Load()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read lsbrelease")
 	}
-
-	var channelRe = regexp.MustCompile(`(dev|beta|stable|testimage)-channel`)
-	match := channelRe.FindStringSubmatch(lsb[lsbrelease.ReleaseTrack])
-	if match == nil {
-		return "", errors.Wrapf(err, "failed to read channel in lsbrelease's releasetrack: %v", lsb[lsbrelease.ReleaseTrack])
+	version, ok := lsb[lsbrelease.Version]
+	if !ok {
+		return "", errors.Errorf("failed to find %s in lsbrelease", lsbrelease.Version)
 	}
-	if match[1] == "testimage" {
-		// if testimage, find the channel info in the description key instead of the release track.
-		// Example of the testimage's lsbrelease:
-		//	CHROMEOS_RELEASE_TRACK=testimage-channel
-		//	CHROMEOS_RELEASE_DESCRIPTION=15117.0.0 (Official Build) dev-channel atlas test
-		match = channelRe.FindStringSubmatch(lsb[lsbrelease.ReleaseDescription])
-		if match == nil {
-			return "", errors.New("failed to read channel in lsbrelease's description")
-		}
-	}
-
-	osChannel := match[1]
-	// if it is "dev" channel, further check if it is on "canary" pre-branch or "dev" post-branch by checking the branch number. eg, "canary" with branch number == 0.
-	if osChannel == "dev" && lsb[lsbrelease.BranchNumber] == "0" {
-		osChannel = "canary"
-	}
-	return osChannel, nil
-}
-
-// statefulLacrosChannels resolves the stateful-lacros channels from the given OS channel within the supported version skews.
-// This includes public OS user channels (eg, "dev", "beta" and "stable") and also a special channel "canary" for extra test coverage on trunk.
-func statefulLacrosChannels(osChannel string) ([]string, error) {
-	// TODO(crbug.com/1258138): Update valid version skews when changed. Currently it is [0, +2] of stateful-lacros against OS.
-	switch osChannel {
-	case "canary":
-		return []string{"canary"}, nil
-	case "dev":
-		return []string{"dev"}, nil
-	case "beta":
-		return []string{"beta", "dev"}, nil
-	case "stable":
-		return []string{"stable", "beta", "dev"}, nil
-	default:
-		return []string{}, errors.Errorf("failed to find valid stateful-lacros channels from OS channel: %v", osChannel)
-	}
+	return version, nil
 }
 
 func waitForLacrosPath(ctx context.Context, tconn *chrome.TestConn) (execPath string, err error) {
@@ -156,21 +118,32 @@ func ShelfLaunchOmaha(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Read the OS channel and stateful-lacros channels that are compatible with each other.
-	osChannel, err := chromeOSChannel()
+	// Get the current OS, Ash and stateful-lacros versions.
+	osVersion, err := chromeOSVersion()
 	if err != nil {
-		s.Fatal("Failed to get the OS channel: ", err)
+		s.Fatal("Failed to get OS version: ", err)
 	}
-	statefulLacrosChannels, err := statefulLacrosChannels(osChannel)
+	ashVersionComponents, err := chromeproc.Version(ctx)
 	if err != nil {
-		s.Fatal("Failed to resolve the stateful-lacros channels from the OS channel: ", err)
+		s.Fatal("Failed to get Ash version: ", err)
+	}
+	ashVersion := strings.Join(ashVersionComponents, ".")
+	compatibleChannels, err := versionutil.CompatibleLacrosChannels(ctx, ashVersion)
+	if err != nil {
+		s.Fatal("Failed to get Lacros channels compatible with Ash: ", err)
 	}
 
-	// Resolve all compatible stateful-lacros channels from the given OS channel.
-	s.Logf("ShelfLaunch with OS: %v, stateful-lacros: %v", osChannel, statefulLacrosChannels)
+	s.Logf("ShelfLaunch with OS: %v, Ash: %v, stateful-lacros: %v channel(s) %v", osVersion, ashVersion, len(compatibleChannels), compatibleChannels)
 	cfg := lacrosfixt.NewConfig(lacrosfixt.Selection(lacros.Omaha))
-	for _, lacrosChannel := range statefulLacrosChannels {
-		s.Run(ctx, fmt.Sprintf("OS: %v, stateful-lacros: %v", osChannel, lacrosChannel), func(ctx context.Context, s *testing.State) {
+
+	// Run sub-tests to check if stateful-lacros is installable and launchable on the channels compatible with Ash
+	// from the older milestone to the newer.
+	for _, lacrosChannel := range []string{"stable", "beta", "dev", "canary"} {
+		lacrosVersion, ok := compatibleChannels[lacrosChannel]
+		if !ok {
+			continue
+		}
+		s.Run(ctx, fmt.Sprintf("OS: %v, Ash: %v, stateful-lacros: %v (%v)", osVersion, ashVersion, lacrosVersion, lacrosChannel), func(ctx context.Context, s *testing.State) {
 			cr, err := browserfixt.NewChrome(ctx, browser.TypeLacros, cfg,
 				chrome.ExtraArgs("--lacros-stability="+lacrosChannel))
 			if err != nil {
@@ -184,8 +157,7 @@ func ShelfLaunchOmaha(ctx context.Context, s *testing.State) {
 			// Ensure Lacros is installed.
 			execPath, err := waitForLacrosPath(ctx, tconn)
 			if err != nil {
-				// TODO(crbug.com/1367120): Log the stateful-lacros version served in Omaha by the time it fails.
-				s.Fatalf("Lacros is not installed from stateful-lacros channel: %v on OS: %v, err: %v", lacrosChannel, osChannel, err)
+				s.Fatalf("Lacros is not installed from stateful-lacros: %v (%v), Ash: %v, OS: %v, err: %v", lacrosVersion, lacrosChannel, ashVersion, osVersion, err)
 			}
 			s.Log("Lacros is installed at ", execPath)
 
