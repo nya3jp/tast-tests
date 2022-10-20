@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cc9f65_47be6a8b",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T16:10:29Z",
+      "side": 1,
+      "message": "Victor, sounds reasonable to me, but is it okay for you or someone on your team who knows better about the policyutil structure than me to follow up on that in a separate CL if if is unrelated to this change?",
+      "parentUuid": "23eb4917_5e7a6df2",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99bacb40_3e3de11d",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18e1135e_af30c87f",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T16:10:29Z",
+      "side": 1,
+      "message": "I can do polling to get around it for now, but is there any chance to investigate a root cause (b/254067263) and fix it for Lacros if available? I could probably leave a TODO on the polling if it makes sense.",
+      "parentUuid": "99bacb40_3e3de11d",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78c83d64_945365c2",
         "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
         "patchSetId": 4
@@ -82,6 +118,24 @@
       "writtenOn": "2022-10-20T15:29:21Z",
       "side": 1,
       "message": "Use the following pattern for calling cleanUp on error:\n\nok :\u003d false\ndefer func() {\n if !ok {\n   ...Do cleanup\n }\n}\n\nok \u003d true\nreturn id, name, cleanUp, nil\n\nIt will make sure all cases are covered even if the code changes in the future. Remembering to add calls before a return is not maintainable.",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcb71a9_ccf1182a",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T16:10:29Z",
+      "side": 1,
+      "message": "Looks like the existing pattern returns `cleanUp` to a caller so the suggestion may not be what it was trying to do here. I might be misunderstanding though since this snippet has existed even before I made this CL for Tast migration.",
+      "parentUuid": "78c83d64_945365c2",
       "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
