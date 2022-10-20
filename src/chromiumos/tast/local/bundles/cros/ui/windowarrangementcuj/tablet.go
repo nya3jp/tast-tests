@@ -96,7 +96,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 // RunTablet runs window arrangement cuj for tablet. Since windows are always
 // maximized in tablet mode, we only test performance for tab dragging and split
 // view resizing.
-func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, startARCApp, stopARCApp action.Action) (retErr error) {
+func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context) (retErr error) {
 	const (
 		timeout           = 10 * time.Second
 		duration          = 2 * time.Second
@@ -190,55 +190,6 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	// Exercise split view resize functionality.
 	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, enterOverview, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to exercise split view resize functionality with two browser windows")
-	}
-
-	// For the part with an ARC window, adjust the drag points to help avoid https://crbug.com/1297297.
-	// Specifically, avoid resizing the ARC window to its minimum width which is 342. The split view
-	// divider width is 8, half of that is 4, and so there are 4 DIPs between the divider's centerpoint
-	// and the ARC window. The divider's centerpoint is between pixels and cannot be the exact position
-	// of a touch gesture, so there are only 3 DIPs between the drag point and the ARC window. So the
-	// ARC window has width 342 at a drag point 345 away from the right end. To avoid reaching the
-	// minimum size of the ARC window, we stay 346 away from the right end.
-	// TODO(https://crbug.com/1297297): Remove this when the bug is fixed.
-	splitViewDragPoints[2].X -= 346
-
-	// Start the ARC app.
-	if err := action.Retry(3, startARCApp, 0)(ctx); err != nil {
-		return errors.Wrap(err, "failed to start ARC app")
-	}
-	defer cleanUp(closeCtx, action.Named("close the ARC app", stopARCApp), &retErr)
-	// The ARC app will be automatically snapped because split view mode is active.
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateLeftSnapped); err != nil {
-		return errors.Wrap(err, "failed to wait for ARC app to be snapped on left")
-	}
-
-	// Swap the windows so that enterOverview will put the browser
-	// window in overview and leave the ARC window snapped.
-	tapDivider := pc.ClickAt(splitViewDragPoints[0])
-	if err := action.Combine("double tap the divider", tapDivider, uiauto.Sleep(doubleTapInterval), tapDivider)(ctx); err != nil {
-		return errors.Wrap(err, "failed to swap snapped windows")
-	}
-
-	// Wait for location-change events to be completed.
-	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for location-change events to be completed")
-	}
-
-	// b/246799978 causes the ARC app window to have the wrong bounds. Do a split
-	// view resize to update the bounds. There are no plans to fix b/246799978.
-	if err := pc.Drag(
-		splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[0].Add(coords.NewPoint(20, 0)), duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag divider just a little bit")
-	}
-	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for location-change events to be completed")
-	}
-
-	// Exercise split view resize functionality.
-	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, enterOverview, splitViewDragPoints...); err != nil {
-		return errors.Wrap(err, "failed to exercise split view resize functionality with an ARC window and a browser window")
 	}
 
 	return nil
