@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee2cf49_433a1ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-20T14:21:51Z",
+      "side": 1,
+      "message": "We should use hwdep.SmartAmp() here.\nFor device that does not enable the boot time calibration, they still need to sound card init to apply the calibration values in the VPD. They just don\u0027t run boot time calibration. Thanks!",
+      "range": {
+        "startLine": 62,
+        "startChar": 37,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "ab255f74a51e5af44d23bb163dc9b425489dd99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
