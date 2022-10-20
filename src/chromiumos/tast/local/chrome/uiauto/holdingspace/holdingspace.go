@@ -6,10 +6,14 @@ package holdingspace
 
 import (
 	"context"
+	"path/filepath"
+	"reflect"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // Class names.
@@ -87,4 +91,63 @@ func ResetHoldingSpace(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrap(err, "failed to reset holding space")
 	}
 	return nil
+}
+
+// GetScreenshots returns the locations of screenshot files present in the user's
+// downloads directory. Screenshot files are assumed to match a specific pattern.
+func GetScreenshots(downloadsPath string) (map[string]struct{}, error) {
+	result := make(map[string]struct{})
+	screenshots, err := filepath.Glob(filepath.Join(
+		downloadsPath, "Screenshot*.png"))
+	if err == nil {
+		for i := range screenshots {
+			result[screenshots[i]] = struct{}{}
+		}
+	}
+	return result, err
+}
+
+// TakeScreenshot captures a fullscreen screenshot using the virtual keyboard
+// and returns the location of the screenshot file in the user's downloads
+// directory. This should behave consistently across device form factors.
+func TakeScreenshot(ctx context.Context, downloadsPath string) (string, error) {
+	var result string
+
+	// Cache existing screenshots.
+	screenshots, err := GetScreenshots(downloadsPath)
+	if err != nil {
+		return result, err
+	}
+
+	// Create virtual keyboard.
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return result, err
+	}
+	defer keyboard.Close()
+
+	// Take a screenshot.
+	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+		return result, err
+	}
+
+	// Wait for screenshot.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		newScreenshots, err := GetScreenshots(downloadsPath)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if reflect.DeepEqual(screenshots, newScreenshots) {
+			return errors.New("waiting for screenshot")
+		}
+		for newScreenshot := range newScreenshots {
+			if _, exists := screenshots[newScreenshot]; !exists {
+				result = newScreenshot
+				return nil
+			}
+		}
+		return nil
+	}, nil)
+
+	return result, err
 }
