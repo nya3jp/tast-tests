@@ -12,11 +12,15 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -59,6 +63,7 @@ func FilesAppDragAndDropPin(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not open filesapp: ", err)
 	}
+	defer fsapp.Close(ctx)
 
 	// Reset the holding space and `MarkTimeOfFirstAdd` to make the `HoldingSpaceTrayIcon`
 	// show.
@@ -101,6 +106,47 @@ func FilesAppDragAndDropPin(ctx context.Context, s *testing.State) {
 		uia.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(testFile)),
 	)(ctx); err != nil {
 		s.Fatalf("Failed to pin item %q by dragging: %s", testFile, err)
+	}
+	fileLocation, err := uia.Location(ctx, holdingspace.FindPinnedFileChip().Name(testFile))
+	if err != nil {
+		s.Fatal("Failed to get holding space test file location: ", err)
+	}
+
+	fsappLocation, err := uia.Location(ctx, nodewith.Role(role.ListBox))
+	if err != nil {
+		s.Fatal("Failed to get Files App location: ", err)
+	}
+
+	// Copy text file to Files App by drag and drop.
+	uia.LeftClick(tray)
+	mouse.Drag(tconn, fileLocation.CenterPoint(), fsappLocation.CenterPoint(), time.Second)(ctx)
+	// Check holding space is closed.
+	uia.Gone(holdingspace.FindChip())
+	if err != nil {
+		s.Fatal("Failed to move file to Files Download: ", err)
+	}
+	const copyTestFile = "test (1).txt"
+	defer os.Remove(filepath.Join(myFilesPath, copyTestFile))
+
+	// Open chrome browser.
+	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+		s.Fatal("Failed to launch chrome app: ", err)
+	}
+	defer apps.Close(ctx, tconn, apps.Chrome.ID)
+
+	chromeWindowFinder := nodewith.NameContaining("Google Chrome").Role(role.Window)
+	chromeLocation, err := uia.Location(ctx, chromeWindowFinder.HasClass("BrowserRootView"))
+
+	// Open test file in Chrome browser by drag and drop.
+	// uia.LeftClick(tray)
+	mouse.Click(tconn, trayLocation.CenterPoint(), mouse.LeftButton)
+	uia.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(testFile))
+	mouse.Drag(tconn, fileLocation.CenterPoint(), chromeLocation.CenterPoint(), time.Second)(ctx)
+	// Check holding space is closed.
+	uia.Gone(holdingspace.FindChip())
+	uia.WaitUntilExists(nodewith.Role(role.Tab).Name("testFile"))(ctx)
+	if err != nil {
+		s.Fatal("Failed to open test file in Chrome browser: ", err)
 	}
 
 }
