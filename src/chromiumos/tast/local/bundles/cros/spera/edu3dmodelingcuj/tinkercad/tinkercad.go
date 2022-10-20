@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -106,33 +107,37 @@ func (tc *TinkerCad) Open(ctx context.Context) (err error) {
 // Will do sign up process if don't have a TinkerCAD account.
 func (tc *TinkerCad) Login(account string) action.Action {
 	return func(ctx context.Context) error {
-		signInWithGoogleOauth := func(ctx context.Context) error {
-			personalAccounts := loginAreaFinder.Name("Personal accounts").Role(role.StaticText)
-			signIn := loginAreaFinder.Name("Sign in with Google").Role(role.StaticText)
-			account := nodewith.Name(account).Role(role.StaticText)
-			btnContinue := nodewith.Name("Continue").HasClass("adsk-btn").Role(role.Button)
-			// If the DUT has only one account, it would login to TinkerCAD directly.
-			// Otherwise, it would show list of accounts.
-			// Also it will do sign up process if haven't done it before.
-			return uiauto.NamedCombine("login to TinkerCAD",
-				tc.ui.DoDefaultUntil(personalAccounts,
-					tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(signIn)),
-				tc.ui.DoDefault(signIn),
-				// Click account button while there's more than one google account.
-				uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(account),
-					tc.ui.DoDefaultUntil(account, tc.ui.Gone(account))),
-				// Click continue button while the account hasn't signed up.
-				uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(btnContinue),
-					tc.ui.DoDefault(btnContinue)),
-			)(ctx)
-		}
+		personalAccounts := loginAreaFinder.Name("Personal accounts").Role(role.StaticText)
+		signIn := loginAreaFinder.Name("Sign in with Google").Role(role.StaticText)
+		accountText := nodewith.Name(account).Role(role.StaticText)
+		btnContinue := nodewith.Name("Continue").HasClass("adsk-btn").Role(role.Button)
+		profilePicture := dashboardAreaFinder.Role(role.GenericContainer).HasClass("profile__picture")
+		// If the DUT has only one account, it would login to TinkerCAD directly.
+		// Otherwise, it would show list of accounts.
+		// Also it will do sign up process if haven't done it before.
+		signInWithGoogleOauth := uiauto.NamedCombine("login to TinkerCAD",
+			tc.ui.DoDefaultUntil(personalAccounts,
+				tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(signIn)),
+			tc.ui.DoDefault(signIn),
+			// Click account button while there's more than one google account.
+			uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(accountText),
+				tc.ui.DoDefaultUntil(accountText, tc.ui.Gone(accountText))),
+			// Click continue button while the account hasn't signed up.
+			uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(btnContinue),
+				tc.ui.DoDefault(btnContinue)),
+			tc.ui.WaitUntilExists(profilePicture),
+		)
 		if err := tc.conn.Navigate(ctx, cuj.TinkerCadSignInURL); err != nil {
 			return errors.Wrapf(err, "failed to navigate to %s", cuj.TinkerCadSignInURL)
 		}
-		createNewDesign := dashboardAreaFinder.Name("Create new design").Role(role.StaticText)
-		return uiauto.NamedCombine("login to TinkerCAD though google oauth with "+account,
-			uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilGone(createNewDesign),
-				signInWithGoogleOauth))(ctx)
+		if err := webutil.WaitForQuiescence(ctx, tc.conn, 15*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for sign in page to finish loading")
+		}
+		return uiauto.NamedAction("login to TinkerCAD though google oauth with "+account,
+			uiauto.IfFailThen(
+				tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(profilePicture),
+				signInWithGoogleOauth),
+		)(ctx)
 	}
 }
 
@@ -222,18 +227,22 @@ func (tc *TinkerCad) GetEditorWindowRect(ctx context.Context) (coords.Rect, erro
 
 // DisableGrid disable show grid option.
 func (tc *TinkerCad) DisableGrid() action.Action {
-	popUpMsg := nodewith.NameContaining("to your design!").Role(role.StaticText)
-	popUpClose := nodewith.HasClass("new-feature-details-toast-title-button-close").Role(role.GenericContainer)
-	btnEditGrid := editorAreaFinder.Name("Edit Grid").Role(role.StaticText)
-	cbContainer := nodewith.HasClass("editgrid__modal__block1__showGridContainer").Role(role.GenericContainer)
-	cbShowGrid := nodewith.HasClass("editor__inspector__item__checkbox").Role(role.CheckBox).Ancestor(cbContainer)
-	btnUpdateGrid := editorAreaFinder.Name("Update Grid").Role(role.Button)
+	settingsLink := editorAreaFinder.Name("Settings").Role(role.Link)
+	showGridContainer := editorAreaFinder.Role(role.GenericContainer).HasClass("editgrid__modal__block1__showGridContainer")
+	showGridCheckBox := nodewith.Role(role.CheckBox).Ancestor(showGridContainer).HasClass("editor__inspector__item__checkbox")
+	gridEditor := editorAreaFinder.HasClass("editgrid__modal")
+	cancelImage := nodewith.Name("icon-cancel").Role(role.Image).Ancestor(gridEditor)
+	newFeatureMenu := editorAreaFinder.Role(role.Menu).HasClass("new-feature-details-toast-theme")
+	closeButton := nodewith.Role(role.GenericContainer).Ancestor(newFeatureMenu).HasClass("new-feature-details-toast-title-button-close")
 	return uiauto.NamedCombine("disable show grid option",
-		tc.ui.DoDefault(btnEditGrid),
-		tc.ui.DoDefault(cbShowGrid),
-		tc.ui.DoDefault(btnUpdateGrid),
-		uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(popUpMsg),
-			tc.ui.DoDefault(popUpClose)))
+		tc.ui.DoDefault(settingsLink),
+		tc.ui.DoDefaultUntil(
+			showGridCheckBox,
+			tc.ui.WithTimeout(shortUITimeout).WaitUntilCheckedState(showGridCheckBox, false),
+		),
+		tc.ui.DoDefault(cancelImage),
+		uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(newFeatureMenu),
+			tc.ui.DoDefault(closeButton)))
 }
 
 // AddShapeAndRotate adds primitive shape by given shape name and rotates it.
@@ -270,9 +279,12 @@ func (tc *TinkerCad) AddShapeAndRotate(shapeName string) action.Action {
 
 // RotateAll rotates all shapes at the same time.
 func (tc *TinkerCad) RotateAll() action.Action {
+	shapesReg := regexp.MustCompile(`Shapes\(\d+\)`)
+	shapesText := editorAreaFinder.NameRegex(shapesReg).Role(role.StaticText)
 	return uiauto.NamedCombine("rotate all shapes together",
 		// Pressing ctrl+A for select all shortcut on TinkerCad.
 		tc.kb.AccelAction("ctrl+A"),
+		tc.ui.WaitUntilExists(shapesText),
 		// Pressing F for focus shortcut on TinkerCad and this helps draging action to be more stable.
 		tc.kb.TypeKeyAction(input.KEY_F),
 		tc.rotate,
