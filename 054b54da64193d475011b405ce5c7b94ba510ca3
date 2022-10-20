@@ -70,6 +70,30 @@
       },
       "revId": "054b54da64193d475011b405ce5c7b94ba510ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22adb0b1_17818777",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-10-20T04:14:01Z",
+      "side": 1,
+      "message": "Do we now isolate the firmware.* tests so we can reprovision after the suite is done? If not we may need tast to support it.",
+      "parentUuid": "a8fcf17f_e8ed1b4d",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "054b54da64193d475011b405ce5c7b94ba510ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
