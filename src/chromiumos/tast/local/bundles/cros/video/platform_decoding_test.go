@@ -1341,7 +1341,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			CmdBuilder:   "ffmpegMD5VAAPIargs",
 			Files:        files,
 			Timeout:      defaultTimeout,
-			SoftwareDeps: []string{"vaapi", caps.HWDecodeVP8},
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeH264},
 			Metadata:     genExtraData(files),
 			Attr:         []string{"graphics_video_h264"},
 		}
@@ -1420,6 +1420,56 @@ func TestPlatformDecodingParams(t *testing.T) {
 			}
 
 			params = append(params, param)
+		}
+	}
+
+	// Generate ffmpeg V4L2 VP8 tests.
+	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
+		files := vp8Files[testGroup]
+
+		params = append(params, paramData{
+			Name:         fmt.Sprintf("ffmpeg_v4l2_vp8_%s", testGroup),
+			Decoder:      ffmpegMD5Path,
+			CmdBuilder:   "ffmpegMD5V4L2VP8args",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP8},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_vp8"},
+		})
+	}
+
+	// Generate ffmpeg V4L2 VP9 tests.
+	for i, profile := range []string{"profile_0"} {
+		for _, levelGroup := range []string{"group1" /*, "group2", "group3", "group4", "level5_0", "level5_1"*/} {
+			for _, cat := range []string{
+				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
+			} {
+				//// Disabled due to <1% pass rate over 30 days. See b/246820265
+				//if fmt.Sprintf("ffmpeg_v4l2_vp9_%d_%s_%s", i, levelGroup, cat) == "ffmpeg_vaapi_vp9_0_group1_frm_resize" {
+				//	continue
+				//}
+				//// Disabled due to <1% pass rate over 30 days. See b/246820265
+				//if fmt.Sprintf("ffmpeg_v4l2_vp9_%d_%s_%s", i, levelGroup, cat) == "ffmpeg_vaapi_vp9_0_group1_sub8x8_sf" {
+				//	continue
+				//}
+				files := vp9WebmFiles[profile][levelGroup][cat]
+				param := paramData{
+					Name:         fmt.Sprintf("ffmpeg_v4l2_vp9_%d_%s_%s", i, levelGroup, cat),
+					Decoder:      ffmpegMD5Path,
+					CmdBuilder:   "ffmpegMD5V4L2VP9args",
+					Files:        files,
+					Timeout:      defaultTimeout,
+					SoftwareDeps: []string{"v4l2_codec"},
+					Metadata:     genExtraData(files),
+					Attr:         []string{"graphics_video_vp9"},
+				}
+				//if extension, ok := vp9GroupExtensions[levelGroup]; ok {
+				//	param.Timeout = extension
+				//}
+
+				params = append(params, param)
+			}
 		}
 	}
 

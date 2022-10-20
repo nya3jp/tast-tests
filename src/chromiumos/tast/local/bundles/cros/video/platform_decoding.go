@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/bundles/cros/video/expectations"
+	//"chromiumos/tast/local/bundles/cros/video/expectations"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -2504,7 +2504,7 @@ func init() {
 					commandBuilder: ffmpegMD5VAAPIargs,
 				},
 				Timeout:           10 * time.Minute,
-				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_h264_1080_30"},
 				ExtraData:         []string{"test_vectors/h264/baseline/AUD_MW_E.h264", "test_vectors/h264/baseline/AUD_MW_E.h264.json", "test_vectors/h264/baseline/BA1_Sony_D.h264", "test_vectors/h264/baseline/BA1_Sony_D.h264.json", "test_vectors/h264/baseline/BA2_Sony_F.h264", "test_vectors/h264/baseline/BA2_Sony_F.h264.json", "test_vectors/h264/baseline/BAMQ1_JVC_C.h264", "test_vectors/h264/baseline/BAMQ1_JVC_C.h264.json", "test_vectors/h264/baseline/BAMQ2_JVC_C.h264", "test_vectors/h264/baseline/BAMQ2_JVC_C.h264.json", "test_vectors/h264/baseline/BANM_MW_D.h264", "test_vectors/h264/baseline/BANM_MW_D.h264.json", "test_vectors/h264/baseline/BA_MW_D.h264", "test_vectors/h264/baseline/BA_MW_D.h264.json", "test_vectors/h264/baseline/CI_MW_D.h264", "test_vectors/h264/baseline/CI_MW_D.h264.json", "test_vectors/h264/baseline/CVSE2_Sony_B.h264", "test_vectors/h264/baseline/CVSE2_Sony_B.h264.json", "test_vectors/h264/baseline/HCBP1_HHI_A.h264", "test_vectors/h264/baseline/HCBP1_HHI_A.h264.json", "test_vectors/h264/baseline/HCBP2_HHI_A.h264", "test_vectors/h264/baseline/HCBP2_HHI_A.h264.json", "test_vectors/h264/baseline/LS_SVA_D.h264", "test_vectors/h264/baseline/LS_SVA_D.h264.json", "test_vectors/h264/baseline/MIDR_MW_D.h264", "test_vectors/h264/baseline/MIDR_MW_D.h264.json", "test_vectors/h264/baseline/MPS_MW_A.h264", "test_vectors/h264/baseline/MPS_MW_A.h264.json", "test_vectors/h264/baseline/MR1_MW_A.h264", "test_vectors/h264/baseline/MR1_MW_A.h264.json", "test_vectors/h264/baseline/MR2_MW_A.h264", "test_vectors/h264/baseline/MR2_MW_A.h264.json", "test_vectors/h264/baseline/NL1_Sony_D.h264", "test_vectors/h264/baseline/NL1_Sony_D.h264.json", "test_vectors/h264/baseline/NL2_Sony_H.h264", "test_vectors/h264/baseline/NL2_Sony_H.h264.json", "test_vectors/h264/baseline/NLMQ1_JVC_C.h264", "test_vectors/h264/baseline/NLMQ1_JVC_C.h264.json", "test_vectors/h264/baseline/NLMQ2_JVC_C.h264", "test_vectors/h264/baseline/NLMQ2_JVC_C.h264.json", "test_vectors/h264/baseline/NRF_MW_E.h264", "test_vectors/h264/baseline/NRF_MW_E.h264.json", "test_vectors/h264/baseline/SVA_BA1_B.h264", "test_vectors/h264/baseline/SVA_BA1_B.h264.json", "test_vectors/h264/baseline/SVA_BA2_D.h264", "test_vectors/h264/baseline/SVA_BA2_D.h264.json", "test_vectors/h264/baseline/SVA_NL1_B.h264", "test_vectors/h264/baseline/SVA_NL1_B.h264.json", "test_vectors/h264/baseline/SVA_NL2_E.h264", "test_vectors/h264/baseline/SVA_NL2_E.h264.json"},
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
@@ -2516,7 +2516,7 @@ func init() {
 					commandBuilder: ffmpegMD5VAAPIargs,
 				},
 				Timeout:           10 * time.Minute,
-				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_h264_1080_30"},
 				ExtraData:         []string{"test_vectors/h264/main/CABA1_SVA_B.h264", "test_vectors/h264/main/CABA1_SVA_B.h264.json", "test_vectors/h264/main/CABA1_Sony_D.h264", "test_vectors/h264/main/CABA1_Sony_D.h264.json", "test_vectors/h264/main/CABA2_SVA_B.h264", "test_vectors/h264/main/CABA2_SVA_B.h264.json", "test_vectors/h264/main/CABA2_Sony_E.h264", "test_vectors/h264/main/CABA2_Sony_E.h264.json", "test_vectors/h264/main/CABA3_SVA_B.h264", "test_vectors/h264/main/CABA3_SVA_B.h264.json", "test_vectors/h264/main/CABA3_Sony_C.h264", "test_vectors/h264/main/CABA3_Sony_C.h264.json", "test_vectors/h264/main/CABA3_TOSHIBA_E.h264", "test_vectors/h264/main/CABA3_TOSHIBA_E.h264.json", "test_vectors/h264/main/CACQP3_Sony_D.h264", "test_vectors/h264/main/CACQP3_Sony_D.h264.json", "test_vectors/h264/main/CANL1_SVA_B.h264", "test_vectors/h264/main/CANL1_SVA_B.h264.json", "test_vectors/h264/main/CANL1_Sony_E.h264", "test_vectors/h264/main/CANL1_Sony_E.h264.json", "test_vectors/h264/main/CANL1_TOSHIBA_G.h264", "test_vectors/h264/main/CANL1_TOSHIBA_G.h264.json", "test_vectors/h264/main/CANL2_SVA_B.h264", "test_vectors/h264/main/CANL2_SVA_B.h264.json", "test_vectors/h264/main/CANL2_Sony_E.h264", "test_vectors/h264/main/CANL2_Sony_E.h264.json", "test_vectors/h264/main/CANL3_SVA_B.h264", "test_vectors/h264/main/CANL3_SVA_B.h264.json", "test_vectors/h264/main/CANL3_Sony_C.h264", "test_vectors/h264/main/CANL3_Sony_C.h264.json", "test_vectors/h264/main/CANL4_SVA_B.h264", "test_vectors/h264/main/CANL4_SVA_B.h264.json", "test_vectors/h264/main/CAPCM1_Sand_E.h264", "test_vectors/h264/main/CAPCM1_Sand_E.h264.json", "test_vectors/h264/main/CAPCMNL1_Sand_E.h264", "test_vectors/h264/main/CAPCMNL1_Sand_E.h264.json", "test_vectors/h264/main/CAPM3_Sony_D.h264", "test_vectors/h264/main/CAPM3_Sony_D.h264.json", "test_vectors/h264/main/CAQP1_Sony_B.h264", "test_vectors/h264/main/CAQP1_Sony_B.h264.json", "test_vectors/h264/main/CAWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CAWP1_TOSHIBA_E.h264.json", "test_vectors/h264/main/CAWP5_TOSHIBA_E.h264", "test_vectors/h264/main/CAWP5_TOSHIBA_E.h264.json", "test_vectors/h264/main/CVBS3_Sony_C.h264", "test_vectors/h264/main/CVBS3_Sony_C.h264.json", "test_vectors/h264/main/CVPCMNL1_SVA_C.h264", "test_vectors/h264/main/CVPCMNL1_SVA_C.h264.json", "test_vectors/h264/main/CVPCMNL2_SVA_C.h264", "test_vectors/h264/main/CVPCMNL2_SVA_C.h264.json", "test_vectors/h264/main/CVSE3_Sony_H.h264", "test_vectors/h264/main/CVSE3_Sony_H.h264.json", "test_vectors/h264/main/CVSEFDFT3_Sony_E.h264", "test_vectors/h264/main/CVSEFDFT3_Sony_E.h264.json", "test_vectors/h264/main/CVWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP1_TOSHIBA_E.h264.json", "test_vectors/h264/main/CVWP2_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP2_TOSHIBA_E.h264.json", "test_vectors/h264/main/CVWP3_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP3_TOSHIBA_E.h264.json", "test_vectors/h264/main/CVWP5_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP5_TOSHIBA_E.h264.json", "test_vectors/h264/main/NL3_SVA_E.h264", "test_vectors/h264/main/NL3_SVA_E.h264.json", "test_vectors/h264/main/camp_mot_frm0_full.h264", "test_vectors/h264/main/camp_mot_frm0_full.h264.json", "test_vectors/h264/main/cvmp_mot_frm0_full_B.h264", "test_vectors/h264/main/cvmp_mot_frm0_full_B.h264.json", "test_vectors/h264/main/src19td.IBP.h264", "test_vectors/h264/main/src19td.IBP.h264.json", "test_vectors/h264/main/HCMP1_HHI_A.h264", "test_vectors/h264/main/HCMP1_HHI_A.h264.json"},
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
@@ -2528,7 +2528,7 @@ func init() {
 					commandBuilder: ffmpegMD5VAAPIargs,
 				},
 				Timeout:           10 * time.Minute,
-				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_h264_1080_30"},
 				ExtraData:         []string{"test_vectors/h264/baseline/BA1_FT_C.h264", "test_vectors/h264/baseline/BA1_FT_C.h264.json", "test_vectors/h264/baseline/BASQP1_Sony_C.h264", "test_vectors/h264/baseline/BASQP1_Sony_C.h264.json", "test_vectors/h264/baseline/CI1_FT_B.h264", "test_vectors/h264/baseline/CI1_FT_B.h264.json", "test_vectors/h264/baseline/SVA_Base_B.h264", "test_vectors/h264/baseline/SVA_Base_B.h264.json", "test_vectors/h264/baseline/SVA_CL1_E.h264", "test_vectors/h264/baseline/SVA_CL1_E.h264.json", "test_vectors/h264/baseline/SVA_FM1_E.h264", "test_vectors/h264/baseline/SVA_FM1_E.h264.json", "test_vectors/h264/baseline/MR1_BT_A.h264", "test_vectors/h264/baseline/MR1_BT_A.h264.json", "test_vectors/h264/main/CABACI3_Sony_B.h264", "test_vectors/h264/main/CABACI3_Sony_B.h264.json", "test_vectors/h264/main/CABAST3_Sony_E.h264", "test_vectors/h264/main/CABAST3_Sony_E.h264.json", "test_vectors/h264/main/CABASTBR3_Sony_B.h264", "test_vectors/h264/main/CABASTBR3_Sony_B.h264.json", "test_vectors/h264/main/SL1_SVA_B.h264", "test_vectors/h264/main/SL1_SVA_B.h264.json"},
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
@@ -2755,6 +2755,162 @@ func init() {
 				ExtraData:         []string{"test_vectors/av1/aom/av1-1-b8-22-svc-L1T2.ivf", "test_vectors/av1/aom/av1-1-b8-22-svc-L1T2.ivf.json", "test_vectors/av1/aom/av1-1-b8-22-svc-L2T1.ivf", "test_vectors/av1/aom/av1-1-b8-22-svc-L2T1.ivf.json", "test_vectors/av1/aom/av1-1-b8-22-svc-L2T2.ivf", "test_vectors/av1/aom/av1-1-b8-22-svc-L2T2.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_av1"},
 			},
+			{
+				Name: "ffmpeg_v4l2_vp8_inter",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1402.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_inter_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_inter_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf", "test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_intra",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1411.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1400.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1411.ivf", "test_vectors/vp8/intra/vp80-01-intra-1411.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf.json", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_intra_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf", "test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_intra_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf", "test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp8_comprehensive",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-006.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-014.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP8args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-001.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-006.ivf", "test_vectors/vp8/vp80-00-comprehensive-006.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-014.ivf", "test_vectors/vp8/vp80-00-comprehensive-014.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-018.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_buf",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_frm_resize",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_gf_dist",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_384X192_fr30_bd8_gf_dist_4_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_256X144_fr15_bd8_gf_dist_4_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_256X144_fr15_bd8_gf_dist_4_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_256X144_fr15_bd8_gf_dist_4_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_384X192_fr30_bd8_gf_dist_4_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_384X192_fr30_bd8_gf_dist_4_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_384X192_fr30_bd8_gf_dist_4_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_odd_size",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_376X184_fr30_bd8_odd_size_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_248X144_fr15_bd8_odd_size_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_248X144_fr15_bd8_odd_size_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_248X144_fr15_bd8_odd_size_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_376X184_fr30_bd8_odd_size_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_376X184_fr30_bd8_odd_size_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_376X184_fr30_bd8_odd_size_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_sub8x8",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
+				Name: "ffmpeg_v4l2_vp9_0_group1_sub8x8_sf",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5V4L2VP9args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
 		},
 	})
 }
@@ -2796,11 +2952,11 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
-	expectation, err := expectations.GetTestExpectation(ctx, s)
-	if err != nil {
-		s.Fatal("Failed to load test expectation: ", err)
-	}
-	defer expectation.HandleFinalExpectation(s)
+	//expectation, err := expectations.GetTestExpectation(ctx, s)
+	//if err != nil {
+	//	s.Fatal("Failed to load test expectation: ", err)
+	//}
+	//defer expectation.HandleFinalExpectation(s)
 
 	// Creates temporary md5 checksum log file
 	f, err := os.CreateTemp("", "frame_checksums.*.md5")
@@ -2835,14 +2991,16 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 			fmt.Sprintf("--md5=%s", md5LogPath),
 		).SeparatedOutput(testexec.DumpLogOnError)
 
+		testing.Sleep(ctx, 1*time.Second)
+
 		if err != nil {
 			output := append(stdout, stderr...)
 			testing.ContextLogf(ctx, "%v failed : %s", exec, string(output))
 			errorMessage := fmt.Sprintf("%v failed unexpectedly on %s: ", exec, filename)
 			if stopOnFailure {
-				expectation.Fatal(s, errorMessage, err)
+				s.Fatal(s, errorMessage, err)
 			}
-			expectation.Error(s, errorMessage, err)
+			s.Error(s, errorMessage, err)
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}
@@ -2944,5 +3102,25 @@ func ffmpegMD5VAAPIargs(ctx context.Context, filename, md5OutputPath string) []s
 		"--output=" + md5OutputPath,
 		"--flags=-hwaccel",
 		"--flags=vaapi",
+	}
+}
+
+// ffmpegMD5V4L2VP8args provides the arguments to use with ffmpeg for V4L2 stateful.
+func ffmpegMD5V4L2VP8args(ctx context.Context, filename, md5OutputPath string) []string {
+	return []string{
+		"--video=" + filename,
+		"--output=" + md5OutputPath,
+		"--flags=-c:v",
+		"--flags=vp8_v4l2m2m",
+	}
+}
+
+// ffmpegMD5V4L2VP9args provides the arguments to use with ffmpeg for V4L2 stateful.
+func ffmpegMD5V4L2VP9args(ctx context.Context, filename, md5OutputPath string) []string {
+	return []string{
+		"--video=" + filename,
+		"--output=" + md5OutputPath,
+		"--flags=-c:v",
+		"--flags=vp9_v4l2m2m",
 	}
 }
