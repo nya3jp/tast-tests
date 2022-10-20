@@ -118,6 +118,30 @@
       },
       "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f3503c_12ac82d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-20T20:00:29Z",
+      "side": 1,
+      "message": "I tried setting the GO on specific `freq/band/channel/mode` but that didn\u0027t work. These are the options for `p2p_group_add`:\n```\np2p_group_add [persistent|persistent\u003d\u003cnetwork id\u003e] [freq\u003d\u003cfreq in MHz\u003e]\n\t[ht40] [vht] [he]\n```",
+      "parentUuid": "a40be74f_1fd3f4f7",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
