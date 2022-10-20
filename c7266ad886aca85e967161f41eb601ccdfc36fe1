@@ -46,6 +46,30 @@
       },
       "revId": "c7266ad886aca85e967161f41eb601ccdfc36fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc602e7_eb748205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-20T14:12:59Z",
+      "side": 1,
+      "message": "right, i mean each `[0-9]` should instead be that regex in case there are more networks",
+      "parentUuid": "4733b25b_58f2dd87",
+      "range": {
+        "startLine": 106,
+        "startChar": 69,
+        "endLine": 106,
+        "endChar": 83
+      },
+      "revId": "c7266ad886aca85e967161f41eb601ccdfc36fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
