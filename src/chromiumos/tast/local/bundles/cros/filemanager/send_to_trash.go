@@ -48,6 +48,12 @@ func init() {
 			// "informational",
 		},
 		Fixture: "driveFsStartedTrashEnabled",
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-a06f961a-17f5-4fbd-8285-49abb000dee1",
+			},
+		},
 	})
 }
 

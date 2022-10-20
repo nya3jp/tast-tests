@@ -32,6 +32,12 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-7b10de50-1ede-4b3e-8fd8-5c54c8e7331b",
+			},
+		},
 	})
 }
 

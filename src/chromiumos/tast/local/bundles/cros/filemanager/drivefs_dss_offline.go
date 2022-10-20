@@ -46,6 +46,12 @@ func init() {
 		},
 		Timeout: 5 * time.Minute,
 		Fixture: "driveFsStartedWithNativeMessaging",
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-32d74807-7b2f-46ae-8bef-b34b76ab328c",
+			},
+		},
 	})
 }
 

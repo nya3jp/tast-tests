@@ -70,6 +70,12 @@ func init() {
 			"Texts.taZ",
 			"Texts.tZ",
 		},
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-4acc1d8c-a491-49ae-acb8-d3e7f29a510a",
+			},
+		},
 	})
 }
 

@@ -35,6 +35,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-4acc1d8c-a491-49ae-acb8-d3e7f29a510a",
+			},
+		},
 	})
 }
 
@@ -120,12 +126,12 @@ func DragDrop(ctx context.Context, s *testing.State) {
 func setupDragDropExtension(ctx context.Context, s *testing.State, extDir string) (string, error) {
 	for _, name := range []string{"manifest.json", "background.js", "window.js", "window.html"} {
 		if err := fsutil.CopyFile(s.DataPath("drag_drop_"+name), filepath.Join(extDir, name)); err != nil {
-			return "", errors.Wrapf(err, "failed to copy extension %q: %v", name, err)
+			return "", errors.Wrapf(err, "failed to copy extension %q", name)
 		}
 	}
 	extID, err := chrome.ComputeExtensionID(extDir)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to compute extension ID for %q: %v", extDir, err)
+		return "", errors.Wrapf(err, "failed to compute extension ID for %q", extDir)
 	}
 
 	return extID, nil
