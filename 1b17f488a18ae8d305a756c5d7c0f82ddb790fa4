@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6379a95b_6840f3fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-20T12:21:00Z",
+      "side": 1,
+      "message": "Not existed yet.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "1b17f488a18ae8d305a756c5d7c0f82ddb790fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
