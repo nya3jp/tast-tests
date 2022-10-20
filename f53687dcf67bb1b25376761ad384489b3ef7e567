@@ -87,6 +87,30 @@
       },
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d75cea_11bd72d8",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-20T15:10:57Z",
+      "side": 1,
+      "message": "\u003e Then, I am not sure if this can be easily implemented without a bigger refactoring, since the callback (rather the required parameters of the callback) will lead to dependency circles in config.go.\n\nAh I see! In this case, I think we could add an enum and move the actual `handleMicrosoftLogin` function to some shared place. I think it would be great if we could run SAML login test with only a `chrome.New` call (similar to login.ChromeGAIA), if possible.",
+      "parentUuid": "8d8fdeef_90b6a8fe",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
