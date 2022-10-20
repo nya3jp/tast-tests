@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b657dfa_4b51c831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-10-20T07:31:58Z",
+      "side": 1,
+      "message": "Removed seemingly unreachable line. Re-run CQ+2.",
+      "revId": "99af280ddcd1681f0d3dcf85ac5debf33e76daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
