@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63e61fd8_55e959a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-20T10:01:11Z",
+      "side": 1,
+      "message": "Can I ask you to add a check to `PreTest` if the image on the DUT is the original image, and if not, fail? No need for restoration there. But it should be avoided that if the restoration in `PostTest` fails, the next test starts with a wrong version.",
+      "revId": "191bddae865ec54bed79876b099dc4b18aded2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3a7774b_776da164",
         "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
         "patchSetId": 2
