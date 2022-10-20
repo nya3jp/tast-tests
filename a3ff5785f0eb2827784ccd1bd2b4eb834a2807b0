@@ -46,6 +46,30 @@
       },
       "revId": "a3ff5785f0eb2827784ccd1bd2b4eb834a2807b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1747f4c4_9a87afab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T20:30:21Z",
+      "side": 1,
+      "message": "Also this:\n\n\t2022-10-20T19:21:14.797896Z Completed test ui.WindowArrangementCUJ.clamshell_mode_vm in 20m49.479s with 0 error(s)",
+      "parentUuid": "7b534471_6bf3006a",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "a3ff5785f0eb2827784ccd1bd2b4eb834a2807b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
