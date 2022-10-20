@@ -20,13 +20,14 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
 const (
 	uiTimeout  = 5 * time.Second
-	swipeSpeed = 10 * time.Millisecond
+	swipeSpeed = 300 * time.Millisecond
 	delay      = 2 * time.Second
 )
 
@@ -83,6 +84,11 @@ func TabletModeBasicWindowControl(ctx context.Context, s *testing.State) {
 	defer connYoutube.Close()
 	defer connYoutube.CloseTarget(cleanupCtx)
 
+	// Wait for youtube to finish loading (to ensure it can be scrolled).
+	if err := webutil.WaitForQuiescence(ctx, connYoutube, time.Minute); err != nil {
+		s.Fatal("Failed to load YouTube: ", err)
+	}
+
 	// Enter tablet mode.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
@@ -137,16 +143,21 @@ func TabletModeBasicWindowControl(ctx context.Context, s *testing.State) {
 
 	// Scrolling up on chrome tab.
 	if err := uiauto.Combine(
-		"scrolling up on chrome tab", tc.Swipe(swipeStartPt, tc.SwipeTo(swipeEndPt, swipeSpeed), tc.Hold(time.Second)),
+		"scrolling up on chrome tab",
+		tc.Swipe(swipeStartPt, tc.SwipeTo(swipeEndPt, swipeSpeed), tc.Hold(time.Second)),
 		// Address bar should should disappear during scrolling.
-		ui.WithTimeout(uiTimeout).WaitUntilGone(addressBarNode.Onscreen()))(ctx); err != nil {
+		ui.WithTimeout(uiTimeout).WaitUntilGone(addressBarNode.Onscreen()),
+	)(ctx); err != nil {
 		s.Fatal("Failed to scroll up on browser window: ", err)
 	}
+
 	// Scrolling down on chrome tab.
 	if err := uiauto.Combine(
-		"scrolling down on chrome tab", tc.Swipe(swipeEndPt, tc.SwipeTo(swipeStartPt, swipeSpeed), tc.Hold(time.Second)),
+		"scrolling down on chrome tab",
+		tc.Swipe(swipeEndPt, tc.SwipeTo(swipeStartPt, swipeSpeed), tc.Hold(time.Second)),
 		// Address bar should should reappear during scrolling.
-		ui.WithTimeout(uiTimeout).WaitUntilExists(addressBarNode.Onscreen()))(ctx); err != nil {
+		ui.WithTimeout(uiTimeout).WaitUntilExists(addressBarNode.Onscreen()),
+	)(ctx); err != nil {
 		s.Fatal("Failed to scroll down on browser window: ", err)
 	}
 }
