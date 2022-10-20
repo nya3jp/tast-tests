@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380eb129_7a119f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-20T01:24:47Z",
+      "side": 1,
+      "message": "I must be missing something:\nWhy are we not adding \"canary\" to the \"beta\" case as well?",
+      "revId": "6967ae1c07d4a5ec7b4e9cd61051eae9e1454e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
