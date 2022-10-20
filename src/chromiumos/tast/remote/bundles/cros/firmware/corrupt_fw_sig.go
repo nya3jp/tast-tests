@@ -25,7 +25,7 @@ func init() {
 		Func:         CorruptFWSig,
 		Desc:         "Servo based firmware signatures corruption test",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"crossystem", "flashrom"},

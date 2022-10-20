@@ -25,7 +25,7 @@ func init() {
 		Func:         CorruptFWBody,
 		Desc:         "Servo based firmware body corruption test",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_usb"},
 		Timeout:      20 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		SoftwareDeps: []string{"crossystem", "flashrom"},

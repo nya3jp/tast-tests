@@ -29,7 +29,7 @@ func init() {
 		Func:         CorruptBothFWSigAB,
 		Desc:         "Servo based both firmware signature A and B corruption test. This test requires a USB disk with ChromeOS test image plugged-in. this test corrupts both firmware signature A and B. On next reboot, the firmware verification fails and enters recovery mode. This test then checks the success of the recovery boot",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      60 * time.Minute,
 		Vars:         []string{"firmware.skipFlashUSB"},
