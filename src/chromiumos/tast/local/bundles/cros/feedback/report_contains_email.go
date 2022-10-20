@@ -8,11 +8,13 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	fpb "chromiumos/tast/local/bundles/cros/feedback/proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/localstate"
@@ -67,7 +69,7 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 	// Clean up in the end.
 	defer func() {
 		if err := os.RemoveAll(feedbackapp.ReportPath); err != nil {
-			s.Log("Failed to remove feedback report: ", err)
+			s.Error("Failed to remove feedback report: ", err)
 		}
 	}()
 
@@ -137,16 +139,21 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read report content: ", err)
 	}
 
-	actualContent := strings.ToValidUTF8(string(content), "")
+	report := &fpb.ExtensionSubmit{}
+	if err = proto.Unmarshal(content, report); err != nil {
+		s.Fatal("Failed to parse report: ", err)
+	}
+
+	userEmail := report.GetCommonData().GetUserEmail()
 	expectedEmail := selectedEmail
 
 	// Verify feedback report contains email based on user selection.
 	if expectedEmailInFeedback {
-		if !strings.Contains(actualContent, expectedEmail) {
+		if userEmail != selectedEmail {
 			s.Fatalf("Expected email %s does not exist", expectedEmail)
 		}
 	} else {
-		if strings.Contains(actualContent, expectedEmail) {
+		if userEmail != "" {
 			s.Fatalf("Unexpected email %s does exist", expectedEmail)
 		}
 	}

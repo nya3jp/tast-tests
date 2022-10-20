@@ -9,12 +9,14 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	fpb "chromiumos/tast/local/bundles/cros/feedback/proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -74,17 +76,17 @@ func ChooseToShareSelectedFileOrNot(ctx context.Context, s *testing.State) {
 
 	cleanUp := func() {
 		if err := os.RemoveAll(fa.ReportPath); err != nil {
-			s.Log("Failed to remove feedback report: ", err)
+			s.Error("Failed to remove feedback report: ", err)
 		}
 
 		files, err := ioutil.ReadDir(downloadsPath)
 		if err != nil {
-			s.Log("Failed to read files in Downloads: ", err)
+			s.Error("Failed to read files in Downloads: ", err)
 		} else {
 			for _, f := range files {
 				path := filepath.Join(downloadsPath, f.Name())
 				if err := os.RemoveAll(path); err != nil {
-					s.Logf("Failed to RemoveAll(%v): %v", path, err)
+					s.Errorf("Failed to RemoveAll(%v): %v", path, err)
 				}
 			}
 		}
@@ -174,9 +176,21 @@ func ChooseToShareSelectedFileOrNot(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		s.Fatal("Failed to read report content: ", err)
 	}
+	report := &fpb.ExtensionSubmit{}
+	if err = proto.Unmarshal(content, report); err != nil {
+		s.Fatal("Failed to parse report: ", err)
+	}
+	productSpecificBinaryData := report.GetProductSpecificBinaryData()
 
-	actualContent := strings.ToValidUTF8(string(content), "")
-	fileExist := strings.Contains(actualContent, fileName)
+	// File will be compressed to a zip file.
+	zipFile := fileName + ".zip"
+	fileExist := false
+	for _, element := range productSpecificBinaryData {
+		if element.GetName() == zipFile {
+			fileExist = true
+			break
+		}
+	}
 
 	// Verify feedback report contains selected file based on user selection.
 	if shareSelectedFile {
