@@ -16,6 +16,23 @@
       "message": "Hi V, can you please help add a reviewer for this CL?",
       "revId": "5a49b4253de7714557fedd5547c57b96c2e1dd83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5981c96_9cd52346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158284
+      },
+      "writtenOn": "2022-10-20T17:04:55Z",
+      "side": 1,
+      "message": "Hi Renuga,\n\nSince this is an ARC related test case, thought it would be good to get your feedback as well.\n\nThanks! \nVin",
+      "revId": "5a49b4253de7714557fedd5547c57b96c2e1dd83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
