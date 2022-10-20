@@ -16,6 +16,92 @@
       "message": "LGTM",
       "revId": "3bb9745f1d88a1d3622c471934e2bf9946cec495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bdf4c2_f99c8f4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-20T02:14:22Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "3bb9745f1d88a1d3622c471934e2bf9946cec495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f48d56_e2e9c806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-20T02:14:22Z",
+      "side": 1,
+      "message": "nit: \u0027verifies\u0027 appears here twice\nnit: LaunchFeedbackFromBrowser verifies the Feedback app can be launched from the browser. ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "3bb9745f1d88a1d3622c471934e2bf9946cec495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d1ac51_1db20dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_essential_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-20T02:14:22Z",
+      "side": 1,
+      "message": "nit: Should this be an error?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "3bb9745f1d88a1d3622c471934e2bf9946cec495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa31eb64_cfe4c245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_essential_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-20T02:14:22Z",
+      "side": 1,
+      "message": "optional: This and the Fatal errors below could be errors",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "3bb9745f1d88a1d3622c471934e2bf9946cec495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
