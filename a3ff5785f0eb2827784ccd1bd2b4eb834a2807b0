@@ -22,6 +22,30 @@
       },
       "revId": "a3ff5785f0eb2827784ccd1bd2b4eb834a2807b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b534471_6bf3006a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T20:26:48Z",
+      "side": 1,
+      "message": "Because I saw this while testing this CL:\n\n\t2022-10-20T19:21:07.003447Z [19:21:07.736] Failed to save ARC-related log files: failed to save the messages-arcvm: vm_pstore_dump command failed with an unexpected reason: \"\": context deadline exceeded",
+      "parentUuid": "01146d22_9a07f6ca",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "a3ff5785f0eb2827784ccd1bd2b4eb834a2807b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
