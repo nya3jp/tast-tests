@@ -256,6 +256,24 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithOobeDeferredLogin",
+		Desc:     "Create chrome instance that will start on the Welcome screen and login when needed using a GAIA pool account",
+		Contacts: []string{"bohdanty@google.com, cros-oobe@google.com"},
+		Vars:     []string{"ui.gaiaPoolDefault", "ui.signinProfileTestExtensionManifestKey"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{
+				DontSkipOOBEAfterLogin(),
+				DeferLogin(),
+				GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+				LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
