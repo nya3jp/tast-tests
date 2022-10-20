@@ -33,6 +33,57 @@
       "message": "+vsavu@ for owner\u0027s review on `policyutil.go`. Is it okay to move on with this workaround for test coverage and let us work on a long term solution separately at b/254067263? Any thoughts?",
       "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23eb4917_5e7a6df2",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T15:29:21Z",
+      "side": 1,
+      "message": "This function also seems pretty unrelated to the rest of the file, maybe move it to its own file. Can also be done in a separate CL.",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99bacb40_3e3de11d",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T15:29:21Z",
+      "side": 1,
+      "message": "Use a testing.Poll starting here.\n\nIf installation is flaky, do everything again reliably.",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c83d64_945365c2",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T15:29:21Z",
+      "side": 1,
+      "message": "Use the following pattern for calling cleanUp on error:\n\nok :\u003d false\ndefer func() {\n if !ok {\n   ...Do cleanup\n }\n}\n\nok \u003d true\nreturn id, name, cleanUp, nil\n\nIt will make sure all cases are covered even if the code changes in the future. Remembering to add calls before a return is not maintainable.",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
