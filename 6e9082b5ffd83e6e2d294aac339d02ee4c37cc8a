@@ -56,6 +56,30 @@
       },
       "revId": "6e9082b5ffd83e6e2d294aac339d02ee4c37cc8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9650c39e_84771f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-10-20T13:14:21Z",
+      "side": 1,
+      "message": "The integration with Tast is still on development phase, I have seen it marking it as a failure with a direct link to last time it ran. I will bring this up to their team, with a couple more concerns (I have seen that their database is not cleaning as expected and causes one test to be parsed as 12)",
+      "parentUuid": "4c7e4985_02d7c6ff",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "6e9082b5ffd83e6e2d294aac339d02ee4c37cc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
