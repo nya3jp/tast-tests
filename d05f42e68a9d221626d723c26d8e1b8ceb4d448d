@@ -34,6 +34,24 @@
       "parentUuid": "6b32d05b_f931b0dc",
       "revId": "d05f42e68a9d221626d723c26d8e1b8ceb4d448d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b15e825_287a22dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-20T20:22:32Z",
+      "side": 0,
+      "message": "Thanks for clarifying.",
+      "parentUuid": "bb5e292f_128f3a50",
+      "revId": "d05f42e68a9d221626d723c26d8e1b8ceb4d448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
