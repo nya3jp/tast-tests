@@ -16,6 +16,23 @@
       "message": "yichenz: Could you help review? THanks!",
       "revId": "c1b697ebcc69bf97fdb908e30eb6c389d7c81bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac773bd0_46e2554d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-20T23:57:51Z",
+      "side": 1,
+      "message": "Thanks for the quick review yichen!",
+      "revId": "c1b697ebcc69bf97fdb908e30eb6c389d7c81bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
