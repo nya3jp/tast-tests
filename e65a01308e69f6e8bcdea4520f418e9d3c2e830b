@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a2e79e_c052109c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ba3f8a92_0122bc8d",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de029c46_dc2edcaf",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-19T23:19:35Z",
       "side": 1,
       "message": "nit: Is this better served as the test `Desc`?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a544260_1fd10931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Moved to test Desc",
+      "parentUuid": "de029c46_dc2edcaf",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e84df04_981896f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102a50aa_6e3d7630",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0679826f_43535078",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-19T23:19:35Z",
       "side": 1,
       "message": "missing `defer arc.Close()`?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 4
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f5fa7e_d4295a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0679826f_43535078",
       "range": {
         "startLine": 75,
         "startChar": 1,
@@ -152,6 +248,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c61f6b98_931d974b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "I agree it\u0027s best to scope this and narrow down. The issue is that I don\u0027t know how to.\n\nhttps://screenshot.googleplex.com/4dBoR7EMW2cCBDw\nhttps://paste.googleplex.com/5576299220303872?raw\n\nAbove are the screenshot and UI tree. The UI tree doesn\u0027t include the element \"Chrome\" and \"Play Store\" (I suspect the \"Play Store\" element in the UI tree is for other things).\n\nAny advice?",
+      "parentUuid": "df563a69_1b00a85f",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d8c21dc_1fe6de25",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
         "patchSetId": 4
@@ -163,6 +277,24 @@
       "writtenOn": "2022-10-19T23:19:35Z",
       "side": 1,
       "message": "This comment is a bit confusing to me - is it OK to fail if the prompt doesn\u0027t appear (which is what\u0027s happening now) or should that set of steps be optional?",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "996b3226_f03a71ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "As of now, this prompt is always showing up on my DUT. I had two options:\n\n1. make the code also handle the situation where the prompt doesn\u0027t show up (but the test can still succeed). Downside is that I don\u0027t have a way to test this.\n2. assume the prompt always shows up. in case of an UX change (i.e. prompt no longer shows up), we can change the expectation of this test.\n\nI chose 2).",
+      "parentUuid": "7d8c21dc_1fe6de25",
       "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -186,6 +318,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83ca2020_1ffc254f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Same as above. I don\u0027t see \"Always\" in the UI tree thus don\u0027t know how to scope it.",
+      "parentUuid": "13db6e90_61c5ce7a",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28be7da6_37efb89d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
         "patchSetId": 4
@@ -197,6 +347,24 @@
       "writtenOn": "2022-10-19T23:19:35Z",
       "side": 1,
       "message": "Missing `: \", err)` at the end",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd772f37_2a8687c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28be7da6_37efb89d",
       "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
