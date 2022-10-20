@@ -16,7 +16,10 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
+	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -77,6 +80,22 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
+	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to detect if the device is in tablet-mode or not: ", err)
+	}
+
+	var pc pointer.Context
+	if inTabletMode {
+		pc, err = pointer.NewTouch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller: ", err)
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
+	}
+	defer pc.Close()
+
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, a, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
@@ -112,11 +131,16 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for ARC++ YouTube app to idle")
 		}
 
-		// Sleep to simulate a user passively watching.
-		if err := testing.Sleep(ctx, 10*time.Minute); err != nil {
-			return errors.Wrap(err, "failed to sleep")
-		}
+		for i := 0; i < 5; i++ {
+			if err := inputsimulations.RunAshUIAction(ctx, tconn, pc); err != nil {
+				return errors.Wrap(err, "failed to run Ash UI action")
+			}
 
+			// Sleep to simulate a user passively watching.
+			if err := testing.Sleep(ctx, 2*time.Minute); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+		}
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to conduct the performance measurement: ", err)
