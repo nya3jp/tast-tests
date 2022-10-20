@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -54,8 +55,11 @@ func init() {
 				ExtraSoftwareDeps: []string{"cras"},
 			},
 			{
-				Name:              "sound_card_init",
-				Val:               checkStatus("sound_card_init", upstartcommon.StopGoal, upstartcommon.WaitingState),
+				Name: "sound_card_init",
+				Val:  checkStatus("sound_card_init", upstartcommon.StopGoal, upstartcommon.WaitingState),
+				// TODO(b/254566972): hwdep.SmartAmp() is narrower than having /etc/init/sound_card_init.conf
+				// If we can have sound_card_init as a SoftwareDep, use that instead.
+				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmp()),
 				ExtraSoftwareDeps: []string{"cras"},
 			},
 		},
