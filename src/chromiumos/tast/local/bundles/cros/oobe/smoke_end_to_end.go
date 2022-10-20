@@ -48,6 +48,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 	}
+	//test
 	cr, err := chrome.New(ctx, options...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
