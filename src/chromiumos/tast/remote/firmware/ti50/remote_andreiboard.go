@@ -52,14 +52,15 @@ func ListRemoteUltraDebugTargets(ctx context.Context, dut *dut.DUT) ([]string, e
 // readTimeout should be set to the max expected duration between char outputs.
 //
 // Example:
-//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-//   if err != nil {
-//       s.Fatal("rpcDial: ", err)
-//   }
-//   defer rpcClient.Close(ctx)
 //
-//   board := NewRemoteAndreiboard(s.DUT(), rpcClient.Conn, "/path/to/UDTarget", 4096, "/path/to/spiflash" 2 * time.Second)
-//   defer board.Close(ctx)
+//	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+//	if err != nil {
+//	    s.Fatal("rpcDial: ", err)
+//	}
+//	defer rpcClient.Close(ctx)
+//
+//	board := NewRemoteAndreiboard(s.DUT(), rpcClient.Conn, "/path/to/UDTarget", 4096, "/path/to/spiflash" 2 * time.Second)
+//	defer board.Close(ctx)
 func NewRemoteAndreiboard(dut *dut.DUT, grpcConn *grpc.ClientConn, targetDevice string, bufSize int, spiFlash string, readTimeout time.Duration) *RemoteAndreiboard {
 	serialServiceClient := pb.NewSerialPortServiceClient(grpcConn)
 	opener := serial.NewRemotePortOpener(serialServiceClient, targetDevice, 115200, readTimeout)
@@ -177,4 +178,9 @@ func (a *RemoteAndreiboard) Close(ctx context.Context) error {
 		dutfsClient.RemoveAll(ctx, a.remoteWorkDir)
 	}
 	return a.Andreiboard.Close(ctx)
+}
+
+// GSCToolCommand executes gsctool.
+func (a *RemoteAndreiboard) GSCToolCommand(ctx context.Context, image string, args ...string) (output []byte, err error) {
+	return nil, errors.New("Unimplemented RemoteAndreiboard GSCToolCommand")
 }

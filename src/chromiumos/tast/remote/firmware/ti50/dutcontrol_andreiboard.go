@@ -36,9 +36,11 @@ type DUTControlAndreiboard struct {
 //
 // Example:
 // conn, err := grpc.DialContext(ctx, hostPort, grpc.WithInsecure())
-// if err != nil {
-//     return nil, err
-// }
+//
+//	if err != nil {
+//	    return nil, err
+//	}
+//
 // defer conn.Close(ctx)
 // board := NewDUTControlAndreiboard(conn, 4096, 200 * time.Millisecond)
 // defer board.Close(ctx)
@@ -115,7 +117,7 @@ func (a *DUTControlAndreiboard) OpenTitanToolCommand(ctx context.Context, cmd st
 	return a.PlainCommand(ctx, cmd, args...)
 }
 
-// Reset resets the board via spiflash, causing the image to reboot.
+// Reset the chip by asking opentitantool to toggle the reset pin.
 func (a *DUTControlAndreiboard) Reset(ctx context.Context) error {
 	_, err := a.PlainCommand(ctx, "gpio", "write", "RESET", "false")
 	if err != nil {
@@ -127,4 +129,29 @@ func (a *DUTControlAndreiboard) Reset(ctx context.Context) error {
 		return err
 	}
 	return nil
+}
+
+// GSCToolCommand executes gsctool via the DutControl service.
+func (a *DUTControlAndreiboard) GSCToolCommand(ctx context.Context, image string, args ...string) (output []byte, err error) {
+	var cArgs []*dutcontrol.CommandArg
+	for _, a := range args {
+		cArgs = append(cArgs, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: a}})
+	}
+	if image != "" {
+		imageBytes, err := ioutil.ReadFile(image)
+		if err != nil {
+			return nil, errors.Wrapf(err, "reading image file %q", image)
+		}
+		cArgs = append(cArgs, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_File{File: imageBytes}})
+	}
+	req := &dutcontrol.CommandRequest{Args: cArgs}
+	resp, err := a.client.GSCToolCommand(ctx, req)
+	if err != nil {
+		return nil, errors.Wrapf(err, "request %s", strings.Join(args, " "))
+	}
+	output = append(resp.Output, resp.ErrOutput...)
+	if resp.Err != "" {
+		return output, errors.Errorf("operation %s: %s", strings.Join(args, " "), resp.Err)
+	}
+	return output, nil
 }
