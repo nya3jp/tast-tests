@@ -52,6 +52,46 @@
       "parentUuid": "59f7ae21_473b58c7",
       "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728e5e04_61b6d742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-20T16:43:02Z",
+      "side": 1,
+      "message": "When you add tast owners, it should always be with tast-owners@google.com. \n\nSince @kyleshima is OOO until next Tuesday, I would recommend that you remove him from the CL and add tast-owners@google.com to get a new reviewer.",
+      "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca505c06_83b92d95",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-20T16:43:02Z",
+      "side": 1,
+      "message": "Is there a reason to use `ui.Exists` in this case, but `ui.WaitUntilExists` in the other? The former evaluates immediately, while the latter allows for some asynchronicity.",
+      "range": {
+        "startLine": 258,
+        "startChar": 9,
+        "endLine": 258,
+        "endChar": 95
+      },
+      "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
