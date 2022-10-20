@@ -189,6 +189,12 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 		args = append(args, "--disable-features="+strings.Join(fs, ","))
 	}
 
+	if cfg.EnableStackSampledMetrics() {
+		args = append(args, "--start-stack-profiler=browser-test")
+	} else {
+		args = append(args, "--disable-stack-profiler")
+	}
+
 	// Lacros features and additional args used to launch lacros-chrome should be delimited by
 	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-args.
 	// See browser_manager.cc in Chrome source.
@@ -211,9 +217,12 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 	if len(lacrosExtArgs) != 0 {
 		largs = append(largs, lacrosExtArgs...)
 	}
-	if len(largs) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
+	if cfg.EnableStackSampledMetrics() {
+		largs = append(largs, "--start-stack-profiler=browser-test")
+	} else {
+		largs = append(largs, "--disable-stack-profiler")
 	}
+	args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
 
 	if cfg.EnablePersonalizationHub() {
 		args = append(args, "--enable-features=PersonalizationHub")
