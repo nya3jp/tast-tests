@@ -40,7 +40,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
-		Timeout:      20*time.Minute + cuj.CPUStablizationTimeout,
+		Timeout:      30 * time.Minute,
 		Data:         []string{"shaka_720.webm", "pip.html", cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
