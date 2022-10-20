@@ -8,12 +8,14 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	fpb "chromiumos/tast/local/bundles/cros/feedback/proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -72,7 +74,7 @@ func ChooseToSharePageURLOrNot(ctx context.Context, s *testing.State) {
 
 	cleanUp := func() {
 		if err := os.RemoveAll(feedbackapp.ReportPath); err != nil {
-			s.Log("Failed to remove feedback report: ", err)
+			s.Error("Failed to remove feedback report: ", err)
 		}
 	}
 
@@ -149,16 +151,19 @@ func ChooseToSharePageURLOrNot(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to read report content: ", err)
 			}
 
-			actualContent := strings.ToValidUTF8(string(content), "")
-			reportContainsURL := strings.Contains(actualContent, tabLink)
+			report := &fpb.ExtensionSubmit{}
+			if err = proto.Unmarshal(content, report); err != nil {
+				s.Fatal("Failed to parse report: ", err)
+			}
+			reportURL := report.GetWebData().GetUrl()
 
 			// Verify if report contains the page url.
 			if tc.sharePageURL {
-				if !reportContainsURL {
+				if reportURL != tabLink {
 					s.Fatal("Failed to verify can choose to share page url")
 				}
 			} else {
-				if reportContainsURL {
+				if reportURL != "" {
 					s.Fatal("Failed to verify can choose not to share page url")
 				}
 			}
