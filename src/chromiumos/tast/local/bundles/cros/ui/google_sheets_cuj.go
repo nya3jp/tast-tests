@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -104,6 +105,8 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to detect it is in tablet-mode or not: ", err)
 	}
+
+	var pc pointer.Context
 	if inTabletMode {
 		// If it is in tablet mode, ensure it it in landscape orientation.
 		orientation, err := display.GetOrientation(ctx, tconn)
@@ -121,7 +124,15 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 			}
 			defer display.SetDisplayRotationSync(closeCtx, tconn, info.ID, display.Rotate0)
 		}
+
+		pc, err = pointer.NewTouch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller: ", err)
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
 	}
+	defer pc.Close()
 	s.Logf("Is in tablet-mode: %t", inTabletMode)
 
 	ui := uiauto.New(tconn)
@@ -242,6 +253,10 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 			if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
 				return err
+			}
+
+			if err := inputsimulations.RunAshUIAction(ctx, tconn, pc, inTabletMode); err != nil {
+				return errors.Wrap(err, "failed to run Ash UI action")
 			}
 		}
 
