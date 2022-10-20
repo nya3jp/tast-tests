@@ -38,26 +38,15 @@ func init() {
 			"ui.gaiaPoolDefault",
 		},
 		Timeout: chrome.GAIALoginTimeout + 5*time.Minute,
-		Params: []testing.Param{{
-			Val: false,
-		}, {
-			Name: "polymer3",
-			Val:  true,
-		}},
 	})
 }
 
 func SmokeEndToEnd(ctx context.Context, s *testing.State) {
-	polymer3 := s.Param().(bool)
 	options := []chrome.Option{
-		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-	}
-	if polymer3 {
-		options = append(options, chrome.EnableFeatures("EnableOobePolymer3"))
 	}
 	cr, err := chrome.New(ctx, options...)
 	if err != nil {
