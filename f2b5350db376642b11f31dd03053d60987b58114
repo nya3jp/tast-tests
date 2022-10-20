@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ca4ec4_f0f19be6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-20T22:05:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee34c149_6a1ae692",
+      "revId": "f2b5350db376642b11f31dd03053d60987b58114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b9170f_52e1319c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-20T21:06:15Z",
       "side": 1,
       "message": "Can we use `ash.SetWindowStateAndWait` instead of `ash.SetWindowState`? Waiting for animations to finish is usually the best way to avoid flakes :) (for this and for the files app)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d245?q\u003dWMEventNormal\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "revId": "f2b5350db376642b11f31dd03053d60987b58114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdd4fd9_315d64cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_caption_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-10-20T22:05:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b9170f_52e1319c",
       "revId": "f2b5350db376642b11f31dd03053d60987b58114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
