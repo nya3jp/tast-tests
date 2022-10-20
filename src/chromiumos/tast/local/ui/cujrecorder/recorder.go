@@ -402,12 +402,12 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		perfSrc.NewThermalDataSource(),
 		r.gpuDataSource,
 		perfSrc.NewMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
-	}, perf.Interval(checkInterval), perf.Prefix(tpsMetricPrefix))
+	}, perf.Interval(checkInterval), perf.Prefix(tpsMetricPrefix), perf.EnableGracePeriod())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create TPS timeline")
 	}
 
-	r.powerTimeline, err = perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(checkInterval), perf.Prefix(powerMetricPrefix))
+	r.powerTimeline, err = perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(checkInterval), perf.Prefix(powerMetricPrefix), perf.EnableGracePeriod())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create power timeline")
 	}
