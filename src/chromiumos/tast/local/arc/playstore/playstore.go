@@ -277,15 +277,17 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			return testing.PollBreak(err)
 		}
 
-		// Wait until progress bar is gone.
-		testing.ContextLog(ctx, "Checking existence of progress bar")
-		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
-		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
+		testing.ContextLog(ctx, "Checking existence of installation")
+		// There are two possible of descriptions on the Play Store installation page.
+		// One is "Download in progress", the other is "Install in progress".
+		// If one of them exists, that means the installation is still in progress.
+		progress := d.Object(ui.DescriptionContains("in progress"))
+		if err := progress.WaitForExists(ctx, defaultUITimeout); err == nil {
 			// Print the percentage of app installed so far.
 			printPercentageOfAppInstalled(ctx, d)
-			testing.ContextLog(ctx, "Wait until progress bar is gone")
-			if err := progressBar.WaitUntilGone(ctx, installationTimeout); err != nil {
-				return errors.Wrap(err, "progress bar still exists")
+			testing.ContextLog(ctx, "Wait until download and install complete")
+			if err := progress.WaitUntilGone(ctx, installationTimeout); err != nil {
+				return errors.Wrap(err, "installation is still in progress")
 			}
 		}
 
