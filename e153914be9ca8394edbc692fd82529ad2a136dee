@@ -16,6 +16,24 @@
       "message": "Thanks for taking a look at this, LGTM!",
       "revId": "e153914be9ca8394edbc692fd82529ad2a136dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb044be6_44beb0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T20:36:10Z",
+      "side": 1,
+      "message": "Would you mind giving the CL Code-Review +2 as you are a Tast owner?",
+      "parentUuid": "cc179cd9_0dc4c407",
+      "revId": "e153914be9ca8394edbc692fd82529ad2a136dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
