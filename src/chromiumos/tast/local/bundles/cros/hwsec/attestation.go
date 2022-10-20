@@ -22,6 +22,10 @@ func init() {
 		Func:         Attestation,
 		Desc:         "Verifies attestation-related functionality",
 		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name: "auth_session_api",
+			Val:  &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthSessionMountAPI},
+		}},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm", "endorsement"},
 		Timeout:      4 * time.Minute,
@@ -38,6 +42,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 	}
 	attestation := helper.AttestationClient()
 	cryptohome := helper.CryptohomeClient()
+	cryptohome.SetMountAPIParam(s.Param().(*hwsec.CryptohomeMountAPIParam))
 	mountInfo := hwsec.NewCryptohomeMountInfo(r, cryptohome)
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
@@ -70,7 +75,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to cleanup: ", err)
 	}
 
-	if err := cryptohome.MountVault(ctx, "fake_label", hwsec.NewPassAuthConfig(username, "testpass"), true /* create */, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.mountVaultWithAuthSession(ctx, "fake_label", hwsec.NewPassAuthConfig(username, "testpass"), true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
