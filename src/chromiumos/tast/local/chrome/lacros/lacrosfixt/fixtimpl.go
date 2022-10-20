@@ -229,4 +229,16 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosWithStackSampledMetrics",
+		Desc:     "Lacros Chrome from a pre-built image; stack-sampled metrics on turned on for both ash and lacros",
+		Contacts: []string{"iby@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(chrome.EnableStackSampledMetrics())).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }

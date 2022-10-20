@@ -288,6 +288,10 @@ func (c *Config) TestExtOAuthClientID() string { return c.m.TestExtOAuthClientID
 // detection screen in OOBE.
 func (c *Config) EnableHIDScreenOnOOBE() bool { return c.m.EnableHIDScreenOnOOBE }
 
+// EnableStackSampledMetrics returns true if the browsers should have stack-sampled
+// metrics enabled.
+func (c *Config) EnableStackSampledMetrics() bool { return c.m.EnableStackSampledMetrics }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -296,7 +300,7 @@ func (c *Config) EnableHIDScreenOnOOBE() bool { return c.m.EnableHIDScreenOnOOBE
 // The "reuse_match" tag defines how a field should be handled when trying to reuse the existing
 // chrome session. It has the following values:
 // - "false": this field doesn't have to match for reused session
-// - "true": this field have to match for reused session
+// - "true": this field has to match for reused session
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type MutableConfig struct {
@@ -344,6 +348,7 @@ type MutableConfig struct {
 	UseSandboxGaia                  bool       `reuse_match:"true"`
 	TestExtOAuthClientID            string     `reuse_match:"true"`
 	EnableHIDScreenOnOOBE           bool       `reuse_match:"true"`
+	EnableStackSampledMetrics       bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -380,6 +385,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EnablePersonalizationHub:        true,
 			UseSandboxGaia:                  false,
 			EnableHIDScreenOnOOBE:           false,
+			EnableStackSampledMetrics:       false,
 		},
 	}
 	for _, opt := range opts {
