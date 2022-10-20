@@ -35,6 +35,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "smbStarted",
+		SearchFlags: []*testing.StringPair{
+			{
+				Key:   "feature_id",
+				Value: "screenplay-f72fb345-8214-4dc8-8c40-92a81a58f9de",
+			},
+		},
 	})
 }
 
