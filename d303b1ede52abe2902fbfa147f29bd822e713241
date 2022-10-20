@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff47fc6f_fa48234d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-10-20T21:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17fb8751_d29eddb7",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f89425_886d8a91",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869da37b_b012262d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-10-20T21:22:52Z",
+      "side": 1,
+      "message": "Yes, thank you for reviewing!",
+      "parentUuid": "59f89425_886d8a91",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e9e716_f93733c8",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-20T06:40:53Z",
       "side": 1,
       "message": "This is the default, you can leave it out if you don\u0027t need something specific.",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43e1d4f_38ab29f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-10-20T21:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e9e716_f93733c8",
       "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
