@@ -7,20 +7,17 @@ package firmware
 import (
 	"context"
 	"fmt"
-	"path/filepath"
+	"io/ioutil"
+	"os/exec"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/dutfs"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/remote/firmware/ti50/fixture"
-	"chromiumos/tast/rpc"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
-
-const ti50USBID = "18d1:504a"
 
 var consoleUpdateTooSoonRegexp = regexp.MustCompile("Attempted update too soon")
 var gsctoolUpdateTooSoonRegexp = regexp.MustCompile(`Error: status 0x9`)
@@ -33,7 +30,6 @@ func init() {
 		Func:    Ti50CCDUpdate,
 		Desc:    "Ti50 firmware update over CCD using gsctool",
 		Timeout: 5 * time.Minute,
-		Vars:    []string{"serial"},
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
@@ -43,10 +39,8 @@ func init() {
 	})
 }
 
-// Ti50CCDUpdate requires HW setup with SuzyQ cable from Andreiboard to DUT.
+// Ti50CCDUpdate requires HW setup with SuzyQ cable from Andreiboard to drone/workstation.
 func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
-	serial := s.RequiredVar("serial")
-	lsusbSerialRegexp := regexp.MustCompile(`iSerial\s+\d\s` + serial)
 	f := s.FixtValue().(*fixture.Value)
 
 	board, err := f.DevBoard(ctx, 10000, time.Second)
@@ -54,7 +48,7 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get board: ", err)
 	}
 
-	dutImage, err := prepareCcdImageFile(ctx, s, f.ImagePath)
+	ccdImage, err := prepareCcdImageFile(ctx, s, f.ImagePath)
 	if err != nil {
 		s.Fatal("Prepare file: ", err)
 	}
@@ -80,38 +74,25 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Not running RW_A")
 	}
 
-	// Wait one more second to ensure that USB is connected before running lsusb on host
+	// Wait one more second to ensure that USB is connected before running gsctool
 	testing.Sleep(ctx, 1*time.Second)
 
-	cmd := s.DUT().Conn().CommandContext(ctx, "lsusb", "-d", ti50USBID, "-v")
-	out, err := cmd.CombinedOutput()
-	outStr = string(out)
+	out, err := board.GSCToolCommand(ctx, "", "--fwver")
 	if err != nil {
-		// Report the current usb connection state since lsusb just failed
-		outStr, err := i.Command(ctx, "usb")
+		// Report the current usb connection state on failure.
+		usbOut, err := i.Command(ctx, "usb")
 		if err != nil {
-			s.Fatal("Getting ti50 usb state: ", err)
+			s.Fatal("Getting usb state: ", err)
 		}
-		testing.ContextLog(ctx, "USB state on ti50:")
-		testing.ContextLog(ctx, outStr)
-
-		s.Fatal("Failed lsusb: ", err, outStr)
-	}
-	if !lsusbSerialRegexp.MatchString(outStr) {
-		s.Fatal("Failed to match serial: ", outStr)
-	}
-
-	cmd = s.DUT().Conn().CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, "-f")
-	out, err = cmd.CombinedOutput()
-	if err != nil {
-		s.Fatalf("Failed to read version: %v: %s", err, out)
+		testing.ContextLog(ctx, "USB state:")
+		testing.ContextLog(ctx, usbOut)
+		s.Fatal("Failed to read version: ", err, out)
 	}
 
 	// Ti50 will reject updates for 60 seconds.
 	testing.Sleep(ctx, 30*time.Second)
 
-	cmd = s.DUT().Conn().CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, dutImage)
-	out, _ = cmd.CombinedOutput()
+	out, _ = board.GSCToolCommand(ctx, ccdImage)
 	if !gsctoolUpdateTooSoonRegexp.Match(out) {
 		s.Fatalf("Wrong gsctool output for update too soon: %s", out)
 	}
@@ -123,8 +104,7 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 
 	testing.Sleep(ctx, 30*time.Second)
 
-	cmd = s.DUT().Conn().CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, dutImage)
-	out, _ = cmd.CombinedOutput()
+	out, _ = board.GSCToolCommand(ctx, ccdImage)
 	if !gsctoolUpdateSuccessRegexp.Match(out) {
 		s.Fatalf("Wrong gsctool output for update: %s", out)
 	}
@@ -145,34 +125,22 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 	}
 }
 
-// prepareCcdImageFile copies the Ti50 image file to the DUT and zeros the RO
-// signature field. Returns the DUT file path to be used by gsctool to perform
-// the CCD update.
+// prepareCcdImageFile copies the Ti50 image and zeros the RO signature field.
+// Returns the file path to be used by gsctool to perform the CCD update.
 func prepareCcdImageFile(ctx context.Context, s *testing.State, image string) (string, error) {
 	if image == "" {
 		return "", errors.New("no image file")
 	}
 
-	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	f, err := ioutil.TempFile("", "ccd_")
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "create temp image file")
 	}
-	defer rpcClient.Close(ctx)
+	f.Close()
+	ccdImage := f.Name()
 
-	dutfsClient := dutfs.NewClient(rpcClient.Conn)
-
-	workDir, err := dutfsClient.TempDir(ctx, "", "")
-	if err != nil {
-		return "", err
-	}
-
-	dutImage := filepath.Join(workDir, "ti50.bin")
-
-	testing.ContextLogf(ctx, "Copy image %s to DUT %s", image, dutImage)
-
-	_, err = linuxssh.PutFiles(ctx, s.DUT().Conn(), map[string]string{image: dutImage}, linuxssh.DereferenceSymlinks)
-	if err != nil {
-		return "", err
+	if err := fsutil.CopyFile(image, ccdImage); err != nil {
+		return "", errors.Wrap(err, "copy image file")
 	}
 
 	// Zero the signature field (offset 4, length 384) in RO_A and RO_B, and
@@ -185,11 +153,11 @@ func prepareCcdImageFile(ctx context.Context, s *testing.State, image string) (s
 			seek = base
 			count = 4
 		}
-		cmd := s.DUT().Conn().CommandContext(ctx, "dd", fmt.Sprintf("seek=%d", seek), fmt.Sprintf("count=%d", count), "bs=1", "conv=nocreat,notrunc", "if=/dev/zero", "of="+dutImage)
+		cmd := exec.CommandContext(ctx, "dd", fmt.Sprintf("seek=%d", seek), fmt.Sprintf("count=%d", count), "bs=1", "conv=nocreat,notrunc", "if=/dev/zero", "of="+ccdImage)
 		if err := cmd.Run(); err != nil {
-			return "", err
+			return "", errors.Wrap(err, "zero with dd")
 		}
 	}
 
-	return dutImage, nil
+	return ccdImage, nil
 }

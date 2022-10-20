@@ -27,4 +27,6 @@ type DevBoard interface {
 	Reset(ctx context.Context) error
 	// Close closes the console port.
 	Close(ctx context.Context) error
+	// GSCToolCommand executes gsctool.
+	GSCToolCommand(ctx context.Context, image string, args ...string) (output []byte, err error)
 }
