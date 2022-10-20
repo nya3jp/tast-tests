@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54c775c3_c15be948",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1524811
+      },
+      "writtenOn": "2022-10-20T07:50:14Z",
+      "side": 1,
+      "message": "Got it. I was thinking to make CQ work first and then come with a more general solution later (as cros-config is empty for every device for now). Let me complete this.",
+      "parentUuid": "f1503da1_4e7afbe2",
+      "revId": "7312964c3219c69db31c7f9feda881cdb89b8274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19ae98b7_ff9b036e",
         "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-19T21:04:20Z",
       "side": 1,
       "message": "IMHO, 50 is too low, the device is still safe. 90 or 99 is a proper threshold.",
+      "revId": "7312964c3219c69db31c7f9feda881cdb89b8274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2673e8_1feea425",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1524811
+      },
+      "writtenOn": "2022-10-20T07:50:14Z",
+      "side": 1,
+      "message": "Actually this is the same default value for cros-health-tool before this change. I think the actual value won\u0027t actually matter as Tast allows all results including Failed.",
+      "parentUuid": "19ae98b7_ff9b036e",
       "revId": "7312964c3219c69db31c7f9feda881cdb89b8274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
