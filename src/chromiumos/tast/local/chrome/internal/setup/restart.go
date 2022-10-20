@@ -189,6 +189,18 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 		args = append(args, "--disable-features="+strings.Join(fs, ","))
 	}
 
+	stackProfilerArg := "--disable-stack-profiler"
+	if cfg.EnableStackSampledMetrics() {
+		// "browser-test" forces the stack profiler into a testing mode, where it
+		// will always run, will in run in all renderers, and will sample far more
+		// often than normal (once a second). See IsBrowserTestModeEnabled() in
+		// chrome/common/profiler/thread_profiler_configuration.cc. This is normally
+		// used for Chrome's browser tests, but we want the same behavior for
+		// ChromeOS's integration tests.
+		stackProfilerArg = "--start-stack-profiler=browser-test"
+	}
+	args = append(args, stackProfilerArg)
+
 	// Lacros features and additional args used to launch lacros-chrome should be delimited by
 	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-args.
 	// See browser_manager.cc in Chrome source.
@@ -211,9 +223,8 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 	if len(lacrosExtArgs) != 0 {
 		largs = append(largs, lacrosExtArgs...)
 	}
-	if len(largs) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
-	}
+	largs = append(largs, stackProfilerArg)
+	args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
 
 	if cfg.EnablePersonalizationHub() {
 		args = append(args, "--enable-features=PersonalizationHub")
