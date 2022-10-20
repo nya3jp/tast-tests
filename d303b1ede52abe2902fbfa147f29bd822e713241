@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fb8751_d29eddb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T06:40:53Z",
+      "side": 1,
+      "message": "nit: reflow to 72 characters.",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f89425_886d8a91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T06:40:53Z",
+      "side": 1,
+      "message": "Can you also ask someone from your team to review?",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e9e716_f93733c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-20T06:40:53Z",
+      "side": 1,
+      "message": "This is the default, you can leave it out if you don\u0027t need something specific.",
+      "revId": "d303b1ede52abe2902fbfa147f29bd822e713241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
