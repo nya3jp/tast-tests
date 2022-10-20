@@ -241,7 +241,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		testCase     TestCaseBitmask
 		gTestName    string
 		metricPrefix string
-		parseFunc    func(string, *perf.Values, string) error
+		parseFunc    func(context.Context, string, *perf.Values, string) error
 	}{
 		{CappedFlag, "MeasureCappedPerformance", "capped_single_decoder", parseCappedPerfMetrics},
 		{UncappedFlag, "MeasureUncappedPerformance", "uncapped_single_decoder", parseUncappedPerfMetrics},
@@ -273,7 +273,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		if _, err := os.Stat(json); os.IsNotExist(err) {
 			return errors.Wrap(err, "failed to find performance metrics file")
 		}
-		if err := test.parseFunc(json, p, test.metricPrefix); err != nil {
+		if err := test.parseFunc(ctx, json, p, test.metricPrefix); err != nil {
 			return errors.Wrap(err, "failed to parse performance metrics")
 		}
 
