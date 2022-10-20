@@ -16,6 +16,24 @@
       "message": "Do you recall the reason why we grouped all IO subflows except EXT4 for geometric mean calc?  Unfortunately, there isn\u0027t a comment AFAICT that explains this.",
       "revId": "d05f42e68a9d221626d723c26d8e1b8ceb4d448d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5e292f_128f3a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-20T19:11:31Z",
+      "side": 0,
+      "message": "yes. without this IO would have much higher influence than others.\nHaving it grouped allowed normalization prior to total score calculation.\n\noob    -| geom average\nsquash -|--|\nesd    -|  |\n           |-io_score (geom average)\n           |\next4   ----|\n\nIn this case ext4 has the same weight as combination of others (oob squash esd)",
+      "parentUuid": "6b32d05b_f931b0dc",
+      "revId": "d05f42e68a9d221626d723c26d8e1b8ceb4d448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

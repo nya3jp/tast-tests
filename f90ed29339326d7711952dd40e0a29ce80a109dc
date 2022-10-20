@@ -33,6 +33,24 @@
       "message": "Can you put this in a separate CL? It seems unrelated to the other test changes.",
       "revId": "f90ed29339326d7711952dd40e0a29ce80a109dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a15bba_47bcd2b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-20T19:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f464815_438a0124",
+      "revId": "f90ed29339326d7711952dd40e0a29ce80a109dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
