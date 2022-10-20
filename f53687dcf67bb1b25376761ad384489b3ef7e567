@@ -63,6 +63,30 @@
       },
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8fdeef_90b6a8fe",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-20T08:41:04Z",
+      "side": 1,
+      "message": "I am not sure, if I understand this correctly. Are you proposing to add a callback parameter to the SAMLLogin function and thus to the `MutableConfig`? Then, I am not sure if this can be easily implemented without a bigger refactoring, since the callback (rather the required parameters of the callback) will lead to dependency circles in `config.go`.\nOr would the idea be, to only add an enum to the config, which will then decide, which SAML login function will be called [here](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3871029/6/src/chromiumos/tast/local/chrome/internal/login/gaia.go#196).",
+      "parentUuid": "603ee2c5_5ac30fa0",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
