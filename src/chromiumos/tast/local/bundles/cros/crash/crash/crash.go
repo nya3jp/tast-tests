@@ -455,6 +455,11 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	result.Pslog = crashReportFiles[".pslog"]
+
+	if err := crash.VerifyMetaFileRefs(result.Meta); err != nil {
+		return nil, errors.Wrap(err, ".meta file has invalid file reference")
+	}
+
 	return result, nil
 }
 
