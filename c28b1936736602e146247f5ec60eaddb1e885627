@@ -16,6 +16,23 @@
       "message": "Hi ricardoq@, PTAL. Thanks!",
       "revId": "c28b1936736602e146247f5ec60eaddb1e885627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "046d0410_238ef778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-20T18:37:06Z",
+      "side": 1,
+      "message": "+2\n\na few comments:\n\n- next time use tast-owners@google.com for reviewer (go/tast-reviews)\n- fix merge conflict",
+      "revId": "c28b1936736602e146247f5ec60eaddb1e885627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
