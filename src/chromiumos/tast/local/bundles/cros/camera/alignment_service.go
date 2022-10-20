@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/crd"
+	//"chromiumos/tast/local/chrome/uiauto/crd"
 	"chromiumos/tast/local/cryptohome"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
@@ -50,18 +50,18 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 	}
 	defer cr.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
+	/*tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect Test API")
-	}
+	}*/
 	// TODO(b/166370953): Handle CRD timeout.
-	if err := crd.Launch(ctx, cr, tconn); err != nil {
+	/*if err := crd.Launch(ctx, cr, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to launch remote desktop")
 	}
 	testing.ContextLog(ctx, "Waiting connection")
 	if err := crd.WaitConnection(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "no client connected")
-	}
+	}*/
 
 	conn, err := cr.NewConn(ctx, srv.URL+"/camerabox_align.html")
 	if err != nil {
