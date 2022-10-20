@@ -745,7 +745,8 @@ func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap, rxB
 
 // AddInterface creates a interface on phy with name=iface and type=t.
 func (r *Runner) AddInterface(ctx context.Context, phy, iface string, t IfType) error {
-	if err := r.cmd.Run(ctx, "iw", "phy", phy, "interface", "add", iface, "type", string(t)); err != nil {
+	params := []string{"phy", phy, "interface", "add", iface, "type", string(t)}
+	if err := r.cmd.Run(ctx, "iw", params...); err != nil {
 		return errors.Wrapf(err, "failed to add interface %s on %s", iface, phy)
 	}
 	return nil

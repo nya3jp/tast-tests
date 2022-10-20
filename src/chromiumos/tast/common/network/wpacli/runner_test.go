@@ -30,8 +30,9 @@ func TestSudoWPACLI(t *testing.T) {
 			expect: []string{"-u", "wpa", "-g", "wpa", "wpa_cli", "-i", "wlan0", "ping"},
 		},
 	}
+	r := NewRunner(newCmdRunner())
 	for _, tc := range testcases {
-		result := sudoWPACLI(tc.input...)
+		result := r.sudoWPACLI(tc.input...)
 		if !reflect.DeepEqual(result, tc.expect) {
 			t.Errorf("sudoWPACLI outputs differs; got %v, want %v", result, tc.expect)
 		}
@@ -53,7 +54,7 @@ func newCmdRunner() *cmdRunner {
 
 func (r *cmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
 	if len(args) < 2 {
-		return nil, errors.Errorf("insufficent #args: got %d; want >=2", len(args))
+		return nil, errors.Errorf("insufficient #args: got %d; want >=2", len(args))
 	}
 	iface := args[len(args)-2]
 	s, ok := r.script[iface]

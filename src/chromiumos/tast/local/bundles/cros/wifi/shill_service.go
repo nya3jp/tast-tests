@@ -23,6 +23,7 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/network/firewall"
+	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/shillconst"
@@ -35,6 +36,7 @@ import (
 	local_firewall "chromiumos/tast/local/network/firewall"
 	network_iface "chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/network/ip"
+	local_iw "chromiumos/tast/local/network/iw"
 	local_ping "chromiumos/tast/local/network/ping"
 	localwpacli "chromiumos/tast/local/network/wpacli"
 	"chromiumos/tast/local/power"
@@ -2935,8 +2937,14 @@ func (s *ShillService) StartTethering(ctx context.Context, request *wifi.Tetheri
 	ctx, st := timing.Start(ctx, "wifi_service.StartTethering")
 	defer st.End()
 	testing.ContextLog(ctx, "Attempting to start tethering with config: ", request)
+	const apSetType iw.IfType = "__ap"
 
 	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
+	err := local_iw.NewLocalRunner().AddInterface(ctx, "phy0", "wlan1", apSetType)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to add interface")
+	}
+
 	channel, err := s.startSoftAP(ctx, request)
 	if err != nil {
 		localwpacli.NewLocalRunner().StopSoftAP(ctx)
@@ -2968,9 +2976,11 @@ func (s *ShillService) StopTethering(ctx context.Context, _ *empty.Empty) (*empt
 	}
 
 	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
-	if err := localwpacli.NewLocalRunner().StopSoftAP(ctx); err != nil {
+	if err := localwpacli.NewSpecificLocalRunner("wlan1").StopSoftAP(ctx); err != nil {
 		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop soft AP in wpa_supplicant"))
 	}
+
+	local_iw.NewLocalRunner().RemoveInterface(ctx, "wlan1")
 
 	return &empty.Empty{}, firstErr
 }
@@ -2992,7 +3002,7 @@ func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringR
 		keyMgmt = "WPA-PSK SAE"
 	}
 
-	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), keyMgmt, string(request.Psk), string(request.Cipher)); err != nil {
+	if err := localwpacli.NewSpecificLocalRunner("wlan1").StartSoftAP(ctx, freq, string(request.Ssid), keyMgmt, string(request.Psk), string(request.Cipher)); err != nil {
 		return 0, errors.Wrap(err, "failed to start soft AP in wpa_supplicant")
 	}
 

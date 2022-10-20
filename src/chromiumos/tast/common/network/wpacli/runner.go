@@ -22,7 +22,8 @@ import (
 
 // Runner contains methods involving wpa_cli command.
 type Runner struct {
-	cmd cmd.Runner
+	cmd   cmd.Runner
+	iface string
 }
 
 // NewRunner creates a new wpa_cli command utility runner.
@@ -30,9 +31,17 @@ func NewRunner(c cmd.Runner) *Runner {
 	return &Runner{cmd: c}
 }
 
+// NewRunner creates a new wpa_cli command utility runner.
+func NewSpecificRunner(c cmd.Runner, i string) *Runner {
+	return &Runner{cmd: c, iface: i}
+}
+
 // sudoWPACLI returns a sudo command args that runs wpa_cli with args under sudo.
-func sudoWPACLI(args ...string) []string {
+func (r *Runner) sudoWPACLI(args ...string) []string {
 	ret := []string{"-u", "wpa", "-g", "wpa", "wpa_cli"}
+	if r.iface != "" {
+		ret = append(ret, "-i", r.iface)
+	}
 	for _, arg := range args {
 		ret = append(ret, arg)
 	}
@@ -41,7 +50,7 @@ func sudoWPACLI(args ...string) []string {
 
 // Ping runs "wpa_cli -i iface ping" command and expects to see PONG.
 func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("-i", iface, "ping")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("-i", iface, "ping")...)
 	if err != nil {
 		return cmdOut, errors.Wrapf(err, "failed running wpa_cli -i %s ping", iface)
 	}
@@ -53,7 +62,7 @@ func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
 
 // ClearBSSIDIgnore clears the BSSID_IGNORE list on DUT.
 func (r *Runner) ClearBSSIDIgnore(ctx context.Context) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bssid_ignore", "clear")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("bssid_ignore", "clear")...)
 	if err != nil {
 		return errors.Wrap(err, "failed running wpa_cli bssid_ignore clear")
 	}
@@ -65,7 +74,7 @@ func (r *Runner) ClearBSSIDIgnore(ctx context.Context) error {
 
 // AddToBSSIDIgnore adds the passed BSSID into BSSID_IGNORE list on DUT.
 func (r *Runner) AddToBSSIDIgnore(ctx context.Context, bssid string) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bssid_ignore", bssid)...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("bssid_ignore", bssid)...)
 	if err != nil {
 		return errors.Wrap(err, "failed running wpa_cli bssid_ignore")
 	}
@@ -107,7 +116,7 @@ func SerializeNonPrefChans(chans ...NonPrefChan) string {
 
 // Set sets a specified global wpa_supplicant property to a specified value
 func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("set", string(prop), val)...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("set", string(prop), val)...)
 	if err != nil {
 		return errors.Wrapf(err, "failed running wpa_cli set %s %s", string(prop), val)
 	}
@@ -119,7 +128,8 @@ func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
 
 // run runs a specific command and checks for expected response.
 func (r *Runner) run(ctx context.Context, expected string, opts ...string) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI(opts...)...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI(opts...)...)
+	testing.ContextLogf(ctx, "WPACLI: sudo %s", strings.Join(r.sudoWPACLI(opts...), " "))
 	if err != nil {
 		return errors.Wrapf(err, "failed running wpa_cli %s", strings.Join(opts, " "))
 	}
@@ -156,7 +166,7 @@ func (r *Runner) TDLSLinkStatus(ctx context.Context, mac string) error {
 
 // addNetwork adds a wpa_supplicant network and returns the network ID.
 func (r *Runner) addNetwork(ctx context.Context) (int, error) {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("add_network")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("add_network")...)
 	if err != nil {
 		return -1, errors.Wrap(err, "failed running wpa_cli add_network")
 	}
@@ -178,7 +188,7 @@ func (r *Runner) setNetwork(ctx context.Context, networkID int, variable, value 
 
 // statusMap returns a generated status key/value map from the output of the WiFi interface.
 func (r *Runner) statusMap(ctx context.Context, iface string) (map[string]string, error) {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("-i", iface, "status")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("-i", iface, "status")...)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed running wpa_cli -i %s status", iface)
 	}
@@ -200,7 +210,7 @@ func (r *Runner) Scan(ctx context.Context) error {
 // scanResults returns latest scan results.
 func (r *Runner) scanResults(ctx context.Context) ([]map[string]string, error) {
 	var networks []map[string]string
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("scan_results")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("scan_results")...)
 	if err != nil {
 		return networks, errors.Wrap(err, "failed running wpa_cli scan_results")
 	}
@@ -459,7 +469,7 @@ func (r *Runner) StopSoftAP(ctx context.Context) error {
 func (r *Runner) waitForStatus(ctx context.Context, status string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return r.run(ctx, "wpa_state="+status, "status")
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 2 * time.Second}); err != nil {
 		return err
 	}
 	return nil
@@ -467,7 +477,7 @@ func (r *Runner) waitForStatus(ctx context.Context, status string) error {
 
 // BSS fetches from wpa_supplicant all the known information about a given BSSID.
 func (r *Runner) BSS(ctx context.Context, addr net.HardwareAddr) (map[string]string, error) {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bss", addr.String())...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", r.sudoWPACLI("bss", addr.String())...)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed running wpa_cli 'bss %s'", addr)
 	}

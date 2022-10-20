@@ -17,3 +17,8 @@ type Runner = wpacli.Runner
 func NewLocalRunner() *Runner {
 	return wpacli.NewRunner(&cmd.LocalCmdRunner{})
 }
+
+// NewLocalRunner creates an wpacli runner for local execution.
+func NewSpecificLocalRunner(i string) *Runner {
+	return wpacli.NewSpecificRunner(&cmd.LocalCmdRunner{}, i)
+}
