@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebCodecsEncode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies that WebCodecs encoding API works, maybe verifying use of a hardware accelerator",
 		Contacts: []string{
 			"hiroh@chromium.org", // Test author.
@@ -36,6 +36,11 @@ func init() {
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264},
 			Fixture:           "chromeWebCodecs",
+		}, {
+			Name:              "h264_hw_lacros",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264},
+			Fixture:           "chromeWebCodecsLacros",
 		}, {
 			Name:              "h264_sw_l1t2",
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2", BitrateMode: "constant"},
@@ -76,6 +81,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeWebCodecs",
 		}, {
+			Name:              "vp8_hw_lacros",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeWebCodecsLacros",
+		}, {
 			Name:    "vp8_sw_l1t3",
 			Val:     webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3", BitrateMode: "constant"},
 			Fixture: "chromeWebCodecs",
@@ -97,6 +107,11 @@ func init() {
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			Fixture:           "chromeWebCodecs",
+		}, {
+			Name:              "vp9_hw_lacros",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeWebCodecsLacros",
 		}, {
 			Name:    "vp9_sw_l1t2",
 			Val:     webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2", BitrateMode: "constant"},
