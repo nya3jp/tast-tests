@@ -461,17 +461,22 @@ func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func(con
 
 // DisableUserSecretStash disables the UserSecretStash experiment by making sure
 // that the disable flag file checked by cryptohomed exists.
-func (h *CmdTPMClearHelper) DisableUserSecretStash(ctx context.Context) error {
+func (h *CmdTPMClearHelper) DisableUserSecretStash(ctx context.Context) (func(context.Context) error, error) {
 	if _, err := h.cmdRunner.Run(ctx, "rm", "-f", ussFlagFile); err != nil {
-		return errors.Wrap(err, "failed to remove the UserSecretStash flag file")
+		return nil, errors.Wrap(err, "failed to remove the UserSecretStash flag file")
 	}
 
 	// Run tmpfiles to restore the removed folders and permissions.
 	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "mkdir", "-p", path.Dir(ussDisabledFlagFile)); err != nil {
-		return errors.Wrap(err, "failed to create the UserSecretStash disable flag file directory")
+		return nil, errors.Wrap(err, "failed to create the UserSecretStash disable flag file directory")
 	}
 	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "touch", ussDisabledFlagFile); err != nil {
-		return errors.Wrap(err, "failed to write the UserSecretStash disable flag file")
+		return nil, errors.Wrap(err, "failed to write the UserSecretStash disable flag file")
 	}
-	return nil
+	return (func(ctx context.Context) error {
+		if _, err := h.cmdRunner.Run(ctx, "rm", ussDisabledFlagFile); err != nil {
+			return errors.Wrap(err, "failed to remove the UserSecretStash disable flag file")
+		}
+		return nil
+	}), nil
 }
