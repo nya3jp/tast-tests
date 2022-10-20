@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -125,6 +126,22 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 
+	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to detect if the device is in tablet mode or not: ", err)
+	}
+
+	var pc pointer.Context
+	if inTabletMode {
+		pc, err = pointer.NewTouch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller: ", err)
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
+	}
+	defer pc.Close()
+
 	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
 		hasError := func() bool { return retErr != nil }
 		slidesConn, err := cs.NewConn(ctx, slidesURL, browser.WithNewWindow())
@@ -140,14 +157,20 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		// Go through the Slides deck.
 		s.Logf("Going through the Google Slides file for %s", slidesScrollTimeout)
 
-		// At fixed intervals, stop scrolling and click a menu item
-		// to ensure we collect mouse metrics.
 		ac := uiauto.New(tconn)
+
+		// Keep track of the number of iterations we run the
+		// scroll-down cycle for. This allows us to control how often
+		// we want to run Ash UI interactions to ensure collection of
+		// Ash.Smoothness.PercentDroppedFrames_1sWindow.
+		i := 0
 		for endTime := time.Now().Add(slidesScrollTimeout); time.Now().Before(endTime); {
 			if err := inputsimulations.RepeatKeyPress(ctx, kw, "Down", time.Second, 10); err != nil {
 				return errors.Wrap(err, "failed to scroll down with down arrow")
 			}
 
+			// At fixed intervals, stop scrolling and click a menu item
+			// to ensure we collect mouse metrics.
 			fileMenu := nodewith.Name("File").HasClass("menu-button")
 			if err := action.Combine(
 				"open and close the file menu and then refocus on the presentation",
@@ -168,6 +191,15 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 			if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
 				return err
 			}
+
+			// Interact with the Ash UI every 5 scroll iterations, beginning
+			// with the first scroll iteration.
+			if i%5 == 0 {
+				if err := inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+					return errors.Wrap(err, "failed to do Ash workflows")
+				}
+			}
+			i++
 		}
 
 		// Ensure the slides deck gets scrolled.
