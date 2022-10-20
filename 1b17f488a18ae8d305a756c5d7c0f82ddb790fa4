@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3d3aaf_31cd7e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-10-20T20:30:49Z",
+      "side": 1,
+      "message": "lgtm, relying on Hidehiko for the fixture stuff",
+      "revId": "1b17f488a18ae8d305a756c5d7c0f82ddb790fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6379a95b_6840f3fc",
@@ -19,6 +36,29 @@
         "startChar": 24,
         "endLine": 30,
         "endChar": 43
+      },
+      "revId": "1b17f488a18ae8d305a756c5d7c0f82ddb790fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ac7f92_945c37a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-10-20T20:30:49Z",
+      "side": 1,
+      "message": "nit: like function below, can you please add some comment here? Thanks",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 30
       },
       "revId": "1b17f488a18ae8d305a756c5d7c0f82ddb790fa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
