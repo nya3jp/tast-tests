@@ -48,6 +48,7 @@ func init() {
 					Theme:                  ambient.SlideShow,
 					AnimationPlaybackSpeed: ambient.SlideShowDefaultPlaybackSpeed,
 					AnimationStartTimeout:  ambient.AmbientStartSlideShowDefaultTimeout,
+					PlayTestVideo:          false,
 				},
 			},
 			{
@@ -57,6 +58,7 @@ func init() {
 					Theme:                  ambient.SlideShow,
 					AnimationPlaybackSpeed: ambient.SlideShowDefaultPlaybackSpeed,
 					AnimationStartTimeout:  ambient.AmbientStartSlideShowDefaultTimeout,
+					PlayTestVideo:          false,
 				},
 			},
 			// For animated themes:
@@ -74,6 +76,7 @@ func init() {
 					Theme:                  ambient.FeelTheBreeze,
 					AnimationPlaybackSpeed: ambient.AnimationDefaultPlaybackSpeed,
 					AnimationStartTimeout:  ambient.AmbientStartAnimationDefaultTimeout,
+					PlayTestVideo:          false,
 				},
 			},
 			{
@@ -83,6 +86,7 @@ func init() {
 					Theme:                  ambient.FloatOnBy,
 					AnimationPlaybackSpeed: ambient.AnimationDefaultPlaybackSpeed,
 					AnimationStartTimeout:  ambient.AmbientStartAnimationDefaultTimeout,
+					PlayTestVideo:          true,
 				},
 			},
 		},
@@ -128,28 +132,30 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to prepare %v/%v screensaver: %v", testParams.TopicSource, testParams.Theme, err)
 	}
 
-	kb, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to open the keyboard: ", err)
-	}
-	defer kb.Close()
+	if testParams.PlayTestVideo {
+		kb, err := input.VirtualKeyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to open the keyboard: ", err)
+		}
+		defer kb.Close()
 
-	var uiHandler cuj.UIActionHandler
-	if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
-		s.Fatal("Failed to create clamshell action handler: ", err)
-	}
-	defer uiHandler.Close()
+		var uiHandler cuj.UIActionHandler
+		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+			s.Fatal("Failed to create clamshell action handler: ", err)
+		}
+		defer uiHandler.Close()
 
-	// Open up an arbitrary Youtube video to test "media string". The name of
-	// the media playing should be displayed in the screensaver.
-	const extendedDisplay = false
-	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, extendedDisplay, ui, uiHandler)
-	if err := videoApp.OpenAndPlayVideo(ambient.TestVideoSrc)(ctx); err != nil {
-		s.Fatalf("Failed to open %s: %v", ambient.TestVideoSrc.URL, err)
+		// Open up an arbitrary Youtube video to test "media string". The name of
+		// the media playing should be displayed in the screensaver.
+		const extendedDisplay = false
+		videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, extendedDisplay, ui, uiHandler)
+		if err := videoApp.OpenAndPlayVideo(ambient.TestVideoSrc)(ctx); err != nil {
+			s.Fatalf("Failed to open %s: %v", ambient.TestVideoSrc.URL, err)
+		}
+		defer videoApp.Close(cleanupCtx)
 	}
-	defer videoApp.Close(cleanupCtx)
 
-	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui, testParams.AnimationStartTimeout); err != nil {
+	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui, testParams.AnimationStartTimeout, testParams.PlayTestVideo); err != nil {
 		s.Fatal("Failed to start ambient mode: ", err)
 	}
 

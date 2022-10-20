@@ -67,6 +67,7 @@ type TestParams struct {
 	Theme                  string
 	AnimationPlaybackSpeed float32
 	AnimationStartTimeout  time.Duration
+	PlayTestVideo          bool // whether we want to test the media player in ambient mode
 }
 
 // DeviceSettings that must be set on the DUT before the test begins. These
@@ -198,12 +199,13 @@ func TestLockScreenIdle(
 	tconn *chrome.TestConn,
 	ui *uiauto.Context,
 	ambientStartTimeout time.Duration,
+	playTestVideo bool,
 ) error {
 	return uiauto.Combine("start, hide, and restart ambient mode",
 		lockScreen(ctx, tconn),
-		waitForAmbientStart(tconn, ui, ambientStartTimeout),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout, playTestVideo),
 		hideAmbientMode(tconn, ui),
-		waitForAmbientStart(tconn, ui, ambientStartTimeout),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout, playTestVideo),
 	)(ctx)
 }
 
@@ -240,7 +242,7 @@ func UnlockScreen(ctx context.Context, tconn *chrome.TestConn, username, passwor
 
 // waitForAmbientStart returns an action to wait for ambient mode to start and validate
 // the number of photo transitions during ambient mode.
-func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout time.Duration) uiauto.Action {
+func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout time.Duration, playTestVideo bool) uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := waitForPhotoTransitions(
 			ctx,
@@ -250,20 +252,34 @@ func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout tim
 		); err != nil {
 			return errors.Wrap(err, "failed to wait for photo transitions")
 		}
-		// For the media string condition:
-		// .First() is needed because there are actually 2 media string "nodes"
-		// present in the UI tree during slideshow mode. The second node is
-		// invisible in the background and is a product of how slideshow mode is
-		// implemented. Without ".First()"" though, this condition fails saying
-		// that here are multiple matching nodes.
-		if err := uiauto.Combine("validate ambient screen and media string",
-			ui.WaitUntilExists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window)),
-			ui.WaitUntilExists(nodewith.NameContaining(TestVideoSrc.Title).First()),
+		if playTestVideo {
+			return showMediaStringInScreensaver(ctx, ui)
+		}
+		if err := ui.WaitUntilExists(
+			nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to validate ambient screen and media string exist")
+			return errors.Wrap(err, "failed to wait for ambient mode start")
 		}
 		return nil
 	}
+}
+
+// showMediaStringInScreensaver returns an error if the media string is missing from
+// the screensaver.
+func showMediaStringInScreensaver(ctx context.Context, ui *uiauto.Context) error {
+	// For the media string condition:
+	// .First() is needed because there are actually 2 media string "nodes"
+	// present in the UI tree during slideshow mode. The second node is
+	// invisible in the background and is a product of how slideshow mode is
+	// implemented. Without ".First()"" though, this condition fails saying
+	// that here are multiple matching nodes.
+	if err := uiauto.Combine("validate ambient screen and media string",
+		ui.WaitUntilExists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window)),
+		ui.WaitUntilExists(nodewith.NameContaining(TestVideoSrc.Title).First()),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to validate ambient screen and media string exist")
+	}
+	return nil
 }
 
 // hideAmbientMode returns an action to move the mouse to escape from ambient mode
