@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1ee456_26444b6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-20T23:09:12Z",
+      "side": 1,
+      "message": "nit: can we also add MediaRecorder [1] and \nMediaRecorderPerf [2]?\n\nOtherwise this CL LGTM.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go?q\u003dtast-tests%20webrtc%2F%20MediaRecorder\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "1e836e88a2494ba55e6f25d6b7caf29121cb7025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "34faf645_d67ffb4a",
