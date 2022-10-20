@@ -8,22 +8,16 @@ package windowarrangementcuj
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"net/url"
 	"regexp"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,8 +26,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
-
-const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
 
 // TestParam holds parameters of window arrangement cuj test variations.
 type TestParam struct {
@@ -71,15 +63,6 @@ type Connections struct {
 
 	// PipVideoTestURL is the URL of the PIP video test page.
 	PipVideoTestURL string
-
-	// ARC holds resources related to the ARC session.
-	ARC *arc.ARC
-
-	// StartARCApp starts the ARC app.
-	StartARCApp action.Action
-
-	// StopARCApp stops the ARC app.
-	StopARCApp action.Action
 }
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
@@ -137,26 +120,6 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 	}
 
-	connection.ARC = s.FixtValue().(cuj.FixtureData).ARC
-
-	arcUI, err := connection.ARC.NewUIDevice(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to initialize ARC UI automator")
-	}
-	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, arcUI.Close)
-
-	if err := connection.ARC.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
-		return nil, errors.Wrap(err, "failed to install ARC app")
-	}
-	act, err := arc.NewActivity(connection.ARC, pkgName, ".VideoActivity")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create ARC activity")
-	}
-	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
-		act.Close()
-		return nil
-	})
-
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
 		srv.Close()
@@ -164,55 +127,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	})
 	connection.PipVideoTestURL = srv.URL + "/pip.html"
 
-	srvURL, err := url.Parse(srv.URL)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to parse test server URL")
-	}
-	hostPort, err := strconv.Atoi(srvURL.Port())
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to parse test server port")
-	}
-	androidPort, err := connection.ARC.ReverseTCP(ctx, hostPort)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start reverse port forwarding")
-	}
-	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
-		return connection.ARC.RemoveReverseTCP(ctx, androidPort)
-	})
-
-	withTestVideo := arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
-	cantPlayThisVideo := arcUI.Object(
-		ui.Text("Can't play this video."),
-		ui.PackageName(pkgName),
-		ui.ClassName("android.widget.TextView"),
-	)
-	connection.StartARCApp = func(ctx context.Context) (retErr error) {
-		if err := act.Start(ctx, connection.TestConn, withTestVideo); err != nil {
-			return err
-		}
-		defer func(ctx context.Context) {
-			if retErr == nil {
-				return
-			}
-			if err := act.Stop(ctx, connection.TestConn); err != nil {
-				testing.ContextLog(ctx, "Failed to stop ARC app after failing to start it: ", err)
-			}
-		}(ctx)
-		// Wait until the video is playing, or at least the app is
-		// idle and not showing the message "Can't play this video."
-		if err := arcUI.WaitForIdle(ctx, time.Minute); err != nil {
-			return errors.Wrap(err, "failed to wait for ARC app to be idle")
-		}
-		if err := cantPlayThisVideo.WaitUntilGone(ctx, time.Minute); err != nil {
-			return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
-		}
-		return nil
-	}
-
-	connection.StopARCApp = func(ctx context.Context) error {
-		return act.Stop(ctx, connection.TestConn)
-	}
-
+	var err error
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test api")
@@ -303,13 +218,27 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 	return nil
 }
 
+// removeExtraDesk removes the active desk and then ensures that a window that
+// was on this removed desk is active. This window activation is important for
+// the drag in combineTabs, because the tab to be dragged needs to be on top.
+func removeExtraDesk(ctx context.Context, tconn *chrome.TestConn) error {
+	w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.OnActiveDesk })
+	if err != nil {
+		return errors.Wrap(err, "failed to find window on active desk")
+	}
+	if err := ash.RemoveActiveDesk(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to remove desk")
+	}
+	if err := w.ActivateWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to ensure suitable window activation")
+	}
+	return nil
+}
+
 // dragAndRestore performs a drag beginning at the first given point, proceeding
 // through the others in order, and ending back at the first given point. Before
-// ending the drag, dragAndRestore tries to wait until every window has the same
-// bounds as before the drag (as expected because the drag is a closed loop). If
-// that wait times out, then the drag is ended anyway. The wait is repeated after
-// the drag is ended, and if there is a window bounds change that does not even
-// revert after the drag is completed, dragAndRestore returns a non-nil error.
+// ending the drag, dragAndRestore waits until every window has the same bounds
+// as before the drag (as expected because the drag is a closed loop).
 func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, duration time.Duration, p ...coords.Point) error {
 	if len(p) < 2 {
 		return errors.Errorf("expected at least two drag points, got %v", p)
@@ -340,16 +269,12 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 	dragSteps = append(dragSteps, pc.DragTo(p[0], duration), func(ctx context.Context) error {
 		if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
-			testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag (see https://crbug.com/1297297): ", err)
+			return errors.Wrap(err, "failed to wait for expected window bounds before ending drag")
 		}
 		return nil
 	})
 	if err := pc.Drag(p[0], dragSteps...)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag")
-	}
-
-	if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
-		return errors.Wrap(err, "failed to wait for expected window bounds after ending drag (which should never happen, regardless of https://crbug.com/1297297)")
 	}
 
 	return nil
