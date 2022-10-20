@@ -1182,6 +1182,19 @@ func (u *CryptohomeClient) InvalidateAuthSession(ctx context.Context, authSessio
 	return err
 }
 
+// CleanupSession invalidates a user with AuthSessionID and unmount user home directories and daemon-stores.
+func (u *CryptohomeClient) CleanupSession(ctx context.Context, authSessionID string) error {
+	// Kill the AuthSession.
+	if _, err := u.binary.invalidateAuthSession(ctx, authSessionID); err != nil {
+		return errors.Wrap(err, "failed to invaldiate AuthSession")
+	}
+	// Clean up obsolete state, in case there's any.
+	if err := u.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount vaults for cleanup")
+	}
+	return nil
+}
+
 // FetchRecoveryRequest creates recovery request, returns the value of the request.
 func (u *CryptohomeClient) FetchRecoveryRequest(ctx context.Context, authSessionID, label, epochResponseHex string) (string, error) {
 	response, err := u.binary.fetchRecoveryRequest(ctx, authSessionID, label, epochResponseHex)
