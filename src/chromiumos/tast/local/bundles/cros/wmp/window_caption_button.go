@@ -92,6 +92,11 @@ func WindowCaptionButton(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
+	// Set the Chrome window to normal state before testing the caption button actions.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, bw.ID, ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to set Chrome window state to \"Normal\": ", err)
+	}
+
 	// Minimize the window using the minimize caption button.
 	minimizeButton := nodewith.Name("Minimize")
 	if err := ui.LeftClick(minimizeButton)(ctx); err != nil {
@@ -153,6 +158,11 @@ func WindowCaptionButton(ctx context.Context, s *testing.State) {
 	filesApp, err := ash.GetActiveWindow(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the active window: ", err)
+	}
+
+	// Set the FilesApp window state to normal state before testing the caption button actions.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, filesApp.ID, ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to set FilesApp window state to \"Normal\": ", err)
 	}
 
 	// Maximize the FilesApp window by using the keyboard shortcuts `Alt+=`.
