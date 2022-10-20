@@ -17,6 +17,7 @@ const buttonClassName = "Button"
 const downloadsSectionClassName = "DownloadsSection"
 const holdingSpaceItemChipViewClassName = "HoldingSpaceItemChipView"
 const holdingSpaceItemScreenCaptureViewClassName = "HoldingSpaceItemScreenCaptureView"
+const holdingSpaceTrayChildBubbleClassName = "HoldingSpaceTrayChildBubble"
 const holdingSpaceTrayClassName = "HoldingSpaceTray"
 const menuItemViewClassName = "MenuItemView"
 const pinnedFilesSectionClassName = "PinnedFilesSection"
@@ -71,6 +72,11 @@ func FindScreenCaptureView() *nodewith.Finder {
 // FindTray returns a finder which locates the holding space tray node.
 func FindTray() *nodewith.Finder {
 	return nodewith.ClassName(holdingSpaceTrayClassName)
+}
+
+// FindTrayBubble returns a finder which locates a holding space tray child bubble node.
+func FindTrayBubble() *nodewith.Finder {
+	return nodewith.ClassName(holdingSpaceTrayChildBubbleClassName)
 }
 
 // ResetHoldingSpaceOptions is defined in autotest_private.idl.
