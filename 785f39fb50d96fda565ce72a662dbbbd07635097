@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e198a2af_dd75d14e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T17:03:14Z",
+      "side": 1,
+      "message": "Re-adding tast-owners@ as Kamil seems to be ooo.",
+      "revId": "785f39fb50d96fda565ce72a662dbbbd07635097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
