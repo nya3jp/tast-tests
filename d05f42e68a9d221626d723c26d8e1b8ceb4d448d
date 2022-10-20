@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b32d05b_f931b0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-20T02:41:25Z",
+      "side": 0,
+      "message": "Do you recall the reason why we grouped all IO subflows except EXT4 for geometric mean calc?  Unfortunately, there isn\u0027t a comment AFAICT that explains this.",
+      "revId": "d05f42e68a9d221626d723c26d8e1b8ceb4d448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
