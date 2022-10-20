@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "704e9fd5_385f2d8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-10-20T01:32:51Z",
+      "side": 1,
+      "message": "Updated commit message to include details of how it works",
+      "parentUuid": "9004d131_52a234ee",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0df123b2_c58c32ff",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-19T22:11:43Z",
       "side": 1,
       "message": "These bugs don\u0027t really make sense for your change. Add a bug related to screenplay or make a new bug for the work you\u0027re doing",
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8449fb_9991c397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-10-20T01:32:51Z",
+      "side": 1,
+      "message": "Added the Screenplay bug that is driving the effort to improve tast test tagging",
+      "parentUuid": "0df123b2_c58c32ff",
       "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +132,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4a1deafc_649a1503",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-10-20T01:32:51Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c67d555a_f9e4d86d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 100
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4ee63e41_3b8a7097",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -118,6 +184,30 @@
       "writtenOn": "2022-10-19T22:00:02Z",
       "side": 1,
       "message": "How does screenplay work with parameterized tests?",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "d1d3f9f03b2cb747addbe983a0bb845f69080e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5588408_088c5458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_full_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-10-20T01:32:51Z",
+      "side": 1,
+      "message": "It will add each mode as a different test related to the same Scene",
+      "parentUuid": "d41c8d57_687abbd2",
       "range": {
         "startLine": 44,
         "startChar": 11,
