@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc62df6_9f87709a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_oboetester_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-20T03:19:11Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if I should comment on a long running test. Thinking back again, the timeout should already indicate that.\n\nRemoved the comment, thanks!",
+      "parentUuid": "176cbf82_aa0a7ab6",
+      "revId": "238e39bf21d74f12875f0dca8fd899c8ab51511b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8cdf2b3_76af3ea7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-19T17:43:49Z",
       "side": 1,
       "message": "it\u0027s fine to leave this out -- part of the reason we use polling is so we can have a long timeout that is not often reached",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "238e39bf21d74f12875f0dca8fd899c8ab51511b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7f4cf1_db0cfbff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_oboetester_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-20T03:19:11Z",
+      "side": 1,
+      "message": "Got it. Thanks!",
+      "parentUuid": "b8cdf2b3_76af3ea7",
       "range": {
         "startLine": 131,
         "startChar": 30,
