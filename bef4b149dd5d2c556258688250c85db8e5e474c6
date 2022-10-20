@@ -34,6 +34,24 @@
       "parentUuid": "27d77cdc_77ed2a1c",
       "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ab6bcd_c578a729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-10-20T03:36:43Z",
+      "side": 1,
+      "message": "I\u0027m ultimately OK with either of those, but 1) IMO serves the greater good since it helps both the Youtube team with their test and also helps future test cases that want to play a youtube video without worry about making their own version. If 1) ends up being impractical for whatever reason, we can resort to 2).\n\nI can take this on when I have time, but if you\u0027d like to drive this, by all means, that would be great.",
+      "parentUuid": "59f7ae21_473b58c7",
+      "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
