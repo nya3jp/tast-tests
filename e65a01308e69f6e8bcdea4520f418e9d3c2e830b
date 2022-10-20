@@ -326,6 +326,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88901f9e_29a2e183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-20T02:54:04Z",
+      "side": 1,
+      "message": "Makes sense, maybe a brief comment to explain this might/could be done differently in the future?",
+      "parentUuid": "8cd8a7d9_89dbf65a",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d8c21dc_1fe6de25",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
         "patchSetId": 4
@@ -390,6 +408,24 @@
       "side": 1,
       "message": "Same as above. I don\u0027t see \"Always\" in the UI tree thus don\u0027t know how to scope it.",
       "parentUuid": "13db6e90_61c5ce7a",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bffaa0_0b81acc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-20T02:54:04Z",
+      "side": 1,
+      "message": "Commented above",
+      "parentUuid": "83ca2020_1ffc254f",
       "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
