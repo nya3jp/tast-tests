@@ -9,12 +9,14 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	fpb "chromiumos/tast/local/bundles/cros/feedback/proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -115,7 +117,7 @@ func ChooseToShareSelectedFileOrNot(ctx context.Context, s *testing.State) {
 	}
 
 	// Find add file button and click.
-	addFileButton := nodewith.NameContaining("Add file").Role(
+	addFileButton := nodewith.NameContaining("Add file Add file").Role(
 		role.Button).Ancestor(feedbackRootNode)
 	if err := ui.DoDefault(addFileButton)(ctx); err != nil {
 		s.Fatal("Failed to click add file button: ", err)
@@ -174,9 +176,21 @@ func ChooseToShareSelectedFileOrNot(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		s.Fatal("Failed to read report content: ", err)
 	}
+	report := &fpb.ExtensionSubmit{}
+	if err = proto.Unmarshal(content, report); err != nil {
+		s.Fatal("Failed to parse report: ", err)
+	}
+	productSpecificBinaryData := report.GetProductSpecificBinaryData()
 
-	actualContent := strings.ToValidUTF8(string(content), "")
-	fileExist := strings.Contains(actualContent, fileName)
+	// File will be compressed to a zip file.
+	zipFile := fileName + ".zip"
+	fileExist := false
+	for _, element := range productSpecificBinaryData {
+		if element.GetName() == zipFile {
+			fileExist = true
+			break
+		}
+	}
 
 	// Verify feedback report contains selected file based on user selection.
 	if shareSelectedFile {
