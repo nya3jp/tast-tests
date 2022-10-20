@@ -47,11 +47,12 @@ func ListConnectedUltraDebugTargets(ctx context.Context) ([]string, error) {
 // readTimeout is the max duration of expected silence during reads.
 //
 // Example:
-//   device, _ := ListConnectedUltraDebugTargets(ctx)
-//   if len(device) == 0 {
-//       testing.ContextLog(ctx, "Could not find any UD device")
-//   }
-//   board := NewConnectedAndreiboard(device, 4096, "/path/to/spi/flash", 1 * time.Second)
+//
+//	device, _ := ListConnectedUltraDebugTargets(ctx)
+//	if len(device) == 0 {
+//	    testing.ContextLog(ctx, "Could not find any UD device")
+//	}
+//	board := NewConnectedAndreiboard(device, 4096, "/path/to/spi/flash", 1 * time.Second)
 func NewConnectedAndreiboard(targetDevice string, bufSize int, spiFlash string, readTimeout time.Duration) *ConnectedAndreiboard {
 	opener := serial.NewConnectedPortOpener(targetDevice, 115200, readTimeout)
 	ab := NewAndreiboard(bufSize, opener, spiFlash)
@@ -108,4 +109,9 @@ func (a *ConnectedAndreiboard) Reset(ctx context.Context) error {
 	}
 
 	return err
+}
+
+// GSCToolCommand executes gsctool.
+func (a *ConnectedAndreiboard) GSCToolCommand(ctx context.Context, image string, args ...string) (output []byte, err error) {
+	return nil, errors.New("Unimplemented ConnectedAndreiboard GSCToolCommand")
 }
