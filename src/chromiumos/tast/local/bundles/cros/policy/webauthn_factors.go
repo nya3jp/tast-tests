@@ -213,7 +213,7 @@ func WebauthnFactors(ctx context.Context, s *testing.State) {
 			if pinCapabilities.set {
 				if err := uiauto.Combine("switch to PIN and wait for PIN dialog",
 					// Find and click on radio button "PIN".
-					ui.LeftClick(nodewith.Name("PIN").Role(role.RadioButton)),
+					ui.LeftClick(nodewith.Name("PIN or password").Role(role.RadioButton)),
 					// Find and click on "Set up PIN" button.
 					ui.LeftClick(nodewith.Name("Set up PIN").Role(role.Button)),
 					// Wait for the PIN pop up window to appear.
@@ -263,7 +263,7 @@ func WebauthnFactors(ctx context.Context, s *testing.State) {
 				}
 
 				// Delete the PIN so upcoming tests don't get affected.
-				if err := ui.LeftClick(nodewith.Name("Password").Role(role.RadioButton))(ctx); err != nil {
+				if err := ui.LeftClick(nodewith.Name("Password only").Role(role.RadioButton))(ctx); err != nil {
 					s.Fatal("Failed to delete PIN: ", err)
 				}
 			}

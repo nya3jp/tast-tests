@@ -127,7 +127,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 
 			if err := uiauto.Combine("switch to PIN and wait for PIN dialog",
 				// Find and click on radio button "PIN".
-				ui.LeftClick(nodewith.Name("PIN").Role(role.RadioButton)),
+				ui.LeftClick(nodewith.Name("PIN or password").Role(role.RadioButton)),
 				// Find and click on "Set up PIN" button.
 				ui.LeftClick(nodewith.Name("Set up PIN").Role(role.Button)),
 				// Wait for the PIN pop up window to appear.
