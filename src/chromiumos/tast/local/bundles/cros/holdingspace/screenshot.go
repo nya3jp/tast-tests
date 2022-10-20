@@ -8,10 +8,8 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"reflect"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -21,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -91,7 +88,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure no screenshots exist prior to testing.
-	screenshots, err := getScreenshots(downloadsPath)
+	screenshots, err := holdingspace.GetScreenshots(downloadsPath)
 	if err != nil || len(screenshots) != 0 {
 		s.Fatal("Failed to verify no screenshots exist: ", err)
 	}
@@ -107,7 +104,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 		// Capture a fullscreen screenshot using the virtual keyboard. This should
 		// behave consistently across device form factors.
 		func(ctx context.Context) error {
-			screenshotLocation, err = takeScreenshot(ctx, downloadsPath)
+			screenshotLocation, err = holdingspace.TakeScreenshot(ctx, downloadsPath)
 			return err
 		},
 	)(ctx); err != nil {
@@ -195,7 +192,7 @@ func testScreenshotOverflow(
 			// Take the first additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[0], err = takeScreenshot(ctx, downloadsPath); err != nil {
+				if screenshotLocations[0], err = holdingspace.TakeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -210,7 +207,7 @@ func testScreenshotOverflow(
 			// Take the second additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[1], err = takeScreenshot(ctx, downloadsPath); err != nil {
+				if screenshotLocations[1], err = holdingspace.TakeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -227,7 +224,7 @@ func testScreenshotOverflow(
 			// Take the third additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[2], err = takeScreenshot(ctx, downloadsPath); err != nil {
+				if screenshotLocations[2], err = holdingspace.TakeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -315,63 +312,4 @@ func testScreenshotRemove(
 		ui.WaitUntilGone(holdingspace.FindScreenCaptureView().Name(screenshotName)),
 		ui.EnsureGoneFor(holdingspace.FindScreenCaptureView().Name(screenshotName), 5*time.Second),
 	)
-}
-
-// getScreenshots returns the locations of screenshot files present in the user's
-// downloads directory. Screenshot files are assumed to match a specific pattern.
-func getScreenshots(downloadsPath string) (map[string]struct{}, error) {
-	result := make(map[string]struct{})
-	screenshots, err := filepath.Glob(filepath.Join(
-		downloadsPath, "Screenshot*.png"))
-	if err == nil {
-		for i := range screenshots {
-			result[screenshots[i]] = struct{}{}
-		}
-	}
-	return result, err
-}
-
-// takeScreenshot captures a fullscreen screenshot using the virtual keyboard
-// and returns the location of the screenshot file in the user's downloads
-// directory. This should behave consistently across device form factors.
-func takeScreenshot(ctx context.Context, downloadsPath string) (string, error) {
-	var result string
-
-	// Cache existing screenshots.
-	screenshots, err := getScreenshots(downloadsPath)
-	if err != nil {
-		return result, err
-	}
-
-	// Create virtual keyboard.
-	keyboard, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		return result, err
-	}
-	defer keyboard.Close()
-
-	// Take a screenshot.
-	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
-		return result, err
-	}
-
-	// Wait for screenshot.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		newScreenshots, err := getScreenshots(downloadsPath)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		if reflect.DeepEqual(screenshots, newScreenshots) {
-			return errors.New("waiting for screenshot")
-		}
-		for newScreenshot := range newScreenshots {
-			if _, exists := screenshots[newScreenshot]; !exists {
-				result = newScreenshot
-				return nil
-			}
-		}
-		return nil
-	}, nil)
-
-	return result, err
 }
