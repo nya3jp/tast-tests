@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c6edb9_014dbfbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-20T17:57:36Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "662009c596cadea6227992faaeb29da8dccf76d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a105253_5afa996b",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-20T17:57:36Z",
+      "side": 1,
+      "message": "Please wrap this call for errors",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 104
+      },
+      "revId": "662009c596cadea6227992faaeb29da8dccf76d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
