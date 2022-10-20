@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Runs Speedtest on cellular interface",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_perf_nightly"},
+		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_perf_nightly", "cellular_crosbolt_unstable"},
 		HardwareDeps: hwdep.D(hwdep.Cellular()),
 		Timeout:      4 * time.Minute,
 	})

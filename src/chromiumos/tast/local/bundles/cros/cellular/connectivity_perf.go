@@ -21,7 +21,7 @@ func init() {
 		Func:         ConnectivityPerf,
 		Desc:         "Measure the time it takes to enable, disable, connect, and disconnect from a Cellular Service ",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_perf_nightly"},
+		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_perf_nightly", "cellular_crosbolt_unstable"},
 		HardwareDeps: hwdep.D(hwdep.Cellular()),
 		Timeout:      10 * time.Minute,
 		Fixture:      "cellular",
