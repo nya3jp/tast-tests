@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f245add_01d63c0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c1fff70_6256754f",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba3f8a92_0122bc8d",
@@ -219,6 +237,30 @@
       "writtenOn": "2022-10-20T00:36:30Z",
       "side": 1,
       "message": "clearUpCtx",
+      "range": {
+        "startLine": 104,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9c6e92_100bbb6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T01:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09350de_1e1f5057",
       "range": {
         "startLine": 104,
         "startChar": 15,
