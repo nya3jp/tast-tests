@@ -462,11 +462,11 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		return nil, errors.Wrap(err, "failed to start BatteryInfoTracker")
 	}
 
-	if err := r.tpsTimeline.StartRecording(ctx); err != nil {
+	if err := r.tpsTimeline.StartRecordingWithGracePeriod(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording TPS timeline data")
 	}
 
-	if err := r.powerTimeline.StartRecording(ctx); err != nil {
+	if err := r.powerTimeline.StartRecordingWithGracePeriod(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording power timeline data")
 	}
 
