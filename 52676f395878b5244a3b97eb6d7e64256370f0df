@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e4e4f1_08eef539",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-20T19:15:00Z",
+      "side": 0,
+      "message": "Any reason you are removing yourself here?",
+      "revId": "52676f395878b5244a3b97eb6d7e64256370f0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
