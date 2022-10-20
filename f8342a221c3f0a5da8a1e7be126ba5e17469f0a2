@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f9ea0e_0a98e218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T18:53:04Z",
+      "side": 1,
+      "message": "nit: `the`",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "f8342a221c3f0a5da8a1e7be126ba5e17469f0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acda955_2eac74dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T18:53:04Z",
+      "side": 1,
+      "message": "nit: hyphen",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "f8342a221c3f0a5da8a1e7be126ba5e17469f0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d3365bc_ab48d584",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-10-20T18:19:13Z",
       "side": 1,
       "message": "amusbach, could you take a look at this CL? THanks!",
+      "revId": "f8342a221c3f0a5da8a1e7be126ba5e17469f0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a24dde_bd9590d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-20T18:53:04Z",
+      "side": 1,
+      "message": "lgtm with nits",
       "revId": "f8342a221c3f0a5da8a1e7be126ba5e17469f0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
