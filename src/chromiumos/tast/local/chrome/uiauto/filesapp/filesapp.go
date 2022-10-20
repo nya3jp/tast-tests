@@ -455,18 +455,23 @@ func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action 
 
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
 func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
+	return f.DragAndDropFiles([]string{fileName}, dropPoint, kb)
+}
+
+// DragAndDropFiles selects the list of file(s) and drags and drops the file(s) to the specified point.
+func (f *FilesApp) DragAndDropFiles(listFileNames []string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Clicking on a file is not enough as the clicks can be too quick for FileInfo
 		// to be added to the drop event, this leads to an empty event. Clicking the
 		// file and checking the Action Bar we can guarantee FileInfo exists on the
 		// drop event.
-		if err := f.SelectMultipleFiles(kb, fileName)(ctx); err != nil {
+		if err := f.SelectMultipleFiles(kb, listFileNames...)(ctx); err != nil {
 			return errors.Wrap(err, "failed to select the file for drag and drop")
 		}
 		// Focus back to FilesApp after drop.
 		defer f.LeftClick(nodewith.Role(role.ListBox))(ctx)
 
-		srcPoint, err := f.ui.Location(ctx, file(fileName))
+		srcPoint, err := f.ui.Location(ctx, file(listFileNames[0]))
 		if err != nil {
 			return errors.Wrap(err, "failed to find the location for the file")
 		}
