@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a7774b_776da164",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-10-20T07:51:26Z",
+      "side": 1,
+      "message": "Strictly speaking, it\u0027s not the version skew that comes from rolling back that may cause issues here. Both rollback.go and enterprise_rollback_previous_version.go run on the remote/server. It\u0027s the occasional strange version skew within the installed version of tast and the version of the tests that we\u0027ve seen.\nAt least that is my understanding.",
+      "range": {
+        "startLine": 227,
+        "startChar": 54,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "191bddae865ec54bed79876b099dc4b18aded2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
