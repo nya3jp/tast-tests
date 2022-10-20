@@ -23,7 +23,7 @@ func init() {
 		Func:         TryFWB,
 		Desc:         "Servo based boot firmware B test",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"crossystem"},
