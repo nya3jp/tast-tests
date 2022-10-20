@@ -102,7 +102,7 @@ func cleanup(ctx context.Context, s *testing.State) {
 		s.Error("Dump wipe_init.log fail: ", err)
 	}
 
-	oldWipeLogFilePath := filepath.Join("/old", wipeLogFilePath)
+	oldWipeLogFilePath := filepath.Join("/old_root", wipeLogFilePath)
 	hostWipeLogFilePath := filepath.Join(s.OutDir(), wipeLogFile)
 	if err := d.GetFile(ctx, oldWipeLogFilePath, hostWipeLogFilePath); err != nil {
 		s.Logf("Dump %s (after pivot root) fail: %v", wipeLogFile, err)
