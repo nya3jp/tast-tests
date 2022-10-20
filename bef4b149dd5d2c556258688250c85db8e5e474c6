@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0172ce_90678b81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-10-20T19:28:14Z",
+      "side": 1,
+      "message": "I agree that 1) would be a better solution ultimately. For now let\u0027s just disable the youtube playing part for at least `SetScreensaver.art_gallery`, and come back to it when `youtube_web.OpenAndPlayVideo()` is feasible.",
+      "parentUuid": "f2ab6bcd_c578a729",
+      "revId": "bef4b149dd5d2c556258688250c85db8e5e474c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca505c06_83b92d95",
