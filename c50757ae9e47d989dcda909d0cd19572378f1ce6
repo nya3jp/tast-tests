@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "020b3664_737e538f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_web_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-20T04:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5037375_cad95d93",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3f2021_b27b347f",
