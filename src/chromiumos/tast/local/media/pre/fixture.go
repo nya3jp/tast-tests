@@ -216,6 +216,23 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeVideoWithFakeWebcamLacros",
+		Desc:     "Similar to chromeVideo fixture but supplementing it with the use of a fake video/audio capture device (a.k.a. 'fake webcam'), see https://webrtc.org/testing/ (lacros)",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeFakeWebcamArgs...),
+				chrome.LacrosExtraArgs(chromeFakeWebcamArgs...))).Opts()
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but using the alternative video decoder",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
@@ -563,6 +580,23 @@ func init() {
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeWebCodecsArgs...),
 			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecsLacros",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API (lacros)",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+				chrome.LacrosExtraArgs(chromeWebCodecsArgs...))).Opts()
 		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,

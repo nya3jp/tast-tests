@@ -173,6 +173,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "h264_360p_hw_lacros",
+			Val:               peerconnection.MakeTestOptions("H264", 640, 360),
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			Name:              "h264_360p_sw",
 			Val:               peerconnection.MakeSWEncoderTestOptions("H264", 640, 360),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264, "proprietary_codecs"},
@@ -183,6 +188,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "vp8_360p_hw_lacros",
+			Val:               peerconnection.MakeTestOptions("VP8", 640, 360),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			Name:              "vp8_360p_sw",
 			Val:               peerconnection.MakeSWEncoderTestOptions("VP8", 640, 360),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
@@ -192,6 +202,11 @@ func init() {
 			Val:               peerconnection.MakeTestOptions("VP9", 640, 360),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			Name:              "vp9_360p_hw_lacros",
+			Val:               peerconnection.MakeTestOptions("VP9", 640, 360),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
 		}, {
 			Name:              "vp9_360p_sw",
 			Val:               peerconnection.MakeSWEncoderTestOptions("VP9", 640, 360),
