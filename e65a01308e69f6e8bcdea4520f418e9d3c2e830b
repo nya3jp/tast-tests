@@ -342,6 +342,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e33813_5d358bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-20T17:30:28Z",
+      "side": 1,
+      "message": "Done. Added TODO here and below.",
+      "parentUuid": "88901f9e_29a2e183",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d8c21dc_1fe6de25",
