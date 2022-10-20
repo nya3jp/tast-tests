@@ -16,6 +16,23 @@
       "message": "PTAL. TY",
       "revId": "f90ed29339326d7711952dd40e0a29ce80a109dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f464815_438a0124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-20T01:43:28Z",
+      "side": 1,
+      "message": "Can you put this in a separate CL? It seems unrelated to the other test changes.",
+      "revId": "f90ed29339326d7711952dd40e0a29ce80a109dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
