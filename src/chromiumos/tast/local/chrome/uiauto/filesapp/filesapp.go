@@ -460,13 +460,14 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 		// to be added to the drop event, this leads to an empty event. Clicking the
 		// file and checking the Action Bar we can guarantee FileInfo exists on the
 		// drop event.
-		if err := f.SelectMultipleFiles(kb, fileName)(ctx); err != nil {
+		listFileName := strings.Fields(fileName)
+		if err := f.SelectMultipleFiles(kb, listFileName...)(ctx); err != nil {
 			return errors.Wrap(err, "failed to select the file for drag and drop")
 		}
 		// Focus back to FilesApp after drop.
 		defer f.LeftClick(nodewith.Role(role.ListBox))(ctx)
 
-		srcPoint, err := f.ui.Location(ctx, file(fileName))
+		srcPoint, err := f.ui.Location(ctx, file(listFileName[0]))
 		if err != nil {
 			return errors.Wrap(err, "failed to find the location for the file")
 		}
