@@ -16,6 +16,23 @@
       "message": "Fine with me. Prashant, please take a look. Thanks.",
       "revId": "9d65ecfa42da3c2a7a933a2702a11d07d433c7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22819658_3f9ffbec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-20T17:54:03Z",
+      "side": 1,
+      "message": "Hi Benson, with Prashant on leave can you take a look at this update? It will skip all HidWake tests on octopus boards. I am seeing that HID events still wake the device on octopus but the wake event is registered to an ACPI device in the linux device tree, not a USB device. That causes the test to fail because it is looking for the wakeiup_count to be incremented for a USB device. I spoke with Prashant about this before going on leave and he suggested just skipping octopus while I confirm that this is expected behavior and update the test to account for it.",
+      "revId": "9d65ecfa42da3c2a7a933a2702a11d07d433c7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
