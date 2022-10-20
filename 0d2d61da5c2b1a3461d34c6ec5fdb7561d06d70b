@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db94b898_5c48a2c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-20T04:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912f8e09_ddaef92a",
+      "range": {
+        "startLine": 25,
+        "startChar": 87,
+        "endLine": 25,
+        "endChar": 116
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dda0323_35c33af7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-20T03:37:32Z",
       "side": 1,
       "message": "router? Or DHCP server?\nWe should mention where the DHCP server is in this diagram.",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e1f250_05bd954c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-20T04:55:00Z",
+      "side": 1,
+      "message": "Yes, this should be \"router\". Done.",
+      "parentUuid": "5dda0323_35c33af7",
       "range": {
         "startLine": 41,
         "startChar": 20,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4eff7d_f0047c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-20T04:55:00Z",
+      "side": 1,
+      "message": "Added a sentence below.",
+      "parentUuid": "cdf26145_5bb7690d",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace13486_5a407f7e",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-19T13:58:53Z",
       "side": 1,
       "message": "So just checking: the format is prefix1\",\"gateway1\",\"prefix2\",\"gateway2\",\"... ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 27,
+        "endLine": 179,
+        "endChar": 45
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220c3ae9_0d82e7b8",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-20T04:55:00Z",
+      "side": 1,
+      "message": "Correct",
+      "parentUuid": "ace13486_5a407f7e",
       "range": {
         "startLine": 179,
         "startChar": 27,
