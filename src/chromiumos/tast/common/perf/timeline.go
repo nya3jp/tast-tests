@@ -93,12 +93,14 @@ func (t defaultClock) Now() time.Time {
 
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
-	sources         []TimelineDatasource
-	interval        time.Duration
-	cancelRecording context.CancelFunc
-	recordingValues *Values
-	recordingStatus chan error
-	clock           Clock
+	sources          []TimelineDatasource
+	interval         time.Duration
+	cancelRecording  context.CancelFunc
+	recordingValues  *Values
+	recordingStatus  chan error
+	clock            Clock
+	snapshotsSkipped int
+	prefix           string
 }
 
 // NewTimelineOptions holds all optional parameters of NewTimeline.
@@ -148,7 +150,12 @@ func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...N
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss, interval: args.Interval, clock: args.Clock}, nil
+	return &Timeline{
+		sources:  ss,
+		interval: args.Interval,
+		clock:    args.Clock,
+		prefix:   args.Prefix,
+	}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -181,8 +188,24 @@ func (t *Timeline) stop(ctx context.Context, v *Values) error {
 	return nil
 }
 
-// StartRecording starts capturing metrics in a goroutine. The sampling interval is specified as a parameter of NewTimeline. StartRecording may not be called twice, unless StopRecording is called in-between.
+// StartRecording starts capturing metrics in a goroutine. The sampling
+// interval is specified as a parameter of NewTimeline. StartRecording
+// may not be called twice, unless StopRecording is called in-between.
+// If a snapshot takes longer than the timeline interval, the timeline
+// collection will fail.
 func (t *Timeline) StartRecording(ctx context.Context) error {
+	return t.startRecordingTimeline(ctx, false)
+}
+
+// StartRecordingWithGracePeriod is like StartRecording, but it allows
+// for a 1-interval grace period to complete snapshot collection.
+// Timeline collection fails if taking the snapshot takes more than 2
+// intervals to complete.
+func (t *Timeline) StartRecordingWithGracePeriod(ctx context.Context) error {
+	return t.startRecordingTimeline(ctx, true)
+}
+
+func (t *Timeline) startRecordingTimeline(ctx context.Context, continueOnError bool) error {
 	if t.recordingStatus != nil {
 		return errors.New("already recording")
 	}
@@ -193,10 +216,19 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 
 	go func() {
 		for nextTime := t.clock.Now().Add(t.interval); ; nextTime = nextTime.Add(t.interval) {
-			sleepTime := nextTime.Sub(t.clock.Now())
+			// If the snapshot took more time than the timeline
+			// interval, give a 1-interval grace period to complete the
+			// snapshot. If a snapshot takes longer than 2 intervals,
+			// fail the timeline collection.
+			if continueOnError && nextTime.Before(t.clock.Now()) {
+				nextTime = nextTime.Add(t.interval)
+				testing.ContextLogf(ctx, "skipping snapshot; trying to snapshot every %v, but taking the last snapshot already took more time", t.interval)
+				t.snapshotsSkipped++
+			}
 
+			sleepTime := nextTime.Sub(t.clock.Now())
 			if sleepTime < 0 {
-				t.recordingStatus <- errors.Errorf("trying to snapshot every %v, but taking the last snapshot already took more time", t.interval)
+				t.recordingStatus <- errors.Errorf("failed to take snapshot; trying to snapshot every %v, but taking the last snapshot already took more time", t.interval)
 				return
 			}
 
@@ -244,6 +276,19 @@ func (t *Timeline) StopRecording(ctx context.Context) (*Values, error) {
 	val := NewValues()
 	if err := t.stop(ctx, val); err != nil {
 		return nil, err
+	}
+
+	if t.snapshotsSkipped > 0 {
+		prefix := "DefaultTimeline"
+		if len(t.prefix) > 0 {
+			prefix = t.prefix
+		}
+
+		val.Set(Metric{
+			Name:      prefix + "snapshotsSkipped",
+			Unit:      "count",
+			Direction: SmallerIsBetter,
+		}, float64(t.snapshotsSkipped))
 	}
 	t.recordingValues.Merge(val)
 
