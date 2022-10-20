@@ -517,3 +517,15 @@ func EnableHIDScreenOnOOBE() Option {
 		return nil
 	}
 }
+
+// EnableStackSampledMetrics returns an Option that can be passed to New to turn
+// on the stack-sampling profiler.
+// By default, in tast tests, we always force the stack-sampled profiler off to avoid
+// strange flakes if the profiler has an issue, and to avoid noise in performance
+// tests. (It will run 20% of the time if we don't force it one way or the other.)
+func EnableStackSampledMetrics() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnableStackSampledMetrics = true
+		return nil
+	}
+}
