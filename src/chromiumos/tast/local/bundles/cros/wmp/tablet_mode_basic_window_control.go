@@ -20,13 +20,14 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
 const (
 	uiTimeout  = 5 * time.Second
-	swipeSpeed = 10 * time.Millisecond
+	swipeSpeed = 300 * time.Millisecond
 	delay      = 2 * time.Second
 )
 
@@ -82,6 +83,11 @@ func TabletModeBasicWindowControl(ctx context.Context, s *testing.State) {
 	}
 	defer connYoutube.Close()
 	defer connYoutube.CloseTarget(cleanupCtx)
+
+	// Wait each page to finish loading (to see if the network connection works).
+	if err := webutil.WaitForQuiescence(ctx, connYoutube, time.Minute); err != nil {
+		s.Fatal("Failed to load YouTube: ", err)
+	}
 
 	// Enter tablet mode.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
