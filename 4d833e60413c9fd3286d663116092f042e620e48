@@ -52,6 +52,24 @@
       "parentUuid": "87ff7a81_a0401238",
       "revId": "4d833e60413c9fd3286d663116092f042e620e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda04efa_2320308d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-20T15:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a1e913_8f6385a5",
+      "revId": "4d833e60413c9fd3286d663116092f042e620e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
