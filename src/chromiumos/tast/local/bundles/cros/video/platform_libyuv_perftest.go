@@ -22,6 +22,14 @@ import (
 
 const libyuvUnitTestBin = "libyuv_perftest"
 
+// libYUVPerfTestParams allows adjusting some of the test arguments passed in.
+type libYUVPerfTestParams struct {
+	testName       string
+	numRepetitions uint32
+	width          uint32
+	height         uint32
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PlatformLibYUVPerftest,
@@ -33,17 +41,37 @@ func init() {
 		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name: "yuy2tonv12",
-			Val:  "LibYUVConvertTest.YUY2ToNV12_Opt",
+			Val: libYUVPerfTestParams{testName: "LibYUVConvertTest.YUY2ToNV12_Opt",
+				numRepetitions: 1000,
+				// For this conversion we target some typical camera capture resolution.
+				width:  640,
+				height: 360,
+			},
 		}, {
 			Name: "nv12scale",
-			Val:  "LibYUVScaleTest.NV12ScaleDownBy2_Bilinear",
+			Val: libYUVPerfTestParams{testName: "LibYUVConvertTest.NV12ScaleDownBy2_Bilinear",
+				numRepetitions: 1000,
+				// For this conversion we target some typical camera capture resolution.
+				width:  640,
+				height: 360,
+			},
 		}, {
-			Name:              "mm21tonv12",
-			Val:               "LibYUVConvertTest.MM21ToNV12_Opt",
+			Name: "mm21tonv12",
+			Val: libYUVPerfTestParams{testName: "LibYUVConvertTest.MM21ToNV12_Opt",
+				numRepetitions: 5000,
+				// For this conversion we target some typical video playback resolution.
+				width:  1280,
+				height: 720,
+			},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.SkipOnPlatform("bob", "gru", "kevin")),
 		}, {
-			Name:              "mm21toi420",
-			Val:               "LibYUVConvertTest.MM21ToI420_Opt",
+			Name: "mm21toi420",
+			Val: libYUVPerfTestParams{testName: "LibYUVConvertTest.MM21ToI420_Opt",
+				numRepetitions: 5000,
+				// For this conversion we target some typical video playback resolution.
+				width:  1280,
+				height: 720,
+			},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.SkipOnPlatform("bob", "gru", "kevin")),
 		}},
 	})
@@ -52,12 +80,14 @@ func init() {
 // PlatformLibYUVPerftest runs a libyuv unit test with and without assembly
 // optimization to compare performance.
 func PlatformLibYUVPerftest(ctx context.Context, s *testing.State) {
-	env := []string{"LIBYUV_REPEAT=10000",
-		"LIBYUV_WIDTH=640",
-		"LIBYUV_HEIGHT=360"}
+	testOpt := s.Param().(libYUVPerfTestParams)
+
+	env := []string{"LIBYUV_REPEAT=" + fmt.Sprint(testOpt.numRepetitions),
+		"LIBYUV_WIDTH=" + fmt.Sprint(testOpt.width),
+		"LIBYUV_HEIGHT=" + fmt.Sprint(testOpt.height)}
 
 	logFileOpt := filepath.Join(s.OutDir(), libyuvUnitTestBin+"_opt.log")
-	if err := runLIBYUVUnittest(ctx, logFileOpt, s.Param().(string), env); err != nil {
+	if err := runLIBYUVUnittest(ctx, logFileOpt, testOpt.testName, env); err != nil {
 		s.Fatal("Failed to run test binary: ", err)
 	}
 
@@ -77,7 +107,7 @@ func PlatformLibYUVPerftest(ctx context.Context, s *testing.State) {
 	env = append(env, "LIBYUV_DISABLE_ASM=1")
 
 	logFileNoOpt := filepath.Join(s.OutDir(), libyuvUnitTestBin+"_noOpt.log")
-	if err = runLIBYUVUnittest(ctx, logFileNoOpt, s.Param().(string), env); err != nil {
+	if err = runLIBYUVUnittest(ctx, logFileNoOpt, testOpt.testName, env); err != nil {
 		s.Fatal("Failed to run test binary: ", err)
 	}
 
