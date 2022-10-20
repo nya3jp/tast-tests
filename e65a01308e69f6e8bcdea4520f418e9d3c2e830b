@@ -308,6 +308,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cd8a7d9_89dbf65a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-20T02:14:26Z",
+      "side": 1,
+      "message": "When we re-use code from unicorn test, we wouldn\u0027t have to worry about this. That test does things a bit differently. So this code is temporary/throw away.",
+      "parentUuid": "c61f6b98_931d974b",
+      "revId": "e65a01308e69f6e8bcdea4520f418e9d3c2e830b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d8c21dc_1fe6de25",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
         "patchSetId": 4
