@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dda0323_35c33af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-10-20T03:37:32Z",
+      "side": 1,
+      "message": "router? Or DHCP server?\nWe should mention where the DHCP server is in this diagram.",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf26145_5bb7690d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-10-20T03:37:32Z",
+      "side": 1,
+      "message": "Add a comment that this is done by bridging in the test router?",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "0d2d61da5c2b1a3461d34c6ec5fdb7561d06d70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ace13486_5a407f7e",
         "filename": "src/chromiumos/tast/local/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 1
