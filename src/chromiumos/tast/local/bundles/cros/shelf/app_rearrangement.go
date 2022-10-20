@@ -399,9 +399,14 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify shelf app bounds: ", err)
 	}
 
-	shelfAppBounds, err := ash.ShelfAppBoundsForNames(ctx, tconn, ui, defaultPinnedAppNamesInOrder)
+	scrollableShelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
 	if err != nil {
-		s.Fatal("Failed to get shelf app bounds: ", err)
+		s.Fatal("Failed to fetch the scrollable shelf info: ", err)
+	}
+
+	shelfAppBounds := scrollableShelfInfo.IconsBoundsInScreen
+	if len(shelfAppBounds) != 4 {
+		s.Fatal("Wrong number of shelf apps: ", err)
 	}
 
 	firstSlotCenter := shelfAppBounds[0].CenterPoint()
