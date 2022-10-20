@@ -16,6 +16,24 @@
       "message": "I must be missing something:\nWhy are we not adding \"canary\" to the \"beta\" case as well?",
       "revId": "6967ae1c07d4a5ec7b4e9cd61051eae9e1454e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180b0e5b_bcbe721d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-20T01:53:28Z",
+      "side": 1,
+      "message": "This test is scheduled in the OS release cadence (not in the Browser cadence) and the OS team\u0027s expectation is that lacros should be stable and pre-qualified by the Browser team, so that we can use it to verify new OS release candidates. With this current mapping we already cover 8 combos of a large test matrix.\n\nI think pulling in lacros \"canary\" that is not tested nor qualified into the OS release cadence seems to be off target to ensure the OS build quality. But, it could be better covered by the browser-side version skew testing on Lacros ToT.\n\nRather, I\u0027d see adding lacros \"canary\" + OS \"dev\" is an exception to this in that branch point is usually the most risky area where lacros + OS is starting to diverge. Does it make sense?\n+svenzheng for any thoughts on consolidated test matrix between both teams.",
+      "parentUuid": "380eb129_7a119f00",
+      "revId": "6967ae1c07d4a5ec7b4e9cd61051eae9e1454e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
