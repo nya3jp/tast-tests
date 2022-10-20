@@ -19,6 +19,8 @@ import (
 	"syscall"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -212,7 +214,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		filterBasename = filterBasename[:15]
 	}
 	if err := crash.EnableCrashFiltering(ctx, filterBasename); err != nil {
-		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
+		return nil, errors.Wrap(err, "failed to replace crash filter")
 	}
 	command = append(command, opts.CrasherPath)
 	if !opts.CauseCrash {
@@ -284,7 +286,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	}
 
 	result := CrasherResult{
-		Crashed:             (crasherExitCode == 128+int(syscall.SIGSEGV)),
+		Crashed:             (crasherExitCode == 128+int(unix.SIGSEGV)),
 		CrashReporterCaught: crashReporterCaught,
 		ReturnCode:          crasherExitCode,
 	}
@@ -296,6 +298,33 @@ func crashFilePrefix(crasherPath string) string {
 	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
 	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
 	return nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crasherPath), "_")
+}
+
+// verifyMetaFileRefs verifies that all "upload_file_" refs in the meta file, as well as the "payload",
+// specify valid file paths.
+func verifyMetaFileRefs(metaPath string) error {
+	contents, err := os.ReadFile(metaPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read meta file")
+	}
+	dir := filepath.Dir(metaPath)
+	lines := strings.Split(string(contents), "\n")
+	for _, l := range lines {
+		if strings.HasPrefix(l, "payload=") || strings.HasPrefix(l, "upload_file_") {
+			parts := strings.Split(l, "=")
+			if len(parts) != 2 {
+				return errors.Errorf("invalid format for .meta file: %s", l)
+			}
+			f := parts[1]
+			if strings.HasPrefix(f, "/") {
+				return errors.Errorf("unexpected absolute path in meta file: %s", f)
+			}
+			if _, err := os.Stat(filepath.Join(dir, f)); err != nil {
+				return errors.Wrapf(err, "could not stat %s", f)
+			}
+		}
+	}
+	return nil
 }
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
@@ -453,6 +482,11 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	result.Pslog = crashReportFiles[".pslog"]
+
+	if err := verifyMetaFileRefs(result.Meta); err != nil {
+		return nil, errors.Wrap(err, ".meta file has invalid file reference")
+	}
+
 	return result, nil
 }
 
@@ -600,7 +634,7 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		}
 		s, ok := e.Sys().(syscall.WaitStatus)
 		if !ok {
-			return errors.Wrap(err, "failed to get exit status from crash_sender: failed to cast to syscall.WaitStatus")
+			return errors.Wrap(err, "failed to get exit status from crash_sender: failed to cast to unix.WaitStatus")
 		}
 		if s.ExitStatus() != 1 {
 			return errors.Wrap(err, "failed to kill crash_sender")
