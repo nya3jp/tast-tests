@@ -54,7 +54,6 @@ var (
 	// and regenerate the *.pbf files by following the directions in cellular/data/README.md.
 	carrierMapping = map[string]carrier{
 		"00101":  carrierAmarisoft,
-		"001010": carrierAmarisoft,
 		"23415":  carrierVodafoneUK,
 		"310260": carrierTmobile,
 		"310280": carrierAtt,
@@ -94,8 +93,17 @@ var (
 // GetKnownAPNsForOperator returns a list of known APNs for a carrier.
 func GetKnownAPNsForOperator(operatorID string) ([]KnownAPN, error) {
 	carrier, ok := carrierMapping[operatorID]
+	// If the operatorID has more than 5 digits and we cannot find it, we might be able to
+	// find an operatorID that matches with 5 digits.
 	if !ok {
-		return nil, errors.Errorf("cannot find carrier for operator %q", operatorID)
+		if len(operatorID) <= 5 {
+			return nil, errors.Errorf("cannot find carrier for operator %q", operatorID)
+		}
+		operatorID = operatorID[0:5]
+		carrier, ok = carrierMapping[operatorID]
+		if !ok {
+			return nil, errors.Errorf("cannot find carrier for operator %q", operatorID)
+		}
 	}
 	apns, ok := carrierAPNs[carrier]
 	if !ok {
