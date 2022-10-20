@@ -33,6 +33,24 @@
       "message": "+2\n\na few comments:\n\n- next time use tast-owners@google.com for reviewer (go/tast-reviews)\n- fix merge conflict",
       "revId": "c28b1936736602e146247f5ec60eaddb1e885627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a628541b_9b0d6d77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536317
+      },
+      "writtenOn": "2022-10-20T18:44:17Z",
+      "side": 1,
+      "message": "Thanks for the tips. Will use `tast-owners@google.com` next time. Looks like a fix for this was already merged so I\u0027ll abandon this CL in favor of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3963133.",
+      "parentUuid": "046d0410_238ef778",
+      "revId": "c28b1936736602e146247f5ec60eaddb1e885627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
