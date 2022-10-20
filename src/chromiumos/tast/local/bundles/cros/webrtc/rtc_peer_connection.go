@@ -127,6 +127,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeCameraPerf",
 		}, {
+			Name:              "h264_enc_lacros",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			Name:              "vp8_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
@@ -136,6 +141,11 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP8},
 			Fixture:           "chromeCameraPerf",
+		}, {
+			Name:              "vp8_enc_lacros",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
 		}, {
 			Name:              "vp8_enc_simulcast",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: true},
@@ -181,6 +191,11 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP9},
 			Fixture:           "chromeCameraPerf",
+		}, {
+			Name:              "vp9_enc_lacros",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.

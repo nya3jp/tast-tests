@@ -34,6 +34,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "h264_lacros",
+			Val:               videotype.H264,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			// TODO(b/236546408): Remove once hardware variable bitrate encoding is enabled by default.
 			Name:              "h264_vbr",
 			Val:               videotype.H264,
@@ -47,11 +53,23 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "vp8_lacros",
+			Val:               videotype.VP8,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			Name:              "vp9",
 			Val:               videotype.VP9,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			Name:              "vp9_lacros",
+			Val:               videotype.VP9,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
 		}, {
 			Name:              "vp8_cam",
 			Val:               videotype.VP8,

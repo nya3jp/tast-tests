@@ -53,6 +53,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "h264_hw_lacros",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			// TODO(b/236546408): Remove once hardware variable bitrate encoding is enabled by default.
 			Name:              "h264_hw_vbr",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
@@ -64,10 +69,20 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "vp8_hw_lacros",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP8"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
+		}, {
 			Name:              "vp9_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			Name:              "vp9_hw_lacros",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamLacros",
 		}},
 	})
 }
