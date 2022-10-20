@@ -53,8 +53,9 @@ func init() {
 type cleanupFunc func(context.Context) error
 
 type fixtureImpl struct {
-	ussFlag        bool
-	ussFlagCleanup cleanupFunc
+	ussFlag               bool
+	ussFlagCleanup        cleanupFunc
+	ussDisableFlagCleanup cleanupFunc
 }
 
 // AuthSessionFixture provides data on how the session has been configured by the fixture.
@@ -93,7 +94,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		// ensuring that the flag file that enables it does not exist.
 		//
 		// This mode has no cleanup as this is the "default" state.
-		err := helper.DisableUserSecretStash(ctx)
+		f.ussDisableFlagCleanup, err = helper.DisableUserSecretStash(ctx)
 		if err != nil {
 			s.Error("Failed to clean up the USS flag during setup: ", err)
 		}
@@ -111,6 +112,11 @@ func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 		err := f.ussFlagCleanup(ctx)
 		if err != nil {
 			s.Error("Failed to clean up the USS flag: ", err)
+		}
+	} else {
+		err := f.ussDisableFlagCleanup(ctx)
+		if err != nil {
+			s.Error("Failed to clean up the USS disable flag: ", err)
 		}
 	}
 }
