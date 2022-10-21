@@ -39,6 +39,30 @@
       },
       "revId": "f0d2766f9c0231cc26535493903994996aff3d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843a6483_bc84a7a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-10-21T08:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a5aae2_e8b50071",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 20
+      },
+      "revId": "f0d2766f9c0231cc26535493903994996aff3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
