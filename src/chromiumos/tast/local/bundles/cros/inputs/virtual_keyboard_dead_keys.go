@@ -113,7 +113,6 @@ func init() {
 				Name:              "french_lacros",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.LacrosClamshellVK,
 				Val: deadKeysTestCase{
 					inputMethod:          ime.FrenchFrance,
@@ -126,7 +125,6 @@ func init() {
 				Name:              "catalan_lacros",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.LacrosTabletVK,
 				Val: deadKeysTestCase{
 					inputMethod:          ime.Catalan,

@@ -116,7 +116,6 @@ func init() {
 			{
 				Name:              "en_us_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
@@ -129,7 +128,6 @@ func init() {
 			{
 				Name:              "en_us_a11y_lacros",
 				Fixture:           fixture.LacrosClamshellVK,
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
@@ -142,7 +140,6 @@ func init() {
 			{
 				Name:              "es_es_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
@@ -168,7 +165,6 @@ func init() {
 			{
 				Name:              "fr_fr_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
@@ -181,7 +177,6 @@ func init() {
 			{
 				Name:              "fr_fr_a11y_lacros",
 				Fixture:           fixture.LacrosClamshellVK,
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
