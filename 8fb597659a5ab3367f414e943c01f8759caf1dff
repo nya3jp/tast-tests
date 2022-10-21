@@ -22,6 +22,52 @@
       },
       "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec98a55c_16ace349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-21T14:51:10Z",
+      "side": 1,
+      "message": "Speaking of which, I ve learned that it is WAI to share the hostname across different profiles, and also across all services. We could consider testing these behaviors as well.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716c6663_b80829af",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-21T14:51:10Z",
+      "side": 1,
+      "message": "These values 5 and 3 are quite mysterious. Could we add in a comment an example for a line in this file ?",
+      "range": {
+        "startLine": 292,
+        "startChar": 42,
+        "endLine": 292,
+        "endChar": 50
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
