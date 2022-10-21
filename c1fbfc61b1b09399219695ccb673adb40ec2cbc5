@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f910a9_de9f32c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_ui_service.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-21T21:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912dbc21_e5fad7b2",
+      "revId": "c1fbfc61b1b09399219695ccb673adb40ec2cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e92f0a88_bfc0461d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-21T20:59:18Z",
       "side": 1,
       "message": "Typo. Bluetooth",
+      "revId": "c1fbfc61b1b09399219695ccb673adb40ec2cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8cbbc2_5fcf3f4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_mouse_only.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-21T21:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92f0a88_bfc0461d",
       "revId": "c1fbfc61b1b09399219695ccb673adb40ec2cbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
