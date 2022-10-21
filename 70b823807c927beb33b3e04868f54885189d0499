@@ -75,6 +75,30 @@
       },
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794c222d_3a26f0cc",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1326772
+      },
+      "writtenOn": "2022-10-21T22:04:04Z",
+      "side": 1,
+      "message": "Yes. amd64, arm, arm64 are all separate.",
+      "parentUuid": "3c8eee8c_3ac81f3a",
+      "range": {
+        "startLine": 44,
+        "startChar": 75,
+        "endLine": 44,
+        "endChar": 81
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
