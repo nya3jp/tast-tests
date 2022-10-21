@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fee34f_f1877cb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T21:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47bcb827_5589999a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e5d394_ca5b7397",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-21T18:12:12Z",
       "side": 1,
       "message": "nit: `scroll-`",
+      "range": {
+        "startLine": 162,
+        "startChar": 55,
+        "endLine": 162,
+        "endChar": 61
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a5b983_36a5ad77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T21:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e5d394_ca5b7397",
       "range": {
         "startLine": 162,
         "startChar": 55,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025b8ea2_a87618db",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T21:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e530cc6_a416ec92",
+      "range": {
+        "startLine": 33,
+        "startChar": 85,
+        "endLine": 33,
+        "endChar": 102
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "712d0c2e_13888672",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-21T18:12:12Z",
       "side": 1,
       "message": "nit: Be more explicit because `uiauto.Combine` returns `action.Action` which is a `function` but this also could be referring to `RunAshUIAction`.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7741715_74df9cd0",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T21:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712d0c2e_13888672",
       "range": {
         "startLine": 86,
         "startChar": 5,

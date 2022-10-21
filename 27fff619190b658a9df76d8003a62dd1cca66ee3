@@ -688,6 +688,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2af76e3_2b885f2a",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T21:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e7c9c5_61958f43",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e28c2f2_f7abe367",
