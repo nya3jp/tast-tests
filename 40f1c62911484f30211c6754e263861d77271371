@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9053c5b4_7f73a835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-21T04:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46c695a4_51cb2154",
+      "revId": "40f1c62911484f30211c6754e263861d77271371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d492901_b6ceb2f2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-17T16:14:56Z",
       "side": 1,
       "message": "https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "40f1c62911484f30211c6754e263861d77271371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477cf81c_4ac18b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-21T04:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d492901_b6ceb2f2",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b553cf44_3da2410c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-21T04:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade6e824_9aa6f31e",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "40f1c62911484f30211c6754e263861d77271371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b9f75f2_30389484",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0bb53bf_61d303a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-21T04:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9f75f2_30389484",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "40f1c62911484f30211c6754e263861d77271371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "105310d3_a5f01d1e",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-10-17T16:14:56Z",
       "side": 1,
       "message": "Before calling `audioPlayerControls` at all, use `ui.IsNodeFound` to check whether the playlist is expanded or collapsed. If it is expanded, use `audioPlayerControls` to collapse and then expand it. If it is collapsed, use `audioPlayerControls` to expand and then collapse it. Either way, just make two calls to `audioPlayerControls`, each where the error handling is a simple call to `errors.Wrap`.",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 2
+      },
+      "revId": "40f1c62911484f30211c6754e263861d77271371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340c594c_e23a0d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-10-21T04:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105310d3_a5f01d1e",
       "range": {
         "startLine": 388,
         "startChar": 0,
