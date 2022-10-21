@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "05eba933_e9ee7164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-21T08:22:49Z",
+      "side": 1,
+      "message": "nit: add line break before arc.ChromeVirtualKeyboard.unstable",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 83
+      },
+      "revId": "0b692a2cf68400ba4af2cc4816da894207d4120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5d8007a3_19a74fb4",
@@ -14,6 +37,40 @@
       "writtenOn": "2022-10-21T05:39:44Z",
       "side": 1,
       "message": "+tast-owners, PTAL. Thanks!",
+      "revId": "0b692a2cf68400ba4af2cc4816da894207d4120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ef1c02_d075f16e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-21T08:22:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0b692a2cf68400ba4af2cc4816da894207d4120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71766ade_26ef941e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-21T08:22:49Z",
+      "side": 1,
+      "message": "nit: missing .",
       "revId": "0b692a2cf68400ba4af2cc4816da894207d4120e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
