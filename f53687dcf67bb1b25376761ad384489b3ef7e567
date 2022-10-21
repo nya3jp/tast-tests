@@ -111,6 +111,30 @@
       },
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc10991d_6d36eaff",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-21T07:29:39Z",
+      "side": 1,
+      "message": "Unfortunately, this leads again to dependency cycles (uiauto and a testConnection are currently required for the SAML login). To fix this, I currently see two paths:\n1. Rewrite the Microsoft login using plain js queries (similar to how it is done with the current GAIA login possibilities). This matches the current login style and keeps the usage consistent, it will however increase the effort to implement logins with other IdPs. And we need to implement a `CustomLogin` option, which still will give control back to the test (e.g. for fake IdPs as in the [Device Trust tast test](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3871029))\n2. Implement a helper method for SAML login tests where we pass a SAML login callback as well as chrome options, which is implemented similar to that:\n```\n   cr, err :\u003d chrome.New(ctx, options)`\n   callback()\n   WaitForCryptohome()\n   WaitForOOBEConnectionToBeDismissed()\n   RemoveNotifications()\n```\nNew tests could still just run SAML login with one call, logins with new IdPs could be easily added and custom functionality could be injected as well. The usage will be slightly different (no longer `chrome.New(...)`)\n\nIf anyone has other ideas, please let me know 😊",
+      "parentUuid": "82d75cea_11bd72d8",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
