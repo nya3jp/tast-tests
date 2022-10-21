@@ -16,6 +16,46 @@
       "message": "lgtm",
       "revId": "7f29dfa36e6b41e8a6cad337b2697db0be7aa790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8feafe85_92f65efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T20:46:59Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "7f29dfa36e6b41e8a6cad337b2697db0be7aa790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6fde6f_fac805cf",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T20:46:59Z",
+      "side": 1,
+      "message": "nit: Keep the ordering consistent between here and the `Timeline` type definition.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 44
+      },
+      "revId": "7f29dfa36e6b41e8a6cad337b2697db0be7aa790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
