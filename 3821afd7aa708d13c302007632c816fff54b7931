@@ -16,6 +16,52 @@
       "message": "work around for the --wp-list issue. Tested on jacuzzi boards where --wp-list cmd was failing, now appears to work.",
       "revId": "3821afd7aa708d13c302007632c816fff54b7931",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1d247f_0e584795",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-10-21T10:06:17Z",
+      "side": 1,
+      "message": "This condition probably won\u0027t return true because the string expected here comes from stderr, which we might need to extract using StderrPipe.",
+      "range": {
+        "startLine": 475,
+        "startChar": 6,
+        "endLine": 475,
+        "endChar": 81
+      },
+      "revId": "3821afd7aa708d13c302007632c816fff54b7931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9475385_3d1936ab",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-10-21T10:06:17Z",
+      "side": 1,
+      "message": "On a few models [drobit, vilboz14, kohaku, etc.] [stainless link](https://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2022-10-08\u0026last_date\u003d2022-10-21\u0026suite\u003d%5Efaft_unstable%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dFailed+to+enable+AP+write+protection%3A+rpc+error%3A+code+%3D+Unknown+desc+%3D+failed+to+find+all+range+in+--wp-list+output%3A\u0026exclude_reason\u003d%28connecting+to+servo%3A+timeout%7Cservo+does+not+support+pd+role+and+no+rpm+vars+provided%7Cset+power+via+rpm%3A+timeout%7CGot+global+error%3A+connection+to+test+bundle+broken%7Crpm+client+did+not+set+power+state+to+%28ON%7COFF%29%7CEC%3A+No+data+was+sent+from+the+pty%29\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse), we found outputs like this: `start: 0x000000, length: 0x008000`. But, this output seems to change with the ChromeOS builds. We\u0027re guessing it may eventually be unified across models. It may be good to consider both patterns at the moment.",
+      "range": {
+        "startLine": 485,
+        "startChar": 33,
+        "endLine": 485,
+        "endChar": 106
+      },
+      "revId": "3821afd7aa708d13c302007632c816fff54b7931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
