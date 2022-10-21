@@ -16,6 +16,29 @@
       "message": "Please review, thank you!",
       "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b029bd3f_20471b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-21T18:09:35Z",
+      "side": 1,
+      "message": "I wonder do we want to fail the test here? Even the screen recorder is not added successfully, the rest of the test can still probably pass, no?",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 9
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
