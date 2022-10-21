@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4175eb0b_58657c17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "Can you please add more context to the bug why do you need this test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2ddeb7_8ea33492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "Just found that this is a duplicate of existing test. Can you please clarify this moment?",
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48feccda_74c6cc5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "This test is identical to src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/inputs/touch_coldboot.go\n\nWhy do we need to have the same test twice?",
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9fdb4e_cfc8b0c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "please pass ctx explicitly and return error instead of using s.Fatal",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f9c645_27548dae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "nit: gRPC or RPC",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dadb339_d3b2ef6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "can\u0027t you just have 1 string instead of adding 3 strings?",
+      "range": {
+        "startLine": 126,
+        "startChar": 63,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2451cfe3_aab788e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T12:37:00Z",
+      "side": 1,
+      "message": "nit: put this into defer statement just in case if function will panic you will be able to close the channel",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 13
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
