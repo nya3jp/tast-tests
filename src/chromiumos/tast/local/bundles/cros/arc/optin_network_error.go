@@ -81,7 +81,7 @@ func validateCheckNetworkButton(ctx context.Context, cr *chrome.Chrome) error {
 	defer conn.Close()
 
 	var btnDisplay string
-	if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-run-network-tests')?.getComputedStyleValue('display') ?? 'none'", &btnDisplay); err != nil {
+	if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-run-network-tests')?.computedStyleMap().get('display').toString() ?? 'none'", &btnDisplay); err != nil {
 		return errors.Wrap(err, "failed to check the button state")
 	}
 
