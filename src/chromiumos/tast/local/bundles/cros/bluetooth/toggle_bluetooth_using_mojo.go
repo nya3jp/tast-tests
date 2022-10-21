@@ -21,7 +21,7 @@ func init() {
 			"shijinabraham@google.com",
 			"cros-conn-test-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:bluetooth", "bluetooth_flaky"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "bluetoothMojoJSObject",
 	})
