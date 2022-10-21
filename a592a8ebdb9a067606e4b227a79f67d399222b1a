@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f95653_bed32ce9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-21T03:21:00Z",
+      "side": 1,
+      "message": "This ensures the DUT boots in forced clamshell mode even if it is tablet device.\nIt enables running this test on betty VM after removing hwdeps.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a592a8ebdb9a067606e4b227a79f67d399222b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
