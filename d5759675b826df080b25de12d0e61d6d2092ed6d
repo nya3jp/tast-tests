@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9f66be_1cb1a042",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb7bb93_37b2ded5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e530b9d_e7aeed5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6af038_a6b00b78",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab616f5_453ba5cc",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-21T17:33:47Z",
       "side": 1,
       "message": "nit: hyphen",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ad1042_09accc2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab616f5_453ba5cc",
       "range": {
         "startLine": 10,
         "startChar": 49,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a423bd3_820cffb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d74ae5_38cf95af",
+      "range": {
+        "startLine": 12,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c751b335_363cdaa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6721dd7c_c7425911",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85600b87_006d058a",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f52348_90b71f6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85600b87_006d058a",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ddfdc9d_75f275f8",
@@ -152,6 +296,24 @@
       "writtenOn": "2022-10-21T17:33:47Z",
       "side": 1,
       "message": "Consider how the resulting timeline data will be plotted on the TPS Dashboard. If I understand correctly, the horizontal axis will be labeled with numbers indicating elapsed time which will be incorrect after a snapshot is skipped. To avoid that problem, when a snapshot is skipped, can you report NaN to every metric in the timeline? I am not really sure how the plotting functionality handles NaN, but I would hope that it will appear as a gap in the plot.",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "400837d7_6c82649a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "I spoke with Michael about how this would work on the dashboard -- we agreed that just skipping the point entirely would be better. Mainly, we don\u0027t want broken line graphs, and would rather interpolate between each point if there was a small skip, especially since the differences would just be between 5 and 10 seconds. Additionally, the charting library can easily handle the variations in the x values, so that wouldn\u0027t be an issue.",
+      "parentUuid": "1ddfdc9d_75f275f8",
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -214,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "631f2ec1_61770b2a",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a85817c_9e12ca57",
+      "range": {
+        "startLine": 197,
+        "startChar": 38,
+        "endLine": 197,
+        "endChar": 43
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7122b912_e9ab8dd1",
@@ -227,6 +413,30 @@
       "writtenOn": "2022-10-21T17:33:47Z",
       "side": 1,
       "message": "Instead of doing this, add `Timeline.enableGracePeriod` and expose the functionality by adding a corresponding `NewTimelineOption`.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 92
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d847c5_10b5e1f9",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7122b912_e9ab8dd1",
       "range": {
         "startLine": 191,
         "startChar": 0,
@@ -260,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b7fbac_214b6309",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0a0f3c_62523e4a",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a9caec_44a8878d",
@@ -273,6 +507,30 @@
       "writtenOn": "2022-10-21T17:33:47Z",
       "side": 1,
       "message": "Check `t.enableGracePeriod` instead of `t.snapshotsSkipped \u003e 0`. That way, if the metric is absent, it will mean that there was no grace period, while if the metric is reported as `0`, it will mean that there was a grace period but no snapshots were skipped. That is a good distinction.",
+      "range": {
+        "startLine": 281,
+        "startChar": 4,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "865811a7_fe3d4542",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a9caec_44a8878d",
       "range": {
         "startLine": 281,
         "startChar": 4,
@@ -332,6 +590,24 @@
       "side": 1,
       "message": "\u003e since we use a prefix, I\u0027d get something like TPS.snapshotsSkipped and Power.snapshotsSkipped\n\nYep, I mean we should record `snapshotsSkipped` from different timeline with grace period enabled under different names.",
       "parentUuid": "8021c241_3ef1db26",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f4b119_f5477b4f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T20:33:48Z",
+      "side": 1,
+      "message": "Spoke offline; basically, we already pass in the prefix into the timeline, so they will already be saved under different names.",
+      "parentUuid": "c0778c39_522df037",
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
