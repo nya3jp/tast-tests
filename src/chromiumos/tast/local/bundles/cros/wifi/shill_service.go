@@ -1993,7 +1993,7 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 	}
 	// We expect that the hostname property below could be not there yet.
 	// If that's the case, the default value is set as an empty string.
-	oldHostname, err := prop.GetString(shillconst.DHCPPropertyHostname)
+	oldHostname, err := prop.GetString(shillconst.ManagerPropertyDHCPHostname)
 	if err != nil {
 		oldHostname = ""
 	}
@@ -2004,7 +2004,7 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 			// No need of restore.
 			return
 		}
-		if err := m.SetProperty(ctx, shillconst.DHCPPropertyHostname, oldHostname); err != nil {
+		if err := m.SetProperty(ctx, shillconst.ManagerPropertyDHCPHostname, oldHostname); err != nil {
 			testing.ContextLogf(ctx, "Failed to restore DHCP hostname to %q: %v", oldHostname, err)
 		}
 	}(ctx)
@@ -2013,7 +2013,7 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 
 	hostname := req.Props.Hostname
 	if oldHostname != hostname {
-		if err := m.SetProperty(ctx, shillconst.DHCPPropertyHostname, hostname); err != nil {
+		if err := m.SetProperty(ctx, shillconst.ManagerPropertyDHCPHostname, hostname); err != nil {
 			return nil, errors.Wrapf(err, "failed to set DHCP hostname to %q", hostname)
 		}
 	}
