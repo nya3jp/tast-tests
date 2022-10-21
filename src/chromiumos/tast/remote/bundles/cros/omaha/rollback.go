@@ -32,7 +32,7 @@ func init() {
 func Rollback(ctx context.Context, s *testing.State) {
 	state := s.FixtValue().(*params.FixtData)
 
-	chromeOSStableInt := state.Config.ChromeOSVersionFromMilestone[state.Config.NextStableChrome]
+	chromeOSStableInt := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentChromeOSStable()]
 	chromeOSStable := strconv.FormatInt(int64(chromeOSStableInt), 10) + ".0.0"
 
 	req := request.New()
@@ -41,43 +41,45 @@ func Rollback(ctx context.Context, s *testing.State) {
 
 	// Go trough all possible major version pins.
 	for vpMilestone, vpChromeOSVersion := range state.Config.ChromeOSVersionFromMilestone {
-		if vpMilestone > state.Config.CurrentStableChrome {
-			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentStableChrome)
+		if vpMilestone > state.Config.CurrentChromeOSStable() {
+			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentChromeOSStable())
 			continue
 		}
 		vpMilestoneStr := strconv.FormatInt(int64(vpMilestone), 10)
 		vpChromeOSVersionStr := strconv.FormatInt(int64(vpChromeOSVersion), 10)
 
-		// Check that rollback is not sent when not requested.
-		s.Run(ctx, "M"+vpMilestoneStr, func(ctx context.Context, s *testing.State) {
-			ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
-			defer cancel()
+		if vpMilestone != state.Config.CurrentChromeOSStable() {
+			// Check that rollback is not sent when not requested.
+			s.Run(ctx, "M"+vpMilestoneStr+"_no_rollback", func(ctx context.Context, s *testing.State) {
+				ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+				defer cancel()
 
-			requestApp.UpdateCheck.TargetVersionPrefix = vpChromeOSVersionStr
-			requestApp.UpdateCheck.RollbackAllowed = false
-			req.Apps = []request.RequestApp{requestApp}
+				requestApp.UpdateCheck.TargetVersionPrefix = vpChromeOSVersionStr
+				requestApp.UpdateCheck.RollbackAllowed = false
+				req.Apps = []request.RequestApp{requestApp}
 
-			res, err := request.Send(ctx, req, "M"+vpMilestoneStr)
-			if err != nil {
-				s.Fatal("Failed to send request: ", err)
-			}
-
-			if err := res.ValidateUpdateResponse(); err == nil {
-				if res.App.UpdateCheck.Rollback {
-					s.Error("Response is an actual rollback")
+				res, err := request.Send(ctx, req, "M"+vpMilestoneStr+"_no_rollback")
+				if err != nil {
+					s.Fatal("Failed to send request: ", err)
 				}
 
-				if chromeVersion, err := res.ChromeVersion(); err != nil {
-					s.Error("Got an update to an older version without requesting rollback, failed to get version: ", err)
-				} else {
-					s.Error("Got an update to an older version without requesting rollback: ", chromeVersion)
-				}
+				if err := res.ValidateUpdateResponse(); err == nil {
+					if res.App.UpdateCheck.Rollback {
+						s.Error("Response is an actual rollback")
+					}
 
-			}
-		})
+					if chromeVersion, err := res.ChromeVersion(); err != nil {
+						s.Error("Got an update to an older version without requesting rollback, failed to get version: ", err)
+					} else {
+						s.Error("Got an update to an older version without requesting rollback: ", chromeVersion)
+					}
+
+				}
+			})
+		}
 
 		// Rollback only supports the last 4 milestones.
-		if vpMilestone < state.Config.CurrentStableChrome-4 {
+		if vpMilestone < state.Config.CurrentChromeOSStable()-4 {
 			s.Logf("Not testing version %d, too old", vpMilestone)
 			continue
 		}
