@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37da19f2_4ba2dcb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-21T18:52:26Z",
+      "side": 1,
+      "message": "Hello all! This change builds on the existing change and makes the test run against both open and secured networks. Please take a look whenever you have time!",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
