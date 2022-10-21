@@ -16,6 +16,24 @@
       "message": "I think this is too few, and this set of boards is not particularly interesting to us. We really need many more boards and quite a variety. Maybe we can run the tests for a little bit and then disable specific boards if there\u0027s a problem?\n\nHere\u0027s a list of boards:\nhttps://dashboards.corp.google.com/_2124afa9_918f_4833_b070_7f2c41800d6e_prod",
       "revId": "b31420e34e736be2b2ab723f0267db2c59235038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165fcf66_99d0d91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-21T01:11:28Z",
+      "side": 1,
+      "message": "I removed the omaha part and added link to the relevant bug.",
+      "parentUuid": "a906add7_0e44ed47",
+      "revId": "b31420e34e736be2b2ab723f0267db2c59235038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
