@@ -316,6 +316,24 @@
       "parentUuid": "dc8d3cce_fd7dfb06",
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0778c39_522df037",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-21T17:57:34Z",
+      "side": 1,
+      "message": "\u003e since we use a prefix, I\u0027d get something like TPS.snapshotsSkipped and Power.snapshotsSkipped\n\nYep, I mean we should record `snapshotsSkipped` from different timeline with grace period enabled under different names.",
+      "parentUuid": "8021c241_3ef1db26",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
