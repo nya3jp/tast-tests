@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af26adf5_6bc8adc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-10-21T07:17:58Z",
+      "side": 1,
+      "message": "Bohdan, is this a test for the LURS CUJ?",
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
