@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afe108c_b67c1dd2",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-21T16:37:52Z",
+      "side": 1,
+      "message": "I am not sure whether we should report `snapshotsSkipped` as part of the collected metrics. Maybe make `snapshotsSkipped` public and let the owner of `perf.Timeline` decide what to do with it.\n\nAvery, WDYT?",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a85817c_9e12ca57",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-21T16:37:52Z",
+      "side": 1,
+      "message": "nit: Document bool args, here and L205.",
+      "range": {
+        "startLine": 197,
+        "startChar": 38,
+        "endLine": 197,
+        "endChar": 43
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8d3cce_fd7dfb06",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-21T16:37:52Z",
+      "side": 1,
+      "message": "If we keep the current way of letting `perf.Timeline` to report skipped count in metrics, we need to use the added `prefix` to differentiate this ( `powerTimeline`) with `tpsTimeline` since both could have skipped counts.",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
