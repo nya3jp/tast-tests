@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de6eb341_d035fa76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-21T16:25:34Z",
+      "side": 1,
+      "message": "When this test was written only the password type was supported. I named the test this way assuming there would be another one for each type. But now looking at the general test coverage I think we can cover the \u0027existing VK when USS enabled\u0027 case with one test. I think I should change the name of the test with a follow up CL and drop password from the name, but didn\u0027t want to change the name of the file in this CL because otherwise the entire file is shown to be a new file and reviewing becomes harder.\nThe purpose of this test is to cover each AuthFactor API with VK when USS is enabled. But for AddAuthFactor initial factor and second factor are handled differently, and testing RemoveAuthFactor is only possible with two factors. PIN is included to cover adding a second factor, and some of the PIN steps are added to ensure this operation happens correctly. I am open to suggestions do you think some of the steps are not needed?",
+      "parentUuid": "2da694d0_1dbe366a",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "5156f54320c84dba2914b0c26489060838e91a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6859d50_b39009a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-21T00:42:11Z",
       "side": 1,
       "message": "nit: This duplicates the global constant with the same name.",
+      "revId": "5156f54320c84dba2914b0c26489060838e91a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bc9187_823c0bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-21T16:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6859d50_b39009a7",
       "revId": "5156f54320c84dba2914b0c26489060838e91a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
