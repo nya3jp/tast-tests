@@ -16,6 +16,138 @@
       "message": "LGTM",
       "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa385e1_56f8afa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "Thanks for working on this new Tast test.",
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e50bfc_ebb2a4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "Nit: ChildTeenApp",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6a067e_e9f6d07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "Nit: Verify that the Child \u0026 Teen version of the Family Link app is launched.",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67aa29eb_251cdeff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "This test currently doesn\u0027t work (it fails at \"Failed to create the instance of ARC\" below). You need to use the fixture familyLinkUnicornArcPolicyLogin for this test to work. ARC doesn\u0027t initialize properly for Family Link (Unicorn and Geller) users without policy.",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 39
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2900d76_822256ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "Installing the Family Link app can take quite some time, so you may want to extend this timeout.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f64baf_c5eb28bd",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-21T06:50:49Z",
+      "side": 1,
+      "message": "Thanks for creating this new fixture for Geller users. Now rename it to familyLinkGellerArcPolicyLogin, similar to familyLinkUnicornArcPolicyLogin, and add a persistent parent fixture.\n\nYou will need to create a new parent fixture called PersistentGellerArc, similar to PersistentFamilyLinkARC [1], except use the family.gellerEmail credentials.\n\nYou also need to add a new entry for the new PersistentGellerArc fixture here [2].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/persistent.go;l\u003d75?q\u003df:persistent.go\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/fixture/policyutil.go;l\u003d76?q\u003dPersistentFamilyLinkARC",
+      "range": {
+        "startLine": 145,
+        "startChar": 13,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
