@@ -34,6 +34,24 @@
       "parentUuid": "380eb129_7a119f00",
       "revId": "6967ae1c07d4a5ec7b4e9cd61051eae9e1454e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef390dc_75e55cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-21T00:26:42Z",
+      "side": 1,
+      "message": "Marking as WIP to figure out a reliable way to set #lacros-stability with live versions of Lacros that are compatible with Ash. See b/254362091.",
+      "parentUuid": "180b0e5b_bcbe721d",
+      "revId": "6967ae1c07d4a5ec7b4e9cd61051eae9e1454e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
