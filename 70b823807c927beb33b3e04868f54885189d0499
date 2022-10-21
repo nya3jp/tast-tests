@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ebfad2_62703f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-21T17:57:54Z",
+      "side": 1,
+      "message": "how about using for `for lacrosChannel, lacrosVersion :\u003d range compatibleChannels {`",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
