@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0d2a3e7_2ad3e8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T02:38:08Z",
+      "side": 1,
+      "message": "Good point, I don\u0027t think we want this test on those devices.\nMaybe we want to rename this dep.\nbtw, does moblab has chrome and arc?",
+      "parentUuid": "5a6fd805_c30d5cac",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ce6124_b0e890c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
         "patchSetId": 2
