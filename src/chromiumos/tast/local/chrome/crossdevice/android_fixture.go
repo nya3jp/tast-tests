@@ -61,6 +61,10 @@ const (
 	crossDevicePerBoxUsername11 = "crossdevice.PerBoxUser11"
 	crossDevicePerBoxUsername12 = "crossdevice.PerBoxUser12"
 	crossDevicePerBoxUsername13 = "crossdevice.PerBoxUser13"
+	crossDevicePerBoxUsername14 = "crossdevice.PerBoxUser14"
+	crossDevicePerBoxUsername15 = "crossdevice.PerBoxUser15"
+	crossDevicePerBoxUsername16 = "crossdevice.PerBoxUser16"
+	crossDevicePerBoxUsername17 = "crossdevice.PerBoxUser17"
 	crossDevicePerBoxPassword   = "crossdevice.PerBoxPassword"
 )
 
@@ -91,6 +95,10 @@ func init() {
 			crossDevicePerBoxUsername11,
 			crossDevicePerBoxUsername12,
 			crossDevicePerBoxUsername13,
+			crossDevicePerBoxUsername14,
+			crossDevicePerBoxUsername15,
+			crossDevicePerBoxUsername16,
+			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -125,6 +133,10 @@ func init() {
 			crossDevicePerBoxUsername11,
 			crossDevicePerBoxUsername12,
 			crossDevicePerBoxUsername13,
+			crossDevicePerBoxUsername14,
+			crossDevicePerBoxUsername15,
+			crossDevicePerBoxUsername16,
+			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -158,6 +170,10 @@ func init() {
 			crossDevicePerBoxUsername11,
 			crossDevicePerBoxUsername12,
 			crossDevicePerBoxUsername13,
+			crossDevicePerBoxUsername14,
+			crossDevicePerBoxUsername15,
+			crossDevicePerBoxUsername16,
+			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -269,42 +285,54 @@ func GetLoginCredentials(ctx context.Context, s *testing.FixtState, feature Feat
 	}
 	password = crossDevicePerBoxPassword
 	switch ipaddress {
+	// chromeos15-row3-metro2-unit3 (asurada|corsola)
+	case "100.115.21.78", "100.115.21.79":
+		username = crossDevicePerBoxUsername14
+	// chromeos15-row3-metro4-unit3 (asurada|sentry)
+	case "172.27.213.21", "172.27.213.22":
+		username = crossDevicePerBoxUsername15
 	// chromeos15-row3-metro1-unit2 (atlas|atlas)
 	case "100.115.21.13", "100.115.21.14":
 		username = crossDevicePerBoxUsername1
-	// chromeos15-row3-metro2-unit4 (jacuzzi|jacuzzi)
-	case "100.115.21.89", "100.115.21.90":
-		username = crossDevicePerBoxUsername2
-	// chromeos15-row3-metro3-unit1 (atlas|cherry)
-	case "172.27.212.175", "172.27.212.176":
-		username = crossDevicePerBoxUsername3
-	// chromeos15-row3-metro3-unit2 (grunt|soraka)
-	case "172.27.212.186", "172.27.212.187":
-		username = crossDevicePerBoxUsername4
 	// chromeos15-row3-metro3-unit3 (atlas|atlas)
 	case "172.27.212.197", "172.27.212.198":
 		username = crossDevicePerBoxUsername5
-	// chromeos15-row3-metro3-unit4 (octopus|strongbad)
-	case "172.27.212.208", "172.27.212.209":
-		username = crossDevicePerBoxUsername6
-	// chromeos15-row3-metro4-unit1 (grunt|scarlet)
-	case "172.27.212.253", "172.27.212.254":
-		username = crossDevicePerBoxUsername7
-	// chromeos15-row3-metro4-unit2 (hatch|octopus)
-	case "172.27.213.10", "172.27.213.11":
-		username = crossDevicePerBoxUsername8
-	// chromeos15-row3-metro1-unit1 (coral|sarien)
-	case "100.115.21.2", "100.115.21.3":
-		username = crossDevicePerBoxUsername9
-	// chromeos15-row3-metro4-unit4 (kukui|puff)
-	case "172.27.213.32", "172.27.213.33":
-		username = crossDevicePerBoxUsername10
-	// chromeos15-row3-metro1-unit4 (guybrush|kevin)
-	case "100.115.21.34", "100.115.21.40":
-		username = crossDevicePerBoxUsername11
+	// chromeos15-row3-metro3-unit1 (atlas|cherry)
+	case "172.27.212.175", "172.27.212.176":
+		username = crossDevicePerBoxUsername3
 	// chromeos15-row3-metro1-unit3 (brya|hana)
 	case "100.115.21.24", "100.115.21.30":
 		username = crossDevicePerBoxUsername12
+	// chromeos15-row3-metro1-unit1 (coral|sarien)
+	case "100.115.21.2", "100.115.21.3":
+		username = crossDevicePerBoxUsername9
+	// chromeos15-row5-rack12-unit7 (dedede|herobrine)
+	case "100.71.236.135", "100.71.236.141":
+		username = crossDevicePerBoxUsername16
+	// chromeos15-row3-metro4-unit1 (grunt|scarlet)
+	case "172.27.212.253", "172.27.212.254":
+		username = crossDevicePerBoxUsername7
+	// chromeos15-row3-metro3-unit2 (grunt|soraka)
+	case "172.27.212.186", "172.27.212.187":
+		username = crossDevicePerBoxUsername4
+	// chromeos15-row3-metro1-unit4 (guybrush|kevin)
+	case "100.115.21.34", "100.115.21.40":
+		username = crossDevicePerBoxUsername11
+	// chromeos15-row3-metro2-unit2 (guybrush|kukui)
+	case "100.115.21.67", "100.115.21.68":
+		username = crossDevicePerBoxUsername17
+	// chromeos15-row3-metro4-unit2 (hatch|octopus)
+	case "172.27.213.10", "172.27.213.11":
+		username = crossDevicePerBoxUsername8
+	// chromeos15-row3-metro2-unit4 (jacuzzi|jacuzzi)
+	case "100.115.21.89", "100.115.21.90":
+		username = crossDevicePerBoxUsername2
+	// chromeos15-row3-metro4-unit4 (kukui|puff)
+	case "172.27.213.32", "172.27.213.33":
+		username = crossDevicePerBoxUsername10
+	// chromeos15-row3-metro3-unit4 (octopus|strongbad)
+	case "172.27.212.208", "172.27.212.209":
+		username = crossDevicePerBoxUsername6
 	// chromeos15-row3-metro2-unit1 (volteer|zork)
 	case "100.115.21.56", "100.115.21.57":
 		username = crossDevicePerBoxUsername13
