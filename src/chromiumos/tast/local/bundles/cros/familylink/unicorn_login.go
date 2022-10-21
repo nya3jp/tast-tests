@@ -24,12 +24,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
-		VarDeps: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.unicornEmail",
-			"family.unicornPassword",
-		},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "familyLinkUnicornLogin",
@@ -45,6 +39,7 @@ func init() {
 func UnicornLogin(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")
@@ -52,7 +47,7 @@ func UnicornLogin(ctx context.Context, s *testing.State) {
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
 	}
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.unicornEmail"), s.OutDir()); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), childCreds.User, s.OutDir()); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
