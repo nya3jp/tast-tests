@@ -73,6 +73,30 @@
       },
       "revId": "11afe112ee29f01e24ae2b0faf79b12b903e6f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "331df186_9eecca98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_login_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-21T07:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d043eec8_acca30ef",
+      "range": {
+        "startLine": 47,
+        "startChar": 39,
+        "endLine": 47,
+        "endChar": 59
+      },
+      "revId": "11afe112ee29f01e24ae2b0faf79b12b903e6f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
