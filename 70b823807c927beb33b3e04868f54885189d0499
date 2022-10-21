@@ -99,6 +99,30 @@
       },
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92917f02_2e0c9a12",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-21T22:29:17Z",
+      "side": 1,
+      "message": "Filed b/254919641 to address that in a follow up after this change. It would be okay to do it later since currently there seems to be no version differences between architectures (yet) with the same versions pushed to all at once.",
+      "parentUuid": "794c222d_3a26f0cc",
+      "range": {
+        "startLine": 44,
+        "startChar": 75,
+        "endLine": 44,
+        "endChar": 81
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
