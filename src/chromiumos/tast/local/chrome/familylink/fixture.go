@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -24,28 +25,53 @@ import (
 const resetTimeout = 30 * time.Second
 
 // NewFamilyLinkFixture creates a new implementation of the Family Link fixture.
-func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
+func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword string, opts ...chrome.Option) testing.FixtureImpl {
 	return &familyLinkFixture{
 		opts:           opts,
 		parentUser:     parentUser,
 		parentPassword: parentPassword,
 		childUser:      childUser,
 		childPassword:  childPassword,
-		isOwner:        isOwner,
+		isOwner:        true,
 		isLacros:       false,
 	}
 }
 
 // NewFamilyLinkFixtureLacros creates a new implementation of the Family Link fixture for Lacros.
-func NewFamilyLinkFixtureLacros(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
+func NewFamilyLinkFixtureLacros(parentUser, parentPassword, childPool string, opts ...chrome.Option) testing.FixtureImpl {
 	return &familyLinkFixture{
 		opts:           opts,
 		parentUser:     parentUser,
 		parentPassword: parentPassword,
-		childUser:      childUser,
-		childPassword:  childPassword,
-		isOwner:        isOwner,
+		childPool:      childPool,
+		isOwner:        true,
 		isLacros:       true,
+	}
+}
+
+// NewFamilyLinkFixtureNonOwner creates a new implementation of the Family Link fixture
+// that logs in with regular device owner and Family Link non-owner.
+func NewFamilyLinkFixtureNonOwner(parentUser, parentPassword, childPool string, opts ...chrome.Option) testing.FixtureImpl {
+	return &familyLinkFixture{
+		opts:           opts,
+		parentUser:     parentUser,
+		parentPassword: parentPassword,
+		childPool:      childPool,
+		isOwner:        false,
+		isLacros:       false,
+	}
+}
+
+// NewFamilyLinkFixturePool creates a new implementation of the Family Link fixture
+// with an account pool.
+func NewFamilyLinkFixturePool(parentUser, parentPassword, childPool string, opts ...chrome.Option) testing.FixtureImpl {
+	return &familyLinkFixture{
+		opts:           opts,
+		parentUser:     parentUser,
+		parentPassword: parentPassword,
+		childPool:      childPool,
+		isOwner:        true,
+		isLacros:       false,
 	}
 }
 
@@ -54,12 +80,11 @@ func init() {
 		Name:     "familyLinkUnicornLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixturePool("family.unicornAccountPoolParentEmail", "family.unicornAccountPoolParentPassword", "family.unicornAccountPool"),
 		Vars: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.unicornEmail",
-			"family.unicornPassword",
+			"family.unicornAccountPoolParentEmail",
+			"family.unicornAccountPoolParentPassword",
+			"family.unicornAccountPool",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -72,12 +97,11 @@ func init() {
 		Name:     "familyLinkUnicornLoginWithLacros",
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"galenemco@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixtureLacros("family.unicornAccountPoolParentEmail", "family.unicornAccountPoolParentPassword", "family.unicornAccountPool"),
 		Vars: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.unicornEmail",
-			"family.unicornPassword",
+			"family.unicornAccountPoolParentEmail",
+			"family.unicornAccountPoolParentPassword",
+			"family.unicornAccountPool",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -90,13 +114,12 @@ func init() {
 		Name:     "familyLinkUnicornLoginNonOwner",
 		Desc:     "Supervised Family Link user login with Unicorn account as second user on device",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false),
+		Impl:     NewFamilyLinkFixtureNonOwner("family.unicornAccountPoolParentEmail", "family.unicornAccountPoolParentPassword", "family.unicornAccountPool"),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.unicornEmail",
-			"family.unicornPassword",
+			"family.unicornAccountPoolParentEmail",
+			"family.unicornAccountPoolParentPassword",
+			"family.unicornAccountPool",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -109,10 +132,11 @@ func init() {
 		Name:     "familyLinkGellerLogin",
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true),
+		// TODO(b/250089099): Create an account pool for Gellers as well.
+		Impl: NewFamilyLinkFixture("family.hohEmail", "family.hohPassword", "family.gellerEmail", "family.gellerPassword"),
 		Vars: []string{
-			"family.parentEmail",
-			"family.parentPassword",
+			"family.hohEmail",
+			"family.hohPassword",
 			"family.gellerEmail",
 			"family.gellerPassword",
 		},
@@ -127,7 +151,7 @@ func init() {
 		Name:     "familyLinkUnicornArcLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported()),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", chrome.ARCSupported()),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
@@ -145,7 +169,7 @@ func init() {
 		Name:     "familyLinkParentArcLogin",
 		Desc:     "Non-supervised Family Link user login with regular parent account and ARC support",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "", "", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "", "", chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
@@ -161,12 +185,11 @@ func init() {
 		Name:     "familyLinkUnicornPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and policy setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixturePool("family.unicornAccountPoolParentEmail", "family.unicornAccountPoolParentPassword", "family.unicornAccountPool"),
 		Vars: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.unicornEmail",
-			"family.unicornPassword",
+			"family.unicornAccountPoolParentEmail",
+			"family.unicornAccountPoolParentPassword",
+			"family.unicornAccountPool",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -180,7 +203,7 @@ func init() {
 		Name:     "familyLinkUnicornArcPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support with fakeDMS setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
@@ -203,6 +226,7 @@ type familyLinkFixture struct {
 	policyUser     string
 	parentUser     string
 	parentPassword string
+	childPool      string
 	childUser      string
 	childPassword  string
 	isOwner        bool
@@ -222,6 +246,9 @@ type FixtData struct {
 
 	// PolicyUser is the user account used in the policy blob.
 	policyUser string
+
+	// ChildCreds is the credentials of the Family Link account.
+	childCreds *chrome.Creds
 }
 
 // Chrome implements the HasChrome interface.
@@ -268,11 +295,26 @@ func (f FixtData) PolicyUser() string {
 	return f.policyUser
 }
 
+// HasChildCreds is an interface for fixtures that log in as a Family Link
+// account. It allows retrieval of the underlying child user credentials.
+type HasChildCreds interface {
+	ChildCreds() *chrome.Creds
+}
+
+// ChildCreds implements the HasChildCreds interface.
+func (f FixtData) ChildCreds() *chrome.Creds {
+	if f.childCreds == nil {
+		panic("ChildCreds is called with nil childCreds instance")
+	}
+	return f.childCreds
+}
+
 // Check at compile-time that FixtData implements the appropriate interfaces.
 var _ chrome.HasChrome = FixtData{}
 var _ HasTestConn = FixtData{}
 var _ fakedms.HasFakeDMS = FixtData{}
 var _ HasPolicyUser = FixtData{}
+var _ HasChildCreds = FixtData{}
 
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	parentUser := s.RequiredVar(f.parentUser)
@@ -282,16 +324,26 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	// disabled for supervised users. Always force enable them in supervised users tests.
 	f.opts = append(f.opts, chrome.ExtraArgs("--force-devtools-available"))
 
-	isChildLogin := len(f.childUser) > 0 && len(f.childPassword) > 0
-	if isChildLogin {
+	var childCreds *chrome.Creds
+	if len(f.childPool) > 0 {
+		creds, err := chrome.PickRandomCreds(s.RequiredVar(f.childPool))
+		if err != nil {
+			s.Fatalf("Failed to parse user creds from pool %s: %v", f.childPool, err)
+		}
+		childCreds = &creds
+	} else if len(f.childUser) > 0 && len(f.childPassword) > 0 {
 		childUser := s.RequiredVar(f.childUser)
 		childPass := s.RequiredVar(f.childPassword)
-		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{
-			User:       childUser,
-			Pass:       childPass,
-			ParentUser: parentUser,
-			ParentPass: parentPass,
-		}))
+		childCreds = &chrome.Creds{
+			User: childUser,
+			Pass: childPass,
+		}
+	}
+	isChildLogin := childCreds != nil
+	if isChildLogin {
+		childCreds.ParentUser = parentUser
+		childCreds.ParentPass = parentPass
+		f.opts = append(f.opts, chrome.GAIALogin(*childCreds))
 	} else {
 		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{
 			User: parentUser,
@@ -307,9 +359,15 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 
 		if isChildLogin {
-			f.policyUser = s.RequiredVar(f.childUser)
+			f.policyUser = childCreds.User
 		} else {
 			f.policyUser = parentUser
+		}
+
+		fdms.SetPersistentPolicyUser(&f.policyUser)
+		// Write the policy blob with persistent values set as the one set by FakeDMS is the default.
+		if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
+			s.Fatal("Failed to write policies to FakeDMS: ", err)
 		}
 
 		f.opts = append(f.opts, chrome.DMSPolicy(fdms.URL))
@@ -370,6 +428,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		fakeDMS:    fdms,
 		testConn:   tconn,
 		policyUser: f.policyUser,
+		childCreds: childCreds,
 	}
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
@@ -380,6 +439,9 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
+	if f.fdms != nil {
+		f.fdms.SetPersistentPolicyUser(nil)
+	}
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}

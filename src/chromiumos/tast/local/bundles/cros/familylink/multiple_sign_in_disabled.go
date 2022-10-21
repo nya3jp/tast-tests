@@ -28,7 +28,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		VarDeps:      []string{"family.unicornEmail"},
 		Fixture:      "familyLinkUnicornLoginNonOwner",
 	})
 }
@@ -38,6 +37,7 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	// device: a regular owner and a Unicorn secondary user. The
 	// Unicorn user is logged in.
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
@@ -49,7 +49,7 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	defer quicksettings.Hide(ctx, tconn)
 
 	s.Log("Attempting to add multiple profiles")
-	userEmail := s.RequiredVar("family.unicornEmail")
+	userEmail := childCreds.User
 	s.Logf("Looking for user email %q", userEmail)
 	userProfileIcon := nodewith.NameContaining(userEmail).Role(role.Button)
 	if err := ui.WaitUntilExists(userProfileIcon)(ctx); err != nil {

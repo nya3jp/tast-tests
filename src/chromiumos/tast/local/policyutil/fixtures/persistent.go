@@ -56,15 +56,10 @@ func init() {
 		Parent:          fixture.FakeDMSEnrolled,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.PersistentFamilyLink,
-		Desc:     "Fixture setting persistent policy user for a Family Link account",
-		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
-		Vars: []string{
-			"family.unicornEmail",
-		},
-		Impl: &persistentFixture{
-			policyUserVar: "family.unicornEmail",
-		},
+		Name:            fixture.PersistentFamilyLink,
+		Desc:            "Fixture setting persistent policy user for a Family Link account",
+		Contacts:        []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl:            &persistentFixture{},
 		SetUpTimeout:    5 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
