@@ -52,6 +52,29 @@
       "parentUuid": "6349f308_3c54f839",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8eee8c_3ac81f3a",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-21T22:01:20Z",
+      "side": 1,
+      "message": "+Sven to confirm if this API works for all lacros build artifacts or not. \n\nIn another email thread, I just noticed that \u0027lacros_arm64\u0027 is used as another platform in the API like:\nhttps://versionhistory.googleapis.com/v1/chrome/platforms/lacros_arm64/channels/all/versions/all/releases\n\nIs arm64 going to have independent release channels as a separate platform?",
+      "range": {
+        "startLine": 44,
+        "startChar": 75,
+        "endLine": 44,
+        "endChar": 81
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
