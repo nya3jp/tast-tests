@@ -16,6 +16,184 @@
       "message": "Thank you for the review",
       "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da3eb93_5f03accc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "holdingspace LGTM % comments\n\nPlease obtain CR+1 from a feature owner for scanapp changes",
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5442cc_d5580619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "nit: files",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b0b36a4_1b7ea582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "Is this used?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e195140f_57166319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "Does this need to be defined outside the test body?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada7faa6_7c27c935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbda46f_28a1fb0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "nit: remove, implementation detail",
+      "range": {
+        "startLine": 116,
+        "startChar": 64,
+        "endLine": 116,
+        "endChar": 67
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16472a2_4f4fa6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "nit: remove, implementation detail",
+      "range": {
+        "startLine": 120,
+        "startChar": 58,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a508a9_87bce73a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-21T18:57:34Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 43
+      },
+      "revId": "ba9a6ae7e3b2012b1c4c1e97f21e685f188bc512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
