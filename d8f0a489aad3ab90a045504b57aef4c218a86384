@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fecf1c12_d61c6891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:28:12Z",
+      "side": 1,
+      "message": "I don\u0027t know much about js but Look good to tast.",
+      "revId": "d8f0a489aad3ab90a045504b57aef4c218a86384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
