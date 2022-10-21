@@ -106,6 +106,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e73f1712_9fbe0fd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T13:08:11Z",
+      "side": 1,
+      "message": "You must wait for the command to finish https://pkg.go.dev/os/exec#Cmd.Start\n\ncheck https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/intel/touch_basics_check.go;l\u003d174?q\u003ddeviceScanner\n\n\nplease modify https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/inputs/touch_coldboot.go;l\u003d111?q\u003ddeviceScanner in a separate CL",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69877248_62c48195",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-21T13:08:11Z",
+      "side": 1,
+      "message": "I think you have to respect ctx in this function",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 18
+      },
+      "revId": "80ff353f64d50304864318a514cb82ddaac960a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dadb339_d3b2ef6f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/touchpad_coldboot.go",
         "patchSetId": 1
