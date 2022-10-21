@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50bb410_a8430dcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "This should be 2022. For any changes to file, we should update this.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98d035f_7f56b791",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "this seems repeated, why not make this an array ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c44a4a_12d8da9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "How the test implementation is verifying what is being said here ? Looks like the implementation does it is configures two network and connects one by one. I was expecting that once a connection to SSID is performed, it connects to the AP with best configuration. And the implementation does not seem like that ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 217
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890aec20_9003e3ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "why not replace this with an instance of multiauthParam structure instance ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 57,
+        "endLine": 46,
+        "endChar": 141
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed8dcd6_8fee4bb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "Any specific reason to not have a defer function to disconnect from AP1 ?",
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0a30cd_bfae75f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-21T20:52:03Z",
+      "side": 1,
+      "message": "nit: substitute by \"and it\u0027s leakage\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 58,
+        "endLine": 111,
+        "endChar": 63
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
