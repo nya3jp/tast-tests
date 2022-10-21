@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08b75fb_2c6af18b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T00:51:09Z",
+      "side": 1,
+      "message": "Thanks! Marking as resolved.",
+      "parentUuid": "65bf811c_6545a1c8",
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de312d05_1c4a265d",
@@ -111,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc90de32_bffbcebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T00:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de312d05_1c4a265d",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5936b7e_d91a8d0f",
@@ -124,6 +166,30 @@
       "writtenOn": "2022-10-18T03:44:03Z",
       "side": 1,
       "message": "nit: be added where ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e675918_60223ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T00:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5936b7e_d91a8d0f",
       "range": {
         "startLine": 23,
         "startChar": 12,
@@ -171,6 +237,30 @@
       "side": 1,
       "message": "Very short, you won\u0027t be able catch it manually, but because this is through code, there might be a race if we don\u0027t poll.\n\nI\u0027ll update the comment.",
       "parentUuid": "424c6f3e_b1769ee2",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "caa9b58cb556965edf41f06e16be79a40106565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24999a2_34fd0b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T00:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec61e65_8fea8e21",
       "range": {
         "startLine": 80,
         "startChar": 11,
