@@ -267,3 +267,32 @@ func (d *dnsmasq) Stop(ctx context.Context) error {
 func (d *dnsmasq) WriteLogs(ctx context.Context, f *os.File) error {
 	return d.env.ReadAndWriteLogIfExists(d.env.ChrootPath(logPath), f)
 }
+
+type lease struct {
+	Hostname string // hostname claimed by the client
+}
+
+// GetLeases returns the leases issued by dnsmasq.
+func (d *dnsmasq) GetLeases(ctx context.Context) ([]lease, error) {
+	s, err := os.ReadFile(d.env.ChrootPath(leaseFilePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read leases file")
+	}
+
+	var leases []lease
+	lines := strings.Split(string(s), "\n")
+	for _, l := range lines {
+		if len(l) == 0 {
+			continue
+		}
+		// Example output:
+		// `1666720187 72:f1:b4:0c:1f:7a 192.168.100.61 test-hostname 01:72:f1:b4:0c:1f:7a`
+		items := strings.Split(l, " ")
+		if len(items) != 5 {
+			return nil, errors.Errorf("unexpected lease line: %s", l)
+		}
+		leases = append(leases, lease{Hostname: items[3]})
+	}
+
+	return leases, nil
+}
