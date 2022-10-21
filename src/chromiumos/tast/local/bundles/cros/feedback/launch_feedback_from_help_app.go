@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -34,8 +35,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 	})
 }
-
-const numberOfHelpLinks = 5
 
 // LaunchFeedbackFromHelpApp verifies launching the Feedback app from
 // the Help app.
@@ -69,33 +68,18 @@ func LaunchFeedbackFromHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Send feedback button: ", err)
 	}
 
-	// Verify Feedback app is launched.
+	// Wait for the Feedback app to launch before closing the Help app.
 	if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}
 
-	// Verify essential elements exist.
-	issueDescriptionInput := nodewith.NameContaining("Description").Role(role.TextField)
-	continueButton := nodewith.Name("Continue").Role(role.Button)
-
-	if err := uiauto.Combine("Verify essential elements exist",
-		ui.WaitUntilExists(issueDescriptionInput),
-		ui.WaitUntilExists(continueButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to find element: ", err)
-	}
-
-	// Close the Help app, otherwise the query for links will return too many results.
+	// Close the Help app, otherwise the query for links in
+	// VerifyFeedbackAppIsLaunched will return too many results.
 	if err := apps.Close(ctx, tconn, apps.Help.ID); err != nil {
 		s.Error("Failed to close the Help app: ", err)
 	}
 
-	// Verify five default help content links exist.
-	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
-	for i := 0; i < numberOfHelpLinks; i++ {
-		item := helpLink.Nth(i)
-		if err := ui.WaitUntilExists(item)(ctx); err != nil {
-			s.Errorf("Failed to find five help links (link %d): %v", i, err)
-		}
+	if err := feedbackapp.VerifyFeedbackAppIsLaunched(ctx, tconn, ui); err != nil {
+		s.Fatal("Failed to verify that the Feedback app is launched: ", err)
 	}
 }
