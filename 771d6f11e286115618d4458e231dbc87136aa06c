@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac6de10_3fe6d4a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-10-21T09:25:43Z",
+      "side": 1,
+      "message": "Great that we\u0027ll soon have the possibility to test DCHP with WPAD in Chrome!\n\nWPAD with DHCP was broken when the NetworkService was added and it\u0027s broken now in Lacros :). It would be great to have a tast test to detect future errors.",
+      "revId": "771d6f11e286115618d4458e231dbc87136aa06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

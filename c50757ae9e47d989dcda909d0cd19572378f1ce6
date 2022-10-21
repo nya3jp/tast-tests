@@ -86,6 +86,30 @@
       },
       "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50cb383_96c99089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_web_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-10-21T09:25:43Z",
+      "side": 1,
+      "message": "WPAD via DHCP is currently broken in Lacros. Ash is sending the WPAD url to Lacros as part of the WPAD settings configuration[1], but Lacros ignores them.\n\nI\u0027ll need to change the NetworkService in Lacros so it can fetch the DHCP WPAD URL via mojo from the Browser (similar to how Ash does it).\n\n\u003e I believe WPAD is not automatically applied right ?\n\nExactly, the proxy needs to be configured to use auto-detect (via UI, policy or extension).\n\n[1]https://source.chromium.org/chromium/chromium/src/+/main:chromeos/crosapi/mojom/network_settings_service.mojom;l\u003d68;drc\u003d95f3e04e349bf59cdf13c4f4d81748a2b392dcaf\n[2]https://source.chromium.org/chromium/chromium/src/+/main:services/network/url_request_context_builder_mojo.cc;l\u003d58;drc\u003d95f3e04e349bf59cdf13c4f4d81748a2b392dcaf",
+      "parentUuid": "4e3f2021_b27b347f",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "c50757ae9e47d989dcda909d0cd19572378f1ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
