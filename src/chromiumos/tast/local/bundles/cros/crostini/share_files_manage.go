@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShareFilesManage,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Test sharing My files with Crostini and manage it by selecting contenxt menu 'Manage Linux Sharing'",
+		Desc:         "Test sharing My files with Crostini and manage it by selecting context menu 'Manage Linux Sharing'",
 		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
