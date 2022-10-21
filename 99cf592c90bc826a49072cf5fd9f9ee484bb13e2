@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b7526f1_e5e615ef",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-21T06:40:59Z",
+      "side": 1,
+      "message": "nit: reflow to 80 characters, it\u0027s a bit to long.",
+      "revId": "99cf592c90bc826a49072cf5fd9f9ee484bb13e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4066d509_c2682746",
         "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
         "patchSetId": 5
@@ -20,6 +37,47 @@
         "endLine": 70,
         "endChar": 27
       },
+      "revId": "99cf592c90bc826a49072cf5fd9f9ee484bb13e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ff5022_96787f4e",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-21T06:40:59Z",
+      "side": 1,
+      "message": "ResetChrome should be safe",
+      "parentUuid": "4066d509_c2682746",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "99cf592c90bc826a49072cf5fd9f9ee484bb13e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c190a10_f66ec954",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-21T06:40:59Z",
+      "side": 1,
+      "message": "nit: Also log before waiting so we know how long it waited for. It will help if it\u0027s unexpectedly stopped by timeouts.",
       "revId": "99cf592c90bc826a49072cf5fd9f9ee484bb13e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

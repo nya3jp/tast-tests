@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc36cf0_98bf5dd3",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-21T06:40:59Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "57cc9f65_47be6a8b",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99bacb40_3e3de11d",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I can do polling to get around it for now, but is there any chance to investigate a root cause (b/254067263) and fix it for Lacros if available? I could probably leave a TODO on the polling if it makes sense.",
       "parentUuid": "99bacb40_3e3de11d",
+      "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad9c7d3_e337eb3d",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-21T06:40:59Z",
+      "side": 1,
+      "message": "BugBash is coming 😊. Unfortunately I\u0027m not sure we can cover all corner cases here.\n\nPolicy invalidations for FakeDMS are coming, which will change how we refresh policies anyway.",
+      "parentUuid": "18e1135e_af30c87f",
       "revId": "cd77bd72dfec438a5d39401912c93d47cd25072e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
