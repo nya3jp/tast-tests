@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ea5c26_dae37df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:17:41Z",
+      "side": 1,
+      "message": "`exercise`",
+      "range": {
+        "startLine": 417,
+        "startChar": 37,
+        "endLine": 417,
+        "endChar": 44
+      },
+      "revId": "09dbfd23146b403514c55cd9863adcb7a1355b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecb9478_94e2eb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:17:41Z",
+      "side": 1,
+      "message": "`exercise`",
+      "range": {
+        "startLine": 424,
+        "startChar": 5,
+        "endLine": 424,
+        "endChar": 12
+      },
+      "revId": "09dbfd23146b403514c55cd9863adcb7a1355b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a564af3b_3a3ab47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:17:41Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "09dbfd23146b403514c55cd9863adcb7a1355b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7530a81_04e12dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:17:41Z",
+      "side": 1,
+      "message": "How about:\n\n\t`failed to check if \"Collapse play queue\" button is found`",
+      "range": {
+        "startLine": 432,
+        "startChar": 26,
+        "endLine": 432,
+        "endChar": 84
+      },
+      "revId": "09dbfd23146b403514c55cd9863adcb7a1355b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
