@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "812adce2_9404a78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-10-21T07:09:26Z",
+      "side": 1,
+      "message": "Changed from `s.Fatal` to `return errors.Wrap` (sorry for an edit after sending).",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "d09f70d48a3c446a6713b678a2349b92bfca19a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
