@@ -76,35 +76,57 @@ If there is no key for the test, then it is expected to pass.
 To use test expectations, the test writer should implement
 
 ```
-expectation, err := expectations.GetTestExpectation(ctx, s)
+expectation, err := expectations.GetTestExpectation(ctx, s.TestName())
 if err != nil {
 	s.Fatal("Unable to get test expectation", err)
 }
-defer expectation.HandleFinalExpectation(s)
+// Schedules a post-test expectations handling. If the test is expected to
+// fail, but did not, then this generates an error.
+defer func() {
+	if err := expectation.HandleFinalExpectation(); err != nil {
+		s.Error("Unmet expectation: ", err)
+	}
+}()
 ```
 
 If a test passes when it is expected to fail, then `FailForMissingErrors` will
 cause the test to fail with a message containing the tickets provided in the
 `Expectations` structure.
 
-In the test code, use the `Expectation` instance for reporting errors. I.e.
+In the test code, make the following subsitutions.
+
+Replace `s.Error(args...)` with
 
 ```
-expectation.Error(s, "Error message", err):
-expectation.Errorf(s, "Error message %v: %v", var, err):
-expectation.Fatal(s, "Error message", err):
-expectation.Fatalf(s, "Error message %v: %v", var, err):
+if expErr := expectation.ReportError(args...); expErr != nil {
+	s.Error("Unexpected error: ", expErr)
+}
 ```
 
-For a test case with a FAIL expectation, using the `Expectation` instance's
-methods, `Error` and `Errorf`, will demote an error to a log. Using the methods
-`Fatal` and `Fatalf` will demote the message to a log, and cause the test to
-exit (similar to `testing.State.Fatal` and `testing.State.Fatalf`).
+Replace `s.Errorf(formatString, args...)` with
 
-If the test does not specify an expctation, then `Expectation` methods for
-`Error`, `Errorf`, `Fatal`, and `Fatalf` call the respective `testing.State`
-methods.
+```
+if expErr := expectation.ReportErrorf(formatString, args...); expErr != nil {
+	s.Error("Unexpected error: ", expErr)
+}
+```
 
-Use of the `testing.State` `Error`, `Errorf`, `Fatal`, and `Fatalf` methods
-will result in the test failing. I.e. they are not affected by loading a test
-expectation.
+Replace `s.Fatal(args...)` with
+
+```
+if expErr := expectation.ReportError(args...); expErr != nil {
+	s.Fatal("Unexpected error: ", expErr)
+}
+exit
+```
+
+Replace `s.Fatalf(formatString, args...)` with
+
+```
+if expErr := expectation.ReportErrorf(formatString, args...); expErr != nil {
+	s.Fatal("Unexpected error: ", expErr)
+}
+exit
+```
+
+Note that it is up to the test code to exit for "expected" fatal errors.
