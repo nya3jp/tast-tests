@@ -508,6 +508,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a screenshot every 2 minutes up to a maximum of 5
+	// screenshots, to ensure we capture any bots that drop during
+	// the call and any issues that come up with the collab window.
+	if err := recorder.AddScreenshotRecorder(ctx, 2*time.Minute, 5); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {
 			s.Error("Failed to stop recorder: ", err)
