@@ -56,6 +56,24 @@
       "message": "If we keep the current way of letting `perf.Timeline` to report skipped count in metrics, we need to use the added `prefix` to differentiate this ( `powerTimeline`) with `tpsTimeline` since both could have skipped counts.",
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8021c241_3ef1db26",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T17:24:47Z",
+      "side": 1,
+      "message": "Hm, I already set the metric name to `prefix + \"snapshotsSkipped\"` in L288 of timeline.go  -- is that what you mean?\n\nIf they don\u0027t set a prefix, I use \"DefaultTimeline\" as the prefix, so I\u0027d get something like \"DefaultTimeline.snapshotSkipped\"\n\nsince we use a prefix, I\u0027d get something like `TPS.snapshotsSkipped` and `Power.snapshotsSkipped`",
+      "parentUuid": "dc8d3cce_fd7dfb06",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
