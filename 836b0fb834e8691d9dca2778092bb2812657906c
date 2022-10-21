@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "922b0887_879f72f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-21T06:51:53Z",
+      "side": 1,
+      "message": "I see. So you mean normally we just skip some models for the whole test and we put `SkipOnModel` in `init()`?",
+      "parentUuid": "63563aa4_38839e61",
+      "revId": "836b0fb834e8691d9dca2778092bb2812657906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f00b7b7_c4b1418d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-20T07:39:39Z",
       "side": 1,
       "message": "`return errors.Wrapf` ?",
+      "range": {
+        "startLine": 612,
+        "startChar": 2,
+        "endLine": 612,
+        "endChar": 9
+      },
+      "revId": "836b0fb834e8691d9dca2778092bb2812657906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d9d86c_0ea9dc66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-21T06:51:53Z",
+      "side": 1,
+      "message": "Ah sorry, I did it again. Fixed.",
+      "parentUuid": "6f00b7b7_c4b1418d",
       "range": {
         "startLine": 612,
         "startChar": 2,
