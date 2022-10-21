@@ -62,17 +62,16 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	cleanUp, err := arcpipvideotest.EstablishARCPIPVideo(ctx, tconn, a, s.DataFileSystem(), false)
-	if err != nil {
-		s.Fatal("Failed to establish ARC PIP video: ", err)
-	}
-	defer cleanUp(cleanupCtx)
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, 3*time.Second, func(ctx context.Context) error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
 
-	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait a second")
+		cleanUp, err := arcpipvideotest.EstablishARCPIPVideo(ctx, tconn, a, s.DataFileSystem(), false)
+		if err != nil {
+			return errors.Wrap(err, "failed to establish ARC PIP video")
 		}
-		return nil
+		return cleanUp(cleanupCtx)
 	}, "Viz.DisplayCompositor.OverlayStrategy")
 	if err != nil {
 		s.Fatal("Failed to record histogram Viz.DisplayCompositor.OverlayStrategy: ", err)
