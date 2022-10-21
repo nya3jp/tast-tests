@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7d1483_38096abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-21T02:53:37Z",
+      "side": 1,
+      "message": "We\u0027re not actually verifying the window gets floated here.\n\nIt seems the `floated` WindowStateType hasn\u0027t been added yet [1]. Could you add it with your test here? It might require piping through a few classes [2] but since we\u0027ll need it eventually we should add it now, we can talk about this tomorrow and walk through it offline!\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d33 \n[2] https://source.chromium.org/chromium/chromium/src/+/main:chromeos/ui/base/window_state_type.h;l\u003d46;drc\u003db3842582ae4610f1847d69076ad00570c2eafd79",
+      "revId": "1485c2a56a9b2fdca8a951e1869840e1cb4ef634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
