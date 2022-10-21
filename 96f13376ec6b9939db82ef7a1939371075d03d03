@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cff6218_d240d144",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T23:54:10Z",
+      "side": 1,
+      "message": "Should we fix navigation in tablet mode?",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "96f13376ec6b9939db82ef7a1939371075d03d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861aac77_db7c9d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T23:54:10Z",
+      "side": 1,
+      "message": "If you expect that this test flow works in Tablet mode, I think we should fix Tablet mode instead of testing this only in Clamshell mode. If the intention is to test this only in Clamshell mode for this test file (Tablet mode will be covered in another file, etc), lgtm.\n\nThank you!",
+      "revId": "96f13376ec6b9939db82ef7a1939371075d03d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47599bc_96f731b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T23:54:10Z",
+      "side": 1,
+      "message": "FYI: If a DUT switches from Tablet mode to Clamshell mode, there is launcher animation. I don\u0027t know whether this can interfere with this test. Just FYI.\n\ne.g.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go;l\u003d160-166;drc\u003d198368780add75900897a8ad8c3de32401101760\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/assistant/fixture.go;l\u003d312-316;drc\u003d0a6fd72b66382296084fbdd4a76d21b4229e6c87",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 63
+      },
+      "revId": "96f13376ec6b9939db82ef7a1939371075d03d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176d9f4d_ece84520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T23:54:10Z",
+      "side": 1,
+      "message": "Is there any reason we cannot use the default timeout value? If there is no reason, I would recommend you to simply use the default timeout. If there is a reason, would you add a comment about why?",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "96f13376ec6b9939db82ef7a1939371075d03d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
