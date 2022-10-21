@@ -22,8 +22,8 @@ import (
 const (
 	// BrightnessChangeTimeoutSlackDuration limits by how much the actual duration could differ from the expected duration.
 	//
-	// This discrepancy could be caused by both initial HPS startup and by it adapting to the image change.
-	BrightnessChangeTimeoutSlackDuration = 10 * time.Second
+	// This discrepancy could be caused by HPS adapting to the exposure change.
+	BrightnessChangeTimeoutSlackDuration = 5 * time.Second
 	// LockOnLeave is the Settings name for LoL.
 	LockOnLeave = "Lock-on-leave"
 	// SecondPersonAlert is the Settings name for SPA.

@@ -89,6 +89,8 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
+	startTime := time.Now()
+
 	// Enable LoL in setting.
 	client := pb.NewHpsServiceClient(cl.Conn)
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
@@ -118,6 +120,13 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
+	// If we're expecting quick dim because no user is present, we need to
+	// start counting the time from here because this is when powerd has
+	// begun receiving a filtered presence signal from hpsd.
+	if presenceNo.numOfPerson == utils.ZeroPresence {
+		startTime = time.Now()
+	}
+
 	initialBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
@@ -127,8 +136,6 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	if _, err := client.OpenHPSInternalsPage(hctx.Ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error open hps-internals")
 	}
-
-	startTime := time.Now()
 
 	testing.ContextLog(ctx, "Waiting for screen to dim")
 	if err := utils.PollForDim(ctx, initialBrightness, dimDelay, false, dut.Conn()); err != nil {
