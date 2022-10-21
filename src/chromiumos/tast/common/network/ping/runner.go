@@ -94,9 +94,9 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 
 	command := pingCmd
 	if cfg.user != "" {
-		command = "su"
+		command = "sudo"
 		userCmd := shutil.EscapeSlice(append([]string{pingCmd}, args...))
-		args = []string{cfg.user, "-c", userCmd}
+		args = []string{"-u", cfg.user, "bash", "-c", userCmd}
 	}
 
 	output, cmdErr := r.cmd.Output(ctx, command, args...)
