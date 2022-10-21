@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/local/input"
 )
 
+const numberOfHelpLinks = 5
+
 // IssueText export is used to enter the issue description.
 const IssueText = "Test only - please ignore"
 
@@ -109,4 +111,33 @@ func LaunchAndGoToConfirmationPage(ctx context.Context, tconn *chrome.TestConn) 
 	}
 
 	return feedbackRootNode, nil
+}
+
+// VerifyFeedbackAppIsLaunched checks that the app is open and all essential elements are in place.
+func VerifyFeedbackAppIsLaunched(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
+	if err := ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err != nil {
+		return errors.Wrap(err, "could not find app in shelf after launch")
+	}
+
+	// Verify essential elements exist.
+	issueDescriptionInput := nodewith.NameContaining("Description").Role(role.TextField)
+	button := nodewith.Name("Continue").Role(role.Button)
+
+	if err := uiauto.Combine("Verify essential elements exist",
+		ui.WaitUntilExists(issueDescriptionInput),
+		ui.WaitUntilExists(button),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find element")
+	}
+
+	// Verify five default help content links exist.
+	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
+	for i := 0; i < numberOfHelpLinks; i++ {
+		item := helpLink.Nth(i)
+		if err := ui.WaitUntilExists(item)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find five help links")
+		}
+	}
+
+	return nil
 }
