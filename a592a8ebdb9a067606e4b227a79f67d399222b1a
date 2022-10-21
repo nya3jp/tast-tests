@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "687b93f8_e544b50d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-21T03:24:51Z",
+      "side": 1,
+      "message": "Nice! LGTM",
+      "revId": "a592a8ebdb9a067606e4b227a79f67d399222b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90f95653_bed32ce9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
         "patchSetId": 1
