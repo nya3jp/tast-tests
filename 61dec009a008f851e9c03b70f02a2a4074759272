@@ -16,6 +16,121 @@
       "message": "+Jie, can you take a look for tast owner? (But also feel free to update to `tast-owners`) Thanks!",
       "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d15a09e_20a4dd08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T01:52:29Z",
+      "side": 1,
+      "message": "Just curious, since we already remove the USE flag for wifi in shill, is this attribute still required?",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ce6124_b0e890c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T01:52:29Z",
+      "side": 1,
+      "message": "nit: \"len(aObjs) \u003d %d, want 2\"\nAt least put \"got\" at first.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf648eb_95c9ba61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T01:52:29Z",
+      "side": 1,
+      "message": "Just to check, we use `Error` here (and below), is it meaningful to continue the test if we got a a failure here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa88d356_bda693e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T01:52:29Z",
+      "side": 1,
+      "message": "Is this \"objs\"?\nGo comment does not use \"||\" format, to refer to an identifier, just use the name should be fine. Some examples: http://go/go-style/decisions#comment-sentences",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 8
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d566179_09072856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-21T01:52:29Z",
+      "side": 1,
+      "message": "nit: reflow the comment at 80 characters\n\n\"When possible, aim for comments that will read well on an 80-column wide terminal\"\n\nhttp://go/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
