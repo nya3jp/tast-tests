@@ -51,7 +51,9 @@ var dpPlusModels = []string{
 	"tidus",
 	// volteer family
 	// TODO(b:190100059): Remove once VBT is fixed.
-	"collis", "copano", "delbin", "drobit", "eldrid", "lillipup", "lindar", "volteer", "volteer2",
+	"volteer2",
+	// reven family
+	"reven",
 }
 
 func init() {
