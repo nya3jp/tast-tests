@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "23bde8de_e6476df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_source_routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-21T05:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5775330b_cdc9459f",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "b13eb47b7c48b88e1cdbd768d7e61c6e17606be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6a0df94_8ee4d9bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_source_routing.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-21T02:39:43Z",
       "side": 1,
       "message": "JFYI, I have another patch https://crrev.com/c/3965729 which adds a ConnectToRouterWithPool() function can be used to simplify this code",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "b13eb47b7c48b88e1cdbd768d7e61c6e17606be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa7952e_51e10273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_source_routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-21T05:20:43Z",
+      "side": 1,
+      "message": "Nice. Can take a pass after and simplify.",
+      "parentUuid": "f6a0df94_8ee4d9bc",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2976c70_d1be0b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_source_routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-21T05:20:43Z",
+      "side": 1,
+      "message": "Done thanks",
+      "parentUuid": "909739ec_e54a1299",
+      "range": {
+        "startLine": 93,
+        "startChar": 16,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "b13eb47b7c48b88e1cdbd768d7e61c6e17606be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28569748_965b1e9e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-21T02:39:43Z",
       "side": 1,
       "message": "nit: \"create vpn connection\"",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "b13eb47b7c48b88e1cdbd768d7e61c6e17606be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3802873_2bf482cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_source_routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-21T05:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28569748_965b1e9e",
       "range": {
         "startLine": 97,
         "startChar": 21,
