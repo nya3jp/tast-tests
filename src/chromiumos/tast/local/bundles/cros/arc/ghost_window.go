@@ -6,8 +6,12 @@ package arc
 
 import (
 	"context"
+	"fmt"
+	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -27,6 +31,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	ghostWindowPlayStorePkgName   = "com.android.vending"
+	fixupGhostWindowMessagePrefix = "Updating Android System"
+)
+
 type gwTestParams struct {
 	name string
 	fn   func(context.Context, *testing.State)
@@ -41,7 +50,7 @@ var ghostWindowFeatureFlags = []string{
 }
 
 var fullrestoreGwTests = []gwTestParams{
-	{"fullrestorePlayStore", testLaunchFromFullRestoreSingalPlayStore},
+	{"fullrestorePlayStore", testLaunchFromFullRestoreSinglePlayStore},
 	{"fullrestorePlayStoreAndSetting", testLaunchFromFullRestorePlayStoreAndAndroidSetting},
 	{"fullrestorePlayStoreInTabletMode", testLaunchFromFullRestorePlayStoreInTabletMode},
 }
@@ -49,6 +58,10 @@ var fullrestoreGwTests = []gwTestParams{
 var generalLaunchGwTests = []gwTestParams{
 	{"shelfLaunchPlayStore", testShelfLaunchPlayStore},
 	{"launcherLaunchPlayStore", testLauncherLaunchPlayStore},
+}
+
+var fixupGwTests = []gwTestParams{
+	{"fixup", testFixupPlayStore},
 }
 
 func init() {
@@ -80,6 +93,10 @@ func init() {
 			Val:  fullrestoreGwTests,
 			// Temporarily restrict it only for ARC R, not T or above version.
 			ExtraSoftwareDeps: []string{"android_vm_r"},
+		}, {
+			Name:              "fixup_r",
+			Val:               fixupGwTests,
+			ExtraSoftwareDeps: []string{"android_vm_r"},
 		}},
 	})
 }
@@ -91,8 +108,8 @@ func GhostWindow(ctx context.Context, s *testing.State) {
 	}
 }
 
-// testLaunchFromFullRestoreSingalPlayStore test restore single PlayStore task.
-func testLaunchFromFullRestoreSingalPlayStore(ctx context.Context, s *testing.State) {
+// testLaunchFromFullRestoreSinglePlayStore test restore single PlayStore task.
+func testLaunchFromFullRestoreSinglePlayStore(ctx context.Context, s *testing.State) {
 	// Reserve 10 seconds for clean-up tasks.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -274,7 +291,7 @@ func testShelfLaunchPlayStore(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure ARC Ghost Window of PlayStore has popup.
-	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID); err != nil {
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID, ""); err != nil {
 		s.Fatal("Failed to wait for Ghost Window of PlayStore: ", err)
 	}
 }
@@ -317,9 +334,68 @@ func testLauncherLaunchPlayStore(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure ARC Ghost Window of PlayStore has popup.
-	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID); err != nil {
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID, ""); err != nil {
 		s.Fatal("Failed to wait for Ghost Window of PlayStore: ", err)
 	}
+}
+
+func testFixupPlayStore(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cr, err := loginChrome(ctx, s, nil)
+	if err != nil {
+		s.Fatal("Failed to optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	creds := cr.Creds()
+	user := cr.NormalizedUser()
+
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
+	}
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to wait for ARC boot: ", err)
+	}
+
+	s.Log("Preparing to trigger fixup on next sign in")
+	cleanupFunc, err := prepareFixup(ctx, a, user)
+	if err != nil {
+		s.Fatal("Failed to prepare fixup: ", err)
+	}
+	defer cleanupFunc(cleanupCtx)
+
+	// Sign out and sign in again.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out: ", err)
+	}
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to re-optin: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
+		s.Fatal("Failed to launch PlayStore from launcher: ", err)
+	}
+
+	// Check that the fixup ghost window is popped up.
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID, fixupGhostWindowMessagePrefix); err != nil {
+		s.Fatal("Failed to wait for Ghost Window of Play Store: ", err)
+	}
+	// // Check that the fixup ghost window eventually transitions to ARC window.
+	// if err := waitARCWindowShown(ctx, tconn, time.Minute, ghostWindowPlayStorePkgName); err != nil {
+	// 	s.Fatal("Failed to wait for Play Store: ", err)
+	// }
 }
 
 func waitARCWindowShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration, pkgName string) error {
@@ -331,10 +407,19 @@ func waitARCWindowShown(ctx context.Context, tconn *chrome.TestConn, timeout tim
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
-func waitGhostWindowShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration, appID string) error {
+func waitGhostWindowShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration, appID, messagePrefix string) error {
+	ui := uiauto.New(tconn)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := ash.GetARCGhostWindowInfo(ctx, tconn, appID); err != nil {
+		window, err := ash.GetARCGhostWindowInfo(ctx, tconn, appID)
+		if err != nil {
 			return err
+		}
+		windowFinder := nodewith.HasClass(window.Name).Role(role.Window)
+		if messagePrefix != "" {
+			label := nodewith.Ancestor(windowFinder).Role(role.StaticText).HasClass("Label").NameStartingWith(messagePrefix)
+			if err := ui.Exists(label)(ctx); err != nil {
+				return err
+			}
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
@@ -384,7 +469,6 @@ func loginChrome(ctx context.Context, s *testing.State, creds *chrome.Creds) (*c
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.EnableFeatures(ghostWindowFeatureFlags...),
-		chrome.EnableFeatures(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome")
@@ -437,8 +521,6 @@ func waitForWindowInfoSaved(ctx context.Context) {
 }
 
 func optinAndLaunchPlayStore(ctx context.Context, cr *chrome.Chrome) error {
-	const ghostWindowPlayStorePkgName = "com.android.vending"
-
 	// Optin to Play Store.
 	testing.ContextLog(ctx, "Opting into Play Store")
 	maxAttempts := 1
@@ -513,8 +595,66 @@ func restoreAndVerifyGhostWindow(ctx context.Context, s *testing.State, cr *chro
 	}
 
 	// Make sure ARC Ghost Window of PlayStore has popup.
-	if err := waitGhostWindowShown(ctx, tconn, time.Minute, appID); err != nil {
+	if err := waitGhostWindowShown(ctx, tconn, time.Minute, appID, ""); err != nil {
 		return errors.Wrap(err, "failed to wait for Play Store")
 	}
 	return nil
+}
+
+// prepareFixup sets up the package data in the SDCard partition so that a long fixup happens for
+// Play Store after the user re-login.
+func prepareFixup(ctx context.Context, a *arc.ARC, user string) (func(context.Context) error, error) {
+	const (
+		// The name of the extended attribute to mark the completion of the fixup.
+		fixupXAttr = "arc.fixed"
+		// The number of directories to create in Play Store's package directory in the
+		// SDCard partition.
+		numberOfDirectories = 10000
+	)
+
+	cleanup, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to make Android's SDCard partition available on host")
+	}
+	defer cleanup(ctx)
+
+	playStoreDataDir, err := arc.PkgDataDir(ctx, user, ghostWindowPlayStorePkgName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Play Store's package data directory")
+	}
+
+	// Create a lot of empty directories in Play Store's package directory in SDCard partition.
+	targetDir := filepath.Join(playStoreDataDir, "testdirs")
+	if err := os.MkdirAll(targetDir, 0755); err != nil {
+		return nil, errors.Wrapf(err, "failed to create the target dir %s", targetDir)
+	}
+	cleanupFunc := func(ctx context.Context) error {
+		cleanup, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, user)
+		if err != nil {
+			return errors.Wrap(err, "failed to make Android's SDCard partition available on host for cleanup")
+		}
+		defer cleanup(ctx)
+
+		return os.RemoveAll(targetDir)
+	}
+	for i := 0; i < numberOfDirectories; i++ {
+		dirPath := filepath.Join(targetDir, fmt.Sprintf("dir_%d", i))
+		if err := os.MkdirAll(dirPath, 0755); err != nil {
+			return cleanupFunc, errors.Wrapf(err, "failed to create directory %s for fixup", dirPath)
+		}
+	}
+
+	androidDataDir, err := arc.AndroidDataDir(ctx, user)
+	if err != nil {
+		return cleanupFunc, errors.Wrap(err, "failed to get android-data dir")
+	}
+	androidDirInSDCardPartition := filepath.Join(androidDataDir, "data/media/0/Android")
+
+	for _, path := range []string{playStoreDataDir, androidDirInSDCardPartition} {
+		cmd := testexec.CommandContext(ctx, "attr", "-s", fixupXAttr, "-V", "0", path)
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			return cleanupFunc, errors.Wrapf(err, "failed to unset fixup completion mark for %s", path)
+		}
+	}
+	return cleanupFunc, nil
 }
