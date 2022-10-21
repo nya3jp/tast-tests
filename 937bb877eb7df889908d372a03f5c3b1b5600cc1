@@ -16,6 +16,47 @@
       "message": "Bohdan, is this a test for the LURS CUJ?",
       "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a74da1_d10d2dd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-21T11:45:22Z",
+      "side": 1,
+      "message": "Yes, looks like it corresponds to the \"1.2.7 Test signin screen with lots of users\" from the LURS test tracker. Adding Anastasiia and tast owners to take a look.",
+      "parentUuid": "af26adf5_6bc8adc3",
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe773183_df654c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_in_with_lots_of_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-21T11:45:22Z",
+      "side": 1,
+      "message": "I guess we could logout manually in the same way as it done in the https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/logout.go rather than create new chrome. Though, I\u0027m not sure whether it would perform better than the current implementation. anastasiian@ what do you think?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
