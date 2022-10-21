@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f66fc2f_121619b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/tablet_mode_power_off_menu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-10-21T01:37:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0f3fa6b_78c7ee65",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "34b0bfe74b9e5bd0c9c5522d3350bcf787372584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f32bbdf2_9f2b7258",
