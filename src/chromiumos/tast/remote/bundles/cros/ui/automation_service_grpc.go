@@ -39,7 +39,9 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 
 	// Start Chrome on the DUT.
 	cs := pb.NewChromeServiceClient(cl.Conn)
-	loginReq := &pb.NewRequest{}
+	loginReq := &pb.NewRequest{
+		ExtraArgs: []string{"--force-tablet-mode=clamshell"},
+	}
 	if _, err := cs.New(ctx, loginReq, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -67,6 +69,16 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 	if _, err := uiautoSvc.WaitUntilExists(ctx, &pb.WaitUntilExistsRequest{Finder: filesAppShelfButtonFinder}); err != nil {
 		s.Fatal("Failed to find Files shelf button: ", err)
+	}
+
+	// Only verify screenshot captured, without screen diff validation.
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{Finder: chromeAppShelfButtonFinder}); err != nil {
+		s.Fatal("Failed to take screenshot of the Chrome app shelf button : ", err)
+	}
+
+	// Only verify screenshot captured, without screen diff validation.
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{}); err != nil {
+		s.Fatal("Failed to take screenshot: ", err)
 	}
 
 	// Open Files App and close it by clicking the cross on the window.

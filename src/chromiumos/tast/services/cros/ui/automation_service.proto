@@ -39,6 +39,9 @@ service AutomationService {
 
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+
+  // CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
+  rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse) {}
 }
 
 message LeftClickRequest {
@@ -73,6 +76,14 @@ message InfoRequest {
 
 message InfoResponse {
   NodeInfo node_info = 1;
+}
+
+message CaptureScreenshotRequest {
+  optional Finder finder = 1;
+}
+
+message CaptureScreenshotResponse {
+  bytes png_base64 = 1;
 }
 
 // NodeInfo is a wrapper around chrome.automation API AutomationNode.

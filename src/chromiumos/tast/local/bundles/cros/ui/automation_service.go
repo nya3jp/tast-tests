@@ -5,7 +5,10 @@
 package ui
 
 import (
+	"bytes"
 	"context"
+	"image"
+	"image/png"
 	"regexp"
 	"strings"
 
@@ -21,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/common"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/screenshot"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -205,6 +209,49 @@ func (svc *AutomationService) WaitUntilExists(ctx context.Context, req *pb.WaitU
 		return nil, errors.Wrapf(err, "failed calling WaitUntilExists with finder: %v", finder.Pretty())
 	}
 	return &empty.Empty{}, nil
+}
+
+// CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
+func (svc *AutomationService) CaptureScreenshot(ctx context.Context, req *pb.CaptureScreenshotRequest) (*pb.CaptureScreenshotResponse, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	cr := svc.sharedObject.Chrome
+	if cr == nil {
+		return nil, errors.New("Chrome is not instantiated")
+	}
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+
+	var img image.Image
+	if req.Finder != nil {
+		finder, err := toFinder(req.Finder)
+		if err != nil {
+			return nil, err
+		}
+		nodeInfo, err := ui.Info(ctx, finder)
+		if err != nil {
+			return nil, err
+		}
+		img, err = screenshot.GrabAndCropScreenshot(ctx, cr, nodeInfo.Location)
+	} else {
+		img, err = screenshot.GrabScreenshot(ctx, cr)
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	var b bytes.Buffer
+	if err = png.Encode(&b, img); err != nil {
+		return nil, err
+	}
+
+	return &pb.CaptureScreenshotResponse{
+		PngBase64: b.Bytes(),
+	}, nil
 }
 
 func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Context, error) {
