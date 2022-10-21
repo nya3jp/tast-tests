@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2933bee0_931aa4be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-10-21T07:59:03Z",
+      "side": 1,
+      "message": "Tested on other devices, and there seems to be reason to check histograms after executing EstablishARCPIPVideo.",
+      "revId": "6a6d2e29f0b60724cf588b9e7a39b1c7a0fc400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "95f453be_b0fa0f76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
         "patchSetId": 3
