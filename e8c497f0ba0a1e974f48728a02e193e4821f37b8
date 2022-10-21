@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c80ed23_b3a7a22f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-10-21T20:19:38Z",
+      "side": 1,
+      "message": "I also spot checked 4 or 5 boxes that the existing IP addresses are still valid",
+      "revId": "e8c497f0ba0a1e974f48728a02e193e4821f37b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
