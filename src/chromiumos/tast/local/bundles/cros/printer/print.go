@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/printer/uitools"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -29,17 +31,29 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Print,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that a virtual USB printer can be saved and printed to",
 		Contacts:     []string{"gavinwill@google.com", "cros-peripherals@google.com"},
 		Attr: []string{
 			"group:mainline",
+			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
-		Fixture:      "virtualUsbPrinterModulesLoaded",
+		Params: []testing.Param{
+			{
+				Val:     browser.TypeAsh,
+				Fixture: "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
+			},
+			{
+				Name:              "lacros",
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "virtualUsbPrinterModulesLoadedWithLacros",
+			},
+		},
 	})
 }
 
@@ -48,15 +62,13 @@ func Print(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Chrome instance: ", err)
-	}
-	defer cr.Close(cleanupCtx)
+	bt := s.Param().(browser.Type)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
+	// tconn is the ash TestConn.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
+		s.Fatal("Failed to connect ash test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
@@ -107,14 +119,20 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to save virtual USB printer and open Print Preview: ", err)
 	}
 
-	// Launch Print Management app.
-	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	// Create a browser (either ash or lacros, based on browser type).
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
 	if err != nil {
-		s.Fatal("Failed to launch Print Management app: ", err)
+		s.Fatal("Failed to launch browser: ", err)
 	}
+	defer closeBrowser(cleanupCtx)
+
+	conn, err := br.NewConn(ctx, "chrome://version/")
+	if err != nil {
+		s.Fatal("Failed to connect to broswer: ", err)
+	}
+	defer conn.Close()
 
 	if err := uiauto.Combine("open Print Preview with shortcut Ctrl+P",
-		ui.WithTimeout(time.Minute).WaitUntilExists(editPrinterButton),
 		kb.AccelAction("Ctrl+P"),
 		printpreview.WaitForPrintPreview(tconn),
 	)(ctx); err != nil {
@@ -148,6 +166,12 @@ func Print(ctx context.Context, s *testing.State) {
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Print job failed to complete: ", err)
+	}
+
+	// Launch Print Management app.
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Print Management app: ", err)
 	}
 
 	if err := uiauto.Combine("Verify print job",

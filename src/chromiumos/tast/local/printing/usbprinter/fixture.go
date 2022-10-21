@@ -35,6 +35,15 @@ func init() {
 		TearDownTimeout: moduleLoadTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name:            "virtualUsbPrinterModulesLoadedWithLacros",
+		Desc:            "Kernel modules necessary for `virtual-usb-printer` loaded (with `lacros` fixture)",
+		Contacts:        []string{"cros-printing-dev@chromium.org"},
+		Impl:            &loadModuleFixture{},
+		Parent:          "lacros",
+		SetUpTimeout:    moduleLoadTimeout,
+		TearDownTimeout: moduleLoadTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name:            "virtualUsbPrinterModulesLoadedWithArcBooted",
 		Desc:            "Kernel modules necessary for `virtual-usb-printer` loaded (with `arcBooted` fixture)",
 		Contacts:        []string{"cros-printing-dev@chromium.org"},
