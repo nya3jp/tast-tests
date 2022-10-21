@@ -13,8 +13,11 @@ service HpsService {
 
   // StartUIWithCustomScreenPrivacySetting changes the settings in screen privacy accordingly.
   rpc StartUIWithCustomScreenPrivacySetting(StartUIWithCustomScreenPrivacySettingRequest) returns (google.protobuf.Empty) {}
-  // WaitForDbus performs a polling and waits for the firmware being flashed.
-  rpc WaitForDbus(google.protobuf.Empty) returns (google.protobuf.Empty){}
+
+  // WaitForHps waits for hpsd to be ready, and optionally to finish enabling the requested features.
+  // This includes booting the HPS peripheral and potentially flashing its firmware.
+  rpc WaitForHps(WaitForHpsRequest) returns (google.protobuf.Empty){}
+
   // CheckForLockScreen checks if the screen is at lock status.
   rpc CheckForLockScreen(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -35,6 +38,14 @@ service HpsService {
 message StartUIWithCustomScreenPrivacySettingRequest {
   string setting = 1;  // Option being "Lock on Leave" or "Viewing protection".
   bool enable = 2;
+}
+
+// Note that the HPS D-Bus method names use the older terminology:
+// "sense" = presence detection, for "Lock on leave" functionality
+// "notify" = second person detection, for "Viewing protection" functionality
+message WaitForHpsRequest {
+  bool wait_for_sense = 1;   // Also wait for HPS to enable feature 0 ("sense")
+  bool wait_for_notify = 2;  // Also wait for HPS to enable feature 1 ("notify")
 }
 
 message RetrieveDimMetricsResponse {

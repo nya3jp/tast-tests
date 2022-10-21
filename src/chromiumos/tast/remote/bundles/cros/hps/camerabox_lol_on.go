@@ -89,19 +89,23 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	// Wait for Dbus to be available.
-	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to wait for dbus command to be available: ", err)
-	}
-
 	// Enable LoL in setting.
+	client := pb.NewHpsServiceClient(cl.Conn)
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to change setting: ", err)
+	}
+
+	// Wait for hpsd to finish starting the HPS peripheral and enabling the feature we requested.
+	waitReq := &pb.WaitForHpsRequest{
+		WaitForSense:  true,
+		WaitForNotify: false,
+	}
+	if _, err := client.WaitForHps(ctx, waitReq); err != nil {
+		s.Fatal("Failed to wait for HPS to be ready: ", err)
 	}
 
 	// When showing ZeroPresence expect that quick dim will happen.
