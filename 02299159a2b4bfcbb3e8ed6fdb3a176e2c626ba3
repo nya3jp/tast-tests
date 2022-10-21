@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3e48c5_c910f21c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "multiple cancel/pause/resume/removes are added",
+      "parentUuid": "c86bb765_f27de773",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c72236f_84a67185",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-18T23:46:14Z",
       "side": 1,
       "message": "Why so long?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 27
+      },
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38e7135_44b18d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "Fixed and reduced it to default timeout",
+      "parentUuid": "4c72236f_84a67185",
       "range": {
         "startLine": 172,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63227745_214dbf5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f593dd68_aab87ddb",
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a554dd8a_1635a07a",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-18T23:46:14Z",
       "side": 1,
       "message": "We should verify that this causes files to be removed from the pinned section",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 32
+      },
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e82eea8_383e9822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a554dd8a_1635a07a",
       "range": {
         "startLine": 464,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc5f2a4_07929b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "Fixed by applying another approach",
+      "parentUuid": "d81ee3c7_ae6c80d2",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 75
+      },
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "215e1083_317565dc",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-10-18T23:46:14Z",
       "side": 1,
       "message": "Not used?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "02299159a2b4bfcbb3e8ed6fdb3a176e2c626ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dded96d5_b4c96a2e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-21T13:54:31Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "215e1083_317565dc",
       "range": {
         "startLine": 31,
         "startChar": 0,
