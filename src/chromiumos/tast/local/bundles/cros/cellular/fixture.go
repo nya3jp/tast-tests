@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/hermes"
-	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -144,27 +143,27 @@ func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState)
 }
 
 func (f *cellularFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	if s.HasError() {
-		testing.ContextLog(ctx, "Fixture detected a test failure, restarting MM and Shill")
-		// stop and start jobs instead of upstart.Restart to emulate a reboot.
-		if _, err := stopJob(ctx, shillJobName); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop job: %q, %s", shillJobName, err)
-		}
-		if _, err := stopJob(ctx, modemManagerJobName); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop job: %q, %s", modemManagerJobName, err)
-		}
-		if err := upstart.StartJob(ctx, shillJobName); err != nil {
-			testing.ContextLogf(ctx, "Failed to restart job: %q, %s", shillJobName, err)
-		}
-		if err := upstart.StartJob(ctx, modemManagerJobName); err != nil {
-			testing.ContextLogf(ctx, "Failed to restart job: %q, %s", modemManagerJobName, err)
-		}
-		if _, err := modemmanager.NewModem(ctx); err != nil {
-			testing.ContextLog(ctx, "Could not find MM dbus object after restarting ModemManager: ", err)
-		}
-		// Delay starting the next test to avoid any transients caused by restarting MM and shill.
-		testing.Sleep(ctx, uptimeBeforeTest)
-	}
+	// if s.HasError() {
+	// 	testing.ContextLog(ctx, "Fixture detected a test failure, restarting MM and Shill")
+	// 	// stop and start jobs instead of upstart.Restart to emulate a reboot.
+	// 	if _, err := stopJob(ctx, shillJobName); err != nil {
+	// 		testing.ContextLogf(ctx, "Failed to stop job: %q, %s", shillJobName, err)
+	// 	}
+	// 	if _, err := stopJob(ctx, modemManagerJobName); err != nil {
+	// 		testing.ContextLogf(ctx, "Failed to stop job: %q, %s", modemManagerJobName, err)
+	// 	}
+	// 	if err := upstart.StartJob(ctx, shillJobName); err != nil {
+	// 		testing.ContextLogf(ctx, "Failed to restart job: %q, %s", shillJobName, err)
+	// 	}
+	// 	if err := upstart.StartJob(ctx, modemManagerJobName); err != nil {
+	// 		testing.ContextLogf(ctx, "Failed to restart job: %q, %s", modemManagerJobName, err)
+	// 	}
+	// 	if _, err := modemmanager.NewModem(ctx); err != nil {
+	// 		testing.ContextLog(ctx, "Could not find MM dbus object after restarting ModemManager: ", err)
+	// 	}
+	// 	// Delay starting the next test to avoid any transients caused by restarting MM and shill.
+	// 	testing.Sleep(ctx, uptimeBeforeTest)
+	// }
 }
 
 func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {

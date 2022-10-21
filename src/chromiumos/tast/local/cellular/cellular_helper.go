@@ -16,6 +16,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus/v5"
+
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
@@ -1079,6 +1081,22 @@ func (h *Helper) SetAPN(ctx context.Context, apn map[string]string) error {
 	}
 	if err := service.SetProperty(ctx, shillconst.ServicePropertyCellularAPN, apn); err != nil {
 		return errors.Wrap(err, "failed to set Cellular.APN")
+	}
+	return nil
+}
+
+// SetUserAPNList sets the new APN revamp UI property `Cellular.UserAPNList`.
+func (h *Helper) SetUserAPNList(ctx context.Context, apns []map[string]string) error {
+	ctx, st := timing.Start(ctx, "Helper.SetUserAPNList")
+	defer st.End()
+
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Cellular Service")
+	}
+	v := dbus.Vairnt
+	if err := service.SetProperty(ctx, shillconst.ServicePropertyCellularUserAPNList, dbus.MakeVariant{apns}); err != nil {
+		return errors.Wrap(err, "failed to set Cellular.UserAPNList")
 	}
 	return nil
 }

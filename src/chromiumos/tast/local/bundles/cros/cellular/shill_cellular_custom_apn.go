@@ -16,6 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type shillCellularCustomAPNTestParam struct {
+	TestNewAPNUIRevamp bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ShillCellularCustomApn,
@@ -24,13 +28,22 @@ func init() {
 			"andrewlassalle@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
-		Data:    []string{"test_no_apns.pbf"},
+		Attr: []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Data: []string{"test_no_apns.pbf"},
+		Params: []testing.Param{{
+			Name: "set_apn",
+			Val:  shillCellularCustomAPNTestParam{false},
+		}, {
+			Name: "set_user_apn_list",
+			Val:  shillCellularCustomAPNTestParam{true},
+		}},
 		Fixture: "cellular",
 	})
 }
 
 func ShillCellularCustomApn(ctx context.Context, s *testing.State) {
+	params := s.Param().(shillCellularCustomAPNTestParam)
+	testNewAPNUIRevamp := params.TestNewAPNUIRevamp
 	modbOverrideProto := "test_no_apns.pbf"
 	modem, err := modemmanager.NewModemWithSim(ctx)
 	if err != nil {
@@ -96,6 +109,11 @@ func ShillCellularCustomApn(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable cellular: ", err)
 	}
 
+	service, err := helper.FindServiceForDevice(ctx)
+	if err != nil {
+		s.Fatal("Unable to find Cellular Service for Device: ", err)
+	}
+
 	knownAPNs, err := cellular.GetKnownAPNsForOperator(operatorID)
 	if err != nil {
 		s.Fatal("Cannot find known APNs: ", err)
@@ -104,40 +122,50 @@ func ShillCellularCustomApn(ctx context.Context, s *testing.State) {
 	optionalAPNExist := false
 	optionalAPNSucceeded := false
 	for _, knownAPN := range knownAPNs {
-		ipType, okIPType := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnIPType]
-		attach, okAttach := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnAttach]
-		auth, okAuth := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnAuthentication]
-		if okAttach && attach == shillconst.DevicePropertyCellularAPNInfoApnAttachTrue {
-			// Skip known ipv4v6 and ipv6 APNs, since Cellular.APN doesn't support the ip_type field.
-			// Skip known PAP APNs, since Cellular.APN doesn't support the authentication field.
-			if (okIPType && (ipType == shillconst.DevicePropertyCellularAPNInfoApnIPTypeIPv4v6 || ipType == shillconst.DevicePropertyCellularAPNInfoApnIPTypeIPv6)) ||
-				(okAuth && (auth == shillconst.DevicePropertyCellularAPNInfoApnAuthenticationPAP)) {
-				continue
+		if testNewAPNUIRevamp {
+			apns := []map[string]string{knownAPN.APNInfo}
+
+			if err = helper.SetUserAPNList(ctx, apns); err != nil {
+				s.Fatal("Unable to set the custom APN: ", err)
+			}
+		} else {
+			ipType, okIPType := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnIPType]
+			attach, okAttach := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnAttach]
+			auth, okAuth := knownAPN.APNInfo[shillconst.DevicePropertyCellularAPNInfoApnAuthentication]
+			if okAttach && attach == shillconst.DevicePropertyCellularAPNInfoApnAttachTrue {
+				// Skip known ipv4v6 and ipv6 APNs, since Cellular.APN doesn't support the ip_type field.
+				// Skip known PAP APNs, since Cellular.APN doesn't support the authentication field.
+				if (okIPType && (ipType == shillconst.DevicePropertyCellularAPNInfoApnIPTypeIPv4v6 || ipType == shillconst.DevicePropertyCellularAPNInfoApnIPTypeIPv6)) ||
+					(okAuth && (auth == shillconst.DevicePropertyCellularAPNInfoApnAuthenticationPAP)) {
+					continue
+				}
+			}
+
+			if okIPType {
+				// Remove ip_type since the UI never sends that value.
+				delete(knownAPN.APNInfo, shillconst.DevicePropertyCellularAPNInfoApnIPType)
+			}
+			if okAuth {
+				// Remove authentication since the UI never sends that value.
+				delete(knownAPN.APNInfo, shillconst.DevicePropertyCellularAPNInfoApnAuthentication)
+			}
+
+			if err = helper.SetAPN(ctx, knownAPN.APNInfo); err != nil {
+				s.Fatal("Unable to set the custom APN: ", err)
+			}
+			// b/249592531: Reattach gets triggered every time on this test because |ResetShill| clears the default profile,
+			// deleting the previous value of UseAttachApn. If the new APN is an attach APN, the Reattach is triggered a second time.
+			// A 5 second delay is enough to ensure that the service is destroyed when a Reattach is triggered.
+			testing.Sleep(ctx, 5*time.Second)
+			// Because of Reattach, the service changes when an attach APN is changed.
+			service, err = helper.FindServiceForDevice(ctx)
+			if err != nil {
+				s.Fatal("Unable to find Cellular Service for Device: ", err)
 			}
 		}
 
-		if okIPType {
-			// Remove ip_type since the UI never sends that value.
-			delete(knownAPN.APNInfo, shillconst.DevicePropertyCellularAPNInfoApnIPType)
-		}
-		if okAuth {
-			// Remove authentication since the UI never sends that value.
-			delete(knownAPN.APNInfo, shillconst.DevicePropertyCellularAPNInfoApnAuthentication)
-		}
 		if knownAPN.Optional {
 			optionalAPNExist = true
-		}
-		if err = helper.SetAPN(ctx, knownAPN.APNInfo); err != nil {
-			s.Fatal("Unable to set the custom APN: ", err)
-		}
-		// b/249592531: Reattach gets triggered every time on this test because |ResetShill| clears the default profile,
-		// deleting the previous value of UseAttachApn. If the new APN is an attach APN, the Reattach is triggered a second time.
-		// A 5 second delay is enough to ensure that the service is destroyed when a Reattach is triggered.
-		testing.Sleep(ctx, 5*time.Second)
-		// Because of Reattach, the service changes when an attach APN is changed.
-		service, err := helper.FindServiceForDevice(ctx)
-		if err != nil {
-			s.Fatal("Unable to find Cellular Service for Device: ", err)
 		}
 
 		testing.ContextLog(ctx, "Connecting with ", knownAPN.APNInfo)
