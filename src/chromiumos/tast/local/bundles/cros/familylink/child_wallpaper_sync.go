@@ -36,6 +36,9 @@ func init() {
 func ChildWallpaperSync(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
+	// TODO(b/254891227): Remove this when chrome.New() doesn't have a race condition.
+	testing.Sleep(ctx, 5*time.Second)
+
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	wallpaperName := s.RequiredVar("unicorn.wallpaperName")
