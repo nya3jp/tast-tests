@@ -16,6 +16,57 @@
       "message": "Add Jonathan Fan, who is the author of automation_service.go to the code reviewer list",
       "revId": "f55e6b7557cf28e9828117d2cd1b26628fa61aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c94f298_f1733625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-21T00:30:18Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit tests passed.\n\nThanks",
+      "revId": "f55e6b7557cf28e9828117d2cd1b26628fa61aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63e7eaf_3c2857af",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 25
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-21T00:30:18Z",
+      "side": 1,
+      "message": "// If true, OOBE HID detection screen will not be skipped in OOBE.",
+      "revId": "f55e6b7557cf28e9828117d2cd1b26628fa61aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28b4a4b_d14c5380",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 25
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-21T00:30:18Z",
+      "side": 1,
+      "message": "What is ui.signinProfileTestExtensionManifestKey? Please add more explanation in the comment.",
+      "revId": "f55e6b7557cf28e9828117d2cd1b26628fa61aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
