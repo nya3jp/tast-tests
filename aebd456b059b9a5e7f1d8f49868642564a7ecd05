@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29870e0e_2cc4739b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-21T21:19:09Z",
+      "side": 1,
+      "message": "This removes testing.State usage from the expectations package, which should hopefully unblock moving the package so graphics tests can use it.\n\nI am still going to go to the tast review on Tuesday Oct. 25th to see if there is a chance for an exception to the helper functions: `Error`, `Errorf`, `Fatal`, `Fatalf`. I wanted to get a working implementation that complies with Tast owners requirements to see how much extra code would be needed and if there were any functionality limitations. There weren\u0027t any limitations which is good. The new package requires a few more lines of code for test writers to write when integrating expectations.\n\nRomaric: I updated the README.md integration notes with the new usage. Please take a look since this will affect your tests.",
+      "revId": "aebd456b059b9a5e7f1d8f49868642564a7ecd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
