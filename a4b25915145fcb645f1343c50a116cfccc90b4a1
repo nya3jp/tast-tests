@@ -33,6 +33,24 @@
       "message": "I wonder if we can this switch it to a utility function and put in chromiumos/tast/local/chrome/display/display.go.\n\nThere\u0027s already a map:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go",
       "revId": "a4b25915145fcb645f1343c50a116cfccc90b4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4560bec_e3b8b271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-21T05:29:44Z",
+      "side": 1,
+      "message": "Sorry for the delay! Done.",
+      "parentUuid": "a42fa6b2_c497e5da",
+      "revId": "a4b25915145fcb645f1343c50a116cfccc90b4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
