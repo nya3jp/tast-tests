@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efad1ea_a1bc36f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea8b722_988659bf",
+      "range": {
+        "startLine": 12,
+        "startChar": 66,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e19c2c_841174cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa05ef7_0c548f2d",
+      "range": {
+        "startLine": 12,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b940f6c_903726cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a21730fd_9649f0a0",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e5b0b76_eec2b447",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664d58a9_f42a9b10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5b0b76_eec2b447",
+      "range": {
+        "startLine": 12,
+        "startChar": 68,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d13ff8b3_2b18e54b",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "nit: `\u003cDUT\u003e`",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c2ad9e_f67bf5d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13ff8b3_2b18e54b",
       "range": {
         "startLine": 17,
         "startChar": 13,
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda7f8c7_04324efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb8cbaf_f7d16356",
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b73c8210_41ae549e",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "CL:3964969 has landed, so just rebase this CL.",
+      "range": {
+        "startLine": 60,
+        "startChar": 23,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad5ead2_2b10c72e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73c8210_41ae549e",
       "range": {
         "startLine": 60,
         "startChar": 23,
@@ -196,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5295b5c6_c1b1fff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b61d1551_c2feb409",
+      "range": {
+        "startLine": 131,
+        "startChar": 54,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f063e7d_887434be",
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e1d63c_f5eeb4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f063e7d_887434be",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 58
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f605d98_9c054dab",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "nit: `RunAshUIAction` (because it is kind of a dangling pronoun)",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf53f51_c98e9fc7",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f605d98_9c054dab",
       "range": {
         "startLine": 25,
         "startChar": 57,
@@ -288,6 +522,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347fabee_4d09c629",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82045d30_b7ac0185",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eed362a_bac1448e",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ac59e8_e3f42098",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6acee02_cf0d2238",
@@ -301,6 +583,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "If this is meant to be a second paragraph, add a blank line to better separate it from the first paragraph. Otherwise, don\u0027t end a line where there is clearly space for more, as after `when this function is called.`",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2783d83_97ac8339",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6acee02_cf0d2238",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -336,6 +642,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6efc437_fb4b27e2",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "I think the word \"Exercise\" might confuse people as to what this function does. What about \"InteractWithAshUI\"? or something else?",
+      "parentUuid": "5b8bf4b6_f0d8ed59",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e28c2f2_f7abe367",
         "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
         "patchSetId": 3
@@ -347,6 +677,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "nit: `uiauto` because clearly this code is primarily usage of `uiauto`. (If `uiauto.Combine` shouldn\u0027t be used here, then I don\u0027t see why it should ever be used.)",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9ef1a1_48b3b648",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e28c2f2_f7abe367",
       "range": {
         "startLine": 36,
         "startChar": 11,
@@ -380,6 +734,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc038b90_ae2479b7",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1a331e_27383e55",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb371d43_9c7d3295",
@@ -393,6 +771,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "This is mouse input, but the function is used in tablet mode too.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b578c4be_4306e1d5",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb371d43_9c7d3295",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -426,6 +828,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc4c45b_ae94da44",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeff5f89_4bee75d4",
+      "range": {
+        "startLine": 41,
+        "startChar": 42,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb919ac_f303c2e1",
@@ -439,6 +865,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "nit: `uiauto` because clearly this code is primarily usage of `uiauto`. (If `uiauto.Sleep` shouldn\u0027t be used here, then I don\u0027t see why it should ever be used.)",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d03c47_27ccdfa8",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb919ac_f303c2e1",
       "range": {
         "startLine": 43,
         "startChar": 2,
@@ -472,6 +922,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac54801_44d1bccf",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b228b3_570f828d",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77658796_615e6111",
@@ -485,6 +959,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "How about:\n\n\tw, err :\u003d ash.FindFirstWindowInOverview(ctx, tconn)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get overview window\")\n\t}",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae596f4_3b12e90f",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77658796_615e6111",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -518,6 +1016,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "615bac95_11d93e22",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fda425c_b868392a",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "088136a1_ecce2473",
@@ -531,6 +1053,30 @@
       "writtenOn": "2022-10-20T21:49:49Z",
       "side": 1,
       "message": "nit: `uiauto`",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "27fff619190b658a9df76d8003a62dd1cca66ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4922a263_93697964",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "088136a1_ecce2473",
       "range": {
         "startLine": 78,
         "startChar": 2,
