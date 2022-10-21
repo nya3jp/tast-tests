@@ -39,6 +39,29 @@
       "message": "mcasas@, hiroh@ - PTAL and let me know if you want me to add any other tests. Thanks!",
       "revId": "1e836e88a2494ba55e6f25d6b7caf29121cb7025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267f590d_7bece1b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-10-21T02:30:29Z",
+      "side": 1,
+      "message": "They are small resolution tests.\n\nYou may want to add \"h264_hw_lacros\", the lacros version of \"h264_hw\" above?\n\"h264_hw\" does 720p call. \n\nDitto for other codecs.",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 4
+      },
+      "revId": "1e836e88a2494ba55e6f25d6b7caf29121cb7025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
