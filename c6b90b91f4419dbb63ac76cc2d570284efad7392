@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c60c29_17caf2d3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-21T19:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2422030_b188fa5c",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 26
+      },
+      "revId": "c6b90b91f4419dbb63ac76cc2d570284efad7392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910e4ed1_c888976d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-11T18:28:48Z",
       "side": 1,
       "message": "Changed from s.Fatal to testing.ContextLog because of https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 383,
+        "endChar": 26
+      },
+      "revId": "c6b90b91f4419dbb63ac76cc2d570284efad7392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89942e01_3eda2abb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-21T19:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910e4ed1_c888976d",
       "range": {
         "startLine": 383,
         "startChar": 2,
