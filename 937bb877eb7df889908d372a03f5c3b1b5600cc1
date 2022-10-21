@@ -97,6 +97,30 @@
       },
       "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a242691c_1c385fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_in_with_lots_of_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-21T16:29:26Z",
+      "side": 1,
+      "message": "I believe we have a screenshot `screenshot_chrome.png` even if we use `faillog.DumpUITreeOnError`. I looked into our code a bit and seems like the key difference is what method we use to capture a screenshot. For `DumpUITreeWithScreenshotOnError` we use https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/screenshot/capture.go;l\u003d125-148?q\u003dCaptureChromeForDisplay%20package:chromeos\u0026type\u003dcs and default screenshot is created with the https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/screenshot/capture.go;l\u003d94-104?q\u003dCaptureChromeForDisplay%20package:chromeos\u0026type\u003dcs. There is a comment about the difference between those two methods:\n```\n// CaptureCDP takes a screenshot and saves it as a PNG image at path, similar to\n// CaptureChrome.\n// The diff from CaptureChrome is that this function takes *cdputil.Conn, which\n// is used by chrome.Conn. Thus, CaptureChrome records logs in case of error,\n// while this does not. XXX\n```\n\nIt is unclear to me which logs we will capture with the `CaptureChrome`? Also, do you think it would be beneficial to replace `DumpUITreeOnError` with the `DumpUITreeWithScreenshotOnError` inside all login/oobe tests?",
+      "parentUuid": "f892dd50_6ea8f523",
+      "range": {
+        "startLine": 98,
+        "startChar": 17,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
