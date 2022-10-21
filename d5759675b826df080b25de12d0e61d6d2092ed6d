@@ -3,6 +3,161 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d6af038_a6b00b78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "nit: This should be at most 50 characters according to [1]. How about:\n\n\tperf: Add snapshot grace period in perf.Timeline\n\n[1] https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb7bb93_37b2ded5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "`perf`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab616f5_453ba5cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "nit: hyphen",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6721dd7c_c7425911",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "nit: `happens`",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d74ae5_38cf95af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "nit: `will`",
+      "range": {
+        "startLine": 12,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85600b87_006d058a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "nit: `miss`",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddfdc9d_75f275f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "Consider how the resulting timeline data will be plotted on the TPS Dashboard. If I understand correctly, the horizontal axis will be labeled with numbers indicating elapsed time which will be incorrect after a snapshot is skipped. To avoid that problem, when a snapshot is skipped, can you report NaN to every metric in the timeline? I am not really sure how the plotting functionality handles NaN, but I would hope that it will appear as a gap in the plot.",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7afe108c_b67c1dd2",
         "filename": "src/chromiumos/tast/common/perf/timeline.go",
         "patchSetId": 4
@@ -14,6 +169,24 @@
       "writtenOn": "2022-10-21T16:37:52Z",
       "side": 1,
       "message": "I am not sure whether we should report `snapshotsSkipped` as part of the collected metrics. Maybe make `snapshotsSkipped` public and let the owner of `perf.Timeline` decide what to do with it.\n\nAvery, WDYT?",
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85afc45_4e7c13ca",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "I think this is fine the way it is, because `perf.Timeline.StopRecording` already returns `*perf.Values` and it will be easier to keep the metrics consistent if they are handled all in one place.",
+      "parentUuid": "7afe108c_b67c1dd2",
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -36,6 +209,75 @@
         "startChar": 38,
         "endLine": 197,
         "endChar": 43
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7122b912_e9ab8dd1",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "Instead of doing this, add `Timeline.enableGracePeriod` and expose the functionality by adding a corresponding `NewTimelineOption`.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 92
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0a0f3c_62523e4a",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "I think that if one snapshot takes longer than 2 intervals, then this code will output inaccurate and misleading error messages. Also, it makes multiple calls to `t.clock.Now()` which will return times that are slightly different in the context of logic that assumes they are the same. How about:\n\n\tsleepTime :\u003d nextTime.Sub(t.clock.Now())\n\tif sleepTime \u003c 0 {\n\t\tif !t.enableGracePeriod {\n\t\t\tt.recordingStatus \u003c- errors.Errorf(\"failed to take snapshot; trying to snapshot every %v, but taking the last snapshot already took more time\", t.interval)\n\t\t\treturn\n\t\t}\n\t\t\n\t\tsleepTime +\u003d t.interval\n\t\tif sleepTime \u003c 0 {\n\t\t\tt.recordingStatus \u003c- errors.Errorf(\"failed to take snapshot; trying to snapshot every %v with 1-interval grace period, but taking the last snapshot already took more than 2 intervals\", t.interval)\n\t\t\treturn\n\t\t}\n\t\t\n\t\ttesting.ContextLogf(ctx, \"Skipping snapshot because the last snapshot took more than the %v interval, but completed within the 1-interval grace period\", t.interval)\n\t\tnextTime \u003d nextTime.Add(t.interval)\n\t\tt.snapshotsSkipped++\n\t}",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a9caec_44a8878d",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T17:33:47Z",
+      "side": 1,
+      "message": "Check `t.enableGracePeriod` instead of `t.snapshotsSkipped \u003e 0`. That way, if the metric is absent, it will mean that there was no grace period, while if the metric is reported as `0`, it will mean that there was a grace period but no snapshots were skipped. That is a good distinction.",
+      "range": {
+        "startLine": 281,
+        "startChar": 4,
+        "endLine": 281,
+        "endChar": 26
       },
       "revId": "d5759675b826df080b25de12d0e61d6d2092ed6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
