@@ -16,6 +16,92 @@
       "message": "Hi Yuki, PTAL. Thank you.",
       "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834768dd_9c59b358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T18:56:47Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c58901e_27cb8e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T18:56:47Z",
+      "side": 1,
+      "message": "I cannot find a definition of `assistantWithDlc` in the above `fixture.go`. Could you double check whether this code runs?",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4ab8d2_6be40eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T18:56:47Z",
+      "side": 1,
+      "message": "Does it have to be `board\u003dzork`? Or do we just need it to be capable of DLC? If it\u0027s the latter, how about using `ExtraSoftwareDeps` with `dlc` to make the intention clear?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#software-dependencies",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de4a040_3d309568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-21T18:56:47Z",
+      "side": 1,
+      "message": "Is there any reason that we don\u0027t want to run `no_dlc` in those conditions? I don\u0027t think we have to make `Params` as mutually exclusive. If `no_dlc` can run in those conditions, I think we can just run it in those conditions as well.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 70
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
