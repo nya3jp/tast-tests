@@ -63,6 +63,30 @@
       },
       "revId": "b817ebbf260ccd568edfdbc4f05a69e5c337a329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35508eb8_94a6d9f4",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-21T05:39:01Z",
+      "side": 1,
+      "message": "maybe... I hope no one uses the return value when err !\u003d nil...",
+      "parentUuid": "82c16d7e_9eb637f2",
+      "range": {
+        "startLine": 329,
+        "startChar": 8,
+        "endLine": 329,
+        "endChar": 15
+      },
+      "revId": "b817ebbf260ccd568edfdbc4f05a69e5c337a329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
