@@ -104,7 +104,7 @@ func ChooseToSharePageURLOrNot(ctx context.Context, s *testing.State) {
 
 			// Verify url text exists.
 			urlText := nodewith.NameContaining(tabLink).Role(
-				role.StaticText).Ancestor(feedbackRootNode)
+				role.Link).Ancestor(feedbackRootNode)
 			if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 				s.Fatal("Failed to find element: ", err)
 			}
