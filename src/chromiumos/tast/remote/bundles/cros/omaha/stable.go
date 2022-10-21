@@ -31,9 +31,14 @@ func init() {
 func Stable(ctx context.Context, s *testing.State) {
 	state := s.FixtValue().(*params.FixtData)
 
+	prevVersion, err := state.Config.PreviousMilestoneOSVersion(state.Config.CurrentChromeOSStable())
+	if err != nil {
+		s.Fatal("Failed to get previous version: ", err)
+	}
+
 	req := request.New()
-	req.GenSP(state.Device, state.Config.OldVersion)
-	req.Apps = append(req.Apps, request.GenerateRequestApp(state.Device, state.Config.OldVersion, request.Stable))
+	req.GenSP(state.Device, prevVersion)
+	req.Apps = append(req.Apps, request.GenerateRequestApp(state.Device, prevVersion, request.Stable))
 
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
@@ -47,19 +52,24 @@ func Stable(ctx context.Context, s *testing.State) {
 		s.Fatal("Response is not an update: ", err)
 	}
 
-	// Check if the current stable is being served. We also accept the next stable
-	// here to not break during the transition from Mxx to Mxx+1.
-	if chromeVersion, err := res.ChromeVersion(); err != nil {
-		s.Error("Failed to get Chrome version: ", err)
-	} else if !request.MatchOneOfVersions(chromeVersion, state.Config.CurrentStableChrome, state.Config.NextStableChrome) {
-		s.Errorf("Chrome Version %q does not match the current %d or next %d milestone", chromeVersion, state.Config.CurrentStableChrome, state.Config.NextStableChrome)
+	prevMilestone, err := state.Config.PreviousMilestone(state.Config.CurrentChromeOSStable())
+	if err != nil {
+		s.Fatal("Failed to get previous version: ", err)
 	}
 
-	currentStableChromeOS := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentStableChrome]
-	nextStableChromeOS := state.Config.ChromeOSVersionFromMilestone[state.Config.NextStableChrome]
+	// Check if the current stable is being served. We also accept the previous
+	// stable here to not break during fractional pushes.
+	if chromeVersion, err := res.ChromeVersion(); err != nil {
+		s.Error("Failed to get Chrome version: ", err)
+	} else if !request.MatchOneOfVersions(chromeVersion, state.Config.CurrentChromeOSStable(), prevMilestone) {
+		s.Errorf("Chrome Version %q does not match the current %d or previous %d milestone", chromeVersion, state.Config.CurrentChromeOSStable(), prevMilestone)
+	}
+
+	currentStableChromeOS := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentChromeOSStable()]
+	prevStableChromeOS := state.Config.ChromeOSVersionFromMilestone[prevMilestone]
 	if chromeOSVersion, err := res.ChromeOSVersion(); err != nil {
 		s.Error("Failed to get ChromeOS version: ", err)
-	} else if !request.MatchOneOfVersions(chromeOSVersion, currentStableChromeOS, nextStableChromeOS) {
-		s.Errorf("ChromeOS Version %q does not match the current %d or next %d version", chromeOSVersion, currentStableChromeOS, nextStableChromeOS)
+	} else if !request.MatchOneOfVersions(chromeOSVersion, currentStableChromeOS, prevStableChromeOS) {
+		s.Errorf("ChromeOS Version %q does not match the current %d or previous %d version", chromeOSVersion, currentStableChromeOS, prevStableChromeOS)
 	}
 }
