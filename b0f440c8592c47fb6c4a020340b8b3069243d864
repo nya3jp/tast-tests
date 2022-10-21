@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bcb827_5589999a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:12:12Z",
+      "side": 1,
+      "message": "Wrap at 72 characters.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e5d394_ca5b7397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:12:12Z",
+      "side": 1,
+      "message": "nit: `scroll-`",
+      "range": {
+        "startLine": 162,
+        "startChar": 55,
+        "endLine": 162,
+        "endChar": 61
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e530cc6_a416ec92",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:12:12Z",
+      "side": 1,
+      "message": "nit: Instead of adding this parameter, you can do the following:\n\n\tvar touch bool\n\tswitch pc.(type) {\n\tcase nil:\n\t\treturn errors.New(\"pointer context is nil\")\n\tcase *pointer.MouseContext:\n\t\ttouch \u003d false\n\tcase *pointer.TouchContext:\n\t\ttouch \u003d true\n\tdefault:\n\t\treturn errors.New(\"unrecognized pointer context type\")\n\t}\n\nThis will be more code complexity overall, but I would argue it still offers better code maintainability because of the clean API.",
+      "range": {
+        "startLine": 33,
+        "startChar": 85,
+        "endLine": 33,
+        "endChar": 102
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712d0c2e_13888672",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/generate_metrics_actions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:12:12Z",
+      "side": 1,
+      "message": "nit: Be more explicit because `uiauto.Combine` returns `action.Action` which is a `function` but this also could be referring to `RunAshUIAction`.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "b0f440c8592c47fb6c4a020340b8b3069243d864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
