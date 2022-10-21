@@ -34,9 +34,8 @@ func init() {
 		Func:         DiskIOPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini Disk IO Performance",
-		Contacts:     []string{"cylee@chromium.org", "clumptini@google.com"},
-		// TODO(crbug.com/1124920): Test is disabled until it can be fixed
-		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_weekly"},
 		Data:         fioFiles(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		HardwareDeps: crostini.CrostiniMinDiskSize,
