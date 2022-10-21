@@ -16,6 +16,24 @@
       "message": "Include text like `test only` so that it\u0027s clear it\u0027s only a test not a real feedback.",
       "revId": "feaeffdb8e9718590c6a21870b7e355a8c6316b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80694631_08eef5c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_category_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-21T17:46:35Z",
+      "side": 1,
+      "message": "`IssueText` includes the `test only` message.",
+      "parentUuid": "3fd9fc35_2c26dba1",
+      "revId": "feaeffdb8e9718590c6a21870b7e355a8c6316b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
