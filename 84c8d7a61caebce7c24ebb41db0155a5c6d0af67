@@ -16,6 +16,23 @@
       "message": "+2 for Tast Review",
       "revId": "84c8d7a61caebce7c24ebb41db0155a5c6d0af67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52240c3e_fa783c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-10-21T16:00:16Z",
+      "side": 1,
+      "message": "lgtm but I prefer renaming the flag to better reflect its purpose: skip sending reports out in tests.",
+      "revId": "84c8d7a61caebce7c24ebb41db0155a5c6d0af67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
