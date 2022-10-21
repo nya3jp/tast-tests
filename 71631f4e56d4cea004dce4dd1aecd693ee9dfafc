@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d75866_18baf5a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "Please add tast-owners@google.com to reviewers and let gwsq assign it.",
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51881815_e0b26902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "You need to check err.\nif err !\u003d nil {...}",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a90b3b9_58907367",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "Can you also add a comment that caller should call printer.Stop?",
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971eb4cc_9198f92a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "I assume it is a virtual printer.",
+      "range": {
+        "startLine": 350,
+        "startChar": 28,
+        "endLine": 350,
+        "endChar": 35
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a32b024_dfc0bdea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "It\u0027s better to surface the error to stainless with a wrapped error message for debugging.\n\nreturn nil, errors.Wrap(err, \"failed to attach virtual printer\")",
+      "range": {
+        "startLine": 360,
+        "startChar": 14,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062f1df9_abdc6206",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "ditto. errors.Wrap(err, \"failed to wait ...\") and rest",
+      "range": {
+        "startLine": 364,
+        "startChar": 14,
+        "endLine": 364,
+        "endChar": 17
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a79bf05_192e1d8a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "Can you also add comment that caller should call app.Stop?",
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d1110c_894db042",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "Looks like you can just put settings here?",
+      "range": {
+        "startLine": 402,
+        "startChar": 22,
+        "endLine": 402,
+        "endChar": 34
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599e5fe2_2d7c8f41",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-21T23:26:39Z",
+      "side": 1,
+      "message": "Let\u0027s put nil here explicitly.",
+      "range": {
+        "startLine": 409,
+        "startChar": 13,
+        "endLine": 409,
+        "endChar": 16
+      },
+      "revId": "71631f4e56d4cea004dce4dd1aecd693ee9dfafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
