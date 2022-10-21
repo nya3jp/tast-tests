@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c20a1605_2f7e4b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:23:12Z",
+      "side": 1,
+      "message": "nit: `drop`",
+      "range": {
+        "startLine": 512,
+        "startChar": 52,
+        "endLine": 512,
+        "endChar": 59
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534f79ab_c44739d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:23:12Z",
+      "side": 1,
+      "message": "nit: Take a screenshot every 2 minutes up to a maximum of 5 screenshots",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 512,
+        "endChar": 15
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b029bd3f_20471b32",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 2
@@ -31,6 +77,30 @@
       "writtenOn": "2022-10-21T18:09:35Z",
       "side": 1,
       "message": "I wonder do we want to fail the test here? Even the screen recorder is not added successfully, the rest of the test can still probably pass, no?",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 9
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11645b92_529a24e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-21T18:23:12Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b029bd3f_20471b32",
       "range": {
         "startLine": 515,
         "startChar": 2,
