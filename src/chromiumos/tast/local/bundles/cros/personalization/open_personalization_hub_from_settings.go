@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -48,6 +49,13 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Force Chrome to be in clamshell mode.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
+	}
+	defer cleanup(ctx)
+
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
@@ -59,9 +67,7 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("open personalization hub from settings",
 		personalization.SearchForAppInLauncher(personalization.SettingsSearchTerm, personalization.SettingsAppName, kb, ui),
-		ui.LeftClick(nodewith.Role(role.Link).NameContaining(personalization.Personalization).HasClass("item")),
-		ui.LeftClick(nodewith.Role(role.Link).NameContaining(personalization.SettingsSetWallpaper).First()),
-		ui.WaitUntilExists(personalization.PersonalizationHubWindow),
+		navigateToPersHubFromSettings(ui),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub from settings: ", err)
 	}
@@ -75,4 +81,15 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub by searching in settings: ", err)
 	}
+}
+
+func navigateToPersHubFromSettings(ui *uiauto.Context) uiauto.Action {
+	nodeSettingsItem := nodewith.Role(role.Link).NameContaining(personalization.Personalization).HasClass("item")
+	nodeHubLink := nodewith.Role(role.Link).NameContaining(personalization.SettingsSetWallpaper).First()
+
+	return uiauto.Retry(3, uiauto.Combine("navigate to personalization hub",
+		ui.WithTimeout(500*time.Millisecond).DoDefault(nodeSettingsItem),
+		ui.WithTimeout(500*time.Millisecond).DoDefault(nodeHubLink),
+		ui.WithTimeout(time.Second).WaitUntilExists(personalization.PersonalizationHubWindow),
+	))
 }
