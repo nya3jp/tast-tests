@@ -49,9 +49,15 @@ func LTS(ctx context.Context, s *testing.State) {
 	ltsPrefix := strconv.FormatInt(int64(ltsChromeOsVersion), 10)
 	currentChromeOSLTSMinor := state.Config.ChromeOSLTRMilestoneWithMinimumMinor[currentChromeOSLTS]
 
+	prevVersion, err := state.Config.PreviousMilestoneOSVersion(currentChromeOSLTS)
+	if err != nil {
+		s.Fatal("Failed to get previous version: ", err)
+	}
+
 	req := request.New()
-	req.GenSP(state.Device, state.Config.OldVersion)
-	requestApp := request.GenerateRequestApp(state.Device, state.Config.OldVersion, request.Stable)
+	req.GenSP(state.Device, prevVersion)
+
+	requestApp := request.GenerateRequestApp(state.Device, prevVersion, request.Stable)
 	requestApp.UpdateCheck.LTSTag = "lts"
 	requestApp.UpdateCheck.TargetVersionPrefix = ltsPrefix
 	req.Apps = append(req.Apps, requestApp)

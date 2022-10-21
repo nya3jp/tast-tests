@@ -46,7 +46,7 @@ func LTSRollback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find the current LTS milestone in the current config: ", state.Config.ChromeOSLTRMilestoneWithMinimumMinor)
 	}
 
-	chromeOSStableInt := state.Config.ChromeOSVersionFromMilestone[state.Config.NextStableChrome]
+	chromeOSStableInt := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentChromeOSStable()]
 	chromeOSStable := strconv.FormatInt(int64(chromeOSStableInt), 10) + ".0.0"
 
 	req := request.New()

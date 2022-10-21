@@ -32,18 +32,14 @@ func init() {
 func MajorVersionPinning(ctx context.Context, s *testing.State) {
 	state := s.FixtValue().(*params.FixtData)
 
-	req := request.New()
-	req.GenSP(state.Device, state.Config.OldVersion)
-	requestApp := request.GenerateRequestApp(state.Device, state.Config.OldVersion, request.Stable)
-
 	for vpMilestone, vpChromeOSVersion := range state.Config.ChromeOSVersionFromMilestone {
-		if vpMilestone > state.Config.CurrentStableChrome {
-			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentStableChrome)
+		if vpMilestone > state.Config.CurrentChromeOSStable() {
+			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentChromeOSStable())
 			continue
 		}
 
 		// Major Version Pinning only supports the last 10 milestones.
-		if vpMilestone < state.Config.CurrentStableChrome-10 {
+		if vpMilestone < state.Config.CurrentChromeOSStable()-10 {
 			s.Logf("Not testing version %d, too old", vpMilestone)
 			continue
 		}
@@ -54,6 +50,15 @@ func MajorVersionPinning(ctx context.Context, s *testing.State) {
 		s.Run(ctx, "M"+vpMilestoneStr, func(ctx context.Context, s *testing.State) {
 			ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 			defer cancel()
+
+			prevVersion, err := state.Config.PreviousMilestoneOSVersion(vpMilestone)
+			if err != nil {
+				s.Fatal("Failed to get previous version: ", err)
+			}
+
+			req := request.New()
+			req.GenSP(state.Device, prevVersion)
+			requestApp := request.GenerateRequestApp(state.Device, prevVersion, request.Stable)
 
 			requestApp.UpdateCheck.TargetVersionPrefix = vpChromeOSVersionStr
 			req.Apps = []request.RequestApp{requestApp}
