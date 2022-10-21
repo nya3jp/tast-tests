@@ -40,9 +40,15 @@ func LTSPinning(ctx context.Context, s *testing.State) {
 			ltsChromeOsVersion := state.Config.ChromeOSVersionFromMilestone[chromeOsLTS]
 			ltsPrefix := strconv.FormatInt(int64(ltsChromeOsVersion), 10)
 
+			prevVersion, err := state.Config.PreviousMilestoneOSVersion(chromeOsLTS)
+			if err != nil {
+				s.Fatal("Failed to get previous version: ", err)
+			}
+
 			req := request.New()
-			req.GenSP(state.Device, state.Config.OldVersion)
-			requestApp := request.GenerateRequestApp(state.Device, state.Config.OldVersion, request.Stable)
+			req.GenSP(state.Device, prevVersion)
+
+			requestApp := request.GenerateRequestApp(state.Device, prevVersion, request.Stable)
 			requestApp.UpdateCheck.LTSTag = "lts"
 			requestApp.UpdateCheck.TargetVersionPrefix = ltsPrefix
 			req.Apps = append(req.Apps, requestApp)
