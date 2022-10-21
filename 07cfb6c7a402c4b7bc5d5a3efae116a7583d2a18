@@ -119,6 +119,24 @@
       "message": "Looks failures are unrelated and think it is safe to chump it.",
       "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b44655_f1257358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-21T21:23:18Z",
+      "side": 1,
+      "message": "Thanks for the approval! I\u0027ll submit it now.",
+      "parentUuid": "9d1b1761_aa674f74",
+      "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
