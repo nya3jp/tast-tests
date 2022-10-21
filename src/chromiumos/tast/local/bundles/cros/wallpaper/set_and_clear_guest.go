@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/local/wallpaper/constants"
@@ -59,6 +60,13 @@ func SetAndClearGuest(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	ui := uiauto.New(tconn)
+
+	if err := uiauto.Combine("Enable light mode",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.ToggleLightMode(ui))(ctx); err != nil {
+		s.Fatal("Failed to enable light mode: ", err)
+	}
+
 	if err := uiauto.Combine("Verify and set wallpaper",
 		verifyDefaultWallpaper(ui),
 		selectAndVerifyWallpaper(ui),
