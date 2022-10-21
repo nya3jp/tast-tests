@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119bb093_1092b447",
+        "filename": "test.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-21T22:40:10Z",
+      "side": 1,
+      "message": "We like to use full sentences. Please fix!\nHello world!",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "e9ed5fc7823f15465daa6eb5dd9065d3073eb66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
