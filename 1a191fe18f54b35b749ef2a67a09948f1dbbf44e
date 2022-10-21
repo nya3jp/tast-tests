@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32dc800d_da6d2926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-21T22:11:07Z",
+      "side": 1,
+      "message": "I\u0027m using tconn here (which is a connection to ash, I think??).  When I tried using a TestAPIConn from the browser object (br), this SelectPrinter failed waiting for the \u0027Destination \u0027 popup button.  Is the print preview stuff only in ash?",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "1a191fe18f54b35b749ef2a67a09948f1dbbf44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
