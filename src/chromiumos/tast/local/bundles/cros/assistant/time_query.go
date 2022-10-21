@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,7 +27,25 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistant",
+		Params: []testing.Param{
+			{
+				// Zork boards has the DLC capability to run Libassistant DLC and V2 tests.
+				Name:              "libassistant_dlc",
+				Fixture:           "assistantWithDlc",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("berknip", "betty")),
+			},
+			{
+				// Zork boards has the DLC capability to run Libassistant DLC and V2 tests.
+				Name:              "libassistant_v2",
+				Fixture:           "assistantWithLibassistantV2",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("berknip", "betty")),
+			},
+			{
+				Name:              "no_dlc",
+				Fixture:           "assistant",
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("berknip", "betty")),
+			},
+		},
 	})
 }
 

@@ -281,6 +281,44 @@ func init() {
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithDlc",
+		Desc: "Chrome session for assistant testing with LibAssistantDlc flag",
+		Contacts: []string{
+			"wutao@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				ashNoNudgesExtraArg(),
+				chrome.EnableFeatures("LibAssistantDlc"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithLibassistantV2",
+		Desc: "Chrome session for assistant testing with LibAssistantV2 flag",
+		Contacts: []string{
+			"wutao@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				ashNoNudgesExtraArg(),
+				chrome.EnableFeatures("LibAssistantDlc", "LibAssistantV2"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 type tabletFixture struct {
