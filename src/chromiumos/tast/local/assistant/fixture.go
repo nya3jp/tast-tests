@@ -281,6 +281,78 @@ func init() {
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithDlc",
+		Desc: "Chrome session for assistant testing with LibAssistantDlc flag",
+		Contacts: []string{
+			"wutao@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				ashNoNudgesExtraArg(),
+				chrome.EnableFeatures("LibAssistantDlc"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithLibassistantV2",
+		Desc: "Chrome session for assistant testing with LibAssistantV2 flag",
+		Contacts: []string{
+			"wutao@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				ashNoNudgesExtraArg(),
+				chrome.EnableFeatures("LibAssistantDlc", "LibAssistantV2"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantWithDlc",
+		Desc: "Assistant is enabled with DLC feature",
+		Contacts: []string{
+			"wutao@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent: "assistantBaseWithDlc",
+		Impl: NewAssistantFixture(func(s *testing.FixtState) FixtData {
+			return FixtData{
+				Chrome: s.ParentValue().(*chrome.Chrome),
+			}
+		}),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantWithLibassistantV2",
+		Desc: "Assistant is enabled with Libassistant V2 feature",
+		Contacts: []string{
+			"wutao@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent: "assistantBaseWithLibassistantV2",
+		Impl: NewAssistantFixture(func(s *testing.FixtState) FixtData {
+			return FixtData{
+				Chrome: s.ParentValue().(*chrome.Chrome),
+			}
+		}),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
 }
 
 type tabletFixture struct {
