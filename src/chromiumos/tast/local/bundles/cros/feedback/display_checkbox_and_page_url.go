@@ -70,7 +70,7 @@ func DisplayCheckboxAndPageURL(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify url text exists.
-	urlText := nodewith.NameContaining("chrome://newtab/").Role(role.StaticText).Ancestor(feedbackRootNode)
+	urlText := nodewith.NameContaining("chrome://newtab/").Role(role.Link).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 		s.Fatal("Failed to find element: ", err)
 	}
