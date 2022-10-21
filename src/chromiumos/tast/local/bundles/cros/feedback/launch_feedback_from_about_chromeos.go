@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -82,28 +83,7 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Send feedback button: ", err)
 	}
 
-	// Verify Feedback app is launched.
-	if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err != nil {
-		s.Fatal("Could not find app in shelf after launch: ", err)
-	}
-
-	// Verify essential elements exist.
-	issueDescriptionInput := nodewith.NameContaining("Description").Role(role.TextField)
-	button := nodewith.Name("Continue").Role(role.Button)
-
-	if err := uiauto.Combine("Verify essential elements exist",
-		ui.WaitUntilExists(issueDescriptionInput),
-		ui.WaitUntilExists(button),
-	)(ctx); err != nil {
-		s.Fatal("Failed to find element: ", err)
-	}
-
-	// Verify five default help content links exist.
-	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
-	for i := 0; i < 5; i++ {
-		item := helpLink.Nth(i)
-		if err := ui.WaitUntilExists(item)(ctx); err != nil {
-			s.Error("Failed to find five help links: ", err)
-		}
+	if err := feedbackapp.VerifyFeedbackAppIsLaunched(ctx, tconn, ui); err != nil {
+		s.Fatal("Failed to verify that the Feedback app is launched: ", err)
 	}
 }
