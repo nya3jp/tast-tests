@@ -160,7 +160,7 @@ func init() {
 				checkToNoGoodScreen: true,
 			},
 			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
-			Timeout:   15 * time.Minute,
+			Timeout:   30 * time.Minute,
 		}, {
 			Name:    "broken_screen",
 			Fixture: fixture.NormalMode,
