@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8385dce_f982fee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-21T01:14:52Z",
+      "side": 1,
+      "message": "work around for the --wp-list issue. Tested on jacuzzi boards where --wp-list cmd was failing, now appears to work.",
+      "revId": "3821afd7aa708d13c302007632c816fff54b7931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
