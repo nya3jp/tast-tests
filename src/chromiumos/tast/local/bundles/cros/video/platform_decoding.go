@@ -2796,11 +2796,17 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
-	expectation, err := expectations.GetTestExpectation(ctx, s)
+	expectation, err := expectations.GetTestExpectation(ctx, s.TestName())
 	if err != nil {
 		s.Fatal("Failed to load test expectation: ", err)
 	}
-	defer expectation.HandleFinalExpectation(s)
+	// Schedules a post-test expectations handling. If the test is expected to
+	// fail, but did not, then this generates an error.
+	defer func() {
+		if err := expectation.HandleFinalExpectation(); err != nil {
+			s.Error("Unmet expectation: ", err)
+		}
+	}()
 
 	// Creates temporary md5 checksum log file
 	f, err := os.CreateTemp("", "frame_checksums.*.md5")
@@ -2838,11 +2844,12 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 		if err != nil {
 			output := append(stdout, stderr...)
 			testing.ContextLogf(ctx, "%v failed : %s", exec, string(output))
-			errorMessage := fmt.Sprintf("%v failed unexpectedly on %s: ", exec, filename)
-			if stopOnFailure {
-				expectation.Fatal(s, errorMessage, err)
+			if expErr := expectation.ReportErrorf("%v failed on %s: %v", exec, filename, err); expErr != nil {
+				s.Error("Unexpected error: ", expErr)
 			}
-			expectation.Error(s, errorMessage, err)
+			if stopOnFailure {
+				return
+			}
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}

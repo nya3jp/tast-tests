@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"runtime"
 	"strings"
 
 	"gopkg.in/yaml.v2"
@@ -216,7 +215,7 @@ func expectPass(ctx context.Context) Expectation {
 // GetTestExpectationFromDirectory opens an existing test expectations file
 // based on the device model, board, or gpu chipset. Looks in
 // testExpectationsDirectory for test expectations files.
-func GetTestExpectationFromDirectory(ctx context.Context, s *testing.State, testExpectationsDirectory string) (Expectation, error) {
+func GetTestExpectationFromDirectory(ctx context.Context, testName, testExpectationsDirectory string) (Expectation, error) {
 	// Try the following file names:
 	// 1. base_directory/model-<model>.yml
 	// 2. base_directory/buildboard-<buildboard>.yml
@@ -254,7 +253,7 @@ func GetTestExpectationFromDirectory(ctx context.Context, s *testing.State, test
 			if err != nil {
 				return expectPass(ctx), errors.Wrap(err, "unable to parse expectations file")
 			}
-			expectation, ok := expectations[s.TestName()]
+			expectation, ok := expectations[testName]
 			if !ok {
 				return expectPass(ctx), nil
 			}
@@ -268,75 +267,55 @@ func GetTestExpectationFromDirectory(ctx context.Context, s *testing.State, test
 
 // GetTestExpectation opens an existing test expectations file based on the
 // device model, board, or gpu chipset. Uses the default directory naming scheme.
-func GetTestExpectation(ctx context.Context, s *testing.State) (Expectation, error) {
-	directory, err := getTestExpectationsDirectory(s.TestName())
+func GetTestExpectation(ctx context.Context, testName string) (Expectation, error) {
+	directory, err := getTestExpectationsDirectory(testName)
 	if err != nil {
 		return expectPass(ctx), err
 	}
-	return GetTestExpectationFromDirectory(ctx, s, directory)
+	return GetTestExpectationFromDirectory(ctx, testName, directory)
 }
 
-// Error is an expectation aware wrapper over testing.State.Error. If the
-// test is expected to fail, then the error is demoted to a log.
-func (e *Expectation) Error(s *testing.State, args ...interface{}) {
+// ReportError is used to get the preferred error handling within the
+// context of a test expectation. If the return value is not nil, then
+// the test code should use the error as an input to Error or Fatal.
+// If the test code must not continue after the error, it is up to the
+// caller to guarantee to exit.
+func (e *Expectation) ReportError(args ...interface{}) error {
 	e.hasTastError = true
 	switch e.Expectation {
 	case ExpectPass:
-		s.Error(args...)
+		return errors.New(fmt.Sprint(args...))
 	case ExpectFailure:
 		testing.ContextLog(e.ctx, append([]interface{}{"Error:"}, args...))
 	}
+	return nil
 }
 
-// Errorf is an expectation aware wrapper over testing.State.Errorf. If the
-// test is expected to fail, then the error is demoted to a log.
-func (e *Expectation) Errorf(s *testing.State, format string, args ...interface{}) {
+// ReportErrorf is used to get the preferred error handling within the
+// context of a test expectation. If the return value is not nil, then
+// the test code should use the error as an input to Error or Fatal.
+// If the test code must not continue after the error, it is up to the
+// caller to guarantee to exit.
+func (e *Expectation) ReportErrorf(format string, args ...interface{}) error {
 	e.hasTastError = true
 	switch e.Expectation {
 	case ExpectPass:
-		s.Errorf(format, args...)
+		return errors.Errorf(format, args...)
 	case ExpectFailure:
 		testing.ContextLogf(e.ctx, "Error: "+format, args...)
 	}
-}
-
-// Fatal is an expectation aware wrapper over testing.State.Fatal. If the
-// test is expected to fail, then the fatal error is demoted to a log, but
-// the test still stops.
-func (e *Expectation) Fatal(s *testing.State, args ...interface{}) {
-	e.hasTastError = true
-	switch e.Expectation {
-	case ExpectPass:
-		s.Fatal(args...)
-	case ExpectFailure:
-		testing.ContextLog(e.ctx, append([]interface{}{"Fatal:"}, args...))
-		runtime.Goexit()
-	}
-}
-
-// Fatalf is an expectation aware wrapper over testing.State.Fatalf. If the
-// test is expected to fail, then the fatal error is demoted to a log, but
-// the test still stops.
-func (e *Expectation) Fatalf(s *testing.State, format string, args ...interface{}) {
-	e.hasTastError = true
-	switch e.Expectation {
-	case ExpectPass:
-		s.Fatalf(format, args...)
-	case ExpectFailure:
-		testing.ContextLogf(e.ctx, "Fatal: "+format, args...)
-		runtime.Goexit()
-	}
+	return nil
 }
 
 // HandleFinalExpectation will cause the test case to fail if there was no error,
 // but the expectation was to fail. Calling this should be deferred by a test.
-func (e *Expectation) HandleFinalExpectation(s *testing.State) {
+func (e *Expectation) HandleFinalExpectation() error {
 	if e.Expectation == ExpectFailure && !e.hasTastError {
 		var ticketsMessage string
 		if len(e.Tickets) > 0 {
 			ticketsMessage = " due to " + strings.Join(e.Tickets, ", ")
 		}
-		s.Errorf("Test passed! Consider removing %s expectation%s", e.Expectation, ticketsMessage)
+		return errors.Errorf("Test passed! Consider removing %s expectation%s", e.Expectation, ticketsMessage)
 	} else if e.Expectation == ExpectFailure && e.hasTastError {
 		var sinceBuildMessage string
 		if len(e.SinceBuild) > 0 {
@@ -353,4 +332,5 @@ func (e *Expectation) HandleFinalExpectation(s *testing.State) {
 
 		testing.ContextLogf(e.ctx, "The test encountered Tast errors. These were ignored due to existing expectation%s%s%s", sinceBuildMessage, ticketsMessage, commentsMessage)
 	}
+	return nil
 }
