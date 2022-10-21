@@ -17,6 +17,7 @@ import (
 	"google.golang.org/grpc"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
 
+	"chromiumos/system_api/hps_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -47,15 +48,45 @@ type SettingService struct {
 	cr *chrome.Chrome
 }
 
-// WaitForDbus wait for the hpsd to finish flashing.
-func (hss *SettingService) WaitForDbus(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	dbusName := "org.chromium.Hps"
-	dbusPath := "/org/chromium/Hps"
+// WaitForHps waits for hpsd to be ready, and optionally to finish enabling the requested features.
+// This includes booting the HPS peripheral and potentially flashing its firmware.
+func (hss *SettingService) WaitForHps(ctx context.Context, req *pb.WaitForHpsRequest) (*empty.Empty, error) {
+	const (
+		dbusName      = "org.chromium.Hps"
+		dbusPath      = "/org/chromium/Hps"
+		dbusInterface = "org.chromium.Hps"
+	)
 
-	_, _, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	testing.ContextLog(ctx, "Waiting for hpsd to bind its D-Bus name")
+	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to connect to %s", dbusName)
 	}
+
+	// At this point, hpsd has bound its D-Bus name, meaning it has started
+	// successfully and powered up the HPS peripheral, including applying
+	// firmware updates if needed.
+
+	if req.WaitForSense {
+		testing.ContextLog(ctx, "Waiting for hpsd to enable 'sense' feature")
+		result := &hps_proto.HpsResultProto{}
+		if err := dbusutil.CallProtoMethod(ctx, obj, dbusInterface+".GetResultHpsSense", nil, result); err != nil {
+			return nil, errors.Wrap(err, "failed to get 'sense' result from hpsd")
+		}
+		// At this point, hpsd has reponded with a "sense" score, meaning it
+		// has powered on the HPS peripheral again if necessary, and told it to
+		// start executing feature 0.
+	}
+
+	if req.WaitForNotify {
+		testing.ContextLog(ctx, "Waiting for hpsd to enable 'notify' feature")
+		result := &hps_proto.HpsResultProto{}
+		if err := dbusutil.CallProtoMethod(ctx, obj, dbusInterface+".GetResultHpsNotify", nil, result); err != nil {
+			return nil, errors.Wrap(err, "failed to get 'notify' result from hpsd")
+		}
+		// As above, HPS has started executing feature 1.
+	}
+
 	return &empty.Empty{}, nil
 }
 

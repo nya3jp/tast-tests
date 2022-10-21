@@ -86,12 +86,7 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to wait for dbus command to be available: ", err)
-	}
-
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: utils.SecondPersonAlert,
 		Enable:  spaEnabled.spaOn,
@@ -101,13 +96,19 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to change setting: ", err)
 	}
 
+	// Wait for hpsd to finish starting the HPS peripheral and enabling the feature we requested.
+	waitReq := &pb.WaitForHpsRequest{
+		WaitForSense:  false,
+		WaitForNotify: spaEnabled.spaOn,
+	}
+	if _, err := client.WaitForHps(ctx, waitReq); err != nil {
+		s.Fatal("Failed to wait for HPS to be ready: ", err)
+	}
+
 	// Render hps-internal page for debugging before waiting for dim.
 	if _, err := client.OpenHPSInternalsPage(hctx.Ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error open hps-internals: ", err)
 	}
-
-	// Waits for 10s for the hps sensor to work.
-	testing.Sleep(ctx, time.Second*10)
 
 	// Index i is representing the number of people in an image too.
 	for key, val := range hostPaths {

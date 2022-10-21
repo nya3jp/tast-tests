@@ -73,12 +73,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to wait for dbus command to be available: ", err)
-	}
-
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: utils.LockOnLeave,
 		Enable:  true,
