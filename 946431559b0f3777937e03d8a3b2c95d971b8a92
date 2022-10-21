@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4c6ebd_00c4bf68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T18:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20a1605_2f7e4b8e",
+      "range": {
+        "startLine": 512,
+        "startChar": 52,
+        "endLine": 512,
+        "endChar": 59
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3cd3ce_11be5068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T18:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534f79ab_c44739d6",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 512,
+        "endChar": 15
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b029bd3f_20471b32",
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "b029bd3f_20471b32",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 9
+      },
+      "revId": "946431559b0f3777937e03d8a3b2c95d971b8a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e90f20a_11433c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-21T18:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11645b92_529a24e4",
       "range": {
         "startLine": 515,
         "startChar": 2,
