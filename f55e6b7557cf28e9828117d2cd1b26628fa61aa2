@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397385dc_dc05ff98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-21T00:07:52Z",
+      "side": 1,
+      "message": "Add Jonathan Fan, who is the author of automation_service.go to the code reviewer list",
+      "revId": "f55e6b7557cf28e9828117d2cd1b26628fa61aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
