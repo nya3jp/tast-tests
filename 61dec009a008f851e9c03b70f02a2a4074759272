@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a6fd805_c30d5cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T02:12:55Z",
+      "side": 1,
+      "message": "It looks like `shill-wifi` is computed as `!moblab`. Given that moblab devices are not using WiFi, it does not make any sense to test WiFi functionality esp. Passpoint on the devices.\n\nBut, tbh, I don\u0027t really know if this is correct / if we want it tested on those devices. Do you have any thoughts on this?",
+      "parentUuid": "4d15a09e_20a4dd08",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ce6124_b0e890c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-21T01:52:29Z",
       "side": 1,
       "message": "nit: \"len(aObjs) \u003d %d, want 2\"\nAt least put \"got\" at first.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe2a5a9_afcbdda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T02:12:55Z",
+      "side": 1,
+      "message": "Ah I didn\u0027t know that there is a rule for this, thanks for the info! Done.",
+      "parentUuid": "09ce6124_b0e890c0",
       "range": {
         "startLine": 88,
         "startChar": 26,
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-21T01:52:29Z",
       "side": 1,
       "message": "Just to check, we use `Error` here (and below), is it meaningful to continue the test if we got a a failure here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d775141c_edc3f114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T02:12:55Z",
+      "side": 1,
+      "message": "Good point, thanks for catching! Marking this (alongside the others) as fatal.",
+      "parentUuid": "7bf648eb_95c9ba61",
       "range": {
         "startLine": 101,
         "startChar": 5,
@@ -128,6 +200,54 @@
         "startChar": 0,
         "endLine": 151,
         "endChar": 9
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b851fb9_b1dcb088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T02:12:55Z",
+      "side": 1,
+      "message": "Ah nice to know, thanks! Done.",
+      "parentUuid": "2d566179_09072856",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f45314_4a349925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-10-21T02:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa88d356_bda693e9",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 8
       },
       "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
