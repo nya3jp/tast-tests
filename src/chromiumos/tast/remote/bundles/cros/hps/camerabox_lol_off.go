@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CameraboxLoLOff,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify that the HPS can dim the screen within the right time range when LoL is off",
+		Desc:         "Verify that HPS does not dim the screen quickly when LoL is off",
 		Data:         []string{hpsutil.PersonPresentPageArchiveFilename},
 		Contacts: []string{
 			"eunicesun@google.com",
@@ -73,12 +73,14 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
+	// First turn on the "Lock on leave" feature.
+	// This is only needed so that we can scrape the quick dim delay from the powerd logs.
+	// We turn it off again below, when performing the actual test.
 	client := pb.NewHpsServiceClient(cl.Conn)
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
-	// Change the setting to true so that we can get the quickdim delay time.
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to change setting: ", err)
 	}
@@ -92,6 +94,8 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
+	// Turn off the "Lock on leave" feature. This disables HPS and gives us
+	// traditional dimming behaviour (i.e. not quick dim).
 	req.Enable = false
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to change setting: ", err)
@@ -106,7 +110,8 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	if _, err := client.OpenHPSInternalsPage(hctx.Ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error open hps-internals")
 	}
-	// It should not dim after DimDelay.
+
+	// It should *not* dim the screen within the quick dim delay period.
 	// Poll instead of Sleep in order to fail fast in case screen dims before the delay.
 	err = utils.PollForBrightnessChange(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), dut.Conn())
 	if err != nil {
@@ -121,7 +126,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected brightness change: was: ", brightness, ", new: ", newBrightness)
 	}
 
-	// It should not lock after quick dim delay.
+	// It should *not* lock the screen within the quick screen off delay period.
 	err = utils.PollForBrightnessChange(ctx, brightness, quickDimMetrics.ScreenOffDelay.AsDuration(), dut.Conn())
 	if err != nil {
 		// If brightness is not changed it's not an error in this case, as we'll check the brightness after polling anyway.
