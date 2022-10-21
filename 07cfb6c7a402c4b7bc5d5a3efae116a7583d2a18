@@ -102,6 +102,23 @@
       "message": "Grabbed an atlas device and verified that it can pass locally. Retry the submit...",
       "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1b1761_aa674f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-21T21:21:01Z",
+      "side": 1,
+      "message": "Looks failures are unrelated and think it is safe to chump it.",
+      "revId": "07cfb6c7a402c4b7bc5d5a3efae116a7583d2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
