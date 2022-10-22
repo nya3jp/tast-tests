@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5bc95d7_4a9022f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-22T00:54:07Z",
+      "side": 1,
+      "message": "When I use `chromeLoggedIn` and HasChrome, it will have the `Panic: interface conversion: *arc.PreData is not chrome.HasChrome: missing method Chrome` error message. To use HasChrome, I changed the fixture to `loggedInToCUJUser` which can support ARC.",
+      "parentUuid": "35009148_3c30489b",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c359e59_67fdbc72",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 3
