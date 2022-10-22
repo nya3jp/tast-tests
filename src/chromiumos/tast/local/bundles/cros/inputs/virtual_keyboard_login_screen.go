@@ -88,7 +88,7 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
 	if err != nil {
@@ -121,8 +121,11 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 			vkbCtx.TapNode(leftShiftKey),                            // Shifted VK
 			vkbCtx.TapKey("Z"),                                      // pwd: x2Z
 			vkbCtx.TapKeysIgnoringCase([]string{"g", "space", "m"}), // pwd: x2Zg m
-			ui.DoDefault(nodewith.Name("Show password")),
-			ud.WaitUntilExists(passwordText),
+			uiauto.Retry(5, uiauto.NamedCombine(
+				"Show password and validate text",
+				ui.DoDefault(nodewith.Name("Show password")),
+				ud.WaitUntilExists(passwordText),
+			)),
 		),
 		uc,
 		&useractions.UserActionCfg{
