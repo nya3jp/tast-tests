@@ -22,6 +22,30 @@
       },
       "revId": "1a191fe18f54b35b749ef2a67a09948f1dbbf44e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c154af5f_254cff98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-22T00:24:21Z",
+      "side": 1,
+      "message": "Print preview should definitely be working in lacros (if it\u0027s not, we have a bug to fix), but it looks like here you\u0027re passing the ash test connection in.  https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/main:src/chromiumos/tast/local/bundles/cros/printer/print_extension.go;l\u003d100;drc\u003df2c8e449a6315aea128562f62dbba160bd5941ec should be a good example of how to set up both test connections.",
+      "parentUuid": "32dc800d_da6d2926",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "1a191fe18f54b35b749ef2a67a09948f1dbbf44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
