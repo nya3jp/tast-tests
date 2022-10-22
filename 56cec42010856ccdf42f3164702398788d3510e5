@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24488aca_905d2981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_network_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-22T00:14:29Z",
+      "side": 1,
+      "message": "Please verify that this doesn\u0027t throw when display attribute is not set.",
+      "range": {
+        "startLine": 84,
+        "startChar": 137,
+        "endLine": 84,
+        "endChar": 149
+      },
+      "revId": "56cec42010856ccdf42f3164702398788d3510e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
