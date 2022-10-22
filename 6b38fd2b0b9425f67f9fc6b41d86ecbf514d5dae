@@ -22,6 +22,30 @@
       },
       "revId": "6b38fd2b0b9425f67f9fc6b41d86ecbf514d5dae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b5d201_50c0689b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-22T22:44:59Z",
+      "side": 1,
+      "message": "Not needed",
+      "parentUuid": "aac0cb5e_83f0349a",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 4
+      },
+      "revId": "6b38fd2b0b9425f67f9fc6b41d86ecbf514d5dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
