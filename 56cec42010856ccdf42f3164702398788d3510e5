@@ -22,6 +22,30 @@
       },
       "revId": "56cec42010856ccdf42f3164702398788d3510e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f324ed5_b2ae3e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_network_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115893
+      },
+      "writtenOn": "2022-10-22T00:25:18Z",
+      "side": 1,
+      "message": "Summarizing from chat discussion, `.computedStyleMap().get(\u0027display\u0027)` can only ever return \u0027null\u0027 if the element is not in the DOM. Otherwise it should always return a non-null value. Example snippet\n\n```\nvar d \u003d document.createElement(\u0027div\u0027)\ndocument.body.appendChild(d)\nconsole.log(d.computedStyleMap().get(\u0027display\u0027).toString());\n```",
+      "parentUuid": "24488aca_905d2981",
+      "range": {
+        "startLine": 84,
+        "startChar": 137,
+        "endLine": 84,
+        "endChar": 149
+      },
+      "revId": "56cec42010856ccdf42f3164702398788d3510e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
