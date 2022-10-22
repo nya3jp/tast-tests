@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb808f0f_eac2a01c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-22T00:29:34Z",
+      "side": 1,
+      "message": "Cool. Thanks for the fix.\n\nVerified it passes. Send to CQ.",
+      "revId": "56cec42010856ccdf42f3164702398788d3510e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24488aca_905d2981",
