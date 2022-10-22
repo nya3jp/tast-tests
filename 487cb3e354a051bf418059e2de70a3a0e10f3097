@@ -129,6 +129,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ff57476_daaa99b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-22T00:51:47Z",
+      "side": 1,
+      "message": "After replacing the fixtures with familyLinkUnicornArcPolicyLogin and familyLinkGellerArcPolicyLogin, there\u0027s no need to PerformAndClose(). A more robust way to enable ARC is to inject this policy:\n\n    arcEnabledPolicy :\u003d \u0026policy.ArcEnabled{Val: true}\n\tpolicies :\u003d []policy.Policy{arcEnabledPolicy}\n\tpb :\u003d policy.NewBlob()\n\tpb.AddPolicies(policies)\n\tif err :\u003d policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err !\u003d nil {\n\t\ts.Fatal(\"Failed to serve policies: \", err)\n\t}\n\t\nSee example here [1].\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go;l\u003d47?q\u003dfamilyLinkUnicornArcPolicyLogin",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f64baf_c5eb28bd",
         "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
         "patchSetId": 1
