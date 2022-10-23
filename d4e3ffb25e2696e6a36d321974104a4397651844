@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41917ae8_586e891b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-23T21:08:16Z",
+      "side": 1,
+      "message": "Is the relative order of WaitForNotify vs WaitForSense important? If we want both, will it still work if we wait for WaitForNotify first?",
+      "revId": "d4e3ffb25e2696e6a36d321974104a4397651844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
