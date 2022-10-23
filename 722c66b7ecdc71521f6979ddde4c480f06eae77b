@@ -22,6 +22,30 @@
       },
       "revId": "722c66b7ecdc71521f6979ddde4c480f06eae77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d608688_dfaa0baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-23T23:34:38Z",
+      "side": 1,
+      "message": "I intend to allow non-audio services to be added as parameterized tests. Once that happens it makes sense to signify the owner of each service.",
+      "parentUuid": "d4e5177e_9af1f0de",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "722c66b7ecdc71521f6979ddde4c480f06eae77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
