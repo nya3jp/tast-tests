@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca68474_d4997fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527467
+      },
+      "writtenOn": "2022-10-24T05:29:58Z",
+      "side": 1,
+      "message": "Apologies for the late answer. Was OOO for 2 weeks. PTAL.",
+      "revId": "9c5cc78d10ac12038ac4e0e9ecf94e4f68efd4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
