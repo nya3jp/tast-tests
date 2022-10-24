@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd3bb40_59399d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-24T20:37:22Z",
+      "side": 1,
+      "message": "Hi Yuki, PTAL. Thanks for reviewing.",
+      "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94395ca0_cc34dc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-24T20:37:22Z",
+      "side": 1,
+      "message": "There were some errors when resolving the conflict. PTAL.",
+      "parentUuid": "8c58901e_27cb8e8f",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4ab8d2_6be40eaf",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1983c8f_8c2df997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-24T20:37:22Z",
+      "side": 1,
+      "message": "Thank you.\nYes. it needs to be board\u003dzork. libassistant dlc is only available on zork/betty right now.\nI updated the comments.\nTo be safe, I also added the software deps of `dlc`.",
+      "parentUuid": "db4ab8d2_6be40eaf",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2de4a040_3d309568",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-10-21T18:56:47Z",
       "side": 1,
       "message": "Is there any reason that we don\u0027t want to run `no_dlc` in those conditions? I don\u0027t think we have to make `Params` as mutually exclusive. If `no_dlc` can run in those conditions, I think we can just run it in those conditions as well.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 70
+      },
+      "revId": "396333f209ae3e5969c9ddf2d5bc54318d9cb325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1faea5_7524d84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-24T20:37:22Z",
+      "side": 1,
+      "message": "sg. Thanks. Done.",
+      "parentUuid": "2de4a040_3d309568",
       "range": {
         "startLine": 46,
         "startChar": 2,
