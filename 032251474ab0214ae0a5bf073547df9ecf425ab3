@@ -16,6 +16,23 @@
       "message": "lgtm. Thank you!",
       "revId": "032251474ab0214ae0a5bf073547df9ecf425ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c27a2d_da52c01b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-10-24T18:48:08Z",
+      "side": 1,
+      "message": "go/exoneration-guide suggests that we exonerate these tests rather than mark them informational",
+      "revId": "032251474ab0214ae0a5bf073547df9ecf425ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
