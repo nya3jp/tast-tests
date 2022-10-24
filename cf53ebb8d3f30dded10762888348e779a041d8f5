@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d657de8_9df1bbb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136302
+      },
+      "writtenOn": "2022-10-24T08:16:56Z",
+      "side": 1,
+      "message": "Thanks, lgtm.",
+      "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a79d08b_2e78a791",
@@ -54,6 +71,23 @@
         "endLine": 104,
         "endChar": 26
       },
+      "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7efabc_489e87fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136302
+      },
+      "writtenOn": "2022-10-24T08:16:56Z",
+      "side": 1,
+      "message": "Please add a comment here saying what the value means.\n(Alternatively to using a bool you could make the value be the extra actions to test.)",
       "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
