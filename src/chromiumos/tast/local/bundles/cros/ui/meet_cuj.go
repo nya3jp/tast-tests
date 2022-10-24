@@ -39,7 +39,6 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/loginstatus"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -1005,12 +1004,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				pv.Merge(webRTCInternalsPV)
 			}
 		}
-	}
-
-	// Take a screenshot prior to closing Meet, to facilitate debugging.
-	screenshotFile := filepath.Join(s.OutDir(), "meet_screenshot.png")
-	if err := screenshot.CaptureChrome(ctx, cr, screenshotFile); err != nil {
-		s.Log("Failed to take screenshot: ", err)
 	}
 
 	// Reset the browser zoom, because the browser retains the zoom
