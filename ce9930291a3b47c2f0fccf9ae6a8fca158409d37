@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b472295_7458fc7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-24T22:52:39Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "ce9930291a3b47c2f0fccf9ae6a8fca158409d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f994ffe8_d33557b8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-24T22:52:39Z",
+      "side": 1,
+      "message": "What are these types (screenshotType + screenRecordingType) used for? I don\u0027t see an enum definition",
+      "revId": "ce9930291a3b47c2f0fccf9ae6a8fca158409d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33de8a9_3793e752",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/screenshot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-24T22:52:39Z",
+      "side": 1,
+      "message": "nit: I think it would be clearer if these three values were kept together with\n```\ntype CaptureModeSource int\n```",
+      "revId": "ce9930291a3b47c2f0fccf9ae6a8fca158409d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
