@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a98cef_17a05dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T00:23:01Z",
+      "side": 1,
+      "message": "What do you mean by \"still up\"? E.g. this will pass on Ash even when there is no browser window anymore.",
+      "revId": "05e105f5d7b85d7796e9b49ed4b97e945b7e71eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
