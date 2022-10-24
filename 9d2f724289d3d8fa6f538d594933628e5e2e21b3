@@ -134,6 +134,30 @@
       },
       "revId": "9d2f724289d3d8fa6f538d594933628e5e2e21b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c948e5_36fb2140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-24T16:56:50Z",
+      "side": 1,
+      "message": "Ah, I see, I was not familiar with that idiom and most of my original attempts to do something similar-ish did not manage to take with gofmt. I was able to rework most of the multi-line ifs into something along these lines.",
+      "parentUuid": "dab9a95c_956b9c63",
+      "range": {
+        "startLine": 204,
+        "startChar": 62,
+        "endLine": 204,
+        "endChar": 77
+      },
+      "revId": "9d2f724289d3d8fa6f538d594933628e5e2e21b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
