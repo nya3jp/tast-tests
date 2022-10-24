@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be10cb3_9c12d4d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T20:47:38Z",
+      "side": 1,
+      "message": "FYI the base test seems to have got flaky recently: b/255174628\nIt would be nice to stabilize it in parallel so that the lacros variant test in this change could be as stable as it is.",
+      "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a9e6d7_c46616d1",
