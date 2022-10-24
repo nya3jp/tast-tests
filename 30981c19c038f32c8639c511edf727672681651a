@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96056b09_3e2cda04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: `AuthSession` (to be consistent with how it\u0027s spelled in other places)",
+      "range": {
+        "startLine": 98,
+        "startChar": 27,
+        "endLine": 98,
+        "endChar": 39
+      },
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83a26bc_62aa1f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: I think these details are not important here - we can shorten it to:\n\n    // 2. Enable the UserSecretStash experiment.",
+      "range": {
+        "startLine": 124,
+        "startChar": 44,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e9111f_d553695b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "Just a note: authenticating an already authenticated AuthSession is not a well-defined operation. For example, `AuthSession::key_data_` will be overwritten with the PIN factor\u0027s information regardless of whether it\u0027s correct or not. Ditto in other places below that reuse the already authenticated AuthSession for checking PIN.\n\nIt\u0027s OK to keep it like this, because technically it should work today. But a more real-world testing scenario would be to start a new AuthSession each time we want to try authenticating via PIN.",
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78de33ef_ca9f44cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: Let\u0027s make the comment a bit more specific, because there are two factors involved in the test. E.g., \"PIN AuthFactor\" or \"second AuthFactor\".",
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29006b6d_d437266f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: Typo in \"invalidate\".",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95fa69a5_c730e27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: Typo in \"succeeded\".",
+      "range": {
+        "startLine": 210,
+        "startChar": 43,
+        "endLine": 210,
+        "endChar": 51
+      },
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52fac654_d956ddc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-24T23:52:31Z",
+      "side": 1,
+      "message": "nit: Typo",
+      "range": {
+        "startLine": 230,
+        "startChar": 73,
+        "endLine": 230,
+        "endChar": 81
+      },
+      "revId": "30981c19c038f32c8639c511edf727672681651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
