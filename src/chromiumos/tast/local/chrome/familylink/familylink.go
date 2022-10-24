@@ -403,7 +403,7 @@ func NavigateExtensionApprovalFlow(ctx context.Context, cr *chrome.Chrome, tconn
 		return errors.Wrap(err, "failed to click ask parent")
 	}
 
-	testing.ContextLog(ctx, "Selecting parent email"+strings.ToLower(parentEmail))
+	testing.ContextLogf(ctx, "Selecting parent email %q", strings.ToLower(parentEmail))
 	parentEmailRadio := nodewith.Name(strings.ToLower(parentEmail)).Role(role.RadioButton)
 	parentEmailText := nodewith.Name(strings.ToLower(parentEmail))
 	// If there are two parents, the dialog contains a radio button with both parent emails.
