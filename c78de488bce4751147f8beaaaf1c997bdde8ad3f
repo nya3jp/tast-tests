@@ -115,6 +115,30 @@
       },
       "revId": "c78de488bce4751147f8beaaaf1c997bdde8ad3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147c578e_e461bf92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/mature_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T23:24:45Z",
+      "side": 1,
+      "message": "Done removing the URL join completely since https://crrev.com/i/5052346 will update the URLs with a trailing slash.",
+      "parentUuid": "a5e4f204_e13c3d7d",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "c78de488bce4751147f8beaaaf1c997bdde8ad3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
