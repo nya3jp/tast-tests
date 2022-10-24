@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa7e0859_03fafcfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-24T21:20:41Z",
+      "side": 1,
+      "message": "We should check for length here, before returning the element at index 2.",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4bda29c_04354a73",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
         "patchSetId": 1
@@ -77,6 +100,23 @@
       "writtenOn": "2022-10-24T14:12:34Z",
       "side": 1,
       "message": "not consistent with L37. As mentioned above, let\u0027s return error.",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09283bbd_6969b705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-24T21:20:41Z",
+      "side": 1,
+      "message": "nit: Should we return error here (and the following cases) and then s.Fatal in line 156?",
       "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +180,23 @@
         "endLine": 98,
         "endChar": 68
       },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee38d3c_7ad328b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-24T21:20:41Z",
+      "side": 1,
+      "message": "nit: kernAPath :\u003d \"\"",
       "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
