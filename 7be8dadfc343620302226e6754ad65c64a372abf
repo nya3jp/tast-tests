@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f91596c_a4227f16",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T13:24:07Z",
+      "side": 1,
+      "message": "we could even lift this up to the very top of the function, right?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "7be8dadfc343620302226e6754ad65c64a372abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd463b48_96a07802",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T13:24:07Z",
+      "side": 1,
+      "message": "nit: can just use `[:5]` here",
+      "range": {
+        "startLine": 102,
+        "startChar": 25,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "7be8dadfc343620302226e6754ad65c64a372abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
