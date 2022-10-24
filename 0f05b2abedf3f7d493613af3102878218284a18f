@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04d5fe1_33ca2c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "ecec0012_6f4ea014",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af1d0712_71698298",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71330d16_1afd758a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af1d0712_71698298",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38da5393_726f14c1",
@@ -101,6 +149,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "nit: init `bt` with TypeAsh value",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce80c91a_e0975fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38da5393_726f14c1",
       "range": {
         "startLine": 70,
         "startChar": 7,
@@ -136,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b44c391_27b85cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Do you have any suggestion on how to do it? I was following what has been done in policy_service.go (https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/policy_service.go;l\u003d1?q\u003dpolicy_service.go\u0026sq\u003d\n) but I cannot really find how to release resources.",
+      "parentUuid": "79219271_32a6e7ff",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 15
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe33e458_398c55f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
         "patchSetId": 13
@@ -147,6 +243,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "nit: HTML",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42540fa8_5fd536cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe33e458_398c55f1",
       "range": {
         "startLine": 87,
         "startChar": 14,
@@ -180,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cae436f_f521a68b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc552d89_f0664a34",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f98f1487_28a82192",
@@ -193,6 +337,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "don\u0027t ignore error",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eef4979_f410cd7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98f1487_28a82192",
       "range": {
         "startLine": 174,
         "startChar": 18,
@@ -228,6 +396,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98d80a70_cdf10223",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Not all parameterised tests use all the vardeps, is there a way to specifically assign some vardeps?",
+      "parentUuid": "a8d10480_fefbfb72",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5020c792_771b620d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
         "patchSetId": 13
@@ -239,6 +431,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "It isn\u0027t recommended to pass testing.State to other functions\n\ninstead pass directly what is needed for the function and handle returned error",
+      "range": {
+        "startLine": 62,
+        "startChar": 38,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89ba745_8a38d850",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "I think this way could be more maintainable especially since many other tests will share the same `dlputil.ValidateActionReporting` function. I think I read something about subtests shared across several tests, where it is possible to pass `testing.State`. If I don\u0027t pass `testing.State` I will have to pass about 10 parameters. Do you still recommend doing it?",
+      "parentUuid": "5020c792_771b620d",
       "range": {
         "startLine": 62,
         "startChar": 38,
@@ -272,6 +488,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb169f54_d7459459",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a83c27_887bfa57",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27470dae_d2c4f788",
@@ -295,6 +535,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfe4902_114ef72c",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27470dae_d2c4f788",
+      "range": {
+        "startLine": 314,
+        "startChar": 104,
+        "endLine": 314,
+        "endChar": 214
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f86479_a2284cd7",
@@ -308,6 +572,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "nit: maybe drop * here? slice in Go is already like a pointer",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 21
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc52cb5_b86a75ee",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f86479_a2284cd7",
       "range": {
         "startLine": 364,
         "startChar": 20,
@@ -343,6 +631,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e1b2da2_286b9216",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "I think it could be informative to get details about all the \"wrong\" events and not just return when the first wrong one is detected. I formatted the code differently to make it more readable. Please let me know what you think.",
+      "parentUuid": "4ca2a598_2a6f58b4",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 162
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a790afd4_2e96b7b3",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 13
@@ -354,6 +666,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "Use next error message here and in other places:\n\nunexpected restriction \u003d got %v, want %v",
+      "range": {
+        "startLine": 394,
+        "startChar": 24,
+        "endLine": 394,
+        "endChar": 64
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0baa901e_c957d2b7",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a790afd4_2e96b7b3",
       "range": {
         "startLine": 394,
         "startChar": 24,
@@ -389,6 +725,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39ade34d_121f292a",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Actually when `mode \u003d\u003d dlp.Mode_WARN_PROCEED`, `expectedEvents` is `warnEvents`. That is because when `mode \u003d\u003d dlp.Mode_WARN_PROCEED`, we have to check both `warnEvents` and `warnProceededEvents`.",
+      "parentUuid": "ac01a736_97335b17",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 3
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "424645c4_a10be8c1",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 13
@@ -400,6 +760,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "if you used testing.State, you don\u0027t need to return error",
+      "range": {
+        "startLine": 407,
+        "startChar": 83,
+        "endLine": 407,
+        "endChar": 88
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b590ee6_9ad332d8",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "424645c4_a10be8c1",
       "range": {
         "startLine": 407,
         "startChar": 83,
@@ -433,6 +817,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33a27f4_971e1637",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6974c000_ecd924cf",
+      "range": {
+        "startLine": 453,
+        "startChar": 9,
+        "endLine": 453,
+        "endChar": 16
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a29c6e03_5f0ff205",
@@ -446,6 +854,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "nit: err :\u003d",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 10
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0108ec5_88270a91",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29c6e03_5f0ff205",
       "range": {
         "startLine": 471,
         "startChar": 4,
@@ -479,6 +911,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1061798_ca1d460e",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97f83612_0447dbf3",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 10
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9d46c44_19b1c3c8",
@@ -492,6 +948,30 @@
       "writtenOn": "2022-10-19T12:28:28Z",
       "side": 1,
       "message": "Shouldn\u0027t this be a string[]?",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2971c9a9_4494625e",
+        "filename": "src/chromiumos/tast/services/cros/dlp/dlp.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "I have seen other tests using a single string of comma separated features. Do you think it could be a feasible approach here as well?",
+      "parentUuid": "d9d46c44_19b1c3c8",
       "range": {
         "startLine": 14,
         "startChar": 2,

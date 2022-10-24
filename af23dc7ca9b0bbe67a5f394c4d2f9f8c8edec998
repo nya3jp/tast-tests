@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbbc2975_90bb6cd1",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-24T08:25:44Z",
+      "side": 1,
+      "message": "I moved them back to the specific test. What if I have 4 or 5 more tests using parameters with the same values? I was concerned about repeating the same 300 lines of code so many times. Do you have some better advice here?",
+      "parentUuid": "4c47808c_6fd66f7b",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "af23dc7ca9b0bbe67a5f394c4d2f9f8c8edec998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bac36085_d30986eb",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 11
