@@ -74,26 +74,6 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		duration = 2 * time.Second
 	)
 
-	// Gets info of the browser window, assuming it is the active window.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the window list")
-	}
-	browserWinID := ws[0].ID
-
-	// Turn the window into normal state.
-	if err := ash.SetWindowStateAndWait(ctx, tconn, browserWinID, ash.WindowStateNormal); err != nil {
-		return errors.Wrap(err, "failed to set the window state to normal")
-	}
-
-	browserWin, err := ash.GetWindow(ctx, tconn, browserWinID)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window")
-	}
-	if browserWin.State != ash.WindowStateNormal {
-		return errors.Errorf("Wrong window state: expected Normal, got %s", browserWin.State)
-	}
-
 	// Gets primary display info and interesting drag points.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -108,8 +88,40 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	snapLeftPoint := coords.NewPoint(info.WorkArea.Left+1, info.WorkArea.CenterY())
 	snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
 
+	// Get the browser window.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the window list")
+	}
+	if len(ws) != 1 {
+		return errors.Errorf("unexpected number of windows: got %d, want 1", len(ws))
+	}
+	browserWinID := ws[0].ID
+
+	// Set the browser window state to "Normal".
+	if err := ash.SetWindowStateAndWait(ctx, tconn, browserWinID, ash.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to set browser window state to \"Normal\"")
+	}
+
+	// Initialize the browser window bounds.
+	desiredBounds := info.WorkArea.WithInset(50, 50)
+	bounds, displayID, err := ash.SetWindowBounds(ctx, tconn, browserWinID, desiredBounds, info.ID)
+	if err != nil {
+		return errors.Wrap(err, "failed to set the browser window bounds")
+	}
+	if displayID != info.ID {
+		return errors.Errorf("unexpected display ID for browser window: got %q; want %q", displayID, info.ID)
+	}
+	if bounds != desiredBounds {
+		return errors.Errorf("unexpected browser window bounds: got %v; want %v", bounds, desiredBounds)
+	}
+
+	// Wait for the browser window to finish animating to the desired bounds.
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, browserWinID); err != nil {
+		return errors.Wrap(err, "failed to wait for the browser window animation")
+	}
+
 	// Resize window.
-	bounds := browserWin.BoundsInRoot
 	upperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
 	middlePt := coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2)
 	testing.ContextLog(ctx, "Resizing the browser window")
