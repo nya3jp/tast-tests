@@ -72,8 +72,6 @@ const (
 	PersistentLacrosEnrolled = "persistentLacrosEnrolled"
 	// PersistentLacrosRealUser is a fixture name.
 	PersistentLacrosRealUser = "persistentLacrosRealUser"
-	// PersistentFamilyLink is a fixture name.
-	PersistentFamilyLink = "persistentFamilyLink"
 	// PersistentFamilyLinkARC is a fixture name.
 	PersistentFamilyLinkARC = "persistentFamilyLinkARC"
 	// PersistentProjectorEDU is a fixture name.
