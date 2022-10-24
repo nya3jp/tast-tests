@@ -16,6 +16,24 @@
       "message": "Is the relative order of WaitForNotify vs WaitForSense important? If we want both, will it still work if we wait for WaitForNotify first?",
       "revId": "d4e3ffb25e2696e6a36d321974104a4397651844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d95981_781f062f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-24T04:20:00Z",
+      "side": 1,
+      "message": "The order isn\u0027t important.\n\nBecause on the sensor side they are now both the same actual model, enabling one feature or both features takes the same amount of time effectively. In case we ask it to wait for both, in practice the first one will do the actual waiting and then the second one will just succeed straight away.\n\nSo it should work for any combination of features.",
+      "parentUuid": "41917ae8_586e891b",
+      "revId": "d4e3ffb25e2696e6a36d321974104a4397651844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
