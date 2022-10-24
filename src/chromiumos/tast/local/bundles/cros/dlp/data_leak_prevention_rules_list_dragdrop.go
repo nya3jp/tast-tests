@@ -6,7 +6,6 @@ package dlp
 
 import (
 	"context"
-	"math"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
@@ -82,29 +81,19 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Ensures that the display zoom factor is 80% (allowing for rounding error) or
-	// less, to ensure that the work area length is at least twice the minimum length
-	// of a browser window, so that browser windows can be snapped in split view.
-	const zoomMaximum = 0.80000005
+	// Sets the display zoom factor to minimum, to ensure that the work area
+	// length is at least twice the minimum length of a browser window, so that
+	// browser windows can be snapped in split view.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
-	if zoomInitial := info.DisplayZoomFactor; zoomInitial > zoomMaximum {
-		zoomForTest := math.Inf(-1)
-		for _, zoom := range info.AvailableDisplayZoomFactors {
-			if zoom <= zoomMaximum && zoom > zoomForTest {
-				zoomForTest = zoom
-			}
-		}
-		if math.IsInf(zoomForTest, -1) {
-			s.Fatal("A display zoom factor of 80% or less is not available")
-		}
-		if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomForTest}); err != nil {
-			s.Fatalf("Failed to set display zoom factor to %f: %v", zoomForTest, err)
-		}
-		defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
+	zoomInitial := info.DisplayZoomFactor
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
 	}
+	defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
