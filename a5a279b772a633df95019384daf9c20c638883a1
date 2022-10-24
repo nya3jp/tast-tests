@@ -22,6 +22,30 @@
       },
       "revId": "a5a279b772a633df95019384daf9c20c638883a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7866da9d_b4de6a94",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-24T07:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8b35dde_662b5e5e",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "a5a279b772a633df95019384daf9c20c638883a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
