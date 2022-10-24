@@ -28,7 +28,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		VarDeps:      []string{"arc.parentUser"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -47,9 +46,10 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		playStoreSearchText    = "Search for apps & games"
 		appName                = "Instagram"
 	)
-	parentUser := s.RequiredVar("arc.parentUser")
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
+	parentUser := childCreds.ParentUser
 
 	st, err := arc.GetState(ctx, tconn)
 	if err != nil {

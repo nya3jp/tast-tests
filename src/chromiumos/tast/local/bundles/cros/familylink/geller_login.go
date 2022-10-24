@@ -33,15 +33,13 @@ func init() {
 			Fixture:           "familyLinkGellerLoginWithLacros",
 			Val:               browser.TypeLacros,
 		}},
-		VarDeps: []string{
-			"family.gellerEmail",
-		},
 	})
 }
 
 func GellerLogin(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")
@@ -49,7 +47,7 @@ func GellerLogin(ctx context.Context, s *testing.State) {
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
 	}
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.gellerEmail"), s.OutDir()); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), childCreds.User, s.OutDir()); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }

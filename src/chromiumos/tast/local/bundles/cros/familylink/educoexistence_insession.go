@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
-		VarDeps:      []string{"family.parentEmail", "family.parentPassword", "family.eduEmail", "family.eduPassword"},
+		VarDeps:      []string{"family.eduEmail", "family.eduPassword"},
 		Fixture:      "familyLinkUnicornLogin",
 	})
 }
@@ -32,9 +32,10 @@ func init() {
 func EducoexistenceInsession(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
-	parentUser := s.RequiredVar("family.parentEmail")
-	parentPass := s.RequiredVar("family.parentPassword")
+	parentUser := childCreds.ParentUser
+	parentPass := childCreds.ParentPass
 	eduUser := s.RequiredVar("family.eduEmail")
 	eduPass := s.RequiredVar("family.eduPassword")
 

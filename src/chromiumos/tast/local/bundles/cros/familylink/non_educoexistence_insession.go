@@ -27,7 +27,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
-		Vars:         []string{"family.parentEmail", "family.parentPassword"},
 		Fixture:      "familyLinkUnicornLogin",
 	})
 }
@@ -35,11 +34,12 @@ func init() {
 func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
-	unicornParentUser := s.RequiredVar("family.parentEmail")
-	unicornParentPass := s.RequiredVar("family.parentPassword")
-	nonEduUser := s.RequiredVar("family.parentEmail")
-	nonEduPass := s.RequiredVar("family.parentPassword")
+	unicornParentUser := childCreds.ParentUser
+	unicornParentPass := childCreds.ParentPass
+	nonEduUser := childCreds.ParentUser
+	nonEduPass := childCreds.ParentPass
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
