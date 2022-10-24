@@ -197,7 +197,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
 		if err := a.WaitForPackages(ctx, packages); err != nil {
-			return exit("wait for packages", err)
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
+			return retry("wait for packages", err)
 		}
 
 		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
@@ -205,8 +206,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ensurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
-			// TODO(b/242902484): Switch to exit when unstable variant is removed.
-			return retry("verify Play Store is not empty", err)
+			return exit("verify Play Store is not empty", err)
 		}
 
 		return nil
