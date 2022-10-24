@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8767e1ce_02cf5669",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-24T21:58:45Z",
+      "side": 1,
+      "message": "jchinlee@, tast-owners@ PTAL\n\nOthers FYI.\n\n\nNote that I still need to write and land the CL describing which\nSoCs support 8K video decoding, until then this CL will be a noop.\nI run it using -checktestdeps\u003dfalse on volteer",
+      "revId": "f4a658dec693511c6e48a70be885928c3216d7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
