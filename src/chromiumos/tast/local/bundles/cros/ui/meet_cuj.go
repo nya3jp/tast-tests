@@ -28,7 +28,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -858,23 +857,31 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 			// Toggle the Google Docs file menu button for press and
 			// release metrics.
-			waitUntilStable := ui.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)
 			fileMenu := nodewith.Name("File").HasClass("menu-button")
+			menuContainer := nodewith.HasClass("goog-menu")
 			if !inTabletMode {
 				if err := ui.MouseMoveTo(fileMenu, 500*time.Millisecond)(ctx); err != nil {
-					s.Log("Failed to move mouse to Google Doc's file menu: ", err)
+					return errors.Wrap(err, "failed to move mouse to Google Doc's file menu")
 				}
 			}
-			if err := action.Combine(
-				"toggle the Google Doc's file menu",
-				// Open file menu.
-				pc.Click(fileMenu),
-				waitUntilStable,
 
-				// Close file menu.
-				pc.Click(fileMenu),
-				waitUntilStable,
-			)(ctx); err != nil {
+			// Add a retry to open the file menu, because sometimes devices need
+			// an additional click to focus on the page properly.
+			if err := uiauto.Retry(2,
+				action.Combine(
+					"open the Google Doc's file menu",
+					pc.Click(fileMenu),
+					ui.WithTimeout(10*time.Second).WaitUntilExists(menuContainer),
+				))(ctx); err != nil {
+				return err
+			}
+
+			if err := uiauto.Retry(2,
+				action.Combine(
+					"close the Google Doc's file menu",
+					pc.Click(fileMenu),
+					ui.WithTimeout(10*time.Second).WaitUntilGone(menuContainer),
+				))(ctx); err != nil {
 				return err
 			}
 
@@ -889,7 +896,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			docsBounds := docsWindow.TargetBounds
 			if !inTabletMode {
 				if err := mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond)(ctx); err != nil {
-					s.Log("Failed to move mouse to center of Google Docs window: ", err)
+					return errors.Wrap(err, "failed to move mouse to center of Google Docs window")
 				}
 			}
 			if err := pc.Drag(
