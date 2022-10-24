@@ -37,7 +37,7 @@ func init() {
 		Func:         TestFileAttached,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Enterprise connector test for uploading files",
-		Timeout:      20 * time.Minute,
+		Timeout:      30 * time.Minute,
 		Contacts: []string{
 			"sseckler@google.com",
 			"cros-enterprise-connectors@google.com",
