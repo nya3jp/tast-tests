@@ -16,6 +16,24 @@
       "message": "is it easier to create it here from scratch rather than passing it from the outside?",
       "revId": "4e378f9c00b1fe390ddaba169a4162923e72d557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4f8b1c_3d0bf089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-24T22:43:08Z",
+      "side": 1,
+      "message": "Sorry, not sure what you mean. Are you talking about the HpsContext? This function is a top-level Tast test, so I have to create the HpsContext here -- there is no \"outside\" I can pass it in from, is there?",
+      "parentUuid": "35c1d6e9_e0783bc5",
+      "revId": "4e378f9c00b1fe390ddaba169a4162923e72d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
