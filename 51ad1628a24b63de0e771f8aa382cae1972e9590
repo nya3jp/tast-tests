@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff16cb7d_feb3560a",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss/floss.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T21:44:37Z",
+      "side": 1,
+      "message": "Yes, folks from the Platform team have been helping to implement the Floss methods added here.",
+      "parentUuid": "2e5e4855_176848e6",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "859c6e26_3ba7a08e",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-24T20:53:29Z",
       "side": 1,
       "message": "Where is this supposed to be passed in from?",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f47516_60cf5d08",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T21:44:37Z",
+      "side": 1,
+      "message": "I was thinking that one of the easier ways might be to just add it as a member of `FixtValue` and create duplicate fixtures for Floss but opted to just hard-code it for now since none of the tests (yet) will be running with Floss. If it is preferred I can move it into `FixtValue` right away-- WDYT?",
+      "parentUuid": "859c6e26_3ba7a08e",
       "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
