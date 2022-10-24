@@ -19,13 +19,19 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyLogin,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if Unicorn login with policy setup is working",
 		Contacts:     []string{"xiqiruan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "familyLinkUnicornPolicyLogin",
+		Params: []testing.Param{{
+			Fixture: "familyLinkUnicornPolicyLogin",
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "familyLinkUnicornPolicyLoginWithLacros",
+		}},
 	})
 }
 
