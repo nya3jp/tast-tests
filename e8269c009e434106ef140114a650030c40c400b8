@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65cf2c85_c9ae8756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Please take another look.\n\nThanks!",
+      "revId": "e8269c009e434106ef140114a650030c40c400b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf057b0d_bb932e45",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "A result of `go fmt` to pass presubmit.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "e8269c009e434106ef140114a650030c40c400b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

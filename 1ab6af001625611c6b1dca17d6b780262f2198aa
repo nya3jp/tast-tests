@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced3d09e_d7f3079f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3a72d9_8650ed67",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d255e982_7b435cab",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d24712bd_93321e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Sorry this was left over comment I forgot to delete after rebase.\n\nLet me use mutex before calling idGenerator().",
+      "parentUuid": "d255e982_7b435cab",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4ae33f7_1aa1b301",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
         "patchSetId": 4
@@ -82,6 +118,24 @@
       "writtenOn": "2022-10-19T13:54:43Z",
       "side": 1,
       "message": "worth trying to close all conns when chrome is shutdown.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b9c545_91554e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "And when do you do that?",
+      "parentUuid": "e4ae33f7_1aa1b301",
       "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e59317_03b1a36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98fc3ae5_999e8694",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb1fe17a_d72209d4",
@@ -122,6 +200,24 @@
       "writtenOn": "2022-10-19T13:54:43Z",
       "side": 1,
       "message": "you can do this just before L111, so you do not need delete twice.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "856cad7a_e87ae1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb1fe17a_d72209d4",
       "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +245,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9621939_95fedc8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b3c13d_1e689bf8",
+      "range": {
+        "startLine": 173,
+        "startChar": 24,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b1c767b_c0a5c9b3",
@@ -162,6 +282,24 @@
       "writtenOn": "2022-10-19T17:50:13Z",
       "side": 1,
       "message": "how about just using `return c.cl.Target.ActivateTarget(ctx, args)`?",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9840b6f_215150c4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/cdputil/conn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "0b1c767b_c0a5c9b3",
       "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +321,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c401e5d_4e4a01f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/conn_service_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6de645_347f5fdb",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f45f547_b06a8d10",
@@ -196,6 +352,24 @@
       "writtenOn": "2022-10-19T17:50:13Z",
       "side": 1,
       "message": "nit: trailing space.",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97e03dd_fceeec1b",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f45f547_b06a8d10",
       "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +391,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4712772d_d90022a4",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bd1517_e705fc99",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99826b21_c7d8066b",
@@ -234,6 +426,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cf2ee1_a120fbb7",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99826b21_c7d8066b",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce018675_aad21a28",
@@ -247,6 +457,30 @@
       "writtenOn": "2022-10-19T13:54:43Z",
       "side": 1,
       "message": "conceptually this will be identical with NewConnResponse?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "595a61a8_62605b20",
+        "filename": "src/chromiumos/tast/services/cros/ui/conn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T01:33:16Z",
+      "side": 1,
+      "message": "That is true. Let me reuse NewConnResponse.",
+      "parentUuid": "ce018675_aad21a28",
       "range": {
         "startLine": 54,
         "startChar": 2,
