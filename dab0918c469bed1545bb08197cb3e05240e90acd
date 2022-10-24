@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0020fea2_08ea5962",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-24T23:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a73513d_3296dc64",
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac22a777_272cd1f5",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0daf1aa1_eeaf5ac7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-24T23:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac22a777_272cd1f5",
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3892296_00a990b7",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-10-24T04:03:44Z",
       "side": 1,
       "message": "Could you document browser-test is special value for start-stack-profiler and why?",
+      "range": {
+        "startLine": 221,
+        "startChar": 48,
+        "endLine": 221,
+        "endChar": 60
+      },
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cbd02e_82dca069",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-24T23:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3892296_00a990b7",
       "range": {
         "startLine": 221,
         "startChar": 48,
