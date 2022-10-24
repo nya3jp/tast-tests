@@ -394,47 +394,50 @@ func verifyUIForFileAttached(
 		// Wait for scanning dialog to show and complete scanning.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView").First()
 		scanningLabelFinder := nodewith.Role(role.StaticText).HasClass("Label").NameStartingWith("Checking").Ancestor(scanningDialogFinder)
-		if err := uiauto.Combine("show scanning dialog",
-			// 1. Wait until scanning started.
-			ui.WithTimeout(2*time.Second).WithInterval(10*time.Millisecond).WaitUntilExists(scanningLabelFinder),
-			// 2. Wait until scanning finished.
-			ui.WithTimeout(helpers.ScanningTimeOut).WithInterval(10*time.Millisecond).WaitUntilGone(scanningLabelFinder),
-		)(ctx); err != nil {
-			s.Error("Did not show scanning dialog: ", err)
+
+		// 1. Wait until scanning has started.
+		if err := ui.WithTimeout(2 * time.Second).WithInterval(10 * time.Millisecond).WaitUntilExists(scanningLabelFinder)(ctx); err != nil {
+			// Only log this error, as we are sometimes too slow to notice it.
+			s.Log("Did not show scanning dialog: ", err)
+		}
+		// 2. Wait until scanning is finished.
+		if err := ui.WithTimeout(helpers.ScanningTimeOut).WithInterval(100 * time.Millisecond).WaitUntilGone(scanningLabelFinder)(ctx); err != nil {
+			s.Fatal("Scanning is not yet complete: ", err)
 		}
 
 		if shouldBlockUpload {
 			// Check that a blocked verdict is shown.
 			blockedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder).NameContaining(params.UlBlockLabel)
 			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(blockedLabelTextFinder)(ctx); err != nil {
-				s.Error("Did not show scan blocked message: ", err)
+				s.Fatal("Did not show scan blocked message: ", err)
 			}
 
 			// Close dialog.
 			closeButtonFinder := nodewith.Name("Close").Role(role.Button).Ancestor(scanningDialogFinder)
 			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(closeButtonFinder)(ctx); err != nil {
-				s.Error("Did not show close button for blocked dialog: ", err)
+				s.Fatal("Did not show close button for blocked dialog: ", err)
 			}
 			if err := ui.LeftClick(closeButtonFinder)(ctx); err != nil {
-				s.Error("Failed to close dialog: ", err)
+				s.Fatal("Failed to close dialog: ", err)
 			}
 		} else {
 			// Check that an allowed verdict is shown.
 			allowedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder).NameContaining("file will be uploaded")
 			if err := ui.WithTimeout(5 * time.Second).WithInterval(10 * time.Millisecond).WaitUntilExists(allowedLabelTextFinder)(ctx); err != nil {
-				s.Error("Did not show scan success message: ", err)
+				// The dialog sometimes closes very quickly, so we only log the error instead of requiring it.
+				s.Log("Did not show scan success message: ", err)
 			}
 			// For allowed, the dialog should be closed automatically.
 		}
 		// Check that the dialog is closed.
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(scanningDialogFinder)(ctx); err != nil {
-			s.Error("Did not close scanning dialog: ", err)
+			s.Fatal("Did not close scanning dialog: ", err)
 		}
 	} else {
 		// Check that no dialog will be opened.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView")
 		if err := ui.EnsureGoneFor(scanningDialogFinder, 2*time.Second)(ctx); err != nil {
-			s.Error("Scanning dialog detected, but none was expected: ", err)
+			s.Fatal("Scanning dialog detected, but none was expected: ", err)
 		}
 	}
 }
