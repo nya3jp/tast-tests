@@ -47,6 +47,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f9bd54_e74c7135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-24T22:51:51Z",
+      "side": 1,
+      "message": "No concerns beyond what Jun mentioned.",
+      "revId": "1a17a2e11d3248c01848b2344d48708fbea13dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89f631b_9f76ba11",
