@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70345e05_f0feae03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "It is because arm64 could be picked up only when lacros_unstable is specified as defined at http://osscs/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d115?q\u003dlacros_stable\u0026start\u003d21\n\nRemoved the \"lacros_unstable\" variant to add arm64 later in a separate CL along with b/254919641 when it\u0027s ready.",
+      "parentUuid": "2bd955ea_f288750d",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f65e202_d489da4c",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-24T01:55:29Z",
       "side": 1,
       "message": "the given Ash version.",
+      "range": {
+        "startLine": 56,
+        "startChar": 114,
+        "endLine": 56,
+        "endChar": 117
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4494cb07_be3eb101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f65e202_d489da4c",
       "range": {
         "startLine": 56,
         "startChar": 114,
@@ -88,6 +130,42 @@
       "writtenOn": "2022-10-24T01:55:29Z",
       "side": 1,
       "message": "Nit: compatibleLacrosChannels (lacrosCompatible sounds like \"compatible with Lacros\")",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa91bca_3b7806e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77043e4d_7aa3ab28",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08324812_6e61ef3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done. That\u0027s a good idea that we can add more abstraction later when needed after this initial CL (eg, support different arch or sort options)",
+      "parentUuid": "d53fe273_e28f501a",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -239,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe07687d_24e80dda",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8a757c_8fe08584",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65c00204_a94a6a36",
@@ -252,6 +354,24 @@
       "writtenOn": "2022-10-24T01:55:29Z",
       "side": 1,
       "message": "I think using the devtools protocol to query the version is cleaner.\n\nhttps://pkg.go.dev/github.com/mafredri/cdp#Browser.GetVersion",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f427538d_c1d02f49",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Not sure how it works conditionally with both Ash or Lacros depending on what is set as a primary browser. Let me know if you see how it could be implemented with devtools protocol and we can do it in a follow up.",
+      "parentUuid": "65c00204_a94a6a36",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -279,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e5b768_4809810a",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1b61b9_0e7e84b9",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296ce869_36e74216",
@@ -292,6 +436,24 @@
       "writtenOn": "2022-10-24T01:55:29Z",
       "side": 1,
       "message": "In AshVersion above you\u0027re using a regexp. Would be nice to have a uniform way. How about having a function ReadVersion of type string -\u003e (version, error), where version is a struct with four numbers. Then use that function everywhere.",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "703f3a2f_79447454",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "A good idea. I was thinking about that by utilizing this version.go at http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go\nBtw, it\u0027s currently in the remote bundle, so it needs some extra work to move it to ../common and get it referenced everywhere including this. Not all of these would fit well in this single CL since it would have to touch other tests across different code locations, but I think we can leave a TODO and implement it in a follow up.",
+      "parentUuid": "296ce869_36e74216",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -319,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6948c45_67da9eb5",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4e60c8_930c6da6",
+      "range": {
+        "startLine": 122,
+        "startChar": 56,
+        "endLine": 122,
+        "endChar": 60
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78357bcc_3ea7cb91",
@@ -332,6 +518,24 @@
       "writtenOn": "2022-10-24T01:55:29Z",
       "side": 1,
       "message": "Where did you find these rules? The closest I could find is https://docs.google.com/document/d/124Ps9ymvArxyhqqR-eH-1TOz7_vCEdv5fLjsB6mC2Mg/edit\nwhich is a bit vague:\n\n\"On release branches, where release velocity is more critical, support limited backwards compatibility as long as Lacros and Ash are on the same branch. For examples:\"\n\nWe also need to make sure to only allow older Lacros when the test is running with a release branch Ash, not on ToT.",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43127f1d_fd58dac8",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T16:51:11Z",
+      "side": 1,
+      "message": "That doc still holds true when it comes to backward compatibility. And here is an internal meeting note with erikchen@, djmm@, srinivassista@ and more about NNNN skew clarification: https://docs.google.com/document/d/1YiDSeXBg7B0kfv7UnsDAD114qhcSnDyPVbtsgQn_e80/edit#bookmark\u003did.glwjq657e6v0\nFYI it is not to change any existing workflow but rather just to clarify that Lacros \u003e\u003d NNNN (OS/Ash) on branches once a branch is cut from the ToT where Lacros/Ash are versioned/uprev\u0027ed together atomically. Hopefully there will be more detailed documentation about the release/compatibility process.",
+      "parentUuid": "78357bcc_3ea7cb91",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
