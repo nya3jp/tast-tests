@@ -16,6 +16,24 @@
       "message": "Seems that the test is consistently failing after this CL: https://tastboard.corp.google.com/test/dlp.DataLeakPreventionRulesListDragdrop",
       "revId": "acae37fffa53d2b584865fcceccbf2b98bf4fe94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc69f12_4d93ca90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T21:39:54Z",
+      "side": 1,
+      "message": "CL:3976102",
+      "parentUuid": "e9433460_b12ce0cd",
+      "revId": "acae37fffa53d2b584865fcceccbf2b98bf4fe94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
