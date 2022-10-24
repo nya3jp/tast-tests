@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23330854_da707e29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T04:03:44Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a73513d_3296dc64",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T04:03:44Z",
+      "side": 1,
+      "message": "maybe:\n\nstack_profiler_arg :\u003d \"--disable-stack-profiler\"\nif cfg.EnableStackSampledMetrics() {\n  stack_profiler_arg \u003d \"--start-stack-profiler\u003dbrowser-test\"\n｝\n\nabove, then\n\nargs \u003d append(args, stack_profiler_arg)\n\nhere, and \n\nlargs \u003d append(largs, stack_profiler_args)\n\nbelow.",
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac22a777_272cd1f5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T04:03:44Z",
+      "side": 1,
+      "message": "could you add document that browser-test is the special value for --start-stack-profiler and why?",
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3892296_00a990b7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T04:03:44Z",
+      "side": 1,
+      "message": "Could you document browser-test is special value for start-stack-profiler and why?",
+      "range": {
+        "startLine": 221,
+        "startChar": 48,
+        "endLine": 221,
+        "endChar": 60
+      },
+      "revId": "dab0918c469bed1545bb08197cb3e05240e90acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
