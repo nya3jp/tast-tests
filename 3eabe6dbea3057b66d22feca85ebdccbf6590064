@@ -16,6 +16,23 @@
       "message": "Hi Yuki, PTAL. Thanks for reviewing.",
       "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ffb83d_311e344b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-10-24T21:17:32Z",
+      "side": 1,
+      "message": "lgtm. Thank you!",
+      "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
