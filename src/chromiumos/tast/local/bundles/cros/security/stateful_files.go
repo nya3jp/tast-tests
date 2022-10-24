@@ -79,7 +79,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/lib/cras"), chk.Users("cras"), chk.Groups("cras"), chk.Mode(0755)),                     // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/lib/cras"), chk.Users("cras"), chk.Groups("cras"), chk.Mode(0644), chk.SkipChildren()), // children
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), chk.Users("chaps"), chk.Groups("chronos-access"), chk.NotMode(027)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), chk.Users("dhcp"), chk.Groups("dhcp"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/dhcpcd"), chk.Users("dhcp"), chk.Groups("dhcp"), chk.Mode(0775)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), chk.Users("dhcp"), chk.Groups("dhcp"), chk.NotMode(0113)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), chk.Users("root"), chk.NotMode(022), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/hpsd"), chk.Users("hpsd"), chk.Groups("hpsd"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), chk.Users("imageloaderd"), chk.Groups("imageloaderd"), chk.NotMode(022)),
