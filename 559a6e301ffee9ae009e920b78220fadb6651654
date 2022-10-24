@@ -16,6 +16,47 @@
       "message": "e",
       "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9047b065_08196f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T17:21:16Z",
+      "side": 1,
+      "message": "oops... 😊",
+      "parentUuid": "bc14f460_c6d4bb84",
+      "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce58e6f_37558bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_esim_update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T17:21:16Z",
+      "side": 1,
+      "message": "prefer returning an error from performFWUpdate and then Fataling here if it\u0027s not what you expect. You can also use s.Run to run these as subtests (then Fataling in one will not stop the other from running) or Error instead of Fatal",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
