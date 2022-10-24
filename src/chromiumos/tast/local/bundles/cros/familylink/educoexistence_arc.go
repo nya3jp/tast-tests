@@ -35,7 +35,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + 5*time.Minute,
-		VarDeps: []string{"arc.parentUser", "arc.parentPassword", "family.eduEmail", "family.eduPassword"},
+		VarDeps: []string{"family.eduEmail", "family.eduPassword"},
 		Fixture: "familyLinkUnicornArcPolicyLogin",
 	})
 }
@@ -44,9 +44,10 @@ func EducoexistenceArc(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
-	parentUser := s.RequiredVar("arc.parentUser")
-	parentPass := s.RequiredVar("arc.parentPassword")
+	parentUser := childCreds.ParentUser
+	parentPass := childCreds.ParentPass
 	eduUser := s.RequiredVar("family.eduEmail")
 	eduPass := s.RequiredVar("family.eduPassword")
 

@@ -34,7 +34,6 @@ func init() {
 			"play_store",
 		},
 		Timeout: 6 * time.Minute,
-		VarDeps: []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

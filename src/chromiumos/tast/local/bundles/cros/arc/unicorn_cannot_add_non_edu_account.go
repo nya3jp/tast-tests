@@ -40,7 +40,6 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
 		Fixture: "familyLinkUnicornArcPolicyLogin",
 	})
 }
@@ -48,6 +47,7 @@ func init() {
 func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	st, err := arc.GetState(ctx, tconn)
 	if err != nil {
@@ -85,9 +85,9 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	nonEduUserEmail := s.RequiredVar("arc.parentUser")
-	nonEduUserPass := s.RequiredVar("arc.parentPassword")
-	parentPassword := s.RequiredVar("arc.parentPassword")
+	nonEduUserEmail := childCreds.ParentUser
+	nonEduUserPass := childCreds.ParentPass
+	parentPassword := childCreds.ParentPass
 	s.Log("Add non-EDU ARC account and verify")
 	if err := openAndroidSettingsAndAddAccount(ctx, d, cr, tconn, parentPassword, nonEduUserEmail, nonEduUserPass); err != nil {
 		s.Fatal("Failed to Open Android Settigns and Add Account: ", err)
