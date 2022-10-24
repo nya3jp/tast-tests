@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f0c4c8_be1ac81a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T17:02:26Z",
+      "side": 1,
+      "message": "Only if you plan on using this in other tests. Otherwise, it doesn\u0027t make any sense to move it.",
+      "parentUuid": "a301018c_a00ed508",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb02d91b_7972a021",
@@ -130,6 +154,24 @@
       "side": 1,
       "message": "That is a good question! There will be at least one other test that builds on this functionality (connecting to WiFi from OS Settings) so I had moved it here. I could encapsulate these in a method that handles filling in the \"Join Wi-Fi network\" dialog, but I was hesitant to add that helper since it would require either passing in service clients or creating them, and I wasn\u0027t sure whether we wanted those dependencies in a utility file. WDYT?",
       "parentUuid": "fb02d91b_7972a021",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cedd84d_809c6e5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T17:02:26Z",
+      "side": 1,
+      "message": "That\u0027s fine, thanks for the clarification.",
+      "parentUuid": "f4a4a878_209eb8a2",
       "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
