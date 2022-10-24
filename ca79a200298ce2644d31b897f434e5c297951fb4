@@ -16,6 +16,23 @@
       "message": "skipping shadow review for trivial CL",
       "revId": "ca79a200298ce2644d31b897f434e5c297951fb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9d43a2_2cd34555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-24T15:34:19Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ca79a200298ce2644d31b897f434e5c297951fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
