@@ -62,14 +62,6 @@ func UnloadP11TestToken(ctx context.Context, r hwsec.CmdRunner, scratchpadPath s
 	return nil
 }
 
-// ChangeP11TestTokenAuthData changes authorization data auth_data by new_auth_data stored in scratchpadPath.
-func ChangeP11TestTokenAuthData(ctx context.Context, r hwsec.CmdRunner, scratchpadPath, authData, newAuthData string) error {
-	if _, err := r.Run(ctx, "chaps_client", "--change_auth", "--path="+scratchpadPath, "--auth="+authData, "--new_auth="+newAuthData); err != nil {
-		return errors.Wrap(err, "failed to change PKCS11 token auth data")
-	}
-	return nil
-}
-
 // CleanupP11TestToken deletes the test token stored in scratchpadPath.
 func CleanupP11TestToken(ctx context.Context, r hwsec.CmdRunner, scratchpadPath string) error {
 	if err := UnloadP11TestToken(ctx, r, scratchpadPath); err != nil {
