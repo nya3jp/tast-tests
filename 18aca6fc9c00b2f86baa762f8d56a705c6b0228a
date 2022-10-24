@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8970c669_90a351e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T16:52:42Z",
+      "side": 1,
+      "message": "Thank you for taking a look at this change Eric! Responded to comments and questions below :)",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af25bef_48209a24",
@@ -60,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a301018c_a00ed508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T16:52:42Z",
+      "side": 1,
+      "message": "The only reason I ended up not moving it was because it felt like a very straightforward finder since it only uses the SSID provided and chooses the first node, but I definitely can move it-- would this be preferred?",
+      "parentUuid": "1af25bef_48209a24",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb02d91b_7972a021",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
         "patchSetId": 1
@@ -71,6 +112,24 @@
       "writtenOn": "2022-10-24T15:47:03Z",
       "side": 1,
       "message": "I assume we\u0027re planning to reuse these somewhere else? Otherwise we can just define them in the test file.",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a4a878_209eb8a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T16:52:42Z",
+      "side": 1,
+      "message": "That is a good question! There will be at least one other test that builds on this functionality (connecting to WiFi from OS Settings) so I had moved it here. I could encapsulate these in a method that handles filling in the \"Join Wi-Fi network\" dialog, but I was hesitant to add that helper since it would require either passing in service clients or creating them, and I wasn\u0027t sure whether we wanted those dependencies in a utility file. WDYT?",
+      "parentUuid": "fb02d91b_7972a021",
       "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
