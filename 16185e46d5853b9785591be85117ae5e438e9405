@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6591210e_d37d9932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_consumption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-24T19:00:33Z",
+      "side": 1,
+      "message": "Is this ready to run in the lab nightly? If so add firmware_unstable. Or if it won\u0027t ever run in the lab, maybe we don\u0027t need group:firmware.",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fc9f106_65e83776",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -31,6 +54,52 @@
       "writtenOn": "2022-10-24T15:43:07Z",
       "side": 1,
       "message": "Could you move these formatting changes to a separate CL?",
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b61b57_d5de1345",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-24T19:00:33Z",
+      "side": 1,
+      "message": "This seems like an incomplete sentence.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4f4bfb_26695a38",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-24T19:00:33Z",
+      "side": 1,
+      "message": "Move this comment down 1 line.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 95
+      },
       "revId": "16185e46d5853b9785591be85117ae5e438e9405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
