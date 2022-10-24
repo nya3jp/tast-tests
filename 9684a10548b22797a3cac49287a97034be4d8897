@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4910723_14fe79a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T14:30:37Z",
+      "side": 1,
+      "message": "This isn\u0027t a symbol that is getting exported so please make the first letter lowercase",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 23
+      },
+      "revId": "9684a10548b22797a3cac49287a97034be4d8897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
