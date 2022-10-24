@@ -16,6 +16,63 @@
       "message": "Hello all! This change builds on the existing change and makes the test run against both open and secured networks. Please take a look whenever you have time!",
       "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6281dd_af780a7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:47:03Z",
+      "side": 1,
+      "message": "Looks good generally. Wondering about how the wifiutil.ui stuff will be used in the future.",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af25bef_48209a24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:47:03Z",
+      "side": 1,
+      "message": "any reason not to move this into wifiutil.ui as a function (ssid string -\u003e *ui.Finder) along with the others?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb02d91b_7972a021",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:47:03Z",
+      "side": 1,
+      "message": "I assume we\u0027re planning to reuse these somewhere else? Otherwise we can just define them in the test file.",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
