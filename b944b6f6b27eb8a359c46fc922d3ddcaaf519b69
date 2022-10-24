@@ -1,6 +1,121 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a631cfe1_bd0376bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "nit: `File`",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9bb5c4_d71f2ac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "nit: `File`",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75292aff_3046166e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "nit: `proceeding`",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0c8dd1_bbe98dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "`File`",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc2dca6_01e71ff2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "Also mention that for moving the mouse to the File menu and to the center of the Google Docs window, you are changing the error messages from `s.Log` to `return errors.Wrap(err, \"failed to move mouse to...\")`. Why are you doing that?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4edd5821_760bfbbe",
@@ -14,6 +129,29 @@
       "writtenOn": "2022-10-24T22:33:18Z",
       "side": 1,
       "message": "Please review, thanks!",
+      "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7626b246_02e366f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-24T23:14:16Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we should retry the click when `pc.Click` returns a non-nil `error`. Also, after the File menu is successfully opened, the page must have been properly focused, so there shouldn\u0027t be such a problem closing the File menu. How about:\n\n\tclickFileMenu :\u003d pc.Click(fileMenu)\n\tuiForWaiting :\u003d ui.WithTimeout(10*time.Second)\n\twaitForFileMenu :\u003d uiForWaiting.WaitUntilExists(menuContainer)\n\twaitForNoFileMenu :\u003d uiForWaiting.WaitUntilGone(menuContainer)\n\tif err :\u003d uiauto.Combine(\"toggle the Google Doc\u0027s file menu\",\n\t\tclickFileMenu,\n\t\t// If the File menu doesn\u0027t appear, maybe it\u0027s because the click\n\t\t// only focused the page. Then we just need to click again.\n\t\tuiauto.IfFailThen(waitForFileMenu, uiauto.Combine(clickFileMenu, waitForFileMenu)),\n\t\tclickFileMenu,\n\t\twaitForNoFileMenu,\n\t)(ctx); err !\u003d nil {\n\t\treturn nil\n\t}",
+      "range": {
+        "startLine": 868,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 4
+      },
       "revId": "b944b6f6b27eb8a359c46fc922d3ddcaaf519b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
