@@ -6,8 +6,8 @@ package firmware
 
 import (
 	"context"
+	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/servo"
@@ -90,20 +90,19 @@ func ECPDRole(ctx context.Context, s *testing.State) {
 }
 
 func listUSBPdPorts(ctx context.Context, h *firmware.Helper) ([]int, error) {
-	bout, err := h.DUT.Conn().CommandContext(ctx, "ectool", "usbpdmuxinfo", "tsv").Output()
+	bout, err := h.DUT.Conn().CommandContext(ctx, "ectool", "usbpdpower").Output()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to run usbpdmuxinfo")
+		return nil, errors.Wrap(err, "failed to run usbpdpower")
 	}
-	sout := strings.TrimSpace(string(bout))
-	portNum := strings.Split(sout, "\n")
-	if len(portNum) == 0 {
+	r := regexp.MustCompile(`Port (\d)`)
+	matches := r.FindAllStringSubmatch(string(bout), -1)
+	if len(matches) == 0 {
 		return nil, errors.New("could not find any usb pd ports")
 	}
 
 	var usbPdPorts []int
-	for _, port := range portNum {
-		vals := strings.Split(port, "\t")
-		p, err := strconv.Atoi(vals[0])
+	for _, port := range matches {
+		p, err := strconv.Atoi(port[1])
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse port ID")
 		}
