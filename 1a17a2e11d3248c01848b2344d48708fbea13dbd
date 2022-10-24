@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f611f33f_bc1ef59a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-24T22:57:16Z",
+      "side": 1,
+      "message": "the entire CL is dedicated to remove older kernel versions, it should be in the same CL. There is not logic change in this CL.\n\nUpdated the CL to better describe that.",
+      "parentUuid": "5fa276e5_ff58707a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1a17a2e11d3248c01848b2344d48708fbea13dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83b388a_987fa3b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-24T22:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1439341_5f39aefd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "1a17a2e11d3248c01848b2344d48708fbea13dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "30f9bd54_e74c7135",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-24T22:27:36Z",
       "side": 1,
       "message": "nit: it would be nice to have a comment above if it is a new section and different from above. Otherwise you should remove the empty line.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 26
+      },
+      "revId": "1a17a2e11d3248c01848b2344d48708fbea13dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eec6ddb_377516b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-24T22:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b89f631b_9f76ba11",
       "range": {
         "startLine": 225,
         "startChar": 3,
