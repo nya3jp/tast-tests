@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1115bb4d_b0721f54",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/cros_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-10-24T20:17:44Z",
+      "side": 1,
+      "message": "The ti50 image at some point this year stopped outputting a carriage return before the newline, updated this pattern here to match and pass the test.",
+      "range": {
+        "startLine": 23,
+        "startChar": 62,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "1322ab2cf794dd2eba59eaa928542f40414b34f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
