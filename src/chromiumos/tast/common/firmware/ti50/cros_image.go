@@ -20,7 +20,7 @@ type CrOSImage struct {
 
 // NewCrOSImage creates a new CrOSImage.
 func NewCrOSImage(board DevBoard) *CrOSImage {
-	return &CrOSImage{CommandImage: NewCommandImage(board, "\r", "\r\n> ")}
+	return &CrOSImage{CommandImage: NewCommandImage(board, "\r", "\n> ")}
 }
 
 // WaitUntilBooted waits until the image is fully booted.
