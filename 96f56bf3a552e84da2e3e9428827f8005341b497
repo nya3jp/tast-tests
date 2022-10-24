@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc643564_bbfa7d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T21:38:11Z",
+      "side": 1,
+      "message": "The Creds struct looks like this [1]:\n\n// Creds contains credentials to log into a Chrome user session.\ntype Creds struct {\n\tUser string\n\tPass string\n\t...\n\tParentUser string\n\tParentPass string\n}\n\nFor regular test accounts, the ParentUser and ParentPass fields are empty. They are populated only for child test accounts. Thus, we should call this variable childCreds to make it clear that the User and Pass fields refer to the child\u0027s credentials, and the ParentUser and ParentPass fields are populated.\n\nI left a comment about this above the HasChildCreds interface.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d72?q\u003df:tast%20f:chrome%20creds",
+      "parentUuid": "f0a9ce62_e43f252b",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f962e026_a221f51b",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-10-24T06:48:15Z",
       "side": 1,
       "message": "nit: %q to quote the email (to see if there is extra whitespace for example)",
+      "range": {
+        "startLine": 405,
+        "startChar": 50,
+        "endLine": 405,
+        "endChar": 52
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21eec8db_95a933cc",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T21:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f962e026_a221f51b",
       "range": {
         "startLine": 405,
         "startChar": 50,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "253cffb9_d533878d",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T21:38:11Z",
+      "side": 1,
+      "message": "I refactored and normalized our fixtures in crrev.com/c/3975275 so the number is reduced to only two: NewFamilyLinkFixtureDeprecated and NewFamilyLinkFixturePool. I added a comment that NewFamilyLinkFixture is deprecated, so there\u0027s really only one fixture.",
+      "parentUuid": "dc574d48_d62bc62f",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8bba69b_9b1426c8",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18af5640_6fb35d90",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T21:38:11Z",
+      "side": 1,
+      "message": "Done. Now the pool can have any number of test accounts and parents. I modified the implementation of ParseCreds() in crrev.com/c/3975970 to map the child credentials to the parent.\n\nThe one-pager is at go/famexp-tast-account-pools.",
+      "parentUuid": "b8bba69b_9b1426c8",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea9cc3e5_3b80d4cd",
@@ -140,6 +236,24 @@
       "writtenOn": "2022-10-24T06:48:15Z",
       "side": 1,
       "message": "Is this fixture still needed? It does nothing right now.",
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d56780_4c48d94c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/persistent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T21:38:11Z",
+      "side": 1,
+      "message": "Done, I removed this fixture.",
+      "parentUuid": "ea9cc3e5_3b80d4cd",
       "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
