@@ -33,7 +33,7 @@ func init() {
 		// TODO(crbug/1125548): add functionality to verify policy with force installed extension.
 		Desc: "Behavior of the DeveloperToolsAvailability policy, check whether developer tools can be opened on chrome://user-actions page",
 		Contacts: []string{
-			"lamzin@google.com", // Test author
+			"pmarko@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
