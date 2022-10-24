@@ -77,9 +77,11 @@ func Crosh(ctx context.Context, s *testing.State) {
 		kb.TypeAction("shell"),
 		kb.AccelAction("Enter"),
 		ui.WaitUntilExists(nodewith.Name("chronos@localhost").Role(role.StaticText)),
-		ui.RightClick(nodewith.Name("crosh").ClassName("ash/ShelfAppButton")),
-		ui.LeftClick(nodewith.Name("Close").ClassName("MenuItemView")),
-		ui.LeftClick(nodewith.Name("Leave").Role(role.Button).Ancestor(nodewith.Name("Leave app?").Role(role.Window))),
+		kb.TypeAction("exit"),
+		kb.AccelAction("Enter"),
+		kb.TypeAction("exit"),
+		kb.AccelAction("Enter"),
+		ui.WaitUntilGone(nodewith.Name("crosh>").Role(role.StaticText)),
 	)(ctx)
 	if err != nil {
 		s.Fatal("Failed: ", err)
