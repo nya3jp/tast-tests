@@ -75,6 +75,9 @@ var MultipasteItemFinder = NodeFinder.HasClass("scrim")
 // MultipasteSuggestionFinder returns a finder of multipaste suggestion on virtual keyboard header bar.
 var MultipasteSuggestionFinder = NodeFinder.HasClass("chip")
 
+// MultipasteTrashFinder returns a finder for the multipaste delete button.
+var MultipasteTrashFinder = NodeFinder.ClassNameRegex(regexp.MustCompile("trash-button|skv-Bin"))
+
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
 	return KeyFinder.NameRegex(regexp.MustCompile(`(?i)^` + regexp.QuoteMeta(keyName) + `$`))
@@ -532,7 +535,7 @@ func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Conte
 	itemFinder := MultipasteItemFinder.Name(itemName)
 	return uiauto.Combine("Delete item in multipaste virtual keyboard",
 		touchCtx.LongPress(itemFinder),
-		touchCtx.Tap(KeyFinder.HasClass("trash-button")),
+		touchCtx.Tap(MultipasteTrashFinder),
 		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(itemFinder))
 }
 

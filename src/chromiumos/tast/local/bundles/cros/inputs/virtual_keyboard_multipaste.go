@@ -130,15 +130,14 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 
 	actionName = "Select then de-select item in multipaste clipboard"
 	ui := uiauto.New(tconn)
-	trashButton := vkb.KeyFinder.ClassName("trash-button")
 
 	if err := uiauto.UserAction(
 		actionName,
 		uiauto.Combine("Select then de-select item in multipaste virtual keyboard",
 			touchCtx.LongPress(vkb.MultipasteItemFinder.Name(text1)),
-			ui.WithTimeout(3*time.Second).WaitUntilExists(trashButton),
+			ui.WithTimeout(3*time.Second).WaitUntilExists(vkb.MultipasteTrashFinder),
 			vkbCtx.TapMultipasteItem(text1),
-			ui.WithTimeout(3*time.Second).WaitUntilGone(trashButton),
+			ui.WithTimeout(3*time.Second).WaitUntilGone(vkb.MultipasteTrashFinder),
 		),
 		uc,
 		&useractions.UserActionCfg{
