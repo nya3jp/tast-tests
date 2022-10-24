@@ -1,0 +1,292 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73a6845_b4439849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "nit: This",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764ab3f7_0698c3fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "\u003e \"correclty\" is a possible misspelling of \"correctly\".\n\nPlease fix.",
+      "parentUuid": "7c48e388_2a98d999",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedddda4_9e272205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "Exported functions usually need comments. I\u0027m surprised the checker didn\u0027t complain",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58eedc0c_cd94bdd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "does it make sense to run these as parameterized tests instead?",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44d2116_5fa63dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "is a regex match safer?",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70587dfe_1cc69407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "wrap?",
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78da47f4_b4b6e06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "wrap?",
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b309deb_e0e52ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "nit: Go doesn\u0027t have the same camel-casing rules as C++ or Java and acronyms can/should be kept in caps: s/hexSsid/hexSSID/\n\n(here and throughout)",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f291d961_e4eee3d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "don\u0027t hide errors unless the function documents it will always be null (this one does not)\ngo/go-style/decisions#handle-errors\n\nhere and throughout",
+      "range": {
+        "startLine": 125,
+        "startChar": 15,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620286b4_b85cdc4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure what version of Go tast uses but 1.18 has a slices package that can do this for you: \n\nimport  \"golang.org/x/exp/slices\"",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 20
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8c8edc_ab73da00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "don\u0027t name this return param - you don\u0027t use it anyway",
+      "range": {
+        "startLine": 193,
+        "startChar": 66,
+        "endLine": 193,
+        "endChar": 72
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74065cc8_b4f9b854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "nit: just inline into the next statement",
+      "range": {
+        "startLine": 199,
+        "startChar": 13,
+        "endLine": 199,
+        "endChar": 45
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc9c038_f5762c41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-24T07:38:48Z",
+      "side": 1,
+      "message": "for all these magic index numbers you are using here, please define some constants and/or describe what they are",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
