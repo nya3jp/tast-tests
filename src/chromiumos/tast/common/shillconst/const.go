@@ -96,6 +96,7 @@ const (
 	IPConfigPropertyMtu                       = "Mtu"
 	IPConfigPropertyPeerAddress               = "PeerAddress"
 	IPConfigPropertyPrefixlen                 = "Prefixlen"
+	IPConfigPropertySearchDomains             = "SearchDomains"
 	IPConfigPropertyVendorEncapsulatedOptions = "VendorEncapsulatedOptions"
 	IPConfigPropertyWebProxyAutoDiscoveryURL  = "WebProxyAutoDiscoveryUrl"
 	IPConfigPropertyiSNSOptionData            = "iSNSOptionData"
@@ -135,6 +136,7 @@ const (
 	ServicePropertyGUID              = "GUID"
 	ServicePropertyProvider          = "Provider"
 	ServicePropertyPriority          = "Priority"
+	ServicePropertyProxyConfig       = "ProxyConfig"
 	ServicePropertyEphemeralPriority = "EphemeralPriority"
 	ServicePropertyCheckPortal       = "CheckPortal"
 
