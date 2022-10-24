@@ -33,6 +33,29 @@
       "message": "Hi Renuga,\n\nSince this is an ARC related test case, thought it would be good to get your feedback as well.\n\nThanks! \nVin",
       "revId": "5a49b4253de7714557fedd5547c57b96c2e1dd83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb65dd7a_83dec5db",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtube/youtube.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-10-24T18:56:38Z",
+      "side": 1,
+      "message": "Do we need to validate this format of playtime as it appears to be too much. Is it not enough to just check if the playtime string is different instead of validating it?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 25
+      },
+      "revId": "5a49b4253de7714557fedd5547c57b96c2e1dd83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
