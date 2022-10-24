@@ -33,6 +33,24 @@
       "message": "s.Fatalf(\"Roaming sub-label is incorrect: got %s, want %s\", roamingSubLabel, s.Param().(testParameters).roamingSubLabel)\n\n(you can also factor out grabbing the param if you want to make it a bit clearer)",
       "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bf54eb_b1069718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/roaming_status_label.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:20:56Z",
+      "side": 1,
+      "message": "Or use %q for each format specifier if you want the values to be quoted.",
+      "parentUuid": "8c07152b_1dbbe045",
+      "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
