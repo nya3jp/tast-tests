@@ -183,6 +183,13 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
+	// Take a screenshot every 13 seconds up to a maximum of 5
+	// screenshots, to capture the first window arrangement cycle and
+	// the beginning of the second cycle.
+	if err := recorder.AddScreenshotRecorder(ctx, 13*time.Second, 5); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
