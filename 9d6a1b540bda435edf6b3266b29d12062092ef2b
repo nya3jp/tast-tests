@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7dfe441_dd2a4fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:33:40Z",
+      "side": 1,
+      "message": "Oh, I think we have miscommunication.\nMy recommendation is to support HasChrome in PreData fixture etc.",
+      "parentUuid": "f5bc95d7_4a9022f4",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c359e59_67fdbc72",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 3
