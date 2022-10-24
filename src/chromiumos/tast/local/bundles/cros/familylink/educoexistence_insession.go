@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
@@ -18,14 +19,22 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EducoexistenceInsession,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if in-session EDU Coexistence flow is working",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
 		VarDeps:      []string{"family.parentEmail", "family.parentPassword", "family.eduEmail", "family.eduPassword"},
-		Fixture:      "familyLinkUnicornLogin",
+		Params: []testing.Param{{
+			Fixture: "familyLinkUnicornLogin",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "familyLinkUnicornLoginWithLacros",
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
