@@ -24,7 +24,7 @@ import (
 const resetTimeout = 30 * time.Second
 
 // NewFamilyLinkFixture creates a new implementation of the Family Link fixture.
-func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
+func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword string, isOwner, isLacros bool, opts ...chrome.Option) testing.FixtureImpl {
 	return &familyLinkFixture{
 		opts:           opts,
 		parentUser:     parentUser,
@@ -32,20 +32,7 @@ func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword s
 		childUser:      childUser,
 		childPassword:  childPassword,
 		isOwner:        isOwner,
-		isLacros:       false,
-	}
-}
-
-// NewFamilyLinkFixtureLacros creates a new implementation of the Family Link fixture for Lacros.
-func NewFamilyLinkFixtureLacros(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
-	return &familyLinkFixture{
-		opts:           opts,
-		parentUser:     parentUser,
-		parentPassword: parentPassword,
-		childUser:      childUser,
-		childPassword:  childPassword,
-		isOwner:        isOwner,
-		isLacros:       true,
+		isLacros:       isLacros,
 	}
 }
 
@@ -54,7 +41,7 @@ func init() {
 		Name:     "familyLinkUnicornLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true /*isOwner*/, false /*isLacros*/),
 		Vars: []string{
 			"family.parentEmail",
 			"family.parentPassword",
@@ -72,7 +59,7 @@ func init() {
 		Name:     "familyLinkUnicornLoginWithLacros",
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"galenemco@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true /*isOwner*/, true /*isLacros*/),
 		Vars: []string{
 			"family.parentEmail",
 			"family.parentPassword",
@@ -90,7 +77,7 @@ func init() {
 		Name:     "familyLinkUnicornLoginNonOwner",
 		Desc:     "Supervised Family Link user login with Unicorn account as second user on device",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false /*isOwner*/, false /*isLacros*/),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 			"family.parentEmail",
@@ -109,7 +96,7 @@ func init() {
 		Name:     "familyLinkUnicornLoginNonOwnerWithLacros",
 		Desc:     "Supervised Family Link user login with Unicorn account as second user on device",
 		Contacts: []string{"galenemco@chromium.org", "hyungtaekim@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false /*isOwner*/, true /*isLacros*/),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 			"family.parentEmail",
@@ -128,7 +115,7 @@ func init() {
 		Name:     "familyLinkGellerLogin",
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true /*isOwner*/, false /*isLacros*/),
 		Vars: []string{
 			"family.parentEmail",
 			"family.parentPassword",
@@ -146,7 +133,7 @@ func init() {
 		Name:     "familyLinkGellerLoginWithLacros",
 		Desc:     "Supervised Family Link user login with Geller account on Lacros",
 		Contacts: []string{"galenemco@chromium.org", "hyungtaekim@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true /*isOwner*/, true /*isLacros*/),
 		Vars: []string{
 			"family.parentEmail",
 			"family.parentPassword",
@@ -164,7 +151,7 @@ func init() {
 		Name:     "familyLinkUnicornArcLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported()),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true /*isOwner*/, false /*isLacros*/, chrome.ARCSupported()),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
@@ -182,7 +169,7 @@ func init() {
 		Name:     "familyLinkParentArcLogin",
 		Desc:     "Non-supervised Family Link user login with regular parent account and ARC support",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "", "", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "", "", true /*isOwner*/, false /*isLacros*/, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
@@ -198,7 +185,7 @@ func init() {
 		Name:     "familyLinkUnicornPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and policy setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true /*isOwner*/, false /*isLacros*/),
 		Vars: []string{
 			"family.parentEmail",
 			"family.parentPassword",
@@ -217,7 +204,7 @@ func init() {
 		Name:     "familyLinkUnicornArcPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support with fakeDMS setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true /*isOwner*/, false /*isLacros*/, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
