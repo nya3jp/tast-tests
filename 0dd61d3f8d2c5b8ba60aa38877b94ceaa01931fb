@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca69e7f_6f9aa235",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-24T23:03:42Z",
+      "side": 1,
+      "message": "avoid variable names like these `a, d, act`, they are not very readable.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "0dd61d3f8d2c5b8ba60aa38877b94ceaa01931fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6cea51_e2533d61",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-24T23:03:42Z",
+      "side": 1,
+      "message": "These can be simplified to avoid redundant `if` checks:\n```\n\tinstalled, err :\u003d y.a.PackageInstalled(ctx, youtubePkg)\n\tif err !\u003d nil {\n\t\treturn err\n\t}\n\tvar appVersion string\n\tif installed {\n\t\tappVersion, err \u003d dumpAppInfo(ctx, y.a, y.d, youtubePkg)\n\t\tif err !\u003d nil {\n\t\t\treturn errors.Wrapf(err, \"failed to get %s version\", youtubePkg)\n\t\t}\n\t\tfor _, version :\u003d range knownGoodVersions {\n\t\t\tif appVersion \u003d\u003d version {\n\t\t\t\treturn nil\n\t\t\t}\n\t\t}\n\t\t\n\t\ttesting.ContextLog(ctx, \"Uninstall the Youtube app\")\n\t\tif err :\u003d y.a.Uninstall(ctx, youtubePkg); err !\u003d nil {\n\t\t\treturn errors.Wrapf(err, \"failed to uninstall %s version\", youtubePkg)\n\t\t}\n\t}\n\treturn y.a.Install(ctx, y.youtubeApkPath)\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "0dd61d3f8d2c5b8ba60aa38877b94ceaa01931fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
