@@ -495,19 +495,18 @@ func runPhase1(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunPara
 			return nil, nil, errors.Wrap(err, "cannot add initial tab from list")
 		}
 		tabs = append(tabs, t)
-		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to wait for quiescence")
-		}
-		if err := t.wiggle(ctx); err != nil {
-			return nil, nil, errors.Wrap(err, "cannot wiggle initial tab")
-		}
 	}
 
-	for _, t := range tabs {
-		if err := t.pin(ctx); err != nil {
-			testing.ContextLogf(ctx, "Cannot pin tab %d: %v", t.id, err)
-		}
-	}
+	// Cycle through tabs programatically.
+	// for i := 0; i < 10; i++ {
+	// 	for _, t := range tabs {
+	// 		t.tconn.Call(ctx, nil, `async (id) => tast.promisify(chrome.tabs.update)(id, {active: true})`, t.id)
+	// 	}
+	// }
+	// newTab(ctx, cr, "chrome://histograms")
+
+	return nil, nil, errors.Wrap(err, "Done!")
+
 	pinnedTabs = tabs[:]
 
 	// Collect and log tab-switching times in the absence of memory pressure.
@@ -686,7 +685,7 @@ type RunParameters struct {
 // Parameter arc is optional - if nil, VM-dependent metrics will be omitted.
 func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p *RunParameters) (errRet error) {
 	const (
-		initialTabSetSize    = 5
+		initialTabSetSize    = 60
 		recentTabSetSize     = 5
 		coldTabSetSize       = 10
 		tabCycleDelay        = 300 * time.Millisecond
