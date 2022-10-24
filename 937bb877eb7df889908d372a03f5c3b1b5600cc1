@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca687090_9ba9bdf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_in_with_lots_of_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-24T12:07:24Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion, but I think just restarting Chrome with chrome.New should be less flaky",
+      "parentUuid": "fe773183_df654c5f",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f892dd50_6ea8f523",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_in_with_lots_of_users.go",
         "patchSetId": 1
