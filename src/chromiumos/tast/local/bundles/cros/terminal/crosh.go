@@ -35,10 +35,6 @@ func init() {
 	})
 }
 
-var (
-	croshTab = nodewith.Name("crosh").Role(role.Window).ClassName("BrowserFrame")
-)
-
 func Crosh(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -55,6 +51,14 @@ func Crosh(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	// Remove public IME if it is installed (seems to be only amd64-generic
+	// boards) since it sends bad text and key events.
+	const publicImeExt = "fgoepimhcoialccpbmpnnblemnepkkao"
+	if err := tconn.Call(ctx, nil,
+		"tast.promisify(chrome.autotestPrivate.removeComponentExtension)", publicImeExt); err != nil {
+		s.Fatal("Failed to remove public IME extension: ", err)
 	}
 
 	// Launch Crosh.
