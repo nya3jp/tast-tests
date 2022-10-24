@@ -66,7 +66,7 @@ func (du *dataUploader) needUpload(bucket string) bool {
 	}
 
 	if !du.buildDescriptor.Official {
-		testing.ContextLogf(du.ctx, "Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", du.androidVersion)
+		testing.ContextLogf(du.ctx, "Version: %s is not official version and generated caches won't be uploaded to the server", du.androidVersion)
 		return false
 	}
 
@@ -269,7 +269,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 
 	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
-	s.Logf("Detected version: %s", v)
+	vUreadahead := fmt.Sprintf("host_%s_%s_%s", desc.HostUreadaheadAbi, desc.BuildType, desc.BuildID)
+	s.Logf("Detected version %s(host %s)", v, desc.HostUreadaheadAbi)
 	if desc.BuildType != "user" {
 		s.Fatal("Data collector should only be run on a user build")
 	}
@@ -295,6 +296,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	du := dataUploader{
 		ctx:             ctx,
 		androidVersion:  v,
+		shouldUpload:    param.upload,
+		buildDescriptor: desc,
+	}
+	duUreadahead := dataUploader{
+		ctx:             ctx,
+		androidVersion:  vUreadahead,
 		shouldUpload:    param.upload,
 		buildDescriptor: desc,
 	}
@@ -360,13 +367,13 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		targetTar := filepath.Join(targetDir, v+".tar")
+		targetTar := filepath.Join(targetDir, vUreadahead+".tar")
 		testing.ContextLogf(shortCtx, "Compressing ureadahead packs to %q", targetTar)
 		if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
 			s.Fatalf("Failed to compress %q: %v", targetDir, err)
 		}
 
-		if err := du.uploadIfNeeded(targetTar, ureadAheadPack); err != nil {
+		if err := duUreadahead.uploadIfNeeded(targetTar, ureadAheadPack); err != nil {
 			s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
 		}
 
