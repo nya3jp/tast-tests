@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4510dc72_1c2d440b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_certs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-24T03:41:07Z",
+      "side": 1,
+      "message": "I believe there are partners using moblab to pass CTS. kinaba@ would know.",
+      "parentUuid": "f7bb30f1_4f9073fe",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "61dec009a008f851e9c03b70f02a2a4074759272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09ce6124_b0e890c0",
