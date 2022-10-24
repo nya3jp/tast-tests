@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01ec2f3f_00e0fa92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-24T01:04:34Z",
+      "side": 1,
+      "message": "\u003e So you mean normally we just skip some models for the whole test and we put SkipOnModel in init()?\n\nInstead of skipping the whole test, we can just create a test variant like `_skip_toggle_phone_tablet` which runs all tests except \"toggle phone-tablet\" case.\nIn the variant param, you can set the `Val: true` and use that value here to switch the test code.\n\nPlease check `tablet_mode_vm` vs. `tablet_home_launcher_vm` for the real world example.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/split_view.go;l\u003d79;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "parentUuid": "922b0887_879f72f9",
+      "revId": "836b0fb834e8691d9dca2778092bb2812657906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f00b7b7_c4b1418d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 4
