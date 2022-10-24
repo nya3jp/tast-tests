@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebd7769_0482d8e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-24T16:12:22Z",
+      "side": 1,
+      "message": "LGTM. Please run tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit tests passed.\n\nPlease also find somebody familiar with this test to review it and give you +2. Thanks.",
+      "revId": "136d0bc5263286703888906127d9d3752bbfdf25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
