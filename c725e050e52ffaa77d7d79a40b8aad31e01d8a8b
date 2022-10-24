@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9f3f025_44fafe11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-24T23:58:27Z",
+      "side": 1,
+      "message": "@agawronska@chromium.org is this a bug? I think the edu secondary account is supposed to appear in the browser profile too. \n\n@hyungtaekim@chromium.org does this issue only happen for the Lacros variant of the test or both?",
+      "parentUuid": "c6d0c895_c1652f2c",
+      "revId": "c725e050e52ffaa77d7d79a40b8aad31e01d8a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3257dd7_8d38090c",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
         "patchSetId": 1
