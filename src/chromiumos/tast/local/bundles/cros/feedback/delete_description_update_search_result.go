@@ -135,8 +135,8 @@ func firstLinkName(ctx context.Context, ui *uiauto.Context) (
 		}
 		return nil
 	}, &testing.PollOptions{
-		Interval: 5 * time.Second,
-		Timeout:  30 * time.Second,
+		Interval: 10 * time.Second,
+		Timeout:  1 * time.Minute,
 	}); err != nil {
 		return "", errors.Wrap(err, "failed to find the first link name")
 	}
