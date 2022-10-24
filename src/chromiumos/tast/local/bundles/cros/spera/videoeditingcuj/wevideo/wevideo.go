@@ -90,7 +90,8 @@ func (w *WeVideo) Login(account string) action.Action {
 		return nil
 	}
 	loginButton := nodewith.Name("Log in").Role(role.Button)
-	loginWebArea := nodewith.Name("Log in to your account").Role(role.RootWebArea)
+	loginReg := regexp.MustCompile(`(Login|Log in) to your account`)
+	loginWebArea := nodewith.NameRegex(loginReg).Role(role.RootWebArea)
 	googleLink := nodewith.Name("Log in with Google").Role(role.Link).Ancestor(loginWebArea)
 	targetAccount := nodewith.Name(account).Role(role.StaticText)
 
