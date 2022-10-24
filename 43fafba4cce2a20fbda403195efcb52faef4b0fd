@@ -16,6 +16,23 @@
       "message": "Hi Toni, this deflake the AppRearrangement test. Please take a look. Thanks!",
       "revId": "43fafba4cce2a20fbda403195efcb52faef4b0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74c6d8a_6460717a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-24T17:10:47Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "43fafba4cce2a20fbda403195efcb52faef4b0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
