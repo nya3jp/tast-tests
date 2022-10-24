@@ -26,8 +26,9 @@ func init() {
 			"anastasiian@chromium.org",
 			"cryptohome-core@google.com",
 		},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"tpm"},
+		Attr: []string{"group:mainline"},
+		// For "no_tpm_dynamic" - see http://b/251789202.
+		SoftwareDeps: []string{"tpm", "no_tpm_dynamic"},
 		Fixture:      "ussAuthSessionFixture",
 		Params: []testing.Param{
 			{

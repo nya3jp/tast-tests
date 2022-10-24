@@ -13,11 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RecoveryCrypto,
-		Desc:         "Checks that cryptohome recovery process succeeds with fake/local mediation",
-		Contacts:     []string{"anastasiian@chromium.org", "cros-lurs@google.com"},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"tpm"},
+		Func:     RecoveryCrypto,
+		Desc:     "Checks that cryptohome recovery process succeeds with fake/local mediation",
+		Contacts: []string{"anastasiian@chromium.org", "cros-lurs@google.com"},
+		Attr:     []string{"group:mainline"},
+		// For "no_tpm_dynamic" - see http://b/251789202.
+		SoftwareDeps: []string{"tpm", "no_tpm_dynamic"},
 	})
 }
 
