@@ -40,10 +40,10 @@ type TestFileParams struct {
 }
 
 // ScanningTimeOut describes the typical time out for a scan.
-const ScanningTimeOut = 3 * time.Minute
+const ScanningTimeOut = 5 * time.Minute
 
 // DmTokenTimeOut describes how long we wait for a valid dm token.
-const DmTokenTimeOut = 6 * time.Minute
+const DmTokenTimeOut = 10 * time.Minute
 
 // GetTestFileParams returns the list of parameters for the files that should be tested.
 func GetTestFileParams() []TestFileParams {
