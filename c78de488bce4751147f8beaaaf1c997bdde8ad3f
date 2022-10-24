@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfdf3e5_f851625f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/mature_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T23:00:22Z",
+      "side": 1,
+      "message": "Sounds good. send https://crrev.com/i/5052346 for that change in tast-tests-private.",
+      "parentUuid": "256e6ccb_6b92a7f6",
+      "revId": "c78de488bce4751147f8beaaaf1c997bdde8ad3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "817930f8_29239265",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-24T22:22:22Z",
       "side": 1,
       "message": "This seems like a utility function that belongs in familylink.go [1].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/familylink/familylink.go?q\u003df:familylink.go",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "c78de488bce4751147f8beaaaf1c997bdde8ad3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e4f204_e13c3d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/mature_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-24T23:00:22Z",
+      "side": 1,
+      "message": "Thanks for your suggestion. If it\u0027s safe to use https://pkg.go.dev/net/url#JoinPath (available in 1.19 or later) I can use that instead. otherwise, I\u0027ll be able to move it to familylink.go as you suggested.",
+      "parentUuid": "817930f8_29239265",
       "range": {
         "startLine": 82,
         "startChar": 0,
