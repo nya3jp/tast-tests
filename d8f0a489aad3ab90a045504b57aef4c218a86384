@@ -16,6 +16,23 @@
       "message": "I don\u0027t know much about js but Look good to tast.",
       "revId": "d8f0a489aad3ab90a045504b57aef4c218a86384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6aa39f6_eabbd73f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T16:47:16Z",
+      "side": 1,
+      "message": "LGTM, thank you for investigating and getting this fix out! :)",
+      "revId": "d8f0a489aad3ab90a045504b57aef4c218a86384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
