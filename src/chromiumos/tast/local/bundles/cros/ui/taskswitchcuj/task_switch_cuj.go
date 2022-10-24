@@ -241,7 +241,7 @@ func Run(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return err
 		}
-
+		numBrowserWindows++
 		numWindows := numAppWindows + numBrowserWindows + 1
 
 		// Initialize task switch workflows only after launching Chrome
