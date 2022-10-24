@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5b547e_c07979de",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-10-24T00:36:34Z",
+      "side": 1,
+      "message": "lots of different commands take a file param. see the flashrom_tester. might want to specify this in each command",
+      "revId": "9fa73f83adb3958c870693a53508e631d83c4fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce4e702_0f211037",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-10-24T00:36:34Z",
+      "side": 1,
+      "message": "for flashcontentsImage you probably want either a go \u0027io.Reader\u0027 type https://pkg.go.dev/io#Reader or a filepath: https://pkg.go.dev/path/filepath or a *File https://pkg.go.dev/os#Open.\n\nflashrom_tester used Path, which is probably the easiest for both cli and lib impls to use.",
+      "revId": "9fa73f83adb3958c870693a53508e631d83c4fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
