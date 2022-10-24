@@ -16,6 +16,40 @@
       "message": "Hello all! I spent some time working on refactoring the Bluetooth service to support Floss and believe this is in pretty good shape. I tested this change via a small custom test that started discovery, queried for devices, and stopped discovery via the service. Please take a look and let me know what you think-- feedback on tweaks to the service are very welcome!",
       "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5e4855_176848e6",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss/floss.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T20:53:29Z",
+      "side": 1,
+      "message": "I assume it\u0027s currently intentional that the following methods are all stubs?",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859c6e26_3ba7a08e",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T20:53:29Z",
+      "side": 1,
+      "message": "Where is this supposed to be passed in from?",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
