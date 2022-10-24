@@ -16,6 +16,23 @@
       "message": "Fixed merge conflicts.",
       "revId": "d83fde22f2d3635edef2ce1d4d0c70f7119f7be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e2c2df_21b473b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-24T16:50:57Z",
+      "side": 1,
+      "message": "nit: Waiting",
+      "revId": "d83fde22f2d3635edef2ce1d4d0c70f7119f7be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
