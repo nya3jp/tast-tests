@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c73705_55e5aba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T20:17:59Z",
+      "side": 1,
+      "message": "Thank you for taking a look at this change Eric! Will hold off on landing until the change this builds off of is landed :)",
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af25bef_48209a24",
@@ -113,6 +130,30 @@
       "side": 1,
       "message": "Only if you plan on using this in other tests. Otherwise, it doesn\u0027t make any sense to move it.",
       "parentUuid": "a301018c_a00ed508",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "18aca6fc9c00b2f86baa762f8d56a705c6b0228a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9785c1dd_60e06f60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-24T20:17:59Z",
+      "side": 1,
+      "message": "Okay, that SGTM-- I am not sure as of now if this same finder will be used (e.g. might end up being more specific) so I can leave it here and move it if it does end up being used. Thank you Eric!",
+      "parentUuid": "a6f0c4c8_be1ac81a",
       "range": {
         "startLine": 117,
         "startChar": 0,
