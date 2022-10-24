@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9026a21c_97d2598b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-24T14:31:36Z",
+      "side": 1,
+      "message": "I am not in favor of this limited pool design.\nTzarial, (as you are looking on Tast improvements work) can you please have a look as well.",
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a9ce62_e43f252b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-24T14:31:36Z",
+      "side": 1,
+      "message": "Nit(Across the cl): Since it contains parent credentials, call it something else than childCreds",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f962e026_a221f51b",
@@ -36,6 +76,52 @@
         "startChar": 50,
         "endLine": 405,
         "endChar": 52
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc574d48_d62bc62f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-24T14:31:36Z",
+      "side": 1,
+      "message": "We start to have nontrivial number of fixtures and it is hard to determine which fixture should be used for what.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8bba69b_9b1426c8",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-24T14:31:36Z",
+      "side": 1,
+      "message": "It is a serious limitation to only have one parent in the pool.\nIMO this pool design is not robust enough. Growing number of fixture makes them harder to use. Rather than as-hoc change, I would suggest one-pager for clarifying the requirements and the future-proof design.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 31
       },
       "revId": "96f56bf3a552e84da2e3e9428827f8005341b497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
