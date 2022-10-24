@@ -72,6 +72,23 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentLacrosFamilyLink,
+		Desc:     "Fixture setting persistent policy user for a Family Link account on Lacros",
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"family.unicornEmail",
+		},
+		Impl: &persistentFixture{
+			policies:      []policy.Policy{&policy.LacrosAvailability{Val: "lacros_only"}},
+			policyUserVar: "family.unicornEmail",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.PersistentFamilyLinkARC,
 		Desc:     "Fixture setting persistent policy user for a Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
