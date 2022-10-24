@@ -259,6 +259,9 @@ type FixtData struct {
 
 	// PolicyUser is the user account used in the policy blob.
 	policyUser string
+
+	// ChildCreds is the credentials of the Family Link account.
+	childCreds *chrome.Creds
 }
 
 // Chrome implements the HasChrome interface.
@@ -305,11 +308,29 @@ func (f FixtData) PolicyUser() string {
 	return f.policyUser
 }
 
+// HasChildCreds is an interface for fixtures that log in as a Family Link
+// account. It allows retrieval of the underlying child user credentials.
+// Despite containing parent credentials, the interface is called HasChildCreds
+// because only child creds have parent credentials. The ParentUser and
+// ParentPass fields are empty for regular users.
+type HasChildCreds interface {
+	ChildCreds() *chrome.Creds
+}
+
+// ChildCreds implements the HasChildCreds interface.
+func (f FixtData) ChildCreds() *chrome.Creds {
+	if f.childCreds == nil {
+		panic("ChildCreds is called with nil childCreds instance")
+	}
+	return f.childCreds
+}
+
 // Check at compile-time that FixtData implements the appropriate interfaces.
 var _ chrome.HasChrome = FixtData{}
 var _ HasTestConn = FixtData{}
 var _ fakedms.HasFakeDMS = FixtData{}
 var _ HasPolicyUser = FixtData{}
+var _ HasChildCreds = FixtData{}
 
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	parentUser := s.RequiredVar(f.parentUser)
@@ -319,22 +340,24 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	// disabled for supervised users. Always force enable them in supervised users tests.
 	f.opts = append(f.opts, chrome.ExtraArgs("--force-devtools-available"))
 
-	isChildLogin := len(f.childUser) > 0 && len(f.childPassword) > 0
-	if isChildLogin {
+	var childCreds *chrome.Creds
+	if len(f.childUser) > 0 && len(f.childPassword) > 0 {
 		childUser := s.RequiredVar(f.childUser)
 		childPass := s.RequiredVar(f.childPassword)
-		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{
+		childCreds = &chrome.Creds{
 			User:       childUser,
 			Pass:       childPass,
 			ParentUser: parentUser,
 			ParentPass: parentPass,
-		}))
+		}
+		f.opts = append(f.opts, chrome.GAIALogin(*childCreds))
 	} else {
 		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{
 			User: parentUser,
 			Pass: parentPass,
 		}))
 	}
+	isChildLogin := childCreds != nil
 
 	// Checks whether the current fixture has a FakeDMS parent fixture.
 	fdms, isPolicyTest := s.ParentValue().(*fakedms.FakeDMS)
@@ -344,7 +367,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 
 		if isChildLogin {
-			f.policyUser = s.RequiredVar(f.childUser)
+			f.policyUser = childCreds.User
 		} else {
 			f.policyUser = parentUser
 		}
@@ -407,6 +430,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		fakeDMS:    fdms,
 		testConn:   tconn,
 		policyUser: f.policyUser,
+		childCreds: childCreds,
 	}
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
