@@ -125,6 +125,13 @@ func Run(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a screenshot every 2 minutes up to a maximum of 5
+	// screenshots, to try to capture at least 2 screenshots in each
+	// of the task switching workflows.
+	if err := recorder.AddScreenshotRecorder(ctx, 2*time.Minute, 5); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
 	if err != nil {
 		s.Fatal("Failed to obtain the top-row layout: ", err)

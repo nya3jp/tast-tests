@@ -124,6 +124,13 @@ func Run(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a screenshot every 2 minutes up to a maximum of 5
+	// screenshots, to capture the state of the device during each of the
+	// desk switching workflows.
+	if err := recorder.AddScreenshotRecorder(ctx, 2*time.Minute, 5); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	defer ash.CleanUpDesks(cleanupCtx, tconn)
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "failure")
 
