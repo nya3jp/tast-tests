@@ -29,7 +29,7 @@ func init() {
 		Func:         TestDownload,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Enterprise connector test for downloading files",
-		Timeout:      20 * time.Minute,
+		Timeout:      30 * time.Minute,
 		Contacts: []string{
 			"sseckler@google.com",
 			"cros-enterprise-connectors@google.com",
