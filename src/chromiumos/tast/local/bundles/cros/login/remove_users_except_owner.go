@@ -124,6 +124,11 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to verify users list: ", err)
 		}
 
+		// Cryptohomes of all users should be available.
+		checkCryptohomeFileInfo(ctx, s, deviceOwner)
+		checkCryptohomeFileInfo(ctx, s, additionalUser1)
+		checkCryptohomeFileInfo(ctx, s, additionalUser2)
+
 		// Remove a non-owner user.
 		removeButtonName := "Remove " + signinutil.GetUsernameFromEmail(additionalUser1)
 
@@ -154,20 +159,15 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 
 		// Cryptohome of a deleted user should not exist.
-		cryptohomeFileInfo, err := getCryptohomeFileInfo(ctx, s, additionalUser1)
+		_, err = getCryptohomeFileInfo(ctx, s, additionalUser1)
 		if err == nil {
 			s.Fatalf("Cryptohome directory for %s still exists", additionalUser1)
 		} else if !os.IsNotExist(err) {
 			s.Fatal("Unexpected error: ", err)
 		}
 
-		// Cryptohome of the device owher should be available.
-		cryptohomeFileInfo, err = getCryptohomeFileInfo(ctx, s, deviceOwner)
-		if err != nil {
-			s.Fatalf("Cryptohome directory for %s could not be accessed: %v", deviceOwner, err)
-		} else if cryptohomeFileInfo == nil {
-			s.Fatalf("Cryptohome directory for %s does not exist", deviceOwner)
-		}
+		// Cryptohome of the device owner should be available.
+		checkCryptohomeFileInfo(ctx, s, deviceOwner)
 	}()
 
 	// Go back to the login screen and check user pods.
@@ -230,4 +230,14 @@ func getCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) (
 	}
 
 	return os.Stat(path)
+}
+
+func checkCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) {
+	// Cryptohome of the device owner should be available.
+	cryptohomeFileInfo, err := getCryptohomeFileInfo(ctx, s, user)
+	if err != nil {
+		s.Fatalf("Cryptohome directory for %s could not be accessed: %v", deviceOwner, err)
+	} else if cryptohomeFileInfo == nil {
+		s.Fatalf("Cryptohome directory for %s does not exist", deviceOwner)
+	}
 }
