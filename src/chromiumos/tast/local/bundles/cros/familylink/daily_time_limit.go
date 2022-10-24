@@ -32,7 +32,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		VarDeps:      []string{"family.unicornEmail", "family.unicornPassword"},
 		Fixture:      "familyLinkUnicornPolicyLogin",
 	})
 }
@@ -40,6 +39,7 @@ func init() {
 func DailyTimeLimit(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	// Make sure screen is not locked.
 	s.Log("Assert the screen is not locked")
@@ -125,7 +125,7 @@ func DailyTimeLimit(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for daily limit reset at most in ", resetInMin)
-	childUser := strings.ToLower(s.RequiredVar("family.unicornEmail"))
+	childUser := strings.ToLower(childCreds.User)
 	if err := lockscreen.WaitForPasswordField(ctx, tconn, childUser, resetInMin+authTimeOut); err != nil {
 		s.Error("Password text field did not appear in the UI: ", err)
 	}
@@ -137,7 +137,7 @@ func DailyTimeLimit(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 	if err := lockscreen.EnterPassword(ctx, tconn, childUser,
-		s.RequiredVar("family.unicornPassword"), kb); err != nil {
+		childCreds.Pass, kb); err != nil {
 		s.Fatal("Entering password failed: ", err)
 	}
 	if st, err := lockscreen.WaitState(ctx, tconn,

@@ -28,10 +28,6 @@ func init() {
 		// This test has a long timeout because syncing settings can occasionally
 		// take a long time.
 		Timeout: 5 * time.Minute,
-		VarDeps: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-		},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "familyLinkUnicornLogin",
@@ -60,7 +56,7 @@ func waitForBoolPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName 
 			return err
 		}
 		if value != expectedValue {
-			return errors.Errorf("%q is not the right value", prefName)
+			return errors.Errorf("%q is not the right value, expected %t, got %t", prefName, expectedValue, value)
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: timeout}); err != nil {
@@ -93,6 +89,7 @@ func waitForBoolPrefValueFromAshOrLacros(ctx context.Context, tconn *chrome.Test
 func UnicornExtensions(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	childCreds := s.FixtValue().(familylink.HasChildCreds).ChildCreds()
 
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")
@@ -105,7 +102,7 @@ func UnicornExtensions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pref: ", err)
 	}
 
-	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.parentEmail"), s.RequiredVar("family.parentPassword")); err != nil {
+	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, s.Param().(browser.Type), childCreds.ParentUser, childCreds.ParentPass); err != nil {
 		s.Fatal("Failed to add extension: ", err)
 	}
 }
