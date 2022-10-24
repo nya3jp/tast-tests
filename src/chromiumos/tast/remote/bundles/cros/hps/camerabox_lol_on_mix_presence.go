@@ -93,6 +93,19 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for HPS to be ready: ", err)
 	}
 
+	// Check that HPS is running the expected firmware version.
+	runningVersion, err := hpsutil.FetchRunningFirmwareVersion(hctx)
+	if err != nil {
+		s.Error("Error reading running firmware version: ", err)
+	}
+	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+	if err != nil {
+		s.Error("Error reading firmware version from image: ", err)
+	}
+	if runningVersion != expectedVersion {
+		s.Errorf("HPS reports running firmware version %v but expected %v", runningVersion, expectedVersion)
+	}
+
 	// Get the delays for the quick dim
 	delayReq := &wrappers.BoolValue{
 		Value: true,

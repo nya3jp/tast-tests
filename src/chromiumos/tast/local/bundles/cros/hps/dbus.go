@@ -10,6 +10,7 @@ import (
 	"github.com/godbus/dbus/v5"
 
 	pb "chromiumos/system_api/hps_proto"
+	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -67,5 +68,23 @@ func DBus(ctx context.Context, s *testing.State) {
 		s.Error("EnableHpsSense(BasicFilter) failed: ", err)
 	} else {
 		s.Log("EnableHpsSense(BasicFilter) success")
+	}
+
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), s.DUT().Conn())
+	if err != nil {
+		s.Fatal("Error creating HpsContext: ", err)
+	}
+
+	// Check that HPS is running the expected firmware version.
+	runningVersion, err := hpsutil.FetchRunningFirmwareVersion(hctx)
+	if err != nil {
+		s.Error("Error reading running firmware version: ", err)
+	}
+	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+	if err != nil {
+		s.Error("Error reading firmware version from image: ", err)
+	}
+	if runningVersion != expectedVersion {
+		s.Errorf("HPS reports running firmware version %v but expected %v", runningVersion, expectedVersion)
 	}
 }
