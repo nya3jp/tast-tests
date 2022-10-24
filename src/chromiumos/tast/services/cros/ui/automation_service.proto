@@ -46,6 +46,9 @@ service AutomationService {
   // MouseRelease releases the certain mouse button.
   rpc MouseRelease(MouseReleaseRequest) returns (google.protobuf.Empty) {}
 
+  // MouseMoveTo moves the mouse to hover the requested node.
+  rpc MouseMoveTo(MouseMoveToRequest) returns (google.protobuf.Empty) {}
+
   // CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
   rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse) {}
 }
@@ -56,6 +59,10 @@ message LeftClickRequest {
 message MousePressRequest {
   MouseButton mouse_button = 1;
   Finder finder = 2;
+}
+message MouseMoveToRequest {
+  Finder finder = 1;
+  int32 duration_ms = 2;
 }
 message MouseReleaseRequest {
   MouseButton mouse_button = 1;

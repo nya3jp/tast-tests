@@ -11,6 +11,7 @@ import (
 	"image/png"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -247,6 +248,27 @@ func (svc *AutomationService) MousePress(ctx context.Context, req *pb.MousePress
 	}
 	if err := ui.MousePress(button, finder)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed calling MousePress on button %q with finder: %v", string(button), finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
+// MouseMoveTo moves the mouse to hover the requested node.
+func (svc *AutomationService) MouseMoveTo(ctx context.Context, req *pb.MouseMoveToRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+
+	finder, err := toFinder(req.Finder)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ui.MouseMoveTo(finder, time.Duration(req.DurationMs)*time.Millisecond)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed moving mouse to finder %v", finder)
 	}
 	return &empty.Empty{}, nil
 }
