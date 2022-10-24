@@ -7,6 +7,7 @@ package filepicker
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -39,7 +40,15 @@ func (f *FilePicker) OpenDir(dirName string) uiauto.Action {
 
 // OpenFile returns a function that executes double click on a file to open it.
 func (f *FilePicker) OpenFile(fileName string) uiauto.Action {
-	return f.filesApp.OpenFile(fileName)
+	// For the file picker, opening the file should close the picker.
+	// We retry opening the file three times to deflake some tests,
+	// as sometimes the double-click seems to be ignored.
+	return uiauto.Retry(3,
+		uiauto.Combine(fmt.Sprintf("OpenFile(%s)", fileName),
+			f.filesApp.SelectFile(fileName),
+			f.filesApp.OpenFile(fileName),
+			f.filesApp.WithTimeout(3*time.Second).WaitUntilGone(filesapp.WindowFinder(vars.FilePickerPseudoAppID)),
+		))
 }
 
 // SelectFile returns a function that selects a file.
