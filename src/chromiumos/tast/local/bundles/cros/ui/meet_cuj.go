@@ -28,7 +28,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -862,26 +861,33 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			// Toggle the Google Docs file menu button for press and
+			// Toggle the Google Docs File menu button for press and
 			// release metrics.
-			waitUntilStable := ui.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)
 			fileMenu := nodewith.Name("File").HasClass("menu-button")
+			menuContainer := nodewith.HasClass("goog-menu")
 			if !inTabletMode {
 				if err := ui.MouseMoveTo(fileMenu, 500*time.Millisecond)(ctx); err != nil {
-					s.Log("Failed to move mouse to Google Doc's file menu: ", err)
+					return errors.Wrap(err, "failed to move mouse to Google Doc's File menu")
 				}
 			}
-			if err := action.Combine(
-				"toggle the Google Doc's file menu",
-				// Open file menu.
-				pc.Click(fileMenu),
-				waitUntilStable,
 
-				// Close file menu.
-				pc.Click(fileMenu),
-				waitUntilStable,
+			clickFileMenu := pc.Click(fileMenu)
+			uiForWaiting := ui.WithTimeout(10 * time.Second)
+			waitForFileMenu := uiForWaiting.WaitUntilExists(menuContainer)
+			waitForNoFileMenu := uiForWaiting.WaitUntilGone(menuContainer)
+			if err := uiauto.Combine("toggle the Google Doc's File menu",
+				clickFileMenu,
+				// If the File menu doesn't appear, maybe it's because the click
+				// only focused the page. Then we just need to click again.
+				uiauto.IfFailThen(
+					waitForFileMenu,
+					uiauto.Combine("click/tap File menu",
+						clickFileMenu,
+						waitForFileMenu)),
+				clickFileMenu,
+				waitForNoFileMenu,
 			)(ctx); err != nil {
-				return err
+				return nil
 			}
 
 			// Get the Google Docs window again to properly retrieve
@@ -895,7 +901,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			docsBounds := docsWindow.TargetBounds
 			if !inTabletMode {
 				if err := mouse.Move(tconn, docsBounds.CenterPoint(), 500*time.Millisecond)(ctx); err != nil {
-					s.Log("Failed to move mouse to center of Google Docs window: ", err)
+					return errors.Wrap(err, "failed to move mouse to center of Google Docs window")
 				}
 			}
 			if err := pc.Drag(
