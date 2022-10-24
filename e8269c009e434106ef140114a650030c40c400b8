@@ -20,6 +20,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5bfa6c53_0a755e77",
+        "filename": "src/chromiumos/tast/local/chrome/internal/cdputil/conn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-24T05:10:07Z",
+      "side": 1,
+      "message": "A result of `go fmt` for presubmit.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "e8269c009e434106ef140114a650030c40c400b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf057b0d_bb932e45",
         "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
         "patchSetId": 5
