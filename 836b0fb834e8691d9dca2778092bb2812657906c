@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfb5e30_98f5b1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-24T05:27:02Z",
+      "side": 1,
+      "message": "Thanks for the explanation! As per our off-line discussion, since it\u0027s the temporary approach let me just leave it as it is now.",
+      "parentUuid": "01ec2f3f_00e0fa92",
+      "revId": "836b0fb834e8691d9dca2778092bb2812657906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f00b7b7_c4b1418d",
