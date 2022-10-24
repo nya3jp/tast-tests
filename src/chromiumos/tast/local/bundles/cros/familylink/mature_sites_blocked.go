@@ -7,9 +7,14 @@ package familylink
 
 import (
 	"context"
+	"net/url"
+	"path"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -21,18 +26,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MatureSitesBlocked,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that matures sites are blocked for Unicorn users",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"unicorn.matureSite"},
-		Fixture:      "familyLinkUnicornLogin",
+		Params: []testing.Param{{
+			Fixture: "familyLinkUnicornLogin",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "familyLinkUnicornLoginWithLacros",
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func MatureSitesBlocked(ctx context.Context, s *testing.State) {
+	// Reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
@@ -40,14 +58,32 @@ func MatureSitesBlocked(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	conn, err := cr.NewConn(ctx, matureSite)
+	// `url` must match exactly the URL that Chrome ends up associating with
+	// the tab. For example, you must use "https://www.google.com/" with a
+	// trailing slash (/) instead of "http://google.com". If it can't find the
+	// requested one, SetUpWithURL will print out the URLs of the current tabs.
+	url, err := urlJoin(matureSite, "/")
+	if err != nil {
+		s.Fatal("Failed to join URL: ", err)
+	}
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url.String())
 	if err != nil {
 		s.Fatal("Failed to navigate to website: ", err)
 	}
+	defer closeBrowser(cleanupCtx)
 	defer conn.Close()
 
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(nodewith.Name("Site blocked").Role(role.StaticText))(ctx); err != nil {
 		s.Fatal("Mature website is not blocked for Unicorn user: ", err)
 	}
+}
+
+func urlJoin(base, part string) (*url.URL, error) {
+	parsed, err := url.Parse(base)
+	if err != nil {
+		return nil, err
+	}
+	parsed.Path = path.Join(parsed.Path, part)
+	return parsed, nil
 }
