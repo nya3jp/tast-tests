@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3176c656_d81cb2c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-24T11:56:30Z",
+      "side": 1,
+      "message": "Are the changes compared to the original CL capture in PS1-\u003ePS2 diff?",
+      "revId": "5e94e862133dae20201062303aab7d95cafe6092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
