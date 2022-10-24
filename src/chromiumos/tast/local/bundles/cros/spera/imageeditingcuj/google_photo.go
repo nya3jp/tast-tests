@@ -172,7 +172,7 @@ func (g *GooglePhotos) Upload(fileName string) uiauto.Action {
 	computerItem := nodewith.Name("Computer").Role(role.MenuItem)
 	filesWebAreaFinder := nodewith.Ancestor(nodewith.Name("Files").Role(role.RootWebArea))
 	downloadsItem := filesWebAreaFinder.Name("Downloads").Role(role.TreeItem)
-	testImageOption := filesWebAreaFinder.Name(fileName).Role(role.ListBoxOption).Focusable()
+	testImageOption := filesWebAreaFinder.NameStartingWith(fileName).Role(role.ListBoxOption).Focusable()
 	openButton := nodewith.Name("Open").Role(role.Button)
 	continueButton := nodewith.Name("Continue").Role(role.Button)
 	closeDialogButton := nodewith.Name("Close dialog").Role(role.Button).Focusable()
