@@ -1,6 +1,97 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42cb9ff1_d56244a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd955ea_f288750d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Can you explain the meaning of _stable and _unstable again? And why don\u0027t we test with just \"lacros\"?",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f65e202_d489da4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "the given Ash version.",
+      "range": {
+        "startLine": 56,
+        "startChar": 114,
+        "endLine": 56,
+        "endChar": 117
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53fe273_e28f501a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Can you move this function into the versionutil package? Any test that wants to have an Omaha variant (e.g. StartupPerf) will need it.\n\nMaybe we can add even more abstraction to make it easier for tests.",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77043e4d_7aa3ab28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Nit: compatibleLacrosChannels (lacrosCompatible sounds like \"compatible with Lacros\")",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58ebfad2_62703f03",
@@ -121,6 +212,126 @@
         "endLine": 44,
         "endChar": 81
       },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8a757c_8fe08584",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "string representation of the current Ash version",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c00204_a94a6a36",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "I think using the devtools protocol to query the version is cleaner.\n\nhttps://pkg.go.dev/github.com/mafredri/cdp#Browser.GetVersion",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1b61b9_0e7e84b9",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Let\u0027s use a more explicit name. How about LacrosCompatibleWithAsh?",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296ce869_36e74216",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "In AshVersion above you\u0027re using a regexp. Would be nice to have a uniform way. How about having a function ReadVersion of type string -\u003e (version, error), where version is a struct with four numbers. Then use that function everywhere.",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4e60c8_930c6da6",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "because",
+      "range": {
+        "startLine": 122,
+        "startChar": 56,
+        "endLine": 122,
+        "endChar": 60
+      },
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78357bcc_3ea7cb91",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T01:55:29Z",
+      "side": 1,
+      "message": "Where did you find these rules? The closest I could find is https://docs.google.com/document/d/124Ps9ymvArxyhqqR-eH-1TOz7_vCEdv5fLjsB6mC2Mg/edit\nwhich is a bit vague:\n\n\"On release branches, where release velocity is more critical, support limited backwards compatibility as long as Lacros and Ash are on the same branch. For examples:\"\n\nWe also need to make sure to only allow older Lacros when the test is running with a release branch Ash, not on ToT.",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
