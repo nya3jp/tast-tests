@@ -90,7 +90,7 @@ func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) (e
 		return errors.Wrap(err, "bootstrap request")
 	}
 	if resp.Err != "" {
-		return errors.Errorf("bootstrap operation failed: %s", resp.Err)
+		return errors.Errorf("bootstrap operation failed: %s, stdout: %s, stderr: %s", resp.Err, resp.Output, resp.ErrOutput)
 	}
 	return nil
 }
@@ -107,7 +107,7 @@ func (a *DUTControlAndreiboard) PlainCommand(ctx context.Context, cmd string, ar
 		return nil, errors.Wrapf(err, "request %s %s", cmd, strings.Join(args, " "))
 	}
 	if resp.Err != "" {
-		return resp.Output, errors.Errorf("operation %s %s: %s", cmd, strings.Join(args, " "), resp.Err)
+		return resp.Output, errors.Errorf("operation %s %s: %s, stderr: %s", cmd, strings.Join(args, " "), resp.Err, resp.ErrOutput)
 	}
 	return resp.Output, nil
 }
