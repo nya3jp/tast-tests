@@ -99,6 +99,7 @@ const (
 	IPConfigPropertyVendorEncapsulatedOptions = "VendorEncapsulatedOptions"
 	IPConfigPropertyWebProxyAutoDiscoveryURL  = "WebProxyAutoDiscoveryUrl"
 	IPConfigPropertyiSNSOptionData            = "iSNSOptionData"
+	IPConfigPropertyManualProxyConfiguration  = "ManualProxyConfiguration"
 )
 
 // Manager property names.
