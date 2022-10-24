@@ -16,6 +16,46 @@
       "message": "I changed the way of skipping the tests to use `ExtraHardwareDeps` instead, in case we need some other hacky quick fix for the same boards. Please take another look~",
       "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24307b5_263777f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-24T08:10:10Z",
+      "side": 1,
+      "message": "Nice clean up!! LGTM",
+      "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a79d08b_2e78a791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-24T08:10:10Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to explicitly set this if the `Name` is empty",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
