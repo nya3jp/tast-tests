@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e712dac4_e118f325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-24T07:40:04Z",
+      "side": 1,
+      "message": "I changed the way of skipping the tests to use `ExtraHardwareDeps` instead, in case we need some other hacky quick fix for the same boards. Please take another look~",
+      "revId": "cf53ebb8d3f30dded10762888348e779a041d8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

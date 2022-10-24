@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "313acea6_42c34541",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-24T07:40:04Z",
+      "side": 1,
+      "message": "Sure using arc instead.",
+      "parentUuid": "ea8d5a0c_219b0809",
+      "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "26d7d18a_dc3a8fec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-24T06:13:23Z",
       "side": 1,
       "message": "I was gonna suggest using proper hardware dependencies, but I see that it was already brought up.",
+      "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8852f24d_e396bd8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-24T07:40:04Z",
+      "side": 1,
+      "message": "Let me use `ExtraHardwareDeps` instead in case we need another hacky quick fix for the same boards for the current bug.",
+      "parentUuid": "3c7b4a99_1999a906",
       "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
