@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb650271_ff674b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:20:32Z",
+      "side": 1,
+      "message": "just a small one left, thanks for all this!",
+      "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c07152b_1dbbe045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/roaming_status_label.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-24T15:20:32Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Roaming sub-label is incorrect: got %s, want %s\", roamingSubLabel, s.Param().(testParameters).roamingSubLabel)\n\n(you can also factor out grabbing the param if you want to make it a bit clearer)",
+      "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
