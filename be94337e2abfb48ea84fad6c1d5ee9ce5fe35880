@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9165f9_a2ae7c66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/detachable_dev_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-24T18:34:03Z",
+      "side": 1,
+      "message": "Add firmware_usb since you use the usb stick.",
+      "range": {
+        "startLine": 30,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "be94337e2abfb48ea84fad6c1d5ee9ce5fe35880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
