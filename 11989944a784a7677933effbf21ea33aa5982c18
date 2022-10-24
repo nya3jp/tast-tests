@@ -33,6 +33,24 @@
       "message": "Nit: similar to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go;l\u003d37-59;drc\u003de72415f37dfbd2c86113f62956b6ee469d2a763e, this should be a list variable at the top of the  file, rather than a function",
       "revId": "11989944a784a7677933effbf21ea33aa5982c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591e5055_d4698512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-10-24T22:44:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3c99e6_226c1d4b",
+      "revId": "11989944a784a7677933effbf21ea33aa5982c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
