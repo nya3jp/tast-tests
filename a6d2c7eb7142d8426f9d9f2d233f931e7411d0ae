@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ec054a_c7fc1e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "# took 1 working day, so skipping shadow review.",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4bfa5d_220ef8e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "style: let\u0027s drop getter prefix. \"kernelImageVersion\" or can we just call \"kernelVersion\"?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a6eb00_0e09558a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "recommendation: let\u0027s not take testing.State in a function like this. Instead, could you take helper, and return (string, error)?\n\nDItto or all helper functions below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 48,
+        "endLine": 32,
+        "endChar": 64
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bda29c_04354a73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "not consistent with L37. As mentioned above, let\u0027s return error.",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7b1f82_0172abc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "nit:style: imagePath, version string",
+      "range": {
+        "startLine": 76,
+        "startChar": 66,
+        "endLine": 76,
+        "endChar": 98
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3633dc_0389ffc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "nit/style: \"string\" can be dropped.",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2929a44c_4f061e44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "style: \"of\u003d\" + imagePath\n\nto concat two strings.",
+      "range": {
+        "startLine": 98,
+        "startChar": 37,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d01ed5_962bad55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "nit/style: successful :\u003d false",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a1bbba_8726f7f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "optional: maybe print version values?",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8cb8c2_f029a361",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-24T14:12:34Z",
+      "side": 1,
+      "message": "should this be called regardless of whether it failed or not?\nThen, let\u0027s call this in defer around L149.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
