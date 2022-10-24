@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9f95bf_db296ad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_consumption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-24T15:43:07Z",
+      "side": 1,
+      "message": "Could you add a brief description (maybe just one line) of the format that is expected for `pwr_servo`?",
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc9f106_65e83776",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-24T15:43:07Z",
+      "side": 1,
+      "message": "Could you move these formatting changes to a separate CL?",
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4add655d_18110185",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-24T15:43:07Z",
+      "side": 1,
+      "message": "Another formatting change.",
+      "revId": "16185e46d5853b9785591be85117ae5e438e9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
