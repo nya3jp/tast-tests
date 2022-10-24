@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"gopkg.in/yaml.v2"
@@ -26,6 +27,22 @@ import (
 )
 
 const expectationsDirectory = "/usr/local/graphics/expectations"
+
+// disable is a runtime variable to disable loading expectations when "true"
+var disable = testing.RegisterVarString(
+	"expectations.disable",
+	"false",
+	"Set to true to disable expectations usage. Example: --var=expectations.disable=true")
+
+// isDisabled returns true when the runtime variable expectations.Disable has
+// been set to "true".
+func isDisabled() (bool, error) {
+	value, err := strconv.ParseBool(disable.Value())
+	if err != nil {
+		return false, errors.Wrap(err, "failed to parse runtime variable "+disable.Name())
+	}
+	return value, nil
+}
 
 // debugLogging is a runtime variable to enable more debugging logs about the
 // use of expectations files. When set to "true" to, it turns on log messages
@@ -218,6 +235,15 @@ func expectPass(ctx context.Context) Expectation {
 // based on the device model, board, or gpu chipset. Looks in
 // testExpectationsDirectory for test expectations files.
 func GetTestExpectationFromDirectory(ctx context.Context, testName, testExpectationsDirectory string) (Expectation, error) {
+	disabled, err := isDisabled()
+	if err != nil {
+		return expectPass(ctx), err
+	}
+	if disabled {
+		testing.ContextLogf(ctx, "Loading expectations was disabled to runtime variable %s=%s", disable.Name(), disable.Value())
+		return expectPass(ctx), nil
+	}
+
 	// Try the following file names:
 	// 1. base_directory/model-<model>.yml
 	// 2. base_directory/buildboard-<buildboard>.yml
