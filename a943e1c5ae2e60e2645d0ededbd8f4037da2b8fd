@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8d5a0c_219b0809",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T06:13:23Z",
+      "side": 1,
+      "message": "Nit: no need for \"tast-tests\" prefix as we\u0027re in the tast-tests repository.",
+      "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "26d7d18a_dc3a8fec",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-10-24T05:27:02Z",
       "side": 1,
       "message": "Tast owners, please take a look~",
+      "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7b4a99_1999a906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-24T06:13:23Z",
+      "side": 1,
+      "message": "I was gonna suggest using proper hardware dependencies, but I see that it was already brought up.",
       "revId": "a943e1c5ae2e60e2645d0ededbd8f4037da2b8fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
