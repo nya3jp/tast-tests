@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9e0327_8b3b75a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T23:34:27Z",
+      "side": 1,
+      "message": "We may have to avoid submitting this to `mainline` until http://b/249564120 is resolved. Otherwise any tests run after this will be running on a device with a writable rootfs.\n\nCan you verify that if we leave out `group:mainline`, the test will not be executed in the CQ (or other places)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "42c4453b77ccf9b52b32e3b66f84a2654406f904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
