@@ -50,6 +50,23 @@
       "message": "Thanks for cleaning this up - please hold off on submitting until we validate the new change",
       "revId": "cf5b4544c73981b9ddea0f898b77f7c84a3f61ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b91712_cce49572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-25T22:45:06Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "cf5b4544c73981b9ddea0f898b77f7c84a3f61ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
