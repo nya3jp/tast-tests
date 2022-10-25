@@ -22,6 +22,30 @@
       },
       "revId": "be94337e2abfb48ea84fad6c1d5ee9ce5fe35880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d014b849_1e42d2be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/detachable_dev_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-10-25T04:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9165f9_a2ae7c66",
+      "range": {
+        "startLine": 30,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "be94337e2abfb48ea84fad6c1d5ee9ce5fe35880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
