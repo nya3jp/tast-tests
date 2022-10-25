@@ -218,7 +218,7 @@ var modelTemperatureThresholds = map[string]int{
 	"metaknight": 52000,
 	"pirette":    52000,
 	"drawman":    52000,
-	"lantis":     51000,
+	"lantis":     951000,
 	"anahera":    51000,
 	"pasara":     51000,
 	"pirika":     51000,
