@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c33422a_be4cb055",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-25T01:17:05Z",
+      "side": 1,
+      "message": "Oh I see, thanks for pointing this out. I\u0027ve changed it to Fetch.",
+      "parentUuid": "43174d3d_5191ced8",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "4e378f9c00b1fe390ddaba169a4162923e72d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6492b206_ec343443",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-24T22:49:11Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 8
+      },
+      "revId": "4e378f9c00b1fe390ddaba169a4162923e72d557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc72b56_8ba4aea6",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-25T01:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492b206_ec343443",
       "range": {
         "startLine": 278,
         "startChar": 5,
