@@ -145,3 +145,16 @@ const (
 	ESimStatusNoProfile    = 1
 	ESimStatusWithProfiles = 2
 )
+
+// Modem types
+type ModemType uint32
+
+const (
+	ModemUnspeciefied   ModemType = 0
+    ModemQualcomm7180   ModemType = 1
+	ModemFibocomL850GL  ModemType = 2
+	ModemNL668          ModemType = 3
+	ModemFM350          ModemType = 4
+	ModemFM101          ModemType = 5
+	ModemQualcomm7280   ModemType = 6
+)
