@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15799a08_5cbeae25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "80e50bfc_ebb2a4a1",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc6a067e_e9f6d07e",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b23f58_04938811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "bc6a067e_e9f6d07e",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67aa29eb_251cdeff",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-10-21T06:50:49Z",
       "side": 1,
       "message": "This test currently doesn\u0027t work (it fails at \"Failed to create the instance of ARC\" below). You need to use the fixture familyLinkUnicornArcPolicyLogin for this test to work. ARC doesn\u0027t initialize properly for Family Link (Unicorn and Geller) users without policy.",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 39
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e418e5_acde3b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "67aa29eb_251cdeff",
       "range": {
         "startLine": 43,
         "startChar": 14,
@@ -129,6 +201,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1844e00_0725e2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Sorry, the `apputil.InstallationTimeout` is for installing the app, should we add some comments here?",
+      "parentUuid": "a2900d76_822256ed",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ff57476_daaa99b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
         "patchSetId": 1
@@ -140,6 +236,30 @@
       "writtenOn": "2022-10-22T00:51:47Z",
       "side": 1,
       "message": "After replacing the fixtures with familyLinkUnicornArcPolicyLogin and familyLinkGellerArcPolicyLogin, there\u0027s no need to PerformAndClose(). A more robust way to enable ARC is to inject this policy:\n\n    arcEnabledPolicy :\u003d \u0026policy.ArcEnabled{Val: true}\n\tpolicies :\u003d []policy.Policy{arcEnabledPolicy}\n\tpb :\u003d policy.NewBlob()\n\tpb.AddPolicies(policies)\n\tif err :\u003d policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err !\u003d nil {\n\t\ts.Fatal(\"Failed to serve policies: \", err)\n\t}\n\t\nSee example here [1].\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go;l\u003d47?q\u003dfamilyLinkUnicornArcPolicyLogin",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dece3d3_bfbc8d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0ff57476_daaa99b8",
       "range": {
         "startLine": 58,
         "startChar": 17,
@@ -163,6 +283,30 @@
       "writtenOn": "2022-10-21T06:50:49Z",
       "side": 1,
       "message": "Thanks for creating this new fixture for Geller users. Now rename it to familyLinkGellerArcPolicyLogin, similar to familyLinkUnicornArcPolicyLogin, and add a persistent parent fixture.\n\nYou will need to create a new parent fixture called PersistentGellerArc, similar to PersistentFamilyLinkARC [1], except use the family.gellerEmail credentials.\n\nYou also need to add a new entry for the new PersistentGellerArc fixture here [2].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/persistent.go;l\u003d75?q\u003df:persistent.go\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/fixture/policyutil.go;l\u003d76?q\u003dPersistentFamilyLinkARC",
+      "range": {
+        "startLine": 145,
+        "startChar": 13,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863e7c04_fdca2ddf",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-25T03:56:28Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "65f64baf_c5eb28bd",
       "range": {
         "startLine": 145,
         "startChar": 13,
