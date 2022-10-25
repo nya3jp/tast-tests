@@ -38,6 +38,8 @@ func init() {
 }
 
 func AudioRecord(ctx context.Context, s *testing.State) {
+	chrome := s.FixtValue().(chrome.HasChrome).Chrome()
+
 	// Load ALSA loopback module.
 	unload, err := audio.LoadAloop(ctx)
 	if err != nil {
@@ -45,7 +47,11 @@ func AudioRecord(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err = audio.SetupLoopback(ctx, chrome); err != nil {
+		s.Fatal("Failed to setup loopback device: ", err)
+	}
+
+	tconn, err := chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
