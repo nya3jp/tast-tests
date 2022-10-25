@@ -1057,12 +1057,15 @@ func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, 
 // AuthenticateAuthFactor authenticates an AuthSession with a given authSessionID via an auth factor.
 func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessionID, label, password string) (*uda.AuthenticateAuthFactorReply, error) {
 	binaryMsg, err := u.binary.authenticateAuthFactor(ctx, authSessionID, label, password)
-	if err != nil {
-		return nil, errors.Wrap(err, "AuthenticateAuthFactor failed")
-	}
+
+	// Attempt to parse the binaryMsg anyway, we need them to check for the correct error code.
 	reply := &uda.AuthenticateAuthFactorReply{}
-	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
-		return nil, errors.Wrap(err, "failed to unmarshal AuthenticateAuthFactor reply")
+	if unmarshErr := proto.Unmarshal(binaryMsg, reply); unmarshErr != nil {
+		return nil, errors.Wrap(unmarshErr, "failed to unmarshal AuthenticateAuthFactor reply")
+	}
+
+	if err != nil {
+		return reply, errors.Wrap(err, "AuthenticateAuthFactor failed")
 	}
 	return reply, nil
 }
