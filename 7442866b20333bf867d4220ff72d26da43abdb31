@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8f1e251d_ea18b1d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-25T00:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb7c747_dfa8e767",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "7442866b20333bf867d4220ff72d26da43abdb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8534c3a0_4815a2bd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 12
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-20T02:07:48Z",
       "side": 1,
       "message": "nit: this will be output in multiple lines, let\u0027s try to do this in one line.\nYou can create the string for overlay ips before the output.",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "7442866b20333bf867d4220ff72d26da43abdb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72864467_15aeec25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-25T00:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "242b9c87_adca68a4",
       "range": {
         "startLine": 214,
         "startChar": 1,
