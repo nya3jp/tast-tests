@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "172499b6_1b4b4d25",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T23:31:00Z",
+      "side": 1,
+      "message": "Thanks for the catch. was mistaken to see the type of version components is int64, which is not true at https://osscs.corp.google.com/chromium/chromium/src/+/main:base/version.h `int` should be okay.",
+      "parentUuid": "9d6c6223_8dcb3e28",
+      "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "741bccd5_73e0682d",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-10-25T23:05:03Z",
       "side": 1,
       "message": "Nit: do the splitting inside the conv method?",
+      "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1207067e_ddd8991d",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T23:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "741bccd5_73e0682d",
       "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
