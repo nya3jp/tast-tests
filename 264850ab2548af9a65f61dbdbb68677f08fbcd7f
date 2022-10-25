@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8257f4d7_df47537b",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-10-25T12:36:17Z",
+      "side": 1,
+      "message": "Indicate that it is a test config failure, not the test failure",
+      "range": {
+        "startLine": 209,
+        "startChar": 31,
+        "endLine": 209,
+        "endChar": 116
+      },
+      "revId": "264850ab2548af9a65f61dbdbb68677f08fbcd7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a4ee28_72115b35",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-10-25T12:36:17Z",
+      "side": 1,
+      "message": "Would it be possible to extend the basic functionality of a web kiosk app? E.g. add buttons to call specified web APIs?",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 26
+      },
+      "revId": "264850ab2548af9a65f61dbdbb68677f08fbcd7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
