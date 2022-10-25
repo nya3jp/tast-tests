@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a0bc85b_4c5d5264",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "nit: `login`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a34dea3_d5e547a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "nit: This should be at most 50 characters according to https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages\n\nYou could write:\n\n\tlogin: Check cryptohome in RemoveUsersExceptOwner",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6084cf0a_75e6fade",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
         "patchSetId": 2
@@ -26,6 +72,99 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cffcdb8a_fb9c90dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6084cf0a_75e6fade",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 15
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec58d8c9_5fa1903c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "nit: `still`",
+      "range": {
+        "startLine": 169,
+        "startChar": 42,
+        "endLine": 169,
+        "endChar": 43
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95faa040_b2141d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "Also get rid of this. It\u0027s relevant to this CL, because `checkCryptohomeFileInfo` needs to call `getCryptohomeFileInfo`.",
+      "range": {
+        "startLine": 226,
+        "startChar": 48,
+        "endLine": 226,
+        "endChar": 64
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e59a953_16420183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "nit: `specified`",
+      "range": {
+        "startLine": 235,
+        "startChar": 57,
+        "endLine": 235,
+        "endChar": 65
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93c7ebb2_09526a38",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
         "patchSetId": 2
@@ -37,6 +176,47 @@
       "writtenOn": "2022-10-25T16:29:22Z",
       "side": 1,
       "message": "It\u0027s not recommended to pass in the testing state to a helper function [1]. Since you\u0027re checking for an error, you can instead get rid of the `s *testing.State` parameter and return the error, wrapped\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state",
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a18732e_8788a75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "93c7ebb2_09526a38",
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0bc5cf_d130c980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:18:14Z",
+      "side": 1,
+      "message": "nit:\n\n\tif cryptohomeFileInfo, err :\u003d getCryptohomeFileInfo(ctx, user); err !\u003d nil {",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 16
+      },
       "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
