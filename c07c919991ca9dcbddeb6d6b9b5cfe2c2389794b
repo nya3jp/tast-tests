@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f3f5ab_bf8573aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:02:48Z",
+      "side": 1,
+      "message": "nit: `Use screenshot utility in`",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c43681_458a685b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:02:48Z",
+      "side": 1,
+      "message": "nit: `Use the screenshot recorder in`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "10f5ee9d_5a4439ff",
@@ -14,6 +60,69 @@
       "writtenOn": "2022-10-25T00:53:04Z",
       "side": 1,
       "message": "Please review, thanks!",
+      "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7bbdf2_32138af1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:02:48Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1532e3_4a069d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:02:48Z",
+      "side": 1,
+      "message": "nit: `screenshots`",
+      "range": {
+        "startLine": 129,
+        "startChar": 46,
+        "endLine": 129,
+        "endChar": 56
+      },
+      "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb896854_6eac9234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:02:48Z",
+      "side": 1,
+      "message": "nit: ` and the beginning of the second cycle.`",
+      "range": {
+        "startLine": 187,
+        "startChar": 62,
+        "endLine": 187,
+        "endChar": 63
+      },
       "revId": "c07c919991ca9dcbddeb6d6b9b5cfe2c2389794b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
