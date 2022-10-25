@@ -1,0 +1,20 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wifi;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wifi";
+
+service DeviceService {
+    // GetDeviceInfo returns the WLAN device names defined in tast/testing/wlan. e.g. "Intel AX 211". 
+    rpc GetDeviceInfo(google.protobuf.Empty) returns (GetDeviceInfoResponse) {}
+}
+
+message GetDeviceInfoResponse {
+    string name = 1;
+}
