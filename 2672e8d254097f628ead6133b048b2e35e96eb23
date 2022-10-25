@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "162579d9_32f9c81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-25T23:55:36Z",
+      "side": 1,
+      "message": "nit: args might be a better name?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "2672e8d254097f628ead6133b048b2e35e96eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd3241d_f364acfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-25T23:55:36Z",
+      "side": 1,
+      "message": "nit: since MustCompile panics or returns a valid regexp, it needs only be evaluated once so idiomatically in Go, we put this in a file variable (even though in this particular case it will be called once, this code may be refactored)",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "2672e8d254097f628ead6133b048b2e35e96eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f41fff0_ab27367a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-25T23:55:36Z",
+      "side": 1,
+      "message": "nit: combine conditions into 1 statement",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "2672e8d254097f628ead6133b048b2e35e96eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b9d79f2_4520a145",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 18
