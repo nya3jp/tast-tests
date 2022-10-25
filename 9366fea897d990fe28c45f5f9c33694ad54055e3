@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34651bfe_5f2c0037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_codecs_encode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-25T18:14:42Z",
+      "side": 1,
+      "message": "Done. Thanks for catching these!",
+      "parentUuid": "8129aede_f4758723",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "9366fea897d990fe28c45f5f9c33694ad54055e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f0645e_6f38fd77",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-10-25T17:58:12Z",
       "side": 1,
       "message": "LacrosVariantExists",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "9366fea897d990fe28c45f5f9c33694ad54055e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4288a2_fae43b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-25T18:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f0645e_6f38fd77",
       "range": {
         "startLine": 21,
         "startChar": 24,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5d3555_14df90ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-25T18:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131b7227_c0a1d125",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "9366fea897d990fe28c45f5f9c33694ad54055e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97910a92_92c9b154",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9624ea2_503789d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-25T18:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97910a92_92c9b154",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "9366fea897d990fe28c45f5f9c33694ad54055e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7cdf8bd_e8956a97",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-10-25T17:58:12Z",
       "side": 1,
       "message": "LacrosVariantExists",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "9366fea897d990fe28c45f5f9c33694ad54055e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17156d2a_43f09013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-25T18:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7cdf8bd_e8956a97",
       "range": {
         "startLine": 21,
         "startChar": 24,
