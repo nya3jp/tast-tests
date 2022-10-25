@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6562d923_aa13c637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T20:15:43Z",
+      "side": 1,
+      "message": "That is close but if I would say it in other words, `br` and `cr` are two different instances but pointing to the same underlying CDP session to ash-chrome. You can probably see `br` is a layer of abstraction that can deal with common browser behaviors between ash-chrome and lacros-chrome (eg, open tabs/windows, close them or reload)",
+      "parentUuid": "c1c51481_a924c87e",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68a9e6d7_c46616d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
         "patchSetId": 1
