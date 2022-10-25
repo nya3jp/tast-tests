@@ -16,6 +16,41 @@
       "message": "Do I need to change these back to informational when adding lacros version, or is passing CQ good enough since these have already been \u0027vetted\u0027?",
       "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b15c40_f9ffa727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-25T19:24:45Z",
+      "side": 1,
+      "message": "Definitely a good idea to mark the lacros variant as informational, since it\u0027s new.  Since the other test got rewritten a bit in the process, it\u0027s probably not a bad idea to just mark the whole thing as informational.  Since it was previously passing, we should be able to promote it back in ~20 runs.",
+      "parentUuid": "57391d94_9ff56229",
+      "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9cf67e_772a7690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-25T19:24:45Z",
+      "side": 1,
+      "message": "Does this need to do anything to wait for the print management app to finish launching before continuing?",
+      "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
