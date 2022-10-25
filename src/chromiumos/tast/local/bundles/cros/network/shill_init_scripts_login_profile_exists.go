@@ -22,8 +22,7 @@ func init() {
 		Desc:         "Test that shill init scripts perform as expected",
 		Contacts:     []string{"hugobenichi@google.com", "cros-networking@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		// b:238260020 - disable aged (>1y) unpromoted informational tests
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:network"},
 		// This test performs 2 logins.
 		Timeout: 2*chrome.LoginTimeout + time.Minute,
 	})
