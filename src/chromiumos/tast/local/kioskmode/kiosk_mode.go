@@ -7,9 +7,21 @@
 package kioskmode
 
 import (
+	"bufio"
+	"bytes"
 	"context"
+	"encoding/binary"
+	"fmt"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/png"
+	"io"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -33,19 +45,7 @@ var (
 	// WebKioskAccountID identifier of the web Kiosk application.
 	WebKioskAccountID   = "arbitrary_id_web_kiosk_1@managedchrome.com"
 	webKioskAccountType = policy.AccountTypeKioskWebApp
-	webKioskIconURL     = "https://www.google.com"
-	webKioskTitle       = "TastKioskModeSetByPolicyGooglePage"
-	webKioskURL         = "https://www.google.com"
-	// DeviceLocalAccountInfo uses *string instead of string for internal data
-	// structure. That is needed since fields in json are marked as omitempty.
-	webKioskPolicy = policy.DeviceLocalAccountInfo{
-		AccountID:   &WebKioskAccountID,
-		AccountType: &webKioskAccountType,
-		WebKioskAppInfo: &policy.WebKioskAppInfo{
-			Url:     &webKioskURL,
-			Title:   &webKioskTitle,
-			IconUrl: &webKioskIconURL,
-		}}
+	webKioskTitle       = "Web Kiosk Placeholder Title"
 
 	// KioskAppAccountID identifier of the Kiosk application.
 	KioskAppAccountID   = "arbitrary_id_store_app_2@managedchrome.com"
@@ -64,16 +64,6 @@ var (
 		KioskAppInfo: &policy.KioskAppInfo{
 			AppId: &KioskAppID,
 		}}
-
-	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
-	// configuration. Each, when setting public account policies can be
-	// referred by id: KioskAppAccountID and WebKioskAccountID
-	DefaultLocalAccountsConfiguration = policy.DeviceLocalAccounts{
-		Val: []policy.DeviceLocalAccountInfo{
-			kioskAppPolicy,
-			webKioskPolicy,
-		},
-	}
 )
 
 const (
@@ -93,6 +83,7 @@ type Kiosk struct {
 	cr            *chrome.Chrome
 	fdms          *fakedms.FakeDMS
 	localAccounts *policy.DeviceLocalAccounts
+	httpServer    *httptest.Server
 	autostart     bool
 }
 
@@ -113,6 +104,10 @@ func (k *Kiosk) Close(ctx context.Context) (retErr error) {
 			retErr = errors.Wrap(err, "could not close Chrome while closing Kiosk session")
 		}
 	}(ctx)
+
+	if k.httpServer != nil {
+		k.httpServer.Close()
+	}
 
 	var policies []policy.Policy
 	// When AutoLaunch() option was used, then the corresponding policy has to
@@ -201,15 +196,49 @@ func IsKioskAppStarted(ctx context.Context) error {
 // passing chrome.LoadSigninProfileExtension(). In that case Chrome is started
 // and stays on Signin screen with Kiosk accounts loaded.
 // Use defer kiosk.Close(ctx) to clean.
-func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *chrome.Chrome, error) {
+func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (k *Kiosk, c *chrome.Chrome, e error) {
 	cfg, err := NewConfig(opts)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to process options")
 	}
 
-	if cfg.m.DeviceLocalAccounts == nil {
+	var deviceLocalAccounts *policy.DeviceLocalAccounts
+	var httpServer *httptest.Server
+	if cfg.m.UseDefaultLocalAccounts {
+		if cfg.m.DeviceLocalAccounts != nil {
+			return nil, nil, errors.New("invalid config: DeviceLocalAccounts and UseDefaultLocalAccounts should not be used at the same time")
+		}
+
+		// Start local http server for web Kiosk.
+		httpServer = httptest.NewServer(http.HandlerFunc(webKioskServerHandler))
+		testing.ContextLog(ctx, "Serving test PWA at "+httpServer.URL)
+		iconURL := httpServer.URL + "/icon.png"
+
+		deviceLocalAccounts = &policy.DeviceLocalAccounts{
+			Val: []policy.DeviceLocalAccountInfo{
+				kioskAppPolicy,
+				{
+					AccountID:   &WebKioskAccountID,
+					AccountType: &webKioskAccountType,
+					WebKioskAppInfo: &policy.WebKioskAppInfo{
+						Url:     &httpServer.URL,
+						Title:   &webKioskTitle,
+						IconUrl: &iconURL,
+					}},
+			},
+		}
+	} else if cfg.m.DeviceLocalAccounts != nil {
+		deviceLocalAccounts = cfg.m.DeviceLocalAccounts
+	} else {
 		return nil, nil, errors.Wrap(err, "local device accounts were not set")
 	}
+
+	// Close local http server if Kiosk fails to start.
+	defer func() {
+		if httpServer != nil && k == nil {
+			httpServer.Close()
+		}
+	}()
 
 	err = func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Kiosk mode: Starting Chrome to set Kiosk policies")
@@ -228,7 +257,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 
 		// Set local accounts policy.
 		policies := []policy.Policy{
-			cfg.m.DeviceLocalAccounts,
+			deviceLocalAccounts,
 		}
 
 		// Handle the AutoLaunch setup.
@@ -260,7 +289,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 			// In case of AutoLaunch was used we try to override policies with
 			// local accounts similarly as in kioskmode.Close().
 			if cfg.m.AutoLaunch == true {
-				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
+				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{deviceLocalAccounts}); err != nil {
 					testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test : ", err)
 				}
 			}
@@ -303,7 +332,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 			// that Kiosk is ready for launch, and finally it waits for Kiosk
 			// to be launched.
 			if err := ConfirmKioskStarted(ctx, reader); err != nil {
-				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
+				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{deviceLocalAccounts}); err != nil {
 					testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
 				}
 				cr.Close(ctx)
@@ -314,7 +343,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 			// library will still make sure that Kiosk start sequence started
 			// and Kiosk is ready for launch.
 			if err := confirmKioskInitialized(ctx, reader); err != nil {
-				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
+				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{deviceLocalAccounts}); err != nil {
 					testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
 				}
 				cr.Close(ctx)
@@ -337,7 +366,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 		}
 	}
 
-	return &Kiosk{cr: cr, fdms: fdms, localAccounts: cfg.m.DeviceLocalAccounts, autostart: cfg.m.AutoLaunch}, cr, nil
+	return &Kiosk{cr: cr, fdms: fdms, localAccounts: deviceLocalAccounts, httpServer: httpServer, autostart: cfg.m.AutoLaunch}, cr, nil
 }
 
 // startChromeClearPolicies is called when Chrome fails to start in autostart
@@ -496,4 +525,77 @@ func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*
 		return nil, errors.Wrap(err, "failed to restart Chrome")
 	}
 	return cr, nil
+}
+
+// webKioskServerHandler handles http requests sent to test web Kiosk server.
+func webKioskServerHandler(w http.ResponseWriter, r *http.Request) {
+	const (
+		contentHTMLFormat = `
+<!DOCTYPE html>
+<html>
+    <head>
+      <title id="title">Kiosk Test PWA page</title>
+      <link rel="manifest" href="manifest.webmanifest">
+      <link rel="icon" type="image/png" href="icon.png">
+    </head>
+    <body>
+        <h1>Test PWA for Web Kiosk</h1>
+        <p>Path: %s</p>
+    </body>
+</html>
+`
+		manifestJs = `
+{
+  "description": "Kiosk Test PWA description",
+  "display": "standalone",
+  "icons":[{"sizes":"144x144","src":"/icon.png","type":"image/png"}],
+  "id":"/",
+  "name":"Web Kiosk Test PWA",
+  "scope":"/",
+  "short_name":"Kiosk Test",
+  "start_url":"/start",
+  "theme_color":"#000000"
+}
+`
+	)
+	if r.Method != http.MethodGet {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Serve PWA manifest JSON.
+	if strings.Contains(r.URL.Path, "manifest.webmanifest") {
+		w.Header().Add("Content-Type", "application/manifest+json")
+		w.Header().Set("Content-Length", strconv.Itoa(binary.Size(manifestJs)))
+		w.WriteHeader(http.StatusOK)
+		io.WriteString(w, manifestJs)
+		return
+	}
+
+	// Serve a blank PNG image as app icon.
+	if strings.Contains(r.URL.Path, "icon.png") {
+		var pngData bytes.Buffer
+		pngWriter := bufio.NewWriter(&pngData)
+		icon := image.NewRGBA(image.Rectangle{Min: image.Point{}, Max: image.Point{X: 144, Y: 144}})
+		draw.Draw(icon, icon.Bounds(), &image.Uniform{C: color.Black}, image.Point{}, draw.Src)
+		if err := png.Encode(pngWriter, icon); err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Add("Content-Type", "image/png")
+		w.Header().Add("Content-Disposition", "attachment; filename=icon.png")
+		w.Header().Set("Content-Length", strconv.Itoa(pngData.Len()))
+		w.WriteHeader(http.StatusOK)
+		w.Write(pngData.Bytes())
+		return
+	}
+
+	// Serve a html with path in body for all other paths.
+	contentHTML := fmt.Sprintf(contentHTMLFormat, r.URL.Path)
+	w.Header().Add("Content-Type", "text/html")
+	w.Header().Set("Content-Length", strconv.Itoa(binary.Size(contentHTML)))
+	w.WriteHeader(http.StatusOK)
+	io.WriteString(w, contentHTML)
+	return
 }

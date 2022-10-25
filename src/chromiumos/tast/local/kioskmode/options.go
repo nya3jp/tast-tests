@@ -17,11 +17,11 @@ func ExtraPolicies(p []policy.Policy) Option {
 	}
 }
 
-// DefaultLocalAccounts uses default Kiosk applications configuration stored
-// in kioskmode.defaultLocalAccountsConfiguration.
+// DefaultLocalAccounts uses default Kiosk applications configuration generated
+// in kioskmode.New().
 func DefaultLocalAccounts() Option {
 	return func(cfg *MutableConfig) error {
-		cfg.DeviceLocalAccounts = &DefaultLocalAccountsConfiguration
+		cfg.UseDefaultLocalAccounts = true
 		return nil
 	}
 }
