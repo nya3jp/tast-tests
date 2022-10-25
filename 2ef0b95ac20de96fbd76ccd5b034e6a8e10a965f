@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6be94c40_e7416628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:13:59Z",
+      "side": 1,
+      "message": "AFAIK the policy should be shown on the chrome://policy page in Lacros if it is set. policyutil.Verify is checking Ash though.",
+      "parentUuid": "7d48a47e_c9913c94",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 107
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f527b5ac_cb275e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d232a8cc_47d2be96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:13:59Z",
+      "side": 1,
+      "message": "Can you poll on a condition instead? Maybe checking if the page has been loaded.",
+      "parentUuid": "f527b5ac_cb275e68",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "614f7510_16995500",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
@@ -101,6 +149,30 @@
       "writtenOn": "2022-10-25T01:27:55Z",
       "side": 1,
       "message": "A question for the reviewers: Does it make sense having this addition checkpoint for the family policy login test? If not, I can remove L77-91.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded5e445_704b0496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:13:59Z",
+      "side": 1,
+      "message": "Having this here makes sure policies are actually being applied, it\u0027s also quite readable.",
+      "parentUuid": "614f7510_16995500",
       "range": {
         "startLine": 89,
         "startChar": 0,
