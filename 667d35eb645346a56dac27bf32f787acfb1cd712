@@ -16,6 +16,57 @@
       "message": "Hi Victor, this CL is ready for review.",
       "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb59ec8_50dd9997",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:09:44Z",
+      "side": 1,
+      "message": "Also add support for getting the Contact for OTA accounts here.\n\nLet\u0027s have them in the same order as the Creds struct.",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bc5842_e0b82f0a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:09:44Z",
+      "side": 1,
+      "message": "Please also check if the GAIAID is empty.",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc61d41_cfc91d18",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-25T08:09:44Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
