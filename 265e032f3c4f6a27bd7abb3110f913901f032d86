@@ -286,6 +286,30 @@
       },
       "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0921928e_7a4ceaf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-25T04:36:47Z",
+      "side": 1,
+      "message": "I added a default `freq\u003d2462` and `mode\u003dht40`, and made the perf test use the `freq\u003d5180` with `mode\u003dht40`.\n\n\nI am going to add more subtest for different freq and modes in coming CLs. However,  I see some failures to create the group onwer with certain configurations such as `p2p_group_add freq\u003d5180 vht` and I am investigating these atm.",
+      "parentUuid": "c6bc3f6b_46683792",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
