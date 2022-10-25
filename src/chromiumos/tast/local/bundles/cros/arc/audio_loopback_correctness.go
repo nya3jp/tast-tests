@@ -422,6 +422,7 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 		cleanupTime     = 30 * time.Second
 		captureDuration = 3 // second(s)
 		captureRate     = 48000
+		retries         = 3
 
 		keySampleRate      = "sample_rate"
 		keyChannelConfig   = "channel_config"
@@ -490,30 +491,6 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 
 	pkg := arcaudio.Pkg
 	activityName := arcaudioTestParam.Class
-
-	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
-	activity, err := arc.NewActivity(a, pkg, activityName)
-	if err != nil {
-		s.Fatalf("Failed to create activity %q in package %q: %v", activityName, pkg, err)
-	}
-	defer activity.Close()
-
-	if err := activity.Start(ctx, tconn,
-		arc.WithExtraIntUint64(keyPerformanceMode, uint64(arcaudioTestParam.PerformanceMode)),
-		arc.WithExtraIntUint64(keySampleRate, arcaudioTestParam.SampleRate),
-		arc.WithExtraIntUint64(keyChannelConfig, uint64(arcaudioTestParam.ChannelConfig))); err != nil {
-		s.Fatalf("Failed to start activity %q in package %q: %v", activityName, pkg, err)
-	}
-	defer func(ctx context.Context) error {
-		// Check that app is still running
-		if _, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName()); err != nil {
-			return err
-		}
-
-		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)
-		return activity.Stop(ctx, tconn)
-	}(cleanupCtx)
-
 	output := audio.TestRawData{
 		Path:          filepath.Join(s.OutDir(), "audio_loopback_recorded.raw"),
 		BitsPerSample: 16,
@@ -521,12 +498,6 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 		Rate:          captureRate,
 		Duration:      captureDuration,
 	}
-
-	capturedData, err := captureOutputAndReadData(ctx, output)
-	if err != nil {
-		s.Fatal("Failed to capture output: ", err)
-	}
-
 	var expectedFreqs []int
 	switch arcaudioTestParam.ChannelConfig {
 	case arcaudio.ChannelConfigOutStereo:
@@ -537,10 +508,57 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 		expectedFreqs = []int{200, 250, 400, 450, 300, 350}
 	}
 
-	for channel := 0; channel < len(expectedFreqs); channel++ {
-		expectedFreq := expectedFreqs[channel]
-		if err := analyzeData(ctx, capturedData[channel], float64(captureRate), float64(expectedFreq), param.incorrectSlicesLimit); err != nil {
-			s.Errorf("channel %d failed: %v", channel+1, err)
-		}
+	var lastErr error
+	testPass := false
+	for attempt := 1; attempt <= retries && !testPass; attempt++ {
+		testing.ContextLogf(ctx, "Starting activity %s/%s (attempt %d/%d)", pkg, activityName, attempt, retries)
+
+		func() {
+			var activity *arc.Activity
+			activity, lastErr = arc.NewActivity(a, pkg, activityName)
+			if lastErr != nil {
+				testing.ContextLogf(ctx, "Failed to create activity %q in package %q: %v", activityName, pkg, lastErr)
+				return
+			}
+			defer activity.Close()
+
+			if lastErr = activity.Start(ctx, tconn,
+				arc.WithExtraIntUint64(keyPerformanceMode, uint64(arcaudioTestParam.PerformanceMode)),
+				arc.WithExtraIntUint64(keySampleRate, arcaudioTestParam.SampleRate),
+				arc.WithExtraIntUint64(keyChannelConfig, uint64(arcaudioTestParam.ChannelConfig))); lastErr != nil {
+				testing.ContextLogf(ctx, "Failed to start activity %q in package %q: %v", activityName, pkg, lastErr)
+				return
+			}
+			defer func(ctx context.Context) error {
+				// Check that app is still running
+				if _, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName()); err != nil {
+					return err
+				}
+
+				testing.ContextLog(ctx, "Stopping activities in package", pkg)
+				return activity.Stop(ctx, tconn)
+			}(cleanupCtx)
+
+			var capturedData [][]int64
+			capturedData, lastErr = captureOutputAndReadData(ctx, output)
+			if lastErr != nil {
+				testing.ContextLog(ctx, "Failed to capture output: ", lastErr)
+				return
+			}
+
+			for channel := 0; channel < len(expectedFreqs); channel++ {
+				expectedFreq := expectedFreqs[channel]
+				if lastErr = analyzeData(ctx, capturedData[channel], float64(captureRate), float64(expectedFreq), param.incorrectSlicesLimit); lastErr != nil {
+					testing.ContextLogf(ctx, "Channel %d failed: %v", channel+1, lastErr)
+					return
+				}
+			}
+
+			testPass = true
+		}()
+	}
+
+	if !testPass {
+		s.Fatal("Test failed for all attempts. Last error: ", lastErr)
 	}
 }
