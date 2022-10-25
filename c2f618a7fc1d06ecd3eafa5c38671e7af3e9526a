@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30adfa96_6a169a68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a50bb410_a8430dcf",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a98d035f_7f56b791",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-21T20:52:03Z",
       "side": 1,
       "message": "this seems repeated, why not make this an array ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d44c1be_fa251399",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "There are only two sets of parameters, so I don\u0027t use an array.",
+      "parentUuid": "a98d035f_7f56b791",
       "range": {
         "startLine": 21,
         "startChar": 7,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f12338e8_ebd96800",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "This is not a test to check the ability to select the more secure network, it is to check the ability to connect the correct work selected by the user. The device doesn\u0027t make decision, it is the user who selects the network. If the user selects the open network, the device will connect to the open network, even though the WPA network is also available, because the user may not have the access to the WPA network (the user doesn\u0027t know the password).",
+      "parentUuid": "e8c44a4a_12d8da9f",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 217
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "890aec20_9003e3ab",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-21T20:52:03Z",
       "side": 1,
       "message": "why not replace this with an instance of multiauthParam structure instance ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 57,
+        "endLine": 46,
+        "endChar": 141
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8449aba4_0eb961cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "890aec20_9003e3ab",
       "range": {
         "startLine": 46,
         "startChar": 57,
@@ -112,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a831f3b0_92c096e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "CleanDisconnectWifi() sends disconnect to the DUT, so that the DUT disconnect from the service. \nA DUT can only connect to one service. The DUT disconnected from the first AP after it connected to the second AP.",
+      "parentUuid": "aed8dcd6_8fee4bb0",
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f0a30cd_bfae75f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 4
@@ -123,6 +237,30 @@
       "writtenOn": "2022-10-21T20:52:03Z",
       "side": 1,
       "message": "nit: substitute by \"and it\u0027s leakage\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 58,
+        "endLine": 111,
+        "endChar": 63
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f420d2_5ff35c1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-25T00:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f0a30cd_bfae75f6",
       "range": {
         "startLine": 111,
         "startChar": 58,
