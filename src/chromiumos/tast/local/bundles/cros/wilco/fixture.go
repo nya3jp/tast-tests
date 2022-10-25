@@ -30,9 +30,9 @@ func init() {
 		Name: "wilcoDTCAllowed",
 		Desc: "Wilco DTC fixture with support for DTC VM, Supportd daemon and Wilco Chrome Extension",
 		Contacts: []string{
-			"lamzin@google.com", // wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
-			"bisakhmondal00@gmail.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            NewWilcoFixture(false),
 		Parent:          fixture.FakeDMSEnrolled,
@@ -46,9 +46,9 @@ func init() {
 		Name: "wilcoDTCAllowedVMTestMode",
 		Desc: "Wilco DTC fixture with support for DTC VM (Test Mode Configuration), Supportd daemon and Wilco Chrome Extension",
 		Contacts: []string{
-			"lamzin@google.com", // wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
-			"bisakhmondal00@gmail.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            NewWilcoFixture(true),
 		Parent:          fixture.FakeDMSEnrolled,

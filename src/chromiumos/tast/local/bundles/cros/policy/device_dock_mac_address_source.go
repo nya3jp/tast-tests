@@ -38,8 +38,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test setting the DeviceDockMacAddressSource policy by checking if the DUT changing MAC address",
 		Contacts: []string{
-			"lamzin@google.com", // Test author
-			"chromeos-wilco@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "wilco"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,

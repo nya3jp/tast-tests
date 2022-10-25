@@ -50,9 +50,9 @@ func init() {
 		Name: TelemetryExtension,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
@@ -65,9 +65,9 @@ func init() {
 		Name: TelemetryExtensionLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(lacros()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
@@ -80,9 +80,9 @@ func init() {
 		Name: TelemetryExtensionOverrideOEMName,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on devices that are not officially supported yet",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(overrideOEMName()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
@@ -95,9 +95,9 @@ func init() {
 		Name: TelemetryExtensionOverrideOEMNameLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on devices that are not officially supported yet",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(lacros(), overrideOEMName()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
@@ -110,9 +110,9 @@ func init() {
 		Name: TelemetryExtensionOptionsPage,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(optionsPage()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
@@ -125,9 +125,9 @@ func init() {
 		Name: TelemetryExtensionOptionsPageLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page in Lacros browser",
 		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(lacros(), optionsPage()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,

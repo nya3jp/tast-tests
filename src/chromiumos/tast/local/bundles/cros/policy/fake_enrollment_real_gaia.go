@@ -32,8 +32,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that real GAIA account can be used along with fake enrollment",
 		Contacts: []string{
-			"lamzin@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		// Disabled due to <1% pass rate over 30 days. See b/246818601
 		//Attr:         []string{"group:mainline", "informational"},

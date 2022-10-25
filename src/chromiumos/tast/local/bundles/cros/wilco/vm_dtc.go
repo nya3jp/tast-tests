@@ -21,8 +21,9 @@ func init() {
 		Func: VMDTC,
 		Desc: "Starts an instance of the Wilco DTC VM and tests the DTC (Diagnostics and Telemetry Controller) binaries using partner provided utilities",
 		Contacts: []string{
-			"lamzin@google.com", // wilco_dtc_supportd author
-			"chromeos-wilco@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"}, // b/217770420
 		SoftwareDeps: []string{"vm_host", "wilco"},

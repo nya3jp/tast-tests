@@ -19,9 +19,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.telemetry.getOemData Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
-			"lamzin@google.com", // Test and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:telemetry_extension_hw"},
 		SoftwareDeps: []string{"chrome"},
