@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651f8430_f5bb51fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T20:18:45Z",
+      "side": 1,
+      "message": "See also http://go/lacros-tast-porting for the porting guideline if it helps.",
+      "parentUuid": "6562d923_aa13c637",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a9e6d7_c46616d1",
