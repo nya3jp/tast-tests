@@ -12,8 +12,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RejectDocumentFormat,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that lpadmin handles a printer rejecting get-printer-attributes requests containing the document-format attribute",
 		Contacts:     []string{"pmoy@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
@@ -31,9 +29,9 @@ func init() {
 			"paper-io_printing",
 		},
 		Timeout:      2 * time.Minute,
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"reject_document_format_script.textproto"},
-		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
+		Fixture:      "virtualUsbPrinterModulesLoaded",
 	})
 }
 
@@ -41,14 +39,6 @@ func RejectDocumentFormat(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	cr := s.FixtValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
