@@ -103,6 +103,22 @@ func init() {
 		PostTestTimeout: 5 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentProjectorChild,
+		Desc:     "Fixture setting persistent policy user for a Family Link account",
+		Contacts: []string{"tobyhuang@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"projector.childEmail",
+		},
+		Impl: &persistentFixture{
+			policyUserVar: "projector.childEmail",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
 }
 
 type persistentFixture struct {

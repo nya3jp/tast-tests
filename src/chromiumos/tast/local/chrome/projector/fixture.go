@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -28,8 +29,8 @@ const resetTimeout = 30 * time.Second
 var chromeFlags = chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView, ProjectorLocalPlayback")
 
 // NewProjectorFixture creates a new implementation of the Projector fixture.
-func NewProjectorFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
-	return &projectorFixture{fOpts: fOpts}
+func NewProjectorFixture(fOpts chrome.OptionsCallback, policies []policy.Policy) testing.FixtureImpl {
+	return &projectorFixture{fOpts: fOpts, policies: policies}
 }
 
 func init() {
@@ -42,7 +43,7 @@ func init() {
 				chromeFlags,
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			}, nil
-		}),
+		}, []policy.Policy{}),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 		},
@@ -62,7 +63,7 @@ func init() {
 				chromeFlags,
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			)).Opts()
-		}),
+		}, []policy.Policy{}),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 		},
@@ -78,7 +79,7 @@ func init() {
 	// tests.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "projectorUnicornLogin",
-		Desc:     "Supervised Family Link user login with Unicorn account for Projector tests",
+		Desc:     "Supervised Family Link user login with Unicorn account and fakeDMS policy setup for Projector tests",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
@@ -90,6 +91,8 @@ func init() {
 					ParentPass: s.RequiredVar("projector.parentPassword"),
 				}),
 			}, nil
+		}, []policy.Policy{
+			&policy.ProjectorDogfoodForFamilyLinkEnabled{Val: true},
 		}),
 		Vars: []string{
 			"projector.childEmail",
@@ -102,6 +105,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentProjectorChild,
 	})
 
 	// Managed user login requires fakeDMS to work.
@@ -117,6 +121,8 @@ func init() {
 					Pass: s.RequiredVar("projector.eduPassword"),
 				}),
 			}, nil
+		}, []policy.Policy{
+			&policy.ProjectorEnabled{Val: true},
 		}),
 		Vars: []string{
 			"projector.eduEmail",
@@ -132,10 +138,10 @@ func init() {
 }
 
 type projectorFixture struct {
-	cr         *chrome.Chrome
-	fOpts      chrome.OptionsCallback
-	fdms       *fakedms.FakeDMS
-	policyUser string
+	cr       *chrome.Chrome
+	fOpts    chrome.OptionsCallback
+	fdms     *fakedms.FakeDMS
+	policies []policy.Policy
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -146,8 +152,6 @@ type FixtData struct {
 	testConn *chrome.TestConn
 	// FakeDMS is the running DMS server if any.
 	fakeDMS *fakedms.FakeDMS
-	// PolicyUser is the user account used in the policy blob.
-	policyUser string
 }
 
 // Chrome implements the HasChrome interface.
@@ -174,19 +178,10 @@ func (f FixtData) FakeDMS() *fakedms.FakeDMS {
 	return f.fakeDMS
 }
 
-// PolicyUser implements the HasPolicyUser interface.
-func (f FixtData) PolicyUser() string {
-	if f.policyUser == "" {
-		panic("PolicyUser is called with empty policyUser")
-	}
-	return f.policyUser
-}
-
 // Check at compile-time that FixtData implements the appropriate interfaces.
 var _ chrome.HasChrome = FixtData{}
 var _ familylink.HasTestConn = FixtData{}
 var _ fakedms.HasFakeDMS = FixtData{}
-var _ familylink.HasPolicyUser = FixtData{}
 
 func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	opts, err := f.fOpts(ctx, s)
@@ -201,7 +196,6 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 			s.Fatal("Failed to ping FakeDMS: ", err)
 		}
 
-		f.policyUser = s.RequiredVar("projector.eduEmail")
 		opts = append(opts, chrome.DMSPolicy(fdms.URL))
 		opts = append(opts, chrome.DisablePolicyKeyVerification())
 	}
@@ -220,6 +214,13 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 			s.Fatal("Failed to serve policies: ", err)
 		}
 	}
+	if len(f.policies) > 0 {
+		pb := policy.NewBlob()
+		pb.AddPolicies(f.policies)
+		if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+			s.Fatal("Failed to serve policies: ", err)
+		}
+	}
 
 	f.cr = cr
 	f.fdms = fdms
@@ -234,10 +235,9 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return &FixtData{
-		chrome:     cr,
-		testConn:   tconn,
-		fakeDMS:    fdms,
-		policyUser: f.policyUser,
+		chrome:   cr,
+		testConn: tconn,
+		fakeDMS:  fdms,
 	}
 }
 
