@@ -16,6 +16,24 @@
       "message": "nit/style: We can drop retErr",
       "revId": "61e7a321537c75a60844fc2e6eb2ada77ae8ada2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b8ed11_041644fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T17:25:41Z",
+      "side": 1,
+      "message": "The `defer` calls use `\u0026retErr`.",
+      "parentUuid": "a323ac0c_852f5929",
+      "revId": "61e7a321537c75a60844fc2e6eb2ada77ae8ada2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
