@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a5bdc8_533238e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-10-25T01:38:30Z",
+      "side": 1,
+      "message": "Hi Oleh, this is cherry-pick of the revert CL under your review back to M108.",
+      "revId": "ce1ad2c6e6e750dd367a28e6cdc95cdf7bee139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
