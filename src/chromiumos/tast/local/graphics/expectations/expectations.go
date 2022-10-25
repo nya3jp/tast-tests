@@ -93,6 +93,31 @@ const (
 
 const expectationsFileExtension = "yml"
 
+// getDeviceModel returns the model of the running device.
+func getDeviceModel(ctx context.Context) (string, error) {
+	model, err := crosconfig.Get(ctx, "/", "name")
+	if err != nil {
+		return "", errors.Wrap(err, "unable to find model")
+	}
+
+	return model, nil
+}
+
+// getDeviceBuildBoard gets the board and build from the running device lsbrelease.
+func getDeviceBuildBoard(ctx context.Context) (string, error) {
+	lsbValues, err := lsbrelease.Load()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get lsb-release info")
+	}
+
+	buildBoard, ok := lsbValues[lsbrelease.Board]
+	if !ok {
+		return "", errors.New("unable to find board")
+	}
+
+	return buildBoard, nil
+}
+
 // convertBuildToBoard returns the board string from a build string.
 // ChromeOS build strings begin with the board type and possibly contain a
 // suffix for the build variant. I.e. `-kernelnext` or `64`.
@@ -107,45 +132,59 @@ func convertBuildToBoard(variant string) string {
 	return re.FindString(variant)
 }
 
-// generateTestExpectationsFilename generates a test expectations
-// file name using the specified directory location. Probes the device model,
-// board, or gpu chipset to generate the file name.
-func generateTestExpectationsFilename(ctx context.Context, testExpectationDirectory string, theFileType fileType) (string, error) {
-	var err error
-	var name string
+// getDeviceBuild gets the board from the running device lsbrelease.
+func getDeviceBuild(ctx context.Context) (string, error) {
+	buildBoard, err := getDeviceBuildBoard(ctx)
+	if err != nil {
+		return "", err
+	}
 
+	return convertBuildToBoard(buildBoard), nil
+}
+
+// getDeviceChipset gets the GPU chipset ID from the running device.
+func getDeviceChipset(ctx context.Context) (string, error) {
+	gpu, err := graphics.GPUFamilies(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get GPU chipset")
+	}
+	// We use the first GPU found for expectation.
+	return gpu[0], nil
+}
+
+// getDeviceIdentifier returns an identifier for the running device based on fileType.
+func getDeviceIdentifier(ctx context.Context, theFileType fileType) (string, error) {
 	switch theFileType {
 	case modelFile:
-		name, err = crosconfig.Get(ctx, "/", "name")
-		if err != nil {
-			return name, errors.Wrap(err, "unable to find model")
-		}
-	case boardFile, buildBoardFile:
-		var ok bool
-		lsbValues, err := lsbrelease.Load()
-		if err != nil {
-			return name, errors.Wrap(err, "failed to get lsb-release info")
-		}
-		name, ok = lsbValues[lsbrelease.Board]
-		if !ok {
-			return name, errors.New("unable to find board")
-		}
-		if theFileType == boardFile {
-			name = convertBuildToBoard(name)
-		}
+		return getDeviceModel(ctx)
+	case buildBoardFile:
+		return getDeviceBuildBoard(ctx)
+	case boardFile:
+		return getDeviceBuild(ctx)
 	case gpuChipsetFile:
-		gpu, err := graphics.GPUFamilies(ctx)
-		if err != nil {
-			return name, errors.Wrap(err, "failed to get GPU chipset")
-		}
-		// We use the first GPU found for expectation.
-		name = gpu[0]
-	case allDevicesFile:
-		return fmt.Sprintf("%s/%s.%s", testExpectationDirectory, theFileType, expectationsFileExtension), err
+		return getDeviceChipset(ctx)
 	default:
-		return name, errors.Errorf("invalid expectation type: %s", theFileType)
+		return "", errors.Errorf("invalid identifier type: %s", theFileType)
 	}
-	return fmt.Sprintf("%s/%s-%s.%s", testExpectationDirectory, theFileType, name, expectationsFileExtension), err
+}
+
+// generateTestExpectationsFilename generates a test expectations file name
+// using the specified directory location. Depending on theFileType, this may
+// probe the device model, board, or gpu chipset to generate the file name.
+func generateTestExpectationsFilename(ctx context.Context, testExpectationDirectory string, theFileType fileType) (string, error) {
+	var err error
+	// This handles allDevicesFile, which uses a file name without an identifier.
+	if theFileType == allDevicesFile {
+		return fmt.Sprintf("%s/%s.%s", testExpectationDirectory, theFileType, expectationsFileExtension), err
+	}
+
+	// All other file types require getting an identifier from the device.
+	identifier, err := getDeviceIdentifier(ctx, theFileType)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%s/%s-%s.%s", testExpectationDirectory, theFileType, identifier, expectationsFileExtension), err
 }
 
 // getTestExpectationsDirectory generates the test expectations directory from
