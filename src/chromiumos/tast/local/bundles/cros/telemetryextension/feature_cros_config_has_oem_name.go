@@ -38,7 +38,7 @@ func FeatureCrOSConfigHasOEMName(ctx context.Context, s *testing.State) {
 
 	if vendor, err := crosconfig.Get(ctx, "/branding", "oem-name"); err != nil {
 		s.Error("Failed to read vendor name: ", err)
-	} else if got, allowed_vendors := vendor, []string{"HP", "ASUS"}; !contains(allowed_vendors, got) {
-		s.Errorf("Unexpected vendor name = got %q, want %q", got, allowed_vendors)
+	} else if got, allowedVendors := vendor, []string{"HP", "ASUS"}; !contains(allowedVendors, got) {
+		s.Errorf("Unexpected vendor name = got %q, want %q", got, allowedVendors)
 	}
 }
