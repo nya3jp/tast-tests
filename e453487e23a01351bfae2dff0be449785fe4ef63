@@ -33,6 +33,40 @@
       "message": "Georg, is there anything left to address in this change? please let me know.",
       "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6c6223_8dcb3e28",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-25T23:05:03Z",
+      "side": 1,
+      "message": "Nit: Use strconv.Atoi if you don\u0027t need to specify a base? and output int, not int64?",
+      "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741bccd5_73e0682d",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-25T23:05:03Z",
+      "side": 1,
+      "message": "Nit: do the splitting inside the conv method?",
+      "revId": "e453487e23a01351bfae2dff0be449785fe4ef63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
