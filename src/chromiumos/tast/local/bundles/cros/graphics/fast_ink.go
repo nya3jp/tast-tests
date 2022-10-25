@@ -98,125 +98,121 @@ func init() {
 					ash.WindowStateMaximized,
 					ash.WindowStateFullscreen,
 				}},
-		},
-			/* Disabled due to <1% pass rate over 30 days. See b/246818311
-			{
-				Name:              "chrome_clamshell_lacros",
-				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
-				Fixture:           "lacros",
-				Val: fastInkTestParams{
-					arc:         false,
-					browserType: browser.TypeLacros,
-					tablet:      false,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate90,
-						display.Rotate180,
-						display.Rotate270,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateNormal,
-						ash.WindowStateMaximized,
-						ash.WindowStateFullscreen,
-					}},
-			},
-			*/
-			{
+		}, {
+			Name:              "chrome_clamshell_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:           "lacros",
+			Val: fastInkTestParams{
+				arc:         false,
+				browserType: browser.TypeLacros,
+				tablet:      false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
 
-				Name:              "chrome_tablet_lacros",
-				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
-				Fixture:           "lacros",
-				Val: fastInkTestParams{
-					arc:         false,
-					browserType: browser.TypeLacros,
-					tablet:      true,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate90,
-						display.Rotate180,
-						display.Rotate270,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateMaximized,
-						ash.WindowStateFullscreen,
-					}},
-			}, {
-				Name:              "arc_clamshell",
-				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraData:         []string{fastInkAPK},
-				Fixture:           "arcBootedInClamshellMode",
-				Val: fastInkTestParams{
-					arc:    true,
-					tablet: false,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate180,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateNormal,
-						ash.WindowStateLeftSnapped,
-						ash.WindowStateRightSnapped,
-						ash.WindowStateMaximized,
-						ash.WindowStateFullscreen,
-					}},
-			}, {
-				Name:              "arc_tablet",
-				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraData:         []string{fastInkAPK},
-				Fixture:           "arcBootedInTabletMode",
-				Val: fastInkTestParams{
-					arc:    true,
-					tablet: true,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate180,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateMaximized,
-						ash.WindowStateLeftSnapped,
-						ash.WindowStateRightSnapped,
-						ash.WindowStateFullscreen,
-					}},
-			}, {
-				Name:              "arc_clamshell_vm",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraData:         []string{fastInkAPK},
-				Fixture:           "arcBootedInClamshellMode",
-				Val: fastInkTestParams{
-					arc:    true,
-					tablet: false,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate180,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateNormal,
-						ash.WindowStateLeftSnapped,
-						ash.WindowStateMaximized,
-						ash.WindowStateRightSnapped,
-						ash.WindowStateFullscreen,
-					}},
-			}, {
-				Name:              "arc_tablet_vm",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraData:         []string{fastInkAPK},
-				Fixture:           "arcBootedInTabletMode",
-				Val: fastInkTestParams{
-					arc:    true,
-					tablet: true,
-					displayRotations: []display.RotationAngle{
-						display.Rotate0,
-						display.Rotate180,
-					},
-					wStates: []ash.WindowStateType{
-						ash.WindowStateLeftSnapped,
-						ash.WindowStateMaximized,
-						ash.WindowStateRightSnapped,
-						ash.WindowStateFullscreen,
-					}},
-			}},
+			Name:              "chrome_tablet_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:           "lacros",
+			Val: fastInkTestParams{
+				arc:         false,
+				browserType: browser.TypeLacros,
+				tablet:      true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_clamshell",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInClamshellMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_tablet",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInTabletMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_clamshell_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInClamshellMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateMaximized,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "arc_tablet_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData:         []string{fastInkAPK},
+			Fixture:           "arcBootedInTabletMode",
+			Val: fastInkTestParams{
+				arc:    true,
+				tablet: true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate180,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateLeftSnapped,
+					ash.WindowStateMaximized,
+					ash.WindowStateRightSnapped,
+					ash.WindowStateFullscreen,
+				}},
+		}},
 	})
 }
 
