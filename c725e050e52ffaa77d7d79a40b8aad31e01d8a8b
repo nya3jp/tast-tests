@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fcd0ec8_807ebeb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-25T14:30:03Z",
+      "side": 1,
+      "message": "We disable the multi profile in Lacros for supervised users and the experience in Ash and Lacros should be similar: one browser profile with 2 accounts (supervised account as primary and EDU account as secondary).",
+      "parentUuid": "902f9e1f_e53e2950",
+      "revId": "c725e050e52ffaa77d7d79a40b8aad31e01d8a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3257dd7_8d38090c",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
         "patchSetId": 1
