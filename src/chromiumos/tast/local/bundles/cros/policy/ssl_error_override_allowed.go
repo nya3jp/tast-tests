@@ -45,19 +45,18 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{serverKeyFile, serverCertFile},
-		Params: []testing.Param{{
-			Name:    "ash",
-			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     browser.TypeAsh,
-		},
-		/* Disabled due to <1% pass rate over 30 days. See b/246818601
-		{
-			Name:              "lacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               browser.TypeLacros,
-		}
-		*/
+		Params: []testing.Param{
+			{
+				Name:    "ash",
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     browser.TypeAsh,
+			},
+			{ // TODO(b/237062417, hendrich) disable again after collecting logs.
+				Name:              "lacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val:               browser.TypeLacros,
+			},
 		},
 
 		SearchFlags: []*testing.StringPair{
