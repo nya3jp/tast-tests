@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66ba9a2_72f546f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-10-25T21:38:46Z",
+      "side": 1,
+      "message": "I understand the rational here and hopefully we can make this work in the future.",
+      "revId": "cad203f2f0247aeb5a66ac9284c7afb63c35e0b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
