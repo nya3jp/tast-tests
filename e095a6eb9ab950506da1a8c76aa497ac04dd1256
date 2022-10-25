@@ -16,6 +16,23 @@
       "message": "Bohdan \u0026 Tast owners, please take a look.",
       "revId": "e095a6eb9ab950506da1a8c76aa497ac04dd1256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5700426f_e0b0680c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-25T18:00:30Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e095a6eb9ab950506da1a8c76aa497ac04dd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
