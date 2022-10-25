@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "648bf65a_77f7ec0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-25T02:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58eedc0c_cd94bdd2",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f44d2116_5fa63dd7",
@@ -179,6 +203,30 @@
       "writtenOn": "2022-10-24T07:38:48Z",
       "side": 1,
       "message": "is a regex match safer?",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49599fd2_fac6f4de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-25T02:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44d2116_5fa63dd7",
       "range": {
         "startLine": 109,
         "startChar": 18,
@@ -319,6 +367,30 @@
       "writtenOn": "2022-10-24T07:38:48Z",
       "side": 1,
       "message": "don\u0027t hide errors unless the function documents it will always be null (this one does not)\ngo/go-style/decisions#handle-errors\n\nhere and throughout",
+      "range": {
+        "startLine": 125,
+        "startChar": 15,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5a2f35_bc420a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-25T02:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f291d961_e4eee3d9",
       "range": {
         "startLine": 125,
         "startChar": 15,
@@ -507,6 +579,30 @@
       "writtenOn": "2022-10-24T07:38:48Z",
       "side": 1,
       "message": "for all these magic index numbers you are using here, please define some constants and/or describe what they are",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "73bd17d91c760aade73c7b1112054ec259d0938b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32235cc_ded67398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-25T02:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc9c038_f5762c41",
       "range": {
         "startLine": 204,
         "startChar": 3,
