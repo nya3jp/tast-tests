@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b57dfe_b0e68fb5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T21:47:59Z",
+      "side": 1,
+      "message": "Done. Good point because it would be difficult to insert Contact and change the order later.",
+      "parentUuid": "1eb59ec8_50dd9997",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2bc5842_e0b82f0a",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff37867_6928dc73",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T21:47:59Z",
+      "side": 1,
+      "message": "Done, even though we know the string fields should be empty at this point because they weren\u0027t initialized. I guess it doesn\u0027t hurt to be defensive.",
+      "parentUuid": "a2bc5842_e0b82f0a",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc61d41_cfc91d18",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-25T08:09:44Z",
       "side": 1,
       "message": "Same here",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0211b1f0_cc0c7e26",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T21:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc61d41_cfc91d18",
       "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
