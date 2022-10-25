@@ -20,10 +20,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sending GetStatefulPartitionAvailableCapacity gRPC requests from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
-			"lamzin@google.com", // wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
-			"rbock@google.com",
-			"bisakhmondal00@gmail.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco", "chrome"},

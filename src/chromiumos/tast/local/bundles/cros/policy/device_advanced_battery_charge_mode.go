@@ -31,9 +31,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests the DeviceAdvancedBatteryCharge policies that maximize battery health",
 		Contacts: []string{
-			"lamzin@google.com", // policy author
-			"chromeos-wilco@google.com",
-			"bisakhmondal00@gmail.com", // test author
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      25 * time.Minute,

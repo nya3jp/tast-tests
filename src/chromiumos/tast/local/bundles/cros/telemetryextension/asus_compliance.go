@@ -19,9 +19,9 @@ func init() {
 		Func: ASUSCompliance,
 		Desc: "Verifies that DUT satisfies all requirements to run Telemetry Extension such as has all required VPD fields and correct CrOSConfig",
 		Contacts: []string{
-			"bkersting@google.com", // Test and Telemetry Extension author
-			"lamzin@google.com",    // Telemetry Extension author
-			"cros-oem-services-team@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:telemetry_extension_hw"},
 		HardwareDeps: dep.AsusModels(),

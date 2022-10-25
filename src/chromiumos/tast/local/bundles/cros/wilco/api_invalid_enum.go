@@ -18,9 +18,9 @@ func init() {
 		Func: APIInvalidEnum,
 		Desc: "Test sending invalid gRPC requests with enums out of range from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
-			"vsavu@google.com",  // Test author
-			"lamzin@google.com", // wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"vm_host", "wilco"},

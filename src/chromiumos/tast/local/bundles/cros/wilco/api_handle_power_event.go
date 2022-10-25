@@ -22,8 +22,9 @@ func init() {
 		Func: APIHandlePowerEvent,
 		Desc: "Tests that the Wilco DTC VM receives power events using the DPSL",
 		Contacts: []string{
-			"lamzin@google.com", // Test author and wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
