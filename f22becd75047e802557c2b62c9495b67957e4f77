@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e3eb0b_6d3307f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "nit: do we want to separate into two and log `out` when it does not match?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4368c4_81d949e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "`s.Fatal` should be used since (I suppose) we want to stop the test here.\nSame for the following `s.Error()`s when applicable.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2b0e26_f086e69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "We don\u0027t need to log `err` here because it should be nil?",
+      "range": {
+        "startLine": 161,
+        "startChar": 90,
+        "endLine": 161,
+        "endChar": 93
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40427c8_926f5501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "do we need to check len(netInfos) here?",
+      "range": {
+        "startLine": 241,
+        "startChar": 10,
+        "endLine": 241,
+        "endChar": 11
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753d0b69_d217385c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "Just `return a.Command(...)`?",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 13
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

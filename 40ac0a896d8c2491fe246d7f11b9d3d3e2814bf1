@@ -873,6 +873,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7c7f8a_ba66a7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b96d98e7_5dabadfc",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ed18ed_2d8c9932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "cancel() cancels the ctx but not cleanupCtx\nThe reason we have a cleanupCtx is that, if the execution with ctx timeouts, the cleanup with the cleanupCtx can still be ran because cleanupCtx will be expired later. If we use ctx for the cleanup, they will not have the chance to run if ctx is already timeout.",
+      "parentUuid": "0dabba31_41a6396f",
+      "range": {
+        "startLine": 123,
+        "startChar": 21,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b55097ca_d59aeb21",
@@ -910,6 +958,30 @@
       "side": 1,
       "message": "Yes they are the same, just think it would be inconsistency if I use `shillconst` for some args but not for others (There are some property names not exsiting in `shillconst`).\nWould it be better if we use `shillconst` wherever we could?",
       "parentUuid": "b55097ca_d59aeb21",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2606bf0_0008edf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T07:28:57Z",
+      "side": 1,
+      "message": "If all of them are the property names exposed in shill, we can just add the missing ones in shillconst.",
+      "parentUuid": "4d0f1257_1e362efd",
       "range": {
         "startLine": 159,
         "startChar": 8,
