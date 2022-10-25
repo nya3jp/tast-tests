@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91ddbea_e894ce80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-25T17:45:43Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e229606_56563f89",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-10-25T09:25:50Z",
       "side": 1,
       "message": "Question:\nWouldn\u0027t this switch be enabled anyway if we used:\n```\nExtraSoftwareDeps: []string{\"hps\"},\nExtraHardwareDeps: hwdep.D(hwdep.HPS()),\n```\n?",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692ba89f_3bbaab6e",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-25T17:45:43Z",
+      "side": 1,
+      "message": "I believe that the ones you listed is for Tast to select a proper device that matches those capabilities. [1] \n\nWhereas `--has-hps` is the actual command line switch that needs to be passed to Chrome. [2]\n\n\n[1]: https://crsrc.org/o/src/platform/tast/docs/test_dependencies.md;drc\u003d0970d7f97400e4c5ecea204de2e297fe862783c4;l\u003d112\n\n[2]: https://crsrc.org/c/ash/constants/ash_switches.cc;l\u003d608?q\u003dhas-hps",
+      "parentUuid": "8e229606_56563f89",
       "range": {
         "startLine": 277,
         "startChar": 15,
