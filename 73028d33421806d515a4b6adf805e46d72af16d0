@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf7df92_08bd70fc",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-10-25T09:16:23Z",
+      "side": 1,
+      "message": "Gabor, can we make this optional and only restore the original image upon failure if it\u0027s present?\n\nSelf built images don\u0027t have buildpath. It\u0027s impossible to run the test manually at the moment without modifying test or image every time. Also, when I run the test manually, I don\u0027t want it to download some image from goldeneye upon failure.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
