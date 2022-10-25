@@ -396,6 +396,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4d87884_a1c3cdd3",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T15:00:53Z",
+      "side": 1,
+      "message": "I see. Btw, for this test we specifically need to know the versions of Ash and primary browsers for comparison. Can we consider using the devtools later in a follow up if it doesn\u0027t have to block this change? WDYT?",
+      "parentUuid": "a8c4bcea_bb405872",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1b61b9_0e7e84b9",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 3
@@ -590,6 +608,24 @@
       "side": 1,
       "message": "What about this point:\n\u003e We also need to make sure to only allow older Lacros when the test is running with a release branch Ash, not on ToT.\n\nAt the moment you\u0027re allowing it even on ToT.",
       "parentUuid": "43127f1d_fd58dac8",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09a6018_718afb5c",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T15:00:53Z",
+      "side": 1,
+      "message": "I think it should be fine because it still complies with our version skew policy on both the ToT and branches.\nOn the ToT it would always be like `Lacros NNNN \u003d\u003d Ash` in x.x.NNNN.x since it\u0027s atomically uprev\u0027ed and versioned, so this check should work on the ToT.\nAside, I would prefer not using the \"branch\" or \"channel\" concepts in tests whenever possible because of b/254362091, but using the versions instead.",
+      "parentUuid": "ee06d2b9_2f5f4426",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
