@@ -279,13 +279,14 @@ func HandleSavePasswordToGoogle(ctx context.Context, s *testing.State, tconn *ch
 		dismissButtonID = "android:id/button2"
 		mayBeLaterText  = "Maybe later"
 		noThanksID      = "android:id/autofill_save_no"
-
-		DialogTimeout = 10 * time.Second
+		neverText       = "Never"
+		DialogTimeout   = 10 * time.Second
 	)
 	appVerifier := d.Object(ui.PackageName(appPkgName))
 	dimissButton := d.Object(ui.ID(dismissButtonID))
 	maybeLaterButton := d.Object(ui.ClassName(AndroidButtonClassName), ui.TextMatches("(?i)"+mayBeLaterText))
 	noThanksButton := d.Object(ui.ID(noThanksID))
+	neverButton := d.Object(ui.TextMatches("(?i)" + neverText))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := dimissButton.WaitForExists(ctx, DialogTimeout); err == nil {
 			s.Log("Click on dimissButton")
@@ -298,6 +299,10 @@ func HandleSavePasswordToGoogle(ctx context.Context, s *testing.State, tconn *ch
 		if err := noThanksButton.WaitForExists(ctx, DialogTimeout); err == nil {
 			s.Log("Click on No thanks button or not now button")
 			noThanksButton.Click(ctx)
+		}
+		if err := neverButton.WaitForExists(ctx, DialogTimeout); err == nil {
+			s.Log("Click on never button")
+			neverButton.Click(ctx)
 		}
 		return appVerifier.Exists(ctx)
 	}, &testing.PollOptions{Timeout: MediumUITimeout}); err != nil {
