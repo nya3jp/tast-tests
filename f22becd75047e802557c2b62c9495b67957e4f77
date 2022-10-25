@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "013d4002_8b9475bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T11:31:44Z",
+      "side": 1,
+      "message": "I would prefer having two if branches, which will make the output (a little) easier to read.\nNo strong preference here.",
+      "parentUuid": "89bce462_cd44e4b8",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc4368c4_81d949e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 17
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "How do we decide when to use `s.Fatal`? Is it when if we have error here, the following test would be meaningless? For example here, and preobably failed to add network on L122 etc? If just param doesnt match expectation it doesnt need to stop. Is my understanding right?",
       "parentUuid": "dc4368c4_81d949e4",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67464af1_bd1c27a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T11:31:44Z",
+      "side": 1,
+      "message": "\u003e Is it when if we have error here, the following test would be meaningless?\n\u003e If just param doesnt match expectation it doesnt need to stop.\n\nThat\u0027s correct.",
+      "parentUuid": "0e6142f5_d0f5d143",
       "range": {
         "startLine": 127,
         "startChar": 2,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "If `len(network)` is 0, it means theres no network info, `len(netInfos)` is 0 as well, otherwise we have info and dont need to worry about `len(netInfos)`",
       "parentUuid": "b40427c8_926f5501",
+      "range": {
+        "startLine": 241,
+        "startChar": 10,
+        "endLine": 241,
+        "endChar": 11
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26639af_b0e0c54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T11:31:44Z",
+      "side": 1,
+      "message": "Ack, so does it means `len(network)` should always be equal to `len(netInfos)`?\nMaybe worth a comment for future readers.",
+      "parentUuid": "7834e7d8_07f89d51",
       "range": {
         "startLine": 241,
         "startChar": 10,
