@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "968a544d_ed150708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T13:42:05Z",
+      "side": 1,
+      "message": "Yes I think so, but you could maybe quickly check with garrick@ to confirm this bug was meant to cover client options.",
+      "parentUuid": "d544b6b9_1b6e7587",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec98a55c_16ace349",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Good suggestion! Done.",
       "parentUuid": "ec98a55c_16ace349",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a9e4da_1cb274d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T13:42:05Z",
+      "side": 1,
+      "message": "Thanks a lot ! Looks great.",
+      "parentUuid": "2377983e_fd8f1fbf",
       "range": {
         "startLine": 26,
         "startChar": 2,
