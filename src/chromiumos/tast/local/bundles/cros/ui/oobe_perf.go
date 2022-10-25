@@ -19,10 +19,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OobePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test waits for out-of-box-experience (OOBE) Welcome screen and measures the time of the WebUI loading",
 		Contacts: []string{
 			"rsorokin@google.com",
+			"rrsilva@google.com",
+			"bohdanty@google.com",
 			"chromeos-sw-engprod@google.com",
 			"cros-oac@google.com",
 		},
