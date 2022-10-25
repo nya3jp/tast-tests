@@ -57,6 +57,30 @@
       },
       "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337989fb_61411447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_esim_update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-25T14:09:01Z",
+      "side": 1,
+      "message": "\u003e prefer returning an error from performFWUpdate\n\nI understand why subfunctions should not throw fatal errors. In this case, my intent was to inline performFWUpdate. First, we check that the eSIM flow was triggered (by using an invalid testcase), and then check that the eSIM OS update file is applied when InstalledProfiles is called. \n\nThe other way of accomplishing this would to create a new DBUS property in Hermes called \"eos_update_applied_for_testing\", but I felt that would be overkill.",
+      "parentUuid": "bce58e6f_37558bc2",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
