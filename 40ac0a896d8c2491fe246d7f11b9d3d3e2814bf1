@@ -921,6 +921,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b144a868_da352a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-25T11:16:48Z",
+      "side": 1,
+      "message": "Understood, thanks for the explanation!",
+      "parentUuid": "76ed18ed_2d8c9932",
+      "range": {
+        "startLine": 123,
+        "startChar": 21,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b55097ca_d59aeb21",
