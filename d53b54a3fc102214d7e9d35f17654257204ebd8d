@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca5a518_3abade31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-10-25T19:24:49Z",
+      "side": 1,
+      "message": "Thanks for the cleanup, I am happy to let go of my first tast test :-)",
+      "revId": "d53b54a3fc102214d7e9d35f17654257204ebd8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
