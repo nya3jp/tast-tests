@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65efedc_4edbf23f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-25T21:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab162f7_cda556fd",
+      "range": {
+        "startLine": 879,
+        "startChar": 53,
+        "endLine": 879,
+        "endChar": 57
+      },
+      "revId": "0abd596b86fe697f52cf76e1d5687426beaec0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58760428_e7701526",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-25T20:51:44Z",
       "side": 1,
       "message": "nit: `File`",
+      "range": {
+        "startLine": 885,
+        "startChar": 31,
+        "endLine": 885,
+        "endChar": 35
+      },
+      "revId": "0abd596b86fe697f52cf76e1d5687426beaec0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a010107_ded6dd2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-25T21:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58760428_e7701526",
       "range": {
         "startLine": 885,
         "startChar": 31,
