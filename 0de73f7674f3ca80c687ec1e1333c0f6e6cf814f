@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964941ea_89f60443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-25T22:17:01Z",
+      "side": 1,
+      "message": "Ugh. The change to lsbrelease to use the other directory was submitted, but this failed for with an rebase issue.\n\nPatchset 7 includes a fresh rebase onto cros/main, but I think the lsb change is going to break tast runs.",
+      "revId": "0de73f7674f3ca80c687ec1e1333c0f6e6cf814f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
