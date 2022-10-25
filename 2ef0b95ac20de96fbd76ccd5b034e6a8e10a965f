@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d48a47e_c9913c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T01:39:10Z",
+      "side": 1,
+      "message": "See https://screenshot.googleplex.com/4AsuJmLSjTQor7j for what I asked.",
+      "parentUuid": "71aecab7_47b120e3",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 107
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f527b5ac_cb275e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
