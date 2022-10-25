@@ -50,6 +50,40 @@
       "message": "Hi Hidehiko, PTAL as owner. Thank you.",
       "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f49bc0f_1217d4f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-25T16:33:43Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbcdf03b_ddd24c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-25T16:33:43Z",
+      "side": 1,
+      "message": "optional: you may want to drop the Name, so that you can keep the original one as is with the same name. (I.e., Name is optional).",
+      "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
