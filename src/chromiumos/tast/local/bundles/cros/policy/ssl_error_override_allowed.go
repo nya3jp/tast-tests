@@ -50,14 +50,13 @@ func init() {
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/246818601
+		// TODO(b/237062417, hendrich) disable again after collecting logs
 		{
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}
-		*/
 		},
 
 		SearchFlags: []*testing.StringPair{
