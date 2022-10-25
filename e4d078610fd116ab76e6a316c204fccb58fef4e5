@@ -51,6 +51,24 @@
       "parentUuid": "8c07152b_1dbbe045",
       "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad80e4d_d68dff0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/roaming_status_label.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-10-25T17:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37bf54eb_b1069718",
+      "revId": "e4d078610fd116ab76e6a316c204fccb58fef4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
