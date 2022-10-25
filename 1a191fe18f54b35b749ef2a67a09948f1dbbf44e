@@ -46,6 +46,30 @@
       },
       "revId": "1a191fe18f54b35b749ef2a67a09948f1dbbf44e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644e080d_4e910bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-25T18:50:49Z",
+      "side": 1,
+      "message": "Turns out the Lacros Tast test porting guide (go/lacros-tast-porting) specifically addresses using the accessibility tree.  It says to use the ash-chrome TestConn, so I think I have what I want here.",
+      "parentUuid": "c154af5f_254cff98",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "1a191fe18f54b35b749ef2a67a09948f1dbbf44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
