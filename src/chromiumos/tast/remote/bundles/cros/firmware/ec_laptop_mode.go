@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -29,6 +30,11 @@ import (
 type testArgs struct {
 	formFactor    string
 	setLaptopMode string
+}
+
+type compareDispBusInfo struct {
+	runtimeUsageBefore int
+	runtimeUsageAfter  int
 }
 
 func init() {
@@ -144,9 +150,13 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 
 		// Rather than send a tab on power button, set DUT's powerstate to ON.
 		// Some DUTs might require longer press on the power button to power
-		// on, i.e. Kukui/Kakadu.
+		// on, i.e. Kukui/Kakadu. But, if SetPowerState fails, retry with the
+		// power button.
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
-			s.Fatal("Failed to set powerstate to ON: ", err)
+			s.Log("Failed to set powerstate to ON, retrying with power button: ", err)
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				s.Fatal("Failed to press power button: ", err)
+			}
 		}
 
 		s.Log("Waiting for the boot to complete")
@@ -256,6 +266,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			if _, err := screenLockService.ReuseChrome(ctx, &empty.Empty{}); err != nil {
 				s.Fatal("Failed to reuse existing chrome session for screenLockService: ", err)
 			}
+			vals := compareDispBusInfo{}
+			if out, err := readDispBusRuntime(ctx, h); err != nil {
+				s.Log("Failed to read display bus info: ", err)
+			} else {
+				vals.runtimeUsageBefore = out
+			}
 			s.Log("Locking Screen")
 			if err := lockScreen(ctx); err != nil {
 				s.Fatal("Lock-screen did not behave as expected: ", err)
@@ -271,6 +287,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			// While this function locked the screen, it also turned the display off.
 			// If display was off, send a tap on the power button to bring it on before
 			// continuing the rest of the test.
+			if out, err := readDispBusRuntime(ctx, h); err != nil {
+				s.Log("Failed to read display bus info: ", err)
+			} else {
+				vals.runtimeUsageAfter = out
+				s.Logf("Got runtime usage before: %d, and after: %d", vals.runtimeUsageBefore, vals.runtimeUsageAfter)
+			}
 			if err := checkDisplay(ctx); err != nil {
 				if strings.Contains(err.Error(), "CRTC not found. Is the screen on?") {
 					s.Log("Display turned off at lock screen. Sending a tap on power button")
@@ -289,6 +311,13 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
+		vals := compareDispBusInfo{}
+		if out, err := readDispBusRuntime(ctx, h); err != nil {
+			s.Log("Failed to read display bus info: ", err)
+		} else {
+			vals.runtimeUsageBefore = out
+		}
+
 		s.Log("Tapping on the power button")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 			s.Fatal("Failed to tap on the power button: ", err)
@@ -304,6 +333,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		// As of now, we've observed such behavior on Kukui and Soraka, but not on Strongbad.
 		// ModeSwitcherType seems to be one indicator that'll distinguish between them.
 		// We're continuing to identify better indicators.
+		if out, err := readDispBusRuntime(ctx, h); err != nil {
+			s.Log("Failed to read display bus info: ", err)
+		} else {
+			vals.runtimeUsageAfter = out
+			s.Logf("Got runtime usage before: %d, and after: %d", vals.runtimeUsageBefore, vals.runtimeUsageAfter)
+		}
 		if args.formFactor != "detachable" || h.Config.ModeSwitcherType != firmware.TabletDetachableSwitcher {
 			s.Log("Checking that display remains on")
 			if err := checkDisplay(ctx); err != nil {
@@ -600,4 +635,35 @@ func validatePressOnPower(ctx context.Context, h *firmware.Helper, pressDur time
 		return errors.Wrap(err, "reading for power press")
 	}
 	return nil
+}
+
+// readDispBusRuntime reads and outputs runtime usage count from the display's bus info. This count
+// is expected to decrement when display turns off, and increment when on.
+func readDispBusRuntime(ctx context.Context, h *firmware.Helper) (int, error) {
+	lshwCommand := "lshw -businfo | grep -i display"
+	lshwOut, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", lshwCommand).Output()
+	if err != nil {
+		return 0, errors.Wrap(err, "running lshw command")
+	}
+	re := regexp.MustCompile(`(\w*@\S*)[^\n\r]*`)
+	match := re.FindStringSubmatch(string(lshwOut))
+	if len(match) != 2 {
+		return 0, errors.Errorf("found unexpected length %d, wanted 2", len(match))
+	}
+	busInfoPath := match[1]
+	data := strings.SplitN(busInfoPath, "@", 2)
+	if len(data) != 2 {
+		return 0, errors.Errorf("expected two tokens in %q, but got %d", busInfoPath, len(data))
+	}
+	dispBusPath := fmt.Sprintf("/sys/bus/%s/devices/%s/power/runtime_usage", data[0], data[1])
+	kernalOut, err := h.DUT.Conn().CommandContext(ctx, "cat", dispBusPath).Output()
+	if err != nil {
+		return 0, errors.Wrap(err, "reading display runtime usage")
+	}
+	endVal, err := strconv.Atoi(strings.TrimSpace(string(kernalOut)))
+	if err != nil {
+		return 0, errors.Wrapf(err, "parsing kernel reading: %s", strings.TrimSpace(string(kernalOut)))
+	}
+	testing.ContextLogf(ctx, "Display bus runtime usage value: %d", endVal)
+	return endVal, nil
 }
