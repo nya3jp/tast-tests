@@ -31,8 +31,8 @@ func init() {
 		Desc:     "Kiosk mode started with default app setup, DUT is enrolled",
 		Contacts: []string{"kamilszarek@google.com", "alt-modalities-stability@google.com"},
 		Impl: &kioskFixture{
-			autoLaunchKioskAppID: kioskmode.WebKioskAccountID,
-			localAccounts:        &kioskmode.DefaultLocalAccountsConfiguration,
+			autoLaunchKioskAppID:    kioskmode.WebKioskAccountID,
+			useDefaultLocalAccounts: true,
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -46,9 +46,9 @@ func init() {
 		Desc:     "Kiosk mode started with default app setup, DUT is enrolled and Lacros enabled",
 		Contacts: []string{"irfedorova@google.com", "chromeos-kiosk-eng@google.com"},
 		Impl: &kioskFixture{
-			autoLaunchKioskAppID: kioskmode.WebKioskAccountID,
-			localAccounts:        &kioskmode.DefaultLocalAccountsConfiguration,
-			extraOpts:            []chrome.Option{chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
+			autoLaunchKioskAppID:    kioskmode.WebKioskAccountID,
+			useDefaultLocalAccounts: true,
+			extraOpts:               []chrome.Option{chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -63,6 +63,9 @@ type kioskFixture struct {
 	cr *chrome.Chrome
 	// fdms is the already running DMS server from the parent fixture.
 	fdms *fakedms.FakeDMS
+	// useDefaultLocalAccounts enables default local accounts generated in
+	// kioskmode.New().
+	useDefaultLocalAccounts bool
 	// localAccounts is the policy with local accounts configuration that will
 	// be applied for Kiosk mode.
 	localAccounts *policy.DeviceLocalAccounts
@@ -112,12 +115,17 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 	k.fdms = fdms
 
-	kiosk, cr, err := kioskmode.New(ctx,
-		fdms,
+	options := []kioskmode.Option{
 		kioskmode.AutoLaunch(k.autoLaunchKioskAppID),
-		kioskmode.CustomLocalAccounts(k.localAccounts),
 		kioskmode.ExtraChromeOptions(k.extraOpts...),
-	)
+	}
+	if k.useDefaultLocalAccounts {
+		options = append(options, kioskmode.DefaultLocalAccounts())
+	} else {
+		options = append(options, kioskmode.CustomLocalAccounts(k.localAccounts))
+	}
+
+	kiosk, cr, err := kioskmode.New(ctx, fdms, options...)
 	if err != nil {
 		s.Fatal("Failed to create Chrome in kiosk mode: ", err)
 	}
