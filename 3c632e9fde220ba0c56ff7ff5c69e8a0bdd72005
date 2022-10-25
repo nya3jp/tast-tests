@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25ef31d_6bce2ccf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T16:57:53Z",
+      "side": 1,
+      "message": "`rather than`",
+      "range": {
+        "startLine": 17,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "3c632e9fde220ba0c56ff7ff5c69e8a0bdd72005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6b61fb_26e75713",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T16:57:53Z",
+      "side": 1,
+      "message": "lgtm with minor adjustments to text",
+      "revId": "3c632e9fde220ba0c56ff7ff5c69e8a0bdd72005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f70493_a6b5ce60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T16:57:53Z",
+      "side": 1,
+      "message": "nit: `File`",
+      "range": {
+        "startLine": 871,
+        "startChar": 67,
+        "endLine": 871,
+        "endChar": 71
+      },
+      "revId": "3c632e9fde220ba0c56ff7ff5c69e8a0bdd72005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f7d625_2795a41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-25T16:57:53Z",
+      "side": 1,
+      "message": "nit: `click/tap`",
+      "range": {
+        "startLine": 885,
+        "startChar": 21,
+        "endLine": 885,
+        "endChar": 26
+      },
+      "revId": "3c632e9fde220ba0c56ff7ff5c69e8a0bdd72005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
