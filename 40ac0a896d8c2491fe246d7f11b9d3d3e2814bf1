@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6356b6d9_b730c08c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "nit: prefer to use \"WiFi\" for descriptive text.",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c643298f_587b7232",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83626438_8c891b61",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -73,6 +119,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2672cfc0_9510841f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "WiFi",
+      "range": {
+        "startLine": 38,
+        "startChar": 62,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89923e89_e466b9a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 9
@@ -89,6 +158,29 @@
         "startChar": 4,
         "endLine": 39,
         "endChar": 9
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ae166a_d8985404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "nit: given",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
       },
       "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -142,6 +234,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7702d122_9ea19f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "I don\u0027t think this address has a DNS service like 1.1.1.1. We should put 8.8.8.8 or 8.8.4.4 as a real example here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70f77801_e05ce79e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 9
@@ -158,6 +273,52 @@
         "startChar": 0,
         "endLine": 89,
         "endChar": 101
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a62e3c9_02d9dcc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "wrong command ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 73,
+        "endLine": 89,
+        "endChar": 99
+      },
+      "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b60ff5_5af3b36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-25T05:08:14Z",
+      "side": 1,
+      "message": "wrong expected properties ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 52
       },
       "revId": "40ac0a896d8c2491fe246d7f11b9d3d3e2814bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
