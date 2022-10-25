@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa790697_df611911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-25T03:38:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b12ee9_bd89bed0",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 61
+      },
+      "revId": "c3b29c9b3f291af338fcc04b328abfe5f5563bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a206fff2_4020ed21",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-21T18:57:13Z",
       "side": 1,
       "message": "Can\u0027t you add the test but not schedule it in crosbolt?",
+      "revId": "c3b29c9b3f291af338fcc04b328abfe5f5563bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35044558_90e490c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-25T03:38:54Z",
+      "side": 1,
+      "message": "I don\u0027t know whether it\u0027s possible to \"remove\" attributes in the subtests. I guess we can specify `Attr:         []string{\"group:cuj\"},` in each individual subtest but I don\u0027t like this solution.\n\nSo I just added them commented out.",
+      "parentUuid": "a206fff2_4020ed21",
       "revId": "c3b29c9b3f291af338fcc04b328abfe5f5563bbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
