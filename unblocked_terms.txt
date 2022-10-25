@@ -49,7 +49,6 @@ black.?list
 # build.?cop            - clean
 # crazy                 - clean
 # cripple               - clean
-# dummy                 - clean
 # first.?class.?citizen - clean
 # grandfathered         - clean
 # gr[ae]y.?hat          - clean
@@ -90,6 +89,9 @@ slave
 
 # white.?label          - see crbug/1135050
 #                       - see go/tast-coil-status for known use cases
+
+dummy
+#    - see b/242264841
 
 white.?list
 #    - see crbug/1101928
