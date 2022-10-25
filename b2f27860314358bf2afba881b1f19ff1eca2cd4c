@@ -80,6 +80,30 @@
       },
       "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f22e590_4420087a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-25T19:53:35Z",
+      "side": 1,
+      "message": "Yes, it\u0027s about the same delay once with ash-chrome and another with lacros-chrome. Then marking as resolved as I think we can go with this change as it is. Can you help review it again? Thanks,",
+      "parentUuid": "4b30ab0c_104a45d0",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
