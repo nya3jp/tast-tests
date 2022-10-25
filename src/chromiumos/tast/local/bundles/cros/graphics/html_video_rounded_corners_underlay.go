@@ -32,11 +32,32 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"180p_60fps_600frames.h264.mp4", "video_with_rounded_corners.html"},
 		Params: []testing.Param{{
-			Fixture: "chromeGraphics",
-			Val:     browser.TypeAsh,
+			// TODO(b/246573749): Remove cave and chell when the test can pass on them.
+			// TODO(b/255636769): Remove rusty and steelix when the test can pass on them.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("cave", "chell", "rusty", "steelix")),
+			Fixture:           "chromeGraphics",
+			Val:               browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+			// TODO(b/246573749): Remove cave and chell when the test can pass on them.
+			// TODO(b/255636769): Remove rusty and steelix when the test can pass on them.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("cave", "chell", "rusty", "steelix")),
+			Fixture:           "chromeGraphicsLacros",
+			Val:               browser.TypeLacros,
+		}, {
+			Name: "failing",
+			// TODO(b/246573749): Remove cave and chell when the test can pass on them.
+			// TODO(b/255636769): Remove rusty and steelix when the test can pass on them.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("cave", "chell", "rusty", "steelix")),
+			Fixture:           "chromeGraphics",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "failing_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			// TODO(b/246573749): Remove cave and chell when the test can pass on them.
+			// TODO(b/255636769): Remove rusty and steelix when the test can pass on them.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("cave", "chell", "rusty", "steelix")),
 			Fixture:           "chromeGraphicsLacros",
 			Val:               browser.TypeLacros,
 		}},
