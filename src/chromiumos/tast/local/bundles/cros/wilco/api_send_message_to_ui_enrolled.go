@@ -21,10 +21,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sending a message from the Wilco DTC VM to the Chromium extension",
 		Contacts: []string{
-			"vsavu@google.com",  // Test author
-			"lamzin@google.com", // wilco_dtc_supportd maintainer
-			"chromeos-wilco@google.com",
-			"bisakhmondal00@gmail.com",
+			"chromeos-oem-services@google.com", // Use team email for tickets.
+			"bkersting@google.com",
+			"lamzin@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco", "chrome"},
