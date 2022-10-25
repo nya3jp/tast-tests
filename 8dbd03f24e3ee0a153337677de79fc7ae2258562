@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42162a7_d477cbf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-25T16:45:54Z",
+      "side": 1,
+      "message": "In general, if the flakiness is happening on the real use cases, retrying is just adding a risk to pass the test \"wrongly\".\n\nCould you describe what is the root cause of flakiness in the code comment, and minimize the retrying code iff it is not possible to remove the root cause due to testing set-up reasons?",
+      "revId": "8dbd03f24e3ee0a153337677de79fc7ae2258562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
