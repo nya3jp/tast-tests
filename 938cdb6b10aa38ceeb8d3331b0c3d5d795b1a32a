@@ -16,6 +16,23 @@
       "message": "Hi Li, this CL is ready for review.",
       "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884d68d0_9a6b04a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-10-25T16:42:06Z",
+      "side": 1,
+      "message": "+xiqiruan\n\nAs Projector is enabled for FL users by default, the next step is probably to clean up the FL users policy.",
+      "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
