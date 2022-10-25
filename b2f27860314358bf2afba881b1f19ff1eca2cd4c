@@ -56,6 +56,30 @@
       },
       "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b30ab0c_104a45d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2022-10-25T19:30:57Z",
+      "side": 1,
+      "message": "There\u0027s no existing way to make it take effect sooner.  The delay is presumably in fetching the block-list via chrome sync.   Do you see the same delay when running the test with ash-chrome?",
+      "parentUuid": "68a9e6d7_c46616d1",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "b2f27860314358bf2afba881b1f19ff1eca2cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
