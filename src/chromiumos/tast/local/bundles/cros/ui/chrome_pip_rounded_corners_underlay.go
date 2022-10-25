@@ -49,11 +49,24 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"180p_60fps_600frames.h264.mp4", "pip_video.html"},
 		Params: []testing.Param{{
-			Fixture: "chromeGraphics",
-			Val:     browser.TypeAsh,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("cave", "chell", "rusty", "steelix")),
+			Fixture:           "chromeGraphics",
+			Val:               browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("cave", "chell")),
+			Fixture:           "chromeGraphicsLacros",
+			Val:               browser.TypeLacros,
+		}, {
+			Name:              "failing",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("cave", "chell", "rusty", "steelix")),
+			Fixture:           "chromeGraphics",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "failing_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("cave", "chell")),
 			Fixture:           "chromeGraphicsLacros",
 			Val:               browser.TypeLacros,
 		}},
