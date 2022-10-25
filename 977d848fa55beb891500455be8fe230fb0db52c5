@@ -105,6 +105,23 @@
       "parentUuid": "eca3372b_c4baa665",
       "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219e3e13_8aa07f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-10-25T16:14:09Z",
+      "side": 1,
+      "message": "We should focus on the migrated test cases. Removing reviewers.",
+      "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
