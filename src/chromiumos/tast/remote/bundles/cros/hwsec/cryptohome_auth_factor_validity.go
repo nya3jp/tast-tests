@@ -102,8 +102,15 @@ func testAuthenticate(ctx context.Context, client *hwsec.CryptohomeClient, usern
 	defer client.InvalidateAuthSession(ctx, authSessionID)
 
 	// Authorization should fail with the incorrect password.
-	if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, label, incorrectPassword); err == nil {
+	reply, err := client.AuthenticateAuthFactor(ctx, authSessionID, label, incorrectPassword)
+	if err == nil {
 		return errors.New("incorrect password successfully authenticated")
+	}
+	if reply == nil {
+		return errors.New("empty error on unsuccessful login")
+	}
+	if reply.ErrorInfo.PrimaryAction != uda.PrimaryAction_PRIMARY_INCORRECT_AUTH {
+		return errors.New("incorrect auth does not yield the correct PrimaryAction in reply")
 	}
 
 	// Authorization should work with the correct password.
