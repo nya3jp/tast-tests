@@ -25,6 +25,9 @@ type Config struct {
 type MutableConfig struct {
 	// DeviceLocalAccounts is the configuration with local device accounts.
 	DeviceLocalAccounts *policy.DeviceLocalAccounts
+	// UseDefaultLocalAccounts enables default local accounts generated in
+	// kioskmode.New().
+	UseDefaultLocalAccounts bool
 	// ExtraPolicies holds extra policies that will be applied.
 	ExtraPolicies []policy.Policy
 	// PublicAccountPolicies holds public accounts' IDs with associated polices
