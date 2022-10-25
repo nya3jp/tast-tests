@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d083e1_9dfb56ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-10-25T09:25:50Z",
+      "side": 1,
+      "message": "LGTM, with a question",
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e229606_56563f89",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-10-25T09:25:50Z",
+      "side": 1,
+      "message": "Question:\nWouldn\u0027t this switch be enabled anyway if we used:\n```\nExtraSoftwareDeps: []string{\"hps\"},\nExtraHardwareDeps: hwdep.D(hwdep.HPS()),\n```\n?",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
