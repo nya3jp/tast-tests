@@ -16,6 +16,23 @@
       "message": "Hi Jared,\n\nI am adding bluetooth tast tests to bluetooth suites. This is for\n1) Control the scheduling \n2) Solve the issue of floss tests being scheduled on un-supported boards.\n\nRegards\nShijin",
       "revId": "3d97035352d71fdf1a2e8939b58cf9195e2d6cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cda6f2e_8f284d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-10-25T21:26:31Z",
+      "side": 1,
+      "message": "These are tests that do not use btpeers so we should also add `bluetooth_sa` to them. The Since `bluetooth_flaky` is there it will still only run in the flaky suite, but then later all you have to do is remove the `bluetooth_flaky` and then it will be in the standalone suite.\n\nThough since flaky _is_ there, you can leave like this for now and then when we go to remove flaky we can just add it to the standalone suite then. Either way works.",
+      "revId": "3d97035352d71fdf1a2e8939b58cf9195e2d6cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
