@@ -16,6 +16,23 @@
       "message": "PTAL\ntY",
       "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cd6baa_5bc8e06a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-25T17:50:47Z",
+      "side": 1,
+      "message": "Out of curiosity, as v \u0026 vUreadahead seems unrelated, and you log v here, do you need to log the vUreadahead too?",
+      "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
