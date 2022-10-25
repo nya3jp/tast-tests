@@ -35,6 +35,11 @@ func Run(ctx context.Context, s *testing.State) {
 	// the 3 workflows run in 10/3 minutes.
 	const deskSwitchingDuration = time.Minute * 10 / 3
 
+	// Create a separate test setup deadline. 15 minutes should be
+	// enough time to open all of the windows and desks.
+	setupCtx, cancel := context.WithTimeout(ctx, 15*time.Minute)
+	defer cancel()
+
 	// Reserve ten seconds for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -44,7 +49,7 @@ func Run(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(setupCtx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -53,14 +58,14 @@ func Run(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 	switch bt {
 	case browser.TypeLacros:
-		l, err := lacros.Launch(ctx, tconn)
+		l, err := lacros.Launch(setupCtx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch Lacros: ", err)
 		}
 		defer l.Close(cleanupCtx)
 		cs = l
 
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+		if bTconn, err = l.TestAPIConn(setupCtx); err != nil {
 			s.Fatal("Failed to connect to the Lacros TestAPIConn: ", err)
 		}
 	case browser.TypeAsh:
@@ -68,25 +73,25 @@ func Run(ctx context.Context, s *testing.State) {
 		bTconn = tconn
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	cleanup, err := ash.EnsureTabletModeEnabled(setupCtx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
-	kw, err := input.Keyboard(ctx)
+	kw, err := input.Keyboard(setupCtx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
 	}
 	defer kw.Close()
 
-	mw, err := input.Mouse(ctx)
+	mw, err := input.Mouse(setupCtx)
 	if err != nil {
 		s.Fatal("Failed to get the mouse: ", err)
 	}
 	defer mw.Close()
 
-	tpw, err := input.Trackpad(ctx)
+	tpw, err := input.Trackpad(setupCtx)
 	if err != nil {
 		s.Fatal("Failed to create a trackpad device: ", err)
 	}
@@ -102,11 +107,11 @@ func Run(ctx context.Context, s *testing.State) {
 
 	// The above preparation may take several minutes. Ensure that the
 	// display is awake and will stay awake for the performance measurement.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := power.TurnOnDisplay(setupCtx); err != nil {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(setupCtx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
@@ -119,7 +124,7 @@ func Run(ctx context.Context, s *testing.State) {
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if _, ok := s.Var("record"); ok {
-		if err := recorder.AddScreenRecorder(ctx, tconn, s.TestName()); err != nil {
+		if err := recorder.AddScreenRecorder(setupCtx, tconn, s.TestName()); err != nil {
 			s.Fatal("Failed to add screen recorder: ", err)
 		}
 	}
@@ -129,12 +134,12 @@ func Run(ctx context.Context, s *testing.State) {
 
 	// Open all desks and windows for each desk. Additionally, initialize
 	// unique user input actions that will be performed on each desk.
-	onVisitActions, expectedNumWindows, err := setUpDesks(ctx, tconn, bTconn, cs, kw, mw, tpw, tw)
+	onVisitActions, expectedNumWindows, err := setUpDesks(setupCtx, tconn, bTconn, cs, kw, mw, tpw, tw)
 	if err != nil {
 		s.Fatal("Failed to set up desks: ", err)
 	}
 
-	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
+	topRow, err := input.KeyboardTopRowLayout(setupCtx, kw)
 	if err != nil {
 		s.Fatal("Failed to obtain the top-row layout: ", err)
 	}
@@ -146,7 +151,7 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 
 	if bt == browser.TypeLacros {
-		if err := browser.CloseTabByTitle(ctx, bTconn, "New Tab"); err != nil {
+		if err := browser.CloseTabByTitle(setupCtx, bTconn, "New Tab"); err != nil {
 			s.Fatal(`Failed to close "New Tab" tab: `, err)
 		}
 	}
