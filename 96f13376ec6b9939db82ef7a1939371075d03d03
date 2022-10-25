@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5459cbd_89a9681a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-10-25T18:13:53Z",
+      "side": 1,
+      "message": "Thank you both for the comments. I will re-submit this CL by adding a handler for tablet mode.\n\nI will also try to bring b/243988917 to this test.",
+      "revId": "96f13376ec6b9939db82ef7a1939371075d03d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a47599bc_96f731b6",
