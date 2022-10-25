@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57391d94_9ff56229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-25T18:54:16Z",
+      "side": 1,
+      "message": "Do I need to change these back to informational when adding lacros version, or is passing CQ good enough since these have already been \u0027vetted\u0027?",
+      "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
