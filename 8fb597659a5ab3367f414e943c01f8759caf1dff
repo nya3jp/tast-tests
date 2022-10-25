@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2377983e_fd8f1fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dhcp_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T05:56:53Z",
+      "side": 1,
+      "message": "Good suggestion! Done.",
+      "parentUuid": "ec98a55c_16ace349",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716c6663_b80829af",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-10-21T14:51:10Z",
       "side": 1,
       "message": "These values 5 and 3 are quite mysterious. Could we add in a comment an example for a line in this file ?",
+      "range": {
+        "startLine": 292,
+        "startChar": 42,
+        "endLine": 292,
+        "endChar": 50
+      },
+      "revId": "8fb597659a5ab3367f414e943c01f8759caf1dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e407ff_17ce0189",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-25T05:56:53Z",
+      "side": 1,
+      "message": "Done. I didn\u0027t check what it exactly means for each field though. We can do that when necessary in the future.",
+      "parentUuid": "716c6663_b80829af",
       "range": {
         "startLine": 292,
         "startChar": 42,
