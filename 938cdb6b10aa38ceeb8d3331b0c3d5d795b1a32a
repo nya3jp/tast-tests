@@ -33,6 +33,24 @@
       "message": "+xiqiruan\n\nAs Projector is enabled for FL users by default, the next step is probably to clean up the FL users policy.",
       "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8800b8fe_a07bfada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T17:00:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure what changed and why this fix is needed. The TranscriptTranslation.supervised_child test was passing when I landed it recently. For some reason, Family Link users stopped loading policy by default in Tast, so we have to manually enable policy. And then policies aren\u0027t enabled by default, so we have to manually inject the policies that we want to enable. I can\u0027t reproduce this issue in prod, so it seems specific to Tast.",
+      "parentUuid": "884d68d0_9a6b04a0",
+      "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
