@@ -9,11 +9,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -196,6 +199,9 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 		okButtonText          = "OK"
 		notNowID              = "android:id/autofill_save_no"
 		neverButtonText       = "Never"
+		// The inputs rendered by Netflix are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 10
 	)
 
 	// Check for signInButton.
@@ -254,19 +260,21 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on clickOnSignInButton: ", err)
 	}
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-
 	// Click on never button to save your password.
 	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Never Button doesn't exist: ", err)
 	} else if err := neverButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on neverButton: ", err)
 	}
-	// Select User.
-	selectUser := d.Object(ui.ID(selectUserID), ui.Index(0))
-	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("SelectUser doesn't exist: ", err)
-	} else if err := selectUser.Click(ctx); err != nil {
-		s.Fatal("Failed to click on selectUser: ", err)
+
+	userProfileButton := uidetection.Word("appcompat")
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for user profile",
+		ud.WaitUntilExists(userProfileButton),
+		ud.Tap(userProfileButton),
+		action.Sleep(waitForActiveInputTime),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find user profile: ", err)
 	}
 
 	// Click on ok button.
@@ -299,14 +307,19 @@ func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		signOutText           = "Sign Out"
 		selectUserID          = "com.netflix.mediaclient:id/2131429149"
 		TextClassName         = "android.widget.EditText"
+		// The inputs rendered by Netflix are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 10
 	)
 
-	// Select User.
-	selectUser := d.Object(ui.ID(selectUserID), ui.Index(0))
-	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("SelectUser doesn't exist: ", err)
-	} else if err := selectUser.Click(ctx); err != nil {
-		s.Fatal("Failed to click on selectUser: ", err)
+	userProfileButton := uidetection.Word("appcompat")
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for user profile",
+		ud.WaitUntilExists(userProfileButton),
+		ud.Tap(userProfileButton),
+		action.Sleep(waitForActiveInputTime),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find user profile: ", err)
 	}
 
 	// Check for Introducing downloads pop up
