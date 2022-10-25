@@ -6,16 +6,26 @@ package wifi
 
 import (
 	"context"
+	"fmt"
 	"time"
+
+	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/remote/wificell/hostapd"
+	ap "chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 )
+
+type scanPerfTestcase struct {
+	apOpts []ap.Option
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -25,8 +35,22 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		Attr:        []string{"group:wificell", "wificell_perf"},
-		ServiceDeps: []string{wificell.TFServiceName},
+		ServiceDeps: []string{wificell.TFServiceName, "tast.cros.wifi.DeviceService"},
 		Fixture:     "wificellFixt",
+		Params: []testing.Param{
+			{
+				Name: "dtim1",
+				Val: []scanPerfTestcase{{
+					apOpts: []ap.Option{ap.DTIMPeriod(1)},
+				}},
+			},
+			{
+				Name: "dtim2",
+				Val: []scanPerfTestcase{{
+					apOpts: []ap.Option{ap.DTIMPeriod(2)},
+				}},
+			},
+		},
 	})
 }
 
@@ -36,33 +60,42 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		fgSingleChannelScanTimeout = time.Second
 		fgFullScanTimeout          = 10 * time.Second
 		bgFullScanTimeout          = 15 * time.Second
+		pollTimeout                = 15 * time.Second
 	)
 
+	const (
+		fgFullScanThreshold        = 4 * time.Second
+		bgFullScanThreshold        = 7 * time.Second
+		fgFullScanThresholdRelaxed = 5 * time.Second
+		bgFullScanThresholdRelaxed = 8 * time.Second
+	)
+
+	// The following models are known to have slower fg scan times: b/253099273
+	// Use relaxed threshold until the bug has been solved. Same for the bg scan.
+	fgRelaxedChipSet := map[string]struct{}{
+		wlan.DeviceNames[wlan.QualcommAtherosQCA6174]:     {},
+		wlan.DeviceNames[wlan.QualcommWCN3990]:            {},
+		wlan.DeviceNames[wlan.QualcommAtherosQCA6174SDIO]: {},
+	}
+	// The following models are known to have slower bg scan tiems: b/253096914
+	bgRelaxedChipSet := map[string]struct{}{
+		wlan.DeviceNames[wlan.MediaTekMT7921PCIE]: {},
+		wlan.DeviceNames[wlan.MediaTekMT7921SDIO]: {},
+	}
+
+	// WiFi chips in this list will not be compared with a threshold and always pass.
+	var exemptList []string
+	// We lack data for WiFi6E models so threshold is not determined yet.
+	wifi6e := []string{
+		wlan.DeviceNames[wlan.IntelAX211],
+		wlan.DeviceNames[wlan.QualcommWCN6855],
+	}
+	exemptList = append(exemptList, wifi6e...)
+
+	// Repeated scan times to obtain averages.
+	const scanTimes = 5
+
 	tf := s.FixtValue().(*wificell.TestFixture)
-
-	ap, err := tf.DefaultOpenNetworkAP(ctx)
-	if err != nil {
-		s.Fatal("Failed to configure the AP: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.DeconfigAP(ctx, ap); err != nil {
-			s.Error("Failed to deconfig the AP: ", err)
-		}
-	}(ctx)
-	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
-	defer cancel()
-	s.Log("AP setup done")
-
-	ssid := ap.Config().SSID
-	freq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
-	if err != nil {
-		s.Fatalf("Failed to convert channel %d to frequency: %v", ap.Config().Channel, err)
-	}
-	iface, err := tf.ClientInterface(ctx)
-	if err != nil {
-		s.Fatal("Failed to get DUT's interface: ", err)
-	}
-	iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
 
 	pv := perf.NewValues()
 	defer func() {
@@ -74,6 +107,7 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	logDuration := func(label string, duration time.Duration) {
 		pv.Set(perf.Metric{
 			Name:      label,
+			Variant:   "Average",
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, duration.Seconds())
@@ -82,7 +116,7 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 
 	// pollTimedScan polls "iw scan" with specific SSID and returns scan duration.
 	// Each scan takes at most scanTimeout, and the polling takes at most pollTimeout.
-	pollTimedScan := func(ctx context.Context, freqs []int, scanTimeout, pollTimeout time.Duration) (time.Duration, error) {
+	pollTimedScan := func(ctx context.Context, freqs []int, scanTimeout, pollTimeout time.Duration, ssid, iface string, iwr *iw.Runner) (time.Duration, error) {
 		var scanResult *iw.TimedScanData
 		if pollTimeout < scanTimeout {
 			pollTimeout = scanTimeout
@@ -111,48 +145,150 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		return scanResult.Time, nil
 	}
 
-	pollTimeout := 15 * time.Second
 	// Foreground single channel scan.
 	// Foreground scan means the scan is performed without any established connection.
-	if duration, err := pollTimedScan(ctx, []int{freq}, fgSingleChannelScanTimeout, pollTimeout); err != nil {
-		s.Errorf("Failed to perform single channel scan at frequency %d: %v", freq, err)
-	} else {
-		logDuration("scan_time_foreground_single_scan", duration)
+	fgSingleScan := func(ctx context.Context, freq int, ssid, iface string, iwr *iw.Runner) {
+		if duration, err := pollTimedScan(ctx, []int{freq}, fgSingleChannelScanTimeout, pollTimeout, ssid, iface, iwr); err != nil {
+			s.Errorf("Failed to perform single channel scan at frequency %d: %v", freq, err)
+		} else {
+			logDuration("scan_time_foreground_single_scan", duration)
+		}
 	}
 
-	// Foreground full scan.
-	if duration, err := pollTimedScan(ctx, nil, fgFullScanTimeout, pollTimeout); err != nil {
-		s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
-	} else {
-		logDuration("scan_time_foreground_full", duration)
+	fgFullScan := func(ctx context.Context, freq int, ssid, iface string, iwr *iw.Runner, devName string, exempt bool) {
+		var fgFullScanSum time.Duration
+		threshold := fgFullScanThreshold
+		if _, ok := fgRelaxedChipSet[devName]; ok {
+			threshold = fgFullScanThresholdRelaxed
+			s.Logf("There is a known issue (b/253099273) for this WiFi chip (%s), use a relaxed threshold: %s", devName, threshold)
+		}
+		for i := 0; i < scanTimes; i++ {
+			if duration, err := pollTimedScan(ctx, nil, fgFullScanTimeout, pollTimeout, ssid, iface, iwr); err != nil {
+				s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
+			} else {
+				if !exempt && duration > threshold {
+					s.Errorf("Foreground scan #(%d/%d) duration: %s. Exceed threshold: %s", i+1, scanTimes, duration, threshold)
+				} else {
+					s.Logf("Foreground scan #(%d/%d) duration: %s", i+1, scanTimes, duration)
+				}
+				fgFullScanSum += duration
+			}
+		}
+		fgFullScanAvg := fgFullScanSum / scanTimes
+		s.Logf("Foreground scan average duration: %s", fgFullScanAvg)
+		logDuration("scan_time_foreground_full", fgFullScanAvg)
 	}
 
-	ctx, restoreBg, err := tf.WifiClient().TurnOffBgscan(ctx)
+	bgFullScan := func(ctx context.Context, freq int, ssid, iface string, iwr *iw.Runner, devName string, exempt bool, apIface *wificell.APIface) {
+		ctx, restoreBg, err := tf.WifiClient().TurnOffBgscan(ctx)
+		if err != nil {
+			s.Fatal("Failed to turn off the background scan: ", err)
+		}
+		defer func() {
+			if err := restoreBg(); err != nil {
+				s.Error("Failed to restore the background scan config: ", err)
+			}
+		}()
+
+		// DUT connecting to the AP.
+		if _, err := tf.ConnectWifiAP(ctx, apIface); err != nil {
+			s.Fatal("DUT: failed to connect to WiFi: ", err)
+		}
+		defer func(ctx context.Context) {
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
+				s.Error("Failed to disconnect WiFi, err: ", err)
+			}
+		}(ctx)
+		ctx, cancel := tf.ReserveForDisconnect(ctx)
+		defer cancel()
+		s.Log("Connected")
+
+		var bgFullScanSum time.Duration
+		threshold := bgFullScanThreshold
+		if _, ok := bgRelaxedChipSet[devName]; ok {
+			threshold = bgFullScanThresholdRelaxed
+			s.Logf("There is a known issue (b/253096914) for this WiFi chip (%s), use a relaxed threshold: %s", devName, threshold)
+		}
+		for i := 0; i < scanTimes; i++ {
+			if duration, err := pollTimedScan(ctx, nil, bgFullScanTimeout, pollTimeout, ssid, iface, iwr); err != nil {
+				s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
+			} else {
+				if !exempt && duration > threshold {
+					s.Errorf("Background scan #(%d/%d) duration: %s. Exceed threshold: %s", i+1, scanTimes, duration, threshold)
+				} else {
+					s.Logf("Background scan #(%d/%d) duration: %s", i+1, scanTimes, duration)
+				}
+				bgFullScanSum += duration
+			}
+		}
+		bgFullScanAvg := bgFullScanSum / scanTimes
+		s.Logf("Background scan average duration: %s", bgFullScanAvg)
+		logDuration("scan_time_background_full", bgFullScanAvg)
+	}
+
+	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, devName string, exempt bool) {
+		apIface, err := tf.ConfigureAP(ctx, options, nil)
+		if err != nil {
+			s.Fatal("Failed to configure the AP: ", err)
+		}
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, apIface); err != nil {
+				s.Error("Failed to deconfig the AP: ", err)
+			}
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, apIface)
+		defer cancel()
+		s.Log("AP setup done")
+
+		ssid := apIface.Config().SSID
+		freq, err := ap.ChannelToFrequency(apIface.Config().Channel)
+		if err != nil {
+			s.Fatalf("Failed to convert channel %d to frequency: %v", apIface.Config().Channel, err)
+		}
+		iface, err := tf.ClientInterface(ctx)
+		if err != nil {
+			s.Fatal("Failed to get DUT's interface: ", err)
+		}
+		iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
+
+		s.Logf("DTIM is set as %d", apIface.Config().DTIMPeriod)
+
+		fgSingleScan(ctx, freq, ssid, iface, iwr)
+		fgFullScan(ctx, freq, ssid, iface, iwr, devName, exempt)
+		bgFullScan(ctx, freq, ssid, iface, iwr, devName, exempt, apIface)
+	}
+
+	r, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to turn off the background scan: ", err)
+		s.Fatal("Failed to connect rpc: ", err)
 	}
-	defer func() {
-		if err := restoreBg(); err != nil {
-			s.Error("Failed to restore the background scan config: ", err)
-		}
-	}()
+	defer r.Close(ctx)
 
-	// DUT connecting to the AP.
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
-		s.Fatal("DUT: failed to connect to WiFi: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.CleanDisconnectWifi(ctx); err != nil {
-			s.Error("Failed to disconnect WiFi, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel = tf.ReserveForDisconnect(ctx)
-	defer cancel()
-	s.Log("Connected")
+	client := wifi.NewDeviceServiceClient(r.Conn)
 
-	if duration, err := pollTimedScan(ctx, nil, bgFullScanTimeout, pollTimeout); err != nil {
-		s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
-	} else {
-		logDuration("scan_time_background_full", duration)
+	// Get the information of the WLAN device.
+	devInfo, err := client.GetDeviceInfo(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed obtaining WLAN device information through rpc: ", err)
 	}
+
+	testcases := s.Param().([]scanPerfTestcase)
+	exempt := false
+	for _, n := range exemptList {
+		if n == devInfo.Name {
+			exempt = true
+			s.Log("This device has no threshold for ScanPerf tests and will always pass")
+			break
+		}
+	}
+	for i, tc := range testcases {
+		subtest := func(ctx context.Context, s *testing.State) {
+			options := append(wificell.DefaultOpenNetworkAPOptions(), tc.apOpts...)
+			testOnce(ctx, s, options, devInfo.Name, exempt)
+		}
+		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
+			return
+		}
+	}
+	s.Log("Tearing down")
 }
