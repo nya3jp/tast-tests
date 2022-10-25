@@ -16,6 +16,23 @@
       "message": "Hi Galen, this CL is ready for review.",
       "revId": "80c27c3eb65abddf5f06fc3873f503112c8a149d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36dc0e0_04a0c110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-10-25T14:22:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "80c27c3eb65abddf5f06fc3873f503112c8a149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
