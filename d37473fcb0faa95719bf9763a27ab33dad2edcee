@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1479d320_737843ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-25T21:20:35Z",
+      "side": 1,
+      "message": "nit: caches?  packs is specific to ureadahead.",
+      "range": {
+        "startLine": 69,
+        "startChar": 81,
+        "endLine": 69,
+        "endChar": 86
+      },
+      "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28cd6baa_5bc8e06a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 1
@@ -48,6 +71,75 @@
       "writtenOn": "2022-10-25T17:50:47Z",
       "side": 1,
       "message": "Out of curiosity, as v \u0026 vUreadahead seems unrelated, and you log v here, do you need to log the vUreadahead too?",
+      "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa0c5e9_be46bcba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-25T21:20:35Z",
+      "side": 1,
+      "message": "Question below about whether we should add 32-bit x86 support as well.  If not please remove this part of the comment.",
+      "range": {
+        "startLine": 27,
+        "startChar": 37,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eaac53a_f772cfd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-25T21:20:35Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a660d24_f51f32d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-10-25T21:20:35Z",
+      "side": 1,
+      "message": "Please double check whether we should have x86 binary support for cheets_x86 boards.",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 27
+      },
       "revId": "d37473fcb0faa95719bf9763a27ab33dad2edcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
