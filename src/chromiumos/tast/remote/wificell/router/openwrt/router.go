@@ -336,11 +336,19 @@ func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Co
 		return nil, errors.Wrap(err, "failed to install router credentials")
 	}
 
-	// Fail fast if WEP is configured since it is hard to deduce from logs.
+	// Log a warning about WEP since OpenWrt support is device and OS version
+	// dependent. Allow it to still attempt the configuration though, as it's
+	// possible that an OpenWrt device has explicitly enabled it.
 	if isWEP, err := common.HostapdSecurityConfigIsWEP(conf.SecurityConfig); err != nil {
 		return nil, errors.Wrap(err, "failed to check if hostapd security config uses wep")
 	} else if isWEP {
-		return nil, errors.Wrap(err, "WEP security is not supported on OpenWrt routers")
+		testing.ContextLog(
+			ctx,
+			"Warning: Starting hostapd with a security config using WEP. "+
+				"OpenWrt routers are not guaranteed to support WEP in future OS"+
+				"versions. If this device does not support WEP, hostapd will fail to"+
+				"start.",
+		)
 	}
 
 	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
