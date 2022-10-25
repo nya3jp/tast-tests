@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c076fdf2_3f989122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-25T20:33:15Z",
+      "side": 1,
+      "message": "One more thing, please add lacros softwareDeps to all lacros variants.",
+      "revId": "148fa6fbd0487a89c413bcc1dcf85437ece7c24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "052f90aa_652b0f8d",
