@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ec4034e_a881d927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-25T17:56:20Z",
+      "side": 1,
+      "message": "You can introduce RPC to stop chrome.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/policy_service.go;l\u003d367?q\u003dpolicy_service.go\n\n\nbtw, if EnrollAndLogin failed and return error, this function is responsible for resource releasing",
+      "parentUuid": "2b44c391_27b85cef",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 15
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe33e458_398c55f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
         "patchSetId": 13
@@ -418,6 +442,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0038b6_7a5da847",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-25T17:56:20Z",
+      "side": 1,
+      "message": "I was sure that Tast supports different vars for different parametrised tests similar to ExtraSoftwareDeps or ExtraData. This is not supported by the framework. Sorry.",
+      "parentUuid": "98d80a70_cdf10223",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5020c792_771b620d",
@@ -455,6 +503,30 @@
       "side": 1,
       "message": "I think this way could be more maintainable especially since many other tests will share the same `dlputil.ValidateActionReporting` function. I think I read something about subtests shared across several tests, where it is possible to pass `testing.State`. If I don\u0027t pass `testing.State` I will have to pass about 10 parameters. Do you still recommend doing it?",
       "parentUuid": "5020c792_771b620d",
+      "range": {
+        "startLine": 62,
+        "startChar": 38,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e2d0e0_b4cbd15b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-25T17:56:20Z",
+      "side": 1,
+      "message": "do you have already such tests in some CL?\n\ncan\u0027t you just use dlputil.ValidateActionReporting in 1 test file and have a lot of parameters?",
+      "parentUuid": "e89ba745_8a38d850",
       "range": {
         "startLine": 62,
         "startChar": 38,

@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c1970eb_8af4fb5d",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-25T17:56:20Z",
+      "side": 1,
+      "message": "some params actually might be generated for some tests\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/printer/add_test.go\n\nmaybe you can generate same params for all tests and this way you will have same copied through multiple files. The tast idea is that params must be in declarative form in the test file.",
+      "parentUuid": "fbbc2975_90bb6cd1",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "af23dc7ca9b0bbe67a5f394c4d2f9f8c8edec998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bac36085_d30986eb",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 11
