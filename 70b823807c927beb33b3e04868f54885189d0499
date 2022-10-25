@@ -378,6 +378,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8c4bcea_bb405872",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-25T08:04:32Z",
+      "side": 1,
+      "message": "We\u0027ll have to add some methods to the chrome Tast library.",
+      "parentUuid": "f427538d_c1d02f49",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1b61b9_0e7e84b9",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 3
@@ -454,6 +472,24 @@
       "side": 1,
       "message": "A good idea. I was thinking about that by utilizing this version.go at http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go\nBtw, it\u0027s currently in the remote bundle, so it needs some extra work to move it to ../common and get it referenced everywhere including this. Not all of these would fit well in this single CL since it would have to touch other tests across different code locations, but I think we can leave a TODO and implement it in a follow up.",
       "parentUuid": "296ce869_36e74216",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffe5ded_34c7afc4",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-25T08:04:32Z",
+      "side": 1,
+      "message": "Fine with me to do followup.",
+      "parentUuid": "703f3a2f_79447454",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -536,6 +572,24 @@
       "side": 1,
       "message": "That doc still holds true when it comes to backward compatibility. And here is an internal meeting note with erikchen@, djmm@, srinivassista@ and more about NNNN skew clarification: https://docs.google.com/document/d/1YiDSeXBg7B0kfv7UnsDAD114qhcSnDyPVbtsgQn_e80/edit#bookmark\u003did.glwjq657e6v0\nFYI it is not to change any existing workflow but rather just to clarify that Lacros \u003e\u003d NNNN (OS/Ash) on branches once a branch is cut from the ToT where Lacros/Ash are versioned/uprev\u0027ed together atomically. Hopefully there will be more detailed documentation about the release/compatibility process.",
       "parentUuid": "78357bcc_3ea7cb91",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee06d2b9_2f5f4426",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-25T08:04:32Z",
+      "side": 1,
+      "message": "What about this point:\n\u003e We also need to make sure to only allow older Lacros when the test is running with a release branch Ash, not on ToT.\n\nAt the moment you\u0027re allowing it even on ToT.",
+      "parentUuid": "43127f1d_fd58dac8",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
