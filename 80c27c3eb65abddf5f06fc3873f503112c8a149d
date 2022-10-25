@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "80c27c3eb65abddf5f06fc3873f503112c8a149d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39aa10ba_1907d56b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T15:53:41Z",
+      "side": 1,
+      "message": "Hi Tast Owners, this CL is ready for review.",
+      "revId": "80c27c3eb65abddf5f06fc3873f503112c8a149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
