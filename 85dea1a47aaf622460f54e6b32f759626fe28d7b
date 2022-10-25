@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805aad49_ac4c585c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-25T23:33:19Z",
+      "side": 1,
+      "message": "!\u003d \"y\" || !\u003d \"m\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "85dea1a47aaf622460f54e6b32f759626fe28d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
