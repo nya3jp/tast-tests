@@ -84,6 +84,24 @@
       "message": "optional: you may want to drop the Name, so that you can keep the original one as is with the same name. (I.e., Name is optional).",
       "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772fcb32_e74e3a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/time_query.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-25T17:21:30Z",
+      "side": 1,
+      "message": "Ack. Removed. Thanks.",
+      "parentUuid": "fbcdf03b_ddd24c0f",
+      "revId": "3eabe6dbea3057b66d22feca85ebdccbf6590064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
