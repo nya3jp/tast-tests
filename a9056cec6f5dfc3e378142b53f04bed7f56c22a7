@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34064d3b_6c0915ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T20:47:48Z",
+      "side": 1,
+      "message": "I would re-word this a bit to make it clear that it\u0027s not the test\u0027s responsibility to restore the read-only rootfs. Something like:\n\n\u003e Note that there is no way for this test to restore the rootfs back to read-only mode. b/249564120 ensures that the test infrastructure will do so.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 86
+      },
+      "revId": "a9056cec6f5dfc3e378142b53f04bed7f56c22a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6b561f_2adeb3a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T20:47:48Z",
+      "side": 1,
+      "message": "I would use an absolute path (e.g., `\"/testfile.txt\"`) to ensure that the test behaves the same regardless of the current working directory.",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "a9056cec6f5dfc3e378142b53f04bed7f56c22a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
