@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ba7d3f_672a7384",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-25T21:52:47Z",
+      "side": 1,
+      "message": "If you meant to check if len(ps[2]) \u003e 0, then I don\u0027t think that\u0027s necessary because even if ps[2] were an empty string, assigning to another empty string is just a no-op.",
+      "parentUuid": "cff37867_6928dc73",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc61d41_cfc91d18",
