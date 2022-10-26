@@ -111,6 +111,14 @@ func ChapsECPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get user token slot ID: ", err)
 	}
 
+	// Time the generate operation.
+	_, generateHwElapsed, err := util.GenerateKeysAndMeasure(ctx, pkcs11Util, pkcs11.GenECP256, slot, username, "33", util.GenerateHWTimes)
+	// Note that we do not retain the generated keys because we don't need to test the signing performance.
+	// Signing performance for imported and generated keys are the same, so we only test the imported variant.
+	if err != nil {
+		s.Fatal("Failed to generate hardware backed keys: ", err)
+	}
+
 	// Time the import operation for hw-backed keys.
 	importedHwKeys, importHwElapsed, err := util.ImportKeysAndMeasure(ctx, pkcs11Util, privECKeyPath, slot, username, "11", util.ImportHWTimes, false)
 	if err != nil {
@@ -139,6 +147,13 @@ func ChapsECPerf(ctx context.Context, s *testing.State) {
 	// Record the perf measurements.
 	value := perf.NewValues()
 
+	value.Set(perf.Metric{
+		Name:      "chaps_generate_time",
+		Variant:   "hwbacked_ec",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, generateHwElapsed.Seconds()/float64(util.GenerateHWTimes))
 	value.Set(perf.Metric{
 		Name:      "chaps_import_time",
 		Variant:   "hwbacked_ec",
