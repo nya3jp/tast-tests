@@ -16,6 +16,108 @@
       "message": "@seewaifu@google.com\n\nAs I see you are the code owner, could you also review the patch?\nThank you",
       "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac3f6ea_70c8b4c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "1. Please run tast unit tests: fast_build.sh -T\n\nThen, add this line to commit log:\n\nTEST\u003dtast unit test passed.\n\n2. Please see my comments.\n\n3. Please add a reviewer that is familiar with camera tests to the reviewer list.\n\nThanks.",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8258aa50_ed0a27d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "```\nif val, present :\u003d toggleInfo.State[state]; present {\n    return val\n}\nreturn false\n```",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee3c1cd_e1697d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "Remove blank line.",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc8cf77_62329c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "Why do you need to check for erro again? Did you just check it at line 107?",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563a314e_a3acb855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "```\nif currentStat \u003d\u003d enable {\n    return nil\n}\nif err :\u003d clickCameraToggle(ctx, tconn); err !\u003d nil {\n    return err\n}\nreturn nil\n\n```",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbc0513_948a6eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T20:44:58Z",
+      "side": 1,
+      "message": "```\nreturn png.Encode(f, img)\n```",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
