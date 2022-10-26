@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "980d2b28_02774bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-26T21:15:42Z",
+      "side": 1,
+      "message": "Sorry for the late reply! I forgot to mention that we have changed the params in Patchset 5. Different from previous patchset, in Patchset 5, we only have two params, which have the fixture `loggedInToCUJUser` and `loggedInToCUJUserLacros`, one for ash and one for lacros. For each of the params, we will launch 3 kinds of windows, a terminal app, a chrome browser app, and an arc app.",
+      "parentUuid": "d7dfe441_dd2a4fc9",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c359e59_67fdbc72",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 3
