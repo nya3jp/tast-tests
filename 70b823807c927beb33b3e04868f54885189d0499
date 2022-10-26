@@ -414,6 +414,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17b3ddb9_9f1289c4",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-26T01:22:16Z",
+      "side": 1,
+      "message": "Yes it can be a followup.",
+      "parentUuid": "a4d87884_a1c3cdd3",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1b61b9_0e7e84b9",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 3
@@ -626,6 +644,24 @@
       "side": 1,
       "message": "I think it should be fine because it still complies with our version skew policy on both the ToT and branches.\nOn the ToT it would always be like `Lacros NNNN \u003d\u003d Ash` in x.x.NNNN.x since it\u0027s atomically uprev\u0027ed and versioned, so this check should work on the ToT.\nAside, I would prefer not using the \"branch\" or \"channel\" concepts in tests whenever possible because of b/254362091, but using the versions instead.",
       "parentUuid": "ee06d2b9_2f5f4426",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5f3fcc_a332d982",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-26T01:22:16Z",
+      "side": 1,
+      "message": "On ToT, is the third component (last number) guaranteed to be 0?",
+      "parentUuid": "d09a6018_718afb5c",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
