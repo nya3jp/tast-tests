@@ -818,12 +818,22 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 		return errors.Wrap(err, "failed to get all windows")
 	}
 
+	var swipeDuration time.Duration
+	// Shorten the swipe duration if no windows are visible (e.g. in overview or
+	// home screen) so the swipe is not detected as a gesture to go from home
+	// screen to overview.
+	if len(windows) == 0 {
+		swipeDuration = 30 * time.Millisecond
+	} else {
+		swipeDuration = 300 * time.Millisecond
+	}
+
 	startX := width / 2
 	startY := height - 1
 	endX := startX
 	endY := height / 2
 
-	if err := stw.Swipe(ctx, startX, startY, endX, endY, 300*time.Millisecond); err != nil {
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, swipeDuration); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
 	if err := stw.End(); err != nil {
@@ -834,6 +844,11 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 			return errors.Wrap(err, "failed to wait for the dragged window to animate")
 		}
 	}
+
+	if err := WaitForLauncherState(ctx, tconn, FullscreenAllApps); err != nil {
+		return errors.Wrap(err, "launcher not shown")
+	}
+
 	return nil
 }
 
