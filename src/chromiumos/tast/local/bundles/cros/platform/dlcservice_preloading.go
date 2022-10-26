@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies that DLC preloading works by setting up a prelaoded test DLC and installing it",
 		Contacts:     []string{"kimjae@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

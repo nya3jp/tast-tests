@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies that DLC cros deploying works by mimicking the cros deploy flow",
 		Contacts:     []string{"kimjae@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
