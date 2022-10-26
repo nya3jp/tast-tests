@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -102,8 +103,8 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	// Start partial screen recording via UI.
 	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
 	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
-	dragStartPt := info.WorkArea.TopLeft()
-	dragEndPt := info.WorkArea.CenterPoint()
+	dragStartPt := info.WorkArea.CenterPoint().Sub(coords.Point{X: 100, Y: 100})
+	dragEndPt := info.WorkArea.CenterPoint().Add(coords.Point{X: 100, Y: 100})
 	// The click point must be outside of drag area (i.e. outside of dragStartPt - dragEndPt rectangle).
 	dragClearPt := info.WorkArea.BottomCenter()
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
