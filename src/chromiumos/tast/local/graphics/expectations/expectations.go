@@ -178,6 +178,22 @@ func (ft *fileType) getDeviceIdentifier(ctx context.Context) (string, error) {
 	return fmt.Sprintf("%s-%s", *ft, id), err
 }
 
+// logDeviceIdentity creates a context log with the identity that will be used
+// for loading expectations files.
+func logDeviceIdentity(ctx context.Context) {
+	var err error
+	fileTypes := []fileType{modelFile, buildBoardFile, boardFile, gpuChipsetFile}
+	identifiers := make([]string, len(fileTypes))
+	for idx, ft := range fileTypes {
+		identifiers[idx], err = ft.getDeviceIdentifier(ctx)
+		if err != nil {
+			identifiers[idx] = fmt.Sprintf("%s-unknown", ft)
+		}
+	}
+
+	testing.ContextLog(ctx, "Device has the following expectations identity: ", strings.Join(identifiers, ", "))
+}
+
 // generateTestExpectationsFilename generates a test expectations file name
 // using the specified directory location. Depending on the fileType, this may
 // probe the device model, board, or gpu chipset to generate the file name.
@@ -275,6 +291,8 @@ func expectPass(ctx context.Context) Expectation {
 // based on the device model, board, or gpu chipset. Looks in
 // testExpectationsDirectory for test expectations files.
 func GetTestExpectationFromDirectory(ctx context.Context, testName, testExpectationsDirectory string) (Expectation, error) {
+	logDeviceIdentity(ctx)
+
 	disabled, err := isDisabled()
 	if err != nil {
 		return expectPass(ctx), err
