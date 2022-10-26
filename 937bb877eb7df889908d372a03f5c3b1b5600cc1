@@ -193,6 +193,30 @@
       },
       "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cd40fb_dc6ed687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_in_with_lots_of_users.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-26T12:37:08Z",
+      "side": 1,
+      "message": "Sorry for the late reply. This is fine then, it isn\u0027t anything critical anyway so it shouldn\u0027t block the submission.",
+      "parentUuid": "6e0dd549_d906b4ab",
+      "range": {
+        "startLine": 98,
+        "startChar": 17,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "937bb877eb7df889908d372a03f5c3b1b5600cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
