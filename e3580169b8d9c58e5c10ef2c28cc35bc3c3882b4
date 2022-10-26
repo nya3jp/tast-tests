@@ -34,6 +34,24 @@
       "parentUuid": "1012009b_feb5b597",
       "revId": "e3580169b8d9c58e5c10ef2c28cc35bc3c3882b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b99985_55f89e0b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-10-26T20:34:34Z",
+      "side": 1,
+      "message": "Thanks for the advice!",
+      "parentUuid": "ef9f0aa5_b186c6a3",
+      "revId": "e3580169b8d9c58e5c10ef2c28cc35bc3c3882b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
