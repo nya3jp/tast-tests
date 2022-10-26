@@ -86,6 +86,24 @@
       "parentUuid": "859c6e26_3ba7a08e",
       "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e3abb7_297daeba",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-26T15:24:42Z",
+      "side": 1,
+      "message": "If nothing is using floss yet, but this will be changed in the future, then this is fine to split into several steps.",
+      "parentUuid": "b3f47516_60cf5d08",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
