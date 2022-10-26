@@ -5,17 +5,14 @@
 package policy
 
 import (
-	"bytes"
 	"context"
-	"image"
 	"image/color"
-	"image/jpeg"
-	"os"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/bundles/cros/policy/imagehelpers"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -44,26 +41,6 @@ func init() {
 			pci.SearchFlag(&policy.WallpaperImage{}, pci.VerifiedFunctionalityUI),
 		},
 	})
-}
-
-// getImgBytesFromFilePath returns bytes of the image with the filePath.
-func getImgBytesFromFilePath(filePath string) ([]byte, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-	buf := new(bytes.Buffer)
-	err = jpeg.Encode(buf, image, nil)
-	if err != nil {
-		return nil, err
-	}
-	imgBytes := buf.Bytes()
-	return imgBytes, nil
 }
 
 // WallpaperImage tests the WallpaperImage policy.
@@ -105,11 +82,11 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	}
 	defer eds.Stop(ctx)
 
-	imgBytes, err := getImgBytesFromFilePath(s.DataPath("wallpaper_image.jpeg"))
+	jpegBytes, err := imagehelpers.GetJPEGBytesFromFilePath(s.DataPath("wallpaper_image.jpeg"))
 	if err != nil {
 		s.Fatal("Failed to read wallpaper image: ", err)
 	}
-	iurl, ihash := eds.ServePolicyData(imgBytes)
+	iurl, ihash := eds.ServePolicyData(jpegBytes)
 
 	for _, param := range []struct {
 		name                string
