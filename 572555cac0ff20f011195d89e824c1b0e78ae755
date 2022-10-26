@@ -16,6 +16,23 @@
       "message": "Hi Seewai, this is the test we talked about\nRunning `goimports --local\u003dchromiumos/ camera_switch.go` removes an import that is needed for the test to compile",
       "revId": "572555cac0ff20f011195d89e824c1b0e78ae755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dfd4ae_4a109740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T16:36:06Z",
+      "side": 1,
+      "message": "Your package name and directory name mismatched. Please see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3981934 as an example to fix yours. Thanks.",
+      "revId": "572555cac0ff20f011195d89e824c1b0e78ae755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
