@@ -30,8 +30,8 @@ import (
 	"chromiumos/tast/local/network/virtualnet"
 	"chromiumos/tast/local/network/virtualnet/env"
 	"chromiumos/tast/local/network/virtualnet/httpserver"
+	"chromiumos/tast/local/network/virtualnet/l4server"
 	"chromiumos/tast/local/network/virtualnet/subnet"
-	"chromiumos/tast/local/network/virtualnet/udpserver"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -71,14 +71,14 @@ func init() {
 
 type server struct {
 	rt   *env.Env
-	fam  udpserver.Family
+	fam  l4server.Family
 	port int
 	addr net.IP
 }
 
 func (s server) dst() string {
 	addr := s.addr.String()
-	if s.fam == udpserver.UDP6 {
+	if s.fam == l4server.UDP6 {
 		addr = fmt.Sprintf("[%v]", addr)
 	}
 	return fmt.Sprintf("%v:%v", addr, s.port)
@@ -92,8 +92,8 @@ type counters struct {
 	tx, rx uint64
 }
 
-func ipFamily(f udpserver.Family) pp.TrafficCounter_IpFamily {
-	if f == udpserver.UDP6 {
+func ipFamily(f l4server.Family) pp.TrafficCounter_IpFamily {
+	if f == l4server.UDP6 {
 		return pp.TrafficCounter_IPV6
 	}
 	return pp.TrafficCounter_IPV4
@@ -134,10 +134,10 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 
 	var svrs []*server
 	pool := subnet.NewPool()
-	fams := []udpserver.Family{udpserver.UDP4}
+	fams := []l4server.Family{l4server.UDP4}
 	// IPv6 tested for host user sources only.
 	if param.users {
-		fams = append(fams, udpserver.UDP6)
+		fams = append(fams, l4server.UDP6)
 	}
 	for _, fam := range fams {
 		svr, err := setup(ctx, mgr, pool, fam)
@@ -347,9 +347,9 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 	}
 }
 
-func setup(ctx context.Context, mgr *shill.Manager, pool *subnet.Pool, fam udpserver.Family) (*server, error) {
+func setup(ctx context.Context, mgr *shill.Manager, pool *subnet.Pool, fam l4server.Family) (*server, error) {
 	var opt virtualnet.EnvOptions
-	if fam == udpserver.UDP6 {
+	if fam == l4server.UDP6 {
 		opt.Priority = 1
 		opt.NameSuffix = "6"
 		opt.RAServer = true
@@ -376,16 +376,16 @@ func setup(ctx context.Context, mgr *shill.Manager, pool *subnet.Pool, fam udpse
 	}
 
 	port := unusedOrRandomPort(ctx, fam)
-	udp := udpserver.New(fam, port, 512, udpserver.Reflector())
+	udp := l4server.New(fam, port, 512, l4server.Reflector())
 	if err := rt.StartServer(ctx, fam.String(), udp); err != nil {
 		return nil, errors.Wrapf(err, "failed to start %s server", fam)
 	}
-	addrs, err := rt.WaitForVethInAddrs(ctx, fam == udpserver.UDP4, fam == udpserver.UDP6)
+	addrs, err := rt.WaitForVethInAddrs(ctx, fam == l4server.UDP4, fam == l4server.UDP6)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get %s router addrs: ", fam)
 	}
 	var addr net.IP
-	if fam == udpserver.UDP6 {
+	if fam == l4server.UDP6 {
 		addr = addrs.IPv6Addrs[0]
 	} else {
 		addr = addrs.IPv4Addr
@@ -430,7 +430,7 @@ func connectVPN(ctx context.Context, s *server) (*vpn.Connection, error) {
 	return conn, nil
 }
 
-func unusedOrRandomPort(ctx context.Context, fam udpserver.Family) int {
+func unusedOrRandomPort(ctx context.Context, fam l4server.Family) int {
 	rport := func(err error) int {
 		testing.ContextLog(ctx, "Failed to query unused port - generating one randomly, good luck: ", err)
 		return 10000 + rand.Intn(50000)
