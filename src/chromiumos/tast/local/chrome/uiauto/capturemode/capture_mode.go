@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -45,11 +46,18 @@ func TakeAreaScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to enter capture mode")
 	}
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the primary display info")
+	}
+
+	screenCenter := info.WorkArea.CenterPoint()
+
 	// We need to click outside of previous selected area, otherwise we might
 	// resize selected area to an empty rectangle and won't see a capture button.
 	if err := uiauto.Combine("click and drag",
-		mouse.Click(tconn, coords.Point{X: 200, Y: 200}, mouse.LeftButton),
-		mouse.Drag(tconn, coords.Point{X: 0, Y: 0}, coords.Point{X: 100, Y: 100}, 0*time.Second),
+		mouse.Click(tconn, screenCenter.Sub(coords.Point{X: 200, Y: 200}), mouse.LeftButton),
+		mouse.Drag(tconn, screenCenter.Sub(coords.Point{X: 100, Y: 100}), screenCenter.Add(coords.Point{X: 100, Y: 100}), 0*time.Second),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click outside of previously selected area and drag mouse")
 	}
