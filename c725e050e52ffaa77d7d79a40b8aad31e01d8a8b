@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7cfa68_79f9693e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T22:49:40Z",
+      "side": 1,
+      "message": "Markng as resolved while leaving a TODO for a follow up on testtracker and automation.",
+      "parentUuid": "28eabf85_6959596e",
+      "revId": "c725e050e52ffaa77d7d79a40b8aad31e01d8a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3257dd7_8d38090c",
