@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05025d2_a38f50a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15f21141_b5152af1",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40ef07de_92e5b004",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-26T15:38:53Z",
       "side": 1,
       "message": "nit: move the helper closer to the method implementations",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18aba4b_de4a086a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ef07de_92e5b004",
       "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,66 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32a5ff9_94fd178e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592da850_22733794",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 38
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c732e5_70146c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4a997a_bc24b044",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a79e16_3a584874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a484be5a_98e292d4",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b8e925a_cc28d2b7",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-10-26T15:38:53Z",
       "side": 1,
       "message": "defer has a specific meaning in go. Maybe:\n\n\"and allow re-enabling with restoreNonCellularInterfaces.\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 48,
+        "endLine": 165,
+        "endChar": 53
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f44f294_ae544d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8e925a_cc28d2b7",
       "range": {
         "startLine": 165,
         "startChar": 48,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38bbadaf_c4ea8eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b32cac_86ff1531",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e0eacd_00efe706",
@@ -157,6 +307,24 @@
       "writtenOn": "2022-10-26T15:38:53Z",
       "side": 1,
       "message": "nit: end with .",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3ebd3b_ecfe8d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e0eacd_00efe706",
       "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f27bf2f2_04627040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "True, I forget it and just added it.",
+      "parentUuid": "fb2edb33_42258e1b",
+      "range": {
+        "startLine": 191,
+        "startChar": 39,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a45cb8c_09c4fb9e",
@@ -197,6 +389,24 @@
       "writtenOn": "2022-10-26T15:38:53Z",
       "side": 1,
       "message": "nit: remove newline.",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdb605d_1bf511bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a45cb8c_09c4fb9e",
       "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
