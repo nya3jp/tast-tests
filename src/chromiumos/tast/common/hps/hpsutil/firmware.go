@@ -12,11 +12,13 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -39,6 +41,7 @@ const (
 	// Paths to different firmware blobs.
 	hpsFirmwarePath     = "/usr/lib/firmware/hps/"
 	stage1Name          = "mcu_stage1.bin"
+	versionFileName     = "mcu_stage1.version.txt"
 	fpgaBitstreamName   = "fpga_bitstream.bin"
 	fpgaApplicationName = "fpga_application.bin"
 )
@@ -246,4 +249,51 @@ func decompressBin(ctx context.Context) (map[string]string, error) {
 		paths[filePrefix] = filepath.Join(firmwareTmpPath, filePrefix)
 	}
 	return paths, nil
+}
+
+// FetchRunningFirmwareVersion reads out the version of the firmware currently running on HPS.
+//
+// This assumes HPS is powered on and running in the application
+// (that is, hpsd has finished enabling features).
+func FetchRunningFirmwareVersion(hctx *HpsContext) (int32, error) {
+	testing.ContextLog(hctx.Ctx, "Checking running firmware version reported by HPS")
+
+	versionHigh, err := GetRegisterValue(hctx, "10")
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read firmware version high byte register")
+	}
+
+	versionLow, err := GetRegisterValue(hctx, "11")
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read firmware version low byte register")
+	}
+
+	version := int32(versionHigh)<<16 | int32(versionLow)
+	testing.ContextLog(hctx.Ctx, "HPS running version: ", version)
+	return version, nil
+}
+
+// FetchFirmwareVersionFromImage determines the version of the firmware stored in
+// the ChromeOS image running on the DUT.
+func FetchFirmwareVersionFromImage(hctx *HpsContext) (int32, error) {
+	firmwareVersionFilePath := filepath.Join(hpsFirmwarePath, versionFileName)
+
+	var versionBytes []byte
+	var err error
+	if hctx.DutConn != nil {
+		versionBytes, err = linuxssh.ReadFile(hctx.Ctx, hctx.DutConn, firmwareVersionFilePath)
+	} else {
+		versionBytes, err = ioutil.ReadFile(firmwareVersionFilePath)
+	}
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read firmware version from %v", firmwareVersionFilePath)
+	}
+
+	version, err := strconv.ParseInt(strings.TrimSpace(string(versionBytes)), 10, 32)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to decode firmware version from %v", firmwareVersionFilePath)
+	}
+
+	testing.ContextLogf(hctx.Ctx, "Found firmware version from %v: %v", firmwareVersionFilePath, version)
+	return int32(version), nil
 }
