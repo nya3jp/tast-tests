@@ -33,6 +33,24 @@
       "message": "We probably should have all the other helper `Authenticate*AuthFactor` functions work this way, but I guess that\u0027s a larger change. At least this way all the ones that return the response proto do the same thing.",
       "revId": "aa77f7f18510151aa7e9468d497d78cababdf48a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8e35df_38b588de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-10-26T13:57:38Z",
+      "side": 1,
+      "message": "The testing for cryptohome error handling will involve quite some other cryptohome functions (probably the Prepare* stuffs and StartAuthSession as well), so they\u0027ll get changed as well. I just want to make sure that we\u0027ve alignment on this direction so that if there are objects I only need to change fewer code.",
+      "parentUuid": "5eb2aeb8_ca003b3e",
+      "revId": "aa77f7f18510151aa7e9468d497d78cababdf48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
