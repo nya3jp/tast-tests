@@ -82,6 +82,9 @@ const (
 ---
 UseVPD
 `
+
+	// vpdFiles is the file that stores VPD values.
+	vpdFiles = "/sys/firmware/vpd/ro/dsm_calib_r0_%d"
 )
 
 // deviceSettings is the sound_card_init config.
@@ -155,6 +158,10 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 		s.Fatal("rdcRange is empty")
 	}
 	numCh := uint(len(rdcRange))
+
+	if err := verifyVPDExist(ctx, d, numCh); err != nil {
+		s.Fatal("Missing VPD: ", err)
+	}
 
 	if err := removeSoundCardInitFiles(ctx, d, soundCardID); err != nil {
 		s.Fatal("Failed to remove previous files: ", err)
@@ -240,6 +247,22 @@ func removeCalibrationFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID s
 		file := fmt.Sprintf(calibrationFiles, soundCardID, i)
 		if err := fs.Remove(ctx, file); err != nil && !os.IsNotExist(err) {
 			return errors.Wrapf(err, "failed to rm file: %s", file)
+		}
+	}
+	return nil
+}
+
+// verifyVPDExist returns error if VPD files do not exist.
+func verifyVPDExist(ctx context.Context, d *rpcdut.RPCDUT, count uint) error {
+	fs := dutfs.NewClient(d.RPC().Conn)
+	for i := 0; i < int(count); i++ {
+		f := fmt.Sprintf(vpdFiles, i)
+		exists, err := fs.Exists(ctx, f)
+		if err != nil {
+			return errors.Wrapf(err, "failed to stat %s", f)
+		}
+		if !exists {
+			return errors.New(f + " does not exist")
 		}
 	}
 	return nil
