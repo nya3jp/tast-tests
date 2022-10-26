@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37308e16_9de8fb6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "\"ssid\"",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3e6116_fcae59a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "nit: ending period",
+      "range": {
+        "startLine": 33,
+        "startChar": 45,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81831ed9_c2b09577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t take a careful look before -- it seems that this is not a property exposed by shill, so let\u0027s do not add this in shillconst.\n\nHow about checking the value \"ProxyConfig\" here instead? Since \"props are expected properties of created network\", it\u0027s better to contain the property value directly instead of indicating the test code how to check the value here.",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7efc89_9b8c493c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "nit: I know forgetNetwork(...) has no side effect if a.Command(...) above failed, but it\u0027s more common to put this defer after the error check.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8348062d_867c85e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "nit: check the err at first (move this before L123)\n\nbtw, is there any relationship between `out is empty` and `err !\u003d nil`? (I mean can we remove the `out !\u003d nil` check after this change?)",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650ecb1e_340215cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "Instead of doing the conversion here, does it make sense to use bool direclty in tc.props?\n(you can change the type to map[string]interface{} to make it able to hold different types of values)",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 28
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fbbe68_5cb7540b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "nit: use or create the const in shillconst",
+      "range": {
+        "startLine": 170,
+        "startChar": 24,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e03b28d_11de3965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "I\u0027m suprised at this is a json string instead of D-Bus dict...",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 49
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad10708b_09ec9376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "use or create const in shillconst",
+      "range": {
+        "startLine": 215,
+        "startChar": 61,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581ed7a4_8273c0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T04:15:53Z",
+      "side": 1,
+      "message": "nit: \"want %+v\"",
+      "range": {
+        "startLine": 218,
+        "startChar": 38,
+        "endLine": 218,
+        "endChar": 61
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
