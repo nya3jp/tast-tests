@@ -1053,10 +1053,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
-		if err := webRTCUI.WaitUntilGone(videoStream)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for video stream info to disappear")
-		}
-		return nil
+		return uiauto.Combine("wait for video stream info to disappear",
+			webRTCUI.WaitUntilGone(videoStream),
+			ui.EnsureGoneFor(videoStream, 5*time.Second),
+		)(ctx)
 	}, names...); err != nil {
 		s.Error("Failed to gather WebRTC metrics for video streams: ", err)
 	} else {
