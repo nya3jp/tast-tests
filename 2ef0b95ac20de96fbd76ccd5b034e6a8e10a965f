@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55faf82a_a7c84982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-26T22:27:17Z",
+      "side": 1,
+      "message": "policy.LacrosAvailability is not showing in the screenshot. This probably override the policy you set in persistent fixture.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71aecab7_47b120e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
@@ -151,6 +174,30 @@
       "side": 1,
       "message": "No, the screenshot was taken before reaching to L89 (I put some sleep to do that) but interestingly it didn\u0027t fail in L72, but the test passed with success.",
       "parentUuid": "434dea0e_5fe828c1",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 107
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1dfbcd_9d615426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-26T22:27:17Z",
+      "side": 1,
+      "message": "I think the lacros should be a yellow chrome icon? which is different from the screenshot. See comment above.",
+      "parentUuid": "65b9373b_53f2c76b",
       "range": {
         "startLine": 71,
         "startChar": 18,
