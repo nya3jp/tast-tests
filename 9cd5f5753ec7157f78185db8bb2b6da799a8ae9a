@@ -16,6 +16,160 @@
       "message": "Thanks to all reviewers for your time on this.",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fa33a1_22ba7f62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "I\u0027m going to be OOO. Let me loop in Eliot to hand over this review.",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e24ece0_ec556e63",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "I think this should not be a part of chrome package.\nMany of the function are not related to Chrome.\nAlso, some functions should not be provided as a part of support library, because the uses should be very limited carefully.\n\nI\u0027d recommend to move this to somewhere under subdir of the bundles.",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea396493_b92ab1c4",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "deprecated:\n\nhttps://pkg.go.dev/io/ioutil#ReadAll",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f990de6_bd961c6a",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "nit: should body be alreayd []byte, right?",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4ee8d6_862d2d36",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "looks dup:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go;l\u003d21\n\nI think we should refactor to move the func to somewhere under chrome/ash/... (rather than proc), but let\u0027s not dup anyways.",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbcbb92f_aabe9da7",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "this should be provided as a function just only for specific purpose.\nIn general, tast tests should be written in a way that is independent from versions (and thus accessing lsbrelease is restricted).\n\nThere\u0027re some edge cases (like this), but this kind of function should be restricted to be accessed only from some intentional functions/tests only.",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494640bd_3a87bae9",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "just looking at the code, it overwrites all the time. Should we check actual version values? Or if it is guaranteed somehow, could you add a link to the reference where it is defined so?",
+      "range": {
+        "startLine": 122,
+        "startChar": 21,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeeb35e3_2337c766",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:28:46Z",
+      "side": 1,
+      "message": "should this cause to fail?",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
