@@ -80,6 +80,30 @@
       },
       "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfb8fa3_d6adabb0",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-26T14:43:47Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure about this because the taeko devices (this model has HPS functionality enabled on it) that I was able to lease with the crosfleet didn\u0027t have `--has-hps` enabled on them.\n\nI think we can try to land this test without `--has-hps` flag and monitor how it will work. In case of the failures because `--has-hps` is not enabled we can just add flag.\n\nOsama, Renato what do you think?",
+      "parentUuid": "692ba89f_3bbaab6e",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
