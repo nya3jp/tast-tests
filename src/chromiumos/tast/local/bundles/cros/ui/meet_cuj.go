@@ -982,7 +982,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Report info from chrome://webrtc-internals.
 	webRTCUI := ui.WithTimeout(10 * time.Minute)
-	videoStream := nodewith.NameContaining("VideoStream").First()
 	if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
 		s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
 	} else {
@@ -1053,10 +1052,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
-		if err := webRTCUI.WaitUntilGone(videoStream)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for video stream info to disappear")
-		}
-		return nil
+		videoStream := nodewith.NameContaining("VideoStream").First()
+		return uiauto.Combine("wait for video stream info to disappear",
+			webRTCUI.WaitUntilGone(videoStream),
+			// Wait a little longer because we have seen the histograms
+			// sometimes missing one or two video streams (see b/255342950).
+			ui.EnsureGoneFor(videoStream, 5*time.Second),
+		)(ctx)
 	}, names...); err != nil {
 		s.Error("Failed to gather WebRTC metrics for video streams: ", err)
 	} else {
