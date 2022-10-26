@@ -46,6 +46,30 @@
       },
       "revId": "85dea1a47aaf622460f54e6b32f759626fe28d7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6419d60_20f9403c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-26T18:10:15Z",
+      "side": 1,
+      "message": "For bool/tristate kernel config, there\u0027s no need to worry about value.\n\nLooks at the snippet in config_verify.go\n```\n\t// enabled contains keys that should be set to y or m.\n\tenabled []string\n\t// value contains key and value pairs that should be set.\n\tvalue map[string]string\n```\n\nValues are mostly not used to determine if a feature is enabled or not, they are just modifying some already enabled features.\nMaybe add a comment in isEnabled to address this?",
+      "parentUuid": "b10b5865_e8e82807",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "85dea1a47aaf622460f54e6b32f759626fe28d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
