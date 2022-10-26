@@ -114,6 +114,7 @@ const (
 	ManagerPropertyGlobalFTEnabled        = "WiFi.GlobalFTEnabled"
 	ManagerPropertyScanAllowRoam          = "WiFi.ScanAllowRoam"
 	ManagerPropertyDOHProviders           = "DNSProxyDOHProviders"
+	ManagerPropertyDisableWiFiVHT         = "DisableWiFiVHT"
 	ManagerPropertyPortalHTTPSURL         = "PortalHttpsUrl"
 )
 

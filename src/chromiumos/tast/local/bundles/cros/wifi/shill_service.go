@@ -2353,6 +2353,21 @@ func (s *ShillService) SetScanAllowRoamProperty(ctx context.Context, req *wifi.S
 	return &empty.Empty{}, nil
 }
 
+// SetGlobalFTProperty set the WiFi.DisableWiFiVHT manager property value.
+func (s *ShillService) SetManagerPropertyDisableWiFiVHT(ctx context.Context, req *wifi.SetManagerPropertyDisableWiFiVHTRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyDisableWiFiVHT, req.Disabled); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyDisableWiFiVHT, req.Disabled)
+	}
+	return &empty.Empty{}, nil
+}
+
 // FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
 func (s *ShillService) FlushBSS(ctx context.Context, req *wifi.FlushBSSRequest) (*empty.Empty, error) {
 	ctx, cancel := reserveForReturn(ctx)

@@ -161,6 +161,9 @@ service ShillService {
   // SetScanAllowRoamProperty set the WiFi.ScanAllowRoam manager property value.
   rpc SetScanAllowRoamProperty(SetScanAllowRoamPropertyRequest) returns (google.protobuf.Empty) {}
 
+// SetManagerPropertyDisableWiFiVHT persistently enables/disables VHT via shill.
+  rpc SetManagerPropertyDisableWiFiVHT(SetManagerPropertyDisableWiFiVHTRequest) returns (google.protobuf.Empty) {}
+
   // DisconnectReason is a streaming gRPC, who waits for the wpa_supplicant's
   // DisconnectReason property change, and returns the code to the client.
   // To notify the caller that it is ready, it sends an empty response after
@@ -530,6 +533,10 @@ message GetScanAllowRoamPropertyResponse {
 
 message SetScanAllowRoamPropertyRequest {
   bool allow = 1;
+}
+
+message SetManagerPropertyDisableWiFiVHTRequest {
+  bool disabled = 1;
 }
 
 message InitDUTRequest {
