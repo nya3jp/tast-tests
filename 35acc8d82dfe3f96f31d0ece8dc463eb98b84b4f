@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a25d7c_74554da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-26T20:35:22Z",
+      "side": 1,
+      "message": "Sorry about this, I realized this line was present locally but I never patched my commit before I uploaded for review. I\u0027m hoping for a quick review -- I thoroughly tested this on my end and ensure that it fixes tablet mode TaskSwitchCUJ.",
+      "revId": "35acc8d82dfe3f96f31d0ece8dc463eb98b84b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
