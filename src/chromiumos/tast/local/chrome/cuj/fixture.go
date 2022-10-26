@@ -6,8 +6,8 @@ package cuj
 
 import (
 	"context"
-	"io"
 	"os"
+	"path"
 	"path/filepath"
 	"time"
 
@@ -38,6 +38,9 @@ const (
 	// CPUStablizationTimeout is the time to wait for cpu stablization, which
 	// is the sum of cpu cool down time and cpu idle time.
 	CPUStablizationTimeout = CPUCoolDownTimeout + CPUIdleTimeout
+	// webRTCLogsGatherTimeout is the time allowed for gathering the WebRTC
+	// event log files into a gzip archive in the test output directory.
+	webRTCLogsGatherTimeout = 15 * time.Second
 
 	resetTimeout = 30 * time.Second
 
@@ -111,6 +114,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		PostTestTimeout: webRTCLogsGatherTimeout,
 		Vars:            []string{"ui.cujEnterpriseAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -202,6 +206,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		PostTestTimeout: webRTCLogsGatherTimeout,
 		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -219,6 +224,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		PostTestTimeout: webRTCLogsGatherTimeout,
 		Vars:            []string{"ui.cujAccountPool"},
 	})
 }
@@ -581,32 +587,18 @@ func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.Fixt
 		return
 	}
 	s.Log("Gathering WebRTC event log files: ", webRTCLogs)
+	if err := testexec.CommandContext(ctx, "tar",
+		append(
+			[]string{"-cvzf", path.Join(s.OutDir(), "webrtc-logs.tar.gz")},
+			webRTCLogs...,
+		)...,
+	).Run(testexec.DumpLogOnError); err != nil {
+		s.Log("Failed to gather WebRTC event log files: ", err)
+	}
+	s.Log("Deleting WebRTC event log files in /tmp")
 	for _, filename := range webRTCLogs {
-		outFile := filepath.Join(s.OutDir(), filepath.Base(filename))
-		if err := copyFileForTestResults(filename, outFile); err != nil {
-			s.Logf("Failed to copy %q to %q: %s", filename, outFile, err)
-		}
 		if err := os.Remove(filename); err != nil {
 			s.Logf("Failed to delete %q: %s", filename, err)
 		}
 	}
-}
-
-// copyFileForTestResults copies a file. The destination file must not already exist. The
-// created copy has file permissions 0644 regardless of the file permissions of the original.
-func copyFileForTestResults(srcPath, dstPath string) error {
-	src, err := os.Open(srcPath)
-	if err != nil {
-		return err
-	}
-	defer src.Close()
-
-	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
-	if err != nil {
-		return err
-	}
-	defer dst.Close()
-
-	_, err = io.Copy(dst, src)
-	return err
 }
