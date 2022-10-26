@@ -16,6 +16,46 @@
       "message": "Hi,\n\nCan you take another look please?\n\nThanks!",
       "revId": "5fb6a0f0aee037d6af7370f5d537ba4b4d310b0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f7c0ce_bab83688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:15:38Z",
+      "side": 1,
+      "message": "I need to be OOO, so let me loop in Eliot to continue reviewing.",
+      "revId": "5fb6a0f0aee037d6af7370f5d537ba4b4d310b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7dccf7_3d7bd9a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:15:38Z",
+      "side": 1,
+      "message": "do you mean, maybe:\n\nvar errs []error\n...\nerrs \u003d append(errs, errors.Wrapf(err, \"...\"))\n\n?\n- |err| should be somewhat kept.\n- The first error instance of Wrap(f?) should be the cause, while errs pointing the previous error is not the cause.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 67
+      },
+      "revId": "5fb6a0f0aee037d6af7370f5d537ba4b4d310b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b8170af_1edd3940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:15:38Z",
+      "side": 1,
+      "message": "Ok for short term.\n\nCould you clarify in the document that callers need to call CloseAll at the end of use?\n\nAlso, my concern is that conns[] will keep the stale instances forever.\nCould you add TODO to come up with some structure to destroy them?",
+      "parentUuid": "67ebcbf3_bf76262d",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98fc3ae5_999e8694",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
         "patchSetId": 4
