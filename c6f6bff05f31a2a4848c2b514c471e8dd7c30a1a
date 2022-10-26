@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabb072a_a7b204a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed, using `website` for all similar wording.",
+      "parentUuid": "15609e6c_b2073e09",
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76799fe_3b21477e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "This should be `login` (one word).",
+      "range": {
+        "startLine": 32,
+        "startChar": 80,
+        "endLine": 32,
+        "endChar": 86
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bb5c3e_13233100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e76799fe_3b21477e",
       "range": {
         "startLine": 32,
         "startChar": 80,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5637d4_4e462a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e0baaf3f_fadbf58a",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be699f7b_439374a2",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "optional nit: I would remove this blank line because the constants below are so closely related to the type definition above.",
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fd355e_683b4ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Sorry, this is automatically formatted by `gofmt`, should we disable the `gofmt` for this?",
+      "parentUuid": "be699f7b_439374a2",
       "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26055483_72cf3163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d42de2d0_1e1083a1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "237955c6_bb91f534",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "This should be\n\n\t// cr is for faillog.\n\tcr *chrome.Chrome\n\t// outDir is for faillog.\n\toutDir string\n\nbecause of https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4219c615_d4a639fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "237955c6_bb91f534",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -173,6 +305,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "607a5fcf_94538df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Doc string removed.",
+      "parentUuid": "a4593f7d_ce5e9188",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 114
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abb0a7d_e1c6882a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Doc string removed.",
+      "parentUuid": "b336c889_662d95c5",
+      "range": {
+        "startLine": 83,
+        "startChar": 99,
+        "endLine": 83,
+        "endChar": 105
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ef2042_dc4496a6",
@@ -186,6 +366,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "optional nit: Inline this because the name `classNameRegexp` imparts no further information about what appears as an argument to `ClassNameRegex`.",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 67
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f55154_9d58a306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a6ef2042_dc4496a6",
       "range": {
         "startLine": 104,
         "startChar": 2,
@@ -219,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4399252d_839ddd6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "15573698_d4ad5d9c",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2836fd_cbcfb913",
@@ -232,6 +460,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "optional nit: Use `%q` to wrap the URL in quotes so it doesn\u0027t look like the colon could possibly be part of the URL.",
+      "range": {
+        "startLine": 165,
+        "startChar": 55,
+        "endLine": 165,
+        "endChar": 57
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b8963f_a26772fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9f2836fd_cbcfb913",
       "range": {
         "startLine": 165,
         "startChar": 55,
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96fef30_655267cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Doc string added",
+      "parentUuid": "f025d928_cde9b659",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2264d30_6102ba63",
@@ -278,6 +554,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "optional nit: Consider\n\n\tif err :\u003d conn.CloseTarget(ctx); err !\u003d nil {\n\t\ttesting.ContextLogf(ctx, \"Failed to close web site %q: %v\", url, err)\n\t}\n\tif err :\u003d conn.Close(); err !\u003d nil {\n\t\ttesting.ContextLogf(ctx, \"Failed to close test connection to web site %q: %v\", url, err)\n\t}\n\nbecause of https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46243d1b_33839aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a2264d30_6102ba63",
       "range": {
         "startLine": 187,
         "startChar": 0,
@@ -334,6 +634,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b40e255_9b5b4edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9a213f93_4261bfaf",
+      "range": {
+        "startLine": 191,
+        "startChar": 33,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20e837d_b0a947b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9d4bc2d7_4b1d347e",
+      "range": {
+        "startLine": 191,
+        "startChar": 42,
+        "endLine": 191,
+        "endChar": 43
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76c1de36_f4c15487",
@@ -347,6 +695,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit: `to`",
+      "range": {
+        "startLine": 193,
+        "startChar": 54,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a2d1e4_80b83bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "76c1de36_f4c15487",
       "range": {
         "startLine": 193,
         "startChar": 54,
@@ -380,6 +752,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "964eaf78_4d74d703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "aa9dba2d_d85983bd",
+      "range": {
+        "startLine": 198,
+        "startChar": 26,
+        "endLine": 198,
+        "endChar": 65
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15d01e62_861b77a3",
@@ -393,6 +789,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit:\n\n\t`failed to turn off \"request mobile site\"`",
+      "range": {
+        "startLine": 203,
+        "startChar": 26,
+        "endLine": 203,
+        "endChar": 66
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65b4569_9f22e68a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "15d01e62_861b77a3",
       "range": {
         "startLine": 203,
         "startChar": 26,
@@ -426,6 +846,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3257bc84_d2db2dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0ccdc593_87acf7b4",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 65
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71c634f5_51739080",
@@ -439,6 +883,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit: Use `%q` to be consistent with lines 183 and 211.",
+      "range": {
+        "startLine": 213,
+        "startChar": 55,
+        "endLine": 213,
+        "endChar": 57
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349a804b_4755327d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "71c634f5_51739080",
       "range": {
         "startLine": 213,
         "startChar": 55,
@@ -472,6 +940,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0033f6a9_05f2ee64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "559f6644_bc103d7f",
+      "range": {
+        "startLine": 217,
+        "startChar": 26,
+        "endLine": 217,
+        "endChar": 64
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad4402dd_000412ab",
@@ -485,6 +977,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit:\n\n\t// requestMobileSiteAndVerify opens the three dot menu, clicks the \"request mobile site\"\n\t// button, waits for the web page to be stable, and verifies the expected mobile site status.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 61
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b94e424_4bdd7e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ad4402dd_000412ab",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -541,6 +1057,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cfa7151_2fb6f862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed by refactored",
+      "parentUuid": "cd7e29bd_47c7c5c6",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58689bc9_1d6d91ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed by refactored",
+      "parentUuid": "25c7c8b7_2fbc7666",
+      "range": {
+        "startLine": 231,
+        "startChar": 42,
+        "endLine": 231,
+        "endChar": 43
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d73e798_606a7f2b",
@@ -554,6 +1118,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit: `to`",
+      "range": {
+        "startLine": 233,
+        "startChar": 54,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "187700d2_dc45f8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed by refactored",
+      "parentUuid": "3d73e798_606a7f2b",
       "range": {
         "startLine": 233,
         "startChar": 54,
@@ -587,6 +1175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a39698_9c3157df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed, thank you!",
+      "parentUuid": "54eb4c98_61e5a59b",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "548032f8_40c3fac4",
@@ -600,6 +1212,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit:\n\n\t// verifyMobileSite opens the three dot menu, checks if the \"request mobile site\" button is checked,\n\t// verifies the expected \"request mobile site\" button status, and then closes the three dot menu.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 48
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "791836eb_ce370d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "548032f8_40c3fac4",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -679,6 +1315,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e950e05_08d86111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a33385ee_d0513331",
+      "range": {
+        "startLine": 259,
+        "startChar": 63,
+        "endLine": 259,
+        "endChar": 64
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84cda97_5034b3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "de700c3b_f951ecbb",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 112
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82837004_ce7a266b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b955b8f2_654ed141",
+      "range": {
+        "startLine": 259,
+        "startChar": 22,
+        "endLine": 259,
+        "endChar": 25
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8860fb86_8d2667ee",
@@ -725,6 +1433,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6decb6_4d97ae52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "This method was removed",
+      "parentUuid": "8860fb86_8d2667ee",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 107
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7399c497_dc68641f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed by remove this method",
+      "parentUuid": "e0df9730_11b47404",
+      "range": {
+        "startLine": 268,
+        "startChar": 71,
+        "endLine": 268,
+        "endChar": 106
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d30d61b4_46f49d33",
@@ -738,6 +1494,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "It should be `revisitWeb` because _revisit_ is one word.",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 15
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b7ba342_922d4516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "This method was removed",
+      "parentUuid": "d30d61b4_46f49d33",
       "range": {
         "startLine": 269,
         "startChar": 5,
@@ -794,6 +1574,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14086002_708cc3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "This method was removed",
+      "parentUuid": "bc483375_05477d06",
+      "range": {
+        "startLine": 271,
+        "startChar": 52,
+        "endLine": 271,
+        "endChar": 54
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89245db2_9d3dcffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "This method was removed",
+      "parentUuid": "ef129956_0b0d3c4a",
+      "range": {
+        "startLine": 271,
+        "startChar": 50,
+        "endLine": 271,
+        "endChar": 52
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3679e387_35bfb0ea",
@@ -807,6 +1635,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "nit:\n\n\t// ensureLeftOffSettingOn opens chrome://settings/onStartup, ensures that \"continue\n\t// where you left off\" is turned on, and then closes chrome://settings/onStartup.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 52
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26aba0d_fb46ebfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "3679e387_35bfb0ea",
       "range": {
         "startLine": 276,
         "startChar": 0,
@@ -840,6 +1692,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eda5407_9bf22b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "04722d7f_8eaf72ca",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 12
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c37415e1_d45c0374",
@@ -853,6 +1729,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "`%q` for consistency",
+      "range": {
+        "startLine": 286,
+        "startChar": 43,
+        "endLine": 286,
+        "endChar": 45
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "411ad422_5dcfc2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c37415e1_d45c0374",
       "range": {
         "startLine": 286,
         "startChar": 43,
@@ -886,6 +1786,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f58de17_398db58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c8e7c065_508e22a8",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 14
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30d18d0_325f3e0b",
@@ -909,6 +1833,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2cd42b_bcdb37af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f30d18d0_325f3e0b",
+      "range": {
+        "startLine": 294,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 15
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a5d75b3_211c8546",
@@ -922,6 +1870,30 @@
       "writtenOn": "2022-10-18T19:19:27Z",
       "side": 1,
       "message": "Based on the function comment, I guess what you want is:\n\n\tverify :\u003d res.ui.WaitUntilExists(coninueLeftOff.Role(role.RadioButton))\n\treturn uiauto.IfFailThen(verify, uiauto.Combine(`turn on \"continue where you left off\"`,\n\t\t\tres.ui.LeftClick(coninueLeftOff.Role(role.InlineTextBox)), verify))(ctx)",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 7
+      },
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc9f9b8_328a53f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7a5d75b3_211c8546",
       "range": {
         "startLine": 295,
         "startChar": 0,

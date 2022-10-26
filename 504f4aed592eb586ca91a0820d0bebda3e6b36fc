@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561ab6a3_74d2632e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-26T11:13:18Z",
+      "side": 1,
+      "message": "Sorry for the delay and sorry for all those wording issues, thank you all for your time!",
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
