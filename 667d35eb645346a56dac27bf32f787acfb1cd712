@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93c48e52_dc04fe6a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T07:45:35Z",
+      "side": 1,
+      "message": "I prefer to be explicit here (even if it\u0027s a no-op). And they do need to be \u003e0 .",
+      "parentUuid": "e0ba7d3f_672a7384",
+      "revId": "667d35eb645346a56dac27bf32f787acfb1cd712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbc61d41_cfc91d18",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 1
