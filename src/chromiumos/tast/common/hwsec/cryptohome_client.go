@@ -50,6 +50,18 @@ func getLastLine(s string) string {
 	return lines[len(lines)-1]
 }
 
+// UserSecretStashStatus identifies the status of UserSecretStash usage.
+type UserSecretStashStatus int64
+
+const (
+	// NotEnabled force using legacy VaultKeysets are used for key backing store for the user.
+	NotEnabled UserSecretStashStatus = iota
+	// Enabled makes UserSecretStash preferred key backing store for the user.
+	Enabled
+	// Rolledback rollbacks UserSecretStash after enabling it.
+	Rolledback
+)
+
 const (
 	// OldCryptohomeMountAPI makes the client use old api.
 	OldCryptohomeMountAPI = iota
