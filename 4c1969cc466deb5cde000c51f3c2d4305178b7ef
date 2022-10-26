@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0779f77d_4b1c10c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T14:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0e3240_806b9655",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 54
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48dba402_73b5f34b",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87517379_1f928f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T14:29:38Z",
+      "side": 1,
+      "message": "I moved the restoreNonCellularInterfaces to restore the states.",
+      "parentUuid": "48dba402_73b5f34b",
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8340edb_913a8f84",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-10-26T13:42:59Z",
       "side": 1,
       "message": "recommendation: restoreNonCellularInterfaces().",
+      "range": {
+        "startLine": 180,
+        "startChar": 17,
+        "endLine": 180,
+        "endChar": 71
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe91633b_2ee73a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T14:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8340edb_913a8f84",
       "range": {
         "startLine": 180,
         "startChar": 17,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3fb582_269b9129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T14:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfb5d357_7412d7a8",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be36d63d_a010461a",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-10-26T13:42:59Z",
       "side": 1,
       "message": "huge nit: runTestOffline ?",
+      "range": {
+        "startLine": 192,
+        "startChar": 20,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2dcd13_5fe07d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-10-26T14:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be36d63d_a010461a",
       "range": {
         "startLine": 192,
         "startChar": 20,
