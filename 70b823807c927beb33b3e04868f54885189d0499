@@ -718,6 +718,24 @@
       "parentUuid": "7eb9a436_3bdaab67",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707c089a_9992d042",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T03:50:14Z",
+      "side": 1,
+      "message": "Updated based on go/lacros-independent-updates",
+      "parentUuid": "2927d18a_81d740c1",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
