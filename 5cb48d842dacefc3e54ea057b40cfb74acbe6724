@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b09076_c5646917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-26T16:27:01Z",
+      "side": 1,
+      "message": "Your package name and directory name mismatched. Please see this CL as an example to fix yours. Thanks.",
+      "revId": "5cb48d842dacefc3e54ea057b40cfb74acbe6724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
