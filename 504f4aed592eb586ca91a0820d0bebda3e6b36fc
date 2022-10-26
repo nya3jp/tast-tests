@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a100e1b_3add6525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "nit: You only have to wrap at 72 characters, so this word `for` can go at the end of the previous line.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1bbb42f_75392aa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "Don\u0027t put a space at the front of the line.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "561ab6a3_74d2632e",
@@ -14,6 +60,121 @@
       "writtenOn": "2022-10-26T11:13:18Z",
       "side": 1,
       "message": "Sorry for the delay and sorry for all those wording issues, thank you all for your time!",
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fef4b3f_7b85ca58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "nit: This probably should be `nil`.\n\nSee: https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9bb90b_0aac5e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "nit: How about:\n\n\toptsForUser :\u003d map[userType][]chrome.Option{\n\t\tchild:  []chrome.Option{\n\t\t\tchrome.GAIALogin(chrome.Creds{\n\t\t\t\tUser:       s.RequiredVar(\"family.unicornEmail\"),\n\t\t\t\tPass:       s.RequiredVar(\"family.unicornPassword\"),\n\t\t\t\tParentUser: s.RequiredVar(\"family.parentEmail\"),\n\t\t\t\tParentPass: s.RequiredVar(\"family.parentPassword\"),\n\t\t\t}),\n\t\t},\n\t\tnormal: []chrome.Option{\n\t\t\tchrome.GAIALogin(chrome.Creds{\n\t\t\t\tUser: s.RequiredVar(\"family.parentEmail\"),\n\t\t\t\tPass: s.RequiredVar(\"family.parentPassword\"),\n\t\t\t}),\n\t\t},\n\t}\n\t\n\tbrowserType :\u003d s.Param().(browser.Type)\n\tswitch browserType {\n\tcase browser.TypeAsh:\n\t\t// TODO(b/244513681): Enable guest mode test for lacros once lacros supports the guest mode.\n\t\toptsForUser[guest] \u003d []chrome.Option{chrome.GuestLogin()}\n\tcase browser.TypeLacros:\n\t\toptsForUser[child] \u003d append(optsForUser[child], chrome.EnableFeatures(\"LacrosForSupervisedUsers\"))\n\t}\n\t\n\t...\n\t\n\tfor user, opts :\u003d range optsForUser {",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d6b2f6_8f6fa8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "Should this be `guest`?",
+      "range": {
+        "startLine": 116,
+        "startChar": 20,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d818c6_a200041b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "`revisits`",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 15
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c09f071_4e7b1e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "`that`",
+      "range": {
+        "startLine": 164,
+        "startChar": 38,
+        "endLine": 164,
+        "endChar": 40
+      },
       "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

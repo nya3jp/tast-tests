@@ -165,6 +165,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ba4be4_c0181134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:10:13Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "04fd355e_683b4ad8",
+      "revId": "c6f6bff05f31a2a4848c2b514c471e8dd7c30a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42de2d0_1e1083a1",
