@@ -16,6 +16,24 @@
       "message": "Let\u0027s let the other CL land and verify that we are green again, then remove this in a follow-up after.",
       "revId": "5cf116a0bcdcd9681c99546da828fc87c2989eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a29cd8_85142648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-10-26T19:41:04Z",
+      "side": 0,
+      "message": "Understood. Done.",
+      "parentUuid": "c235197c_ba887506",
+      "revId": "5cf116a0bcdcd9681c99546da828fc87c2989eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
