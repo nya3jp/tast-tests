@@ -105,6 +105,30 @@
       },
       "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603eaed3_c7127ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_esim_update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-26T15:20:07Z",
+      "side": 1,
+      "message": "It also has benefits in case you ever move performFWUpdate into a helper package -- passing around the State will cause lint errors in those cases.",
+      "parentUuid": "6da09ca3_e1d85125",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "559a6e301ffee9ae009e920b78220fadb6651654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
