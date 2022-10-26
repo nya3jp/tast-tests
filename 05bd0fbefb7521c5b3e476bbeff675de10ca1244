@@ -104,6 +104,30 @@
       },
       "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6db7824_079e74c3",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-10-26T16:53:32Z",
+      "side": 1,
+      "message": "That\u0027s strange!\n\nI agree with your plan, let\u0027s land it without `--has-hps` instead of overriding the value of `--has-hps`.\n\nAccording to my understanding, if \"taeko\" has the HPS functionality, then it should always have `--has-hps` enabled. If we got any failures, we can file a bug to the platform side to better understand when `--has-hps` is exactly enabled.",
+      "parentUuid": "dbfb8fa3_d6adabb0",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
