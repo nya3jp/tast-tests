@@ -8,6 +8,7 @@ package crosserverutil
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -38,6 +39,12 @@ type Client struct {
 	port      int
 	forwarder *ssh.Forwarder
 	cmd       *ssh.Cmd
+}
+
+// tcpServerResponse contains the return value for RunTCPServer.
+type tcpServerResponse struct {
+	// Port represents the TCP port number the gRPC server is listening on.
+	Port int `json:"port"`
 }
 
 // Close shuts down cros server and performs other necessary cleanup.
@@ -92,22 +99,23 @@ func Dial(ctx context.Context, d *dut.DUT, hostname string, port int, useForward
 		}
 	}()
 
+	// Start CrOS server
+	if err = c.startCrosServer(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start CrOS server process")
+	}
+
 	// Setup forwarder to expose remote gRPC server port through SSH connection
 	if useForwarder {
-		addr := fmt.Sprintf("localhost:%d", port)
+		addr := fmt.Sprintf("localhost:%d", c.port)
+		testing.ContextLogf(ctx, "Setup port forwarding to %s", addr)
 		c.forwarder, err = sshConn.ForwardLocalToRemote("tcp", addr, addr, func(err error) {})
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup port forwarding")
 		}
 	}
 
-	// Start CrOS server
-	if err = c.startCrosServer(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to start CrOS server process")
-	}
-
 	// Setup gRPC channel
-	c.Conn, err = grpc.Dial(fmt.Sprintf("%s:%d", hostname, port), grpc.WithInsecure())
+	c.Conn, err = grpc.Dial(fmt.Sprintf("%s:%d", hostname, c.port), grpc.WithInsecure())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to setup gRPC channel")
 	}
@@ -118,9 +126,11 @@ func Dial(ctx context.Context, d *dut.DUT, hostname string, port int, useForward
 // startCrosServer initiates the cros server process and grpc server on DUT through SSH
 func (c *Client) startCrosServer(ctx context.Context) error {
 
-	// Try to kill any process using the desired port
-	if err := c.stopCrosServer(ctx); err != nil {
-		return errors.Wrapf(err, "failed to kill existing process using the TCP port: %d", c.port)
+	// Try to kill any process using the specific desired port
+	if c.port != 0 {
+		if err := c.stopCrosServer(ctx); err != nil {
+			return errors.Wrapf(err, "failed to kill existing process using the TCP port: %d", c.port)
+		}
 	}
 
 	// Start CrOS server as a separate process
@@ -134,14 +144,22 @@ func (c *Client) startCrosServer(ctx context.Context) error {
 	}
 	stdoutScanner := bufio.NewScanner(cmdStdOutReader)
 
+	resChannel := make(chan int)
+	errChannel := make(chan error, 1)
+
 	// Pipe the output from ssh command to testing.Contextlog
 	go func() {
 		// The command session will close stdout upon termination
 		// causing the scanner to exit the loop.
-		for stdoutScanner.Scan() {
-			line := stdoutScanner.Text()
-			testing.ContextLog(ctx, "cros stdout: ", line)
+		stdoutScanner.Scan()
+		tcpServerResponseJSON := stdoutScanner.Text()
+		testing.ContextLog(ctx, "cros stdout: ", tcpServerResponseJSON)
+
+		var response tcpServerResponse
+		if err := json.Unmarshal([]byte(tcpServerResponseJSON), &response); err != nil {
+			errChannel <- errors.Wrapf(err, "failed to unmarshall cros server response: %v", tcpServerResponseJSON)
 		}
+		resChannel <- response.Port
 	}()
 
 	cmdStdErrReader, err := cmd.StderrPipe()
@@ -164,6 +182,14 @@ func (c *Client) startCrosServer(ctx context.Context) error {
 		return errors.Wrapf(err, "failed to start CrOS server cmd: %v", cmdStr)
 	}
 	c.cmd = cmd
+
+	// Wait until an assigned port or an error is returned.
+	select {
+	case assignedPort := <-resChannel:
+		c.port = assignedPort
+	case err := <-errChannel:
+		return err
+	}
 
 	return nil
 }
