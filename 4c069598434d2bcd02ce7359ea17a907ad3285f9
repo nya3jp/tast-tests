@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8a9569_9b431515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Thank you for your patience with this review! Overall things are looking pretty good, just have some questions added below. Please let me know if anything is unclear :)",
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79756844_66b05f81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Nit: Consider rewording this to something like \"Checks that a bluetooth keyboard can be used to complete OOBE\".",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679436c9_52a404d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Will these be used by other tests? Would it make sense to move these into a shared/utility file, or even just declare finders in a shared file that can be used?\n\nE.g. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3970785/1/src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ebc094_d13cae0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Would it be possible to query servo directly to determine if a keyboard is connected? This seems like it might be more reliable/extensible than relying on the UI.\n\nOn a similar note, WDYT of extracting this logic into a helper method? This seems like it may end up being used by multiple HID detection tests?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 95
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74b1036_e33e2572",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "If this will be re-used could we move this into a shared/utility file?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228d6a19_9ae24d66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Nit: I think we could probably remove this and rely on the `LeftClick` method below which will wait until the node exists.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af0f6137_87f81478",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Is there servo cleanup that we need to do as well?",
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb69e615_d11a9bae",
+        "filename": "src/chromiumos/tast/remote/cros/ui/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-26T00:07:59Z",
+      "side": 1,
+      "message": "Nit: Consider updating to mention we failed to find a node with a name containing `name`.",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
