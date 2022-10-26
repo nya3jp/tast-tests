@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37743d4f_cfa1afdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: wrap the lines.",
+      "range": {
+        "startLine": 23,
+        "startChar": 71,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a988230f_bc292ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "I notice that there are a few issues here that would\u0027ve been picked up by presubmit. Please ensure (even though you have noted the inclusive language presubmit error) that all other errors are solved before bypassing hooks.\n\nAnother point is: do you have a SME from the audio side who can review this? Generally it takes both a tast reviewer and someone familiar with the area to approved.",
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f775041_0105ba21",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "should this be `if the err is nil` ? in the case (line 28) where it is non-nil you don\u0027t return a deferred function?",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893d13a2_86b7f22a",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "If this doesn\u0027t get ran what is the implications on other tests? I wonder if it\u0027s worth exposing this functionality as a software dependency or fixture instead.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcfe278_9f23a3ec",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: extra space not needed here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 87,
+        "endLine": 46,
+        "endChar": 88
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60b9aa9_eb8f981d",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: why not just inline this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb59642_5ff88245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: do you have a team ldap you can add here as well as your own?",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4b574d_81a28156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "Please use a `cleanupCtx` here to ensure this is ran on timeout:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41940ec_9cb59a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: `verifyNumberOfVolumeChanges`",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff778c59_0e82db25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: start with lowercase, this should\u0027ve been picked up in the presubmit, did you ensure all presubmit messages were appeased (except the `dummy` coil usage) before submitting?",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a243808_3cea227a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "nit: remove extra space",
+      "range": {
+        "startLine": 135,
+        "startChar": 70,
+        "endLine": 135,
+        "endChar": 71
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec67e917_58a26363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "Again use cleanupCtx here.",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fa6c81_500df3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-26T00:41:24Z",
+      "side": 1,
+      "message": "does the error contain more information here? might be worth suffixing these errors with steps 10 - 25 etc",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
