@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71484fef_75adee46",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T16:10:06Z",
+      "side": 1,
+      "message": "There seems to be a need for querying ash versions in some tests already and it\u0027s been spread across some packages. It would be nice to do a follow up independently of this change so that we can make sure all callsites could be covered at once. WDYT?",
+      "parentUuid": "ca029158_d298c4dc",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea396493_b92ab1c4",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 6
