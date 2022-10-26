@@ -50,9 +50,9 @@ func isDisabled() (bool, error) {
 //
 //	tast run -var=expectations.DebugLogging=true <DUT> <test name pattern>
 var debugLogging = testing.RegisterVarString(
-	"expectations.DebugLogging",
+	"expectations.debugLogging",
 	"false",
-	"Set to true to enable debug logging for expectations. Example: --var=expectations.DebugLogging=true")
+	"Set to true to enable debug logging for expectations. Example: --var=expectations.debugLogging=true")
 
 // debugLog will write to the context log when the verboseLogging runtime
 // variable is set to true by a user. Use of debugLog is recommended for
@@ -73,6 +73,34 @@ func debugLogf(ctx context.Context, format string, args ...interface{}) {
 		testing.ContextLogf(ctx, format, args...)
 	}
 }
+
+// overrideModel can be specified to override the model identity. This can be
+// used for manual testing and for early bringup.
+var overrideModel = testing.RegisterVarString(
+	"expectations.overrideModel",
+	"",
+	"Set to override the detected model. Example: --var=expectations.overrideModel=baz")
+
+// overrideBuildBoard can be specified to override the "build board" identity.
+// This can be used for manual testing and for early bringup.
+var overrideBuildBoard = testing.RegisterVarString(
+	"expectations.overrideBuildBoard",
+	"",
+	"Set to override the detected build board. Example: --var=expectations.overrideBuildBoard=baz")
+
+// overrideBoard can be specified to override the board identity.
+// This can be used for manual testing and for early bringup.
+var overrideBoard = testing.RegisterVarString(
+	"expectations.overrideBoard",
+	"",
+	"Set to override the detected board. Example: --var=expectations.overrideBoard=baz")
+
+// overrideChipset can be specified to override the GPU chipset identity.
+// This can be used for manual testing and for early bringup.
+var overrideChipset = testing.RegisterVarString(
+	"expectations.overrideChipset",
+	"",
+	"Set to override the detected chipset. Example: --var=expectations.overrideChipset=baz")
 
 // fileType contains the DUT attribute that is matched when opening a test
 // expectations file. Each type has a different naming convention.
@@ -97,6 +125,11 @@ const expectationsFileExtension = "yml"
 
 // getDeviceModel returns the model of the running device.
 func getDeviceModel(ctx context.Context) (string, error) {
+	if len(overrideModel.Value()) > 0 {
+		testing.ContextLog(ctx, "Device model has been overriden to ", overrideModel.Value())
+		return overrideModel.Value(), nil
+	}
+
 	model, err := crosconfig.Get(ctx, "/", "name")
 	if err != nil {
 		return "", errors.Wrap(err, "unable to find model")
@@ -105,8 +138,9 @@ func getDeviceModel(ctx context.Context) (string, error) {
 	return model, nil
 }
 
-// getDeviceBuildBoard gets the board and build from the running device lsbrelease.
-func getDeviceBuildBoard(ctx context.Context) (string, error) {
+// getDeviceBuildBoardWithoutOverride gets the board and build from the running
+// device lsbrelease. Ignores overrideBuildBoard runtime variable.
+func getDeviceBuildBoardWithoutOverride(ctx context.Context) (string, error) {
 	lsbValues, err := lsbrelease.Load()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get lsb-release info")
@@ -118,6 +152,16 @@ func getDeviceBuildBoard(ctx context.Context) (string, error) {
 	}
 
 	return buildBoard, nil
+}
+
+// getDeviceBuildBoard gets the board and build from the running device lsbrelease.
+func getDeviceBuildBoard(ctx context.Context) (string, error) {
+	if len(overrideBuildBoard.Value()) > 0 {
+		testing.ContextLog(ctx, "Device build board has been overriden to ", overrideBuildBoard.Value())
+		return overrideBuildBoard.Value(), nil
+	}
+
+	return getDeviceBuildBoardWithoutOverride(ctx)
 }
 
 // convertBuildToBoard returns the board string from a build string.
@@ -136,7 +180,12 @@ func convertBuildToBoard(variant string) string {
 
 // getDeviceBuild gets the board from the running device lsbrelease.
 func getDeviceBuild(ctx context.Context) (string, error) {
-	buildBoard, err := getDeviceBuildBoard(ctx)
+	if len(overrideBoard.Value()) > 0 {
+		testing.ContextLog(ctx, "Device board has been overriden to ", overrideBoard.Value())
+		return overrideBoard.Value(), nil
+	}
+
+	buildBoard, err := getDeviceBuildBoardWithoutOverride(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -146,6 +195,11 @@ func getDeviceBuild(ctx context.Context) (string, error) {
 
 // getDeviceChipset gets the GPU chipset ID from the running device.
 func getDeviceChipset(ctx context.Context) (string, error) {
+	if len(overrideChipset.Value()) > 0 {
+		testing.ContextLog(ctx, "Device GPU chipset has been overriden to ", overrideChipset.Value())
+		return overrideChipset.Value(), nil
+	}
+
 	gpu, err := graphics.GPUFamilies(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get GPU chipset")
