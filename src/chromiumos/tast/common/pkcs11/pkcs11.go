@@ -333,6 +333,27 @@ func (p *Chaps) CreateGeneratedKey(ctx context.Context, scratchpadPath, keyType,
 	return result, nil
 }
 
+// CreateGeneratedKeyBySlot performs mostly the same function as CreateGeneratedKey, except that it skips querying slot and saving the public key.
+// Shaving this 2 operations off allows this method to be used for benchmarking purpose.
+func (p *Chaps) CreateGeneratedKeyBySlot(ctx context.Context, keyType string, slot int, username, objID string) (*KeyInfo, error) {
+	result := &KeyInfo{
+		keyPrefix:   "",
+		privKeyPath: "", // No private key.
+		pubKeyPath:  "", // Public key not extracted.
+		certPath:    "", // No certs.
+		objID:       objID,
+		slot:        slot,
+		username:    username,
+	}
+
+	// Generate the key.
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--keypairgen", "--key-type", keyType, "--id="+result.objID); err != nil {
+		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	return result, nil
+}
+
 // ImportPrivateKeyOptions specifies the various options to ImportPrivateKeyBySlot.
 type ImportPrivateKeyOptions struct {
 	// PrivKeyPath is the path to the private key file in DER format.
