@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67ebcbf3_bf76262d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-10-26T01:40:28Z",
+      "side": 1,
+      "message": "I\u0027ve introduced a new API to conn_service `CloseAll`.\n\nAdditionally I\u0027ve looked into calling `CloseAll` from chrome_service but that seemed like a lot of work because currently there is no easy way of creating another grpc client in a call on chrome_serivce and calling another grpc call to conn_service.\n\nI think making the client (in this case power tests) call CloseAll on conn_service is a good middle ground.\n\nWDYT?",
+      "parentUuid": "f959a7fc_2fa10229",
+      "revId": "1ab6af001625611c6b1dca17d6b780262f2198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98fc3ae5_999e8694",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/conn_service.go",
         "patchSetId": 4
