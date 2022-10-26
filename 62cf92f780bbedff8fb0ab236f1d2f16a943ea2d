@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39037514_3c202dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:38:06Z",
+      "side": 1,
+      "message": "Get rid of this parameter because it\u0027s just not used.",
+      "range": {
+        "startLine": 217,
+        "startChar": 21,
+        "endLine": 217,
+        "endChar": 32
+      },
+      "revId": "62cf92f780bbedff8fb0ab236f1d2f16a943ea2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
