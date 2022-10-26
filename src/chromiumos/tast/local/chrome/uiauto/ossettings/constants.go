@@ -121,6 +121,15 @@ var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
 // AddCellularButton is the finder for the Add Cellular button in cellular network list
 var AddCellularButton = nodewith.NameStartingWith("Add Cellular").Role(role.Button)
 
+// UnlockButton is the finder for the Unlock button in cellular network list or settings home page.
+var UnlockButton = nodewith.NameContaining("Unlock").Role(role.Button)
+
+// NextButton is the finder for a button labelled as Next.
+var NextButton = nodewith.NameContaining("Next").Role(role.Button)
+
+// DoneButton is the finder for a button labelled as Done.
+var DoneButton = nodewith.NameContaining("Done").Role(role.Button)
+
 // Elements in "Cellular detail page"
 var (
 	// ConnectedStatus is the finder for the connected status text UI in the cellular detail page.
