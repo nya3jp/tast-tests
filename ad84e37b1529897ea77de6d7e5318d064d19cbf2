@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e82f72_69f2a48a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-26T13:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a34dea3_d5e547a2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f552b4_8811f904",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-26T13:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0bc85b_4c5d5264",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ad84e37b1529897ea77de6d7e5318d064d19cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6084cf0a_75e6fade",
