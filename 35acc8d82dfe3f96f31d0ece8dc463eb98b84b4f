@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "459267ac_7d004898",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T20:38:46Z",
+      "side": 1,
+      "message": "nit: 50 characters or fewer",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "35acc8d82dfe3f96f31d0ece8dc463eb98b84b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a8a25d7c_74554da8",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-10-26T20:35:22Z",
       "side": 1,
       "message": "Sorry about this, I realized this line was present locally but I never patched my commit before I uploaded for review. I\u0027m hoping for a quick review -- I thoroughly tested this on my end and ensure that it fixes tablet mode TaskSwitchCUJ.",
+      "revId": "35acc8d82dfe3f96f31d0ece8dc463eb98b84b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c514edcd_f0233412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T20:38:46Z",
+      "side": 1,
+      "message": "lgtm with nit",
       "revId": "35acc8d82dfe3f96f31d0ece8dc463eb98b84b4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
