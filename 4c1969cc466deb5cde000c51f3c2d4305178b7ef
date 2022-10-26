@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15c2d44_4615c8d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "My scan.\nUnfortunately, I cannot mark LGTM with the current version, but I have to be OOO. I\u0027d recommend to add tast-owners back to R to find another reviewer from tast reviewers.",
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0e3240_806b9655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "Tast is integration test framework, so everything is for testing :-).\n\nRecommendation: disableNonCelluarInterfaces()",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 54
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dba402_73b5f34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "you have to call enableEthernetFunc here to avoid leaking the state.",
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8340edb_913a8f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "recommendation: restoreNonCellularInterfaces().",
+      "range": {
+        "startLine": 180,
+        "startChar": 17,
+        "endLine": 180,
+        "endChar": 71
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb5d357_7412d7a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "this sounds different from what it implements? It includes to run the test itself, too.",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be36d63d_a010461a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T13:42:59Z",
+      "side": 1,
+      "message": "huge nit: runTestOffline ?",
+      "range": {
+        "startLine": 192,
+        "startChar": 20,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "4c1969cc466deb5cde000c51f3c2d4305178b7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
