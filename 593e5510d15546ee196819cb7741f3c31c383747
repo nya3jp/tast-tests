@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1d437b_aa72bc7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-26T23:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deebdaed_aff51084",
+      "revId": "593e5510d15546ee196819cb7741f3c31c383747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f14dffc7_6e63dd33",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-26T21:02:23Z",
       "side": 1,
       "message": "ditto",
+      "revId": "593e5510d15546ee196819cb7741f3c31c383747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1255ef_05780821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-26T23:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14dffc7_6e63dd33",
       "revId": "593e5510d15546ee196819cb7741f3c31c383747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
