@@ -16,6 +16,24 @@
       "message": "What do you mean by \"still up\"? E.g. this will pass on Ash even when there is no browser window anymore.",
       "revId": "05e105f5d7b85d7796e9b49ed4b97e945b7e71eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c69b3e_ea811af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-26T17:43:37Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "38a98cef_17a05dc2",
+      "revId": "05e105f5d7b85d7796e9b49ed4b97e945b7e71eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

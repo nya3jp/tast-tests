@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58bec0bd_502b56b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-26T17:43:37Z",
+      "side": 1,
+      "message": "Done. PTAL",
+      "parentUuid": "279e8d23_524a0788",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "8bf2a5c482ebc6c7d137e767db27bd225091a120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0862aead_88afa428",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4b2aeb_bab55ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-26T17:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0862aead_88afa428",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "8bf2a5c482ebc6c7d137e767db27bd225091a120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2b306cf_e190b2d9",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-21T04:53:10Z",
       "side": 1,
       "message": "nit",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "8bf2a5c482ebc6c7d137e767db27bd225091a120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8488c536_3eff6e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-26T17:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b306cf_e190b2d9",
       "range": {
         "startLine": 63,
         "startChar": 10,
