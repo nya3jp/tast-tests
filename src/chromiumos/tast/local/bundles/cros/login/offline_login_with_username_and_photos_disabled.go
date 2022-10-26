@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -57,6 +57,13 @@ func OfflineLoginWithUsernameAndPhotosDisabled(ctx context.Context, s *testing.S
 	defer cancel()
 
 	setupOwnerAndUsersAndPresetting(ctx, cleanUpCtx, s, creds)
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Manager object: ", err)
+	}
+
+	helper := helper{Manager: manager}
 
 	loginOffline := func(ctx context.Context) error {
 		cleanUpCtx := ctx
@@ -127,9 +134,10 @@ func OfflineLoginWithUsernameAndPhotosDisabled(ctx context.Context, s *testing.S
 		return nil
 	}
 
-	if err := network.ExecFuncOnChromeOffline(ctx, loginOffline); err != nil {
-		s.Fatal("Failed to login offline: ", err)
+	if err := helper.runTestOffline(ctx, loginOffline); err != nil {
+		s.Fatal("Failed to run test on cellular interface: ", err)
 	}
+
 }
 
 func clickSignInAsExistingUserLink(ctx context.Context, s *testing.State, oobeConn *chrome.Conn) {
@@ -142,6 +150,71 @@ func clickSignInAsExistingUserLink(ctx context.Context, s *testing.State, oobeCo
 		s.Fatal("Failed to click on sign in as existing user link : ", err)
 	}
 
+}
+
+type helper struct {
+	Manager            *shill.Manager
+	enableEthernetFunc func(ctx context.Context)
+	enableWifiFunc     func(ctx context.Context)
+	enableCellularFunc func(ctx context.Context)
+}
+
+func (h *helper) disableAllNetworkInterfaces(ctx context.Context) error {
+	ctx, cancel := ctxutil.Shorten(ctx, shill.EnableWaitTime*2)
+	defer cancel()
+
+	// Disable Ethernet if present and maybe re-enabling.
+	ethernetFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		return errors.Wrap(err, "unable to disable Ethernet")
+	}
+
+	// Disable  Cellular if present and maybe re-enabling.
+	cellularFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		return errors.Wrap(err, "unable to disable Cellular")
+	}
+
+	// Disable Wifi if present and maybe re-enabling.
+	wifiFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		return errors.Wrap(err, "unable to disable Wifi")
+	}
+
+	h.enableEthernetFunc = ethernetFunc
+	h.enableWifiFunc = wifiFunc
+	h.enableCellularFunc = cellularFunc
+
+	return nil
+}
+
+// restoreAllNetworkInterfaces enable previously disabled interfaces.
+func (h *helper) restoreAllNetworkInterfaces(ctx context.Context) {
+	if h.enableEthernetFunc != nil {
+		h.enableEthernetFunc(ctx)
+	}
+
+	if h.enableWifiFunc != nil {
+		h.enableWifiFunc(ctx)
+	}
+
+	if h.enableCellularFunc != nil {
+		h.enableWifiFunc(ctx)
+	}
+
+	h.enableEthernetFunc = nil
+	h.enableWifiFunc = nil
+	h.enableCellularFunc = nil
+}
+
+// runTestOffline setup the device for offline test and run testBody.
+func (h *helper) runTestOffline(ctx context.Context, testBody func(ctx context.Context) error) error {
+	defer h.restoreAllNetworkInterfaces(ctx)
+	if err := h.disableAllNetworkInterfaces(ctx); err != nil {
+		return errors.Wrap(err, "failed to disable non cellular interface")
+	}
+
+	return testBody(ctx)
 }
 
 func fillTextField(ctx context.Context, s *testing.State, ui *uiauto.Context, kb *input.KeyboardEventWriter, nodeName, nodeValue string) {
