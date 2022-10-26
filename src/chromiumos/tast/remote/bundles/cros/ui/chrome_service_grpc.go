@@ -133,9 +133,9 @@ func pickRandomCreds(creds string) (*pb.NewRequest_Credentials, error) {
 
 	// Extract user and password from the concatenated string
 	line = strings.TrimSpace(line)
-	userNamePassword := strings.SplitN(line, ":", 2)
-	if len(userNamePassword) != 2 {
-		return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", randomIndex+1)
+	userNamePassword := strings.SplitN(line, ":", -1)
+	if len(userNamePassword) < 2 {
+		return nil, errors.Errorf("failed to parse credential list from line %d", randomIndex+1)
 	}
 	return &pb.NewRequest_Credentials{
 		Username: userNamePassword[0],
