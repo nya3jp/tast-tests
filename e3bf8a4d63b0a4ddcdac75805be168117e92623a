@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a636c2_9bc07ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37308e16_9de8fb6c",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be3e6116_fcae59a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-26T04:15:53Z",
       "side": 1,
       "message": "nit: ending period",
+      "range": {
+        "startLine": 33,
+        "startChar": 45,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023c7a47_43cfe8b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3e6116_fcae59a6",
       "range": {
         "startLine": 33,
         "startChar": 45,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5e31c55_0506c499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "That makes sense. `ProxyConfig` could be a more generic name, thanks! Just to give more explanation regarding manual proxy, it is not meaning we are check this proxy \"manually\", it is a type of proxy configuration, in addition to PAC url proxy :)\nSo I was considering that since pac url property exists in shillconst, the counterpart on the same level should be manual proxy, but `ProxyConfig` should be fine as well?",
+      "parentUuid": "81831ed9_c2b09577",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a7efc89_9b8c493c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 20
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-26T04:15:53Z",
       "side": 1,
       "message": "nit: I know forgetNetwork(...) has no side effect if a.Command(...) above failed, but it\u0027s more common to put this defer after the error check.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87259e8f_a53ea2b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a7efc89_9b8c493c",
       "range": {
         "startLine": 119,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3b97d6_07c875ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "If we move this to L123, then we shouldnt need to check `out !\u003d nil` since if cmd is executed successfully the output is either `Saved succefully` or `Save failed`",
+      "parentUuid": "8348062d_867c85e1",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650ecb1e_340215cf",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-26T04:15:53Z",
       "side": 1,
       "message": "Instead of doing the conversion here, does it make sense to use bool direclty in tc.props?\n(you can change the type to map[string]interface{} to make it able to hold different types of values)",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 28
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6436a93_17bbbba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Good advice, thanks",
+      "parentUuid": "650ecb1e_340215cf",
       "range": {
         "startLine": 166,
         "startChar": 7,
@@ -208,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e53ebb9_86b71dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad10708b_09ec9376",
+      "range": {
+        "startLine": 215,
+        "startChar": 61,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "581ed7a4_8273c0df",
@@ -221,6 +389,30 @@
       "writtenOn": "2022-10-26T04:15:53Z",
       "side": 1,
       "message": "nit: \"want %+v\"",
+      "range": {
+        "startLine": 218,
+        "startChar": 38,
+        "endLine": 218,
+        "endChar": 61
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53575e05_7613eedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T04:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581ed7a4_8273c0df",
       "range": {
         "startLine": 218,
         "startChar": 38,
