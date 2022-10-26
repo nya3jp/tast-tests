@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "889efc04_b0d83aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-26T05:11:09Z",
+      "side": 1,
+      "message": "Ack, this is fine.",
+      "parentUuid": "f1844e00_0725e2ea",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "487cb3e354a051bf418059e2de70a3a0e10f3097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ff57476_daaa99b8",

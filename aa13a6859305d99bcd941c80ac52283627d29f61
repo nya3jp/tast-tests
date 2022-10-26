@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814c3f1e_eaec192c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-26T05:11:09Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "aa13a6859305d99bcd941c80ac52283627d29f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4e3cde_6a2b1acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_teen_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-26T05:11:09Z",
+      "side": 1,
+      "message": "Verifies that clicking the \u0027Parental controls\u0027 link in the Accounts page in Settings launches the Child \u0026 Teen version of the Family Link app.",
+      "revId": "aa13a6859305d99bcd941c80ac52283627d29f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5abb0b28_4d21b993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_teen_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-26T05:11:09Z",
+      "side": 1,
+      "message": "Could you verify that the ArcEnabled policy was injected correctly?\n\n    // Ensure chrome://policy shows correct ArcEnabled value.\n    if err :\u003d policyutil.Verify(ctx, tconn, []policy.Policy{\u0026policy.ArcEnabled{Val: true}}); err !\u003d nil {\n\t\ts.Fatal(\"Failed to verify ArcEnabled: \", err)\n\t}",
+      "revId": "aa13a6859305d99bcd941c80ac52283627d29f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
