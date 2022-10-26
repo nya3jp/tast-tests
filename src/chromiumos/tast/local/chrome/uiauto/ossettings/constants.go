@@ -105,6 +105,12 @@ var (
 // BackArrowBtn is the button to return to last page.
 var BackArrowBtn = nodewith.HasClass("icon-arrow-back").Role(role.Button)
 
+// NextButton is the finder for a button labelled as Next.
+var NextButton = nodewith.NameContaining("Next").Role(role.Button)
+
+// DoneButton is the finder for a button labelled as Done.
+var DoneButton = nodewith.NameContaining("Done").Role(role.Button)
+
 // searchMismatched is the pattern shown in search results
 // when the input keyword in `SearchBox` is mismatched with any existing option.
 var searchMismatched = `No search results found`
