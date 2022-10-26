@@ -254,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b27cd7c_d757ffd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-26T08:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec4034e_a881d927",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 15
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe33e458_398c55f1",
@@ -527,6 +551,30 @@
       "side": 1,
       "message": "do you have already such tests in some CL?\n\ncan\u0027t you just use dlputil.ValidateActionReporting in 1 test file and have a lot of parameters?",
       "parentUuid": "e89ba745_8a38d850",
+      "range": {
+        "startLine": 62,
+        "startChar": 38,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3a506a_b6a0a5d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_clipboard_reporting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-26T08:33:11Z",
+      "side": 1,
+      "message": "Yes you can have a look at\n- https://crrev.com/c/3952050/9\n- https://crrev.com/c/3953492/8\n- more coming\n\nPotentially yes, I could merge all tests into a single one and use the generator you are suggesting below. As a rough estimate this test would have about 120 parameters. Let me know if you think it is a good idea.",
+      "parentUuid": "46e2d0e0_b4cbd15b",
       "range": {
         "startLine": 62,
         "startChar": 38,

@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "398fb159_4ceff52c",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-26T08:33:11Z",
+      "side": 1,
+      "message": "Not really a problem to copy and paste parameters, I was just wondering whether it was worth saving some lines of code. Thanks for sharing the generator!",
+      "parentUuid": "9c1970eb_8af4fb5d",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "af23dc7ca9b0bbe67a5f394c4d2f9f8c8edec998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bac36085_d30986eb",
