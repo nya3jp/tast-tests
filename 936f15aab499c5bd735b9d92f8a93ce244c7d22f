@@ -22,6 +22,30 @@
       },
       "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0e1ffd_92a6050f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-26T15:16:46Z",
+      "side": 0,
+      "message": "I don\u0027t think it matters, as long as the virtual usb modules have been loaded.  How do I specify one configuration or the other?  Is there a way to test this to make sure I don\u0027t need the automatic setup stuff to finish?",
+      "parentUuid": "1a2b5905_ccc45f49",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
