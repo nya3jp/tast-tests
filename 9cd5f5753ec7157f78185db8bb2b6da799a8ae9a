@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ce0c3aa_05da08e5",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T15:55:45Z",
+      "side": 1,
+      "message": "src/chromiumos/tast/local/bundles/cros/lacros/... is the recommending location in this case.\n\n\u003e it could possibly be used by both local and remote bundles.\n\nIt is recommended this \"future possibility\" should not be the reason to put the library in commonly accessible places.\nI\u0027d strongly recommend to keep the scope as minimum as possible at the beginning, and expand it only when there\u0027s some other concrete requirement and it makes sense to share the code.",
+      "parentUuid": "b83b8e68_be44543e",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea396493_b92ab1c4",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 6
@@ -195,6 +213,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "6a4ee8d6_862d2d36",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefa980b_ab844ab3",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T15:55:45Z",
+      "side": 1,
+      "message": "Pls remove the dup.",
+      "parentUuid": "f7262cce_6eacd441",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
