@@ -51,6 +51,24 @@
       "parentUuid": "3339605d_80dfe64f",
       "revId": "fa78c6ace72627e67b0e9c0e128375a7920188bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a7e560_dd5c79b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523442
+      },
+      "writtenOn": "2022-10-26T14:24:10Z",
+      "side": 1,
+      "message": "Thanks for looking into it Kamil! I don\u0027t usually work on Tast at all so I didn\u0027t know how to interpret any of the stats (and didn\u0027t realise that some issues are known issues). I\u0027ll keep the test for now and will revisit in case there are any issues in the future.",
+      "parentUuid": "d7347fbd_28f836b3",
+      "revId": "fa78c6ace72627e67b0e9c0e128375a7920188bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
