@@ -105,6 +105,21 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for HPS to be ready: ", err)
 	}
 
+	// Check that HPS is running the expected firmware version.
+	if spaEnabled.spaOn {
+		runningVersion, err := hpsutil.FetchRunningFirmwareVersion(hctx)
+		if err != nil {
+			s.Error("Error reading running firmware version: ", err)
+		}
+		expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+		if err != nil {
+			s.Error("Error reading firmware version from image: ", err)
+		}
+		if runningVersion != expectedVersion {
+			s.Errorf("HPS reports running firmware version %v but expected %v", runningVersion, expectedVersion)
+		}
+	}
+
 	// Render hps-internal page for debugging before waiting for dim.
 	if _, err := client.OpenHPSInternalsPage(hctx.Ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error open hps-internals: ", err)
