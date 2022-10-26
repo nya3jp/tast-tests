@@ -189,7 +189,11 @@ func init() {
 			Name:              "branch_uprev",
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline", "sona", "morphius", "krane")),
+			// Follow the policy 2 models per ARCH of different boards.
+			// x86 ARC: caroline, asuka
+			// x86-64 ARC: morphius(zork), careena(grunt)
+			// arm64 ARC: krane(kukui), kevin
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline", "asuka", "morphius", "careena", "krane", "kevin")),
 			Val: testParam{
 				vmEnabled:                     false,
 				upload:                        true,
@@ -201,7 +205,11 @@ func init() {
 			Name:              "r_vm_branch_uprev",
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm_r"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("gimble", "kohaku", "eve", "hoglin")),
+			// Follow the policy 2 models per ARCH of different boards.
+			// 8GB if possible to match requirement for ureadahead generation.
+			// x86-64 ARC: kohaku(hatch), eve
+			// arm64 ARC: gimble(herobrine), steelix(corsola)
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku", "eve", "gimble", "steelix")),
 			Val: testParam{
 				vmEnabled:   true,
 				upload:      true,
