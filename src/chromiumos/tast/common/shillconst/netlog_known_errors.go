@@ -28,6 +28,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"patchpaneld", "ndproxy.cc", ".*failed to get interface name on interface.*No such device.*", 0}, // b/237298950
 		{"patchpaneld", "net_util.cc", ".*Invalid prefix length.*", 0},
 		{"patchpaneld", "network_monitor_service.cc", ".*Get device props failed.*", 0},
+		{"patchpaneld", "network_monitor_service.cc", ".*Could not obtain interface index for.*", 0}, // b/255732860
 		{"patchpaneld", "object_proxy.cc", ".*Failed to call method.*", 0},
 		{"patchpaneld", "scoped_ns.cc", ".*Could not open namespace.*", 0},
 		{"patchpaneld", "shill_client.cc", ".*Can't retrieve properties for device.*", 0},
