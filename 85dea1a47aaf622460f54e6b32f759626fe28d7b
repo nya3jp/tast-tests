@@ -22,6 +22,30 @@
       },
       "revId": "85dea1a47aaf622460f54e6b32f759626fe28d7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10b5865_e8e82807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-26T00:52:06Z",
+      "side": 1,
+      "message": "The problem with doing this is that some configs have a number assigned to them so I am not sure if we want to consider that situation as disabled for eg I see something like this in kernel config for my volteer :\nARCH_MMAP_RND_COMPAT_BITS:16",
+      "parentUuid": "805aad49_ac4c585c",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "85dea1a47aaf622460f54e6b32f759626fe28d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
