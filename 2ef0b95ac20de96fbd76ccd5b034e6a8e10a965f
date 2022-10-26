@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "434dea0e_5fe828c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-26T21:06:17Z",
+      "side": 1,
+      "message": "The policy value in the screenshoot is blank (which should be true).. which might leads to an error in line 72.\n\nDid you make the screenshot after the test finishes? persistentFixture.tearDown might clear all policy.",
+      "parentUuid": "5b68ea42_b540860f",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 107
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f527b5ac_cb275e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
