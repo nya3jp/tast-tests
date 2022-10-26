@@ -430,6 +430,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82be8f82_4251b6a2",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T01:30:05Z",
+      "side": 1,
+      "message": "Thanks! marking as resolved now.",
+      "parentUuid": "17b3ddb9_9f1289c4",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa1b61b9_0e7e84b9",
@@ -662,6 +680,24 @@
       "side": 1,
       "message": "On ToT, is the third component (last number) guaranteed to be 0?",
       "parentUuid": "d09a6018_718afb5c",
+      "revId": "70b823807c927beb33b3e04868f54885189d0499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb9a436_3bdaab67",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T01:30:05Z",
+      "side": 1,
+      "message": "Yes, my understanding is that the last number would always be .0 in x.x.NNNN.0 for ash/lacros-chrome on the ToT. and it grows only on branches.",
+      "parentUuid": "2d5f3fcc_a332d982",
       "revId": "70b823807c927beb33b3e04868f54885189d0499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
