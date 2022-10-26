@@ -36,7 +36,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
+		Attr:         []string{"group:cellular", "cellular_unstable"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Timeout:      9 * time.Minute,
 		Vars:         []string{"autotest_host_info_labels"},

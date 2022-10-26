@@ -35,7 +35,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
+		Attr:         []string{"group:cellular", "cellular_unstable"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Timeout:      9 * time.Minute,
 		Vars:         []string{"autotest_host_info_labels"},
@@ -103,7 +103,7 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get name: ", err)
 	}
 
-	connectedProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Connected.*"))
+	connectedProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Details"))
 	var networkNameDetail = nodewith.NameContaining(networkName).ClassName("subpage-arrow").Role(role.Button).Ancestor(connectedProfile.First())
 
 	if err != nil {
@@ -159,25 +159,24 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			if err := ui.WaitUntilExists(networkNameDetail)(ctx); err != nil {
-				s.Fatal("Could not find connected mobile network")
+			if err := ui.WithTimeout(3 * time.Minute).WaitUntilExists(networkNameDetail)(ctx); err != nil {
+				s.Fatal("Could not find connected mobile network: ", err)
 			}
 
 			if err := uiauto.Combine("Go to detail page and expand advanced section",
 				ui.LeftClick(networkNameDetail),
-				ui.WaitUntilExists(ossettings.ConnectedStatus),
-				ui.WithTimeout(90*time.Second).LeftClick(ossettings.CellularAdvanced),
+				ui.LeftClick(ossettings.CellularAdvanced),
 			)(ctx); err != nil {
 				s.Fatal("Failed: ", err)
 			}
 
 			if param.allowCellularSimLock {
 				if err := ui.CheckRestriction(ossettings.LockSimToggle, restriction.None)(ctx); err != nil {
-					s.Fatal("Lock SIM card setting is disabled")
+					s.Fatal("Lock SIM card setting is disabled: ", err)
 				}
 			} else {
 				if err := ui.CheckRestriction(ossettings.LockSimToggle, restriction.Disabled)(ctx); err != nil {
-					s.Fatal("Lock SIM card setting is not disabled")
+					s.Fatal("Lock SIM card setting is not disabled: ", err)
 				}
 			}
 
