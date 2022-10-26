@@ -46,6 +46,30 @@
       },
       "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7722b2d7_a24f77aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-26T15:30:33Z",
+      "side": 0,
+      "message": "The easiest way is to run it logged in and logged out.  For the logged out case, you can log out and run test.  It shouldn\u0027t log in since the fixture doesn\u0027t require it.  For the logged in case, you can run it in a batch with another test that does require logged in Chrome.",
+      "parentUuid": "9d0e1ffd_92a6050f",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
