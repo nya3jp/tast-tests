@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d52c5f_a1a83d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-10-26T14:21:18Z",
+      "side": 1,
+      "message": "Hi Seewai, this is the test we talked about\nRunning `goimports --local\u003dchromiumos/ camera_switch.go` removes an import that is needed for the test to compile",
+      "revId": "572555cac0ff20f011195d89e824c1b0e78ae755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
