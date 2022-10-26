@@ -22,10 +22,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CgptStress,
-		Desc:         "Test DUT shuts down and boots to ChromeOS over many iterations",
-		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Func:     CgptStress,
+		Desc:     "Test DUT shuts down and boots to ChromeOS over many iterations",
+		Contacts: []string{"tij@google.com", "cros-fw-engprod@google.com"},
+		// TODO(b/255617349): This test might be breaking duts, add "firmware_unstable" when fixed or ruled out.
+		Attr:         []string{"group:firmware"},
 		Vars:         []string{"firmware.CgptStressIters"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      100 * time.Minute,
