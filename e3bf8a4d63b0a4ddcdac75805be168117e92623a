@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de3ce08f_e11264f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-26T05:26:34Z",
+      "side": 1,
+      "message": "I would prefer just put this string (\"{\"mode\":\"pac_script\"}\") here, and maybe also the corresponding string for \"auto_reconnect_disabled_with_pac_url\" test above.",
+      "parentUuid": "6beb45d3_055ee88f",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a7efc89_9b8c493c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 20
