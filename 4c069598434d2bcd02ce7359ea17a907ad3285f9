@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb27d34_5d1d5b36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79756844_66b05f81",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "679436c9_52a404d2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-26T00:07:59Z",
       "side": 1,
       "message": "Will these be used by other tests? Would it make sense to move these into a shared/utility file, or even just declare finders in a shared file that can be used?\n\nE.g. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3970785/1/src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ui.go",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3150c68_58bc91ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679436c9_52a404d2",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47b282e_8cbe0663",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Moved it to the utility file method,",
+      "parentUuid": "86ebc094_d13cae0d",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 95
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f74b1036_e33e2572",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-26T00:07:59Z",
       "side": 1,
       "message": "If this will be re-used could we move this into a shared/utility file?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ddb1e4_03b947a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74b1036_e33e2572",
       "range": {
         "startLine": 119,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb49f79_922e27fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228d6a19_9ae24d66",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0f6137_87f81478",
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdf92cc_d1295580",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/oobe_hid_bluetooth_keyboard_only.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "servo gets cleaned up using defer pxy.Close(ctx)",
+      "parentUuid": "af0f6137_87f81478",
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb69e615_d11a9bae",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-10-26T00:07:59Z",
       "side": 1,
       "message": "Nit: Consider updating to mention we failed to find a node with a name containing `name`.",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "4c069598434d2bcd02ce7359ea17a907ad3285f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "650e5200_204253ac",
+        "filename": "src/chromiumos/tast/remote/cros/ui/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-10-26T23:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb69e615_d11a9bae",
       "range": {
         "startLine": 25,
         "startChar": 38,
