@@ -70,6 +70,30 @@
       },
       "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a19969f_055f8357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-26T23:15:45Z",
+      "side": 0,
+      "message": "Ah - right.  Yes, this works both logged in and logged out.",
+      "parentUuid": "7722b2d7_a24f77aa",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "936f15aab499c5bd735b9d92f8a93ce244c7d22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
