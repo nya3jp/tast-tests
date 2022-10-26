@@ -16,6 +16,41 @@
       "message": "fixes a regression for launcher tests in tablet mode caused by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3960778\n\nI\u0027m kinda conflicted between this (making swipe to show launcher work in more situations) and adding a separate method for swipe from overview to home screen,",
       "revId": "1b497a6291456f8561b617470b4881cc6f668496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099ce825_5e69573a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-26T17:57:07Z",
+      "side": 1,
+      "message": "i dont feel strongly either way. its hard to predict what will flake in the lab - maybe we can upload this and see the results",
+      "parentUuid": "55e12cd4_097f08e9",
+      "revId": "1b497a6291456f8561b617470b4881cc6f668496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "992be3b4_81aa708b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-26T17:57:07Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "1b497a6291456f8561b617470b4881cc6f668496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
