@@ -241,8 +241,8 @@ func Run(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return err
 		}
-
-		numWindows := numAppWindows + numBrowserWindows + 1
+		numBrowserWindows++
+		numWindows := numAppWindows + numBrowserWindows
 
 		// Initialize task switch workflows only after launching Chrome
 		// tabs and applications, because switching by Hotseat requires
