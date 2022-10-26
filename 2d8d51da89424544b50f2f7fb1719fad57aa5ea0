@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9c0ae1_86d282b3",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-26T22:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f36f9d_1eb49838",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "2d8d51da89424544b50f2f7fb1719fad57aa5ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3407cb81_8ebd5d38",
@@ -78,6 +102,30 @@
       "writtenOn": "2022-09-02T00:24:35Z",
       "side": 1,
       "message": "I wonder why you used FinalAncestor() [1] here instead of simply Ancestor() [2]?\n\n[1] https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto/nodewith#Finder.FinalAncestor\n[2] https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto/nodewith#Ancestor",
+      "range": {
+        "startLine": 42,
+        "startChar": 67,
+        "endLine": 42,
+        "endChar": 80
+      },
+      "revId": "2d8d51da89424544b50f2f7fb1719fad57aa5ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9eeecf_eaad4420",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-26T22:16:16Z",
+      "side": 1,
+      "message": "Ancestor() does make more sense, updated.",
+      "parentUuid": "3407cb81_8ebd5d38",
       "range": {
         "startLine": 42,
         "startChar": 67,
