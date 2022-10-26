@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/policy/imagehelpers"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -59,11 +60,11 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 	defer eds.Stop(ctx)
 
 	// Serve UserAvatarImage policy data.
-	imgBytes, err := personalization.GetImgFromFilePath(s.DataPath("user_avatar_image.jpeg"))
+	jpegBytes, err := imagehelpers.GetJPEGBytesFromFilePath(s.DataPath("user_avatar_image.jpeg"))
 	if err != nil {
 		s.Fatal("Failed to read user avatar image: ", err)
 	}
-	imgURL, imgHash := eds.ServePolicyData(imgBytes)
+	imgURL, imgHash := eds.ServePolicyData(jpegBytes)
 
 	for _, param := range []struct {
 		name                   string

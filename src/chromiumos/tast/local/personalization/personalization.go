@@ -6,12 +6,8 @@
 package personalization
 
 import (
-	"bytes"
 	"fmt"
-	"image"
-	"image/jpeg"
 	"math/rand"
-	"os"
 	"time"
 
 	"chromiumos/tast/local/chrome/uiauto"
@@ -126,26 +122,4 @@ func SearchForAppInLauncher(query, result string, kb *input.KeyboardEventWriter,
 		kb.TypeAction(query),
 		ui.LeftClick(searchResult),
 	))
-}
-
-// GetImgFromFilePath returns bytes of the image with the filePath.
-// Used by policy.UserAvatarImage, policy.UserAvatarImagePersHub.
-// TODO(crbug.com/1188690): Remove when the bug is fixed.
-func GetImgFromFilePath(filePath string) ([]byte, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-	buf := new(bytes.Buffer)
-	err = jpeg.Encode(buf, image, nil)
-	if err != nil {
-		return nil, err
-	}
-	imgBytes := buf.Bytes()
-	return imgBytes, nil
 }
