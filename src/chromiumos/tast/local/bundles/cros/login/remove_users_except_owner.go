@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/login/signinutil"
 	"chromiumos/tast/local/bundles/cros/login/userutil"
 	"chromiumos/tast/local/chrome"
@@ -50,7 +51,9 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	setupUsers(ctx, cleanUpCtx, s)
+	if err := setupUsers(ctx, cleanUpCtx); err != nil {
+		s.Fatal("Failed to setup users: ", err)
+	}
 
 	// Non-owner should not be able to remove users.
 	func() {
@@ -124,6 +127,13 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to verify users list: ", err)
 		}
 
+		// Cryptohomes of all users should be available.
+		for _, user := range []string{deviceOwner, additionalUser1, additionalUser2} {
+			if err := checkCryptohomeFileInfo(ctx, user); err != nil {
+				s.Fatalf("Failed to check cryptohome info for user %q: %v", user, err)
+			}
+		}
+
 		// Remove a non-owner user.
 		removeButtonName := "Remove " + signinutil.GetUsernameFromEmail(additionalUser1)
 
@@ -154,19 +164,15 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 
 		// Cryptohome of a deleted user should not exist.
-		cryptohomeFileInfo, err := getCryptohomeFileInfo(ctx, s, additionalUser1)
-		if err == nil {
+		if _, err := getCryptohomeFileInfo(ctx, additionalUser1); err == nil {
 			s.Fatalf("Cryptohome directory for %s still exists", additionalUser1)
 		} else if !os.IsNotExist(err) {
 			s.Fatal("Unexpected error: ", err)
 		}
 
-		// Cryptohome of the device owher should be available.
-		cryptohomeFileInfo, err = getCryptohomeFileInfo(ctx, s, deviceOwner)
-		if err != nil {
-			s.Fatalf("Cryptohome directory for %s could not be accessed: %v", deviceOwner, err)
-		} else if cryptohomeFileInfo == nil {
-			s.Fatalf("Cryptohome directory for %s does not exist", deviceOwner)
+		// Cryptohome of the device owner should still be available.
+		if err := checkCryptohomeFileInfo(ctx, deviceOwner); err != nil {
+			s.Fatal("Failed to check cryptohome info for device owner: ", err)
 		}
 	}()
 
@@ -208,26 +214,37 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 	}
 }
 
-func setupUsers(ctx, cleanUpCtxs context.Context, s *testing.State) {
+func setupUsers(ctx, cleanUpCtxs context.Context) error {
 	// For the device owner we wait until their ownership has been established.
 	if err := userutil.CreateDeviceOwner(ctx, deviceOwner, commonPassword); err != nil {
-		s.Fatal("Failed to create device owner: ", err)
+		return errors.Wrap(err, "failed to create device owner")
 	}
 
 	// For other users we don't need to wait for anything.
 	if err := userutil.CreateUser(ctx, additionalUser1, commonPassword, chrome.KeepState()); err != nil {
-		s.Fatal("Failed to create new user: ", err)
+		return errors.Wrap(err, "failed to create new user")
 	}
 	if err := userutil.CreateUser(ctx, additionalUser2, commonPassword, chrome.KeepState()); err != nil {
-		s.Fatal("Failed to create new user: ", err)
+		return errors.Wrap(err, "failed to create new user")
 	}
+	return nil
 }
 
-func getCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) (os.FileInfo, error) {
+func getCryptohomeFileInfo(ctx context.Context, user string) (os.FileInfo, error) {
 	path, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
-		s.Fatalf("Cannot get path to %s's cryptohome: %v", user, err)
+		return nil, errors.Wrapf(err, "cannot get path to %s's cryptohome", user)
 	}
 
 	return os.Stat(path)
+}
+
+// checkCryptohomeFileInfo checks that cryptohome of the specified user is available.
+func checkCryptohomeFileInfo(ctx context.Context, user string) error {
+	if cryptohomeFileInfo, err := getCryptohomeFileInfo(ctx, user); err != nil {
+		return errors.Wrapf(err, "cryptohome directory for %s could not be accessed", deviceOwner)
+	} else if cryptohomeFileInfo == nil {
+		return errors.Errorf("Cryptohome directory for %s does not exist", deviceOwner)
+	}
+	return nil
 }
