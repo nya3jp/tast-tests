@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b83b8e68_be44543e",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "The reason why I thought it could be a part of the chrome package and support library is:\n- it handles chrome versions\n- it could possibly be used by both local and remote bundles.\n\nBtw, it is not clear to me where to put this and if we should do that in this CL or later. Please confirm the best code location. I\u0027m open to moving this around.",
+      "parentUuid": "8e24ece0_ec556e63",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea396493_b92ab1c4",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 6
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-26T13:28:46Z",
       "side": 1,
       "message": "deprecated:\n\nhttps://pkg.go.dev/io/ioutil#ReadAll",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44376bfb_da097440",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea396493_b92ab1c4",
       "range": {
         "startLine": 56,
         "startChar": 14,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cfdaea_81035214",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f990de6_bd961c6a",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a4ee8d6_862d2d36",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7262cce_6eacd441",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a4ee8d6_862d2d36",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbcbb92f_aabe9da7",
@@ -128,6 +212,24 @@
       "writtenOn": "2022-10-26T13:28:46Z",
       "side": 1,
       "message": "this should be provided as a function just only for specific purpose.\nIn general, tast tests should be written in a way that is independent from versions (and thus accessing lsbrelease is restricted).\n\nThere\u0027re some edge cases (like this), but this kind of function should be restricted to be accessed only from some intentional functions/tests only.",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de9c03e_1cb47603",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "Moved to the test.",
+      "parentUuid": "bbcbb92f_aabe9da7",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15162193_28f0ec05",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "Done adding the comment as it is okay to overwrite here",
+      "parentUuid": "494640bd_3a87bae9",
+      "range": {
+        "startLine": 122,
+        "startChar": 21,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeeb35e3_2337c766",
@@ -168,6 +294,24 @@
       "writtenOn": "2022-10-26T13:28:46Z",
       "side": 1,
       "message": "should this cause to fail?",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e7226f_0951665f",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T15:49:40Z",
+      "side": 1,
+      "message": "The reality is there could be a channel \u0027canary_asan\u0027 for dcheck-enabled builds popping up oftentimes, which could be skipped for our continuous testing. See b/254340759.",
+      "parentUuid": "aeeb35e3_2337c766",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
