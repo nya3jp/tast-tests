@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9235c7_07c26f5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-26T07:29:09Z",
+      "side": 1,
+      "message": "err is nil here\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/dutfs/dutfs.go;l\u003d75;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "range": {
+        "startLine": 265,
+        "startChar": 23,
+        "endLine": 265,
+        "endChar": 26
+      },
+      "revId": "6c90006c0220b239e5ba736ac14c7910e48cbfff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
