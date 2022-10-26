@@ -32,6 +32,8 @@ type pinWeaverWithAuthAPIParam struct {
 	// For M104 AuthSession launch, pin is currently set with Legacy API.
 	// Note: both these parameters cannot be true at the same time as that is not a supported case.
 	useLegacyAddAPIForPin bool
+	// Specifies whether to disable UserSecretStash after setting up AuthFactors after enabling it.
+	useUserSecretStashRollback bool
 }
 
 func init() {
@@ -47,31 +49,44 @@ func init() {
 		Params: []testing.Param{{
 			Name: "pin_weaver_with_auth_factor_with_no_uss",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    false,
-				useAuthFactor:         true,
-				useLegacyAddAPIForPin: false,
+				useUserSecretStash:         false,
+				useAuthFactor:              true,
+				useLegacyAddAPIForPin:      false,
+				useUserSecretStashRollback: false,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    false,
-				useAuthFactor:         false,
-				useLegacyAddAPIForPin: false,
+				useUserSecretStash:         false,
+				useAuthFactor:              false,
+				useLegacyAddAPIForPin:      false,
+				useUserSecretStashRollback: false,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session_legacy_pin_add",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    false,
-				useAuthFactor:         false,
-				useLegacyAddAPIForPin: true,
+				useUserSecretStash:         false,
+				useAuthFactor:              false,
+				useLegacyAddAPIForPin:      true,
+				useUserSecretStashRollback: false,
 			},
 		},
 			{
 				Name: "pin_weaver_with_auth_factor_with_uss",
 				Val: pinWeaverWithAuthAPIParam{
-					useUserSecretStash:    true,
-					useAuthFactor:         true,
-					useLegacyAddAPIForPin: false,
+					useUserSecretStash:         true,
+					useAuthFactor:              true,
+					useLegacyAddAPIForPin:      false,
+					useUserSecretStashRollback: false,
+				},
+			},
+			{
+				Name: "pin_weaver_with_auth_factor_after_uss_rollback",
+				Val: pinWeaverWithAuthAPIParam{
+					useUserSecretStash:         true,
+					useAuthFactor:              true,
+					useLegacyAddAPIForPin:      false,
+					useUserSecretStashRollback: true,
 				},
 			},
 		},
@@ -130,9 +145,8 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if userParam.useUserSecretStash {
-		// Enable the UserSecretStash experiment for the duration of the test by
-		// creating a flag file that's checked by cryptohomed.
+	if userParam.useUserSecretStash || userParam.useUserSecretStashRollback {
+		// Enable the UserSecretStash experiment.
 		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
 		if err != nil {
 			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
@@ -173,12 +187,20 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
-	// Ensure that testUser1 still works wth pin.
+	if userParam.useUserSecretStashRollback {
+		// Disable the UserSecretStash experiment.
+		err := helper.DisableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to diable the UserSecretStash experiment: ", err)
+		}
+	}
+
+	// Ensure that testUser1 still works with pin.
 	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
-	// Ensure that testUser1 still works wth password.
+	// Ensure that testUser1 still works with password.
 	if err = authenticateWithCorrectPassword(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPassword with error: ", err)
 	}
