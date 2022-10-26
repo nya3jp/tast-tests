@@ -33,6 +33,41 @@
       "message": "These are tests that do not use btpeers so we should also add `bluetooth_sa` to them. The Since `bluetooth_flaky` is there it will still only run in the flaky suite, but then later all you have to do is remove the `bluetooth_flaky` and then it will be in the standalone suite.\n\nThough since flaky _is_ there, you can leave like this for now and then when we go to remove flaky we can just add it to the standalone suite then. Either way works.",
       "revId": "3d97035352d71fdf1a2e8939b58cf9195e2d6cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2875bcb7_8c115e90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-10-26T20:31:19Z",
+      "side": 1,
+      "message": "Thanks for the +2",
+      "revId": "3d97035352d71fdf1a2e8939b58cf9195e2d6cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de0cc26_833f2362",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-10-26T20:31:19Z",
+      "side": 1,
+      "message": "Hi Jared,\n\nIn practice in bluetooth is to have all tests start in bluetooth_flaky and when stable move to the corresponding stable suite.",
+      "parentUuid": "9cda6f2e_8f284d66",
+      "revId": "3d97035352d71fdf1a2e8939b58cf9195e2d6cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
