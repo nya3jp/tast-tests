@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73b8eee_132d3017",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-26T23:47:35Z",
+      "side": 1,
+      "message": "bootlockbox-client failures look like something related to b/214321767, we can retry I think",
+      "revId": "dca436c0e7fa97e671e6cb751352b6685ef016b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
