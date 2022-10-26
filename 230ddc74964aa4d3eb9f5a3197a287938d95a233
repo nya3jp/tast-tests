@@ -33,6 +33,24 @@
       "message": "nit: 5 * time.Second",
       "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77a6436_93d0df87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-26T23:09:37Z",
+      "side": 1,
+      "message": "gofmt wants to remove these spaces.",
+      "parentUuid": "090a59ae_612a8d87",
+      "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
