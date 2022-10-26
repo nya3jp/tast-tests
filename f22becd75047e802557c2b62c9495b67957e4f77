@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac24ef5_c3166b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T01:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013d4002_8b9475bf",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc4368c4_81d949e4",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "\u003e Is it when if we have error here, the following test would be meaningless?\n\u003e If just param doesnt match expectation it doesnt need to stop.\n\nThat\u0027s correct.",
       "parentUuid": "0e6142f5_d0f5d143",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "771bcd1a_4fc97bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T01:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67464af1_bd1c27a6",
       "range": {
         "startLine": 127,
         "startChar": 2,
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "Ack, so does it means `len(network)` should always be equal to `len(netInfos)`?\nMaybe worth a comment for future readers.",
       "parentUuid": "7834e7d8_07f89d51",
+      "range": {
+        "startLine": 241,
+        "startChar": 10,
+        "endLine": 241,
+        "endChar": 11
+      },
+      "revId": "f22becd75047e802557c2b62c9495b67957e4f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d6c29c_96e421e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T01:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26639af_b0e0c54c",
       "range": {
         "startLine": 241,
         "startChar": 10,
