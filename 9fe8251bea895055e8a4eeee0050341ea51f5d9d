@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "252f55ce_cca432ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-26T20:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d52316_02ef41af",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74a0088a_63df7a0c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f45609_abef4eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-26T20:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a0088a_63df7a0c",
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d23aca_7337801e",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-26T19:25:17Z",
       "side": 1,
       "message": "Same as before - get rid of this comment and ExtraHardwareDeps",
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56486e1f_b3167772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-10-26T20:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d23aca_7337801e",
       "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
