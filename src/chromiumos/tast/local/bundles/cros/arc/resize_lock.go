@@ -80,6 +80,14 @@ var testCases = []resizeLockTestCase{
 	},
 }
 
+type testingMode int
+
+const (
+	runAllTests testingMode = iota
+	skipTogglePhoneTablet
+	skipCUJKeyboard
+)
+
 // For the models with a small display, when toggling from Phone to Tablet, ARC falls back to maximize the app since the requested bounds from Chrome
 // is too large for the display. Therefore, we skip testing toggling between Phone and Tablet for the models in the small display models list.
 // TODO(b/253544751): Use a proper way to handle models with a small display.
@@ -88,6 +96,13 @@ var smallDisplayModelsListMap = []string{
 	"foob",
 	"foob360",
 	"quackingstick",
+}
+
+// The "Search" key is broken for taniks and we are using "Search+Alt+C" in testResizeLockedAppCUJInternal, so the test always fails.
+// Skipping the test as a temporary solution.
+// TODO(b/255708276): Re-enable testResizeLockedAppCUJInternal via keyboard for taniks.
+var brokenKeyboardModelsListMap = []string{
+	"taniks",
 }
 
 func init() {
@@ -101,13 +116,18 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(smallDisplayModelsListMap...)),
-				Val:               true, // Tests toggling between Phone and Tablet
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(append(smallDisplayModelsListMap, brokenKeyboardModelsListMap...)...)),
+				Val:               runAllTests,
 			},
 			{
 				Name:              "skip_toggle_phone_tablet",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(smallDisplayModelsListMap...)),
-				Val:               false, // Skips testing toggling between Phone and Tablet
+				Val:               skipTogglePhoneTablet,
+			},
+			{
+				Name:              "skip_cuj_keyboard",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(brokenKeyboardModelsListMap...)),
+				Val:               skipCUJKeyboard,
 			},
 		},
 	})
@@ -568,6 +588,10 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		{wm.ResizeLockTestPkgName, wm.ResizeLockApkName, wm.ResizeLockMainActivityName, wm.InputMethodClick},
 		{wm.ResizeLock2PkgName, wm.ResizeLock2ApkName, wm.ResizeLockMainActivityName, wm.InputMethodKeyEvent},
 	} {
+		if s.Param().(testingMode) == skipCUJKeyboard && test.method == wm.InputMethodKeyEvent {
+			s.Log("Skipping critical user journey test via keyboard because the model has broken keyboard")
+			continue
+		}
 		if err := testResizeLockedAppCUJInternal(ctx, tconn, a, d, cr, test.packageName, test.apkName, test.activityName, test.method, keyboard, s, testName); err != nil {
 			return errors.Wrapf(err, "failed to run the critical user journey for %s via %s", test.apkName, test.method)
 		}
@@ -619,12 +643,14 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		{wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionNoDialog},
 	}
-	if s.Param().(bool) { // Skipping the toggling between Phone and Tablet for arc.ResizeLock.skip_toggle_phone_tablet
+	if !(s.Param().(testingMode) == skipTogglePhoneTablet) {
 		toggleResizeLockModeTests = append([]toggleResizeLockModeTestsParams{
 			// Toggle between Phone and Tablet.
 			{wm.PhoneResizeLockMode, wm.TabletResizeLockMode, wm.DialogActionNoDialog},
 			{wm.TabletResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog},
 		}, toggleResizeLockModeTests...)
+	} else {
+		s.Log("Skipping toggling Phone and Tablet test because the model has a small display and toggling to Tablet results in maximizing")
 	}
 
 	for _, test := range toggleResizeLockModeTests {
