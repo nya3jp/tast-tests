@@ -16,6 +16,46 @@
       "message": "Please review, thanks!",
       "revId": "405acc8347f505f0e8ed9c5c2377caf1a18a7210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82fb31db_77d6c7e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:23:45Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "405acc8347f505f0e8ed9c5c2377caf1a18a7210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0b56ab_e4370cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-26T17:23:45Z",
+      "side": 1,
+      "message": "nit: `can`",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "405acc8347f505f0e8ed9c5c2377caf1a18a7210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
