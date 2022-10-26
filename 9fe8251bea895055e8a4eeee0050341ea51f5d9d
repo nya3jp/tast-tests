@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d52316_02ef41af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T19:25:17Z",
+      "side": 1,
+      "message": "nit: is there a reason to use /* */ here? If not, let\u0027s stick with //? also below",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a0088a_63df7a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T19:25:17Z",
+      "side": 1,
+      "message": "let\u0027s get rid of this since we aren\u0027t running in the lab anyway and there\u0027s no reason to restrict manual runs to specific boards",
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d23aca_7337801e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T19:25:17Z",
+      "side": 1,
+      "message": "Same as before - get rid of this comment and ExtraHardwareDeps",
+      "revId": "9fe8251bea895055e8a4eeee0050341ea51f5d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
