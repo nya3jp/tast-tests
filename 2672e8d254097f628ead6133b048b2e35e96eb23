@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf0167db_a9b10516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-26T03:36:57Z",
+      "side": 1,
+      "message": "By file var I meant to lift it out the function. You can just move this new change up near the top of the file. Thanks",
+      "parentUuid": "b4224055_1558e2a7",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "2672e8d254097f628ead6133b048b2e35e96eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f41fff0_ab27367a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 18
