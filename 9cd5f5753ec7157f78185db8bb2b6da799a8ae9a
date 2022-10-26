@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc013232_ce4ab136",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T16:29:08Z",
+      "side": 1,
+      "message": "Local and remote cannot share the code in this case.\n\nRemote test need to call grpc server, which is running in \"local\" environemnt. Then RPC implementation can call the chromeproc.Version(), instead, then dup will be resolved in the case.\n\nClearning other uses in a follow up CL sounds good.\nbut, then, this file should be moved under bundles/* package in this CL now. Clean up should be done on top of it. Let\u0027s make our best effort to keep support library as clean as possible.",
+      "parentUuid": "71484fef_75adee46",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea396493_b92ab1c4",
         "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
         "patchSetId": 6
@@ -285,6 +303,24 @@
       "side": 1,
       "message": "ditto for use of ash version by local and remote tests. we can combine this comment to the other one.",
       "parentUuid": "aefa980b_ab844ab3",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8f1603_18f9424d",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-26T16:29:08Z",
+      "side": 1,
+      "message": "I\u0027m not asking you to consolidate all the calls. My ask is to remove this in this CL and replace the call of this in this CL by chromeproc.Version().\nI don\u0027t think we have reasons to duplicate unnecessarily, right?\nTo be clear, I\u0027m just fine to leave other uses as is in this CL, I\u0027m giving it a try not to make the situation worse. WDYT?",
+      "parentUuid": "9af75ea4_037ad8d5",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
