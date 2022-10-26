@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c347711_6b307982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-26T03:51:52Z",
+      "side": 1,
+      "message": "Ahh I see, like a constant var we could use repeatedly? Esp if we are going to use this reg multiple times in the file",
+      "parentUuid": "cf0167db_a9b10516",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "2672e8d254097f628ead6133b048b2e35e96eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f41fff0_ab27367a",
