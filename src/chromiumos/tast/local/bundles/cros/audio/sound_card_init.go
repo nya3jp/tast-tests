@@ -53,6 +53,9 @@ const ampCount = 2
 const initctlTimeout = 2 * time.Second
 const soundCardInitTimeout = 10 * time.Second
 
+// vpdFile is the file stores channel 0 RDC VPD value.
+const vpdFile = "/sys/firmware/vpd/ro/dsm_calib_r0_0"
+
 // SoundCardInit Verifies sound_card_init boot time calibration logic.
 func SoundCardInit(ctx context.Context, s *testing.State) {
 
@@ -63,6 +66,10 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 	soundCardID, err := soundcardinit.GetSoundCardID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get sound card name: ", err)
+	}
+
+	if _, err := os.Stat(vpdFile); err != nil {
+		s.Fatal("Failed to stat VPD file: ", err)
 	}
 
 	// Clear all sound_card_init files.
