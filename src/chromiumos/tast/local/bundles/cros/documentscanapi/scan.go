@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -41,6 +44,16 @@ func init() {
 			"paper-io_scanning",
 		},
 		Fixture: "virtualUsbPrinterModulesLoaded",
+		Params: []testing.Param{
+			{
+				Val: browser.TypeAsh,
+			},
+			{
+				Name:              "lacros",
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -65,11 +78,24 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed setup of Document Scan extension: ", err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
+	bt := s.Param().(browser.Type)
+	var extOpt []chrome.Option
+	if bt == browser.TypeLacros {
+		extOpt = append(extOpt, chrome.LacrosUnpackedExtension(extDir))
+	} else {
+		extOpt = append(extOpt, chrome.UnpackedExtension(extDir))
+	}
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), extOpt...)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		s.Fatal("Failed to launch browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -100,7 +126,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 
 	extURL := "chrome-extension://" + scanTargetExtID + "/scan.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
 		s.Fatalf("Failed to connect to extension URL at %v: %v", extURL, err)
 	}
@@ -114,7 +140,15 @@ func Scan(ctx context.Context, s *testing.State) {
 
 	s.Log("Clicking Scan button")
 	ui := uiauto.New(tconn)
-	scanButton := nodewith.Name("Scan").Role(role.Button).Ancestor(nodewith.Name("Scanner Control").HasClass("RootView"))
+
+	scanButton := nodewith.Name("Scan").Role(role.Button).Ancestor(nodewith.Name("Scanner Control").HasClass("RootView").First())
+
+	if err := uiauto.Combine("wait for scan button",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(scanButton),
+	)(ctx); err != nil {
+		s.Fatal("Scan button faild to appear: ", err)
+	}
+
 	if err := ui.WithInterval(1000*time.Millisecond).LeftClickUntil(scanButton, ui.Gone(scanButton))(ctx); err != nil {
 		s.Fatal("Failed to click Scan button: ", err)
 	}
