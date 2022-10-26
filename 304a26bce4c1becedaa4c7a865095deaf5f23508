@@ -16,6 +16,24 @@
       "message": "Alvin, can you please take another look? Is this an acceptable usage of Tast parameter values?",
       "revId": "304a26bce4c1becedaa4c7a865095deaf5f23508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4d49ee_34de3c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-26T04:58:08Z",
+      "side": 1,
+      "message": "Having different Params based on hwdeps is what Params were made for AFAIK.",
+      "parentUuid": "6e2ffc1b_0273bbbd",
+      "revId": "304a26bce4c1becedaa4c7a865095deaf5f23508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
