@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ac87cc_01da2993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-26T20:44:57Z",
+      "side": 1,
+      "message": "Thanks for clean up!",
+      "revId": "298347c749ea3e5b1b9725eee902444b54948f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426d11fc_06ef466f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-26T20:44:57Z",
+      "side": 1,
+      "message": "Do we want to update tests using these varDeps?\n\nSame as arc.childUser/parentUser",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 27
+      },
+      "revId": "298347c749ea3e5b1b9725eee902444b54948f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
