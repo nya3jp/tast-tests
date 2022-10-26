@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52863eef_3a06b5c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T16:55:50Z",
+      "side": 1,
+      "message": "Reviewers, can you help carry your Code-Review if it looks good as I moved one file from the last patchset? Thanks,",
+      "revId": "bf1015bfbdb07c9f1c87bb40151b1ce779ed15c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

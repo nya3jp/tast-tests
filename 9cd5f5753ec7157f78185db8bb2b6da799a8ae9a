@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5488ea12_cfdff643",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T16:55:50Z",
+      "side": 1,
+      "message": "Done moving to bundles/lacros/versionutil for now. still open to move it to any better location if needed.",
+      "parentUuid": "fc013232_ce4ab136",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea396493_b92ab1c4",
@@ -321,6 +339,24 @@
       "side": 1,
       "message": "I\u0027m not asking you to consolidate all the calls. My ask is to remove this in this CL and replace the call of this in this CL by chromeproc.Version().\nI don\u0027t think we have reasons to duplicate unnecessarily, right?\nTo be clear, I\u0027m just fine to leave other uses as is in this CL, I\u0027m giving it a try not to make the situation worse. WDYT?",
       "parentUuid": "9af75ea4_037ad8d5",
+      "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6db1a93_984bdbd8",
+        "filename": "src/chromiumos/tast/local/chrome/versionutil/versionutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-26T16:55:50Z",
+      "side": 1,
+      "message": "Ack. Used chromeproc.Version for ash version instead.",
+      "parentUuid": "bd8f1603_18f9424d",
       "revId": "9cd5f5753ec7157f78185db8bb2b6da799a8ae9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
