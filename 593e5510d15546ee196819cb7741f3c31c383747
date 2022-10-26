@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f688f7_cf8d2be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T21:02:23Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "593e5510d15546ee196819cb7741f3c31c383747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deebdaed_aff51084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T21:02:23Z",
+      "side": 1,
+      "message": "this comment is out of date",
+      "revId": "593e5510d15546ee196819cb7741f3c31c383747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14dffc7_6e63dd33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-26T21:02:23Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "593e5510d15546ee196819cb7741f3c31c383747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
