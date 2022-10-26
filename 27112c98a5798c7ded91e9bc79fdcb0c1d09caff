@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49554e00_043abe5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-26T15:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b15c40_f9ffa727",
+      "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9cf67e_772a7690",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-10-25T19:24:45Z",
       "side": 1,
       "message": "Does this need to do anything to wait for the print management app to finish launching before continuing?",
+      "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161b06af_deb506d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-26T15:10:40Z",
+      "side": 1,
+      "message": "It looks like the Launch method waits for the app to \u0027launch\u0027 (appear in the shelf).  I assume it\u0027s ready to use when it shows up in the shelf.",
+      "parentUuid": "6f9cf67e_772a7690",
       "revId": "27112c98a5798c7ded91e9bc79fdcb0c1d09caff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
