@@ -19,6 +19,7 @@ import (
 
 	"gopkg.in/yaml.v2"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/graphics"
@@ -132,7 +133,25 @@ func getDeviceModel(ctx context.Context) (string, error) {
 
 	model, err := crosconfig.Get(ctx, "/", "name")
 	if err != nil {
-		return "", errors.Wrap(err, "unable to find model")
+		// Fallback to trying crossystem
+		debugLog(ctx, "Failed to determine the model from crosconfig. Trying crossystem hwid.")
+
+		out, errCrossystem := testexec.CommandContext(ctx, "crossystem", "hwid").Output()
+		if errCrossystem != nil {
+			return "", errors.Wrap(errCrossystem, "unable to find model")
+		}
+		hwid := string(out)
+
+		// hwid is in the form of: '<MODEL>-AAAA ADA-ADA-ADA-ADA-ADA' or
+		// '<MODEL> ADA-ADA-ADA-ADA-ADA' where A is upper case
+		// alphabetic, and D is a digit.
+		modelRe := regexp.MustCompile(`^[A-Z]*`) // matches the model part of an hwid
+
+		upperCaseModel := modelRe.FindString(hwid)
+		if len(upperCaseModel) == 0 {
+			return "", errors.Wrap(err, "unable to find model")
+		}
+		model = strings.ToLower(upperCaseModel)
 	}
 
 	return model, nil
