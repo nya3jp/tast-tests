@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21cae7d4_006e768c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-10-26T04:08:26Z",
+      "side": 1,
+      "message": "We should have a separate suite for UI / e2e tests. Opened a bug https://b.corp.google.com/issues/255681564\n\n@dsunkara@google.com fyi",
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b9ab6f7_554805ac",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
         "patchSetId": 8
