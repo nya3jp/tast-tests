@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f21141_b5152af1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "Is something missing here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ef07de_92e5b004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "nit: move the helper closer to the method implementations",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a484be5a_98e292d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "Not sure if the comment is more descriptive than the name. Maybe just drop it?",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4a997a_bc24b044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592da850_22733794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "disables",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 38
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8e925a_cc28d2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "defer has a specific meaning in go. Maybe:\n\n\"and allow re-enabling with restoreNonCellularInterfaces.\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 48,
+        "endLine": 165,
+        "endChar": 53
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b32cac_86ff1531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "Is this check useful? Setting the func to nil will just work.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e0eacd_00efe706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2edb33_42258e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "Is the device offline if cellular is still enabled?",
+      "range": {
+        "startLine": 191,
+        "startChar": 39,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a45cb8c_09c4fb9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-26T15:38:53Z",
+      "side": 1,
+      "message": "nit: remove newline.",
+      "revId": "fffc0488c42e45fe65ee39631406bee6fdd504d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
