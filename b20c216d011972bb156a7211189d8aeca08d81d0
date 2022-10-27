@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a215ce3_d2719ba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T21:22:36Z",
+      "side": 1,
+      "message": "LGTM, just one nit.",
+      "revId": "b20c216d011972bb156a7211189d8aeca08d81d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05076fc2_09089479",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T21:22:36Z",
+      "side": 1,
+      "message": "nit: The tonality of the comment is negative \"It is not the ....\" instead, it can be \"This test is to check the ability to identify the target network from APs with similar network configs and connect to the target .........\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "b20c216d011972bb156a7211189d8aeca08d81d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

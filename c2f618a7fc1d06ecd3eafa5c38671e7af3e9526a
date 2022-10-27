@@ -238,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6ba75e_f51880ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T21:22:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24ed2d04_23fd04e2",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 217
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "890aec20_9003e3ab",
