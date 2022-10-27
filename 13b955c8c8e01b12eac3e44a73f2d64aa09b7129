@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c593e3_ec428acd",
+        "filename": "android/ArcResizeLockTest/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T13:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5d3b01_4790a32e",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "331550da_e3fbff1e",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-27T12:35:00Z",
       "side": 1,
       "message": "Please put your name here.",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 8
+      },
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3445bbd_c09243a0",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T13:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331550da_e3fbff1e",
       "range": {
         "startLine": 318,
         "startChar": 4,
@@ -163,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75674735_4846a3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T13:37:59Z",
+      "side": 1,
+      "message": "I originally put it here from the learning of recent tast-tests stabilization: installing multiple apks at the beginning of the test sometimes causes flakiness because it\u0027s heavy operations.\nBut installing two apks shouldn\u0027t be too heavy so moved as you suggested :)",
+      "parentUuid": "4ea11b1f_fd04db0b",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c23d511_e065fc7b",
@@ -182,6 +242,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40183b4f_6b1df16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T13:37:59Z",
+      "side": 1,
+      "message": "For the splash visibility check, I\u0027ve changed to use the isSplashVisible arg in `wm.CheckResizeLockState`.\n\n\u003e passing the expected mode directly to this function instead of a bool.\n\nGiven I introduced `isSplashVisible`, what do you think of using a single bool arg?",
+      "parentUuid": "3c23d511_e065fc7b",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af7ddc44_273e7e9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
         "patchSetId": 2
@@ -193,6 +271,24 @@
       "writtenOn": "2022-10-27T12:35:00Z",
       "side": 1,
       "message": "These shelf alignment/behavior restoring logic looks very similar to ash.EnsureTabletModeEnabled for tablet mode.\nCould you file a bug for providing similar methods to them?",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6857d678_02d4e745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T13:37:59Z",
+      "side": 1,
+      "message": "Sorry maybe I don\u0027t get your point. You mean ideally we should have an util method for `ash.GetShelfAlignment` which returns a tuple of cleanup function and err like `EnsureTabletModeEnabled`?",
+      "parentUuid": "af7ddc44_273e7e9c",
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
