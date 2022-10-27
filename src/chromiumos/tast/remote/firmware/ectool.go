@@ -50,6 +50,7 @@ var (
 	reRWVersion     = regexp.MustCompile(`RW version:\s*(\S+)\s`)
 	reECHash        = regexp.MustCompile(`hash:\s*(\S+)\s*`)
 	reTabletModeAng = regexp.MustCompile(`tablet_mode_angle=(\d+) hys=(\d+)`)
+	reFlashSize     = regexp.MustCompile(`FlashSize\s*(\d+)`)
 	reI2CLookup     = regexp.MustCompile(`Bus: I2C; Port: (\S+); Address: (\S+)`)
 )
 
@@ -132,6 +133,19 @@ func (ec *ECTool) ForceTabletModeAngle(ctx context.Context, tabletModeAngle, hys
 		return errors.Wrap(err, "failed to set tablet_mode_angle to 0")
 	}
 	return nil
+}
+
+// FlashSize retireves the flashsize in bytes from the ectool flashinfo command.
+func (ec *ECTool) FlashSize(ctx context.Context) (int, error) {
+	out, err := ec.Command(ctx, "flashinfo").Output()
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get flashinfo output")
+	}
+	match := reFlashSize.FindSubmatch(out)
+	if match == nil {
+		return 0, errors.Errorf("failed to match regexp %s in ectool flashinfo output: %s", reFlashSize, string(out))
+	}
+	return strconv.Atoi(string(match[1]))
 }
 
 // GpioName type holds commands for 'ectool gpioget'.
