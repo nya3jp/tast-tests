@@ -20,16 +20,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Root returns the Process instance of the root lacros-chrome process.
-// tconn is a connection to ash-chrome. If no process can be found, an error is
-// returned.
-func Root(ctx context.Context, tconn *chrome.TestConn) (*process.Process, error) {
+// lacrosInfo returns a snapshot lacros-chrome info or an error on failure.
+func lacrosInfo(ctx context.Context, tconn *chrome.TestConn) (*lacrosinfo.Info, error) {
 	info, err := lacrosinfo.Snapshot(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to retrieve lacrosinfo")
 	}
 	if len(info.LacrosPath) == 0 {
 		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
+	}
+	return info, nil
+}
+
+// Root returns the Process instance of the root lacros-chrome process.
+// tconn is a connection to ash-chrome. If no process can be found, an error is
+// returned.
+func Root(ctx context.Context, tconn *chrome.TestConn) (*process.Process, error) {
+	info, err := lacrosInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
 	}
 	return chromeproc.Root(filepath.Join(info.LacrosPath, "chrome"))
 }
@@ -58,12 +67,19 @@ func ProcsFromPath(ctx context.Context, path string) ([]*process.Process, error)
 // RendererProcesses returns lacros-chrome renderer processes. See also
 // chromiumos/tast/local/chrome/chromeproc's RendererProcesses(), for ash-chrome.
 func RendererProcesses(ctx context.Context, tconn *chrome.TestConn) ([]*process.Process, error) {
-	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	info, err := lacrosInfo(ctx, tconn)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to retrieve lacrosinfo")
-	}
-	if len(info.LacrosPath) == 0 {
-		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
+		return nil, err
 	}
 	return chromeproc.RendererProcesses(filepath.Join(info.LacrosPath, "chrome"))
+}
+
+// GPUProcesses returns lacros-chrome GPU processes. See also
+// chromiumos/tast/local/chrome/chromeproc's GPUProcesses(), for ash-chrome.
+func GPUProcesses(ctx context.Context, tconn *chrome.TestConn) ([]*process.Process, error) {
+	info, err := lacrosInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	return chromeproc.GPUProcesses(filepath.Join(info.LacrosPath, "chrome"))
 }
