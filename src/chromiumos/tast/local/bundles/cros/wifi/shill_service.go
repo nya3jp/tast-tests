@@ -2557,7 +2557,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		// This will cause ping to start right after simulated FW crash, causing ping pkt drops.
 		// Allow 10 secs sleep (FW takes approx ~10 for complete initialization/full scan).
 		// TODO(b/230656342): Handle no disconnection/connection during simulated FW crash.
-		testing.Sleep(ctx, 10*time.Second)
+		testing.Sleep(ctx, 20*time.Second)
 		return nil
 	}
 	iwlwifiResetPath := func(ctx context.Context, iface string) (string, error) {
