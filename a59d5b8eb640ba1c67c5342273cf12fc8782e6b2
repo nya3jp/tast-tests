@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293fcd61_2d780dda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-10-27T14:42:54Z",
+      "side": 1,
+      "message": "We might want to have \"chrome\" here as well.",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2926ec_75ff5994",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-10-27T14:42:54Z",
+      "side": 1,
+      "message": "Is there any specific reason to require \"arc\" here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137a7f7d_b64c3b87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-10-27T14:42:54Z",
+      "side": 1,
+      "message": "IIRC there are some preconditions that we need to poll before running the cros_camera_connector_test as described in https://crrev.com/c/2153227. I am not 100% sure if the statement there is still accurate though.",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
