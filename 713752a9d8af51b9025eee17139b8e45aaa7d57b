@@ -34,6 +34,57 @@
       "parentUuid": "f1322bc1_18fea498",
       "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf361a3c_8930fef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:55:57Z",
+      "side": 1,
+      "message": "Please add a TODO with the comment about dbus.",
+      "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9873b511_cd05e96c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:55:57Z",
+      "side": 1,
+      "message": "I couldn\u0027t quite figure out what this is checking.\nI think it would help if you can avoid mutating the test expectations and move their definitions (including that of the result type) out of the poll.",
+      "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f89bb002_c77cc696",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:55:57Z",
+      "side": 1,
+      "message": "Consider excluding this from the CL.",
+      "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
