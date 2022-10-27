@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28d0476a_1cc6816c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T17:21:55Z",
+      "side": 1,
+      "message": "Generally repetition for similar properties are not preffered, so I would recommend to make it an array. In future for further test enhancements there can be comparison b/w 3 security configs may be ?",
+      "parentUuid": "7d44c1be_fa251399",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8c44a4a_12d8da9f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 4
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "This is not a test to check the ability to select the more secure network, it is to check the ability to connect the correct work selected by the user. The device doesn\u0027t make decision, it is the user who selects the network. If the user selects the open network, the device will connect to the open network, even though the WPA network is also available, because the user may not have the access to the WPA network (the user doesn\u0027t know the password).",
       "parentUuid": "e8c44a4a_12d8da9f",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 217
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af13c8bf_6c38fbfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T17:21:55Z",
+      "side": 1,
+      "message": "May be it requires a bit of rewording \"Test the ability to connect to user selected network correctly ...\" This will be more clear. WDYT ?",
+      "parentUuid": "f12338e8_ebd96800",
       "range": {
         "startLine": 35,
         "startChar": 9,
@@ -220,6 +268,24 @@
       "side": 1,
       "message": "CleanDisconnectWifi() sends disconnect to the DUT, so that the DUT disconnect from the service. \nA DUT can only connect to one service. The DUT disconnected from the first AP after it connected to the second AP.",
       "parentUuid": "aed8dcd6_8fee4bb0",
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd273c9_5d4ca4d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T17:21:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a831f3b0_92c096e5",
       "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
