@@ -32,7 +32,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DRMTraceTool,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests D-Bus methods related to DRMTraceTool",
 		Contacts: []string{
 			"ddavenport@chromium.org",

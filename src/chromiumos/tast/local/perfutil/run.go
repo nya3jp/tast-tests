@@ -20,7 +20,7 @@ import (
 )
 
 // DefaultRuns provides the default number of iteration for a perftest conducts.
-const DefaultRuns = 10
+const DefaultRuns = 1
 
 // ScenarioFunc is the function to conduct the test operation and returns the
 // metric value.
