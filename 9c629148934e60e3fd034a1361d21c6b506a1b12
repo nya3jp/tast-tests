@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28072be_46e0849c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T01:23:02Z",
+      "side": 1,
+      "message": "Please remove hidehiko and request tast owner again, he is ooo.",
+      "revId": "9c629148934e60e3fd034a1361d21c6b506a1b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
