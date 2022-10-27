@@ -81,6 +81,11 @@ func (f *FilesApp) WaitUntilGone(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.WaitUntilGone(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
+// EnsureGoneFor calls ui.EnsureGoneFor scoping the finder to the Files App.
+func (f *FilesApp) EnsureGoneFor(finder *nodewith.Finder, duration time.Duration) uiauto.Action {
+	return f.ui.EnsureGoneFor(finder.FinalAncestor(WindowFinder(f.appID)), duration)
+}
+
 // LeftClick calls ui.LeftClick scoping the finder to the Files App.
 func (f *FilesApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.LeftClick(finder.FinalAncestor(WindowFinder(f.appID)))
