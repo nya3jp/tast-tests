@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62402298_b73682a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-27T15:12:28Z",
+      "side": 1,
+      "message": "after timeouts of 1 resp. 2 seconds for the success dialog and the pending dialog.\n\nSo mostly these tests didn\u0027t fail, but in some cases they did.\nDo you know whether it\u0027s possible to use the uiauto framework within go routines to check the dialogs in the background? normally, I\u0027d assume that we should pick up on dialogs opened for more than a second, but the other things we do sometimes just take too long for that...",
+      "parentUuid": "1ca8d081_4e9b12b9",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33293999_9817f7e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2022-10-25T16:50:32Z",
       "side": 1,
       "message": "same here. Looks like you just will ignore some error, so do we really need to wait for allowedLabelTextFinder?",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 98
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e4758d_985e50a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-27T15:12:28Z",
+      "side": 1,
+      "message": "Ideally I\u0027d like to keep these checks as mandatory, but unfortunately they were too flaky. If you got a good idea on how to check that a ui element existed for a short time, I\u0027m all ears 😄",
+      "parentUuid": "a5d7ab6c_fe37491b",
       "range": {
         "startLine": 427,
         "startChar": 0,
