@@ -16,6 +16,23 @@
       "message": "This is a reland of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3949737. PS1 is the CL as originally landed, PS2 is the fix.",
       "revId": "8ea1390a09cbe4aa8326065c23cefa523eb97f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdda00e_8e33da81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-27T20:36:25Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8ea1390a09cbe4aa8326065c23cefa523eb97f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
