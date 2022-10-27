@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b013014_fd49b771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-27T17:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217860b5_32ada6a8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5f65e1_cd367048",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-27T17:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fabe8c5_4651db36",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aaceda0_0c316b11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-27T17:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1057737b_42886291",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a8cee7_3cf2cb25",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779e0b49_f19655b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-27T17:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a8cee7_3cf2cb25",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07b04356_c246655c",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-27T16:32:02Z",
       "side": 1,
       "message": "This can be simpler thus:\n\n\tfunc Suspend(ctx context.Context, s *testing.State) {\n\t\tconn :\u003d s.DUT().Conn()\n\t\tsmokeTest :\u003d conn.CommandContext(ctx,\n\t\t\t\"cros_camera_connector_test\", \"--gtest_filter\u003dConnectorTest/CaptureTest.OneFrame/NV12_640x480_30fps\")\n\t\tsuspendStressTest :\u003d conn.CommandContext(ctx, \"suspend_stress_test\", \"-c\", \"1\")\n\t\t\n\t\tif output, err :\u003d smokeTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Failed to run a smoke test on the camera: \", err)\n\t\t}\n\t\tif output, err :\u003d suspendStressTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Failed to perform suspend stress test: \", err)\n\t\t}\n\t\tif output, err :\u003d smokeTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Camera failed after suspend: \", err)\n\t\t}\n\t}",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8d7c6f_96d42364",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-27T17:58:32Z",
+      "side": 1,
+      "message": "are you sure that you can simply reuse the smokeTest variable?\n```\n2022-10-27T17:48:42.317418Z [17:48:42.316] Error at suspend.go:45: Camera failed after suspend: Stdout was already set\n2022-10-27T17:48:42.317443Z [17:48:42.316] Stack trace:\nCamera failed after suspend\n        at chromiumos/tast/remote/bundles/cros/camera.Suspend (suspend.go:45)\n        at chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n        at chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n        at runtime.goexit (asm_amd64.s:1594)\nStdout was already set\n        at chromiumos/tast/ssh.init (exec_ctx.go:100)\n        at runtime.doInit (proc.go:6321)\n        at runtime.doInit (proc.go:6298)\n        at runtime.doInit (proc.go:6298)\n        at runtime.doInit (proc.go:6298)\n        at runtime.doInit (proc.go:6298)\n        at runtime.doInit (proc.go:6298)\n        at runtime.main (proc.go:233)\n        ...\n2022-10-27T17:48:44.109318Z [17:48:44.109] Running rpc server: [/usr/local/libexec/tast/bundles/local_pushed/cros -rpc]\n2022-10-27T17:48:45.314664Z [17:48:45.314] Failed to take screenshot by Chrome API: failed to create a new Chrome Devtools Protocol session: failed to query browser\u0027s HTTP endpoint: Get \"http://localhost:34045/json/version\": dial tcp [::1]:34045: connect: connection refused\n2022-10-27T17:48:46.062405Z Completed test camera.Suspend in 16.932s with 1 error(s)\n2022-10-27T17:48:46.062617Z [17:48:46.062] Disconnecting from DUT\n2022-10-27T17:48:46.062640Z [17:48:46.062] Closing DUT SSH connection to localhost:2226\n2022-10-27T17:48:46.392325Z Collecting system information\n2022-10-27T17:48:49.533652Z --------------------------------------------------------------------------------\n2022-10-27T17:48:49.533688Z camera.Suspend [ FAIL ] Camera failed after suspend: Stdout was already set\n2022-10-27T17:48:49.533685Z camera.Suspend [ FAIL ] Camera failed after suspend: Stdout was already set\n2022-10-27T17:48:49.533697Z --------------------------------------------------------------------------------\n2022-10-27T17:48:49.533701Z Results saved to /tmp/tast/results/20221027-174810\n```",
+      "parentUuid": "07b04356_c246655c",
       "range": {
         "startLine": 28,
         "startChar": 0,
