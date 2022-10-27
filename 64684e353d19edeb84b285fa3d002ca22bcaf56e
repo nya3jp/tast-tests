@@ -33,6 +33,24 @@
       "message": "I have a concern that changing the defaults is a breaking change. Some code may start the server up without any -port flag and assume it\u0027s running on port 4445.\n\nI\u0027m happy to add support for port 0, but I\u0027d prefer we reverted the changing of defaults.",
       "revId": "64684e353d19edeb84b285fa3d002ca22bcaf56e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72926a43_7c26ac91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-10-27T16:56:50Z",
+      "side": 1,
+      "message": "I was debating about that too. The change here should apply only to few remote tests (primary your and my *GRPC.go tests) relying on `cros_server_util.GetGRPCClient` where the port assignment and access mechanics was encapsulated from them. \nThe actual usage against the cros server (e.g. Mobly and your webdriver scenarios) is still having the same default value on the tast repo side. I think we should be safe there.\n\nThat said, I think I will change it back to 4445 and have one of the tests use port 0, so that I can cover both types of port assignment in the tests.",
+      "parentUuid": "e22a71b6_88e092b7",
+      "revId": "64684e353d19edeb84b285fa3d002ca22bcaf56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
