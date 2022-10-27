@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a0bfcb_02302379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "Renamed the method to make it more obvious i.e. we configure logging for provisioning before starting provisioning.",
+      "parentUuid": "ff2eb055_31fa2997",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed025f12_4d32a33b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-27T22:10:31Z",
       "side": 1,
       "message": "Same about documenting the reason to must have this here.",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66b6c60_a42c336f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "removed and merged this with the call above.",
+      "parentUuid": "ed025f12_4d32a33b",
       "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d276d58a_78d5cbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99b5ebe_1a3611d3",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cfd4dde_3c9a3f23",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-27T22:10:31Z",
       "side": 1,
       "message": "same comment about documenting the reason to do verbose logging and increase buffer size",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fe1c02_ec46f2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "the new method name should address it.",
+      "parentUuid": "2cfd4dde_3c9a3f23",
       "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8df01e_e8777091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "986fee68_192036f6",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb4373d_e2473e32",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379c8599_4478713a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "Renamed to ConfigureProvisioningLogs",
+      "parentUuid": "cdb4373d_e2473e32",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "618f99c2_2bc404ee",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-10-27T22:10:31Z",
       "side": 1,
       "message": "Naming nit: It seems to set the buffer size to 10M, which is \"increase\" compared to the default value (but not necessarily \"increase\" if the buffer size has already been set to some bigger value).\n\nHow about something like `SetLogcatBufferToLarge`?",
+      "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac92f04d_fcef96d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-27T23:54:47Z",
+      "side": 1,
+      "message": "We set buffer size to integer values. Large seems to imply that setting \u0027large\u0027 as a value is a thing. Moving the const name to method name (i.e. 10mb) doesn\u0027t seem helpful either. Can\u0027t think of a better name. Ack",
+      "parentUuid": "618f99c2_2bc404ee",
       "revId": "844788c36792f7d5901c88d43f28d5c87ecbcb86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
