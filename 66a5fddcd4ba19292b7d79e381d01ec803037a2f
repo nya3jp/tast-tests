@@ -22,6 +22,30 @@
       },
       "revId": "66a5fddcd4ba19292b7d79e381d01ec803037a2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74d926f_3bfd47f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-27T14:56:54Z",
+      "side": 1,
+      "message": "I figured since it got re-written slightly I\u0027d just mark both of them informational.",
+      "parentUuid": "6718d62c_26043eba",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "66a5fddcd4ba19292b7d79e381d01ec803037a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
