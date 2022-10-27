@@ -50,6 +50,24 @@
       "message": "```\n\tcr, err :\u003d chrome.New(ctx, chrome.EnableFeatures(\"CrosPrivacyHub\"))\n```\n\nnit: I don\u0027t think you need line 137 and 138.",
       "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f56f7c_b77ce808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-10-27T16:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2492a6f_d1f77cbe",
+      "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
