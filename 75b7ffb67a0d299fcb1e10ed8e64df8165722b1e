@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8346b600_13afa260",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:09:01Z",
+      "side": 1,
+      "message": "Yeah I had considered it but it\u0027d have to be added in the internal package and then reexported again. Since it\u0027s well-encapsulated (only used in internal package and thew two Browser() methods, i.e., it won\u0027t be used from tests), I prefer sticking with the bool.",
+      "parentUuid": "5ddf1f9e_acc049ff",
+      "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6bcc47c_313bb22c",
         "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-27T03:10:46Z",
       "side": 1,
       "message": "calling it \"initializeAutoTestPrivateEvents\" looks like an abstraction leak to me. What about making this use the same constants mentioned in my other comment?",
+      "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206b06fd_ea22e49c",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:09:01Z",
+      "side": 1,
+      "message": "Good point, used the same name as in the struct.",
+      "parentUuid": "d6bcc47c_313bb22c",
       "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
