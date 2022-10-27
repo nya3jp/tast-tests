@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f45d4c72_290d812c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37743d4f_cfa1afdb",
+      "range": {
+        "startLine": 23,
+        "startChar": 71,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a988230f_bc292ec0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63315300_1b78a689",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f775041_0105ba21",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "893d13a2_86b7f22a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-26T00:41:24Z",
       "side": 1,
       "message": "If this doesn\u0027t get ran what is the implications on other tests? I wonder if it\u0027s worth exposing this functionality as a software dependency or fixture instead.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2275c926_94e739dc",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "If you don\u0027t remove virtual node from cras + select virtual play. If you play audio, there is no sound.\n\nBut as long as the other tests will remember to select the internal speaker as the output device it\u0027s fine.\n\nI guess there are some tests I want to verify that playback is working?",
+      "parentUuid": "893d13a2_86b7f22a",
       "range": {
         "startLine": 37,
         "startChar": 2,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7308b6b7_71229f2a",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abcfe278_9f23a3ec",
+      "range": {
+        "startLine": 46,
+        "startChar": 87,
+        "endLine": 46,
+        "endChar": 88
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60b9aa9_eb8f981d",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-26T00:41:24Z",
       "side": 1,
       "message": "nit: why not just inline this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8941eb1_9f049ff0",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60b9aa9_eb8f981d",
       "range": {
         "startLine": 55,
         "startChar": 37,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73918e63_a857eda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb59642_5ff88245",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4b574d_81a28156",
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55b11b3_88f102ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f4b574d_81a28156",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d41940ec_9cb59a2a",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-10-26T00:41:24Z",
       "side": 1,
       "message": "nit: `verifyNumberOfVolumeChanges`",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81daca0_8bbdca96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41940ec_9cb59a2a",
       "range": {
         "startLine": 122,
         "startChar": 5,
@@ -250,6 +442,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89f34112_0ae64b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Run hook scripts from https://chrome-internal.googlesource.com/chromeos/manifest-internal (yes/always/NO)? yes\n\n[COMMIT 1/1 334c9bd991f6] Add USBVolumeGranularity tast test\n[FAILED] chromiumos/platform/tast-tests: _check_keywords\n    Found a blocked keyword in:\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 20: Matched \"dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 21: Matched \"dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 24: Matched \"dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 32: Matched \"dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 46: Matched \"Dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 65: Matched \"Dummy\" with regex of \"dummy\"\n    /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/platform/tast-tests/src/chromiumos/tast/local/audio/fake_usb_soundcard.go, line 66: Matched \"Dummy\" with regex of \"dummy\"\n\n    Found a blocked keyword in:\n    Commit message, line 5: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 6: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 7: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 8: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 9: Matched \"Dummy\" with regex of \"dummy\"\n    Commit message, line 10: Matched \"Dummy\" with regex of \"dummy\"\n    Commit message, line 11: Matched \"Dummy\" with regex of \"dummy\"\n    Commit message, line 14: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 17: Matched \"Dummy\" with regex of \"dummy\"\n    Commit message, line 19: Matched \"dummy\" with regex of \"dummy\"\n    Commit message, line 23: Matched \"dummy\" with regex of \"dummy\"\n\nFATAL: Preupload failed due to above error(s).\n- To disable some source style checks, and for other hints, see /usr/local/google/home/whalechang/chromiumos_repo/chromiumos.1/src/repohooks/README.md\nERROR: pre-upload hooks exited with exit code: 1",
+      "parentUuid": "ff778c59_0e82db25",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83b39326_bda9fe3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a243808_3cea227a",
+      "range": {
+        "startLine": 135,
+        "startChar": 70,
+        "endLine": 135,
+        "endChar": 71
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec67e917_58a26363",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
         "patchSetId": 1
@@ -261,6 +501,30 @@
       "writtenOn": "2022-10-26T00:41:24Z",
       "side": 1,
       "message": "Again use cleanupCtx here.",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d606877_2e6804e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec67e917_58a26363",
       "range": {
         "startLine": 154,
         "startChar": 16,
@@ -284,6 +548,30 @@
       "writtenOn": "2022-10-26T00:41:24Z",
       "side": 1,
       "message": "does the error contain more information here? might be worth suffixing these errors with steps 10 - 25 etc",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35398751_b66aa44b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-27T08:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fa6c81_500df3dc",
       "range": {
         "startLine": 169,
         "startChar": 12,
