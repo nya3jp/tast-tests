@@ -82,16 +82,9 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 	vars := tabSwitchVariables{
 		param:    s.Param().(TabSwitchParam),
 		webPages: getTestWebpages(),
+		cr:       s.FixtValue().(chrome.HasChrome).Chrome(),
 	}
 
-	switch vars.param.BrowserType {
-	case browser.TypeAsh:
-		vars.cr = s.PreValue().(chrome.HasChrome).Chrome()
-	case browser.TypeLacros:
-		vars.cr = s.FixtValue().(chrome.HasChrome).Chrome()
-	default:
-		return nil, errors.Errorf("unsupported browser type: %v", vars.param.BrowserType)
-	}
 	var err error
 	vars.br, vars.closeBrowser, err = browserfixt.SetUp(ctx, vars.cr, vars.param.BrowserType)
 	if err != nil {

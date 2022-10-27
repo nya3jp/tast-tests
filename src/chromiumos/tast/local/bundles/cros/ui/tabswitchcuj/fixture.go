@@ -30,6 +30,23 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "tabSwitchCUJWPRAsh",
+		Desc: "Composed fixture for TabSwitchCUJ with WPR",
+		Contacts: []string{
+			"amusbach@chromium.org",
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return s.ParentValue().(wpr.FixtValue).FOpt()(ctx, s)
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          "tabSwitchCUJWPR",
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "tabSwitchCUJWPRLacros",
 		Desc: "Composed fixture for TabSwitchCUJ with WPR",
 		Contacts: []string{
