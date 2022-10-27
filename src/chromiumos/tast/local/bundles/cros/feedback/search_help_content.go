@@ -36,6 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
 			Name:    "ash",
 			Fixture: "chromeLoggedInWithOsFeedback",
