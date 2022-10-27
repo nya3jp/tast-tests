@@ -27,6 +27,8 @@ type keyboardTest int
 const (
 	servoUSBKeyboard keyboardTest = iota
 	servoECKeyboard
+	detachableKeyboard
+	convertibleKeyboard
 )
 
 func init() {
@@ -40,10 +42,19 @@ func init() {
 		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Val: servoECKeyboard,
+			Val:               servoECKeyboard,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Detachable, hwdep.Convertible)),
 		}, {
 			Name: "usb_keyboard",
 			Val:  servoUSBKeyboard,
+		}, {
+			Name:              "detachable",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Val:               detachableKeyboard,
+		}, {
+			Name:              "convertible",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			Val:               convertibleKeyboard,
 		}},
 	})
 }
@@ -61,6 +72,18 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
+	}
+
+	testType := s.Param().(keyboardTest)
+	// Make sure internal keyboard is connected for detachable devices.
+	if testType == detachableKeyboard {
+		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "basestate detach"); err != nil {
+			s.Fatal("Failed to set detachable base state to attached: ", err)
+		}
+	} else if testType == convertibleKeyboard {
+		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "tabletmode off"); err != nil {
+			s.Fatal("Failed to set tabletmode to off: ", err)
+		}
 	}
 
 	// Stop UI to prevent keypresses from causing unintended behaviour.
@@ -83,8 +106,26 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 	var testKeyMap map[string]string
 	var keyPressFunc func(context.Context, string) error
 
-	switch s.Param().(keyboardTest) {
-	case servoECKeyboard:
+	switch testType {
+	case servoUSBKeyboard:
+		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.On); err != nil {
+			s.Fatal("Failed to enable usb keyboard: ", err)
+		}
+		// Only usb_keyboard_enter_key uses the usb keyboard handler in servo.
+		testKeyMap = map[string]string{
+			"usb_keyboard_enter_key": "KEY_ENTER",
+		}
+		keyPressFunc = func(ctx context.Context, keyStr string) error {
+			key := servo.KeypressControl(keyStr)
+			if err := h.Servo.KeypressWithDuration(ctx, key, servo.Dur(keyPressDur)); err != nil {
+				return errors.Wrap(err, "failed to type key")
+			}
+			return nil
+		}
+		// This is where the usb keyboard device events that servo emulates are sent.
+		device = "/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd"
+
+	default: // Covers servoECKeyboard, detachableKeyboard, convertibleKeyboard cases.
 		if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
 			s.Fatal("Failed to check for usb keyboard: ", err)
 		} else if hasKb {
@@ -116,23 +157,6 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 		}
 		device = res.Path
 
-	case servoUSBKeyboard:
-		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.On); err != nil {
-			s.Fatal("Failed to enable usb keyboard: ", err)
-		}
-		// Only usb_keyboard_enter_key uses the usb keyboard handler in servo.
-		testKeyMap = map[string]string{
-			"usb_keyboard_enter_key": "KEY_ENTER",
-		}
-		keyPressFunc = func(ctx context.Context, keyStr string) error {
-			key := servo.KeypressControl(keyStr)
-			if err := h.Servo.KeypressWithDuration(ctx, key, servo.Dur(keyPressDur)); err != nil {
-				return errors.Wrap(err, "failed to type key")
-			}
-			return nil
-		}
-		// This is where the usb keyboard device events that servo emulates are sent.
-		device = "/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd"
 	}
 
 	s.Log("Device path: ", device)
