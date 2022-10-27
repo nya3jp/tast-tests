@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908d9b69_5a32ada9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-27T18:25:08Z",
+      "side": 1,
+      "message": "I changed this from LeftClick to DoDefault because the a11y tree was not working correctly on lacros - see this discussion:  https://groups.google.com/a/google.com/g/lacros-tast/c/rimusB5dHPo/m/pqtDo2lmAAAJ",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 14
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
