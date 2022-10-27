@@ -55,6 +55,15 @@ const (
 	// ResizeLock3ApkName is the apk name of the third resize lock app.
 	ResizeLock3ApkName = "ArcResizeLockTest3.apk"
 
+	// ResizeLockO4CViaA2C2PkgName is the package name of the resize lock app declared as O4C via A2C2.
+	ResizeLockO4CViaA2C2PkgName = "org.chromium.arc.testapp.resizelocko4cviaa2c2"
+	// ResizeLockO4CViaA2C2ApkName is the apk name of the resize lock app declared as O4C via A2C2.
+	ResizeLockO4CViaA2C2ApkName = "ArcResizeLockTestO4CViaA2C2.apk"
+	// ResizeLockNonO4CViaA2C2PkgName is the package name of the resize lock app declared as non-O4C (AMAC-e) via A2C2.
+	ResizeLockNonO4CViaA2C2PkgName = "org.chromium.arc.testapp.resizelocknono4cviaa2c2"
+	// ResizeLockNonO4CViaA2C2ApkName is the apk name of the resize lock app declared as non-O4C (AMAC-e) via A2C2.
+	ResizeLockNonO4CViaA2C2ApkName = "ArcResizeLockTestNonO4CViaA2C2.apk"
+
 	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
 	phoneButtonName     = "Phone"
 	tabletButtonName    = "Tablet"
