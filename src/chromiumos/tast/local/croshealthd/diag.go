@@ -46,6 +46,7 @@ const (
 	RoutineHTTPFirewall                   = "http_firewall"
 	RoutineHTTPSFirewall                  = "https_firewall"
 	RoutineHTTPSLatency                   = "https_latency"
+	RoutineSensitiveSensor                = "sensitive_sensor"
 )
 
 // List of possible routine statuses
@@ -174,7 +175,7 @@ func parseOutput(ctx context.Context, raw string) (*RoutineResult, error) {
 			i, err := strconv.Atoi(percent)
 			if err != nil {
 				testing.ContextLogf(ctx, "Failed to parse progress status: %q", value)
-				return nil, errors.Wrapf(err, "Unable to parse %q value %q as int: %v", key, percent, err)
+				return nil, errors.Wrapf(err, "Unable to parse %q value %q as int", key, percent)
 			}
 			progress = i
 		}
