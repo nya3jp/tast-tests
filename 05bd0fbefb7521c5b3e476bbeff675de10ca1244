@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "076f8453_99d74fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-27T09:18:54Z",
+      "side": 1,
+      "message": "Since we won\u0027t force the command line switch, I guess that we could remove the fixture then?",
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e229606_56563f89",
         "filename": "src/chromiumos/tast/local/chrome/fixture.go",
         "patchSetId": 4
@@ -120,6 +137,30 @@
       "side": 1,
       "message": "That\u0027s strange!\n\nI agree with your plan, let\u0027s land it without `--has-hps` instead of overriding the value of `--has-hps`.\n\nAccording to my understanding, if \"taeko\" has the HPS functionality, then it should always have `--has-hps` enabled. If we got any failures, we can file a bug to the platform side to better understand when `--has-hps` is exactly enabled.",
       "parentUuid": "dbfb8fa3_d6adabb0",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49183df_5409ace1",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-27T09:18:54Z",
+      "side": 1,
+      "message": "Thanks for the insight, Osama! I got confused about the `has-hps` switch.\nI agree with you that the switch should be present if the device has HPS.\n\nI guess that in my head I envisioned this subtest as something ensuring that devices with HPS do show the screen, and that skipping it takes you to the next screens. But that is something that could be done at the browser test level, since we are not actually interacting with HPS itself.\n\nIn essence it is a new test due to the parameter that was added. But I am not sure if this is the right way to accomplish this. I wonder if smokeEndToEnd should be instead adapted to perform differently depending on the hardware capabilities. If we add this parameter for `hps` and let\u0027s say in the future we add another parameter for the fingerprint sensor, we would end up with 2 different subtests. But what about devices that would have both `hps` and `fingerprint`?",
+      "parentUuid": "f6db7824_079e74c3",
       "range": {
         "startLine": 277,
         "startChar": 15,
