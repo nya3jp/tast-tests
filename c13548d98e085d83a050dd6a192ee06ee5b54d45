@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "580bb3c2_684ab4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done.\n\nI agree that any change to the UI or accessibility nodes could break the test, so it is brittle in that way. The app UI that we\u0027re testing is not tied to the Chrome release cycle though, the content is delivered over the network from Omaha, and we can define new versions of the content to be conditionally delivered to different devices (called cohorts). \n\nWhere I think we can use this fact to minimize brittleness is in combination with one of the dimensions we customize content delivery on - retailer ID, which is simply set in the demo setup UI. We can set a specific retailer ID value in the Tast test, which matches against a Tast-specific Omaha cohort with that same retailer ID.\n\nIf we want to switch the Tast tests to verify a new version of the content, we\u0027d create another Tast-specific cohort server-side with a different retailer ID. Then we can modify the tests to use the new retailer ID, and fixing any breaking verification or changed UI requirements in the same CL, keeping the tests green.\n\n@drcrash@chromium.org, what do you think about this idea?",
+      "parentUuid": "9b5744da_d1b1b183",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98d65d12_7a5ac108",
         "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-27T08:22:09Z",
       "side": 1,
       "message": "Please add a person as a contact as well.",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ae42b0_e0291a23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98d65d12_7a5ac108",
       "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e40ebc_4e0ccfe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f63ed7_c27b9c52",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "775dc94f_1c059e35",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-27T08:22:09Z",
       "side": 1,
       "message": "nit: remove newline",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a140659f_74aa46e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "775dc94f_1c059e35",
       "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30745b11_f41825d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d890788_cc23f261",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d585b1c5_95bff7ba",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-10-27T08:22:09Z",
       "side": 1,
       "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ab2565_beae617a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d585b1c5_95bff7ba",
       "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e70d82b_bf346c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eaa51ad_aace0d17",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc8514bb_b0b617d1",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-10-27T08:22:09Z",
       "side": 1,
       "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c90608_8184006e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-27T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc8514bb_b0b617d1",
       "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
