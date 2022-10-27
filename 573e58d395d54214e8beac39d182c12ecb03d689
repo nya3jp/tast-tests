@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0687991d_10bb03a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T21:02:28Z",
+      "side": 1,
+      "message": "Is this never expected to work? The test is informational right now, so there\u0027s no harm in letting it run and fail until the issue is fixed.\n\nI think you will probably need to change the test\u0027s LacrosStatus otherwise.",
+      "revId": "573e58d395d54214e8beac39d182c12ecb03d689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
