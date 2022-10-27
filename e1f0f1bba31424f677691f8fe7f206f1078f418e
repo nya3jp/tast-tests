@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a786ec4_5f36e23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:08:41Z",
+      "side": 1,
+      "message": "lgtm with warning",
+      "revId": "e1f0f1bba31424f677691f8fe7f206f1078f418e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf89bb52_7766ed09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:08:41Z",
+      "side": 1,
+      "message": "By the way, in case you\u0027re not aware, this will iterate over the map in random order. Do this only if it doesn\u0027t matter in what order you test the accounts. See here for detailed explanation:\nhttps://stackoverflow.com/questions/55925822/why-are-iterations-over-maps-random",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "e1f0f1bba31424f677691f8fe7f206f1078f418e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
