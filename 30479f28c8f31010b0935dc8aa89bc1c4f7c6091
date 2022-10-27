@@ -1,0 +1,137 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6851de_d1b3d4f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "why 20 minutes?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31be50fd_dbc48a04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "Is this a new thing to allow customizing the test extension without patching Tast?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adc5f94_74caa079",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "nit: i\u0027d suggest an `if else component \u003d\u003d gyro { ... } else { unhandled }` to make possible future expansions easier",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be488ac0_5098b47b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "seems that this file has more info than just gyro/accel data. is it ok to override an entire file? wouldn\u0027t it be better to override only gyro/accel specific data?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee2db48_78e82f42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "\u003e \"attemp\" is a possible misspelling of \"attempt\".\n\nPlease fix.",
+      "parentUuid": "b0eac1e5_488615ee",
+      "range": {
+        "startLine": 230,
+        "startChar": 14,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d40778f_ffe48438",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "\u003e \"attemp\" is a possible misspelling of \"attempt\".\n\nPlease fix.",
+      "parentUuid": "50d94b4a_181006fc",
+      "range": {
+        "startLine": 253,
+        "startChar": 15,
+        "endLine": 253,
+        "endChar": 21
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851530da_52767fd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-27T23:53:30Z",
+      "side": 1,
+      "message": "is this command board/model specific or would work on other boards as well?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
