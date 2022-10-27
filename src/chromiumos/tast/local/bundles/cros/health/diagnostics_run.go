@@ -109,6 +109,10 @@ func init() {
 		}, {
 			Name: "https_latency",
 			Val:  newRoutineParams(croshealthd.RoutineHTTPSLatency),
+		}, {
+			Name:      "sensitive_sensor",
+			Val:       newRoutineParams(croshealthd.RoutineSensitiveSensor),
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
