@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731d60b8_10904b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "Is there a way we can do this with polling? (Is `waitUntilRefreshProfileCompletes` what we want to do here?)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5e25c8_4ec47276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "are these for debugging or do you plan to keep them in?",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e9e3afa_293129de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1114ca_1c375d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "This message seems a bit misleading -- I would probably interpret it as that the activation code worked when it shouldn\u0027t have. Maybe \"Failed to add incorrect activation code\"?",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0254b2be_b7dc144a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "I think you just want `s.Fatal(err)` here if you only want the wrap provided by `uiauto.Combine`",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539828f7_ae5c91fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "ditto re: above, maybe \"Failed to add correct activation code\" or something similar. This would also help distinguish it from the error on L120",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de72eb0_f41947f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "Wasn\u0027t this already called on L58? Do we need to do this again?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b4f169_93dba493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-27T20:59:54Z",
+      "side": 1,
+      "message": "Any reason we are deferring this here and not earlier?",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
