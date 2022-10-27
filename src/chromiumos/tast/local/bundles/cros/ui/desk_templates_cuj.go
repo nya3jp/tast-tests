@@ -162,6 +162,10 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to close Play Store")
 		}
 
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for close Play store action to be completed")
+		}
+
 		// Close all existing windows.
 		if err := ash.CloseAllWindows(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close all windows")
@@ -255,7 +259,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 // waitforAppsToLaunch waits for the given apps to launch.
 func waitforAppsToLaunch(ctx context.Context, tconn *chrome.TestConn, ac *uiauto.Context, appsList []apps.App) error {
 	for _, app := range appsList {
-		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
+		if err := ash.WaitForApp(ctx, tconn, app.ID, 90*time.Second); err != nil {
 			return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 		}
 
