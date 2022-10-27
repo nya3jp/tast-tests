@@ -22,6 +22,30 @@
       },
       "revId": "d762b658d5870a3cb1e280d32932d0010d750b8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37552135_8ffc0b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_esim_update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-27T20:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374204e6_5a4d6894",
+      "range": {
+        "startLine": 49,
+        "startChar": 40,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "d762b658d5870a3cb1e280d32932d0010d750b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
