@@ -22,6 +22,30 @@
       },
       "revId": "81991130174ee24ea3b9228a95b38d7481c48de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "404c54f7_0c5a6440",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-27T16:35:38Z",
+      "side": 1,
+      "message": "Actually Keith Short said we\u0027ll never use this chip for future machines so this is fine.",
+      "parentUuid": "9f422a20_5456120d",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "81991130174ee24ea3b9228a95b38d7481c48de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
