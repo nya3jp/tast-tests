@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb62fd1_fa819339",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "Could you run `wifi.ScamPerf.dtim2` as well?",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257039c2_126b1fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "Finished first round of review.",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e637d92_842c3581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/device_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "I recomend moving this function to shill_service.go instead of creating a new service just for this function.",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42de8be_47d3c491",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "nit: combine these with the const on the line 63.",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c68e1e_67b8265a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "Use ToDo format such as:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003deaf65ebb3bbdd10856fafb198c9d88ac233436c9;l\u003d2882",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ceb939_d41a5d13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "Use ToDo format such as:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003deaf65ebb3bbdd10856fafb198c9d88ac233436c9;l\u003d2882",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5859969d_9b2f062b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "Could you create a bug for tracking this issue if not exist and use ToDo format such as:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003deaf65ebb3bbdd10856fafb198c9d88ac233436c9;l\u003d2882",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0152d75e_b6c94712",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 1,
+      "message": "nit: move to the const above in line 59",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e1bca2_a490e86b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-10-27T22:59:21Z",
+      "side": 0,
+      "message": "Add describtion of what the test does, such as:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d29",
+      "revId": "078633ec386512e8f6e298e322f82e3f839aa167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
