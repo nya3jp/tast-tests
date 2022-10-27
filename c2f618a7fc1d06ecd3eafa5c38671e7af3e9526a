@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "590b98c5_a9af2f23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-27T17:57:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28d0476a_1cc6816c",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8c44a4a_12d8da9f",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "May be it requires a bit of rewording \"Test the ability to connect to user selected network correctly ...\" This will be more clear. WDYT ?",
       "parentUuid": "f12338e8_ebd96800",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 217
+      },
+      "revId": "c2f618a7fc1d06ecd3eafa5c38671e7af3e9526a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ed2d04_23fd04e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-27T17:57:10Z",
+      "side": 1,
+      "message": "It is not necessarily the user who selects the network, auto-connect may also select the open network, for example, don\u0027t have the password, the WPA network signal is too week...\nI added some comments before the function, which explains the goal of this test.",
+      "parentUuid": "af13c8bf_6c38fbfc",
       "range": {
         "startLine": 35,
         "startChar": 9,
