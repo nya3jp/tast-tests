@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
@@ -78,7 +79,7 @@ func outputJSLogAndError(ctx context.Context, conn *chrome.Conn, callErr error) 
 	return callErr
 }
 
-func prepareWebCodecsTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, html string) (cleanupCtx context.Context, server *httptest.Server, conn *chrome.Conn, observer media.PlayerPropertiesChangedClient, deferFunc func(), err error) {
+func prepareWebCodecsTest(ctx context.Context, cs ash.ConnSource, fileSystem http.FileSystem, html string) (cleanupCtx context.Context, server *httptest.Server, conn *chrome.Conn, observer media.PlayerPropertiesChangedClient, deferFunc func(), err error) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		err = errors.Wrap(err, "failed to set values for verbose logging")
@@ -105,7 +106,7 @@ func prepareWebCodecsTest(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		}
 	}()
 	testing.ContextLogf(ctx, "%s, %s", server.URL, html)
-	conn, err = cr.NewConn(ctx, server.URL+"/"+html)
+	conn, err = cs.NewConn(ctx, server.URL+"/"+html)
 	if err != nil {
 		err = errors.Wrap(err, "failed to open webcodecs page")
 		return

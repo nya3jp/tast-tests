@@ -15,7 +15,8 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/encoding"
@@ -35,6 +36,9 @@ type TestEncodeArgs struct {
 	BitrateMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
+	// BrowserType indicates the type of Chrome browser to be used,
+	// Ash Chrome or Lacros Chrome.
+	BrowserType browser.Type
 }
 
 const encodeHTML = "webcodecs_encode.html"
@@ -129,10 +133,10 @@ func verifyTLStruct(numTemporalLayers int, temporalLayerIDs []int) error {
 
 // RunEncodeTest tests encoding in WebCodecs API. It verifies a specified encoder is used and
 // the produced bitstream.
-func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestEncodeArgs, videoFile, outDir string) error {
+func RunEncodeTest(ctx context.Context, cs ash.ConnSource, fileSystem http.FileSystem, testArgs TestEncodeArgs, videoFile, outDir string) error {
 	var crowd720pVideoConfig = videoConfig{width: 1280, height: 720, numFrames: 30, framerate: 30}
 
-	cleanupCtx, server, conn, observer, deferFunc, err := prepareWebCodecsTest(ctx, cr, fileSystem, encodeHTML)
+	cleanupCtx, server, conn, observer, deferFunc, err := prepareWebCodecsTest(ctx, cs, fileSystem, encodeHTML)
 	if err != nil {
 		return err
 	}
