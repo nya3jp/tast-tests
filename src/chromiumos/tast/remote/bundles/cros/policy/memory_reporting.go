@@ -191,7 +191,7 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
-	testStartTime := time.Now()
+	testStartTime := time.Now().Unix()
 	if _, err := pc.GAIAEnrollForReporting(ctx, &ps.GAIAEnrollForReportingRequest{
 		Username:           user,
 		Password:           pass,
@@ -214,12 +214,12 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		events, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, APIKey, "INFO_METRIC")
+		events, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, c.ClientId, APIKey, "INFO_METRIC", testStartTime)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to look up events"))
 		}
 
-		prunedEvents, err := reportingutil.PruneEvents(ctx, events, c.ClientId, testStartTime, func(e reportingutil.InputEvent) bool {
+		prunedEvents, err := reportingutil.PruneEvents(ctx, events, c.ClientId, func(e reportingutil.InputEvent) bool {
 			return tmeInfo(e) != nil
 		})
 		if err != nil {

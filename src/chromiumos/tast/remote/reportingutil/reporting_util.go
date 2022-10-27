@@ -10,8 +10,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strconv"
-	"time"
 
 	grpc "google.golang.org/grpc"
 
@@ -161,29 +159,19 @@ type inputEventsResponse struct {
 }
 
 // PruneEvents reduces the events response to only memory events after test began.
-func PruneEvents(ctx context.Context, events []InputEvent, clientID string, testStartTime time.Time, correctEventType VerifyEventTypeCallback) ([]InputEvent, error) {
+func PruneEvents(ctx context.Context, events []InputEvent, correctEventType VerifyEventTypeCallback) ([]InputEvent, error) {
 	var prunedEvents []InputEvent
 	for _, event := range events {
-		if event.ClientID != clientID {
-			continue
-		}
 		if !correctEventType(event) {
 			continue
 		}
-		us, err := strconv.ParseInt(event.APIEvent.ReportingRecordEvent.Time, 10, 64)
+		prunedEvents = append(prunedEvents, event)
+		j, err := json.Marshal(event)
 		if err != nil {
-			return prunedEvents, errors.Wrap(err, "failed to parse int64 Spanner timestamp from event")
+			testing.ContextLog(ctx, "Failed to marshall event: ", err)
+			return []InputEvent{}, errors.Wrap(err, "failed to marshal event")
 		}
-		t := time.UnixMicro(us)
-		if t.After(testStartTime) {
-			prunedEvents = append(prunedEvents, event)
-			j, err := json.Marshal(event)
-			if err != nil {
-				testing.ContextLog(ctx, "Failed to marshall event: ", err)
-				return []InputEvent{}, errors.Wrap(err, "failed to marshal event")
-			}
-			testing.ContextLog(ctx, "Found a valid event ", string(j))
-		}
+		testing.ContextLog(ctx, "Found a valid event ", string(j))
 	}
 
 	return prunedEvents, nil
@@ -191,8 +179,8 @@ func PruneEvents(ctx context.Context, events []InputEvent, clientID string, test
 
 // LookupEvents Call the Reporting API Server's ChromeReportingDebugService.LookupEvents
 // endpoint to get a list of events received by the server from this user.
-func LookupEvents(ctx context.Context, reportingServerURL, obfuscatedCustomerID, apiKey, destination string) ([]InputEvent, error) {
-	reqPath := fmt.Sprintf("%v/test/events?key=%v&obfuscatedCustomerId=%v&destination=%v", reportingServerURL, apiKey, obfuscatedCustomerID, destination)
+func LookupEvents(ctx context.Context, reportingServerURL, obfuscatedCustomerID, clientID string, apiKey, destination string, testStartTime int64) ([]InputEvent, error) {
+	reqPath := fmt.Sprintf("%v/test/events?key=%v&obfuscatedCustomerId=%v&deviceId=%v&destination=%v&readDataAfterSec=%v", reportingServerURL, apiKey, obfuscatedCustomerID, clientID, destination, testStartTime)
 	req, err := http.NewRequestWithContext(ctx, "GET", reqPath, nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to craft event query request to the Reporting Server")
