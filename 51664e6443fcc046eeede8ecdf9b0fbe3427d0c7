@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7345474f_df121b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-10-27T09:14:25Z",
+      "side": 1,
+      "message": "What I suspect is already called a11y.SetFeatureEnabled() effects to ChromeVox invoked by keyboard later and collides.\nAs there is chromevox_toggle_on_shortcut.go, I changed the plan not to check if ChromeVox is invoked by pressing \"Ctrl+Alt+Z\".\nThe test would check if all the elements are read correctly only.",
+      "revId": "51664e6443fcc046eeede8ecdf9b0fbe3427d0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
