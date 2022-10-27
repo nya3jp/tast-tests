@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9760854c_795e406d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2558,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-27T17:56:43Z",
+      "side": 1,
+      "message": "20",
+      "range": {
+        "startLine": 2558,
+        "startChar": 11,
+        "endLine": 2558,
+        "endChar": 13
+      },
+      "revId": "529afdf83336722496e41e77d1083cb3871315cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96534f2d_c408b6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2558,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-27T17:56:43Z",
+      "side": 1,
+      "message": "Less than 20 sec. We want to say that this sleep is supposed to ensure high confidence the fw is brought up by 20  sec.",
+      "range": {
+        "startLine": 2558,
+        "startChar": 26,
+        "endLine": 2558,
+        "endChar": 83
+      },
+      "revId": "529afdf83336722496e41e77d1083cb3871315cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
