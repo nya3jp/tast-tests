@@ -308,6 +308,29 @@ func init() {
 		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	// TODO(b/254796432): Clean up the flag after the feature launch.
+	// arcBootedInClamshellModeWithArcUpdateO4CListViaA2C2 is a fixture similar to arcBootedInClamshellMode but with the ArcUpdateO4CListViaA2C2 feature enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedInClamshellModeWithArcUpdateO4CListViaA2C2",
+		Desc: "ARC is booted in clamshell mode with ArcUpdateO4CListViaA2C2 feature enabled",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
+				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
+				chrome.EnableFeatures("ArcUpdateO4CListViaA2C2"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 type bootedFixture struct {

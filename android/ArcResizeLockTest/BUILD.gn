@@ -24,3 +24,18 @@ android_apk("ArcResizeLockTest3") {
   target_sdk_version = "28"
   rename_manifest_package = "org.chromium.arc.testapp.resizelock3"
 }
+
+android_apk("ArcResizeLockTestO4CViaA2C2") {
+  manifest = "AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res"]
+  target_sdk_version = "28"
+  rename_manifest_package = "org.chromium.arc.testapp.resizelocko4cviaa2c2"
+}
+android_apk("ArcResizeLockTestNonO4CViaA2C2") {
+  manifest = "AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res"]
+  target_sdk_version = "28"
+  rename_manifest_package = "org.chromium.arc.testapp.resizelocknono4cviaa2c2"
+}
