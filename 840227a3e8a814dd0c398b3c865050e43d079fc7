@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing.",
       "revId": "840227a3e8a814dd0c398b3c865050e43d079fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bca34f_40e25679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-27T19:34:05Z",
+      "side": 1,
+      "message": "Hi Tast Owners, please review this CL.",
+      "revId": "840227a3e8a814dd0c398b3c865050e43d079fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
