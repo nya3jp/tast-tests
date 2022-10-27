@@ -16,6 +16,24 @@
       "message": "Why was the lacros variant removed?",
       "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8339bac7_4e69bb7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-27T01:58:44Z",
+      "side": 1,
+      "message": "The current dbus hook is in ash (chrome/browser/ash/dbus/profiler_status_service_provider.h). I\u0027ll need to add a similar dbus hook in lacros. It\u0027s enough extra code that I don\u0027t think it fits in one CL.",
+      "parentUuid": "f1322bc1_18fea498",
+      "revId": "713752a9d8af51b9025eee17139b8e45aaa7d57b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
