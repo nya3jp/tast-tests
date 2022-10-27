@@ -398,3 +398,42 @@ func (service *DataLeakPreventionService) Screenshot(ctx context.Context, req *p
 	return &empty.Empty{}, nil
 
 }
+
+// PrivacyScreen tests the privacy screen.
+func (service *DataLeakPreventionService) PrivacyScreen(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	browserType := browser.TypeAsh
+	if req.BrowserType == pb.BrowserType_LACROS {
+		browserType = browser.TypeLacros
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, service.chrome, browserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open the browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Create an html page with some text.
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	textContent := []byte("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Random Text 1</title></head><body>Sample text about random things.</body></html>")
+	if err := os.WriteFile(baseDir+"/"+textFilename, textContent, 0644); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed write a file")
+	}
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	return &empty.Empty{}, nil
+
+}

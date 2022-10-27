@@ -265,6 +265,11 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 			BrowserType: params.BrowserType,
 			Mode:        params.Mode,
 		})
+	case dlputil.PrivacyScreen:
+		service.PrivacyScreen(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+			Mode:        params.Mode,
+		})
 	}
 
 	s.Log("Waiting 60 seconds to make sure events reach the server and are processed")
