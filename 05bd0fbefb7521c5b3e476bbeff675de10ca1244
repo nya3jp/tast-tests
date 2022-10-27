@@ -229,6 +229,30 @@
       },
       "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bfc568_9baf4437",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-27T14:56:22Z",
+      "side": 1,
+      "message": "Based on this discussion [1], I think that the way you did using a Parameter seems to be the best way for now if we want to group those tests separately.\n\n[1]: http://g/tast-bugs/3wFFDIz2EHs/o1wy75jpBQAJ",
+      "parentUuid": "5216c1b3_087101a7",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "05bd0fbefb7521c5b3e476bbeff675de10ca1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

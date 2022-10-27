@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b8d644_feb05993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-27T14:56:22Z",
+      "side": 1,
+      "message": "differently",
+      "range": {
+        "startLine": 11,
+        "startChar": 71,
+        "endLine": 11,
+        "endChar": 82
+      },
+      "revId": "bd26cca8b2a4964e0c3ef49045d6d5b8538fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e045f26_e7b31d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-27T14:56:22Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "bd26cca8b2a4964e0c3ef49045d6d5b8538fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
