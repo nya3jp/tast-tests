@@ -57,6 +57,7 @@ const (
 	Recent      = "Recent"
 	Images      = "Images"
 	Trash       = "Trash"
+	UsbDrive    = "USB Drive"
 )
 
 // FilesApp represents an instance of the Files App.
@@ -190,6 +191,16 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	)
 }
 
+// FormatDevice returns a function that formats USB drive with the default options.
+// An error is returned if there is no USB drive or it fails to format.
+func (f *FilesApp) FormatDevice() uiauto.Action {
+	return uiauto.Combine("FormatDevice",
+		f.LeftClick(nodewith.Name("Format device").Role(role.Button)),
+		f.WaitUntilExists(nodewith.Name("Erase and Format").Role(role.Button)),
+		f.LeftClick(nodewith.Name("Erase and Format").Role(role.Button)),
+	)
+}
+
 // OpenDownloads returns a function that opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads() uiauto.Action {
@@ -220,6 +231,18 @@ func (f *FilesApp) OpenTrash() uiauto.Action {
 	return f.OpenDir(Trash, FilesTitlePrefix+Trash)
 }
 
+// OpenUsbDrive returns a function that opens default unformatted USB drive in the Files App.
+// An error is returned if default USB drive is not found or does not open.
+func (f *FilesApp) OpenUsbDrive() uiauto.Action {
+	return f.OpenDir(UsbDrive, FilesTitlePrefix+UsbDrive)
+}
+
+// OpenUsbDriveWithName returns a function that opens USB drive with drive in the Files App.
+// An error is returned if the Usb drive is not found or does not open.
+func (f *FilesApp) OpenUsbDriveWithName(driveName string) uiauto.Action {
+	return f.OpenDir(driveName, FilesTitlePrefix+driveName)
+}
+
 // file returns a nodewith.Finder for a file with the specified name.
 func file(fileName string) *nodewith.Finder {
 	filesBox := nodewith.Role(role.ListBox)
@@ -234,6 +257,11 @@ func (f *FilesApp) WaitForFile(fileName string) uiauto.Action {
 // WaitUntilFileGone returns a function that waits for a file to no longer exist.
 func (f *FilesApp) WaitUntilFileGone(fileName string) uiauto.Action {
 	return f.WaitUntilGone(file(fileName))
+}
+
+// EnsureFileGone returns a function that ensures that the file doesn't appear for the duration.
+func (f *FilesApp) EnsureFileGone(fileName string, duration time.Duration) uiauto.Action {
+	return f.EnsureGoneFor(file(fileName), duration)
 }
 
 // FileExists calls ui.Exists to check whether a folder or a file exists in the Files App.
@@ -259,6 +287,18 @@ func (f *FilesApp) RightClickFile(fileName string) uiauto.Action {
 // OpenQuickView returns a function that opens the QuickView menu for a file.
 func (f *FilesApp) OpenQuickView(fileName string) uiauto.Action {
 	return f.ClickContextMenuItem(fileName, GetInfo)
+}
+
+// CopyFileToClipboard returns a function that copies the file to the clipboard.
+func (f *FilesApp) CopyFileToClipboard(fileName string) uiauto.Action {
+	return f.ClickContextMenuItem(fileName, Copy)
+}
+
+// PasteFileFromClipboard returns a function that pastes a file from the clipboard to the current directory.
+func (f *FilesApp) PasteFileFromClipboard(kb *input.KeyboardEventWriter) uiauto.Action {
+	return uiauto.Combine("PasteFromClipboard()",
+		kb.AccelAction("Ctrl+V"), // Press Ctrl+V to paste the file.
+	)
 }
 
 // ClickMoreMenuItem returns a function that opens More menu then clicks on sub menu items.
