@@ -16,6 +16,47 @@
       "message": "Is this never expected to work? The test is informational right now, so there\u0027s no harm in letting it run and fail until the issue is fixed.\n\nI think you will probably need to change the test\u0027s LacrosStatus otherwise.",
       "revId": "573e58d395d54214e8beac39d182c12ecb03d689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fd3f63_cde60f92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-27T21:40:22Z",
+      "side": 1,
+      "message": "it should work for lacros eventually, but we don\u0027t know the timeline for that. It is informational, but tora [1] will still look at those and ask us to fix or remove tests that fail more than 20%. we are trying to get our tastboard less flaky [2] anyhow\n\n[1] https://g3doc.corp.google.com/chromeos/tora/g3doc/index.md?cl\u003dhead\n[2] https://tastboard.corp.google.com/test?contact\u0026testname\u003dwmp.*\u0026dep\u0026attr",
+      "parentUuid": "0687991d_10bb03a9",
+      "revId": "573e58d395d54214e8beac39d182c12ecb03d689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed8d9e0e_02cf3e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/tablet_mode_basic_window_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-27T21:40:22Z",
+      "side": 1,
+      "message": "nit: Think you\u0027ll need to change this",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "573e58d395d54214e8beac39d182c12ecb03d689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
