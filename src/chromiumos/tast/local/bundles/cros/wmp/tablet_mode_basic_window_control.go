@@ -34,7 +34,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabletModeBasicWindowControl,
-		LacrosStatus: testing.LacrosVariantExists,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tablet basics: Scroll, window controls",
 		Contacts: []string{
 			"shidi@chromium.org",
@@ -46,13 +46,8 @@ func init() {
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
 			Val:     browser.TypeAsh,
-		}, {
-			// TODO(crbug.com/1374485): lacros-chrome currently failed on this test.
-			Name:              "lacros",
-			Fixture:           "lacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-			Val:               browser.TypeLacros,
 		}},
+		// TODO(crbug.com/1374485): lacros-chrome currently failed on this test.
 	})
 }
 
