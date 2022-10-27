@@ -24,7 +24,7 @@ const rtd2142InfoPattern = `.*RTD2142:
 .*Summary:            DisplayPort MST hub
 .*Current version:    \d+\.\d+
 .*Vendor:             Realtek \(PCI:0x10EC\)
-.*GUIDs:              388e452d-728b-5a2b-aa64-09b4fc392232 \? REALTEK-MST\\NAME_10EC2142:00
+.*GUID:               15cb53a3-3217-5949-87ac-2e5cce94e15b \? I2C\\NAME_10EC2142:00
 `
 
 func init() {

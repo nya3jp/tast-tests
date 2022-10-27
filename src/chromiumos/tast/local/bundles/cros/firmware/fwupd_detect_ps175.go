@@ -20,7 +20,7 @@ const (
 .*Device ID:          [0-9a-f]+
 .*Current version:    \d+\.\d+
 .*Vendor:             Parade Technologies \(PCI:0x1AF8, OUI:001CF8\)
-.*GUIDs:              c46df45b-16f2-5eb2-be8d-66f5af40cca8 \? PARADE-LSPCON\\NAME_1AF80175:00
+.*GUID:               c146ccc9-58b6-517c-97f6-9c55a0bd39d3 \? I2C\\NAME_1AF80175:00
 `
 )
 
