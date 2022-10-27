@@ -46,6 +46,30 @@
       },
       "revId": "8a85c6c64636ecc4c6e6f842c0f7c5dd03e0c454",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfd9a80_18c7e690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-27T06:51:41Z",
+      "side": 1,
+      "message": "haha lol yes I\u0027m not sure how that even got in there. sorry chuwei that would have been bad advice :)",
+      "parentUuid": "14e50dc5_00686562",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "8a85c6c64636ecc4c6e6f842c0f7c5dd03e0c454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
