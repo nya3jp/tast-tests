@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d571a898_c8c1282f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-27T20:44:38Z",
+      "side": 1,
+      "message": "Do we need to have this separate suite added prior to landing or would it be possible to retroactively add this?",
+      "parentUuid": "21cae7d4_006e768c",
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b9ab6f7_554805ac",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
         "patchSetId": 8
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-25T22:33:44Z",
       "side": 1,
       "message": "Unless you are trying to test a specific SSID, don\u0027t set one and just get the one it generates with `ssid :\u003d apInterface.Config().SSID`. If you need a manual one I recommend adding some random characters to the end of it.\n\nThe reason for this using the same SSID every time presents the possibility of wificells near each other with faulty/missing RF enclosures making the same network at the same time and DUTs trying to connect to the network may connect to the router from the other wificell inadvertently. While still an unlikely case, it\u0027s safer use a non-static name unless it\u0027s otherwise necessary.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe018d3_9bbc6228",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-27T20:44:38Z",
+      "side": 1,
+      "message": "Ah, I did not realize that this was available to us-- thank you for providing all of that information+context! I much this suggested approach-- went ahead and made this change :)",
+      "parentUuid": "0b9ab6f7_554805ac",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -71,6 +113,30 @@
       "writtenOn": "2022-10-25T22:33:44Z",
       "side": 1,
       "message": "Don\u0027t use a DFS channel for this test, use one that doesn\u0027t require DFS, like 48. See wifi.SimpleConnect for other examples. The `ap.SpectrumManagement()` part won\u0027t be needed for non-DFS channels.\n\nDFS channels technically work - but are slower to configure by definition as routers are supposed to scan for nearby networks before starting one to prevent interference. Unless you are specifically testing if a DUT can connect to a DFS channel (which is a test better suited for wifi.SimpleConnect), use a non-DFS channel to make the test faster. On some routers this can add over a minute of delay.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e62d26_04eb9558",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-27T20:44:38Z",
+      "side": 1,
+      "message": "Ah, I was mostly just following suit with other tests and hadn\u0027t really thought as much about this, thank you for sharing this context as well!\n\n\u003e Unless you are specifically testing if a DUT can connect to a DFS channel\n\nDefinitely not, so I went ahead and made this change too :)",
+      "parentUuid": "cbf2cd3f_061d693b",
       "range": {
         "startLine": 52,
         "startChar": 2,
