@@ -79,7 +79,6 @@ var pipTests = []pipTestParams{
 	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
 	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
-	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 }
@@ -214,11 +213,19 @@ func PIP(ctx context.Context, s *testing.State) {
 // testPIPInternal ...
 func testPIPInternal(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct, maPIPBaseAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, test pipTestParams, tabletMode, multiActivityPIP bool, idx int) error {
 	if test.initMethod == startActivity || test.initMethod == enterPip {
+		// Ensure to wait for the app to be cleaned up before the next test starts.
+		// This could be |pipAct| or |maPIPBaseAct| but the package name is the same.
+		defer ash.WaitForHidden(ctx, tconn, pipAct.PackageName())
+
 		if multiActivityPIP {
 			if err := maPIPBaseAct.Start(ctx, tconn); err != nil {
 				return errors.Wrapf(err, "failed to start %s", maPIPBaseAct.ActivityName())
 			}
 			defer maPIPBaseAct.Stop(ctx, tconn)
+
+			if err := ash.WaitForVisible(ctx, tconn, maPIPBaseAct.PackageName()); err != nil {
+				return errors.Wrap(err, "failed to wait for MAPIP base activity to be visible")
+			}
 		}
 
 		if err := pipAct.Start(ctx, tconn); err != nil {
@@ -255,6 +262,12 @@ func testPIPInternal(ctx context.Context, s *testing.State, cr *chrome.Chrome, t
 		}
 		return err
 	}
+
+	// If the above test involves tablet transition, it could leave some notifications, which affects the PIP position.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close all notifications")
+	}
+
 	return nil
 }
 
@@ -532,6 +545,7 @@ func testPIPExpandViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *ch
 }
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
+// TODO(b/243451626): Stabilize and enable this test case.
 func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
