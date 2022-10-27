@@ -16,6 +16,40 @@
       "message": "Hi Wei,\ncould you please review this test of the camera switch in Privacy Hub when you are back from your vacation?\n(more info in the email)\nThank you!",
       "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed32944f_b3d45db5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-27T16:22:28Z",
+      "side": 1,
+      "message": "I have one nit comment. Please take a look. Thanks.",
+      "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2492a6f_d1f77cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-27T16:22:28Z",
+      "side": 1,
+      "message": "```\n\tcr, err :\u003d chrome.New(ctx, chrome.EnableFeatures(\"CrosPrivacyHub\"))\n```\n\nnit: I don\u0027t think you need line 137 and 138.",
+      "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
