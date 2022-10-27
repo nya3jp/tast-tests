@@ -8,18 +8,14 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
@@ -133,7 +129,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 	packages := strings.Split(s.RequiredVar(packagesVar), ",")
 
-	fdms, err := setupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages)
+	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeForceInstalled)
 	if err != nil {
 		exit("setup fake policy server", err)
 	}
@@ -173,16 +169,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close(ctx)
 
-		if err := enableVerboseLogging(ctx, a); err != nil {
-			return exit("enable verbose logging", err)
+		if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
+			return exit("configure provisioning logs", err)
 		}
 
-		// Increase the logcat buffer size to 10MB.
-		if err := increaseLogcatBufferSize(ctx, a); err != nil {
-			return exit("increase logcat buffer size", err)
-		}
-
-		if err := waitForProvisioning(ctx, a, attempts); err != nil {
+		if err := arcent.WaitForProvisioning(ctx, a, attempts); err != nil {
 			return exit("wait for provisioning", err)
 		}
 
@@ -190,7 +181,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 		defer cancel()
 
-		defer dumpBugReportOnError(cleanupCtx, func() bool {
+		defer arcent.DumpBugReportOnError(cleanupCtx, func() bool {
 			return s.HasError() || retErr != nil
 		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", attempts)))
 
@@ -212,48 +203,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
-	}
-}
-
-func setupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string) (fdms *fakedms.FakeDMS, retErr error) {
-	arcPolicy := arcent.CreateArcPolicyWithForceInstallApps(packages)
-	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
-	policies := []policy.Policy{arcEnabledPolicy, arcPolicy}
-
-	return policyutil.SetUpFakePolicyServer(ctx, outDir, policyUser, policies)
-}
-
-func enableVerboseLogging(ctx context.Context, a *arc.ARC) error {
-	verboseTags := []string{"clouddpc", "Finsky", "Volley", "PlayCommon"}
-	return a.EnableVerboseLogging(ctx, verboseTags...)
-}
-
-func increaseLogcatBufferSize(ctx context.Context, a *arc.ARC) error {
-	return a.Command(ctx, "logcat", "-G", "10M").Run(testexec.DumpLogOnError)
-}
-
-func waitForProvisioning(ctx context.Context, a *arc.ARC, attempt int) error {
-	// CloudDPC sign-in timeout set in code is 3 minutes.
-	const provisioningTimeout = 3 * time.Minute
-
-	if err := a.WaitForProvisioning(ctx, provisioningTimeout); err != nil {
-		if err := optin.DumpLogCat(ctx, strconv.Itoa(attempt)); err != nil {
-			testing.ContextLogf(ctx, "WARNING: Failed to dump logcat: %s", err)
-		}
-		return err
-	}
-	return nil
-
-}
-
-func dumpBugReportOnError(ctx context.Context, hasError func() bool, a *arc.ARC, filePath string) {
-	if !hasError() {
-		return
-	}
-
-	testing.ContextLog(ctx, "Dumping Bug Report")
-	if err := a.BugReport(ctx, filePath); err != nil {
-		testing.ContextLog(ctx, "Failed to get bug report: ", err)
 	}
 }
 

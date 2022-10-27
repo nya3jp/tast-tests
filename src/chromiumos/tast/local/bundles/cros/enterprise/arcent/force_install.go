@@ -10,6 +10,7 @@ import (
 	"sort"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
@@ -18,6 +19,21 @@ import (
 
 // LoginPoolVar is the account pool information
 const LoginPoolVar = "arc.managedAccountPool"
+
+// InstallTypeForceInstalled is the install type for app that is force-installed.
+const InstallTypeForceInstalled = "FORCE_INSTALLED"
+
+// InstallTypeBlocked is the install type for app that is blocked.
+const InstallTypeBlocked = "BLOCKED"
+
+// SetupPolicyServerWithArcApps sets up a fake policy server with ARC enabled and a list of packages with the corresponding install type
+func SetupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string, installType string) (fdms *fakedms.FakeDMS, retErr error) {
+	arcPolicy := CreateArcPolicyWithApps(packages, installType)
+	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
+	policies := []policy.Policy{arcEnabledPolicy, arcPolicy}
+
+	return policyutil.SetUpFakePolicyServer(ctx, outDir, policyUser, policies)
+}
 
 // VerifyArcPolicyForceInstalled matches ArcPolicy FORCE_INSTALLED apps list with expected packages.
 func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, forceInstalledPackages []string) error {
@@ -74,13 +90,13 @@ func makeList(packages map[string]bool) []string {
 	return packagesList
 }
 
-// CreateArcPolicyWithForceInstallApps creates a policy with specified packages as force installs.
-func CreateArcPolicyWithForceInstallApps(packages []string) *policy.ArcPolicy {
+// CreateArcPolicyWithApps creates a policy with specified packages as force installs.
+func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcPolicy {
 	var forceInstalledApps []policy.Application
 	for _, packageName := range packages {
 		forceInstalledApps = append(forceInstalledApps, policy.Application{
 			PackageName: packageName,
-			InstallType: "FORCE_INSTALLED",
+			InstallType: installType,
 		})
 	}
 	arcPolicy := &policy.ArcPolicy{
