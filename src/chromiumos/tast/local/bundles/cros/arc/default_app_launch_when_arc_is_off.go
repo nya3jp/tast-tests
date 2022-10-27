@@ -25,7 +25,7 @@ func init() {
 		Func:         DefaultAppLaunchWhenArcIsOff,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify Default App Icons Launch Opt In Flow When PlayStore is Off ",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

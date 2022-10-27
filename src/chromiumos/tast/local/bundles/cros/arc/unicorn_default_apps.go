@@ -24,7 +24,7 @@ func init() {
 		Func:         UnicornDefaultApps,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the Default arc apps for Unicorn Account",
-		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"chrome"},

@@ -27,7 +27,7 @@ func init() {
 		Func:         EnableExternalStorage,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARC removable media can be enabled from ChromeOS Settings",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "arc-storage@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com", "arc-storage@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
