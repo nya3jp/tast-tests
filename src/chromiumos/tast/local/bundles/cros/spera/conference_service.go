@@ -219,16 +219,9 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 			if err := typecutils.SetMirrorDisplay(ctx, tconn, false); err != nil {
 				return errors.Wrap(err, "failed to unset mirror display")
 			}
-			// Make sure there are two displays on DUT.
-			// This procedure must be performed after display mirror is unset. Otherwise we can only
-			// get one display info.
-			infos, err := display.GetInfo(ctx, tconn)
-			if err != nil {
-				return errors.Wrap(err, "failed to get display info")
-			}
-
-			if len(infos) != 2 {
-				return errors.Errorf("expect 2 displays but got %d", len(infos))
+			expectedDisplayMode := display.DisplayMode{Height: 1080, RefreshRate: 60}
+			if err := display.CheckExtendedDisplay(ctx, tconn, expectedDisplayMode); err != nil {
+				return errors.Wrap(err, "failed to check extended display")
 			}
 		}
 

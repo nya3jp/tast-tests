@@ -120,15 +120,9 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	if err := typecutils.SetMirrorDisplay(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to unset mirror display: ", err)
 	}
-	// Make sure there are two displays on DUT.
-	// This procedure must be performed after display mirror is unset. Otherwise we can only
-	// get one display info.
-	infos, err := display.GetInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get display info: ", err)
-	}
-	if len(infos) != 2 {
-		s.Fatalf("DUT connected with incorrect nubmer of displays - want 2, got %d: %v", len(infos), err)
+	expectedDisplayMode := display.DisplayMode{Height: 1080, RefreshRate: 60}
+	if err := display.CheckExtendedDisplay(ctx, tconn, expectedDisplayMode); err != nil {
+		s.Fatal("Failed to check extended display: ", err)
 	}
 
 	kb, err := input.Keyboard(ctx)

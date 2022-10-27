@@ -328,3 +328,31 @@ func RotationToAngle(rot int) (RotationAngle, error) {
 	}
 	return RotateAny, errors.Errorf("invalid rotation angle %d", rot)
 }
+
+// CheckExtendedDisplay makes sure there are two displays on DUT and the extended display has the expected mode.
+// This procedure must be performed after display mirror is unset. Otherwise it can only get one display info.
+func CheckExtendedDisplay(ctx context.Context, tconn *chrome.TestConn, expectedMode DisplayMode) error {
+	infos, err := GetInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display info")
+	}
+	if len(infos) != 2 {
+		return errors.Wrapf(err, "DUT connected with incorrect number of displays - want 2, got %d", len(infos))
+	}
+	for _, info := range infos {
+		if info.IsInternal {
+			continue
+		}
+		mode, err := info.GetSelectedMode()
+		if err != nil {
+			return errors.Wrap(err, "failed to get selected mode")
+		}
+		if mode.Height != expectedMode.Height {
+			return errors.Errorf("the height of the extended display is not as expected: got: %v, want: %v", mode.Height, expectedMode.Height)
+		}
+		if mode.RefreshRate != expectedMode.RefreshRate {
+			return errors.Errorf("the refresh rate of the extended display is not as expected: got: %v, want: %v", mode.RefreshRate, expectedMode.RefreshRate)
+		}
+	}
+	return nil
+}
