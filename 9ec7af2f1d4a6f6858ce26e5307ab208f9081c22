@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87f8e22_9397b593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-27T09:19:33Z",
+      "side": 1,
+      "message": "As we discussed offline, I have changed the approach to initially only test a few parameter combinations.\nI wanted to ask you whether you think I can keep the infrastructure to support all the other combinations so that maybe in some time we can just add more parameterized tests or you think it is better to remove it.\nThanks!",
+      "revId": "9ec7af2f1d4a6f6858ce26e5307ab208f9081c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
