@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d110fe_2d8a12f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-27T20:46:11Z",
+      "side": 1,
+      "message": "Hello all! I made some minor changes to the parent change and rebased this one, please take a look whenever you have a moment!",
+      "revId": "3e7751ab0e52ed8c25f5aa8e2ec4fc549aed4758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
