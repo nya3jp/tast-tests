@@ -150,6 +150,17 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			numberOfCaptures: 5,
 			shouldTerminate:  true,
 		},
+		{
+			name:      "frequency_based",
+			policyVal: &policy.DeviceDebugPacketCaptureAllowed{Val: true},
+			options: map[string]dbus.Variant{
+				"frequency": (dbus.MakeVariant("5220"))},
+			expectSuccess:    true,
+			captureSizeMiBs:  15,
+			maxFileSizeMiBs:  0,
+			numberOfCaptures: 1,
+			shouldTerminate:  true,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
