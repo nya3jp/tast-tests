@@ -16,6 +16,23 @@
       "message": "Please remove hidehiko and request tast owner again, he is ooo.",
       "revId": "9c629148934e60e3fd034a1361d21c6b506a1b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd4117e_502b1a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T01:27:24Z",
+      "side": 1,
+      "message": "Adding some of the context from the commit message here as a comment might be helpful.",
+      "revId": "9c629148934e60e3fd034a1361d21c6b506a1b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
