@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6718d62c_26043eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-27T00:28:30Z",
+      "side": 1,
+      "message": "Do you want to demote the non-lacros variant? You can add `ExtraAttr: []string{\"informational\"}` to the lacros variant params to leave the regular variant as non-informational.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "66a5fddcd4ba19292b7d79e381d01ec803037a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
