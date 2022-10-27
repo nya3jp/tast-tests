@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f189b9_779bc921",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-27T02:20:04Z",
+      "side": 1,
+      "message": "these aren\u0027t p2p specific right? Can you just call it PhyMode or something?",
+      "revId": "4dc727a7af91ef466bda39278cb5ce4bc35184e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
