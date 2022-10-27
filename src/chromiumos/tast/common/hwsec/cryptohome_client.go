@@ -1270,3 +1270,37 @@ func (u *CryptohomeClient) ListAuthFactors(ctx context.Context, user string) (*u
 
 	return reply, nil
 }
+
+// WithAuthSession will execute a given block of code within an active
+// AuthSession, handling the setup and teardown of the session automatically.
+// The given block should take a string parameter (the authSessionID) and return
+// nil on success and an error if one occurs.
+//
+// The given function would normally be written as a function literal which
+// calls other cryptohome client functions that get used with an active session.
+// So usage would generally look something like:
+//
+//	if err := client.WithAuthSession(ctx, userName, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT, func(authSessionID string) error {
+//	    if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
+//	        return errors.Wrap(err, "add some context here")
+//	    }
+//	    if err := client.PreparePersistentVault(ctx, authSessionID, false /*encryptfs*/); err != nil {
+//	        return errors.Wrap(err, "add some different context here")
+//	    }
+//	}); err != nil {
+//	    s.Fatal("Error message that makes sense for this whole block: ", err)
+//	}
+//
+// This example uses a session to create and prepare a new persistent user. Note
+// that by using a closure as the parameter we can avoid a bunch of parameter
+// boilerplate to pass in other test state like the tast context.
+func (u *CryptohomeClient) WithAuthSession(
+	ctx context.Context, username string, isEphemeral bool, authIntent uda.AuthIntent,
+	f func(string) error) error {
+	_, authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, authIntent)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+	defer u.InvalidateAuthSession(ctx, authSessionID)
+	return f(authSessionID)
+}
