@@ -16,6 +16,24 @@
       "message": "Looks like we\u0027re missing LFS support on ARM.  I\u0027ll re-test with that enabled and try again.",
       "revId": "993b26806de45d5cfa71d380680bfa05dbb7b21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9600be35_49b269b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-27T19:22:37Z",
+      "side": 1,
+      "message": "Confirmed that no additional output changes happened with the LFS flags.",
+      "parentUuid": "ffd4f316_640e840f",
+      "revId": "993b26806de45d5cfa71d380680bfa05dbb7b21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
