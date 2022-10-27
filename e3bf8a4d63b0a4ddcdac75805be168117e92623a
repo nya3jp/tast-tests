@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b5aa738_98f396d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-27T02:34:46Z",
+      "side": 1,
+      "message": "I was considering that perhaps in the future we want to add more fields/info on the proxy config field then this string might become longer with other info, a `strings.Contains` may still work in that situation, is there any reason we want this to be exactly the same?",
+      "parentUuid": "de3ce08f_e11264f0",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "e3bf8a4d63b0a4ddcdac75805be168117e92623a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a7efc89_9b8c493c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
         "patchSetId": 20

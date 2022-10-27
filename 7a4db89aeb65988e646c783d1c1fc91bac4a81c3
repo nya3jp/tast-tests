@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfb43cb_73143a0a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-27T02:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5824a298_696d1adf",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 60
+      },
+      "revId": "7a4db89aeb65988e646c783d1c1fc91bac4a81c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecca121f_d0fe1135",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1e62a3_d4d810cf",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-27T02:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecca121f_d0fe1135",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 58
+      },
+      "revId": "7a4db89aeb65988e646c783d1c1fc91bac4a81c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dc4d983_12dce3b0",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-26T05:26:34Z",
       "side": 1,
       "message": "nit: this should be a Fatal -- L163 is meaningless if this failed.",
+      "range": {
+        "startLine": 160,
+        "startChar": 7,
+        "endLine": 160,
+        "endChar": 12
+      },
+      "revId": "7a4db89aeb65988e646c783d1c1fc91bac4a81c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a428170_5765beeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-27T02:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc4d983_12dce3b0",
       "range": {
         "startLine": 160,
         "startChar": 7,
