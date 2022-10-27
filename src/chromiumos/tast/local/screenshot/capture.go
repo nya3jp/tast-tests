@@ -54,6 +54,19 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 	})
 }
 
+// CaptureChromeWithSigninProfile takes a screenshot of the primary display and saves it as a PNG
+// image to the specified file path. It will use Chrome to perform the screen capture and is
+// using the signin profile test API instead of the regular one.
+func CaptureChromeWithSigninProfile(ctx context.Context, cr *chrome.Chrome, path string) error {
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	return captureInternal(ctx, path, func(code string, out interface{}) error {
+		return tconn.Eval(ctx, code, out)
+	})
+}
+
 const (
 	// Do not use tast.promisify(), because this may be evaluated on the connection
 	// other than TestAPIConn.

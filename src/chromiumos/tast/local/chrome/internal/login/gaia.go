@@ -173,6 +173,9 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		}
 
 		if cfg.LoginMode() == config.SAMLLogin {
+			if err := gaiaConn.WaitForExpr(ctx, "document.querySelector('title').innerHTML != 'Sign in - Google Accounts'"); err != nil {
+				return errors.Wrap(err, "failed to wait for SAML page to be loaded")
+			}
 			return nil
 		}
 
