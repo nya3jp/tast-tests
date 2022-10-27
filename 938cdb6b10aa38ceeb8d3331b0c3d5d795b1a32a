@@ -51,6 +51,29 @@
       "parentUuid": "884d68d0_9a6b04a0",
       "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3a3179_33a31524",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-10-27T01:10:38Z",
+      "side": 1,
+      "message": "Maybe set the policy through parent fixture:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/persistent.go;l\u003d114;drc\u003de6abb0660810b1051d6ecb23aa131d160a987556\n\nPassing a empty policy list like []policy.Policy{} sounds like a policy test(managed user could have no policy set), but fixture like lacrosProjectorLogin has no fdms setup.",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 59
+      },
+      "revId": "938cdb6b10aa38ceeb8d3331b0c3d5d795b1a32a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
