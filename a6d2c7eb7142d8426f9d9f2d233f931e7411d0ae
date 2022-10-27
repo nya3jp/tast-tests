@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "928a2b90_8e657dc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4bfa5d_220ef8e6",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7269311_6a116cc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a6eb00_0e09558a",
+      "range": {
+        "startLine": 32,
+        "startChar": 48,
+        "endLine": 32,
+        "endChar": 64
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa7e0859_03fafcfa",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-24T21:20:41Z",
       "side": 1,
       "message": "We should check for length here, before returning the element at index 2.",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8597dfae_05d963f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa7e0859_03fafcfa",
       "range": {
         "startLine": 42,
         "startChar": 10,
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4573f691_9ee5027a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bda29c_04354a73",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09283bbd_6969b705",
@@ -117,6 +207,24 @@
       "writtenOn": "2022-10-24T21:20:41Z",
       "side": 1,
       "message": "nit: Should we return error here (and the following cases) and then s.Fatal in line 156?",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e25b38_46e88457",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09283bbd_6969b705",
       "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e5f4ff_03487f0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f7b1f82_0172abc3",
+      "range": {
+        "startLine": 76,
+        "startChar": 66,
+        "endLine": 76,
+        "endChar": 98
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b3633dc_0389ffc3",
@@ -157,6 +289,24 @@
       "writtenOn": "2022-10-24T14:12:34Z",
       "side": 1,
       "message": "nit/style: \"string\" can be dropped.",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e07e70c_c2a6b44f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3633dc_0389ffc3",
       "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7f5cdd_92e6ba02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2929a44c_4f061e44",
+      "range": {
+        "startLine": 98,
+        "startChar": 37,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ee38d3c_7ad328b7",
@@ -197,6 +371,24 @@
       "writtenOn": "2022-10-24T21:20:41Z",
       "side": 1,
       "message": "nit: kernAPath :\u003d \"\"",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8c978b_137eb002",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee38d3c_7ad328b7",
       "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +410,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9472389_888ad2a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d01ed5_962bad55",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4a1bbba_8726f7f9",
@@ -235,6 +445,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6641e60_d8ce8553",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a1bbba_8726f7f9",
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf8cb8c2_f029a361",
@@ -248,6 +476,30 @@
       "writtenOn": "2022-10-24T14:12:34Z",
       "side": 1,
       "message": "should this be called regardless of whether it failed or not?\nThen, let\u0027s call this in defer around L149.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "a6d2c7eb7142d8426f9d9f2d233f931e7411d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6522bc4c_7594199f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-27T08:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8cb8c2_f029a361",
       "range": {
         "startLine": 197,
         "startChar": 1,
