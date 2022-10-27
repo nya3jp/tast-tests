@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed98067_69dd3bf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-27T00:48:53Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "549f090824f5e40bc9449cbe2db38e2427b26bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5359ab2c_631e4733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_essential_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-27T00:48:53Z",
+      "side": 1,
+      "message": "Keep in mind these variable names are now shared across the entire `feedback` package, consider making this name more unique or moving it to a more local scope",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "549f090824f5e40bc9449cbe2db38e2427b26bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
