@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c319f8_d129ff84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-27T19:29:20Z",
+      "side": 1,
+      "message": "Is it possible to extract the common with ClipboardCopyPaste() setup parts to some single function to avoid duplication?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 124
+      },
+      "revId": "5331891e17b75444a8cb10e74709e3daa5f45eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
