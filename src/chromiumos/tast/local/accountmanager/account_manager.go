@@ -32,6 +32,63 @@ const DefaultUITimeout = 20 * time.Second
 // LongUITimeout is for interaction with webpages to make sure that page is loaded.
 const LongUITimeout = time.Minute
 
+// ARCAccountOptions is a struct containing options for `CheckIsAccountPresentInARC` call.
+type ARCAccountOptions struct {
+	// Name of the account to be checked
+	accountName string
+	// Whether the account is expected to be present in ARC
+	expectedPresentInARC bool
+	// Whether the account was previously present in ARC. If set to `true` -
+	// `WaitUntilGone` will be used instead of `WaitForExists` while checking the
+	// account presence.
+	previouslyPresentInARC bool
+}
+
+// NewARCAccountOptions returns a `ARCAccountOptions` object for provided username.
+// `expectedPresentInARC` and `previouslyPresentInARC` flags are set to `false`.
+func NewARCAccountOptions(accountName string) ARCAccountOptions {
+	return ARCAccountOptions{
+		accountName:            accountName,
+		expectedPresentInARC:   false,
+		previouslyPresentInARC: false,
+	}
+}
+
+// PreviouslyPresentInARC returns a copy of the struct with
+// `previouslyPresentInARC` flag set to the specified value.
+func (c ARCAccountOptions) PreviouslyPresentInARC(present bool) ARCAccountOptions {
+	return ARCAccountOptions{
+		accountName:            c.accountName,
+		expectedPresentInARC:   c.expectedPresentInARC,
+		previouslyPresentInARC: present,
+	}
+}
+
+// ExpectedPresentInARC returns a copy of the struct with
+// `expectedPresentInARC` flag set to the specified value.
+func (c ARCAccountOptions) ExpectedPresentInARC(expected bool) ARCAccountOptions {
+	return ARCAccountOptions{
+		accountName:            c.accountName,
+		expectedPresentInARC:   expected,
+		previouslyPresentInARC: c.previouslyPresentInARC,
+	}
+}
+
+// AccountName return `accountName`.
+func (c ARCAccountOptions) AccountName() string {
+	return c.accountName
+}
+
+// IsPreviouslyPresentInARC return `previouslyPresentInARC`.
+func (c ARCAccountOptions) IsPreviouslyPresentInARC() bool {
+	return c.previouslyPresentInARC
+}
+
+// IsExpectedPresentInARC return `expectedPresentInARC`.
+func (c ARCAccountOptions) IsExpectedPresentInARC() bool {
+	return c.expectedPresentInARC
+}
+
 // AddAccountDialog returns a root node of the system account addition dialog.
 func AddAccountDialog() *nodewith.Finder {
 	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
@@ -301,18 +358,18 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 
 // CheckIsAccountPresentInARCAction returns an action that checks whether account
 // is present in ARC depending on expectedPresentInARC parameter.
-func CheckIsAccountPresentInARCAction(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInARC bool) action.Action {
+func CheckIsAccountPresentInARCAction(tconn *chrome.TestConn, d *androidui.Device, options ARCAccountOptions) action.Action {
 	return func(ctx context.Context) error {
 		if err := OpenARCAccountsInARCSettings(ctx, tconn, d); err != nil {
 			return err
 		}
-		return CheckIsAccountPresentInARC(ctx, tconn, d, accountName, expectedPresentInARC)
+		return CheckIsAccountPresentInARC(ctx, tconn, d, options)
 	}
 }
 
 // CheckIsAccountPresentInARC checks whether account is present in ARC depending
 // on expectedPresentInARC parameter. The ARC accounts page should be already open.
-func CheckIsAccountPresentInARC(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInARC bool) error {
+func CheckIsAccountPresentInARC(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, options ARCAccountOptions) error {
 	const (
 		// Note: it may take long time for account to be propagated to ARC.
 		// When increasing this timeout, consider increasing timeout of the tests which call this method.
@@ -321,13 +378,24 @@ func CheckIsAccountPresentInARC(ctx context.Context, tconn *chrome.TestConn, d *
 	)
 
 	account := d.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches(accountName), androidui.Enabled(true))
+		androidui.TextMatches(options.AccountName()), androidui.Enabled(true))
 
-	err := account.WaitForExists(ctx, arcAccountCheckTimeout)
-	if err == nil && !expectedPresentInARC {
+	if options.IsPreviouslyPresentInARC() {
+		goneErr := account.WaitUntilGone(ctx, arcAccountCheckTimeout)
+		if goneErr == nil && options.IsExpectedPresentInARC() {
+			return errors.New("the account is gone, but expected to be present")
+		} else if goneErr != nil && !options.IsExpectedPresentInARC() {
+			return errors.Wrap(goneErr, "failed to wait for account to be gone")
+		}
+
+		return nil
+	}
+
+	existsErr := account.WaitForExists(ctx, arcAccountCheckTimeout)
+	if existsErr == nil && !options.IsExpectedPresentInARC() {
 		return errors.New("the account is present, but expected to be gone")
-	} else if err != nil && expectedPresentInARC {
-		return errors.Wrap(err, "failed to wait for account present")
+	} else if existsErr != nil && options.IsExpectedPresentInARC() {
+		return errors.Wrap(existsErr, "failed to wait for account present")
 	}
 
 	return nil
