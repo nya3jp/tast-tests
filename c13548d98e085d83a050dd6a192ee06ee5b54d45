@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5744da_d1b1b183",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "Can you add someone from your team to review.\n\nI\u0027m concerned with the amount of UI interaction happening in this test. Many changes will break it.",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d65d12_7a5ac108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "Please add a person as a contact as well.",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f63ed7_c27b9c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775dc94f_1c059e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d890788_cc23f261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d585b1c5_95bff7ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eaa51ad_aace0d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8514bb_b0b617d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-27T08:22:09Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
