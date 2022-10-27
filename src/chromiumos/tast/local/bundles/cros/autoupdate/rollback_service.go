@@ -6,7 +6,6 @@ package autoupdate
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -15,7 +14,6 @@ import (
 	nws "chromiumos/tast/local/bundles/cros/autoupdate/rollbacknetworks"
 	"chromiumos/tast/local/chrome"
 	nc "chromiumos/tast/local/network/netconfig"
-	"chromiumos/tast/lsbrelease"
 	aupb "chromiumos/tast/services/cros/autoupdate"
 	"chromiumos/tast/testing"
 )
@@ -121,21 +119,6 @@ func verifyNetworks(ctx context.Context, networks []*aupb.NetworkInformation, ap
 // VerifyRollbackRequest needs to contain the unchanged NetworkInformation from
 // SetUpNetworksResponse.
 func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.VerifyRollbackRequest) (*aupb.VerifyRollbackResponse, error) {
-	// There has been some updates that affect what the test should check based on
-	// which image we have rollback to, so we need to retrieve in which milestone
-	// we are at.
-	// Retrieving milestone first in case we have trouble getting the value, we
-	// do not need to waste time starting Chrome.
-	lsbContent, err := lsbrelease.Load()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read /etc/lsb-release")
-	}
-
-	milestoneVal, err := strconv.Atoi(lsbContent[lsbrelease.Milestone])
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to convert milestone %s to integer", lsbContent[lsbrelease.Milestone])
-	}
-
 	// Chrome would send an auto re-enrollment request to the real DMServer
 	// which will fail because the device wasn't enrolled at all.
 	// Try to prevent that by setting DMServer URL to nonsense.
@@ -150,19 +133,6 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrap(err, "failed to create OOBE connection")
 	}
 	defer oobeConn.Close()
-
-	// The following checks are expected to fail on any milestone <100 because
-	// Chrome was not ready for rollback tests yet. We skip them and consider the
-	// verification is successful, but we inform that a full verification was not
-	// possible.
-	// TODO(237500398) delete when it is not needed anymore.
-	if milestoneVal < 100 {
-		response := &aupb.VerifyRollbackResponse{
-			Successful:          true,
-			VerificationDetails: "M < 100: image does not support a full rollback verification",
-		}
-		return response, nil
-	}
 
 	// Verify network configuration during OOBE.
 	apiOOBE, err := nc.CreateOobeCrosNetworkConfig(ctx, cr)

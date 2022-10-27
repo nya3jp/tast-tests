@@ -190,14 +190,6 @@ func VerifyRollbackData(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 		return errors.Errorf("rollback was not successful: %s", response.VerificationDetails)
 	}
 
-	// On any milestone <100 Chrome was not ready to be tested yet, so it is not
-	// possible to carry out all verification steps and they are skipped. The
-	// verification is considered successful but if details are provided by the
-	// service, they the should be logged.
-	if response.VerificationDetails != "" {
-		testing.ContextLog(ctx, response.VerificationDetails)
-	}
-
 	return nil
 }
 
