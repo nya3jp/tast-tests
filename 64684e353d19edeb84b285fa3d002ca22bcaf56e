@@ -16,6 +16,23 @@
       "message": "Hi Matt,\nCan you please help me review this change on the Tast TCP server?\nThanks,\nJonathan",
       "revId": "64684e353d19edeb84b285fa3d002ca22bcaf56e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22a71b6_88e092b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-10-27T00:28:37Z",
+      "side": 1,
+      "message": "I have a concern that changing the defaults is a breaking change. Some code may start the server up without any -port flag and assume it\u0027s running on port 4445.\n\nI\u0027m happy to add support for port 0, but I\u0027d prefer we reverted the changing of defaults.",
+      "revId": "64684e353d19edeb84b285fa3d002ca22bcaf56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
