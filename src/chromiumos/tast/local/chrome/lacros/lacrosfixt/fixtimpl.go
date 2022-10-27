@@ -171,9 +171,7 @@ func init() {
 		Desc:     "Lacros Chrome with resources file sharing feature",
 		Contacts: []string{"elkurin@chromium.org", "hidehiko@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(ChromeOptions(
-				chrome.ExtraArgs("--enable-features=LacrosResourcesFileSharing"),
-			)).Opts()
+			return NewConfig(ChromeOptions(chrome.EnableFeatures("LacrosResourcesFileSharing"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
