@@ -16,6 +16,24 @@
       "message": "This one will be cleaned up by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979088",
       "revId": "e816b8f65c63a98b17f8b48652d134967d397a53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0fd137_e857a890",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-27T02:49:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e2740fa_63a7ee91",
+      "revId": "e816b8f65c63a98b17f8b48652d134967d397a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
