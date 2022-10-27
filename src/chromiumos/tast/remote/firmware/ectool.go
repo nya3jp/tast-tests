@@ -144,6 +144,8 @@ const (
 	ENPP3300POGO GpioName = "EN_PP3300_POGO"
 	// ENBASE for the 'ectool gpioget EN_BASE' cmd.
 	ENBASE GpioName = "EN_BASE"
+	// PP3300DXBASE for the 'ectool gpioget PP3300_DX_BASE' cmd.
+	PP3300DXBASE GpioName = "PP3300_DX_BASE"
 	// ECEDPBLEN for the 'ectool gpioget EC_EDP_BL_EN' cmd.
 	ECEDPBLEN GpioName = "EC_EDP_BL_EN"
 	// BLDISABLEL for the 'ectool gpioget BL_DISABLE_L' cmd.
