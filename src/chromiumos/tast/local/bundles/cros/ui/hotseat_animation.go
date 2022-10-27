@@ -11,11 +11,14 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -34,38 +37,49 @@ const (
 )
 
 type hotseatTestVal struct {
-	TestType hotseatTestType
+	TestType    hotseatTestType
+	BrowserType browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HotseatAnimation,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the framerate of the hotseat animation in tablet mode",
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name:    "non_overflow_shelf",
-				Val:     nonOverflow,
-				Fixture: "chromeLoggedInWith100FakeApps",
-			},
-			{
-				Name:    "overflow_shelf",
-				Val:     overflow,
-				Fixture: "chromeLoggedInWith100FakeApps",
-			},
-
-			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
-			{
-				Name:    "shelf_with_navigation_widget",
-				Val:     showNavigationWidget,
-				Fixture: "install100Apps",
-			},
-		},
+		Params: []testing.Param{{
+			Name:    "non_overflow_shelf",
+			Val:     hotseatTestVal{nonOverflow, browser.TypeAsh},
+			Fixture: "chromeLoggedInWith100FakeApps",
+		}, {
+			Name:    "overflow_shelf",
+			Val:     hotseatTestVal{overflow, browser.TypeAsh},
+			Fixture: "chromeLoggedInWith100FakeApps",
+		}, { // TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
+			Name:    "shelf_with_navigation_widget",
+			Val:     hotseatTestVal{showNavigationWidget, browser.TypeAsh},
+			Fixture: "install100Apps",
+		}, {
+			Name:              "non_overflow_shelf_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               hotseatTestVal{nonOverflow, browser.TypeLacros},
+			Fixture:           "lacrosWith100FakeApps",
+		}, {
+			Name:              "overflow_shelf_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               hotseatTestVal{overflow, browser.TypeLacros},
+			Fixture:           "lacrosWith100FakeApps",
+		}, {
+			// TODO: Failed to enter overflow shelf with the error "got 0 apps, want at least 10 apps"
+			Name:              "shelf_with_navigation_widget_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               hotseatTestVal{showNavigationWidget, browser.TypeLacros},
+			Fixture:           "install100LacrosApps",
+		}},
 	})
 }
 
@@ -98,19 +112,25 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		swipeDuration   = 500 * time.Millisecond
 	)
 
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
 	var cr *chrome.Chrome
 
-	testType := s.Param().(hotseatTestType)
+	testType := s.Param().(hotseatTestVal).TestType
+	bt := s.Param().(hotseatTestVal).BrowserType
 	if testType == showNavigationWidget {
 		opts := []chrome.Option{chrome.DisableFeatures("HideShelfControlsInTabletMode")}
 		opts = append(opts, s.FixtValue().([]chrome.Option)...)
 		var err error
-		cr, err = chrome.New(ctx, opts...)
+		cr, err = browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
 	} else {
 		cr = s.FixtValue().(*chrome.Chrome)
 	}
@@ -129,7 +149,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// The app list gets shown during transition to tablet mode, Wait for the transition to
 	// full screen app list to finish before proceeding with testing hotseat animations to
@@ -167,6 +187,12 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for stable shelf bouds: ", err)
 	}
 
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find browser app info: ", err)
+	}
+
+	// Use `cr` from ash-chrome for the metrics that are recorded in ash-chrome.
 	runner := perfutil.NewRunner(cr.Browser())
 
 	// Collect metrics data from hiding hotseat by window creation.
@@ -175,7 +201,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		hiddenHotseatWidgetHistogram,
 		shownHotseatHistogram,
 		shownHotseatWidgetHistogram}
-	if s.Param().(hotseatTestType) == showNavigationWidget {
+	if testType == showNavigationWidget {
 		histogramsName = append(histogramsName,
 			hiddenBackButtonHistogram,
 			hiddenHomeButtonHistogram,
@@ -184,26 +210,29 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			shownHomeButtonHistogram,
 			shownWidgetHistogram)
 	}
+	// Use `tconn` from ash-chrome for the metrics that are recorded in ash-chrome.
 	runner.RunMultiple(ctx, "WindowCreation", uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		conn, err := cr.NewConn(sctx, "", browser.WithNewWindow())
-		if err != nil {
-			return errors.Wrap(err, "failed to open browser window")
+		if err := apps.Launch(sctx, tconn, browserApp.ID); err != nil {
+			s.Fatal("Failed to open browser window: ", err)
+		}
+		if _, err := ash.WaitForAppWindow(sctx, tconn, browserApp.ID); err != nil {
+			s.Fatal("Browser did not become visible: ", err)
 		}
 		defer func() {
-			if err := conn.Close(); err != nil {
-				s.Error("Failed to close a connection: ", err)
+			if err := apps.Close(ctx, tconn, browserApp.ID); err != nil {
+				s.Error("Failed to close browser: ", err)
 			}
 		}()
+
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
-			conn.CloseTarget(ctx)
 			return err
 		}
 
-		if err := conn.CloseTarget(ctx); err != nil {
-			return errors.Wrap(err, "failed to close a target")
+		if err := apps.Close(ctx, tconn, browserApp.ID); err != nil {
+			return errors.Wrap(err, "failed to close browser")
 		}
 
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
@@ -238,7 +267,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		hiddenHotseatHistogram:       true,
 		hiddenHotseatWidgetHistogram: true,
 	}
-	if s.Param().(hotseatTestType) == showNavigationWidget {
+	if testType == showNavigationWidget {
 		windowActivationHistogramNames[hiddenBackButtonHistogram] = true
 		windowActivationHistogramNames[hiddenHomeButtonHistogram] = true
 		windowActivationHistogramNames[hiddenWidgetHistogram] = true
@@ -247,12 +276,18 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		histogramsName = append(histogramsName, name)
 	}
 
+	// Ensure there is no window open before the next test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
+
 	// Add a new tab.
-	conn, err := cr.NewConn(ctx, ui.PerftestURL)
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, ui.PerftestURL)
 	if err != nil {
 		s.Fatal("Failed to create a new tab: ", err)
 	}
 	conn.Close()
+	defer closeBrowser(cleanupCtx)
 
 	displayInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
@@ -264,6 +299,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to generate touch coord converter")
 	}
 
+	// Use `tconn` from ash-chrome for the metrics that are recorded in ash-chrome.
 	runner.RunMultiple(ctx, "", uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
