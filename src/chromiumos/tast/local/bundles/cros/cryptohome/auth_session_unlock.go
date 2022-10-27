@@ -18,8 +18,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type authSessionUnlockConfig struct {
-	useUserSecretStash bool
+type authSessionUnlockParams struct {
+	// Specifies whether the user should be ephemeral.
+	isEphemeral bool
 }
 
 func init() {
@@ -31,15 +32,33 @@ func init() {
 			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Data: []string{"testcert.p12"},
+		// The tests are parameterized across two variables: is the user
+		// persistent or ephemeral, and is the backing store USS or Vault
+		// Keysets. The latter choice is controlled by a text fixture.
 		Params: []testing.Param{{
-			Name: "with_vk",
-			Val: authSessionUnlockConfig{
-				useUserSecretStash: false,
+			Name:    "ephemeral_with_vk",
+			Fixture: "vkAuthSessionFixture",
+			Val: authSessionUnlockParams{
+				isEphemeral: true,
 			},
 		}, {
-			Name: "with_uss",
-			Val: authSessionUnlockConfig{
-				useUserSecretStash: true,
+			Name:    "ephemeral_with_uss",
+			Fixture: "ussAuthSessionFixture",
+			Val: authSessionUnlockParams{
+				isEphemeral: true,
+			},
+		}, {
+			Name:    "persistent_with_vk",
+			Fixture: "vkAuthSessionFixture",
+			Val: authSessionUnlockParams{
+				isEphemeral: false,
+			},
+		}, {
+			Name:    "persistent_with_uss",
+			Fixture: "ussAuthSessionFixture",
+			Val: authSessionUnlockParams{
+				isEphemeral: false,
 			},
 		}},
 	})
@@ -47,14 +66,15 @@ func init() {
 
 func AuthSessionUnlock(ctx context.Context, s *testing.State) {
 	const (
-		userName      = "foo@bar.baz"
-		password      = "secret"
-		passwordLabel = "online-password"
+		ownerName       = "owner@bar.baz"
+		userName        = "foo@bar.baz"
+		userPassword    = "secret"
+		newUserPassword = "i-forgot-secret"
+		passwordLabel   = "online-password"
 	)
 
-	config := s.Param().(authSessionUnlockConfig)
-
-	ctxForCleanup := ctx
+	userParam := s.Param().(authSessionUnlockParams)
+	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
@@ -66,111 +86,114 @@ func AuthSessionUnlock(ctx context.Context, s *testing.State) {
 	}
 	daemonController := helper.DaemonController()
 
-	if config.useUserSecretStash {
-		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-		if err != nil {
-			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-		}
-		defer cleanupUSSExperiment(ctxForCleanup)
-	}
-
-	// Prepare by waiting for the daemon availability and cleaning obsolete state.
+	// Wait for cryptohomed to become available if needed.
 	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
 		s.Fatal("Failed to ensure cryptohomed: ", err)
 	}
-	if err := cryptohome.UnmountAll(ctx); err != nil {
-		s.Log("Failed to unmount all before test starts: ", err)
+
+	// Clean up old state or mounts for the test user, if any exists.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for preparation: ", err)
 	}
 	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
-		s.Log("Failed to remove vault before test starts: ", err)
+		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	// Create the user and verify unlock succeeds.
-	cleanupUser, err := createUserWithPasswordFactor(ctx, client, userName, password, passwordLabel)
-	if err != nil {
-		s.Fatal("Failed to create user: ", err)
+	// Set up an owner. This is needed for ephemeral users. Once this is done
+	// unmount everything to put things in a clean state for the test proper.
+	if err := hwseclocal.SetUpVaultAndUserAsOwner(ctx, s.DataPath("testcert.p12"), ownerName, "whatever", "whatever", helper.CryptohomeClient()); err != nil {
+		client.UnmountAll(ctx)
+		client.RemoveVault(ctx, ownerName)
+		s.Fatal("Failed to setup vault and user as owner: ", err)
 	}
-	defer cleanupUser(ctxForCleanup)
-	if err := testAuthSessionUnlock(ctx, client, userName, password, passwordLabel); err != nil {
-		s.Fatal("Unlock failed after user creation: ", err)
-	}
-
-	// Log out, log in back and verify unlock succeeds again.
 	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount user for remount: ", err)
+		s.Fatal("Failed to unmount vaults for preparation: ", err)
 	}
-	if err := mountUserWithPasswordFactor(ctx, client, userName, password, passwordLabel); err != nil {
-		s.Fatal("Failed to remount user: ", err)
-	}
-	if err := testAuthSessionUnlock(ctx, client, userName, password, passwordLabel); err != nil {
-		s.Fatal("Unlock failed after user creation: ", err)
-	}
-}
+	defer client.RemoveVault(ctxForCleanUp, ownerName)
 
-func createUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) (func(context.Context), error) {
-	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
-	if err != nil {
-		return nil, errors.Wrap(err, "start auth session")
-	}
-	defer client.InvalidateAuthSession(ctx, authSessionID)
-	if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
-		return nil, errors.Wrap(err, "create user")
-	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
-		return nil, errors.Wrap(err, "prepare user vault")
-	}
-	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, password); err != nil {
-		return nil, errors.Wrap(err, "add password factor")
-	}
-	cleanup := func(ctxForCleanup context.Context) {
-		client.UnmountAll(ctxForCleanup)
-		cryptohome.RemoveVault(ctxForCleanup, userName)
-	}
-	return cleanup, nil
-}
-
-func mountUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) error {
-	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
-	if err != nil {
-		return errors.Wrap(err, "start auth session")
-	}
-	defer client.InvalidateAuthSession(ctx, authSessionID)
-	if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, password); err != nil {
-		return errors.Wrap(err, "authenticate using correct password")
-	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
-		return errors.Wrap(err, "prepare persistent vault")
-	}
-	return nil
-}
-
-func testAuthSessionUnlock(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) error {
-	// Check VERIFY_ONLY authentication using the correct password.
-	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
-	if err != nil {
-		return errors.Wrap(err, "start AuthSession")
-	}
-	authReply, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, password)
-	if err != nil {
-		return errors.Wrap(err, "authenticate with correct password")
-	}
-	defer client.InvalidateAuthSession(ctx, authSessionID)
-
-	if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
-		uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+	// Create and mount the user with a password auth factor.
+	if err := client.WithAuthSession(ctx, userName, userParam.isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT, func(authSessionID string) error {
+		if userParam.isEphemeral {
+			if err := client.PrepareEphemeralVault(ctx, authSessionID); err != nil {
+				return errors.Wrap(err, "failed to prepare new ephemeral vault")
+			}
+		} else {
+			if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
+				return errors.Wrap(err, "failed to create persistent user")
+			}
+			if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+				return errors.Wrap(err, "failed to prepare new persistent vault")
+			}
+		}
+		if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+			return errors.Wrap(err, "failed to add initial user password")
+		}
+		return nil
 	}); err != nil {
-		return errors.Wrap(err, "unexpected AuthSession authorized intents")
+		s.Fatal("Failed to create and set up the user: ", err)
+	}
+	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
+	defer client.UnmountAll(ctxForCleanUp)
+
+	// Verify the password can be used to authenticate.
+	if err := client.WithAuthSession(ctx, userName, userParam.isEphemeral, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY, func(authSessionID string) error {
+		var authReply *uda.AuthenticateAuthFactorReply
+		if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, newUserPassword); err == nil {
+			return errors.New("authenticated user with the wrong password")
+		}
+		if authReply, err = client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+			return errors.Wrap(err, "failed to authenticate user")
+		}
+		if err := cryptohomecommon.ExpectContainsAuthIntent(
+			authReply.AuthorizedFor, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+		); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
+		}
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to authenticate with initial password: ", err)
 	}
 
-	// Check VERIFY_ONLY authentication fails when using a wrong password.
-	_, authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
-	if err != nil {
-		return errors.Wrap(err, "start second AuthSession")
+	// If the user is ephemeral, stop here. We can't change any auth factors.
+	if userParam.isEphemeral {
+		return
 	}
-	if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, "wrong-secret"); err == nil {
-		return errors.Wrap(err, "unexpectedly authenticated using a wrong password")
-	}
-	defer client.InvalidateAuthSession(ctx, authSessionID)
 
-	return nil
+	// Change the user's password.
+	if err := client.WithAuthSession(ctx, userName, userParam.isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT, func(authSessionID string) error {
+		var authReply *uda.AuthenticateAuthFactorReply
+		if authReply, err = client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+			return errors.Wrap(err, "failed to authenticate user")
+		}
+		if err := cryptohomecommon.ExpectContainsAuthIntent(
+			authReply.AuthorizedFor, uda.AuthIntent_AUTH_INTENT_DECRYPT,
+		); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
+		}
+		if err := client.UpdatePasswordAuthFactor(ctx, authSessionID, passwordLabel, passwordLabel, newUserPassword); err != nil {
+			return errors.Wrap(err, "failed to update password")
+		}
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to change the user password: ", err)
+	}
+
+	// Verify the new password can be used to authenticate.
+	if err := client.WithAuthSession(ctx, userName, userParam.isEphemeral, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY, func(authSessionID string) error {
+		var authReply *uda.AuthenticateAuthFactorReply
+		if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err == nil {
+			return errors.New("authenticated user with the old password")
+		}
+		if authReply, err = client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, newUserPassword); err != nil {
+			return errors.Wrap(err, "failed to authenticate user")
+		}
+		if err := cryptohomecommon.ExpectContainsAuthIntent(
+			authReply.AuthorizedFor, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+		); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
+		}
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to authenticate with changed password: ", err)
+	}
 }
