@@ -258,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0113276e_760c3ce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T14:38:09Z",
+      "side": 1,
+      "message": "Thanks for updating it! We still have three variables (pkgName, isSplashVisible, mode), so moving all of them into arguments seems too complicated.\nThe current implementation lgtm",
+      "parentUuid": "40183b4f_6b1df16a",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af7ddc44_273e7e9c",
@@ -289,6 +307,24 @@
       "side": 1,
       "message": "Sorry maybe I don\u0027t get your point. You mean ideally we should have an util method for `ash.GetShelfAlignment` which returns a tuple of cleanup function and err like `EnsureTabletModeEnabled`?",
       "parentUuid": "af7ddc44_273e7e9c",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "696e05a7_03f43854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T14:38:09Z",
+      "side": 1,
+      "message": "Yes as I can see the same pattern in some other tests. You don\u0027t have to do it by yourself though.",
+      "parentUuid": "6857d678_02d4e745",
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
