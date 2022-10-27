@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163d2d51_178cf7bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-10-27T10:34:31Z",
+      "side": 1,
+      "message": "Hello Jeremy,\nPlease have a look to this patch for APROBootabilityPerformance().\nThank you in advance.",
+      "revId": "f0cff33273e8fe53846cc530a5975b3327f474a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
