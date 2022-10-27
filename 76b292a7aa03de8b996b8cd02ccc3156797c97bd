@@ -16,6 +16,24 @@
       "message": "Integration of the updated package looked good!",
       "revId": "76b292a7aa03de8b996b8cd02ccc3156797c97bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11286753_80f8f416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-27T16:05:02Z",
+      "side": 1,
+      "message": "*updated expectations package",
+      "parentUuid": "0e0fc1d8_bacaf0c3",
+      "revId": "76b292a7aa03de8b996b8cd02ccc3156797c97bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
