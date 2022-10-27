@@ -224,12 +224,10 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to setup Chrome for consumers: ", err)
 	}
 
-	if f.bt == browser.TypeLacros {
-		// TODO(b/245337406): Find fix for the actual error instead
-		// of this workaround.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			s.Fatal("Unable to pause between Ash and Lacros launch")
-		}
+	// TODO(b/245337406): Find fix for the actual error instead
+	// of this workaround.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Unable to pause between Ash and Lacros launch")
 	}
 
 	br, closeBr, err := browserfixt.SetUp(ctx, f.cr, f.bt)
