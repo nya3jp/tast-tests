@@ -37,6 +37,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da5d3b01_4790a32e",
+        "filename": "android/ArcResizeLockTest/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T12:35:00Z",
+      "side": 1,
+      "message": "nit: blank line?",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331550da_e3fbff1e",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T12:35:00Z",
+      "side": 1,
+      "message": "Please put your name here.",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 8
+      },
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc21ae7b_c6b4f8d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
         "patchSetId": 2
@@ -102,6 +142,57 @@
         "endLine": 60,
         "endChar": 2
       },
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea11b1f_fd04db0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T12:35:00Z",
+      "side": 1,
+      "message": "How about installing both apks in ResizeLockA2C2 to make this function focus on actual testing?",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c23d511_e065fc7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T12:35:00Z",
+      "side": 1,
+      "message": "Do you want to test the existence of the splash or it\u0027s needed for checking the resize lock state?\nIf latter, we may want to skip the check and passing the expected mode directly to this function instead of a bool.",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7ddc44_273e7e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-27T12:35:00Z",
+      "side": 1,
+      "message": "These shelf alignment/behavior restoring logic looks very similar to ash.EnsureTabletModeEnabled for tablet mode.\nCould you file a bug for providing similar methods to them?",
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
