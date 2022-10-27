@@ -105,32 +105,32 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 		action   uiauto.Action
 	}{
 		{
-			// Trigger suggestion "how are you" and insert into
+			// Trigger suggestion "good morning" and insert into
 			// textfield with tab.
 			name:     "AcceptSuggestionWithTab",
 			scenario: "verify suggestion appears and accepted with tab key",
 			errStr:   "Failed to accept suggestion: %v",
 			action: uiauto.Combine("accept multiword suggestion with tab",
-				keyboard.TypeAction("ho"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "ho"),
+				keyboard.TypeAction("goo"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Tab"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "how are you"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "good morning"),
 			),
 		},
 		{
-			// Trigger suggestion "how are you" and insert into
+			// Trigger suggestion "good morning" and insert into
 			// textfield with down + enter key.
 			name:     "AcceptSuggestionWithDownAndEnter",
 			scenario: "verify suggestion appears and accepted with down and enter key",
 			errStr:   "Failed to accept suggestion: %v",
 			action: uiauto.Combine("accept multiword suggestion with down and enter",
-				keyboard.TypeAction("ho"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "ho"),
+				keyboard.TypeAction("goo"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Down"),
 				keyboard.AccelAction("Enter"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "how are you"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "good morning"),
 			),
 		},
 		{
