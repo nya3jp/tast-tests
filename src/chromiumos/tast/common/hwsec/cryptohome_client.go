@@ -1254,3 +1254,18 @@ func (u *CryptohomeClient) ListAuthFactors(ctx context.Context, user string) (*u
 
 	return reply, nil
 }
+
+// WithAuthSession will execute a given block of code within an active
+// AuthSession, handling the setup and teardown of the session automatically.
+// The given block should take a string parameter (the authSessionID) and return
+// an error.
+func (u *CryptohomeClient) WithAuthSession(
+	ctx context.Context, username string, isEphemeral bool, authIntent uda.AuthIntent,
+	f func(string) error) error {
+	_, authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, authIntent)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+	defer u.InvalidateAuthSession(ctx, authSessionID)
+	return f(authSessionID)
+}
