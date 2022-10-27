@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -24,15 +25,15 @@ func init() {
 }
 
 // in alphabetical order
-var chipSizeMap = map[string]int{
-	"it83xx":          512, // (512 * 1024) bytes
-	"ite_spi_ccd_i2c": 1024,
-	"it8xxx2":         1024,
-	"mec1322":         256,
-	"npcx_int_spi":    512,
-	"npcx_spi":        512,
-	"npcx_uut":        512,
-	"stm32":           256,
+var chipSizeMap = map[string][]int{
+	"it83xx":          []int{512}, // (512 * 1024) bytes
+	"ite_spi_ccd_i2c": []int{1024},
+	"it8xxx2":         []int{1024},
+	"mec1322":         []int{512, 256},
+	"npcx_int_spi":    []int{512},
+	"npcx_spi":        []int{512},
+	"npcx_uut":        []int{512},
+	"stm32":           []int{256},
 }
 
 func ECSize(ctx context.Context, s *testing.State) {
@@ -41,24 +42,32 @@ func ECSize(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	size, err := h.Servo.GetECFlashSize(ctx)
+	sizeInBytes, err := firmware.NewECTool(h.DUT, firmware.ECToolNameMain).FlashSize(ctx)
 	if err != nil {
-		s.Fatal("Failed to get ec size: ", err)
+		s.Fatal("Failed to get flashinfo from ectool: ", err)
 	}
+	size := sizeInBytes / 1024
 
 	chip, err := h.Servo.GetECChip(ctx)
 	if err != nil {
 		s.Fatal("Failed to get ec chip: ", err)
 	}
 
-	s.Logf("Flash size: %v KB", size)
+	s.Logf("Flash size: %d KB", size)
 	s.Log("EC Chip: ", chip)
 
-	expSize, ok := chipSizeMap[chip]
+	expSizes, ok := chipSizeMap[chip]
 	if !ok {
 		s.Fatalf("Failed to find ec chip %v in chipSizeMap", chip)
 	}
-	if expSize != size {
-		s.Fatalf("Failed to verify EC size, want %d KB, got %d KB for chip %v", expSize, size, chip)
+	found := false
+	for _, s := range expSizes {
+		if s == size {
+			found = true
+			break
+		}
+	}
+	if !found {
+		s.Fatalf("Failed to verify EC size, expected one of %v, got %d KB for chip %v", expSizes, size, chip)
 	}
 }
