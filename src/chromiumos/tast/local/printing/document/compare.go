@@ -62,6 +62,9 @@ var cleanRegex = regexp.MustCompile(
 		`|@PJL SET JOBATTR="JobAcct[45]=.*` +
 		`|@PJL DMINFO ASCIIHEX=".*` +
 		`|@PJL SET TIMESTAMP=[0-9]+` +
+		// For HP jobs, the proxy inserts a port number and the direct
+		// test doesn't.
+		`|@PJL COMMENT="socket://.*` +
 		// For Ricoh jobs, the SET DATE/TIME values are time-specific.
 		`|@PJL SET DATE=".*` +
 		`|@PJL SET TIME=".*)[\r\n])` +
