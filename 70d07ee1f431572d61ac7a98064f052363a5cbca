@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef37e20d_855c1630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-27T18:39:44Z",
+      "side": 1,
+      "message": "It looks like the main branch didn\u0027t change significantly.  Can we put this just on the new lacros variant?",
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a294108_326df25b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-27T18:39:44Z",
+      "side": 1,
+      "message": "Why is first needed?  The DOM shouldn\u0027t be different for the test page on lacros, should it?",
+      "range": {
+        "startLine": 145,
+        "startChar": 117,
+        "endLine": 145,
+        "endChar": 126
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "908d9b69_5a32ada9",
         "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
         "patchSetId": 2
@@ -14,6 +54,30 @@
       "writtenOn": "2022-10-27T18:25:08Z",
       "side": 1,
       "message": "I changed this from LeftClick to DoDefault because the a11y tree was not working correctly on lacros - see this discussion:  https://groups.google.com/a/google.com/g/lacros-tast/c/rimusB5dHPo/m/pqtDo2lmAAAJ",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 14
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8cc1755_a54cf491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-27T18:39:44Z",
+      "side": 1,
+      "message": "Seems reasonable.  We\u0027ve made similar changes elsewhere.",
+      "parentUuid": "908d9b69_5a32ada9",
       "range": {
         "startLine": 154,
         "startChar": 5,
