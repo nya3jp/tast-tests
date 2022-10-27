@@ -21,7 +21,7 @@ func init() {
 		Func:         MultipleProfileApps,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC app from one user doesn't appear in another user",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},

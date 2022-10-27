@@ -20,7 +20,7 @@ func init() {
 		Func:         UnicornPlaystoreOn,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks if PlayStore is Enabled for Unicorn Acccount",
-		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,

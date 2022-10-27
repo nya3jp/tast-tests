@@ -110,7 +110,7 @@ func init() {
 		Desc: "ARC is booted with disabling sync flags",
 		Vars: []string{"ui.gaiaPoolDefault"},
 		Contacts: []string{
-			"rnanjappan@chromium.org",
+			"cpiao@google.com",
 			"niwa@chromium.org",
 			"arcvm-eng-team@google.com",
 		},

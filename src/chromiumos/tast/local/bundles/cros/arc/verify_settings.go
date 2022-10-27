@@ -29,7 +29,7 @@ func init() {
 		Func:         VerifySettings,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARC++ settings work as intended",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

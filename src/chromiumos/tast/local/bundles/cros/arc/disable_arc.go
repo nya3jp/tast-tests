@@ -27,7 +27,7 @@ func init() {
 		Func:         DisableArc,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify PlayStore can be turned off in Settings ",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

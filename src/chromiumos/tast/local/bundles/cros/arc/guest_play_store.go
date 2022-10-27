@@ -20,7 +20,7 @@ func init() {
 		Func:         GuestPlayStore,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check PlayStore is Off in Guest mode",
-		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInGuest",

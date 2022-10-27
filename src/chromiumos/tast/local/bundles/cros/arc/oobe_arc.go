@@ -29,7 +29,7 @@ func init() {
 		Func:         OobeArc,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Navigate through OOBE and Verify that PlayStore Settings Screen is launched at the end",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "cros-oac@google.com", "cros-oobe@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com", "cros-oac@google.com", "cros-oobe@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

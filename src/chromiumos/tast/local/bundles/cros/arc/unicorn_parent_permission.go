@@ -24,7 +24,7 @@ func init() {
 		Func:         UnicornParentPermission,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks if App Install Triggers Parent Permission For Unicorn Account",
-		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts:     []string{"cpiao@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
