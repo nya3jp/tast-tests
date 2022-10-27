@@ -45,6 +45,54 @@
       },
       "revId": "529afdf83336722496e41e77d1083cb3871315cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22bd5a31_27310490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2558,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T18:01:53Z",
+      "side": 1,
+      "message": "Good catch, Ack",
+      "parentUuid": "96534f2d_c408b6c4",
+      "range": {
+        "startLine": 2558,
+        "startChar": 26,
+        "endLine": 2558,
+        "endChar": 83
+      },
+      "revId": "529afdf83336722496e41e77d1083cb3871315cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e769059_30dc4b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2558,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-27T18:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9760854c_795e406d",
+      "range": {
+        "startLine": 2558,
+        "startChar": 11,
+        "endLine": 2558,
+        "endChar": 13
+      },
+      "revId": "529afdf83336722496e41e77d1083cb3871315cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
