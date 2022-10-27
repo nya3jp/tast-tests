@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be55d8a6_b3d177d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-10-27T13:27:24Z",
+      "side": 1,
+      "message": "Thanks Oleh for your comments. Now the test contains only what is strictly necessary. \n\nIn short, the plan is to have some end-to-end coverage in addition to the other already existing DLP Tast tests (see here: src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dlp/) so that we are more sure about the complete flow server(policies setup)-\u003eclient(trigger some action)-\u003eserver(receive some events). In general, Tast tests of DLP features without external dependencies are working fine. I\u0027m not sure we can get rid of these dependencies still achieving the same purpose.",
+      "revId": "346fd43545f2ab8caa18950e8e09f3a2fb418c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
