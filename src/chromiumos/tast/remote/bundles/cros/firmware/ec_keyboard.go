@@ -27,6 +27,7 @@ type keyboardTest int
 const (
 	servoUSBKeyboard keyboardTest = iota
 	servoECKeyboard
+	detachableKeyboard
 )
 
 func init() {
@@ -40,10 +41,15 @@ func init() {
 		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Val: servoECKeyboard,
+			Val:               servoECKeyboard,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Detachable)),
 		}, {
 			Name: "usb_keyboard",
 			Val:  servoUSBKeyboard,
+		}, {
+			Name:              "detachable",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Val:               detachableKeyboard,
 		}},
 	})
 }
@@ -61,6 +67,14 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
+	}
+
+	testType := s.Param().(keyboardTest)
+	// Make sure internal keyboard is connected for detachable devices.
+	if testType == detachableKeyboard {
+		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "basestate detach"); err != nil {
+			s.Fatal("Failed to set detachable base state to attached: ", err)
+		}
 	}
 
 	// Stop UI to prevent keypresses from causing unintended behaviour.
@@ -83,8 +97,8 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 	var testKeyMap map[string]string
 	var keyPressFunc func(context.Context, string) error
 
-	switch s.Param().(keyboardTest) {
-	case servoECKeyboard:
+	switch testType {
+	case servoECKeyboard, detachableKeyboard:
 		if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
 			s.Fatal("Failed to check for usb keyboard: ", err)
 		} else if hasKb {
