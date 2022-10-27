@@ -105,6 +105,24 @@
       "parentUuid": "206b06fd_ea22e49c",
       "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9d3893_22e2d89b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-27T05:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3b4953_500b0cf6",
+      "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
