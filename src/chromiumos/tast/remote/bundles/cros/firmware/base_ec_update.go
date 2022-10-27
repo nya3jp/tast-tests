@@ -52,10 +52,12 @@ func init() {
 	})
 }
 
-// baseECInfo contains information about the name and version of base ec.
+// baseECInfo contains information about base ec.
 type baseECInfo struct {
-	name    string
-	version string
+	name           string
+	version        string
+	protectionFlag string
+	roProtected    bool
 }
 
 // modifiedFileDir contains paths defined as follows,
@@ -160,6 +162,7 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to check base ec's version: ", err)
 	}
+	s.Log("Flash protection flags: ", originalBaseEC.protectionFlag)
 
 	if err := modifyBaseEC(ctx, dut, originalBaseEC, &fileDir); err != nil {
 		s.Fatal("Failed to modify base-ec: ", err)
@@ -193,20 +196,33 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 
 	s.Log("Flashing an old image to detachable-base ec")
 	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, hammerConfigs, fileDir.onHost); err != nil {
-		s.Fatal("Failed to flash base ec to an old version: ", err)
+		// If flashing an edited image fails, check whether the version
+		// has changed. Sometimes, this failure might relate to the protection
+		// pipeline designed to guarantee a file's integrity, like so:
+		// Error message: libminijail[9206]: child process 9207 exited
+		// with status 14.
+		s.Log("Failed to flash base ec to an old version: ", err)
+		flashedBaseEC, err := getBaseECInfo(ctx, dut, hammerConfigs.pid)
+		if err != nil {
+			s.Fatal("Failed to get base ec info after flash: ", err)
+		}
+
+		s.Logf("Base ec version: %q [Before] v.s. %q [After]", originalBaseEC.version, flashedBaseEC.version)
+		if baseECVersionUnchanged(originalBaseEC.version[len(originalBaseEC.name)+1:], flashedBaseEC.version[len(flashedBaseEC.name)+1:]) {
+			s.Fatalf("Found base ec version unchanged, got before: %q, and after: %q", originalBaseEC.version, flashedBaseEC.version)
+		}
+
 	}
 
 	// Given that DUT's base ec is running an old firmware,
 	// detaching then re-attaching base would trigger an update
 	// notification window to pop up in a logged in session.
-	if err := triggerAndFindNotification(ctx, ecTool, utilServiceClient, dut); err != nil {
-		s.Fatal("Failed to trigger and find notification: ", err)
-	}
-
-	s.Log("Saving the base ec firmware version after flashing an old image")
-	oldBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
-	if err != nil {
-		s.Fatal("Failed to check base ec's version: ", err)
+	if err := triggerAndFindNotification(ctx, ecTool, utilServiceClient, dut, hammerConfigs.pid); err != nil {
+		currentBaseEC, errBaseEC := getBaseECInfo(ctx, dut, hammerConfigs.pid)
+		if errBaseEC != nil {
+			s.Fatal("Failed to trigger and find notification window, and while getting base ec info: ", errBaseEC)
+		}
+		s.Fatalf("Failed to trigger and find notification window [current base ec version: %s, ro protected: %t]: %v", currentBaseEC.version, currentBaseEC.roProtected, err)
 	}
 
 	s.Log("Power-cycling DUT with a warm reset")
@@ -230,8 +246,8 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check base ec's version: ", err)
 	}
 
-	s.Log("Verifying that base ec updated after a reboot")
-	if !verifyBaseECVersion(oldBaseEC.version[len(oldBaseEC.name)+1:], newBaseEC.version[len(newBaseEC.name)+1:]) {
+	s.Log("Verifying that base ec restored after a reboot")
+	if !baseECVersionUnchanged(originalBaseEC.version[len(originalBaseEC.name)+1:], newBaseEC.version[len(newBaseEC.name)+1:]) {
 		s.Fatal("Failed to update the base ec back to default version")
 	}
 }
@@ -247,22 +263,13 @@ func flashAnOldImgToDetachableBaseEC(ctx context.Context, dut *dut.DUT, hammerCo
 		"--usb_path="+hammerConfigs.usbPath,
 		"--update_if=always",
 	).Run(testexec.DumpLogOnError); err != nil {
-		// Error message: libminijail[9206]: child process 9207 exited with status 14
-		// From: https://chromium.googlesource.com/chromiumos/platform/minijail/+/
-		// c8b21e1a37d1c81f4331011999c30f6e5aef4dca/libminijail.c (Line 1294)
-		// Suspect it's a protection pipeline to guarantee the integrity of file.
-		// Can skip for now and it would not fail the test.
-		if !strings.Contains(err.Error(), "Process exited with status 14") {
-			return errors.Wrap(err, "unable to run the hammerd command")
-		}
-		testing.ContextLogf(ctx, "Error: %q while running hammer command in DUT", err)
+		return errors.Wrap(err, "unable to run the hammerd command")
 	}
-
 	return nil
 }
 
-func verifyBaseECVersion(old, new string) bool {
-	return semver.Compare(old, new) == -1
+func baseECVersionUnchanged(old, new string) bool {
+	return semver.Compare(old, new) == 0
 }
 
 func getBaseECInfo(ctx context.Context, dut *dut.DUT, productIDDecimal string) (baseECInfo, error) {
@@ -282,12 +289,13 @@ func getBaseECInfo(ctx context.Context, dut *dut.DUT, productIDDecimal string) (
 		outputUsbUpdater = string(output)
 		return nil
 	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
-		errors.Wrap(err, "failed to get the info from usb_updater2")
+		return baseEC, errors.Wrap(err, "failed to get the info from usb_updater2")
 	}
 
 	baseECInfoMap := map[string]*regexp.Regexp{
-		"name":    regexp.MustCompile(`version:\s+(\w+)_v`),
-		"version": regexp.MustCompile(`version:\s+(\w+.\w.\w+-\w+)`),
+		"name":             regexp.MustCompile(`version:\s+(\w+)_v`),
+		"version":          regexp.MustCompile(`version:\s+(\w+.\w.\w+-\w+)`),
+		"protection flags": regexp.MustCompile(`Flash protection status:\s+(\w+)`),
 	}
 
 	for k, v := range baseECInfoMap {
@@ -302,18 +310,31 @@ func getBaseECInfo(ctx context.Context, dut *dut.DUT, productIDDecimal string) (
 			baseEC.name = usbUpdater2Info
 		case "version":
 			baseEC.version = usbUpdater2Info
+		case "protection flags":
+			baseEC.protectionFlag = usbUpdater2Info
 		}
 	}
+
+	flagInDecimal, err := strconv.ParseInt(baseEC.protectionFlag, 16, 64)
+	if err != nil {
+		return baseEC, errors.Wrap(err, "failed to convert protection flags into hexadecimal")
+	}
+	flagInBinary := strconv.FormatInt(flagInDecimal, 2)
+	// If the second bit is equal to 1, RO is protected now.
+	if len(flagInBinary) > 1 && string(flagInBinary[len(flagInBinary)-2]) == "1" {
+		baseEC.roProtected = true
+	}
+
 	return baseEC, nil
 }
 
-func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, utilSvcClient fwpb.UtilsServiceClient, dut *dut.DUT) error {
+func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, utilSvcClient fwpb.UtilsServiceClient, dut *dut.DUT, hammerPid string) error {
 
 	// Included in baseGpioNames are a list of possible gpios available for
 	// controlling the base state. The first one found from the list would
 	// be used in setting base state attached/detached.
 	var baseStateGpio string
-	baseGpioNames := []firmware.GpioName{firmware.ENBASE, firmware.ENPP3300POGO}
+	baseGpioNames := []firmware.GpioName{firmware.ENBASE, firmware.ENPP3300POGO, firmware.PP3300DXBASE}
 	foundNames, err := ecTool.FindBaseGpio(ctx, baseGpioNames)
 
 	if err != nil {
@@ -348,8 +369,8 @@ func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, ut
 		}
 
 		// Allow some delay to ensure base attached/detached by setting the gpio.
-		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep for 3 seconds for the command to fully propagate to the DUT")
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep for 10 seconds for the command to fully propagate to the DUT")
 		}
 
 		lsusbInfo, err := dut.Conn().CommandContext(ctx, "lsusb").Output(testexec.DumpLogOnError)
