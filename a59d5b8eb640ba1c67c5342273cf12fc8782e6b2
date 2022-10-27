@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "729babaf_0119e82e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-10-27T18:02:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78fc045f_1bd6f21e",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "137a7f7d_b64c3b87",
@@ -114,6 +132,24 @@
       "side": 1,
       "message": "It is not that simple to run that test from remote tast. I\u0027d rather make a new flag on cros_camera_connector_test to wait for it....\n\nBut to be honest, if the machine can be reached via ssh it probably means that it is ready to get tested...",
       "parentUuid": "137a7f7d_b64c3b87",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1570a3a_5a316053",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-10-27T18:02:20Z",
+      "side": 1,
+      "message": "I am ok to land the test to see the result first and decide if we need that :P",
+      "parentUuid": "6df70c02_64690ffe",
       "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
