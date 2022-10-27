@@ -18,10 +18,12 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/input"
@@ -351,6 +353,24 @@ func MaximizeBrowserWindow(ctx context.Context, tconn *chrome.TestConn, tabletMo
 			// Just log the error and try to continue.
 			testing.ContextLogf(ctx, "Try to continue the test even though maximizing the %q window failed: %v", title, err)
 		}
+	}
+	return nil
+}
+
+// GenerateADF creates touch/mouse controller and generates ADF metrics.
+func GenerateADF(ctx context.Context, tconn *chrome.TestConn, isTablet bool) error {
+	var err error
+	var pc pointer.Context
+	if isTablet {
+		if pc, err = pointer.NewTouch(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to create a touch controller")
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
+	}
+	defer pc.Close()
+	if err = inputsimulations.DoAshWorkflows(ctx, tconn, pc); err != nil {
+		return errors.Wrap(err, "failed to do Ash workflows")
 	}
 	return nil
 }
