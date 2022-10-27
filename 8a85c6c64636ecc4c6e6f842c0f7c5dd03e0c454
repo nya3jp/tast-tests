@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0ec293_ac9e048b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-27T06:20:27Z",
+      "side": 1,
+      "message": "idiomatically in Go we write\n\nif err :\u003d nil; err :\u003d forgetNetwork() {\n   s.Fatal\n}\n\nwhich we can do since err is only considered within this scope and there are no other returns that need to be preserved",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "8a85c6c64636ecc4c6e6f842c0f7c5dd03e0c454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
