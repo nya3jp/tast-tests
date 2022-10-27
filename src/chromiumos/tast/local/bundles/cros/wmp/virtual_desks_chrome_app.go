@@ -141,6 +141,11 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 		s.Fatalf("Expected %v desks, but got %v instead", 2, len(deskMiniViewsInfo))
 	}
 
+	// Exit overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to exit overview mode: ", err)
+	}
+
 	// Open a Chrome browser.
 	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
 		s.Fatalf("Failed to open %s: %v", apps.Chrome.Name, err)
@@ -197,18 +202,15 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected number of windows found; wanted %v, got %v", len(ws), len(currWs))
 	}
 
-	// Enters overview mode.
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to set overview mode: ", err)
-	}
-
 	contextMenu := nodewith.ClassName("MenuHostRootView")
 	newWindowBtn := nodewith.Name("New window").ClassName("MenuItemView")
 	// Click new tab on the Test PWA app from the shelf.
 	if err := uiauto.Combine(
 		"click new tab on Test PWA app",
 		// Switch back to desk 2 first.
-		ac.LeftClick(newDeskMiniView),
+		kb.AccelAction("Search+]"),
+		// This will wait until the container for desk 2 has become visible.
+		ac.WaitForLocation(nodewith.ClassName("Desk_Container_B").State("invisible", false)),
 		ac.RightClick(TestPWABtn),
 		ac.WaitUntilExists(contextMenu),
 		ac.LeftClick(newWindowBtn),
