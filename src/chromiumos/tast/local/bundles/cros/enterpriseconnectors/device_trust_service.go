@@ -6,6 +6,7 @@ package enterpriseconnectors
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/screenshot"
 	pb "chromiumos/tast/services/cros/enterpriseconnectors"
 	"chromiumos/tast/testing"
 )
@@ -71,6 +73,8 @@ func (service *DeviceTrustService) LoginWithFakeIdP(origCtx context.Context, req
 	if err != nil {
 		return nil, errors.Wrap(err, "Chrome login failed")
 	}
+
+	defer takeScreenshotOnError(origCtx, cr, func() bool { return retErr != nil }, "deviceTrustLogin")
 
 	tconn, err := cr.SigninProfileTestAPIConn(origCtx)
 	if err != nil {
@@ -185,4 +189,15 @@ func testFakeIdP(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	}
 
 	return loginPossible, nil
+}
+
+func takeScreenshotOnError(ctx context.Context, cr *chrome.Chrome, hasError func() bool, filePrefix string) {
+	if !hasError() {
+		return
+	}
+
+	testOutDir, _ := testing.ContextOutDir(ctx)
+	if err := screenshot.CaptureChromeWithSigninProfile(ctx, cr, filepath.Join(testOutDir, filePrefix+".png")); err != nil {
+		testing.ContextLog(ctx, "Failed to make a screenshot: ", err)
+	}
 }
