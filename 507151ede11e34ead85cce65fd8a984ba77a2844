@@ -234,6 +234,30 @@
       },
       "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91cb291a_cd3a5b87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T20:20:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b8d7c6f_96d42364",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
