@@ -570,6 +570,23 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecsLacros",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API (lacros)",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.LacrosExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+				chrome.LacrosExtraArgs(chromeWebCodecsArgs...))).Opts()
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// TODO(b/202926617): Remove once vp8 hardware temporal layer encoding is enabled by default.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeWebCodecsWithHWVp8TemporalLayerEncoding",
