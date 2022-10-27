@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2839cb3_e3975f1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-27T01:02:42Z",
+      "side": 1,
+      "message": "+niwa for test owner\u0027s review\n+andreaorru in case if you have any other lacros files to add for this test from what I heard from hidehiko@",
+      "revId": "be0b915010ebae32c9a2b8060850ba490ed907ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbd32a9_2d8288ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-27T01:02:42Z",
+      "side": 1,
+      "message": "Failed file context check for /run/lacros/chrome: got \"u:object_r:unlabeled:s0\"; want \"^u:object_r:chrome_browser_exec:s0$\"\n\nIs this failure expected? What would be the right config to make the test pass for this file?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 81
+      },
+      "revId": "be0b915010ebae32c9a2b8060850ba490ed907ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
