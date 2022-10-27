@@ -51,6 +51,24 @@
       "message": "This change fails wifi.PolicyBasic test which use policy server to provide ONC.\n\nMy test steps are as following,\n1. Sync code to ToT\n2. lease a DUT from [wificell](https://chromeos-swarming.appspot.com/botlist?c\u003did\u0026c\u003dtask\u0026c\u003dlabel-model\u0026c\u003dlabel-platform\u0026c\u003dlabel-pool\u0026c\u003dos\u0026c\u003dstatus\u0026d\u003dasc\u0026f\u003dlabel-pool%3Awificell\u0026k\u003dlabel-pool\u0026s\u003did), for example `chromeos15-row2-rack12-host5`.\n3. SSH port forward the corresponding DUT and router\n`ssh -f -N -L 2200:localhost:22 root@chromeos15-row2-rack12-host5.cros` and `ssh -f -N -L 2210:localhost:22 root@chromeos15-row2-rack12-host5-router.cros`\n4. Within chroot, run `tast run -var\u003drouter\u003dlocalhost:2210 localhost:2200 wifi.PolicyBasic` without this change. Pass\n5. Cherry pick this change on top of ToT `git fetch https://chromium.googlesource.com/chromiumos/platform/tast-tests refs/changes/59/3971159/2 \u0026\u0026 git cherry-pick FETCH_HEAD`\n6. Rerun the test. This time it fails. From the log, the AP is correctly configed. DUT cannot find the AP and I guess the WiFi network provisioned to DUT is not correct, thus, it cannot find the correct AP.",
       "revId": "5e94e862133dae20201062303aab7d95cafe6092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b38a39a_cf2253ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-27T10:26:02Z",
+      "side": 1,
+      "message": "I wonder if this is because Chromium CL (https://crrev.com/c/3973073) hasn\u0027t been uprevved yet.",
+      "parentUuid": "4eb78adb_11a445a9",
+      "revId": "5e94e862133dae20201062303aab7d95cafe6092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
