@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -41,17 +42,18 @@ func ECSize(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	size, err := h.Servo.GetECFlashSize(ctx)
+	sizeInBytes, err := firmware.NewECTool(h.DUT, firmware.ECToolNameMain).FlashSize(ctx)
 	if err != nil {
-		s.Fatal("Failed to get ec size: ", err)
+		s.Fatal("Failed to get flashinfo from ectool: ", err)
 	}
+	size := sizeInBytes / 1024
 
 	chip, err := h.Servo.GetECChip(ctx)
 	if err != nil {
 		s.Fatal("Failed to get ec chip: ", err)
 	}
 
-	s.Logf("Flash size: %v KB", size)
+	s.Logf("Flash size: %d KB", size)
 	s.Log("EC Chip: ", chip)
 
 	expSize, ok := chipSizeMap[chip]
