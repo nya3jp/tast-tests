@@ -16,27 +16,37 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SELinuxFilesARC,
-		// TODO(b/254328916): Make sure we also cover the rootfs chrome binary in lacros variant tests.
-		LacrosStatus: testing.LacrosVariantNeeded,
+		Func:         SELinuxFilesARC,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
 		Contacts:     []string{"niwa@chromium.org", "fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux", "chrome"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{
-			{
-				ExtraSoftwareDeps: []string{"android_p"},
-			}, {
-				Name:              "vm",
-				ExtraSoftwareDeps: []string{"android_vm"},
-			},
-		},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Val:               browser.TypeLacros,
+		}, {
+			Name:              "vm_lacros",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -52,7 +62,8 @@ type arcFileTestCase struct {
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	// Side effect of other tests in the same arc.Booted() may cause this
 	// test more flaky.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
+	cr, err := browserfixt.NewChrome(ctx, browser.TypeLacros, lacrosfixt.NewConfig(),
+		chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -163,6 +174,14 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/sys/kernel/debug/sync/sw_sync", context: "debugfs_sw_sync", ignoreErrors: true},
 		{path: "/var/log/chrome", context: "cros_var_log_chrome", recursive: true},
 	}...)
+
+	// Append lacros test cases.
+	// Update the list below when new lacros specific files are added or removed.
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		testArgs = append(testArgs, []arcFileTestCase{
+			{path: "/run/lacros/chrome", context: "chrome_browser_exec", recursive: true},
+		}...)
+	}
 
 	for _, testArg := range testArgs {
 		filter := testArg.filter
