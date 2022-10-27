@@ -196,12 +196,12 @@ func TelemetryInfoReporting(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		telemetryEvents, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, APIKey, "TELEMETRY_METRIC")
+		telemetryEvents, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, c.ClientId, APIKey, "TELEMETRY_METRIC", testStartTime)
 		if err != nil {
 			return errors.Wrap(err, "failed to look up telemetry events")
 		}
 
-		infoEvents, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, APIKey, "INFO_METRIC")
+		infoEvents, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, c.ClientId, APIKey, "INFO_METRIC", testStartTime)
 		if err != nil {
 			return errors.Wrap(err, "failed to look up info events")
 		}
@@ -243,7 +243,7 @@ func TelemetryInfoReporting(ctx context.Context, s *testing.State) {
 			if internalParam.testType == Info {
 				events = infoEvents
 			}
-			prunedEvents, err := reportingutil.PruneEvents(ctx, events, c.ClientId, testStartTime, func(e reportingutil.InputEvent) bool {
+			prunedEvents, err := reportingutil.PruneEvents(ctx, events, func(e reportingutil.InputEvent) bool {
 				return internalParam.validator(e)
 			})
 			if err != nil {

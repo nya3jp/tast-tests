@@ -6,8 +6,6 @@ package policy
 
 import (
 	"context"
-	"encoding/json"
-	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -43,30 +41,6 @@ func init() {
 			tape.ServiceAccountVar,
 		},
 	})
-}
-
-// validateHeartbeatEvents validates whether a list of events received by the Reporting API Server contains events sent by this test.
-func validateHeartbeatEvents(ctx context.Context, events []reportingutil.InputEvent, clientID string, testStartTime time.Time) (bool, error) {
-	for _, event := range events {
-		if event.ClientID == clientID {
-			// Parse the timestamp and check if the server received the event
-			// after test started.
-			us, err := strconv.ParseInt(event.APIEvent.ReportingRecordEvent.Time, 10, 64)
-			if err != nil {
-				return false, errors.Wrap(err, "failed to parse int64 Spanner timestamp from event")
-			}
-			t := time.UnixMicro(us)
-			if t.After(testStartTime) {
-				j, err := json.Marshal(event)
-				if err != nil {
-					return true, errors.Wrap(err, "failed to marshal event")
-				}
-				testing.ContextLog(ctx, "Found a valid event: ", string(j))
-				return true, nil
-			}
-		}
-	}
-	return false, nil
 }
 
 func HeartbeatReporting(ctx context.Context, s *testing.State) {
@@ -113,14 +87,11 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		events, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, APIKey, "HEARTBEAT_EVENTS")
+		events, err := reportingutil.LookupEvents(ctx, reportingutil.ReportingServerURL, cID, c.ClientId, APIKey, "HEARTBEAT_EVENTS", testStartTime)
 		if err != nil {
 			return errors.Wrap(err, "failed to look up events")
 		}
-
-		if r, err := validateHeartbeatEvents(ctx, events, c.ClientId, testStartTime); err != nil {
-			return errors.Wrap(err, "error validating event")
-		} else if !r {
+		if len(events) < 1 {
 			return errors.New("no event found")
 		}
 		return nil
