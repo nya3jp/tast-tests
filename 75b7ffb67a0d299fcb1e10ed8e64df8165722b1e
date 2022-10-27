@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fbf467_5758de0b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-27T05:32:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8346b600_13afa260",
+      "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6bcc47c_313bb22c",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Good point, used the same name as in the struct.",
       "parentUuid": "d6bcc47c_313bb22c",
+      "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3b4953_500b0cf6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-27T05:32:01Z",
+      "side": 1,
+      "message": "Looks unchanged?",
+      "parentUuid": "206b06fd_ea22e49c",
       "revId": "75b7ffb67a0d299fcb1e10ed8e64df8165722b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
