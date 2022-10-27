@@ -36,6 +36,7 @@ func init() {
 		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      2 * time.Minute,
 	})
 }
 

@@ -41,6 +41,7 @@ func init() {
 		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name: "legal_help_page",
 			Val: testParam{

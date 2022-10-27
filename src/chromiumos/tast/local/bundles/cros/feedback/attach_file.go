@@ -37,6 +37,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{fa.PngFile, fa.PdfFile},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
 	})
 }
 
