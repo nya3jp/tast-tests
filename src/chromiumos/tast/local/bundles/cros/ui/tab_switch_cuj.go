@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
-	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
@@ -38,7 +37,7 @@ func init() {
 			Val: tabswitchcuj.TabSwitchParam{
 				BrowserType: browser.TypeAsh,
 			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+			Fixture: "tabSwitchCUJWPRAsh",
 		}, {
 			Name: "lacros",
 			Val: tabswitchcuj.TabSwitchParam{
