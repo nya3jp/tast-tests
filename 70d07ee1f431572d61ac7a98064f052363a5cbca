@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be468946_7e2d0d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-27T23:14:20Z",
+      "side": 1,
+      "message": "The lacros UI tree seems to have an ash window embedded inside the lacros window.  I think you\u0027re right that First gets you the lacros button, but are you sure the extension is running in lacros?  Were you able to manually run it in lacros to verify?",
+      "parentUuid": "10a6b643_80c97533",
+      "range": {
+        "startLine": 145,
+        "startChar": 117,
+        "endLine": 145,
+        "endChar": 126
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "908d9b69_5a32ada9",
         "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
         "patchSetId": 2
