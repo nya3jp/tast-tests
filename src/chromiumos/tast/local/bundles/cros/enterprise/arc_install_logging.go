@@ -233,7 +233,7 @@ func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, packageName str
 }
 
 func setupPolicyServerWithArcAppsAndEnableLogging(ctx context.Context, outDir, policyUser string, packages []string) (fdms *fakedms.FakeDMS, retErr error) {
-	arcPolicy := arcent.CreateArcPolicyWithForceInstallApps(packages)
+	arcPolicy := arcent.CreateArcPolicyWithApps(packages, arcent.InstallTypeForceInstalled)
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
 	arcInstallLoggingEnabledPolicy := &policy.ArcAppInstallEventLoggingEnabled{Val: true}
 	policies := []policy.Policy{arcEnabledPolicy, arcPolicy, arcInstallLoggingEnabledPolicy}
