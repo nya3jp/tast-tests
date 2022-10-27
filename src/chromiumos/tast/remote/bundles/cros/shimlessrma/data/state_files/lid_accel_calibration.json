@@ -1,0 +1,28 @@
+{
+    "calibration_map": {
+        "RMAD_CALIBRATION_INSTRUCTION_PLACE_BASE_ON_FLAT_SURFACE": {
+            "RMAD_COMPONENT_BASE_ACCELEROMETER": "RMAD_CALIBRATION_SKIP",
+            "RMAD_COMPONENT_BASE_GYROSCOPE": "RMAD_CALIBRATION_SKIP"
+        },
+        "RMAD_CALIBRATION_INSTRUCTION_PLACE_LID_ON_FLAT_SURFACE": {
+            "RMAD_COMPONENT_LID_ACCELEROMETER": "RMAD_CALIBRATION_WAITING"
+        }
+    },
+    "replaced_component_names": [
+        "RMAD_COMPONENT_LID_ACCELEROMETER"
+    ],
+    "state_history": [
+        1,
+        2,
+        3,
+        19,
+        4,
+        5,
+        8,
+        9,
+        11,
+        15,
+        13
+    ],
+    "wipe_device": true
+}

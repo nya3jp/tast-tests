@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
@@ -61,6 +62,7 @@ const (
 	longTimeInSecondToEnableButton = 60
 	firmwareInstallationTime       = 240 * time.Second
 	usbTempMountDir                = "/media/usb-drive"
+	stateFile                      = "/mnt/stateful_partition/unencrypted/rma-data/state"
 )
 
 // UIHelper holds the resources required to communicate with Shimless RMA App.
@@ -89,6 +91,9 @@ func (uiHelper *UIHelper) DisposeResource(cleanupCtx context.Context) {
 	}
 	if err := uiHelper.RPCClient.Close(cleanupCtx); err != nil {
 		testing.ContextLog(cleanupCtx, "Fail to close RPC client: ", err)
+	}
+	if err := uiHelper.Dut.Reboot(cleanupCtx); err != nil {
+		testing.ContextLog(cleanupCtx, "Failed to reboot DUT: ")
 	}
 }
 
@@ -224,10 +229,64 @@ func (uiHelper *UIHelper) DeviceProvisionPageOperation(ctx context.Context) erro
 	)(ctx)
 }
 
-// CalibratePageOperation handles all operations on calibrate Page.
-func (uiHelper *UIHelper) CalibratePageOperation(ctx context.Context) error {
-	return action.Combine("Calibrate page operation",
-		uiHelper.waitForPageToLoad("Prepare to calibrate device components", timeInSecondToLoadPage),
+// CalibrateLidAccelerometerPageOperation handles all operations on calibrate lid accelerometer Page.
+func (uiHelper *UIHelper) CalibrateLidAccelerometerPageOperation(ctx context.Context) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// The first attempt will fail since we don't fake data yet.
+	if err := action.Combine("calibrate lid accelerometer operation",
+		uiHelper.waitForPageToLoad("Calibrate components", timeInSecondToLoadPage),
+		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
+		uiHelper.waitForPageToLoad("Calibrating components…", timeInSecondToLoadPage),
+	)(ctx); err != nil {
+		return err
+	}
+
+	output, _ := uiHelper.Dut.Conn().CommandContext(ctx, "ectool", "motionsense", "lid_angle").Output()
+	testing.ContextLogf(ctx, "Lid angle using real data is %q", string(output))
+
+	// fake data.
+	if err := uiHelper.flattenDutWithFakeSensorData(ctx); err != nil {
+		return errors.Wrap(err, "fail to fake sensor data")
+	}
+	// Reset to use real sensor data.
+	defer uiHelper.resetToUseRealSensorData(cleanupCtx)
+
+	output, _ = uiHelper.Dut.Conn().CommandContext(ctx, "ectool", "motionsense", "lid_angle").Output()
+	testing.ContextLogf(ctx, "Lid angle using fake data is %q", string(output))
+
+	// The second attempt should succeed since we use fake data.
+	if err := action.Combine("recalibrate lid accelerometer operation",
+		uiHelper.waitForPageToLoad("Couldn't calibrate some components", timeInSecondToLoadPage),
+		uiHelper.clickToggleButton("Lid Accelerometer"),
+		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
+		uiHelper.waitForPageToLoad("Calibrate components", timeInSecondToLoadPage),
+		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
+		uiHelper.waitForPageToLoad("Calibrating components…", timeInSecondToLoadPage),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return action.Combine("calibration completion page",
+		uiHelper.waitForPageToLoad("Calibration complete", timeInSecondToLoadPage),
+		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
+	)(ctx)
+}
+
+// CalibrateBaseGyroPageOperation handles all operations on calibrate base gyro Page.
+func (uiHelper *UIHelper) CalibrateBaseGyroPageOperation(ctx context.Context) error {
+	if err := action.Combine("calibrate base gyro operation",
+		uiHelper.waitForPageToLoad("Calibrate components", timeInSecondToLoadPage),
+		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
+		uiHelper.waitForPageToLoad("Calibrating components…", timeInSecondToLoadPage),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return action.Combine("calibration completion page",
+		uiHelper.waitForPageToLoad("Calibration complete", timeInSecondToLoadPage),
 		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
 	)(ctx)
 }
@@ -374,6 +433,16 @@ func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context, enroll bool) erro
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
 		uiHelper.changeEnrollment(enroll),
 	)(ctx)
+}
+
+// OverrideStateFile overrides state file content.
+func (uiHelper *UIHelper) OverrideStateFile(ctx context.Context, content string) error {
+	// Override file content.
+	cmd := fmt.Sprintf(`echo '%s' > %s`, content, stateFile)
+	if err := uiHelper.Dut.Conn().CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
+		return err
+	}
+	return uiHelper.Dut.Reboot(ctx)
 }
 
 func (uiHelper *UIHelper) deleteLogsIfExisting(ctx context.Context) error {
@@ -604,4 +673,23 @@ func (uiHelper *UIHelper) connectBatteryByCr50() action.Action {
 	return func(ctx context.Context) error {
 		return uiHelper.FirmwareHelper.Servo.RunCR50Command(ctx, "bpforce follow_batt_pres atboot")
 	}
+}
+
+func (uiHelper *UIHelper) flattenDutWithFakeSensorData(ctx context.Context) error {
+	// I got the following data by:
+	// (1) flatten the DUT to around 180 degree.
+	// (2) Read lid accelerometer data by `ectool motionsense`.
+	return uiHelper.Dut.Conn().CommandContext(ctx, "ectool", "motionsense", "spoof", "--", "0", "1", "-75", "2035", "16119").Run()
+}
+
+func (uiHelper *UIHelper) resetToUseRealSensorData(ctx context.Context) error {
+	testing.ContextLog(ctx, "Reset Accel to use real data")
+	if err := uiHelper.Dut.Conn().CommandContext(ctx, "ectool", "motionsense", "spoof", "--", "0", "0").Run(); err != nil {
+		return err
+	}
+
+	output, _ := uiHelper.Dut.Conn().CommandContext(ctx, "ectool", "motionsense", "lid_angle").Output()
+	testing.ContextLogf(ctx, "Lid angle after reset is %q", string(output))
+
+	return nil
 }
