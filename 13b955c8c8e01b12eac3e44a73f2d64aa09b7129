@@ -16,6 +16,29 @@
       "message": "Takise-san, PTAL! Thanks.",
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc21ae7b_c6b4f8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-10-27T08:26:21Z",
+      "side": 1,
+      "message": "Let me correct if my understanding of the feature is wrong, but if a2c2 is something that overrides our static O4C allowlist, shouldn\u0027t this app be O4C by default (without a2c2 override)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
