@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fabe8c5_4651db36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:32:02Z",
+      "side": 1,
+      "message": "nit: Just `camera`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217860b5_32ada6a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:32:02Z",
+      "side": 1,
+      "message": "This line should be at most 50 characters, according to https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1057737b_42886291",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:32:02Z",
+      "side": 1,
+      "message": "Use the imperative mood as described in rule #5 at https://cbea.ms/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a8cee7_3cf2cb25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:32:02Z",
+      "side": 1,
+      "message": "End with a period here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b04356_c246655c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-27T16:32:02Z",
+      "side": 1,
+      "message": "This can be simpler thus:\n\n\tfunc Suspend(ctx context.Context, s *testing.State) {\n\t\tconn :\u003d s.DUT().Conn()\n\t\tsmokeTest :\u003d conn.CommandContext(ctx,\n\t\t\t\"cros_camera_connector_test\", \"--gtest_filter\u003dConnectorTest/CaptureTest.OneFrame/NV12_640x480_30fps\")\n\t\tsuspendStressTest :\u003d conn.CommandContext(ctx, \"suspend_stress_test\", \"-c\", \"1\")\n\t\t\n\t\tif output, err :\u003d smokeTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Failed to run a smoke test on the camera: \", err)\n\t\t}\n\t\tif output, err :\u003d suspendStressTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Failed to perform suspend stress test: \", err)\n\t\t}\n\t\tif output, err :\u003d smokeTest.CombinedOutput(); err !\u003d nil {\n\t\t\ts.Log(string(output))\n\t\t\ts.Fatal(\"Camera failed after suspend: \", err)\n\t\t}\n\t}",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "507151ede11e34ead85cce65fd8a984ba77a2844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
