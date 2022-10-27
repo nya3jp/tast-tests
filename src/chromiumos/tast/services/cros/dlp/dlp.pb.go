@@ -305,7 +305,7 @@ var file_dlp_dlp_proto_rawDesc = []byte{
 	0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x52, 0x45, 0x50, 0x4f, 0x52, 0x54, 0x10, 0x01, 0x12, 0x0f,
 	0x0a, 0x0b, 0x57, 0x41, 0x52, 0x4e, 0x5f, 0x43, 0x41, 0x4e, 0x43, 0x45, 0x4c, 0x10, 0x02, 0x12,
 	0x10, 0x0a, 0x0c, 0x57, 0x41, 0x52, 0x4e, 0x5f, 0x50, 0x52, 0x4f, 0x43, 0x45, 0x45, 0x44, 0x10,
-	0x03, 0x12, 0x09, 0x0a, 0x05, 0x41, 0x4c, 0x4c, 0x4f, 0x57, 0x10, 0x04, 0x32, 0x82, 0x03, 0x0a,
+	0x03, 0x12, 0x09, 0x0a, 0x05, 0x41, 0x4c, 0x4c, 0x4f, 0x57, 0x10, 0x04, 0x32, 0xcb, 0x03, 0x0a,
 	0x19, 0x44, 0x61, 0x74, 0x61, 0x4c, 0x65, 0x61, 0x6b, 0x50, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x74,
 	0x69, 0x6f, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x50, 0x0a, 0x0e, 0x45, 0x6e,
 	0x72, 0x6f, 0x6c, 0x6c, 0x41, 0x6e, 0x64, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x24, 0x2e, 0x74,
@@ -330,9 +330,14 @@ var file_dlp_dlp_proto_rawDesc = []byte{
 	0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x64, 0x6c, 0x70, 0x2e, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22,
-	0x00, 0x42, 0x23, 0x5a, 0x21, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f,
-	0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72,
-	0x6f, 0x73, 0x2f, 0x64, 0x6c, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x00, 0x12, 0x47, 0x0a, 0x0d, 0x50, 0x72, 0x69, 0x76, 0x61, 0x63, 0x79, 0x53, 0x63, 0x72, 0x65,
+	0x65, 0x6e, 0x12, 0x1c, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x64,
+	0x6c, 0x70, 0x2e, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x23, 0x5a, 0x21, 0x63, 0x68,
+	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x64, 0x6c, 0x70, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -364,13 +369,15 @@ var file_dlp_dlp_proto_depIdxs = []int32{
 	3, // 4: tast.cros.dlp.DataLeakPreventionService.ClipboardCopyPaste:input_type -> tast.cros.dlp.ActionRequest
 	3, // 5: tast.cros.dlp.DataLeakPreventionService.Print:input_type -> tast.cros.dlp.ActionRequest
 	3, // 6: tast.cros.dlp.DataLeakPreventionService.Screenshot:input_type -> tast.cros.dlp.ActionRequest
-	4, // 7: tast.cros.dlp.DataLeakPreventionService.EnrollAndLogin:output_type -> google.protobuf.Empty
-	4, // 8: tast.cros.dlp.DataLeakPreventionService.StopChrome:output_type -> google.protobuf.Empty
-	4, // 9: tast.cros.dlp.DataLeakPreventionService.ClipboardCopyPaste:output_type -> google.protobuf.Empty
-	4, // 10: tast.cros.dlp.DataLeakPreventionService.Print:output_type -> google.protobuf.Empty
-	4, // 11: tast.cros.dlp.DataLeakPreventionService.Screenshot:output_type -> google.protobuf.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
+	3, // 7: tast.cros.dlp.DataLeakPreventionService.PrivacyScreen:input_type -> tast.cros.dlp.ActionRequest
+	4, // 8: tast.cros.dlp.DataLeakPreventionService.EnrollAndLogin:output_type -> google.protobuf.Empty
+	4, // 9: tast.cros.dlp.DataLeakPreventionService.StopChrome:output_type -> google.protobuf.Empty
+	4, // 10: tast.cros.dlp.DataLeakPreventionService.ClipboardCopyPaste:output_type -> google.protobuf.Empty
+	4, // 11: tast.cros.dlp.DataLeakPreventionService.Print:output_type -> google.protobuf.Empty
+	4, // 12: tast.cros.dlp.DataLeakPreventionService.Screenshot:output_type -> google.protobuf.Empty
+	4, // 13: tast.cros.dlp.DataLeakPreventionService.PrivacyScreen:output_type -> google.protobuf.Empty
+	8, // [8:14] is the sub-list for method output_type
+	2, // [2:8] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -445,6 +452,7 @@ type DataLeakPreventionServiceClient interface {
 	ClipboardCopyPaste(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Print(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Screenshot(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PrivacyScreen(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type dataLeakPreventionServiceClient struct {
@@ -500,6 +508,15 @@ func (c *dataLeakPreventionServiceClient) Screenshot(ctx context.Context, in *Ac
 	return out, nil
 }
 
+func (c *dataLeakPreventionServiceClient) PrivacyScreen(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.dlp.DataLeakPreventionService/PrivacyScreen", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DataLeakPreventionServiceServer is the server API for DataLeakPreventionService service.
 type DataLeakPreventionServiceServer interface {
 	EnrollAndLogin(context.Context, *EnrollAndLoginRequest) (*emptypb.Empty, error)
@@ -507,6 +524,7 @@ type DataLeakPreventionServiceServer interface {
 	ClipboardCopyPaste(context.Context, *ActionRequest) (*emptypb.Empty, error)
 	Print(context.Context, *ActionRequest) (*emptypb.Empty, error)
 	Screenshot(context.Context, *ActionRequest) (*emptypb.Empty, error)
+	PrivacyScreen(context.Context, *ActionRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedDataLeakPreventionServiceServer can be embedded to have forward compatible implementations.
@@ -527,6 +545,9 @@ func (*UnimplementedDataLeakPreventionServiceServer) Print(context.Context, *Act
 }
 func (*UnimplementedDataLeakPreventionServiceServer) Screenshot(context.Context, *ActionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Screenshot not implemented")
+}
+func (*UnimplementedDataLeakPreventionServiceServer) PrivacyScreen(context.Context, *ActionRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrivacyScreen not implemented")
 }
 
 func RegisterDataLeakPreventionServiceServer(s *grpc.Server, srv DataLeakPreventionServiceServer) {
@@ -623,6 +644,24 @@ func _DataLeakPreventionService_Screenshot_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DataLeakPreventionService_PrivacyScreen_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ActionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataLeakPreventionServiceServer).PrivacyScreen(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.dlp.DataLeakPreventionService/PrivacyScreen",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataLeakPreventionServiceServer).PrivacyScreen(ctx, req.(*ActionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _DataLeakPreventionService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.dlp.DataLeakPreventionService",
 	HandlerType: (*DataLeakPreventionServiceServer)(nil),
@@ -646,6 +685,10 @@ var _DataLeakPreventionService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Screenshot",
 			Handler:    _DataLeakPreventionService_Screenshot_Handler,
+		},
+		{
+			MethodName: "PrivacyScreen",
+			Handler:    _DataLeakPreventionService_PrivacyScreen_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
