@@ -39,6 +39,30 @@
       },
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813890f2_8284f551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-27T09:04:23Z",
+      "side": 1,
+      "message": "Your understanding is totally correct, and sorry for lack of explanation.\nYes, currently this package is non-O4C even without A2C2. So I\u0027m going to add this package to the static O4C list in another ARC-side CL.",
+      "parentUuid": "cc21ae7b_c6b4f8d6",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
