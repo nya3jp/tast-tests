@@ -22,6 +22,30 @@
       },
       "revId": "42c4453b77ccf9b52b32e3b66f84a2654406f904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a3b638_994af671",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-10-27T23:15:00Z",
+      "side": 1,
+      "message": "Looks like cq only runs \"group:mainline\" and NOT \"informational\" via critical system http://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.critical-system-shard-0?rcl\u003dc9f59d8e4f97b03888a52916f7178e0c6edf974a\u0026l\u003d44\n\ninformational tests are run on  informational system \nhttp://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.informational-system?rcl\u003df79318160944ecbf1a02c065ffb045afc39de4f2\u0026l\u003d48",
+      "parentUuid": "db9e0327_8b3b75a6",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "42c4453b77ccf9b52b32e3b66f84a2654406f904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
