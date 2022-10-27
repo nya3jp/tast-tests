@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cda46951_f999db19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7a100e1b_3add6525",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae8856d_aeff2d37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a1bbb42f_75392aa0",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "561ab6a3_74d2632e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7722878f_0eda63a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed by taking the suggestion from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3596591/comment/dc9bb90b_0aac5e8b/",
+      "parentUuid": "7fef4b3f_7b85ca58",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9bb90b_0aac5e8b",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eccfe5d_c5a44f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "dc9bb90b_0aac5e8b",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d6b2f6_8f6fa8b8",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-26T17:10:13Z",
       "side": 1,
       "message": "Should this be `guest`?",
+      "range": {
+        "startLine": 116,
+        "startChar": 20,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf96da5_42a425e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed by taking the suggestion from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3596591/comment/dc9bb90b_0aac5e8b/",
+      "parentUuid": "78d6b2f6_8f6fa8b8",
       "range": {
         "startLine": 116,
         "startChar": 20,
@@ -174,6 +294,54 @@
         "startChar": 38,
         "endLine": 164,
         "endChar": 40
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddc4ae7_908e952a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "3c09f071_4e7b1e6d",
+      "range": {
+        "startLine": 164,
+        "startChar": 38,
+        "endLine": 164,
+        "endChar": 40
+      },
+      "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e23bb4_d4e38a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-27T10:21:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e8d818c6_a200041b",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 15
       },
       "revId": "504f4aed592eb586ca91a0820d0bebda3e6b36fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
