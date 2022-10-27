@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073c78e1_fd4e9b3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-27T18:17:16Z",
+      "side": 1,
+      "message": "nit: Trogdor",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "0791ecab30bdac43fa7de4bf71a55f2e777ed678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e928a069_4a237e04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-27T18:17:16Z",
+      "side": 1,
+      "message": "How confident are we that this new threshold is sufficient? Compared to the parent cl, crrev.com/c/3935119, this new TEST string doesn\u0027t seem too different? Did we run this for a few times, or are we using empirical data about the mean fw recovery time?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "0791ecab30bdac43fa7de4bf71a55f2e777ed678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86acf70_b7517f25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-27T18:17:16Z",
+      "side": 1,
+      "message": "Just 1 more question about the TEST string to make sure we don\u0027t have to increase the timeout again.",
+      "revId": "0791ecab30bdac43fa7de4bf71a55f2e777ed678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
