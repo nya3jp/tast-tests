@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b93e09_62770af1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "LGTM with nits. Thanks for polishing the code!",
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a735e2_aed2b378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "use []string as discussed offline?",
+      "range": {
+        "startLine": 70,
+        "startChar": 48,
+        "endLine": 70,
+        "endChar": 65
+      },
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d420b22_af1d86e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 69
+      },
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc9ff66_44fdefcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "nit: do not discard error. Add a log or fail the test on failure here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e962fe5b_2d89b5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "nit: we no longer need to output err since it\u0027s always nil?",
+      "range": {
+        "startLine": 125,
+        "startChar": 49,
+        "endLine": 125,
+        "endChar": 53
+      },
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0229e4f_6280344c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-27T05:34:15Z",
+      "side": 1,
+      "message": "nit: add a comment on why we should use contain but not equal here",
+      "range": {
+        "startLine": 176,
+        "startChar": 9,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "afb59c23568972ebdb03e965d4874883147f2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
