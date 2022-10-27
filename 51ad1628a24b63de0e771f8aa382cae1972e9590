@@ -104,6 +104,24 @@
       "parentUuid": "b3f47516_60cf5d08",
       "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10d8b1a_c5339662",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-27T20:47:34Z",
+      "side": 1,
+      "message": "Okay, I will go ahead and keep this as-is for now-- this will definitely change moving forward but no tests have been added that use this yet. Thank you Eric!",
+      "parentUuid": "a0e3abb7_297daeba",
+      "revId": "51ad1628a24b63de0e771f8aa382cae1972e9590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
