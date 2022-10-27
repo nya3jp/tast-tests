@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca392727_b7feb54f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-10-27T09:12:54Z",
+      "side": 1,
+      "message": "I have asked the camera team for feedback",
+      "parentUuid": "eac3f6ea_70c8b4c8",
+      "revId": "87f1e3393ee592da4e4a7b7a2b4464e8b043ac26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8258aa50_ed0a27d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
         "patchSetId": 2
