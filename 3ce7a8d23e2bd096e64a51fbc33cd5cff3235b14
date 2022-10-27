@@ -67,6 +67,24 @@
       "message": "nit: end with .",
       "revId": "3ce7a8d23e2bd096e64a51fbc33cd5cff3235b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "330149d6_d5cbf394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273632
+      },
+      "writtenOn": "2022-10-27T13:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85f5357_ac689197",
+      "revId": "3ce7a8d23e2bd096e64a51fbc33cd5cff3235b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
