@@ -38,12 +38,14 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BootPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		Func: BootPerf,
+		// The test reboots to the login screen and doesn't require a lacaros variant.
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Boot performance test",
 		Contacts:     []string{"chinglinyu@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},
+		// Deps of "chrome" is used to ensure the test doesn't boot to the OOBE screen.
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
