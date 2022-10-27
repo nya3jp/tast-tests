@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0d54ce_09299d18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-27T18:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef37e20d_855c1630",
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a294108_326df25b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-27T18:39:44Z",
       "side": 1,
       "message": "Why is first needed?  The DOM shouldn\u0027t be different for the test page on lacros, should it?",
+      "range": {
+        "startLine": 145,
+        "startChar": 117,
+        "endLine": 145,
+        "endChar": 126
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a6b643_80c97533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-27T18:56:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure why the DOM changed... lacros has two Scanner Control nodes with RootView class (http://go/paste/4706231791910912) and ash only has one (http://go/paste/5079133469016064).  I didn\u0027t track down why...",
+      "parentUuid": "2a294108_326df25b",
       "range": {
         "startLine": 145,
         "startChar": 117,
