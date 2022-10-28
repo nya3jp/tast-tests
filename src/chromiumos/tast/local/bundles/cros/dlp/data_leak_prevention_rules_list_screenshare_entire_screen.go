@@ -172,6 +172,8 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
 	}
 
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+params.Name)
+
 	var screenRecorder *uiauto.ScreenRecorder
 	screenRecorder, err = uiauto.NewScreenRecorder(ctx, tconn)
 
@@ -190,8 +192,6 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
 
 	wantAllowed := params.Restriction == restrictionlevel.Allowed || params.Restriction == restrictionlevel.WarnProceeded
-
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+params.Name)
 
 	// Screenshare should be allowed.
 	if err := screenshare.CheckFrameStatus(ctx, screenRecorder, true); err != nil {
