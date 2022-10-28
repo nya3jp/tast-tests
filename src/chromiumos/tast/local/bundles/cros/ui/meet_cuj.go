@@ -209,8 +209,9 @@ func init() {
 			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
 		}, {
 			// Even bigger meeting.
-			Name:    "49p",
-			Timeout: defaultTestTimeout,
+			Name:      "49p",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -218,6 +219,8 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
+			// The list of targeted models which SPERA team uses to analyze.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("gimble", "magpie", "lazor", "tomato", "volet")),
 		}, {
 			Name:    "lacros_49p",
 			Timeout: defaultTestTimeout,
