@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ef7f1a_7d287434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-10-28T15:06:07Z",
+      "side": 1,
+      "message": "Hi Alex,\n\nI\u0027m writing a tast test to verify that forced installed extension work behind managed proxies.\n\nIt looks like the extension is not being installed from the Chrome Web Store, although the policy is correctly set.\n\nAny ideas on what\u0027s happening?\n\nAll the best,\nAndreea",
+      "revId": "229577084d3bd3063afab3a8abf5f5b7b8f465f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
