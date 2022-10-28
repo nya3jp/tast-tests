@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e436bc3_3502c42e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-28T09:22:41Z",
+      "side": 1,
+      "message": "LGTM :)\n\nOnly one question",
+      "revId": "da51d6fe1ad5e6ad7a4ca3112033477991d70985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031d73bb_b38e445a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-28T09:22:41Z",
+      "side": 1,
+      "message": "I just want to bring up that this could potentially make the test fail when the title changes. \n\nWould be another way to make this check?",
+      "range": {
+        "startLine": 176,
+        "startChar": 86,
+        "endLine": 176,
+        "endChar": 111
+      },
+      "revId": "da51d6fe1ad5e6ad7a4ca3112033477991d70985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
