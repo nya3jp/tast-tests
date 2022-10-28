@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067a8589_1e3a3c51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T08:36:36Z",
+      "side": 1,
+      "message": "Test is much simpler 😊",
+      "revId": "f207ac2552f21897a11390291edda841901766e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bba4de_d80c1401",
+        "filename": "src/chromiumos/tast/remote/reportingutil/reporting_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T08:36:36Z",
+      "side": 1,
+      "message": "Use time.Time and do the transformation inside the function.",
+      "range": {
+        "startLine": 182,
+        "startChar": 140,
+        "endLine": 182,
+        "endChar": 145
+      },
+      "revId": "f207ac2552f21897a11390291edda841901766e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
