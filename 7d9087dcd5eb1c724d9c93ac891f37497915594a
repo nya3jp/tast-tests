@@ -70,6 +70,24 @@
       "parentUuid": "61fcd11c_2235a2a7",
       "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17212a05_0c14b136",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T14:45:15Z",
+      "side": 0,
+      "message": "Plan SGTM then.\n\nWhat about the current change?",
+      "parentUuid": "ac42b278_52d5e066",
+      "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
