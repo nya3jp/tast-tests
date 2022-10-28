@@ -6,11 +6,16 @@ package virtualnet
 
 import (
 	"context"
+	"encoding/hex"
 	"net"
 	"net/http"
+	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network/virtualnet/certs"
 	"chromiumos/tast/local/network/virtualnet/dnsmasq"
@@ -81,52 +86,8 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		}
 	}()
 
-	if opts.EnableDHCP {
-		v4Subnet, err := pool.AllocNextIPv4Subnet()
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
-		}
-		dnsmasq := dnsmasq.New(
-			dnsmasq.WithDHCPServer(v4Subnet),
-			dnsmasq.WithDHCPNameServers(opts.IPv4DNSServers),
-			dnsmasq.WithResolveHost(opts.ResolvedHost, opts.ResolveHostToIP),
-		)
-		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
-		}
-	}
-
-	if opts.RAServer {
-		v6Prefix, err := pool.AllocNextIPv6Subnet()
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to allocate v4 prefix for DHCP")
-		}
-
-		// Note that in the current implementation, shill requires an IPv6
-		// connection has both address and DNS servers, and thus we need to provide
-		// it here even though it is not reachable.
-		const googleIPv6DNSServer = "2001:4860:4860::8888"
-		radvd := radvd.New(v6Prefix, []string{googleIPv6DNSServer})
-		if err := router.StartServer(ctx, "radvd", radvd); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to start radvd")
-		}
-	}
-
-	if opts.HTTPServerResponseHandler != nil {
-		httpserver := httpserver.New("80", opts.HTTPServerResponseHandler, nil)
-		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to start http server")
-		}
-	}
-
-	if opts.HTTPSServerResponseHandler != nil {
-		if opts.HTTPSCerts == nil {
-			return nil, nil, errors.New("failed to create https server: empty certificate option")
-		}
-		httpsserver := httpserver.New("443", opts.HTTPSServerResponseHandler, opts.HTTPSCerts)
-		if err := router.StartServer(ctx, "httpsserver", httpsserver); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to start https server")
-		}
+	if err := startServersInRouter(ctx, router, pool, opts); err != nil {
+		return nil, nil, err
 	}
 
 	svc, err := findEthernetServiceByIfName(ctx, m, router.VethOutName)
@@ -200,6 +161,58 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 	return svc, router, server, nil
 }
 
+func startServersInRouter(ctx context.Context, router *env.Env, pool *subnet.Pool, opts EnvOptions) error {
+	if opts.EnableDHCP {
+		v4Subnet, err := pool.AllocNextIPv4Subnet()
+		if err != nil {
+			return errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
+		}
+		dnsmasq := dnsmasq.New(
+			dnsmasq.WithDHCPServer(v4Subnet),
+			dnsmasq.WithDHCPNameServers(opts.IPv4DNSServers),
+			dnsmasq.WithResolveHost(opts.ResolvedHost, opts.ResolveHostToIP),
+		)
+		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
+			return errors.Wrap(err, "failed to start dnsmasq")
+		}
+	}
+
+	if opts.RAServer {
+		v6Prefix, err := pool.AllocNextIPv6Subnet()
+		if err != nil {
+			return errors.Wrap(err, "failed to allocate v4 prefix for DHCP")
+		}
+
+		// Note that in the current implementation, shill requires an IPv6
+		// connection has both address and DNS servers, and thus we need to provide
+		// it here even though it is not reachable.
+		const googleIPv6DNSServer = "2001:4860:4860::8888"
+		radvd := radvd.New(v6Prefix, []string{googleIPv6DNSServer})
+		if err := router.StartServer(ctx, "radvd", radvd); err != nil {
+			return errors.Wrap(err, "failed to start radvd")
+		}
+	}
+
+	if opts.HTTPServerResponseHandler != nil {
+		httpserver := httpserver.New("80", opts.HTTPServerResponseHandler, nil)
+		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
+			return errors.Wrap(err, "failed to start http server")
+		}
+	}
+
+	if opts.HTTPSServerResponseHandler != nil {
+		if opts.HTTPSCerts == nil {
+			return errors.New("failed to create https server: empty certificate option")
+		}
+		httpsserver := httpserver.New("443", opts.HTTPSServerResponseHandler, opts.HTTPSCerts)
+		if err := router.StartServer(ctx, "httpsserver", httpsserver); err != nil {
+			return errors.Wrap(err, "failed to start https server")
+		}
+	}
+
+	return nil
+}
+
 func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName string) (*shill.Service, error) {
 	testing.ContextLogf(ctx, "Waiting for device %s showing up", ifName)
 	device, err := m.WaitForDeviceByName(ctx, ifName, 5*time.Second)
@@ -212,4 +225,157 @@ func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName s
 		return nil, errors.Wrap(err, "failed to get the selected service")
 	}
 	return service, nil
+}
+
+type wifiEnv struct {
+	// Service is the shill service corresponding to this AP.
+	Service *shill.Service
+	// Router is the Env which simulates the WiFi router. Servers can be ran on it.
+	Router *env.Env
+
+	hostapd *testexec.Cmd
+
+	// br is the Bridge interface name for connecting apIf and out interface of
+	// wifi.Router. This interface will be started by hostapd and removed manually
+	// by the test code.
+	br string
+}
+
+// Cleanup shuts down all the servers.
+func (e *wifiEnv) Cleanup(ctx context.Context) error {
+	if e.Router != nil {
+		if err := e.Router.Cleanup(ctx); err != nil {
+			return err
+		}
+	}
+	if e.hostapd != nil && e.hostapd.Process != nil {
+		if err := e.hostapd.Kill(); err != nil {
+			return errors.Wrap(err, "failed to kill hostapd process")
+		}
+		e.hostapd.Wait()
+		if err := testexec.CommandContext(ctx, "ip", "link", "del", e.br).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to remove %s", e.br)
+		}
+	}
+	return nil
+}
+
+// CreateWifiRouterEnv create a virtualnet Env with the given options. Different
+// from CreateRouterEnv, the created Env will be shown as a WiFi service in
+// shill. apIf should be an interface created by the mac80211_hwsim kernel
+// module, and this interface will be used to simulate the access point.
+// shillSimulatedWiFi fixture can be used to create such interfaces. Note that
+// the returned shill service will not be connected automatically.
+func CreateWifiRouterEnv(ctx context.Context, apIf string, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (*wifiEnv, error) {
+	wifi := &wifiEnv{}
+	wifi.Router = env.NewHidden("wifi" + opts.NameSuffix)
+	if err := wifi.Router.SetUp(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to set up the router env")
+	}
+
+	success := false
+	cleanupCtx := ctx
+	ctx, _ = ctxutil.Shorten(ctx, 10*time.Second)
+	defer func(ctx context.Context) {
+		if success {
+			return
+		}
+		if err := wifi.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to clean up WiFi Env")
+		}
+	}(cleanupCtx)
+
+	if err := startServersInRouter(ctx, wifi.Router, pool, opts); err != nil {
+		return nil, err
+	}
+
+	ssid := "test-ap" + opts.NameSuffix
+	svcProps := map[string]interface{}{
+		shillconst.ServicePropertyType:        shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID: strings.ToUpper(hex.EncodeToString([]byte(ssid))),
+	}
+
+	// Remove the service if shill already knows this service. It can be leftover
+	// from the previous tests.
+	svc, err := m.FindMatchingService(ctx, svcProps)
+	if err != nil && err.Error() != shillconst.ErrorMatchingServiceNotFound {
+		return nil, errors.Wrap(err, "failed to check service existence before starting hostapd")
+	}
+	if svc != nil {
+		if err := svc.Remove(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to remove the WiFi service")
+		}
+	}
+
+	// Name it with prefix "veth" to avoid shill managing it.
+	wifi.br = "veth-br0" + opts.NameSuffix
+
+	// Start hostapd. We don't care about how the WiFi layer is working here so
+	// just use the simplest setup.
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get ContextOutDir")
+	}
+	hostapdConf := strings.Join([]string{
+		"interface=" + apIf,
+		"ssid=" + ssid,
+		"bridge=" + wifi.br,
+	}, "\n")
+	hostapdConfFile, err := os.CreateTemp(outDir, "hostapd*.conf")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create hostapd config file")
+	}
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to write hostapd config file")
+	}
+	defer os.Remove(hostapdConfFile.Name())
+	if _, err := hostapdConfFile.WriteString(hostapdConf); err != nil {
+		return nil, errors.Wrap(err, "failed to write hostapd config file")
+	}
+	wifi.hostapd = testexec.CommandContext(ctx, "hostapd", hostapdConfFile.Name())
+	if err := wifi.hostapd.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed to start hostapd")
+	}
+
+	testing.ContextLogf(ctx, "Waiting for %s interface up", wifi.br)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := net.InterfaceByName(wifi.br); err != nil {
+			return errors.Errorf("failed to get %s interface", wifi.br)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for bridge interface to appear")
+	}
+
+	// Bridge interfaces.
+	for _, cmd := range [][]string{
+		{"ip", "link", "set", wifi.br, "up"},
+		{"ip", "link", "set", wifi.Router.VethOutName, "up"},
+		{"brctl", "addif", wifi.br, wifi.Router.VethOutName},
+	} {
+		if err := testexec.CommandContext(ctx, cmd[0], cmd[1:]...).Run(testexec.DumpLogOnError); err != nil {
+			return nil, errors.Wrap(err, "failed to bridge the interfaces")
+		}
+	}
+
+	// Trigger a scan and wait for shill to find this service. This may take some
+	// time.
+	if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+		return nil, errors.Wrap(err, "failed to request an active scan")
+	}
+
+	// Trigger a scan and wait for shill to find this service. This may take some
+	// time.
+	testing.ContextLogf(ctx, "Waiting for WiFi service for %s in shill", ssid)
+	if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+		return nil, errors.Wrap(err, "failed to request an active scan")
+	}
+	wifi.Service, err = m.WaitForServiceProperties(ctx, svcProps, 30*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to wait for WiFi service to appear")
+	}
+
+	success = true
+	testing.ContextLogf(ctx, "Virtual WiFi router env with SSID %s has been set up", ssid)
+	return wifi, nil
 }
