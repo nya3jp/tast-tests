@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff7220f_7732a687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "357aa3e2_ae3ba795",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "138bc458_ef4f4b6a",
@@ -124,6 +148,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ae03ee_80f9c2d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea59ba4_8caae339",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31be50fd_dbc48a04",
@@ -177,6 +219,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7467fa62_9b76c615",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172c10e0_db3cfe41",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1291cba3_c358e06a",
@@ -190,6 +250,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "optional nit: This log is not necessary.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62fe8e1_03921645",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "state file is one of the most important input for this test. Let\u0027s keep it to let people have a better understanding about testing status.",
+      "parentUuid": "1291cba3_c358e06a",
       "range": {
         "startLine": 84,
         "startChar": 1,
@@ -223,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d116401_d23681c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c895516f_4e653a6b",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5163c95_2c03b835",
@@ -236,6 +344,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "nit: please do not ignore the err from Sleep.",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1341031f_982ff4cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5163c95_2c03b835",
       "range": {
         "startLine": 97,
         "startChar": 9,
@@ -358,6 +490,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f57b5b_300c38f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee2db48_78e82f42",
+      "range": {
+        "startLine": 230,
+        "startChar": 14,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2f0088b_01da5bbd",
@@ -371,6 +527,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "nit: action description should start with lowercase.",
+      "range": {
+        "startLine": 231,
+        "startChar": 27,
+        "endLine": 231,
+        "endChar": 36
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3f054c_8121241f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f0088b_01da5bbd",
       "range": {
         "startLine": 231,
         "startChar": 27,
@@ -404,6 +584,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf6253f_a851b2e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "This command is used to fetch some data which is nice to have. I don\u0027t want to fail tests just because this command fails.",
+      "parentUuid": "b35b905b_6f369193",
+      "range": {
+        "startLine": 239,
+        "startChar": 9,
+        "endLine": 239,
+        "endChar": 10
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5285e8c7_5a18e891",
@@ -417,6 +621,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "optional nit: %q can be better?",
+      "range": {
+        "startLine": 240,
+        "startChar": 56,
+        "endLine": 240,
+        "endChar": 58
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1fcd2f_1445dcb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5285e8c7_5a18e891",
       "range": {
         "startLine": 240,
         "startChar": 56,
@@ -450,6 +678,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9426c876_64566786",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869b18c8_023ffa6e",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb3eb4e3_bb4a5f78",
@@ -473,6 +725,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05fe9ef_e5071c2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3eb4e3_bb4a5f78",
+      "range": {
+        "startLine": 247,
+        "startChar": 9,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3137cdb6_eaa26233",
@@ -486,6 +762,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "nit: Full sentence should start with capital letter.",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 34
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec5e97d_09a84755",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3137cdb6_eaa26233",
       "range": {
         "startLine": 250,
         "startChar": 3,
@@ -542,6 +842,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70972f99_5b65a3ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb16789_54563685",
+      "range": {
+        "startLine": 251,
+        "startChar": 41,
+        "endLine": 251,
+        "endChar": 44
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b52455_81d9e21a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Change it to above. We need to execute it only if we execute `flattenDutWithFakeSensorData` method",
+      "parentUuid": "60fbdd8f_66a81336",
+      "range": {
+        "startLine": 251,
+        "startChar": 16,
+        "endLine": 251,
+        "endChar": 40
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d40778f_ffe48438",
@@ -556,6 +904,30 @@
       "side": 1,
       "message": "\u003e \"attemp\" is a possible misspelling of \"attempt\".\n\nPlease fix.",
       "parentUuid": "50d94b4a_181006fc",
+      "range": {
+        "startLine": 253,
+        "startChar": 15,
+        "endLine": 253,
+        "endChar": 21
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e924e5_8789063d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d40778f_ffe48438",
       "range": {
         "startLine": 253,
         "startChar": 15,
@@ -589,6 +961,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ce4a69_150789d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b6c514_e8ec015f",
+      "range": {
+        "startLine": 254,
+        "startChar": 27,
+        "endLine": 254,
+        "endChar": 38
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db911976_a205fafc",
@@ -602,6 +998,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "nit: overrides",
+      "range": {
+        "startLine": 431,
+        "startChar": 21,
+        "endLine": 431,
+        "endChar": 29
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c1255f_9711a4b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db911976_a205fafc",
       "range": {
         "startLine": 431,
         "startChar": 21,
@@ -670,6 +1090,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1285f2_5e8773cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1dcc999_c39b77e9",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 2
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28b85df4_fddc729a",
@@ -683,6 +1127,30 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "if output, err :\u003d func(); err !\u003d nil{\n    return err\n}else{\n    testing.ContextLogf(ctx, \"Lid angle after reset is %s\", string(output))\n    return nil\n}\n\nAlternatively:\n\noutput, err :\u003d func()\nif err !\u003dnil{\n    return err\n}\ntesting.ContextLogf(ctx, \"Lid angle after reset is %s\", string(output))\nreturn nil",
+      "range": {
+        "startLine": 685,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 11
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa89be4d_a470baf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T05:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b85df4_fddc729a",
       "range": {
         "startLine": 685,
         "startChar": 1,
