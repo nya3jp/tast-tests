@@ -16,6 +16,24 @@
       "message": "Hi Alex,\n\nI\u0027m writing a tast test to verify that forced installed extension work behind managed proxies.\n\nIt looks like the extension is not being installed from the Chrome Web Store, although the policy is correctly set.\n\nAny ideas on what\u0027s happening?\n\nAll the best,\nAndreea",
       "revId": "229577084d3bd3063afab3a8abf5f5b7b8f465f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad13db9_e00a61cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-28T16:34:14Z",
+      "side": 1,
+      "message": "I took a look and it seems the extension isn\u0027t being installed even when we do not have a proxy. So the problem has to be in the ExtensionInstallForceList policy itself.\nHowever the policy also does not report any errors and is correctly listed under chrome://policy\n\nI took a look at the policy.ExtensionInstallForceList tast test and that test uses actually a real managed account force_installed_tast_user@managedchrome.com which has the ExtensionInstallForceList configured in DPanel. So my guess is that there is some general problem with extensions when using the fake login, but I don\u0027t know what exactly the problem could be.",
+      "parentUuid": "68ef7f1a_7d287434",
+      "revId": "229577084d3bd3063afab3a8abf5f5b7b8f465f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
