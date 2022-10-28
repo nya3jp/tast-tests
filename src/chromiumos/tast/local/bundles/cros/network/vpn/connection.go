@@ -13,8 +13,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus/v5"
+
 	"chromiumos/tast/common/crypto/certificate"
-	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network/routing"
@@ -94,6 +95,8 @@ type Connection struct {
 	manager   *shill.Manager
 	certStore *netcertstore.Store
 	service   *shill.Service
+
+	ServicePath dbus.ObjectPath
 
 	// Properties is the key values of D-Bus properties used for creating this VPN
 	// service.
@@ -277,12 +280,13 @@ func (c *Connection) startServer(ctx context.Context) error {
 }
 
 func (c *Connection) configureService(ctx context.Context) error {
-	servicePath, err := c.manager.ConfigureService(ctx, c.Properties)
+	path, err := c.manager.ConfigureService(ctx, c.Properties)
+	c.ServicePath = path
 	if err != nil {
 		return errors.Wrapf(err, "unable to configure the service for the VPN properties %v", c.Properties)
 	}
 
-	if c.service, err = shill.NewService(ctx, servicePath); err != nil {
+	if c.service, err = shill.NewService(ctx, path); err != nil {
 		return errors.Wrap(err, "failed creating shill service proxy")
 	}
 
@@ -560,4 +564,13 @@ func (c *Connection) connectService(ctx context.Context) (bool, error) {
 	}
 
 	return state != shillconst.ServiceStateFailure, nil
+}
+
+// IsConnected checks the connection state of a connection.
+func (c *Connection) IsConnected(ctx context.Context) (bool, error) {
+	connected, err := c.service.IsConnected(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get IsConnected")
+	}
+	return connected, nil
 }
