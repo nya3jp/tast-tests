@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d3b3c8b_2e6d2cee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T13:36:01Z",
+      "side": 1,
+      "message": "Is skipping milestone 95 a very rare exception then? If it is usually unexpected, then throwing an error sounds like the right approach then. Could we catch it instead of using _ and also print it in the error message?",
+      "parentUuid": "46000c68_cd6cba3d",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "692233e4_1c8b0c74",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 1
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "We don\u0027t have an use case for finding the successor of M95 (we only need this for rollback). If we change the implementation above, I\u0027ll make it consistent.",
       "parentUuid": "5f36b9b7_b32d0780",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 62
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46669007_3ef88c24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T13:36:01Z",
+      "side": 1,
+      "message": "Sg ack",
+      "parentUuid": "6f1f6d8d_aec14fb2",
       "range": {
         "startLine": 55,
         "startChar": 1,
