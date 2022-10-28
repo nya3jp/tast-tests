@@ -232,6 +232,24 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// TODO(b/248528896): Remove one out-of-process video encoding is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeVideoWithFakeWebcamAndOOPVE",
+		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but using the out-of-process video encoder",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeFakeWebcamArgs...),
+				chrome.EnableFeatures("UseOutOfProcessVideoEncoding"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// TODO(b/236546408): Remove once hardware variable bitrate encoding is enabled by default.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithFakeWebcamAndHWVBREncoding",
@@ -562,6 +580,24 @@ func init() {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeWebCodecsArgs...),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	// TODO(b/248528896): Remove once out-of-process video encoding is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecsOOPVE",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API and out-of-process video encoding",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+				chrome.EnableFeatures("UseOutOfProcessVideoEncoding"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",

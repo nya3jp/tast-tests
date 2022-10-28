@@ -135,6 +135,21 @@ func init() {
 			Name:    "av1_sw_vbr",
 			Val:     webcodecs.TestEncodeArgs{Codec: videotype.AV1, Acceleration: webcodecs.PreferSoftware, BitrateMode: "variable"},
 			Fixture: "chromeWebCodecs",
+		}, {
+			Name:              "h264_hw_oopve",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant", OutOfProcessEnabled: true},
+			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264},
+			Fixture:           "chromeWebCodecsOOPVE",
+		}, {
+			Name:              "vp8_hw_oopve",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant", OutOfProcessEnabled: true},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeWebCodecsOOPVE",
+		}, {
+			Name:              "vp9_hw_oopve",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, BitrateMode: "constant", OutOfProcessEnabled: true},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeWebCodecsOOPVE",
 		}},
 	})
 }

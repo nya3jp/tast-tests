@@ -12,10 +12,12 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/encoding"
@@ -35,9 +37,13 @@ type TestEncodeArgs struct {
 	BitrateMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
+	// OutOfProcessEnabled denotes if it is using out-of-process video
+	// encoding
+	OutOfProcessEnabled bool
 }
 
 const encodeHTML = "webcodecs_encode.html"
+const videoEncoderUtilProcName = "media.mojom.VideoEncodeAcceleratorProviderFactory"
 
 // EncodeDataFiles returns the HTML and JS files used in RunEncodeTest.
 func EncodeDataFiles() []string {
@@ -246,11 +252,117 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		}, psnr)
 	}
 
-	if err := p.Save(outDir); err != nil {
-		return errors.Wrap(err, "failed to save perf results")
+	if testArgs.OutOfProcessEnabled {
+		if err := findVideoEncoderUtilityProcess(); err != nil {
+			return errors.Wrap(err, "error occured finding the video encoder utility processes")
+		}
+
+		if err := multipleEncoders(ctx, cr, fileSystem, testArgs, videoFile, outDir); err != nil {
+			return errors.Wrap(err, "error occured testing multiple encoders per utility process")
+		}
 	}
 
 	// TODO: Save bitstream always, if SSIM or PSNR is bad or never?
+	return nil
+}
+
+func findVideoEncoderUtilityProcess() error {
+	procs, err := chromeproc.GetUtilityProcesses()
+
+	if err != nil {
+		return errors.Wrap(err, "failed to FindAll()")
+	}
+
+	re := regexp.MustCompile(` --?utility-sub-type=([\w\.]+)(?: |$)`)
+
+	// Store utility process names for generating an error messages
+	for _, proc := range procs {
+		cmdline, err := proc.Cmdline()
+		if err != nil {
+			return errors.Wrap(err, "failed to get cmdline")
+		}
+
+		matches := re.FindStringSubmatch(cmdline)
+		if len(matches) < 2 {
+			continue
+		}
+
+		procName := matches[1]
+		if procName == videoEncoderUtilProcName {
+			return nil
+		}
+	}
+
+	return errors.Errorf("%s process was not found", videoEncoderUtilProcName)
+}
+
+func multipleEncoders(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestEncodeArgs, videoFile, outDir string) error {
+	var crowd720pVideoConfig = videoConfig{width: 1280, height: 720, numFrames: 30, framerate: 30}
+
+	cleanupCtx, server, conn, _, deferFunc, err := prepareWebCodecsTest(ctx, cr, fileSystem, encodeHTML)
+	if err != nil {
+		return err
+	}
+	defer deferFunc()
+
+	codec := toMIMECodec(testArgs.Codec)
+	if codec == "" {
+		return errors.Errorf("unknown codec: %s", testArgs.Codec)
+	}
+
+	// Decode video frames of crowd720pMP4. The decoded video frames are input of the following encoding.
+	config := crowd720pVideoConfig
+	if err := conn.Call(ctx, nil, "DecodeFrames", server.URL+"/"+crowd720pMP4, config.numFrames); err != nil {
+		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing DecodeFrames"))
+	}
+
+	bitrate := config.width * config.height * config.framerate / 10
+	if err := conn.Call(ctx, nil, "MultipleEncoders", codec, testArgs.Acceleration, config.width, config.height,
+		bitrate, config.framerate, testArgs.ScalabilityMode, testArgs.BitrateMode); err != nil {
+		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing EncodeAndSave"))
+	}
+
+	var success bool
+	if err := conn.Eval(ctx, "TEST.success()", &success); err != nil || !success {
+		return outputJSLogAndError(cleanupCtx, conn, errors.New("WebCodecs encoding is not successfully done"))
+	}
+
+	procs, err := chromeproc.GetUtilityProcesses()
+
+	if err != nil {
+		return errors.Wrap(err, "failed to FindAll()")
+	}
+
+	re := regexp.MustCompile(` --?utility-sub-type=([\w\.]+)(?: |$)`)
+	var numUtilProcs = 0
+
+	// Store utility process names for generating an error messages
+	for _, proc := range procs {
+		cmdline, err := proc.Cmdline()
+		if err != nil {
+			return errors.Wrap(err, "failed to get cmdline")
+		}
+
+		matches := re.FindStringSubmatch(cmdline)
+		if len(matches) < 2 {
+			continue
+		}
+
+		procName := matches[1]
+		if procName == videoEncoderUtilProcName {
+			numUtilProcs++
+		}
+	}
+
+	// Removing the instances created at the beginning of RunEncodeTest
+	numUtilProcs -= 2
+
+	// numUtilProcs is divided by two here because the video encoder sandbox
+	// opens a broker process with the same name.
+	if (numUtilProcs / 2) != 1 {
+		return errors.Errorf("expected 1 process but got %d", (numUtilProcs / 2))
+	}
+
 	return nil
 }
 
