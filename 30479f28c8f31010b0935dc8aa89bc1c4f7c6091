@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acf5fc0b_14c1c04c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-28T02:25:31Z",
+      "side": 1,
+      "message": "Is this true even if ShimlessRMA is like an OOBE/kiosk/signin screen?",
+      "parentUuid": "138bc458_ef4f4b6a",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c6851de_d1b3d4f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
