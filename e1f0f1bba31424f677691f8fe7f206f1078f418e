@@ -39,6 +39,30 @@
       },
       "revId": "e1f0f1bba31424f677691f8fe7f206f1078f418e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5266d18_742e570c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-28T05:44:43Z",
+      "side": 1,
+      "message": "Thank you very much for the reminder, we are expecting this test can be performed even if the order is not fixed.",
+      "parentUuid": "bf89bb52_7766ed09",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "e1f0f1bba31424f677691f8fe7f206f1078f418e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
