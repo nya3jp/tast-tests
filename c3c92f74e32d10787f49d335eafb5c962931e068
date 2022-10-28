@@ -140,6 +140,30 @@
       },
       "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51ec075_42c36180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-28T12:53:57Z",
+      "side": 1,
+      "message": "The user can see it. It\u0027s automatically disappearing after 1 second (2 seconds for the other dialog).",
+      "parentUuid": "3315ee6f_e3463772",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 98
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
