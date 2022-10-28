@@ -25,6 +25,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testParamForLoLOnMixPresence struct {
+	usingLatestFirmware bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CameraboxLoLOnMixPresence,
@@ -42,10 +46,25 @@ func init() {
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet"},
+		Params: []testing.Param{
+			{
+				Val: testParamForLoLOnMixPresence{
+					usingLatestFirmware: false,
+				},
+			},
+			{
+				Name: "latestfw",
+				Val: testParamForLoLOnMixPresence{
+					usingLatestFirmware: true,
+				},
+				Fixture: "hpsdUsingLatestFirmware",
+			},
+		},
 	})
 }
 
 func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
+	param := s.Param().(testParamForLoLOnMixPresence)
 	dut := s.DUT()
 
 	// Creating hps context.
@@ -98,7 +117,11 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Error reading running firmware version: ", err)
 	}
-	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+	firmwarePath := hpsutil.FirmwarePath
+	if param.usingLatestFirmware {
+		firmwarePath = hpsutil.LatestFirmwarePath
+	}
+	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx, firmwarePath)
 	if err != nil {
 		s.Error("Error reading firmware version from image: ", err)
 	}

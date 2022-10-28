@@ -21,8 +21,9 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type spaOnParams struct {
-	spaOn bool
+type testParamForSpa struct {
+	spaOn               bool
+	usingLatestFirmware bool
 }
 
 func init() {
@@ -42,22 +43,34 @@ func init() {
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet", "grpcServerPort"},
-		Params: []testing.Param{{
-			Name: "off",
-			Val: spaOnParams{
-				spaOn: false,
+		Params: []testing.Param{
+			{
+				Name: "off",
+				Val: testParamForSpa{
+					spaOn:               false,
+					usingLatestFirmware: false,
+				},
 			},
-		}, {
-			Name: "on",
-			Val: spaOnParams{
-				spaOn: true,
+			{
+				Name: "on",
+				Val: testParamForSpa{
+					spaOn:               true,
+					usingLatestFirmware: false,
+				},
 			},
-		}},
+			{
+				Name: "on_latestfw",
+				Val: testParamForSpa{
+					spaOn:               true,
+					usingLatestFirmware: true,
+				},
+			},
+		},
 	})
 }
 
 func CameraboxSPA(ctx context.Context, s *testing.State) {
-	spaEnabled := s.Param().(spaOnParams)
+	param := s.Param().(testParamForSpa)
 
 	dut := s.DUT()
 
@@ -89,7 +102,7 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 	client := pb.NewHpsServiceClient(cl.Conn)
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: utils.SecondPersonAlert,
-		Enable:  spaEnabled.spaOn,
+		Enable:  param.spaOn,
 	}
 	// Change the setting to true so that we can get the quickdim delay time.
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
@@ -99,19 +112,23 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 	// Wait for hpsd to finish starting the HPS peripheral and enabling the feature we requested.
 	waitReq := &pb.WaitForHpsRequest{
 		WaitForSense:  false,
-		WaitForNotify: spaEnabled.spaOn,
+		WaitForNotify: param.spaOn,
 	}
 	if _, err := client.WaitForHps(ctx, waitReq); err != nil {
 		s.Fatal("Failed to wait for HPS to be ready: ", err)
 	}
 
 	// Check that HPS is running the expected firmware version.
-	if spaEnabled.spaOn {
+	if param.spaOn {
 		runningVersion, err := hpsutil.FetchRunningFirmwareVersion(hctx)
 		if err != nil {
 			s.Error("Error reading running firmware version: ", err)
 		}
-		expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+		firmwarePath := hpsutil.FirmwarePath
+		if param.usingLatestFirmware {
+			firmwarePath = hpsutil.LatestFirmwarePath
+		}
+		expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx, firmwarePath)
 		if err != nil {
 			s.Error("Error reading firmware version from image: ", err)
 		}
@@ -139,10 +156,10 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 			}
 		}
 		if key == utils.TwoPresence {
-			if !result.Value && spaEnabled.spaOn {
+			if !result.Value && param.spaOn {
 				s.Fatal("No snooping alert")
 			}
-			if result.Value && !spaEnabled.spaOn {
+			if result.Value && !param.spaOn {
 				s.Fatal("Unexpected snooping alert")
 			}
 		}

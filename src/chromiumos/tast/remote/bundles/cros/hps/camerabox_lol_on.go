@@ -23,8 +23,9 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type numPresenceParams struct {
-	numOfPerson string
+type testParamForLoLOn struct {
+	numOfPerson         string
+	usingLatestFirmware bool
 }
 
 func init() {
@@ -44,22 +45,43 @@ func init() {
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet"},
-		Params: []testing.Param{{
-			Name: "no_presence",
-			Val: numPresenceParams{
-				numOfPerson: utils.ZeroPresence,
+		Params: []testing.Param{
+			{
+				Name: "no_presence",
+				Val: testParamForLoLOn{
+					numOfPerson:         utils.ZeroPresence,
+					usingLatestFirmware: false,
+				},
 			},
-		}, {
-			Name: "one_presence",
-			Val: numPresenceParams{
-				numOfPerson: utils.OnePresence,
+			{
+				Name: "one_presence",
+				Val: testParamForLoLOn{
+					numOfPerson:         utils.OnePresence,
+					usingLatestFirmware: false,
+				},
 			},
-		}},
+			{
+				Name: "no_presence_latestfw",
+				Val: testParamForLoLOn{
+					numOfPerson:         utils.ZeroPresence,
+					usingLatestFirmware: true,
+				},
+				Fixture: "hpsdUsingLatestFirmware",
+			},
+			{
+				Name: "one_presence_latestfw",
+				Val: testParamForLoLOn{
+					numOfPerson:         utils.OnePresence,
+					usingLatestFirmware: true,
+				},
+				Fixture: "hpsdUsingLatestFirmware",
+			},
+		},
 	})
 }
 
 func CameraboxLoLOn(ctx context.Context, s *testing.State) {
-	presenceNo := s.Param().(numPresenceParams)
+	param := s.Param().(testParamForLoLOn)
 
 	dut := s.DUT()
 
@@ -77,7 +99,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 	defer displayChart.Close(ctxForCleanupDisplayChart, s.OutDir())
 
-	displayChart.Display(ctx, hostPaths[presenceNo.numOfPerson])
+	displayChart.Display(ctx, hostPaths[param.numOfPerson])
 
 	// Connecting to Taeko.
 	cleanupCtx := ctx
@@ -115,7 +137,11 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Error reading running firmware version: ", err)
 	}
-	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+	firmwarePath := hpsutil.FirmwarePath
+	if param.usingLatestFirmware {
+		firmwarePath = hpsutil.LatestFirmwarePath
+	}
+	expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx, firmwarePath)
 	if err != nil {
 		s.Error("Error reading firmware version from image: ", err)
 	}
@@ -125,10 +151,10 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 
 	// When showing ZeroPresence expect that quick dim will happen.
 	quickDimExpectedReq := &wrappers.BoolValue{
-		Value: presenceNo.numOfPerson == utils.ZeroPresence,
+		Value: param.numOfPerson == utils.ZeroPresence,
 	}
 	quickDimMetrics, err := client.RetrieveDimMetrics(hctx.Ctx, quickDimExpectedReq)
-	dimDelay, screenOffDelay := delayForPresence(presenceNo.numOfPerson, quickDimMetrics)
+	dimDelay, screenOffDelay := delayForPresence(param.numOfPerson, quickDimMetrics)
 	if err != nil {
 		s.Fatal("Error getting delay settings: ", err)
 	}
@@ -136,7 +162,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	// If we're expecting quick dim because no user is present, we need to
 	// start counting the time from here because this is when powerd has
 	// begun receiving a filtered presence signal from hpsd.
-	if presenceNo.numOfPerson == utils.ZeroPresence {
+	if param.numOfPerson == utils.ZeroPresence {
 		startTime = time.Now()
 	}
 
@@ -156,7 +182,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 
 	dimTime := time.Now()
-	err = utils.EnsureHpsSenseSignal(ctx, client, presenceNo.numOfPerson != utils.ZeroPresence)
+	err = utils.EnsureHpsSenseSignal(ctx, client, param.numOfPerson != utils.ZeroPresence)
 	if err != nil {
 		s.Error("Unexpected HPS Signal after dimming: ", err)
 	}
@@ -167,7 +193,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 
 	screenOffTime := time.Now()
-	err = utils.EnsureHpsSenseSignal(ctx, client, presenceNo.numOfPerson != utils.ZeroPresence)
+	err = utils.EnsureHpsSenseSignal(ctx, client, param.numOfPerson != utils.ZeroPresence)
 	if err != nil {
 		s.Error("Unexpected HPS Signal after turning off screen: ", err)
 	}
