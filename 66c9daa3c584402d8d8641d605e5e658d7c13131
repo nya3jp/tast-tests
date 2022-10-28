@@ -16,6 +16,144 @@
       "message": "LGTM",
       "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed879eb1_25b70657",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "Imo, this feels be quite hacky and too specific to what we know the file contains. Maybe instead, we can create a loop that goes through d.ChromeOSVersionFromMilestone[milestone-1] until the end of the array is reached. If a content in the config is found, return it as it is the previous one. If not, return error because it was not found.  That way the solution is general enough in case this config changes.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692233e4_1c8b0c74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "should this be milestone+1?",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f36b9b7_b32d0780",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "I think we should have something similar to what the comment in PreviousMilestone proposes. Because it is possible that milestone+1 is not in the file. If we have a loop that returns the next existing m+1 (or error) is generalisable and transparent to what the config file really contains.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 62
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d297614_421e2444",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "milestone+1",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93cd563_cf16a27c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "Why removing the \"Current\" from the naming? The value below makes uses of `Current` in the naming, so we should be consistent",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5e9023_98a57577",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T10:23:56Z",
+      "side": 1,
+      "message": "I do not understand what this does, was missing it before a bug?",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
