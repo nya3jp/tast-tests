@@ -52,6 +52,24 @@
       "parentUuid": "e083ddf4_f241ad20",
       "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac42b278_52d5e066",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-28T14:24:50Z",
+      "side": 0,
+      "message": "I was thinking of implementing this step in Chrome itself, similar to what the OOBE Test API does for some screens. It could then provide a guarantee that calling \u0027skipToLoginForTesting\u0027 would do all the required actions to bring the user to the login page. We could have a similar \u0027skipToEnrollmentForTesting\u0027 method guaranteeing that you would end up on the enrollment page. \n\nIf we could guarantee this flow via some proper browser tests on the chrome side, we would be able to prevent such breakages, right? But this is just something for the future and out of the scope of this CL.",
+      "parentUuid": "61fcd11c_2235a2a7",
+      "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
