@@ -561,3 +561,8 @@ func (c *Connection) connectService(ctx context.Context) (bool, error) {
 
 	return state != shillconst.ServiceStateFailure, nil
 }
+
+// Service gets service of this connection.
+func (c *Connection) Service() *shill.Service {
+	return c.service
+}
