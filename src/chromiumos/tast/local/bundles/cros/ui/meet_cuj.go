@@ -212,16 +212,18 @@ func init() {
 			// Even bigger meeting.
 			Name:      "49p",
 			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLogging",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("gimble", "magpie", "lazor", "tomato", "volet")),
 		}, {
-			Name:      "lacros_49p",
-			Timeout:   defaultTestTimeout,
+			Name:    "lacros_49p",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -271,8 +273,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// 49p with vp8 video codec.
-			Name:      "49p_vp8",
-			Timeout:   defaultTestTimeout,
+			Name:    "49p_vp8",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
