@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9317fe4_3ea55989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/move_tab_to_another_window_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-28T16:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd39570b_504c8795",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "598c49a4f3aed87201ac7d05a74ea4b899a2047f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a5e2585_81522d44",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-10-28T13:04:29Z",
       "side": 1,
       "message": "nit: 4 and \u003c\u003d in the for loop? otherwise name is misleading. Maybe rename to numNewDesks?",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "598c49a4f3aed87201ac7d05a74ea4b899a2047f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d431b9_704be47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/move_tab_to_another_window_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-28T16:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5e2585_81522d44",
       "range": {
         "startLine": 81,
         "startChar": 18,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d58d94_ff045bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/move_tab_to_another_window_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-28T16:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ed3049_85bfd1a2",
+      "revId": "598c49a4f3aed87201ac7d05a74ea4b899a2047f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1ff00a_5401acd9",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-10-28T13:04:29Z",
       "side": 1,
       "message": "nit: activate",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "598c49a4f3aed87201ac7d05a74ea4b899a2047f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f644621f_b758a906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/move_tab_to_another_window_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-10-28T16:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1ff00a_5401acd9",
       "range": {
         "startLine": 120,
         "startChar": 38,
