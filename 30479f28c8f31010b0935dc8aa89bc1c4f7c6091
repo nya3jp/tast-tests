@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b91180d_f991a544",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2022-10-28T16:18:58Z",
+      "side": 1,
+      "message": "Based on go/webapps-lacros, Shimless RMA falls outside the scope of any Lacros work",
+      "parentUuid": "bd4c5d2c_03ecd80b",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c6851de_d1b3d4f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
@@ -528,6 +552,24 @@
       "side": 1,
       "message": "The file is in json format, you can indent it to make it more readable. If you just want to jump to the state and want to maintain the file, we can discuss the content and format.",
       "parentUuid": "cb9c2ecb_fa749b4e",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df7fc68_8b88f638",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2022-10-28T16:18:58Z",
+      "side": 1,
+      "message": "Yes a lot of this extra data can be removed to jump states. The `state_history` object is the most important one",
+      "parentUuid": "bda37798_29de8c94",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
