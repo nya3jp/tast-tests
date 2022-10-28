@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,10 +39,12 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
 			"ui.cuj_mode",                 // Optional. Expecting "tablet" or "clamshell".
+			"ui.collectTrace",             // Optional. Expecting "enable" or "disable", default is "disable".
 			"ui.QuickCheckCUJ2_wait_time", // Optional. Given time for the system to stablize in seconds.
 			"ui.QuickCheckCUJ2_wifissid",
 			"ui.QuickCheckCUJ2_wifipassword",
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic_unlock",

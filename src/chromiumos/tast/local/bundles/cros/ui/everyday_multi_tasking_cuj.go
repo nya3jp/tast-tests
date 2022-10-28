@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/bluetooth"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -43,8 +44,9 @@ func init() {
 			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
 			"ui.bt_devicename", // Required for Bluetooth subtests.
+			"ui.collectTrace",  // Optional. Expecting "enable" or "disable", default is "disable".
 		},
-		Data: []string{"cca_ui.js"},
+		Data: []string{"cca_ui.js", cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic_ytmusic",
@@ -331,9 +333,12 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer cleanup(cleanupCtx)
 	}
-
+	traceConfigPath := ""
+	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode, enableBT)
+	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, traceConfigPath, tabletMode, enableBT)
 	if err := et.Run(ctx, cr, param.browserType, a, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}

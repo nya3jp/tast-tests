@@ -24,7 +24,7 @@ import (
 )
 
 // Run runs the specified user scenario in productivity with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, bt browser.Type, outDir, sampleSheetURL, expectedText, testFileLocation string) (err error) {
+func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, bt browser.Type, outDir, traceConfigPath, sampleSheetURL, expectedText, testFileLocation string) (err error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -76,9 +76,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
 	defer browser.CloseAllTabs(ctx, tconn)
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	// Shorten the context to clean up the files created in the test case.
 	cleanUpResourceCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
