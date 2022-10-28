@@ -164,6 +164,30 @@
       },
       "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d1516e_6279e0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-28T12:56:45Z",
+      "side": 1,
+      "message": "I was thinking of refactoring this to use addTreeChangeObserver.\nDo you know whether this would help in that aspect?",
+      "parentUuid": "f51ec075_42c36180",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 98
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
