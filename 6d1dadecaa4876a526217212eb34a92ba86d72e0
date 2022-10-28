@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87694262_ee746bf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-10-28T16:08:21Z",
+      "side": 1,
+      "message": "The test still does not check the case when a user is idle and a device is suspended (governed by PowerManagementIdleSettings policy). I did not cover this case in this CL and within the scope of BugBash, since I could not reproduce the suspension of the device after trying different PowerManagementIdleSettings values, needs further investigation. I am still not sure if it is a bug, however, the idle suspension does seem to work on my work device, but not on a DUT device (tried setting the policy via YAPS and D-Panel both, suspension does not work even though every other setting like Screen Dim in that policy work). Let me know if I should file the bug or simple comment in the code will suffice.",
+      "revId": "6d1dadecaa4876a526217212eb34a92ba86d72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
