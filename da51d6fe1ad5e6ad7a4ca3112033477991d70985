@@ -39,6 +39,30 @@
       },
       "revId": "da51d6fe1ad5e6ad7a4ca3112033477991d70985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bff1708_637d3c7e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-10-28T09:47:49Z",
+      "side": 1,
+      "message": "Yes, but I think that\u0027s actually fine since the GAIA login might fail in general when things change there (e.g. div id for username/password).",
+      "parentUuid": "031d73bb_b38e445a",
+      "range": {
+        "startLine": 176,
+        "startChar": 86,
+        "endLine": 176,
+        "endChar": 111
+      },
+      "revId": "da51d6fe1ad5e6ad7a4ca3112033477991d70985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
