@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46000c68_cd6cba3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T11:16:15Z",
+      "side": 1,
+      "message": "I hope we never skip another milestone, This hack can also be removed in the next few months as we drop 96 from major version pinning.\n\nWhen the config is generated automatically, it should break if we have another gap in the config. My first implementation was also generic, but considered the gap detection to be more important. I can change it back if you strongly want it.",
+      "parentUuid": "ed879eb1_25b70657",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "692233e4_1c8b0c74",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2022-10-28T10:23:56Z",
       "side": 1,
       "message": "I think we should have something similar to what the comment in PreviousMilestone proposes. Because it is possible that milestone+1 is not in the file. If we have a loop that returns the next existing m+1 (or error) is generalisable and transparent to what the config file really contains.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 62
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1f6d8d_aec14fb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T11:16:15Z",
+      "side": 1,
+      "message": "We don\u0027t have an use case for finding the successor of M95 (we only need this for rollback). If we change the implementation above, I\u0027ll make it consistent.",
+      "parentUuid": "5f36b9b7_b32d0780",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -146,6 +194,30 @@
       "writtenOn": "2022-10-28T10:23:56Z",
       "side": 1,
       "message": "I do not understand what this does, was missing it before a bug?",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc922331_cd06dc16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T11:16:15Z",
+      "side": 1,
+      "message": "I only noticed when looking at the dumps, adding this suffix makes it easier to understand what\u0027s going on.",
+      "parentUuid": "1c5e9023_98a57577",
       "range": {
         "startLine": 53,
         "startChar": 32,
