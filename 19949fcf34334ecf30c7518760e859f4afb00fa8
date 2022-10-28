@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9d6ffb_25badda8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-28T01:09:28Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "7838cf2d_8e19ab51",
+      "range": {
+        "startLine": 149,
+        "startChar": 53,
+        "endLine": 149,
+        "endChar": 65
+      },
+      "revId": "19949fcf34334ecf30c7518760e859f4afb00fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
