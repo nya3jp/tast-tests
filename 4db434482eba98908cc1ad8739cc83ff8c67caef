@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e40752_ca6486f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T06:38:42Z",
+      "side": 1,
+      "message": "Ack, sounds good",
+      "parentUuid": "ce4acfa0_01d16399",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0afb67f_ac9b3d10",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "I didnt find any method related to ObjectPath, and directly call this on Service would output `type func() *\"chromiumos/tast/local/shill\".Service has no field or method ObjectPath`",
       "parentUuid": "361612f1_795d27cf",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d778b1e_6e56724a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T06:38:42Z",
+      "side": 1,
+      "message": "Sorry my bad... Could you try Service.DBusObject.ObjectPath?",
+      "parentUuid": "96f86ffa_905466b1",
       "range": {
         "startLine": 100,
         "startChar": 1,
