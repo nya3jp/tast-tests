@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2175497f_f34fdbf5",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T10:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11c0ed1_b352280e",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 62
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ab175bf_474ea8e5",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-28T10:37:14Z",
       "side": 1,
       "message": "Nit: The function name and comment is meaningful enough from readability perspective. It creates new Chrome instance then do something else.\n\nHow about NewChromeWithCameraSocketReady or something else.",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 24
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9e7ed6_52729530",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T10:58:57Z",
+      "side": 1,
+      "message": "I hope the new chrome does not need to be done after b/151270948 is fixed. This is why I chose that name.",
+      "parentUuid": "4ab175bf_474ea8e5",
       "range": {
         "startLine": 196,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9281b3d_df42b02f",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T10:58:57Z",
+      "side": 1,
+      "message": "That is cool :). Thanks!",
+      "parentUuid": "765eef48_e9431e1a",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e94140ec_23fd59f7",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae268fd_58e15059",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T10:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e94140ec_23fd59f7",
+      "range": {
+        "startLine": 226,
+        "startChar": 17,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c645840_e53b051c",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-10-28T10:37:14Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 230,
+        "startChar": 17,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac260db_1b920d57",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T10:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c645840_e53b051c",
       "range": {
         "startLine": 230,
         "startChar": 17,
