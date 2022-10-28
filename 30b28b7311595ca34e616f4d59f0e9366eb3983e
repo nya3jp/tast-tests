@@ -39,6 +39,30 @@
       },
       "revId": "30b28b7311595ca34e616f4d59f0e9366eb3983e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c95a748_d3765d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-28T00:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d05ff45_e6ed0b5a",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "30b28b7311595ca34e616f4d59f0e9366eb3983e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
