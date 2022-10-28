@@ -261,7 +261,7 @@ func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 		}
 		return nil
 	}
-	verifyBoundsTimeout := &testing.PollOptions{Timeout: 10 * time.Second}
+	verifyBoundsTimeout := &testing.PollOptions{Timeout: time.Minute}
 
 	var dragSteps []uiauto.Action
 	for i := 1; i < len(p); i++ {
