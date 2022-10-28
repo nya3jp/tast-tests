@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76dce9b2_8a763e0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-28T00:54:15Z",
+      "side": 1,
+      "message": "This will be done a second time at the end of the test due to the defer in line 116. Consider using a flag and checking that in the deferred code.",
+      "revId": "892688633e46771c726c8044c614e39ce5387d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
