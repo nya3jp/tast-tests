@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e539d0bb_9949d2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a7036f_fe9349a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "will it be better to use switch-case here?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0036671b_f729d341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "const dlFileName \u003d \"...\"",
+      "range": {
+        "startLine": 279,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 11
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc6df2b_54f7772f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "nit: missing ending period",
+      "range": {
+        "startLine": 296,
+        "startChar": 27,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94414b66_2b04acf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "ditto, maybe switch-case",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 85
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fc9076_935b2b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "does it make sense to have a copy of this value so we don\u0027t need to do the type cast every time?",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 345,
+        "endChar": 37
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87eddf85_abebc6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "\"fail\", I suppose tast_lint in upload hook should complain about this?",
+      "range": {
+        "startLine": 370,
+        "startChar": 27,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e66d9c_a0cded35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 375,
+        "startChar": 27,
+        "endLine": 375,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6f23b7_925fecd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 382,
+        "startChar": 27,
+        "endLine": 382,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c042a5d_c62d1cd4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "USBDrive (here and other places)\n\"Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2800291a_997d4b48",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "this function does not return an error?",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 71
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2db6c7_e483692d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 75
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ba0bf3_2acd7cb8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:35:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 71
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
