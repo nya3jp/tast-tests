@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed5a1b67_17cf2f2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T02:25:34Z",
+      "side": 1,
+      "message": "To be honest, it is just my guess. Do you prefer another timeout value?",
+      "parentUuid": "3c6851de_d1b3d4f6",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31be50fd_dbc48a04",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
@@ -118,6 +136,24 @@
       "writtenOn": "2022-10-28T02:13:11Z",
       "side": 1,
       "message": "This is for test extension on Login page.",
+      "parentUuid": "31be50fd_dbc48a04",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172c10e0_db3cfe41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T02:25:34Z",
+      "side": 1,
+      "message": "I am not sure but it is common practice if we want to use key without user login.",
       "parentUuid": "31be50fd_dbc48a04",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -209,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cef33ec_a6e35ead",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T02:25:34Z",
+      "side": 1,
+      "message": "Let\u0027s not worry about it for now. We can refactor it when necessary.",
+      "parentUuid": "7adc5f94_74caa079",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be488ac0_5098b47b",
@@ -222,6 +276,24 @@
       "writtenOn": "2022-10-27T23:53:30Z",
       "side": 1,
       "message": "seems that this file has more info than just gyro/accel data. is it ok to override an entire file? wouldn\u0027t it be better to override only gyro/accel specific data?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92720508_a2bf8c8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T02:25:34Z",
+      "side": 1,
+      "message": "Maybe we can. I copied this file directly during manual test. The only purpose of this file is to allow us to jump to the calibration page with specific component selected. Considering the complexity of state file, I prefer to keep it as it is. What\u0027s your thoughts?",
+      "parentUuid": "be488ac0_5098b47b",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -517,6 +589,24 @@
       "writtenOn": "2022-10-27T23:53:30Z",
       "side": 1,
       "message": "is this command board/model specific or would work on other boards as well?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a718645_919d5a57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-28T02:25:34Z",
+      "side": 1,
+      "message": "It should. If it doesn\u0027t, then it is a bug on that board.",
+      "parentUuid": "851530da_52767fd2",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
