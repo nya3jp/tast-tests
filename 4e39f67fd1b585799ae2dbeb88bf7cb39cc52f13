@@ -1,6 +1,144 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f879bc_e185ee75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "This should be at most 50 characters. How about:\n\n`rollback: Remove check for images before M100`\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23da5a33_7a07a6c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "nit: `rollback`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8064459b_97108cfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "Capitalize the first word here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5e9017_fc005cc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "This is confusing, mostly because the word `it` seems to refer to the verification but it actually refers to the milestone check. How about: \"We skip this verification on images from before M100, but such images are now obsolete so the test will no longer be run on them in the first place.\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e56b98_bf66aa2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 characters.\n\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16800ac3_e703e73b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:03:21Z",
+      "side": 1,
+      "message": "You\u0027re removing the milestone check, not the verification.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5830f0ac_d82b779f",
