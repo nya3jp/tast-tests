@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa1e855_24f85b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-28T00:05:46Z",
+      "side": 1,
+      "message": "Thanks! LGTM from tast-owners, I\u0027ll wait for one of the other area reviewers to CR+{1,2} before giving the final stamp.",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

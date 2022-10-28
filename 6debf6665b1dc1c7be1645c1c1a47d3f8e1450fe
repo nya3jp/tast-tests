@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb544039_f47744db",
+        "filename": "src/chromiumos/tast/local/audio/fake_usb_soundcard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-28T00:05:46Z",
+      "side": 1,
+      "message": "Ok. The concern here is I know there are a number of tests that do verify volume and in the event that this test gets scheduled before those tests and this doesn\u0027t get ran via cleanup, this might manifest itself in weird errors for those tests and makes for a large effort to potentially identify the culprit.",
+      "parentUuid": "2275c926_94e739dc",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abcfe278_9f23a3ec",
@@ -483,6 +507,30 @@
         "startChar": 70,
         "endLine": 135,
         "endChar": 71
+      },
+      "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a017a4_d619f790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-28T00:05:46Z",
+      "side": 1,
+      "message": "Ack. Thanks for the update!",
+      "parentUuid": "89f34112_0ae64b1f",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 28
       },
       "revId": "6debf6665b1dc1c7be1645c1c1a47d3f8e1450fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
