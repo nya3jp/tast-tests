@@ -66,6 +66,15 @@ func init() {
 				Fixture:           "loggedInToCUJUserLacros",
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
+			{
+				Name: "tablet_mode_lacros",
+				Val: windowarrangementcuj.TestParam{
+					BrowserType: browser.TypeLacros,
+					Tablet:      true,
+				},
+				Fixture:           "loggedInToCUJUserLacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
 		},
 	})
 }
