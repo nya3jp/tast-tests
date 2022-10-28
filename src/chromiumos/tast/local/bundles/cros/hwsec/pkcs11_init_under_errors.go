@@ -25,6 +25,9 @@ func init() {
 		Func: Pkcs11InitUnderErrors,
 		Desc: "Tests pkcs11 initialization under various system states",
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Val: &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI},
+		}},
 		Contacts: []string{
 			"chenyian@google.com",
 			"cros-hwsec@chromium.org",
@@ -60,6 +63,7 @@ func Pkcs11InitUnderErrors(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
 	cryptohome := helper.CryptohomeClient()
+	cryptohome.SetMountAPIParam(s.Param().(*hwsec.CryptohomeMountAPIParam))
 
 	// Ensure that the user directory is unmounted and does not exist.
 	if err := util.CleanupUserMount(ctx, cryptohome); err != nil {
