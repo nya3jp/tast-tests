@@ -40,5 +40,6 @@ service DataLeakPreventionService {
   rpc ClipboardCopyPaste(ActionRequest) returns (google.protobuf.Empty) {}
   rpc Print(ActionRequest) returns (google.protobuf.Empty) {}
   rpc Screenshot(ActionRequest) returns (google.protobuf.Empty) {}
+  rpc Screenshare(ActionRequest) returns (google.protobuf.Empty) {}
 }
 
