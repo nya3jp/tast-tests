@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9921de0_cda55658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T07:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c65b6b_14dc77f6",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92333d3b_c65b43c0",
