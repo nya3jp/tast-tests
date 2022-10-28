@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63667242_f2a7a0ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-28T08:59:50Z",
+      "side": 1,
+      "message": "nit: Remote the dot.",
+      "range": {
+        "startLine": 7,
+        "startChar": 71,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80260c47_c338ebeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-28T08:59:50Z",
+      "side": 1,
+      "message": "nit: Please use \ntast-tests\nor\nfamililink\n\nUsing \"tast\" suggests change in the framework. Rule of thumb -\u003e either package name (provides clear context of the change) or tast-tests (when multiple packages are affected)/",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c74be6ba_d30b0d55",
@@ -31,6 +77,23 @@
       "writtenOn": "2022-10-28T05:39:39Z",
       "side": 1,
       "message": "Thansk!",
+      "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6062bc_ab47fa0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-28T08:59:50Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "230ddc74964aa4d3eb9f5a3197a287938d95a233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
