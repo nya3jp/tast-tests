@@ -62,6 +62,54 @@
       },
       "revId": "bcef4b4a5f5c03eb5f9b8b43dda78e7433422005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50338aa7_79be4e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T18:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba6ca7f_da9298c5",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "bcef4b4a5f5c03eb5f9b8b43dda78e7433422005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69decd15_ef6c13fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T18:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e55de50_fe3ea758",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "bcef4b4a5f5c03eb5f9b8b43dda78e7433422005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
