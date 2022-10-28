@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493b913f_0e81bccb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-28T03:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392d1476_2ec66899",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "4cd5095430a2d3fd6785609d78298b9875f2b95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6a1db0_f99609f4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa89e40_02857d0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-28T03:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6a1db0_f99609f4",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "4cd5095430a2d3fd6785609d78298b9875f2b95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed6acd0e_833d5787",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-10-26T23:19:31Z",
       "side": 1,
       "message": "Could you tag b/231097154 as well since this CL removes a TODO?",
+      "revId": "4cd5095430a2d3fd6785609d78298b9875f2b95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac59449_c4476ec6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-10-28T03:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed6acd0e_833d5787",
       "revId": "4cd5095430a2d3fd6785609d78298b9875f2b95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
