@@ -39,7 +39,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:cuj"},
-		SoftwareDeps: []string{"chrome", "arc", "no_kernel_upstream"},
+		SoftwareDeps: []string{"chrome", "android_vm", "no_kernel_upstream"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
