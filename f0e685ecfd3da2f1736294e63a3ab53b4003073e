@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59bc3d7_036f67a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T08:04:26Z",
+      "side": 1,
+      "message": "Do you need to deal with else condition if it does not satisfy the condition?",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 2
+      },
+      "revId": "f0e685ecfd3da2f1736294e63a3ab53b4003073e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fe2618_836445c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T08:04:26Z",
+      "side": 1,
+      "message": "Please do not change the year when the file was created.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f0e685ecfd3da2f1736294e63a3ab53b4003073e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
