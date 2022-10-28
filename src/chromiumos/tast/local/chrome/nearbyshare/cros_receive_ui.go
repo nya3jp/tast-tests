@@ -146,3 +146,16 @@ func OpenWiFiNetworkListNotification(ctx context.Context, tconn *chrome.TestConn
 	}
 	return nil
 }
+
+// VerifyCouldNotSaveWiFiNetwork confirms that we got a notification stating we could not save the network
+func VerifyCouldNotSaveWiFiNetwork(ctx context.Context, tconn *chrome.TestConn, senderName, wifiName string, timeout time.Duration) error {
+	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+		ash.WaitTitleContains("Couldn't save"),
+		ash.WaitTitleContains(wifiName),
+		ash.WaitTitleContains(senderName),
+	); err != nil {
+		return errors.Wrap(err, "failed to wait for Wi-Fi networks notification")
+	}
+
+	return nil
+}
