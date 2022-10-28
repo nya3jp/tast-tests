@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9010497b_10c6d6bd",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T11:02:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc9e7ed6_52729530",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 24
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "765eef48_e9431e1a",
