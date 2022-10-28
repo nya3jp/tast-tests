@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c594f6_4f6dbc08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-10-28T07:02:49Z",
+      "side": 1,
+      "message": "LGTM please wait for LGTM from Xiangdong",
+      "revId": "c00f07037b39ac3b23e0fc6bf749bf4b4820b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
