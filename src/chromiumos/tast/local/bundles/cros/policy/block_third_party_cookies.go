@@ -260,7 +260,7 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 
 			ui := uiauto.New(tconn)
 			localhostText := nodewith.NameStartingWith("localhost").Role(role.StaticText)
-			ipButton := nodewith.NameStartingWith("127.0.0.1").Role(role.Button)
+			ipText := nodewith.NameStartingWith("127.0.0.1").Role(role.StaticText)
 			expandButton := nodewith.NameStartingWith("127.0.0.1").Role(role.Button).ClassName("icon-expand-more")
 			removeAllButton := nodewith.Name("Clear All Data").Role(role.Button)
 			confirmRemoveAllButton := nodewith.Name("Clear all").Role(role.Button)
@@ -282,7 +282,7 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 			}
 
 			if err := uiauto.Combine("check_and_clear_cookies",
-				ui.WaitUntilExists(ipButton),
+				ui.WaitUntilExists(ipText),
 				checkCookieExistence,
 				ui.LeftClick(removeAllButton),
 				ui.WaitUntilExists(confirmRemoveAllButton),
