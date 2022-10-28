@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4b5504_0db01ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T21:38:21Z",
+      "side": 1,
+      "message": "Please run `gofmt`. It would remove this space because it doesn\u0027t try to line up values that are separated by a comment.",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 221,
+        "endChar": 22
+      },
+      "revId": "b1dd20a6785d4ecadccb39fc55dc2db3035d5e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
