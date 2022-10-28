@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eff6edf_f524e577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T05:47:52Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "51edecb215611d0a30d8a09fe4a56f9ea4876147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331199d8_f3918362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T05:47:52Z",
+      "side": 1,
+      "message": "Please add a TODO bug for adding Lacros test. Thanks.",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "51edecb215611d0a30d8a09fe4a56f9ea4876147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5994d648_f7d16a28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T05:47:52Z",
+      "side": 1,
+      "message": "nit: please do not omit errors at any time.",
+      "range": {
+        "startLine": 688,
+        "startChar": 9,
+        "endLine": 688,
+        "endChar": 10
+      },
+      "revId": "51edecb215611d0a30d8a09fe4a56f9ea4876147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
