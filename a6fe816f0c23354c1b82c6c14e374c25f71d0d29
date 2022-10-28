@@ -39,6 +39,30 @@
       },
       "revId": "a6fe816f0c23354c1b82c6c14e374c25f71d0d29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9815dadf_06c8634f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-28T16:41:58Z",
+      "side": 1,
+      "message": "let\u0027s keep this - we do use this flavour of UI in some cases (there\u0027s a11y setting to enable it), so testing it makes sense.",
+      "parentUuid": "71f66508_6e4563cd",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "a6fe816f0c23354c1b82c6c14e374c25f71d0d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
