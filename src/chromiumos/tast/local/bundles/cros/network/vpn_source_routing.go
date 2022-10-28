@@ -62,10 +62,7 @@ func VPNSourceRouting(ctx context.Context, s *testing.State) {
 	}
 	defer rt.Cleanup(cleanupCtx)
 
-	vsvr, err := env.New("vserver")
-	if err != nil {
-		s.Fatal("Failed to create server: ", err)
-	}
+	vsvr := env.New("vserver")
 	if err := vsvr.SetUp(ctx); err != nil {
 		s.Fatal("Failed to setup server: ", err)
 	}
