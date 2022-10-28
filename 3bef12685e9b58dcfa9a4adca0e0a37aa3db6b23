@@ -16,6 +16,69 @@
       "message": "It is ready for another round of review. Thanks,",
       "revId": "3bef12685e9b58dcfa9a4adca0e0a37aa3db6b23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc9eec5_b986e040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-28T22:18:18Z",
+      "side": 1,
+      "message": "It seems that the ash variant of the test is broken right now and I am not able to successfully run either of those tests. If you were able to verify this tests locally earlier feel free to move forward with landing that.\n\nI will add more comments to the bug regarding the verification that the user is signed into the browser.",
+      "revId": "3bef12685e9b58dcfa9a4adca0e0a37aa3db6b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73b1620_31ea1774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-28T22:18:18Z",
+      "side": 1,
+      "message": "Nit: We decided to assign to zork@chromium.org for now.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "3bef12685e9b58dcfa9a4adca0e0a37aa3db6b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5496f97c_71617dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-28T22:18:18Z",
+      "side": 1,
+      "message": "SGTM for this TODO.\nAs mentioned before I think we verify secondary account in LaCrOS and Ash in a similar way. Two options out of the top of my mind:\n1. Use chrome://family-link-user-internals debug UI\n2. Navigate to any Google 1p website and open the account picker.\nI will add more details to the bug.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 101
+      },
+      "revId": "3bef12685e9b58dcfa9a4adca0e0a37aa3db6b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
