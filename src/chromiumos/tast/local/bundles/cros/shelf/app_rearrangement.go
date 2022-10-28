@@ -6,7 +6,6 @@ package shelf
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -293,34 +292,34 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	// Update appIDsToPin based on the test type.
 	switch testAppType {
 	case chromeAppTest:
-		fakeAppIDs, err := fakeAppIDs(ctx, tconn)
+		fakeApps, err := ash.InstalledFakeApps(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to get fake app names when the test type is ChromeAppTest: ", err)
 		}
 
-		if len(fakeAppIDs) != 2 {
-			s.Fatalf("Failed to find all fake apps: want 2; got %q: ", len(fakeAppIDs))
+		if len(fakeApps) != 2 {
+			s.Fatalf("Failed to find all fake apps: want 2; got %q: ", len(fakeApps))
 		}
 
-		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
-		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
-		updatedAppIDsInPinOrder = []string{fakeAppIDs[0], browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
-		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeAppIDs[1], apps.Settings.ID, fakeAppIDs[0]}
+		appIDsToPin = []string{apps.Settings.ID, fakeApps[1].AppID, fakeApps[0].AppID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeApps[1].AppID, fakeApps[0].AppID}
+		updatedAppIDsInPinOrder = []string{fakeApps[0].AppID, browserApp.ID, apps.Settings.ID, fakeApps[1].AppID}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeApps[1].AppID, apps.Settings.ID, fakeApps[0].AppID}
 
 	case fileAppTest:
-		fakeAppIDs, err := fakeAppIDs(ctx, tconn)
+		fakeApps, err := ash.InstalledFakeApps(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to get fake app names when the test type is FileAppTest: ", err)
 		}
 
-		if len(fakeAppIDs) != 2 {
-			s.Fatalf("Failed to find all fake apps: want 2; got %q: ", len(fakeAppIDs))
+		if len(fakeApps) != 2 {
+			s.Fatalf("Failed to find all fake apps: want 2; got %q: ", len(fakeApps))
 		}
 
-		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
-		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
-		updatedAppIDsInPinOrder = []string{apps.FilesSWA.ID, browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
-		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeAppIDs[1], apps.Settings.ID, apps.FilesSWA.ID}
+		appIDsToPin = []string{apps.Settings.ID, fakeApps[1].AppID, apps.FilesSWA.ID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeApps[1].AppID, apps.FilesSWA.ID}
+		updatedAppIDsInPinOrder = []string{apps.FilesSWA.ID, browserApp.ID, apps.Settings.ID, fakeApps[1].AppID}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeApps[1].AppID, apps.Settings.ID, apps.FilesSWA.ID}
 
 	case pwaAppTest:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -583,21 +582,6 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
 		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 	}
-}
-
-func fakeAppIDs(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
-	fakeAppIDs := make([]string, 0)
-	installedApps, err := ash.ChromeApps(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the installed apps")
-	}
-	for _, app := range installedApps {
-		if strings.Contains(app.Name, "fake") {
-			fakeAppIDs = append(fakeAppIDs, app.AppID)
-		}
-	}
-
-	return fakeAppIDs, nil
 }
 
 func startDragAction(tconn *chrome.TestConn, actionName string, dragStartLocation coords.Point) uiauto.Action {

@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"sort"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -992,40 +991,30 @@ func swipeHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestCon
 	return nil
 }
 
+// EnterShelfOverflowWithFakeApps uses fake apps to simulate overflow.
+func EnterShelfOverflowWithFakeApps(ctx context.Context, tconn *chrome.TestConn, underRTL bool) error {
+	fakeApps, err := InstalledFakeApps(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the installed fake apps")
+	}
+	return EnterShelfOverflow(ctx, tconn, underRTL, fakeApps)
+}
+
 // EnterShelfOverflow pins enough shelf icons to enter overflow mode. underRTL is true
 // if the UI adapts to right-to-left languages.
-func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn, underRTL bool) error {
+// The `appsToPin` is a list of the apps to pin. To simulate overflow it has to include
+// at least 10 apps.
+// Pass in fake apps to avoid the situation where some apps may disappear after pinned
+// that makes the shelf not overflow unexpectedly.
+func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn, underRTL bool, appsToPin []*ChromeApp) error {
 	// Number of pinned apps in each round of loop.
 	const batchNumber = 10
+	if len(appsToPin) < batchNumber {
+		return errors.Errorf("got %d apps, want at least %d apps", len(appsToPin), batchNumber)
+	}
 
 	// Total amount of pinned apps.
 	sum := 0
-
-	// Poll on ChromeApps to check if the fake apps are installed for use.
-	var installedApps []*ChromeApp
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		installedApps, err = ChromeApps(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to obtain the list of the installed apps")
-		}
-
-		// Some apps will disappear after pinned and make the shelf not overflow.
-		// Choose fake apps to prevent the problem.
-		var apps []*ChromeApp
-		for _, app := range installedApps {
-			if strings.HasPrefix(app.Name, "fake") {
-				apps = append(apps, app)
-			}
-		}
-		installedApps = apps
-		if len(installedApps) == 0 {
-			return errors.New("no fake apps found")
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for fake apps to be installed")
-	}
 
 	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -1060,11 +1049,11 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn, underRTL bo
 		}
 
 		sum += batchNumber
-		if sum > len(installedApps) {
-			return testing.PollBreak(errors.Errorf("got %d apps, want at least %d apps", len(installedApps), sum))
+		if sum > len(appsToPin) {
+			return testing.PollBreak(errors.Errorf("got %d apps, want at least %d apps", len(appsToPin), sum))
 		}
 
-		for _, app := range installedApps[sum-batchNumber : sum] {
+		for _, app := range appsToPin[sum-batchNumber : sum] {
 			if err := PinApp(ctx, tconn, app.AppID); err != nil {
 				return testing.PollBreak(errors.Wrapf(err, "failed to pin app %s", app.AppID))
 			}
