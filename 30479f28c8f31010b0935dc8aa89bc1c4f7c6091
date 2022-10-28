@@ -516,6 +516,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bda37798_29de8c94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510217
+      },
+      "writtenOn": "2022-10-28T07:39:32Z",
+      "side": 1,
+      "message": "The file is in json format, you can indent it to make it more readable. If you just want to jump to the state and want to maintain the file, we can discuss the content and format.",
+      "parentUuid": "cb9c2ecb_fa749b4e",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ee2db48_78e82f42",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 1
