@@ -87,7 +87,7 @@ func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 		binary:               newCryptohomeBinary(r),
 		cryptohomePathBinary: newCryptohomePathBinary(r),
 		daemonController:     NewDaemonController(r),
-		mountAPI:             OldCryptohomeMountAPI,
+		mountAPI:             AuthFactorMountAPI,
 	}
 }
 
