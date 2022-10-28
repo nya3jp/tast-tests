@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fd40735_0fd68fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-28T20:07:44Z",
+      "side": 1,
+      "message": "Thank you. I separated the browser integration into another test file and moved the GetScreenshot() and TakeScreenshot() function into holdingspace from screenshot.go so that both tests can use those functions.",
+      "parentUuid": "ced992d7_a67738c2",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "f74a570f293842ebb4df9b908b9c6cb89b707173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99e5906e_0a30fa9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2022-10-25T23:34:47Z",
       "side": 1,
       "message": "This changes the meaning of the input parameter. When changing meaning, API names, param names/types, documentation should all be updated appropriately :)",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 42
+      },
+      "revId": "f74a570f293842ebb4df9b908b9c6cb89b707173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac002b4_77ac170b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-28T20:07:44Z",
+      "side": 1,
+      "message": "Thank you, added a comment for it. :)",
+      "parentUuid": "19009243_4daa6d19",
       "range": {
         "startLine": 463,
         "startChar": 0,
