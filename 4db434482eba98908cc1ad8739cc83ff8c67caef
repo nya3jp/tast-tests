@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "662054fa_f864f16f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "You mean to test lockdown mode blocks direct traffic? The bug doesnt mention that part though, @hugobenichi@google.com shall we add that part in this test as well?",
+      "parentUuid": "1810612a_f22f2466",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03666d90_12558418",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-28T01:58:24Z",
       "side": 1,
       "message": "nit: OpenVPN",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1ed3dd_d43024a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03666d90_12558418",
       "range": {
         "startLine": 38,
         "startChar": 30,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce4acfa0_01d16399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "I thought we need a test profile on top of global default profile in order to prevent polluting test environment? Perhaps I understood it wrongly..",
+      "parentUuid": "c1ccedda_6e615e98",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0afb67f_ac9b3d10",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
         "patchSetId": 4
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-28T01:58:24Z",
       "side": 1,
       "message": "I suppose we can call SetProperty direclty on profile since PropertyHodler is embedded in Profile",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b89da3_c6b0fe32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0afb67f_ac9b3d10",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -156,6 +252,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e886b50e_289cca07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03e0c88_d1c2dd46",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 11
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1a7662_dd03b8f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043bba02_15273c7e",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 49
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361612f1_795d27cf",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-10-28T01:58:24Z",
       "side": 1,
       "message": "As discussed offline, I would suggest just expose service\nThere should be an ObjectPath() method on Service to get the service path",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f86ffa_905466b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-28T05:55:55Z",
+      "side": 1,
+      "message": "I didnt find any method related to ObjectPath, and directly call this on Service would output `type func() *\"chromiumos/tast/local/shill\".Service has no field or method ObjectPath`",
+      "parentUuid": "361612f1_795d27cf",
       "range": {
         "startLine": 100,
         "startChar": 1,
