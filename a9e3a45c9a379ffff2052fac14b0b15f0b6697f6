@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c724c8d_a762311b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T17:13:47Z",
+      "side": 1,
+      "message": "Is there any simple way a developer could recreate these in the future? (if, say, we change the protocol format)\n\nIf not, I think we should look into adding new commands into `cryptohome-test-tool` that would generate such blobs for the test.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0eeddf_9f83ba6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T17:13:47Z",
+      "side": 1,
+      "message": "This chunk of code is duplicated below. Maybe extract into a helper function, like `ExpectCryptohomeErrorCode`?\n\nAlso this helper could be implemented in a shared place (likely `tast/common/cryptohome/helpers.go`), so that other tests that need similar assertions can reuse it.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
