@@ -16,6 +16,24 @@
       "message": "This will be done a second time at the end of the test due to the defer in line 116. Consider using a flag and checking that in the deferred code.",
       "revId": "892688633e46771c726c8044c614e39ce5387d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91c658b_102e8b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2022-10-28T17:52:27Z",
+      "side": 1,
+      "message": "Thanks Georg for reviewing it, after a discussion with my coworker Avery he mentioned the case is already handled here: \n```\nThis will handle the case where overview mode is not active when the deferred code runs:\nhttps://source.chromium.org/chromium/chromium/src/+/main:ash/wm/overview/overview_test_api.cc;drc\u003d50d8da971873550eb909b9c177cf6188e81ff4c3;l\u003d32\n```\nI\u0027ll go ahead and submit this cl.",
+      "parentUuid": "76dce9b2_8a763e0a",
+      "revId": "892688633e46771c726c8044c614e39ce5387d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
