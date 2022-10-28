@@ -135,14 +135,9 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			// Unlock the screen if needed.
 			if state.Locked {
 				s.Log("Unlocking the screen with password")
-				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 10*time.Second); err != nil {
-					s.Fatalf("Failed to wait until lock screen is ready for password: %v (last status %+v)", err, st)
-				}
-				if err := lockscreen.EnterPassword(ctx, tconn, fixtures.Username, fixtures.Password, kb); err != nil {
+
+				if err := lockscreen.UnlockWithPassword(ctx, tconn, fixtures.Username, fixtures.Password, kb, 10*time.Second, 30*time.Second); err != nil {
 					s.Fatal("Failed to unlock the screen: ", err)
-				}
-				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
-					s.Errorf("Failed to wait for screen to be unlocked: %v (last status %+v)", err, st)
 				}
 			}
 		})
