@@ -49,7 +49,7 @@ func MenuOverflow(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
 
-	if err := ash.EnterShelfOverflow(ctx, tconn, false /* underRTL */); err != nil {
+	if err := ash.EnterShelfOverflowWithFakeApps(ctx, tconn, false /* underRTL */); err != nil {
 		s.Fatal("Failed to enter shelf overflow: ", err)
 	}
 

@@ -221,7 +221,7 @@ func OverflowShelfAlignment(ctx context.Context, s *testing.State) {
 	// 2. Pinning the Settings app then checking the arrow buttons
 	// 3. Scrolling the overflow to the end then checking the arrow buttons
 
-	if err := ash.EnterShelfOverflow(ctx, tconn, isRTL); err != nil {
+	if err := ash.EnterShelfOverflowWithFakeApps(ctx, tconn, isRTL); err != nil {
 		s.Fatal("Failed to enter overflow mode: ", err)
 	}
 
