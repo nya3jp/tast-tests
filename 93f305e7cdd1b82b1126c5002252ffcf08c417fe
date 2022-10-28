@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eee3ba7_e498d365",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-10-28T09:29:02Z",
+      "side": 1,
+      "message": "I think you can re-use `chromiumos/tast/local/hostapd` and define a config generator the creates the conf you want. Then you\u0027ll be able to check the station connects to the access point using the `monitor`. But maybe that\u0027s overkill for what you\u0027re doing.",
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db87dc6c_a2278220",
         "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
         "patchSetId": 1
