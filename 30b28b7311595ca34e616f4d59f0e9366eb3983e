@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "946a4eb0_f853a83e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-28T01:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c46414f_2d0174cc",
+      "revId": "30b28b7311595ca34e616f4d59f0e9366eb3983e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b723da_bad3d698",
@@ -95,6 +113,24 @@
       "writtenOn": "2022-10-28T00:56:03Z",
       "side": 1,
       "message": "This should be \"processType\" according to style guide, as it\u0027s not exported. Analogous for the other two.",
+      "revId": "30b28b7311595ca34e616f4d59f0e9366eb3983e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b54e338_e5defba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-28T01:29:52Z",
+      "side": 1,
+      "message": "It needs to be exported for Store() to work correctly. Store() only sees exported fields",
+      "parentUuid": "17b723da_bad3d698",
       "revId": "30b28b7311595ca34e616f4d59f0e9366eb3983e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
