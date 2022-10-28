@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd4c5d2c_03ecd80b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-28T05:54:47Z",
+      "side": 1,
+      "message": "Can Lacros be used for ShimlessRMA? Maybe Cheng-han or who/kamilszarek know about this?",
+      "parentUuid": "bab8d522_870c5b7a",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c6851de_d1b3d4f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
