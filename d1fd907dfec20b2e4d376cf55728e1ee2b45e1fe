@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99b1d32_9a4abccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-28T20:13:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this have a hardware dep which is the opposite of hwdep.Cellular?",
+      "revId": "d1fd907dfec20b2e4d376cf55728e1ee2b45e1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
