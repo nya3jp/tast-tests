@@ -46,6 +46,30 @@
       },
       "revId": "5331891e17b75444a8cb10e74709e3daa5f45eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46146da9_a29adb3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:41:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0ec05b7_2d233ea4",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 124
+      },
+      "revId": "5331891e17b75444a8cb10e74709e3daa5f45eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
