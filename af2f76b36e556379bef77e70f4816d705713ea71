@@ -16,6 +16,23 @@
       "message": "Thank you all for taking a look at this change! I went ahead and responded to your comments below and made requested changes, PTAL!",
       "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00edaa57_2e4e234c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-28T15:19:07Z",
+      "side": 1,
+      "message": "Friendly ping to take a look at this change whenever y\u0027all have a moment :)",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "226ee2f5_770c6211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-28T15:19:07Z",
+      "side": 1,
+      "message": "Sweet, okay! Thank you Harpreet :)",
+      "parentUuid": "433dd04b_62ea5ab7",
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b9ab6f7_554805ac",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
         "patchSetId": 8
