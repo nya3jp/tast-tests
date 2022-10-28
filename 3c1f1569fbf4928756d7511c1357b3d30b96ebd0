@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac471fd0_544c4f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb80d8fe_6bbea544",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4812cd85_123e1cb4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-28T12:07:16Z",
       "side": 1,
       "message": "nit: USB",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d5de95_143eb668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4812cd85_123e1cb4",
       "range": {
         "startLine": 40,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "392d6c1d_96c51136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28010ed6_700ea2d2",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0198e137_179cb5b0",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-28T12:07:16Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 182,
+        "startChar": 37,
+        "endLine": 182,
+        "endChar": 40
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a00dffc_0ee7ce17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0198e137_179cb5b0",
       "range": {
         "startLine": 182,
         "startChar": 37,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3262a0e9_dafdb95e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1486561_0a721bac",
+      "range": {
+        "startLine": 369,
+        "startChar": 17,
+        "endLine": 369,
+        "endChar": 20
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9591b8e3_c248e43a",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-28T12:07:16Z",
       "side": 1,
       "message": "nit: USB",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 22
+      },
+      "revId": "3c1f1569fbf4928756d7511c1357b3d30b96ebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71f658d_9358214b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T15:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9591b8e3_c248e43a",
       "range": {
         "startLine": 391,
         "startChar": 19,
