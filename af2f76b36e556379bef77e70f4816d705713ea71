@@ -68,6 +68,24 @@
       "parentUuid": "aba0b922_f6924345",
       "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78488d1_86d8f9a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-10-28T21:04:51Z",
+      "side": 1,
+      "message": "+1 on landing this CL.\nThe question can be answered offline in the email.",
+      "parentUuid": "a2eb86b1_c66c4287",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
