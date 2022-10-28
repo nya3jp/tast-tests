@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6725e6_80f7ab8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-28T17:15:19Z",
+      "side": 1,
+      "message": "with a nit.",
+      "revId": "21dacd957dcbf1de423ed16773ab25dd9e8366d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5964220a_eea88751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_remount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-28T17:15:19Z",
+      "side": 1,
+      "message": "As we are here can you add a comment parameter for this boolean false /*create*/?\nAnd it is interesting why it was true before?",
+      "range": {
+        "startLine": 124,
+        "startChar": 123,
+        "endLine": 124,
+        "endChar": 128
+      },
+      "revId": "21dacd957dcbf1de423ed16773ab25dd9e8366d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
