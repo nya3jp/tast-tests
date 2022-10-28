@@ -170,6 +170,24 @@
       "parentUuid": "d1570a3a_5a316053",
       "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbad67a_c2b32b77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-10-28T03:37:27Z",
+      "side": 1,
+      "message": "With `powerd_dbus_suspend` and the `--wakeup_timeout` arg it provides, I think we can run the camera suspend test as a local test ([example][1]).\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/power/time_taken_suspend_resume.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d179",
+      "parentUuid": "2e0f2072_b5db2e48",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
