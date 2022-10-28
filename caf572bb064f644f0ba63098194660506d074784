@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c490095b_10bdd7c1",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-28T03:41:27Z",
+      "side": 1,
+      "message": "Is it common to call New without calling SetUp? If not, why not combine the two?",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "caf572bb064f644f0ba63098194660506d074784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
