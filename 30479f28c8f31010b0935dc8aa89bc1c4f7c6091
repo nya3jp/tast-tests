@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fea59ba4_8caae339",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-28T02:30:24Z",
+      "side": 1,
+      "message": "Ideally the timeout should be as short as possible to avoid wasting resources when something started hanging unexpectedly, but without causing flaky failures. I think default is 5 minutes.",
+      "parentUuid": "ed5a1b67_17cf2f2c",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31be50fd_dbc48a04",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
@@ -294,6 +312,24 @@
       "side": 1,
       "message": "Maybe we can. I copied this file directly during manual test. The only purpose of this file is to allow us to jump to the calibration page with specific component selected. Considering the complexity of state file, I prefer to keep it as it is. What\u0027s your thoughts?",
       "parentUuid": "be488ac0_5098b47b",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9c2ecb_fa749b4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-10-28T02:30:24Z",
+      "side": 1,
+      "message": "I guess Cheng-han should know better, I\u0027d leave this decision to him. (or Gavin)",
+      "parentUuid": "92720508_a2bf8c8c",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
