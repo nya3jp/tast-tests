@@ -87,11 +87,11 @@ func TestAudioLoopbackCorrectnessParams(t *testing.T) {
 		incorrectSlicesLimit int
 	}{{ // Normal device tier
 		hwdep:                `hwdep.D(hwdep.SkipOnModel(lowPerformanceModel...))`,
-		incorrectSlicesLimit: 2,
+		incorrectSlicesLimit: 25,
 	}, { // Low performance device tier
 		name:                 "lowperf",
 		hwdep:                `hwdep.D(hwdep.Model(lowPerformanceModel...))`,
-		incorrectSlicesLimit: 10,
+		incorrectSlicesLimit: 50,
 	}} {
 		for _, tc := range testcases {
 			params = append(params, paramData{
