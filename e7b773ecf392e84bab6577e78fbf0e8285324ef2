@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5669ef3a_d3c70e00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T06:21:28Z",
+      "side": 1,
+      "message": "Thanks for the test.\n\nThis one is testing the connection pinning based on connection marking, we should maybe clarify on the comment that this is slightly different from the other forms of network bindings that we could also test (in separate test cases maybe):\n  - bind() to the src IP of the secondary network\n  - setsockopt(SO_BINDTODEVICE)\nBoth should work both before and after the new high priority network has connected.",
+      "revId": "e7b773ecf392e84bab6577e78fbf0e8285324ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
