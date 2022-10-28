@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a590838c_33aaedf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-28T21:00:27Z",
+      "side": 1,
+      "message": "I dunno, I struggle to figure out how to incorporate some of these cases into existing tests. Usually there\u0027s something I could just add them on to, but the it sort of feels like making a test which is a mishmash of different things?\n\nNot really sure what the right answer is. I can ditch this and just throw extra verify-only authenticate calls into existing tests, does that give us the coverage we want?",
+      "parentUuid": "f8fa9848_744fe7ff",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "829859c8_8683082b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "writtenOn": "2022-10-28T18:03:26Z",
       "side": 1,
       "message": "Hmm where is the VK-vs-USS parameterized?",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac379bb6_9b403eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-28T21:00:27Z",
+      "side": 1,
+      "message": "The fixture takes care of that.",
+      "parentUuid": "829859c8_8683082b",
       "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300fd82e_f977c778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-28T21:00:27Z",
+      "side": 1,
+      "message": "I think so? In previous tests I couldn\u0027t create ephemeral users on unmanaged machines.\n\nMaybe there\u0027s some other way to set things up so that they work, but nobody else was able to give me a better working solution for how to do so and this one was already in use in some of the tests, so I\u0027ve reused it elsewhere (maybe I should make it a fixture of its own).",
+      "parentUuid": "f70855ce_598083e2",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd5a78ec_cd45085c",
@@ -100,6 +154,30 @@
       "writtenOn": "2022-10-28T19:39:42Z",
       "side": 1,
       "message": "Could AuthIntent from the AuthenticateAuthFactorReply be used to test whether the lightweight verification is used?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 3
+      },
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b80077c_10a208b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-28T21:00:27Z",
+      "side": 1,
+      "message": "Do you mean, add checking of the intents reported by it? That probably makes sense. I\u0027ll see what I can do.",
+      "parentUuid": "dd5a78ec_cd45085c",
       "range": {
         "startLine": 166,
         "startChar": 0,
