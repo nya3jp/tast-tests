@@ -561,3 +561,17 @@ func (c *Connection) connectService(ctx context.Context) (bool, error) {
 
 	return state != shillconst.ServiceStateFailure, nil
 }
+
+// IsConnected checks the connection state of a connection.
+func (c *Connection) IsConnected(ctx context.Context) (bool, error) {
+	connected, err := c.service.IsConnected(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get IsConnected")
+	}
+	return connected, nil
+}
+
+// GetService gets service of this connection.
+func (c *Connection) GetService() *shill.Service {
+	return c.service
+}
