@@ -16,6 +16,24 @@
       "message": "@rrsilva@google.com: Is it safe to call Oobe.switchToEnterpriseEnrollmentForTesting without calling OobeAPI.skipToLoginForTesting?",
       "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e083ddf4_f241ad20",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-28T13:17:22Z",
+      "side": 0,
+      "message": "Hi Victor, I will take a look. I\u0027ve also filed http://b/255972416 regarding this `skipToLoginForTesting` for some other flow. \n\nI wonder if we should replace these `*forTesting` \u0027shortcuts\u0027 with something that would resemble the actual flow on the device more genuinely, since these are end to end tests. Currently, they go directly into the browser and change things there, but maybe they should just keep the actions within the frontend to mimic the real flow. What do you think?",
+      "parentUuid": "babad9a8_453aa849",
+      "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
