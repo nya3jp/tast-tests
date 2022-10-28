@@ -16,6 +16,24 @@
       "message": "This could just be me, but I\u0027m not sure how I feel about the nondescript nature of this function name. Seems weird to have users read through the code (without seeing this definition), and have to highlight the bug number to see what its about.\n\nWhat about `getAllNonPipWindows`? With the same comment as written here.",
       "revId": "5fadb85b8421b421ccc29564ef8a092eb3172834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0d0cfd_a08a28f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T19:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39840335_28fcd835",
+      "revId": "5fadb85b8421b421ccc29564ef8a092eb3172834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
