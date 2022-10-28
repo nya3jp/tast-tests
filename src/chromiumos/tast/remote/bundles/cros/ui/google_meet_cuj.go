@@ -28,8 +28,11 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.ui.ConferenceService",
 		},
-		Data: []string{conference.CameraVideo},
-		Vars: []string{"ui.use_real_camera"},
+		Data: []string{conference.CameraVideo, conference.TraceConfigFile},
+		Vars: []string{
+			"ui.use_real_camera",
+			"ui.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
+		},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -241,6 +244,15 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
 	}
+
+	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {
+		remoteTraceConfigFilePath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.TraceConfigFile)
+		if err != nil {
+			s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+		}
+		defer dut.Conn().CommandContext(ctx, "rm", remoteTraceConfigFilePath).Run()
+	}
+
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,

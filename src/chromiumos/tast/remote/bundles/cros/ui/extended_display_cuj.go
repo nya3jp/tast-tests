@@ -29,9 +29,9 @@ func init() {
 		Vars: []string{
 			"ui.chameleon_addr",         // Only needed when using chameleon board as extended display.
 			"ui.chameleon_display_port", // The port connected as extended display. Default is 3.
-
+			"ui.collectTrace",           // Optional. Expecting "enable" or "disable", default is "disable".
 		},
-		Data: []string{conference.CameraVideo},
+		Data: []string{conference.CameraVideo, conference.TraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "premium_meet_large",
@@ -110,8 +110,14 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {
+		remoteTraceConfigFilePath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.TraceConfigFile)
+		if err != nil {
+			s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+		}
+		defer dut.Conn().CommandContext(ctx, "rm", remoteTraceConfigFilePath).Run()
+	}
 	client := pb.NewConferenceServiceClient(c.Conn)
-
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
 		RoomType:        int64(param.RoomType),
