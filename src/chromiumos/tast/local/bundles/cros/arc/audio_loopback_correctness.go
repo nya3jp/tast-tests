@@ -83,7 +83,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -96,7 +96,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -109,7 +109,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -122,7 +122,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -135,7 +135,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -148,7 +148,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -161,7 +161,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -174,7 +174,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModePowerSaving,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -187,7 +187,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeLowLatency,
 					},
-					incorrectSlicesLimit: 2,
+					incorrectSlicesLimit: 20,
 				},
 			},
 			{
@@ -200,7 +200,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -213,7 +213,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -226,7 +226,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -239,7 +239,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -252,7 +252,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -265,7 +265,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -278,7 +278,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeNone,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -291,7 +291,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModePowerSaving,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 			{
@@ -304,7 +304,7 @@ func init() {
 						ChannelConfig:   arcaudio.ChannelConfigOutStereo,
 						PerformanceMode: arcaudio.PerformanceModeLowLatency,
 					},
-					incorrectSlicesLimit: 10,
+					incorrectSlicesLimit: 50,
 				},
 			},
 		},
