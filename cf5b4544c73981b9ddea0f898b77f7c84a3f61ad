@@ -67,6 +67,41 @@
       "message": "LGTM",
       "revId": "cf5b4544c73981b9ddea0f898b77f7c84a3f61ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc444a8_ec8ebdf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-28T14:35:59Z",
+      "side": 1,
+      "message": "Thanks for taking a look over! The fix has been verified.",
+      "revId": "cf5b4544c73981b9ddea0f898b77f7c84a3f61ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d533ef5f_250c491e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-28T14:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9928958_ba07ad4c",
+      "revId": "cf5b4544c73981b9ddea0f898b77f7c84a3f61ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
