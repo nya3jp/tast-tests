@@ -6,6 +6,8 @@ package crostini
 
 import (
 	"context"
+	"fmt"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -328,6 +330,10 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if f.tconn, err = f.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
+	ownerID, err := cryptohome.UserHash(ctx, f.cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get owner ID: ", err)
+	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, f.tconn)
 
 	if f.kb, err = input.Keyboard(ctx); err != nil {
@@ -351,7 +357,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if err != nil {
 		s.Log("Can't record initial restart metrics: ", err)
 	}
-	if checkKeepState(s) && terminaDLCAvailable() {
+	if checkKeepState(s) && terminaDiskExists(ownerID) {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		if err = f.launchExitTerminal(ctx); err != nil {
 			s.Fatal("KeepState error: ", err)
@@ -516,11 +522,17 @@ func checkKeepState(s *testing.FixtState) bool {
 	return false
 }
 
+// terminaDiskExists returns true if the termina disk exists.
+func terminaDiskExists(ownerID string) bool {
+	_, err := os.Stat(fmt.Sprintf("/run/daemon-store/crosvm/%s/dGVybWluYQ==.img", ownerID))
+	return err == nil
+}
+
 // generateChromeOpts generates common chrome options for crostini fixtures.
 func generateChromeOpts(s *testing.FixtState) []chrome.Option {
 	opts := []chrome.Option{chrome.ExtraArgs("--vmodule=crostini*=1")}
 
-	useLocalImage := checkKeepState(s) && terminaDLCAvailable()
+	useLocalImage := checkKeepState(s)
 	if useLocalImage {
 		// Retain the user's cryptohome directory and previously installed VM.
 		opts = append(opts, chrome.KeepState())
