@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "357aa3e2_ae3ba795",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "It seems better to use a struct type than string.\n\ntype sensor struct{\n    name string\n    stateFilePath string\n}\n\nsenorAccel \u003d sensor{\n    \"accel\",\n    \"state_files/lid_accel_calibration.json\",\n}",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138bc458_ef4f4b6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "Since it is a SWA, I am afraid Lacros might also be needed. SWA will use Lacros too.\ngo/webapps-lacros",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c6851de_d1b3d4f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
         "patchSetId": 1
@@ -31,6 +77,93 @@
       "writtenOn": "2022-10-27T23:53:30Z",
       "side": 1,
       "message": "Is this a new thing to allow customizing the test extension without patching Tast?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c439aec5_05ac3d71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "This is for test extension on Login page.",
+      "parentUuid": "31be50fd_dbc48a04",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1291cba3_c358e06a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "optional nit: This log is not necessary.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c895516f_4e653a6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: nice to add the file path in the fail log.\n\ns.Fatalf(\"Fail to read state file at %q on host: %v\", statePath, err)",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5163c95_2c03b835",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: please do not ignore the err from Sleep.",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 14
+      },
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +228,190 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2f0088b_01da5bbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: action description should start with lowercase.",
+      "range": {
+        "startLine": 231,
+        "startChar": 27,
+        "endLine": 231,
+        "endChar": 36
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35b905b_6f369193",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: Errors should not be omitted.",
+      "range": {
+        "startLine": 239,
+        "startChar": 9,
+        "endLine": 239,
+        "endChar": 10
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5285e8c7_5a18e891",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "optional nit: %q can be better?",
+      "range": {
+        "startLine": 240,
+        "startChar": 56,
+        "endLine": 240,
+        "endChar": 58
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869b18c8_023ffa6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: errors wrapper description should be lowercase.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3eb4e3_bb4a5f78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 247,
+        "startChar": 9,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3137cdb6_eaa26233",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: Full sentence should start with capital letter.",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 34
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60fbdd8f_66a81336",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "defer function for cleanup, should be right next to the change. Can you move this before the logging?\n\nbtw, is it only required after the second ectool cmd? e.g. if the test failed after the first cmd, this will not run.",
+      "range": {
+        "startLine": 251,
+        "startChar": 16,
+        "endLine": 251,
+        "endChar": 40
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb16789_54563685",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "Please create a cleanupCtx for reset. Otherwise it does not run if the test failed due to ctx timeout, even inside a lib function.\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\ndefer uiHelper.resetToUseRealSensorData(cleanupCtx)",
+      "range": {
+        "startLine": 251,
+        "startChar": 41,
+        "endLine": 251,
+        "endChar": 44
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d40778f_ffe48438",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 1
@@ -119,6 +436,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69b6c514_e8ec015f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "ditto. lowercase and please fix the rest below.",
+      "range": {
+        "startLine": 254,
+        "startChar": 27,
+        "endLine": 254,
+        "endChar": 38
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db911976_a205fafc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: overrides",
+      "range": {
+        "startLine": 431,
+        "startChar": 21,
+        "endLine": 431,
+        "endChar": 29
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851530da_52767fd2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 1
@@ -130,6 +493,52 @@
       "writtenOn": "2022-10-27T23:53:30Z",
       "side": 1,
       "message": "is this command board/model specific or would work on other boards as well?",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1dcc999_c39b77e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "nit: if err :\u003d func(); err !\u003d nil{}",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 2
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b85df4_fddc729a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T02:13:11Z",
+      "side": 1,
+      "message": "if output, err :\u003d func(); err !\u003d nil{\n    return err\n}else{\n    testing.ContextLogf(ctx, \"Lid angle after reset is %s\", string(output))\n    return nil\n}\n\nAlternatively:\n\noutput, err :\u003d func()\nif err !\u003dnil{\n    return err\n}\ntesting.ContextLogf(ctx, \"Lid angle after reset is %s\", string(output))\nreturn nil",
+      "range": {
+        "startLine": 685,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 11
+      },
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
