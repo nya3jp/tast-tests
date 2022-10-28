@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8ddfe8_84851e06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-28T03:56:04Z",
+      "side": 1,
+      "message": "See https://g3doc.corp.google.com/company/teams/chromeos/subteams/platforms/power/guides/powercap.md?cl\u003dhead for reference",
+      "revId": "6db79a8b9b4f295a421afab2dc8f07a52c5d0714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
