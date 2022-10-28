@@ -161,7 +161,7 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 
 				// TODO(b/203396229): Remove First() after fixing the duplication in the ui tree.
 				// Check if there is no browser history.
-				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("No results").Role(role.StaticText).First()); err != nil {
+				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("Your browsing history appears here").Role(role.StaticText).First()); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "finding text node failed"))
 				} else if exists {
 					histFound = false
