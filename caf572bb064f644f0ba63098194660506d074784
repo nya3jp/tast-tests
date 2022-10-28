@@ -22,6 +22,30 @@
       },
       "revId": "caf572bb064f644f0ba63098194660506d074784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae3dc05_8df85b5b",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T03:44:50Z",
+      "side": 1,
+      "message": "Currently yes, I\u0027m working on adding a new constructor for the Env object, it will not be the case after that.",
+      "parentUuid": "c490095b_10bdd7c1",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "caf572bb064f644f0ba63098194660506d074784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
