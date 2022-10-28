@@ -16,6 +16,108 @@
       "message": "Thanks! LGTM from tast-owners, I\u0027ll wait for one of the other area reviewers to CR+{1,2} before giving the final stamp.",
       "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb9b62e_0cda2c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "looks good to me, only a few nits.",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4702e4e9_08bda064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "just curious, how long will this test usually take? I know some devices may take longer than others, and the rule of thumb is to double the worst scenario use case. BTW 10 min looks like a legit estimation to me.\nsee more: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92333d3b_c65b43c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "nit: maybe ... with %d steps?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b2a6d6_b0a56a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "nit: node?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50f1bff_4e9d24b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "nit: changes\n\nhow about countOfVolumeChanges (to differentiate from numberOfVolumeSteps)?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca3806d_21f49143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1551857
+      },
+      "writtenOn": "2022-10-28T02:14:25Z",
+      "side": 1,
+      "message": "Errorf?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
