@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75065ad8_9c4ed49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-28T06:44:40Z",
+      "side": 1,
+      "message": "I think it should be possible to do things a bit simpler than this, using the existing chromeproc functions. See e.g. lacrosproc.RendererProcesses here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go;l\u003d60;drc\u003d49de0be12d7712cf3184df4a4d2594435ae6c44e\n\nFeel free to create mirrors of the chromeproc.* functions you need in lacrosproc.\n\nWDYT?",
+      "revId": "f7e859f1260dd4483ca5c050f1cef0ec610bb444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
