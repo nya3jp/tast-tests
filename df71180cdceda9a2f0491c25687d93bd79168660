@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcd7436_7eea04c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T06:28:40Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "04dc5712_9208206f",
+      "revId": "df71180cdceda9a2f0491c25687d93bd79168660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c14fcf1f_8e313b40",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-28T06:02:56Z",
       "side": 1,
       "message": "enter (there is no simulation of it, it\u0027s the real shelf overflow)",
+      "range": {
+        "startLine": 994,
+        "startChar": 52,
+        "endLine": 994,
+        "endChar": 60
+      },
+      "revId": "df71180cdceda9a2f0491c25687d93bd79168660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52dc6ea_2e7e6cc7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T06:28:40Z",
+      "side": 1,
+      "message": "Done (that makes more sense)",
+      "parentUuid": "c14fcf1f_8e313b40",
       "range": {
         "startLine": 994,
         "startChar": 52,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb94d4a_bdc48e06",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T06:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af2295f_a357557b",
+      "revId": "df71180cdceda9a2f0491c25687d93bd79168660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3051fbd_e8471c3d",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-10-28T06:02:56Z",
       "side": 1,
       "message": "I know it\u0027s old but this error message makes no sense to me. How about something like \"need more than %d apps to cause overflow\"?",
+      "revId": "df71180cdceda9a2f0491c25687d93bd79168660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a25a29_e6a4f3ac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T06:28:40Z",
+      "side": 1,
+      "message": "That sounds clearer. Done",
+      "parentUuid": "a3051fbd_e8471c3d",
       "revId": "df71180cdceda9a2f0491c25687d93bd79168660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
