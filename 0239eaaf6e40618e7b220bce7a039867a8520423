@@ -16,6 +16,24 @@
       "message": "I feel EnterShelfOverflow shouldn\u0027t have to know about these fake apps. Can you do this in the test instead?",
       "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d563634_89557f4e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T00:45:49Z",
+      "side": 1,
+      "message": "I agreed. Btw, this func is seemingly used by some other tests. If it is okay, I would like to stabilize that for lacros in this change and leave it up to author/users on where to move in a follow up.",
+      "parentUuid": "c570bed1_5028f052",
+      "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
