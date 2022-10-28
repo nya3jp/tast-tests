@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c26731a_f20d78aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-28T00:01:51Z",
+      "side": 1,
+      "message": "I did run it manually, and it worked.  When I run it manually and when I run this tast test without the changes from https://crrev.com/c/3983494?tab\u003dcomments, they both fail.  But they both work with that change.  So I\u0027m pretty sure it\u0027s running in lacros.",
+      "parentUuid": "be468946_7e2d0d4a",
+      "range": {
+        "startLine": 145,
+        "startChar": 117,
+        "endLine": 145,
+        "endChar": 126
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "908d9b69_5a32ada9",
         "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
         "patchSetId": 2
