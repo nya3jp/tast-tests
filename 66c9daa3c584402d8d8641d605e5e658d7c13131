@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f43a1640_4fdbb2dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T14:46:44Z",
+      "side": 1,
+      "message": "M95 was when we transitioned from a 6 week to a 4 week release cycle. I don\u0027t expect that to happen often (it\u0027s the first time ever). I\u0027ll fix the rest when I update the CL.",
+      "parentUuid": "2d3b3c8b_2e6d2cee",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "692233e4_1c8b0c74",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 1
