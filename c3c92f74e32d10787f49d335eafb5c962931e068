@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4cabd41_7886b01f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-28T15:45:52Z",
+      "side": 1,
+      "message": "I\u0027m using async checks now, so this no longer applies.",
+      "parentUuid": "62402298_b73682a6",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33293999_9817f7e2",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-10-25T16:50:32Z",
       "side": 1,
       "message": "Let\u0027s check for specific error we expect and in all other cases fail the test",
+      "range": {
+        "startLine": 399,
+        "startChar": 123,
+        "endLine": 399,
+        "endChar": 133
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58c0cde_10150265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-28T15:45:52Z",
+      "side": 1,
+      "message": "I\u0027m using async checks now, so this no longer applies.",
+      "parentUuid": "33293999_9817f7e2",
       "range": {
         "startLine": 399,
         "startChar": 123,
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "I was thinking of refactoring this to use addTreeChangeObserver.\nDo you know whether this would help in that aspect?",
       "parentUuid": "f51ec075_42c36180",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 98
+      },
+      "revId": "c3c92f74e32d10787f49d335eafb5c962931e068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249f3bdc_1c08e79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-10-28T15:45:52Z",
+      "side": 1,
+      "message": "I\u0027m using async checks now, so this no longer applies.",
+      "parentUuid": "56d1516e_6279e0ec",
       "range": {
         "startLine": 427,
         "startChar": 0,
