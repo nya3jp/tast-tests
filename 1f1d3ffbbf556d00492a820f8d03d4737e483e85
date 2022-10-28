@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e299275d_0ad64fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-10-28T08:30:58Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 26,
+        "startChar": 104,
+        "endLine": 26,
+        "endChar": 117
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c7f205_7072bf2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-10-28T08:30:58Z",
+      "side": 1,
+      "message": "Wondering whether that timeout still makes sense, I think Chrome login can be quite slow. Can I ask you to measure how long on average the test takes on a slow device?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8715082_b503452d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-10-28T08:30:58Z",
+      "side": 1,
+      "message": "Quick question: In oobe, you can only configure device wide networks, but after login, you can configure device wide and user-wide. What does this do after login? I am guessing default it device wide but maybe make it explicit here so the test doesn\u0027t change when default changes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
