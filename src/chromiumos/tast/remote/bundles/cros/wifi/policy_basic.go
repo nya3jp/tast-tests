@@ -142,7 +142,8 @@ func init() {
 				},
 			},
 			{
-				Name: "wpa_eap",
+				Name:      "wpa_eap",
+				ExtraAttr: []string{"wificell_cq"},
 				Val: policyBasicTestcase{
 					sameAp:    false,
 					devApOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT20), ap.SSID(deviceApSSID)},
