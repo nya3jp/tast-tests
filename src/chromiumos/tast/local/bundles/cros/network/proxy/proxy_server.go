@@ -38,6 +38,7 @@ type Server struct {
 	pid         int
 	lifelineFD  *os.File
 	tempDir     string
+	logFile     string
 }
 
 // AuthCredentials can be used to specify an authenticated user with the Basic scheme for the proxy.
@@ -59,20 +60,21 @@ func NewServer() *Server {
 // using reqular expressions.
 func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials, allowlist []string) (retErr error) {
 	// Create a temp dir where configuration and pid files can be saved.
-	tempDir, err := ioutil.TempDir("", "tinyproxy-")
-	if err != nil {
-		return errors.Wrap(err, "failed to create temp dir")
-	}
+	s.tempDir = os.TempDir()
+ 
 	defer func() {
 		if retErr != nil {
-			os.RemoveAll(tempDir)
+			os.RemoveAll(s.tempDir )
 		}
 	}()
-	s.tempDir = tempDir
-	pidFile, err := s.createTempFile()
+ 
+	pidFile, err := s.createTempFile("tinyproxy.*.pid")
 	if err != nil {
 		return errors.Wrap(err, "failed to create PID file")
 	}
+
+	s.logFile = os.TempDir() +"/tiny.log"
+
 	configFile, err := s.createTinyproxyConfig(ctx, port, auth, pidFile, allowlist)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the proxy config file")
@@ -95,7 +97,18 @@ func (s *Server) Stop(ctx context.Context) error {
 	// for the local proxy server.
 	s.lifelineFD.Close()
 	os.RemoveAll(s.tempDir)
+	os.Remove(s.logFile)
 	return testexec.CommandContext(ctx, "killall", proxyServerBin).Run()
+}
+
+func (s *Server) WasProxyUsedForConnection(hostname string) (bool, error){
+	b, err := ioutil.ReadFile(s.logFile)
+    if err != nil {
+		return false, errors.Wrap(err, "failed to read log file")
+    }
+    f := string(b)
+     
+     return strings.Contains(f, hostname), nil
 }
 
 // createTinyproxyConfig creates the proxy configuration file. Returns the config filename in case of success,
@@ -121,6 +134,8 @@ LogLevel Info
 # can be used by patchpanel to create a network namespace.
 PidFile "%s"
 
+LogFile "%s"
+
 # Max number of threads which will be created.
 MaxClients 300
 
@@ -131,7 +146,7 @@ MaxSpareServers 30
 # The number of servers to start initially.
 StartServers 10
 `
-	c = fmt.Sprintf(c, port, pidFileName)
+	c = fmt.Sprintf(c, port, pidFileName, s.logFile)
 
 	if auth != nil {
 		// Credentials for basic authentication
@@ -141,7 +156,7 @@ StartServers 10
 	if len(allowlist) > 0 {
 		hosts := strings.Join(allowlist, "\n")
 
-		filterFile, err := s.createTempFile()
+		filterFile, err := s.createTempFile("*.filter")
 		if err != nil {
 			return "", errors.Wrapf(err, "failed to create tinyproxy filter file %s", hosts)
 		}
@@ -159,7 +174,7 @@ StartServers 10
 		c += fmt.Sprintf(filterConfig, filterFile)
 	}
 
-	configFile, err := s.createTempFile()
+	configFile, err := s.createTempFile("*.config")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create tinyproxy config file")
 	}
@@ -178,8 +193,8 @@ StartServers 10
 
 // createTempFile creates a temporary file in proxy server's temporary directory and returns the
 // path. The temp files will be removed in case of error or when the proxy server is stopped.
-func (s *Server) createTempFile() (string, error) {
-	file, err := ioutil.TempFile(s.tempDir, "tinyproxy-pid-")
+func (s *Server) createTempFile(pattern string) (string, error) {
+	file, err :=  os.CreateTemp(s.tempDir, pattern)  
 	if err != nil {
 		return "", errors.Wrap(err, "failed create temp file")
 	}

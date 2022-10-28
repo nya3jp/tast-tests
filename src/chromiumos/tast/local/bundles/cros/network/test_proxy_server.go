@@ -30,6 +30,7 @@ var (
 
 	allowedHost = "google.com"
 	blockedHost = "ssl.gstatic.com"
+	hostname = "support.google.com"
 )
 
 // TestProxyServer verifies that proxy.Server with authentication is working as expected.
@@ -65,5 +66,23 @@ func TestProxyServer(ctx context.Context, s *testing.State) {
 	} else if !bytes.Contains(out, requestBlockedHeader) {
 		s.Errorf("Unexpected curl result with auth: got %s; want %s", out, requestBlockedHeader)
 	}
+
+	// Verifies that querying the logs to see if the proxy was used for the connection works as expected.
+	used, err := Server.WasProxyUsedForConnection( hostname)
+	if err != nil {
+		s.Error("Failed to verify connection routed through proxy: ", err)
+	} else if used {
+		s.Errorf("Unexpected proxy connection: %s was routed to the proxy server", hostname)
+	}
+
+	out, err = testexec.CommandContext(ctx, "curl", "-I", "-x", "http://user:test0000@"+Server.HostAndPort, hostname).Output()
+	 used, err = Server.WasProxyUsedForConnection(hostname)
+ 
+	if err != nil {
+		s.Error("Failed to verify connection routed through proxy: ", err)
+	} else if !used {
+		s.Errorf("Unexpected direct connection to %s", hostname)
+	}
+
 	Server.Stop(ctx)
 }
