@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd972576_2f43fa02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-10-28T09:24:16Z",
+      "side": 1,
+      "message": "Unnecessary.\nIf it does not satisfy the condition, traceConfigPath would be \"\" (line 336).\nIf traceConfigPath\u003d\u003d\"\", it will do nothing.",
+      "parentUuid": "d59bc3d7_036f67a4",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 2
+      },
+      "revId": "f0e685ecfd3da2f1736294e63a3ab53b4003073e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6fe2618_836445c2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-28T08:04:26Z",
       "side": 1,
       "message": "Please do not change the year when the file was created.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f0e685ecfd3da2f1736294e63a3ab53b4003073e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fce96b7_4b8057ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-10-28T09:24:16Z",
+      "side": 1,
+      "message": "Thanks for checking!\nI recovered the year.",
+      "parentUuid": "b6fe2618_836445c2",
       "range": {
         "startLine": 1,
         "startChar": 13,
