@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41da0f6_c5508602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-10-28T16:08:35Z",
+      "side": 1,
+      "message": "LGTM, just one simple thoughts about checking the playback status, is that possible to get those data from logcat where might be more reliable?",
+      "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
