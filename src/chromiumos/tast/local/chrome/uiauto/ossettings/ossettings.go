@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -452,6 +453,11 @@ func UninstallApp(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 	return uiauto.Combine("uninstall the app",
 		ui.LeftClick(uninstall),
 		ui.WaitUntilExists(uninstallWindow),
+		// Uninstall dialog has a heuristic to determine
+		// unintended clicks, which includes ignoring events
+		// that happen soon after the dialog is shown. Add a
+		// small delay before clicking the uninstall button.
+		action.Sleep(1*time.Second),
 		ui.LeftClick(uninstall.Ancestor(uninstallWindow)),
 		ui.WaitUntilGone(uninstallWindow))(ctx)
 }
