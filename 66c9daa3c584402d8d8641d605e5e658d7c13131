@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "024d8866_d040732a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-10-28T14:02:27Z",
+      "side": 1,
+      "message": "Also, could you please add b/255734554 to the list of related BUGS?",
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed879eb1_25b70657",
