@@ -315,13 +315,13 @@ func getServicePath(ctx context.Context, tf *wificell.TestFixture, ssid string, 
 // verifies that DUT is able to connect and that the resulting Security of the service matches the
 // expectations.
 // Step-by-step procedure:
-// 1. Configure APs with security specified by the test case (all APs form a single network).
-//    For each AP configured:
-//    - make sure that this endpoint have been noticed and
-//    - check that the corresponding service Security matches expected value.
-// 2. Connect to the network.
-// 3. Query service Security and check if it agrees with expectation.
-// 4. Disconnect and deconfigure AP(s)
+//  1. Configure APs with security specified by the test case (all APs form a single network).
+//     For each AP configured:
+//     - make sure that this endpoint have been noticed and
+//     - check that the corresponding service Security matches expected value.
+//  2. Connect to the network.
+//  3. Query service Security and check if it agrees with expectation.
+//  4. Disconnect and deconfigure AP(s)
 func FgsecMultiConnect(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 	ssid := hap.RandomSSID("TAST_FGSEC_")

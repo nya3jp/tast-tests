@@ -83,8 +83,9 @@ func (au *autoupdateFixt) SetUp(ctx context.Context, s *testing.FixtState) inter
 
 // PostTest ensures that the DUT has the original OS image for the upcoming test.
 // If there is a different image it tries to restore the original version
-//  - with a rollback first
-//  - by installing the the original image again.
+//   - with a rollback first
+//   - by installing the the original image again.
+//
 // PostTest fails if it cannot make sure the DUT has the original image.
 func (au *autoupdateFixt) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	checkTimeout := 1 * time.Minute

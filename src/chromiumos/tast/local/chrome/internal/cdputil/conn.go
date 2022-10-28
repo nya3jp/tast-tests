@@ -232,6 +232,7 @@ func (c *Conn) ReleaseAllObjects(ctx context.Context) error {
 // on how they occur. This function tries to return a single-line string that contains the original error.
 //
 // Eval: throw new Error("foo"):
+//
 //	.Text:                  "Uncaught"
 //	.Error:                 "runtime.ExceptionDetails: Uncaught exception at 0:0: Error: foo\n  <stack>"
 //	.Exception.Description: "Error: foo\n  <stack>"

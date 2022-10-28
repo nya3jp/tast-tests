@@ -6,14 +6,17 @@
 // netperf/netserver suite.
 // Example usage:
 // netperfSession := netperf.NewSession(
-// 	clientHost.conn,
-// 	clientHost.IP, // DUT IP
-// 	serverHost.conn,
-// 	serverHost.IP) // Router IP
-// defer func(ctx context.Context) {
-// 	netperfSession.Close(ctx)
-// }(ctx)
-// ret, err = netperfSession.Run(ctx, netperf.Config{
-// 	TestTime:         10*time.Second,
-// 	TestType:         netperf.TestTypeTCPStream})
+//
+//	clientHost.conn,
+//	clientHost.IP, // DUT IP
+//	serverHost.conn,
+//	serverHost.IP) // Router IP
+//
+//	defer func(ctx context.Context) {
+//		netperfSession.Close(ctx)
+//	}(ctx)
+//
+//	ret, err = netperfSession.Run(ctx, netperf.Config{
+//		TestTime:         10*time.Second,
+//		TestType:         netperf.TestTypeTCPStream})
 package netperf

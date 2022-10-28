@@ -37,15 +37,15 @@ func init() {
 		Vars:         []string{"typec.dutTbtPort", "typec.cSwitchPort", "typec.domainIP", "ui.signinProfileTestExtensionManifestKey"},
 		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
 		Params: []testing.Param{{
-			Val:       1,
+			Val: 1,
 			// Disabled due to <1% pass rate over 30 days. See b/241943435
 			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
-			Name:      "stress",
-			Val:       500,
+			Name: "stress",
+			Val:  500,
 			// Disabled due to <1% pass rate over 30 days. See b/246820340
 			//ExtraAttr: []string{"group:stress"},
-			Timeout:   3 * time.Hour,
+			Timeout: 3 * time.Hour,
 		}},
 	})
 }
@@ -57,8 +57,7 @@ func init() {
 //
 // This test requires the following H/W topology to run.
 //
-//
-//        DUT ------> C-Switch(device that performs hot plug-unplug)---->TBT SSD.
+//	DUT ------> C-Switch(device that performs hot plug-unplug)---->TBT SSD.
 func TbtHotplugUnplug(ctx context.Context, s *testing.State) {
 	// TBT port ID in the DUT.
 	tbtPort := s.RequiredVar("typec.dutTbtPort")

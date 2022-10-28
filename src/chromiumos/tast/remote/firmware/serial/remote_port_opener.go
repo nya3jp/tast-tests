@@ -38,18 +38,19 @@ func (c *RemotePortOpener) OpenPort(ctx context.Context) (common.Port, error) {
 // NewRemotePortOpener creates a RemotePortOpener.
 //
 // Example:
-//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-//   defer rpcClient.Close(ctx)
 //
-//   if err != nil {
-//       s.Fatal("rpcDial: ", err)
-//   }
-//   defer rpcClient.Close(ctx)
+//	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+//	defer rpcClient.Close(ctx)
 //
-//   serviceClient := pb.NewSerialPortServiceClient(rpcClient.Conn)
+//	if err != nil {
+//	    s.Fatal("rpcDial: ", err)
+//	}
+//	defer rpcClient.Close(ctx)
 //
-//   opener := NewRemotePortOpener(serviceClient, "/path/to/device", 115200, 2 * time.Second)
-//   port := opener.OpenPort(ctx)
+//	serviceClient := pb.NewSerialPortServiceClient(rpcClient.Conn)
+//
+//	opener := NewRemotePortOpener(serviceClient, "/path/to/device", 115200, 2 * time.Second)
+//	port := opener.OpenPort(ctx)
 func NewRemotePortOpener(client pb.SerialPortServiceClient, name string, baud int, readTimeout time.Duration) *RemotePortOpener {
 	return &RemotePortOpener{
 		config:        common.Config{Name: name, Baud: baud, ReadTimeout: readTimeout},

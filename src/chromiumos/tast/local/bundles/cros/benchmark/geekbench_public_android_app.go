@@ -116,16 +116,18 @@ func GeekbenchPublicAndroidApp(ctx context.Context, s *testing.State) {
 //
 // It locates the score with the following node hierarchy:
 // <node index="0" text="Geekbench Score" resource-id="" class="android.webkit.WebView" ...>
-//     <node index="0" text="" resource-id="" ...>
-//         <node index="0" text="Geekbench Score" resource-id="" ... />
-//         <node index="1" text="" resource-id="" class="android.view.View" ...>
-//             <node index="0" text="990" resource-id="" .../>
-//             <node index="1" text="Single-Core Score" resource-id="" .../>
-//             <node index="2" text="3972" resource-id="" .../>
-//             <node index="3" text="Multi-Core Score" resource-id="" .../>
-//             ...
-//         </node>
-//     </node>
+//
+//	<node index="0" text="" resource-id="" ...>
+//	    <node index="0" text="Geekbench Score" resource-id="" ... />
+//	    <node index="1" text="" resource-id="" class="android.view.View" ...>
+//	        <node index="0" text="990" resource-id="" .../>
+//	        <node index="1" text="Single-Core Score" resource-id="" .../>
+//	        <node index="2" text="3972" resource-id="" .../>
+//	        <node index="3" text="Multi-Core Score" resource-id="" .../>
+//	        ...
+//	    </node>
+//	</node>
+//
 // </node>
 func readAndSaveResult(ctx context.Context, device *androidui.Device, outputDir string) error {
 	root := device.Object(androidui.Text("Geekbench Score"), androidui.ClassName("android.webkit.WebView"))

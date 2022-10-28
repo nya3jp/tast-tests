@@ -238,17 +238,18 @@ func (tc *Context) Hold(duration time.Duration) uiauto.Action {
 // Swipe returns a function to initiate the single-touch gesture, and conducts
 // the specified gesture actions. The gesture starts from the specified location.
 // Examples:
-//   // swipe from a location to another in a second.
-//   tc.Swipe(start, tc.SwipeTo(end, time.Second))
 //
-//   // Longpress and swipe.
-//   tc.Swipe(start, tc.Hold(time.Second), tc.SwipeTo(end, time.Second))
+//	// swipe from a location to another in a second.
+//	tc.Swipe(start, tc.SwipeTo(end, time.Second))
 //
-//   // Multiple points.
-//   tc.Swipe(points[0], tc.SwipeTo(points[1], time.Second), tc.SwipeTo(points[2], time.Second))
+//	// Longpress and swipe.
+//	tc.Swipe(start, tc.Hold(time.Second), tc.SwipeTo(end, time.Second))
 //
-//   // Combine with other actions; swipe and then wait for a UI change.
-//   tc.Swipe(start, tc.SwipeTo(end, time.Second), ac.WaitUntilExists(node))
+//	// Multiple points.
+//	tc.Swipe(points[0], tc.SwipeTo(points[1], time.Second), tc.SwipeTo(points[2], time.Second))
+//
+//	// Combine with other actions; swipe and then wait for a UI change.
+//	tc.Swipe(start, tc.SwipeTo(end, time.Second), ac.WaitUntilExists(node))
 func (tc *Context) Swipe(loc coords.Point, gestures ...uiauto.Action) uiauto.Action {
 	gestureAction := uiauto.Combine("swipe gesture", gestures...)
 	return func(ctx context.Context) error {

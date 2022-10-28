@@ -160,7 +160,9 @@ func (kw *KeyboardEventWriter) Device() string { return kw.dev }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
 // If kw represents a keyboard with a custom top row, we will also send a EV_MSC
+//
 //	event mapped from topRowScanCodeMap
+//
 // If firstErr points at a non-nil error, no events are written.
 // If an error is encountered, it is saved to the address pointed to by firstErr.
 func (kw *KeyboardEventWriter) sendKey(ec EventCode, val int32, firstErr *error) {

@@ -45,8 +45,9 @@ const (
 )
 
 // NewSnippetClient initializes the snippet client by doing the following:
-//   1. Install and run the specified snippet APK to start the server.
-//   2. Forward the snippet's listening port to the host (CrOS device) and establish a TCP connection to it.
+//  1. Install and run the specified snippet APK to start the server.
+//  2. Forward the snippet's listening port to the host (CrOS device) and establish a TCP connection to it.
+//
 // We can then send RPCs over the TCP connection to interact with the snippet.
 // The Android package containing the Snippet class must be provided in the moblyPackage argument.
 // Callers should defer Cleanup to ensure the resources used by the SnippetClient are freed.

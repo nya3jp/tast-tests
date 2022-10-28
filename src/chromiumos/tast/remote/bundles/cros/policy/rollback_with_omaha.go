@@ -44,15 +44,18 @@ func init() {
 // RollbackWithOmaha test must be provided the source and target image versions.
 // The source version should be a full version string. The target can be
 // just a prefix. Furthermore, test should be started with
-//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//
+//	-var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//
 // to avoid accidental execution of the test.
 //
 // For example, to run a rollback from M96 to M94:
 // tast run
-//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
-//   -var=policy.RollbackWithOmaha.sourceVersion=14244.0.0
-//   -var=policy.RollbackWithOmaha.targetVersion=14092.
-//   <ip> policy.RollbackWithOmaha
+//
+//	-var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//	-var=policy.RollbackWithOmaha.sourceVersion=14244.0.0
+//	-var=policy.RollbackWithOmaha.targetVersion=14092.
+//	<ip> policy.RollbackWithOmaha
 func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 	if s.RequiredVar("policy.RollbackWithOmaha.confirm") != "ICanRollbackMyDUT" {
 		s.Log("You should only run this example test if you have manual access to your DUT")

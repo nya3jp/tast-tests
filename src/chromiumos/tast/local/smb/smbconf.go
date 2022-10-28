@@ -18,7 +18,8 @@ type Config struct {
 
 // Section represents either the [global] section or a file share.
 // Each section is made up of parameters of the format:
-//    key = value
+//
+//	key = value
 type Section struct {
 	name   string
 	params map[string]string

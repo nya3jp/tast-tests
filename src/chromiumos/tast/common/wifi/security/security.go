@@ -4,9 +4,9 @@
 
 // Package security defines interfaces for test authors to deal with the
 // diverse WiFi security standards:
-// - Interface Config defines methods to compose configuration files of AP or DUT.
-// - Interface ConfigFactory lets the authors to register the security options
-//   in testing.AddTest and Gen the Config object later in test body.
+//   - Interface Config defines methods to compose configuration files of AP or DUT.
+//   - Interface ConfigFactory lets the authors to register the security options
+//     in testing.AddTest and Gen the Config object later in test body.
 package security
 
 import (

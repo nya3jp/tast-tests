@@ -27,7 +27,8 @@ const (
 
 // Provide constant for primary DUTs roles for tests to use.
 // Note: currently, we use "cd1", "cd2", ... for companinon DUT roles.
-//       There is no process to allow customization it yet.
+//
+//	There is no process to allow customization it yet.
 const (
 	Primary = "" // Name for primary role.
 )

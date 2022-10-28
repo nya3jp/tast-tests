@@ -7,10 +7,12 @@
 // the primary test is finished.
 //
 // Usage:
-// verF := func() (verifier.ResultType, error) {
-//   res := any_test_function_desirable(additional_params)
-//   return verifier.ResultType{Data: res, Timestamp: time.Now()}, nil
-// }
+//
+//	verF := func() (verifier.ResultType, error) {
+//	  res := any_test_function_desirable(additional_params)
+//	  return verifier.ResultType{Data: res, Timestamp: time.Now()}, nil
+//	}
+//
 // vf := verifier.NewVerifier(ctx, verF) // This only creates framework.
 // defer vf.Finish() // This destroys framework.
 // (...)
@@ -21,27 +23,27 @@
 //
 // State machine for the verifier:
 //
-//                        *
-//                        |
-//                        V
-//                /-----------------\
-//                |      Idle       |- - - - - - - - -
-//                \-----------------/                  \ verifyFinish
-//                  /           ^                       \
-//                 /             \                       v
-//                /               \                 /-----------------\
-//   verifyStart (                 \                |     Finished    |
-//                \                 ) verifyStop    \-----------------/
-//                 \               /                     ^
-//                  \             /                     /
-//                   v           /                     /
-//                /-----------------\                 / verifyFinish
-//                |     Running     |- - - - - - - - -
-//                \-----------------/
-//                       /   ^
-//                      /     \
-//                     (       )
-//                      \     /
-//                       \___/
-//                     verifyTimeout
+//	                     *
+//	                     |
+//	                     V
+//	             /-----------------\
+//	             |      Idle       |- - - - - - - - -
+//	             \-----------------/                  \ verifyFinish
+//	               /           ^                       \
+//	              /             \                       v
+//	             /               \                 /-----------------\
+//	verifyStart (                 \                |     Finished    |
+//	             \                 ) verifyStop    \-----------------/
+//	              \               /                     ^
+//	               \             /                     /
+//	                v           /                     /
+//	             /-----------------\                 / verifyFinish
+//	             |     Running     |- - - - - - - - -
+//	             \-----------------/
+//	                    /   ^
+//	                   /     \
+//	                  (       )
+//	                   \     /
+//	                    \___/
+//	                  verifyTimeout
 package verifier

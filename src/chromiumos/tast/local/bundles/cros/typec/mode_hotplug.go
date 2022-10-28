@@ -54,9 +54,8 @@ func init() {
 //
 // This test requires the following H/W topology to run.
 //
-//
-//        DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
-//      (USB4)
+//	  DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
+//	(USB4)
 //
 // The Thunderbolt dock is assumed connected on port index 1.
 func ModeHotplug(ctx context.Context, s *testing.State) {

@@ -70,8 +70,8 @@ func CheckObjectExists(ctx context.Context, obj *ui.Object, timeout time.Duratio
 // timeout specifies the maximum time duration to wait and check on each object.
 //
 // This function is an utility designed for following purposes:
-//	1. Handling UI operation on an ARC app that is performing A/B testing.
-//	2. Handling multiple different objects with the same purposes or outcome.
+//  1. Handling UI operation on an ARC app that is performing A/B testing.
+//  2. Handling multiple different objects with the same purposes or outcome.
 func ClickAnyFromObjectPool(ctx context.Context, pool map[*ui.Object]string, timeout time.Duration) error {
 	clicked := false
 

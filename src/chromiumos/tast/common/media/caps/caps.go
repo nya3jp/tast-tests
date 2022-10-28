@@ -151,11 +151,11 @@ type ErrorReporter interface {
 // (either marked as "no" or not statically defined). Capabilities statically
 // marked as "disable", or those with Capability.Optional set are not verified.
 //
-//                 |        Static capability       |
-//                 | Yes         | No / Not defined |
-//   --------------|-------------|------------------|
-//   Detected      | OK          | Fail             |
-//   Not detected  | Fail        | OK               |
+//	              |        Static capability       |
+//	              | Yes         | No / Not defined |
+//	--------------|-------------|------------------|
+//	Detected      | OK          | Fail             |
+//	Not detected  | Fail        | OK               |
 //
 // For more information see:
 // /src/third_party/chromiumos-overlay/chromeos-base/autotest-capability-default/files/managed-capabilities.yaml

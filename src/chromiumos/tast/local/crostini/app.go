@@ -50,11 +50,11 @@ func findNewShelfItem(before, after []*ash.ShelfItem) (string, error) {
 
 // LaunchGUIApp runs the given command, which is meant to be a crostini
 // application with a GUI, and returns:
-//  - A string, containing the ID of the app that was ran (i.e., a handle which
-//    can be used to inspect/close the app).
-//  - A callback which can be executed to close the application. Users of this
-//    function should immediately defer the callback if one is returned.
-//  - An error, which indicates something went wrong, or nil otherwise.
+//   - A string, containing the ID of the app that was ran (i.e., a handle which
+//     can be used to inspect/close the app).
+//   - A callback which can be executed to close the application. Users of this
+//     function should immediately defer the callback if one is returned.
+//   - An error, which indicates something went wrong, or nil otherwise.
 func LaunchGUIApp(ctx context.Context, tconn *chrome.TestConn, cmd *testexec.Cmd) (string, func(), error) {
 	beforeItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {

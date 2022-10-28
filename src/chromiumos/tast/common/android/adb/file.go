@@ -103,12 +103,12 @@ func (d *Device) FileSize(ctx context.Context, filename string) (int64, error) {
 // It is caller's responsibility to remove all the contents in the directory
 // after its use. One of the typical use cases will be as follows:
 //
-//   tmpdir, err := a.MktempDir(ctx)
-//   if err != nil {
-//     ... // error handling
-//   }
-//   defer a.RemoveAll(tmpdir)
-//   ... // Main code using tmpdir.
+//	tmpdir, err := a.MktempDir(ctx)
+//	if err != nil {
+//	  ... // error handling
+//	}
+//	defer a.RemoveAll(tmpdir)
+//	... // Main code using tmpdir.
 func (d *Device) TempDir(ctx context.Context) (string, error) {
 	out, err := d.ShellCommand(ctx, "mktemp", "-d", "-p", AndroidTmpDirPath).Output(testexec.DumpLogOnError)
 	if err != nil {

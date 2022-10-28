@@ -109,8 +109,9 @@ func VerifyCalibNotExist(ctx context.Context, soundCardID string, count uint) er
 // An example of "aplay -l" log is shown as below:
 // **** List of PLAYBACK Hardware Devices ****
 // card 0: sofcmlmax98390d [sof-cml_max98390_da7219], device 0: Speakers (*) []
-//  Subdevices: 1/1
-//  Subdevice #0: subdevice #0
+//
+//	Subdevices: 1/1
+//	Subdevice #0: subdevice #0
 func GetSoundCardID(ctx context.Context) (string, error) {
 	re := regexp.MustCompile(`card 0: [a-z,0-9]+ `)
 	var soundCardID string

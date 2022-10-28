@@ -51,9 +51,8 @@ func init() {
 //
 // This test requires the following H/W topology to run.
 //
-//
-//        DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
-//      (USB4)
+//	  DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
+//	(USB4)
 func ModeSuspend(ctx context.Context, s *testing.State) {
 	// This check is for test executions which take place on
 	// CQ (where TBT peripherals aren't connected).

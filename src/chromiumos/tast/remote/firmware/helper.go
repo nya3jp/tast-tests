@@ -39,23 +39,26 @@ import (
 // Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.fixture:
 //
 // import (
+//
 //	...
 //	"chromiumos/tast/remote/firmware/fixture"
+//
 // )
 //
-// func init() {
-//	testing.AddTest(&testing.Test{
-//		...
-//              Fixture: fixture.NormalMode,
-//	})
-// }
+//	func init() {
+//		testing.AddTest(&testing.Test{
+//			...
+//	             Fixture: fixture.NormalMode,
+//		})
+//	}
 //
-// func MyTest(ctx context.Context, s *testing.State) {
-// 	h := s.FixtValue().(*fixture.Value).Helper
+//	func MyTest(ctx context.Context, s *testing.State) {
+//		h := s.FixtValue().(*fixture.Value).Helper
 //
-// 	if err := h.RequireServo(ctx); err != nil {
-// 		s.Fatal("Failed to init servo: ", err)
-// 	}
+//		if err := h.RequireServo(ctx); err != nil {
+//			s.Fatal("Failed to init servo: ", err)
+//		}
+//
 // ...
 // }
 type Helper struct {
@@ -804,9 +807,10 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 // When testlab is disabled, OpenCCDNoTestlab would be called,
 // which might take up to 8 minutes.
 // Args:
-// 	 ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
-//	 resetCCD: If true, reset ccd to factory mode after open.
-//	 ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
+//
+//	ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
+//	resetCCD: If true, reset ccd to factory mode after open.
+//	ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
 func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool) error {
 	// Get CCD current status.
 	ccdLevel, err := h.GetCCDLevel(ctx)

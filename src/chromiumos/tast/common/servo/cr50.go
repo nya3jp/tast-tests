@@ -178,10 +178,12 @@ func (s *Servo) SetTestlab(ctx context.Context, option TestlabState) error {
 /*
 GetCCDCapability will return the current state of a specific CCD capability.
 Possible states are:
+
 	0 = Default
 	1 = Always
 	2 = UnlessLocked
 	3 = IfOpened
+
 It will also return "Y" if the capability is accessible, and "-" otherwise.
 */
 func (s *Servo) GetCCDCapability(ctx context.Context, capability CCDCap) (int, string, error) {
@@ -208,6 +210,7 @@ func (s *Servo) GetCCDCapability(ctx context.Context, capability CCDCap) (int, s
 /*
 SetCCDCapability will try to set a CCD capability to a specific state.
 Possible states are:
+
 	Default
 	Always
 	UnlessLocked

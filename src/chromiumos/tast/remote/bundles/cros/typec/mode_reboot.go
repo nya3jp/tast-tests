@@ -63,9 +63,8 @@ func init() {
 //
 // This test requires the following H/W topology to run.
 //
-//        DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
-//      (USB4)
-//
+//	  DUT ------> Thunderbolt3 (>= Titan Ridge) dock -----> DP monitor.
+//	(USB4)
 func ModeReboot(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 	if !d.Connected(ctx) {

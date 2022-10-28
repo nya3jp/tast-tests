@@ -256,7 +256,6 @@ type NoStreamError struct {
 // ...
 //
 // Audio Thread Event Log:
-//
 func dumpActiveStreams(ctx context.Context) ([]StreamInfo, error) {
 	dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output(testexec.DumpLogOnError)
 	if err != nil {

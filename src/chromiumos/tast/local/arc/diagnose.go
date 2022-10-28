@@ -16,7 +16,7 @@ import (
 
 // crashRegexp matches a line in logcat about a crashed process.
 //
-//  11-14 07:15:39.753   703   703 F DEBUG   : pid: 82, tid: 128, name: Binder:82_1  >>> /system/bin/mediaserver <<<
+//	11-14 07:15:39.753   703   703 F DEBUG   : pid: 82, tid: 128, name: Binder:82_1  >>> /system/bin/mediaserver <<<
 var crashRegexp = regexp.MustCompile(` F DEBUG .*>>> (.*) <<<`)
 
 // diagnose diagnoses Android boot failure with logcat. observedErr is an error

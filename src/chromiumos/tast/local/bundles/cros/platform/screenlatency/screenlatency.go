@@ -95,7 +95,8 @@ func CommunicateWithCompanionApp(ctx context.Context, s *testing.State, ln net.L
 // matching strings in ocrData. Key presses are supposed to start at testStartTime.
 //
 // Note: In case the ocrData doesn't contain the lines of text in the proper order
-//       we will return fewer results than the expected key press count.
+//
+//	we will return fewer results than the expected key press count.
 func calculateLag(ctx context.Context, ocrData hostData, testStartTime time.Time, timestamps []time.Time) []time.Duration {
 	var lagResults []time.Duration
 	recordingStartTime := time.Unix(0, (time.Duration(ocrData.RecordingStartTimeUnixMs) * time.Millisecond).Nanoseconds())

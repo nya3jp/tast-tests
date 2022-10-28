@@ -144,11 +144,12 @@ func (t *ArcLifecycleUnit) StillAlive(ctx context.Context, a *arc.ARC) bool {
 }
 
 // NewArcLifecycleUnit creates a helper to allocate memory inside an app in ARC.
-//  id            - Which copy of ArcLifecycleTest app to use.
-//  allocateBytes - mow much memory to allocate.
-//  ratio         - the compression ratio of allocated memory.
-//  limit         - if not nil, wait for Limit after allocation.
-//  minimize      - minimize the app window after allocation completes.
+//
+//	id            - Which copy of ArcLifecycleTest app to use.
+//	allocateBytes - mow much memory to allocate.
+//	ratio         - the compression ratio of allocated memory.
+//	limit         - if not nil, wait for Limit after allocation.
+//	minimize      - minimize the app window after allocation completes.
 func NewArcLifecycleUnit(id int, allocateBytes int64, ratio float64, limit memory.Limit, minimize bool) *ArcLifecycleUnit {
 	return &ArcLifecycleUnit{id, allocateBytes, ratio, limit, minimize}
 }
@@ -229,11 +230,12 @@ func (t *ArcLifecycleTask) StillAlive(ctx context.Context, testEnv *TestEnv) boo
 
 // NewArcLifecycleTask creates a MemoryTask that runs the ArcLifecycleTest app
 // and uses it to allocate memory.
-//  id            - Which copy of ArcLifecycleTest app to use.
-//  allocateBytes - mow much memory to allocate.
-//  ratio         - the compression ratio of allocated memory.
-//  limit         - if not nil, wait for Limit after allocation.
-//  minimize      - minimize the app window after allocation completes.
+//
+//	id            - Which copy of ArcLifecycleTest app to use.
+//	allocateBytes - mow much memory to allocate.
+//	ratio         - the compression ratio of allocated memory.
+//	limit         - if not nil, wait for Limit after allocation.
+//	minimize      - minimize the app window after allocation completes.
 func NewArcLifecycleTask(id int, allocateBytes int64, ratio float64, limit memory.Limit, minimize bool) *ArcLifecycleTask {
 	return &ArcLifecycleTask{*NewArcLifecycleUnit(id, allocateBytes, ratio, limit, minimize)}
 }

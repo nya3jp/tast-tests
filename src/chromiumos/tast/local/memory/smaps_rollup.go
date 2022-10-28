@@ -49,7 +49,8 @@ type HostSummary struct {
 // SharedSwapPss is the amount of swap used by shared memory regions divided by
 // the number of times those regions are mapped.
 // CrosvmGuestPss is the sum of the Pss used by the crosvm_guest region,
-//  (which means memory from the VM mapped on the host).
+//
+//	(which means memory from the VM mapped on the host).
 type SharedInfo struct {
 	SharedSwapPss  uint64
 	CrosvmGuestPss uint64

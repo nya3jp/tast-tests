@@ -41,8 +41,9 @@ func Get(ctx context.Context, mountPoint string) (*Info, error) {
 // parseDfOutput parses output from a "df -B1 --print-type <mountpoint>" command.
 //
 // The output is expected to have the following form:
-//  Filesystem     Type  1B-blocks       Used Available Use% Mounted on
-//  /dev/root      ext2 2064203776 1718403072 345800704  84% /
+//
+//	Filesystem     Type  1B-blocks       Used Available Use% Mounted on
+//	/dev/root      ext2 2064203776 1718403072 345800704  84% /
 func parseDfOutput(out []byte) (*Info, error) {
 	out = bytes.TrimSpace(out)
 	if len(out) == 0 {

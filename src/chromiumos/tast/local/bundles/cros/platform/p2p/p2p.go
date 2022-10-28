@@ -20,27 +20,27 @@
 //
 // Below is a diagram illustrating the setup.
 //
-//  [Default network namespace] +------------------+-------------+
-//                              |                  |             |
-//       +--------+      +--------------+  +--------------+      |
-//       |  Tast  |----->|  p2p_server  |  |  p2p_client  |      |
-//       +--------+ HTTP +--------------+  +--------------+      |
-//            |                                                  | D-Bus
-//       +------------------------------------------------+      |  IPC
-//       |         veth-default (169.254.100.1)           |      |
-//       +------------------------------------------------+      |
-//                              | mDNS/DNS-SD                    |
-//  ----------------------------+-----------------------------------------
-//                              |                                |
-//       +------------------------------------------------+      |
-//       |         veth-isolated (169.254.100.2)          |      |
-//       +------------------------------------------------+      |
-//                              |                                |
-//                      +----------------+                       |
-//                      |  avahi-daemon  |<----------------------+
-//                      +----------------+
+//	[Default network namespace] +------------------+-------------+
+//	                            |                  |             |
+//	     +--------+      +--------------+  +--------------+      |
+//	     |  Tast  |----->|  p2p_server  |  |  p2p_client  |      |
+//	     +--------+ HTTP +--------------+  +--------------+      |
+//	          |                                                  | D-Bus
+//	     +------------------------------------------------+      |  IPC
+//	     |         veth-default (169.254.100.1)           |      |
+//	     +------------------------------------------------+      |
+//	                            | mDNS/DNS-SD                    |
+//	----------------------------+-----------------------------------------
+//	                            |                                |
+//	     +------------------------------------------------+      |
+//	     |         veth-isolated (169.254.100.2)          |      |
+//	     +------------------------------------------------+      |
+//	                            |                                |
+//	                    +----------------+                       |
+//	                    |  avahi-daemon  |<----------------------+
+//	                    +----------------+
 //
-//  [Isolated network namespace "tastns"]
+//	[Isolated network namespace "tastns"]
 //
 // Note that it would be more preferable to run the Tast test process, instead
 // of avahi-daemon, in an isolated network namespace, because it is more similar
@@ -49,9 +49,8 @@
 // setns(2) works per-thread but Go programs do not have a way to call system
 // calls on all threads at once. See the following issues for details:
 //
-//  https://github.com/vishvananda/netns/issues/17
-//  https://github.com/golang/go/issues/1435
-//
+//	https://github.com/vishvananda/netns/issues/17
+//	https://github.com/golang/go/issues/1435
 package p2p
 
 import (

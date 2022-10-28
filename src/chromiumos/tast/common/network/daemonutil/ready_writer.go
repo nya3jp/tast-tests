@@ -14,9 +14,10 @@ import (
 
 // ReadyFunc checks the data written to ReadyWriter and returns if the service is
 // ready or having error. ReadyWriter expects:
-//   (false, nil) if the service is not ready yet;
-//   (false, err) if the service has an error;
-//   (true, nil) if the service is ready.
+//
+//	(false, nil) if the service is not ready yet;
+//	(false, err) if the service has an error;
+//	(true, nil) if the service is ready.
 type ReadyFunc func([]byte) (bool, error)
 
 // ReadyWriter stores the data written to it and identifies if a service is ready

@@ -43,7 +43,8 @@ const (
 //
 // Example output:
 // 1: lo@veth1: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+//
+//	link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
 type showLinkIfaceResult struct {
 	name  string // "lo" in example.
 	alias string // "veth1" in example. Will only be set if an alias is present.
@@ -92,7 +93,8 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 //
 // Example "ip link show" output:
 // 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+//
+//	link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
 func (r *Runner) listAllLinks(ctx context.Context, isUp bool, iface string) ([]*showLinkIfaceResult, error) {
 	var allInterfaces []*showLinkIfaceResult
 	args := []string{"link", "show"}
@@ -163,7 +165,8 @@ func (r *Runner) listAllLinks(ctx context.Context, isUp bool, iface string) ([]*
 //
 // Example "ip link show" output:
 // 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+//
+//	link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
 func (r *Runner) showLink(ctx context.Context, iface string) (*showLinkIfaceResult, error) {
 	allInterfaces, err := r.listAllLinks(ctx, false, iface)
 	if err != nil {

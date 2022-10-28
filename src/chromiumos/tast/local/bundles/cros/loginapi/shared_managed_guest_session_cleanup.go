@@ -39,18 +39,19 @@ func init() {
 
 // SharedManagedGuestSessionCleanup tests that chrome.login.endSession performs
 // its cleanup operations correctly. The following cleanups are tested:
-// 1. Browsing data: This is tested by opening a browser page, setting a
-//    cookie, and checking that both the browser history and cookie are cleared
-//    after cleanup.
-// 2. Open windows: This is tested by opening a browser tab and checking that
-//    the tab is closed.
-// 3. Extensions: This is tested by checking that the background page
-//   connection is closed after cleanup. This is not a direct check since we
-//   cannot test if an extension has been reinstalled.
-//   The RestrictedManagedGuestSessionExtensionCleanupExemptList policy is also
-//   tested here.
-// 4. Clipboard: This is tested by setting clipboard data and checking that it
-//    is cleared.
+//  1. Browsing data: This is tested by opening a browser page, setting a
+//     cookie, and checking that both the browser history and cookie are cleared
+//     after cleanup.
+//  2. Open windows: This is tested by opening a browser tab and checking that
+//     the tab is closed.
+//  3. Extensions: This is tested by checking that the background page
+//     connection is closed after cleanup. This is not a direct check since we
+//     cannot test if an extension has been reinstalled.
+//     The RestrictedManagedGuestSessionExtensionCleanupExemptList policy is also
+//     tested here.
+//  4. Clipboard: This is tested by setting clipboard data and checking that it
+//     is cleared.
+//
 // Printing is not tested due to the set up needed and will be covered in a
 // browser test in Chrome instead.
 func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {

@@ -7,15 +7,15 @@
 //
 // Usage
 //
-//  p, err := profiler.Start(ctx, s, Profiler.Perf(nil), ...)
-//  if err != nil {
-//  	// Error handling...
-//  }
-//  defer func() {
-//  	if err := p.End(); err != nil {
-//  		// Error handling...
-//  	}
-//  }()
+//	p, err := profiler.Start(ctx, s, Profiler.Perf(nil), ...)
+//	if err != nil {
+//		// Error handling...
+//	}
+//	defer func() {
+//		if err := p.End(); err != nil {
+//			// Error handling...
+//		}
+//	}()
 package profiler
 
 import (

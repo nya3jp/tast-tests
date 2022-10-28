@@ -400,13 +400,13 @@ func init() {
 // FgsecWpaChange tests connectivity to an AP with changed WPA settings
 // security mode.  Each subtest is a loop over list of security configuration specified above.  For
 // each element:
-// 1. Configure AP according to security configuration (keeping SSID so all the time it is regarded
-//    as the same network by the shill)
-// 2. Test ability to connect.
-// 3. Check that:
-//    - the service path has not changed,
-//    - service has correct Security property.
-// 4. Deconfigure AP.
+//  1. Configure AP according to security configuration (keeping SSID so all the time it is regarded
+//     as the same network by the shill)
+//  2. Test ability to connect.
+//  3. Check that:
+//     - the service path has not changed,
+//     - service has correct Security property.
+//  4. Deconfigure AP.
 func FgsecWpaChange(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 	ssid := ap.RandomSSID("TAST_FGSEC_")

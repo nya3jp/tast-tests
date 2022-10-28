@@ -27,14 +27,14 @@ import (
 )
 
 // How to create archived home data to be used by this test:
-// 1) Flash the previous version of ARC++ (e.g. ARC++ P).
-// 2) Sign in with the specified test account (See arc.DataMigration.yaml for username/password).
-// 3) Wait until ARC++ boots and uninstall all unnecessary apps.
-// 4) (optional) Populate files under /data/ or install apps.
-// 5) ssh to DUT and create .tbz2 file by
-//    `cd /home/.shadow/<hash>/mount && tar --xattrs --selinux -cjf /tmp/<dest_file_name>.tbz2 .`
-// 6) Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
-//    the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
+//  1. Flash the previous version of ARC++ (e.g. ARC++ P).
+//  2. Sign in with the specified test account (See arc.DataMigration.yaml for username/password).
+//  3. Wait until ARC++ boots and uninstall all unnecessary apps.
+//  4. (optional) Populate files under /data/ or install apps.
+//  5. ssh to DUT and create .tbz2 file by
+//     `cd /home/.shadow/<hash>/mount && tar --xattrs --selinux -cjf /tmp/<dest_file_name>.tbz2 .`
+//  6. Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
+//     the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
 const (
 	homeDataNameNycX86            = "data_migration_nyc_x86_64"
 	homeDataNamePiX86             = "data_migration_pi_x86_64"
@@ -120,8 +120,10 @@ func init() {
 // DataMigration checks regressions for the following bugs:
 // b/173835269 Can't download or install some apps after P->R data migration.
 // b/183690158 vold hangs while processing fixupAllAppDirs() if there are thousands of files to fix.
-//             (Home data data_migration_pi_* contains 5000 dirs under
-//              /sdcard/Android/data/com.android.vending/files/ for reproducing this bug.)
+//
+//	(Home data data_migration_pi_* contains 5000 dirs under
+//	 /sdcard/Android/data/com.android.vending/files/ for reproducing this bug.)
+//
 // b/190293594 GMSCore for Pi is picked up on ARC R after P->R upgrade.
 func DataMigration(ctx context.Context, s *testing.State) {
 	const (

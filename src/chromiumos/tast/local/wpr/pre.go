@@ -70,20 +70,20 @@ func ReplayMode(archive string) testing.Precondition {
 //
 // Example usage:
 //
-//	func init() {
-//		testing.AddTest(&testing.Test{
-//			Func: DoSomething
-//			...
-//			Pre: wpr.RecordMode("/tmp/example_wpr_archive.wprgo"),
-//		})
-//	}
+//		func init() {
+//			testing.AddTest(&testing.Test{
+//				Func: DoSomething
+//				...
+//				Pre: wpr.RecordMode("/tmp/example_wpr_archive.wprgo"),
+//			})
+//		}
 //
-//	func DoSomething(ctx context.Context, s *testing.State) {
-//		// cr is a logged-in Chrome with net traffic redirected through WPR
-//    // and recorded.
-//		cr := s.PreValue().(*chrome.Chrome)
-//		...
-//	}
+//		func DoSomething(ctx context.Context, s *testing.State) {
+//			// cr is a logged-in Chrome with net traffic redirected through WPR
+//	   // and recorded.
+//			cr := s.PreValue().(*chrome.Chrome)
+//			...
+//		}
 func RecordMode(archive string) testing.Precondition {
 	return getOrCreatePrecondition(getCallerPackage(), archive, Record)
 }

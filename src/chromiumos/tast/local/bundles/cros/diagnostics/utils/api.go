@@ -15,6 +15,7 @@ import (
 
 // systemDataProviderJs is a stringified JS file that exposes the SystemDataProvider mojo
 // API.
+//
 //go:embed api_wrapper.js
 var systemDataProviderJs string
 

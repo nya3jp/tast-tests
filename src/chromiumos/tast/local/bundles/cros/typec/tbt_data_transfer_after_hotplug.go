@@ -50,8 +50,7 @@ func init() {
 //
 // This test requires the following H/W topology to run.
 //
-//
-//        DUT ------> C-Switch(device that performs hot plug-unplug)---->TBT SSD.
+//	DUT ------> C-Switch(device that performs hot plug-unplug)---->TBT SSD.
 func TbtDataTransferAfterHotplug(ctx context.Context, s *testing.State) {
 
 	const (

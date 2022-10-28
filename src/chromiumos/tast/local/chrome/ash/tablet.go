@@ -35,11 +35,12 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error
 // and returns a function which reverts back to the original state.
 //
 // Typically, this will be used like:
-//   cleanup, err := ash.EnsureTabletModeEnabled(ctx, c, true)
-//   if err != nil {
-//     s.Fatal("Failed to ensure in tablet mode: ", err)
-//   }
-//   defer cleanup(ctx)
+//
+//	cleanup, err := ash.EnsureTabletModeEnabled(ctx, c, true)
+//	if err != nil {
+//	  s.Fatal("Failed to ensure in tablet mode: ", err)
+//	}
+//	defer cleanup(ctx)
 func EnsureTabletModeEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) (func(ctx context.Context) error, error) {
 	originallyEnabled, err := TabletModeEnabled(ctx, tconn)
 	if err != nil {

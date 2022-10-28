@@ -80,7 +80,8 @@ type objectInfo struct {
 // Object creates an Object from given selectors.
 //
 // Example:
-//  btn := d.Object(ui.ID("foo_button"), ui.Text("bar"))
+//
+//	btn := d.Object(ui.ID("foo_button"), ui.Text("bar"))
 func (d *Device) Object(opts ...SelectorOption) *Object {
 	return &Object{d: d, s: newSelector(opts)}
 }

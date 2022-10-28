@@ -114,11 +114,11 @@ func runAccelVideoTestCmd(ctx context.Context, execCmd, filter, logfilepath stri
 
 // RunAccelVideoTest runs video_decode_accelerator_tests with the specified
 // video file. TestParams specifies:
-// 1. Whether to run the tests against the VDA or VD based video decoder
-//    implementations.
-// 2. If the output of the decoder is a linear buffer (this is false by
-//    default).
-// 3. If the global VA-API lock should be disabled.
+//  1. Whether to run the tests against the VDA or VD based video decoder
+//     implementations.
+//  2. If the output of the decoder is a linear buffer (this is false by
+//     default).
+//  3. If the global VA-API lock should be disabled.
 func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters TestParams) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -204,11 +204,12 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 
 // RunAccelVideoPerfTest runs video_decode_accelerator_perf_tests with the
 // specified video file. TestParams specifies:
-// 1. Which Chrome stack implementation to run against (e.g. VDA, VD, etc.)
-// 2. Whether the output of the decoder should be a linear buffer (false by
-//    default), or the platform natural storage.
-// 3. If the global VA-API lock should be disabled (false by default).
-// 4. Which test cases to run, e.g. capped, uncapped, both etc.
+//  1. Which Chrome stack implementation to run against (e.g. VDA, VD, etc.)
+//  2. Whether the output of the decoder should be a linear buffer (false by
+//     default), or the platform natural storage.
+//  3. If the global VA-API lock should be disabled (false by default).
+//  4. Which test cases to run, e.g. capped, uncapped, both etc.
+//
 // The test binary is run twice. The first time the test is run in isolation,
 // creating its own output JSON file. The second time it's run cyclically to
 // measure system wide metrics (e.g. CPU usage, power consumption).

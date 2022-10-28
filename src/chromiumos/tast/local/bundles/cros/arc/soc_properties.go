@@ -32,9 +32,9 @@ func init() {
 			"dru",
 			"druwl",
 			"dumo",
-			"elm",  // AUE on Container-R
+			"elm", // AUE on Container-R
 			"edgar",
-			"hana",  // AUE on Container-R
+			"hana", // AUE on Container-R
 			"kevin",
 			"ultima",
 		)),

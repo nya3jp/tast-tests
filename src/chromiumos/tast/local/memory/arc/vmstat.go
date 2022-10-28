@@ -19,7 +19,7 @@ import (
 // VMStatMetrics writes the contents of `/proc/vmstat` to outdir. If outdir is
 // "", then no logs are written. If p is provided, it adds the following
 // metrics:
-//  - arcvm_virtio_balloon - The size of the virtio_balloon, in bytes.
+//   - arcvm_virtio_balloon - The size of the virtio_balloon, in bytes.
 func VMStatMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outdir, suffix string) error {
 	vmstat, err := a.Command(ctx, "cat", "/proc/vmstat").Output()
 	if err != nil {

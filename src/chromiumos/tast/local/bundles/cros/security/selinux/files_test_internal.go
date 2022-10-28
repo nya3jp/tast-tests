@@ -14,9 +14,11 @@ import (
 // Files should have been labeled by platform2/sepolicy/file_contexts/ or
 // platform2/sepolicy/policy/*/genfs_contexts with a few exceptions.
 // Exceptions include:
-//  - type_transition rule to default assign a label for files created
+//   - type_transition rule to default assign a label for files created
+//
 // under some condition.
-//  - mv/cp files without preserving original labels but inheriting
+//   - mv/cp files without preserving original labels but inheriting
+//
 // labels from new parent directory (e.g. /var/log/mount-encrypted.log)
 type FileTestCase struct {
 	Path         string // absolute file path

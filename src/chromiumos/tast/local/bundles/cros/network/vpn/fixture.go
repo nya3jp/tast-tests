@@ -71,10 +71,11 @@ func resetShillWithLockingHook(ctx context.Context) error {
 
 // vpnFixture is a fixture to prepare environment that can be used to test VPN
 // connections. Particularly, this fixture does the followings:
-// - Reset shill in SetUp and TearDown, to make sure we have a clean shill profile.
-// - Prepare the cert store and install user certificate (and server CA certificate
-//	 if Chrome is required).
-// - Start a new Chrome session if required.
+//   - Reset shill in SetUp and TearDown, to make sure we have a clean shill profile.
+//   - Prepare the cert store and install user certificate (and server CA certificate
+//     if Chrome is required).
+//   - Start a new Chrome session if required.
+//
 // When a test failed, to ensure we have a clean setup, shill will be reset if
 // there is no Chrome, and a full restart of this fixture will happen if there is Chrome.
 type vpnFixture struct {

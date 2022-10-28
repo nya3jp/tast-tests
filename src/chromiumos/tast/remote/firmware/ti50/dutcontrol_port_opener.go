@@ -29,9 +29,11 @@ const (
 //
 // Example:
 // conn, err := grpc.DialContext(ctx, hostPort, grpc.WithInsecure())
-// if err != nil {
-//     return nil, err
-// }
+//
+//	if err != nil {
+//	    return nil, err
+//	}
+//
 // defer conn.Close(ctx)
 // client := dutcontrol.NewDutControlClient(conn)
 // opener := &DUTControlRawUARTPortOpener(client, "console", 115200, 1024, 200 * time.Millisecond)

@@ -58,9 +58,10 @@ func (base *BaseMemoryStats) Clone() *BaseMemoryStats {
 // NewBaseMemoryStats gathers data on ever-growing metrics, so that they can
 // be a baseline to subtract from the same metrics at a later time.
 // A test will ideally perform this sequence:
-//     base := metrics.NewBaseMemoryStats()
-//     ..run the test..
-//     metrics.LogMemoryStats( ..., base, ...)
+//
+//	base := metrics.NewBaseMemoryStats()
+//	..run the test..
+//	metrics.LogMemoryStats( ..., base, ...)
 func NewBaseMemoryStats(ctx context.Context, arc *arc.ARC) (*BaseMemoryStats, error) {
 	basezram, err := memory.NewZramStats()
 	if err != nil {

@@ -210,9 +210,10 @@ func psiDeltaMetrics(base, stat *PSIOneSystemStats, elapsedMicroseconds int64, p
 
 // PSIMetrics writes a JSON file containing statistics from PSI metrics.
 // Parameter base is optional:
-// * if base is set, it defines the starting point for metrics, and its contents
-//   are overwritten with the latest snapshot of PSI metrics.
-// * if base is nil, metrics are averaged since boot.
+//   - if base is set, it defines the starting point for metrics, and its contents
+//     are overwritten with the latest snapshot of PSI metrics.
+//   - if base is nil, metrics are averaged since boot.
+//
 // If outdir is "", then no logs are written.
 func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values, outdir, suffix string) error {
 	stat, err := NewPSIStats(ctx, a)

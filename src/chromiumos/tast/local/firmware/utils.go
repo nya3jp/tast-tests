@@ -24,7 +24,8 @@ var rePartition = regexp.MustCompile("p?[0-9]+$")
 // CheckCrossystemValues calls crossystem to check whether the specified key-value pairs are present.
 // We use the following crossystem syntax, which returns an error code of 0
 // if (and only if) all key-value pairs match:
-//     crossystem param1?value1 [param2?value2 [...]]
+//
+//	crossystem param1?value1 [param2?value2 [...]]
 func CheckCrossystemValues(ctx context.Context, values map[string]string) bool {
 	cmdArgs := make([]string, len(values))
 	i := 0

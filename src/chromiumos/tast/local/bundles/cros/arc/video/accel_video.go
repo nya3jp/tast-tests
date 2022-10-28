@@ -38,7 +38,8 @@ var EncoderBlocklistVM = []string{
 // EncoderAllowlistVPxVM is the list of devices on which the ARCVM VP8/9 HW encoder is enabled.
 // TODO(b/155138243): Remove allowlist once VP8/9 HW encoding is enabled on all devices.
 // Note: Combining this allowlist with the above blocklist works fine, entries in this list won't
-//       override entries in the blocklist.
+//
+//	override entries in the blocklist.
 var EncoderAllowlistVPxVM = []string{
 	"hatch",
 }
