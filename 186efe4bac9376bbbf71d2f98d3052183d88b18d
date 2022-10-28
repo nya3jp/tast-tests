@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f736f6b_ff419d7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T18:03:26Z",
+      "side": 1,
+      "message": "A nice idea indeed!",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab35139_36aa5b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T18:03:26Z",
+      "side": 1,
+      "message": "This seems to overlap significantly with the existing tests `cryptohome.UpdatePassword` and `cryptohome.AuthSessionUnlock`, although I think some aspects, like the ephemeral unlock, wasn\u0027t previously covered by cryptohome tests.\n\nHow should we go about this duplication? We\u0027re obviously dealing with a complex multidimensional set of test scenarios, and there are different ways of forming test \"paths\" in it.\n\nIn the spirit of behavior-driven testing, I think the mentioned tests were actually good starting points: \"when you want to unlock a.k.a. verify credentials, this should hold\" or \"after you update password, here\u0027s what should hold\". We could expand them to support missing combinations that you found out. WDYT?",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829859c8_8683082b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T18:03:26Z",
+      "side": 1,
+      "message": "Hmm where is the VK-vs-USS parameterized?",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70855ce_598083e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T18:03:26Z",
+      "side": 1,
+      "message": "BTW is this really needed?",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
