@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25da6e84_e8bef48b",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T14:35:28Z",
+      "side": 1,
+      "message": "We should specify this is for the shill AlwaysOn VPN feature (!\u003d Android AlwaysOn).",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 24
+      },
+      "revId": "81fb5eebe79f104604c3845d8f3dbc5b1f297564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
