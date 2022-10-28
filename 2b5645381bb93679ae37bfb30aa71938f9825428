@@ -39,6 +39,23 @@
       },
       "revId": "2b5645381bb93679ae37bfb30aa71938f9825428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afa1fd6_67a7ce5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-28T17:23:58Z",
+      "side": 1,
+      "message": "IIUC the expectation will be that it\u0027s only set to `true` if `useUserSecretStash` is? The rollback is only effective after the feature has been on.\n\nSo I\u0027m wondering whether we should rather change `useUserSecretStash` to be a tri-bool, probably an enum: `no` / `yes` / `yes-and-then-rollback`. This would make it clear which combinations are useful, and also keep test parameters readable (four-boolean tuples are somewhat hard to parse).",
+      "revId": "2b5645381bb93679ae37bfb30aa71938f9825428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
