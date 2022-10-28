@@ -63,6 +63,30 @@
       },
       "revId": "a6fe816f0c23354c1b82c6c14e374c25f71d0d29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbc1509_cab09966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T16:49:33Z",
+      "side": 1,
+      "message": "Keeping them should be okay as I checked that this and its lacros variant tests are passing. Thanks for confirming this.",
+      "parentUuid": "9815dadf_06c8634f",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "a6fe816f0c23354c1b82c6c14e374c25f71d0d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
