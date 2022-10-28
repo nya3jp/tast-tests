@@ -33,6 +33,24 @@
       "message": "Could you add `s.Log(\"...\")` to explain why this case is going to be skipped?",
       "revId": "ac3e9749c77849704d35da35135ab1626ab1c239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b712282_412e33a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-28T02:12:01Z",
+      "side": 1,
+      "message": "Done! THank you for the review!",
+      "parentUuid": "41605f92_92699155",
+      "revId": "ac3e9749c77849704d35da35135ab1626ab1c239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

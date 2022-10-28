@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf100ec_bc0b2afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-10-28T02:12:01Z",
+      "side": 1,
+      "message": "Tast-owner please take a look~",
+      "revId": "9ee66079728731279cc84993cea110a3f752c277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
