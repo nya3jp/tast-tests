@@ -70,6 +70,24 @@
       "parentUuid": "fc27280c_3f960236",
       "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a9398f_7140aeb3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-28T01:59:54Z",
+      "side": 1,
+      "message": "Fine with me.",
+      "parentUuid": "72f0788e_f823e9f6",
+      "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
