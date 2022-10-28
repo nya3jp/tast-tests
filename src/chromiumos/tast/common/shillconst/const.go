@@ -392,3 +392,9 @@ const (
 const (
 	CellularServiceMinSignalStrength = 10
 )
+
+// Shill always on VPN values.
+const (
+	AlwaysOnVPNServive = "AlwaysOnVpnService"
+	AlwaysOnVPNMode    = "AlwaysOnVpnMode"
+)
