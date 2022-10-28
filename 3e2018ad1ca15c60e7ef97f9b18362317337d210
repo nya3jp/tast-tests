@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95492fa_373a4d58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-28T11:30:43Z",
+      "side": 1,
+      "message": "I suggest \"variant\" instead of \"subtest\" here.\n\nIn Tast, \"subtest\" is a different concept, that runs a child test inside a parent test.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d621;drc\u003d40abc47087c3e1722042ec4e01f6c085415a1f27\n\nThis case is \"parameterized test\", which is equivalent to making an independent test with a different name by appending a suffix (and also using the parameter).",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "3e2018ad1ca15c60e7ef97f9b18362317337d210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a90567c5_fa8e7f51",
