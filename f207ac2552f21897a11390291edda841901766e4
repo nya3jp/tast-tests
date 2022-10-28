@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f5a511_0dc5612a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524292
+      },
+      "writtenOn": "2022-10-28T16:41:22Z",
+      "side": 1,
+      "message": "Yesss, finally 😎",
+      "parentUuid": "067a8589_1e3a3c51",
+      "revId": "f207ac2552f21897a11390291edda841901766e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09bba4de_d80c1401",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-28T08:36:36Z",
       "side": 1,
       "message": "Use time.Time and do the transformation inside the function.",
+      "range": {
+        "startLine": 182,
+        "startChar": 140,
+        "endLine": 182,
+        "endChar": 145
+      },
+      "revId": "f207ac2552f21897a11390291edda841901766e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071e4806_af66d64f",
+        "filename": "src/chromiumos/tast/remote/reportingutil/reporting_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1524292
+      },
+      "writtenOn": "2022-10-28T16:41:22Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "09bba4de_d80c1401",
       "range": {
         "startLine": 182,
         "startChar": 140,
