@@ -23,20 +23,18 @@ const (
 	core     = "core"
 	uncore   = "uncore"
 	dram     = "dram"
-	psys     = "psys"
 )
 
 var isZoneExpected = map[string]bool{
-	// core reports the the joules from the CPU. It belongs to package-0.
+	// core reports the the joules from the CPU. It is a subset of package-0.
 	core: true,
-	// dram reports the joules from memory. It belongs to package-0.
+	// dram reports the joules from memory. This is an estimate.
 	dram: true,
-	// package-0 reports the joules from Zone 0 in RAPL, which is about the sum of subzones core, uncore and dram.
+	// package-0 reports the joules from the energy consumption of the entire SoC.
 	package0: true,
-	// psys reports the joules from Zone 1 in RAPL.
-	psys: true,
-	// uncore reports the joules from the GPU. It belongs to package-0.
+	// uncore reports the joules from the GPU. It is a subset of package-0.
 	uncore: true,
+	// Note: psys is not supported on ChromeOS.
 }
 
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.
@@ -65,7 +63,6 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 		{"Core", rapl.joules[core]},
 		{"Uncore", rapl.joules[uncore]},
 		{"DRAM", rapl.joules[dram]},
-		{"Psys", rapl.joules[psys]},
 	} {
 		perfValues.Append(perf.Metric{
 			Name:      prefix + e.name,
@@ -89,7 +86,6 @@ func (rapl *RAPLValues) ReportWattPerfMetrics(perfValues *perf.Values, prefix st
 		{"Core", rapl.joules[core] / interval},
 		{"Uncore", rapl.joules[uncore] / interval},
 		{"DRAM", rapl.joules[dram] / interval},
-		{"Psys", rapl.joules[psys] / interval},
 	} {
 		perfValues.Append(perf.Metric{
 			Name:      prefix + e.name,
@@ -100,9 +96,10 @@ func (rapl *RAPLValues) ReportWattPerfMetrics(perfValues *perf.Values, prefix st
 	}
 }
 
-// Total returns the sum of joules at the top level.
-func (rapl *RAPLValues) Total() float64 {
-	return rapl.joules[package0] + rapl.joules[psys]
+// Package0 returns the sum of joules for the entire SoC. Note that this is
+// slightly different from total power.
+func (rapl *RAPLValues) Package0() float64 {
+	return rapl.joules[package0]
 }
 
 // Core returns the joules from the CPU.

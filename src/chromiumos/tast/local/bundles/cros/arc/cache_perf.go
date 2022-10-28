@@ -265,7 +265,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 		if err != nil {
 			return 0, 0, errors.Wrap(err, "failed to get power usage")
 		}
-		energy = energyDif.Total()
+		energy = energyDif.Package0()
 	}
 
 	return duration, energy, nil
