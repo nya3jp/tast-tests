@@ -327,6 +327,24 @@
       "parentUuid": "6857d678_02d4e745",
       "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032b5903_d2e631b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock_a2c2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-28T00:49:27Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll file a FR 😊",
+      "parentUuid": "696e05a7_03f43854",
+      "revId": "13b955c8c8e01b12eac3e44a73f2d64aa09b7129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
