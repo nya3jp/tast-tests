@@ -64,62 +64,90 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name: "ash_clipboard_copy_paste",
+				Name: "ash_screenshare",
 				Val: testParams{
 					Username:    restrictionReportReportingEnabledUsername,
 					Password:    restrictionReportReportingEnabledPassword,
 					BrowserType: dlp.BrowserType_ASH,
-					Action:      dlputil.ClipboardCopyPaste,
+					Action:      dlputil.Screenshare,
 				},
 			},
-			{
-				Name: "lacros_clipboard_copy_paste",
-				Val: testParams{
-					Username:    restrictionReportReportingEnabledUsername,
-					Password:    restrictionReportReportingEnabledPassword,
-					BrowserType: dlp.BrowserType_LACROS,
-					Action:      dlputil.ClipboardCopyPaste,
-				},
-				ExtraSoftwareDeps: []string{"lacros"},
-			},
-			{
-				Name: "ash_print",
-				Val: testParams{
-					Username:    restrictionReportReportingEnabledUsername,
-					Password:    restrictionReportReportingEnabledPassword,
-					BrowserType: dlp.BrowserType_ASH,
-					Action:      dlputil.Printing,
-				},
-			},
-			{
-				Name: "lacros_print",
-				Val: testParams{
-					Username:    restrictionReportReportingEnabledUsername,
-					Password:    restrictionReportReportingEnabledPassword,
-					BrowserType: dlp.BrowserType_LACROS,
-					Action:      dlputil.Printing,
-				},
-				ExtraSoftwareDeps: []string{"lacros"},
-			},
-			{
-				Name: "ash_screenshot",
-				Val: testParams{
-					Username:    restrictionReportReportingEnabledUsername,
-					Password:    restrictionReportReportingEnabledPassword,
-					BrowserType: dlp.BrowserType_ASH,
-					Action:      dlputil.Screenshot,
-				},
-			},
-			{
-				Name: "lacros_screenshot",
-				Val: testParams{
-					Username:    restrictionReportReportingEnabledUsername,
-					Password:    restrictionReportReportingEnabledPassword,
-					BrowserType: dlp.BrowserType_LACROS,
-					Action:      dlputil.Screenshot,
-				},
-				ExtraSoftwareDeps: []string{"lacros"},
-			},
+			// {
+			// 	Name: "ash_clipboard_copy_paste",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_ASH,
+			// 		Action:      dlputil.ClipboardCopyPaste,
+			// 	},
+			// },
+			// {
+			// 	Name: "lacros_clipboard_copy_paste",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_LACROS,
+			// 		Action:      dlputil.ClipboardCopyPaste,
+			// 	},
+			// 	ExtraSoftwareDeps: []string{"lacros"},
+			// },
+			// {
+			// 	Name: "ash_print",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_ASH,
+			// 		Action:      dlputil.Printing,
+			// 	},
+			// },
+			// {
+			// 	Name: "lacros_print",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_LACROS,
+			// 		Action:      dlputil.Printing,
+			// 	},
+			// 	ExtraSoftwareDeps: []string{"lacros"},
+			// },
+			// {
+			// 	Name: "ash_screenshot",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_ASH,
+			// 		Action:      dlputil.Screenshot,
+			// 	},
+			// },
+			// {
+			// 	Name: "lacros_screenshot",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_LACROS,
+			// 		Action:      dlputil.Screenshot,
+			// 	},
+			// 	ExtraSoftwareDeps: []string{"lacros"},
+			// },
+			// {
+			// 	Name: "ash_screenshare",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_ASH,
+			// 		Action:      dlputil.Screenshare,
+			// 	},
+			// },
+			// {
+			// 	Name: "lacros_screenshare",
+			// 	Val: testParams{
+			// 		Username:    restrictionReportReportingEnabledUsername,
+			// 		Password:    restrictionReportReportingEnabledPassword,
+			// 		BrowserType: dlp.BrowserType_LACROS,
+			// 		Action:      dlputil.Screenshare,
+			// 	},
+			// 	ExtraSoftwareDeps: []string{"lacros"},
+			// },
 		},
 	})
 }
@@ -191,6 +219,10 @@ func DlpReporting(ctx context.Context, s *testing.State) {
 		})
 	case dlputil.Screenshot:
 		service.Screenshot(ctx, &dlp.ActionRequest{
+			BrowserType: params.BrowserType,
+		})
+	case dlputil.Screenshare:
+		service.Screenshare(ctx, &dlp.ActionRequest{
 			BrowserType: params.BrowserType,
 		})
 	}

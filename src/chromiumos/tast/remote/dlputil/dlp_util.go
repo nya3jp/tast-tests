@@ -23,6 +23,8 @@ const (
 	Printing
 	// Screenshot identifies a screenshot action.
 	Screenshot
+	// Screenshare identifies a screenshare action.
+	Screenshare
 )
 
 // String returns a string representation of `Action`.
@@ -34,6 +36,8 @@ func (action Action) String() string {
 		return "PRINTING"
 	case Screenshot:
 		return "SCREENSHOT"
+	case Screenshare:
+		return "SCREENCAST"
 	default:
 		return fmt.Sprintf("String() not defined for Action %d", int(action))
 	}

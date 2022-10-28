@@ -330,3 +330,52 @@ func (service *DataLeakPreventionService) Screenshot(ctx context.Context, req *p
 	return &empty.Empty{}, nil
 
 }
+
+// Screenshare shares the screen.
+func (service *DataLeakPreventionService) Screenshare(ctx context.Context, req *pb.ActionRequest) (_ *empty.Empty, retErr error) {
+
+	baseDir := "/tmp"
+	textFilename := "text.html"
+	if err := createHTMLTextPage(filepath.Join(baseDir, textFilename)); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while creating the HTML text page")
+	}
+
+	br, closeBrowser, err := setupBrowser(ctx, service.chrome, req.BrowserType)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "error while setting up the browser")
+	}
+	defer closeBrowser(ctx)
+
+	server := httptest.NewServer(http.FileServer(http.Dir(baseDir)))
+	defer server.Close()
+
+	conn, err := br.NewConn(ctx, server.URL+"/"+textFilename)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to open page")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to wait to achieve quiescence")
+	}
+
+	// Connect to Test API.
+	tconn, err := service.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to connect to test API")
+	}
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to create screen recorder")
+	}
+	if screenRecorder == nil {
+		return &empty.Empty{}, errors.Wrap(err, "screen recorder not found")
+	}
+	if err := screenRecorder.Start(ctx, tconn); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to start screen recorder")
+	}
+
+	return &empty.Empty{}, nil
+
+}
