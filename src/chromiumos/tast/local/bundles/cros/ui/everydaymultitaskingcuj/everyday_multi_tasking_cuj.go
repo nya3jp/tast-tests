@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -53,18 +53,28 @@ const (
 
 // RunParams holds the parameters to run the test main logic.
 type RunParams struct {
-	tier           cuj.Tier
-	ccaScriptPaths []string // ccaSriptPaths is the scirpt paths used by CCA package to do camera testing.
-	outDir         string
-	appName        string
-	account        string // account is the one used by Spotify APP to do login.
-	tabletMode     bool
-	enableBT       bool
+	tier            cuj.Tier
+	ccaScriptPaths  []string // ccaSriptPaths is the scirpt paths used by CCA package to do camera testing.
+	outDir          string
+	appName         string
+	account         string // account is the one used by Spotify APP to do login.
+	tabletMode      bool
+	enableBT        bool
+	traceConfigPath string
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, enableBT bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode, enableBT: enableBT}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account, traceConfigPath string,
+	tabletMode, enableBT bool) *RunParams {
+	return &RunParams{tier: tier,
+		ccaScriptPaths:  ccaScriptPaths,
+		outDir:          outDir,
+		appName:         appName,
+		account:         account,
+		traceConfigPath: traceConfigPath,
+		tabletMode:      tabletMode,
+		enableBT:        enableBT,
+	}
 }
 
 type runResources struct {
@@ -207,7 +217,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if params.traceConfigPath != "" {
+		recorder.EnableTracing(params.outDir, params.traceConfigPath)
+	}
 	var appStartTime int64
 	switch params.appName {
 	case HelloWorldAppName:
