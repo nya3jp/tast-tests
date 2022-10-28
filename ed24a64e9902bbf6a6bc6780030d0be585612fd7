@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3a2b42_b5218415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-28T16:57:48Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8faa8786_879fa29e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_ec_reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-28T16:57:48Z",
+      "side": 1,
+      "message": "nit: A little confusing over here (and line 150), as we are returning and error when err \u003d\u003d nil. It would be good if we can add a comment here.",
+      "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
