@@ -9,7 +9,9 @@ package testutil
 import (
 	"context"
 	"encoding/json"
+	"os"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -17,6 +19,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -186,4 +190,55 @@ func MIPICamerasFromCrOSCameraTool(ctx context.Context) ([]map[string]string, er
 func IsVividDriverLoaded(ctx context.Context) bool {
 	cmd := testexec.CommandContext(ctx, "sh", "-c", "lsmod | grep -q vivid")
 	return cmd.Run() == nil
+}
+
+// WaitForCameraSocket returns when the camera socket is ready.
+func WaitForCameraSocket(ctx context.Context) (*chrome.Chrome, error) {
+	const exec = "cros_camera_connector_test"
+	const socket = "/run/camera/camera3.sock"
+
+	// TODO(b/151270948): Temporarily disable ARC.
+	// The cros-camera service would kill itself when running the test if
+	// arc_setup.cc is triggered at that time, which will fail the test.
+	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.NoLogin())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+
+	setupSuccess := false
+	defer func() {
+		if !setupSuccess {
+			cr.Close(ctx)
+		}
+	}()
+
+	if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
+		return nil, errors.Wrap(err, "failed to start cros-camera")
+	}
+
+	arcCameraGID, err := sysutil.GetGID("arc-camera")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get gid of arc-camera")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := os.Stat(socket)
+		if err != nil {
+			return err
+		}
+		perm := info.Mode().Perm()
+		if perm != 0660 {
+			return testing.PollBreak(errors.Errorf("perm %04o (want %04o)", perm, 0660))
+		}
+		st := info.Sys().(*syscall.Stat_t)
+		if st.Gid != arcCameraGID {
+			return testing.PollBreak(errors.Errorf("gid %04o (want %04o)", st.Gid, arcCameraGID))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "invalid camera socket")
+	}
+
+	setupSuccess = true
+	return cr, nil
 }
