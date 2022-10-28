@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babad9a8_453aa849",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T11:51:19Z",
+      "side": 0,
+      "message": "@rrsilva@google.com: Is it safe to call Oobe.switchToEnterpriseEnrollmentForTesting without calling OobeAPI.skipToLoginForTesting?",
+      "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
