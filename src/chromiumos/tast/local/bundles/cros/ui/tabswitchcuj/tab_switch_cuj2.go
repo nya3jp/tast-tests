@@ -586,7 +586,9 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
-
+	if collect, ok := s.Var("ui.collectTrace"); ok && collect == "enable" {
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+	}
 	// Shorten context a bit to allow for cleanup if Run fails.
 	shorterCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
