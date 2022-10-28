@@ -40,7 +40,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebAPK,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that a WebAPK can be used to share data to a web app",
 		Contacts: []string{
 			"tsergeant@chromium.org",
