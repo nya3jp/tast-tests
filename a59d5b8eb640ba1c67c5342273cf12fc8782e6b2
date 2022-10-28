@@ -188,6 +188,24 @@
       "parentUuid": "2e0f2072_b5db2e48",
       "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25913308_d0f2faeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-28T09:18:02Z",
+      "side": 1,
+      "message": "Thanks for the tip :). Redoing as local...",
+      "parentUuid": "8fbad67a_c2b32b77",
+      "revId": "a59d5b8eb640ba1c67c5342273cf12fc8782e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
