@@ -6,9 +6,9 @@ package benchmark
 
 import (
 	"context"
-	"fmt"
 	"math"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -21,12 +21,12 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -38,16 +38,26 @@ const crxprtRunningTime = 45 * time.Minute
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CRXPRT2,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Execute Chrome extension CrXPRT 2 to do benchmark and acquire test score",
 		Contacts:     []string{"alfredyu@cienet.com", "xliu@cienet.com"},
 		// Purposely leave the empty Attr here. Public benchmark tests are not included in crosbolt group for now.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      setup.BenchmarkChromeFixture,
 		Timeout:      crxprtRunningTime + 15*time.Minute,
 		VarDeps:      []string{"benchmark.username"},
+		Params: []testing.Param{
+			{
+				Val:     browser.TypeAsh,
+				Fixture: setup.BenchmarkChromeFixture,
+			},
+			{
+				Name:    "lacros",
+				Val:     browser.TypeLacros,
+				Fixture: setup.BenchmarkLacrosFixture,
+			},
+		},
 	})
 }
 
@@ -56,7 +66,7 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 		extName     = "CrXPRT 2"
 		windowName  = "CrXPRT"
 		extID       = "ldeofhcgjhplegompgciolncekblpkad"
-		extStoreURL = "https://chrome.google.com/webstore/detail/crxprt-2/ldeofhcgjhplegompgciolncekblpkad"
+		extStoreURL = "https://chrome.google.com/webstore/detail/crxprt-2/ldeofhcgjhplegompgciolncekblpkad?pli=1&_ind=category%252Fextensions&_asi=1&source=5"
 		extPageURL  = "chrome-extension://ldeofhcgjhplegompgciolncekblpkad/index.html"
 
 		btnIDNext  = "next_btn"
@@ -75,19 +85,23 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(closeCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(closeCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
 	s.Logf("Launching %s", extName)
-	if err := launchChromeExtension(ctx, cr.Browser(), tconn, extName, extID, extStoreURL); err != nil {
+	if err := launchChromeExtension(ctx, br, tconn, extName, extID, extStoreURL); err != nil {
 		s.Fatalf("Failed to launch %s, error: %v", extName, err)
 	}
 
-	// Dump UITree and save screenshot to provide information for debugging if something goes wrong.
-	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
-	defer faillog.SaveScreenshotOnError(closeCtx, cr, s.OutDir(), s.HasError)
-
-	ui := uiauto.New(tconn).WithPollOpts(testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second})
+	ui := uiauto.New(tconn).WithInterval(time.Second)
 
 	root := nodewith.Name(windowName).Role(role.RootWebArea)
-	footer := nodewith.ClassName("footer").Role(role.GenericContainer)
+	footer := nodewith.HasClass("footer").Role(role.GenericContainer)
 	if err := uiauto.Combine("wait for launch",
 		ui.WaitUntilExists(root),
 		ui.WaitUntilExists(footer),
@@ -99,31 +113,31 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 
 	// CrXPRT 2 provide two types of test, this test case will execute the performance test.
 	s.Log("Select performance test")
-	pTestFinder := crxprtNodeFinder.Name("Performance test").ClassName("test_sel_perfbtn").Role(role.Link).State("focusable", true).State("linked", true)
+	pTestFinder := crxprtNodeFinder.Name("Performance test").Role(role.Link).HasClass("test_sel_perfbtn").Focusable().Linked()
 	if err := ui.LeftClick(pTestFinder)(ctx); err != nil {
 		s.Fatal("Failed to select performance test: ", err)
 	}
 
 	s.Log("Connecting to the app")
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extPageURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(extPageURL))
 	if err != nil {
 		s.Fatalf("Failed to connect to extension: %s, error: %+v", extName, err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(closeCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(closeCtx, s.OutDir(), s.HasError, cr, "ui_dump_extension")
 
-	nextBtnFinder := crxprtNodeFinder.Name("Next").ClassName("blue_btn").Role(role.Link).State("focusable", true).State("linked", true)
-	if err := ui.WaitUntilExists(nextBtnFinder)(ctx); err != nil {
-		s.Fatal("Failed to wait for next button: ", err)
-	}
+	const (
+		enabledButtonClass  = "blue_btn"
+		disabledButtonClass = "gray_btn"
+	)
 
 	// The button might be offscreen or covered by footer,
 	// and uiauto.Context.MakeVisible() will not work if the node is not offscreen or
 	// partially covered (overlay) by other node (in this case, the footer might cover the button).
-	// To make the click action more reliable, issue a click by invoking JavaScript call.
-	clickByJS := fmt.Sprintf("document.getElementById(%q).click()", btnIDNext)
-	if err := conn.Eval(ctx, clickByJS, nil); err != nil {
-		s.Fatal("Failed to click button: ", err)
+	nextBtnFinder := crxprtNodeFinder.Name("Next").Role(role.Link).HasClass(enabledButtonClass).Focusable().Linked()
+	if err := ui.DoDefault(nextBtnFinder)(ctx); err != nil {
+		s.Fatal("Failed to got to next step: ", err)
 	}
 
 	startBtn := crxprtNodeFinder.Name("Start").Role(role.Link)
@@ -136,7 +150,7 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 	}
 
 	// CrXPRT 2 demand the device name to be set before execution.
-	if info.ClassName == "gray_btn" {
+	if info.ClassName == disabledButtonClass {
 		s.Log("Start button is grayed out; need to set up the deivce name")
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
@@ -146,34 +160,27 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 
 		// Set the device name.
 		s.Log("Typing device name")
-		inputFieldFinder := crxprtNodeFinder.Role(role.TextField).State(state.Editable, true).State(state.Focusable, true)
+		inputFieldFinder := crxprtNodeFinder.Role(role.TextField).Editable().Focusable()
 		deviceName := s.RequiredVar("benchmark.username")
 		if err := uiauto.Combine("input device name and wait for start button to change state",
-			ui.LeftClickUntil(inputFieldFinder, ui.WithTimeout(3*time.Second).WaitUntilExists(inputFieldFinder.Focused())),
+			ui.DoDefaultUntil(inputFieldFinder, ui.WithTimeout(3*time.Second).WaitUntilExists(inputFieldFinder.Focused())),
 			kb.TypeAction(deviceName),
-			ui.WaitUntilGone(startBtn.ClassName("gray_btn")),
+			ui.WaitUntilGone(startBtn.HasClass(disabledButtonClass)),
 		)(ctx); err != nil {
 			s.Fatal("Failed to input device name and wait for start button to change state: ", err)
 		}
 	}
 
-	// Make sure start button is enabled.
-	if err := ui.WaitUntilExists(startBtn.ClassName("blue_btn"))(ctx); err != nil {
-		s.Fatal("Failed to continue because start button is not enabled: ", err)
-	}
-
 	// The button might be offscreen or covered by footer,
-	// and uiauto.Context.MakeVisible() will not work if the element is not offscreen or
+	// and uiauto.Context.MakeVisible() will not work if the node is not offscreen or
 	// partially covered (overlay) by other node (in this case, the footer might cover the button).
-	// To make the click action more reliable, issue a click by invoke JavaScript call.
-	clickByJS = fmt.Sprintf("document.getElementById(%q).click()", btnIDStart)
-	if err := conn.Eval(ctx, clickByJS, nil); err != nil {
-		s.Fatal("Failed to click button: ", err)
+	if err := ui.DoDefault(startBtn.HasClass(enabledButtonClass))(ctx); err != nil {
+		s.Fatal("Failed to click start button to start the benchmark: ", err)
 	}
 
-	resultFinder := crxprtNodeFinder.Role(role.Heading).ClassName("selectable")
-	incompleteFinder := resultFinder.Name("Test Incomplete")
-	if err := ui.WaitUntilExists(incompleteFinder)(ctx); err != nil {
+	iterationsContainer := nodewith.Role(role.GenericContainer).HasClass("iterations")
+	iterationsText := nodewith.NameContaining("iterations").Role(role.StaticText).Ancestor(iterationsContainer)
+	if err := ui.WaitUntilExists(iterationsText)(ctx); err != nil {
 		s.Fatal("Benchmark might not have started executing: ", err)
 	}
 
@@ -182,14 +189,15 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 
 	fScore := math.NaN()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := ui.Gone(incompleteFinder)(ctx); err != nil {
-			s.Logf("Result label not found - %s test is still running. Elapsed time: %s", extName, time.Since(startTime))
+		if err := ui.EnsureGoneFor(iterationsText, 5*time.Second)(ctx); err != nil {
+			s.Logf("Iteration text found - %s test is still running. Elapsed time: %s", extName, time.Since(startTime))
 			return errors.Wrap(err, "still executing")
 		}
 
-		// There should be three nodes found, and second one is the target.
-		resultNodeFinder := resultFinder.Nth(1)
-		info, err := ui.Info(ctx, resultNodeFinder)
+		resultArea := crxprtNodeFinder.Role(role.GenericContainer).HasClass("result_page_result_area")
+		scoreReg := regexp.MustCompile(`^\d+$`)
+		scoreHeading := nodewith.NameRegex(scoreReg).Role(role.Heading).Ancestor(resultArea)
+		info, err := ui.Info(ctx, scoreHeading)
 		if err != nil {
 			return testing.PollBreak(errors.New("failed to get the info of result node"))
 		}
@@ -216,7 +224,7 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 	}, fScore)
 	s.Logf("Benchmark %s final score: %f", extName, fScore)
 	if err = pv.Save(s.OutDir()); err != nil {
-		s.Fatal("Failed to store values, error: ", err)
+		s.Fatal("Failed to store values: ", err)
 	}
 }
 
