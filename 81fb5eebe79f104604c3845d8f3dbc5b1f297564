@@ -22,6 +22,29 @@
       },
       "revId": "81fb5eebe79f104604c3845d8f3dbc5b1f297564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7e75aa_0d0076d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T14:38:15Z",
+      "side": 1,
+      "message": "There should be no reason this is a problem, but if possible we should try to test different types of builtin VPNs. Maybe 2 of the 4 clients is enough.",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "81fb5eebe79f104604c3845d8f3dbc5b1f297564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

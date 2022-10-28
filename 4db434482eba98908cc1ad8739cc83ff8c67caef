@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e43ac5c7_4ec95be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T14:38:15Z",
+      "side": 1,
+      "message": "Another thing where we had a couple of bugs before is when logging in and out a user.\n\nWe should have a separate test file where we:\n  - log a user (i.e push a user profile in shill)\n  - configure a VPN for that user, and configure AlwaysOn for that VPN\n  - log out the user, check that AlwaysOn is gone and that the VPN is disconnected\n  - relog the user, check that the VPN starts automatically.",
+      "parentUuid": "8a76e96d_650e3bee",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03666d90_12558418",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
         "patchSetId": 4
