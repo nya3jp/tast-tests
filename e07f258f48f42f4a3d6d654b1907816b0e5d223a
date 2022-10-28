@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edf8e0e_bbddd4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-28T19:57:07Z",
+      "side": 1,
+      "message": "Nope, that\u0027s fine. I was just wondering",
+      "parentUuid": "ee672e91_25bc8f51",
+      "revId": "e07f258f48f42f4a3d6d654b1907816b0e5d223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e9e3afa_293129de",
