@@ -16,6 +16,121 @@
       "message": "defer +2 to Tast Owners",
       "revId": "b44017ea177b86b311bd0084becd9268e645864f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11c0ed1_b352280e",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T10:37:14Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 62
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab175bf_474ea8e5",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T10:37:14Z",
+      "side": 1,
+      "message": "Nit: The function name and comment is meaningful enough from readability perspective. It creates new Chrome instance then do something else.\n\nHow about NewChromeWithCameraSocketReady or something else.",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 24
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765eef48_e9431e1a",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T10:37:14Z",
+      "side": 1,
+      "message": "Instead of calling this function in each error handling. You can do below:\n\n1. Create a cleanupCtx in case it fails due to ctx timeout.\n2. Using a boolean state to check setup state and cleanup on failure.\n\n/////////////////////////////////\nsetupSuccess :\u003d false\ndefer(){\n    if !setupSuccess{\n        cr.Close(cleanupCtx)\n    }\n}\n\nsetupA()\nsetupB()\nsetupC()\nsetupSuccess \u003d true",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94140ec_23fd59f7",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T10:37:14Z",
+      "side": 1,
+      "message": "Does the permission potentially change? Otherwise it should use PollBreak https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#PollBreak",
+      "range": {
+        "startLine": 226,
+        "startChar": 17,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c645840_e53b051c",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-28T10:37:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 230,
+        "startChar": 17,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "b44017ea177b86b311bd0084becd9268e645864f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
