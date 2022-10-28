@@ -80,6 +80,19 @@ func New(name string) *Env {
 	}
 }
 
+// NewHidden creates a new Env object. Different from New(), the veth interface
+// created in this method will not be visible to shill (its name started with
+// "veth" and thus shill will ignore it).
+func NewHidden(name string) *Env {
+	return &Env{
+		name:        name,
+		NetNSName:   "netns-" + name,
+		VethOutName: "vetho_" + name,
+		VethInName:  "vethi_" + name,
+		servers:     map[string]server{},
+	}
+}
+
 // SetUp starts the required environment, which includes a chroot, a netns, and
 // a pair of veths with one peer inside the netns and the other peer outside the
 // netns. It is caller's responsibility to call Cleanup() on the returned object
