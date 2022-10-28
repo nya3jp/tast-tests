@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90567c5_fa8e7f51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-28T10:24:23Z",
+      "side": 1,
+      "message": "Bohdan \u0026 Tast owners, please take a look.",
+      "revId": "3e2018ad1ca15c60e7ef97f9b18362317337d210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
