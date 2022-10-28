@@ -33,6 +33,24 @@
       "message": "IIRC, lacros variant needs to have lacros SoftwareDeps.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/docs/test_dependencies.md;l\u003d119?q\u003df:tast%20lacros%20SoftwareDep%20f:dep\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$",
       "revId": "148fa6fbd0487a89c413bcc1dcf85437ece7c24d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c4530e_7906a437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1517142
+      },
+      "writtenOn": "2022-10-28T09:44:39Z",
+      "side": 1,
+      "message": "Thanks for catching that, Po-Hsien! Actually, I realized that I\u0027m missing important code for launching lacros. I\u0027m going to split this CL into smaller ones to make it easier for reviewers.",
+      "parentUuid": "052f90aa_652b0f8d",
+      "revId": "148fa6fbd0487a89c413bcc1dcf85437ece7c24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
