@@ -50,6 +50,24 @@
       "message": "This is a general comment regarding UI tests and not to be resolved in this CL.\n\nThe general outline of a UI test will be 1) Perform action in UI 2) Verify result. In this test we are verifying the result via the UI itself. Should we also verify the result at lower layer than UI, i.e platform layer? (Not just for this test, but UI tests in general)\n\nI think it will \n1) help us catch a class of errors where the UI does not match the underlying status. (Ex WiFi is shown as connected in UI but not really connected in platform).\n\n2) help detect when the test is working but the only part of test which is verifying the result via UI is failing.\n\n\nI don\u0027t know how common 1) is in WiFi. In bluetooth we have seen instance where device shows are connected in UI but not working since the UI is out of sync with the platform state.",
       "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2eb86b1_c66c4287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-28T20:25:29Z",
+      "side": 1,
+      "message": "Hey Shijin! That is a good question, and one that I am not actually certain on what the best approach would be as I could see cases being made to perform checks at a lower level as well as cases not to. WDYT of continuing this discussion in the thread that aashutoshk@ started, and in the meantime we could land this change so that the helper methods/services introduced are available to folks?",
+      "parentUuid": "aba0b922_f6924345",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
