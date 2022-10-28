@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d63dae_4bd47e24",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T08:55:53Z",
+      "side": 1,
+      "message": "example usage: https://crrev.com/c/3989713",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 24
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db87dc6c_a2278220",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T08:55:53Z",
+      "side": 1,
+      "message": "20 seconds is not enough at least. Anyone know why and/or how to speed it up?",
+      "range": {
+        "startLine": 351,
+        "startChar": 63,
+        "endLine": 351,
+        "endChar": 77
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
