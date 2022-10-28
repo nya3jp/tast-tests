@@ -29,7 +29,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, bt browser.Type, roomType RoomType) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, roomType RoomType) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -94,6 +94,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	defer recorder.Close(cleanUpRecorderCtx)
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
+	if err := recorder.AddCollectedMetrics(tconn, bt, cujrecorder.WebRTCMetrics()...); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
 	}
 	isNoRoom := roomType == NoRoom
 	meetTimeout := 50 * time.Second
