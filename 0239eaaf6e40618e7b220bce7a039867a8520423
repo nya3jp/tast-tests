@@ -52,6 +52,24 @@
       "parentUuid": "6d563634_89557f4e",
       "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f0788e_f823e9f6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T01:48:10Z",
+      "side": 1,
+      "message": "SGTM. Looked at them using this func. They are in the local bundles of either \u0027ui\u0027 or \u0027shelf\u0027 package. Moving to `tast/local/bundles/cros/shelf/\u003cutil_or_else\u003e` would be doable in a follow up if it is okay with the reviewers.",
+      "parentUuid": "fc27280c_3f960236",
+      "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
