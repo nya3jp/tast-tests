@@ -16,6 +16,24 @@
       "message": "In general, if the flakiness is happening on the real use cases, retrying is just adding a risk to pass the test \"wrongly\".\n\nCould you describe what is the root cause of flakiness in the code comment, and minimize the retrying code iff it is not possible to remove the root cause due to testing set-up reasons?",
       "revId": "8dbd03f24e3ee0a153337677de79fc7ae2258562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df499f4_af2c7a45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-10-28T07:40:41Z",
+      "side": 1,
+      "message": "Thanks for the comment. After discussing with the team, we will try lowering the test threshold first (http://crrev/c/3989711) and see if we still need retrying.\n\nThe reason for the flakiness is that sometimes audio thread could not wake up to write the audio data in time and cause audio glitch. (especially on low performance devices)\n\nUsually there aren\u0027t many glitches per test, but rarely, the number of glitches will spike up and cause the test to fail. I suspect that there might be some CPU heavy tasks running, but I haven\u0027t been able to identify the exact root cause yet.",
+      "parentUuid": "f42162a7_d477cbf7",
+      "revId": "8dbd03f24e3ee0a153337677de79fc7ae2258562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
