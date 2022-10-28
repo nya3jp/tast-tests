@@ -14,12 +14,14 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/testing"
 )
 
 // AppListBubbleClassName is the automation API class name of the bubble launcher.
@@ -296,6 +298,34 @@ func prepareFakeAppsWithIconData(baseDir string, appNames []string, iconData [][
 	}
 
 	return dirs, nil
+}
+
+// InstalledFakeApps returns a list of the installed fake apps.
+func InstalledFakeApps(ctx context.Context, tconn *chrome.TestConn) ([]*ChromeApp, error) {
+	// Poll until the fake apps are installed.
+	var installedApps []*ChromeApp
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		installedApps, err = ChromeApps(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain the list of the installed apps")
+		}
+
+		var fakeApps []*ChromeApp
+		for _, app := range installedApps {
+			if strings.HasPrefix(app.Name, "fake") {
+				fakeApps = append(fakeApps, app)
+			}
+		}
+		installedApps = fakeApps
+		if len(installedApps) == 0 {
+			return errors.New("no fake apps found")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for fake apps to be installed")
+	}
+	return installedApps, nil
 }
 
 // The remaining definitions are needed only for faillog & CaptureCDP.
