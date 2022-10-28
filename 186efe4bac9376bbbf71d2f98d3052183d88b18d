@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3a895d8_481fc9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-28T22:01:31Z",
+      "side": 1,
+      "message": "Well yes, we can go the route of just making sure that every other test just incorporates a verify into it. I don\u0027t know how to decide on that in general, though.\n\nDoing basically anything with cryptohome requires doing at least half a dozen or so things at a minimum (to set up a session, a mount and at least one kind of credential) and so it\u0027s always a little unclear what things deserve their own test, and what things should just be counted on to happen incidentally as part of another test.",
+      "parentUuid": "12c98fd4_860e8dc9",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "829859c8_8683082b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
         "patchSetId": 1
