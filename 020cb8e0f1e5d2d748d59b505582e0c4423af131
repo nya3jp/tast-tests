@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacfbe64_b322edff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-28T17:21:20Z",
+      "side": 1,
+      "message": "You don\u0027t need to update the year for existing files IIRC",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf4103b_d2f3f515",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-28T17:21:20Z",
+      "side": 1,
+      "message": "does this remove the existing test coverage from any important workflows? if so, you could consider adding the new test case as a parameterized test and specifying this in the `ExtraAttr` field",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3acd351_29519817",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-28T17:21:20Z",
+      "side": 1,
+      "message": "I think exported function comments should start with the function name (`MultiAuth`). But if the linter didn\u0027t complain then I suppose it\u0027s fine!",
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
