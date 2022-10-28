@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ec478b_aec8abe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T13:53:31Z",
+      "side": 1,
+      "message": "The AP interface right ? Not the client one which is managed by shill. Technically both could be called wlan but here it might be clearer to say explicitly this is the AP side being bridged.",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975fc0f6_136de80d",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T13:53:31Z",
+      "side": 1,
+      "message": "We should maybe consider renaming this one to CreateEthRouterEnv.",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b6d63dae_4bd47e24",
@@ -26,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb2b11c1_5fd70416",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T13:53:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we try to find the service before setting up the backing veth network ?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 49
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417a1327_a295c84a",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T13:53:31Z",
+      "side": 1,
+      "message": "Isn\u0027t there a risk of collision here if we start doing more complex tests ? We should maybe make sure this bridge has been removed.\n\nBTW where is the bridge concretely created ? by hostapd ?",
+      "range": {
+        "startLine": 305,
+        "startChar": 12,
+        "endLine": 305,
+        "endChar": 22
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eee3ba7_e498d365",
         "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
         "patchSetId": 1
@@ -37,6 +129,29 @@
       "writtenOn": "2022-10-28T09:29:02Z",
       "side": 1,
       "message": "I think you can re-use `chromiumos/tast/local/hostapd` and define a config generator the creates the conf you want. Then you\u0027ll be able to check the station connects to the access point using the `monitor`. But maybe that\u0027s overkill for what you\u0027re doing.",
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9fce4c_c30a8a57",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-28T13:53:31Z",
+      "side": 1,
+      "message": "we don\u0027t check this err ?",
+      "range": {
+        "startLine": 318,
+        "startChar": 18,
+        "endLine": 318,
+        "endChar": 21
+      },
       "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
