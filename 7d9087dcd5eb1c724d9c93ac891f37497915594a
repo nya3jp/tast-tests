@@ -34,6 +34,24 @@
       "parentUuid": "babad9a8_453aa849",
       "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fcd11c_2235a2a7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-28T13:30:45Z",
+      "side": 0,
+      "message": "I\u0027m not sure this is the right place to put it though. Tests call chrome.New to get Chrome to a state they want, without caring about how to get there. Maybe it makes more sense to add a separate test that follows the user flow more closely.\n\nI also suspect that more UI interaction will break the tests every time we make a change since nobody notices the tests are broken until the Chrome uprev. Normal GAIA login is part of the CQ, so there\u0027s hope for the enrollment user flow to also be there.",
+      "parentUuid": "e083ddf4_f241ad20",
+      "revId": "7d9087dcd5eb1c724d9c93ac891f37497915594a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
