@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45805185_0b3d9904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e539d0bb_9949d2ea",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a7036f_fe9349a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "will it be better to use switch-case here?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc0ef71_871f9506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71a7036f_fe9349a8",
       "range": {
         "startLine": 202,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7a5a44_157eabcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0036671b_f729d341",
+      "range": {
+        "startLine": 279,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 11
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc6df2b_54f7772f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "nit: missing ending period",
+      "range": {
+        "startLine": 296,
+        "startChar": 27,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b9a2b6_d169382d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc6df2b_54f7772f",
       "range": {
         "startLine": 296,
         "startChar": 27,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "735d8789_af98ddb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94414b66_2b04acf0",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 85
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31fc9076_935b2b4a",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "does it make sense to have a copy of this value so we don\u0027t need to do the type cast every time?",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 345,
+        "endChar": 37
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "405e3931_bfc57c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31fc9076_935b2b4a",
       "range": {
         "startLine": 345,
         "startChar": 4,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed462e14_50c482d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Surprisingly not, didn\u0027t complain.",
+      "parentUuid": "87eddf85_abebc6bf",
+      "range": {
+        "startLine": 370,
+        "startChar": 27,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e66d9c_a0cded35",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 375,
+        "startChar": 27,
+        "endLine": 375,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192a09e6_9f2d8c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e66d9c_a0cded35",
       "range": {
         "startLine": 375,
         "startChar": 27,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2dd34f7_af00f36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_files_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6f23b7_925fecd5",
+      "range": {
+        "startLine": 382,
+        "startChar": 27,
+        "endLine": 382,
+        "endChar": 31
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c042a5d_c62d1cd4",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "USBDrive (here and other places)\n\"Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61254323_c4d7e082",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c042a5d_c62d1cd4",
       "range": {
         "startLine": 60,
         "startChar": 1,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cbb563_fa9e3dcd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2800291a_997d4b48",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 71
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e2db6c7_e483692d",
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a31a3b1_2415da21",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e2db6c7_e483692d",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 75
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12ba0bf3_2acd7cb8",
@@ -290,6 +578,30 @@
       "writtenOn": "2022-10-28T01:35:41Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 71
+      },
+      "revId": "3cceced28634116941ba9f47ac55f595fd6d0b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3b3cdd_f5e8635c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-10-28T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ba0bf3_2acd7cb8",
       "range": {
         "startLine": 241,
         "startChar": 0,
