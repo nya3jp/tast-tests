@@ -66,11 +66,7 @@ type EnvOptions struct {
 // returns the corresponding shill Service and Env object. It's caller's
 // responsibility to call Cleanup() on the returned Env object.
 func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (*shill.Service, *env.Env, error) {
-	router, err := env.New("router" + opts.NameSuffix)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to create router env")
-	}
-
+	router := env.New("router" + opts.NameSuffix)
 	if err := router.SetUp(ctx); err != nil {
 		return nil, nil, errors.Wrap(err, "failed to set up the router env")
 	}
@@ -183,11 +179,7 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 		}
 	}()
 
-	server, err := env.New("server" + opts.NameSuffix)
-	if err != nil {
-		return nil, nil, nil, errors.Wrap(err, "failed to create server env")
-	}
-
+	server := env.New("server" + opts.NameSuffix)
 	if err := server.SetUp(ctx); err != nil {
 		return nil, nil, nil, errors.Wrap(err, "failed to set up server env")
 	}

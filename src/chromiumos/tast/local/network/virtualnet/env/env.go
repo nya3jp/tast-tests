@@ -25,7 +25,7 @@ import (
 )
 
 // maxNameLen is the limitation of the length of the name of a Env object. This
-// limitation comes from the max ifname name length (IFNAMSIZ=16).
+// limitation comes from the max ifname name length ().
 const maxNameLen = 10
 
 var rootSymlinks = [][]string{{"var/run", "/run"}, {"var/lock", "/run/lock"}}
@@ -71,27 +71,23 @@ type server interface {
 	WriteLogs(ctx context.Context, f *os.File) error
 }
 
-// New creates a new NewEnv object. It is caller's responsibility to call
-// Cleanup() on the returned object if this call succeeded. |name| will be used
-// as part of the names of netns, ifnames of veths, and the log file, and thus
-// it should be unique among different Env objects.
-func New(name string) (*Env, error) {
-	if len(name) >= maxNameLen {
-		return nil, errors.Errorf("the length of name %v is too long, should be shorter than %v", len(name), maxNameLen)
-	}
-
+// New creates a new Env object. |name| will be used as part of the names of
+// netns, ifnames of veths, and the log file, and thus it should be unique among
+// different Env objects.
+func New(name string) *Env {
 	return &Env{
 		name:        name,
 		NetNSName:   "netns-" + name,
 		VethOutName: "etho_" + name,
 		VethInName:  "ethi_" + name,
 		servers:     map[string]server{},
-	}, nil
+	}
 }
 
 // SetUp starts the required environment, which includes a chroot, a netns, and
 // a pair of veths with one peer inside the netns and the other peer outside the
-// netns.
+// netns. It is caller's responsibility to call Cleanup() on the returned
+// object if this call succeeded.
 func (e *Env) SetUp(ctx context.Context) error {
 	success := false
 	defer func() {
@@ -102,6 +98,13 @@ func (e *Env) SetUp(ctx context.Context) error {
 			testing.ContextLogf(ctx, "Failed to cleanup env %s: %v", e.name, err)
 		}
 	}()
+
+	const maxIfNameLen = 15 // IFNAMSIZ=16
+	if len(e.VethInName) > maxIfNameLen || len(e.VethOutName) > maxIfNameLen {
+		return errors.Errorf(
+			"ifname is too long: len(%s)=%d, len(%s)=%d, 15 at maximum",
+			e.VethInName, len(e.VethInName), e.VethOutName, len(e.VethOutName))
+	}
 
 	if err := e.makeChroot(ctx); err != nil {
 		return errors.Wrap(err, "failed to make the chroot")
