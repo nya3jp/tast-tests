@@ -191,14 +191,18 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	videoCUJParams := s.Param().(videoCUJParam)
+	app := videoCUJParams.app
 	youtubeApkPath := ""
-	if v, ok := s.Var("spera.install_apk"); ok {
-		installApk, err := strconv.ParseBool(v)
-		if err != nil {
-			s.Fatalf("Failed to parse spera.installApk value %v: %v", v, err)
-		}
-		if installApk {
-			youtubeApkPath = s.DataPath(youtubeApkName)
+	if app == youtube.YoutubeApp {
+		if v, ok := s.Var("spera.install_apk"); ok {
+			installApk, err := strconv.ParseBool(v)
+			if err != nil {
+				s.Fatalf("Failed to parse spera.installApk value %v: %v", v, err)
+			}
+			if installApk {
+				youtubeApkPath = s.DataPath(youtubeApkName)
+			}
 		}
 	}
 
@@ -254,10 +258,9 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		Kb:        kb,
 		UIHandler: uiHandler,
 	}
-	videoCUJParams := s.Param().(videoCUJParam)
 	testParams := youtube.TestParams{
 		Tier:            videoCUJParams.tier,
-		App:             videoCUJParams.app,
+		App:             app,
 		OutDir:          s.OutDir(),
 		TabletMode:      tabletMode,
 		ExtendedDisplay: false,
