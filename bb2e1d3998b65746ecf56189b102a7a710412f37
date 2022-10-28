@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "433dd04b_62ea5ab7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-10-28T01:44:26Z",
+      "side": 1,
+      "message": "Sure. Can update once the new suite is ready for use.",
+      "parentUuid": "d571a898_c8c1282f",
+      "revId": "bb2e1d3998b65746ecf56189b102a7a710412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b9ab6f7_554805ac",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
         "patchSetId": 8
