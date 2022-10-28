@@ -46,6 +46,30 @@
       },
       "revId": "caf572bb064f644f0ba63098194660506d074784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a4da52_45dfa8da",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-28T06:11:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bae3dc05_8df85b5b",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "caf572bb064f644f0ba63098194660506d074784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
