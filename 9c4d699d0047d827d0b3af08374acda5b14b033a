@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43499d34_5f52a37c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:22:02Z",
+      "side": 1,
+      "message": "nit: The double label looks a little odd. How about:\n`camera: Add Suspend test`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "9c4d699d0047d827d0b3af08374acda5b14b033a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77944e0f_a5a096a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:22:02Z",
+      "side": 1,
+      "message": "nit: `Verify`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "9c4d699d0047d827d0b3af08374acda5b14b033a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66957f01_8b745dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:22:02Z",
+      "side": 1,
+      "message": "nit: Remove this blank line.",
+      "revId": "9c4d699d0047d827d0b3af08374acda5b14b033a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acbbb6b_4aef2009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:22:02Z",
+      "side": 1,
+      "message": "Create a shortened context with `ctxutil.Shorten` and use it in the `testexec.CommandContext` calls, so that if `cmd.Run` times out, it will leave time for `cr.Close`.",
+      "revId": "9c4d699d0047d827d0b3af08374acda5b14b033a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d603a5d2_f142255c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-28T17:22:02Z",
+      "side": 1,
+      "message": "nit: Remove this blank line.",
+      "revId": "9c4d699d0047d827d0b3af08374acda5b14b033a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
