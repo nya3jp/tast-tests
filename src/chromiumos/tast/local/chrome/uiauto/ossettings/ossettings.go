@@ -433,6 +433,14 @@ func UninstallApp(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 	return uiauto.Combine("uninstall the app",
 		ui.LeftClick(uninstall),
 		ui.WaitUntilExists(uninstallWindow),
+		func(ctx context.Context) error {
+			// Uninstall dialog has a heuristic to determine
+			// unintended clicks, which includes ignoring events
+			// that happen soon after the dialog is shown. Add a
+			// small delay before clicking the uninstall button.
+			testing.Sleep(ctx, time.Second)
+			return nil
+		},
 		ui.LeftClick(uninstall.Ancestor(uninstallWindow)),
 		ui.WaitUntilGone(uninstallWindow))(ctx)
 }

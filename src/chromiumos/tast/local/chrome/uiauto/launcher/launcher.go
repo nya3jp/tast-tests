@@ -1435,9 +1435,19 @@ func UninstallsAppUsingContextMenu(ctx context.Context, tconn *chrome.TestConn, 
 	if err := uiauto.Combine("Uninstall app",
 		ui.Exists(app),
 		ui.RightClick(app),
+		ui.WaitUntilExists(uninstallOption),
 		ui.LeftClick(uninstallOption),
-		ui.WaitForLocation(confirmUninstall),
+		ui.WaitUntilExists(confirmUninstall),
+		func(ctx context.Context) error {
+			// Uninstall dialog has a heuristic to determine
+			// unintended clicks, which includes ignoring events
+			// that happen soon after the dialog is shown. Add a
+			// small delay before clicking the uninstall button.
+			testing.Sleep(ctx, time.Second)
+			return nil
+		},
 		ui.LeftClick(confirmUninstall),
+		ui.WaitUntilGone(confirmUninstall),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to remove the app on recent apps")
 	}
