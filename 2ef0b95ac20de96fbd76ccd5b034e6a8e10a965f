@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36191ca6_dfa44d2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-28T21:49:34Z",
+      "side": 1,
+      "message": "I tried to run this test on vm. It seems flaky. Sometimes I get the correct policies in LaCrOS and sometimes chrome://policy is blank. Funnily it is different from your screenshot where policy is listed, but marked as unset.\nSee screenshots: http://screen/AC5oC7q8vpxeYhS.png",
+      "parentUuid": "f85d147b_8d6c6791",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 107
+      },
+      "revId": "2ef0b95ac20de96fbd76ccd5b034e6a8e10a965f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f527b5ac_cb275e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 2
