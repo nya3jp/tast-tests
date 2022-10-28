@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5c6db71_e7ccf48d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-28T06:02:26Z",
+      "side": 1,
+      "message": "On my tomato, it takes 2 mins. so I set 10 minutes as time out should be enough.",
+      "parentUuid": "4702e4e9_08bda064",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92333d3b_c65b43c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2022-10-28T02:14:25Z",
       "side": 1,
       "message": "nit: maybe ... with %d steps?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc85bff_ccfc3201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-28T06:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92333d3b_c65b43c0",
       "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c2c4f7_684ebc8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-28T06:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b2a6d6_b0a56a2b",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50f1bff_4e9d24b5",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db4acab_de4662bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-28T06:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50f1bff_4e9d24b5",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca3806d_21f49143",
@@ -116,6 +188,24 @@
       "writtenOn": "2022-10-28T02:14:25Z",
       "side": 1,
       "message": "Errorf?",
+      "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04daaa39_a74fe631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/usb_volume_granularity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1544051
+      },
+      "writtenOn": "2022-10-28T06:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca3806d_21f49143",
       "revId": "334c9bd991f62145aa99c2262a34b73c68985e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
