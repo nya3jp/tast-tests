@@ -313,6 +313,8 @@ const (
 	ProfilePropertyProhibitedTechnologies    = "ProhibitedTechnologies"
 	ProfilePropertyArpGateway                = "ArpGateway"
 	ProfilePropertyNoAutoConnectTechnologies = "NoAutoConnectTechnologies"
+	ProfilePropertyAlwaysOnVPNServive        = "AlwaysOnVpnService"
+	ProfilePropertyAlwaysOnVPNMode           = "AlwaysOnVpnMode"
 )
 
 // Profile entry property names.
@@ -389,4 +391,10 @@ const (
 // Set to 10 = less than 2 bars in the UI
 const (
 	CellularServiceMinSignalStrength = 10
+)
+
+// Shill always on VPN values.
+const (
+	AlwaysOnVPNModeStrict     = "strict"
+	AlwaysOnVPNModeBestEffort = "best-effort"
 )
