@@ -16,6 +16,167 @@
       "message": "tast side lgtm",
       "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1810612a_f22f2466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "Should we also test the difference between strict mode and best effort mode, or you plan to do this in a different test?",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03666d90_12558418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "nit: OpenVPN",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ccedda_6e615e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "Just a question, is there any special reason we need to push a profile?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0afb67f_ac9b3d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "I suppose we can call SetProperty direclty on profile since PropertyHodler is embedded in Profile",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03e0c88_d1c2dd46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "Do not discard error",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 11
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043bba02_15273c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "Let\u0027s add this constant (and below) in shillconst",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 49
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361612f1_795d27cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-28T01:58:24Z",
+      "side": 1,
+      "message": "As discussed offline, I would suggest just expose service\nThere should be an ObjectPath() method on Service to get the service path",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
