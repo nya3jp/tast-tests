@@ -88,6 +88,24 @@
       "parentUuid": "72f0788e_f823e9f6",
       "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42195fbc_4e0f8ce2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-28T04:36:49Z",
+      "side": 1,
+      "message": "I noticed this whole func can\u0027t simply move to local/bundles/* as it is currently being referenced by two different test packages \u0027ui\u0027 and \u0027shelf\u0027. otherwise, it would violate this rule: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code\n\nAlternatively, we could probably separate out the fake apps logic to a new func and let this func take it as an arg.\n\nResolving this to move this convo into a follow up CL (https://crrev.com/c/3989575)",
+      "parentUuid": "c6a9398f_7140aeb3",
+      "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
