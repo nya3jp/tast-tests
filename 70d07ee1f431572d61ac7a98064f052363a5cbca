@@ -131,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e23e3b_b47fa591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-28T00:10:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c26731a_f20d78aa",
+      "range": {
+        "startLine": 145,
+        "startChar": 117,
+        "endLine": 145,
+        "endChar": 126
+      },
+      "revId": "70d07ee1f431572d61ac7a98064f052363a5cbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908d9b69_5a32ada9",
