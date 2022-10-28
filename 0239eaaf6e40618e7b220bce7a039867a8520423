@@ -34,6 +34,24 @@
       "parentUuid": "c570bed1_5028f052",
       "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc27280c_3f960236",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-28T01:39:53Z",
+      "side": 1,
+      "message": "Personally I\u0027m happy for this to be done in a follow up, since the code is already like this.",
+      "parentUuid": "6d563634_89557f4e",
+      "revId": "0239eaaf6e40618e7b220bce7a039867a8520423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
