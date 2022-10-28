@@ -46,7 +46,7 @@ type runInfo struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LMbench,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Execute LMBench to do benchmark testing and retrieve the results",
 		Contacts:     []string{"phuang@cienet.com", "xliu@cienet.com"},
 		// Disabled due to <1% pass rate over 30 days. See b/246820188
