@@ -84,7 +84,7 @@ func testResizeLockState(ctx, cleanupCtx context.Context, tconn *chrome.TestConn
 		expectedMode = wm.PhoneResizeLockMode
 		isSplashVisible = true
 	}
-	if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, activity, expectedMode, isSplashVisible); err != nil {
+	if err := wm.CheckResizeLockState(ctx, tconn, cr, activity, expectedMode, isSplashVisible); err != nil {
 		return errors.Wrapf(err, "failed to verify the resize lock state of %s/%s", pkgName, activityName)
 	}
 

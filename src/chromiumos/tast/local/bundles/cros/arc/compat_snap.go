@@ -56,7 +56,7 @@ func checkCompatSnappedWindowState(ctx context.Context, tconn *chrome.TestConn, 
 		return errors.Wrapf(err, "incorrect compat-snapped window width: got %v; want %v", snappedWidth, stableWidth)
 	}
 
-	if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, act, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
+	if err := wm.CheckResizeLockState(ctx, tconn, cr, act, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrap(err, "failed to verify the resize lock state after snapping")
 	}
 
@@ -81,7 +81,7 @@ func testUnsnapByDragging(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrapf(err, "incorrect compat-snapped window width: got %v; want %v", snappedWidth, stableWidth)
 	}
 
-	if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, act, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
+	if err := wm.CheckResizeLockState(ctx, tconn, cr, act, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrap(err, "failed to verify the resize lock state of compat-snapped window")
 	}
 	return nil
