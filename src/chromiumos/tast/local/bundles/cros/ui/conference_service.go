@@ -32,6 +32,7 @@ import (
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/typecutils"
+	"chromiumos/tast/local/ui/cujrecorder"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -44,6 +45,8 @@ func init() {
 		Vars: []string{
 			// mode is optional. Expecting "tablet" or "clamshell".
 			"ui.cuj_mode",
+			// Optional. Expecting "enable" or "disable", default is "disable".
+			"ui.collectTrace",
 			// CrOS login credentials.
 			"ui.cujAccountPool",
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
@@ -133,6 +136,8 @@ func preTest(ctx context.Context) {
 	}
 }
 
+const tmpDir = "/tmp"
+
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
 	roomType := conference.RoomType(req.RoomType)
 	isNoRoom := roomType == conference.NoRoom
@@ -144,7 +149,10 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
 	}
-
+	traceConfigPath := ""
+	if collect, ok := s.s.Var("ui.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = tmpDir + "/" + cujrecorder.SystemTraceConfigFile
+	}
 	run := func(ctx context.Context, roomURL string) error {
 		accountPool, ok := s.s.Var("ui.cujAccountPool")
 		if !ok {
@@ -239,7 +247,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, bt, roomType); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -395,6 +403,10 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if !ok {
 		return nil, errors.New("failed to get variable ui.zoom_bot_token")
 	}
+	traceConfigPath := ""
+	if collect, ok := s.s.Var("ui.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = tmpDir + "/" + cujrecorder.SystemTraceConfigFile
+	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
 	bt := browser.TypeAsh
@@ -502,7 +514,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, bt, roomType); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
