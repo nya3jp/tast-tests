@@ -277,3 +277,17 @@ func Unlock(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// UnlockWithPassword unlocks the screen by typing the given password, assuming that the screen is locked.
+func UnlockWithPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter, lockTimeout, authTimeout time.Duration) error {
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.ReadyForPassword }, lockTimeout); err != nil {
+		return errors.Wrapf(err, "failed waiting until lock screen is ready for password (last state: %+v)", st)
+	}
+	if err := EnterPassword(ctx, tconn, username, password, kb); err != nil {
+		return errors.Wrap(err, "failed unlocking the screen")
+	}
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return !st.Locked }, authTimeout); err != nil {
+		return errors.Wrapf(err, "failed waiting to log in (last state: %+v)", st)
+	}
+	return nil
+}
