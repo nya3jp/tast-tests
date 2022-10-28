@@ -72,16 +72,17 @@ const defaultName = "DEFAULTS"
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
-	Platform             string            `json:"platform"`
-	Parent               string            `json:"parent"`
-	ECCapability         []ECCapability    `json:"ec_capability"`
-	ModeSwitcherType     ModeSwitcherType  `json:"mode_switcher_type"`
-	PowerButtonDevSwitch bool              `json:"power_button_dev_switch"`
-	RecButtonDevSwitch   bool              `json:"rec_button_dev_switch"`
-	Hibernate            bool              `json:"hibernate"`
-	HasKeyboard          bool              `json:"has_keyboard"`
-	RawUSBEnablePins     []json.RawMessage `json:"custom_usb_enable_pins"`
-	USBAPortCount        int               `json:"usb_a_port_count"`
+	Platform              string            `json:"platform"`
+	Parent                string            `json:"parent"`
+	ECCapability          []ECCapability    `json:"ec_capability"`
+	ModeSwitcherType      ModeSwitcherType  `json:"mode_switcher_type"`
+	PowerButtonDevSwitch  bool              `json:"power_button_dev_switch"`
+	RecButtonDevSwitch    bool              `json:"rec_button_dev_switch"`
+	Hibernate             bool              `json:"hibernate"`
+	HasKeyboard           bool              `json:"has_keyboard"`
+	RawUSBEnablePins      []json.RawMessage `json:"custom_usb_enable_pins"`
+	USBAPortCount         int               `json:"usb_a_port_count"`
+	GSCCanWakeECWithReset bool              `json:"gsc_can_wake_ec_with_reset"`
 
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
