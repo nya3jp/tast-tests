@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e994c9_d094b0bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-10-28T11:43:53Z",
+      "side": 1,
+      "message": "Hi everyone, PTAL when able. Feel free to reassign reviewers if needed.",
+      "revId": "476167f359844ad84e4abcdad77fd2008973f7f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a55e40_bc007cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-10-28T11:43:53Z",
+      "side": 1,
+      "message": "This change was suggested by poromov@, moving it earlier means that if the creation of the ScreenRecorder fails, we still get a UI tree dump.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 103
+      },
+      "revId": "476167f359844ad84e4abcdad77fd2008973f7f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
