@@ -101,11 +101,17 @@ func VPNSourceRouting(ctx context.Context, s *testing.State) {
 	if err := conn.SetUp(ctx); err != nil {
 		s.Fatal("Failed to setup vpn: ", err)
 	}
+	vaddr := conn.Server.OverlayIP
+
+	if err := routing.ExpectPingFailure(ctx, vaddr, "chronos"); err != nil {
+		s.Errorf("User %s able to ping %v: %v", "chronos", vaddr, err)
+	}
 	if ok, err := conn.Connect(ctx); !ok || err != nil {
 		s.Fatal("Failed to create vpn connection: ", err)
 	}
-	vaddr := conn.Server.OverlayIP
-
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, vaddr, "chronos", 10*time.Second); err != nil {
+		s.Errorf("User %s failed to ping %v: %v", "chronos", vaddr, err)
+	}
 	test := func(user, goodIP, badIP string) {
 		if err := routing.ExpectPingSuccessWithTimeout(ctx, goodIP, user, 10*time.Second); err != nil {
 			s.Errorf("User %s failed to ping %v: %v", user, goodIP, err)
