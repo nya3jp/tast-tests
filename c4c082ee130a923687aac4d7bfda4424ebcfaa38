@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f7ed48a_69f029c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-10-29T01:11:56Z",
+      "side": 1,
+      "message": "This should be total SoC power.",
+      "range": {
+        "startLine": 555,
+        "startChar": 51,
+        "endLine": 555,
+        "endChar": 62
+      },
+      "revId": "c4c082ee130a923687aac4d7bfda4424ebcfaa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c35bcbc9_64a48f26",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 5
