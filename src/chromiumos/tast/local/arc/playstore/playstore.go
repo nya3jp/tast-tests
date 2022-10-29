@@ -60,6 +60,20 @@ func FindAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 	return nil
 }
 
+// OpenAppPage opens the detail page of an app in Play Store.
+func OpenAppPage(ctx context.Context, a *arc.ARC, pkgName string) error {
+	const (
+		intentActionView    = "android.intent.action.VIEW"
+		playStoreAppPageURI = "market://details?id="
+	)
+
+	if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI+pkgName).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to send intent to open the Play Store")
+	}
+
+	return nil
+}
+
 // printPercentageOfAppInstalled func prints the percentage of app installed so far.
 func printPercentageOfAppInstalled(ctx context.Context, d *ui.Device) {
 	const (
@@ -112,8 +126,6 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		tryAgainButtonText = "try again"
 		skipButtonText     = "skip"
 		noThanksButtonText = "No thanks"
-
-		intentActionView = "android.intent.action.VIEW"
 	)
 
 	o := *opt
@@ -141,9 +153,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		return errors.Wrap(err, "failed to wait for ArcIntentHelper")
 	}
 
-	playStoreAppPageURI := "market://details?id=" + pkgName
-	if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to send intent to open the Play Store")
+	if err := OpenAppPage(ctx, a, pkgName); err != nil {
+		return err
 	}
 
 	var opButton *ui.Object // Operation button - install or update.
@@ -205,8 +216,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			if tryLimit == -1 || tries < tryLimit {
 				tries++
 				testing.ContextLogf(ctx, "Retry button is shown. Trying to reopen the Play Store. Total attempts so far: %d", tries)
-				if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
-					return errors.Wrap(err, "failed to send intent to reopen the Play Store")
+				if err := OpenAppPage(ctx, a, pkgName); err != nil {
+					return err
 				}
 			} else {
 				return testing.PollBreak(errors.Errorf("reopen Play Store attempt limit of %d times", tryLimit))
@@ -293,8 +304,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		// If not, reopen the Play Store page by sending the same intent again.
 		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText))).Exists(ctx); err != nil {
 			testing.ContextLog(ctx, "App installation page disappeared; reopen it")
-			if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
-				return errors.Wrap(err, "failed to send intent to reopen the Play Store")
+			if err := OpenAppPage(ctx, a, pkgName); err != nil {
+				return err
 			}
 		}
 
