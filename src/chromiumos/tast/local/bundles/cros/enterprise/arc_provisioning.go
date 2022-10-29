@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -46,11 +47,15 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
+				// TODO(b/254838300): Memory pressure on kukui-arc-r causes test to fail.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu", "katsu", "kodama", "krane")),
 				Val:               withRetries,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
+				// TODO(b/254838300): Memory pressure on kukui-arc-r causes test to fail.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu", "katsu", "kodama", "krane")),
 				Val:               withRetries,
 			},
 			{
