@@ -39,6 +39,30 @@
       },
       "revId": "21dacd957dcbf1de423ed16773ab25dd9e8366d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3b6293_7afb9b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_remount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-10-29T05:20:12Z",
+      "side": 1,
+      "message": "It should not be true before...\n(The legacy cryptohome API will ignore the \"create\" flag if the user already exists.)",
+      "parentUuid": "5964220a_eea88751",
+      "range": {
+        "startLine": 124,
+        "startChar": 123,
+        "endLine": 124,
+        "endChar": 128
+      },
+      "revId": "21dacd957dcbf1de423ed16773ab25dd9e8366d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
