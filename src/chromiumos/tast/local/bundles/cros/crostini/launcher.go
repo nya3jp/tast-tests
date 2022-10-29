@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
@@ -292,11 +293,11 @@ func Launcher(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Confirm we don't have the application going-in or leaving.
-	if err := waitForIcon(ctx, ownerID, conf.launcherID, iconAbsent); err != nil {
+	if err := waitForIcon(ctx, tconn, ownerID, conf.launcherID, iconAbsent); err != nil {
 		s.Fatal("Icon should not be present before installation: ", err)
 	}
 	defer func() {
-		if err := waitForIcon(cleanupCtx, ownerID, conf.launcherID, iconAbsent); err != nil {
+		if err := waitForIcon(cleanupCtx, tconn, ownerID, conf.launcherID, iconAbsent); err != nil {
 			s.Error("Icon should not be present after uninstallation: ", err)
 		}
 	}()
@@ -318,7 +319,7 @@ func Launcher(ctx context.Context, s *testing.State) {
 	// in the launcher as well as having their icons loaded. The icons are only
 	// loaded after they appear in the launcher, so if we check that first we know
 	// it is in the launcher afterwards.
-	if err := waitForIcon(ctx, ownerID, conf.launcherID, iconExists); err != nil {
+	if err := waitForIcon(ctx, tconn, ownerID, conf.launcherID, iconExists); err != nil {
 		s.Fatal("Icon should not be absent after installation: ", err)
 	}
 
@@ -394,7 +395,13 @@ const (
 
 // waitForIcon verifies that the Crostini icon folder for the specified
 // application exists (or doesnt) in the filesystem and contains at least one file.
-func waitForIcon(ctx context.Context, ownerID, appID string, expectation iconExpectation) error {
+func waitForIcon(ctx context.Context, tconn *chrome.TestConn, ownerID, appID string, expectation iconExpectation) error {
+	// Open launcher, so the app icon gets displayed in UI, which will trigger icon load.
+	if err := launcher.ShowLauncher(tconn, false)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open launcher")
+	}
+	defer launcher.HideLauncher(tconn, true)(ctx)
+
 	iconDir := filepath.Join("/home/user", ownerID, "crostini.icons", appID)
 	existenceCheck := func() (iconExpectation, error) {
 		if fileInfo, err := os.Stat(iconDir); err != nil {
