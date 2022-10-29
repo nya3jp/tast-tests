@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -45,6 +45,7 @@ func init() {
 func DemoMode(ctx context.Context, s *testing.State) {
 	const (
 		installButtonText = "Install"
+		testPackage       = "com.google.android.calculator"
 	)
 
 	cr, err := chrome.New(ctx,
@@ -88,35 +89,13 @@ func DemoMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to see Play Store window: ", err)
 	}
 
-	// Find the Calculator app in Play Store.
-	playStoreAppPageURI := "https://play.google.com/store/apps/details?id=" + "com.google.android.calculator"
-	intentActionView := "android.intent.action.VIEW"
-	if err := arc.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to send intent to open the Play Store: ", err)
-	}
+	playstore.OpenAppPage(ctx, arc, testPackage)
 
-	// Between Chrome and Play Store, always open with Play Store: Choose Play
-	// Store and click "Always".
 	d, err := arc.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close(clearupCtx)
-	// TODO(yaohuali): Narrow down on the target UI element, in case other element with same text is selected and clicked.
-	openWith := d.Object(ui.Text("Play Store"))
-	if err := openWith.WaitForExists(ctx, 10*time.Second); err != nil {
-		// If we didn't get a prompt, the Play Store might be open. If this happens, adjust test expectation accordingly.
-		s.Fatal("Failed to see the prompt to choose between Chrome and Play Store: ", err)
-	}
-	// If we get a prompt, click to always use Play Store.
-	if err := openWith.Click(ctx); err != nil {
-		s.Error("Failed to click 'Open with Play Store': ", err)
-	}
-	// TODO(yaohuali): Narrow down on the target UI element, in case other element with same text is selected and clicked.
-	alwaysLink := d.Object(ui.Text("Always"))
-	if err := alwaysLink.Click(ctx); err != nil {
-		s.Error("Failed to click 'Always': ", err)
-	}
 
 	// Ensure that the "Install" button is disabled.
 	opButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonText), ui.Enabled(false))

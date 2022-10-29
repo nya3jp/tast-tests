@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
@@ -117,19 +118,7 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	searchText := d.Object(ui.ClassName("android.widget.TextView"), ui.Text("Search for apps & games"))
-	if err := searchText.WaitForExists(ctx, DefaultUITimeout); err != nil {
-		s.Error("searchText doesn't exist: ", err)
-	} else if err := searchText.Click(ctx); err != nil {
-		s.Fatal("Failed to click on searchText: ", err)
-	}
-
-	searchTextEdit := d.Object(ui.ClassName("android.widget.EditText"), ui.Text("Search for apps & games"))
-	if err := searchTextEdit.SetText(ctx, "youtube.creator"); err != nil {
-		s.Fatal("Failed to searchText: ", err)
-	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
-	}
+	playstore.OpenAppPage(ctx, a, blockedPackage)
 
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText))
 	if err := installButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
