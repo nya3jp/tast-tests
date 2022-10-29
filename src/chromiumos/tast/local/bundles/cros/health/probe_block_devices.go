@@ -13,6 +13,18 @@ import (
 )
 
 type blockDeviceInfo struct {
+	SubsystemVendor *jsontypes.Uint32 `json:"subsystem_vendor"`
+	SubsystemDevice *jsontypes.Uint32 `json:"subsystem_device"`
+	PcieRev         *uint8            `json:"pcie_rev"`
+	FirmwareRev     *jsontypes.Uint64 `json:"firmware_rev"`
+	Manfid          *uint16           `json:"manfid"`
+	Pnm             *jsontypes.Uint64 `json:"pnm"`
+	Prv             *uint8            `json:"prv"`
+	Fwrev           *jsontypes.Uint64 `json:"fwrev"`
+	JedecManfid     *uint16           `json:"jedec_manfid"`
+}
+
+type nonRemovableBlockDeviceInfo struct {
 	BytesReadSinceLastBoot          jsontypes.Uint64  `json:"bytes_read_since_last_boot"`
 	BytesWrittenSinceLastBoot       jsontypes.Uint64  `json:"bytes_written_since_last_boot"`
 	IoTimeSecondsSinceLastBoot      jsontypes.Uint64  `json:"io_time_seconds_since_last_boot"`
@@ -25,10 +37,11 @@ type blockDeviceInfo struct {
 	WriteTimeSecondsSinceLastBoot   jsontypes.Uint64  `json:"write_time_seconds_since_last_boot"`
 	DiscardTimeSecondsSinceLastBoot *jsontypes.Uint64 `json:"discard_time_seconds_since_last_boot"`
 	ManufacturerID                  uint8             `json:"manufacturer_id"`
+	DeviceInfo                      *blockDeviceInfo  `json:"device_info"`
 }
 
 type blockDeviceResult struct {
-	BlockDevices []blockDeviceInfo `json:"block_devices"`
+	BlockDevices []nonRemovableBlockDeviceInfo `json:"block_devices"`
 }
 
 func init() {
