@@ -371,3 +371,22 @@ func InstallOrUpdateAppAndClose(ctx context.Context, tconn *chrome.TestConn, a *
 	}
 	return optin.ClosePlayStore(ctx, tconn)
 }
+
+// LaunchAssetBrowserActivity starts the activity that displays the available apps.
+func LaunchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) (*arc.Activity, error) {
+	const (
+		playStorePackage     = "com.android.vending"
+		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
+	)
+
+	testing.ContextLog(ctx, "Starting Asset Browser activity")
+	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create new activity")
+	}
+	if err := act.Start(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed starting Play Store")
+	}
+
+	return act, nil
+}

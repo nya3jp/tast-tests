@@ -7,12 +7,18 @@ package arcent
 
 import (
 	"context"
+	"fmt"
 	"sort"
+	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -22,6 +28,9 @@ const LoginPoolVar = "arc.managedAccountPool"
 
 // InstallTypeForceInstalled is the install type for app that is force-installed.
 const InstallTypeForceInstalled = "FORCE_INSTALLED"
+
+// InstallTypeAvailable is the install type for app that is allowed.
+const InstallTypeAvailable = "AVAILABLE"
 
 // InstallTypeBlocked is the install type for app that is blocked.
 const InstallTypeBlocked = "BLOCKED"
@@ -61,7 +70,7 @@ func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, 
 	for _, application := range apps {
 		packageName := application.PackageName
 		installType := application.InstallType
-		if installType == "FORCE_INSTALLED" {
+		if installType == InstallTypeForceInstalled {
 			forceInstalled[packageName] = true
 		}
 	}
@@ -108,4 +117,56 @@ func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcP
 	}
 
 	return arcPolicy
+}
+
+// EnsurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
+func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
+	const (
+		searchBarTextStart = "Search for apps"
+		emptyPlayStoreText = "No results found."
+		serverErrorText    = "Server error|Error.*server.*"
+		tryAgainButtonText = "Try again"
+	)
+
+	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
+		return retErr != nil
+	}, fmt.Sprintf("play_store_%d.png", runID))
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to initialize UI Automator")
+	}
+	defer d.Close(ctx)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// if GMS Core updates after launch, it can cause Play Store to be closed so we have to
+		// launch it again.
+		act, err := playstore.LaunchAssetBrowserActivity(ctx, tconn, a)
+		if err != nil {
+			return err
+		}
+		defer act.Close()
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if running, err := act.IsRunning(ctx); err != nil {
+				return testing.PollBreak(err)
+			} else if !running {
+				return testing.PollBreak(errors.New("Play Store closed"))
+			}
+
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return errors.New("Play Store is empty")
+			}
+
+			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
+				return testing.PollBreak(err)
+			}
+
+			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
+				return errors.Wrap(err, "Play Store UI screen not shown")
+			}
+
+			return nil
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Interval: 10 * time.Second})
 }
