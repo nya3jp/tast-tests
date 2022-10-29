@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "952868e5_4a181396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-10-29T01:24:37Z",
+      "side": 1,
+      "message": "Verified on chromeos15-row9-rack2-host1 with openwrt-21.02.5-cros-1.0.1",
+      "revId": "199004168b28ab301c06db727455d0680fbe5bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
