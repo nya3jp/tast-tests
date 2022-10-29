@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -23,18 +24,18 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Availability,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verifies that ARC is available in different scenarios",
+		Desc:         "Verifies that ARC is available after update of GMS Core",
 		Contacts:     []string{"timkovich@chromium.org", "arc-eng@google.com"},
+
 		SoftwareDeps: []string{"chrome"},
-		// TODO(http://b/172011479): Test is disabled until it can be fixed
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 15 * time.Minute,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -58,7 +59,8 @@ func isPlayStoreOpen(ctx context.Context, s *testing.State, d *ui.Device, tconn 
 }
 
 // updateApp updates pkgName, if possible.
-func updateApp(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, pkgName string) {
+func updateApp(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, pkgName string, tconn *chrome.TestConn) {
+	s.Log("Update the app")
 	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to send intent to open the Play Store: ", err)
 	}
@@ -73,11 +75,45 @@ func updateApp(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, 
 		s.Error("Failed to click update: ", err)
 	}
 
-	// The update is finished when the "Deactivate" button appears.
+	// Wait until progress bar is gone.
+	testing.ContextLog(ctx, "Checking existence of progress bar")
+	progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
+	if err := progressBar.WaitForExists(ctx, 20*time.Second); err == nil {
+		// Print the percentage of app installed so far.
+		testing.ContextLog(ctx, "Wait until progress bar is gone")
+		if err := progressBar.WaitUntilGone(ctx, 90*time.Second); err != nil {
+			return
+		}
+	}
+
+	s.Log("ReOpen PlayStore")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		s.Log("send intent")
+		if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+			return errors.New("failed to open Play Store")
+		}
+
+		if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
+			return errors.New("failed to send intent to open the Play Store")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Minute, Interval: 5 * time.Second}); err != nil {
+		return
+	}
+
+	// Below logic to check the button based on ARC version.
+	isARCVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
 	deactivateBtn := d.Object(ui.Text("Deactivate"), ui.ClassName("android.widget.Button"))
-	if err := deactivateBtn.WaitForExists(ctx, 300*time.Second); err != nil {
+	if isARCVMEnabled {
+		deactivateBtn = d.Object(ui.Text("Uninstall"), ui.ClassName("android.widget.Button"))
+	}
+	if err := deactivateBtn.WaitForExists(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out updating app: ", err)
 	}
+
 }
 
 // reopenPlayStore closes and reopens the Play Store so it goes back to the table of contents page.
@@ -86,103 +122,37 @@ func reopenPlayStore(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.De
 		s.Log("Failed to close app: ", err)
 	}
 
-	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "https://play.google.com/store").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to send intent to open the Play Store: ", err)
+	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+		s.Error("Failed to launch Play Store: ", err)
 	}
 
-	openWith := d.Object(ui.Text("Play Store"))
-	if err := openWith.WaitForExists(ctx, 10*time.Second); err != nil {
-		// If we didn't get a prompt, the Play Store *might* be open, so keep going anyway.
-		return
-	}
-
-	if err := openWith.Click(ctx); err != nil {
-		s.Error("Failed to click 'Open with Play Store': ", err)
-	}
-
-	alwaysLink := d.Object(ui.Text("ALWAYS"))
-	if err := alwaysLink.Click(ctx); err != nil {
-		s.Error("Failed to click 'Always': ", err)
-	}
 }
 
-// Availability Ensures that ARC is available after:
-// * Login
-// * Logout/Login
-// * Updating GMS Core
-// * Updating Play Store
 func Availability(ctx context.Context, s *testing.State) {
-	dumpUIOnErr := func(ctx context.Context, a *arc.ARC) {
-		if s.HasError() {
-			if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
-				s.Error("Failed to dump UIAutomator: ", err)
-			}
-			if err := a.PullFile(ctx, "/sdcard/window_dump.xml", filepath.Join(s.OutDir(), "uiautomator_dump.xml")); err != nil {
-				s.Error("Failed to pull UIAutomator dump: ", err)
-			}
-		}
-	}
-
-	var creds chrome.Creds
-
-	func() {
-		cr, err := chrome.New(ctx,
-			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-			chrome.ARCSupported(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...))
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer cr.Close(ctx)
-
-		creds = cr.Creds()
-
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to create test API connection: ", err)
-		}
-
-		// Optin to Play Store.
-		s.Log("Opting into Play Store")
-		maxAttempts := 2
-		if err = optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
-			s.Fatal("Failed to optin to Play Store: ", err)
-		}
-		if err = optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-			s.Fatal("Failed to wait for Play Store: ", err)
-		}
-
-		// Setup ARC.
-		a, err := arc.New(ctx, s.OutDir())
-		if err != nil {
-			s.Fatal("Failed to start ARC: ", err)
-		}
-		defer a.Close(ctx)
-		defer dumpUIOnErr(ctx, a)
-
-		d, err := a.NewUIDevice(ctx)
-		if err != nil {
-			s.Fatal("Failed initializing UI Automator: ", err)
-		}
-		defer d.Close(ctx)
-
-		isPlayStoreOpen(ctx, s, d, tconn)
-	}()
-
-	cr, err := chrome.New(
-		ctx,
-		chrome.KeepState(),
-		chrome.GAIALogin(creds),
+	// Setup Chrome.
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...),
-	)
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	// Optin to Play Store.
+	s.Log("Opting into Play Store")
+	maxAttempts := 3
+
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
+		s.Fatal("Failed to optin to Play Store: ", err)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
+	}
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
+		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 
 	// Setup ARC.
@@ -191,7 +161,16 @@ func Availability(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close(ctx)
-	defer dumpUIOnErr(ctx, a)
+	defer func() {
+		if s.HasError() {
+			if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
+				s.Error("Failed to dump UIAutomator: ", err)
+			}
+			if err := a.PullFile(ctx, "/sdcard/window_dump.xml", filepath.Join(s.OutDir(), "uiautomator_dump.xml")); err != nil {
+				s.Error("Failed to pull UIAutomator dump: ", err)
+			}
+		}
+	}()
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
@@ -199,17 +178,12 @@ func Availability(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	s.Log("Opening the Play Store after restart")
-	reopenPlayStore(ctx, s, a, d, tconn)
-	isPlayStoreOpen(ctx, s, d, tconn)
-
 	appsToUpdate := []string{
 		"com.google.android.gms",
-		"com.android.vending",
 	}
 
 	for _, app := range appsToUpdate {
-		updateApp(ctx, s, a, d, app)
+		updateApp(ctx, s, a, d, app, tconn)
 		reopenPlayStore(ctx, s, a, d, tconn)
 		isPlayStoreOpen(ctx, s, d, tconn)
 	}
