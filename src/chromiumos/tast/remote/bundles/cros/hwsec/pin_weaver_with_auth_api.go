@@ -29,9 +29,6 @@ type pinWeaverWithAuthAPIParam struct {
 	// Specifies whether to use AuthFactor.
 	// This, for now, also assumes that AuthSession would be used with AuthFactors.
 	useAuthFactor bool
-	// For M104 AuthSession launch, pin is currently set with Legacy API.
-	// Note: both these parameters cannot be true at the same time as that is not a supported case.
-	useLegacyAddAPIForPin bool
 }
 
 func init() {
@@ -47,39 +44,34 @@ func init() {
 		Params: []testing.Param{{
 			Name: "pin_weaver_with_auth_factor_with_no_uss",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    hwsec.NotEnabled,
-				useAuthFactor:         true,
-				useLegacyAddAPIForPin: false,
+				useUserSecretStash: hwsec.NotEnabled,
+				useAuthFactor:      true,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    hwsec.NotEnabled,
-				useAuthFactor:         false,
-				useLegacyAddAPIForPin: false,
+				useUserSecretStash: hwsec.NotEnabled,
+				useAuthFactor:      false,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session_legacy_pin_add",
 			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    hwsec.NotEnabled,
-				useAuthFactor:         false,
-				useLegacyAddAPIForPin: true,
+				useUserSecretStash: hwsec.NotEnabled,
+				useAuthFactor:      false,
 			},
 		},
 			{
 				Name: "pin_weaver_with_auth_factor_with_uss",
 				Val: pinWeaverWithAuthAPIParam{
-					useUserSecretStash:    hwsec.Enabled,
-					useAuthFactor:         true,
-					useLegacyAddAPIForPin: false,
+					useUserSecretStash: hwsec.Enabled,
+					useAuthFactor:      true,
 				},
 			},
 			{
 				Name: "pin_weaver_with_auth_factor_after_uss_rollback",
 				Val: pinWeaverWithAuthAPIParam{
-					useUserSecretStash:    hwsec.Rolledback,
-					useAuthFactor:         true,
-					useLegacyAddAPIForPin: false,
+					useUserSecretStash: hwsec.Rolledback,
+					useAuthFactor:      true,
 				},
 			},
 		},
@@ -359,15 +351,12 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 	}
 
 	// Add a PIN auth factor to the user.
-	if userParam.useLegacyAddAPIForPin {
-		err = cryptohomeHelper.AddVaultKey(ctx, userName, passwordAuthFactorSecret, passwordAuthFactorLabel, correctPINSecret, authFactorLabelPIN, true)
+	if userParam.useAuthFactor {
+		err = cryptohomeHelper.AddPinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
 	} else {
-		if userParam.useAuthFactor {
-			err = cryptohomeHelper.AddPinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
-		} else {
-			err = cryptohomeHelper.AddPinCredentialsWithAuthSession(ctx, authFactorLabelPIN, correctPINSecret, authSessionID)
-		}
+		err = cryptohomeHelper.AddPinCredentialsWithAuthSession(ctx, authFactorLabelPIN, correctPINSecret, authSessionID)
 	}
+
 	if err != nil {
 		return errors.Wrap(err, "failed to add le credential")
 	}
