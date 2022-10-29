@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61947f5_0cdac467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/existing_vault_keysets_when_uss_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-29T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b660bb7f_e6cfdaf9",
+      "revId": "92c7de7873c485e6aa6b0f6f0285b917fbe42036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19cf09b_39a5e816",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-27T19:12:14Z",
       "side": 1,
       "message": "nit: to become",
+      "range": {
+        "startLine": 80,
+        "startChar": 25,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "92c7de7873c485e6aa6b0f6f0285b917fbe42036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9175da3_57e2f745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/existing_vault_keysets_when_uss_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-29T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e19cf09b_39a5e816",
       "range": {
         "startLine": 80,
         "startChar": 25,
