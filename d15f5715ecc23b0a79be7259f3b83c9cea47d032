@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6efbafb_14281b97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-29T03:42:50Z",
+      "side": 1,
+      "message": "Can you clarify this test as well? It\u0027s not super clear to me what Phase2User does.",
+      "revId": "d15f5715ecc23b0a79be7259f3b83c9cea47d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb2bfb9a_5f117c4c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
         "patchSetId": 2
