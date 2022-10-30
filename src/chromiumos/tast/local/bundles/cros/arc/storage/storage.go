@@ -26,6 +26,8 @@ import (
 const (
 	// Timeout to wait for UI item to appear.
 	uiTimeout = 10 * time.Second
+	// Test app's name displayed in the context menu of the Files app.
+	testAppName = "ARC File Reader Test"
 
 	// Labels to appear in the test app and their expected values.
 
@@ -161,8 +163,7 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, config Tes
 			}
 			return nil
 		},
-		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
-		files.LeftClick(nodewith.Name("ARC File Reader Test").Role(role.StaticText)),
+		files.ClickContextMenuItem(config.FileName, filesapp.OpenWith, testAppName),
 	)(ctx)
 }
 
