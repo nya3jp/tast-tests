@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bc89a5_40923293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-30T14:34:58Z",
+      "side": 1,
+      "message": "Sounds good, will add the `cryptohome-test-tool` changes in a follow-up CL",
+      "parentUuid": "6c724c8d_a762311b",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a0eeddf_9f83ba6c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-28T17:13:47Z",
       "side": 1,
       "message": "This chunk of code is duplicated below. Maybe extract into a helper function, like `ExpectCryptohomeErrorCode`?\n\nAlso this helper could be implemented in a shared place (likely `tast/common/cryptohome/helpers.go`), so that other tests that need similar assertions can reuse it.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fd62d9_289df890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-30T14:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0eeddf_9f83ba6c",
       "range": {
         "startLine": 118,
         "startChar": 0,
