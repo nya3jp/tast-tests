@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec5121d_76eb1710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1524811
+      },
+      "writtenOn": "2022-10-30T19:16:31Z",
+      "side": 1,
+      "message": "The reason behind naming this struct `blockDeviceInfo` instead of `deviceInfo` is that there\u0027s already a `deviceInfo` in `probe_bluetooth_info.go`, which would cause conflicts.",
+      "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
