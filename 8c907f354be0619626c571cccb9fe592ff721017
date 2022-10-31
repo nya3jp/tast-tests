@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a24665_adbd91ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-10-31T16:26:20Z",
+      "side": 1,
+      "message": "I talked to Leon offline and we think that this patch should improve things for now. We will keep an eye on the tests and fix new issues that may arise.",
+      "revId": "8c907f354be0619626c571cccb9fe592ff721017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
