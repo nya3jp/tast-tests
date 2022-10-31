@@ -33,6 +33,24 @@
       "message": "Can you describe the test step by step here while you\u0027re at it? b/231669774",
       "revId": "d15f5715ecc23b0a79be7259f3b83c9cea47d032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08529788_979901a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-10-31T06:36:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bb2bfb9a_5f117c4c",
+      "revId": "d15f5715ecc23b0a79be7259f3b83c9cea47d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
