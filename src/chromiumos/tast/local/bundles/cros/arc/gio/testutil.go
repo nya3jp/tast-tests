@@ -284,6 +284,10 @@ func PopulateReceivedTimes(ctx context.Context, params TestParams, numLines int)
 
 	events := make([]inputlatency.InputEvent, 0, numLines)
 	for _, line := range lines {
+		// Throw away "ACTION_MOVE" data.
+		if strings.Contains(line, "ACTION_MOVE") {
+			continue
+		}
 		lineSplit := strings.Split(line, " ")
 		timestamp, err := strconv.ParseInt(lineSplit[len(lineSplit)-1], 10, 64)
 		if err != nil {
