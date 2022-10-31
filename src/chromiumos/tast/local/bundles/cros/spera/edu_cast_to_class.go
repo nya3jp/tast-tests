@@ -46,13 +46,13 @@ func init() {
 		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
-				Name:    "plus_cast",
+				Name:    "essential",
 				Timeout: 10 * time.Minute,
 				Fixture: "enrolledLoggedInToCUJUser",
 				Val:     browser.TypeAsh,
 			},
 			{
-				Name:              "plus_lacros_cast",
+				Name:              "essential_lacros",
 				Timeout:           10 * time.Minute,
 				Fixture:           "enrolledLoggedInToCUJUserLacros",
 				ExtraSoftwareDeps: []string{"lacros"},
