@@ -16,6 +16,24 @@
       "message": "You may want to consider using the screen recorder to record the screen instead? Should give you strictly more information, if I understand your problem correctly.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go;l\u003d120-127;drc\u003dc8929e5908930ccb510420f0aadd6f7b490bcedf",
       "revId": "44ba4fcd0f36e52c5098ab5142fbc35f9bbebb22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0f08b6_45ed545c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-31T23:44:47Z",
+      "side": 1,
+      "message": "Just based on how many variants this test has (I think more than 12), and how infrequent this error is in comparison to the test as a whole, I\u0027m not sure the screen recording is worth the bloat in stainless. Right now, we have two solutions that we should first try: screenshots, and logging the notification. If neither of them can show us anything, we could go to the screen recording.",
+      "parentUuid": "589412f4_51c20af8",
+      "revId": "44ba4fcd0f36e52c5098ab5142fbc35f9bbebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
