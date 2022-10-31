@@ -39,6 +39,7 @@ const (
 	asphaltPkgName                   = "com.gameloft.android.ANMP.GloftA9HM"
 	homescapesPkgName                = "com.playrix.homescapes"
 	skypePkgName                     = "com.skype.raider"
+	minecraftPkgName                 = "com.mojang.minecraftedu"
 	toontasticPkgName                = "com.google.toontastic"
 	playButtonText                   = "Play"
 	clamshellLaunchTestForToontastic = "Launch app in Clamshell"
