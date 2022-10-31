@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "337404fa_38bfadff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-10-31T16:28:10Z",
+      "side": 1,
+      "message": "+1. It would help reviewers understand the purpose of this change if you can elaborate on what you plan to do with the newly added log.",
+      "parentUuid": "ba95b04b_22c91db7",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28c58696_0c91b7cc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
         "patchSetId": 2
@@ -66,6 +90,23 @@
         "endLine": 180,
         "endChar": 20
       },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cda6aad_08cf1745",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-10-31T16:28:10Z",
+      "side": 1,
+      "message": "I believe logging success rate is more useful than logging which iteration failed? What do you plan to do with the newly added log?",
       "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
