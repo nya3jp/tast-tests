@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d72e2f9_60474d61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-31T17:42:43Z",
+      "side": 1,
+      "message": "Hey Yichen,\n\nYour CL is doing 2 things at the same time. Can you split it so that each CL does only 1 thing? See go/cros-wifi-cr about breaking up CLs into smallest standalone changes possible.",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "3dc0cc60634b7ff99b707ed924c382b731b7997c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9b24811a_065be541",
