@@ -38,12 +38,20 @@ const (
 	// We want to use slightly longer pause to make this non-flaky.
 	firmwareVerificationDelay = time.Second * 2
 
+	// FirmwarePath is the path on the DUT filesystem where HPS firmware images
+	// are stored.
+	FirmwarePath = "/usr/lib/firmware/hps/"
 	// Paths to different firmware blobs.
-	hpsFirmwarePath     = "/usr/lib/firmware/hps/"
 	stage1Name          = "mcu_stage1.bin"
 	versionFileName     = "mcu_stage1.version.txt"
 	fpgaBitstreamName   = "fpga_bitstream.bin"
 	fpgaApplicationName = "fpga_application.bin"
+
+	// LatestFirmwarePath is the path on the DUT where "latest" firmware images
+	// are stored. This firmware was built from source during the build
+	// process. The images are not signed and represent the latest unreleased
+	// version of firmware, unlike the released firmware in /usr/lib/firmware/hps.
+	LatestFirmwarePath = "/usr/lib/firmware/hps/latest"
 )
 
 // DeviceType specifies which device to flash.
@@ -226,7 +234,7 @@ func decompressBin(ctx context.Context) (map[string]string, error) {
 
 	firmwareTmpPath := strings.TrimSpace(string(tmpDir))
 
-	files, err := ioutil.ReadDir(hpsFirmwarePath)
+	files, err := ioutil.ReadDir(FirmwarePath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to list files under firmware dir")
 	}
@@ -237,7 +245,7 @@ func decompressBin(ctx context.Context) (map[string]string, error) {
 			continue
 		}
 
-		originPath := filepath.Join(hpsFirmwarePath, file.Name())
+		originPath := filepath.Join(FirmwarePath, file.Name())
 		filePrefix := strings.Replace(file.Name(), ".xz", "", -1)
 
 		if _, err := testexec.CommandContext(ctx, "cp", originPath, firmwareTmpPath).Output(); err != nil {
@@ -275,8 +283,8 @@ func FetchRunningFirmwareVersion(hctx *HpsContext) (int32, error) {
 
 // FetchFirmwareVersionFromImage determines the version of the firmware stored in
 // the ChromeOS image running on the DUT.
-func FetchFirmwareVersionFromImage(hctx *HpsContext) (int32, error) {
-	firmwareVersionFilePath := filepath.Join(hpsFirmwarePath, versionFileName)
+func FetchFirmwareVersionFromImage(hctx *HpsContext, firmwarePath string) (int32, error) {
+	firmwareVersionFilePath := filepath.Join(firmwarePath, versionFileName)
 
 	var versionBytes []byte
 	var err error
