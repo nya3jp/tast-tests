@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this have a hardware dep which is the opposite of hwdep.Cellular?",
       "revId": "d1fd907dfec20b2e4d376cf55728e1ee2b45e1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1273dc3_26f23e7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-10-31T13:48:04Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of hwdep. My plan was to restrict this test to a group of DUTs that do not have cellular capability. Upon checking with the EngProd team, I understood that \u0027wificell\u0027 group is one that does not have cellular DUTs.\n\nIf there is a better way to go about this, please let me know.",
+      "parentUuid": "e99b1d32_9a4abccd",
+      "revId": "d1fd907dfec20b2e4d376cf55728e1ee2b45e1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
