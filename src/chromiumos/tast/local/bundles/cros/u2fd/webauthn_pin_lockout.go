@@ -150,10 +150,9 @@ func WebauthnPINLockout(ctx context.Context, s *testing.State) {
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(node)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for the retry button")
 		}
-		if err := ui.WithTimeout(5 * time.Second).EnsureFocused(node)(ctx); err != nil {
-			return errors.Wrap(err, "failed to focus the retry button")
-		}
-		if err = ui.DoDefault(node)(ctx); err != nil {
+		// The retry button shouldn't be continuously clicked with an interval too
+		// short, as it restarts the processing on each click.
+		if err = ui.WithInterval(2*time.Second).DoDefaultUntil(node, ui.Gone(node))(ctx); err != nil {
 			return errors.Wrap(err, "failed to press the retry button")
 		}
 
