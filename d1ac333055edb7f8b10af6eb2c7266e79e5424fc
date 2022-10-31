@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5d7483_a0dbc286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-31T19:32:07Z",
+      "side": 1,
+      "message": "This is not going to ship so we can remove this parameterization and any mention of holding space in this CL :)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 101
+      },
+      "revId": "d1ac333055edb7f8b10af6eb2c7266e79e5424fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c3f8be_e97bdde6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-31T19:32:07Z",
+      "side": 1,
+      "message": "Will any extension work? Can we use something 1st party?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 127
+      },
+      "revId": "d1ac333055edb7f8b10af6eb2c7266e79e5424fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

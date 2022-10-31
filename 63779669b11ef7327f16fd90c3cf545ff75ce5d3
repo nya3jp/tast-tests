@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1ee102a_029e8fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-31T19:32:07Z",
+      "side": 1,
+      "message": "Yes, I think it would be preferable to find the listItem with a descendent matching \"Should show a \u0027malicious\u0027 warning\" and then find the sibling link, though I wouldn\u0027t get index from \"name\". The goal is to reduce potential flakiness and relying on the ordering of a page that we don\u0027t own is very fragile :)",
+      "parentUuid": "806f6ac4_06f4815a",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 44
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90d380d1_3da4cc64",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
         "patchSetId": 9

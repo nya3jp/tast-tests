@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1cf47a_f409273e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-10-31T19:32:07Z",
+      "side": 1,
+      "message": "Do the malicious/suspicious files need to be hosted outside of `regularFileURLPrefix` or can we add them there so that we aren\u0027t relying on third party UI?",
+      "parentUuid": "ad9d9b2a_f3cb36a4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 117
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2ef35db_f7b4dc7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
         "patchSetId": 3
