@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cc1ffd_fe56a462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-10-31T15:48:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519bb6fc_9ddb87fe",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a0eeddf_9f83ba6c",
