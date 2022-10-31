@@ -104,22 +104,22 @@ func init() {
 					app:  youtube.YoutubeWeb,
 				},
 			}, {
-				Name:      "basic_youtube_app",
+				Name:      "essential_youtube_app",
 				Fixture:   "loggedInAndKeepState",
 				Timeout:   10 * time.Minute,
 				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
-					tier: cuj.Basic,
+					tier: cuj.Essential,
 					app:  youtube.YoutubeApp,
 				},
 			}, {
-				Name:              "basic_lacros_youtube_app",
+				Name:              "essential_lacros_youtube_app",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
-					tier:        cuj.Basic,
+					tier:        cuj.Essential,
 					app:         youtube.YoutubeApp,
 					browserType: browser.TypeLacros,
 				},
@@ -135,22 +135,22 @@ func init() {
 					app:  youtube.YoutubeApp,
 				},
 			}, {
-				Name:      "premium_youtube_app",
+				Name:      "advanced_youtube_app",
 				Fixture:   "loggedInAndKeepState",
 				Timeout:   10 * time.Minute,
 				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
-					tier: cuj.Premium,
+					tier: cuj.Advanced,
 					app:  youtube.YoutubeApp,
 				},
 			}, {
-				Name:              "premium_lacros_youtube_app",
+				Name:              "advanced_lacros_youtube_app",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
-					tier:        cuj.Premium,
+					tier:        cuj.Advanced,
 					app:         youtube.YoutubeApp,
 					browserType: browser.TypeLacros,
 				},
