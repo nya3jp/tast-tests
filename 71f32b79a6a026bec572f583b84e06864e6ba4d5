@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5dbf42a_c67b9a7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-10-31T23:58:05Z",
+      "side": 1,
+      "message": "lgtm from my side, thanks!",
+      "revId": "71f32b79a6a026bec572f583b84e06864e6ba4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9a679929_060e35b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
         "patchSetId": 1
