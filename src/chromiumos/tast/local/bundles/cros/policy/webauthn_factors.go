@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -263,9 +262,10 @@ func WebauthnFactors(ctx context.Context, s *testing.State) {
 				}
 
 				// Delete the PIN so upcoming tests don't get affected.
-				if err := ui.LeftClick(nodewith.Name("Password only").Role(role.RadioButton))(ctx); err != nil {
+				if err := ui.DoDefault(nodewith.Name("Password only").Role(role.RadioButton))(ctx); err != nil {
 					s.Fatal("Failed to delete PIN: ", err)
 				}
+				testing.Sleep(ctx, time.Second*5)
 			}
 		})
 	}
@@ -306,21 +306,15 @@ func getExpectedWebAuthnCapabilities(quickUnlockModeAllowlist *policy.QuickUnloc
 }
 
 func verifyInSessionAuthDialog(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, pinEnabled bool) error {
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	conn, err := cr.NewConn(ctx, "https://webauthn.io/")
+	// Navigate to "logout" path first to clear leftover sessions from previous tests.
+	conn, err := cr.NewConn(ctx, "https://webauthn.io/logout")
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
-	defer func(ctx context.Context, conn *chrome.Conn) {
-		conn.Navigate(ctx, "https://webauthn.io/logout")
-		conn.CloseTarget(ctx)
-		conn.Close()
-	}(cleanupCtx, conn)
+	if err = conn.Navigate(ctx, "https://webauthn.io/"); err != nil {
+		return errors.Wrap(err, "failed to navigate to test website")
+	}
 
 	name := randomUsername()
 	testing.ContextLogf(ctx, "Username: %s", name)
