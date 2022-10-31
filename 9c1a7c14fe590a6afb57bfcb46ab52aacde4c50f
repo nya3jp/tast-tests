@@ -39,6 +39,30 @@
       },
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274acf27_c800e257",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-10-31T23:08:06Z",
+      "side": 1,
+      "message": "It\u0027s a good question.\n\nThis fixture is only messing with the hpsd config, and I tried to make it as robust as possible (only overwrite the file at the end, leave the original in place, etc). But it\u0027s still possible this could cause some problem like hpsd failing to start or crashing etc. That shouldn\u0027t affect anything on the DUT besides HPS-related functionality though.\n\nOne obvious exception is MakeRootfsWritable which probably has some messy failure modes (I didn\u0027t look closely at it because it\u0027s an existing utility function). This fixture also makes no attempt to put the rootfs back to read-only because there didn\u0027t seem to be any precedent for that.\n\nI don\u0027t think it\u0027s much of an issue though, because this fixture is only used by the HPS Camerabox tests, and they are grouped into the hps-cq suite. They are excluded from all the normal test suites, since they need special hardware. So there should be no risk of flow-on effects from this fixture messing things up.",
+      "parentUuid": "630db442_c15bdebe",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
