@@ -16,6 +16,92 @@
       "message": "You may see failure on Gale?",
       "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0190614_df4bdfc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T21:31:38Z",
+      "side": 1,
+      "message": "Thank you so much Eizan for contributing a test!",
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de8757e_7e849b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T21:31:38Z",
+      "side": 1,
+      "message": "I am not sure what\u0027s canonical approach, but maybe cros-flashrom-team@google.com is better than one person?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb84a0b_2257ab8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T21:31:38Z",
+      "side": 1,
+      "message": "Can this be a constant? especially if you add a successful message (comment below).",
+      "range": {
+        "startLine": 30,
+        "startChar": 45,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e7ce9e_727d11e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T21:31:38Z",
+      "side": 1,
+      "message": "Maybe add a info message that \"test completed successfully, /sys/class/mtd/mtd0 found\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
