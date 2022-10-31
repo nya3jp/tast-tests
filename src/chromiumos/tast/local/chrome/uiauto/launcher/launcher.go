@@ -55,6 +55,9 @@ const PagedAppsGridViewClass = "AppsGridView"
 // tablet mode.
 const SearchResultPageView = "SearchResultPageView"
 
+// SearchBoxView defines the class name of the search box view.
+const SearchBoxView = "SearchBoxView"
+
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
 
@@ -130,6 +133,19 @@ func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) u
 	ui := uiauto.New(tconn)
 	categoryListView := SearchResultListViewFinder.Name(category)
 	return ui.WaitUntilExists(SearchResultListItemFinder.Name(result).Ancestor(categoryListView))
+}
+
+// CheckSearchBoxGhostText checks that the ghost text populated in the search box is the same as
+// 'expectedGhostText'.
+func CheckSearchBoxGhostText(ctx context.Context, tconn *chrome.TestConn, expectedGhostText string) (bool, error) {
+	var ghostText string
+	if err := tconn.Call(ctx, ghostText, "tast.promisify(chrome.autotestPrivate.getLauncherSearchGhostText)"); err != nil {
+		return false, errors.Wrap(err, "failed to get launcher search ghost text")
+	}
+	if ghostText == expectedGhostText {
+		return false, nil
+	}
+	return false, nil
 }
 
 // SetUpLauncherTest performs common launcher test setup steps that set tablet
