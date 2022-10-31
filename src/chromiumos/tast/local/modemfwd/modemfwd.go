@@ -10,6 +10,8 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus/v5"
@@ -198,19 +200,174 @@ func GetAutoUpdatePrefValue(ctx context.Context) bool {
 	return false
 }
 
+// Device prefixes
+const (
+	usbPrefix = "usb:"
+	pciPrefix = "pci:"
+	socPrefix = "soc:"
+)
+
+// WaitForDevice waits for a device to be present with a given ID |DEVICE-TYPE-PREFIX:VID:PID|.
+// Note: For SoC devices, there is no VID/PID; the modem is assumed to be a QRTR device and is
+// detected by looking for a QRTR node implemented a set of modem QMI services.
+func WaitForDevice(ctx context.Context, deviceID string) error {
+	if strings.HasPrefix(deviceID, usbPrefix) {
+		return WaitForUsbDevice(ctx, deviceID, time.Minute)
+	} else if strings.HasPrefix(deviceID, pciPrefix) {
+		return WaitForPciDevice(ctx, deviceID, time.Minute)
+	} else if strings.HasPrefix(deviceID, socPrefix) {
+		return WaitForQrtrModemDevice(ctx, time.Minute)
+	}
+	return errors.Errorf("failed to find device, unknown device prefix in ID: %q", deviceID)
+}
+
+// WaitForPciDevice polls for the presence of the PCI device with ID |VID:PID|
+// Note: This expects both the VID an PID to be provided and will not work for wildcard or partial
+// IDs such as "*:*", or "ffff:".
+func WaitForPciDevice(ctx context.Context, pciID string, maxWaitTime time.Duration) error {
+	// trim device-type prefix from id if it was passed in with one
+	pciID = strings.TrimPrefix(pciID, pciPrefix)
+	// trim location and any other tags after the device name
+	pciID = strings.Split(pciID, " ")[0]
+
+	// Check whether PCI device presented as |VID:PID| exists in host
+	// lspci will still return a zero exit code even if the device is not found
+	// so we need to check that the output contains the provided pciID.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if output, err := testexec.CommandContext(ctx, "lspci", "-n", "-d", pciID).Output(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "unexpected PCI status in host os")
+		} else if !strings.Contains(string(output), pciID) {
+			return errors.New("PCI device not found")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  maxWaitTime,
+		Interval: 500 * time.Millisecond,
+	}); err != nil {
+		return errors.Wrapf(err, "failed to find PCI device with ID: %q", pciID)
+	}
+	return nil
+}
+
 // WaitForUsbDevice polls for the presence of the USB device with ID |VID:PID|
-func WaitForUsbDevice(ctx context.Context, UsbID string, maxWaitTime time.Duration) error {
-	return testing.Poll(ctx, func(context.Context) error {
+func WaitForUsbDevice(ctx context.Context, usbID string, maxWaitTime time.Duration) error {
+	// trim device-type prefix from id if it was passed in with one
+	usbID = strings.TrimPrefix(usbID, usbPrefix)
+	// trim location and any other tags after the device name
+	usbID = strings.Split(usbID, " ")[0]
+
+	if err := testing.Poll(ctx, func(context.Context) error {
 		// Check whether USB device presented as |VID:PID| exists in host
 		// If the specified device is not found, a non-zero exit code is returned
 		// by lsusb and err will not be nil
 		// |err == nil| indicates |lsusb -d XXXX:XXXX| finds the expected devices.
-		if err := testexec.CommandContext(ctx, "lsusb", "-d", UsbID).Run(testexec.DumpLogOnError); err != nil {
+		if err := testexec.CommandContext(ctx, "lsusb", "-d", usbID).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "unexpected usb status in host os")
 		}
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  maxWaitTime,
 		Interval: 500 * time.Millisecond,
-	})
+	}); err != nil {
+		return errors.Wrapf(err, "failed to find USB device with ID: %q", usbID)
+	}
+	return nil
+}
+
+type qmiService int
+
+const (
+	qmiWirelessDataService     qmiService = 1
+	qmiDeviceManagementService            = 2
+	qmiNetworkAccessService               = 3
+)
+
+// requiredQmiServices are the QMI services required for a QRTR node to represent a modem
+// See: src/third_party/modemmanager-next/src/mm-qrtr-bus-watcher.c
+var requiredQmiServices = []qmiService{
+	qmiWirelessDataService,
+	qmiDeviceManagementService,
+	qmiNetworkAccessService,
+}
+
+type qrtrNode struct {
+	services map[qmiService]bool
+}
+
+// WaitForQrtrModemDevice polls for the presence of a QRTR node implementing the required modem QMI services.
+func WaitForQrtrModemDevice(ctx context.Context, maxWaitTime time.Duration) error {
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if ok, err := hasQrtrNodeWithModemServices(ctx, requiredQmiServices...); err != nil {
+			return testing.PollBreak(err)
+		} else if !ok {
+			return errors.New("failed to find QRTR node with the requested services")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  maxWaitTime,
+		Interval: 500 * time.Millisecond,
+	}); err != nil {
+		return errors.Wrap(err, "failed to find a QRTR modem device")
+	}
+	return nil
+}
+
+// hasQrtrNodeWithModemServices searches for a QRTR node implementing all of the requested QMI services and returns an error if none is found.
+func hasQrtrNodeWithModemServices(ctx context.Context, requiredServices ...qmiService) (bool, error) {
+	nodes, err := getQrtrNodes(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get available QRTR nodes")
+	}
+
+	for _, node := range nodes {
+		foundAll := true
+		for _, serviceID := range requiredServices {
+			if !node.services[serviceID] {
+				foundAll = false
+				break
+			}
+		}
+		if foundAll {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+// getQrtrNodes returns the available QRTR nodes returned by qrtr-lookup
+func getQrtrNodes(ctx context.Context) (map[int]*qrtrNode, error) {
+	out, err := testexec.CommandContext(ctx, "qrtr-lookup").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get QRTR services via qrtr-lookup")
+	}
+
+	// collect all nodes from qrtr-lookup
+	const fieldCount = 6
+	const serviceIndex = 0
+	const nodeIndex = 3
+	nodes := make(map[int]*qrtrNode, 0)
+	for _, line := range strings.Split(string(out), "\n") {
+		fields := strings.Fields(line)
+		if len(fields) < fieldCount {
+			continue
+		}
+
+		nodeID, err := strconv.Atoi(fields[nodeIndex])
+		if err != nil {
+			continue
+		}
+
+		serviceID, err := strconv.Atoi(fields[serviceIndex])
+		if err != nil {
+			continue
+		}
+
+		if _, ok := nodes[nodeID]; !ok {
+			nodes[nodeID] = &qrtrNode{services: make(map[qmiService]bool)}
+		}
+		nodes[nodeID].services[qmiService(serviceID)] = true
+	}
+
+	return nodes, nil
 }

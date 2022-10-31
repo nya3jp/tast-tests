@@ -7,6 +7,7 @@ package cellular
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 
 	"github.com/golang/protobuf/proto"
@@ -14,6 +15,8 @@ import (
 	mfwd "chromiumos/modemfwd"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/modemfwd"
+	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -70,6 +73,33 @@ func ParseModemHelperManifest(ctx context.Context) (*mfwd.HelperManifest, error)
 	return manifest, nil
 }
 
+// GetModemFirmwareDevice gets the modem firmware device for this variant.
+func GetModemFirmwareDevice(ctx context.Context) (*mfwd.Device, error) {
+	manifest, err := ParseModemFirmwareManifest(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse the firmware manifest")
+	}
+
+	if len(manifest.Device) == 0 {
+		return nil, errors.New("no devices found in firmware manifest")
+	}
+
+	// Ignore error since some boards may not always use a variant
+	dutVariant, _ := GetDeviceVariant(ctx)
+	for _, device := range manifest.Device {
+		if dutVariant == device.Variant {
+			return device, nil
+		}
+	}
+
+	if dutVariant == "" {
+		testing.ContextLog(ctx, "No device with empty variant found in manifest, defaulting to first entry")
+		return manifest.Device[0], nil
+	}
+
+	return nil, errors.Errorf("variant %q does not contain a device", dutVariant)
+}
+
 // GetModemHelperPath Get the path where the modem helper files are located.
 func GetModemHelperPath() string {
 	return "/opt/google/modemfwd-helpers/"
@@ -78,6 +108,41 @@ func GetModemHelperPath() string {
 // GetModemHelperManifestPath Get the path of the modem helper manifest.
 func GetModemHelperManifestPath() string {
 	return filepath.Join(GetModemHelperPath(), "helper_manifest.prototxt")
+}
+
+// ModemHelperPathExists returns true if the modem manifest helper path exists on this device.
+func ModemHelperPathExists() bool {
+	_, err := os.Stat(GetModemHelperPath())
+	return err == nil
+}
+
+// GetModemFirmwareHelperEntry gets the modem helper entry for this variant.
+func GetModemFirmwareHelperEntry(ctx context.Context) (*mfwd.HelperEntry, error) {
+	helperManifest, err := ParseModemHelperManifest(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get extra arguments from firmware proto")
+	}
+
+	if len(helperManifest.Helper) == 0 {
+		return nil, errors.New("no helper entries found in modem helper manifest")
+	}
+
+	// Ignore error since some boards may not always use a variant
+	dutVariant, _ := GetDeviceVariant(ctx)
+	for _, helper := range helperManifest.Helper {
+		for _, variant := range helper.Variant {
+			if variant == dutVariant {
+				return helper, nil
+			}
+		}
+	}
+
+	if dutVariant == "" {
+		testing.ContextLog(ctx, "No helper entry with empty variant found in manifest, defaulting to first entry")
+		return helperManifest.Helper[0], nil
+	}
+
+	return nil, errors.Errorf("variant %q does not contain a helper entry", dutVariant)
 }
 
 // GetDlcIDForVariant gets the dlc id of the variant, otherwise return error.
@@ -101,4 +166,34 @@ func GetDlcIDForVariant(ctx context.Context) (string, error) {
 	}
 	return "", errors.Errorf("variant %q does not contain a DlcId", dutVariant)
 
+}
+
+// RestartModemWithHelper uses the modemfwd helper to force a modem restart.
+func RestartModemWithHelper(ctx context.Context) error {
+	helper, err := GetModemFirmwareHelperEntry(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get modem firmware helper")
+	}
+
+	device, err := GetModemFirmwareDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get modem device")
+	}
+
+	if err := modemfwd.WaitForDevice(ctx, device.DeviceId); err != nil {
+		return errors.Wrap(err, "failed to wait for modem device")
+	}
+
+	helperPath := filepath.Join(GetModemHelperPath(), helper.Filename)
+	args := helper.ExtraArgument
+	args = append([]string{"--reboot"}, args...)
+	if err := testexec.CommandContext(ctx, helperPath, args...).Run(); err != nil {
+		return errors.Wrap(err, "failed to restart modem with modemfwd-helper")
+	}
+
+	// Wait for MM to export the modem after rebooting
+	if _, err = modemmanager.NewModemWithSim(ctx); err != nil {
+		return errors.Wrap(err, "failed to get modem after reboot")
+	}
+	return nil
 }
