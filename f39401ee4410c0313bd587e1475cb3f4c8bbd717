@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0086495c_78d3864f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-31T16:11:07Z",
+      "side": 1,
+      "message": "That sounds like a bug in the device, not in the test. If the AP disappears, we expect the device to detect that the AP is gone and connect back to another AP on its own.",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
