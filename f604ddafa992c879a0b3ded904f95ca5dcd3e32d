@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8fbc1f_bc903d6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-31T21:53:54Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "f604ddafa992c879a0b3ded904f95ca5dcd3e32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ab528c_f3a67e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-31T21:53:54Z",
+      "side": 1,
+      "message": "do we need this?",
+      "range": {
+        "startLine": 1167,
+        "startChar": 47,
+        "endLine": 1167,
+        "endChar": 53
+      },
+      "revId": "f604ddafa992c879a0b3ded904f95ca5dcd3e32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
