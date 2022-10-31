@@ -85,7 +85,7 @@ func init() {
 				Val:               typingTestIMEs,
 				Fixture:           fixture.LacrosTabletVK,
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 		},
 	})

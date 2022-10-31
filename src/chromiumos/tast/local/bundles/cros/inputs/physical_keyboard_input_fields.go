@@ -45,7 +45,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraAttr:         []string{"informational"},
 				Val:               ime.EnglishUS,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 		},
 	})

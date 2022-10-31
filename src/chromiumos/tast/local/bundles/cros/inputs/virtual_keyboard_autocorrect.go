@@ -116,7 +116,7 @@ func init() {
 			{
 				Name:              "en_us_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -128,7 +128,7 @@ func init() {
 			{
 				Name:              "en_us_a11y_lacros",
 				Fixture:           fixture.LacrosClamshellVK,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -140,7 +140,7 @@ func init() {
 			{
 				Name:              "es_es_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -153,7 +153,7 @@ func init() {
 				Name:              "es_es_a11y_lacros",
 				Fixture:           fixture.LacrosClamshellVK,
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -165,7 +165,7 @@ func init() {
 			{
 				Name:              "fr_fr_tablet_lacros",
 				Fixture:           fixture.LacrosTabletVK,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -177,7 +177,7 @@ func init() {
 			{
 				Name:              "fr_fr_a11y_lacros",
 				Fixture:           fixture.LacrosClamshellVK,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",

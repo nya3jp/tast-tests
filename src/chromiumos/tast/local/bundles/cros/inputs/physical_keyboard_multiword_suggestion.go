@@ -48,7 +48,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithMultiwordSuggest,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
