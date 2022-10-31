@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf1214a_7a11695e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T16:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c83b576_339e5ddb",
+      "revId": "c0b59218c1e218f8d8ea98bc61e483f1c8c72f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb0a68cb_e248286b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-28T18:27:34Z",
       "side": 1,
       "message": "Can we print err also? what are possible errors",
+      "revId": "c0b59218c1e218f8d8ea98bc61e483f1c8c72f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4071b349_c7af0919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T16:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0a68cb_e248286b",
       "revId": "c0b59218c1e218f8d8ea98bc61e483f1c8c72f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0a2c290_b72ea030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T16:31:17Z",
+      "side": 1,
+      "message": "gofmt removes the spaces",
+      "parentUuid": "4e3defa9_42306631",
+      "range": {
+        "startLine": 107,
+        "startChar": 38,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "c0b59218c1e218f8d8ea98bc61e483f1c8c72f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5591199_7e426825",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
         "patchSetId": 2
@@ -71,6 +131,30 @@
       "writtenOn": "2022-10-28T18:27:34Z",
       "side": 1,
       "message": "nitpick: space for consistency",
+      "range": {
+        "startLine": 145,
+        "startChar": 51,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "c0b59218c1e218f8d8ea98bc61e483f1c8c72f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdadf05_9697a41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T16:31:17Z",
+      "side": 1,
+      "message": "gofmt removes the spaces",
+      "parentUuid": "b5591199_7e426825",
       "range": {
         "startLine": 145,
         "startChar": 51,
