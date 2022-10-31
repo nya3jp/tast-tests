@@ -1,0 +1,53 @@
+<!-- Copyright 2022 The ChromiumOS Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+
+<head>
+  <!-- The title is used in the tests to identify the window. -->
+  <title>drop not ready.</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <link rel="manifest" href="/drag_drop_pwa_manifest.json" />
+  <link rel="icon" href="/drag_drop_pwa_icon.png" type="image/png" />
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+    #drag-drop {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+      text-align: center;
+      line-height: 300px;
+      font-size: 32px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="drag-drop" draggable="true">drop not ready.</div>
+  <script type="text/javascript">
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/drag_drop_pwa_service.js')
+        .then(function (registration) {
+          console.log('Registered events at scope: ', registration.scope);
+        });
+    }
+
+    window.addEventListener('load', () => {
+      const dropArea = document.getElementById('drag-drop');
+      dropArea.addEventListener('dragover', e => e.preventDefault());
+      dropArea.addEventListener('dragenter', e => e.preventDefault());
+      dropArea.addEventListener('drop', e => {
+        e.preventDefault();
+        if (e.dataTransfer.files.length === 1) {
+          window.document.title = 'drop registered: ' + e.dataTransfer.files[0].name;
+          dropArea.innerText = 'drop registered';
+        }
+      });
+      dropArea.innerText = 'drop ready.';
+      window.document.title = 'awaiting drop.';
+    });
+  </script>
+</body>
