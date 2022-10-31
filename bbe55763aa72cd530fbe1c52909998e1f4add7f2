@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4463d367_61de6af9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-31T18:16:55Z",
+      "side": 1,
+      "message": "IMO, it would be nice to verify allow and block near each other, with all factors/code the same except for the policy. That would make it clear that the policy is the only factor making the difference (app show up / not show up).\n\nIf \"block app\" is tested is another test/file, then there could be small/tricky difference between that and the \"allow app\" test. Such difference would be hard to see, and may grow over time (if/when we change only one of the two).\n\nAlternatively, we may also reuse code for allow/block/force-install situations, which would ensure that the only difference is the policy (ignore the difference in verification code).\n\nAnother thought is that, for the allow/block/force-install policy, ideally we test their state and also transition between states.\n\nWhat do you think?",
+      "parentUuid": "ad20de8b_b1b3d67b",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06ce09e2_b4ea68bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
         "patchSetId": 2
