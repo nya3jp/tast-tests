@@ -264,6 +264,30 @@
       },
       "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc05dbf_9c1f5904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-31T20:41:26Z",
+      "side": 1,
+      "message": "Added intent checks to all of the successful Authenticate calls.",
+      "parentUuid": "a232a69b_ed5e07da",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 3
+      },
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
