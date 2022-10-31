@@ -263,7 +263,7 @@ func (c *Connection) startServer(ctx context.Context) error {
 	var err error
 	switch c.config.Type {
 	case TypeIKEv2:
-		c.Server, err = StartIKEv2Server(ctx, c.serverEnv, c.config.AuthType)
+		c.Server, err = StartIKEv2Server(ctx, c.serverEnv, c.config.AuthType, c.config.IPType)
 	case TypeL2TPIPsec:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.serverEnv, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
