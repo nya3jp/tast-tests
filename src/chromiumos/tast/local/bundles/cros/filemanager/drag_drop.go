@@ -7,61 +7,114 @@ package filemanager
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/input"
+
+	// "chromiumos/tast/errors"
+	// "chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome"
+
+	// "chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
+
+	// "chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragDrop,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify drag drop from files app works",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
+		Timeout: 4 * time.Minute,
+		Attr:    []string{"group:mainline", "informational"},
+		Data: []string{
+			"drag_drop_pwa_manifest.json",
+			"drag_drop_pwa_service.js",
+			"drag_drop_pwa_icon.png",
+			"drag_drop_pwa_window.html",
+		},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func DragDrop(ctx context.Context, s *testing.State) {
-	extDir, err := ioutil.TempDir("", "tast.filemanager.DragDropExtension")
-	if err != nil {
-		s.Fatal("Failed creating temp extension directory: ", err)
-	}
-	defer os.RemoveAll(extDir)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	dropTargetExtID, err := setupDragDropExtension(ctx, s, extDir)
-	if err != nil {
-		s.Fatal("Failed setup of drag drop extension: ", err)
-	}
-
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
+		s.Fatal("Failed to get the test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	mux := http.NewServeMux()
+	fs := http.FileServer(s.DataFileSystem())
+	mux.Handle("/", fs)
+
+	server := &http.Server{Addr: ":8080", Handler: mux}
+	go func() {
+		if err := server.ListenAndServe(); err != http.ErrServerClosed {
+			s.Fatal("Failed to create local server: ", err)
+		}
+	}()
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	defer func(ctx context.Context) {
+		if err := server.Shutdown(ctx); err != nil {
+			s.Log("Failed to stop http server: ", err)
+		}
+	}(cleanupCtx)
+
+	bt := s.Param().(browser.Type)
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, "http://localhost:8080/drag_drop_pwa_window.html")
+	if err != nil {
+		s.Fatal("Failed to load PWA for URL: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
+
+	window, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, "awaiting drop.")
+	if err != nil {
+		s.Fatal("Failed to wait for PWA window to appear: ", err)
+	}
+	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateRightSnapped); err != nil {
+		s.Fatal("Failed to snap Test PWA to the right: ", err)
+	}
+	// After the window has been snapped to the right the bounds change. However,
+	// the bounds stored in `w` are cached, so update the bounds again.
+	window, err = ash.GetWindow(ctx, tconn, window.ID)
+	if err != nil {
+		s.Fatal("Failed to get the updated window bounds: ", err)
+	}
+	dstPoint := window.TargetBounds.CenterPoint()
+
+	// defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
 	if err != nil {
@@ -81,18 +134,14 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
+	defer files.Close(cleanupCtx)
 
-	// Get connection to foreground extension to verify changes.
-	dropTargetURL := "chrome-extension://" + dropTargetExtID + "/window.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(dropTargetURL))
+	window, err = ash.WaitForAnyWindowWithTitle(ctx, tconn, filesapp.FilesTitlePrefix)
 	if err != nil {
-		s.Fatalf("Could not connect to extension at %v: %v", dropTargetURL, err)
+		s.Fatal("Failed to wait for Files app window to appear: ", err)
 	}
-	defer conn.Close()
-
-	// Make sure the extension title has loaded JavaScript properly.
-	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "window.document.title == 'awaiting drop.'", 5*time.Second); err != nil {
-		s.Fatal("Failed waiting for javascript to update window.document.title: ", err)
+	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateLeftSnapped); err != nil {
+		s.Fatal("Failed to snap Files app to the left: ", err)
 	}
 
 	kb, err := input.Keyboard(ctx)
@@ -101,9 +150,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	// The drag drop chrome app defaults to (0,0) with width 300 and height 300 and always on top.
-	dstPoint := coords.Point{X: 100, Y: 100}
-
 	// The Files App may show a welcome banner on launch to introduce the user to new features.
 	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
 	dragDropAction := files.WithTimeout(5*time.Second).WithInterval(time.Second).DragAndDropFile(textFile, dstPoint, kb)
@@ -111,41 +157,28 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to drag and drop: ", err)
 	}
 
-	if err := verifyDroppedFileMatchesDraggedFile(ctx, conn, textFile); err != nil {
+	if err := verifyDroppedFileMatchesDraggedFile(ctx, tconn, textFile); err != nil {
 		s.Fatal("Failed verifying the dropped file matches the drag file: ", err)
 	}
 }
 
-// setupDragDropExtension moves the extension files into the extension directory and returns the extension ID.
-func setupDragDropExtension(ctx context.Context, s *testing.State, extDir string) (string, error) {
-	for _, name := range []string{"manifest.json", "background.js", "window.js", "window.html"} {
-		if err := fsutil.CopyFile(s.DataPath("drag_drop_"+name), filepath.Join(extDir, name)); err != nil {
-			return "", errors.Wrapf(err, "failed to copy extension %q: %v", name, err)
-		}
-	}
-	extID, err := chrome.ComputeExtensionID(extDir)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to compute extension ID for %q: %v", extDir, err)
-	}
-
-	return extID, nil
-}
-
 // verifyDroppedFileMatchesDraggedFile observes the extensions window title for changes.
 // If the title changes to drop registered, the file names are compared to ensure file data is transferred.
-func verifyDroppedFileMatchesDraggedFile(ctx context.Context, conn *chrome.Conn, createdFileName string) error {
-	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "window.document.title.startsWith('drop registered:')", 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed registering drop on extension, title has not changed")
+func verifyDroppedFileMatchesDraggedFile(ctx context.Context, tconn *chrome.TestConn, createdFileName string) error {
+	window, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool {
+		return strings.Contains(w.Title, "drop registered:")
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed registering drop on PWA, title has not changed")
 	}
-
-	var actualDroppedFileName string
-	if err := conn.Eval(ctx, "window.document.title.replace('drop registered:', '')", &actualDroppedFileName); err != nil {
-		return errors.Wrap(err, "failed retrieving the drag drop window title")
+	titleMatcher := regexp.MustCompile("drop registered: (" + strings.ReplaceAll(createdFileName, ".", "\\.") + ")")
+	actualDroppedFileName := titleMatcher.FindStringSubmatch(window.Title)
+	if len(actualDroppedFileName) != 2 {
+		testing.ContextLog(ctx, actualDroppedFileName)
+		return errors.Errorf("failed to extract filename from title: %q", window.Title)
 	}
-
-	if createdFileName != actualDroppedFileName {
-		return errors.Errorf("failed dropped file doesnt match dragged file, got: %q; want: %q", actualDroppedFileName, createdFileName)
+	if createdFileName != actualDroppedFileName[1] {
+		return errors.Errorf("failed dropped file doesnt match dragged file, got: %q; want: %q", actualDroppedFileName[1], createdFileName)
 	}
-
 	return nil
 }
