@@ -80,7 +80,7 @@ func NewScreenshotRecorder(ctx context.Context, interval time.Duration, maxImage
 		return nil, errors.Errorf("cannot create screenshot recorder with %d max images", maxImages)
 	}
 
-	if interval == 0 {
+	if interval == 0 && maxImages != 1 {
 		return nil, errors.New("cannot create screenshot recorder with a 0 interval")
 	}
 
@@ -110,6 +110,13 @@ func (r *screenshotRecorderImpl) Start(ctx context.Context) error {
 	r.recording = true
 
 	r.startTime = time.Now()
+
+	// If max images is 1, then the only screenshot that will be taken is
+	// the one at the very end of the test.
+	if r.maxImages == 1 {
+		close(r.stopackc)
+		return nil
+	}
 
 	testing.ContextLog(ctx, "screenshot_recorder: Taking a screenshot every ", r.interval)
 	go func() {

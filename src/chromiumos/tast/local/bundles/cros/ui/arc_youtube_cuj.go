@@ -95,6 +95,11 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a single screenshot at the end of the test.
+	if err := recorder.AddScreenshotRecorder(ctx, 0, 1); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Launch the ARC YouTube app.
 		if err := act.Start(ctx, tconn); err != nil {
