@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc65520_40b52b19",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T06:05:46Z",
+      "side": 1,
+      "message": "Done.\nI have updated example usage in package documentation, and added `filePath` to read and write functionality.",
+      "parentUuid": "ee5b547e_c07979de",
+      "revId": "9fa73f83adb3958c870693a53508e631d83c4fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ce4e702_0f211037",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-24T00:36:34Z",
       "side": 1,
       "message": "for flashcontentsImage you probably want either a go \u0027io.Reader\u0027 type https://pkg.go.dev/io#Reader or a filepath: https://pkg.go.dev/path/filepath or a *File https://pkg.go.dev/os#Open.\n\nflashrom_tester used Path, which is probably the easiest for both cli and lib impls to use.",
+      "revId": "9fa73f83adb3958c870693a53508e631d83c4fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ecf718_4623926f",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-10-31T06:05:46Z",
+      "side": 1,
+      "message": "Looking at the filepath package, it contains some functions to operate with file paths, however all the paths are represented as strings. Leaving as string, as we agreed.",
+      "parentUuid": "5ce4e702_0f211037",
       "revId": "9fa73f83adb3958c870693a53508e631d83c4fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
