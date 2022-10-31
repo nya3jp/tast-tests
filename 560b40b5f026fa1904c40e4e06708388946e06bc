@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc49d4b1_68ad06f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-10-31T01:11:53Z",
+      "side": 1,
+      "message": "Submitting it because it is a clean revert from a few hours ago.",
+      "revId": "560b40b5f026fa1904c40e4e06708388946e06bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
