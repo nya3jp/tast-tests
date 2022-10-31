@@ -161,6 +161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfd43ce_516c76ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-10-31T14:37:42Z",
+      "side": 1,
+      "message": "Thanks ! That covers most of the important points I think. For the interaction with user logging in and logging out, we can that as a separate test case.",
+      "parentUuid": "86d402c1_ab161a04",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "4db434482eba98908cc1ad8739cc83ff8c67caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03666d90_12558418",
