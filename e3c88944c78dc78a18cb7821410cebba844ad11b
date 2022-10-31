@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "287c3043_849bf493",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T18:51:34Z",
+      "side": 1,
+      "message": "nit: be explicit 1*time.Second",
+      "range": {
+        "startLine": 1446,
+        "startChar": 22,
+        "endLine": 1446,
+        "endChar": 33
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7675e145_a149628e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 1
@@ -37,6 +60,23 @@
         "endLine": 1448,
         "endChar": 4
       },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4518b881_51bf7955",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T18:51:34Z",
+      "side": 1,
+      "message": "nit: be explicit 1*time.Second",
       "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
