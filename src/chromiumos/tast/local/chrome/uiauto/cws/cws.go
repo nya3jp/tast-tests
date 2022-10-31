@@ -100,17 +100,23 @@ func InstallApp(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn
 }
 
 // UninstallApp uninstalls the specified Chrome app from the Chrome Web Store.
-func UninstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, app App) error {
-	cws, err := cr.NewConn(ctx, app.URL)
+func UninstallApp(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, app App) error {
+	cws, err := br.NewConn(ctx, app.URL)
 	if err != nil {
 		return err
 	}
 	defer cws.Close()
 	defer cws.CloseTarget(ctx)
-
+	var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
 	ui := uiauto.New(tconn)
-	return uiauto.Combine("uninstall the extension from CWS",
-		ui.DoDefault(nodewith.Role(role.Button).Name("Remove from Chrome").First()),
-		ui.LeftClick(nodewith.Role(role.Button).Name("Remove")),
-	)(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		uiauto.Combine("uninstall the extension from CWS",
+			ui.DoDefault(nodewith.Role(role.Button).Name("Remove from Chrome").First()),
+			ui.LeftClick(nodewith.Role(role.Button).Name("Remove")),
+		)(ctx)
+		return errors.Errorf("Fail to install %s", app.Name)
+	}, pollOpts); err != nil {
+		return errors.Wrapf(err, "failed to install %s", app.Name)
+	}
+	return nil
 }
