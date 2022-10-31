@@ -22,6 +22,47 @@
       },
       "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd77554_744ed393",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-31T21:31:39Z",
+      "side": 1,
+      "message": "+1, but don\u0027t we already have something like RoamAPGone to test similar behavior? Does that test fail too?",
+      "parentUuid": "0086495c_78d3864f",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ea593a_d46fe3fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-31T21:31:39Z",
+      "side": 1,
+      "message": "While you\u0027re looking at this test, can you provide a step by step description of the test: b/231669774?",
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
