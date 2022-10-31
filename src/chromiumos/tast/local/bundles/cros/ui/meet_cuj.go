@@ -35,7 +35,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/loginstatus"
@@ -1166,25 +1165,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 // returns the file path. This function assumes that chrome://webrtc-internals
 // is already shown, with the Create Dump section expanded.
 func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, username string) (string, error) {
-	downloadsPath, err := cryptohome.DownloadsPath(ctx, username)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get Downloads path")
-	}
-
-	button := nodewith.Name("Download the PeerConnection updates and stats data").Role(role.Button)
-	if err := uiauto.Combine("invoke the button for the dump download",
-		ui.WaitUntilExists(button),
-		ui.DoDefault(button),
-	)(ctx); err != nil {
-		return "", err
-	}
-
-	notification, err := ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Download complete"))
-	if err != nil {
-		return "", errors.Wrap(err, "failed to wait for download notification")
-	}
-
-	return filepath.Join(downloadsPath, notification.Message), nil
+	return "", errors.New("testing debugging functionality")
 }
 
 // reportWebRTCInternals reports info from a WebRTC internals dump to performance metrics.
