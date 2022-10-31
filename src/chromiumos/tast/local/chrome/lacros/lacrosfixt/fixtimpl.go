@@ -216,6 +216,22 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacrosGaiaLogin is used to test Lacros with a gaia user login.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosEduGaiaLogin",
+		Desc:     "Lacros with Edu User Gaia Login",
+		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
+		// TODO(https://crbug.com/1380072): create new edu users and use that instead
+		Vars: []string{"ui.gaiaPoolDefault"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosOsFeedback is is similar to lacros but should be used
 	// by tests that will launch lacros with OsFeedback enabled.
 	testing.AddFixture(&testing.Fixture{

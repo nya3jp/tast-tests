@@ -83,7 +83,7 @@ func DisplayAllTabs(ctx context.Context, s *testing.State) {
 	if err := cws.InstallApp(ctx, cr.Browser(), tconn, cwsApp); err != nil {
 		s.Fatal("Failed to install CWS app: ", err)
 	}
-	defer cws.UninstallApp(cleanupCtx, cr, tconn, cwsApp)
+	defer cws.UninstallApp(cleanupCtx, cr.Browser(), tconn, cwsApp)
 
 	for _, browserWindow := range browserTabs {
 		for _, process := range browserWindow {
