@@ -22,6 +22,30 @@
       },
       "revId": "1e9bb15f4338d9945375eebed37d23939a06fd6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300b3cf8_7b7d88cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1211710
+      },
+      "writtenOn": "2022-10-31T05:21:03Z",
+      "side": 1,
+      "message": "this was added by the \"tast-lint -fix\", not by me.",
+      "parentUuid": "aed12f26_ba538f61",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "1e9bb15f4338d9945375eebed37d23939a06fd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
