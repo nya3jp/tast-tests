@@ -36,6 +36,9 @@ service ShillService {
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
 
+  // GetDeviceInfo returns the WLAN device names defined in tast/testing/wlan. e.g. "Intel AX 211". 
+  rpc GetDeviceInfo(google.protobuf.Empty) returns (GetDeviceInfoResponse) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
 
@@ -303,6 +306,10 @@ message QueryServiceResponse {
 
 message GetInterfaceResponse {
   string name = 1;
+}
+
+message GetDeviceInfoResponse {
+    string name = 1;
 }
 
 message GetIPv4AddrsRequest {
