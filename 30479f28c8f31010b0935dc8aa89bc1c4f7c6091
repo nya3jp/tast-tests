@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e7dc7d_b5daf5e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/calibration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-31T01:23:58Z",
+      "side": 1,
+      "message": "Thanks for confirmation. I will keep Lacros as unneeded.",
+      "parentUuid": "9b91180d_f991a544",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c6851de_d1b3d4f6",
@@ -570,6 +594,24 @@
       "side": 1,
       "message": "Yes a lot of this extra data can be removed to jump states. The `state_history` object is the most important one",
       "parentUuid": "bda37798_29de8c94",
+      "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfdd394_d7937a39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/data/state_files/base_gyro_calibration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-31T01:23:58Z",
+      "side": 1,
+      "message": "I prettify the json and remove unnecessary contents.",
+      "parentUuid": "6df7fc68_8b88f638",
       "revId": "30479f28c8f31010b0935dc8aa89bc1c4f7c6091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
