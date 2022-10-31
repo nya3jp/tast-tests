@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba95b04b_22c91db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-31T16:05:46Z",
+      "side": 1,
+      "message": "IIUC, the pass rate is already shown at the end:\n\n```\nSuspend stress finished; success rate\u003d%d/%d; reconnect time (seconds): fastest\u003d%f, slowest\u003d%f, average\u003d%f\n```\n\nIf the idea is to know precisely which iteration failed, rather than logging every successful iteration would it make sense to add the iteration numnber to the \"Failed to assert WiFi connection after suspend-resume\" error case?",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c58696_0c91b7cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-31T16:05:46Z",
+      "side": 1,
+      "message": "typo: iteration",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50be8036_b5cbcd7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-10-31T16:05:46Z",
+      "side": 1,
+      "message": "nit: can you remove the \u0027_\u0027 to be consistent with other logs?",
+      "range": {
+        "startLine": 180,
+        "startChar": 19,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
