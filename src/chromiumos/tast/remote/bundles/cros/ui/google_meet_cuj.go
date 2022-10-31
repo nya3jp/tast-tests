@@ -36,181 +36,181 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.TwoRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_two",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.TwoRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:              "basic_two_crosbolt",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.TwoRoomSize,
 				},
 			}, {
 				Name:    "basic_small",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.SmallRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_small",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.SmallRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:              "basic_small_crosbolt",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.SmallRoomSize,
 				},
 			}, {
 				Name:    "basic_large",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_large",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:              "basic_large_crosbolt",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "basic_class",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.ClassRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_class",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.ClassRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:              "basic_class_crosbolt",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "plus_large",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "plus_lacros_large",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:    "plus_class",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.ClassRoomSize,
 				},
 			}, {
 				Name:              "plus_lacros_class",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.ClassRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:    "premium_large",
-				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "premium_lacros_large",
-				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
 			}, {
 				Name:    "plus_no_meet",
-				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
+				Timeout: 10*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.NoRoom,
 				},
 			}, {
 				Name:              "plus_lacros_no_meet",
-				Timeout:           time.Minute*10 + conference.CPUIdleTimeout,
+				Timeout:           10*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.NoRoom,
 					IsLacros: true,
 				},
 			}, {
 				Name:    "premium_no_meet",
-				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
+				Timeout: 10*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.NoRoom,
 				},
 			}, {
 				Name:              "premium_lacros_no_meet",
-				Timeout:           time.Minute*10 + conference.CPUIdleTimeout,
+				Timeout:           10*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.NoRoom,
 					IsLacros: true,
 				},
@@ -255,7 +255,7 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
-		Tier:            param.Tier,
+		Tier:            int64(param.Tier),
 		RoomType:        int64(param.RoomType),
 		ExtendedDisplay: false,
 		CameraVideoPath: remoteCameraVideoPath,
