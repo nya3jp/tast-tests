@@ -6,7 +6,6 @@ package platform
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -17,6 +16,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/services/cros/security"
@@ -291,11 +291,11 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 	}
 	// Validating prev sleep state for power modes.
 	if btType.bootType == "reboot" {
-		if err := validateSleepState(ctx, dut, 0); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 0); err != nil {
 			s.Fatal("Failed to get previous sleep state: ", err)
 		}
 	} else {
-		if err := validateSleepState(ctx, dut, 5); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 5); err != nil {
 			s.Fatal("Failed to get previous sleep state: ", err)
 		}
 	}
@@ -305,24 +305,6 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 	if err := verifyCBMem(ctx, dut, cbmemTimeout); err != nil {
 		s.Fatal("Failed to verify cbmem timeout: ", err)
 	}
-}
-
-// validateSleepState from cbmem command output.
-func validateSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	// Command to check previous sleep state.
-	const cmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd).Output()
-	if err != nil {
-		return errors.Wrapf(err, "failed to execute %q command", cmd)
-	}
-
-	got := strings.TrimSpace(string(out))
-	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
-
-	if !strings.Contains(got, want) {
-		return errors.Errorf("unexpected sleep state: got %q, want %q", got, want)
-	}
-	return nil
 }
 
 // verifyCBMem verifies cbmem timeout.

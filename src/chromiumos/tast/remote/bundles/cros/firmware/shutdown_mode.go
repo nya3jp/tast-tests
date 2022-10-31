@@ -6,16 +6,14 @@ package firmware
 
 import (
 	"context"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -33,8 +31,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShutdownMode,
-		Desc:         "Verifies that system comes back after power button press and poweroff",
+		Func: ShutdownMode, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that system comes back after power button press and poweroff",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
@@ -115,7 +112,7 @@ func ShutdownMode(ctx context.Context, s *testing.State) {
 		}
 		pwrOnDUT()
 		chromeLogin()
-		if err := validateCbmemPrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
 			s.Fatalf("Failed Previous Sleep state is not %d after powerbutton long pressing via servo: %v", expectedPrevSleepState, err)
 		}
 	}
@@ -129,7 +126,7 @@ func ShutdownMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get G3 powerstate: ", err)
 		}
 		pwrOnDUT()
-		if err := validateCbmemPrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
 			s.Fatalf("Failed Previous Sleep state is not %d after executing poweroff command: %v", expectedPrevSleepState, err)
 		}
 		haltCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
@@ -141,27 +138,8 @@ func ShutdownMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get G3 powerstate: ", err)
 		}
 		pwrOnDUT()
-		if err := validateCbmemPrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
 			s.Fatalf("Failed Previous Sleep state is not %d after executing halt command: %v", expectedPrevSleepState, err)
 		}
 	}
-}
-
-// validateCbmemPrevSleepState sleep state from cbmem command output.
-func validateCbmemPrevSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	const (
-		// Command to check previous sleep state.
-		prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	)
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
-	if err != nil {
-		return err
-	}
-	// Extract prevsleep state from example output "prev_sleep_state 5".
-	if count, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1]); err != nil {
-		return err
-	} else if count != sleepStateValue {
-		return errors.Errorf("previous sleep state must be %d", sleepStateValue)
-	}
-	return nil
 }
