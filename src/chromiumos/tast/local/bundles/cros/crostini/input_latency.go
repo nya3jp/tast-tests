@@ -84,12 +84,6 @@ func InputLatency(ctx context.Context, s *testing.State) {
 	}
 	defer errFile.Close()
 
-	// TOOD(cylee): Install it in container image.
-	s.Log("Installing xterm")
-	if _, err := perfutil.RunCmd(ctx, cont.Command(ctx, "sudo", "apt-get", "-y", "install", "xterm"), errFile); err != nil {
-		s.Fatal("Failed to install xterm: ", err)
-	}
-
 	// runCleanup runs c if non-nil and reports any error that it returns.
 	runCleanup := func(c cleanupFunc, errString string) {
 		if c != nil {

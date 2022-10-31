@@ -243,11 +243,6 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize VM disk: ", err)
 	}
 
-	testing.ContextLog(ctx, "Installing fio")
-	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to install fio: ", err)
-	}
-
 	const (
 		testDataFileName = "fio_test_data"
 	)
