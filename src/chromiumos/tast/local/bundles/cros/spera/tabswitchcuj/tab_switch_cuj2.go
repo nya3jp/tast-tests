@@ -61,13 +61,17 @@ type Level uint8
 // Level indicate how intensive of this test case is going to execute.
 //
 // Basic is the level to use to run this case in basic level
+// Essential is the level to use to run this case in essential level
 // Plus is the level to use to run this case in plus level
-// Premium is the level to use to run this case in basic level
+// Premium is the level to use to run this case in premium level
+// Advanced is the level to use to run this case in advanced level
 // Record is the level to use to run this case in *record mode*
 const (
 	Basic Level = iota
+	Essential
 	Plus
 	Premium
+	Advanced
 	Record
 )
 
@@ -380,13 +384,13 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 	winNum := 1
 	tabNum := 0
 	switch caseLevel {
-	case Basic:
+	case Basic, Essential:
 		winNum = 2
 		tabNum = 5
 	case Plus:
 		winNum = 4
 		tabNum = 6
-	case Premium, Record:
+	case Premium, Advanced, Record:
 		winNum = 4
 		tabNum = 9
 	}

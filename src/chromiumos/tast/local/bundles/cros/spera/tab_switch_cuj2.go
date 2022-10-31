@@ -100,17 +100,15 @@ func init() {
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			}, {
-				Name:    "premium_noproxy",
-				Timeout: 45 * time.Minute,
-				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
-
+				Name:              "premium_noproxy",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
-				Name:    "premium_lacros_noproxy",
-				Timeout: 45 * time.Minute,
-				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false, browserType: browser.TypeLacros},
-
+				Name:              "premium_lacros_noproxy",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false, browserType: browser.TypeLacros},
 				Fixture:           "loggedInAndKeepStateLacros",
 				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
@@ -121,6 +119,30 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			}, {
+				Name:              "essential",
+				Timeout:           35 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Essential, wprProxy: false},
+				Fixture:           "loggedInAndKeepState",
+				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "essential_lacros",
+				Timeout:           35 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Essential, wprProxy: false, browserType: browser.TypeLacros},
+				Fixture:           "loggedInAndKeepStateLacros",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
+			}, {
+				Name:              "advanced",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Advanced, wprProxy: false},
+				Fixture:           "loggedInAndKeepState",
+				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "advanced_lacros",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Advanced, wprProxy: false, browserType: browser.TypeLacros},
+				Fixture:           "loggedInAndKeepStateLacros",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			},
 		},
 	})
