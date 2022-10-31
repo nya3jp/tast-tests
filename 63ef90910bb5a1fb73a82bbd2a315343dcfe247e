@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bf56c4_18de61e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-31T05:30:24Z",
+      "side": 1,
+      "message": "I think you should add some lines around reason of promotion, like what you have captured in the bug e.g. \"Very often CLs are getting pushed, breaking this feature e.g. b/XXX1,b/XXX2. This promotion is to catch those CLs before merging.",
+      "revId": "63ef90910bb5a1fb73a82bbd2a315343dcfe247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
