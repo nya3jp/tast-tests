@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41c82af6_4a0ecfd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "Not that I\u0027m aware of. But cellular_sim_test_esim attribute ensures that this test only runs on boards with an euicc inserted iiuc",
+      "parentUuid": "9090d564_8e7ed734",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67460a5e_61d6ddc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-28T19:45:07Z",
       "side": 1,
       "message": "here message can be, \"Failed to add esim profile with incorrect activation code: \"",
+      "range": {
+        "startLine": 103,
+        "startChar": 20,
+        "endLine": 103,
+        "endChar": 35
+      },
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09dc515b_c9dff72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67460a5e_61d6ddc6",
       "range": {
         "startLine": 103,
         "startChar": 20,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5bcea8_ab169e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b44f3ab_e47259b5",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3f1eb64_1e931bcd",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-10-28T19:45:07Z",
       "side": 1,
       "message": "This can be: \"Failed to add esim profile with correct activation code: \"",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 50
+      },
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94e70d4_92983658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3f1eb64_1e931bcd",
       "range": {
         "startLine": 115,
         "startChar": 11,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dba991d_3b841b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9da8369_f52e0d7c",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5194820c_c5241516",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-10-28T19:45:07Z",
       "side": 1,
       "message": "Does line#52 resetmemory happens in case of verification fail scenario?",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a4c620_bb2ab0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-10-31T17:00:46Z",
+      "side": 1,
+      "message": "It should because of the defer call, no?",
+      "parentUuid": "5194820c_c5241516",
       "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
