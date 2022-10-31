@@ -177,6 +177,10 @@ func SuspendStress(ctx context.Context, s *testing.State) {
 				s.Error("Failed to assert WiFi connection after suspend-resume: ", err)
 			} else {
 				connectTimes = append(connectTimes, connectTime.Seconds())
+				// Publish test progress on every 10 iterations.
+				if (i % 10 == 0) {
+					s.Logf("Suspend stress iteration count: %d", i+1)
+				}
 			}
 		}
 
