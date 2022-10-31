@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69f273db_9af52a64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_ec_reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-31T02:17:22Z",
+      "side": 1,
+      "message": "This probably doesn\u0027t do what you want. This will skip the test on the grunt and nami reference devices, but not on grunt and nami devices more generally (e.g. the test will still run on akali, kasumi, etc). If you want to skip the test on certain boards, you\u0027ll want to define a software dep using the \"board:\" syntax here: https://chromium.googlesource.com/chromiumos/platform/tast/+/main/src/chromiumos/tast/internal/crosbundle/software_defs.go",
+      "range": {
+        "startLine": 38,
+        "startChar": 42,
+        "endLine": 38,
+        "endChar": 76
+      },
+      "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8faa8786_879fa29e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_ec_reset.go",
         "patchSetId": 1
