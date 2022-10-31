@@ -17,6 +17,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
+// TODO(b/256522810) : remove "steelix" when b/256522810 is fixed.
+// TODO(b/256523120) : remove "gimble" when b/256523120 is fixed.
+// TODO(b/256534123) : remove "treeya360" when b/256534123 is fixed.
+var crasRecordQualityUnstableModels = []string{"sasukette", "steelix", "gimble", "treeya360"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrasRecordQuality,
@@ -26,15 +32,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"audio_stable"},
-			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("sasukette")),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(crasRecordQualityUnstableModels...)),
 		}, {
 			Name:              "unstable_platform",
 			ExtraSoftwareDeps: []string{"audio_unstable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable_model",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("sasukette")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(crasRecordQualityUnstableModels...)),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
