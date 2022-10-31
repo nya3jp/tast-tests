@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b22b7c_b029c934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-31T02:19:47Z",
+      "side": 1,
+      "message": "It seems that when this part would make best-effort mode fail,for ping failed when VPN is disconnected for best effort mode.\nAm I doing anything wrong here or VPN is not working correctly?",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "81b2565746fba16a8eeb12d829f10f94714af962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
