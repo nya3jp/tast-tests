@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2c01d51_e782e383",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T11:07:44Z",
+      "side": 1,
+      "message": "Done, but this breaks M96 LTS rollback. Is that a problem?",
+      "parentUuid": "f43a1640_4fdbb2dc",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "692233e4_1c8b0c74",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 1
@@ -224,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c856770_e34c45c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T11:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "692233e4_1c8b0c74",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d297614_421e2444",
@@ -247,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a576cbb9_5ba416ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T11:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d297614_421e2444",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a93cd563_cf16a27c",
@@ -260,6 +332,30 @@
       "writtenOn": "2022-10-28T10:23:56Z",
       "side": 1,
       "message": "Why removing the \"Current\" from the naming? The value below makes uses of `Current` in the naming, so we should be consistent",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6c2adc_7e358a06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T11:07:44Z",
+      "side": 1,
+      "message": "Even better, we can completely drop it since ChromeOSVersionFromMilestone only contains stable entries.",
+      "parentUuid": "a93cd563_cf16a27c",
       "range": {
         "startLine": 26,
         "startChar": 2,
