@@ -43,6 +43,7 @@ import (
 	"chromiumos/tast/local/wpasupplicant"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 	"chromiumos/tast/timing"
 )
 
@@ -865,6 +866,18 @@ func (s *ShillService) GetInterface(ctx context.Context, e *empty.Empty) (*wifi.
 	return &wifi.GetInterfaceResponse{
 		Name: netIf,
 	}, nil
+}
+
+func (s *ShillService) GetDeviceInfo(ctx context.Context, _ *empty.Empty) (*wifi.GetDeviceInfoResponse, error) {
+	// Get the information of the WLAN device.
+	devInfo, err := wlan.DeviceInfo()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read the WLAN device information")
+	}
+	return &wifi.GetDeviceInfoResponse{
+		Name: devInfo.Name,
+	}, nil
+
 }
 
 // GetIPv4Addrs returns the IPv4 addresses for the network interface.
