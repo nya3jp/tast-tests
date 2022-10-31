@@ -40,7 +40,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the input is controllable by UI API",
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "audio_stable"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      4 * time.Minute,

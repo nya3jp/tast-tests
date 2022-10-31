@@ -28,7 +28,7 @@ func init() {
 		Fixture:      "lacrosAudio",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"lacros_stable"},
+			ExtraSoftwareDeps: []string{"lacros_stable", "audio_stable"},
 		}, {
 			Name:              "unstable",
 			ExtraAttr:         []string{"informational"},

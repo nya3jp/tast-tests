@@ -67,7 +67,7 @@ func init() {
 			"chromeos-audio-bugs@google.com", // Media team
 			"pteerapong@chromium.org",        // Author
 		},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome", "arc", "audio_stable"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
