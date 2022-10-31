@@ -19,8 +19,10 @@ import (
 )
 
 const (
-	numEvents = 50
-	waitMS    = 50
+	numEvents     = 50
+	numMoveEvents = 75
+	waitMS        = 50
+	moveDuration  = time.Second
 )
 
 func init() {
@@ -83,11 +85,38 @@ func InputOverlayPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Calculate input latency and save metrics.
-		tapPv := perf.NewValues()
-		if err := evaluateLatency(ctx, params, tapEventTimes, "avgInputOverlayTapLatency", tapPv); err != nil {
+		pv := perf.NewValues()
+		if err := evaluateLatency(ctx, params, tapEventTimes, numEvents, "avgInputOverlayTapLatency", pv); err != nil {
 			return errors.Wrap(err, "failed to evaluate")
 		}
-		if err := tapPv.Save(s.OutDir()); err != nil {
+
+		// Inject the described number of move events.
+		moveEventTimes := make([]int64, 0, numEvents)
+		for i := 0; i < numEvents; i += 2 {
+			if err := inputlatency.WaitForNextEventTime(ctx, params.Arc, &moveEventTimes, waitMS); err != nil {
+				return errors.Wrap(err, "failed to generate event time")
+			}
+			if err := kb.AccelPress(ctx, "w"); err != nil {
+				return errors.Wrap(err, "unable to inject key events")
+			}
+
+			// Hold down for a second to simulate move action.
+			if err := testing.Sleep(ctx, moveDuration); err != nil {
+				return errors.Wrap(err, "failed to wait for move hold duration")
+			}
+
+			if err := inputlatency.WaitForNextEventTime(ctx, params.Arc, &moveEventTimes, waitMS); err != nil {
+				return errors.Wrap(err, "failed to generate event time")
+			}
+			if err := kb.AccelRelease(ctx, "w"); err != nil {
+				return errors.Wrap(err, "unable to inject key events")
+			}
+		}
+
+		if err := evaluateLatency(ctx, params, moveEventTimes, numMoveEvents, "avgInputOverlayMoveLatency", pv); err != nil {
+			return errors.Wrap(err, "failed to evaluate")
+		}
+		if err := pv.Save(s.OutDir()); err != nil {
 			return errors.Wrap(err, "failed saving perf data")
 		}
 
@@ -96,9 +125,9 @@ func InputOverlayPerf(ctx context.Context, s *testing.State) {
 }
 
 // evaluateLatency gets event data, calculates the latency, and adds the result to performance metrics.
-func evaluateLatency(ctx context.Context, params gio.TestParams, eventTimes []int64, perfName string, pv *perf.Values) error {
+func evaluateLatency(ctx context.Context, params gio.TestParams, eventTimes []int64, numLines int, perfName string, pv *perf.Values) error {
 	// Get event received RTC times.
-	events, err := gio.PopulateReceivedTimes(ctx, params, numEvents)
+	events, err := gio.PopulateReceivedTimes(ctx, params, numLines)
 	if err != nil {
 		return errors.Wrap(err, "could not receive event")
 	}
