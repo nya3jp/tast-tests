@@ -123,6 +123,12 @@ func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		gainTolerance     = 10.0
 	)
 
+	// quicksettings APIs sometimes detected that audio setting
+	// is still opened while it is actually fading out.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(ctx, tconn)
+	quicksettings.Show(ctx, tconn)
+
 	// Set input enabled(unmuted) by UI quicksettings.
 	if err := setInputEnabled(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set mic unmuted: ", err)
@@ -209,6 +215,12 @@ func testInputMute(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		captureDuration = 1 // second(s)
 		rmsTolerance    = 0.00001
 	)
+
+	// quicksettings APIs sometimes detected that audio setting
+	// is still opened while it is actually fading out.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(ctx, tconn)
+	quicksettings.Show(ctx, tconn)
 
 	// Set input disabled(muted) by UI quicksettings, and enabled after test.
 	if err := setInputEnabled(ctx, tconn, false); err != nil {
