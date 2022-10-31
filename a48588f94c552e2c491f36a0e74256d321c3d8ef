@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bdfc9e_3e02575c",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "This needs tests. It is far from trivial at this point.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85df69e_0b428a79",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "In this case, you would have already added the entry to `policies` in the loop above. Following this code, you will add it again. Should you be deduplicating?",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6c0e93_88223bfe",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "This needs tests to capture various error conditions and regular flow.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5517ae05_e19ee515",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "This assumes one user policy as any subsequent policies will override the original one. Should we not be adding all of them to userPolicies? Same for device policies below.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffd3e2e_4c868645",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "Why not retrieve the value in the if-statement above?\n\n    if epRawJson, ok :\u003d objmap[\"external_policies\"]; ok {\n      var externalPolicies []entry\n      err \u003d json.Unmarshal(*epRawJson, \u0026externalPolicies)\n      ...\n    }\n    \nSame for regular policies above.",
+      "range": {
+        "startLine": 337,
+        "startChar": 23,
+        "endLine": 337,
+        "endChar": 51
+      },
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b68472f_5ace977b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-31T20:15:31Z",
+      "side": 1,
+      "message": "Merge this with the statement above:\n\n    if err \u003d json.Unmarshal(*epRawJson, \u0026externalPolicies); err !\u003d nil {\n      return errors.Wrap(err, \"failed to unmarshal external_policies array\")\n    }\n    \nSame elsewhere.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
