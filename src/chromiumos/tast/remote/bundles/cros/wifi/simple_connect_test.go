@@ -304,12 +304,14 @@ func simpleConnectWPA() []simpleConnectParams {
 				"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt([]string{wpa.KeyMgmtWPAPSKSHA256}),
 				wpa.Ciphers2(wpa.CipherCCMP),
 		            )`),
+			ExpectedSecurity: wpaModeToShillSecurity(`PureWPA2`),
 		}, {
 			APOpts: simpleConnectCommonSecApOpts + ", ap.PMF(ap.PMFRequired)",
 			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
 				"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt([]string{%s, %s}),
 				wpa.Ciphers2(wpa.CipherCCMP),
 		            )`, "wpa.KeyMgmtWPAPSK", "wpa.KeyMgmtWPAPSKSHA256"),
+			ExpectedSecurity: wpaModeToShillSecurity(`PureWPA2`),
 		}},
 	}, {
 		Name: "wpa2pmfoptional",
