@@ -22,6 +22,30 @@
       },
       "revId": "81b2565746fba16a8eeb12d829f10f94714af962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532112d2_2a5ff208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-10-31T09:21:45Z",
+      "side": 1,
+      "message": "Update on this comment: now is able to ping in best-effort mode (Thanks help from Jason). It seems that disconnected strict mode is not blocking ping. Currently looking into it.",
+      "parentUuid": "78b22b7c_b029c934",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "81b2565746fba16a8eeb12d829f10f94714af962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
