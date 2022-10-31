@@ -171,12 +171,16 @@ func SuspendStress(ctx context.Context, s *testing.State) {
 
 		s.Logf("Start suspend-resume for %d times", suspendCount)
 		var connectTimes []float64
-		for i := 0; i < suspendCount; i++ {
+		for i := 0; i <= suspendCount; i++ {
 			connectTime, err := tf.WifiClient().SuspendAssertConnect(ctx, suspendTime)
 			if err != nil {
 				s.Error("Failed to assert WiFi connection after suspend-resume: ", err)
 			} else {
 				connectTimes = append(connectTimes, connectTime.Seconds())
+				// Publish test progress on every 10 iterations.
+				if (i % 10 == 0) {
+					s.Logf("Suspend stress iteration count: %d", i+1)
+				}
 			}
 		}
 
