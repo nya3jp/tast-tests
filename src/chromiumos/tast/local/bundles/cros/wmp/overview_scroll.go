@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
@@ -41,6 +42,7 @@ func init() {
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
 			Name: "portrait",
 			Val:  testParam{true, browser.TypeAsh},
@@ -88,8 +90,6 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ac := uiauto.New(tconn)
 
@@ -159,6 +159,8 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	// There should be max 8 onscreen windows at any time; the rest should be offscreen.
 	const maxNumOnscreenWindows = 8

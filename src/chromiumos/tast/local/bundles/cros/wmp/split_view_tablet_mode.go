@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type splitViewTabletModeTestParam struct {
@@ -46,6 +47,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
 			Name: "portrait",
 			Val:  splitViewTabletModeTestParam{true, browser.TypeAsh},
@@ -358,9 +360,9 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
 // to snap it. This function assumes that overview is already active.
 func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, target coords.Point) error {
-	info, err := display.GetPrimaryInfo(ctx, tconn)
+	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the primary display info")
+		return errors.Wrap(err, "failed to get the internal display info")
 	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 
