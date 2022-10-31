@@ -6,6 +6,7 @@ package wifi
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -22,6 +23,10 @@ import (
 	"chromiumos/tast/testing/wlan"
 )
 
+type scanPerfTestcase struct {
+	apOpts []ap.Option
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ScanPerf,
@@ -32,6 +37,20 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixt",
+		Params: []testing.Param{
+			{
+				Name: "dtim1",
+				Val: []scanPerfTestcase{{
+					apOpts: []ap.Option{ap.DTIMPeriod(1)},
+				}},
+			},
+			{
+				Name: "dtim2",
+				Val: []scanPerfTestcase{{
+					apOpts: []ap.Option{ap.DTIMPeriod(2)},
+				}},
+			},
+		},
 	})
 }
 
@@ -247,6 +266,8 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		}
 		iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
 
+		s.Logf("DTIM is set as %d", apIface.Config().DTIMPeriod)
+
 		fgSingleScan(ctx, freq, ssid, iface, iwr)
 		fgFullScan(ctx, freq, ssid, iface, iwr, devName, exempt)
 		bgFullScan(ctx, freq, ssid, iface, iwr, devName, exempt, apIface)
@@ -274,7 +295,17 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 			break
 		}
 	}
-	options := wificell.DefaultOpenNetworkAPOptions()
-	testOnce(ctx, s, options, devInfo.Name, exempt)
+
+	testcases := s.Param().([]scanPerfTestcase)
+	for i, tc := range testcases {
+		subtest := func(ctx context.Context, s *testing.State) {
+			options := append(wificell.DefaultOpenNetworkAPOptions(), tc.apOpts...)
+			testOnce(ctx, s, options, devInfo.Name, exempt)
+		}
+		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
+			return
+		}
+	}
+
 	s.Log("Tearing down")
 }
