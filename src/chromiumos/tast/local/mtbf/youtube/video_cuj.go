@@ -174,7 +174,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return errors.Wrapf(err, "failed to create Test API connection for %v browser", bt)
 	}
 	videoSources := basicVideoSrc
-	if tier == cuj.Premium {
+	if tier == cuj.Premium || tier == cuj.Advanced {
 		videoSources = premiumVideoSrc
 	}
 
