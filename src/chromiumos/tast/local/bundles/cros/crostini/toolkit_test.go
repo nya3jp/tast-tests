@@ -23,7 +23,6 @@ func TestToolkitParams(t *testing.T) {
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
 			Val: `toolkitConfig{
 				data:    "toolkit_gtk3_demo.py",
-				deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 				command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:toolkit_gtk3_demo.py",
 			}`,
@@ -33,7 +32,6 @@ func TestToolkitParams(t *testing.T) {
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
 			Val: `toolkitConfig{
 				data:    "toolkit_gtk3_demo.py",
-				deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 				command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 			}`,
@@ -43,7 +41,6 @@ func TestToolkitParams(t *testing.T) {
 			ExtraData: []string{"toolkit_qt5_demo.py"},
 			Val: `toolkitConfig{
 				data:    "toolkit_qt5_demo.py",
-				deps:    []string{"python3-pyqt5"},
 				command: []string{"python3", "toolkit_qt5_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 			}`,
@@ -53,7 +50,6 @@ func TestToolkitParams(t *testing.T) {
 			ExtraData: []string{"toolkit_tkinter_demo.py"},
 			Val: `toolkitConfig{
 				data:    "toolkit_tkinter_demo.py",
-				deps:    []string{"python3-tk"},
 				command: []string{"python3", "toolkit_tkinter_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 			}`,

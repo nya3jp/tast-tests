@@ -186,18 +186,6 @@ func NetworkPerf(ctx context.Context, s *testing.State) {
 		return []byte{}, errors.Wrap(err, errSnippet)
 	}
 
-	// TODO(cylee): remove the installation code once CL:1389056 is submitted.
-	// Install needed packages.
-	packages := []string{
-		"iperf3",
-		"iputils-ping",
-	}
-	s.Log("Installing ", packages)
-	installCmdArgs := append([]string{"sudo", "apt-get", "-y", "install"}, packages...)
-	if _, err := runCmd(cont.Command(ctx, installCmdArgs...)); err != nil {
-		s.Fatalf("Failed to install needed packages %v: %v", packages, err)
-	}
-
 	// Get host and container IP.
 	hostIP, err := getTerminaHostIP(ctx, s)
 	if err != nil {
