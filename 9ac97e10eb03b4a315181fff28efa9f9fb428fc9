@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b99c1c1_37bfe252",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-31T20:23:15Z",
+      "side": 1,
+      "message": "The final logs does provide failing statistics(along with which iteration failed). This change is more towards ease of monitoring this test(it has been useful to me) and might be useful to eveyone in general:\n- I have noticed, that sometimes when the test fails, it generates lots of repeated stack traces and finding the suspend stress finished line is not straight forward. Having periodic iteration count can be easy to notice.\n- Since this test is not run in an automated manner, it needs to run manually and this can take 2-3 hrs. When run manually, we atleast get to know how much of the test is completed and how much is pending.\n\nCurrently, we already get periodic \"RTC suspend time: 10\" message which is not very useful, so may be we can log something that makes sense and might some value, such as.\n```\n2022-10-31T20:07:08.465671Z [20:07:08.465] RTC suspend time: 10\n2022-10-31T20:07:13.781906Z [20:07:13.781] Suspend stress interation count: 0\n2022-10-31T20:07:24.407766Z [20:07:24.407] RTC suspend time: 10\n2022-10-31T20:07:29.371418Z [20:07:29.371] Suspend stress interation count: 1\n2022-10-31T20:07:39.447777Z [20:07:39.447] RTC suspend time: 10\n2022-10-31T20:07:44.717746Z [20:07:44.717] Suspend stress interation count: 2\n2022-10-31T20:07:54.445874Z [20:07:54.445] RTC suspend time: 10\n2022-10-31T20:07:59.315207Z [20:07:59.314] Suspend stress interation count: 3\n2022-10-31T20:08:09.465666Z [20:08:09.465] RTC suspend time: 10\n2022-10-31T20:08:15.133187Z [20:08:15.132] Suspend stress interation count: 4\n2022-10-31T20:08:25.432953Z [20:08:25.432] RTC suspend time: 10\n2022-10-31T20:08:30.420676Z [20:08:30.420] Suspend stress interation count: 5\n2022-10-31T20:08:40.443008Z [20:08:40.442] RTC suspend time: 10\n```\n\nWDYAT ?",
+      "parentUuid": "337404fa_38bfadff",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28c58696_0c91b7cc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
         "patchSetId": 2
@@ -107,6 +131,24 @@
       "writtenOn": "2022-10-31T16:28:10Z",
       "side": 1,
       "message": "I believe logging success rate is more useful than logging which iteration failed? What do you plan to do with the newly added log?",
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03ec430_d31e7db5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-31T20:23:15Z",
+      "side": 1,
+      "message": "Replied on the comment in the commit message.",
+      "parentUuid": "8cda6aad_08cf1745",
       "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
