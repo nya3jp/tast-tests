@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0e98f6_1f35005c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-31T17:56:07Z",
+      "side": 1,
+      "message": "I don\u0027t have concern about the code itself.\n\nAbout the testing logic: This only verifies that the target app can show up in Play Store, but not that this is because of the policy. This is because there\u0027s no test that verifies blocked app doesn\u0027t show up in Play Store. Theoretically, there could be another factor (always true when you run your test) that makes the target app shows up in Play Store.\n\nYes there\u0027s another test that verifies uninstallation of blocked app, but it\u0027s different.",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ce09e2_b4ea68bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-10-31T17:56:07Z",
+      "side": 1,
+      "message": "Why do we need to retry for the following block? Any reason it would fail for reasons outside of the working code and test code?",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
