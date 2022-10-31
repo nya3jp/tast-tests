@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa828e67_c19c6cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-31T02:09:24Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "1b9f98b8_9cd3656a",
+      "revId": "92df45cf191e5b4cfa684f7307c78fe4f4bb86df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c405eae4_481e9bef",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-28T20:01:02Z",
       "side": 1,
       "message": "probably not a big deal, but would it be less fragile to use an element ID here?",
+      "revId": "92df45cf191e5b4cfa684f7307c78fe4f4bb86df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67ba387_88477edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-31T02:09:24Z",
+      "side": 1,
+      "message": "\u003e probably not a big deal, but would it be less fragile to use an element ID here?\n\nIt\u0027s much better. Done.",
+      "parentUuid": "c405eae4_481e9bef",
       "revId": "92df45cf191e5b4cfa684f7307c78fe4f4bb86df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
