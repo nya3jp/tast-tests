@@ -43,6 +43,8 @@ func init() {
 }
 
 func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
+	const testDuration = 10 * time.Minute
+
 	// Reserve ten seconds for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -95,6 +97,14 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// At the end of recorder.Run, the ARC app closes, meaning the
+	// end screenshot would not show the state of the  Youtube app
+	// itself. Take 1 screenshot at the middle of the test
+	// and one at the end to ensure we see the state of the app.
+	if err := recorder.AddScreenshotRecorder(ctx, testDuration/2, 2); err != nil {
+		s.Fatal("Failed to add screenshot recorder: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Launch the ARC YouTube app.
 		if err := act.Start(ctx, tconn); err != nil {
@@ -113,7 +123,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Sleep to simulate a user passively watching.
-		if err := testing.Sleep(ctx, 10*time.Minute); err != nil {
+		if err := testing.Sleep(ctx, testDuration); err != nil {
 			return errors.Wrap(err, "failed to sleep")
 		}
 

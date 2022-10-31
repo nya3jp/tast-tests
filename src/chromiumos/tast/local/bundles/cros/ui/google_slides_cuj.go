@@ -114,6 +114,11 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a single screenshot at the end of the test.
+	if err := recorder.AddEndScreenshotRecorder(ctx); err != nil {
+		s.Log("Failed to add end screenshot recorder: ", err)
+	}
+
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)
 	if err != nil {

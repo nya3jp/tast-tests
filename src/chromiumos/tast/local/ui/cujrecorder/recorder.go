@@ -323,6 +323,19 @@ func (r *Recorder) AddScreenshotRecorder(ctx context.Context, interval time.Dura
 	return nil
 }
 
+// AddEndScreenshotRecorder creates a screenshot recorder that takes a
+// screenshot at the end of recorder.Run.
+func (r *Recorder) AddEndScreenshotRecorder(ctx context.Context) error {
+	var err error
+	// Set up a screenshot recorder with a max of 1 image. This forces the
+	// utility to take a screenshot only at the end of the test.
+	r.screenshotRecorder, err = uiauto.NewScreenshotRecorder(ctx, 0, 1)
+	if err != nil {
+		return errors.Wrap(err, "failed to setup new screenshot recorder that takes an image at the end of the test")
+	}
+	return nil
+}
+
 // NewRecorderWithTestConn creates a Recorder. It also aggregates the metrics of each
 // category (animation smoothness and input latency) and creates the aggregated
 // reports.

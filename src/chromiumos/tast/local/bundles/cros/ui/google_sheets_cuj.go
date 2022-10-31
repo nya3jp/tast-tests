@@ -155,6 +155,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Take a single screenshot at the end of the test.
+	if err := recorder.AddEndScreenshotRecorder(ctx); err != nil {
+		s.Log("Failed to add end screenshot recorder: ", err)
+	}
+
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
 	if err != nil {
