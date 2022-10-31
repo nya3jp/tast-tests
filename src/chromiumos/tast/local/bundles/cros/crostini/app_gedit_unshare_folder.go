@@ -12,7 +12,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
@@ -109,30 +108,6 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Install Gedit if not there. This test often seems to run on containers that
-	// do not have Gedit pre-installed even though crostiniBusterLargeContainer is
-	// configured in the test's fixture.
-	s.Log("Checking if Gedit needs installing")
-	out, err := cont.Command(ctx, "sudo", "dpkg", "-s", "gedit").CombinedOutput(testexec.DumpLogOnError)
-	if err != nil {
-		if strings.Contains(err.Error(), "exit status 1") {
-			// Gedit not in container. Install
-			if strings.Contains(string(out), "package 'gedit' is not installed") {
-				s.Log("Gedit not found - installing")
-			}
-			if err := cont.Command(ctx, "sudo", "apt-get", "update").Run(testexec.DumpLogOnError); err != nil {
-				s.Fatal("Failed to run apt-update: ", err)
-			}
-			if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "gedit").Run(testexec.DumpLogOnError); err != nil {
-				s.Fatal("Failed to install Gedit: ", err)
-			}
-		} else {
-			s.Fatal("Failed to run dpkg to check for gedit: ", err)
-		}
-	} else {
-		s.Log("Gedit already installed")
-	}
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
