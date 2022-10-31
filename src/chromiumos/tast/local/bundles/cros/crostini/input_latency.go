@@ -423,7 +423,7 @@ func startInputLatencyServer(ctx context.Context, cont *vm.Container, socketServ
 		return nil, 0, errors.Wrapf(err, "failed to remove stale socket server port file %v", portFile)
 	}
 
-	socketServerArgs := []string{"xterm", "-e", fmt.Sprintf("/usr/bin/python %v >%v 2>&1", socketServerFile.guestPath, socketServerLog.guestPath)}
+	socketServerArgs := []string{"xterm", "-e", fmt.Sprintf("python3 %v >%v 2>&1", socketServerFile.guestPath, socketServerLog.guestPath)}
 	socketServerCmd := cont.Command(ctx, socketServerArgs...)
 	if err := socketServerCmd.Start(); err != nil {
 		return nil, 0, errors.Wrap(err, "failed to start socket server in container")
