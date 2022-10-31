@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcc8a8f_74e7643c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-31T18:12:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cacfbe64_b322edff",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cf4103b_d2f3f515",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-28T17:21:20Z",
       "side": 1,
       "message": "does this remove the existing test coverage from any important workflows? if so, you could consider adding the new test case as a parameterized test and specifying this in the `ExtraAttr` field",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c52c6d_4a32f2bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-10-31T18:12:23Z",
+      "side": 1,
+      "message": "We may add more combinations of two security options in the future, if we make it a  parameterized test, there will be too many MultiAuth tests.",
+      "parentUuid": "0cf4103b_d2f3f515",
       "range": {
         "startLine": 37,
         "startChar": 60,
