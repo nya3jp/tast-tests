@@ -60,15 +60,15 @@ func init() {
 				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: true},
 				Pre:     wpr.RemoteReplayMode(),
 			}, {
-				Name:              "basic_noproxy",
+				Name:              "essential",
 				Timeout:           35 * time.Minute,
-				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false},
+				Val:               tabSwitchParam{level: tabswitchcuj.Essential, wprProxy: false},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
-				Name:              "basic_lacros_noproxy",
+				Name:              "essential_lacros",
 				Timeout:           35 * time.Minute,
-				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false, browserType: browser.TypeLacros},
+				Val:               tabSwitchParam{level: tabswitchcuj.Essential, wprProxy: false, browserType: browser.TypeLacros},
 				Fixture:           "loggedInAndKeepStateLacros",
 				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
@@ -100,17 +100,15 @@ func init() {
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			}, {
-				Name:    "premium_noproxy",
-				Timeout: 45 * time.Minute,
-				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
-
+				Name:              "advanced",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Advanced, wprProxy: false},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
-				Name:    "premium_lacros_noproxy",
-				Timeout: 45 * time.Minute,
-				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false, browserType: browser.TypeLacros},
-
+				Name:              "advanced_lacros",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Advanced, wprProxy: false, browserType: browser.TypeLacros},
 				Fixture:           "loggedInAndKeepStateLacros",
 				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
