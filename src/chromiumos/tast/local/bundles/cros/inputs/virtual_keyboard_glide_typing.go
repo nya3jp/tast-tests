@@ -88,7 +88,7 @@ func init() {
 					inputMethod: ime.EnglishUS,
 				},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
@@ -99,7 +99,7 @@ func init() {
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
 				},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
 			{
@@ -110,7 +110,7 @@ func init() {
 					inputMethod: ime.EnglishUS,
 				},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
@@ -121,7 +121,7 @@ func init() {
 					inputMethod: ime.EnglishUS,
 				},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 		},

@@ -78,7 +78,7 @@ func init() {
 				Fixture:           fixture.LacrosTabletVK,
 				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraSearchFlags:  util.IMESearchFlags(voiceTestIMEsNewData),
 			},
 		},

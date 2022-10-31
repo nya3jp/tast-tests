@@ -43,7 +43,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithDiacriticsOnPKLongpress,
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 			},

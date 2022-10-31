@@ -57,13 +57,13 @@ func init() {
 			{
 				Name:              "guest_lacros",
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Fixture:           fixture.LacrosAnyVKInGuest,
 			},
 			{
 				Name:              "incognito_lacros",
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Fixture:           fixture.LacrosAnyVK,
 			},
 		},
