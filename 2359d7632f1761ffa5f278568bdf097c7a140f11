@@ -22,6 +22,30 @@
       },
       "revId": "2359d7632f1761ffa5f278568bdf097c7a140f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51de57c6_34fc348e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T04:13:23Z",
+      "side": 1,
+      "message": "Added the other models as well. The test runs on all models in the unstable variant so we won\u0027t lose coverage.",
+      "parentUuid": "1f31d123_8c884bd4",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "2359d7632f1761ffa5f278568bdf097c7a140f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
