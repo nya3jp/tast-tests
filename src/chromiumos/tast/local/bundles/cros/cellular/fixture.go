@@ -33,7 +33,7 @@ func init() {
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  3 * time.Second,
+		PreTestTimeout:  4 * time.Minute,
 		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false},
@@ -47,7 +47,7 @@ func init() {
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  3 * time.Second,
+		PreTestTimeout:  4 * time.Minute,
 		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false, useFakeDMS: true},
@@ -119,6 +119,15 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
 
 func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// If ModemManager isn't exporting a modem, it's possible that the modem has stopped responding due to
+	// b/247984538, attempt to force a restart of the modem on devices that support modemfwd-helpers.
+	if _, err := modemmanager.NewModem(ctx); err != nil && cellular.ModemHelperPathExists() {
+		testing.ContextLog(ctx, "No modem exported by ModemManager, attempting to restart the modem")
+		if err := cellular.RestartModemWithHelper(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to restart modem: ", err)
+		}
+	}
+
 	// Run modem status before starting the test
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
