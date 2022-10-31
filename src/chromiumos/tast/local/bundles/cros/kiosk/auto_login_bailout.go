@@ -6,7 +6,6 @@ package kiosk
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
@@ -63,26 +62,14 @@ func AutoLoginBailout(ctx context.Context, s *testing.State) {
 
 	defer kiosk.Close(ctx)
 
-	if err := kw.Accel(ctx, "Ctrl+Alt+S"); err != nil {
-		s.Error("Failed to hit ctrl+alt+s and attempt to quit a kiosk app: ", err)
-	}
-
-	// Give Chrome some time to actually process the ctrl+alt+s and self
-	// terminate, otherwise the Restart call below might kill Chrome before it
-	// self terminates (and cause the test to fail).
-	// TODO(b/238841265) Find a way to remove this sleep and not have to restart Chrome.
-	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
-		s.Error("Failed to wait for Chrome to exit: ", err)
-	}
-
-	// Restart Chrome with a signin profile test extension to check UI on login screen.
-	// KeepState() will keep the Kiosk setup.
-	cr, err := kiosk.RestartChromeWithOptions(
+	// Sign-in profile extension is needed to check the error message on the UI.
+	cr, err := kiosk.CancelKioskLaunch(
 		ctx,
 		chrome.NoLogin(),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-		chrome.KeepState())
+		chrome.KeepState(),
+		chromeOptions)
 	if err != nil {
 		s.Fatal("Failed to connect to new chrome instance: ", err)
 	}
@@ -91,9 +78,8 @@ func AutoLoginBailout(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(nodewith.Name("Kiosk application launch canceled."))(ctx); err != nil {
-		s.Fatal("Kiosk application is failed to be canceled by user: ", err)
+		s.Fatal("Launch cancelled message did not appear: ", err)
 	}
 }
