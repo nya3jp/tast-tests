@@ -16,6 +16,24 @@
       "message": "Let\u0027s also set a `--wakeup_timeout` to make sure the device always resumes no matter what happens.",
       "revId": "e5ed5fbf5f64e49c8ae43b737881afa27736e15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08fe20de_92a6a251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-10-31T07:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e17f948c_032885e4",
+      "revId": "e5ed5fbf5f64e49c8ae43b737881afa27736e15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
