@@ -11,7 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -30,6 +32,7 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"audio_stable"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(crasRecordQualityUnstableModels...)),
@@ -48,11 +51,23 @@ func init() {
 func CrasRecordQuality(ctx context.Context, s *testing.State) {
 	const duration = 2 * time.Second
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
+	defer cancel()
+
 	// Stop UI in advance for this test to avoid the node being selected by UI.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui: ", err)
 	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
+	defer upstart.EnsureJobRunning(cleanupCtx, "ui")
+
+	defer func(ctx context.Context) {
+		if s.HasError() {
+			if err := crastestclient.DumpAudioDiagnostics(ctx, s.OutDir()); err != nil {
+				s.Error("Failed to dump audio diagnostics: ", err)
+			}
+		}
+	}(cleanupCtx)
 
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
@@ -63,8 +78,8 @@ func CrasRecordQuality(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set internal mic active: ", err)
 	}
 
-	// Set timeout to duration + 1s, which is the time buffer to complete the normal execution.
-	runCtx, cancel := context.WithTimeout(ctx, duration+time.Second)
+	// Set timeout to duration + 5s, which is the time buffer to complete the normal execution.
+	runCtx, cancel := context.WithTimeout(ctx, duration+5*time.Second)
 	defer cancel()
 
 	rawFile := filepath.Join(s.OutDir(), "recorded.raw")
