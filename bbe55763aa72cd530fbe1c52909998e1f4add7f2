@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad20de8b_b1b3d67b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T18:01:31Z",
+      "side": 1,
+      "message": "We\u0027re going to add more tests for different scenarios.",
+      "parentUuid": "1e0e98f6_1f35005c",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ce09e2_b4ea68bd",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-31T17:56:07Z",
       "side": 1,
       "message": "Why do we need to retry for the following block? Any reason it would fail for reasons outside of the working code and test code?",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e00775d_9a6f4ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T18:01:31Z",
+      "side": 1,
+      "message": "all new tests will have this structure. Connecting to chrome and creating an api connection is a flaky operation. This structure helps us easily address points of flakiness. We\u0027re targeting moving all tests to CQ.",
+      "parentUuid": "06ce09e2_b4ea68bd",
       "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
