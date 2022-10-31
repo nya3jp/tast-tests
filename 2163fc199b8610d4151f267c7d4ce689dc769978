@@ -16,6 +16,24 @@
       "message": "nit: add a comment why a sleep is needed or better yet, remove it by using testing.Poll to eliminate races",
       "revId": "2163fc199b8610d4151f267c7d4ce689dc769978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232332ed_d28b3f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-10-31T17:10:52Z",
+      "side": 1,
+      "message": "+1 use testing.Poll on the specific condition we need to wait for, and add a comment why this is needed (I assume Lacros?)",
+      "parentUuid": "e69ba7b7_89666599",
+      "revId": "2163fc199b8610d4151f267c7d4ce689dc769978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
