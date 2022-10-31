@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "556b0356_268fd31d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T18:30:34Z",
+      "side": 1,
+      "message": "There are two scenarios:\n\n1. Policy working fine the first time (allowed/blocked/force-installed)\n2. Policy changing and continuing to be respected after state transition\n\nWe\u0027ll add tests for these scenarios separately\n\nhttps://g3doc.corp.google.com/chromeos/tora/g3doc/best_practices/test_design.md#test-one-thing-per-test\n\nThe recommendation from TORA council and general best practice is to limit the scope of a single test.\n\nLet\u0027s discuss F2F, if there are more questions.",
+      "parentUuid": "4463d367_61de6af9",
+      "revId": "bbe55763aa72cd530fbe1c52909998e1f4add7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06ce09e2_b4ea68bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
         "patchSetId": 2
