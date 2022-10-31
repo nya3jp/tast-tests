@@ -69,6 +69,24 @@
       "message": "Hi David,\n\nI guess there is some issue with this CL.. Can you please share the CQ failure logs?",
       "revId": "ed03a64c5b0f1597d0904f7c2f87fb0f66338c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821df786_6511c642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-31T16:23:01Z",
+      "side": 1,
+      "message": "The lines relevant to your test are:\n\ntast-remote-tests-cros-0.0.2-r13241: # chromiumos/tast/remote/bundles/cros/intel\ntast-remote-tests-cros-0.0.2-r13241: src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go:87:25: undefined: powercontrol.PerformPowerdbusSuspend\ntast-remote-tests-cros-0.0.2-r13241: src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go:114:25: undefined: powercontrol.PerformPowerdbusSuspend",
+      "parentUuid": "99d01b57_76ef5425",
+      "revId": "ed03a64c5b0f1597d0904f7c2f87fb0f66338c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
