@@ -62,6 +62,24 @@ func WaitIDContains(idContains string) waitPredicate {
 // WaitTitle creates a predicate that checks whether notification has specific
 // title.
 func WaitTitle(title string) waitPredicate {
+	// If title is "Download complete" then include debugging
+	// functionality for dumpWebRTCInternals of MeetCUJ.
+	if title == "Download complete" {
+		fakeFailureCount := 0
+		return func(n *Notification) bool {
+			if n.Title != title {
+				return false
+			}
+			// The first two times when n is the download
+			// notification, return false (indicating an unrecognized
+			// notification) to test code that logs debug info.
+			if fakeFailureCount < 2 {
+				fakeFailureCount++
+				return false
+			}
+			return true
+		}
+	}
 	return func(n *Notification) bool {
 		return n.Title == title
 	}
