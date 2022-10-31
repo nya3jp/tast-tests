@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8b2b36_78a5c5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-31T21:41:10Z",
+      "side": 1,
+      "message": "you may need to reserve time for the cleanup task: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "4ae75f10a28dd46e07402e2dfe704ace0763b1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
