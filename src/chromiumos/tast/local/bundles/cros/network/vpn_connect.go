@@ -38,6 +38,7 @@ func init() {
 			Val: vpnTestParams{
 				config: vpn.Config{
 					Type:     vpn.TypeIKEv2,
+					IPType:   vpn.IPTypeIPv4AndIPv6,
 					AuthType: vpn.AuthTypePSK,
 				},
 			},
@@ -47,6 +48,7 @@ func init() {
 			Val: vpnTestParams{
 				config: vpn.Config{
 					Type:     vpn.TypeIKEv2,
+					IPType:   vpn.IPTypeIPv4AndIPv6,
 					AuthType: vpn.AuthTypeCert,
 				},
 			},
@@ -56,6 +58,7 @@ func init() {
 			Val: vpnTestParams{
 				config: vpn.Config{
 					Type:     vpn.TypeIKEv2,
+					IPType:   vpn.IPTypeIPv4AndIPv6,
 					AuthType: vpn.AuthTypeEAP,
 				},
 			},
