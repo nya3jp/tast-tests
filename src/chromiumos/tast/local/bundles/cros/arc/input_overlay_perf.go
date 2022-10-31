@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/gio"
@@ -19,8 +20,12 @@ import (
 )
 
 const (
-	numEvents = 50
-	waitMS    = 50
+	numEvents     = 50
+	numMoveEvents = 100
+	// TODO(b/258229512): get rid of the wait times after the inputlatency package
+	// issues are resolved.
+	waitMS       = 500
+	moveDuration = 1000
 )
 
 func init() {
@@ -65,7 +70,7 @@ func InputOverlayPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Inject the described number of tap events.
-		tapEventTimes := make([]int64, 0, numEvents)
+		tapEventTimes := make([]int64, 0, numMoveEvents)
 		for i := 0; i < numEvents; i += 2 {
 			if err := inputlatency.WaitForNextEventTime(ctx, params.Arc, &tapEventTimes, waitMS); err != nil {
 				return errors.Wrap(err, "failed to generate event time")
@@ -83,11 +88,60 @@ func InputOverlayPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Calculate input latency and save metrics.
-		tapPv := perf.NewValues()
-		if err := evaluateLatency(ctx, params, tapEventTimes, "avgInputOverlayTapLatency", tapPv); err != nil {
+		pv := perf.NewValues()
+		if err := evaluateLatency(ctx, params, tapEventTimes, numEvents, "avgInputOverlayKeyboardTouchTapLatency", pv, "ACTION_DOWN", "ACTION_UP"); err != nil {
 			return errors.Wrap(err, "failed to evaluate")
 		}
-		if err := tapPv.Save(s.OutDir()); err != nil {
+
+		// Inject the described number of move events.
+		// For this simulation, we alternate between pressing the "w" key and the "a"
+		// key, while keeping at least one key pressed at all times, to continually
+		// inject "ACTION_MOVE" events.
+		moveEventTimes := make([]int64, 0, numEvents)
+		recordEventTime := func() action.Action {
+			return func(ctx context.Context) error {
+				if err := inputlatency.WaitForNextEventTime(ctx, params.Arc, &moveEventTimes, moveDuration); err != nil {
+					return errors.Wrap(err, "failed to generate event time")
+				}
+				return nil
+			}
+		}
+		for i := 0; i < numEvents; i += 4 {
+			if err := uiauto.Combine("Continually inject move actions",
+				// Press "w" key.
+				recordEventTime(),
+				kb.AccelPressAction("w"),
+				func(ctx context.Context) error {
+					if i > 0 {
+						// Lift "a" key.
+						if err := recordEventTime()(ctx); err != nil {
+							return errors.Wrap(err, "failed to generate event time")
+						}
+						if err := kb.AccelRelease(ctx, "a"); err != nil {
+							return errors.Wrap(err, "unable to inject key events")
+						}
+					}
+					return nil
+				},
+				// Press "a" key.
+				recordEventTime(),
+				kb.AccelPressAction("a"),
+				// Lift "w" key.
+				recordEventTime(),
+				kb.AccelReleaseAction("w"),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to inject move events")
+			}
+		}
+		// Release final "a" key.
+		if err := kb.AccelRelease(ctx, "a"); err != nil {
+			return errors.Wrap(err, "unable to inject key events")
+		}
+
+		if err := evaluateLatency(ctx, params, moveEventTimes, numMoveEvents, "avgInputOverlayKeyboardTouchMoveLatency", pv, "ACTION_MOVE"); err != nil {
+			return errors.Wrap(err, "failed to evaluate")
+		}
+		if err := pv.Save(s.OutDir()); err != nil {
 			return errors.Wrap(err, "failed saving perf data")
 		}
 
@@ -96,9 +150,11 @@ func InputOverlayPerf(ctx context.Context, s *testing.State) {
 }
 
 // evaluateLatency gets event data, calculates the latency, and adds the result to performance metrics.
-func evaluateLatency(ctx context.Context, params gio.TestParams, eventTimes []int64, perfName string, pv *perf.Values) error {
+// TODO(b/258229512): Modify and use the inputlatency.EvaluateLatency function once the issues with it
+// are resolved.
+func evaluateLatency(ctx context.Context, params gio.TestParams, eventTimes []int64, numLines int, perfName string, pv *perf.Values, keywords ...string) error {
 	// Get event received RTC times.
-	events, err := gio.PopulateReceivedTimes(ctx, params, numEvents)
+	events, err := gio.PopulateReceivedTimes(ctx, params, numLines, keywords...)
 	if err != nil {
 		return errors.Wrap(err, "could not receive event")
 	}
