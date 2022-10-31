@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f277b044_32a4fd14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-31T15:30:51Z",
+      "side": 1,
+      "message": "Thanks for the reviews. Please check this patch.",
+      "revId": "4cd21935d8ba4a00ee1eaf41a045508f7af0b025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
