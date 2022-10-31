@@ -73,7 +73,7 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomType 
 	case LargeRoomSize:
 		urlVar = "spera.meet_url_large"
 		urlSeondaryVar = "spera.meet_url_large_secondary"
-	case ClassRoomSize:
+	case ClassRoomSize, ClassRoomSizeForSperaV2:
 		urlVar = "spera.meet_url_class"
 		urlSeondaryVar = "spera.meet_url_class_secondary"
 	}
