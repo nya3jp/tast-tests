@@ -16,6 +16,52 @@
       "message": "The reason behind naming this struct `blockDeviceInfo` instead of `deviceInfo` is that there\u0027s already a `deviceInfo` in `probe_bluetooth_info.go`, which would cause conflicts.",
       "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37456ff9_089fff53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-31T20:36:17Z",
+      "side": 1,
+      "message": "Are these acronyms or do they contain acronyms? The go style guide says that acronyms should be all in one case (unlike what we do for C++).",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176f1c31_735fdd05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-31T20:36:17Z",
+      "side": 1,
+      "message": "Is this different from FirmwareRev?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
