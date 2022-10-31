@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c1aaa47_96e9c96a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Changed into TEST\u003dtast run -var router\u003d\u003cROUTER\u003e -var pcap\u003d\u003cPCAP\u003e \u003cDUT\u003e wifi.ScanPerf.*",
+      "parentUuid": "3cb62fd1_fa819339",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "257039c2_126b1fbb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48744fd_53d2ea08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/device_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Fixed. Migrated to shill_service.",
+      "parentUuid": "1e637d92_842c3581",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b42de8be_47d3c491",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-27T22:59:21Z",
       "side": 1,
       "message": "nit: combine these with the const on the line 63.",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d471a2c_f49821db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Fixed. Combined all const in this place, including the `scanTimes` below.",
+      "parentUuid": "b42de8be_47d3c491",
       "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8766a3b5_4ac012e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Thanks for providing this template example! Fixed.",
+      "parentUuid": "47c68e1e_67b8265a",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ceb939_d41a5d13",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-10-27T22:59:21Z",
       "side": 1,
       "message": "Use ToDo format such as:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003deaf65ebb3bbdd10856fafb198c9d88ac233436c9;l\u003d2882",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6a5c41_fb781540",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ceb939_d41a5d13",
       "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf22b2f_8d7f9e7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Fixed: b/256486257",
+      "parentUuid": "5859969d_9b2f062b",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0152d75e_b6c94712",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-10-27T22:59:21Z",
       "side": 1,
       "message": "nit: move to the const above in line 59",
+      "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c15331f_6e7c4b6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-10-31T03:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0152d75e_b6c94712",
       "revId": "a4fee254bb99ae9dcb7d15340d4c1eecfea557fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
