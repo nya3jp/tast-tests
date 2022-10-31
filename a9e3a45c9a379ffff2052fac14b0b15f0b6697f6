@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "519bb6fc_9ddb87fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-31T15:43:36Z",
+      "side": 1,
+      "message": "Please add TODO if you want to land it first with hardcoded constants.\n\n(There\u0027s always nontrivial probability that the follow-up change will get delayed or put on hold, so it\u0027s a good approach to always mark such places with TODOs.)",
+      "parentUuid": "b7bc89a5_40923293",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "a9e3a45c9a379ffff2052fac14b0b15f0b6697f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a0eeddf_9f83ba6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_error.go",
         "patchSetId": 8
