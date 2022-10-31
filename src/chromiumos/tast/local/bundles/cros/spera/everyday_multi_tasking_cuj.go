@@ -220,6 +220,46 @@ func init() {
 					appName:  et.SpotifyAppName,
 					enableBT: false,
 				},
+			}, {
+				Name:    "essential_ytmusic",
+				Fixture: "loggedInAndKeepState",
+				Timeout: 20 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Essential,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+				},
+			}, {
+				Name:              "essential_lacros_ytmusic",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:        cuj.Essential,
+					appName:     et.YoutubeMusicAppName,
+					enableBT:    false,
+					browserType: browser.TypeLacros,
+				},
+			}, {
+				Name:    "advanced_ytmusic",
+				Fixture: "loggedInAndKeepState",
+				Timeout: 30 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Advanced,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+				},
+			}, {
+				Name:              "advanced_lacros_ytmusic",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           30 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:        cuj.Advanced,
+					appName:     et.YoutubeMusicAppName,
+					enableBT:    false,
+					browserType: browser.TypeLacros,
+				},
 			},
 		},
 	})
