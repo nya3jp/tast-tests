@@ -174,12 +174,11 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a EAP authentication watcher: ", err)
 	}
 
-	if err := tf.DeconfigAP(roamCtx, ap1); err != nil {
-		s.Fatal("Failed to deconfig AP: ", err)
-	}
-	ap1 = nil
+	if err := tf.WifiClient().RequestRoam(roamCtx, iface, ap0BSSID, 5*time.Second); err != nil {
+                s.Errorf("Failed to roam back from %s to %s: %v", ap1BSSID, ap0BSSID, err)
+        }
 
-	s.Log("Waiting for falling back to AP0")
+	s.Log("Waiting to roam back to AP0")
 	if _, err := waitForRoam(); err != nil {
 		s.Fatal("Failed to wait for falling back to AP0: ", err)
 	}
