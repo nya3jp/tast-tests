@@ -48,21 +48,21 @@ func init() {
 		Data: []string{"cca_ui.js", cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
-				Name:    "basic_ytmusic",
+				Name:    "essential_ytmusic",
 				Fixture: "loggedInAndKeepState",
 				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
-					tier:     cuj.Basic,
+					tier:     cuj.Essential,
 					appName:  et.YoutubeMusicAppName,
 					enableBT: false,
 				},
 			}, {
-				Name:              "basic_lacros_ytmusic",
+				Name:              "essential_lacros_ytmusic",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           20 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
-					tier:        cuj.Basic,
+					tier:        cuj.Essential,
 					appName:     et.YoutubeMusicAppName,
 					enableBT:    false,
 					browserType: browser.TypeLacros,
@@ -141,21 +141,21 @@ func init() {
 					enableBT: false,
 				},
 			}, {
-				Name:    "plus_ytmusic",
+				Name:    "advanced_ytmusic",
 				Fixture: "loggedInAndKeepState",
 				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
-					tier:     cuj.Plus,
+					tier:     cuj.Advanced,
 					appName:  et.YoutubeMusicAppName,
 					enableBT: false,
 				},
 			}, {
-				Name:              "plus_lacros_ytmusic",
+				Name:              "advanced_lacros_ytmusic",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           30 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
-					tier:        cuj.Plus,
+					tier:        cuj.Advanced,
 					appName:     et.YoutubeMusicAppName,
 					enableBT:    false,
 					browserType: browser.TypeLacros,
