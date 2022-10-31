@@ -301,10 +301,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 }
 
 func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
-	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
+	// Basic/Essential tier test scenario: Have 2 browser windows open with 5 tabs each.
 	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
 	// 2. The second window URL list including Google News, CCN news, Wiki.
-	// Plus tier test scenario: Same as basic but click through 20 tabs (4 windows x 5 tabs).
+	// Plus/Advanced tier test scenario: Same as basic but click through 20 tabs (4 windows x 5 tabs).
 	// 1. The first and second window URL list are same as basic.
 	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
 	// 3. The fourth window URL list is same as the third one.
@@ -313,10 +313,10 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 	thirdWindowURLList := []string{cuj.GoogleNewsURL, cuj.CnnURL, cuj.WikipediaURL, cuj.RedditURL, cuj.CnnURL}
 	fourthWindowURLList := thirdWindowURLList
 
-	// Basic tier URL list that will be opened in two browser windows.
+	// Basic/Essential tier URL list that will be opened in two browser windows.
 	pageList := [][]string{firstWindowURLList, secondWindowURLList}
-	// Plus tier URL list that will be opened in four browser windows.
-	if params.tier == cuj.Plus {
+	// Plus/Advanced tier URL list that will be opened in four browser windows.
+	if params.tier == cuj.Plus || params.tier == cuj.Advanced {
 		pageList = append(pageList, thirdWindowURLList, fourthWindowURLList)
 	}
 
