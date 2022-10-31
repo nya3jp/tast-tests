@@ -95,7 +95,7 @@ func DBus(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Error("Error reading running firmware version: ", err)
 		}
-		expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx)
+		expectedVersion, err := hpsutil.FetchFirmwareVersionFromImage(hctx, hpsutil.FirmwarePath)
 		if err != nil {
 			s.Error("Error reading firmware version from image: ", err)
 		}
