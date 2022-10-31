@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7681894_223a8a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-31T17:40:26Z",
+      "side": 1,
+      "message": "LGTM!\n\nOnly few comments, thank you for the test :)",
+      "revId": "f4ef53808793e994119cee139501c06dbacef617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185fc1e4_63ece2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-31T17:40:26Z",
+      "side": 1,
+      "message": "Could we live a comment why this timeout?",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "f4ef53808793e994119cee139501c06dbacef617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637a3da8_756bd05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-31T17:40:26Z",
+      "side": 1,
+      "message": "inline",
+      "range": {
+        "startLine": 59,
+        "startChar": 115,
+        "endLine": 59,
+        "endChar": 126
+      },
+      "revId": "f4ef53808793e994119cee139501c06dbacef617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72049b3b_6dd2b77c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-31T17:40:26Z",
+      "side": 1,
+      "message": "Should we make this const?\n\nWe should probably live a comment that this is a webpage hosted by us.",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 87
+      },
+      "revId": "f4ef53808793e994119cee139501c06dbacef617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9be65ab_21a3d321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/device_trust_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-10-31T17:40:26Z",
+      "side": 1,
+      "message": "nit: url -\u003e URL \nhttps://developers.google.com/style/capitalization",
+      "range": {
+        "startLine": 112,
+        "startChar": 46,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "f4ef53808793e994119cee139501c06dbacef617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
