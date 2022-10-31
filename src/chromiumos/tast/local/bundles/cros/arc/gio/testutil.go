@@ -258,7 +258,7 @@ func TapOverlayButton(kb *input.KeyboardEventWriter, key string, params *TestPar
 
 // PopulateReceivedTimes populates the given array of events with event timestamps,
 // as presented in logcat.
-func PopulateReceivedTimes(ctx context.Context, params TestParams, numLines int) ([]inputlatency.InputEvent, error) {
+func PopulateReceivedTimes(ctx context.Context, params TestParams, numLines int, keywords ...string) ([]inputlatency.InputEvent, error) {
 	out, err := params.Arc.OutputLogcatGrep(ctx, "InputOverlayPerf")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to execute logcat command")
@@ -284,6 +284,17 @@ func PopulateReceivedTimes(ctx context.Context, params TestParams, numLines int)
 
 	events := make([]inputlatency.InputEvent, 0, numLines)
 	for _, line := range lines {
+		// Throw away the line if it does not contain a listed keyword.
+		contains := false
+		for _, keyword := range keywords {
+			if strings.Contains(line, keyword) {
+				contains = true
+			}
+		}
+		if !contains {
+			continue
+		}
+
 		lineSplit := strings.Split(line, " ")
 		timestamp, err := strconv.ParseInt(lineSplit[len(lineSplit)-1], 10, 64)
 		if err != nil {
