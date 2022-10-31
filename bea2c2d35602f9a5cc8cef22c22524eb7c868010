@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b469b68_0a1a8f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_auth_when_uss_rolledbacked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-10-31T15:38:38Z",
+      "side": 1,
+      "message": "Do you think we could reduce the fragmentation of the tests by making one of existing tests parameterized? We already have `cryptohome.KioskWithAuthFactorAPI` and `cryptohome.KioskWithUSS`.",
+      "revId": "bea2c2d35602f9a5cc8cef22c22524eb7c868010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
