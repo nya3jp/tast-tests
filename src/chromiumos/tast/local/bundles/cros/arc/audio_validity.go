@@ -24,7 +24,7 @@ func init() {
 			"paulhsia@chromium.org",          // Media team
 			"judyhsiao@chromium.org",         // Author
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "audio_stable"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
 		Timeout:      3 * time.Minute,

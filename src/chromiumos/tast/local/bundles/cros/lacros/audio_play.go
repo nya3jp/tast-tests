@@ -30,7 +30,7 @@ func init() {
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 		Data:         []string{"media_session_60sec_test.ogg", "audio_playback_test.html"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"lacros_stable"},
+			ExtraSoftwareDeps: []string{"lacros_stable", "audio_stable"},
 		}, {
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},

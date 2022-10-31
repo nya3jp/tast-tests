@@ -30,6 +30,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"audio_stable"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
 	})
 }
