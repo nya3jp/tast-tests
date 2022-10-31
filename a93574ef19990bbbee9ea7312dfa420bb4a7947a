@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44ee915_d461f676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-31T05:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306c51f0_8539dd54",
+      "range": {
+        "startLine": 113,
+        "startChar": 14,
+        "endLine": 113,
+        "endChar": 50
+      },
+      "revId": "a93574ef19990bbbee9ea7312dfa420bb4a7947a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "771e9751_fe91e7f6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "848a8f00_9c3e2c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-31T05:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771e9751_fe91e7f6",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 34
+      },
+      "revId": "a93574ef19990bbbee9ea7312dfa420bb4a7947a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b85d866_624ec1b6",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-15T00:03:16Z",
       "side": 1,
       "message": "`\"unable to access file %q\"`",
+      "range": {
+        "startLine": 178,
+        "startChar": 31,
+        "endLine": 178,
+        "endChar": 58
+      },
+      "revId": "a93574ef19990bbbee9ea7312dfa420bb4a7947a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb59fd8f_55537d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-31T05:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b85d866_624ec1b6",
       "range": {
         "startLine": 178,
         "startChar": 31,
