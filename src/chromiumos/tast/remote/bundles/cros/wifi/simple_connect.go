@@ -337,12 +337,14 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt([]string{wpa.KeyMgmtWPAPSKSHA256}),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
 					secConfFac: wpa.NewConfigFactory(
 						"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt([]string{wpa.KeyMgmtWPAPSK, wpa.KeyMgmtWPAPSKSHA256}),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP broadcasting a WPA2 network using AES based CCMP.
