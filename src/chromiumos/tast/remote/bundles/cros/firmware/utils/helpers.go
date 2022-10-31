@@ -9,6 +9,7 @@ package utils
 import (
 	"context"
 	"strconv"
+	"strings"
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -114,4 +116,15 @@ func CheckCrossystemWPSW(ctx context.Context, h *firmware.Helper, expectedWPSW i
 		return errors.Errorf("expected WP state to %v, is actually %v", expectedWPSW, currWPSW)
 	}
 	return nil
+}
+
+// RootDevPath returns the path to the rootdev, accepts arguments for `rootdev` cmd.
+// Use -s for device path e.g. /dev/mmcblk1p5 or /dev/sda3, "-s, -d" for path without partition e.g. /dev/mmcblk1 or /dev/sda.
+func RootDevPath(ctx context.Context, h *firmware.Helper, args ...string) (string, error) {
+	out, err := h.DUT.Conn().CommandContext(ctx, "rootdev", args...).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "false", errors.Wrap(err, "failed to get rootdev")
+	}
+	devPath := strings.TrimSpace(string(out))
+	return devPath, nil
 }

@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	fwUtils "chromiumos/tast/remote/bundles/cros/firmware/utils"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/ssh"
@@ -52,7 +53,7 @@ func CgptStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	numIters := 10
+	numIters := 3
 	if numItersStr, ok := s.Var("firmware.CgptStressIters"); ok {
 		numItersInt, err := strconv.Atoi(numItersStr)
 		if err != nil {
@@ -86,6 +87,16 @@ func CgptStress(ctx context.Context, s *testing.State) {
 		}
 		// If current data doesn't match backup, set to backed up data.
 		if !reflect.DeepEqual(currDevData, devData) {
+			// Move back to root part A.
+			if err := checkRootPart(ctx, h, "a"); err != nil {
+				s.Log("Failed to check root part, attempting to set to correct part: ", err)
+
+				// If not in root part a, set to a and reboot.
+				if err := resetAndPrioritizeKernelPart(ctx, h, "a"); err != nil {
+					s.Fatal("Failed to prioritize part a: ", err)
+				}
+			}
+
 			if err := setCgptInfo(ctx, h, devData); err != nil {
 				s.Fatal("Failed to reset cgpt info: ", err)
 			}
@@ -94,19 +105,27 @@ func CgptStress(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Creating mode switcher: ", err)
 			}
-			if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+			if err := ms.ModeAwareReboot(ctx, firmware.ColdReset); err != nil {
 				s.Fatal("Failed to reboot: ", err)
+			}
+			if err := h.WaitConnect(ctx); err != nil {
+				s.Fatal("Failed to connect to DUT: ", err)
 			}
 		}
 	}(cleanupContext)
 
 	// Set up kernel to boot from part a initially.
-	if ok, err := checkRootPart(ctx, h, "a"); err != nil {
-		s.Fatal("Failed to check root part: ", err)
-	} else if !ok {
+	if err := checkRootPart(ctx, h, "a"); err != nil {
+		s.Log("Failed to check root part, attempting to set to correct part: ", err)
+
 		// If not in root part a, set to a and reboot.
 		if err := resetAndPrioritizeKernelPart(ctx, h, "a"); err != nil {
 			s.Fatal("Failed to prioritize part a: ", err)
+		}
+
+		// Expect it to be in part a after resetPrioritizeKernelPart.
+		if err := checkRootPart(ctx, h, "a"); err != nil {
+			s.Fatal("Failed to check root part: ", err)
 		}
 	}
 
@@ -114,19 +133,12 @@ func CgptStress(ctx context.Context, s *testing.State) {
 		s.Logf("Running iteration %d out of %d ", i+1, numIters)
 
 		// Expect it to be in part a at start of iteration.
-		if ok, err := checkRootPart(ctx, h, "a"); err != nil {
-			s.Fatal("Failed to check root part: ", err)
-		} else if !ok {
-			s.Fatal("Expected root part a: ", err)
-		}
 		if err := resetAndPrioritizeKernelPart(ctx, h, "b"); err != nil {
 			s.Fatal("Failed to prioritize kernel part b: ", err)
 		}
 
 		// Expect it to be in part b now.
-		if ok, err := checkRootPart(ctx, h, "b"); err != nil {
-			s.Fatal("Failed to check root part: ", err)
-		} else if !ok {
+		if err := checkRootPart(ctx, h, "b"); err != nil {
 			s.Fatal("Expected root part b: ", err)
 		}
 		if err := resetAndPrioritizeKernelPart(ctx, h, "a"); err != nil {
@@ -134,44 +146,39 @@ func CgptStress(ctx context.Context, s *testing.State) {
 		}
 
 		// Expect it to be in part a again.
-		if ok, err := checkRootPart(ctx, h, "a"); err != nil {
-			s.Fatal("Failed to check root part: ", err)
-		} else if !ok {
+		if err := checkRootPart(ctx, h, "a"); err != nil {
 			s.Fatal("Expected root part a: ", err)
 		}
 	}
 }
 
-func checkRootPart(ctx context.Context, h *firmware.Helper, part string) (bool, error) {
+func checkRootPart(ctx context.Context, h *firmware.Helper, part string) error {
 	rootFsMap := map[string]string{"a": "3", "b": "5", "2": "3", "4": "5", "3": "3", "5": "5"}
-	out, err := h.DUT.Conn().CommandContext(ctx, "rootdev", "-s").Output(ssh.DumpLogOnError)
+	devPath, err := fwUtils.RootDevPath(ctx, h, "-s")
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get rootdev")
+		return errors.Wrap(err, "failed to get root dev path")
 	}
-	devPath := strings.TrimSpace(string(out))
 	// Gets single digit partition from device (eg. 3 from /dev/sda3 or 5 from /dev/mmcblk0p5).
 	rootPart := string(devPath[len(devPath)-1:])
 	testing.ContextLogf(ctx, "Current root part: %s; expected root part: %s", rootPart, rootFsMap[part])
 	if rootFsMap[part] != rootPart {
-		testing.ContextLogf(ctx, "Expected to be in part %v, but is currently in part %v", rootFsMap[part], rootPart)
-		return false, nil
+		// testing.ContextLogf(ctx, "Expected to be in part %v, but is currently in part %v", rootFsMap[part], rootPart)
+		return errors.Errorf("expected to be in part %v, but is currently in part %v", rootFsMap[part], rootPart)
 	}
-	return true, nil
+	return nil
 }
 
 func resetAndPrioritizeKernelPart(ctx context.Context, h *firmware.Helper, part string) error {
 	kernelMap := map[string]string{"a": "2", "b": "4", "2": "2", "4": "4", "3": "2", "5": "4"}
-
-	out, err := h.DUT.Conn().CommandContext(ctx, "rootdev", "-s", "-d").Output(ssh.DumpLogOnError)
+	rootDev, err := fwUtils.RootDevPath(ctx, h, "-s", "-d")
 	if err != nil {
-		return errors.Wrap(err, "failed to get rootdev")
+		return errors.Wrap(err, "failed to get root dev path")
 	}
-	rootDev := strings.TrimSpace(string(out))
 
 	cmd := []string{"add", "-i", kernelMap["a"], "-P", "1", "-T", "0", "-S", "1", rootDev}
-	out, err = h.DUT.Conn().CommandContext(ctx, "cgpt", cmd...).Output(ssh.DumpLogOnError)
+	out, err := h.DUT.Conn().CommandContext(ctx, "cgpt", cmd...).Output(ssh.DumpLogOnError)
 	if err != nil {
-		return errors.Wrap(err, "failed to set cgpt values for kern a")
+		return errors.Wrapf(err, "failed to set cgpt values for kern a, had output: %v", out)
 	}
 
 	cmd = []string{"add", "-i", kernelMap["b"], "-P", "1", "-T", "0", "-S", "1", rootDev}
@@ -189,18 +196,20 @@ func resetAndPrioritizeKernelPart(ctx context.Context, h *firmware.Helper, part 
 	if err != nil {
 		return errors.Wrap(err, "failed creating mode switcher")
 	}
-	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+	if err := ms.ModeAwareReboot(ctx, firmware.ColdReset); err != nil {
 		return errors.Wrap(err, "failed to reboot")
+	}
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to DUT")
 	}
 	return nil
 }
 
 func setCgptInfo(ctx context.Context, h *firmware.Helper, devData map[string]map[string]string) error {
-	out, err := h.DUT.Conn().CommandContext(ctx, "rootdev", "-s", "-d").Output(ssh.DumpLogOnError)
+	rootDev, err := fwUtils.RootDevPath(ctx, h, "-s", "-d")
 	if err != nil {
-		return errors.Wrap(err, "failed to get rootdev")
+		return errors.Wrap(err, "failed to get root dev path")
 	}
-	rootDev := strings.TrimSpace(string(out))
 
 	// Modifies only the following settable properties: "priority", "tries", "successful".
 	for partitionName, partition := range devData {
@@ -222,13 +231,13 @@ func setCgptInfo(ctx context.Context, h *firmware.Helper, devData map[string]map
 }
 
 func getCgptInfo(ctx context.Context, h *firmware.Helper) (map[string]map[string]string, error) {
-	out, err := h.DUT.Conn().CommandContext(ctx, "rootdev", "-s", "-d").Output(ssh.DumpLogOnError)
+	rootDev, err := fwUtils.RootDevPath(ctx, h, "-s", "-d")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get rootdev")
+		return nil, errors.Wrap(err, "failed to get root dev path")
 	}
-	rootDev := strings.TrimSpace(string(out))
+
 	// Parse initial cgpt info.
-	out, err = h.DUT.Conn().CommandContext(ctx, "cgpt", "show", rootDev).Output(ssh.DumpLogOnError)
+	out, err := h.DUT.Conn().CommandContext(ctx, "cgpt", "show", rootDev).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cgpt info")
 	}
@@ -247,11 +256,11 @@ func getCgptInfo(ctx context.Context, h *firmware.Helper) (map[string]map[string
 			labelData = map[string]string{"partition": partition}
 		} else if strings.Contains(line, ":") {
 			nameVal := strings.Split(line, ":")
-			name, val := nameVal[0], nameVal[1]
+			name, val := strings.TrimSpace(nameVal[0]), strings.TrimSpace(nameVal[1])
 			if name != "Attr" {
-				labelData[name] = strings.TrimSpace(val)
+				labelData[name] = val
 			} else {
-				for _, attr := range strings.Split(strings.TrimSpace(val), " ") {
+				for _, attr := range strings.Split(val, " ") {
 					newNameVal := strings.Split(attr, "=")
 					labelData[strings.TrimSpace(newNameVal[0])] = strings.TrimSpace(newNameVal[1])
 				}
