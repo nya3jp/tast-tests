@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69ba7b7_89666599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-31T07:45:38Z",
+      "side": 1,
+      "message": "nit: add a comment why a sleep is needed or better yet, remove it by using testing.Poll to eliminate races",
+      "revId": "2163fc199b8610d4151f267c7d4ce689dc769978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
