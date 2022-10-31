@@ -33,13 +33,13 @@ func init() {
 		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
-				Name:    "premium_wevideo",
+				Name:    "advanced_wevideo",
 				Fixture: "enrolledLoggedInToCUJUser",
 				Timeout: 5 * time.Minute,
 				Val:     browser.TypeAsh,
 			},
 			{
-				Name:              "premium_lacros_wevideo",
+				Name:              "advanced_lacros_wevideo",
 				Timeout:           5 * time.Minute,
 				Fixture:           "enrolledLoggedInToCUJUserLacros",
 				ExtraSoftwareDeps: []string{"lacros"},
