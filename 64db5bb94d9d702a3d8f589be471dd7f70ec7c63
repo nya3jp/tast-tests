@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2db9a2_82b15ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-10-31T20:16:57Z",
+      "side": 1,
+      "message": "This is great but it only covers one collector. Is the plan to do similar work individually for all the other tests? If so, should this function be in a place where all the other tests can access it?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 48
+      },
+      "revId": "64db5bb94d9d702a3d8f589be471dd7f70ec7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
