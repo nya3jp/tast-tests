@@ -34,7 +34,7 @@ type TestParameters struct {
 	// RoomType defines the conference room type.
 	RoomType RoomType
 	// Tier defines the test tier: basic, plus, or premium.
-	Tier string
+	Tier Tier
 	// IsLacros defines the browser type is Lacros or not.
 	IsLacros bool
 }

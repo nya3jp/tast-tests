@@ -37,7 +37,7 @@ func init() {
 				Name:    "basic_two",
 				Timeout: time.Minute*15 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.TwoRoomSize,
 				},
 			}, {
@@ -45,7 +45,7 @@ func init() {
 				Timeout:           time.Minute*15 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.TwoRoomSize,
 					IsLacros: true,
 				},
@@ -53,7 +53,7 @@ func init() {
 				Name:    "basic_small",
 				Timeout: time.Minute*15 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.SmallRoomSize,
 				},
 			}, {
@@ -61,7 +61,7 @@ func init() {
 				Timeout:           time.Minute*15 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.SmallRoomSize,
 					IsLacros: true,
 				},
@@ -69,7 +69,7 @@ func init() {
 				Name:    "basic_large",
 				Timeout: time.Minute*20 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
@@ -77,7 +77,7 @@ func init() {
 				Timeout:           time.Minute*20 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
@@ -85,7 +85,7 @@ func init() {
 				Name:    "basic_class",
 				Timeout: time.Minute*20 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.ClassRoomSize,
 				},
 			}, {
@@ -93,7 +93,7 @@ func init() {
 				Timeout:           time.Minute*20 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "basic",
+					Tier:     conference.Basic,
 					RoomType: conference.ClassRoomSize,
 					IsLacros: true,
 				},
@@ -101,7 +101,7 @@ func init() {
 				Name:    "plus_large",
 				Timeout: time.Minute*20 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
@@ -109,7 +109,7 @@ func init() {
 				Timeout:           time.Minute*20 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
@@ -117,7 +117,7 @@ func init() {
 				Name:    "plus_class",
 				Timeout: time.Minute*20 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.ClassRoomSize,
 				},
 			}, {
@@ -125,7 +125,7 @@ func init() {
 				Timeout:           time.Minute*20 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.ClassRoomSize,
 					IsLacros: true,
 				},
@@ -133,7 +133,7 @@ func init() {
 				Name:    "premium_large",
 				Timeout: time.Minute*20 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.LargeRoomSize,
 				},
 			}, {
@@ -141,7 +141,7 @@ func init() {
 				Timeout:           time.Minute*20 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
-					Tier:     "premium",
+					Tier:     conference.Premium,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
@@ -191,7 +191,7 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunZoomScenario(ctx, &pb.MeetScenarioRequest{
-		Tier:            param.Tier,
+		Tier:            int64(param.Tier),
 		RoomType:        int64(param.RoomType),
 		ExtendedDisplay: false,
 		CameraVideoPath: remoteCameraVideoPath,

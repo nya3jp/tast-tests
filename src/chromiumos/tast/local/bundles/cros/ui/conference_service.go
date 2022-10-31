@@ -247,7 +247,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, cuj.Tier(req.Tier), outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -514,7 +514,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, cuj.Tier(req.Tier), outDir, traceConfigPath, tabletMode, bt, roomType); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
