@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6d0e98_82c35cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-10-31T08:45:20Z",
+      "side": 1,
+      "message": "Do arcvm tests depend on real audio drivers?",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748c0126_a17ba916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-10-31T08:45:20Z",
+      "side": 1,
+      "message": "LaCrOS tests don\u0027t depend on real audio drivers.",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5892f74a_93c0d10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_record.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-10-31T08:45:20Z",
+      "side": 1,
+      "message": "LaCrOS tests don\u0027t depend on real audio drivers.",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
