@@ -45,6 +45,19 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val:               browser.TypeLacros,
 			},
+			{
+				Name:    "advanced_wevideo",
+				Fixture: "enrolledLoggedInToCUJUser",
+				Timeout: 5 * time.Minute,
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "advanced_lacros_wevideo",
+				Timeout:           5 * time.Minute,
+				Fixture:           "enrolledLoggedInToCUJUserLacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val:               browser.TypeLacros,
+			},
 		},
 	})
 }
