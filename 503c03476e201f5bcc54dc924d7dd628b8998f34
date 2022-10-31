@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac020fe_38eab4f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-31T19:16:11Z",
+      "side": 1,
+      "message": "nit: I don\u0027t seem to be able to open this go link.",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "503c03476e201f5bcc54dc924d7dd628b8998f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa6505d_f81343be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-31T19:16:11Z",
+      "side": 1,
+      "message": "+edcourtney for lacros tast owner\u0027s review\ncc neis, rzakarian",
+      "revId": "503c03476e201f5bcc54dc924d7dd628b8998f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f539fb_cd0a87e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-10-31T19:16:11Z",
+      "side": 1,
+      "message": "Curious, if it takes this much time (20 minutes) to complete or there is any chance to optimize the execution by breaking down to smaller chunks with minimal sleep.",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "503c03476e201f5bcc54dc924d7dd628b8998f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
