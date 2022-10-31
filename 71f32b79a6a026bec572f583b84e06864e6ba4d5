@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58912e6e_9cec111c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-31T23:36:08Z",
+      "side": 1,
+      "message": "xdai, kyleshima: Could you both take a look? Thanks!",
+      "revId": "71f32b79a6a026bec572f583b84e06864e6ba4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a679929_060e35b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-31T23:36:08Z",
+      "side": 1,
+      "message": "since i am contact of this test, i prefer the dump and screenshot to happen before the cleanups start (i.e. exit overview above). it makes it much easy to debug for me",
+      "revId": "71f32b79a6a026bec572f583b84e06864e6ba4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100db247_405bb0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-31T23:36:08Z",
+      "side": 1,
+      "message": "rest of the test uses GetInternalInfo, so i changed to match",
+      "range": {
+        "startLine": 363,
+        "startChar": 22,
+        "endLine": 363,
+        "endChar": 37
+      },
+      "revId": "71f32b79a6a026bec572f583b84e06864e6ba4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

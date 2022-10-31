@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e095f36_6ba1b95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-10-31T23:36:08Z",
+      "side": 0,
+      "message": "duped at L111",
+      "revId": "c5be98b68d13be736c9fb197a3a2f33bae610d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
