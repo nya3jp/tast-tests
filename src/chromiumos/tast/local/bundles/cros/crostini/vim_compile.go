@@ -51,8 +51,6 @@ func VimCompile(ctx context.Context, s *testing.State) {
 	var collectTime time.Duration
 	i := 0
 
-	setupTest(ctx, s, cont)
-
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("vim.tar.gz"), "vim.tar.gz"); err != nil {
 		s.Fatal("Failed transferring the source tarball: ", err)
 	}
@@ -108,24 +106,6 @@ func VimCompile(ctx context.Context, s *testing.State) {
 	}, float64(avgTime.Seconds()))
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save average compile time due to: ", err)
-	}
-}
-
-// setupTest sets up the device to compile vim.
-func setupTest(ctx context.Context, s *testing.State, cont *vm.Container) {
-	const (
-		installLibs    = "sudo apt-get install -y gcc make libncurses5-dev libncursesw5-dev"
-		fixMissingLibs = "sudo apt-get update --fix-missing"
-	)
-
-	s.Log("Installing required packages to compile vim")
-	if err := executeShellCommand(ctx, cont, installLibs); err != nil {
-		s.Fatal("Failed to install packages: ", err)
-	}
-
-	s.Log("Installing missing dependencies")
-	if err := executeShellCommand(ctx, cont, fixMissingLibs); err != nil {
-		s.Fatal("Failed to update dependencies: ", err)
 	}
 }
 

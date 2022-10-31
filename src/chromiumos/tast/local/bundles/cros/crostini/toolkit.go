@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -21,7 +20,6 @@ import (
 
 type toolkitConfig struct {
 	data    string
-	deps    []string
 	command []string
 	appID   string
 }
@@ -45,7 +43,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:toolkit_gtk3_demo.py",
 				},
@@ -59,7 +56,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:toolkit_gtk3_demo.py",
 				},
@@ -72,7 +68,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:toolkit_gtk3_demo.py",
 				},
@@ -86,7 +81,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:toolkit_gtk3_demo.py",
 				},
@@ -99,7 +93,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 				},
@@ -113,7 +106,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 				},
@@ -126,7 +118,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 				},
@@ -140,7 +131,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
-					deps:    []string{"python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0"},
 					command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 				},
@@ -153,7 +143,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
-					deps:    []string{"python3-pyqt5"},
 					command: []string{"python3", "toolkit_qt5_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 				},
@@ -167,7 +156,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
-					deps:    []string{"python3-pyqt5"},
 					command: []string{"python3", "toolkit_qt5_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 				},
@@ -180,7 +168,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
-					deps:    []string{"python3-pyqt5"},
 					command: []string{"python3", "toolkit_qt5_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 				},
@@ -194,7 +181,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
-					deps:    []string{"python3-pyqt5"},
 					command: []string{"python3", "toolkit_qt5_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 				},
@@ -207,7 +193,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
-					deps:    []string{"python3-tk"},
 					command: []string{"python3", "toolkit_tkinter_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 				},
@@ -221,7 +206,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
-					deps:    []string{"python3-tk"},
 					command: []string{"python3", "toolkit_tkinter_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 				},
@@ -234,7 +218,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
-					deps:    []string{"python3-tk"},
 					command: []string{"python3", "toolkit_tkinter_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 				},
@@ -248,7 +231,6 @@ func init() {
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
-					deps:    []string{"python3-tk"},
 					command: []string{"python3", "toolkit_tkinter_demo.py"},
 					appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 				},
@@ -271,15 +253,6 @@ func Toolkit(ctx context.Context, s *testing.State) {
 
 	if err := cont.PushFile(ctx, s.DataPath(conf.data), conf.data); err != nil {
 		s.Fatalf("Failed to push %v to container: %v", conf.data, err)
-	}
-
-	if len(conf.deps) > 0 {
-		s.Log("Installing: ", strings.Join(conf.deps, " "))
-		installArgs := []string{"sudo", "apt-get", "-y", "install"}
-		installArgs = append(installArgs, conf.deps...)
-		if err := cont.Command(ctx, installArgs...).Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("Failed to install %s: %v", strings.Join(conf.deps, " "), err)
-		}
 	}
 
 	s.Log("Running the demo")
