@@ -12,6 +12,7 @@ import (
 	"time"
 
 	uda "chromiumos/system_api/user_data_auth_proto"
+	cryptohomecommon "chromiumos/tast/common/cryptohome"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -169,12 +170,7 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 	}
 
 	err = authenticateWithRecoveryFactor(ctx, authSessionID, recoveryLabel)
-	var exitErr *hwsec.CmdExitError
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error in authentication after factor removal: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED) {
-		s.Fatalf("Unexpected exit code in authentication after factor removal: got %d; want %d",
-			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
+		s.Fatal("Failed to get the correct error code for auth factor removal: ", err)
 	}
 }
