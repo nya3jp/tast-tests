@@ -38,6 +38,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/loginstatus"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -529,6 +530,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer webrtcInternals.Close()
 
+	webRTCInternalsWindow, err := ash.FindOnlyWindow(ctx, tconn, ash.BrowserTitleMatch(meet.browserType, "WebRTC Internals"))
+	if err != nil {
+		s.Fatal("Failed to find the WebRTC Internals window: ", err)
+	}
+
+	// Maximize the WebRTC Internals window now, in preparation to take
+	// a screenshot of it if dumpWebRTCInternals fails at the end of
+	// the test. That screenshot is for investigation of b/255343902.
+	// TODO(b/255343902): Remove this when the bug is fixed.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, webRTCInternalsWindow.ID, ash.WindowStateMaximized); err != nil {
+		s.Log("Failed to ensure that the WebRTC Internals window is maximized: ", err)
+	}
+
 	// Lacros specific setup.
 	if meet.browserType == browser.TypeLacros {
 		// Close "New Tab" window after creating the chrome://webrtc-internals window.
@@ -993,6 +1007,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	webRTCUI := ui.WithTimeout(10 * time.Minute)
 	if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
 		s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
+		// Take a screenshot with the chrome://webrtc-internals tab in
+		// the foreground, to facilitate investigation of b/255343902.
+		// TODO(b/255343902): Remove this when the bug is fixed.
+		if err := webRTCInternalsWindow.ActivateWindow(ctx, tconn); err != nil {
+			s.Log("Failed to activate the WebRTC Internals window: ", err)
+		}
+		if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), "webrtc-internals.jpg")); err != nil {
+			s.Log("Failed to take screenshot webrtc-internals.jpg: ", err)
+		}
 	} else {
 		dump, readErr := os.ReadFile(path)
 		if readErr != nil {
