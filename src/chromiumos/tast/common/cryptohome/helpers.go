@@ -9,6 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 
 	uda "chromiumos/system_api/user_data_auth_proto"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 )
 
@@ -64,4 +65,17 @@ func ExpectAuthFactorsWithTypeAndLabel(factors, expectedFactors []*uda.AuthFacto
 		return nil
 	}
 	return errors.New(diff)
+}
+
+// ExpectCryptohomeErrorCode checks whether the specified error `err` has the
+// exit error code equal to the specified `code`.
+func ExpectCryptohomeErrorCode(err error, code uda.CryptohomeErrorCode) error {
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		return errors.Errorf("unexpected error: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != (int)(code) {
+		return errors.Errorf("unexpected exit code: got %d; want %d", exitErr.ExitCode, code)
+	}
+	return nil
 }
