@@ -110,6 +110,30 @@
       },
       "revId": "51edecb215611d0a30d8a09fe4a56f9ea4876147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701ab7b1_77baac7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-31T01:43:20Z",
+      "side": 1,
+      "message": "The common practice for errors not terminating tests:\n\nif err !\u003d nil{\n    testing.ContextLogf(ctx, \"...%v\", err)\n}\n\nIt is up to you anyway.",
+      "parentUuid": "3eaff9f0_28ecff3c",
+      "range": {
+        "startLine": 688,
+        "startChar": 9,
+        "endLine": 688,
+        "endChar": 10
+      },
+      "revId": "51edecb215611d0a30d8a09fe4a56f9ea4876147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
