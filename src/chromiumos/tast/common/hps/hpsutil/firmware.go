@@ -263,7 +263,7 @@ func decompressBin(ctx context.Context) (map[string]string, error) {
 //
 // This assumes HPS is powered on and running in the application
 // (that is, hpsd has finished enabling features).
-func FetchRunningFirmwareVersion(hctx *HpsContext) (int32, error) {
+func FetchRunningFirmwareVersion(hctx *HpsContext) (uint32, error) {
 	testing.ContextLog(hctx.Ctx, "Checking running firmware version reported by HPS")
 
 	versionHigh, err := GetRegisterValue(hctx, "10")
@@ -276,14 +276,14 @@ func FetchRunningFirmwareVersion(hctx *HpsContext) (int32, error) {
 		return 0, errors.Wrap(err, "failed to read firmware version low byte register")
 	}
 
-	version := int32(versionHigh)<<16 | int32(versionLow)
+	version := uint32(versionHigh)<<16 | uint32(versionLow)
 	testing.ContextLog(hctx.Ctx, "HPS running version: ", version)
 	return version, nil
 }
 
 // FetchFirmwareVersionFromImage determines the version of the firmware stored in
 // the ChromeOS image running on the DUT.
-func FetchFirmwareVersionFromImage(hctx *HpsContext, firmwarePath string) (int32, error) {
+func FetchFirmwareVersionFromImage(hctx *HpsContext, firmwarePath string) (uint32, error) {
 	firmwareVersionFilePath := filepath.Join(firmwarePath, versionFileName)
 
 	var versionBytes []byte
@@ -297,11 +297,11 @@ func FetchFirmwareVersionFromImage(hctx *HpsContext, firmwarePath string) (int32
 		return 0, errors.Wrapf(err, "failed to read firmware version from %v", firmwareVersionFilePath)
 	}
 
-	version, err := strconv.ParseInt(strings.TrimSpace(string(versionBytes)), 10, 32)
+	version, err := strconv.ParseUint(strings.TrimSpace(string(versionBytes)), 10, 32)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to decode firmware version from %v", firmwareVersionFilePath)
 	}
 
 	testing.ContextLogf(hctx.Ctx, "Found firmware version from %v: %v", firmwareVersionFilePath, version)
-	return int32(version), nil
+	return uint32(version), nil
 }
