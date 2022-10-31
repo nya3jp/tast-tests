@@ -8,7 +8,6 @@ import (
 	"context"
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/servo"
@@ -130,21 +129,8 @@ func ShutdownPwrbuttonStress(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to login to chrome: ", err)
 		}
 
-		const prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-		cmdCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
-		defer cancel()
-		out, err := dut.Conn().CommandContext(cmdCtx, "sh", "-c", prevSleepStateCmd).Output()
-		if err != nil {
-			s.Fatal("Failed to execute cbmem command: ", err)
-		}
-
-		count, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1])
-		if err != nil {
-			s.Fatal("Failed to convert string: ", err)
-		}
-
-		if count != 5 {
-			s.Fatalf("Failed to check the sleept state, got %q, want 5", count)
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 5); err != nil {
+			s.Fatal("Previous Sleep state is not 5: ", err)
 		}
 	}
 }

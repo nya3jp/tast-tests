@@ -6,19 +6,16 @@ package firmware
 
 import (
 	"context"
-	"fmt"
 	"regexp"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -135,7 +132,7 @@ func PowerModes(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wake up DUT: ", err)
 		}
 
-		if err := validatePrevSleepState(ctx, dut, 5); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 5); err != nil {
 			s.Fatal("Previous Sleep state is not 5: ", err)
 		}
 	}
@@ -163,7 +160,7 @@ func PowerModes(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wake up DUT: ", err)
 			}
 		}
-		if err := validatePrevSleepState(ctx, dut, 5); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 5); err != nil {
 			s.Fatal("Previous Sleep state is not 5: ", err)
 		}
 	}
@@ -174,26 +171,8 @@ func PowerModes(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reboot DUT: ", err)
 		}
 
-		if err := validatePrevSleepState(ctx, dut, 0); err != nil {
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, 0); err != nil {
 			s.Fatal("Previous Sleep state is not 0: ", err)
 		}
 	}
-}
-
-// validatePrevSleepState sleep state from cbmem command output.
-func validatePrevSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	// Command to check previous sleep state.
-	const cmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd).Output()
-	if err != nil {
-		return errors.Wrapf(err, "failed to execute %q command", cmd)
-	}
-
-	got := strings.TrimSpace(string(out))
-	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
-
-	if !strings.Contains(got, want) {
-		return errors.Errorf("unexpected sleep state = got %q, want %q", got, want)
-	}
-	return nil
 }
