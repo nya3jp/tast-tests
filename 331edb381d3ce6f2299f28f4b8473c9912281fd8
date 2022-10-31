@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc694932_79b25828",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "798d112b_ee462974",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47e82a7_4ceebee0",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "KernelConfig",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7977e4b8_f168a488",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47e82a7_4ceebee0",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed4bb18_6cdd936f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done will add now.",
+      "parentUuid": "dd4d54a9_b73bec9d",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f77eaf4e_bc052ed0",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Please use full sentences\nKernel configuration items that should be builtin ...",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f71f6ee_1d564197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f77eaf4e_bc052ed0",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94eedd89_fec30497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb848372_b86c8fc6",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2af22a_bdd2465f",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "same",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c770b126_b77008b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2af22a_bdd2465f",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53038df_7d278932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "935295e9_b8149a56",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6630f17f_a1945140",
@@ -139,6 +271,30 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Verify the kernel is correctly configured for graphics usage.",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87a387f_2140ec73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6630f17f_a1945140",
       "range": {
         "startLine": 43,
         "startChar": 17,
@@ -172,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb5c427_c1a884b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72faf38c_2409112a",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7125f36_72749e3c",
@@ -185,6 +365,30 @@
       "writtenOn": "2022-10-31T18:12:31Z",
       "side": 1,
       "message": "gpuWatchDog or gpuWatchHangs here.\n\nThis test should run without chrome.",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9380a32_410f2eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7125f36_72749e3c",
       "range": {
         "startLine": 50,
         "startChar": 17,
@@ -218,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006a9469_5d894d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1911b6f8_ae8bbbb8",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfaa6775_57df423b",
@@ -231,6 +459,30 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Can you please output the kernel configuration here for the logs?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4f6948_cdab8bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfaa6775_57df423b",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -264,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8370f4_630831cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc2c72c0_99ffea1f",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f0301e7_c60a340b",
@@ -277,6 +553,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627bc741_a199b0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f0301e7_c60a340b",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -298,6 +592,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b888ef_e887c7da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371c4fed_15c6d5b1",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de2f3638_81dc6125",
@@ -311,6 +623,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b07d223_67704809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de2f3638_81dc6125",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -332,6 +662,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8c22e2_39dd6cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cbc5d6e_436af5b3",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5598e766_418d7a1a",
@@ -345,6 +693,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8e5855_5bd481ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5598e766_418d7a1a",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -366,6 +732,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f58fced_897f15d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01ca4ed6_d5b87a7f",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89be7363_857f273b",
@@ -379,6 +763,24 @@
       "writtenOn": "2022-10-31T08:41:43Z",
       "side": 1,
       "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0821cc3_d2a4e1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-10-31T19:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89be7363_857f273b",
       "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
