@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c580cb_fa7ab8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-10-31T08:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ffd507_27d54796",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "1320783e45290691260e281e9de94d4a0d6c2cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e36443aa_1832a068",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-31T08:03:21Z",
       "side": 1,
       "message": "nit: `2 * time.Second` to be consistent.",
+      "range": {
+        "startLine": 155,
+        "startChar": 27,
+        "endLine": 155,
+        "endChar": 40
+      },
+      "revId": "1320783e45290691260e281e9de94d4a0d6c2cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41928bc_e986d491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-10-31T08:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e36443aa_1832a068",
       "range": {
         "startLine": 155,
         "startChar": 27,
