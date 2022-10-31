@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e502b524_70f4bf9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-31T16:10:58Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7675e145_a149628e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-31T16:10:58Z",
+      "side": 1,
+      "message": "`action.Sleep` can be used here instead",
+      "range": {
+        "startLine": 1441,
+        "startChar": 2,
+        "endLine": 1448,
+        "endChar": 4
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4095c59_73a1540c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-31T16:10:58Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 4
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
