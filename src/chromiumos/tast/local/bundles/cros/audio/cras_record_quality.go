@@ -29,7 +29,7 @@ func init() {
 		Desc:         "Verifies recorded samples from CRAS are correct",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"audio_stable"},
