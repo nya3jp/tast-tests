@@ -29,7 +29,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, roomType RoomType) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier cuj.Tier, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, roomType RoomType) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -104,9 +104,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	meetTimeout := 50 * time.Second
 	if isNoRoom {
 		meetTimeout = 70 * time.Second
-	} else if tier == "plus" {
+	} else if tier == cuj.Plus {
 		meetTimeout = 140 * time.Second
-	} else if tier == "premium" {
+	} else if tier == cuj.Premium {
 		meetTimeout = 3 * time.Minute
 	}
 
@@ -122,7 +122,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 		if !isNoRoom {
 			// Only premium tier need to change background to blur at the beginning.
-			toBlur := tier == "premium"
+			toBlur := tier == cuj.Premium
 			if err := conf.Join(ctx, inviteLink, toBlur); err != nil {
 				return err
 			}
@@ -144,9 +144,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Plus and premium tier.
-		if tier == "plus" || tier == "premium" {
+		if tier == cuj.Plus || tier == cuj.Premium {
 			application := googleSlides
-			if tier == "premium" {
+			if tier == cuj.Premium {
 				application = googleDocs
 			}
 			if err := conf.Presenting(ctx, application); err != nil {
@@ -155,7 +155,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Premium tier.
-		if !isNoRoom && tier == "premium" {
+		if !isNoRoom && tier == cuj.Premium {
 			if err := conf.BackgroundChange(ctx); err != nil {
 				return err
 			}

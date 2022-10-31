@@ -40,7 +40,7 @@ func init() {
 					// This is a premium test case for extended display CUJ.
 					// But this case just calls Google Meet "plus" case, so the given tier
 					// is "plus" instead of "premium".
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 				},
 			},
@@ -52,7 +52,7 @@ func init() {
 					// This is a premium test case for extended display CUJ.
 					// But this case just calls Google Meet "plus" case, so the given tier
 					// is "plus" instead of "premium".
-					Tier:     "plus",
+					Tier:     conference.Plus,
 					RoomType: conference.LargeRoomSize,
 					IsLacros: true,
 				},
@@ -119,7 +119,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	client := pb.NewConferenceService2Client(c.Conn)
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
-		Tier:            param.Tier,
+		Tier:            int64(param.Tier),
 		RoomType:        int64(param.RoomType),
 		ExtendedDisplay: true,
 		CameraVideoPath: remoteCameraVideoPath,
