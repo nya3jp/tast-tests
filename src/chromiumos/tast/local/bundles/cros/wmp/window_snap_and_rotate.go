@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
@@ -42,6 +43,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
 			Name:    "portrait",
 			Fixture: "chromeLoggedIn",
@@ -88,8 +90,6 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain internal display info: ", err)
 	}
-
-	defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 
 	// Rotate the screen if it is a portrait test.
 	portrait := s.Param().(windowSnapAndRotateTestParam).portrait
