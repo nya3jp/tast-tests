@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f005ea_9c6dd090",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-31T04:18:30Z",
+      "side": 1,
+      "message": "Looks fine to me now. I don\u0027t know if it\u0027s strictly necessary given the new exoneration infrastructure, but it won\u0027t hurt anything.",
+      "revId": "15f2e59474cb62704cae42985b506d36dae0441a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
