@@ -34,6 +34,24 @@
       "parentUuid": "69e62324_eed7c662",
       "revId": "d8a284293827be8167804e92a5832b6100724064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9476bc23_4a314531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-31T18:12:31Z",
+      "side": 1,
+      "message": "The current Attr fields looks good 😊",
+      "parentUuid": "9c13d11a_5023eafe",
+      "revId": "d8a284293827be8167804e92a5832b6100724064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

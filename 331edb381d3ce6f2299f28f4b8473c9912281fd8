@@ -151,6 +151,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72faf38c_2409112a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-31T18:12:31Z",
+      "side": 1,
+      "message": "delete.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7125f36_72749e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-31T18:12:31Z",
+      "side": 1,
+      "message": "gpuWatchDog or gpuWatchHangs here.\n\nThis test should run without chrome.",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1911b6f8_ae8bbbb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-31T18:12:31Z",
+      "side": 1,
+      "message": "2 minutes.",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfaa6775_57df423b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
         "patchSetId": 14
