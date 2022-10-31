@@ -177,6 +177,78 @@ func init() {
 					IsLacros: true,
 				},
 			},
+			{
+				Name:    "essential_large",
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Val: conference.TestParameters{
+					Tier:     conference.Essential,
+					RoomType: conference.LargeRoomSize,
+				},
+			},
+			{
+				Name:    "essential_class",
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Val: conference.TestParameters{
+					Tier:     conference.Essential,
+					RoomType: conference.ClassRoomSizeForSperaV2,
+				},
+			},
+			{
+				Name:              "essential_lacros_large",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     conference.Essential,
+					RoomType: conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			},
+			{
+				Name:              "essential_lacros_class",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     conference.Essential,
+					RoomType: conference.ClassRoomSizeForSperaV2,
+					IsLacros: true,
+				},
+			},
+			{
+				Name:    "advanced_large",
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Val: conference.TestParameters{
+					Tier:     conference.Advanced,
+					RoomType: conference.LargeRoomSize,
+				},
+			},
+			{
+				Name:    "advanced_class",
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
+				Val: conference.TestParameters{
+					Tier:     conference.Advanced,
+					RoomType: conference.ClassRoomSizeForSperaV2,
+				},
+			},
+			{
+				Name:              "advanced_lacros_large",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     conference.Advanced,
+					RoomType: conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			},
+			{
+				Name:              "advanced_lacros_class",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     conference.Advanced,
+					RoomType: conference.ClassRoomSizeForSperaV2,
+					IsLacros: true,
+				},
+			},
 		},
 	})
 }

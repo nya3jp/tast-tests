@@ -320,7 +320,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, participants, expectedParticipants))
 		}
 		switch conf.roomType {
-		case ClassRoomSize:
+		case ClassRoomSize, ClassRoomSizeForSperaV2:
 			if participants < expectedParticipants {
 				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, participants, expectedParticipants))
 			}
@@ -613,7 +613,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 						return errors.Wrap(err, "failed to get stable grids")
 					}
 					// Check classrooms to expect grids to be more than 16 grids.
-					if conf.roomType == ClassRoomSize && len(grids) <= 16 {
+					if (conf.roomType == ClassRoomSize || conf.roomType == ClassRoomSizeForSperaV2) && len(grids) <= 16 {
 						return errors.Wrapf(err, "unexpected grids: got: %v; want more than 16 grids", len(grids))
 					}
 					return nil
