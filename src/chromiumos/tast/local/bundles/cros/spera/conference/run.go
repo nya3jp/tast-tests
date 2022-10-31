@@ -101,12 +101,14 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		recorder.EnableTracing(outDir, traceConfigPath)
 	}
 	isNoRoom := roomType == NoRoom
+	isPlus := tier == cuj.Plus || (tier == cuj.Advanced && roomType == ClassRoomSizeForSperaV2)
+	isPremium := tier == cuj.Premium || (tier == cuj.Advanced && roomType == LargeRoomSize)
 	meetTimeout := 50 * time.Second
 	if isNoRoom {
 		meetTimeout = 70 * time.Second
-	} else if tier == cuj.Plus {
+	} else if isPlus {
 		meetTimeout = 140 * time.Second
-	} else if tier == cuj.Premium {
+	} else if isPremium {
 		meetTimeout = 3 * time.Minute
 	}
 
@@ -122,7 +124,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 		if !isNoRoom {
 			// Only premium tier need to change background to blur at the beginning.
-			toBlur := tier == cuj.Premium
+			toBlur := tier == cuj.Premium || tier == cuj.Essential || tier == cuj.Advanced
 			if err := conf.Join(ctx, inviteLink, toBlur); err != nil {
 				return err
 			}
@@ -144,9 +146,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Plus and premium tier.
-		if tier == cuj.Plus || tier == cuj.Premium {
+		if isPlus || isPremium {
 			application := googleSlides
-			if tier == cuj.Premium {
+			if isPremium {
 				application = googleDocs
 			}
 			if err := conf.Presenting(ctx, application); err != nil {
@@ -155,7 +157,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Premium tier.
-		if !isNoRoom && tier == cuj.Premium {
+		if !isNoRoom && isPremium {
 			if err := conf.BackgroundChange(ctx); err != nil {
 				return err
 			}
