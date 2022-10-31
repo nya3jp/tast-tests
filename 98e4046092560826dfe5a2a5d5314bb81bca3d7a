@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ac5792_e99cb088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T21:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10e35e4c_ead55c65",
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "510b45c2_b1d906e5",
@@ -135,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651a2aa7_cc6bbb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T21:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8707e5af_5dbb54a7",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54491f33_f1d33664",
@@ -172,6 +214,30 @@
       "side": 1,
       "message": "The general idea is to things close to where we actually need them.\n\nIn the past there have been flakiness problems with creating UIDevice too early. Some networking related bug causes the connection to fail/break.",
       "parentUuid": "54491f33_f1d33664",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ea23d2_68064307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T21:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5d69bdf_be0ac6cd",
       "range": {
         "startLine": 128,
         "startChar": 0,
