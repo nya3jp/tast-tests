@@ -16,6 +16,29 @@
       "message": "It was just a mistake with the fixture not being imported, I\u0027ve fixed it now along with another problem I found in handling version numbers.\n\nThis is ready for review, please take a look.",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630db442_c15bdebe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-31T21:58:43Z",
+      "side": 1,
+      "message": "just want to check: if any of the function calls fails, could it leave the DUT in a corrupted state that may affect other tests (i.e., non-hps tests)?\n\nThere was a case where the AutouUdate tests didn\u0027t recover the DUTs properly (especially when the tests failed), causing following tests that assume a clean DUT to fail. Just want to check it won\u0027t happen here.",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
