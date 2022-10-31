@@ -1156,7 +1156,22 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return "", err
 	}
 
-	notification, err := ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Download complete"))
+	notificationPredicate := ash.WaitTitle("Download complete")
+	notificationIDs := make(map[string]struct{})
+	notification, err := ash.WaitForNotification(ctx, tconn, 10*time.Minute, func(notification *ash.Notification) bool {
+		if notificationPredicate(notification) {
+			return true
+		}
+		// Log unrecognized notifications to help with investigation
+		// of b/255343902, but avoid logging the same notification
+		// repeatedly in a tight loop for ten minutes (LOL).
+		// TODO(b/255343902): Remove this when the bug is fixed.
+		if _, alreadyLogged := notificationIDs[notification.ID]; !alreadyLogged {
+			testing.ContextLog(ctx, "Found unrecognized notification while waiting for download notification: ", *notification)
+			notificationIDs[notification.ID] = struct{}{}
+		}
+		return false
+	})
 	if err != nil {
 		return "", errors.Wrap(err, "failed to wait for download notification")
 	}
