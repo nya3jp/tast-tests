@@ -1,0 +1,317 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798d112b_ee462974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be KernelConfig?",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47e82a7_4ceebee0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "KernelConfig",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4d54a9_b73bec9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Looks great, some minor changes in the comments.\n\nI think we should ask Dominik and Sean to review, maybe they have suggestions for other flags to check.",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77eaf4e_bc052ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Please use full sentences\nKernel configuration items that should be builtin ...",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb848372_b86c8fc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Kernel configuration items that ...",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2af22a_bdd2465f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "same",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935295e9_b8149a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Kernel configuration items that ...",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6630f17f_a1945140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Verify the kernel is correctly configured for graphics usage.",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfaa6775_57df423b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Can you please output the kernel configuration here for the logs?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2c72c0_99ffea1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Check that any builtin config is not configured.",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0301e7_c60a340b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371c4fed_15c6d5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Please capitalize: Check...",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2f3638_81dc6125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbc5d6e_436af5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Full sentence.",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5598e766_418d7a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ca4ed6_d5b87a7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89be7363_857f273b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-31T08:41:43Z",
+      "side": 1,
+      "message": "Expecting",
+      "revId": "331edb381d3ce6f2299f28f4b8473c9912281fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
