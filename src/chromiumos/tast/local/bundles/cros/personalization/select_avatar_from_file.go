@@ -70,10 +70,12 @@ func selectProfileImage(ctx context.Context, ui *uiauto.Context) error {
 	googleProfilePhotoContainer := nodewith.Role(role.ListBoxOption).Name(googleProfilePhoto).HasClass("image-container")
 	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(googleProfilePhoto).HasClass("tast-selected-profile-image")
 
-	return uiauto.Combine("change avatar back to Google profile photo",
-		ui.WithTimeout(3*time.Second).DoDefault(googleProfilePhotoContainer),
-		ui.WithTimeout(3*time.Second).WaitUntilExists(selectedAvatarOption),
-	)(ctx)
+	// Use uiauto.Retry to loosen the test because of the flakiness. "googleProfilePhotoContainer" could be non-clickable
+	// when it is initially rendered in the a11y tree. This change may result in uncaught regression failure.
+	return uiauto.Retry(3, uiauto.Combine("change avatar back to Google profile photo",
+		ui.DoDefault(googleProfilePhotoContainer),
+		ui.WaitUntilExists(selectedAvatarOption),
+	))(ctx)
 }
 
 func SelectAvatarFromFile(ctx context.Context, s *testing.State) {
