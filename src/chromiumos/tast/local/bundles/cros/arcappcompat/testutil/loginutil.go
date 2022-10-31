@@ -138,9 +138,17 @@ func enterEmailAddress(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
-	emailID := s.RequiredVar("arcappcompat.Minecraft.emailid")
-	if err := kb.Type(ctx, emailID); err != nil {
-		s.Fatal("Failed to enter emailID: ", err)
+	if appPkgName == minecraftPkgName {
+		emailID := s.RequiredVar("arcappcompat.Minecraft.emailid")
+		if err := kb.Type(ctx, emailID); err != nil {
+			s.Fatal("Failed to enter emailID: ", err)
+		}
+	}
+	if appPkgName == skypePkgName {
+		emailID := s.RequiredVar("arcappcompat.Skype.emailid")
+		if err := kb.Type(ctx, emailID); err != nil {
+			s.Fatal("Failed to enter emailID: ", err)
+		}
 	}
 	s.Log("Entered EmailAddress")
 }
@@ -205,9 +213,17 @@ func enterPassword(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
-	password := s.RequiredVar("arcappcompat.Minecraft.password")
-	if err := kb.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if appPkgName == minecraftPkgName {
+		password := s.RequiredVar("arcappcompat.Minecraft.password")
+		if err := kb.Type(ctx, password); err != nil {
+			s.Fatal("Failed to enter password: ", err)
+		}
+	}
+	if appPkgName == skypePkgName {
+		password := s.RequiredVar("arcappcompat.Skype.password")
+		if err := kb.Type(ctx, password); err != nil {
+			s.Fatal("Failed to enter password: ", err)
+		}
 	}
 	s.Log("Entered password")
 }
@@ -230,11 +246,11 @@ func ClickUntilFocused(ctx context.Context, s *testing.State, tconn *chrome.Test
 // ClickUntilButtonExists func click on until specified button exists.
 func ClickUntilButtonExists(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, checkElement, targetElement *ui.Object) {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := targetElement.Exists(ctx); err != nil {
+		if err := checkElement.Exists(ctx); err == nil {
+			s.Log("Click on check element")
 			checkElement.Click(ctx)
-			return err
 		}
-		return nil
+		return targetElement.Exists(ctx)
 	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
 		s.Log("targetElement doesn't exist: ", err)
 	}
