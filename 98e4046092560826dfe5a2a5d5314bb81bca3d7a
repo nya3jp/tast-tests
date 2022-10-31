@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e35e4c_ead55c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T19:51:44Z",
+      "side": 1,
+      "message": "This helps easily switch an exit to retry (notice the same signature) and it also avoids repetition in the error message.",
+      "parentUuid": "0407b28d_105822cd",
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "510b45c2_b1d906e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
         "patchSetId": 3
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8707e5af_5dbb54a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T19:51:44Z",
+      "side": 1,
+      "message": "We\u0027ve had problems with these sections in the past and retries helped.",
+      "parentUuid": "510b45c2_b1d906e5",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54491f33_f1d33664",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
         "patchSetId": 3
@@ -71,6 +113,30 @@
       "writtenOn": "2022-10-31T19:33:29Z",
       "side": 1,
       "message": "Set this up outside of the poll?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "98e4046092560826dfe5a2a5d5314bb81bca3d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d69bdf_be0ac6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-10-31T19:51:44Z",
+      "side": 1,
+      "message": "The general idea is to things close to where we actually need them.\n\nIn the past there have been flakiness problems with creating UIDevice too early. Some networking related bug causes the connection to fail/break.",
+      "parentUuid": "54491f33_f1d33664",
       "range": {
         "startLine": 128,
         "startChar": 0,
