@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c49426_3d141866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-31T09:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6d0e98_82c35cb2",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "748c0126_a17ba916",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88f885b_9691575a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-31T09:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748c0126_a17ba916",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5892f74a_93c0d10e",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-31T08:45:20Z",
       "side": 1,
       "message": "LaCrOS tests don\u0027t depend on real audio drivers.",
+      "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0d325a_af2162a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_record.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-31T09:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5892f74a_93c0d10e",
       "revId": "e9d93abf14c4edd23cb31dae67dcb6217822c91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
