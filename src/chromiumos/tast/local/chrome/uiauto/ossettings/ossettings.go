@@ -282,6 +282,7 @@ func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected s
 			s.LeftClick(oldOptionFinder),
 			s.LeftClick(optionFinder),
 		),
+		uiauto.Sleep(time.Second),
 		s.LeftClick(settingFinder),
 		uiauto.Sleep(time.Second),
 	)
