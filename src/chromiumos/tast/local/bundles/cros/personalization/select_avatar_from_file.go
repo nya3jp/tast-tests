@@ -70,10 +70,10 @@ func selectProfileImage(ctx context.Context, ui *uiauto.Context) error {
 	googleProfilePhotoContainer := nodewith.Role(role.ListBoxOption).Name(googleProfilePhoto).HasClass("image-container")
 	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(googleProfilePhoto).HasClass("tast-selected-profile-image")
 
-	return uiauto.Combine("change avatar back to Google profile photo",
-		ui.WithTimeout(3*time.Second).DoDefault(googleProfilePhotoContainer),
-		ui.WithTimeout(3*time.Second).WaitUntilExists(selectedAvatarOption),
-	)(ctx)
+	return uiauto.Retry(3, uiauto.Combine("change avatar back to Google profile photo",
+		ui.WithTimeout(time.Second).DoDefault(googleProfilePhotoContainer),
+		ui.WithTimeout(time.Second).WaitUntilExists(selectedAvatarOption),
+	))(ctx)
 }
 
 func SelectAvatarFromFile(ctx context.Context, s *testing.State) {
