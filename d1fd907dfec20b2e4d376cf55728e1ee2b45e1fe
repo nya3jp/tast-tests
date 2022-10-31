@@ -34,6 +34,24 @@
       "parentUuid": "e99b1d32_9a4abccd",
       "revId": "d1fd907dfec20b2e4d376cf55728e1ee2b45e1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a09ac73_72bac6e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-31T21:07:19Z",
+      "side": 1,
+      "message": "This might work for now but it is indirect, and so someone in the future may remove it if they can\u0027t find a reason for it to be restricted to that pool. There\u0027s also the possibility that a cellular device might make it into the wificell group at some point in the future, so it\u0027s less fragile to gate this on the actual hardware features of the DUT rather than another predicate that only happens to be true right now.",
+      "parentUuid": "e1273dc3_26f23e7a",
+      "revId": "d1fd907dfec20b2e4d376cf55728e1ee2b45e1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
