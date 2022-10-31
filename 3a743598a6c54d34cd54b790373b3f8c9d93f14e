@@ -46,6 +46,30 @@
       },
       "revId": "3a743598a6c54d34cd54b790373b3f8c9d93f14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cabbcd6_45b8f3f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-10-31T05:46:17Z",
+      "side": 1,
+      "message": "Tested with \"~/trunk/src/platform/tast/fast_build.sh -T\", test result:\n  ok  \tchromiumos/tast/local/bundles/cros/platform\t(cached)",
+      "parentUuid": "b262b6d6_5b8e5e30",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "3a743598a6c54d34cd54b790373b3f8c9d93f14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
