@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f73f4e_3da70ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-31T20:51:36Z",
+      "side": 1,
+      "message": "Now, Clvk is currently failing on hana and I drafted crrev.com/c/3994922 to fix that.\nNot sure if we want to revert this or land the fix?",
+      "revId": "11c6d6ad902fe467e48e25143d321ce04af826aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
