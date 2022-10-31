@@ -10,7 +10,6 @@ import (
 	"math/rand"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -25,25 +24,19 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	// We need truly random values for username strings so that different test runs don't affect each other.
 	rand.Seed(time.Now().UnixNano())
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
-	conn, err := br.NewConn(ctx, "https://webauthn.io/")
+	// Navigate to "logout" path first to clear leftover sessions from previous tests.
+	conn, err := br.NewConn(ctx, "https://webauthn.io/logout")
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
-	defer func(ctx context.Context, conn *chrome.Conn) {
-		conn.Navigate(ctx, "https://webauthn.io/logout")
-		conn.CloseTarget(ctx)
-		conn.Close()
-	}(cleanupCtx, conn)
+	if err = conn.Navigate(ctx, "https://webauthn.io/"); err != nil {
+		return errors.Wrap(err, "failed to navigate to test website")
+	}
 
 	// Perform MakeCredential on the test website.
 

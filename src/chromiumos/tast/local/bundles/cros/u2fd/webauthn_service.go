@@ -114,8 +114,12 @@ func (c *WebauthnService) StartWebauthn(ctx context.Context, req *hwsec.StartWeb
 		hasDialog:         req.GetHasDialog(),
 	}
 	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	conn, err := c.br.NewConn(ctx, "https://webauthn.io/?"+getQueryStringByConfiguration(c.cfg))
+	// Navigate to "logout" path first to clear leftover sessions from previous tests.
+	conn, err := c.br.NewConn(ctx, "https://webauthn.io/logout")
 	if err != nil {
+		return nil, errors.Wrap(err, "failed to navigate to test website")
+	}
+	if err = conn.Navigate(ctx, "https://webauthn.io/?"+getQueryStringByConfiguration(c.cfg)); err != nil {
 		return nil, errors.Wrap(err, "failed to navigate to test website")
 	}
 	c.conn = conn
@@ -125,8 +129,6 @@ func (c *WebauthnService) StartWebauthn(ctx context.Context, req *hwsec.StartWeb
 
 func (c *WebauthnService) EndWebauthn(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.conn != nil {
-		c.conn.Navigate(ctx, "https://webauthn.io/logout")
-		c.conn.CloseTarget(ctx)
 		c.conn.Close()
 		c.conn = nil
 	}
