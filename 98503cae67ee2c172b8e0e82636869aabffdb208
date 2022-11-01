@@ -90,6 +90,24 @@
       "message": "Kind of surprised we wouldn\u0027t just pass in the original device.DeviceId and have the modemfwd package handle it? Surely we might need to do something similar for PCI devices?",
       "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f17c5a_c5ba8c9c",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-01T21:13:41Z",
+      "side": 1,
+      "message": "I\u0027ll update the modemfwd package to handle parsing the device-type prefix. PCI devices should be straightforward, is there a good way to check if the modem exists for SoC devices?",
+      "parentUuid": "70c4c911_b8264609",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
