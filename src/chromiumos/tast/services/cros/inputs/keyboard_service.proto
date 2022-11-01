@@ -12,6 +12,12 @@ option go_package = "chromiumos/tast/services/cros/inputs";
 
 // KeyboardService provides functionalities to interact with keyboard device
 service KeyboardService {
+  // New creates and new instance of a virtual keyboard. 
+  rpc NewKeyboard(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by NewKeyboard. 
+  rpc CloseKeyboard(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // Type injects key events suitable for generating the string s.
   // Only characters that can be typed using a QWERTY keyboard are supported,
   // and the current keyboard layout must be QWERTY. The left Shift key is

@@ -33,6 +33,26 @@ func init() {
 type KeyboardService struct {
 	sharedObject *common.SharedObjectsForService
 	mutex        sync.Mutex
+	keyboard     *input.KeyboardEventWriter
+}
+
+func (svc *KeyboardService) NewKeyboard(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard handle")
+	}
+
+	svc.keyboard = kb
+	return &empty.Empty{}, nil
+}
+
+func (svc *KeyboardService) CloseKeyboard(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if svc.keyboard == nil {
+		return nil, errors.New("CloseKeyboard called before New")
+	}
+
+	svc.keyboard.Close()
+	return &empty.Empty{}, nil
 }
 
 // Type injects key events suitable for generating the string s.
@@ -58,9 +78,11 @@ func (svc *KeyboardService) Type(ctx context.Context, req *pb.TypeRequest) (*emp
 // Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
 // Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
 // In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
+//
 //	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
 //	Whitespace:    "Enter", "Space", "Tab", "Backspace"
 //	Function keys: "F1", "F2", ..., "F12"
+//
 // "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
 func (svc *KeyboardService) Accel(ctx context.Context, req *pb.AccelRequest) (*empty.Empty, error) {
 	svc.mutex.Lock()

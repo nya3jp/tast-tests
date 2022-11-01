@@ -1,0 +1,21 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.inputs;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/inputs";
+
+// MouseService provides some operations of a mouse device.
+service MouseService {
+  // Creates a new instance of a mouse device. CloseMouse must be called later
+  // to clean up the associated resources.
+  rpc NewMouse (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by NewMouse.
+  rpc CloseMouse (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
