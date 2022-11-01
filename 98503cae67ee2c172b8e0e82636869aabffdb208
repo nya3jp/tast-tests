@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8631093_fef602f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-01T00:50:04Z",
+      "side": 1,
+      "message": "@aleksandermj@google.com this is only a 1 minute poll to check that a modem is exposed rather than the 3 that you mentioned, but at this point the DUT has to be alive for over 2 minutes due to the fixtures `SetUp`. I can extend it though if you think it\u0027s too short.",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
