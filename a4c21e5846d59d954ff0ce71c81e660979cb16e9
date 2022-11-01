@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "355109e7_995cf15e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T22:31:20Z",
+      "side": 1,
+      "message": "you can include in a comma separated list here, e.g. \"BUG\u003db:243415436,b:231669774\"",
+      "parentUuid": "0cffb6af_66a0cdf3",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf5169a_440b4a33",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "According to [this](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/), refactoring is no longer necessary and hence removed.",
       "parentUuid": "bdf5169a_440b4a33",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7a6529_de3a63ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T22:31:20Z",
+      "side": 1,
+      "message": "This can still be split into two changes (see above).",
+      "parentUuid": "95e38ea6_3b4350a2",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
