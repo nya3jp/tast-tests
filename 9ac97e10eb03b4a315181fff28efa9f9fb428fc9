@@ -167,6 +167,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb92ca05_00f890b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-11-01T06:53:25Z",
+      "side": 1,
+      "message": "Will make the changes add push in next patchset.",
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c58696_0c91b7cc",
