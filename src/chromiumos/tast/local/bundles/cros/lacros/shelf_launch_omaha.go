@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 
@@ -41,9 +42,16 @@ func init() {
 		Contacts:     []string{"hyungtaekim@chromium.org", "chromeos-sw-engprod@google.com", "lacros-tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		// Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-		HardwareDeps: hwdep.D(hwdep.Model("kasumi", "vilboz" /* amd64 */, "krane" /* arm */)),
-		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			// Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kasumi", "vilboz" /* amd64 */, "krane" /* arm */)),
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("lazor" /* arm64 */)),
+		}},
+		Timeout: 4 * time.Minute,
 	})
 }
 
@@ -58,6 +66,22 @@ func chromeOSVersion() (string, error) {
 		return "", errors.Errorf("failed to find %s in lsbrelease", lsbrelease.Version)
 	}
 	return version, nil
+}
+
+// supportedLacrosPlatform returns a string representation of the lacros platform supported on the architecture the test runs on.
+// It is useful to look up lacros version info for the given lacros platform using VersionHistory API.
+// It internally reads the userspace architecture (possibly different from kernel) to find the matching lacros platform.
+func supportedLacrosPlatform() (string, error) {
+	switch arch := runtime.GOARCH; arch {
+	case "amd64":
+		return "lacros", nil
+	case "arm64":
+		return "lacros_arm64", nil
+	case "arm":
+		return "lacros_arm32", nil
+	default:
+		return "", errors.Errorf("unsupported userspace arch for this test: %v", arch)
+	}
 }
 
 func waitForLacrosPath(ctx context.Context, tconn *chrome.TestConn) (execPath string, err error) {
@@ -128,7 +152,11 @@ func ShelfLaunchOmaha(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Ash version: ", err)
 	}
 	ashVersion := strings.Join(ashVersionComponents, ".")
-	compatibleChannels, err := versionutil.CompatibleLacrosChannels(ctx, ashVersion)
+	lacrosPlatform, err := supportedLacrosPlatform()
+	if err != nil {
+		s.Fatal("Failed to get lacros platform: ", err)
+	}
+	compatibleChannels, err := versionutil.CompatibleLacrosChannels(ctx, ashVersion, lacrosPlatform)
 	if err != nil {
 		s.Fatal("Failed to get Lacros channels compatible with Ash: ", err)
 	}

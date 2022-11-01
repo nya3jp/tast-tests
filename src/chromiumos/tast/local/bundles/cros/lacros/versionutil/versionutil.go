@@ -8,6 +8,7 @@ package versionutil
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"regexp"
@@ -35,13 +36,13 @@ type Release struct {
 	FractionGroup string `json:"fractionGroup"`
 }
 
-// HTTPGetVersionHistory calls VersionHistory API to get the latest live versions of all channels,
+// HTTPGetVersionHistory calls VersionHistory API to get the latest live versions of all channels for the given `platform`,
 // returns a sorted list of `Release` by versions in ascending order.
 // See https://developer.chrome.com/docs/versionhistory/reference/ for the usage of the API.
-func HTTPGetVersionHistory(ctx context.Context) ([]Release, error) {
-	const apiURL = "https://versionhistory.googleapis.com/v1/chrome/platforms/lacros/channels/all/versions/all/releases" +
-		"?filter=endtime=none" +
-		"&order_by=version%20asc" // in ascending order of version
+func HTTPGetVersionHistory(ctx context.Context, platform string) ([]Release, error) {
+	apiURL := fmt.Sprintf("https://versionhistory.googleapis.com/v1/chrome/platforms/%s/channels/all/versions/all/releases"+
+		"?filter=endtime=none"+
+		"&order_by=version%%20asc", platform) // in ascending order of version
 	testing.ContextLog(ctx, "Calling VersionHistory: ", apiURL)
 	resp, err := http.Get(apiURL)
 	if err != nil {
@@ -67,16 +68,16 @@ func HTTPGetVersionHistory(ctx context.Context) ([]Release, error) {
 }
 
 // CompatibleLacrosChannels returns a map of lacros channels to the latest live versions that are compatible with the given Ash version.
-func CompatibleLacrosChannels(ctx context.Context, ashVersion string) (map[string]string, error) {
+func CompatibleLacrosChannels(ctx context.Context, ashVersion, lacrosPlatform string) (map[string]string, error) {
 	// Call VersionHistory API to get the latest live versions of all channels.
-	releases, err := HTTPGetVersionHistory(ctx)
+	releases, err := HTTPGetVersionHistory(ctx, lacrosPlatform)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to call VersionHistory API")
 	}
 
 	// Parse the latest versions for each channel, and save the ones only compatible with Ash.
 	channelToVersionMap := make(map[string]string)
-	var channelRE = regexp.MustCompile(`chrome/platforms/lacros/channels/(\w+)`)
+	var channelRE = regexp.MustCompile(fmt.Sprintf(`chrome/platforms/%s/channels/(\w+)`, lacrosPlatform))
 	for _, release := range releases {
 		match := channelRE.FindStringSubmatch(release.Name)
 		if match == nil {
