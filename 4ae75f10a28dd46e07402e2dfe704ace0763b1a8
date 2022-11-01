@@ -46,6 +46,30 @@
       },
       "revId": "4ae75f10a28dd46e07402e2dfe704ace0763b1a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86da1e60_b5b750a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-01T08:00:25Z",
+      "side": 1,
+      "message": "hmmmm, it is a bit different, that is to restrict the execution time for one specific method call (you are still using `ctx` elsewhere), instead of researving time for cleanup tasks, for which we normally reserve time for cleanup task with `context.Shorten`, like:\n```\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n```\nthen use `cleanupCtx` for deferred functions and `ctx` for normal executions.\n\nIt may not make much difference in this test, but it is generally a safer way of writing tests.e.g., if one of the helper functions like `audio.ConvertRawToWav(ctx,...)` takes longer in the future, the deferred function won\u0027t be exuected if it is using `ctx` as well.",
+      "parentUuid": "ef946e6e_61fa6528",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "4ae75f10a28dd46e07402e2dfe704ace0763b1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
