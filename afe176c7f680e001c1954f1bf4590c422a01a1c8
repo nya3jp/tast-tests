@@ -50,6 +50,24 @@
       "message": "Hi Patrick,\n\nCan you please share the CQ failure logs?",
       "revId": "afe176c7f680e001c1954f1bf4590c422a01a1c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6210750_d7b03473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-11-01T03:29:19Z",
+      "side": 1,
+      "message": "```\nsrc/chromiumos/tast/local/bundles/cros/typec/tbt_display_video_playback_stress.go:185:88: too many arguments in call to youtube.NewYtWeb\n \thave (*\"chromiumos/tast/local/chrome/browser\".Browser, *driver.TestConn, *\"chromiumos/tast/local/input\".KeyboardEventWriter, youtube.VideoSrc, bool, *uiauto.Context, *cuj.ClamshellActionHandler)\n \twant (*\"chromiumos/tast/local/chrome/browser\".Browser, *driver.TestConn, *\"chromiumos/tast/local/input\".KeyboardEventWriter, bool, *uiauto.Context, cuj.UIActionHandler)\nsrc/chromiumos/tast/local/bundles/cros/typec/tbt_display_video_playback_stress.go:189:36: cannot use ctx (variable of type context.Context) as type youtube.VideoSrc in argument to ytbWeb.OpenAndPlayVideo\n```",
+      "parentUuid": "30d3994d_50795f8e",
+      "revId": "afe176c7f680e001c1954f1bf4590c422a01a1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
