@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14545184_703ff844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-11-01T17:21:01Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. I will check why RoamAPGone is not affected and on PMKSA is affected. The reason I had  b/256740412, was because I was planning to improve this test and then focus getting the fix in b/256740412. Given that we should not be merging this, until we have coverage in RoamAPGone, we dupe both to one.\n\nI will mark this CL as WIP to get coverage on RoamAPGone first and then revive this CL.",
+      "parentUuid": "2078d845_67c49ff1",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69ea593a_d46fe3fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 2
