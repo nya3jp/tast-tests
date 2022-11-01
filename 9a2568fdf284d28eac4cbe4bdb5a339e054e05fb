@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aae62ec1_bf263e12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T22:36:01Z",
+      "side": 1,
+      "message": "Can you fix the TEST\u003d section to incldue the unit tests?",
+      "parentUuid": "d090f290_d4dd6dbe",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be8a088e_c922aa65",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Yes https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/next/src/ap/ap_config.c;rcl\u003d20a522b9ebe52bac34cc4ecfc1a9722cc1e77cdc;l\u003d88",
       "parentUuid": "be8a088e_c922aa65",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c47b60_ec4c3662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T22:36:01Z",
+      "side": 1,
+      "message": "Sorry for the confusion, I meant did you make sure that setting the DTIM option in the AP config options actually makes it all the way to the AP? I think it\u0027s the first time we\u0027re using that configuration, just wanted to make sure that it\u0027s actually plumbed through.\n\nLooking again, it does look like we use it in PowerSave, it does increase confidence that it\u0027s working as expected",
+      "parentUuid": "01ad6687_d6264184",
       "range": {
         "startLine": 12,
         "startChar": 5,
