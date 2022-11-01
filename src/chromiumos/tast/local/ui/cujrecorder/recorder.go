@@ -323,6 +323,17 @@ func (r *Recorder) AddScreenshotRecorder(ctx context.Context, interval time.Dura
 	return nil
 }
 
+// CustomScreenshot takes a screenshot of the display. This function
+// can only be called after |AddScreenshotRecorder|, but can be called
+// before and after |Run|.
+func (r *Recorder) CustomScreenshot(ctx context.Context) {
+	if r.screenshotRecorder == nil {
+		testing.ContextLog(ctx, "Failed to take custom screenshot, screenshot recorder was not added to the recorder")
+		return
+	}
+	r.screenshotRecorder.TakeScreenshot(ctx)
+}
+
 // NewRecorderWithTestConn creates a Recorder. It also aggregates the metrics of each
 // category (animation smoothness and input latency) and creates the aggregated
 // reports.
