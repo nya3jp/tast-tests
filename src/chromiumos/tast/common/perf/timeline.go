@@ -212,12 +212,13 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 	t.recordingValues = NewValues()
 	t.recordingStatus = make(chan error, 1)
 
+	var lastSnapshotDuration time.Duration
 	go func() {
 		for nextTime := t.clock.Now().Add(t.interval); ; nextTime = nextTime.Add(t.interval) {
 			sleepTime := nextTime.Sub(t.clock.Now())
 			if sleepTime < 0 {
 				if !t.enableGracePeriod {
-					t.recordingStatus <- errors.Errorf("failed to take snapshot; trying to snapshot every %v, but taking the last snapshot already took more time", t.interval)
+					t.recordingStatus <- errors.Errorf("trying to snapshot every %v, but taking the last snapshot took %v", t.interval, lastSnapshotDuration)
 					return
 				}
 
@@ -227,11 +228,11 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				// fail the timeline collection.
 				sleepTime += t.interval
 				if sleepTime < 0 {
-					t.recordingStatus <- errors.Errorf("failed to take snapshot; trying to snapshot every %v with 1-interval grace period, but taking the last snapshot already took more than 2 intervals", t.interval)
+					t.recordingStatus <- errors.Errorf("failed to take snapshot; trying to snapshot every %v with 1-interval grace period, but taking the last snapshot already took more than 2 intervals (%v)", t.interval, lastSnapshotDuration)
 					return
 				}
 
-				testing.ContextLogf(ctx, "Skipping snapshot because the last snapshot took more than the %v interval, but completed within the 1-interval grace period", t.interval)
+				testing.ContextLogf(ctx, "Skipping snapshot because the last snapshot took more than the %v interval (%v), but completed within the 1-interval grace period", t.interval, lastSnapshotDuration)
 				nextTime = nextTime.Add(t.interval)
 				t.snapshotsSkipped++
 			}
@@ -241,6 +242,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 
+			snapshotStart := t.clock.Now()
 			val := NewValues()
 			if err := t.snapshot(ctx, val); err != nil {
 				if ctx.Err() != nil {
@@ -252,6 +254,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 			t.recordingValues.Merge(val)
+			lastSnapshotDuration = t.clock.Now().Sub(snapshotStart)
 		}
 	}()
 
