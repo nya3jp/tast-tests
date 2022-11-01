@@ -22,6 +22,30 @@
       },
       "revId": "fa0a4e06be65d0af71667c929528e3859c1c5d0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ad79ff_56e66315",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T22:45:50Z",
+      "side": 1,
+      "message": "I only find one [example](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1569166) but from other team. Do you have any expectations or examples? I think it should be like this:\n`TEST\u003dFEATURES\u003dtest fast_build.sh -T`. WDYT?",
+      "parentUuid": "c137f00a_58dd1e75",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "fa0a4e06be65d0af71667c929528e3859c1c5d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
