@@ -35,6 +35,12 @@ const InstallTypeAvailable = "AVAILABLE"
 // InstallTypeBlocked is the install type for app that is blocked.
 const InstallTypeBlocked = "BLOCKED"
 
+// PlayStoreModeBlockList is the Play Store mode that allows any app to be installed unless it is blocked.
+const PlayStoreModeBlockList = "BLACKLIST"
+
+// PlayStoreModeAllowList is the Play Store mode that allows only allowlisted and force-installed apps.
+const PlayStoreModeAllowList = "WHITELIST"
+
 // SetupPolicyServerWithArcApps sets up a fake policy server with ARC enabled and a list of packages with the corresponding install type
 func SetupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string, installType string) (fdms *fakedms.FakeDMS, retErr error) {
 	arcPolicy := CreateArcPolicyWithApps(packages, installType)
