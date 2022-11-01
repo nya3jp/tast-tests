@@ -114,6 +114,11 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Add an empty screenshot recorder.
+	if err := recorder.AddScreenshotRecorder(ctx, 0, 0); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -148,6 +153,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to open the google slides website")
 		}
+
 		defer slidesConn.Close()
 		defer slidesConn.CloseTarget(closeCtx)
 
@@ -201,6 +207,10 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 			}
 			i++
 		}
+
+		// Take a screenshot to see the state of the slide deck
+		// after scrolling for 10 minutes.
+		recorder.CustomScreenshot(ctx)
 
 		// Ensure the slides deck gets scrolled.
 		var scrollTop int
