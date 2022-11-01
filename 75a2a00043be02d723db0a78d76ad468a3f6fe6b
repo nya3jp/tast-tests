@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a772a1dc_1970c6c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-01T23:10:07Z",
+      "side": 1,
+      "message": "Jao-ke, this is something that you had asked for. Sample log:\n\n\u003e Device has the following expectations identity: model\u003dlazor, buildboard\u003dtrogdor, board\u003dtrogdor, chipset\u003dsc7180\n\nLMK if this isn\u0027t what you were thinking of. Thanks!",
+      "revId": "75a2a00043be02d723db0a78d76ad468a3f6fe6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
