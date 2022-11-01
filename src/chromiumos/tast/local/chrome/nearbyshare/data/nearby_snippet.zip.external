@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromeos-test-assets-private/tast/nearbyshare/nearby_snippet_20220518.zip",
-  "size": 607921,
-  "sha256sum": "2451cfa211243c8dddae386d18e853424f7fe4b2f9c3698c684d0f5e0d2acadf"
+  "url": "gs://chromeos-test-assets-private/tast/nearbyshare/nearby_snippet_20221011.zip",
+  "size": 647565,
+  "sha256sum": "b71ad6ea6a2baadc9af738ee4a1aeb8376b4273d58345b9cafac3b07e4f2c9b7"
 }
