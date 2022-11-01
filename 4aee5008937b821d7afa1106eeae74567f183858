@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232bb1c4_5535c241",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:01Z",
+      "side": 1,
+      "message": "I\u0027ll defer to others to recommend if there\u0027s way to detect use the wlan info without adding an extra interface to shill_service, I\u0027m really not familiar with that part of the framework",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382519f5_0338be3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:01Z",
+      "side": 1,
+      "message": "It would be good to also run the Tast unit tests https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/main/docs/writing_tests.md#unit-tests",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb224c8b_b61c4066",
@@ -32,6 +78,29 @@
       "side": 1,
       "message": "Oops, I misunderstood what this was doing, resolving.",
       "parentUuid": "bb224c8b_b61c4066",
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365aaf28_1f597958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:01Z",
+      "side": 1,
+      "message": "Can we pass around the ID instead? I think it\u0027s better to match enums rather than strings, it adds some compile-time checks",
+      "range": {
+        "startLine": 878,
+        "startChar": 16,
+        "endLine": 878,
+        "endChar": 20
+      },
       "revId": "4aee5008937b821d7afa1106eeae74567f183858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
