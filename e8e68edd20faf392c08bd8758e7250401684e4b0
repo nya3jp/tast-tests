@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101ba914_08b909ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T22:47:03Z",
+      "side": 1,
+      "message": "I think this is the last Desk?\n\nAll in all, it\u0027s unexpected to me that verify* changed the activeDesk. Do you mind change the activeDesk back in verifyWindowsOnDesks?",
+      "range": {
+        "startLine": 142,
+        "startChar": 18,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "e8e68edd20faf392c08bd8758e7250401684e4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b49c17c_42a10ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T22:47:03Z",
+      "side": 1,
+      "message": "This function actually changes the activeDesk, so we should either change it back to original activeDesk or comment here.",
+      "revId": "e8e68edd20faf392c08bd8758e7250401684e4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
