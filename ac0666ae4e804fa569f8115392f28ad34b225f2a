@@ -22,6 +22,30 @@
       },
       "revId": "ac0666ae4e804fa569f8115392f28ad34b225f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4349f46b_31e1a5f6",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-11-01T20:48:55Z",
+      "side": 1,
+      "message": "That they all specify valid paths -- this was on line 261. Moved it up to line 260 since golang doesn\u0027t have line length limits.\n\nAlso, rephrased a bit to be more clear.",
+      "parentUuid": "843de97a_c7c95269",
+      "range": {
+        "startLine": 260,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 35
+      },
+      "revId": "ac0666ae4e804fa569f8115392f28ad34b225f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
