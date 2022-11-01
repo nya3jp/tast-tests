@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0b53c917_0aad9976",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-11-01T22:37:06Z",
+      "side": 1,
+      "message": "Yes. Also we have to update Chrome flags passed by tast tests if we are not enabling console.log output in Chrome log for now.",
+      "parentUuid": "3a2090ff_e601dc21",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "ef0a0f946b4d45c00e8d9a0ee5dc51d07eb72955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79197c29_4ef99537",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
