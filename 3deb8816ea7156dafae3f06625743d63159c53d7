@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342dcee4_19c60d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-01T02:09:20Z",
+      "side": 1,
+      "message": "Slightly different from the earlier attempt https://crrev.com/c/3938051.\n\n1. Retry will log the failures and we will have more information if it still fails.\n2. Another possibility is that shift works, but VK flashes back to unshifted when looking for capital Z.",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 15
+      },
+      "revId": "3deb8816ea7156dafae3f06625743d63159c53d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
