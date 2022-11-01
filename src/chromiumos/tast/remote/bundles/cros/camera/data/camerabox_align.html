@@ -7,13 +7,37 @@
     <title>Camerabox Align</title>
     <link rel="stylesheet" href="camerabox_align.css">
     <script src="camerabox_align.js"></script>
+    <script src="pattern_checker.js"></script>
+    <script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
   </head>
   <body>
-    <div>The border of preview should lay in green area:</div>
-    <div>
-      <video></video>
-      <div class="message"></div>
-      <div><button id="settled" hidden>Settled</button></div>
-    </div>
+    <table>
+      <tr>
+        <th>The border of preview should lay in green area:</th>
+        <th> <h1 id="debug"> </h1></th>
+      </tr>
+      <tr>
+        <th>
+          <video></video>
+          <div class="message"></div>
+          <div><button id="settled" hidden>Settled</button></div>
+        </th>
+        <th>
+          <div class="inputoutput">
+            <canvas id="wrapImg" ></canvas>
+            <div class="caption"></div>
+          </div>
+        </th>
+      </tr>>
+      <tr>
+        <th>    
+        </th>
+        <th>
+          <div class="inputoutput">
+            <img id="pattern_img"  src='upright.png' hidden/> 
+          </div>
+        </th>
+      </tr>
+    </table>
   </body>
 </html>

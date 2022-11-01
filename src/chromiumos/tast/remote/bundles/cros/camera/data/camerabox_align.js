@@ -28,7 +28,7 @@ function getAspectRatioName(aspectRatio) {
   }
   return '16x9';
 }
-
+let cvIsReady = false;
 class Preview {
   constructor() {
     /**
@@ -170,9 +170,33 @@ window.Tast = class Tast {
    * @return {!Promise<boolean>}
    * @private
    */
-  static async checkAlign_(facing, aspectRatio) {
+   static async checkAlign_(facing, aspectRatio) {
     const frame = await Tast.getPreviewFrame_(facing, aspectRatio);
+    if (!cvIsReady){
+      cv = await cv;
+      cvIsReady = true;
+    }
+    const ctx =
+    /** @type {!CanvasRenderingContext2D} */ (frame.getContext('2d'));
+    const imageData = ctx.getImageData(0, 0, frame.width, frame.height);
+    document.getElementById("debug").innerHTML = "Debug"
+    return PatternChecker.checkAlign(pattern_img,imageData,wrapImg,0.4);
 
+   }
+
+  /**
+   * Checks the |aspectRatio| camera FOV of |facing| camera is aligned with
+   * pattern shown on chart tablet by capturing a frame from camera and
+   * verifying all pixels on the frame boundary lying in green area of chart
+   * pattern.
+   * @param {!Facing} facing
+   * @param {!AspectRatio} aspectRatio
+   * @return {!Promise<boolean>}
+   * @private
+   */
+  static async checkAlign_2(facing, aspectRatio) {
+
+    const frame = await Tast.getPreviewFrame_(facing, aspectRatio);
     const getHue = (r, g, b) => {
       const max = Math.max(r, g, b);
       const min = Math.min(r, g, b);
