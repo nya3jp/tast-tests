@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d66124_36c1a8ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550987
+      },
+      "writtenOn": "2022-11-01T01:34:40Z",
+      "side": 1,
+      "message": "Derek \u0026 Opal:\n\nCan I get a review from you before sending it out for owner review? You\u0027re probably more familiar with Tast in power team?",
+      "revId": "0147d64ce546e7dd61ef8a9f585871bba6c0edcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
