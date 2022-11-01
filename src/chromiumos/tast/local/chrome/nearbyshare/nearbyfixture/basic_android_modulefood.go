@@ -25,8 +25,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilityAllContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -47,8 +47,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilityAllContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -69,8 +69,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -89,8 +89,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -111,8 +111,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilitySelectedContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: true,
 		}),
 		Contacts: []string{
@@ -136,8 +136,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilitySelectedContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: true,
 		}),
 		Contacts: []string{
@@ -160,8 +160,8 @@ func addModulefoodAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilitySelectedContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: false,
 		}),
 		Vars: []string{
