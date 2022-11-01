@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a93cff7_13811692",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T19:29:24Z",
+      "side": 1,
+      "message": "+1 to parameterized test. \"too many tests\" is not a real reason for not doing that (see SimpleConnect). We also shouldn\u0027t move this into unstable, otherwise we lose test coverage.",
+      "parentUuid": "92c52c6d_4a32f2bd",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3acd351_29519817",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 8
