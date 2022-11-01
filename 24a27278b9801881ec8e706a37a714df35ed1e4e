@@ -16,6 +16,63 @@
       "message": "LGTM",
       "revId": "24a27278b9801881ec8e706a37a714df35ed1e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab767e4_d7e1db64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-01T16:29:47Z",
+      "side": 1,
+      "message": "Some nits in comments.",
+      "revId": "24a27278b9801881ec8e706a37a714df35ed1e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca300eb5_cf831524",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-01T16:29:47Z",
+      "side": 1,
+      "message": "Ending period. Same below.",
+      "revId": "24a27278b9801881ec8e706a37a714df35ed1e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9f2982_2af4cb55",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-01T16:29:47Z",
+      "side": 1,
+      "message": "returns\n\nSame below.",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "24a27278b9801881ec8e706a37a714df35ed1e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
