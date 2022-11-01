@@ -75,6 +75,30 @@
       },
       "revId": "be0b915010ebae32c9a2b8060850ba490ed907ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ce1698_aa999757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-01T22:39:12Z",
+      "side": 1,
+      "message": "+Jorge, Satoshi, Andrea, \nI\u0027m not very familiar with this selinux check. Can you help figure out how lacros files should be configured for these lacros variant tests for this initial check-in? Thanks,",
+      "parentUuid": "bbbd32a9_2d8288ac",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 81
+      },
+      "revId": "be0b915010ebae32c9a2b8060850ba490ed907ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
