@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ff1d748_a62af1f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-11-01T06:49:52Z",
+      "side": 1,
+      "message": "The device is able to detect that the AP is gone, however, it is taking slightly longer time than before and occasionally it is breaching the 30 secs timeout leading to test failure. Increasing the timeout to 40 secs makes the test to pass consistently, however, we should still investigate why the detection time increased b/256740412\n\nThis patch is supposed to make PMKSA caching more robust by explicitly roaming the device through dbus command, so it is not affected by bug such as b/256740412. Thoughts?",
+      "parentUuid": "0086495c_78d3864f",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69ea593a_d46fe3fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 2
