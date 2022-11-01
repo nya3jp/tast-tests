@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33614c1_c05d696d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-01T04:33:55Z",
+      "side": 1,
+      "message": "mostly lgtm",
+      "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9644e46e_dc30703f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-01T04:33:55Z",
+      "side": 1,
+      "message": "IMO don\u0027t use this helper function, it\u0027s only one extra if statement",
+      "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2da29b6_94224769",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-01T04:33:55Z",
+      "side": 1,
+      "message": "small request but can you add a note that tconn should be ash-tconn to all these functions?",
+      "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
