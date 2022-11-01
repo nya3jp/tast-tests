@@ -205,8 +205,8 @@ func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome
 			return nil, errors.Wrap(err, "failed to connect to test api")
 		}
 		// lacros.Connect() fails if DevTools connection file was already created, but Chrome does not accept connections.
-		// Retry for 10 seconds.
-		for deadline := time.Now().Add(10 * time.Second); time.Now().Before(deadline); {
+		// Retry for 20 seconds.
+		for deadline := time.Now().Add(20 * time.Second); time.Now().Before(deadline); {
 			retL, err = lacros.Connect(ctx, tconn)
 			if err == nil {
 				return retL, err
@@ -563,7 +563,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 
 				testName := fmt.Sprintf("%s%s.%s.%dwindows", s.TestName(), suffix, arcMode, currentWindows)
 				s.Logf("Starting test: %q", testName)
-				r.RunMultiple(ctx, testName,
+				if err := r.RunMultiple(ctx, testName,
 					uiperf.Run(s, func(ctx context.Context, name string) ([]*metrics.Histogram, error) {
 						var err error
 						cr, err = loginPerfStartToLoginScreen(ctx, s, param.bt, lacrosCfg, arcOpt, inTabletMode)
@@ -675,7 +675,9 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						}
 						return logout(ctx, cr, l)
 					},
-				)
+				); err != nil {
+					s.Fatal("Failed to run test scenario ", testName, ": ", err)
+				}
 			}
 		}
 	}
