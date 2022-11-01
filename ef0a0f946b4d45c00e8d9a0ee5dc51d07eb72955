@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7653d25_81554b3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-11-01T18:06:37Z",
+      "side": 1,
+      "message": "Do you know why it fails for about 5% of times? If it\u0027s out of our control (e.g. server side failure, etc), I think it\u0027s okay to deflake this with retries. If it\u0027s caused by our code, I think it\u0027s better to try to fix it on our end.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "ef0a0f946b4d45c00e8d9a0ee5dc51d07eb72955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79197c29_4ef99537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-11-01T18:06:37Z",
+      "side": 1,
+      "message": "Thank you! One high-level comment. Even if the 5% failures are caused by our code, I think it\u0027s okay to deflake this test with retries if it\u0027s too difficult/complicated to fix. I think the reason matters in this case.",
+      "revId": "ef0a0f946b4d45c00e8d9a0ee5dc51d07eb72955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
