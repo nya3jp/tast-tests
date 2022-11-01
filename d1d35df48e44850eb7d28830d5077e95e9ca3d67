@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cdfbedf_55e8feaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-11-01T20:05:28Z",
+      "side": 1,
+      "message": "(just waiting for Chrome to uprev to 109.0.5395.0 or higher before checking this in)",
+      "revId": "d1d35df48e44850eb7d28830d5077e95e9ca3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
