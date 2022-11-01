@@ -338,6 +338,11 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 				testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
 			}
 
+			if out, err := h.cmdRunner.Run(ctx, "bash", "-c", "vgchange -ay; lvremove -ff /dev/*/cryptohome*"); err != nil {
+				// Ignore errors on failure, it is possible that the device doesn't support LVM or doesn't have any dm-crypt user crpytohomes.
+				testing.ContextLog(ctx, "Failed to remove user logical volumes (this might be expected if the device doesn't support LVM): ", err, string(out))
+			}
+
 			// Run tmpfiles to restore the removed folders and permissions.
 			if out, err := h.cmdRunner.Run(ctx, "/bin/systemd-tmpfiles", "--create", "--remove", "--boot", "--prefix", "/home", "--prefix", "/var/lib"); err != nil {
 				testing.ContextLog(ctx, "Failed to run tmpfiles: ", err, string(out))
