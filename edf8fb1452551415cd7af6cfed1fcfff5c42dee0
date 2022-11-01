@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b550e754_66aa5344",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-11-01T14:09:00Z",
+      "side": 1,
+      "message": "By using external data file, I guess we don\u0027t need this Cq-Depend anymore?",
+      "revId": "edf8fb1452551415cd7af6cfed1fcfff5c42dee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
