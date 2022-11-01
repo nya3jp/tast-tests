@@ -31,6 +31,7 @@ const (
 	shortUITimeout = 3 * time.Second  // Used for situations where UI response might be faster.
 	longUITimeout  = 30 * time.Second // Used for situations where UI response might be slow.
 	retryTimes     = 3                // retryTimes is the maximum number of times the action will be retried.
+	editorTabClass = "MuiListItem-button"
 )
 
 var weVideoWebArea = nodewith.Name("WeVideo").Role(role.RootWebArea)
@@ -147,13 +148,13 @@ func (w *WeVideo) Create() action.Action {
 func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTrack string) action.Action {
 	ui := w.ui
 	searchVideo := nodewith.Name("Search videos").Role(role.TextField)
-	stockMediaButton := nodewith.Name("Videos").Role(role.Button).HasClass("MuiListItem-button")
+	videosTab := nodewith.Name("Videos").Role(role.Tab).HasClass(editorTabClass)
 	tryItNowButton := nodewith.Name("TRY IT NOW").Role(role.Button)
 	openStockMedia := uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilGone(searchVideo),
 		// The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.
 		uiauto.Retry(retryTimes, uiauto.NamedCombine("open stock media",
 			w.closePromptWindow(),
-			ui.LeftClick(stockMediaButton),
+			ui.LeftClick(videosTab),
 			uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(tryItNowButton), ui.LeftClick(tryItNowButton)),
 			ui.WaitUntilExists(searchVideo),
 		)))
@@ -182,7 +183,7 @@ func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTr
 			if err != nil {
 				return err
 			}
-			playHead := nodewith.Name("Playhead").Role(role.GenericContainer)
+			playHead := nodewith.NameContaining("Playhead").Role(role.GenericContainer)
 			playHeadLocation, err := ui.Location(ctx, playHead)
 			if err != nil {
 				return err
@@ -228,7 +229,7 @@ func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTr
 // AddText adds static text to the expected track.
 func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 	ui := w.ui
-	textButton := nodewith.Name("Text").Role(role.Button).HasClass("MuiListItem-button")
+	textTab := nodewith.Name("Text").Role(role.Tab).HasClass(editorTabClass)
 	// It removes the text info, so it can only capture "Basic text" node by classname.
 	// The first one is "Basic text".
 	basicText := nodewith.ClassName("ui-draggable-handle").Role(role.GenericContainer).First()
@@ -265,7 +266,7 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 	)
 	return uiauto.NamedCombine(fmt.Sprintf("add text to clip \"%s\"", clipName),
 		w.closePromptWindow(),
-		ui.LeftClick(textButton),
+		ui.LeftClick(textTab),
 		dragTextToTrack,
 		editTextProperties,
 	)
@@ -273,7 +274,7 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 
 // AddTransition adds transition to the expected clip.
 func (w *WeVideo) AddTransition(clipName string) action.Action {
-	transitionButton := nodewith.Name("Transitions").Role(role.Button).HasClass("MuiListItem-button")
+	transitionTab := nodewith.Name("Transitions").Role(role.Tab).HasClass(editorTabClass)
 	transitionClip := nodewith.HasClass("clip-transition").Role(role.GenericContainer)
 	dragTransitionToClip := func(ctx context.Context) error {
 		crossFade := nodewith.Name("Cross fade").Role(role.StaticText)
@@ -295,7 +296,7 @@ func (w *WeVideo) AddTransition(clipName string) action.Action {
 	}
 	return uiauto.NamedCombine(fmt.Sprintf("add transition \"Cross fade\" to clip \"%s\"", clipName),
 		w.closePromptWindow(),
-		w.ui.LeftClick(transitionButton),
+		w.ui.LeftClick(transitionTab),
 		dragTransitionToClip,
 	)
 }
@@ -405,7 +406,8 @@ func (w *WeVideo) currentTime(ctx context.Context) (string, error) {
 
 // closePromptWindow closes the pop-up prompt window.
 func (w *WeVideo) closePromptWindow() action.Action {
-	promptWindow := nodewith.NameContaining("Intercom Live Chat").Role(role.Dialog)
+	promptReg := regexp.MustCompile("(?i)intercom live chat tour")
+	promptWindow := nodewith.NameRegex(promptReg).Role(role.Dialog)
 	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(promptWindow).First()
 	closeDialog := uiauto.NamedAction("close prompt window",
 		w.ui.LeftClickUntil(closeButton, w.ui.WithTimeout(shortUITimeout).WaitUntilGone(closeButton)))
