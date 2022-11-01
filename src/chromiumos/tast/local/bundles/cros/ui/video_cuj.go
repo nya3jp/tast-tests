@@ -198,6 +198,13 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
+	if err := recorder.AddCollectedMetrics(bTconn, testParam.bt,
+		cujrecorder.NewCustomMetricConfig(
+			"Viz.DisplayCompositor.OverlayStrategy", "enum",
+			/* this is a enum histogram and the direction is meaningless */ perf.SmallerIsBetter)); err != nil {
+		s.Fatal("Failed to add overlay strategy metrics to recorder: ", err)
+	}
+
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
@@ -610,8 +617,11 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, vs)
 
-	if err = recorder.Record(ctx, pv); err != nil {
+	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
+	}
+	if err := recorder.SaveHistograms(s.OutDir()); err != nil {
+		s.Error("Failed to save histogram raw data: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
