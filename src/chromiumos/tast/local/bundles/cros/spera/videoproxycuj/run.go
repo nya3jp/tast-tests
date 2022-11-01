@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package gamingproxycuj contains the test code for GamingProxyCUJ.
-package gamingproxycuj
+// Package videoproxycuj contains the test code for VideoProxyCUJ.
+package videoproxycuj
 
 import (
 	"context"
@@ -35,7 +35,7 @@ const (
 	googleDocsTitle = "Google Docs"
 )
 
-// Run runs the GamingProxyCUJ test.
+// Run runs the VideoProxyCUJ test.
 func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, videoOption VideoOption) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
