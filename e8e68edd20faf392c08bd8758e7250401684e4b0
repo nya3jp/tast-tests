@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4df1ad4_7e788052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T23:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "101ba914_08b909ff",
+      "range": {
+        "startLine": 142,
+        "startChar": 18,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "e8e68edd20faf392c08bd8758e7250401684e4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b49c17c_42a10ee9",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-01T22:47:03Z",
       "side": 1,
       "message": "This function actually changes the activeDesk, so we should either change it back to original activeDesk or comment here.",
+      "revId": "e8e68edd20faf392c08bd8758e7250401684e4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13490f6_58d3cd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T23:38:34Z",
+      "side": 1,
+      "message": "Change it back to original activeDesk.",
+      "parentUuid": "5b49c17c_42a10ee9",
       "revId": "e8e68edd20faf392c08bd8758e7250401684e4b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
