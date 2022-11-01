@@ -488,6 +488,15 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 
 	defer a.Uninstall(cleanupCtx, arcaudio.Pkg)
 
+	// Dump AudioDiagnostics log on test fail
+	defer func(ctx context.Context) {
+		if s.HasError() {
+			if err := crastestclient.DumpAudioDiagnostics(ctx, s.OutDir()); err != nil {
+				s.Error("Failed to dump audio diagnostics: ", err)
+			}
+		}
+	}(cleanupCtx)
+
 	pkg := arcaudio.Pkg
 	activityName := arcaudioTestParam.Class
 
