@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ea6572c_13ab3331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-01T22:04:55Z",
+      "side": 1,
+      "message": "We can\u0027t just override one policy. If we override, it has to be all policies (which is a hassle and also problematic when the real policy changes).\n\nI guess adding a flag might be better.",
+      "parentUuid": "28a35d1b_d36328d2",
+      "revId": "15b3e753c969ffe343abe82de747302f70313a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d4e3719_a95abf64",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
         "patchSetId": 4
