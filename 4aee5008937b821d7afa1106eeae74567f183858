@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a881f86a_587624d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:20:14Z",
+      "side": 1,
+      "message": "Well, \"common/remote/local\" pattern looks good for a single command call from remote, like iw runner, in which we simply invoke one `iw` command. However, in our case, there are multiple commands, e.g. in a for loop (https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/wlan/wlan.go;rcl\u003d40abc47087c3e1722042ec4e01f6c085415a1f27;l\u003d154), and this suits well for the \"procedure call\" use case to save the communication time between two endpoints. So here I think using and rpc service is the best way. \nBTW, I think this function has been used in other places and if we move it to /common, all references should be modified. Since I don\u0027t see a clear advantage of doing so (I mean move to /common), I would suggest not. \nWhat do you think?",
+      "parentUuid": "38f854a0_5ae448de",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "382519f5_0338be3f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "writtenOn": "2022-11-01T02:23:01Z",
       "side": 1,
       "message": "It would be good to also run the Tast unit tests https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/main/docs/writing_tests.md#unit-tests",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544ef7a6_c88ab409",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:20:14Z",
+      "side": 1,
+      "message": "Added. See the reply on the same comment in the third CL, our section passed and there\u0027s an issue with the framework and I filed a bug to them.",
+      "parentUuid": "382519f5_0338be3f",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -143,6 +191,30 @@
       "side": 1,
       "message": "Or just add everything here to match the function name (and to avoid updating the proto every time we need another part of it).",
       "parentUuid": "365aaf28_1f597958",
+      "range": {
+        "startLine": 878,
+        "startChar": 16,
+        "endLine": 878,
+        "endChar": 20
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4419ce2d_cffe4368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:20:14Z",
+      "side": 1,
+      "message": "I don\u0027t agree with adding the enum type ID here. This response is a proto and only supports basic types. If we introduce ID enums, we need to re-define in the proto file, which introduces another source of ID enum def. However, this enum is subject to change and whenever we introduce a new chip the maintainer needs to add in two places. \nFrom the intention of [this function](https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/wlan/wlan.go;rcl\u003d40abc47087c3e1722042ec4e01f6c085415a1f27;l\u003d197) it seems other fields from `DevInfo` are used to determine the name inside this function and not exported. That is, only Name and ID are consumed, so I think it may not be necessary to expose all fields. \nAs for ID, to avoid redefining the enums, can I simply define as `int32` in proto? When using ID, I can use enum elements to compare with.",
+      "parentUuid": "cd8d2d89_f8088998",
       "range": {
         "startLine": 878,
         "startChar": 16,
