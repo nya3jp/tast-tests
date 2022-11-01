@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47867f4_7937f9b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T07:18:24Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be any tests blocking the CQ so let\u0027s fix the issue later if there is any.",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "a75bf454fccc3bbc04fa50de74611c83f804616a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
