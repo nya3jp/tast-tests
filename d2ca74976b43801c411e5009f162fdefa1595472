@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87af95d5_5ae38b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-11-01T09:56:31Z",
+      "side": 1,
+      "message": "LGTM.\n\nI am not sure if that is possible  but will there be a similar effort to serve the kiosk app locally too?",
+      "revId": "d2ca74976b43801c411e5009f162fdefa1595472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
