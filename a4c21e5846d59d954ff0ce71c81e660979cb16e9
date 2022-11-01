@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cffb6af_66a0cdf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Do you mean add another line with \"BUG\u003db:xxx\"? I searched CLs for \"231669774\" and didn\u0027t find any other with this. Otherwise should I add more descriptions here according to that content?",
+      "parentUuid": "5336e026_7fd922ad",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf5169a_440b4a33",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-01T05:04:48Z",
       "side": 1,
       "message": "There seems to be a lot of complicated/unnecessary refactoring going on here. There are two changes here:\n\n1. For full scans, repeat multiple times and report the average (basically just add two loops around the scans).\n2. Add a pass/fail threshold.\n\nIf you\u0027d like to do the refactor as well, please do that in a separate change, but you can still split this further regardless.",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e38ea6_3b4350a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "According to [this](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/), refactoring is no longer necessary and hence removed.",
+      "parentUuid": "bdf5169a_440b4a33",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2022-11-01T02:23:18Z",
       "side": 1,
       "message": "nit: typo, compares",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0c6615_971fbdec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "fe749377_03a84abb",
       "range": {
         "startLine": 41,
         "startChar": 35,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ab0933_c05cbd1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "7ff21d79_c2217af4",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e241efee_bcca2a52",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-11-01T05:04:48Z",
       "side": 1,
       "message": "nit: rm",
+      "range": {
+        "startLine": 72,
+        "startChar": 57,
+        "endLine": 72,
+        "endChar": 77
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a0505d_f8551c0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e241efee_bcca2a52",
       "range": {
         "startLine": 72,
         "startChar": 57,
@@ -123,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "467be4ed_223cc495",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "I think after fixing [this](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/e241efee_bcca2a52/), this comment is still necessary here. There are two issues. Otherwise do you mean combine the two TODO test together?",
+      "parentUuid": "6b3a3815_de55ccc0",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "312796a7_0184e919",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 8
@@ -134,6 +260,30 @@
       "writtenOn": "2022-11-01T02:23:18Z",
       "side": 1,
       "message": "It\u0027s a bit academic since I don\u0027t think we want any exemptions, but maybe you could use a const map, like fgRelaxedChipSet and bgRelaxedChipSet? In the test code you can then handle all of them the same way: rather than passing around the \"exempt\" boolean, you could you define exemptScanThreshold of 10s and just use that threshold",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284d033b_5631a91b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Sounds good. Combined with other suggestions on 6E, I\u0027ll make a uniform fashion and use a long threshold.",
+      "parentUuid": "312796a7_0184e919",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -193,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c3369f4_1281fb3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "(Note: see reply https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/312796a7_0184e919/)",
+      "parentUuid": "cc17106e_dc0243dd",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6eeac1e_f34fb8ad",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 8
@@ -204,6 +378,30 @@
       "writtenOn": "2022-11-01T05:04:48Z",
       "side": 1,
       "message": "no need for this, just do a map lookup",
+      "range": {
+        "startLine": 154,
+        "startChar": 103,
+        "endLine": 154,
+        "endChar": 109
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d85c51_c186511e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "(Note: see reply https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/312796a7_0184e919/)\nWill make a map in the next iteration.",
+      "parentUuid": "e6eeac1e_f34fb8ad",
       "range": {
         "startLine": 154,
         "startChar": 103,
@@ -237,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "838bd986_9cb041c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "Thanks for this suggestion! \nAccording to [this change](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/), I removed the refactoring and thus different `sum`\u0027s are now in the same namespace. I reused this variable like `threshold` and `avg` and set to 0 before reuse.",
+      "parentUuid": "ad0775af_2f17eb46",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65517a37_af22e28b",
@@ -260,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df3545d_8ad64d23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "According to [this change](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/), I removed the refactoring so both are reset now.",
+      "parentUuid": "65517a37_af22e28b",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 44
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9730555f_d03e7410",
@@ -273,6 +519,30 @@
       "writtenOn": "2022-11-01T02:23:18Z",
       "side": 1,
       "message": "That looks like lines 43-66 before the CL. Can you split that in a different CL to minimize the individual diffs?",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 49
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a8f51b_7c6fc313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "According to [this change](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/), I removed the refactoring so a new CL is not needed.",
+      "parentUuid": "9730555f_d03e7410",
       "range": {
         "startLine": 226,
         "startChar": 2,
@@ -332,6 +602,24 @@
       "side": 1,
       "message": "Actually unresolving since it seems unnecessary in the next CL.",
       "parentUuid": "74381bbd_ea95531a",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccd3213_7d110dbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:19:31Z",
+      "side": 1,
+      "message": "`testOnce` removed. Fixed with that CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3994041/comment/7e51d9ff_36f4eaa1/",
+      "parentUuid": "bdf39bd7_fa637e71",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
