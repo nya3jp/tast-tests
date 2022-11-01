@@ -16,6 +16,24 @@
       "message": "Great! Didn\u0027t know we already have an L4 server in tast library.",
       "revId": "c7d6c6a9174e2494a58524637d2787541509e713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5299e3_295103cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T02:44:34Z",
+      "side": 1,
+      "message": "Yea, Garrick added the UDP one and I extended it for TCP, but the drawback is that it\u0027s not easy to start the connection with a different user in go directly, we may need to execute some external binary for that.\n(There seems to be a trick to start another goroutine, bind it to an OS thread, and change the user there. I have tried that by myself and not sure if it is stable.)",
+      "parentUuid": "d8007ee9_7468d359",
+      "revId": "c7d6c6a9174e2494a58524637d2787541509e713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
