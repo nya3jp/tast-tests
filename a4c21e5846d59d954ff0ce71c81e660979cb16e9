@@ -298,6 +298,24 @@
       "message": "why use testOnce? We only ever do it once, you should be able to just inline",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74381bbd_ea95531a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T05:06:26Z",
+      "side": 1,
+      "message": "nvm, saw that you\u0027re using this in the next CL, ignore this.",
+      "parentUuid": "6222f8a7_47333e5d",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
