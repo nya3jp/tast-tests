@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0696a9_605b8c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e417683e_680a5eb6",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e72a0304_477877c3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T19:05:50Z",
       "side": 1,
       "message": "nit: sort alphabetically under lacros_cancel_multiple",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5820bf6_e74dd855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e72a0304_477877c3",
       "range": {
         "startLine": 199,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a9dfaf_42f7eee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "763008cb_5f89d597",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 47
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3c559cf_3ff7fdc7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-31T19:05:50Z",
       "side": 1,
       "message": "Do we need the `Sprintf()` call here or will the preceding `Fprintf()` call suffice?",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 31
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5530914c_bbb7b6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a3c559cf_3ff7fdc7",
       "range": {
         "startLine": 310,
         "startChar": 19,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "644657c8_5cd6e912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d01c7f5c_86cb0d3c",
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301f0ba3_d7f2fad7",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-10-31T19:05:50Z",
       "side": 1,
       "message": "nit: download chips",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 21
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf60795_805f3187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "301f0ba3_d7f2fad7",
       "range": {
         "startLine": 374,
         "startChar": 16,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2f3589_1fefedbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "659b597a_02a75d37",
+      "range": {
+        "startLine": 400,
+        "startChar": 16,
+        "endLine": 400,
+        "endChar": 21
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eac33af_8608efab",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-10-31T19:05:50Z",
       "side": 1,
       "message": "nit: download chips",
+      "range": {
+        "startLine": 444,
+        "startChar": 16,
+        "endLine": 444,
+        "endChar": 23
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa20e48_d9327d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0eac33af_8608efab",
       "range": {
         "startLine": 444,
         "startChar": 16,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e9b015_805687bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "17d1d986_5049a98c",
+      "range": {
+        "startLine": 486,
+        "startChar": 16,
+        "endLine": 486,
+        "endChar": 21
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4bef4a8_6d3de0c7",
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3484dcdd_79efb379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e4bef4a8_6d3de0c7",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 1
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4763868_802f0d07",
@@ -255,6 +489,30 @@
       "writtenOn": "2022-10-31T19:05:50Z",
       "side": 1,
       "message": "nit: `name()`, chip is redundant",
+      "range": {
+        "startLine": 579,
+        "startChar": 27,
+        "endLine": 579,
+        "endChar": 35
+      },
+      "revId": "68c95f29950c451c7328a1f544868cb728689b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f28916_2c8c72ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-01T14:42:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f4763868_802f0d07",
       "range": {
         "startLine": 579,
         "startChar": 27,
