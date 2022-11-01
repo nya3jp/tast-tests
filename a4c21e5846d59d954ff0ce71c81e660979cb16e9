@@ -316,6 +316,24 @@
       "parentUuid": "6222f8a7_47333e5d",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf39bd7_fa637e71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T05:09:35Z",
+      "side": 1,
+      "message": "Actually unresolving since it seems unnecessary in the next CL.",
+      "parentUuid": "74381bbd_ea95531a",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
