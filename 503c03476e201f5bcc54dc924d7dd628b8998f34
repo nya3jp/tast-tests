@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "50f34287_de8b4240",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-01T20:56:38Z",
+      "side": 1,
+      "message": "Shared with you.",
+      "parentUuid": "4ac020fe_38eab4f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "503c03476e201f5bcc54dc924d7dd628b8998f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "caa6505d_f81343be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T19:16:11Z",
       "side": 1,
       "message": "Curious, if it takes this much time (20 minutes) to complete or there is any chance to optimize the execution by breaking down to smaller chunks with minimal sleep.",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "503c03476e201f5bcc54dc924d7dd628b8998f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7176e6_31d2f4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-01T20:56:38Z",
+      "side": 1,
+      "message": "It takes about 8 minutes to finish. I checked other CUJs for Lacros, most them takes quite long time. \n\nAccording to go/lacros-audit-cujs, I think it is designed to verify a series of behaviors and complete them in one trunk of time.",
+      "parentUuid": "06f539fb_cd0a87e7",
       "range": {
         "startLine": 30,
         "startChar": 42,
