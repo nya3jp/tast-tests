@@ -206,6 +206,7 @@ func (s *Service) Remove(ctx context.Context) error {
 
 func (s *Service) getStringProperty(ctx context.Context, propertyName string) (string, error) {
 	props, err := s.GetProperties(ctx)
+
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read service properties")
 	}
