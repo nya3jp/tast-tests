@@ -16,6 +16,24 @@
       "message": "By using external data file, I guess we don\u0027t need this Cq-Depend anymore?",
       "revId": "edf8fb1452551415cd7af6cfed1fcfff5c42dee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc1232b_c814b0a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T14:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b550e754_66aa5344",
+      "revId": "edf8fb1452551415cd7af6cfed1fcfff5c42dee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
