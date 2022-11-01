@@ -18,9 +18,11 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -28,6 +30,14 @@ import (
 type gwTestParams struct {
 	name string
 	fn   func(context.Context, *testing.State)
+}
+
+var ghostWindowFeatureFlags = []string{
+	"FullRestore",
+	"ArcGhostWindow",
+	"ArcWindowPredictor",
+	"ArcFixupWindowFeature",
+	"ArcGhostWindowNewStyle",
 }
 
 var fullrestoreGwTests = []gwTestParams{
@@ -49,6 +59,7 @@ func init() {
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{{
@@ -75,6 +86,7 @@ func init() {
 
 func GhostWindow(ctx context.Context, s *testing.State) {
 	for _, test := range s.Param().([]gwTestParams) {
+		s.Logf("Running %q sub-test", test.name)
 		s.Run(ctx, test.name, test.fn)
 	}
 }
@@ -100,18 +112,18 @@ func testLaunchFromFullRestoreSingalPlayStore(ctx context.Context, s *testing.St
 
 	// Stop Chrome after window info saved.
 	waitForWindowInfoSaved(ctx)
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to log out: ", err)
-	}
 
 	// Re-login.
+	if err := logoutChrome(ctx, cr); err != nil {
+		s.Fatal("Failed to logout chrome: ", err)
+	}
 	cr, err = loginChrome(ctx, s, &creds)
 	if err != nil {
-		s.Fatal("Failed to re-optin: ", err)
+		s.Fatal("Failed to login again: ", err)
 	}
 	defer cr.Close(cleanupCtx)
 
-	if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
+	if err := restoreAndVerifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch ghost window: ", err)
 	}
 
@@ -147,18 +159,18 @@ func testLaunchFromFullRestorePlayStoreAndAndroidSetting(ctx context.Context, s 
 
 	// Stop Chrome after window info saved.
 	waitForWindowInfoSaved(ctx)
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to log out: ", err)
-	}
 
-	// Re-login
+	// Re-login.
+	if err := logoutChrome(ctx, cr); err != nil {
+		s.Fatal("Failed to logout chrome: ", err)
+	}
 	cr, err = loginChrome(ctx, s, &creds)
 	if err != nil {
-		s.Fatal("Failed to re-optin: ", err)
+		s.Fatal("Failed to login again: ", err)
 	}
 	defer cr.Close(cleanupCtx)
 
-	if err := verifyGhostWindow(ctx, s, cr, false, apps.AndroidSettings.ID); err != nil {
+	if err := restoreAndVerifyGhostWindow(ctx, s, cr, false, apps.AndroidSettings.ID); err != nil {
 		s.Fatal("Failed to launch ghost window: ", err)
 	}
 
@@ -199,18 +211,18 @@ func testLaunchFromFullRestorePlayStoreInTabletMode(ctx context.Context, s *test
 
 	// Stop Chrome after window info saved.
 	waitForWindowInfoSaved(ctx)
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to log out: ", err)
-	}
 
 	// Re-login.
+	if err := logoutChrome(ctx, cr); err != nil {
+		s.Fatal("Failed to logout chrome: ", err)
+	}
 	cr, err = loginChrome(ctx, s, &creds)
 	if err != nil {
-		s.Fatal("Failed to re-optin: ", err)
+		s.Fatal("Failed to login again: ", err)
 	}
 	defer cr.Close(cleanupCtx)
 
-	if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
+	if err := restoreAndVerifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch ghost window: ", err)
 	}
 }
@@ -227,10 +239,26 @@ func testShelfLaunchPlayStore(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
+	creds := cr.Creds()
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
+	}
+
+	// Re-login to make sure the ARC has not finish boot when launch request sent.
+	if err := logoutChrome(ctx, cr); err != nil {
+		s.Fatal("Failed to logout chrome: ", err)
+	}
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to login again: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.WaitForShelf(ctx, tconn, 30*time.Second); err != nil {
 		s.Fatal("Shelf did not appear after logging in: ", err)
@@ -263,10 +291,26 @@ func testLauncherLaunchPlayStore(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
+	creds := cr.Creds()
+	if err := optinAndLaunchPlayStore(ctx, cr); err != nil {
+		s.Fatal("Failed to initial optin: ", err)
+	}
+
+	// Re-login to make sure the ARC has not finish boot when launch request sent.
+	if err := logoutChrome(ctx, cr); err != nil {
+		s.Fatal("Failed to logout chrome: ", err)
+	}
+	cr, err = loginChrome(ctx, s, &creds)
+	if err != nil {
+		s.Fatal("Failed to login again: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
 		s.Fatal("Failed to launch PlayStore from launcher: ", err)
@@ -298,31 +342,61 @@ func waitGhostWindowShown(ctx context.Context, tconn *chrome.TestConn, timeout t
 
 func loginChrome(ctx context.Context, s *testing.State, creds *chrome.Creds) (*chrome.Chrome, error) {
 	if creds != nil {
-		// Setup Chrome. Login by the creds.
 		cr, err := chrome.New(ctx,
-			chrome.GAIALogin(*creds),
+			chrome.NoLogin(),
 			chrome.ARCSupported(),
-			chrome.EnableFeatures("FullRestore"),
-			chrome.EnableFeatures("ArcGhostWindow"),
-			chrome.RemoveNotification(false),
+			chrome.EnableFeatures(ghostWindowFeatureFlags...),
 			chrome.KeepState(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...),
+		)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to start Chrome")
+			return nil, errors.Wrap(err, "chrome start failed")
 		}
+
+		tconn, err := cr.SigninProfileTestAPIConn(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to re-establish test API connection")
+		}
+
+		if _, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 10*time.Second); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for login screen")
+		}
+
+		keyboard, err := input.Keyboard(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get keyboard")
+		}
+		defer keyboard.Close()
+
+		if err = lockscreen.EnterPassword(ctx, tconn, creds.User, creds.Pass, keyboard); err != nil {
+			return nil, errors.Wrap(err, "failed to enter password")
+		}
+
+		if err := lockscreen.WaitForLoggedIn(ctx, tconn, chrome.LoginTimeout); err != nil {
+			s.Fatal("Failed to login: ", err)
+		}
+
 		return cr, nil
 	}
 	// Setup Chrome for a new cred.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
-		chrome.EnableFeatures("FullRestore"),
-		chrome.EnableFeatures("ArcGhostWindow"),
+		chrome.EnableFeatures(ghostWindowFeatureFlags...),
+		chrome.EnableFeatures(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome")
 	}
 	return cr, nil
+}
+
+func logoutChrome(ctx context.Context, cr *chrome.Chrome) error {
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "failed to restart ui")
+	}
+	return nil
 }
 
 func clickRestoreButtonNormalStatus(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, s *testing.State) error {
@@ -422,7 +496,7 @@ func launchAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 	return settingPage.Close(ctx)
 }
 
-func verifyGhostWindow(ctx context.Context, s *testing.State, cr *chrome.Chrome, isCrash bool, appID string) error {
+func restoreAndVerifyGhostWindow(ctx context.Context, s *testing.State, cr *chrome.Chrome, isCrash bool, appID string) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create test API connection")
