@@ -16,6 +16,23 @@
       "message": "CCed Darren, as I heard you were discussing with gdoc team how to get content some time.",
       "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7e3d42_102848d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-01T05:13:35Z",
+      "side": 1,
+      "message": "Hi reviewers, this function will be soon used by E14s regression on gdoc. I have tested it locally with xiuwen@\u0027s draft CL and it works as expected.",
+      "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
