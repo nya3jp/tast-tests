@@ -22,8 +22,8 @@ func addWebRTCAndWLANFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -43,8 +43,8 @@ func addWebRTCAndWLANFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -65,8 +65,8 @@ func addWebRTCAndWLANFixtures() {
 			fixtureOptions{
 				crosDataUsage:              nearbycommon.DataUsageOnline,
 				crosVisibility:             nearbycommon.VisibilityNoOne,
-				androidDataUsage:           nearbysnippet.DataUsageOnline,
-				androidVisibility:          nearbysnippet.VisibilityNoOne,
+				androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+				androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 				crosSelectAndroidAsContact: false,
 			}),
 		Contacts: []string{

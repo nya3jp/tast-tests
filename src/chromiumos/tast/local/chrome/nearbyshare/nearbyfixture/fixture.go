@@ -42,8 +42,8 @@ const customAndroidUsername = "android_username"
 type fixtureOptions struct {
 	crosDataUsage              nearbycommon.DataUsage
 	crosVisibility             nearbycommon.Visibility
-	androidDataUsage           nearbysnippet.DataUsage
-	androidVisibility          nearbysnippet.Visibility
+	androidDataUsage           nearbysnippet.NearbySharingDataUsage
+	androidVisibility          nearbysnippet.NearbySharingVisibility
 	crosSelectAndroidAsContact bool
 }
 
@@ -75,8 +75,8 @@ type nearbyShareFixture struct {
 	crosVisibility nearbycommon.Visibility
 	// crosSelectAndroidAsContact is only used when crosVisibility == nearbycommon.VisibilitySelectedContacts. If true, the connected Android device will be selected as an allowed contact. Otherwise no contacts will be selected.
 	crosSelectAndroidAsContact bool
-	androidDataUsage           nearbysnippet.DataUsage
-	androidVisibility          nearbysnippet.Visibility
+	androidDataUsage           nearbysnippet.NearbySharingDataUsage
+	androidVisibility          nearbysnippet.NearbySharingVisibility
 	androidDevice              *nearbysnippet.AndroidNearbyDevice
 	crosAttributes             *nearbycommon.CrosAttributes
 	androidAttributes          *nearbysnippet.AndroidAttributes

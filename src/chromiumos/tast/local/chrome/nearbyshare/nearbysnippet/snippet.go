@@ -8,9 +8,12 @@ package nearbysnippet
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/android"
 	"chromiumos/tast/common/android/adb"
@@ -192,8 +195,8 @@ func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error)
 }
 
 // GetDataUsage retrieve's the Android device's Nearby Share data usage setting.
-func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, error) {
-	var data DataUsage
+func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (NearbySharingDataUsage, error) {
+	var data NearbySharingDataUsage
 	// Provide an additional second for the socket read so it does not time out before the RPC does.
 	res, err := a.snippetClient.RPC(ctx, (settingTimeoutSeconds+1)*time.Second, "getDataUsage", settingTimeoutSeconds)
 	if err != nil {
@@ -206,8 +209,8 @@ func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, erro
 }
 
 // GetVisibility retrieve's the Android device's Nearby Share visibility setting.
-func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, error) {
-	var vis Visibility
+func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (NearbySharingVisibility, error) {
+	var vis NearbySharingVisibility
 	// Provide an additional second for the socket read so it does not time out before the RPC does.
 	res, err := a.snippetClient.RPC(ctx, (settingTimeoutSeconds+1)*time.Second, "getVisibility", settingTimeoutSeconds)
 	if err != nil {
@@ -219,9 +222,47 @@ func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, er
 	return vis, nil
 }
 
+// jsonProtoRequest is the format for the setupDevice request.
+type jsonProtoRequest struct {
+	ProtoBytes ProtoBytesSlice `json:"proto_bytes"`
+}
+
+// ProtoBytesSlice holds the byte info for the NearbySharingSettings proto.
+type ProtoBytesSlice []byte
+
+// MarshalJSON overrides the default json.Marhsal behaviour into the format the snippet requires.
+func (u ProtoBytesSlice) MarshalJSON() ([]byte, error) {
+	var result string
+	if u == nil {
+		result = "null"
+	} else {
+		result = strings.Join(strings.Fields(fmt.Sprintf("%d", u)), ",")
+	}
+	return []byte(result), nil
+}
+
 // SetupDevice configures the Android device's Nearby Share settings.
-func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsage, visibility Visibility, name string) error {
-	_, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "setupDevice", dataUsage, visibility, name)
+func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage NearbySharingDataUsage, visibility NearbySharingVisibility, name string) error {
+
+	// setupDevice takes one arg, a byte array version of the NearbySharingSettings proto attached to a "proto_bytes" arg.
+	// {"proto_bytes": {10, 32, 32, ...}
+	// This is due to different platforms having different enum numbers for the different values
+	// See go/go-proto-snippet for details.
+	settings := NearbySharingSettings{
+		DeviceName: &name,
+		DataUsage:  dataUsage.Enum(),
+		Visibility: visibility.Enum(),
+	}
+
+	// proto.Marshal() returns a byte slice for the proto.
+	settingsBytes, err := proto.Marshal(&settings)
+	if err != nil {
+		return errors.Wrap(err, "failed to serialize the nearby share settings proto")
+	}
+
+	protoBytes := &jsonProtoRequest{ProtoBytes: settingsBytes}
+
+	_, err = a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "setupDevice", protoBytes)
 	return err
 }
 
@@ -418,21 +459,14 @@ func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*Androi
 	if err != nil {
 		return nil, err
 	}
-	if val, ok := DataUsageStrings[dataUsage]; ok {
-		metadata.DataUsage = val
-	} else {
-		return nil, errors.Errorf("undefined dataUsage: %v", dataUsage)
-	}
+	metadata.DataUsage = dataUsage.String()
 
 	visibility, err := a.GetVisibility(ctx)
 	if err != nil {
 		return nil, err
 	}
-	if val, ok := VisibilityStrings[visibility]; ok {
-		metadata.Visibility = val
-	} else {
-		return nil, errors.Errorf("undefined visibility: %v", visibility)
-	}
+
+	metadata.Visibility = visibility.String()
 
 	nearbyVersion, err := a.GetNearbySharingVersion(ctx)
 	if err != nil {
