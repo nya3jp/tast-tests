@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2389af77_2bebd111",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T05:08:59Z",
+      "side": 1,
+      "message": "+1, then you don\u0027t have to add a loop below.",
+      "parentUuid": "7e51d9ff_36f4eaa1",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82631828_eb3ac369",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 1
