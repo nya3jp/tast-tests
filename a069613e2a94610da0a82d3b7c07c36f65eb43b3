@@ -33,6 +33,159 @@
       "message": "A shortened video showing what this test does: https://drive.google.com/file/d/1cVFjp0u8zXb8Kxr7IPCTuFrZOW9BKRWk/view?usp\u003dsharing\u0026resourcekey\u003d0-MlMEhPFf-R-1nx9PxsikHw",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c589cf_c5b124c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Very readable!",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041f9c12_9793a895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Do you think it\u0027s useful to link to a video of the test run from here? It\u0027s nice to see the video first before digging into the code",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca043f87_7db9e9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "FYI, I think this file would shrink by more than half if all this error handling could be somehow done elsewhere. Not only is it distracting and verbose, it also interrupts the flow as you\u0027re reading the code. There\u0027s nothing that can be done, is that right?",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3009c60c_2b98d413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "I\u0027m torn between putting all these here or peppering it throughout the code body below. I think it might be nicer below? Thoughts? You can say something like:\n// Add pre-existing list of common metrics (Optional)",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786b5b5c_6fad7aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f8086c_9099a35d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb89018d_d3bf7eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "needs comment",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c2d080_2adc9182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we instead close all tabs first thing before opening a new tab? This should also take care of any pollution from previous tests, instead of relying on this assumption",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a05a2f5_2f2d544b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:53:00Z",
+      "side": 1,
+      "message": "Might be nicer to break up this comment and move it below",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
