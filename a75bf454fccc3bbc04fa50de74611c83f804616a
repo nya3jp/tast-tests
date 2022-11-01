@@ -22,6 +22,30 @@
       },
       "revId": "a75bf454fccc3bbc04fa50de74611c83f804616a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d49fdc_2047436e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-01T07:47:49Z",
+      "side": 1,
+      "message": "Sounds good. Let\u0027s keep an eye on it.",
+      "parentUuid": "e47867f4_7937f9b8",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "a75bf454fccc3bbc04fa50de74611c83f804616a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
