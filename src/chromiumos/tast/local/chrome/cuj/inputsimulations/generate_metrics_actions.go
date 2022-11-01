@@ -48,7 +48,8 @@ func DoAshWorkflows(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 
 	// Open and close the system tray bubble.
-	systemTray := nodewith.HasClass("UnifiedSystemTray")
+	// There is more than one "UnifiedSystemTray" on the UI tree when an extended display is connected.
+	systemTray := nodewith.HasClass("UnifiedSystemTray").First()
 	systemTrayContainer := nodewith.HasClass("SystemTrayContainer")
 	ac := uiauto.New(tconn)
 
