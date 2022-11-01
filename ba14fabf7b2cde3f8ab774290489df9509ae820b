@@ -16,6 +16,167 @@
       "message": "Hi Yongshun, please review this CL! Thanks!",
       "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840ca9a7_39c8caf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "This timeout is already specified in loggedInToCUJUser fixture.\nNo need to duplicate these timeouts.",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 57
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049cfec6_a6448dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "Out of curiosity, What would happen when you call ash.ActivateDeskAtIndex(ctx, tconn, 3) if ActiveDeskIndex \u003d\u003d 3\n\nMaybe we don\u0027t need the extra if statement?",
+      "range": {
+        "startLine": 148,
+        "startChar": 16,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5b413e_29c12f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "Do we need to check if the ActiveDeskIndex is 2 after step 8?",
+      "range": {
+        "startLine": 159,
+        "startChar": 27,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4834d525_0f070ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "err \u003d\u003d nil here. No need to print it out.",
+      "range": {
+        "startLine": 165,
+        "startChar": 80,
+        "endLine": 165,
+        "endChar": 83
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d54e09f_00f572ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "err \u003d\u003d nil here.",
+      "range": {
+        "startLine": 186,
+        "startChar": 80,
+        "endLine": 186,
+        "endChar": 83
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db16fd71_6c0fdc8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "Optional, I\u0027d probably rename this to onlyOnDesk2 for clarity.\n\nBtw, we have toAllDesks in prev function and showOnDesk2 in this func. How about simply use toAllDesks/onAllDesks on both functions so you don\u0027t have to flip true/false in line 207 - line 218.",
+      "range": {
+        "startLine": 267,
+        "startChar": 91,
+        "endLine": 267,
+        "endChar": 102
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9405d5_d03ba3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T20:55:24Z",
+      "side": 1,
+      "message": "Do you mind switch i \u0026 count so it is consistent with the next if statement?\n\nif i !\u003d 1 \u0026\u0026 count !\u003d 0",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 11
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
