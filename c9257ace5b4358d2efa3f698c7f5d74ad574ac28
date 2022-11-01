@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200dd5a4_407ce002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "If vivid is required for the test to work, do we need to add `caps.VividCamera` in SoftwareDeps?\n\nFor example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d42",
+      "range": {
+        "startLine": 32,
+        "startChar": 116,
+        "endLine": 32,
+        "endChar": 128
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d61b01_74ce1051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit:\n```\nui :\u003d uiauto.New(tconn)\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb23fe6_093d1356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit:\n```\npressedAttribute :\u003d \"aria-pressed\"\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fa8325_14b7fc1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "These parts seem to be identical to the ones in `isCameraEnabled()`. Can we extract them to avoid duplicated codes?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f2b46f_59139129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit: \n```\nif currentState, err :\u003d isCameraEnabled(ctx, tconn); err !\u003d nil {\n  return err\n} else if currentState \u003d\u003d enabled {\n  return nil\n}\n```",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abee1aaa_2e23d083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit: Simply return `clickCameraToggle(ctx, tconn)` if we don\u0027t want to wrap any extra information in the error.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e215d3_ab7a503e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit:\n```\nif enabled, err :\u003d ...; err !\u003d nil {\n  ...\n} else if !enabled {\n  ...\n}\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0f5641_98f035b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b27201_636fb39e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "Maybe use `setCameraSwitchState()` for consistency?",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66628f25_da2ff707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b0d1d5_93bf7c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1294b649_831b1767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "Dumb question: Why l is Left + Width?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6fa685_7ef148ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-01T06:05:45Z",
+      "side": 1,
+      "message": "nit:\n```\nvar w int \u003d rct.Width / 3\nvar h int \u003d rct.Height / 3\nvar l int \u003d rct.Left + w\nvar t int \u003d rct.Top + h\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
