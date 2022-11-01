@@ -94,7 +94,7 @@ func (uiHelper *UIHelper) DisposeResource(cleanupCtx context.Context) {
 
 // WelcomePageOperation handles all operations on Welcome Page.
 func (uiHelper *UIHelper) WelcomePageOperation(ctx context.Context) error {
-	return action.Combine("Welcome page operation",
+	return action.Combine("welcome page operation",
 		uiHelper.waitForPageToLoad("Chromebook repair", timeInSecondToLoadPage),
 		uiHelper.waitAndClickButton("Get started", longTimeInSecondToEnableButton),
 	)(ctx)
@@ -128,7 +128,7 @@ func (uiHelper *UIHelper) VerifyOfflineOperationSuccess(ctx context.Context) err
 
 // ComponentsPageOperation handles all operations on Components Selection Page.
 func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
-	return action.Combine("Components page operation",
+	return action.Combine("components page operation",
 		uiHelper.waitForPageToLoad("Select which components were replaced", timeInSecondToLoadPage),
 		uiHelper.clickToggleButton("Base Accelerometer"),
 		uiHelper.clickButton("Next"),
@@ -147,7 +147,7 @@ func (uiHelper *UIHelper) OwnerPageOperation(destination DestinationOption) acti
 			return errors.Errorf("%s is invalid destination", destination)
 		}
 
-		return action.Combine("Owner page operation",
+		return action.Combine("owner page operation",
 			uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
 			uiHelper.clickRadioButton(buttonLabel),
 			uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
@@ -162,7 +162,7 @@ func (uiHelper *UIHelper) WriteProtectPageChooseRSU(ctx context.Context) error {
 
 // WriteProtectPageChooseManual handles all operations on WP Page and select manual option.
 func (uiHelper *UIHelper) WriteProtectPageChooseManual(ctx context.Context) error {
-	return action.Combine("Write Protect page operation and choose manual",
+	return action.Combine("write Protect page operation and choose manual",
 		uiHelper.writeProtectPageOperation("Manually turn off"),
 		uiHelper.disconnectBatteryByCr50(),
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOff),
@@ -172,7 +172,7 @@ func (uiHelper *UIHelper) WriteProtectPageChooseManual(ctx context.Context) erro
 
 // WipeDevicePageOperation handles all operations on wipe device Page.
 func (uiHelper *UIHelper) WipeDevicePageOperation(ctx context.Context) error {
-	return action.Combine("Wipe Device page operation",
+	return action.Combine("wipe Device page operation",
 		uiHelper.waitForPageToLoad("Device is going to the same user. Erase user data?", timeInSecondToLoadPage),
 		uiHelper.clickRadioButton("Erase all data"),
 		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
@@ -181,7 +181,7 @@ func (uiHelper *UIHelper) WipeDevicePageOperation(ctx context.Context) error {
 
 // WriteProtectDisabledPageOperation handles all operations on Write Protect Disabled Page.
 func (uiHelper *UIHelper) WriteProtectDisabledPageOperation(ctx context.Context) error {
-	return action.Combine("Write Protect Disabled page operation",
+	return action.Combine("write Protect Disabled page operation",
 		uiHelper.waitForPageToLoad("Write Protect is turned off", timeInSecondToLoadPage),
 		uiHelper.clickButton("Next"),
 	)(ctx)
@@ -189,7 +189,7 @@ func (uiHelper *UIHelper) WriteProtectDisabledPageOperation(ctx context.Context)
 
 // WriteProtectEnabledPageOperation handles all operations on Write Protect Enable Page.
 func (uiHelper *UIHelper) WriteProtectEnabledPageOperation(ctx context.Context) error {
-	return action.Combine("Write Protect Enabled page operation",
+	return action.Combine("write Protect Enabled page operation",
 		uiHelper.waitForPageToLoad("Manually enable write-protect", timeInSecondToLoadPage),
 		uiHelper.clickButton("Next"),
 	)(ctx)
@@ -203,7 +203,7 @@ func (uiHelper *UIHelper) FirmwareInstallationPageOperation(ctx context.Context)
 
 // DeviceInformationPageOperation handles all operations on device information Page.
 func (uiHelper *UIHelper) DeviceInformationPageOperation(ctx context.Context) error {
-	return action.Combine("Device Information page operation",
+	return action.Combine("device Information page operation",
 		uiHelper.waitForPageToLoad("Please confirm device information", timeInSecondToLoadPage),
 		uiHelper.clickButton("Next"),
 	)(ctx)
@@ -211,7 +211,7 @@ func (uiHelper *UIHelper) DeviceInformationPageOperation(ctx context.Context) er
 
 // DeviceProvisionPageOperation handles all operations on device provisioning Page.
 func (uiHelper *UIHelper) DeviceProvisionPageOperation(ctx context.Context) error {
-	return action.Combine("Device Provision page operation",
+	return action.Combine("device Provision page operation",
 		uiHelper.waitForPageToLoad("Provisioning the device…", timeInSecondToLoadPage),
 		uiHelper.connectBatteryByCr50(),
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
@@ -220,7 +220,7 @@ func (uiHelper *UIHelper) DeviceProvisionPageOperation(ctx context.Context) erro
 
 // CalibratePageOperation handles all operations on calibrate Page.
 func (uiHelper *UIHelper) CalibratePageOperation(ctx context.Context) error {
-	return action.Combine("Calibrate page operation",
+	return action.Combine("calibrate page operation",
 		uiHelper.waitForPageToLoad("Prepare to calibrate device components", timeInSecondToLoadPage),
 		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
 	)(ctx)
@@ -228,7 +228,7 @@ func (uiHelper *UIHelper) CalibratePageOperation(ctx context.Context) error {
 
 // FinalizingRepairPageOperation handles all operations on finalizing repair Page.
 func (uiHelper *UIHelper) FinalizingRepairPageOperation(ctx context.Context) error {
-	return action.Combine("Finalizing Repair page operation",
+	return action.Combine("finalizing Repair page operation",
 		uiHelper.waitForPageToLoad("Finalizing repair", timeInSecondToLoadPage),
 	)(ctx)
 }
@@ -244,7 +244,7 @@ func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context, stor
 			return err
 		}
 
-		return action.Combine("Repair Completed page operation",
+		return action.Combine("repair Completed page operation",
 			uiHelper.waitForPageToLoad("Almost done!", longTimeInSecondToEnableButton),
 			uiHelper.clickButton("See RMA logs"),
 			uiHelper.clickButton("Save to USB"),
@@ -253,7 +253,7 @@ func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context, stor
 		)(ctx)
 	}
 
-	return action.Combine("Repair Completed page operation",
+	return action.Combine("repair Completed page operation",
 		uiHelper.waitForPageToLoad("Almost done!", longTimeInSecondToEnableButton),
 		uiHelper.clickButton("Reboot"),
 	)(ctx)
@@ -264,28 +264,28 @@ func (uiHelper *UIHelper) VerifyLogIsSaved(ctx context.Context) error {
 	// Output is supposed to be something like /dev/sda1.
 	usb, err := uiHelper.findUSBName(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Fail to get USB")
+		return errors.Wrap(err, "fail to get USB")
 	}
 	testing.ContextLogf(ctx, "USB is %s", usb)
 
 	if err = uiHelper.mountUSB(ctx, usb); err != nil {
-		return errors.Wrap(err, "Fail to mount USB")
+		return errors.Wrap(err, "fail to mount USB")
 	}
 
 	// Verify that we can get rma log.
 	err = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("ls %s/rma-*", usbTempMountDir)).Run()
 	if err != nil {
-		return errors.Wrap(err, "Fail to find Shimless RMA log")
+		return errors.Wrap(err, "fail to find Shimless RMA log")
 	}
 	testing.ContextLog(ctx, "Found Shimless RMA log successfully")
 
 	// Remove log.
 	if err = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("rm %s/rma-*", usbTempMountDir)).Run(); err != nil {
-		return errors.Wrap(err, "Fail to delete Shimless RMA log")
+		return errors.Wrap(err, "fail to delete Shimless RMA log")
 	}
 
 	if err = uiHelper.umountUSB(ctx); err != nil {
-		return errors.Wrap(err, "Fail to umount USB")
+		return errors.Wrap(err, "fail to umount USB")
 	}
 
 	return uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxHost)
@@ -294,14 +294,14 @@ func (uiHelper *UIHelper) VerifyLogIsSaved(ctx context.Context) error {
 // RSUPageOperation handles all operations on RSU Page.
 func (uiHelper *UIHelper) RSUPageOperation(ctx context.Context) error {
 	// Change battery status and WP status
-	if err := action.Combine("Disconnect Battery and disable WP",
+	if err := action.Combine("disconnect Battery and disable WP",
 		uiHelper.disconnectBatteryByCr50(),
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOff),
 	)(ctx); err != nil {
 		return err
 	}
 
-	if err := action.Combine("Click Challenge Code URL",
+	if err := action.Combine("click Challenge Code URL",
 		uiHelper.waitForPageToLoad("Perform RMA Server Unlock", timeInSecondToLoadPage),
 		uiHelper.clickLink("this URL"),
 	)(ctx); err != nil {
@@ -326,7 +326,7 @@ func (uiHelper *UIHelper) RSUPageOperation(ctx context.Context) error {
 		return err
 	}
 
-	return action.Combine("Enter unlock code and click Next",
+	return action.Combine("enter unlock code and click Next",
 		uiHelper.clickButton("Done"),
 		uiHelper.enterIntoTextInput(authCode, "Enter the 8-character unlock code"),
 		uiHelper.clickButton("Next"),
@@ -351,6 +351,14 @@ func (uiHelper *UIHelper) WaitForFirmwareInstallation(ctx context.Context) error
 		return err
 	}
 
+	// The following prints content in /dev.
+	// The test will continue even if the following fails.
+	if output, err := uiHelper.Dut.Conn().CommandContext(ctx, "ls", "/dev").Output(); err != nil {
+		testing.ContextLogf(ctx, "Fail to ls /dev because %s", err)
+	} else {
+		testing.ContextLogf(ctx, "Output of ls /dev is %q", output)
+	}
+
 	testing.ContextLogf(ctx, "Sleeping %s to wait for firmware installation", firmwareInstallationTime)
 	return testing.Sleep(ctx, firmwareInstallationTime)
 }
@@ -359,9 +367,11 @@ func (uiHelper *UIHelper) WaitForFirmwareInstallation(ctx context.Context) error
 func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context, enroll bool) error {
 	// If error is raised, then Factory is already disabled.
 	// Therefore, ignore any error.
-	uiHelper.changeFactoryMode("disable")(ctx)
+	if err := uiHelper.changeFactoryMode("disable")(ctx); err != nil {
+		testing.ContextLogf(ctx, "Fail to disable Factory Mode because %s", err)
+	}
 
-	return action.Combine("Setup init status for test",
+	return action.Combine("setup init status for test",
 		// Open CCD needs to be executed after disable Factory mode.
 		// It is because disable Factory mode will also lock CCD.
 		uiHelper.openCCDIfNotOpen(),
@@ -374,19 +384,21 @@ func (uiHelper *UIHelper) deleteLogsIfExisting(ctx context.Context) error {
 	// Output is supposed to be something like /dev/sda1.
 	usb, err := uiHelper.findUSBName(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Fail to get USB")
+		return errors.Wrap(err, "fail to get USB")
 	}
 	testing.ContextLogf(ctx, "USB is %s", usb)
 
 	if err = uiHelper.mountUSB(ctx, usb); err != nil {
-		return errors.Wrap(err, "Fail to mount USB")
+		return errors.Wrap(err, "fail to mount USB")
 	}
 
 	// Ignore the error since rma log may not exist at all.
-	_ = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("rm %s/rma-*", usbTempMountDir)).Run()
+	if err = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("rm %s/rma-*", usbTempMountDir)).Run(); err != nil {
+		testing.ContextLogf(ctx, "Fail to delete rma log because %s", err)
+	}
 
 	if err = uiHelper.umountUSB(ctx); err != nil {
-		return errors.Wrap(err, "Fail to umount USB")
+		return errors.Wrap(err, "fail to umount USB")
 	}
 
 	return nil
@@ -482,7 +494,7 @@ func (uiHelper *UIHelper) changeFactoryMode(status string) action.Action {
 }
 
 func (uiHelper *UIHelper) writeProtectPageOperation(radioButtonLabel string) action.Action {
-	return action.Combine("Write Protect page operation",
+	return action.Combine("write Protect page operation",
 		uiHelper.waitForPageToLoad("Select how you would like to turn off Write Protect", timeInSecondToLoadPage),
 		uiHelper.clickRadioButton(radioButtonLabel),
 		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
@@ -490,7 +502,7 @@ func (uiHelper *UIHelper) writeProtectPageOperation(radioButtonLabel string) act
 }
 
 func (uiHelper *UIHelper) waitAndClickButton(label string, timeInSecond int32) action.Action {
-	return action.Combine("Wait and click button",
+	return action.Combine("wait and click button",
 		func(ctx context.Context) error {
 			_, err := uiHelper.Client.WaitUntilButtonEnabled(ctx, &pb.WaitUntilButtonEnabledRequest{
 				Label:            label,
