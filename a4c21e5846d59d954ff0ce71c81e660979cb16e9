@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe749377_03a84abb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "nit: typo, compares",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312796a7_0184e919",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "It\u0027s a bit academic since I don\u0027t think we want any exemptions, but maybe you could use a const map, like fgRelaxedChipSet and bgRelaxedChipSet? In the test code you can then handle all of them the same way: rather than passing around the \"exempt\" boolean, you could you define exemptScanThreshold of 10s and just use that threshold",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4336271_16cb4efd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "We should already have crosbolt data for those, I think?\n\nRegardless, I think we want to enforce the same thresholds as the other chipsets since in practice they\u0027re running the test in 5GHz-only test environments. That will change in the future and we could potentially define (in future CL) 6GHz-enabled scan times",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0775af_2f17eb46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "nit: this prefix is not necessary in context, go/go-style/decisions#repetitive-in-context",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65517a37_af22e28b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "AFAICT this is 90+% identical to the fgFullScan function. Maybe you could factor out both in a function rather than duplicating a lot of code?",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 44
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9730555f_d03e7410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:23:18Z",
+      "side": 1,
+      "message": "That looks like lines 43-66 before the CL. Can you split that in a different CL to minimize the individual diffs?",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 49
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
