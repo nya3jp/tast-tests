@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcb03c87_220af5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-01T17:54:02Z",
+      "side": 1,
+      "message": "In general, any browser integrations should be tested with both an ash browser and a lacros browser until the ash browser has been fully deprecated :)",
+      "parentUuid": "30bbb9e4_42de4204",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fe2ac_798fa836",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
         "patchSetId": 6
@@ -643,6 +667,54 @@
       "side": 1,
       "message": "Thank you. It is parameterized single and multi cases and ashbrowser and lacros browser but lacros ones are failing.",
       "parentUuid": "c82e596f_1deb7cf4",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672ee404_5370e055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-01T17:54:02Z",
+      "side": 1,
+      "message": "If the test doesn\u0027t assert expected behavior then the test isn\u0027t providing any coverage :) Here, the goal is to assert that dragging and dropping multiple items does in fact propagate the expected payload to the browser. We should add a check that asserts that :) e.g. Write a small web page that will detect and print contents of the payload.\n\nBrowser app drag-and-drop should probably be implemented in a different CL from Files app drag-and-drop to avoid one blocking the other :)",
+      "parentUuid": "d85a334b_b1beca47",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2f891b_d0da10f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-01T17:54:02Z",
+      "side": 1,
+      "message": "```\nCombine requires that each step return a ctx.\n```\n\nNot quite, `Combine()` expects that each step is an action. An action is a function that accepts context and returns an error.\n\n```\nI did not find a function for pressing keyboard keys\n```\n\nCan you not wrap the method call in an action?\n\n```\nI like the error messages along the way so it is easier to find out where the test breaks\n```\n\n`Combine()` bubbles up the error, it will tell you where the test breaks :)",
+      "parentUuid": "5aae6429_8ec81866",
       "range": {
         "startLine": 142,
         "startChar": 0,
