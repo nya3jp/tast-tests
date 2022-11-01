@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30bbb9e4_42de4204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "I don\u0027t know. Should I change to testing.LacrosVariantExists? Then parameterize it by browser.TypeLacros and browser.TypeAsh?",
+      "parentUuid": "048418d8_bdc2ea5c",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fe2ac_798fa836",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "in and out?",
+      "range": {
+        "startLine": 31,
+        "startChar": 52,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7e6b1d_7765847c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Only out. Thank you :)",
+      "parentUuid": "046fe2ac_798fa836",
       "range": {
         "startLine": 31,
         "startChar": 52,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "045c12a8_60202160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Not necessary. I can remove it. Thank you",
+      "parentUuid": "252a74c8_dc463e4a",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0652bb3c_3cf0ea92",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "Is this necessary?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4885638a_f6ee7225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Not necessary. I can remove it. Thank you",
+      "parentUuid": "0652bb3c_3cf0ea92",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b9319c_b1542891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea56901_c32426b5",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 60
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67fd4f1c_55f8a054",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "Do we need to verify holding space after each screenshot or can we wait until all screenshots have been taken?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1dcd0b_ad698bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Yes I like that way better. Thank you",
+      "parentUuid": "67fd4f1c_55f8a054",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9956e7fb_94a6c1d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Yes. I can move this defer func() above the holding space UI state verification but then if first screenshot succeeds and either second or third screenshot does not succeed then these files won\u0027t be removed. I guess it is better to have defer the removal of each one individually.",
+      "parentUuid": "3f48d2e3_37a50f4e",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 33
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626fb2a5_b72555fe",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "nit: move into finder?",
+      "range": {
+        "startLine": 143,
+        "startChar": 61,
+        "endLine": 143,
+        "endChar": 88
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6776a7_aff90dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "626fb2a5_b72555fe",
       "range": {
         "startLine": 143,
         "startChar": 61,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ce6532_647d3283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1ee05e_e0504214",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f17c3ce_d2cd6523",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "What `err` is this?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce036f22_f9a94098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Thank you",
+      "parentUuid": "4f17c3ce_d2cd6523",
       "range": {
         "startLine": 189,
         "startChar": 0,
@@ -331,6 +571,78 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "The single and multi cases can be parameterized :)",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aae6429_8ec81866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "I wanted to put it in a `uiauto.Combine()` but I did not find a function for pressing keyboard keys that returns a Go closure function like `func(ctx context.Context)`. Combine requires that each step return a `ctx`. I like the error messages along the way so it is easier to find out where the test breaks. How were you thinking of using `uiauto.Combine()` for the keyboard key presses?",
+      "parentUuid": "710cdee2_e45a21e4",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85a334b_b1beca47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Should I remove that check and add a comment explaining behavior? Thank you",
+      "parentUuid": "0dffd2fb_37d5b6ea",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a786db9_36c99660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-01T00:17:42Z",
+      "side": 1,
+      "message": "Thank you. It is parameterized single and multi cases and ashbrowser and lacros browser but lacros ones are failing.",
+      "parentUuid": "c82e596f_1deb7cf4",
       "range": {
         "startLine": 142,
         "startChar": 0,
