@@ -563,7 +563,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 
 				testName := fmt.Sprintf("%s%s.%s.%dwindows", s.TestName(), suffix, arcMode, currentWindows)
 				s.Logf("Starting test: %q", testName)
-				r.RunMultiple(ctx, testName,
+				if err := r.RunMultiple(ctx, testName,
 					uiperf.Run(s, func(ctx context.Context, name string) ([]*metrics.Histogram, error) {
 						var err error
 						cr, err = loginPerfStartToLoginScreen(ctx, s, param.bt, lacrosCfg, arcOpt, inTabletMode)
@@ -675,7 +675,9 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						}
 						return logout(ctx, cr, l)
 					},
-				)
+				); err != nil {
+					s.Fatal("Failed to run test scenario ", testName, ": ", err)
+				}
 			}
 		}
 	}
