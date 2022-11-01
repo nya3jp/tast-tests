@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "468d3666_f77f7f9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T15:32:47Z",
+      "side": 1,
+      "message": "I think we should look at it the other way: the test is successfully doing its job of finding bugs in devices, so we should not change it. If we change it and it no longer fails when the device has a bug like b/256740412, then it\u0027s a worse test since it\u0027s no longer finding some bugs.\nUnless there\u0027s a completely separate test that is detecting b/256740412?",
+      "parentUuid": "1ff1d748_a62af1f9",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "f39401ee4410c0313bd587e1475cb3f4c8bbd717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69ea593a_d46fe3fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 2
