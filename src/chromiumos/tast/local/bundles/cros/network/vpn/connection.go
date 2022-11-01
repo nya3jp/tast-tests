@@ -246,8 +246,8 @@ func (c *Connection) startServer(ctx context.Context) error {
 		if err := c.routingEnv.SetUp(ctx); err != nil {
 			return errors.Wrap(err, "failed to setup routing env")
 		}
-		c.serverEnv = c.routingEnv.BaseRouter
-		c.secondServerEnv = c.routingEnv.BaseServer
+		c.serverEnv = c.routingEnv.BaseServer
+		c.secondServerEnv = c.routingEnv.BaseRouter
 	}
 
 	var err error
