@@ -105,32 +105,32 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 		action   uiauto.Action
 	}{
 		{
-			// Trigger suggestion "good morning" and insert into
+			// Trigger suggestion "how are you" and insert into
 			// textfield with tab.
 			name:     "AcceptSuggestionWithTab",
 			scenario: "verify suggestion appears and accepted with tab key",
 			errStr:   "Failed to accept suggestion: %v",
 			action: uiauto.Combine("accept multiword suggestion with tab",
-				keyboard.TypeAction("goo"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
+				keyboard.TypeAction("hi there ho"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there ho"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Tab"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "good morning"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there how are you"),
 			),
 		},
 		{
-			// Trigger suggestion "good morning" and insert into
+			// Trigger suggestion "how are you" and insert into
 			// textfield with down + enter key.
 			name:     "AcceptSuggestionWithDownAndEnter",
 			scenario: "verify suggestion appears and accepted with down and enter key",
 			errStr:   "Failed to accept suggestion: %v",
 			action: uiauto.Combine("accept multiword suggestion with down and enter",
-				keyboard.TypeAction("goo"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
+				keyboard.TypeAction("hi there ho"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there ho"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Down"),
 				keyboard.AccelAction("Enter"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "good morning"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there how are you"),
 			),
 		},
 		{
@@ -177,18 +177,18 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 			scenario: "suggestions handles newline gracefully",
 			errStr:   "Failed to accept suggestion: %v",
 			action: uiauto.Combine("suggestion handles newline gracefully",
-				keyboard.TypeAction("goo"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
+				keyboard.TypeAction("hi there h"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there h"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Enter"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo\n"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there h\n"),
 				ui.WaitUntilGone(suggestionWindowFinder),
 				keyboard.AccelAction("Backspace"),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "goo"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there h"),
 				ui.WaitUntilExists(suggestionWindowFinder),
 				keyboard.AccelAction("Tab"),
 				ui.WaitUntilGone(suggestionWindowFinder),
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "good morning"),
+				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "hi there how are you"),
 			),
 		},
 	}
