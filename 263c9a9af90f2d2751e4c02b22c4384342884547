@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac24d6d_b21c94d7",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-11-01T23:01:12Z",
+      "side": 1,
+      "message": "`// nil indicates entire chip.`",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "263c9a9af90f2d2751e4c02b22c4384342884547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e67456_805216fa",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-11-01T23:01:12Z",
+      "side": 1,
+      "message": "seems like a type alias?\n\n```\n// Instance of a flashrom builder to run operations with side-effects.\ntype Instance \u003d Builder\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "263c9a9af90f2d2751e4c02b22c4384342884547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d27f97_e8861000",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-11-01T23:01:12Z",
+      "side": 1,
+      "message": "Probably should say `// Probe gets a flashrom instance that will probe the chip`.\n\nAlthernative frame of mind is to just document that every op of a Instance inherits a \u0027probe\u0027 step intrinsically on the instance type. Then you could just call this method either \u0027NewInstance\u0027 or \u0027Finalise\u0027 which is a bit more descriptive of what it is really doing at the implementation level.\n\nEither way, doesn\u0027t matter with the above comment update.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "263c9a9af90f2d2751e4c02b22c4384342884547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
