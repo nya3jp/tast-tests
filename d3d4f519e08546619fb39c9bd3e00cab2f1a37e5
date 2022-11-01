@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85302da_f441c6ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-11-01T01:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c261f448_2db1eb5e",
+      "revId": "d3d4f519e08546619fb39c9bd3e00cab2f1a37e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9883605_a318278c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3181db_85c2751f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-11-01T01:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9883605_a318278c",
+      "revId": "d3d4f519e08546619fb39c9bd3e00cab2f1a37e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "782056b4_e4357d31",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-31T09:24:14Z",
       "side": 1,
       "message": "I think this test is using aloop as well.",
+      "revId": "d3d4f519e08546619fb39c9bd3e00cab2f1a37e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e12005_3382c48a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-11-01T01:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "782056b4_e4357d31",
       "revId": "d3d4f519e08546619fb39c9bd3e00cab2f1a37e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
