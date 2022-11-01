@@ -122,7 +122,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"rialto_cellular_autoconnect", "root", "root", 0}, // runs on veyron_rialto
 		{"rialto_modem_watchdog", "root", "root", 0},       // runs on veyron_rialto
 		{"netperf", "root", "root", 0},                     // started by Autotest tests
-		{"tpm_managerd", "root", "root", 0},
+		{"tpm_managerd", "tpm_manager", "tpm_manager", restrictCaps | noNewPrivs | seccomp},
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", 0}, // uses NNP/seccomp but sometimes seen before sandboxing: https://crbug.com/936703#c16
 		{"imageloader", "imageloaderd", "imageloaderd", mntNSNoPivotRoot | restrictCaps | noNewPrivs | seccomp},

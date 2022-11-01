@@ -167,7 +167,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 	if _, err := user.Lookup("tpm_manager"); err == nil {
 		prependPatterns(
 			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager"), chk.Users("tpm_manager"), chk.Groups("tpm_manager"), chk.NotMode(022)),
-			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)))
+			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), chk.Users("tpm_manager"), chk.Groups("tpm_manager"), chk.NotMode(077)))
 	}
 
 	if _, err := user.Lookup("tpm2-simulator"); err == nil {
