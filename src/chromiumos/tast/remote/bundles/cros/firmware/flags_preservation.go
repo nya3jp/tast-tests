@@ -158,16 +158,6 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				}
 				return nil
 			}
-			// checkPowerState checks for the power state value.
-			checkPowerState := func() string {
-				s.Log("Checking for the DUT's power state")
-				state, err := h.Servo.GetECSystemPowerState(ctx)
-				if err != nil {
-					s.Log("Error getting power state: ", err)
-					return "unknown"
-				}
-				return state
-			}
 			// Retry powering off DUT with a longer press if the duration was less than
 			// 10 seconds on the power button, and the DUT remained at S0.
 			powerOff := h.Config.HoldPwrButtonPowerOff
@@ -181,7 +171,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 					if err == nil {
 						break
 					}
-					powerState := checkPowerState()
+					powerState, _ := checkPowerState(ctx, h)
 					if powerState != "S0" || powerOff == 9*time.Second {
 						s.Fatal("Failed to power off DUT: ", err)
 					}
@@ -352,7 +342,19 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
-			s.Fatal("Failed to reconnect to DUT: ", err)
+			// When reconnecting to the DUT fails from plugging in AC,
+			// check for its power state, charge state, and whether
+			// the battery is detected (present). Also, log gpio output
+			// indicating when the system power is good for AP to pwr up.
+			pwrState, _ := checkPowerState(ctx, h)
+			stateOfCharge, _ := checkChgstateBatt(ctx, h, "state_of_charge")
+			battPresent, _ := checkChgstateBatt(ctx, h, "is_present")
+			// To-do: EC_FCH_PWROK was configured for zork devices, for example,
+			// vilboz and dirinboz. Add more gpio names in the future if more
+			// models are to be checked.
+			pwrOkGpio, _ := grepGpio(ctx, h, "EC_FCH_PWROK")
+			s.Fatalf("Failed to reconnect to DUT [power state %s, battery %s, %s, gpio_pwrok %s]: %v",
+				pwrState, stateOfCharge, battPresent, pwrOkGpio, err)
 		}
 		// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes,
 		// CCD might be locked. Open CCD after waking DUT and before talking to the EC.
@@ -532,4 +534,57 @@ func checkMaxChargerPower(ctx context.Context, h *firmware.Helper) error {
 	testing.ContextLogf(ctx, "DUT receives max_voltage: %f, max_current: %f, max_power: %f",
 		maxVoltage, maxCurrent, maxVoltage*maxCurrent)
 	return nil
+}
+
+// checkChgstateBatt runs ec command 'chgstate' and collects information
+// from the battery section.
+func checkChgstateBatt(ctx context.Context, h *firmware.Helper, attr string) (string, error) {
+	if err := h.Servo.RunECCommand(ctx, "chan 0"); err != nil {
+		return "unknown", errors.Wrap(err, "failed to send 'chan 0' to EC")
+	}
+	defer func() {
+		if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+			testing.ContextLog(ctx, "Failed to send 'chan 0xffffffff' to EC: ", err)
+		}
+	}()
+	match := `batt.*:((\n|.)*?is_present = \S*)[\n\r]`
+	chgstateBatt, err := h.Servo.RunECCommandGetOutput(ctx, "chgstate", []string{match})
+	if err != nil {
+		return "unknwon", errors.Wrap(err, "failed to run command chgstate")
+	}
+	for _, val := range strings.Split(chgstateBatt[0][1], "\r\n\t") {
+		if strings.Contains(val, attr) {
+			return val, nil
+		}
+	}
+	return "unknown", nil
+}
+
+// grepGpio runs ec command 'gpioget' to check for a gpio's value.
+func grepGpio(ctx context.Context, h *firmware.Helper, name string) (string, error) {
+	if err := h.Servo.RunECCommand(ctx, "chan 0"); err != nil {
+		return "unknown", errors.Wrap(err, "failed to send 'chan 0' to EC")
+	}
+	defer func() {
+		if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+			testing.ContextLog(ctx, "Failed to send 'chan 0xffffffff' to EC: ", err)
+		}
+	}()
+	match := fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, name)
+	cmd := fmt.Sprintf("gpioget %s", name)
+	out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, []string{match})
+	if err != nil {
+		return "unknown", errors.Wrapf(err, "failed to run command %v", cmd)
+	}
+	return out[0][1], nil
+}
+
+// checkPowerState checks for the dut's power state.
+func checkPowerState(ctx context.Context, h *firmware.Helper) (string, error) {
+	testing.ContextLog(ctx, "Checking for the DUT's power state")
+	state, err := h.Servo.GetECSystemPowerState(ctx)
+	if err != nil {
+		return "unknown", err
+	}
+	return state, nil
 }
