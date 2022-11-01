@@ -19,6 +19,8 @@ import (
 	"syscall"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -212,7 +214,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		filterBasename = filterBasename[:15]
 	}
 	if err := crash.EnableCrashFiltering(ctx, filterBasename); err != nil {
-		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
+		return nil, errors.Wrap(err, "failed to replace crash filter")
 	}
 	command = append(command, opts.CrasherPath)
 	if !opts.CauseCrash {
@@ -284,7 +286,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	}
 
 	result := CrasherResult{
-		Crashed:             (crasherExitCode == 128+int(syscall.SIGSEGV)),
+		Crashed:             (crasherExitCode == 128+int(unix.SIGSEGV)),
 		CrashReporterCaught: crashReporterCaught,
 		ReturnCode:          crasherExitCode,
 	}
@@ -621,8 +623,7 @@ func CleanCrashSpoolDirs(ctx context.Context, crasherPath string) error {
 	crashDirs = append(
 		crashDirs,
 		crash.SystemCrashDir,
-		crash.LocalCrashDir,
-		crash.UserCrashDir)
+		crash.LocalCrashDir)
 	crashes, err := crash.GetCrashes(crashDirs...)
 	if err != nil {
 		return errors.Wrap(err, "failed to get crash file list")

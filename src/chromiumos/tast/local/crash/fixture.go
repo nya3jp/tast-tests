@@ -252,7 +252,6 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	crashDirs := []crashAndStash{
 		{SystemCrashDir, systemCrashStash},
 		{LocalCrashDir, localCrashStash},
-		{UserCrashDir, userCrashStash},
 		{ClobberCrashDir, clobberCrashStash},
 	}
 
@@ -514,7 +513,6 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 	crashDirs := []crashAndStash{
 		{SystemCrashDir, systemCrashStash},
 		{LocalCrashDir, localCrashStash},
-		{UserCrashDir, userCrashStash},
 		{ClobberCrashDir, clobberCrashStash},
 	}
 
