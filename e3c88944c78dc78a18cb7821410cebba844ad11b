@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c95ab17_8bf0b134",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-01T05:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287c3043_849bf493",
+      "range": {
+        "startLine": 1446,
+        "startChar": 22,
+        "endLine": 1446,
+        "endChar": 33
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7675e145_a149628e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T16:10:58Z",
       "side": 1,
       "message": "`action.Sleep` can be used here instead",
+      "range": {
+        "startLine": 1441,
+        "startChar": 2,
+        "endLine": 1448,
+        "endChar": 4
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496b32e6_80bc21ff",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-01T05:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7675e145_a149628e",
       "range": {
         "startLine": 1441,
         "startChar": 2,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4159a566_04383ab4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-01T05:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4518b881_51bf7955",
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4095c59_73a1540c",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-10-31T16:10:58Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 4
+      },
+      "revId": "e3c88944c78dc78a18cb7821410cebba844ad11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00db2eb3_828efc3d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-01T05:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4095c59_73a1540c",
       "range": {
         "startLine": 436,
         "startChar": 2,
