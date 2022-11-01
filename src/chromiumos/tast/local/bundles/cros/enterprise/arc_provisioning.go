@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/retry"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -91,41 +92,17 @@ func init() {
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout = 4 * time.Minute
-		maxAttempts = 2
 	)
 
-	attempts := 1
-	doRetries := s.Param().(bool)
-
-	// Indicates a failure in the core feature under test so the polling should stop.
-	exit := func(desc string, err error) error {
-		s.Fatalf("Failed to %s: %v", desc, err)
-		return nil
-	}
-
-	// Indicates that the error is retryable and unrelated to core feature under test.
-	retryForAll := func(desc string, err error) error {
-		if attempts < maxAttempts {
-			attempts++
-			err = errors.Wrap(err, "failed to "+desc)
-			s.Logf("%s. Retrying", err)
-			return err
-		}
-		return exit(desc, err)
-	}
-
-	// Indicates that the error is being retried only to stabilize the test temporarily.
-	// TODO(b/242902484): Replace the calls to this with exit() when unstable variant is removed.
-	retry := func(desc string, err error) error {
-		if doRetries {
-			return retryForAll(desc, err)
-		}
-		return exit(desc, err)
-	}
+	rl := &retry.Loop{Attempts: 1,
+		MaxAttempts: 2,
+		DoRetries:   s.Param().(bool),
+		Fatalf:      s.Fatalf,
+		Logf:        s.Logf}
 
 	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
 	if err != nil {
-		exit("get login creds", err)
+		rl.Exit("get login creds", err)
 	}
 	login := chrome.GAIALogin(creds)
 
@@ -133,7 +110,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeForceInstalled)
 	if err != nil {
-		exit("setup fake policy server", err)
+		rl.Exit("setup fake policy server", err)
 	}
 	defer fdms.Stop(ctx)
 
@@ -147,36 +124,36 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			chrome.DMSPolicy(fdms.URL),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
-			return retryForAll("connect to Chrome", err)
+			return rl.RetryForAll("connect to Chrome", err)
 		}
 		defer cr.Close(ctx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return retryForAll("create test API connection", err)
+			return rl.RetryForAll("create test API connection", err)
 		}
 
 		// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
 		if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
-			return exit("verify ArcEnabled in policy", err)
+			return rl.Exit("verify ArcEnabled in policy", err)
 		}
 
 		if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, packages); err != nil {
-			return exit("verify force-installed apps", err)
+			return rl.Exit("verify force-installed apps", err)
 		}
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			return exit("start ARC by policy", err)
+			return rl.Exit("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
 
 		if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
-			return exit("configure provisioning logs", err)
+			return rl.Exit("configure provisioning logs", err)
 		}
 
-		if err := arcent.WaitForProvisioning(ctx, a, attempts); err != nil {
-			return exit("wait for provisioning", err)
+		if err := arcent.WaitForProvisioning(ctx, a, rl.Attempts); err != nil {
+			return rl.Exit("wait for provisioning", err)
 		}
 
 		cleanupCtx := ctx
@@ -185,21 +162,21 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		defer arcent.DumpBugReportOnError(cleanupCtx, func() bool {
 			return s.HasError() || retErr != nil
-		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", attempts)))
+		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", rl.Attempts)))
 
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
 		if err := a.WaitForPackages(ctx, packages); err != nil {
 			// TODO(b/242902484): Switch to exit when unstable variant is removed.
-			return retry("wait for packages", err)
+			return rl.Retry("wait for packages", err)
 		}
 
 		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			return exit("verify packages are uninstallable", err)
+			return rl.Exit("verify packages are uninstallable", err)
 		}
 
 		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
-			return exit("verify Play Store is not empty", err)
+			return rl.Exit("verify Play Store is not empty", err)
 		}
 
 		return nil
