@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e066e2_209b4e79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-11-01T07:14:31Z",
+      "side": 1,
+      "message": "Why did you lowercase all the strings?",
+      "revId": "ab5cbb0dc16e38533e993ab7e452225e8651bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
