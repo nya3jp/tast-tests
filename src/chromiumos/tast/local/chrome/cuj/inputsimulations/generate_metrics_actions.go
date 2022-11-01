@@ -48,7 +48,7 @@ func DoAshWorkflows(ctx context.Context, tconn *chrome.TestConn, pc pointer.Cont
 	}
 
 	// Open and close the system tray bubble.
-	systemTray := nodewith.HasClass("UnifiedSystemTray")
+	systemTray := nodewith.HasClass("UnifiedSystemTray").First()
 	systemTrayContainer := nodewith.HasClass("SystemTrayContainer")
 	ac := uiauto.New(tconn)
 
