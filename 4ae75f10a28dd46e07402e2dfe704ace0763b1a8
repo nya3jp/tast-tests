@@ -22,6 +22,30 @@
       },
       "revId": "4ae75f10a28dd46e07402e2dfe704ace0763b1a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef946e6e_61fa6528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-11-01T06:48:06Z",
+      "side": 1,
+      "message": "Does `runCtx, cancel :\u003d context.WithTimeout(ctx, duration+5*time.Second)` reserve time for the cleaup task?\nThanks!",
+      "parentUuid": "af8b2b36_78a5c5b4",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "4ae75f10a28dd46e07402e2dfe704ace0763b1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
