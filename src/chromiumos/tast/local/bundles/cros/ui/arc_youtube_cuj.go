@@ -95,6 +95,11 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Create an empty screenshot recorder.
+	if err := recorder.AddScreenshotRecorder(ctx, 0, 0); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Launch the ARC YouTube app.
 		if err := act.Start(ctx, tconn); err != nil {
@@ -117,6 +122,9 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to sleep")
 		}
 
+		// Take a screenshot at the end of recorder.Run, before
+		// the ARC YouTube app closes.
+		recorder.CustomScreenshot(ctx)
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to conduct the performance measurement: ", err)

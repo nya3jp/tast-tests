@@ -114,6 +114,11 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Add an empty screenshot recorder.
+	if err := recorder.AddScreenshotRecorder(ctx, 0, 0); err != nil {
+		s.Fatal("Failed to add screenshot recorder: ", err)
+	}
+
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -201,6 +206,10 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 			}
 			i++
 		}
+
+		// Take a screenshot to see the state of the slide deck
+		// after scrolling for 10 minutes.
+		recorder.CustomScreenshot(ctx)
 
 		// Ensure the slides deck gets scrolled.
 		var scrollTop int

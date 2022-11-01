@@ -30,15 +30,34 @@ type ScreenshotRecorder interface {
 	Start(ctx context.Context) error
 
 	// Stop stops the screenshot recorder. It takes one last screenshot to
-	// capture the device at its end state. This function can only be
-	// called after |Start| has been called.
+	// capture the device at its end state, if the max number of
+	// images for the recorder is greater than 0. This function can
+	// only be called after |Start| has been called.
 	Stop(ctx context.Context) error
+
+	// TakeScreenshot takes a screenshot of the display and saves it
+	// similarly to the screenshots taken at fixed intervals. This
+	// screenshot, however, will have the "-custom" suffix, and can
+	// be taken before and after |Start| and |Stop| has run.
+	// TakeScreenshot counts towards the recorder's |maxImages|,
+	// but is not limited by it. Thus, if TakeScreenshot is called
+	// and we already hit the |maxImages|, the screenshot is still
+	// taken, but no more shots would be taken at fixed intervals.
+	TakeScreenshot(ctx context.Context)
 }
 
 // screenshotRecorderImpl is used to implement ScreenshotRecorder.
 type screenshotRecorderImpl struct {
 	// recording is whether or not the recorder has started recording.
 	recording bool
+
+	// takingIntervalShots is whether or not there is a goroutine
+	// active that is taking screenshots at a given interval. The
+	// screenshot goroutine will close when the max number of
+	// screenshots have been taken. The overall recorder, however,
+	// will remain active, so that it can appropriately cleanup
+	// with |Stop|.
+	takingIntervalShots bool
 
 	// interval is the delay between screenshots.
 	interval time.Duration
@@ -69,19 +88,37 @@ type screenshotRecorderImpl struct {
 	// stopackc is the channel for the background task to tell the
 	// foreground task that it is done.
 	stopackc chan struct{}
+
+	// customc is the channel for the foreground task to tell the
+	// background task to take a screenshot.
+	customc chan struct{}
 }
 
 // NewScreenshotRecorder creates a ScreenshotRecorder that can take
-// screenshots of the display at the specified |interval|. After
-// creating the recorder, you could start recording by calling
+// screenshots of the display at the specified |interval|. If
+// |interval| is 0, no interval screenshots will be taken. A screenshot
+// will be taken in |Stop| if |maxImages| is greater than 0.
+// After creating the recorder, you could start recording by calling
 // |Start|, and stop recording by calling |Stop|.
+//
+// Examples:
+// 1. NewScreenshotRecorder(ctx, time.Minute, 5) is a recorder that will
+// take 1 screenshot every minute 4 times, and then take 1 screenshot at
+// when |Stop| is called.
+// 2. NewScreenshotRecorder(ctx, 0, 1) is a recorder that will take
+// a screenshot when |Stop| is called.
+// 3. NewScreenshotRecorder(ctx, 0, 0) is an empty recorder that will
+// not take any screenshots.
+//
+// Examples #2 and #3 are useful when using TakeScreenshot, as that can
+// give more flexibility to when screenshots are taken.
 func NewScreenshotRecorder(ctx context.Context, interval time.Duration, maxImages int) (ScreenshotRecorder, error) {
-	if maxImages <= 0 {
+	if maxImages < 0 {
 		return nil, errors.Errorf("cannot create screenshot recorder with %d max images", maxImages)
 	}
 
-	if interval == 0 {
-		return nil, errors.New("cannot create screenshot recorder with a 0 interval")
+	if maxImages > 0 && interval <= 0 {
+		return nil, errors.Errorf("cannot create screenshot recorder with a %v interval when max images is %d", interval, maxImages)
 	}
 
 	dir, ok := testing.ContextOutDir(ctx)
@@ -98,6 +135,7 @@ func NewScreenshotRecorder(ctx context.Context, interval time.Duration, maxImage
 		interval:       interval,
 		screenshotsDir: screenshotDir,
 		maxImages:      maxImages,
+		customc:        make(chan struct{}),
 		stopc:          make(chan struct{}),
 		stopackc:       make(chan struct{}),
 	}, nil
@@ -111,40 +149,43 @@ func (r *screenshotRecorderImpl) Start(ctx context.Context) error {
 
 	r.startTime = time.Now()
 
-	testing.ContextLog(ctx, "screenshot_recorder: Taking a screenshot every ", r.interval)
 	go func() {
-		done := false
-		for !done {
+		r.takingIntervalShots = true
+
+		// If an interval is not specified, we skip taking
+		// screenshots at specified intervals.
+		if r.interval == 0 {
+			r.takingIntervalShots = false
+		} else {
+			testing.ContextLog(ctx, "screenshot_recorder: Taking a screenshot every ", r.interval)
+		}
+
+		for r.takingIntervalShots {
+			// We subtract 1 from max images to reserve one
+			// screenshot that is taken when |Stop| is called.
+			if r.numImages >= r.maxImages-1 {
+				testing.ContextLogf(ctx, "screenshot_recorder: The max number of interval screenshots have been taken (%d); will not take any more", r.maxImages-1)
+				r.takingIntervalShots = false
+				break
+			}
+
 			select {
 			case <-time.After(r.interval):
 				if err := r.captureDisplay(ctx, ""); err != nil {
-					testing.ContextLog(ctx, "screenshot_recorder: Failed to take screenshot: ", err)
-					if r.firstErr == nil {
-						r.firstErr = err
-					}
-					break
+					testing.ContextLog(ctx, "screenshot_recorder: Failed to take a screenshot: ", err)
 				}
-
-				// We subtract 1 from max images to reserve one
-				// screenshot that is taken when |Stop| is called.
-				if r.numImages < r.maxImages-1 {
-					break
-				}
-
-				testing.ContextLogf(ctx, "screenshot_recorder: The max number of screenshots have been taken (%d); will not take any more", r.maxImages)
-				done = true
+			case <-r.customc:
+				r.customCaptureDisplay(ctx)
 			case <-r.stopc:
 				testing.ContextLog(ctx, "screenshot_recorder: Background signaled to stop")
-				done = true
+				r.takingIntervalShots = false
 			case <-ctx.Done():
-				done = true
+				r.takingIntervalShots = false
 			}
 		}
-
 		// Let the foreground task know we are done.
 		close(r.stopackc)
 	}()
-
 	return nil
 }
 
@@ -175,7 +216,7 @@ func (r *screenshotRecorderImpl) Stop(ctx context.Context) error {
 		return errors.Wrap(r.firstErr, "screenshot recording failed")
 	}
 
-	if !ctxIsFinished {
+	if !ctxIsFinished && r.maxImages > 0 {
 		// Take a final screenshot. Append file name with "-end" to
 		// explain why this screenshot was taken at a different
 		// interval than the other screenshots.
@@ -185,6 +226,19 @@ func (r *screenshotRecorderImpl) Stop(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+func (r *screenshotRecorderImpl) TakeScreenshot(ctx context.Context) {
+	// If we are still taking screenshots at specific intervals,
+	// send a message to the screenshot goroutine to take a
+	// screenshot. If we are not recording, take a screenshot
+	// separately. By using a channel, we can prevent race
+	// conditions, where two screenshots are taken at the same time.
+	if r.takingIntervalShots {
+		r.customc <- struct{}{}
+	} else {
+		r.customCaptureDisplay(ctx)
+	}
 }
 
 // captureDisplay takes a screenshot of the active display and saves it
@@ -203,13 +257,31 @@ func (r *screenshotRecorderImpl) Stop(ctx context.Context) error {
 func (r *screenshotRecorderImpl) captureDisplay(ctx context.Context, fileSuffix string) error {
 	testing.ContextLogf(ctx, "screenshot_recorder: Will take screenshot #%d", r.numImages+1)
 
-	secondsSinceStart := int(time.Now().Sub(r.startTime).Seconds())
+	var secondsSinceStart int
+	if !r.startTime.IsZero() {
+		secondsSinceStart = int(time.Now().Sub(r.startTime).Seconds())
+	}
 	path := filepath.Join(r.screenshotsDir, fmt.Sprintf("cuj-%d-%d%s.jpg", r.numImages+1, secondsSinceStart, fileSuffix))
 
 	cmd := testexec.CommandContext(ctx, "screenshot", path)
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+	err := cmd.Run(testexec.DumpLogOnError)
+	if err != nil {
 		return errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
 	r.numImages++
+
+	if r.firstErr == nil {
+		r.firstErr = err
+	}
 	return nil
+}
+
+// customCaptureDisplay is a wrapper around r.captureDisplay explicitly
+// for custom screenshots. This function helps to eliminate code
+// duplication between taking custom screenshots outside the screenshot
+// goroutine and inside of it.
+func (r *screenshotRecorderImpl) customCaptureDisplay(ctx context.Context) {
+	if err := r.captureDisplay(ctx, "-custom"); err != nil {
+		testing.ContextLog(ctx, "screenshot_recorder: Failed to take custom screenshot: ", err)
+	}
 }

@@ -155,6 +155,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Add a empty screenshot recorder.
+	if err := recorder.AddScreenshotRecorder(ctx, 0, 0); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
 	if err != nil {
@@ -259,6 +264,10 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to do Ash workflows")
 			}
 		}
+
+		// Take a screenshot to see the state of the Google
+		// Sheet after scrolling for 10 minutes.
+		recorder.CustomScreenshot(ctx)
 
 		var scrollTop int
 		// Ensure scrollbar gets scrolled.
