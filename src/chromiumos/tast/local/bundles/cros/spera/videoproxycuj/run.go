@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package gamingproxycuj contains the test code for GamingProxyCUJ.
-package gamingproxycuj
+// Package videoproxycuj contains the test code for VideoProxyCUJ.
+package videoproxycuj
 
 import (
 	"context"
@@ -30,12 +30,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TestParams stores data common to the tests run in this package.
+type TestParams struct {
+	BrowserType browser.Type
+	VideoOption VideoOption
+}
+
 const (
 	crosVideoTitle  = "CrosVideo"
 	googleDocsTitle = "Google Docs"
 )
 
-// Run runs the GamingProxyCUJ test.
+// Run runs the VideoProxyCUJ test.
 func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, videoOption VideoOption) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
@@ -155,9 +161,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string,
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		return gamingProxyScenario(ctx, tconn, kb, video)
+		return videoProxyScenario(ctx, tconn, kb, video)
 	}); err != nil {
-		return errors.Wrap(err, "failed to run the gaming proxy scenario")
+		return errors.Wrap(err, "failed to run the video proxy scenario")
 	}
 
 	if err := uiauto.Combine("pause video",
@@ -209,7 +215,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string,
 	return nil
 }
 
-func gamingProxyScenario(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video *CrosVideo) error {
+func videoProxyScenario(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video *CrosVideo) error {
 	const (
 		docParagraph  = "The Little Prince's story follows a young prince who visits various planets in space."
 		repeatTimeout = 15 * time.Minute
