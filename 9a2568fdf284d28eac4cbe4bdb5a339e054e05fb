@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d090f290_d4dd6dbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:17:10Z",
+      "side": 1,
+      "message": "`fast_build.sh -T` results in failure and it is not on us, and I filed a bug to them: b/256891990. The tast/remote part passed :)",
+      "parentUuid": "bb032d5a_4a7d6ddc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be8a088e_c922aa65",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-01T02:27:18Z",
       "side": 1,
       "message": "Did you check that the DTIM period actually used by the AP was the one you expected?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ad6687_d6264184",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:17:10Z",
+      "side": 1,
+      "message": "Yes https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/next/src/ap/ap_config.c;rcl\u003d20a522b9ebe52bac34cc4ecfc1a9722cc1e77cdc;l\u003d88",
+      "parentUuid": "be8a088e_c922aa65",
       "range": {
         "startLine": 12,
         "startChar": 5,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f384c0c_3fe52dec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:17:10Z",
+      "side": 1,
+      "message": "Fixed, and the `testOnce` loop on bottom removed. \n(Related to the previous CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/6222f8a7_47333e5d/)",
+      "parentUuid": "2389af77_2bebd111",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82631828_eb3ac369",
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "040bfa3b_8a28551c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:17:10Z",
+      "side": 1,
+      "message": "Fixed. Now `scanPerfTestcase` removed and directly type asserted into `ap.Option`, and the variable name has changed according to your linked style.",
+      "parentUuid": "82631828_eb3ac369",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 10
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5d2266d_0232c46d",
@@ -147,6 +243,30 @@
       "writtenOn": "2022-11-01T02:27:18Z",
       "side": 1,
       "message": "nit: I think variables are supposed to be named with mixed case go/go-style/guide#mixed-caps",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 9
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e56df7_d669ff1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-01T20:17:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b5d2266d_0232c46d",
       "range": {
         "startLine": 301,
         "startChar": 2,
