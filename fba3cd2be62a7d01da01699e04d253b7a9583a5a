@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d63bcf62_5fc405a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-11-01T20:53:29Z",
+      "side": 1,
+      "message": "Hi Theo, do we know how we are planning to use these new methods and also the keyboard instance? How is this used to simulate the plug and unplug actions?",
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "948a30c7_a12c8bc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
         "patchSetId": 2
