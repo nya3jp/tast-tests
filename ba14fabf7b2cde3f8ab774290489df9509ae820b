@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "857cb4c5_55bb141b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840ca9a7_39c8caf2",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 57
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "049cfec6_a6448dc6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-01T20:55:24Z",
       "side": 1,
       "message": "Out of curiosity, What would happen when you call ash.ActivateDeskAtIndex(ctx, tconn, 3) if ActiveDeskIndex \u003d\u003d 3\n\nMaybe we don\u0027t need the extra if statement?",
+      "range": {
+        "startLine": 148,
+        "startChar": 16,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5697e024_fe2b6bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "If the desk with index 3 is already active, it will fail for this function. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/desks.go;l\u003d117?q\u003dActivateDeskAtIndex\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch But I agree we don\u0027t need this if statement here, since `verifyWindowsOnDesks()` at line 138 will make the Desk 7 be the active desk.",
+      "parentUuid": "049cfec6_a6448dc6",
       "range": {
         "startLine": 148,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b399248_0f284b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "The function at line 155 will make the active desk be Desk 6. I think we can also close window on Desk 6.",
+      "parentUuid": "2a5b413e_29c12f97",
+      "range": {
+        "startLine": 159,
+        "startChar": 27,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4834d525_0f070ca7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-01T20:55:24Z",
       "side": 1,
       "message": "err \u003d\u003d nil here. No need to print it out.",
+      "range": {
+        "startLine": 165,
+        "startChar": 80,
+        "endLine": 165,
+        "endChar": 83
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76154478_9aa0e1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4834d525_0f070ca7",
       "range": {
         "startLine": 165,
         "startChar": 80,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "641178a5_487e8d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d54e09f_00f572ae",
+      "range": {
+        "startLine": 186,
+        "startChar": 80,
+        "endLine": 186,
+        "endChar": 83
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db16fd71_6c0fdc8e",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8156a13c_18da287b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "db16fd71_6c0fdc8e",
+      "range": {
+        "startLine": 267,
+        "startChar": 91,
+        "endLine": 267,
+        "endChar": 102
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb9405d5_d03ba3e2",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-11-01T20:55:24Z",
       "side": 1,
       "message": "Do you mind switch i \u0026 count so it is consistent with the next if statement?\n\nif i !\u003d 1 \u0026\u0026 count !\u003d 0",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 11
+      },
+      "revId": "ba14fabf7b2cde3f8ab774290489df9509ae820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f24c39_13dfc039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_all_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-01T22:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb9405d5_d03ba3e2",
       "range": {
         "startLine": 293,
         "startChar": 6,
