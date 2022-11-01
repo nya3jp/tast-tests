@@ -126,6 +126,11 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		}
 	}
 
+	// Add an empty screenshot recorder.
+	if err := vars.recorder.AddScreenshotRecorder(ctx, 0, 0); err != nil {
+		s.Log("Failed to add screenshot recorder: ", err)
+	}
+
 	metricsSuccessfullyAdded = true
 	return &vars, nil
 }
@@ -368,6 +373,10 @@ func testBody(ctx context.Context, test *tabSwitchVariables) error {
 				i++
 			}
 		}
+
+		// Take a screenshot to see the status of the CNN/Reddit
+		// window before closing it.
+		test.recorder.CustomScreenshot(ctx)
 
 		switch test.param.BrowserType {
 		case browser.TypeLacros:
