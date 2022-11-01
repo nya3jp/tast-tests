@@ -137,7 +137,9 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for reboot start.
-	testing.Sleep(ctx, rmaweb.WaitForRebootStart)
+	if err := testing.Sleep(ctx, rmaweb.WaitForRebootStart); err != nil {
+		s.Error("Fail to sleep: ", err)
+	}
 
 	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
 	if err != nil {
@@ -149,14 +151,14 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	// Since we already run Manual test case (removal battery) in skylab and install firmware from USB,
 	// we skip firmware installation in all RSU test cases.
 	if wpOption == rmaweb.Manual {
-		if err := action.Combine("Navigate to firmware installation page and install firmware",
+		if err := action.Combine("navigate to firmware installation page and install firmware",
 			uiHelper.WriteProtectDisabledPageOperation,
 			uiHelper.WaitForFirmwareInstallation,
 		)(ctx); err != nil {
 			s.Fatal("Fail to navigate to firmware installation page and install firmware: ", err)
 		}
 	} else {
-		if err := action.Combine("Navigate to firmware installation page and bypass firmware install",
+		if err := action.Combine("navigate to firmware installation page and bypass firmware install",
 			uiHelper.WriteProtectDisabledPageOperation,
 			uiHelper.BypassFirmwareInstallation,
 		)(ctx); err != nil {
@@ -165,7 +167,9 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for reboot start.
-	testing.Sleep(ctx, rmaweb.WaitForRebootStart)
+	if err := testing.Sleep(ctx, rmaweb.WaitForRebootStart); err != nil {
+		s.Error("Fail to sleep: ", err)
+	}
 
 	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
 	if err != nil {
@@ -173,7 +177,7 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 	// Restart will dispose resources, so don't dispose resources explicitly.
 
-	if err := action.Combine("Navigate to Device Provision page",
+	if err := action.Combine("navigate to Device Provision page",
 		uiHelper.FirmwareInstallationPageOperation,
 		uiHelper.DeviceInformationPageOperation,
 		uiHelper.DeviceProvisionPageOperation,
@@ -182,32 +186,15 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 
 	// Another reboot after provisioning
-	testing.Sleep(ctx, rmaweb.WaitForRebootStart)
+	if err := testing.Sleep(ctx, rmaweb.WaitForRebootStart); err != nil {
+		s.Error("Fail to sleep: ", err)
+	}
 
 	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
 	if err != nil {
 		s.Fatal("Fail to initialize RMA Helper: ", err)
 	}
 	defer uiHelper.DisposeResource(cleanupCtx)
-
-	// TODO: I comment out the following code due to a bug in Shimless RMA.
-	// I will add it back after Shimless RMA fix it.
-	// Bug link: b:231906070
-	/**
-	web.WriteProtectEnabledPageOperation(ctx, s, client)
-	s.Log("WriteProtectEnabledPageOperation")
-
-	// Wait for reboot start.
-	testing.Sleep(ctx, rmaweb.WaitForRebootStart)
-
-	cl, client, error = rmaweb.CreateShimlessClient(ctx, s.RPCHint(), dut, firmwareHelper, s.RequiredVar("ui.signinProfileTestExtensionManifestKey"), true)
-	defer cl.Close(cleanupCtx)
-	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Fail to create Shimless RMA Client: ", err)
-	}
-	s.Log("Init Shimless RMA successfully after enable CCD")
-	*/
 
 	storeLogFlag := rmaweb.NotStoreLog
 	if wpOption == rmaweb.Manual {
@@ -228,14 +215,14 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 func generateActionCombinedToDisableWP(option rmaweb.WriteProtectDisableOption, enroll bool, destination rmaweb.DestinationOption, uiHelper *rmaweb.UIHelper) action.Action {
 
 	if enroll && destination == rmaweb.DifferentUser && option == rmaweb.Rsu {
-		return action.Combine("Navigate to RSU page and turn off write protect",
+		return action.Combine("navigate to RSU page and turn off write protect",
 			uiHelper.WelcomePageOperation,
 			uiHelper.ComponentsPageOperation,
 			uiHelper.OwnerPageOperation(destination),
 			uiHelper.RSUPageOperation,
 		)
 	} else if !enroll && destination == rmaweb.DifferentUser && option == rmaweb.Rsu {
-		return action.Combine("Navigate to RSU page, choose different user and turn off write protect",
+		return action.Combine("navigate to RSU page, choose different user and turn off write protect",
 			uiHelper.WelcomePageOperation,
 			uiHelper.ComponentsPageOperation,
 			uiHelper.OwnerPageOperation(destination),
@@ -243,7 +230,7 @@ func generateActionCombinedToDisableWP(option rmaweb.WriteProtectDisableOption, 
 			uiHelper.RSUPageOperation,
 		)
 	} else if !enroll && destination == rmaweb.SameUser && option == rmaweb.Rsu {
-		return action.Combine("Navigate to RSU page , choose same user and turn off write protect",
+		return action.Combine("navigate to RSU page , choose same user and turn off write protect",
 			uiHelper.WelcomePageOperation,
 			uiHelper.ComponentsPageOperation,
 			uiHelper.OwnerPageOperation(destination),
@@ -252,7 +239,7 @@ func generateActionCombinedToDisableWP(option rmaweb.WriteProtectDisableOption, 
 			uiHelper.RSUPageOperation,
 		)
 	} else if !enroll && destination == rmaweb.SameUser && option == rmaweb.Manual {
-		return action.Combine("Navigate to Manual Disable Write Protect page, choose same user and turn off write protect",
+		return action.Combine("navigate to Manual Disable Write Protect page, choose same user and turn off write protect",
 			uiHelper.WelcomePageOperation,
 			uiHelper.ComponentsPageOperation,
 			uiHelper.OwnerPageOperation(destination),
