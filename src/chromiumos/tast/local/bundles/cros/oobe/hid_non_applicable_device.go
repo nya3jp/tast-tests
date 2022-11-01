@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/oobe/fixture"
 	"chromiumos/tast/local/oobe"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -35,7 +36,7 @@ func init() {
 
 // HidNonApplicableDevice checks that the OOBE Welcome screen is shown.
 func HidNonApplicableDevice(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*oobe.ChromeOobeHidDetection).Chrome
+	cr := s.FixtValue().(*fixture.ChromeOobeHidDetection).Chrome
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
 		s.Fatal("Failed to create OOBE connection: ", err)
