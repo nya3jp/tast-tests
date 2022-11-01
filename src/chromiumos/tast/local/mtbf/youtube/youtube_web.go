@@ -205,9 +205,9 @@ func (y *YtWeb) SwitchQuality(resolution string) uiauto.Action {
 	}
 }
 
-// EnterFullscreen switches youtube video to fullscreen.
-func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
-	testing.ContextLog(ctx, "Make Youtube video fullscreen")
+// EnterFullScreen switches youtube video to full screen.
+func (y *YtWeb) EnterFullScreen(ctx context.Context) error {
+	testing.ContextLog(ctx, "Make Youtube video full screen")
 
 	if ytWin, err := ash.GetWindow(ctx, y.tconn, y.ytWinID); err != nil {
 		return errors.Wrap(err, "failed to get youtube window")
@@ -222,11 +222,45 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 
 	fullscreenBtn := nodewith.Name("Full screen (f)").Role(role.Button)
 	if err := y.ui.DoDefault(fullscreenBtn)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click fullscreen button")
+		return errors.Wrap(err, "failed to click full screen button")
 	}
 
 	if err := waitWindowStateFullscreen(ctx, y.tconn, YoutubeWindowTitle); err != nil {
-		return errors.Wrap(err, "failed to tap fullscreen button")
+		return errors.Wrap(err, "failed to tap full screen button")
+	}
+
+	if err := waitForYoutubeReadyState(ctx, y.ytConn); err != nil {
+		return errors.Wrap(err, "failed to wait for Youtube ready state")
+	}
+	return nil
+}
+
+// ExitFullScreen exits Youtube video from full screen.
+func (y *YtWeb) ExitFullScreen(ctx context.Context) error {
+	testing.ContextLog(ctx, "Exit Youtube video from full screen")
+
+	if ytWin, err := ash.GetWindow(ctx, y.tconn, y.ytWinID); err != nil {
+		return errors.Wrap(err, "failed to get youtube window")
+	} else if ytWin.State != ash.WindowStateFullscreen {
+		return nil
+	}
+
+	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
+		return errors.Wrap(err, "failed to clear notification prompts")
+	}
+
+	// Move the mouse to a specific location to ensure focus on the video now.
+	// Sometimes the button name will be "Exit full screen" or remain "Full screen" even when entering full screen.
+	// It's more stable to use keyboard shortcuts.
+	if err := uiauto.NamedCombine("click exit full screen button",
+		y.ui.MouseMoveTo(videoButton, mouseMoveDuration),
+		y.kb.AccelAction("f"),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click exit full screen button")
+	}
+
+	if err := waitWindowStateExitFullscreen(ctx, y.tconn, YoutubeWindowTitle); err != nil {
+		return errors.Wrap(err, "failed to tap exit full screen button")
 	}
 
 	if err := waitForYoutubeReadyState(ctx, y.ytConn); err != nil {
