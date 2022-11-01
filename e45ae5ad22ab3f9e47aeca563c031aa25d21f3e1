@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77384ded_212c97a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T23:39:38Z",
+      "side": 1,
+      "message": "We decided to instead use local test so i am abandoning this CL",
+      "revId": "e45ae5ad22ab3f9e47aeca563c031aa25d21f3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
