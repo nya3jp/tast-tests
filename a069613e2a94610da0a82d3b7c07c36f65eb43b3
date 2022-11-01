@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cca19c5_94c566a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-01T05:57:23Z",
+      "side": 1,
+      "message": "Sammie, could you please review to see if something doesn\u0027t make sense as an outsider",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "041f9c12_9793a895",
