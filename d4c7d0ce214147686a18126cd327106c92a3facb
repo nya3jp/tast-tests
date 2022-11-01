@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d538a776_8cfdf338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_memory.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:07:34Z",
+      "side": 1,
+      "message": "Can you add a comment why we need 10 second sleep here?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805ce5ce_485235c7",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:07:34Z",
+      "side": 1,
+      "message": "Gerrit is weird, isn\u0027t this already in the repository? Why gerrit think this is new.",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee447f5_021bdbc4",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:07:34Z",
+      "side": 1,
+      "message": "regex pattern.",
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576bd37c_989ecdc2",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:07:34Z",
+      "side": 1,
+      "message": "You don\u0027t need this, sysutil.KernelVersionAndArch() returns arch.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 15
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5bce1f3_c17d05ec",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:07:34Z",
+      "side": 1,
+      "message": "graphics/hardware_probe is doing what you are doing right here.\n\ngraphics.CPUFamily(ctx)",
+      "range": {
+        "startLine": 137,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
