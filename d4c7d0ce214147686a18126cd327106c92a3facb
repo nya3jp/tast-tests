@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff953a97_b8451469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kernel_memory.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d538a776_8cfdf338",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e2d4a87_4b9af9df",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-01T18:20:38Z",
       "side": 1,
       "message": "Can you initialize those fields globally?\n\namdgpuFields \u003d map[string][]string{\n    \"gem_objects\": []string{\"/sys/kernel/debug/dri/0/amdgpu_gem_info\"},\n    \"memory\": []string{\"/sys/kernel/debug/dri/0/amdgpu_gtt_mm\"},\n}",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3fd67b_db58ab96",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2d4a87_4b9af9df",
       "range": {
         "startLine": 26,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "425f3dd5_cb2568c2",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "805ce5ce_485235c7",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ee447f5_021bdbc4",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ef85e5_54434b7a",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee447f5_021bdbc4",
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "576bd37c_989ecdc2",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-11-01T18:07:34Z",
       "side": 1,
       "message": "You don\u0027t need this, sysutil.KernelVersionAndArch() returns arch.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 15
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86525e61_f261de51",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "576bd37c_989ecdc2",
       "range": {
         "startLine": 176,
         "startChar": 5,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1ab2a2_a43b7d97",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bce1f3_c17d05ec",
+      "range": {
+        "startLine": 137,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a0e08d_e2f4f08d",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-11-01T18:20:38Z",
       "side": 1,
       "message": "Seems like some of the fields are missing?",
+      "range": {
+        "startLine": 354,
+        "startChar": 21,
+        "endLine": 354,
+        "endChar": 40
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a403e0_aa527789",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-11-01T22:51:00Z",
+      "side": 1,
+      "message": "I was going off of https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/graphics/graphics_utils.py;l\u003d945? \n\nadding a warning for the missing ones.",
+      "parentUuid": "a9a0e08d_e2f4f08d",
       "range": {
         "startLine": 354,
         "startChar": 21,
