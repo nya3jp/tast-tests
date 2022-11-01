@@ -48,12 +48,12 @@ func init() {
 			// TODO(pwang): Not all platform has fbc enabled. Add SoftwareDeps/HardwareDeps once we got some results on stainless.
 			Name:              "fbc",
 			Val:               fbc,
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.IntelSOC()),
 			Fixture:           "chromeGraphicsIdle",
 		}, {
 			Name:              "fbc_arc",
 			Val:               fbc,
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.IntelSOC()),
 			Fixture:           "chromeGraphicsIdleArc",
 		}, {
 			Name:              "psr",
@@ -234,7 +234,7 @@ func fbc(ctx context.Context) error {
 		re := regexp.MustCompile("FBC enabled")
 		matches := re.FindStringSubmatch(string(f))
 		if matches == nil {
-			return errors.Wrapf(err, "FBC enabled not found, last content is %v", string(f))
+			return errors.Wrapf(err, "FBC enabled not found, last content: %v", string(f))
 		}
 		return nil
 	}, &testing.PollOptions{
