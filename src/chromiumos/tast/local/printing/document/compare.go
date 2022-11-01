@@ -48,7 +48,7 @@ var cleanRegex = regexp.MustCompile(
 		// Removes time metadata for PCLm Jobs.
 		`|% *job-start-time: .*` +
 		`|@PJL COMMENT="Job Start Time:.*` +
-		`|@PJL COMMENT=".*; \d{2}-\d{2}-\d{4}"` +
+		`|@PJL COMMENT=".*; \d{1,2}-\d{1,2}-\d{4}"` +
 		// Removes PDF xref objects (they contain byte offsets).
 		`|\d{10} \d{5} [fn] *` +
 		// Removes the byte offset of a PDF xref object.
