@@ -1,0 +1,46 @@
+// nearby_sharing_snippets.proto
+// Definition of the Nearby Mobly snippets protocol buffer
+
+syntax = "proto2";
+
+package nearbysnippet;
+
+option go_package = "chromiumos/tast/local/chrome/nearbyshare/nearbysnippet";
+
+// Represents the data usage preference.
+enum NearbySharingDataUsage {
+  DATA_USAGE_UNKNOWN = 0;
+  // User is never willing to use the Internet
+  DATA_USAGE_OFFLINE = 1;
+  // User is always willing to use the Internet
+  DATA_USAGE_ONLINE = 2;
+  // User is willing to use the Internet on an un-metered connection.
+  // NOTE: This matches Android Nearby Share's naming for now.
+  DATA_USAGE_WIFI_ONLY = 3;
+}
+
+// Represents the visibility of the device's advertisement.
+enum NearbySharingVisibility {
+  VISIBILITY_UNKNOWN = 0;
+  VISIBILITY_HIDDEN = 1;
+  // The user is visible to all contacts.
+  VISIBILITY_ALL_CONTACTS = 2;
+  // The user is only visible to selected contacts.
+  VISIBILITY_SELECTED_CONTACTS = 3;
+  // The user is visible to everyone.
+  VISIBILITY_EVERYONE = 4;
+  // The user is visible to devices signed in with the same account.
+  VISIBILITY_SELF_SHARE = 5;
+}
+
+// Represents settings for Nearby Sharing.
+message NearbySharingSettings {
+  // A human readable name for this device.
+  optional string device_name = 1;
+
+  // Sets the data usage preference.
+  optional NearbySharingDataUsage data_usage = 2;
+
+  // Sets the visibility preference.
+  optional NearbySharingVisibility visibility = 3;
+}
