@@ -16,3 +16,15 @@ import (
 func IsWelcomeScreenVisible(ctx context.Context, oobeConn *chrome.Conn) error {
 	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()")
 }
+
+// IsHidMouseDetected checks if the current page in OOBE to see if it's
+// currently on the HID Detection page.
+func IsHidMouseDetected(ctx context.Context, oobeConn *chrome.Conn) error {
+	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.mouseDetected()")
+}
+
+// IsHidKeyboardDetected checks if the current page in OOBE to see if it's
+// currently on the HID Detection page.
+func IsHidKeyboardDetected(ctx context.Context, oobeConn *chrome.Conn) error {
+	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.keyboardDetected()")
+}
