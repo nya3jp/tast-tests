@@ -50,3 +50,15 @@ func IsHidDetectionKeyboardNotDetected(ctx context.Context, oobeConn *chrome.Con
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 	return ui.WaitUntilExists(keyboardNotDetectedTextNode)(ctx)
 }
+
+// IsHidMouseDetected checks if the current page in OOBE to see if it's
+// currently on the HID Detection page.
+func IsHidMouseDetected(ctx context.Context, oobeConn *chrome.Conn) error {
+	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.mouseDetected()")
+}
+
+// IsHidKeyboardDetected checks if the current page in OOBE to see if it's
+// currently on the HID Detection page.
+func IsHidKeyboardDetected(ctx context.Context, oobeConn *chrome.Conn) error {
+	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.keyboardDetected()")
+}
