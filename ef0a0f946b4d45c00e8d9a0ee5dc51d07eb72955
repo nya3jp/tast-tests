@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a385d08_ee7b8989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-11-01T18:50:30Z",
+      "side": 1,
+      "message": "Thank you for the suggestion! I\u0027ll try to add a log",
+      "parentUuid": "d2bfdbe7_236ac3ea",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "ef0a0f946b4d45c00e8d9a0ee5dc51d07eb72955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "79197c29_4ef99537",
