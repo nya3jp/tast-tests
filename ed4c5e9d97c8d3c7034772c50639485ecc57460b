@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd3b076_aa8748b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-11-01T19:03:19Z",
+      "side": 1,
+      "message": "To have the same scenario to compare with the real touch move (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d137), I think we shouldn\u0027t release it here.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "ed4c5e9d97c8d3c7034772c50639485ecc57460b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
