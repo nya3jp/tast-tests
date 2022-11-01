@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"strconv"
 	"time"
@@ -229,6 +230,12 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Error("Test did not run")
 		s.Fatal("Failed to connect to servo: ", err)
 	}
+	// Write an echo to servod, just to make the test name appear in the logs.
+	if _, err := i.value.Helper.Servo.Echo(ctx, fmt.Sprintf("Test start: %s", s.TestName())); err != nil {
+		s.Error("Test did not run")
+		s.Fatal("Servo echo failed: ", err)
+	}
+
 	if i.disallowSSH {
 		return
 	}
