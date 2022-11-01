@@ -16,6 +16,41 @@
       "message": "LGTM.\n\nI am not sure if that is possible  but will there be a similar effort to serve the kiosk app locally too?",
       "revId": "d2ca74976b43801c411e5009f162fdefa1595472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e3a3bf_1b6bf81f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-11-01T10:05:39Z",
+      "side": 1,
+      "message": "Thanks for the review, Kamil!",
+      "revId": "d2ca74976b43801c411e5009f162fdefa1595472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac8521e_2b1cfde2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-11-01T10:05:39Z",
+      "side": 1,
+      "message": "I haven\u0027t looked into this yet but I think it should be possible to serve local crx files in Tast. I\u0027m not sure if this is a good idea though since we will not be able to detect regression in Chrome web store server.",
+      "parentUuid": "87af95d5_5ae38b60",
+      "revId": "d2ca74976b43801c411e5009f162fdefa1595472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
