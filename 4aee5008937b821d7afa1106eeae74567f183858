@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38f854a0_5ae448de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T04:13:48Z",
+      "side": 1,
+      "message": "+1 to this, one way I can think of is moving the string parsing and file name consts to tast/common/..., then have some base class that\u0027s overridden in the tast/local/... and tast/remote/... directories for the respective test type that implements the actual file reading. For local tests, we can continue to use native Go packages, and for remote tests, we can just use remote ssh runner to do it via command line.",
+      "parentUuid": "232bb1c4_5535c241",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "382519f5_0338be3f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "writtenOn": "2022-11-01T02:23:01Z",
       "side": 1,
       "message": "Can we pass around the ID instead? I think it\u0027s better to match enums rather than strings, it adds some compile-time checks",
+      "range": {
+        "startLine": 878,
+        "startChar": 16,
+        "endLine": 878,
+        "endChar": 20
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8d2d89_f8088998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T04:13:48Z",
+      "side": 1,
+      "message": "Or just add everything here to match the function name (and to avoid updating the proto every time we need another part of it).",
+      "parentUuid": "365aaf28_1f597958",
       "range": {
         "startLine": 878,
         "startChar": 16,
