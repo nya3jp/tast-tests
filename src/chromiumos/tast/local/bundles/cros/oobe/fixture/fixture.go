@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package oobe
+// Package fixture contains fixtures oobe tests use.
+package fixture
 
 import (
 	"context"
@@ -21,6 +22,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Vars:            []string{"ui.signinProfileTestExtensionManifestKey"},
+		Parent:          "turnOffServoKeyboard",
 		Impl:            &ChromeOobeHidDetection{},
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,

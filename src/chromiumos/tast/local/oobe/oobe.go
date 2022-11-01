@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -47,6 +48,35 @@ func IsHidDetectionKeyboardNotDetected(ctx context.Context, oobeConn *chrome.Con
 		return err
 	}
 	keyboardNotDetectedTextNode := nodewith.Role(role.StaticText).Name(keyboardNotDetectedText)
+	return uiauto.New(tconn).WaitUntilExists(keyboardNotDetectedTextNode)(ctx)
+}
+
+// IsHidDetectionSearchingForMouse checks if OOBE HID Detection page is
+// searching for mouse device.
+func IsHidDetectionSearchingForMouse(ctx context.Context, oobeConn *chrome.Conn, tconn *chrome.TestConn) error {
+	var mouseNotDetectedText string
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getMouseNotDetectedText()", &mouseNotDetectedText); err != nil {
+		return err
+	}
+	mouseNotDetectedTextNode := nodewith.Role(role.StaticText).Name(mouseNotDetectedText)
+	return uiauto.New(tconn).WaitUntilExists(mouseNotDetectedTextNode)(ctx)
+}
+
+// ClickHidScreenNextButton clicks on the next button in OOBE HID detection screen.
+func ClickHidScreenNextButton(ctx context.Context, oobeConn *chrome.Conn, tconn *chrome.TestConn) error {
+	var nextButtonName string
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getNextButtonName()", &nextButtonName); err != nil {
+		return errors.Wrap(err, "failed to retrieve the next button")
+	}
+
+	nextButtonFinder := nodewith.Name(nextButtonName).Role(role.Button)
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
-	return ui.WaitUntilExists(keyboardNotDetectedTextNode)(ctx)
+	if err := uiauto.Combine("Click on next button",
+		ui.WaitUntilExists(nextButtonFinder),
+		ui.LeftClick(nextButtonFinder),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on next button")
+	}
+
+	return nil
 }
