@@ -33,6 +33,52 @@
       "message": "Hi reviewers, this function will be soon used by E14s regression on gdoc. I have tested it locally with xiuwen@\u0027s draft CL and it works as expected.",
       "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3392cf_ce73d0cd",
+        "filename": "src/chromiumos/tast/local/chrome/googleapps/docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-01T06:00:47Z",
+      "side": 1,
+      "message": "you don\u0027t need this, `testing.Poll` is an action by definition.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 41
+      },
+      "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b3cb1e_6171c1f5",
+        "filename": "src/chromiumos/tast/local/chrome/googleapps/docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-01T06:00:47Z",
+      "side": 1,
+      "message": "Avoid named return value here as it reduces the clarity/readability.\n\n\"Don\u0027t name result parameters in order to avoid declaring a variable inside the function. This practice results in unnecessary API verbosity at the cost of minor implementation brevity.\" (http://go/go-style/decisions#named-result-parameters)",
+      "range": {
+        "startLine": 163,
+        "startChar": 59,
+        "endLine": 163,
+        "endChar": 86
+      },
+      "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
