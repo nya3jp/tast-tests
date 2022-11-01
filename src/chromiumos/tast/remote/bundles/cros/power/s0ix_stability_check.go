@@ -31,6 +31,7 @@ type s0ixCheckTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         S0ixStabilityCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies S0ix stability with suspend-resume",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -168,7 +169,7 @@ func S0ixStabilityCheck(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to match pre PkgCstate value: ", pkgOpSetOutput)
 	}
 
-	pkgOpSetPre, err := strconv.Atoi(matchSetPre[1])
+	pkgOpSetPre, err := strconv.ParseInt(matchSetPre[1], 0, 64)
 	if err != nil {
 		s.Fatal("Failed to convert string to integer: ", err)
 	}
@@ -235,7 +236,7 @@ func S0ixStabilityCheck(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to match post PkgCstate value: ", pkgOpSetPostOutput)
 	}
 
-	pkgOpSetPost, err := strconv.Atoi(matchSetPost[1])
+	pkgOpSetPost, err := strconv.ParseInt(matchSetPost[1], 0, 64)
 	if err != nil {
 		s.Fatal("Failed to convert string to integer: ", err)
 	}
