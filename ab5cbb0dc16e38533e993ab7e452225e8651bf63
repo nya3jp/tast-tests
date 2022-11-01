@@ -16,6 +16,24 @@
       "message": "Why did you lowercase all the strings?",
       "revId": "ab5cbb0dc16e38533e993ab7e452225e8651bf63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de69d25d_c2479704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-11-01T10:05:26Z",
+      "side": 1,
+      "message": "Learn it from Jun. It is better to lowercase for error.Wraps and action.Combine.",
+      "parentUuid": "69e066e2_209b4e79",
+      "revId": "ab5cbb0dc16e38533e993ab7e452225e8651bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
