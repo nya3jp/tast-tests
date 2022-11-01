@@ -117,9 +117,13 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 	if err := uiauto.UserAction(
 		"VK typing input",
 		uiauto.Combine(`input and verify login password`,
-			vkbCtx.TapKeys([]string{"x", "2"}),                      // pwd: x2
-			vkbCtx.TapNode(leftShiftKey),                            // Shifted VK
-			vkbCtx.TapKey("Z"),                                      // pwd: x2Z
+			vkbCtx.TapKeys([]string{"x", "2"}), // pwd: x2
+			uiauto.Retry(3, uiauto.Combine(
+				"press left SHIFT key and check VK shifted",
+				vkbCtx.TapNode(leftShiftKey),
+				vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),
+			)),
+			vkbCtx.TapKey("Z"), // pwd: x2Z
 			vkbCtx.TapKeysIgnoringCase([]string{"g", "space", "m"}), // pwd: x2Zg m
 			uiauto.Retry(5, uiauto.NamedCombine(
 				"Show password and validate text",
