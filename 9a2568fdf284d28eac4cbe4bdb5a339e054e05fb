@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb032d5a_4a7d6ddc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:27:18Z",
+      "side": 1,
+      "message": "It would be good to also run the Tast unit tests https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/main/docs/writing_tests.md#unit-tests",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8a088e_c922aa65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:27:18Z",
+      "side": 1,
+      "message": "Did you check that the DTIM period actually used by the AP was the one you expected?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a306392a_278cece2",
@@ -14,6 +60,75 @@
       "writtenOn": "2022-10-31T23:13:20Z",
       "side": 1,
       "message": "The old CL has now split into three:)",
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e51d9ff_36f4eaa1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:27:18Z",
+      "side": 1,
+      "message": "Rather than an array of size 1, would it make sense to use a single parameter?",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82631828_eb3ac369",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:27:18Z",
+      "side": 1,
+      "message": "nit: I think variables are supposed to be named with mixed case go/go-style/guide#mixed-caps",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 10
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d2266d_0232c46d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-01T02:27:18Z",
+      "side": 1,
+      "message": "nit: I think variables are supposed to be named with mixed case go/go-style/guide#mixed-caps",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 9
+      },
       "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
