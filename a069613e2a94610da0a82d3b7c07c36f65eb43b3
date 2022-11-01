@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "302bef3c_b83ea915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "This would _technically_ be open source right? What permissions would this video have to have? Would it be a plane drive link or a go/ link?",
+      "parentUuid": "041f9c12_9793a895",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca043f87_7db9e9bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
         "patchSetId": 4
@@ -116,6 +134,24 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "FYI, I think this file would shrink by more than half if all this error handling could be somehow done elsewhere. Not only is it distracting and verbose, it also interrupts the flow as you\u0027re reading the code. There\u0027s nothing that can be done, is that right?",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209ebada_b4f0c044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "As far as I know about go, this is just kind of how it is? (I blame go for not having error handling)\n\n@amusbach@chromium.org Wdyt?",
+      "parentUuid": "ca043f87_7db9e9bd",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +179,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c96a1a4_f507dd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b076e24_2e6fe5e6",
+      "range": {
+        "startLine": 75,
+        "startChar": 37,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3009c60c_2b98d413",
@@ -156,6 +216,24 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "I\u0027m torn between putting all these here or peppering it throughout the code body below. I think it might be nicer below? Thoughts? You can say something like:\n// Add pre-existing list of common metrics (Optional)",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa551df1_0ec3500a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Added below, I like how it looks there!",
+      "parentUuid": "3009c60c_2b98d413",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -179,6 +257,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32a15e75_f2794d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Oh, I think theres a misunderstanding about this. I just included this comment because almost every test I\u0027ve seen had a comment like this. \n\nThis \"virtual\" keyboard isn\u0027t the on screen keyboard that I\u0027m trying to work with in the future DocsCUJ -- its just our virtual way of inputting key-presses to the DUT. We use input.Keyboard (and similarly, we use the virtual mouse input.Mouse) to mimic using the keyboard and mouse respectively (hence, \"virtual\"). \n\nI tried to add more to this code-comment to explain this, wdyt?",
+      "parentUuid": "786b5b5c_6fad7aaf",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15f8086c_9099a35d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
         "patchSetId": 4
@@ -190,6 +286,24 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "Why do you need this?",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6427b014_6756b0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "See note about input.Keyboard (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3990909/comment/786b5b5c_6fad7aaf/)",
+      "parentUuid": "15f8086c_9099a35d",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -211,6 +325,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03b5df6_5425132b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb89018d_d3bf7eef",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71c2d080_2adc9182",
@@ -224,6 +356,24 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "Shouldn\u0027t we instead close all tabs first thing before opening a new tab? This should also take care of any pollution from previous tests, instead of relying on this assumption",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e3dbdc3_0d3aa116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "The tabs reopening from previous tests was fixed by @neis in crrev/c/3912317. Since then (its been a while since that landed), we never ran into any issues of tabs reopening from previous tests. If tests are holding over windows, thats a bigger issue that our fixture needs to address, or else each individual test would have a large amount of bloat cleaning up old tests.\n\nalso note: When lacros launches, a New Tab has to appear to keep it \"active\". \"Closing all tabs\" would actually kill Lacros. Currently all of our tests rely on this assumption and I think its valid -- the previous issues were actually a mistake with Lacros.",
+      "parentUuid": "71c2d080_2adc9182",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -245,6 +395,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0266d8_4fb3efa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a05a2f5_2f2d544b",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ef4ad8_93771cf7",
@@ -258,6 +426,30 @@
       "writtenOn": "2022-11-01T18:01:11Z",
       "side": 1,
       "message": "nit: extra space",
+      "range": {
+        "startLine": 225,
+        "startChar": 33,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f28d6c_b9a5764c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-01T18:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ef4ad8_93771cf7",
       "range": {
         "startLine": 225,
         "startChar": 33,
