@@ -143,3 +143,28 @@ func DeleteDoc(tconn *chrome.TestConn) action.Action {
 func waitForDocsSaved(tconn *chrome.TestConn) action.Action {
 	return waitForDocumentSaved(tconn, docsName)
 }
+
+// WaitUntilDocContentToBe waits for up to 5s until expected content.
+func WaitUntilDocContentToBe(docConn *chrome.Conn, expectedContent string) action.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			docContent, err := docContent(ctx, docConn)
+			if err != nil {
+				return err
+			}
+			if docContent != expectedContent {
+				return errors.Errorf("unexpected gdoc content: got %q; want %q", docContent, expectedContent)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second})
+	}
+}
+
+func docContent(ctx context.Context, docConn *chrome.Conn) (string, error) {
+	expr := `shadowPiercingQuery(".docs-texteventtarget-iframe").contentWindow.document.body.textContent`
+	var content string
+	if err := webutil.EvalWithShadowPiercer(ctx, docConn, expr, &content); err != nil {
+		return "", err
+	}
+	return content, nil
+}
