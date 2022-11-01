@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ce92b3_55d8cb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T21:17:08Z",
+      "side": 1,
+      "message": "I am working on a CL that would show how these new methods would be used. ill cc you once i am done!",
+      "parentUuid": "d63bcf62_5fc405a6",
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948a30c7_a12c8bc7",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-01T20:52:27Z",
       "side": 1,
       "message": "Can we check if `svc.keyboard` was already set and throw an error if so?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb14e9f6_ad5b97f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T21:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948a30c7_a12c8bc7",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8805df2_c82d1853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T21:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c0969a_52ea6c4c",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8afb9026_9618a44c",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0869c09d_d131c3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T21:17:08Z",
+      "side": 1,
+      "message": "We actually need the sharedObject for instantiating the mouse service as a singleton. removed mutex",
+      "parentUuid": "8afb9026_9618a44c",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "273da746_efce661a",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-11-01T20:52:27Z",
       "side": 1,
       "message": "Nit: Remove extra spacing.",
+      "range": {
+        "startLine": 15,
+        "startChar": 78,
+        "endLine": 15,
+        "endChar": 79
+      },
+      "revId": "fba3cd2be62a7d01da01699e04d253b7a9583a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb81458c_3abc9cfb",
+        "filename": "src/chromiumos/tast/services/cros/inputs/keyboard_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-01T21:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "273da746_efce661a",
       "range": {
         "startLine": 15,
         "startChar": 78,
