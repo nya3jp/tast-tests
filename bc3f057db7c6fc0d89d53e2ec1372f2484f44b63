@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "396ed6e6_db8edc4b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-11-01T07:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9644e46e_dc30703f",
+      "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2da29b6_94224769",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-01T04:33:55Z",
       "side": 1,
       "message": "small request but can you add a note that tconn should be ash-tconn to all these functions?",
+      "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabf832b_80a9edc1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-11-01T07:50:26Z",
+      "side": 1,
+      "message": "Added to RendererProcesses() and GPUProcesses().",
+      "parentUuid": "e2da29b6_94224769",
       "revId": "bc3f057db7c6fc0d89d53e2ec1372f2484f44b63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
