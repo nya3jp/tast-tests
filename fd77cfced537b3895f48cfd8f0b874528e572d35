@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94fb0dcd_24499052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T05:25:53Z",
+      "side": 1,
+      "message": "btw, do we need this deps of chrome?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "fd77cfced537b3895f48cfd8f0b874528e572d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
