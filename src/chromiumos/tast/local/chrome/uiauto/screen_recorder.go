@@ -143,7 +143,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	if err := Combine("start screen recorder through ui",
 		ui.WithInterval(500*time.Millisecond).LeftClickUntil(entireScreenTab, ui.Exists(firstDisplay)),
 		ui.WithInterval(500*time.Millisecond).LeftClickUntil(firstDisplay, ui.Exists(shareButton)),
-		ui.LeftClick(shareButton),
+		ui.LeftClickUntil(shareButton, ui.WithTimeout(time.Second).WaitUntilGone(shareButton)),
 	)(ctx); err != nil {
 		return nil, err
 	}
