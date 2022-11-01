@@ -21,13 +21,14 @@ Generating a new defs.go file:
 
  Assuming chromiumos and chromium are checkouts for their respective
  projects you need to run:
-  > PT=chromium/src/components/policy/resources/policy_templates.json
+  > PT=chromium/src/components/policy/resources
+  > python "${PT}/policy_templates.py"
   > cd chromiumos/src/platform/tast-tests/src/chromiumos/tast/common/policy/gen
-  > ./policy_tast_struct_creator.py --policy_templates ${PT}
+  > ./policy_tast_struct_creator.py --policy_templates "${PT}/policy_templates.json"
 """
 
 import argparse
-import ast
+import json
 import os
 import subprocess
 
@@ -541,6 +542,7 @@ type ArcPolicyValue struct {
 \tApplications\t[]Application\t`json:"applications"`
 \tPlayLocalPolicyEnabled\tbool\t`json:"playLocalPolicyEnabled"`
 \tPlayEmmApiInstallDisabled\tbool\t`json:"playEmmApiInstallDisabled"`
+\tPlayStoreMode\tstring\t`json:"playStoreMode"`
 }
 """ + attr_structs
   return attr_type, attr_structs
@@ -781,7 +783,7 @@ def main():
     return
 
   with open(args.policy_path) as f:
-    pt_contents = ast.literal_eval(f.read())
+    pt_contents = json.loads(f.read())
 
   device_field_lookup = pt_contents['device_policy_proto_map']
   # Save legacy field values. Note: this implementation won't work with any
