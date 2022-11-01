@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc6a662_c833312f",
+        "filename": "src/chromiumos/tast/local/chrome/googleapps/docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-01T07:48:54Z",
+      "side": 1,
+      "message": "oops, I misread this, sorry.",
+      "parentUuid": "32342439_70689543",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 41
+      },
+      "revId": "aa04f6bd10e92f5c3b91f7fa021c1c8a835513ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14b3cb1e_6171c1f5",
