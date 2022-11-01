@@ -31,8 +31,7 @@ func init() {
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		// Disabled due to <1% pass rate over 30 days. See b/241943747
-		//Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		SearchFlags: []*testing.StringPair{{
 			Key: "feature_id",
@@ -89,7 +88,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	defer cleanup(cleanupCtx)
 
 	defer ash.CleanUpDesks(cleanupCtx, tconn)
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	// Ensure there is no window open before test starts.
 	// TODO(crbug.com/1311504): Ensure that chrome.ResetState can close lacros windows opened in the previous tests as well. Apply it to wmp test package.

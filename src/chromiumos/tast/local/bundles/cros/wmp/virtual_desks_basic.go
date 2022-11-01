@@ -68,7 +68,6 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	defer cleanup(cleanupCtx)
 
 	defer ash.CleanUpDesks(cleanupCtx, tconn)
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Ensure there is no window open before test starts.
 	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
