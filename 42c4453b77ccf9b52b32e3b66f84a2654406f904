@@ -46,6 +46,30 @@
       },
       "revId": "42c4453b77ccf9b52b32e3b66f84a2654406f904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6997b813_28dd5115",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-01T15:40:51Z",
+      "side": 1,
+      "message": "Great. I think that means we can submit if we remove the `group:mainline` attribute. Let\u0027s add a `TODO(http://b/249564120)` to re-add it to `group:mainline` once that bug is fixed.\n\nGo ahead and add the Tast reviewers on this CL too.",
+      "parentUuid": "d2a3b638_994af671",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "42c4453b77ccf9b52b32e3b66f84a2654406f904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
