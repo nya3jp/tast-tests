@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7181b755_6afd2cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-01T18:01:11Z",
+      "side": 1,
+      "message": "lgtm\n\nthis is really easy to follow from someone who doesn\u0027t use tast much. appreciate all the detailed comments!",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "041f9c12_9793a895",
@@ -99,6 +116,29 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "FYI, I think this file would shrink by more than half if all this error handling could be somehow done elsewhere. Not only is it distracting and verbose, it also interrupts the flow as you\u0027re reading the code. There\u0027s nothing that can be done, is that right?",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b076e24_2e6fe5e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-01T18:01:11Z",
+      "side": 1,
+      "message": "nit: browser: \", err",
+      "range": {
+        "startLine": 75,
+        "startChar": 37,
+        "endLine": 75,
+        "endChar": 38
+      },
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +241,29 @@
       "writtenOn": "2022-11-01T05:53:00Z",
       "side": 1,
       "message": "Might be nicer to break up this comment and move it below",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ef4ad8_93771cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-01T18:01:11Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 225,
+        "startChar": 33,
+        "endLine": 225,
+        "endChar": 34
+      },
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
