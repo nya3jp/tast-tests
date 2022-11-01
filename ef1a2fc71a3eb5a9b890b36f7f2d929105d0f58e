@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e4def7_439c80f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-11-01T17:03:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41c82af6_4a0ecfd0",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67460a5e_61d6ddc6",
@@ -243,6 +261,24 @@
       "side": 1,
       "message": "It should because of the defer call, no?",
       "parentUuid": "5194820c_c5241516",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3150e0c_084a1afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-11-01T17:03:16Z",
+      "side": 1,
+      "message": "Yes it should, have you got chance to verify to make sure its leaving in right state!",
+      "parentUuid": "18a4c620_bb2ab0ca",
       "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
