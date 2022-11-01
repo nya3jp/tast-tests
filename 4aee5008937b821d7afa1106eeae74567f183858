@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1773ca1a_ad1f31e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T22:27:53Z",
+      "side": 1,
+      "message": "Ah good call, I agree with you then, it would be too many ssh calls. Resolving.",
+      "parentUuid": "a881f86a_587624d0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382519f5_0338be3f",
@@ -215,6 +239,30 @@
       "side": 1,
       "message": "I don\u0027t agree with adding the enum type ID here. This response is a proto and only supports basic types. If we introduce ID enums, we need to re-define in the proto file, which introduces another source of ID enum def. However, this enum is subject to change and whenever we introduce a new chip the maintainer needs to add in two places. \nFrom the intention of [this function](https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/wlan/wlan.go;rcl\u003d40abc47087c3e1722042ec4e01f6c085415a1f27;l\u003d197) it seems other fields from `DevInfo` are used to determine the name inside this function and not exported. That is, only Name and ID are consumed, so I think it may not be necessary to expose all fields. \nAs for ID, to avoid redefining the enums, can I simply define as `int32` in proto? When using ID, I can use enum elements to compare with.",
       "parentUuid": "cd8d2d89_f8088998",
+      "range": {
+        "startLine": 878,
+        "startChar": 16,
+        "endLine": 878,
+        "endChar": 20
+      },
+      "revId": "4aee5008937b821d7afa1106eeae74567f183858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ee0f01_46bf401e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-01T22:27:53Z",
+      "side": 1,
+      "message": "\u003e As for ID, to avoid redefining the enums, can I simply define as int32 in proto? When using ID, I can use enum elements to compare with.\n\nI think this is what Nicolas was suggesting.",
+      "parentUuid": "4419ce2d_cffe4368",
       "range": {
         "startLine": 878,
         "startChar": 16,
