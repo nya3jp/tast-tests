@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e97412_d7414fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:59:35Z",
+      "side": 1,
+      "message": "It seems that this part is a bit flaky for strict mode.\nIs a lag between disconnection and block traffic expected? If it is, probably better to change here to a polling test.",
+      "range": {
+        "startLine": 206,
+        "startChar": 20,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
