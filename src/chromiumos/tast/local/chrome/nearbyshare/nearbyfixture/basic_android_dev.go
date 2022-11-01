@@ -24,8 +24,8 @@ func addDevAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilityAllContacts,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityAllContacts,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -47,8 +47,8 @@ func addDevAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOnline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOnline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{
@@ -67,8 +67,8 @@ func addDevAndroidFixtures() {
 		Impl: NewNearbyShareFixture(fixtureOptions{
 			crosDataUsage:              nearbycommon.DataUsageOffline,
 			crosVisibility:             nearbycommon.VisibilityNoOne,
-			androidDataUsage:           nearbysnippet.DataUsageOffline,
-			androidVisibility:          nearbysnippet.VisibilityNoOne,
+			androidDataUsage:           nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE,
+			androidVisibility:          nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN,
 			crosSelectAndroidAsContact: false,
 		}),
 		Contacts: []string{

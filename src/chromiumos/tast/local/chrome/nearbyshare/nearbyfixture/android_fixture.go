@@ -52,7 +52,7 @@ const (
 )
 
 // NewNearbyShareAndroid creates a fixture that sets up an Android device for Nearby Share.
-func NewNearbyShareAndroid(androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, androidNearbyChannel channel) testing.FixtureImpl {
+func NewNearbyShareAndroid(androidDataUsage nearbysnippet.NearbySharingDataUsage, androidVisibility nearbysnippet.NearbySharingVisibility, androidNearbyChannel channel) testing.FixtureImpl {
 	return &nearbyShareAndroidFixture{
 		androidDataUsage:     androidDataUsage,
 		androidVisibility:    androidVisibility,
@@ -64,7 +64,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
-		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, modulefood),
+		Impl: NewNearbyShareAndroid(nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE, nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS, modulefood),
 		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -85,7 +85,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareAndroidSetupDev",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts), using the dev version of Nearby",
-		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, dev),
+		Impl: NewNearbyShareAndroid(nearbysnippet.NearbySharingDataUsage_DATA_USAGE_ONLINE, nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS, dev),
 		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -106,7 +106,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareAndroidSetupProd",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts), using the prod version of Nearby",
-		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, prod),
+		Impl: NewNearbyShareAndroid(nearbysnippet.NearbySharingDataUsage_DATA_USAGE_OFFLINE, nearbysnippet.NearbySharingVisibility_VISIBILITY_ALL_CONTACTS, prod),
 		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -126,8 +126,8 @@ func init() {
 }
 
 type nearbyShareAndroidFixture struct {
-	androidDataUsage     nearbysnippet.DataUsage
-	androidVisibility    nearbysnippet.Visibility
+	androidDataUsage     nearbysnippet.NearbySharingDataUsage
+	androidVisibility    nearbysnippet.NearbySharingVisibility
 	androidDevice        *nearbysnippet.AndroidNearbyDevice
 	androidNearbyChannel channel
 }
@@ -242,7 +242,7 @@ func (f *nearbyShareAndroidFixture) PreTest(ctx context.Context, s *testing.Fixt
 func (f *nearbyShareAndroidFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 // configureAndroidNearbySettings configures Nearby Share settings on an Android device.
-func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) error {
+func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.NearbySharingDataUsage, visibility nearbysnippet.NearbySharingVisibility, name string) error {
 	// Ensure Nearby is disabled to avoid race conditions or starting up in an invalid state after the device is set up.
 	if err := androidNearby.SetEnabled(ctx, false); err != nil {
 		return errors.Wrap(err, "failed to disable Nearby Share")
@@ -280,7 +280,7 @@ func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysn
 		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
 	}
 
-	if visibility != nearbysnippet.VisibilityNoOne {
+	if visibility != nearbysnippet.NearbySharingVisibility_VISIBILITY_HIDDEN {
 		// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
 		if err := androidNearby.Sync(ctx); err != nil {
 			return errors.Wrap(err, "failed to sync contacts and certificates")

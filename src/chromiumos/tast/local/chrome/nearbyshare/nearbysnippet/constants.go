@@ -14,44 +14,6 @@ const (
 // SendDir is the subdirectory of the Android downloads directory where we will stage files for sending.
 const SendDir = "test_files"
 
-// DataUsage are data usage values for the Nearby Snippet's setupDevice and getDataUsage methods.
-type DataUsage int
-
-// These are the 3 values defined by the Nearby Snippet API.
-const (
-	DataUsageOffline DataUsage = iota + 1
-	DataUsageOnline
-	DataUsageWifiOnly
-)
-
-// DataUsageStrings is a map of DataUsage to human-readable setting values.
-var DataUsageStrings = map[DataUsage]string{
-	DataUsageOffline:  "Offline",
-	DataUsageOnline:   "Online",
-	DataUsageWifiOnly: "Wifi Only",
-}
-
-// Visibility are values for the Nearby Snippet's setupDevice and getVisibility methods, corresponding to different contact visibility settings.
-type Visibility int
-
-// These are the 5 values defined by the Nearby Snippet API.
-const (
-	VisibilityUnknown Visibility = iota - 1
-	VisibilityNoOne
-	VisibilityAllContacts
-	VisibilitySelectedContacts
-	VisibilityEveryone
-)
-
-// VisibilityStrings is a map of Visibility to human-readable setting values.
-var VisibilityStrings = map[Visibility]string{
-	VisibilityUnknown:          "Unknown",
-	VisibilityNoOne:            "No One",
-	VisibilityAllContacts:      "All Contacts",
-	VisibilitySelectedContacts: "Selected Contacts",
-	VisibilityEveryone:         "Everyone",
-}
-
 // SnippetEvent are the event names posted by the Nearby Snippet to its event cache after initiating receiving.
 // The host CrOS device can monitor the sharing state by awaiting these events using the Nearby Snippet's eventWaitAndGet RPC.
 type SnippetEvent string
