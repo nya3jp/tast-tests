@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee33e32_c8c61fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-01T02:42:05Z",
+      "side": 1,
+      "message": "When there is no IPv4 this string will start with \",\"?\n\nConsider using `strings.Join`.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 45
+      },
+      "revId": "60e274d3d664f75c07797b57beca2f9133a1db47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
