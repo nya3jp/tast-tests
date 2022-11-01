@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7cf11e_cd468fdd",
+        "filename": "src/chromiumos/tast/common/cryptohome/helpers.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-01T14:47:59Z",
+      "side": 1,
+      "message": "nit: remove the parentheses from around `int`",
+      "range": {
+        "startLine": 77,
+        "startChar": 24,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "3d0e03e13c4700dfec4cf951894696eb68f9066e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
