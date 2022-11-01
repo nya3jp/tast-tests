@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24abe82_368053a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-01T20:42:46Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to continue with the remaining scenarios and then fail at the end? That would provide information about more problems.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "17da6f1e7af028512f0620df45ff7fd4f01312ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9518eb1e_7fba93f2",
@@ -14,6 +37,52 @@
       "writtenOn": "2022-11-01T04:33:08Z",
       "side": 1,
       "message": "Please review.",
+      "revId": "17da6f1e7af028512f0620df45ff7fd4f01312ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965e54b9_17102cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-01T20:42:46Z",
+      "side": 1,
+      "message": "nit: Discuss this change in the commit message, or make it a separate CL.",
+      "range": {
+        "startLine": 209,
+        "startChar": 33,
+        "endLine": 209,
+        "endChar": 49
+      },
+      "revId": "17da6f1e7af028512f0620df45ff7fd4f01312ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6068de8f_578b97b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-01T20:42:46Z",
+      "side": 1,
+      "message": "nit: `s.Fatalf(\"Failed to run test scenario %s: %s\", testName, err)`",
+      "range": {
+        "startLine": 679,
+        "startChar": 5,
+        "endLine": 679,
+        "endChar": 65
+      },
       "revId": "17da6f1e7af028512f0620df45ff7fd4f01312ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
