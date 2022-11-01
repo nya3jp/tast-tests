@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e2d4a87_4b9af9df",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:20:38Z",
+      "side": 1,
+      "message": "Can you initialize those fields globally?\n\namdgpuFields \u003d map[string][]string{\n    \"gem_objects\": []string{\"/sys/kernel/debug/dri/0/amdgpu_gem_info\"},\n    \"memory\": []string{\"/sys/kernel/debug/dri/0/amdgpu_gtt_mm\"},\n}",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "805ce5ce_485235c7",
         "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
         "patchSetId": 6
@@ -105,6 +128,29 @@
         "startChar": 9,
         "endLine": 209,
         "endChar": 1
+      },
+      "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a0e08d_e2f4f08d",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-01T18:20:38Z",
+      "side": 1,
+      "message": "Seems like some of the fields are missing?",
+      "range": {
+        "startLine": 354,
+        "startChar": 21,
+        "endLine": 354,
+        "endChar": 40
       },
       "revId": "d4c7d0ce214147686a18126cd327106c92a3facb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
