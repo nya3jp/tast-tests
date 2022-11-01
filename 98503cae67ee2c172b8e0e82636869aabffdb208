@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cdf597_3792d982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-01T18:51:47Z",
+      "side": 1,
+      "message": "Which devices did you test this on? How does this interact with non-USB devices (i.e. FM350 and the QC SoC-based ones)?",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8631093_fef602f2",
@@ -14,6 +31,63 @@
       "writtenOn": "2022-11-01T00:50:04Z",
       "side": 1,
       "message": "@aleksandermj@google.com this is only a 1 minute poll to check that a modem is exposed rather than the 3 that you mentioned, but at this point the DUT has to be alive for over 2 minutes due to the fixtures `SetUp`. I can extend it though if you think it\u0027s too short.",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b4bc58_6d085915",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-01T18:51:47Z",
+      "side": 1,
+      "message": "You can move this after the bit where you parse the manifest.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 39
+      },
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fc0889_098980c6",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-01T18:51:47Z",
+      "side": 1,
+      "message": "this error might look funny for the blank-variant case. Should we special case that where it just returns manifest.Device[0] and errors out with something else if the device list is empty?",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c4c911_b8264609",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-01T18:51:47Z",
+      "side": 1,
+      "message": "Kind of surprised we wouldn\u0027t just pass in the original device.DeviceId and have the modemfwd package handle it? Surely we might need to do something similar for PCI devices?",
       "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
