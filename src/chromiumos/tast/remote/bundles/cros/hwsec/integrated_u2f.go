@@ -27,6 +27,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type integratedU2fParam struct {
+	isSimulator bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IntegratedU2F,
@@ -37,12 +41,19 @@ func init() {
 			"yich@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "gsc", "reboot"},
-		Attr:         []string{"group:firmware", "firmware_cr50"},
-		VarDeps:      []string{"servo"},
 		ServiceDeps: []string{
 			"tast.cros.example.ChromeService",
 			"tast.cros.hwsec.AttestationDBusService",
 		},
+		Vars: []string{"servo"},
+		Params: []testing.Param{{
+			ExtraAttr: []string{"group:firmware", "firmware_cr50"},
+			Val:       integratedU2fParam{isSimulator: false},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"tpm2_simulator"},
+			Val:               integratedU2fParam{isSimulator: true},
+		}},
 		Timeout: 10 * time.Minute,
 	})
 }
@@ -91,14 +102,20 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure chaps slots: ", err)
 	}
 
-	// Connect to servo.
-	servoSpec, _ := s.Var("servo")
-	pxy, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	var pbHelper util.PowerButtonHelper
+	if !s.Param().(integratedU2fParam).isSimulator {
+		// Connect to servo.
+		servoSpec, _ := s.Var("servo")
+		pxy, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
+		if err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
+		defer pxy.Close(ctx)
+		svo := pxy.Servo()
+		pbHelper = util.NewServoPowerButtonHelper(svo)
+	} else {
+		pbHelper = util.NewSocketPowerButtonHelper(cmdRunner)
 	}
-	defer pxy.Close(ctx)
-	svo := pxy.Servo()
 
 	// Clean up the flags in u2fd after the tests finished.
 	defer util.SetU2fdFlags(ctx, helper, false, false, false)
@@ -146,7 +163,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 			//  Wait for system become stable.
 			testing.Sleep(ctx, 3*time.Second)
 
-			if err := runU2Test(ctx, s.DUT(), device, svo); err != nil {
+			if err := runU2Test(ctx, s.DUT(), device, pbHelper); err != nil {
 				s.Fatal("U2F test filed: ", err)
 			}
 		})
@@ -181,7 +198,7 @@ func u2fDevicePath(ctx context.Context, cmd *hwsecremote.CmdRunnerRemote) (strin
 }
 
 // runU2Test runs the U2FTest with the U2F device.
-func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Servo) (retErr error) {
+func runU2Test(ctx context.Context, dut *dut.DUT, device string, pbHelper util.PowerButtonHelper) (retErr error) {
 	const (
 		u2fTestPath = "/usr/local/bin/U2FTest"
 		trigger     = "Touch device and hit enter."
@@ -228,7 +245,7 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		line := scanner.Text()
 		if strings.Contains(line, trigger) {
 			testing.ContextLog(ctx, "Clicking power key")
-			if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			if err := pbHelper.PressAndRelease(ctx); err != nil {
 				return errors.Wrap(err, "failed to press the power key")
 			}
 			if _, err := stdin.Write([]byte("\n")); err != nil {

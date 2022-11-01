@@ -22,6 +22,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type webauthnU2fModeParam struct {
+	browserType webauthnpb.BrowserType
+	isSimulator bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebauthnU2fMode,
@@ -31,20 +36,41 @@ func init() {
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
 		},
-		Attr:         []string{"group:firmware", "firmware_cr50"},
 		SoftwareDeps: []string{"chrome", "gsc"},
 		ServiceDeps: []string{
 			"tast.cros.hwsec.WebauthnService",
 			"tast.cros.hwsec.AttestationDBusService",
 		},
 		Params: []testing.Param{{
-			Val: webauthnpb.BrowserType_ASH,
+			ExtraAttr: []string{"group:firmware", "firmware_cr50"},
+			Val: webauthnU2fModeParam{
+				browserType: webauthnpb.BrowserType_ASH,
+				isSimulator: false,
+			},
 		}, {
 			Name:              "lacros",
+			ExtraAttr:         []string{"group:firmware", "firmware_cr50"},
 			ExtraSoftwareDeps: []string{"lacros"},
-			Val:               webauthnpb.BrowserType_LACROS,
+			Val: webauthnU2fModeParam{
+				browserType: webauthnpb.BrowserType_LACROS,
+				isSimulator: false,
+			},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"tpm2_simulator"},
+			Val: webauthnU2fModeParam{
+				browserType: webauthnpb.BrowserType_ASH,
+				isSimulator: true,
+			},
+		}, {
+			Name:              "vm_lacros",
+			ExtraSoftwareDeps: []string{"tpm2_simulator", "lacros"},
+			Val: webauthnU2fModeParam{
+				browserType: webauthnpb.BrowserType_LACROS,
+				isSimulator: true,
+			},
 		}},
-		VarDeps: []string{"servo"},
+		Vars: []string{"servo"},
 	})
 }
 
@@ -73,7 +99,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	bt := s.Param().(webauthnpb.BrowserType)
+	bt := s.Param().(webauthnU2fModeParam).browserType
 
 	// u2fd reads files from the user's home dir, so we need to log in.
 	cr := webauthnpb.NewWebauthnServiceClient(cl.Conn)
@@ -100,14 +126,21 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure chaps slots: ", err)
 	}
 
-	// Connect to servo.
-	servoSpec, _ := s.Var("servo")
-	pxy, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	var pbHelper util.PowerButtonHelper
+	if !s.Param().(webauthnU2fModeParam).isSimulator {
+		// Connect to servo.
+		servoSpec, _ := s.Var("servo")
+		pxy, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
+		if err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
+		defer pxy.Close(ctx)
+		svo := pxy.Servo()
+		pbHelper = util.NewServoPowerButtonHelper(svo)
+	} else {
+		pbHelper = util.NewSocketPowerButtonHelper(cmdRunner)
 	}
-	defer pxy.Close(ctx)
-	svo := pxy.Servo()
+
 	// Set u2f mode to enable power button press authentication.
 	util.SetU2fdFlags(ctx, helper, true, true, false)
 	// Clean up the flags in u2fd after the tests finished.
@@ -121,8 +154,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 	powerButtonAuthCallback := func(ctx context.Context) error {
-		// Press power button using servo.
-		if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+		if err := pbHelper.PressAndRelease(ctx); err != nil {
 			return errors.Wrap(err, "failed to press the power key")
 		}
 		return nil
