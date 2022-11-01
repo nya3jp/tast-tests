@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3a2090ff_e601dc21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-11-01T22:34:57Z",
+      "side": 1,
+      "message": "Sorry but I thought you were referring to the tast test log.txt. To add console.log() to chrome.log we will need to update the chromium side.",
+      "parentUuid": "5a385d08_ee7b8989",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "ef0a0f946b4d45c00e8d9a0ee5dc51d07eb72955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79197c29_4ef99537",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
