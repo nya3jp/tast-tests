@@ -520,6 +520,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb9f21e3_7568bfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T05:24:54Z",
+      "side": 1,
+      "message": "As discussed offline, let\u0027s set up an envrionment similiar to what we are doing in VPNSourceRouting test now, and use iptables rules to block the VPN server to simulate the case the that VPN is not connectable.",
+      "parentUuid": "6a3b7b54_85b1b77d",
+      "range": {
+        "startLine": 180,
+        "startChar": 39,
+        "endLine": 180,
+        "endChar": 51
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a14bcc26_5306b096",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
         "patchSetId": 16
