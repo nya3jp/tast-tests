@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a35d1b_d36328d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-01T17:58:09Z",
+      "side": 1,
+      "message": "Instead of shaking mouse to avoid idling, can we just adjust the idle timeout?\n\nThat way we can esaily extend/disable idling for other similar Demo Mode tests we write.\n\nI don\u0027t know if overriding a policy is an option but idle behavior is controlled via policy. We can configure how long it takes for device to go in idle mode and what happens when it goes in that state (\"do nothing\" is also an option).\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:out/win-Debug/gen/components/policy/proto/chrome_settings.proto;l\u003d17584;drc\u003df3980bec493b6de31119a3048861d466509d7351\n\njacksontadie@ might be able to help with the right policy to use.\n\nWe can also add a chrome flag that is passed to disable idling for tests if it is not written already. It would work the same way as --force-devtools-available used below.",
+      "revId": "15b3e753c969ffe343abe82de747302f70313a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4e3719_a95abf64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/demo_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-01T17:58:09Z",
+      "side": 1,
+      "message": "If Play Store doesn\u0027t launch it could mean that provisioning is failing for demo mode so retrying can hide that problem\n\nThere are two ways to solve this:\n\n1. We write a separate test just for ensuring provisioning succeeds for Demo Mode and that won\u0027t retry\n2. We use the same test for both provisioning and ensuring Play Store loads in readonly demo mode.",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 15
+      },
+      "revId": "15b3e753c969ffe343abe82de747302f70313a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
