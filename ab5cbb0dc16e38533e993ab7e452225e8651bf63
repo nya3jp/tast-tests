@@ -34,6 +34,24 @@
       "parentUuid": "69e066e2_209b4e79",
       "revId": "ab5cbb0dc16e38533e993ab7e452225e8651bf63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5354d770_55c0bf78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-01T10:59:46Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;l\u003d45\n\nThe description of a combined action will be part of the error log in format `failed to %s`. So the description is nicely named as `do something`.",
+      "parentUuid": "de69d25d_c2479704",
+      "revId": "ab5cbb0dc16e38533e993ab7e452225e8651bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
