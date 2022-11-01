@@ -16,6 +16,24 @@
       "message": "If the GUID changed, what happened with the existing CAB firmware files?",
       "revId": "21b11a61604d08824ecf3652c8766179e7bbec9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb2ea96_7d6e14f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-01T22:34:02Z",
+      "side": 1,
+      "message": "We don\u0027t currently have any firmware packages, so it doesn\u0027t matter.",
+      "parentUuid": "73fc4812_e2031838",
+      "revId": "21b11a61604d08824ecf3652c8766179e7bbec9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
