@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4441e7_e1e17166",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-01T02:19:30Z",
+      "side": 1,
+      "message": "Hidehiko is ooo for a while.",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b519452_13066021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-01T02:19:30Z",
+      "side": 1,
+      "message": "What makes the test disabled? Is it the empty Attr here? Please add a comment.",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52314d6_c0493006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-01T02:19:30Z",
+      "side": 1,
+      "message": "Don\u0027t you want to do some sanity check here too? Not sure what reverse migration does exactly. If it disables Lacros, you could check that running apps.PrimaryBrowser() successfully opens Ash.",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e76627_3a19da86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-01T02:19:30Z",
+      "side": 1,
+      "message": "Let\u0027s move this to a common place and share it with the other migration tests.",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebdeaf0_7a50485e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/reverse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-01T02:19:30Z",
+      "side": 1,
+      "message": "Nit: return",
+      "range": {
+        "startLine": 22,
+        "startChar": 68,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
