@@ -382,9 +382,9 @@ func (y *YtApp) checkYoutubeAppPIP(ctx context.Context) error {
 	)(ctx)
 }
 
-// EnterFullscreen switches youtube video to fullscreen.
-func (y *YtApp) EnterFullscreen(ctx context.Context) error {
-	// If the youtube app is already in fullscreen, skip the process to go fullscreen.
+// EnterFullScreen switches youtube video to full screen.
+func (y *YtApp) EnterFullScreen(ctx context.Context) error {
+	// If the youtube app is already in full screen, skip the process to go fullscreen.
 	if err := ash.WaitForCondition(ctx, y.tconn, func(w *ash.Window) bool {
 		return w.Title == YoutubeWindowTitle && w.State == ash.WindowStateFullscreen
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err == nil {
@@ -411,6 +411,26 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Elapsed time when doing enter fullscreen %.3f s", time.Since(startTime).Seconds())
+	return nil
+}
+
+// ExitFullScreen exits Youtube video from fullscreen.
+func (y *YtApp) ExitFullScreen(ctx context.Context) error {
+	testing.ContextLog(ctx, "Exit Youtube video from full screen")
+
+	const exitFullscreenDesc = "Exit fullscreen"
+	exitFsBtn := y.d.Object(androidui.Description(exitFullscreenDesc))
+	playerView := y.d.Object(androidui.ID(playerViewID))
+
+	startTime := time.Now()
+	if err := uiauto.NamedCombine("exit Youtube from full screen",
+		cuj.FindAndClick(playerView, uiWaitTime),
+		cuj.FindAndClick(exitFsBtn, uiWaitTime),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to exit full screen")
+	}
+
+	testing.ContextLogf(ctx, "Elapsed time when doing exit full screen %.3f s", time.Since(startTime).Seconds())
 	return nil
 }
 

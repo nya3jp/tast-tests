@@ -125,7 +125,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 
-		if err := videoApp.EnterFullscreen(ctx); err != nil {
+		if err := videoApp.EnterFullScreen(ctx); err != nil {
 			return errors.Wrap(err, "failed to enter full screen")
 		}
 
