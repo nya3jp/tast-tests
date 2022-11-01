@@ -40,9 +40,10 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportDVFS()),
 			Fixture:           "chromeGraphicsIdle",
 		}, {
-			Name:    "dvfs_arc",
-			Val:     dvfs,
-			Fixture: "chromeGraphicsIdleArc",
+			Name:              "dvfs_arc",
+			Val:               dvfs,
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportDVFS()),
+			Fixture:           "chromeGraphicsIdleArc",
 		}, {
 			// TODO(pwang): Not all platform has fbc enabled. Add SoftwareDeps/HardwareDeps once we got some results on stainless.
 			Name:              "fbc",
