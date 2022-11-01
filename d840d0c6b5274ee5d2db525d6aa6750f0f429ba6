@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d1e48e_47d78b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-01T23:06:49Z",
+      "side": 1,
+      "message": "This refactor made it easier to implement the DUT identity log commit (crrev.com/c/3996400). PTAL when you get a chance.",
+      "revId": "d840d0c6b5274ee5d2db525d6aa6750f0f429ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
