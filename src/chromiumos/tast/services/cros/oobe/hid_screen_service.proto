@@ -1,0 +1,35 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.oobe;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/oobe";
+
+service HidScreenService {
+
+  // ConnectAndVerifyMouse creates an instance of a USB mouse device and verifies that
+  // the mouse is connected to in HID Detection screen and continue button is in the right
+  // state.
+  rpc ConnectAndVerifyMouse(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DisconnectAndVerifyMouse creates an instance of a USB mouse device and verifies that
+  // the mouse can be disconnected in HID Detection screen and continue button in the right
+  // state.
+  rpc DisconnectAndVerifyMouse(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ConnectAndVerifyKeyboard creates an instance of a USB keyboard device and verifies that
+  // the keyboard is connected to in HID Detection screen and continue button in the right
+  // state.
+  rpc ConnectAndVerifyKeyboard(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DisconnectAndVerifyKeyboard creates an instance of a USB keyboard device and verifies that
+  // the keyboard can be disconnected in HID Detection screen and continue button is in the right
+  // state.
+  rpc DisconnectAndVerifyKeyboard(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+}
