@@ -161,19 +161,6 @@ func (c *Connection) SetUpWithoutService(ctx context.Context) error {
 }
 
 func (c *Connection) setUpInternal(ctx context.Context, withSvc bool) error {
-	// Makes sure that the physical Ethernet service is online before we start,
-	// since the physical service change event may affect the VPN connection. We
-	// use 60 seconds here for DHCP negotiation since some DUTs will end up
-	// retrying DHCP discover/request, and this can often take 15-30 seconds
-	// depending on the number of retries.
-	props := map[string]interface{}{
-		shillconst.ServicePropertyType:  shillconst.TypeEthernet,
-		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
-	}
-	if _, err := c.manager.WaitForServiceProperties(ctx, props, 60*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for Ethernet online")
-	}
-
 	if err := c.startServer(ctx); err != nil {
 		return err
 	}
