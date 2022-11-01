@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8a57a7_20b8e980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-01T00:58:25Z",
+      "side": 1,
+      "message": "Talked to drcrash@ offline, he agrees that maybe we should have less UI verification/interaction, since that should all be tested in the app repo itself, not here.\n\nWe can\u0027t get full e2e testing that way, since we\u0027d only be running tests against the single-page-application version of the app, not the actual SWA. But adding a bunch of UI verification here isn\u0027t great either.\n\nRemoved most of the UI interaction aside from verifying that the app transitions from fullscreen mode to windowed mode after moving the mouse.",
+      "parentUuid": "580bb3c2_684ab4f1",
+      "revId": "c13548d98e085d83a050dd6a192ee06ee5b54d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98d65d12_7a5ac108",
