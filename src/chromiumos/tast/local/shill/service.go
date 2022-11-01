@@ -99,6 +99,16 @@ func (s *Service) GetState(ctx context.Context) (string, error) {
 	return state, nil
 }
 
+// GetType returns the current service type.
+func (s *Service) GetType(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyType)
+}
+
+// GetGUID returns the current service GUID.
+func (s *Service) GetGUID(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyGUID)
+}
+
 // GetName returns the current service name.
 func (s *Service) GetName(ctx context.Context) (string, error) {
 	return s.getStringProperty(ctx, shillconst.ServicePropertyName)
