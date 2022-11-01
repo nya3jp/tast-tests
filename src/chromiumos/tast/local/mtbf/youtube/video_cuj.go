@@ -66,8 +66,10 @@ type VideoApp interface {
 	Install(ctx context.Context) error
 	// OpenAndPlayVideo opens a video.
 	OpenAndPlayVideo(video VideoSrc) uiauto.Action
-	// EnterFullscreen switches video to fullscreen.
-	EnterFullscreen(ctx context.Context) error
+	// EnterFullScreen switches video to full screen.
+	EnterFullScreen(ctx context.Context) error
+	// ExitFullScreen exits Youtube video from full screen.
+	ExitFullScreen(ctx context.Context) error
 	// PauseAndPlayVideo verifies video playback.
 	PauseAndPlayVideo(ctx context.Context) error
 	// IsPlaying verifies video is playing.
@@ -359,8 +361,8 @@ func videoScenario(ctx context.Context, resources TestResources, param TestParam
 		return errors.Wrapf(err, "failed to open %s", appName)
 	}
 
-	// Play video at fullscreen.
-	if err := videoApp.EnterFullscreen(ctx); err != nil {
+	// Play video at full screen.
+	if err := videoApp.EnterFullScreen(ctx); err != nil {
 		return errors.Wrap(err, "failed to play video in fullscreen")
 	}
 	// After entering full screen, it must be in playback state.
@@ -417,6 +419,10 @@ func videoScenario(ctx context.Context, resources TestResources, param TestParam
 		}
 	}
 
+	if err := videoApp.ExitFullScreen(ctx); err != nil {
+		return errors.Wrap(err, "failed to exit full screen")
+	}
+
 	// Before recording the metrics, check if there is any tab crashed.
 	if err := tabChecker.Check(ctx); err != nil {
 		return errors.Wrap(err, "tab renderer crashed")
@@ -430,6 +436,16 @@ func waitWindowStateFullscreen(ctx context.Context, tconn *chrome.TestConn, winT
 		return strings.Contains(w.Title, winTitle) && w.State == ash.WindowStateFullscreen
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for fullscreen")
+	}
+	return nil
+}
+
+func waitWindowStateExitFullscreen(ctx context.Context, tconn *chrome.TestConn, winTitle string) error {
+	testing.ContextLog(ctx, "Check if the window is in full screen state")
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return strings.Contains(w.Title, winTitle) && w.State != ash.WindowStateFullscreen
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for exit from full screen")
 	}
 	return nil
 }
