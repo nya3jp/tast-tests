@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "754f7ec9_2728d2e7",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "This sounds better, thanks!",
+      "parentUuid": "efe9a348_b89a0281",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 39
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da497ecd_ac23a907",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-11-01T01:41:21Z",
       "side": 1,
       "message": "remember to add the software deps for ikev2, see VPNConnect tests for example.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b9f408_d450d5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da497ecd_ac23a907",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ad469f_5ea77880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ff9d74_6a3d5798",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3915175_1e2b0274",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-11-01T01:41:21Z",
       "side": 1,
       "message": "nit: handle error",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3cc60f_13379675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3915175_1e2b0274",
       "range": {
         "startLine": 179,
         "startChar": 1,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8658006_90059b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d86018_79d88c40",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1318323_2443f2c0",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-11-01T01:41:21Z",
       "side": 1,
       "message": "I would just expose Service instead of have a getter but this is also fine.\nIf we decide to do this, name the getter as `Service()`. See go/go-style/decisions#getters",
+      "range": {
+        "startLine": 575,
+        "startChar": 21,
+        "endLine": 575,
+        "endChar": 31
+      },
+      "revId": "31d336d723f7207ceb91fa3f595f1ffaa867f400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798afc64_604c92ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-01T02:56:27Z",
+      "side": 1,
+      "message": "The reason I am doing this is because if we need to expose service, name needed to be changed from service to Service and needed extra change in the original file, so I went with adding a getter",
+      "parentUuid": "f1318323_2443f2c0",
       "range": {
         "startLine": 575,
         "startChar": 21,
