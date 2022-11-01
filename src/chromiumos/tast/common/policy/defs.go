@@ -6740,6 +6740,7 @@ type ArcPolicyValue struct {
 	Applications              []Application `json:"applications"`
 	PlayLocalPolicyEnabled    bool          `json:"playLocalPolicyEnabled"`
 	PlayEmmApiInstallDisabled bool          `json:"playEmmApiInstallDisabled"`
+	PlayStoreMode             string        `json:"playStoreMode"`
 }
 
 func (p *ArcPolicy) Name() string          { return "ArcPolicy" }
