@@ -3,6 +3,282 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "695a824d_bb018ec0",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "nit: VPN",
+      "range": {
+        "startLine": 398,
+        "startChar": 9,
+        "endLine": 398,
+        "endChar": 12
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626795b0_69cf9f19",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "nit: ModeStrict\n(follow the naming convention in this file)",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 22
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e255dc2_c6db9a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "nit: Always-on VPN",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77ffaf8_4f914e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "nit: VPN\n(try to use a consistent style in a file)",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423c3871_da4b5e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "connected",
+      "range": {
+        "startLine": 30,
+        "startChar": 72,
+        "endLine": 30,
+        "endChar": 80
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb7c522_a8a6e86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "checks",
+      "range": {
+        "startLine": 104,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 48
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4c8f8b_afc03725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "sets",
+      "range": {
+        "startLine": 104,
+        "startChar": 19,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13cd7e67_0f991a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586515e2_50595f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "check err",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1195988_cd89e263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "sorry I should mention this earlier, you can use `service.WaitForConnectedOrError()` to simplify the code",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94336e62_d5e0d7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "Just to check my understanding: won\u0027t the VPN be re-connected automatically if the service is disconnected? Maybe this is the source of the flakiness?",
+      "range": {
+        "startLine": 180,
+        "startChar": 39,
+        "endLine": 180,
+        "endChar": 51
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14bcc26_5306b096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "service has another `WaitForProperty()` function which does the poll inside.",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9e97412_d7414fe1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
         "patchSetId": 16
@@ -14,6 +290,30 @@
       "writtenOn": "2022-11-01T02:59:35Z",
       "side": 1,
       "message": "It seems that this part is a bit flaky for strict mode.\nIs a lag between disconnection and block traffic expected? If it is, probably better to change here to a polling test.",
+      "range": {
+        "startLine": 206,
+        "startChar": 20,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a094d639_3109ae92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-01T03:31:52Z",
+      "side": 1,
+      "message": "How flaky is this?",
+      "parentUuid": "b9e97412_d7414fe1",
       "range": {
         "startLine": 206,
         "startChar": 20,
