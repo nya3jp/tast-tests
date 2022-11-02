@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cccfe3_b93fc3da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "adef2f63_4323f677",
@@ -14,6 +37,500 @@
       "writtenOn": "2022-11-01T20:04:41Z",
       "side": 1,
       "message": "lgtm!",
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c456a4_d215900b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`ExtraSoftwareDeps: []string{\"lacros\"},`",
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c0ab90_48c8d549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `assuming that`",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c318536f_efa58c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `implements`",
+      "range": {
+        "startLine": 65,
+        "startChar": 59,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7c0fd0_48901d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `chrome.HasChrome`",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49018f58_b88a2292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: Inline this.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7625ecfb_2339dc56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "For simplicity, use `browserfixt.SetUpWithURL` here to open `about:blank` and close the New Tab page, and then don\u0027t do those things inside the `recorder.Run` argument. Then you can use `recorder.RunFor` instead of a `for` loop.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c3ad3d_8619aa8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "I think that the combination of `pointer.NewMouse` and `input.Mouse` will elicit questions from many people. I would explain that `pointer.NewMouse` is associated with `pointer.Context` which is a common interface for both mouse input and touch input, and it is great for dragging, but it doesn\u0027t support just moving the mouse, because there is no corresponding touch input. To move the mouse, we need `input.Mouse`.",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aec5edc_31dea0b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "This should be near the calls to `input.Keyboard` and `input.Mouse`, because it is closely related to those.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd08a74d_6362cd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`defer pc.Close()`",
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebf8595_483d433b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `Create`",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63630d7_e8f0b315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`Use`",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 7
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886b4e8b_220bd1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`a`",
+      "range": {
+        "startLine": 159,
+        "startChar": 60,
+        "endLine": 159,
+        "endChar": 61
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad11bff7_c5c357e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`A`",
+      "range": {
+        "startLine": 159,
+        "startChar": 43,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df92fba1_ab3f24a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`are`",
+      "range": {
+        "startLine": 160,
+        "startChar": 32,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d95008c_59797dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `website`",
+      "range": {
+        "startLine": 169,
+        "startChar": 71,
+        "endLine": 169,
+        "endChar": 78
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57431e9f_d7e017cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`errors.Wrap(err, \"failed to open about:blank\")`",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89bf4c0f_357eebc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`reach`",
+      "range": {
+        "startLine": 199,
+        "startChar": 58,
+        "endLine": 199,
+        "endChar": 59
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6153b63f_9eeff78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`reach`",
+      "range": {
+        "startLine": 252,
+        "startChar": 58,
+        "endLine": 252,
+        "endChar": 59
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da973f4_0cd11667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "Remove the word `a` here.",
+      "range": {
+        "startLine": 258,
+        "startChar": 41,
+        "endLine": 258,
+        "endChar": 42
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d48210_b3f50ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`ticks`",
+      "range": {
+        "startLine": 259,
+        "startChar": 18,
+        "endLine": 259,
+        "endChar": 27
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bb1c68_8b060515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "nit: `workflows` would better match the name of the function.",
+      "range": {
+        "startLine": 278,
+        "startChar": 46,
+        "endLine": 278,
+        "endChar": 54
+      },
+      "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6448400_08e61580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:38:39Z",
+      "side": 1,
+      "message": "`get the metrics in perf.Values`",
+      "range": {
+        "startLine": 286,
+        "startChar": 57,
+        "endLine": 287,
+        "endChar": 22
+      },
       "revId": "7f5926e063cd48b3df07e459d9b8c6d44c77ad23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
