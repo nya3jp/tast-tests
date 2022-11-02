@@ -38,7 +38,8 @@ func init() {
 			"chingkang@google.com",
 			"cros-hwsec@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "tpm2_simulator"},
+		// TODO(b/249934249): Add the gsc version test after we enabled the ti50-emulator.
+		SoftwareDeps: []string{"chrome", "tpm2_simulator", "no_gsc"},
 		Params: []testing.Param{{
 			// This test contains a minimal set of "interesting" versions that are
 			// tested in CQ:
