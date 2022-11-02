@@ -70,6 +70,24 @@
       "parentUuid": "30cde5d3_d876ee0c",
       "revId": "4d7b7909624af57f2da37ce8b4e3efd70f834617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa01154_547b0762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-02T22:27:09Z",
+      "side": 1,
+      "message": "Well, that\u0027s a separate problem :)  More seriously, since we can\u0027t control when the Chrome uprev will land, it\u0027s good to try to make the test work both before and after the change.  Since this test is still informational, it won\u0027t block the CQ if it\u0027s broken for a couple of days if that\u0027s not practical.",
+      "parentUuid": "0998d5b5_20078f74",
+      "revId": "4d7b7909624af57f2da37ce8b4e3efd70f834617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
