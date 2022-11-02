@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67a1ef6_3bd3aa92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T16:57:29Z",
+      "side": 0,
+      "message": "nit: The commit message should explain why you are removing this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 75
+      },
+      "revId": "1e0d6298e54339f9f7a9be8d3e09ffeedd9869de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

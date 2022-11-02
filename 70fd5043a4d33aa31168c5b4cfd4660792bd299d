@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b812730_b3fda855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T16:57:29Z",
+      "side": 1,
+      "message": "`Reenable`",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "70fd5043a4d33aa31168c5b4cfd4660792bd299d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820e68b6_b616bb67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T16:57:29Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "70fd5043a4d33aa31168c5b4cfd4660792bd299d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d063fd3_0cfd1c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T16:57:29Z",
+      "side": 1,
+      "message": "nit: The commit message should explain the motivation for this.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 97
+      },
+      "revId": "70fd5043a4d33aa31168c5b4cfd4660792bd299d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
