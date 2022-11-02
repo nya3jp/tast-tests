@@ -164,9 +164,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return s.HasError() || retErr != nil
 		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", rl.Attempts)))
 
-		// Note: if the user policy for the user is changed, the packages listed in
-		// credentials files must be updated.
-		if err := a.WaitForPackages(ctx, packages); err != nil {
+		installCtx, cancel := context.WithTimeout(ctx, arcent.InstallTimeout)
+		defer cancel()
+		if err := a.WaitForPackages(installCtx, packages); err != nil {
 			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return rl.Retry("wait for packages", err)
 		}

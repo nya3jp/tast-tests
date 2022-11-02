@@ -35,6 +35,9 @@ const InstallTypeAvailable = "AVAILABLE"
 // InstallTypeBlocked is the install type for app that is blocked.
 const InstallTypeBlocked = "BLOCKED"
 
+// InstallTimeout is how long Play Store can take to install an app.
+const InstallTimeout = 10 * time.Minute
+
 // SetupPolicyServerWithArcApps sets up a fake policy server with ARC enabled and a list of packages with the corresponding install type
 func SetupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string, installType string) (fdms *fakedms.FakeDMS, retErr error) {
 	arcPolicy := CreateArcPolicyWithApps(packages, installType)
