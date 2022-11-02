@@ -23,8 +23,12 @@ func init() {
 			"jaredbennett@google.com",
 			"cros-connectivity@google.com",
 		},
-		// TODO(b/245584709): Need to make new btpeer test attributes.
-		Attr:         []string{},
+		Attr: []string{
+			"group:bluetooth",
+			"bluetooth_core",
+			"bluetooth_btpeers_2",
+			"bluetooth_flaky",
+		},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.bluetooth.BTTestService"},
 		Fixture:      "chromeLoggedInWith2BTPeers",
