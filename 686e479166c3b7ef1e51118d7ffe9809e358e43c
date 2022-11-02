@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda4f7a0_a2572b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ea60b9_40d48c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "move this deps to ikev2 tests since we don\u0027t need it for l2tp/ipsec tests.\nYou can use the `ExtraSoftwareDeps` field",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68dc094_d6692d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "optional: I would prefer AuthTypePSK which should be has less dependencies (no need to install cert)",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ad9343_71270581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"and routing is correct when VPN service is not available\"\n\noptional: it would be great if we can have a figure here about the environment we set up since it\u0027s relatively complicated. For example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/routing_dhcp_classless_static.go;drc\u003db16854bd02dee508e2fff87451eb02ce2b479211;l\u003d32",
+      "range": {
+        "startLine": 85,
+        "startChar": 46,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb69983_83788314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "nit: use ConnectToRouterWithPool(), which could simplify this part of code",
+      "range": {
+        "startLine": 141,
+        "startChar": 16,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d39307f_4cf897bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"wait for service online\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 30,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32619a0_8b3a4481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "let\u0027s use a more descriptive name, how about physicalAddr?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da8f65c_28a8ed64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"tested mode\" is a little bit confusing, I would say \"change the Always-on VPN mode\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 39,
+        "endLine": 165,
+        "endChar": 60
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345819a2_062126fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "Always-on VPN service",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 28
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e659d97e_df587a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "Always-on VPN mode",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68d1481_e0f757cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "nit: outdated?",
+      "range": {
+        "startLine": 191,
+        "startChar": 48,
+        "endLine": 191,
+        "endChar": 62
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c107d4d_fda53eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "Sorry perhaps I gave a wrong suggestion before -- we should use `WaitForProperty()` here since `WaitForConnectedOrError()` does not guarantee VPN is conencted when return, it can also be an error.",
+      "range": {
+        "startLine": 192,
+        "startChar": 26,
+        "endLine": 192,
+        "endChar": 49
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97de49fe_71f7bd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"wait for VPN connected automatically\"",
+      "range": {
+        "startLine": 193,
+        "startChar": 21,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5197310a_bce6d88d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"for\"",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 41
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c1994f_cee3d319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "\"connection\" is a little confusing since there is no connection for ping technically\nI would just say \"system traffic\"",
+      "range": {
+        "startLine": 206,
+        "startChar": 9,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c072cef_6484700c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "ditto: user traffic",
+      "range": {
+        "startLine": 211,
+        "startChar": 9,
+        "endLine": 211,
+        "endChar": 47
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a11f1fb_3cc472f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T12:20:18Z",
+      "side": 1,
+      "message": "`const user \u003d \"...\"`",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 18
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
