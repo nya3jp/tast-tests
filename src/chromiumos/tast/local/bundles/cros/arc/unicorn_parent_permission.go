@@ -41,7 +41,7 @@ func init() {
 
 func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	const (
-		askinMessageButtonText = "Ask in a message"
+		askinMessageButtonText = "Ask in person"
 		askinPersonButtonText  = "Ask in person"
 		installButtonText      = "install"
 		playStoreSearchText    = "Search for apps & games"
