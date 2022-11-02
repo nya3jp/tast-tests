@@ -39,6 +39,30 @@
       },
       "revId": "3ed10371f4ef126bfd143c803b81bd768c4f854d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134d4ec9_85ef593b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1554402
+      },
+      "writtenOn": "2022-11-02T06:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef5987b0_30d178b9",
+      "range": {
+        "startLine": 304,
+        "startChar": 4,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "3ed10371f4ef126bfd143c803b81bd768c4f854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
