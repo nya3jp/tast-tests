@@ -50,6 +50,10 @@ func (svc *HidScreenService) ConnectAndVerifyMouse(ctx context.Context, req *emp
 		return &empty.Empty{}, errors.Wrap(err, "expected no mouse device to be detected")
 	}
 
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err == nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be disabled")
+	}
+
 	mouseDvc, err := input.Mouse(ctx)
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to get mouse handle")
@@ -58,6 +62,10 @@ func (svc *HidScreenService) ConnectAndVerifyMouse(ctx context.Context, req *emp
 
 	if err := oobe.IsHidMouseDetected(ctx, oobeConn); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "expected mouse device to be detected")
+	}
+
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be enabled")
 	}
 
 	return &empty.Empty{}, nil
@@ -85,10 +93,18 @@ func (svc *HidScreenService) DisconnectAndVerifyMouse(ctx context.Context, req *
 		return &empty.Empty{}, errors.Wrap(err, "expected mouse device to be detected")
 	}
 
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be enabled")
+	}
+
 	mouseDvc.Close()
 
 	if err := oobe.IsHidMouseDetected(ctx, oobeConn); err == nil {
 		return &empty.Empty{}, errors.Wrap(err, "expected no mouse device to be detected")
+	}
+
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err == nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be disabled")
 	}
 
 	return &empty.Empty{}, nil
@@ -110,6 +126,10 @@ func (svc *HidScreenService) ConnectAndVerifyKeyboard(ctx context.Context, req *
 		return &empty.Empty{}, errors.Wrap(err, "expected no keyboard device to be detected")
 	}
 
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err == nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be disabled")
+	}
+
 	keyboardDvc, err := input.Keyboard(ctx)
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to get keyboard handle")
@@ -118,6 +138,10 @@ func (svc *HidScreenService) ConnectAndVerifyKeyboard(ctx context.Context, req *
 
 	if err := oobe.IsHidKeyboardDetected(ctx, oobeConn); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "expected keyboard device to be detected")
+	}
+
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be enabled")
 	}
 
 	return &empty.Empty{}, nil
@@ -145,10 +169,18 @@ func (svc *HidScreenService) DisconnectAndVerifyKeyboard(ctx context.Context, re
 		return &empty.Empty{}, errors.Wrap(err, "expected keyboard device to be detected")
 	}
 
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be enabled")
+	}
+
 	keyboardDvc.Close()
 
 	if err := oobe.IsHidKeyboardDetected(ctx, oobeConn); err == nil {
 		return &empty.Empty{}, errors.Wrap(err, "expected no keyboard device to be detected")
+	}
+
+	if err := oobe.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err == nil {
+		return &empty.Empty{}, errors.Wrap(err, "expected continue button to be disabled")
 	}
 
 	return &empty.Empty{}, nil
