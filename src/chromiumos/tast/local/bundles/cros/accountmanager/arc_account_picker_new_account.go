@@ -110,7 +110,8 @@ func ARCAccountPickerNewAccount(ctx context.Context, s *testing.State) {
 		// Find "More actions, <email>" button to make sure that account was added.
 		ui.WaitUntilExists(moreActionsButton),
 		// Check that account is not present in ARC.
-		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username1, false),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, d,
+			accountmanager.NewARCAccountOptions(username1).ExpectedPresentInARC(false)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to confirm account addition: ", err)
 	}
@@ -134,7 +135,8 @@ func ARCAccountPickerNewAccount(ctx context.Context, s *testing.State) {
 
 	// Check that account is present in ARC.
 	s.Log("Verifying that account is present in ARC")
-	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username2, true /*expectedPresentInArc*/)(ctx); err != nil {
+	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, d,
+		accountmanager.NewARCAccountOptions(username2).ExpectedPresentInARC(true))(ctx); err != nil {
 		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 }
