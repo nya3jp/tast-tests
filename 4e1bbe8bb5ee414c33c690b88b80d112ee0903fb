@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d60cd21b_8b5be745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T19:12:01Z",
+      "side": 1,
+      "message": "nit: This line should be at most 50 characters according to https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "4e1bbe8bb5ee414c33c690b88b80d112ee0903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657b6cb9_a462c1a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T19:12:01Z",
+      "side": 1,
+      "message": "nit: `ui`\n\nThe change is in the `tast-tests` repository, so if you write `tast-tests` here, it adds nothing.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "4e1bbe8bb5ee414c33c690b88b80d112ee0903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe393cd5_2cfb9156",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-11-02T18:01:03Z",
       "side": 1,
       "message": "PTAL. Thanks.",
+      "revId": "4e1bbe8bb5ee414c33c690b88b80d112ee0903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4753d64_a5f60e28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T19:12:01Z",
+      "side": 1,
+      "message": "lgtm with nits",
       "revId": "4e1bbe8bb5ee414c33c690b88b80d112ee0903fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
