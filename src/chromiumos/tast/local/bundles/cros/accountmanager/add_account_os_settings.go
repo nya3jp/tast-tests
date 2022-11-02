@@ -139,7 +139,8 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	}
 	arcCheckStart := time.Now()
 	// Note: the method will return as soon as account appears in ARC.
-	if err := accountmanager.CheckIsAccountPresentInARC(ctx, tconn, arcDevice, username, true /*expectedPresentInArc*/); err != nil {
+	if err := accountmanager.CheckIsAccountPresentInARC(ctx, tconn, arcDevice,
+		accountmanager.NewARCAccountOptions(username).ExpectedPresentInARC(true)); err != nil {
 		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 	saveARCAccountAdditionTime(time.Since(arcCheckStart), time.Since(accountAddedStart), s)
@@ -167,7 +168,8 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 
 	// Check that account is not present in ARC.
 	s.Log("Verifying that account is not present in ARC")
-	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, false /*expectedPresentInArc*/)(ctx); err != nil {
+	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice,
+		accountmanager.NewARCAccountOptions(username).ExpectedPresentInARC(false).PreviouslyPresentInARC(true))(ctx); err != nil {
 		s.Fatal("Failed to check that account is NOT present in ARC: ", err)
 	}
 }
