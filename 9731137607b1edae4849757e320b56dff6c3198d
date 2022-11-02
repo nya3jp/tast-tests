@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe14374b_991a4b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-02T14:50:12Z",
+      "side": 1,
+      "message": "yichenz: Can you help review? Thanks!",
+      "revId": "9731137607b1edae4849757e320b56dff6c3198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f396b67b_0905c62c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-02T14:50:12Z",
+      "side": 1,
+      "message": "is there a more preferred and robust way to ensure capture mode is cleant up? i dont think i can get to it in this cl but i can file a bug and add TODO",
+      "revId": "9731137607b1edae4849757e320b56dff6c3198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
