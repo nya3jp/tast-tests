@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef5c9b2_789ef46d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T23:10:36Z",
+      "side": 1,
+      "message": "unintentional, removed.",
+      "parentUuid": "80357e69_40b7826c",
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dede8dcc_f01b9533",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-02T21:58:53Z",
       "side": 1,
       "message": "`If |maxImages| is less than 2, |interval| is ignored.`",
+      "range": {
+        "startLine": 99,
+        "startChar": 59,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69c2785_184c5888",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T23:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dede8dcc_f01b9533",
       "range": {
         "startLine": 99,
         "startChar": 59,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0340ce_1934df06",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T23:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e3d8ff6_9c01435d",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7ee541a_77df79d7",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-11-02T21:58:53Z",
       "side": 1,
       "message": "nit: The example should also include screenshots taken after `Stop` was called.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89effe46_c19e519e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T23:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7ee541a_77df79d7",
       "range": {
         "startLine": 254,
         "startChar": 0,
