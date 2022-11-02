@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "23949efd_b87a0e14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-02T19:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da50387f_0d33b7f7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d85b94bb313ff85b4347b13e29ab0c497aef46db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "22a70539_20d7efb7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-02T17:50:01Z",
       "side": 1,
       "message": "nit: `an`",
+      "range": {
+        "startLine": 204,
+        "startChar": 14,
+        "endLine": 204,
+        "endChar": 15
+      },
+      "revId": "d85b94bb313ff85b4347b13e29ab0c497aef46db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3a1fb6_51f733f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-02T19:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de45d2f0_fef4eec3",
       "range": {
         "startLine": 204,
         "startChar": 14,
