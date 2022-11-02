@@ -94,6 +94,30 @@
       },
       "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c053b1_e2115287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:50:17Z",
+      "side": 1,
+      "message": "Thanks for your remind! I have separated two test cases in the TEST specification now. \n\nOutput verified. Take the json for instance:\n```\n(cr) yichenyu@yy192 /tmp/tast/results/20221102-222434 $ cat results.json\n[\n  {\n    \"name\": \"wifi.ScanPerf.dtim1\",\n    ...\n\n```\n\nand \n\n```\n(cr) yichenyu@yy192 /tmp/tast/results/20221102-224541 $ cat results.json \n[\n  {\n    \"name\": \"wifi.ScanPerf\",\n    ...\n\n```",
+      "parentUuid": "4c7fdd94_e2711199",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

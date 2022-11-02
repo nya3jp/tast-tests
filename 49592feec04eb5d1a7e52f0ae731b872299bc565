@@ -16,6 +16,24 @@
       "message": "also comment that dtim\u003d2 in this case.",
       "revId": "49592feec04eb5d1a7e52f0ae731b872299bc565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed674a3_1c5ecd9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:50:17Z",
+      "side": 1,
+      "message": "Thanks for your remind, fixed :)",
+      "parentUuid": "2bde4b41_b4862efd",
+      "revId": "49592feec04eb5d1a7e52f0ae731b872299bc565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
