@@ -22,6 +22,30 @@
       },
       "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c35941f_7eb4a6b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T17:30:30Z",
+      "side": 1,
+      "message": "That\u0027s a good point. Probably the straightforward way to keep the same name is to not parametrize the test, but I prefer keeping the same name for the default case.",
+      "parentUuid": "2754f2aa_1a5d7818",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
