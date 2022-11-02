@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2754f2aa_1a5d7818",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T16:29:05Z",
+      "side": 1,
+      "message": "I just thought of something else. If we change the name of the test from ScanPerf to ScanPerf.dtim2, it\u0027s going to change the name of the test/metrics in crosbolt, right?\n\nTo avoid losing the continuity with existing data, maybe we should keep the name `ScanPerf` for the default case (DTIM\u003d2) and add the \u0027dtim1\u0027 postfix for the DTIM\u003d1 case\n\nUnless there\u0027s a way to keep the `ScanPerf` name for both DTIM cases and only reflect the difference in the name of the metrics? That would be even better I think.",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
