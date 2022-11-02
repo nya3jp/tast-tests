@@ -33,6 +33,24 @@
       "message": "super nit: can we keep these in the same order they\u0027re defined in wlan unless there\u0027s a reason not to?",
       "revId": "708487807a4d010b5d423972fc0ba658f43de031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545d5eb7_64bccdda",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:49Z",
+      "side": 1,
+      "message": "This just comes from conventions for RDB table design and DAO models, where `id` is mostly the first item and name comes next. I kept the order of the rest. Since I didn\u0027t find particular purpose of the original order, I changed into the one I feel comfortable.\nNow I agree keeping the original order is better and I fixed.",
+      "parentUuid": "f88823e7_db874b1e",
+      "revId": "708487807a4d010b5d423972fc0ba658f43de031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
