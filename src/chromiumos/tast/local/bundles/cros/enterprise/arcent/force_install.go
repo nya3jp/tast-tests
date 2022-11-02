@@ -122,6 +122,24 @@ func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcP
 	return arcPolicy
 }
 
+// WaitForAppUnavailableMessage waits for the message shown for blocked apps.
+func WaitForAppUnavailableMessage(ctx context.Context, d *ui.Device, timeout time.Duration) error {
+	const appUnavailableText = "Your administrator has not given you access to this item."
+
+	obj := d.Object(ui.ClassName("android.widget.TextView"), ui.TextMatches("(?i)"+appUnavailableText))
+	return obj.WaitForExists(ctx, timeout)
+}
+
+// WaitForInstallButton waits for Install button to show up on the app detail page.
+func WaitForInstallButton(ctx context.Context, d *ui.Device) (*ui.Object, error) {
+	const installButtonText = "install"
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText))
+	if err := installButton.WaitForExists(ctx, 10*time.Second); err != nil {
+		return nil, err
+	}
+	return installButton, nil
+}
+
 // EnsurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
 func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
 	const (
