@@ -453,7 +453,7 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// TODO(b/172217032): Remove these *HWAV1Decoding preconditions once the hardware av1 decoder feature is enabled by default.
+	// TODO(b/255626192): Remove these *HWAV1Decoding preconditions once the hardware av1 decoder feature is enabled by default.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithHWAV1Decoding",
 		Desc:     "Similar to chromeVideo fixture but also enables hardware accelerated av1 decoding",
@@ -461,7 +461,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
+				chrome.ExtraArgs("--enable-features=ChromeOSHWAV1Decoder"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -477,7 +477,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
+				chrome.ExtraArgs("--enable-features=ChromeOSHWAV1Decoder"),
 				chrome.GuestLogin(),
 			}, nil
 		}),
