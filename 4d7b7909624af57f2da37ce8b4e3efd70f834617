@@ -88,6 +88,24 @@
       "parentUuid": "0998d5b5_20078f74",
       "revId": "4d7b7909624af57f2da37ce8b4e3efd70f834617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e14c10_6b93b27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-11-02T23:15:59Z",
+      "side": 1,
+      "message": "Gotcha - I understand now.  As far as the flag itself, yes, this will work before the flag is added in chrome and after.\n\nI changed the name of the View PPD node to be a regex and we can update it after everything has landed and upreved.  So, this should now work no matter when the other chrome change lands.",
+      "parentUuid": "6aa01154_547b0762",
+      "revId": "4d7b7909624af57f2da37ce8b4e3efd70f834617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
