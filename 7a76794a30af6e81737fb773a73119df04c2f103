@@ -22,6 +22,30 @@
       },
       "revId": "7a76794a30af6e81737fb773a73119df04c2f103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30592d4e_3d9eafc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:38:05Z",
+      "side": 1,
+      "message": "Oh yes, sorry I experienced some local rebase conflicts and didn\u0027t notice this commit message rolled back",
+      "parentUuid": "1259dda7_62766368",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "7a76794a30af6e81737fb773a73119df04c2f103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
