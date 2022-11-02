@@ -164,3 +164,23 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 	}
 	return devices, nil
 }
+
+// UnpairAllDevices removes all bluetooth devices that are paired.
+func (bts *BTTestService) UnpairAllDevices(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	devices, err := bluez.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+	for _, device := range devices {
+		isPaired, err := device.Paired(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if device is paired")
+		}
+		if isPaired {
+			if err := bts.bluezAdapter.RemoveDevice(ctx, device.Path()); err != nil {
+				return nil, errors.Wrapf(err, "failed to remove paired device at dbus path %q", device.Path())
+			}
+		}
+	}
+	return &emptypb.Empty{}, nil
+}
