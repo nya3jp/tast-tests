@@ -51,7 +51,7 @@ func init() {
 				Fixture: fixture.ChromePolicyLoggedIn,
 				Val:     browser.TypeAsh,
 			},
-			{ // TODO(b/237062417, hendrich) disable again after collecting logs.
+			{
 				Name:              "lacros",
 				ExtraSoftwareDeps: []string{"lacros"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
