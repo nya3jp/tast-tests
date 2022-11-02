@@ -41,14 +41,15 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"cros-system-ui-eng@google.com",
 		},
-		// Disabled due to <1% pass rate over 30 days. See b/241942927
-		//Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_p"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "android_vm"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Timeout:      5 * time.Minute,
 	})
 }
 
+// ArcDownload verifies that ARC downloads are shown in holding space.
+// TODO(crbug.com/1347600): Replace "Chrome (Beta)" app usage to avoid flakes.
 func ArcDownload(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
@@ -193,30 +194,20 @@ func ArcDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click no thanks button: ", err)
 	}
 
-	// Click continue and then allow when prompted to allow access to Chrome OS's
-	// file system.
-	continueButton := uid.Object(ui.ClassName("android.widget.Button"),
-		ui.TextMatches("(?i)"+"Continue"))
-	if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		s.Fatal("Failed to find continue button: ", err)
+	// Click the "Download" button to start the download.
+	downloadButton := uid.Object(ui.ClassName("android.widget.Button"),
+		ui.TextMatches("(?i)"+"Download"))
+	if err := downloadButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+		s.Fatal("Failed to find download button: ", err)
 	}
-	if err := continueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click continue button: ", err)
-	}
-	allowButton := uid.Object(ui.ClassName("android.widget.Button"),
-		ui.TextMatches("(?i)"+"Allow"))
-	if err := allowButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		s.Fatal("Failed to find allow button: ", err)
-	}
-	if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click allow button: ", err)
+	if err := downloadButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click download button: ", err)
 	}
 
 	if err := uiauto.Combine("check for download chip",
 		// Left click the tray to open the bubble.
 		uia.LeftClick(holdingspace.FindTray()),
 		// Verify that the ARC download exists in holding space.
-		// Currently broken due to crbug/1291882
 		uia.WaitUntilExists(holdingspace.FindDownloadChip().Name(downloadName)),
 	)(ctx); err != nil {
 		s.Fatal("Download chip not found: ", err)
