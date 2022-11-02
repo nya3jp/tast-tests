@@ -196,6 +196,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bb2c89_9fc209dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T11:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9dc5552_aa675ff1",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "692233e4_1c8b0c74",
