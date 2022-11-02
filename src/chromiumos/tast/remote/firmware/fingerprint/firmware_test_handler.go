@@ -99,7 +99,15 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	defer func() {
 		if initError != nil {
 			testing.ContextLog(ctx, "NewFirmwareTest failed, restore daemon state")
-			if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil {
+
+			var err error
+			if t.d.RPCConnected(ctx) {
+				err = restoreDaemons(ctx, t.UpstartService(), t.daemonState)
+			} else {
+				err = errors.New("RPC connection is not available")
+			}
+
+			if err != nil {
 				testing.ContextLog(ctx, "Failed to restart daemons: ", err)
 			}
 		}
@@ -136,7 +144,15 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		defer func() {
 			if initError != nil {
 				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable biod upstart job")
-				if _, err := t.UpstartService().EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil {
+
+				var err error
+				if t.d.RPCConnected(ctx) {
+					_, err = t.UpstartService().EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName})
+				} else {
+					err = errors.New("RPC connection is not available")
+				}
+
+				if err != nil {
 					testing.ContextLog(ctx, "Failed to re-enable biod upstart job: ", err)
 				}
 			}
@@ -149,7 +165,15 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		defer func() {
 			if initError != nil {
 				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable FP updater")
-				if err := EnableFPUpdater(ctx, d); err != nil {
+
+				var err error
+				if t.d.RPCConnected(ctx) {
+					err = EnableFPUpdater(ctx, d)
+				} else {
+					err = errors.New("RPC connection is not available")
+				}
+
+				if err != nil {
 					testing.ContextLog(ctx, "Failed to re-enable FP updater: ", err)
 				}
 			}
