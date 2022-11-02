@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b768ac8_4f675682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63020cd3_90cb089d",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "868144b9_ec6f20ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72608b97_0d647da1",
+      "range": {
+        "startLine": 12,
+        "startChar": 53,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d89eefba_5aa39ff8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "nit: `has`",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2063c8cd_0efae667",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d89eefba_5aa39ff8",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36e6085_90b5355d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6dc6c28_f134714d",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f4ea8e_b113949a",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "`an`",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0221c74b_96a6b533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f4ea8e_b113949a",
       "range": {
         "startLine": 158,
         "startChar": 8,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0e633b_4192f471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "008ec537_a6983878",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc7a000_fe792f90",
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ad1ff4_fe3d9c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc7a000_fe792f90",
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70b8ac28_7075fbc4",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "nit: Explain that `Stop` can still take a final screenshot in this scenario.",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7690e1ad_9b3437cb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b8ac28_7075fbc4",
       "range": {
         "startLine": 43,
         "startChar": 30,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b16287_412284dc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3c5358_b1d8ccef",
+      "range": {
+        "startLine": 106,
+        "startChar": 70,
+        "endLine": 106,
+        "endChar": 72
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85b4ead8_64b3d410",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "This would return a non-nil `error` in Example 2 from the `NewScreenshotRecorder` comment.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed33f7cf_39496664",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Changed to maxImages \u003e 1. This makes sense with the idea that if maxImages is less than 2, interval is ignored.",
+      "parentUuid": "85b4ead8_64b3d410",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -267,6 +501,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d713e9de_823a7d61",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "If we return early from this function without without sending a message in the stopackc channel, wouldn\u0027t Stop be forced to wait for 30 seconds? I thought to  limit code duplication, I would be simply to just skip the for loop, and send the close message at the end of the goroutine. \n\nI did change `r.interval \u003d\u003d 0` to `r.maxImages \u003c 2`, because that makes more sense.",
+      "parentUuid": "79d16da0_5341cc8e",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 29
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30b3dc2c_b21cbcec",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 1
@@ -278,6 +536,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "`specified`",
+      "range": {
+        "startLine": 232,
+        "startChar": 42,
+        "endLine": 232,
+        "endChar": 50
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942bc16f_594a07f6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b3dc2c_b21cbcec",
       "range": {
         "startLine": 232,
         "startChar": 42,
@@ -311,6 +593,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955a805e_a382edb8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "788eb1bf_ccb9dd4b",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 236,
+        "endChar": 15
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c412fbc_059a95f7",
@@ -324,6 +630,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "I guess this is to allow taking custom screenshots without ever even calling `Start`. If you are supporting such usage, then you should document it in code comments and in the commit message. Also, find a better way to support it than a screenshot file name with `0` for `\u003cnumber of seconds since start\u003e`. How about:\n\n\tvar filename string\n\tif r.startTime.IsZero() {\n\t\tfilename \u003d fmt.Sprintf(\"cuj-%d%s\", r.numImages+1, fileSuffix)\n\t} else {\n\t\tfilename \u003d fmt.Sprintf(\"cuj-%d-%d%s.jpg\", r.numImages+1, time.Since(r.startTime).Seconds(), fileSuffix)\n\t}\n\n\tcmd :\u003d testexec.CommandContext(ctx, \"screenshot\", filepath.Join(r.screenshotsDir, filename))",
+      "range": {
+        "startLine": 261,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26288966_34485311",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Added more documentation to the code / commit message. I tried doing a solution that solved the issue you mentioned with as little code duplication as possible.",
+      "parentUuid": "8c412fbc_059a95f7",
       "range": {
         "startLine": 261,
         "startChar": 4,
@@ -357,6 +687,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ee4574_a8a2ac85",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b344a41_ed175604",
+      "range": {
+        "startLine": 262,
+        "startChar": 26,
+        "endLine": 262,
+        "endChar": 53
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db71557_3dbdffa9",
@@ -370,6 +724,30 @@
       "writtenOn": "2022-11-02T20:22:19Z",
       "side": 1,
       "message": "This code will do nothing because it will only be reached when `err` is nil. Otherwise the function will terminate at `return errors.Errorf(\"failed running %q\", strings.Join(cmd.Args, \" \"))`.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 2
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f445033_4042b969",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T21:29:27Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "9db71557_3dbdffa9",
       "range": {
         "startLine": 273,
         "startChar": 0,
