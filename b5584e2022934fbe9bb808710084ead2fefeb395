@@ -16,6 +16,24 @@
       "message": "nit/style: Error strings should not be capitalized (see go/go-style/decisions#error-strings for the style guide)\n\nSame for all the following  error message",
       "revId": "b5584e2022934fbe9bb808710084ead2fefeb395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47325cd7_94a29746",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-11-02T15:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b954dc6e_a0e294a4",
+      "revId": "b5584e2022934fbe9bb808710084ead2fefeb395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
