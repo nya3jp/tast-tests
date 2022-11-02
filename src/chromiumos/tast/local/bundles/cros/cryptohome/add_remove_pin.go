@@ -9,6 +9,7 @@ import (
 	"time"
 
 	uda "chromiumos/system_api/user_data_auth_proto"
+	cryptohomecommon "chromiumos/tast/common/cryptohome"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -148,14 +149,9 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove PIN authfactor: ", err)
 	}
 	// Attempt PIN Authfactor right after removal.
-	var exitErr *hwsec.CmdExitError
 	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error during authentication with PIN: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
-		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d",
-			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
+		s.Fatal("Failed to get the correct error code for authentication with PIN: ", err)
 	}
 
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
@@ -168,12 +164,8 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start auth session: ", err)
 	}
 	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error during unlock with PIN: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
-		s.Fatalf("Unexpected exit code during unlock with PIN: got %d; want %d",
-			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
+		s.Fatal("Failed to get the correct error code for unlock with PIN: ", err)
 	}
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to invalidate AuthSession: ", err)
@@ -189,12 +181,8 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start auth session: ", err)
 	}
 	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error during authentication with pin: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
-		s.Fatalf("Unexpected exit code during authentication with PIN: got %d; want %d",
-			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
+		s.Fatal("Failed to get the correct error code for authentication with PIN: ", err)
 	}
 	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to invalidate AuthSession: ", err)
