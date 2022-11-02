@@ -60,6 +60,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aa4262f_975edc86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T04:07:20Z",
+      "side": 1,
+      "message": "If one or more scans fail, you need to take that into account when calculating the average. Otherwise your average duration is going to be incorrect but it will still be uploaded to crosbolt",
+      "range": {
+        "startLine": 146,
+        "startChar": 108,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24aa7fca_b440fe11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T04:07:20Z",
+      "side": 1,
+      "message": "Same as above, you need to take failed scans into account when computing the average",
+      "range": {
+        "startLine": 183,
+        "startChar": 108,
+        "endLine": 185,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84e1e6c3_07daa0a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 1
