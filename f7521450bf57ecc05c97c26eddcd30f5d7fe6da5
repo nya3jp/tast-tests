@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28d297b_96096a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-11-02T22:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b872516e_99fd3f22",
+      "range": {
+        "startLine": 213,
+        "startChar": 16,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "f7521450bf57ecc05c97c26eddcd30f5d7fe6da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633f83ff_5370cb88",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-02T21:06:07Z",
       "side": 1,
       "message": "`testing.ContextLogf(ctx, \"loginPerfDoLogin: Connecting to lacros took %s\", duration)`\n\nHere is a demonstration of what that accomplishes: https://go.dev/play/p/u3h14Q-fFtZ",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 121
+      },
+      "revId": "f7521450bf57ecc05c97c26eddcd30f5d7fe6da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f35bbd0_606c83a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-11-02T22:28:27Z",
+      "side": 1,
+      "message": "Done\n\n(after an offline discussion we decided to round it to milliseconds).",
+      "parentUuid": "633f83ff_5370cb88",
       "range": {
         "startLine": 215,
         "startChar": 4,
