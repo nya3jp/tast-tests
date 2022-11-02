@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb30128_a45be8d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T01:02:04Z",
+      "side": 1,
+      "message": "note that it\u0027s unnecessary to prefix with tast: in the tast repo",
+      "parentUuid": "0795bfa2_b8238fc0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "c4c082ee130a923687aac4d7bfda4424ebcfaa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d69ed51_956bfcdb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-28T16:41:59Z",
       "side": 1,
       "message": "nit: Why this order? I can understand putting `CUJs` last because it\u0027s just a broad bucket, but I guess that the others may as well be alphabetized.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "c4c082ee130a923687aac4d7bfda4424ebcfaa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7cbcf3_d0a4d6f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T01:02:04Z",
+      "side": 1,
+      "message": "that\u0027s the order I found them",
+      "parentUuid": "0d69ed51_956bfcdb",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0525da9b_b0d96423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T01:02:04Z",
+      "side": 1,
+      "message": "Yeah, it should. But, we have some dashboards that depend on it, and I decided it would be easier just to remember that it\u0027s package power not whole device power than update the dashboards and lose the existing data for comparison.",
+      "parentUuid": "4f7ed48a_69f029c9",
+      "range": {
+        "startLine": 555,
+        "startChar": 51,
+        "endLine": 555,
+        "endChar": 62
+      },
+      "revId": "c4c082ee130a923687aac4d7bfda4424ebcfaa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c35bcbc9_64a48f26",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-28T16:41:59Z",
       "side": 1,
       "message": "nit: Remove repeated word.",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "c4c082ee130a923687aac4d7bfda4424ebcfaa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babd81d1_5d30b280",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T01:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c35bcbc9_64a48f26",
       "range": {
         "startLine": 29,
         "startChar": 21,
