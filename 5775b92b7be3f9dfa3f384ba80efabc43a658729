@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43cb89dc_f53ccdc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-11-02T21:44:33Z",
+      "side": 1,
+      "message": "@yawano@google.com Hi Yuki, could you PLAT again? Thanks!\n\nI try to replicate this bug in the chromium side but failed: the avatar could always be clicked and selected. This confirms that it is a UI sync issue from the tast-test side rather than the product side.\n\nI tried to run this test for 20+ times in D/L mode, different boards and models, etc., none of which failed to select back the default avatar.\n\nObserving the screenshots, I realized that all the failure cases are triggered in light mode, so I enforce this test to run in light mode, wishing that it could fix the issue temporarily.",
+      "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
