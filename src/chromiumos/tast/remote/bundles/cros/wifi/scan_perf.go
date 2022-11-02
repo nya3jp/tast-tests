@@ -32,6 +32,17 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixt",
+		Params: []testing.Param{
+			{
+				// Default case, DTIM = 2
+				// See https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/next/src/ap/ap_config.c;rcl=20a522b9ebe52bac34cc4ecfc1a9722cc1e77cdc;l=88
+				Val: []ap.Option{},
+			},
+			{
+				Name: "dtim1",
+				Val:  []ap.Option{ap.DTIMPeriod(1)},
+			},
+		},
 	})
 }
 
@@ -111,6 +122,8 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	devID := wlan.DeviceID(devInfo.Id)
 
 	options := wificell.DefaultOpenNetworkAPOptions()
+	testOptions := s.Param().([]ap.Option)
+	options = append(options, testOptions...)
 
 	apIface, err := tf.ConfigureAP(ctx, options, nil)
 	if err != nil {
