@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33069ef0_9c52dc27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T18:35:10Z",
+      "side": 1,
+      "message": "Do not include trailing punctuation on this line. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "d7c1b2ea2a3ac310b50eaaa7eedadae19fab1d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8193a346_3c2b418a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T18:35:10Z",
+      "side": 1,
+      "message": "This line should be at most 50 characters according to https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages\n\nHow about:\n\n\tcuj: Report Lacros connection time in ui.LoginPerf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "d7c1b2ea2a3ac310b50eaaa7eedadae19fab1d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c489b09_fc1200f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T18:35:10Z",
+      "side": 1,
+      "message": "This should be `lacrosConnectTime *time.Duration` because the conversion to `float64` is for the purpose of reporting to a performance metric, which is beyond the scope of this function. The call to `tpsValues.Set` should be `tpsValues.Set(perf.Metric{...}, float64(lacrosConnectTime.Milliseconds()))` so that the conversion to `float64` appears directly in a `float64` argument.",
+      "range": {
+        "startLine": 164,
+        "startChar": 136,
+        "endLine": 164,
+        "endChar": 164
+      },
+      "revId": "d7c1b2ea2a3ac310b50eaaa7eedadae19fab1d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
