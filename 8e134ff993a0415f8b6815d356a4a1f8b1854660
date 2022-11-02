@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66bf6293_49598d8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-02T05:26:25Z",
+      "side": 1,
+      "message": "This is a good point. I intended to check that the window is rendered.\nHowever, the home screen of Firefox could change over time and checking for a static image will make the test harder to maintain. What I did instead is leveraging ACUITI to look for the word \"Firefox\" inside of the window.\n\nHere\u0027s a sample image sent to ACUITI https://screenshot.googleplex.com/5g2ysAnza4zV89J . As you can see, the window does not have a visible title. Instead, we are verifying the title of the tab rendered inside of the window. I though about looking for a rendered part of the interface, but also discarded it, because it could change in newer versions of Firefox.",
+      "parentUuid": "5b299a99_ea21aaaf",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74837db4_198953a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "writtenOn": "2022-11-02T05:14:44Z",
       "side": 1,
       "message": "Having a known-good deb in the external data and installing is a good choice here.\n@ashpakov@google.com, WDYT?\n\nSince the test case is to explicitly install and uninstall firefox, pre-installation is probably not a good option for this test.",
+      "parentUuid": "6f696439_36826529",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e0584c_034c0168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-02T05:26:25Z",
+      "side": 1,
+      "message": "Could container image size be a concern? It\u0027s likely we\u0027ll only need a handful of popular apps we test, but they will still add extra size.",
       "parentUuid": "6f696439_36826529",
       "range": {
         "startLine": 100,
