@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911a54be_4fc7cccf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-02T23:29:17Z",
+      "side": 1,
+      "message": "Can\u0027t we remove the test scheduling from non-intel board instead?",
+      "revId": "cc4ec61c632ae2ca737ddb706ca76253d2181169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
