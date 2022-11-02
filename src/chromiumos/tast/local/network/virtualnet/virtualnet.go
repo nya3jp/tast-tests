@@ -7,6 +7,7 @@ package virtualnet
 import (
 	"context"
 	"encoding/hex"
+	"fmt"
 	"net"
 	"net/http"
 	"os"
@@ -290,9 +291,10 @@ func CreateWifiRouterEnv(ctx context.Context, apIf string, m *shill.Manager, poo
 	}
 
 	ssid := "test-ap" + opts.NameSuffix
+	hexSSID := hex.EncodeToString([]byte(ssid))
 	svcProps := map[string]interface{}{
 		shillconst.ServicePropertyType:        shillconst.TypeWifi,
-		shillconst.ServicePropertyWiFiHexSSID: strings.ToUpper(hex.EncodeToString([]byte(ssid))),
+		shillconst.ServicePropertyWiFiHexSSID: strings.ToUpper(hexSSID),
 	}
 
 	// Remove the service if shill already knows this service. It can be leftover
@@ -305,6 +307,17 @@ func CreateWifiRouterEnv(ctx context.Context, apIf string, m *shill.Manager, poo
 		if err := svc.Remove(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to remove the WiFi service")
 		}
+	}
+
+	// Remove the DHCP lease file if it exists one to make sure we have a clean setup.
+	leaseFile := fmt.Sprintf("/var/lib/dhcpcd/wifi_any_%s_managed_none.lease", hexSSID)
+	if _, err := os.Stat(leaseFile); err == nil {
+		testing.ContextLogf(ctx, "DHCP lease file exists for %s, removing it", ssid)
+		if err := os.Remove(leaseFile); err != nil {
+			return nil, errors.Wrap(err, "failed to remove lease file")
+		}
+	} else if !errors.Is(err, os.ErrNotExist) {
+		return nil, errors.Wrap(err, "failed to check lease file")
 	}
 
 	// Name it with prefix "veth" to avoid shill managing it.
