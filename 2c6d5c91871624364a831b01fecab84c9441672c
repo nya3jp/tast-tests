@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2c6ca6_3cd5de21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-02T18:17:04Z",
+      "side": 0,
+      "message": "Did you intend to remove this?",
+      "revId": "2c6d5c91871624364a831b01fecab84c9441672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
