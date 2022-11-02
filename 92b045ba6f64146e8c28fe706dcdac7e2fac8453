@@ -16,6 +16,115 @@
       "message": "sorry to completely overhaul this CL 😐",
       "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a2b57c_e09062ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-02T09:21:17Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13b9a76_0c18e663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-02T09:21:17Z",
+      "side": 1,
+      "message": "it does not init anything in the background, so I\u0027d remove \"initBackground\" prefix",
+      "range": {
+        "startLine": 333,
+        "startChar": 5,
+        "endLine": 333,
+        "endChar": 19
+      },
+      "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4050b904_558f4053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-02T09:21:17Z",
+      "side": 1,
+      "message": "remove get* prefix:\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 399,
+        "startChar": 5,
+        "endLine": 399,
+        "endChar": 8
+      },
+      "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a93a034_4e3ea698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-02T09:21:17Z",
+      "side": 1,
+      "message": "nit: i\u0027d remove \"safely\" prefix. Otherwise it sounds like you should have unsafe function",
+      "range": {
+        "startLine": 412,
+        "startChar": 5,
+        "endLine": 412,
+        "endChar": 11
+      },
+      "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86158a19_08729de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-02T09:21:17Z",
+      "side": 1,
+      "message": "nit: rename to \"err\"",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 14
+      },
+      "revId": "92b045ba6f64146e8c28fe706dcdac7e2fac8453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
