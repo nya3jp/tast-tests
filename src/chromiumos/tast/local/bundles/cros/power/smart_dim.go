@@ -26,7 +26,7 @@ type smartDimParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmartDim,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check the SmartDim can make decision with ML Service",
 		Contacts:     []string{"alanlxl@chromium.org"},
 		Attr:         []string{"group:mainline"},
