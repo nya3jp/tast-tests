@@ -108,6 +108,24 @@
       "parentUuid": "70c4c911_b8264609",
       "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdb6888_2052c3b8",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-02T13:30:51Z",
+      "side": 1,
+      "message": "For QC SoC there are a few ways. In Shill we check for the kernel driver qcom-q6v5-mss (see https://chromium.googlesource.com/chromiumos/platform2/+/17ecf0d80e26b130f90433b34cc765f00af63053/shill/cellular/cellular.cc#1648 for more about that or ask Madhav). \n\nYou can also open a QRTR socket and check if QMI services for cellular show up in the ADD_SERVER messages you get from there. (Instead of doing all of that yourself, you should be able to use the `qrtr-lookup` command to list available services on the QRTR bus.)",
+      "parentUuid": "44f17c5a_c5ba8c9c",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
