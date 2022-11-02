@@ -22,6 +22,9 @@ service BTTestService {
   // DisconnectAllDevices disconnects all connected bluetooth devices.
   rpc DisconnectAllDevices(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // RemoveAllDevices removes all bluetooth devices.
+  rpc RemoveAllDevices(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // DiscoverDevice confirms that the DUT can discover the provided bluetooth
   // device. Fails if the device is not found or if the discovered matching
   // device's attributes do not match those provided.
