@@ -172,13 +172,8 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 
 	// Try to update password auth factor with wrong label.
 	err = client.UpdatePasswordAuthFactor(ctx, authSessionID, wrongLabel /*label*/, wrongLabel /*newKeyLabel*/, newUserPassword)
-	var exitErr *hwsec.CmdExitError
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error for auth factor update: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != (int)(uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND) {
-		s.Fatalf("Unexpected exit code for auth factor update: got %d; want %d",
-			exitErr.ExitCode, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
+		s.Fatal("Failed to get the correct error code for auth factor update: ", err)
 	}
 
 	// Unmount the user.

@@ -20,31 +20,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Recovery,
-		Desc: "Test addition and authentication of recovery auth factor with password",
-		Contacts: []string{
-			"anastasiian@chromium.org",
-			"cryptohome-core@google.com",
-		},
-		Attr: []string{"group:mainline"},
+		Func:     RecoveryError,
+		Desc:     "Checks that the correct error code is returned after cryptohome recovery failure",
+		Contacts: []string{"anastasiian@chromium.org", "cros-lurs@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Fixture:  "ussAuthSessionFixture",
 		// For "no_tpm_dynamic" - see http://b/251789202.
 		SoftwareDeps: []string{"tpm", "no_tpm_dynamic"},
-		Fixture:      "ussAuthSessionFixture",
-		Params: []testing.Param{
-			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
-			},
-			// TODO(b/195385797): Move this to critical when the bug is fixed.
-			{
-				Name:              "informational",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("gooey")),
-			},
-		},
+		// TODO(b/195385797): Run on gooey when the bug is fixed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
 	})
 }
 
-func Recovery(ctx context.Context, s *testing.State) {
+func RecoveryError(ctx context.Context, s *testing.State) {
 	const (
 		userName             = "foo@bar.baz"
 		userPassword         = "secret"
@@ -52,6 +40,11 @@ func Recovery(ctx context.Context, s *testing.State) {
 		recoveryLabel        = "test-recovery"
 		recoveryUserGaiaID   = "123456789"
 		recoveryDeviceUserID = "123-456-AA-BB"
+		// TODO(b/250518701): Don't use hardcoded constants, generate the error rpc response by the test tool.
+		// CryptoRecoveryRpcResponse with error set to RECOVERY_ERROR_EPOCH.
+		responseEpochErrHex = "08011804"
+		// CryptoRecoveryRpcResponse with error set to RECOVERY_ERROR_FATAL.
+		responseFatalErrHex = "08011801"
 	)
 
 	ctxForCleanUp := ctx
@@ -62,7 +55,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Create and mount the persistent user.
-	_, authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -70,7 +63,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -78,11 +71,6 @@ func Recovery(ctx context.Context, s *testing.State) {
 	// Add a password auth factor to the user.
 	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
 		s.Fatal("Failed to add a password authfactor: ", err)
-	}
-
-	// Write a test file to verify persistence.
-	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
-		s.Fatal("Failed to write test file: ", err)
 	}
 
 	testTool, err := cryptohome.NewRecoveryTestToolWithFakeMediator()
@@ -110,7 +98,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Authenticate a new auth session via the new added recovery auth factor and mount the user.
+	// Authenticate a new auth session via the new added recovery auth factor.
 	_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
@@ -121,36 +109,20 @@ func Recovery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get fake epoch response: ", err)
 	}
 
-	requestHex, err := client.FetchRecoveryRequest(ctx, authSessionID, recoveryLabel, epoch)
+	_, err = client.FetchRecoveryRequest(ctx, authSessionID, recoveryLabel, epoch)
 	if err != nil {
 		s.Fatal("Failed to get recovery request: ", err)
 	}
 
-	response, err := testTool.FakeMediateWithRequest(ctx, requestHex)
-	if err != nil {
-		s.Fatal("Failed to mediate: ", err)
+	// Authenticate with `responseEpochErrHex` - transient error is expected.
+	err = client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, responseEpochErrHex)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_RECOVERY_TRANSIENT); err != nil {
+		s.Fatal("Failed to get the correct error code for transient error: ", err)
 	}
 
-	if err := client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, response); err != nil {
-		s.Fatal("Failed to authenticate recovery auth factor: ", err)
-	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
-		s.Fatal("Failed to prepare persistent vault: ", err)
-	}
-
-	// Verify that the test file is still there.
-	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
-		s.Fatal("Failed to verify file persistence: ", err)
-	}
-
-	// Remove the recovery auth factor.
-	if err := client.RemoveAuthFactor(ctx, authSessionID, recoveryLabel); err != nil {
-		s.Fatal("Failed to remove recovery auth factor: ", err)
-	}
-
-	// Authentication should fail now.
-	err = client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, response)
-	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_KEY_NOT_FOUND); err != nil {
-		s.Fatal("Failed to get the correct error code for auth factor removal: ", err)
+	// Authenticate with `responseFatalErrHex` - fatal error is expected.
+	err = client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, responseFatalErrHex)
+	if err := cryptohomecommon.ExpectCryptohomeErrorCode(err, uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_RECOVERY_FATAL); err != nil {
+		s.Fatal("Failed to get the correct error code for fatal error: ", err)
 	}
 }
