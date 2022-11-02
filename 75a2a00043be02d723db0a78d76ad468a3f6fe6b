@@ -16,6 +16,29 @@
       "message": "Jao-ke, this is something that you had asked for. Sample log:\n\n\u003e Device has the following expectations identity: model\u003dlazor, buildboard\u003dtrogdor, board\u003dtrogdor, chipset\u003dsc7180\n\nLMK if this isn\u0027t what you were thinking of. Thanks!",
       "revId": "75a2a00043be02d723db0a78d76ad468a3f6fe6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7880a417_c2d4af6c",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T22:27:32Z",
+      "side": 1,
+      "message": "Using a list then concat it via strings.Join(yourlist, \", \")",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 16
+      },
+      "revId": "75a2a00043be02d723db0a78d76ad468a3f6fe6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
