@@ -16,6 +16,23 @@
       "message": "We decided to instead use local test so i am abandoning this CL",
       "revId": "e45ae5ad22ab3f9e47aeca563c031aa25d21f3e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18acab7c_2fcde32f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-02T18:55:38Z",
+      "side": 1,
+      "message": "Restoring this CL since we are moving test back to remote.",
+      "revId": "e45ae5ad22ab3f9e47aeca563c031aa25d21f3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
