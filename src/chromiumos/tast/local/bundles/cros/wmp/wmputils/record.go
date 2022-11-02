@@ -39,19 +39,20 @@ func EnsureCaptureModeActivated(tconn *chrome.TestConn, activated bool) uiauto.A
 			return errors.Wrap(err, "failed to load the top-row layout")
 		}
 
-		screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
+		// TODO(b/257122990): For exit, add a more concrete way instead of relying on the ui tree.
+		screenRecordIconButton := nodewith.HasClass("IconButton").Name("Screen record")
 
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			var condition recordModeCondition
 			if activated {
 				condition = recordModeCondition{
-					function: ac.Exists(screenRecordToggleButton),
+					function: ac.Exists(screenRecordIconButton),
 					errorMsg: "it hasn't entered record mode yet",
 					key:      "Ctrl+Shift+" + topRow.SelectTask,
 				}
 			} else {
 				condition = recordModeCondition{
-					function: ac.Gone(screenRecordToggleButton),
+					function: ac.Gone(screenRecordIconButton),
 					errorMsg: "it is still in record mode",
 					key:      "Esc",
 				}

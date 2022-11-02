@@ -54,9 +54,9 @@ func CaptureSelfieCamResizeButton(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	screenRecordToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Screen record")
-	recordFullscreenToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Record full screen")
-	captureModeSettingsButton := nodewith.HasClass("CaptureModeToggleButton").Name("Settings")
+	screenRecordToggleButton := nodewith.HasClass("IconButton").Name("Screen record")
+	recordFullscreenToggleButton := nodewith.HasClass("IconButton").Name("Record full screen")
+	captureModeSettingsButton := nodewith.HasClass("IconButton").Name("Settings")
 	camera := nodewith.HasClass("CaptureModeOption").Name("fake_device_0")
 	cameraPreviewWidget := nodewith.HasClass("CameraPreviewWidget")
 	cameraPreviewResizeButton := nodewith.HasClass("CameraPreviewResizeButton")

@@ -79,10 +79,10 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Starts full screen recording via UI.
-	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
-	recordFullscreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record full screen")
-	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
-	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
+	screenRecordToggleButton := nodewith.HasClass("IconButton").Name("Screen record")
+	recordFullscreenToggleButton := nodewith.HasClass("IconButton").Name("Record full screen")
+	stopRecordButton := nodewith.HasClass("TrayBackgroundView").Name("Stop screen recording")
+	recordTakenLabel := nodewith.HasClass("Label").Name("Screen recording taken")
 
 	// Enter screen capture mode.
 	if err := wmputils.EnsureCaptureModeActivated(tconn, true)(ctx); err != nil {

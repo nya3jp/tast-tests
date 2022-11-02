@@ -61,8 +61,8 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Starts full screen recording via UI.
-	screenRecordToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Screen record")
-	recordFullscreenToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Record full screen")
+	screenRecordToggleButton := nodewith.HasClass("IconButton").Name("Screen record")
+	recordFullscreenToggleButton := nodewith.HasClass("IconButton").Name("Record full screen")
 	stopRecordButton := nodewith.HasClass("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.HasClass("Label").Name("Screen recording taken")
 	popupNotification := nodewith.Role(role.Window).HasClass("ash/message_center/MessagePopup")
