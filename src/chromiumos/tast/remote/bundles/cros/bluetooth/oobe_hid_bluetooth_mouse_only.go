@@ -26,7 +26,11 @@ func init() {
 			"tjohnsonkanu@google.com",
 			"cros-connectivity@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational", "group:bluetooth", "bluetooth_btpeers_1"},
+		Attr: []string{
+			"group:bluetooth",
+			"bluetooth_btpeers_1",
+			"bluetooth_flaky",
+		},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps: []string{
 			"tast.cros.ui.AutomationService",
