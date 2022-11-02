@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5265e0eb_715ebf7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-11-02T04:34:53Z",
+      "side": 1,
+      "message": "@xiqiruan@chromium.org there\u0027s an actual error in all the failure FYI. Consider fixing it before CQ+2 again.",
+      "revId": "e1b0ebac96e85317c61999866a14113ac92d4fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3821e0_ab76e101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transition_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-11-02T04:34:53Z",
+      "side": 1,
+      "message": "This is returning a `func() *chrome.TestConn` you probably want to add parentheses on line 42 to actually execute the function to pass this in here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 69,
+        "endLine": 44,
+        "endChar": 74
+      },
+      "revId": "e1b0ebac96e85317c61999866a14113ac92d4fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
