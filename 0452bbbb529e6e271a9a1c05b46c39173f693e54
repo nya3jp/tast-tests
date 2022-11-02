@@ -16,6 +16,40 @@
       "message": "Major change: WiFi6E list into map",
       "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cbceed_ca2f5587",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:46:56Z",
+      "side": 1,
+      "message": "also Realtek 8852ce and the QC one in Herobrine.",
+      "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a85298_d632de52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:46:56Z",
+      "side": 1,
+      "message": "nit: does `else if` work here?",
+      "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

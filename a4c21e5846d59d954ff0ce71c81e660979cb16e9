@@ -321,6 +321,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "518f7d36_3c49455a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:46:56Z",
+      "side": 1,
+      "message": "No, just that the comments should be identical, e.g. \"Use relaxed threshold until the bug has been solved.\" so we don\u0027t lose context if we remove the above comment independently.",
+      "parentUuid": "467be4ed_223cc495",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "312796a7_0184e919",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 8
