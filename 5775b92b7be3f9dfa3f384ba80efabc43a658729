@@ -87,6 +87,24 @@
       "parentUuid": "cb57867f_dd29b55d",
       "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e04ffc_6303e8a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-02T23:48:11Z",
+      "side": 1,
+      "message": "Hi Yuki, you are right. Retry might hide some potential failure. Honestly, Tast is not a perfect automation tool for desktop UIs. It has its own limitation and no implicit checks. It can often be affected by device performance, cross-platform/window interactions. As a trade-off, we have to use RETRY sometimes to compromise it.\n\nOption 1: Strict test, but slightly flaky. It prevents the test running in CQ so no coverage at all.\n\nOption 2: Loose test with retries. It might hide potential failures at first time, but it is not a high priority (P2?)\n\nI would say I have to choose Option 2 in these cases.\n\nMore comments on the failure, in the test it tries to click a general node `googleProfilePhotoContainer`, which might not be ready to receive the click event even it appears in A11y tree. Along with the page rendering, the node state in A11y tree is also changing. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/state/constants.go;l\u003d14\n\nUnfortunately I do not have the knowledge to answer how Chrome renders the page and bind the event listener.",
+      "parentUuid": "5bafdeb2_7b873c65",
+      "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
