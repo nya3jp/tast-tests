@@ -32,6 +32,16 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixt",
+		Params: []testing.Param{
+			{
+				// Default case
+				Val: []ap.Option{},
+			},
+			{
+				Name: "dtim1",
+				Val:  []ap.Option{ap.DTIMPeriod(1)},
+			},
+		},
 	})
 }
 
@@ -111,6 +121,8 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	devID := wlan.DeviceID(devInfo.Id)
 
 	options := wificell.DefaultOpenNetworkAPOptions()
+	testOptions := s.Param().([]ap.Option)
+	options = append(options, testOptions...)
 
 	apIface, err := tf.ConfigureAP(ctx, options, nil)
 	if err != nil {
