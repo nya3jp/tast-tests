@@ -86,6 +86,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee1a6f5_3bc137d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-02T23:12:49Z",
+      "side": 1,
+      "message": "Looks good from the UI automation side, but I think this test could be cleaner and more compact if it were to utilize the remote fixture + local test pattern, since then you wouldn\u0027t need to add services.",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a76c38a_66988537",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-02T23:12:49Z",
+      "side": 1,
+      "message": "Everything from this point onwards is done locally on the DUT with the UI services. To me this suggests that it might be more efficient to use the remote fixture + local test pattern. You could add a subfixture of `wificellFixtWithCapture` that configures the AP, and the local test can rely on that fixture and execute the UI automation directly without relying on services.\n\nSome details about this here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures\n\n\u003e Local tests/fixtures can depend on a remote fixture if they live in test bundles with the same name (e.g. local cros and remote cros).\n\nIf you think you\u0027ll re-use these services for other tests in the future, then I think it would be OK to stick with this. Otherwise I think remote fixture + local test is probably the best way to write this kind of test.",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba0b922_f6924345",
