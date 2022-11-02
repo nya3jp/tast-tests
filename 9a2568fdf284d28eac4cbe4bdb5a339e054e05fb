@@ -215,6 +215,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f6bf6a_33b3ddbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:54:02Z",
+      "side": 1,
+      "message": "Thanks! (see point number 2 of go/cros-wifi-cr) In general, it\u0027s good to be verbose in the TEST\u003d section as long as it gives the reviewers a better idea of the specifics. Pasting actual output of the commands that you ran gives me more confidence that you did your due diligence (also keep in mind that it helps people looking back on this CL to understand how well tested your code was since they likely won\u0027t read through all the comment history). Can you do that as well? If it begins to get out of hand and formatting is an issue, consider using gpaste.",
+      "parentUuid": "2d798aa5_b72b4c45",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a306392a_278cece2",
