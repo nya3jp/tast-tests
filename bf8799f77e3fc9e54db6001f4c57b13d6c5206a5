@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecf34ff_e3fcc545",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T09:49:38Z",
+      "side": 1,
+      "message": "maybe we should catch this error and report it, same in the other method.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "bf8799f77e3fc9e54db6001f4c57b13d6c5206a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a7e616_c9e10056",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T09:49:38Z",
+      "side": 1,
+      "message": "the current stable should be the last item in `ChromeOSVersionFromMilestone` right? so maybe it is not worth it going through the whole array and would be easier just to get the last element. WDTY?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "bf8799f77e3fc9e54db6001f4c57b13d6c5206a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

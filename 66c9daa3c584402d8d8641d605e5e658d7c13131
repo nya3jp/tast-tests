@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf06a93d_92891988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T09:49:38Z",
+      "side": 1,
+      "message": "unresolving comment",
+      "parentUuid": "024d8866_d040732a",
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed879eb1_25b70657",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 1
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "Done, but this breaks M96 LTS rollback. Is that a problem?",
       "parentUuid": "f43a1640_4fdbb2dc",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "66c9daa3c584402d8d8641d605e5e658d7c13131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9dc5552_aa675ff1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T09:49:38Z",
+      "side": 1,
+      "message": "Oh, I understood you would leave the check for the known failure (95) but report the error for the rest. We do not have any test or plan to have any test that will rollback so to M96 LTS, all rollback tests roll back to M\u003e100 now.\n\nI think we should at least leave a comment mentioning the known issue in case it ever happens, so other people are aware of it.",
+      "parentUuid": "e2c01d51_e782e383",
       "range": {
         "startLine": 40,
         "startChar": 1,
