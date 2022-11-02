@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a96d4b_f473f785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-02T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271fbf86_2d0c43a9",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b075e2f_aec44acb",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e1d8d0_2519cdb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-02T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c908a6ce_96fc7ea7",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9f57f1_d73ea060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-02T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b075e2f_aec44acb",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 70
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c046c9b9_93235ad3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-02T10:28:49Z",
       "side": 1,
       "message": "nit: privacySwitch",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e54c87f_a7cac8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-02T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c046c9b9_93235ad3",
       "range": {
         "startLine": 109,
         "startChar": 1,
