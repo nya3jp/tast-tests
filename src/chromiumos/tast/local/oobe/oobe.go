@@ -40,9 +40,8 @@ func IsHidDetectionContinueButtonEnabled(ctx context.Context, oobeConn *chrome.C
 	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.canClickNext()")
 }
 
-// IsHidDetectionKeyboardNotDetected checks if there is no keyboard detected in
-// the OOBE HID Detection page.
-func IsHidDetectionKeyboardNotDetected(ctx context.Context, oobeConn *chrome.Conn, tconn *chrome.TestConn) error {
+// IsHidDetectionKeyboardSearchingForKeyboard checks if OOBE HID Detection page is searching for keyboard device.
+func IsHidDetectionKeyboardSearchingForKeyboard(ctx context.Context, oobeConn *chrome.Conn, tconn *chrome.TestConn) error {
 	var keyboardNotDetectedText string
 	if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getKeyboardNotDetectedText()", &keyboardNotDetectedText); err != nil {
 		return err
@@ -51,8 +50,7 @@ func IsHidDetectionKeyboardNotDetected(ctx context.Context, oobeConn *chrome.Con
 	return uiauto.New(tconn).WaitUntilExists(keyboardNotDetectedTextNode)(ctx)
 }
 
-// IsHidDetectionSearchingForMouse checks if OOBE HID Detection page is
-// searching for mouse device.
+// IsHidDetectionSearchingForMouse checks if OOBE HID Detection page is searching for mouse device.
 func IsHidDetectionSearchingForMouse(ctx context.Context, oobeConn *chrome.Conn, tconn *chrome.TestConn) error {
 	var mouseNotDetectedText string
 	if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getMouseNotDetectedText()", &mouseNotDetectedText); err != nil {
