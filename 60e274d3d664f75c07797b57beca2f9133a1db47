@@ -22,6 +22,30 @@
       },
       "revId": "60e274d3d664f75c07797b57beca2f9133a1db47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d29f14e_c2e66da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-02T00:34:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ee33e32_c8c61fae",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 45
+      },
+      "revId": "60e274d3d664f75c07797b57beca2f9133a1db47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
