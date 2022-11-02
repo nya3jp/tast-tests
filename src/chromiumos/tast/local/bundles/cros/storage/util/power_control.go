@@ -56,7 +56,8 @@ func SuspendStressTest(ctx context.Context, duration time.Duration) (string, err
 	loops := "--count=" + strconv.Itoa(numLoops)
 
 	cmd := testexec.CommandContext(ctx, suspendStressTestPath, minSuspend,
-		maxSuspend, minWake, maxWake, loops)
+		maxSuspend, minWake, maxWake, loops, "--nopremature_wake_fatal",
+		"--nocrc_fatal", "--nolate_wake_fatal", "--noerrors_fatal", "--nobug_fatal")
 	testing.ContextLog(ctx, "Running command: ", cmd)
 	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
