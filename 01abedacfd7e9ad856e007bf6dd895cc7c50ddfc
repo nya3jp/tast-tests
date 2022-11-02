@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860031f5_c19c7421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T23:37:38Z",
+      "side": 1,
+      "message": "I guess interestingly this is a great use-case for `recorder.CustomScreenshot(ctx)`. crrev/c/3995703.",
+      "revId": "01abedacfd7e9ad856e007bf6dd895cc7c50ddfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
