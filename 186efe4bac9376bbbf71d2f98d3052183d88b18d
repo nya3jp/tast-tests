@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60d0f3da_78b7d70f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-02T19:48:33Z",
+      "side": 1,
+      "message": "Okay, I merged this test with AuthSessionUnlock. In practice I basically just replaced the old test with my new one, since after both refactoring (to use the fixtures and `WithAuthSession`) and adding in the factor update, it looks a lot more like the test I wrote than the original.",
+      "parentUuid": "c3a895d8_481fc9b1",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "829859c8_8683082b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
         "patchSetId": 1
