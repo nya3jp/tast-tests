@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce2a917_669a2731",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "085d8529_11cc1c38",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b85df69e_0b428a79",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-10-31T20:15:31Z",
       "side": 1,
       "message": "In this case, you would have already added the entry to `policies` in the loop above. Following this code, you will add it again. Should you be deduplicating?",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3cf360_10e2bce0",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "b85df69e_0b428a79",
       "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c1aa78_07135ef2",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2936735c_141e50c1",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686d8ea1_9fb45c2c",
@@ -136,6 +190,42 @@
       "writtenOn": "2022-11-02T08:40:53Z",
       "side": 1,
       "message": "nit: Can you move things to separate functions? The current function is way too long and complex.\n\nThose functions could also be tested independently more easily.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97018dc_e1e8b30c",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f8c979_c89d08cf",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6a0457_f0baa0ec",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686d8ea1_9fb45c2c",
       "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -198,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3dcbe2_404973d5",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ffd3e2e_4c868645",
+      "range": {
+        "startLine": 337,
+        "startChar": 23,
+        "endLine": 337,
+        "endChar": 51
+      },
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b68472f_5ace977b",
@@ -211,6 +325,24 @@
       "writtenOn": "2022-10-31T20:15:31Z",
       "side": 1,
       "message": "Merge this with the statement above:\n\n    if err \u003d json.Unmarshal(*epRawJson, \u0026externalPolicies); err !\u003d nil {\n      return errors.Wrap(err, \"failed to unmarshal external_policies array\")\n    }\n    \nSame elsewhere.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543f2b57_dec4ab99",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-02T15:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b68472f_5ace977b",
       "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
