@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b06538b_7fe4c64c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23da5a33_7a07a6c1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c7402c_2ee54573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "As now the commit message includes `rollback:` instead of `tast-tests`, I removed `rollback` from the description and it fits the 50 characters.",
+      "parentUuid": "86f879bc_e185ee75",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac69a9cb_6454fe57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8064459b_97108cfc",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a5e9017_fc005cc4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-28T17:03:21Z",
       "side": 1,
       "message": "This is confusing, mostly because the word `it` seems to refer to the verification but it actually refers to the milestone check. How about: \"We skip this verification on images from before M100, but such images are now obsolete so the test will no longer be run on them in the first place.\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf484ca_77f41e2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "Good point, I have re-written the text. Hope it is more clear now :)",
+      "parentUuid": "5a5e9017_fc005cc4",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7d10cc_e905e540",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e56b98_bf66aa2d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16800ac3_e703e73b",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-28T17:03:21Z",
       "side": 1,
       "message": "You\u0027re removing the milestone check, not the verification.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "4e39f67fd1b585799ae2dbeb88bf7cb39cc52f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5e6044_103b5e97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:53:11Z",
+      "side": 1,
+      "message": "Updated :)",
+      "parentUuid": "16800ac3_e703e73b",
       "range": {
         "startLine": 14,
         "startChar": 7,
