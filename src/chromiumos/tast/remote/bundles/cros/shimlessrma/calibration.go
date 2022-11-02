@@ -41,7 +41,7 @@ func init() {
 			"yanghenry@google.com",
 			"chromeos-engprod-syd@google.com",
 		},
-		Attr: []string{"group:shimless_rma", "shimless_rma_experimental"},
+		Attr: []string{"group:shimless_rma", "shimless_rma_calibration"},
 		Data: []string{sensorAccel.stateFilePath, sensorGyro.stateFilePath},
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
