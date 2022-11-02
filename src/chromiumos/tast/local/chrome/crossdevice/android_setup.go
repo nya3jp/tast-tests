@@ -180,22 +180,24 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 
 // AddAccount adds the specified Google account to the Android device. Assumes the GoogleAccountUtil APK has already been installed.
 func AddAccount(ctx context.Context, d *adb.Device, username, password string) error {
-	addAccountCmd := d.ShellCommand(ctx, "am", "instrument", "-w",
-		"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
-	)
+
 	// TODO(b/187795521): Re-adding the account immediately after removing it is flaky so retry until there is a deterministic indicator.
 	retries := 3
 	for i := 0; i < retries; i++ {
 		testing.Sleep(ctx, 3*time.Second)
+		addAccountCmd := d.ShellCommand(ctx, "am", "instrument", "-w",
+			"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
+		)
 		accountAdded := true
 		if out, err := addAccountCmd.Output(); err != nil {
-			testing.ContextLog(ctx, "Failed to add account from the device")
+			testing.ContextLogf(ctx, "Failed to add account to the device (%v)", err.Error())
 			accountAdded = false
 		} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
 			testing.ContextLogf(ctx, "Failed to add account to the device (%v)", string(out))
 			accountAdded = false
 		}
 		if accountAdded {
+			testing.ContextLogf(ctx, "Nearby GAIA user added after %d attempts", i+1)
 			return nil
 		}
 	}
