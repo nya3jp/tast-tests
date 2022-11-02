@@ -20,7 +20,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +36,9 @@ const (
 	InputWithHandWriting InputModality = "Handwriting"
 	InputWithPK          InputModality = "Physical Keyboard"
 )
+
+// String for ACUITI detection
+const acuitiString string = "acuiti"
 
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
 var PKCandidatesFinder = nodewith.Role(role.ImeCandidate).Onscreen()
@@ -205,4 +210,29 @@ func IMESearchFlags(imes []ime.InputMethod) []*testing.StringPair {
 		)
 	}
 	return searchFlags
+}
+
+// VerifyTextShownFromScreenshot returns an action checking whether the text is shown on the screenshot or not
+func VerifyTextShownFromScreenshot(tconn *chrome.TestConn, vkbCtx *vkb.VirtualKeyboardContext, text string, needExtreTextAssit bool) uiauto.Action {
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+
+	if needExtreTextAssit {
+		return uiauto.Combine("Add ACUITI string to verify text shown one the screen",
+			vkbCtx.TapKeys(strings.Split(acuitiString, "")),
+			vkbCtx.HideVirtualKeyboard(),
+			ud.WaitUntilExists(uidetection.Word(text+acuitiString, uidetection.MaxEditDistance(1), uidetection.DisableApproxMatch(true))),
+		)
+	}
+	return uiauto.Combine("verify text shown on the screen",
+		vkbCtx.HideVirtualKeyboard(),
+		ud.WaitUntilExists(uidetection.Word(text, uidetection.MaxEditDistance(1), uidetection.DisableApproxMatch(true))),
+	)
+
+}
+
+// ClickEnterToStartNewLine return an action clicking the enter button on vk
+func ClickEnterToStartNewLine(ctx context.Context, vkbCtx *vkb.VirtualKeyboardContext) {
+	uiauto.Combine("Click enter button on vk to start new line",
+		vkbCtx.TapKey("enter"),
+	)(ctx)
 }
