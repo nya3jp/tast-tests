@@ -16,6 +16,24 @@
       "message": "Can\u0027t we remove the test scheduling from non-intel board instead?",
       "revId": "cc4ec61c632ae2ca737ddb706ca76253d2181169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0f8392_3129f6d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-02T23:38:11Z",
+      "side": 1,
+      "message": "That functionality doesn\u0027t exist, and the implementation would rely on a bunch of code that\u0027s marked deprecated as well. We could create a permitted or banned list for platforms right now, but we would need to constantly update that.\n\nI think the better approach is to refactor this test into a generic suspend test, then check the S0ix validation files if they exist.",
+      "parentUuid": "911a54be_4fc7cccf",
+      "revId": "cc4ec61c632ae2ca737ddb706ca76253d2181169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
