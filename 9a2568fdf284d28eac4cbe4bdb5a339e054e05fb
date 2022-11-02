@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7a1aea_f7fef034",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:25:19Z",
+      "side": 1,
+      "message": "this bug solved. Now all test passed.",
+      "parentUuid": "d090f290_d4dd6dbe",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8a088e_c922aa65",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "The question is not whether it is supposed to. Please verify whether or not it actually is (e.g. in the beacon)",
       "parentUuid": "01ad6687_d6264184",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d798aa5_b72b4c45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:25:19Z",
+      "side": 1,
+      "message": "Thanks for your clarification:)\n\nI did `iw dev wlan0 station dump` during two subtests after connection to AP, and the DTMI is set to the correct value. Added to the commit msg.\n\nExample output:\n```\nlocalhost /sys/class/net/wlan0/device # iw dev wlan0 station dump\nStation 3a:f4:ff:52:93:dd (on wlan0)\n\t...\n\tDTIM period:\t1\n\t...\n```",
+      "parentUuid": "b08d6369_aa3536fc",
       "range": {
         "startLine": 12,
         "startChar": 5,
