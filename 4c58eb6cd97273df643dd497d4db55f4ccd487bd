@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4b57e9_cac0f6af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ad2cea_383625e8",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9913ae_6d57e83d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c7b6aa_82b1985c",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "268308e3_b7ee22b5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-02T17:42:25Z",
       "side": 1,
       "message": "nit: `we can then write to a file`",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6e68c9_2e575332",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268308e3_b7ee22b5",
       "range": {
         "startLine": 10,
         "startChar": 25,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0f3144_54fb68a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9b2dff9_be131939",
+      "range": {
+        "startLine": 27,
+        "startChar": 59,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05521749_7a8e3669",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951d0e06_0302a3f4",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27433396_3719bd93",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a247f84_0a9075e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27433396_3719bd93",
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29ccea62_1d603e0e",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-11-02T17:42:25Z",
       "side": 1,
       "message": "`cleanupCtx`",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "238c6d89_2d8ff4ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ccea62_1d603e0e",
       "range": {
         "startLine": 41,
         "startChar": 15,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53178307_93367246",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa075df8_8b19b046",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f1bf54e_ae6e0b0b",
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751925f7_6d38c8bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1bf54e_ae6e0b0b",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98de9ed4_c8e3475a",
@@ -215,6 +425,30 @@
       "writtenOn": "2022-11-02T17:42:25Z",
       "side": 1,
       "message": "`const filename \u003d \"/testfile.txt\"`",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8098a5d5_34f7b22e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98de9ed4_c8e3475a",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -261,6 +495,54 @@
       "writtenOn": "2022-11-02T17:42:25Z",
       "side": 1,
       "message": "Just use `Remove`.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f74464_41c37914",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948de53e_d851a502",
+      "range": {
+        "startLine": 81,
+        "startChar": 24,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9885358_cd2a2ffe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-02T18:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "594eb2b4_78906543",
       "range": {
         "startLine": 81,
         "startChar": 14,
