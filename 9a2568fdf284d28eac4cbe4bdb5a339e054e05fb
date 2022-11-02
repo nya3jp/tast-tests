@@ -241,6 +241,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "22621500_534911f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:35:57Z",
+      "side": 1,
+      "message": "Thanks for taking me go over points in the committer expectations! I changed the commit msg and added a paste link",
+      "parentUuid": "d3f6bf6a_33b3ddbc",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "9a2568fdf284d28eac4cbe4bdb5a339e054e05fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a306392a_278cece2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
