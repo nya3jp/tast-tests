@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d63fa8e_b2964272",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T16:34:50Z",
+      "side": 1,
+      "message": "nit: can you rename this and update the comment so that it\u0027s clear that it\u0027s not all 6e comments that are listed here (only the slow ones)?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "4a64dd0ee6fa2b7f99a1e3e5f6c5684cfd0e0158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
