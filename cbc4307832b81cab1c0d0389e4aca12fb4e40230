@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c8cee1_ceff0a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-11-02T04:25:20Z",
+      "side": 1,
+      "message": "🎉",
+      "parentUuid": "b0190614_df4bdfc6",
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c10e38_4c9e6c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-11-02T04:25:20Z",
+      "side": 1,
+      "message": "I looked on chromeos-swarming and I don\u0027t see any devices with board or model set to gale. Can you point me to where I can find something to test on?",
+      "parentUuid": "ed79482d_0aa20cf6",
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de8757e_7e849b75",
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1519e04_e102e3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-11-02T04:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de8757e_7e849b75",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eb84a0b_2257ab8a",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-10-31T21:31:38Z",
       "side": 1,
       "message": "Can this be a constant? especially if you add a successful message (comment below).",
+      "range": {
+        "startLine": 30,
+        "startChar": 45,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "cbc4307832b81cab1c0d0389e4aca12fb4e40230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d921017_84f9c383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-11-02T04:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb84a0b_2257ab8a",
       "range": {
         "startLine": 30,
         "startChar": 45,
