@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183ae4f6_d0c95a03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-02T21:52:55Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nThis CL is WIP. I am receiving 0 networks back from the GetNetworkList call made to network health. Does the shillReset fixture guarantee a network will be ready?",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
