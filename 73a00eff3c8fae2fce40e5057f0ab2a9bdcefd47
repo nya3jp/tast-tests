@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca1d59e_0a408ef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-02T03:08:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24354972_6e12f243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-02T03:08:31Z",
+      "side": 1,
+      "message": "just curious: What about boards that only support android_p? or have we moved completely to android_vm?",
+      "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dccb48b_e79dc6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-02T03:08:31Z",
+      "side": 1,
+      "message": "nit: Remove the extra line",
+      "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
