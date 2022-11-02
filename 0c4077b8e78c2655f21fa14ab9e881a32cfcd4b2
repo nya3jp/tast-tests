@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e335ed5_27e9b640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T14:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411e7aef_14237ba4",
+      "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea3ce883_7e179cdb",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-02T12:43:31Z",
       "side": 1,
       "message": "nit: const lockTimeout \u003d 5*time.Second\n\nIt\u0027s easier to pass time.Time values around without having to worry about the unit.",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec665942_6b2e2b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T14:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3ce883_7e179cdb",
       "range": {
         "startLine": 72,
         "startChar": 7,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdbb7fd_9c5385ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T14:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66c07603_059311d7",
+      "range": {
+        "startLine": 124,
+        "startChar": 29,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c77624b_24a2fef3",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ffa526_9b801542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T14:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c77624b_24a2fef3",
+      "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff896f94_83459161",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-11-02T12:43:31Z",
       "side": 1,
       "message": "Same as above, 5*time.Second",
+      "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad9d8c3_a0abe203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T14:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff896f94_83459161",
       "revId": "0c4077b8e78c2655f21fa14ab9e881a32cfcd4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
