@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63020cd3_90cb089d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`will`",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72608b97_0d647da1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "Just ignore `interval` when `maxImages` is less than 2. No additional functionality is supported by defining this semantic meaning for a zero `interval`. It only adds confusion.",
+      "range": {
+        "startLine": 12,
+        "startChar": 53,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89eefba_5aa39ff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "nit: `has`",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2efd3982_34751684",
@@ -14,6 +83,299 @@
       "writtenOn": "2022-11-02T16:50:38Z",
       "side": 1,
       "message": "Please review, thanks!",
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6dc6c28_f134714d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`Add` just to be consistent with the other tests.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f4ea8e_b113949a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`an`",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008ec537_a6983878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`Log` to be consistent with the other tests.",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc7a000_fe792f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`// Add an empty screenshot recorder.` to be consistent with the other tests.",
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b8ac28_7075fbc4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "nit: Explain that `Stop` can still take a final screenshot in this scenario.",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3c5358_b1d8ccef",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "nit: Remove the word `at` here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 70,
+        "endLine": 106,
+        "endChar": 72
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b4ead8_64b3d410",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "This would return a non-nil `error` in Example 2 from the `NewScreenshotRecorder` comment.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d16da0_5341cc8e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "How about:\n\n\tif r.maxImages \u003c 2 {\n\t\treturn nil\n\t}\n\t\n\ttesting.ContextLog(ctx, \"screenshot_recorder: Taking a screenshot every \", r.interval)\n\tgo func() {\n\t\tfor r.takingIntervalShots \u003d true; r.takingIntervalShots; {",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 29
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b3dc2c_b21cbcec",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`specified`",
+      "range": {
+        "startLine": 232,
+        "startChar": 42,
+        "endLine": 232,
+        "endChar": 50
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788eb1bf_ccb9dd4b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "nit: no comma",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 236,
+        "endChar": 15
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c412fbc_059a95f7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "I guess this is to allow taking custom screenshots without ever even calling `Start`. If you are supporting such usage, then you should document it in code comments and in the commit message. Also, find a better way to support it than a screenshot file name with `0` for `\u003cnumber of seconds since start\u003e`. How about:\n\n\tvar filename string\n\tif r.startTime.IsZero() {\n\t\tfilename \u003d fmt.Sprintf(\"cuj-%d%s\", r.numImages+1, fileSuffix)\n\t} else {\n\t\tfilename \u003d fmt.Sprintf(\"cuj-%d-%d%s.jpg\", r.numImages+1, time.Since(r.startTime).Seconds(), fileSuffix)\n\t}\n\n\tcmd :\u003d testexec.CommandContext(ctx, \"screenshot\", filepath.Join(r.screenshotsDir, filename))",
+      "range": {
+        "startLine": 261,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b344a41_ed175604",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "`time.Since(r.startTime)`",
+      "range": {
+        "startLine": 262,
+        "startChar": 26,
+        "endLine": 262,
+        "endChar": 53
+      },
+      "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db71557_3dbdffa9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T20:22:19Z",
+      "side": 1,
+      "message": "This code will do nothing because it will only be reached when `err` is nil. Otherwise the function will terminate at `return errors.Errorf(\"failed running %q\", strings.Join(cmd.Args, \" \"))`.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 2
+      },
       "revId": "18472991631c0d3bc50d49e58f137733f51fdcf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
