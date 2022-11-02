@@ -158,7 +158,7 @@ func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) erro
 		nodewith.Role(role.ToggleButton).NameRegex(regexp.MustCompile("(Take|Record) partial screen.*")),
 		nodewith.Role(role.ToggleButton).NameRegex(regexp.MustCompile("(Take|Record) window.*")),
 		nodewith.Role(role.ToggleButton).Name("Settings"),
-		nodewith.Role(role.Button).Name("Close").HasClass("CaptureModeButton"),
+		nodewith.Role(role.Button).Name("Close").HasClass("IconButton"),
 	} {
 		if err := ui.WaitUntilExists(btn)(ctx); err != nil {
 			return err

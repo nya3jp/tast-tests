@@ -101,14 +101,14 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Start partial screen recording via UI.
-	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
-	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
+	screenRecordToggleButton := nodewith.HasClass("IconButton").Name("Screen record")
+	recordPartialScreenToggleButton := nodewith.HasClass("IconButton").Name("Record partial screen")
 	dragStartPt := info.WorkArea.CenterPoint().Sub(coords.Point{X: 100, Y: 100})
 	dragEndPt := info.WorkArea.CenterPoint().Add(coords.Point{X: 100, Y: 100})
 	// The click point must be outside of drag area (i.e. outside of dragStartPt - dragEndPt rectangle).
 	dragClearPt := info.WorkArea.BottomCenter()
-	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
-	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
+	stopRecordButton := nodewith.HasClass("TrayBackgroundView").Name("Stop screen recording")
+	recordTakenLabel := nodewith.HasClass("Label").Name("Screen recording taken")
 
 	// Enter screen capture mode.
 	if err := wmputils.EnsureCaptureModeActivated(tconn, true)(ctx); err != nil {
