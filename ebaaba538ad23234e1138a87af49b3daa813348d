@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bfbdd7_9685c503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535837
+      },
+      "writtenOn": "2022-11-02T07:17:40Z",
+      "side": 1,
+      "message": "Would we want to test multiple resolutions? Usually, lower resolutions uses YUYV and higher resolutions use MJPEG as output frames to frameworks.",
+      "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2492a6f_d1f77cbe",
