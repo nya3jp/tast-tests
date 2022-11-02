@@ -64,23 +64,43 @@ func hasPrivacySwitchControl(ctx context.Context) (bool, error) {
 	return false, nil
 }
 
-func hasPrivacySwitchHardware(ctx context.Context) (bool, error) {
+type privacySwitchPresence uint
+
+const (
+	privacySwitchNotPresent privacySwitchPresence = iota
+	privacySwitchPresent
+	privacySwitchIgnore
+)
+
+func hasPrivacySwitchHardware(ctx context.Context) (privacySwitchPresence, error) {
 
 	for i := 0; ; i++ {
-		val, err := crosconfig.Get(ctx, fmt.Sprintf("/camera/devices/%v", i), "has-privacy-switch")
+		device := fmt.Sprintf("/camera/devices/%v", i)
+		_, err := crosconfig.Get(ctx, device, "interface")
 		if crosconfig.IsNotFound(err) {
 			break
 		}
 		if err != nil {
-			return false, errors.Wrap(err, "failed to execute cros_config")
+			return privacySwitchNotPresent, errors.Wrap(err, "failed to execute cros_config")
+		}
+		val, err := crosconfig.Get(ctx, device, "has-privacy-switch")
+		if crosconfig.IsNotFound(err) {
+			continue
+		}
+		if err != nil {
+			return privacySwitchNotPresent, errors.Wrap(err, "failed to execute cros_config")
 		}
 		if val == "true" {
 			testing.ContextLogf(ctx, "Camera %v supports privacy switch", i)
-			return true, nil
+			return privacySwitchPresent, nil
+		}
+		if val == "false" {
+			testing.ContextLogf(ctx, "Camera %v has unconnected privacy switch", i)
+			return privacySwitchIgnore, nil
 		}
 	}
 	testing.ContextLog(ctx, "No privacy switch found")
-	return false, nil
+	return privacySwitchNotPresent, nil
 }
 
 func PrivacySwitch(ctx context.Context, s *testing.State) {
@@ -89,16 +109,16 @@ func PrivacySwitch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get privacy switch control: ", err)
 	}
-	hasHardware, err := hasPrivacySwitchHardware(ctx)
+	privacySwitch, err := hasPrivacySwitchHardware(ctx)
 	if err != nil {
 		s.Fatal("Failed to get privacy switch hardware: ", err)
 	}
 
-	if hasHardware && !hasControl {
+	if privacySwitch == privacySwitchPresent && !hasControl {
 		s.Error("Privacy switch present but no video device can access it")
 	}
 
-	if hasControl && !hasHardware {
+	if privacySwitch == privacySwitchNotPresent && hasControl {
 		s.Error("Privacy switch not present in hardware but accessible via v4l control")
 	}
 
