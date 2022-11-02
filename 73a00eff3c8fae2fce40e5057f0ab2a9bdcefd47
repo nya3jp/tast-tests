@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003f47e6_fff4dffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T15:55:22Z",
+      "side": 1,
+      "message": "The integration is not implemented on Android versions before R due to unavailability of required APIs :)",
+      "parentUuid": "24354972_6e12f243",
+      "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dccb48b_e79dc6e9",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-02T03:08:31Z",
       "side": 1,
       "message": "nit: Remove the extra line",
+      "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc957ed_1a14922c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T15:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dccb48b_e79dc6e9",
       "revId": "73a00eff3c8fae2fce40e5057f0ab2a9bdcefd47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
