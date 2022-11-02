@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15491b54_cf18ddd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb03c87_220af5b0",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046fe2ac_798fa836",
@@ -715,6 +739,54 @@
       "side": 1,
       "message": "```\nCombine requires that each step return a ctx.\n```\n\nNot quite, `Combine()` expects that each step is an action. An action is a function that accepts context and returns an error.\n\n```\nI did not find a function for pressing keyboard keys\n```\n\nCan you not wrap the method call in an action?\n\n```\nI like the error messages along the way so it is easier to find out where the test breaks\n```\n\n`Combine()` bubbles up the error, it will tell you where the test breaks :)",
       "parentUuid": "5aae6429_8ec81866",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73bdbe6_61f1a18b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:37:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "672ee404_5370e055",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aa7cc0_7143613b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:37:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb2f891b_d0da10f7",
       "range": {
         "startLine": 142,
         "startChar": 0,
