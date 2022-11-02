@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "336dcf1d_c3f7e210",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-11-02T02:46:30Z",
+      "side": 1,
+      "message": "if we don\u0027t want power/performance coverage on go/cros-hps-graphs then this is fine. If we do want it then we\u0027ll need to parametrize the Sweetberry test as well.\n\nThere would be not a lot of benefit in doing so unless we plan on doing big changes.",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1fc42f_e5fabfcc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-11-02T02:46:30Z",
+      "side": 1,
+      "message": "Don\u0027t we need to add a fixture for stable firmware as well? Otherwise I think it could flash latest first and then run the \"!latest\" tests without flashing stable.",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "630db442_c15bdebe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
         "patchSetId": 2
@@ -61,6 +95,23 @@
         "endLine": 54,
         "endChar": 41
       },
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41f990d_78382a01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-11-02T02:46:30Z",
+      "side": 1,
+      "message": "can we abort/fail if overrideOrigFilename already exists? in case we didn\u0027t do proper Teardown before, in order to avoid strange behaviour",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
