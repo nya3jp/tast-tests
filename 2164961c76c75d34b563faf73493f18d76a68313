@@ -261,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aad0dec4_386b4593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T12:43:31Z",
+      "side": 1,
+      "message": "policy works better in this case.",
+      "parentUuid": "b5894964_0741272d",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a34f189_e07b14da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
         "patchSetId": 3
