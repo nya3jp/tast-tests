@@ -16,6 +16,420 @@
       "message": "Tytyty",
       "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b15a12b1_0e0ec0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "We probably don\u0027t need a separate method just to wrap the test logic :)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 182
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd96a222_4f0b967e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "What is this line of code doing? :)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75077e7a_04ee5c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 64
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8628db_eff0846e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff84b36_f0e107af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 89
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e2f9ec_87cdf0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 120
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac45962_09103dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "AccelPressAction?",
+      "range": {
+        "startLine": 146,
+        "startChar": 16,
+        "endLine": 146,
+        "endChar": 26
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b760b992_6526b697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 44
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef3f150_b7f38e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec672058_e5b7ad4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 70
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829cd2bc_23555be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "AccelReleaseAction?",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3c9b51_0a068894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa07851_7b4884ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "How do we know files were copied if this LOC is successful?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 122
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20534c92_a926ec64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Using uiauto APIs for the press, move, release will play nicer with `Combine()` :)",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d257ed33_9bc08cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 125
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38149370_12fe8c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Why are we looking for chips here?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c56c036_7e779985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "Same question as above :)",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 100
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822c20cb_2d99295b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T23:10:48Z",
+      "side": 1,
+      "message": "This code may not be reached and we may leak created files?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
