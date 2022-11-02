@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a29b19_95bfe502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-11-02T07:35:34Z",
+      "side": 1,
+      "message": "Does this generalise to other platforms besides hana?",
+      "revId": "a93962b011d8c3205a8d9dc4f588f9530846f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
