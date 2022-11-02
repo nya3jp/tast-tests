@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5bbc4dd_ec08da10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:23:30Z",
+      "side": 1,
+      "message": "My 2 cents: If the base test for ash doesn\u0027t use a fixture, we may not need this here and down below. It\u0027s because the fixture usually instantiates a chrome in its setup so it would conflict if you\u0027re trying to set it up again in test body for \"lacros\".",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddecfd93_7cbc2652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:23:30Z",
+      "side": 1,
+      "message": "Here you can configure ash to activate lacros by calling:\n\n`cr, err :\u003d browserfixt.NewChrome(ctx, params.bt, lacrosfixt.NewConfig(), opts...)`\nand remove `defer closeBrowser(cleanupCtx)`",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 108
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f3ba63_1b5a852d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:23:30Z",
+      "side": 1,
+      "message": "Here you can open a URL in primary browser.\n\n`conn, _, closeBrowser, err :\u003d browserfixt.SetUpWithURL(ctx, cr, params.bt, url)`\n...\n`defer closeBrowser(cleanupCts)` before `defer conn.Close()`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
