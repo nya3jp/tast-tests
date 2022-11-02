@@ -61,6 +61,7 @@ var (
 		"310280": carrierAtt,
 		"310410": carrierAtt,
 		"311480": carrierVerizon,
+		"44010":  carrierDocomo,
 		"44011":  carrierRakuten,
 		"44020":  carrierSoftbank,
 		"44051":  carrierKDDI,
@@ -94,6 +95,9 @@ var (
 			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "au.au-net.ne.jp", attach: attachTrue, ipType: ipv4v6, username: "user@au.au-net.ne.jp", password: "au", auth: chap}},
 			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "uno.au-net.ne.jp", attach: attachTrue, ipType: ipv4v6, username: "685840734641020@uno.au-net.ne.jp", password: "KpyrR6BP", auth: chap}},
 		},
+		carrierDocomo: []KnownAPN{
+			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "spmode.ne.jp", attach: attachTrue, ipType: ipv4v6, auth: chap}},
+		},
 		carrierRakuten: []KnownAPN{
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "rakuten.jp", attach: attachTrue, ipType: ipv4v6}},
 		},
@@ -117,7 +121,12 @@ var (
 func GetKnownAPNsForOperator(operatorID string) ([]KnownAPN, error) {
 	carrier, ok := carrierMapping[operatorID]
 	if !ok {
-		return nil, errors.Errorf("cannot find carrier for operator %q", operatorID)
+		operatorID1 := operatorID[0:5]
+		carrier, ok = carrierMapping[operatorID1]
+		if !ok {
+			return nil, errors.Errorf("cannot find carrier for operators %q or %q", operatorID, operatorID1)
+		}
+		operatorID = operatorID1
 	}
 	apns, ok := carrierAPNs[carrier]
 	if !ok {
