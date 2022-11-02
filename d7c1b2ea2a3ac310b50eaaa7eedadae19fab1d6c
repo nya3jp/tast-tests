@@ -68,6 +68,30 @@
       },
       "revId": "d7c1b2ea2a3ac310b50eaaa7eedadae19fab1d6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc43625d_f034ad70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-11-02T20:56:16Z",
+      "side": 1,
+      "message": "Good catch! Thank you!.",
+      "parentUuid": "9c489b09_fc1200f3",
+      "range": {
+        "startLine": 164,
+        "startChar": 136,
+        "endLine": 164,
+        "endChar": 164
+      },
+      "revId": "d7c1b2ea2a3ac310b50eaaa7eedadae19fab1d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
