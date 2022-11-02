@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f214177_31bf6c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-11-02T16:41:10Z",
+      "side": 1,
+      "message": "can you add a `defer files.Close`? (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go;l\u003d109-113)\n\ncan you also see if GetWindow(ctx, tconn, apps.FilesSWA.ID) (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go;l\u003d97-102) works? then you shouldn\u0027t need to do len(windows) and windows[0] stuff below",
+      "revId": "d765d7a5943ff17f07eacca1e3f290a02e68a022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043dc575_6e029af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-11-02T16:41:10Z",
+      "side": 1,
+      "message": "can we remove this? it\u0027s nice to test the event type is working, but i think the problem would be with wm.go if this were to fail, so it\u0027s not useful to us here. we can add it back later if needed",
+      "revId": "d765d7a5943ff17f07eacca1e3f290a02e68a022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
