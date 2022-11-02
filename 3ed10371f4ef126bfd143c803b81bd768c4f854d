@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03cde5d_3f85da8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-02T06:05:32Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "3ed10371f4ef126bfd143c803b81bd768c4f854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5987b0_30d178b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-02T06:05:32Z",
+      "side": 1,
+      "message": "nit: Please use space to surround \"/\", and fix the rest as well.",
+      "range": {
+        "startLine": 304,
+        "startChar": 4,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "3ed10371f4ef126bfd143c803b81bd768c4f854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
