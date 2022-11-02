@@ -14,10 +14,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var chameleonHostVar = testing.RegisterVarString(
-	"graphics.chameleonhostname",
-	"",
-	"Chameleon Host Name",
+var (
+	chameleonHostVar = testing.RegisterVarString(
+		"graphics.chameleon_host",
+		"localhost",
+		"Hostname for Chameleon")
+
+	chameleonSSHPortVar = testing.RegisterVarString(
+		"graphics.chameleon_ssh_port",
+		"22",
+		"SSH port for Chameleon")
+
+	chameleonPortVar = testing.RegisterVarString(
+		"graphics.chameleon_port",
+		"9992",
+		"Port for chameleond on Chameleon")
 )
 
 func init() {
@@ -60,17 +71,29 @@ func setIgtrcFile(s *testing.State) {
 	}
 
 	// 2. If it's not assigned, get the DUT hostname value and append the suffix.
-	if chameleonHostName == "" {
+	if chameleonHostName == "localhost" {
 		if s.DUT() == nil {
-			s.Fatal("Failed to get the DUT.")
+			s.Fatal("Failed to get the DUT")
 			return
 		}
 		dutHostName := s.DUT().HostName()
 		if dutHostName == "" {
-			s.Fatal("Failed to get the DUT's hostname.")
+			s.Fatal("Failed to get the DUT's hostname")
 			return
 		}
 		chameleonHostName = dutHostName + "-chameleon"
+	}
+
+	/*
+		chameleonSSHPort := ""
+		if chameleonSSHPortVar != nil {
+			chameleonSSHPort = chameleonSSHPortVar.Value()
+		}
+	*/
+
+	chameleonPort := ""
+	if chameleonPortVar != nil {
+		chameleonPort = chameleonPortVar.Value()
 	}
 
 	content := `
@@ -82,10 +105,10 @@ FrameDumpPath=/tmp
 SuspendResumeDelay=15
 
 [Chamelium]
-URL=` + chameleonHostName + `
+URL=` + chameleonHostName + `:` + chameleonPort + `
 
 `
-
+	s.Log(content)
 	// Write config content to .igtrc
 	_, err = igtFile.WriteString(content)
 	if err != nil {
