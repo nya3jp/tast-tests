@@ -35,7 +35,6 @@ func init() {
 		},
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
-		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -166,7 +165,12 @@ func ViewPPD(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	// TODO(http://b/233925425): Remove flag when no longer needed
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=EnableViewPpd"))
+	if err != nil {
+		s.Fatal("Failed to create Chrome instance: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
