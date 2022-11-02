@@ -12,9 +12,17 @@ import (
 // for an element indicating DUT is looking for a keyboard device to connect to.
 const SearchingForKeyboardNodeName = "Searching for keyboard"
 
+// SearchingForMouseNodeName is the node name in OOBE HID detection page,
+// for an element indicating DUT is looking for a mouse device to connect to.
+const SearchingForMouseNodeName = "Searching for pointing device"
+
 // FoundUSBKeyboardNodeName is the node name in OOBE HID detection page,
 // for an element indicating a USB keyboard device is connected to DUT.
 const FoundUSBKeyboardNodeName = "USB keyboard connected"
+
+// FoundUSBMouseNodeName is the node name in OOBE HID detection page,
+// for an element indicating a USB mouse device is connected to DUT.
+const FoundUSBMouseNodeName = "Pointing device connected"
 
 // ContinueButtonEnabledNodeName is the node name in OOBE HID detection page,
 // for an element indicating contunue button is enabled.
