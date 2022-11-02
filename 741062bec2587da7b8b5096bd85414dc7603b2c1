@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084be91a_bc244729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-02T23:10:52Z",
+      "side": 1,
+      "message": "nit: you need to rebase this change on it parent change. Can be done using gerrit UI.",
+      "revId": "741062bec2587da7b8b5096bd85414dc7603b2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
