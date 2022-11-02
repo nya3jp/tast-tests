@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc18c43d_cb9ae0fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T22:34:02Z",
+      "side": 1,
+      "message": "`Additionally`",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73f521f7_85f82a26",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-11-02T22:13:15Z",
       "side": 1,
       "message": "yichenz: THanks for hte review!\namusbach: Can you do tast-owner review? Thanks!",
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73881df3_0fa3c143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T22:34:02Z",
+      "side": 1,
+      "message": "lgtm with simple changes",
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac488c4_ef8c30b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T22:34:02Z",
+      "side": 1,
+      "message": "nit: Does this `TODO` really need to be written here? _Investigate_ implies that depending on what you find out, there might be no code change necessary. However if you write this `TODO` here then you definitely will need another CL because if nothing else, you will need to remove this `TODO`.",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f146df_70497a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T22:34:02Z",
+      "side": 1,
+      "message": "`HasClass`",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 46
+      },
       "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
