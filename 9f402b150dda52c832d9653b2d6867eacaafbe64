@@ -542,6 +542,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2ab900_1b2353f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-02T08:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9f21e3_7568bfcf",
+      "range": {
+        "startLine": 180,
+        "startChar": 39,
+        "endLine": 180,
+        "endChar": 51
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a14bcc26_5306b096",
@@ -555,6 +579,30 @@
       "writtenOn": "2022-11-01T03:31:52Z",
       "side": 1,
       "message": "service has another `WaitForProperty()` function which does the poll inside.",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "9f402b150dda52c832d9653b2d6867eacaafbe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d90b84_1f79cbac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-02T08:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a14bcc26_5306b096",
       "range": {
         "startLine": 184,
         "startChar": 1,
