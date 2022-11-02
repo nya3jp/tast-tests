@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c3f343_3ffd1da2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-11-02T17:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a4ae1f_4565bcc3",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "e920f1bba84f388c79cd438f6c42b6f16b543226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7115ef_f907dfb5",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a420bfd9_d3a97306",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-11-02T17:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7115ef_f907dfb5",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "e920f1bba84f388c79cd438f6c42b6f16b543226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa71b03_04abb227",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-02T16:23:24Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "e920f1bba84f388c79cd438f6c42b6f16b543226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c98fba8_59a33c89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-11-02T17:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aa71b03_04abb227",
       "range": {
         "startLine": 35,
         "startChar": 5,
