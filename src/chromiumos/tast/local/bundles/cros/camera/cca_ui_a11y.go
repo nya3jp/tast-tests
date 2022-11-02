@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -71,6 +72,10 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 
 	visited := make(map[string]bool)
 	tab := "Tab"
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Error("Failed to wait CPU untile idle: ", err)
+	}
 
 	// Turning on ChromeVox by keyboard is in a11y/chromevox_toggle_on_shortcut.go
 	// Connect to ChromeVox using NewChromeVoxConn.
