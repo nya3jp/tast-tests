@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ccb9af_fd5295fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Interesting, Didn\u0027t know it can be specified like this.\nOn the other hand we had the issue that vivid was not working in VM in the past. If we put VM and not vivid in the software deps, it will guard also against such issues. If we put just vivid in the deps and vivid is broken, the tests will be skipped, I think it\u0027s better to highlight the issue with vivid.\n\nI think we can merge the current version and see if we have some failures due to vivid, having in mind that we can use this in case that vivid is not present on all machines.",
+      "parentUuid": "200dd5a4_407ce002",
+      "range": {
+        "startLine": 32,
+        "startChar": 116,
+        "endLine": 32,
+        "endChar": 128
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2d61b01_74ce1051",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-01T06:05:45Z",
       "side": 1,
       "message": "nit:\n```\nui :\u003d uiauto.New(tconn)\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4e16dc_ddfbe3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "I really prefer to have the full type there, as the code navigation with tast code doesn\u0027t work and sometimes it\u0027s a pain to figure out what is the type.",
+      "parentUuid": "a2d61b01_74ce1051",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bdbadcb_ee627bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "I really prefer to have the full type there, as the code navigation with tast code doesn\u0027t work and sometimes it\u0027s a pain to figure out what is the type.",
+      "parentUuid": "eeb23fe6_093d1356",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7fa8325_14b7fc1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-01T06:05:45Z",
       "side": 1,
       "message": "These parts seem to be identical to the ones in `isCameraEnabled()`. Can we extract them to avoid duplicated codes?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6248fed_33601927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "There are also some duplicates in the UI tast tests and not only code duplicates, but some setup could be done once for multiple tests.\nWe will address this in the follow up refactoring: http://b/256993448",
+      "parentUuid": "c7fa8325_14b7fc1d",
       "range": {
         "startLine": 88,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b827ee75_82dab629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f2b46f_59139129",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abee1aaa_2e23d083",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-11-01T06:05:45Z",
       "side": 1,
       "message": "nit: Simply return `clickCameraToggle(ctx, tconn)` if we don\u0027t want to wrap any extra information in the error.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5079f654_9ca58382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abee1aaa_2e23d083",
       "range": {
         "startLine": 125,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "046d4fcf_34dfb622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e215d3_ab7a503e",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0f5641_98f035b3",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-11-01T06:05:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c576e64_c750318a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0f5641_98f035b3",
       "range": {
         "startLine": 171,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc7add3_9c7975fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "That\u0027s not what I want to test.\nI am in a state where the camera is on, now I click and the camera should be off.\nsetCameraSwitchState(false) clicks the state only under some conditions.",
+      "parentUuid": "29b27201_636fb39e",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66628f25_da2ff707",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2669d8cd_a3439d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66628f25_da2ff707",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b0d1d5_93bf7c02",
@@ -244,6 +484,30 @@
       "writtenOn": "2022-11-01T06:05:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511ba3ac_873e84a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b0d1d5_93bf7c02",
       "range": {
         "startLine": 195,
         "startChar": 1,

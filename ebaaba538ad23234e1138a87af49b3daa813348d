@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "facefe80_e8044cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-02T10:12:57Z",
+      "side": 1,
+      "message": "Sounds like a good idea, but I don\u0027t know how to do it in the VM at the moment.\nIt also doesn\u0027t have to be in this patch. I\u0027ll file a task to extend this in future.\n\nbug: http://b/256987236",
+      "parentUuid": "6ed86a17_fc366bbb",
+      "revId": "ebaaba538ad23234e1138a87af49b3daa813348d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2492a6f_d1f77cbe",
