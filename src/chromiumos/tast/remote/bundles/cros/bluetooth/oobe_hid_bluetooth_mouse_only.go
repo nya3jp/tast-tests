@@ -10,6 +10,7 @@ import (
 
 	"google.golang.org/protobuf/types/known/emptypb"
 
+	cbt "chromiumos/tast/common/chameleon/devices/common/bluetooth"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bluetooth"
 	"chromiumos/tast/services/cros/ui"
@@ -84,7 +85,9 @@ func OobeHidBluetoothMouseOnly(ctx context.Context, s *testing.State) {
 	checkNodeWithNameExists(ctx, uiautoSvc, s, SearchingForPointerNodeName)
 
 	// Discover btPeer as a mouse.
-	mouseDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[0].BluetoothMouseDevice())
+	mouseDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[0], &bluetooth.EmulatedBTPeerDeviceConfig{
+		DeviceType: cbt.DeviceTypeMouse,
+	})
 	if err != nil {
 		s.Fatalf("Failed to configure btpeer as a %s device: %s", mouseDevice.DeviceType(), err)
 	}
