@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4776014a_94245c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-02T10:57:56Z",
+      "side": 1,
+      "message": "nit:\n`} else if val \u003d\u003d \"false\" {`",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "revId": "69b4573d2c8b9372757646c584fcc9876dd0ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
