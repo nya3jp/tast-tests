@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "085d8529_11cc1c38",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T08:40:53Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c2bdfc9e_3e02575c",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b85df69e_0b428a79",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 4
@@ -48,6 +66,58 @@
       "writtenOn": "2022-10-31T20:15:31Z",
       "side": 1,
       "message": "This needs tests to capture various error conditions and regular flow.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75067055_f0bcd9ad",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T08:40:53Z",
+      "side": 1,
+      "message": "I\u0027m happy with simple test that marshalls to json, unmarshalls and make sure they match. It should be table-driven to cover most situations.",
+      "parentUuid": "fc6c0e93_88223bfe",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686d8ea1_9fb45c2c",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T08:40:53Z",
+      "side": 1,
+      "message": "nit: this needs comments.",
+      "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f8c979_c89d08cf",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T08:40:53Z",
+      "side": 1,
+      "message": "nit: Can you move things to separate functions? The current function is way too long and complex.\n\nThose functions could also be tested independently more easily.",
       "revId": "a48588f94c552e2c491f36a0e74256d321c3d8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
