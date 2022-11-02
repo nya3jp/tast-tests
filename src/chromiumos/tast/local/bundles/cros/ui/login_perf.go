@@ -161,14 +161,14 @@ func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, browserT
 }
 
 // loginPerfDoLogin logs in and waits for animations to finish.
-func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome.Creds, browserType browser.Type) (retL *lacros.Lacros, retErr error) {
+func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome.Creds, browserType browser.Type) (retL *lacros.Lacros, lacrosConnectTimeMs *float64, retErr error) {
 	outdir, ok := testing.ContextOutDir(ctx)
 	if !ok {
-		return nil, errors.New("no output directory exists")
+		return nil, nil, errors.New("no output directory exists")
 	}
 	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "creating login test API connection failed")
+		return nil, nil, errors.Wrap(err, "creating login test API connection failed")
 	}
 	defer faillog.DumpUITreeOnError(ctx, outdir, func() bool { return retErr != nil }, tLoginConn)
 
@@ -177,48 +177,52 @@ func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome
 	// We can check in the UI for the password field to exist, which seems to be a good enough indicator that
 	// the field is ready for keyboard input.
 	if err := lockscreen.WaitForPasswordField(ctx, tLoginConn, credentials.User, 15*time.Second); err != nil {
-		return nil, errors.Wrap(err, "password text field did not appear in the ui")
+		return nil, nil, errors.Wrap(err, "password text field did not appear in the ui")
 	}
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get keyboard")
+		return nil, nil, errors.Wrap(err, "failed to get keyboard")
 	}
 	defer kb.Close()
 
 	if err := kb.Type(ctx, credentials.Pass+"\n"); err != nil {
-		return nil, errors.Wrap(err, "entering password failed")
+		return nil, nil, errors.Wrap(err, "entering password failed")
 	}
 
 	// Check if the login was successful using the API and also by looking for the shelf in the UI.
 	if st, err := lockscreen.WaitState(ctx, tLoginConn, func(st lockscreen.State) bool { return st.LoggedIn }, 30*time.Second); err != nil {
-		return nil, errors.Wrapf(err, "failed waiting to log in: last state: %+v", st)
+		return nil, nil, errors.Wrapf(err, "failed waiting to log in: last state: %+v", st)
 	}
 
 	if err := ash.WaitForShelf(ctx, tLoginConn, 120*time.Second); err != nil {
-		return nil, errors.Wrap(err, "shelf did not appear after logging in")
+		return nil, nil, errors.Wrap(err, "shelf did not appear after logging in")
 	}
 
 	if browserType == browser.TypeLacros {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to test api")
+			return nil, nil, errors.Wrap(err, "failed to connect to test api")
 		}
+		startTime := time.Now()
 		// lacros.Connect() fails if DevTools connection file was already created, but Chrome does not accept connections.
-		// Retry for 10 seconds.
-		for deadline := time.Now().Add(10 * time.Second); time.Now().Before(deadline); {
+		// Retry for 20 seconds.
+		for deadline := time.Now().Add(20 * time.Second); time.Now().Before(deadline); {
 			retL, err = lacros.Connect(ctx, tconn)
 			if err == nil {
-				return retL, err
+				lacrosConnectTimeMs = new(float64)
+				*lacrosConnectTimeMs = float64(time.Now().Sub(startTime).Milliseconds())
+				testing.ContextLogf(ctx, "loginPerfDoLogin: Connecting to lacros took %dms", int64(*lacrosConnectTimeMs))
+				return retL, lacrosConnectTimeMs, err
 			}
 			testing.ContextLog(ctx, "loginPerfDoLogin: Connect to lacros failed. Sleeping for 10 milliseconds before retry")
 			if err := testing.Sleep(ctx, 10*time.Millisecond); err != nil {
-				return nil, errors.Wrap(err, "failed to wait for lacros-chrome test connection")
+				return nil, nil, errors.Wrap(err, "failed to wait for lacros-chrome test connection")
 			}
 		}
-		return nil, errors.Wrap(err, "timed out retrying connection to Lacros")
+		return nil, nil, errors.Wrap(err, "timed out retrying connection to Lacros")
 	}
-	return nil, nil
+	return nil, nil, nil
 }
 
 func loginPerfCreateWindows(ctx context.Context, cr *chrome.Chrome, l *lacros.Lacros, url string, n int) error {
@@ -487,7 +491,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 					}
 					defer cr.Close(ctx)
 
-					l, err := loginPerfDoLogin(ctx, cr, creds, param.bt)
+					l, _, err := loginPerfDoLogin(ctx, cr, creds, param.bt)
 					if err != nil {
 						return err
 					}
@@ -591,10 +595,12 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 							}
 						}
 
+						var lacrosConnectTimeMs *float64
+
 						// The actual test function
 						testFunc := func(ctx context.Context) error {
 							var err error
-							l, err = loginPerfDoLogin(ctx, cr, creds, param.bt)
+							l, lacrosConnectTimeMs, err = loginPerfDoLogin(ctx, cr, creds, param.bt)
 							if err != nil {
 								return errors.Wrap(err, "failed to log in")
 							}
@@ -639,6 +645,13 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						tpsValues := perf.NewValues()
 						if err := cujRecorder.Record(ctx, tpsValues); err != nil {
 							return nil, errors.Wrap(err, "failed to collect the data from the recorder")
+						}
+						if lacrosConnectTimeMs != nil {
+							tpsValues.Set(perf.Metric{
+								Name:      "Ash.Tast.LacrosConnectTime",
+								Unit:      "millisecond",
+								Direction: perf.SmallerIsBetter,
+							}, *lacrosConnectTimeMs)
 						}
 						r.Values().MergeWithSuffix(fmt.Sprintf("%s.%s.%dwindows", suffix, arcMode, currentWindows), tpsValues.GetValues())
 						return histograms, err
