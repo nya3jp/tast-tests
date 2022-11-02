@@ -349,6 +349,9 @@ func GetScan(pattern string) (string, error) {
 
 // StartPrinter sets up the virtual printer. Caller should call printer.Stop.
 func StartPrinter(ctx context.Context, tconn *chrome.TestConn) (*usbprinter.Printer, error) {
+	if err := cups.RestartPrintingSystem(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to reset printing system")
+	}
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
 		usbprinter.WithGenericIPPAttributes(),
@@ -360,9 +363,6 @@ func StartPrinter(ctx context.Context, tconn *chrome.TestConn) (*usbprinter.Prin
 	}
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for ippusb_bridge socket")
-	}
-	if err = cups.RestartPrintingSystem(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to reset printing system")
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for printer notification")

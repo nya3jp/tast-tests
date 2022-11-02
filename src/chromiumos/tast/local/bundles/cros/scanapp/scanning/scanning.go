@@ -435,6 +435,9 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
+	}
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithDescriptors(scannerParams.Descriptors),
 		usbprinter.WithAttributes(scannerParams.Attributes),
@@ -452,9 +455,6 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}(cleanupCtx)
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
-	}
-	if err = cups.RestartPrintingSystem(ctx); err != nil {
-		s.Fatal("Failed to restart printing system: ", err)
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
