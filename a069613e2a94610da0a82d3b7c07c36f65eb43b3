@@ -123,6 +123,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f85514e_2f3f9146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T16:31:04Z",
+      "side": 1,
+      "message": "plain* oops",
+      "parentUuid": "302bef3c_b83ea915",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca043f87_7db9e9bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
         "patchSetId": 4
@@ -152,6 +170,24 @@
       "side": 1,
       "message": "As far as I know about go, this is just kind of how it is? (I blame go for not having error handling)\n\n@amusbach@chromium.org Wdyt?",
       "parentUuid": "ca043f87_7db9e9bd",
+      "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d76e309_5e849a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-02T16:31:04Z",
+      "side": 1,
+      "message": "Copying from avery\u0027s comment to me outside the CL: \n\n```\nIf the point is to give an instructive example, it should represent how we really write Tast tests.\nThis is how we actually do error handling in Tast tests. It is part of what people should learn from the example.\n```",
+      "parentUuid": "209ebada_b4f0c044",
       "revId": "a069613e2a94610da0a82d3b7c07c36f65eb43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
