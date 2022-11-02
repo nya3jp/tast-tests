@@ -52,9 +52,9 @@ func CaptureSelfieCamSelection(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	screenRecordToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Screen record")
-	recordFullscreenToggleButton := nodewith.HasClass("CaptureModeToggleButton").Name("Record full screen")
-	captureModeSettingsButton := nodewith.HasClass("CaptureModeToggleButton").Name("Settings")
+	screenRecordToggleButton := nodewith.HasClass("IconButton").Name("Screen record")
+	recordFullscreenToggleButton := nodewith.HasClass("IconButton").Name("Record full screen")
+	captureModeSettingsButton := nodewith.HasClass("IconButton").Name("Settings")
 	// Note that the first (n = 0) "Off" option is for audio input. We want the camera's at n = 1.
 	cameraOffButton := nodewith.HasClass("CaptureModeOption").Name("Off").Nth(1)
 	firstCamera := nodewith.HasClass("CaptureModeOption").Name("fake_device_0")
