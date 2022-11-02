@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c71a9a3_c96cc57f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-11-02T08:49:31Z",
+      "side": 1,
+      "message": "The test is stable right now: https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-10-27\u0026last_date\u003d2022-11-02\u0026master_builder_name\u003d%5Emaster-release%24%7C-\u0026branch\u003d%5Emain%24\u0026test\u003d%5Etast%5C.audio%5C.UIInput%5C.gain%24\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dtrue\u0026exclude_non_critical\u003dtrue\n\nThe remaining failaures in 3 days: https://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2022-10-31\u0026last_date\u003d2022-11-02\u0026master_builder_name\u003d%5Emaster-release%24%7C-\u0026branch\u003d%5Emain%24\u0026test\u003d%5Etast%5C.audio%5C.UIInput%5C.gain%24\u0026status\u003dFAIL\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dtrue\u0026exclude_non_critical\u003dtrue are:\n\n1. test global timeout\n2. Precondition failure\n3. Failed to increase mic gain slider: should be fixed by https://crrev.com/c/3990473",
+      "revId": "658c11711bad4497aa7918d3f3e6bc8c2ad05af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
