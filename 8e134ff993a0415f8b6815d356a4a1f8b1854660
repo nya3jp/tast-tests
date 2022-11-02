@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74837db4_198953a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-02T04:07:29Z",
+      "side": 1,
+      "message": "@sophialin@google.com, last time you mentioned that we could install the package from a fixed .deb file, instead of installing from the remote repo, which will break at certain points (e.g., b/255730970). \n\nIs there an easy way we could apply in this test?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
