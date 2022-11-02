@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a348f109_c411e63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-02T01:15:48Z",
+      "side": 1,
+      "message": "Nit: \"The result is useful for looking up lacros version info using VersionHistory API.\", and make that the last sentence.",
+      "revId": "480ef944f2cd5fe3f820605043dd6b5f0fe5b5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
