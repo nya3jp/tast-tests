@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/types/known/emptypb"
 
 	btc "chromiumos/tast/common/bluetooth"
@@ -42,9 +43,9 @@ const (
 )
 
 const (
-	setUpTimeout    = 20 * time.Second
-	resetTimeout    = 5 * time.Second
-	tearDownTimeout = 10 * time.Second
+	setUpTimeout    = 80 * time.Second
+	resetTimeout    = 65 * time.Second
+	tearDownTimeout = 70 * time.Second
 
 	// btpeerTimeoutBuffer is added to fixture per btpeer expected to give
 	// additional time to manage each btpeer.
@@ -276,10 +277,13 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}
 
-	// Enable bluetooth adapter.
+	// Enable bluetooth adapter and clear devices.
 	if tf.features.BluetoothAdapterEnabled {
 		if _, err := tf.fv.BTS.EnableBluetoothAdapter(ctx, &emptypb.Empty{}); err != nil {
 			s.Fatal("Failed to enable bluetooth adapter on DUT: ", err)
+		}
+		if err := tf.clearDutBluetoothDevices(ctx); err != nil {
+			s.Error("Failed to clear DUT bluetooth devices: ", err)
 		}
 	}
 	return tf.fv
@@ -294,8 +298,8 @@ func (tf *fixture) Reset(ctx context.Context) (retErr error) {
 		if _, err := tf.fv.BTS.EnableBluetoothAdapter(ctx, &emptypb.Empty{}); err != nil {
 			return errors.Wrap(err, "failed to enable bluetooth adapter on DUT")
 		}
-		if _, err := tf.fv.BTS.DisconnectAllDevices(ctx, &emptypb.Empty{}); err != nil {
-			return errors.Wrap(err, "failed to disconnected all bluetooth devices")
+		if err := tf.clearDutBluetoothDevices(ctx); err != nil {
+			return errors.Wrap(err, "failed to clear DUT bluetooth devices")
 		}
 	}
 	if err := tf.resetBTPeers(ctx); err != nil {
@@ -327,6 +331,9 @@ func (tf *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 func (tf *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Turn bluetooth adapter back off.
 	if tf.features.BluetoothAdapterEnabled {
+		if err := tf.clearDutBluetoothDevices(ctx); err != nil {
+			s.Error("Failed to clear DUT bluetooth devices: ", err)
+		}
 		if _, err := tf.fv.BTS.DisableBluetoothAdapter(ctx, &emptypb.Empty{}); err != nil {
 			s.Error("Failed to disable bluetooth adapter on DUT: ", err)
 		}
@@ -400,14 +407,52 @@ func (tf *fixture) setUpBTPeers(ctx context.Context, s *testing.FixtState, requi
 
 // resetBTPeers resets each configured btpeer to return them to their normal
 // state and clear any changes a test may have made to them.
-func (tf *fixture) resetBTPeers(ctx context.Context) (firstErr error) {
+// Each btpeer is reset in parallel to save time. If any reset fails, the first
+// error is returned and any pending resets are cancelled.
+func (tf *fixture) resetBTPeers(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("resetBTPeers_%d", len(tf.fv.BTPeers)))
 	defer st.End()
-	for i, btpeer := range tf.fv.BTPeers {
-		if err := btpeer.Reset(ctx); err != nil && firstErr != nil {
-			firstErr = errors.Wrapf(err, "failed to reset btpeer[%d] at %q", i,
-				btpeer.Host())
-		}
+	if len(tf.fv.BTPeers) == 0 {
+		return nil
 	}
-	return firstErr
+	testing.ContextLogf(ctx, "Resetting %d btpeers", len(tf.fv.BTPeers))
+	resetCtx, cancelResetCtx := context.WithTimeout(ctx, 1*time.Minute)
+	defer cancelResetCtx()
+	resetGroup, resetCtx := errgroup.WithContext(resetCtx)
+	for i, btpeer := range tf.fv.BTPeers {
+		resetGroup.Go(func() error {
+			return tf.resetBTPeer(resetCtx, i, btpeer)
+		})
+	}
+	if err := resetGroup.Wait(); err != nil {
+		return errors.Wrap(err, "failed to reset btpeers")
+	}
+	return nil
+}
+
+func (tf *fixture) resetBTPeer(ctx context.Context, btpeerNum int, btpeer chameleon.Chameleond) error {
+	// Reset the base chameleond service state.
+	if err := btpeer.Reset(ctx); err != nil {
+		return errors.Wrapf(err, "failed to reset chameleond on btpeer[%d] at %q", btpeerNum, btpeer.Host())
+	}
+	// Reset the bluetooth service state, through the keyboard device interface
+	// since this method is not exposed at a higher level.
+	if err := btpeer.BluetoothKeyboardDevice().ResetStack(ctx, ""); err != nil {
+		return errors.Wrapf(err, "failed to reset bluetooth stack on btpeer[%d] at %q", btpeerNum, btpeer.Host())
+	}
+	return nil
+}
+
+// clearDutBluetoothDevices disconnects the DUT from any connected bluetooth
+// devices and also removes all known bluetooth devices from the DUT.
+func (tf *fixture) clearDutBluetoothDevices(ctx context.Context) error {
+	testing.ContextLog(ctx, "Disconnecting all bluetooth devices from DUT")
+	if _, err := tf.fv.BTS.DisconnectAllDevices(ctx, &emptypb.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to disconnected all bluetooth devices")
+	}
+	testing.ContextLog(ctx, "Removing all bluetooth devices from DUT")
+	if _, err := tf.fv.BTS.RemoveAllDevices(ctx, &emptypb.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to remove all bluetooth devices")
+	}
+	return nil
 }

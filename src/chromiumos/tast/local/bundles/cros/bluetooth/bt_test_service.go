@@ -164,3 +164,17 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 	}
 	return devices, nil
 }
+
+// RemoveAllDevices removes all bluetooth devices.
+func (bts *BTTestService) RemoveAllDevices(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	devices, err := bluez.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+	for _, device := range devices {
+		if err := bts.bluezAdapter.RemoveDevice(ctx, device.Path()); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove device at dbus path %q", device.Path())
+		}
+	}
+	return &emptypb.Empty{}, nil
+}

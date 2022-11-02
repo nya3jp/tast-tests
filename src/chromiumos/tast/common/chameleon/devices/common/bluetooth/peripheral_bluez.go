@@ -6,8 +6,12 @@ package bluetooth
 
 import (
 	"context"
+	"strings"
+	"time"
 
 	"chromiumos/tast/common/xmlrpc"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // BluezPeripheral is an interface for making RPC calls to a chameleond daemon
@@ -45,7 +49,10 @@ type BluezPeripheral interface {
 
 	// ResetStack calls the Chameleond RPC method of the same name.
 	// Restores the BT stack to a pristine state by restarting running services.
-	ResetStack(ctx context.Context, nextDeviceType bool) error
+	// Note: Calling this will restart the chameleond process immediately and
+	// throw an EOF error as it won't actually return a response due to the
+	// restart.
+	ResetStack(ctx context.Context, nextDeviceType string) error
 
 	// Init calls the Chameleond RPC method of the same name.
 	// Ensures the chip is in the correct state for the tests to be run.
@@ -169,8 +176,45 @@ func (c *CommonBluezPeripheral) SetBtdFlags(ctx context.Context, deviceType stri
 
 // ResetStack calls the Chameleond RPC method of the same name.
 // This implements BluezPeripheral.ResetStack, see that for more details.
-func (c *CommonBluezPeripheral) ResetStack(ctx context.Context, nextDeviceType bool) error {
-	return c.RPC("ResetStack").Args(nextDeviceType).Call(ctx)
+//
+// Since ResetStack doesn't actually return anything due to the service restart,
+// a second call to AdapterPowerOff is made (which is already a side effect of
+// ResetStack) to verify that the RPC interface is back up before returning.
+// This second call is repeated until it succeeds or still fails after timing
+// out after 1 minute. Be sure to call this with a context that can spare enough
+// time for this.
+func (c *CommonBluezPeripheral) ResetStack(ctx context.Context, nextDeviceType string) error {
+	// Call ResetStack and confirm that the error is as we expect from the
+	// connection being abruptly cut.
+	var err error
+	if nextDeviceType == "" {
+		err = c.RPC("ResetStack").Call(ctx)
+	} else {
+		err = c.RPC("ResetStack").Args(nextDeviceType).Call(ctx)
+	}
+	if err == nil {
+		return errors.New("RPC call to ResetStack did not return an error as expected due from a chameleond service restart")
+	}
+	if !strings.HasSuffix(err.Error(), ": EOF") {
+		return errors.Wrap(err, "failed to validate ResetStack call error as expected EOF error from a chameleond service restart")
+	}
+
+	// Verify chameleond is back up by making a different call until it succeeds.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := c.AdapterPowerOff(ctx)
+		return err
+	}, &testing.PollOptions{
+		Timeout:  60 * time.Second,
+		Interval: 5 * time.Second,
+	}); err != nil {
+		// Calling AdapterPowerOff should execute successfully when chameleond is
+		// back up, but should not have any additional side effects as it is also
+		// called by the initial ResetStack call within chameleond.
+		if _, err := c.AdapterPowerOff(ctx); err != nil {
+			return errors.Wrap(err, "failed to confirm chameleond service is back up after calling ResetStack")
+		}
+	}
+	return nil
 }
 
 // Init calls the Chameleond RPC method of the same name.
