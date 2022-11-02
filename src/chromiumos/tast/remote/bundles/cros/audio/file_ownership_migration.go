@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Check files are migrated on boot",
 		SoftwareDeps: []string{"cras", "reboot"},
 		Contacts:     []string{"aaronyu@google.com", "chromeos-audio-sw@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 	})
 }
