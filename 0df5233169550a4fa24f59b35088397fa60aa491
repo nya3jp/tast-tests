@@ -16,6 +16,24 @@
       "message": "I\u0027m an external contributor, so can\u0027t read things like BUG\u003db:257099651 for context.",
       "revId": "0df5233169550a4fa24f59b35088397fa60aa491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cb7b63_0ba42574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-11-02T22:31:02Z",
+      "side": 1,
+      "message": "There isn\u0027t much added context in the bug. Basically Theo and I are both writing tests that use these functions so we thought it would be a good idea to just make a CL independent of a test. \n\nThis is what is written in the bug:\n\nWe need some basic functionality shared across multiple tests used to detect various states of the OOBE HID Detection screen. Such as:\n\nChecking if the HID Detection screen is enabled.\nChecking if the continue button is enabled.\nChecking if no keyboard was detected. \netc...",
+      "parentUuid": "11d84201_5330ab79",
+      "revId": "0df5233169550a4fa24f59b35088397fa60aa491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
