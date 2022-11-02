@@ -174,18 +174,17 @@ func Kahoot(ctx context.Context, s *testing.State) {
 // verify Kahoot reached main activity page of the app.
 func launchAppForKahoot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		continueText        = "Continue with Basic"
-		dismissButtonID     = "android:id/button2"
-		enterEmailAddressID = "username"
-		loginButtonID       = "no.mobitroll.kahoot.android:id/loginText"
-		loginText           = "Log in"
-		mayBeLaterText      = "Maybe later"
-		notNowID            = "android:id/autofill_save_no"
-		passwordID          = "password"
+		continueText         = "Continue with Basic"
+		enterEmailAddressID  = "username"
+		loginButtonClassName = "android.widget.TextView"
+		loginText            = "Login"
+		signinID             = "login-submit-btn"
+		notNowID             = "android:id/autofill_save_no"
+		passwordID           = "password"
 	)
 
 	// Check for login button.
-	loginButton := d.Object(ui.ID(loginButtonID))
+	loginButton := d.Object(ui.ClassName(loginButtonClassName), ui.TextMatches("(?i)"+loginText))
 	if err := loginButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("LoginButton doesn't exist: ", err)
 	}
@@ -268,35 +267,12 @@ func launchAppForKahoot(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	s.Log("Entered password")
 
 	// Click on signIn Button until not now button exist.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
+	signInButton := d.Object(ui.ID(signinID))
 	notNowButton := d.Object(ui.ID(notNowID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := notNowButton.Exists(ctx); err != nil {
-			signInButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Log("notNowButton doesn't exist: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
-	}
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signInButton, notNowButton)
 
-	// Click on dimiss button to save password.
-	dimissButton := d.Object(ui.ID(dismissButtonID))
-	if err := dimissButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("dimissButton doesn't exists: ", err)
-	} else if err := dimissButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on dimissButton: ", err)
-	}
-
-	// Click on maybe later button.
-	maybeLaterButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+mayBeLaterText))
-	if err := maybeLaterButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("maybeLaterButton doesn't exists: ", err)
-	} else if err := maybeLaterButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on maybeLaterButton: ", err)
-	}
+	// To handle save a password to google.
+	testutil.HandleSavePasswordToGoogle(ctx, s, tconn, a, d, appPkgName)
 
 	// Click on continue with basic button.
 	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+continueText))
