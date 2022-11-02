@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e2658f_2d6e22f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f774d3f8_08492b68",
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23885568_bfdad66a",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-31T07:38:16Z",
       "side": 1,
       "message": "very minor nit: no need to provide the full path",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6a7ff3_b081ed2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23885568_bfdad66a",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e75f97f_5a23e7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a98f069d_06b89a6c",
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36d49baa_6e1f0ead",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7093a3_b686b5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d49baa_6e1f0ead",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d73f07ba_016d858a",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-10-31T07:38:16Z",
       "side": 1,
       "message": "you need to shorten the context after using it as a cleanup context.\n\nyou can use ctxutil.Shorten",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4a0bd3_0e6c2b7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d73f07ba_016d858a",
       "range": {
         "startLine": 65,
         "startChar": 3,
@@ -129,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5894964_0741272d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "The simple \"value\" did not seem really descriptive, also when I tried to port the behavior on idle suspension, there was another policy variable so I had to differentiate the two.  maybe I could change it to just \"policy\" for now, or if there is a convention here for a tested policy to be referred as \"value\", then will leave it as it is",
+      "parentUuid": "9c997e89_dde85426",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a34f189_e07b14da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
         "patchSetId": 3
@@ -140,6 +272,30 @@
       "writtenOn": "2022-10-31T07:38:16Z",
       "side": 1,
       "message": "TODO(crbug.com/1264764)\n\nIt makes the link work in codesearch.",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445cae6c_bfb059cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a34f189_e07b14da",
       "range": {
         "startLine": 119,
         "startChar": 6,
@@ -163,6 +319,24 @@
       "writtenOn": "2022-10-31T07:38:16Z",
       "side": 1,
       "message": "Why create a function here? It just continues the logic in the loop.\n\nMaybe just inline the function, it\u0027s more readable.",
+      "revId": "2164961c76c75d34b563faf73493f18d76a68313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "653c95f9_e3013519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-02T11:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "820355a0_f810d25e",
       "revId": "2164961c76c75d34b563faf73493f18d76a68313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
