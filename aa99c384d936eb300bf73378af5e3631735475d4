@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91634fb8_d1448099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T17:36:15Z",
+      "side": 1,
+      "message": "nit: \"file\", \"drag_and_drop\" is redundant given the name of the testing function :)",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "aa99c384d936eb300bf73378af5e3631735475d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe62909_3eaf3011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T17:36:15Z",
+      "side": 1,
+      "message": "nit: \"files\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "aa99c384d936eb300bf73378af5e3631735475d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3747b16e_a1fa92da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-02T17:36:15Z",
+      "side": 1,
+      "message": "Can the parameterized values just be a count? e.g.\n\n```\n\t\tParams: []testing.Param{{\n\t\t\tName: \"single_file\",\n\t\t\tVal: /*count\u003d*/1,\n\t\t}, {\n\t\t\tName: \"multiple_files\",\n\t\t\tVal: /*count\u003d*/2,\n\t\t}},\n```\n\nThe cases should be pretty much identical, so I don\u0027t think we\u0027ll need separate testing logic just to handle different counts.\n\nI\u0027ll hold off on reviewing the rest of the CL until you update the parameterization since I expect the code will change non-trivially :)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "aa99c384d936eb300bf73378af5e3631735475d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
