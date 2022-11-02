@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee7be29_a7ba4dfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-02T23:12:04Z",
+      "side": 1,
+      "message": "nit: After rebasing it\u0027s parent you can rebase this change to it\u0027s parent. Can be done using gerrit UI.",
+      "revId": "f30ae69da2f7cce236233c955d19ddb338360a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
