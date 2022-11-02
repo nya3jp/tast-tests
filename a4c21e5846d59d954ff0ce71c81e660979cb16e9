@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab1e179_4014f0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:23:39Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "355109e7_995cf15e",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf5169a_440b4a33",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "This can still be split into two changes (see above).",
       "parentUuid": "95e38ea6_3b4350a2",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2485e1fc_bdabee79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:23:39Z",
+      "side": 1,
+      "message": "Oh sorry I missed this. Now further split into two.",
+      "parentUuid": "ca7a6529_de3a63ba",
       "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -330,6 +366,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc844cdd_f13b19f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:23:39Z",
+      "side": 1,
+      "message": "Now \"exempt\" boolean replaced with map lookup :-)",
+      "parentUuid": "284d033b_5631a91b",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4336271_16cb4efd",
@@ -438,6 +498,30 @@
       "side": 1,
       "message": "(Note: see reply https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/312796a7_0184e919/)\nWill make a map in the next iteration.",
       "parentUuid": "e6eeac1e_f34fb8ad",
+      "range": {
+        "startLine": 154,
+        "startChar": 103,
+        "endLine": 154,
+        "endChar": 109
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8786c4c2_7a8108af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T02:23:39Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "78d85c51_c186511e",
       "range": {
         "startLine": 154,
         "startChar": 103,
