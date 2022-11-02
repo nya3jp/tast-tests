@@ -281,6 +281,24 @@
       "parentUuid": "18a4c620_bb2ab0ca",
       "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0157d677_5b225b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_esim_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-11-02T16:56:22Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "a3150e0c_084a1afc",
+      "revId": "ef1a2fc71a3eb5a9b890b36f7f2d929105d0f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
