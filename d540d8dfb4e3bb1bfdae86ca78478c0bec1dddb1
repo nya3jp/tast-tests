@@ -16,6 +16,23 @@
       "message": "Probably wait on this.",
       "revId": "d540d8dfb4e3bb1bfdae86ca78478c0bec1dddb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88196f2b_62e31467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:33:57Z",
+      "side": 1,
+      "message": "Thanks Syed",
+      "revId": "d540d8dfb4e3bb1bfdae86ca78478c0bec1dddb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
