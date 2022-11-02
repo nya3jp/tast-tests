@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab84e06b_80f77ad0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T14:48:06Z",
+      "side": 1,
+      "message": "Oh I understand now, thanks for explaining. It makes sense as it is then :)",
+      "parentUuid": "993bb91e_30eba391",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "bf8799f77e3fc9e54db6001f4c57b13d6c5206a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79a7e616_c9e10056",

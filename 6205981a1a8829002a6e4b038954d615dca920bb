@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59084a9c_4b3c096a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T14:48:06Z",
+      "side": 1,
+      "message": "nit: should start with capital letter.",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431f6e72_02334186",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T14:48:06Z",
+      "side": 1,
+      "message": "nit: should start with capital letter.",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602d8c54_1119a452",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T14:48:06Z",
+      "side": 1,
+      "message": "Because this is now a method that goes through every value to find the current stable value, imo it would make sense to create a variable and call it only once, instead of 4 times in the code.",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9405a6_47c8c667",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T14:48:06Z",
+      "side": 1,
+      "message": "Similar to the other comment. Because this is now a method that goes through every value to find the current stable value, imo it would make sense to create a variable (e.g. `currentStable`) and call it only once, instead of 5 times in the code.",
+      "range": {
+        "startLine": 34,
+        "startChar": 61,
+        "endLine": 34,
+        "endChar": 97
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
