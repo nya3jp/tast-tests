@@ -8,13 +8,18 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 )
 
 func init() {
@@ -35,6 +40,7 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		This test measures WiFi scan time with established network connection (background scan)
 		or without (foreground scan) and compares with thresholds to indicate pass or not.
 		Full (all channels) scan times are obtained as avg from tests with `scanTimes` times.
+		Thresholds are applied to each single full scan test.
 		Here are the steps:
 		1- Configures the AP (e.g. specifies DTIM value).
 		2- Performs single channel foreground scan.
@@ -54,9 +60,55 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		fgFullScanTimeout          = 10 * time.Second
 		bgFullScanTimeout          = 15 * time.Second
 		pollTimeout                = 15 * time.Second
+
+		// Thresholds for scan tests.
+		fgFullScanThreshold        = 4 * time.Second
+		bgFullScanThreshold        = 7 * time.Second
+		fgFullScanThresholdRelaxed = 5 * time.Second
+		bgFullScanThresholdRelaxed = 8 * time.Second
+		fgFullScanThresholdWiFi6E  = 15 * time.Second
+		bgFullScanThresholdWiFi6E  = 20 * time.Second
 	)
 
+	// TODO(b/253099273): The following chipsets are known to have slower fg scan times.
+	// Use relaxed threshold until the bug has been solved.
+	fgRelaxedChipsets := map[wlan.DeviceID]struct{}{
+		wlan.QualcommAtherosQCA6174:     {},
+		wlan.QualcommWCN3990:            {},
+		wlan.QualcommAtherosQCA6174SDIO: {},
+	}
+
+	// TODO(b/253096914): The following chipsets are known to have slower bg scan times.
+	// Use relaxed threshold until the bug has been solved.
+	bgRelaxedChipsets := map[wlan.DeviceID]struct{}{
+		wlan.MediaTekMT7921PCIE: {},
+		wlan.MediaTekMT7921SDIO: {},
+	}
+
+	// TODO(b/256486257): We lack data for WiFi6E models so threshold is not determined yet.
+	// Temporarily set to sufficiently long values to make those tests always pass for those fail to reach regular thresholds.
+	wifi6eRelaxedChipsets := map[wlan.DeviceID]struct{}{
+		wlan.QualcommWCN6855:  {},
+		wlan.QualcommWCN6750:  {},
+		wlan.Realtek8852CPCIE: {},
+	}
+
 	tf := s.FixtValue().(*wificell.TestFixture)
+
+	r, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to connect rpc: ", err)
+	}
+	defer r.Close(ctx)
+
+	client := wifi.NewShillServiceClient(r.Conn)
+
+	// Get the information of the WLAN device.
+	devInfo, err := client.GetDeviceInfo(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed obtaining WLAN device information through rpc: ", err)
+	}
+	devID := wlan.DeviceID(devInfo.Id)
 
 	options := wificell.DefaultOpenNetworkAPOptions()
 
@@ -143,11 +195,23 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	// Foreground full scan.
 	count := 0
 	var sum time.Duration
+	threshold := fgFullScanThreshold
+	if _, ok := fgRelaxedChipsets[devID]; ok {
+		threshold = fgFullScanThresholdRelaxed
+		s.Logf("There is a known issue (b/253099273) for this WiFi chip (%s), use a relaxed threshold: %s", devInfo.Name, threshold)
+	} else if _, ok := wifi6eRelaxedChipsets[devID]; ok {
+		threshold = fgFullScanThresholdWiFi6E
+		s.Logf("There is a known issue (b/256486257) for this WiFi6E chips (%s) and this test will pass", devInfo.Name)
+	}
 	for i := 1; i <= scanTimes; i++ {
 		if duration, err := pollTimedScan(ctx, nil, fgFullScanTimeout, pollTimeout, ssid, iface, iwr); err != nil {
 			s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
 		} else {
-			s.Logf("Foreground scan #(%d/%d) duration: %s", i, scanTimes, duration)
+			if duration > threshold {
+				s.Errorf("Foreground scan #(%d/%d) duration: %s. Exceed threshold: %s", i, scanTimes, duration, threshold)
+			} else {
+				s.Logf("Foreground scan #(%d/%d) duration: %s", i, scanTimes, duration)
+			}
 			sum += duration
 			count++
 		}
@@ -186,11 +250,23 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 
 	count = 0
 	sum = 0
+	threshold = bgFullScanThreshold
+	if _, ok := bgRelaxedChipsets[devID]; ok {
+		threshold = bgFullScanThresholdRelaxed
+		s.Logf("There is a known issue (b/253096914) for this WiFi chip (%s), use a relaxed threshold: %s", devInfo.Name, threshold)
+	} else if _, ok := wifi6eRelaxedChipsets[devID]; ok {
+		threshold = bgFullScanThresholdWiFi6E
+		s.Logf("There is a known issue (b/256486257) for this WiFi6E chips (%s) and this test will pass", devInfo.Name)
+	}
 	for i := 1; i <= scanTimes; i++ {
 		if duration, err := pollTimedScan(ctx, nil, bgFullScanTimeout, pollTimeout, ssid, iface, iwr); err != nil {
 			s.Errorf("Failed to perform full channel scan at frequency %d: %v", freq, err)
 		} else {
-			s.Logf("Background scan #(%d/%d) duration: %s", i, scanTimes, duration)
+			if duration > threshold {
+				s.Errorf("Background scan #(%d/%d) duration: %s. Exceed threshold: %s", i, scanTimes, duration, threshold)
+			} else {
+				s.Logf("Background scan #(%d/%d) duration: %s", i, scanTimes, duration)
+			}
 			sum += duration
 			count++
 		}
