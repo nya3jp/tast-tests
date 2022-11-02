@@ -269,6 +269,7 @@ func (d *dnsmasq) WriteLogs(ctx context.Context, f *os.File) error {
 }
 
 type lease struct {
+	IP       string
 	Hostname string // hostname claimed by the client
 }
 
@@ -291,7 +292,7 @@ func (d *dnsmasq) GetLeases(ctx context.Context) ([]lease, error) {
 		if len(items) != 5 {
 			return nil, errors.Errorf("unexpected lease line: %s", l)
 		}
-		leases = append(leases, lease{Hostname: items[3]})
+		leases = append(leases, lease{IP: items[2], Hostname: items[3]})
 	}
 
 	return leases, nil
