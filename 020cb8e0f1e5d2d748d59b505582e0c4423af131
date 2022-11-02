@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34eb5aa_f6180cbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-02T20:03:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a93cff7_13811692",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3acd351_29519817",
@@ -132,6 +156,24 @@
       "writtenOn": "2022-10-28T17:21:20Z",
       "side": 1,
       "message": "I think exported function comments should start with the function name (`MultiAuth`). But if the linter didn\u0027t complain then I suppose it\u0027s fine!",
+      "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d2a081_b5148e9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-02T20:03:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3acd351_29519817",
       "revId": "020cb8e0f1e5d2d748d59b505582e0c4423af131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
