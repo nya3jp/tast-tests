@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80357e69_40b7826c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:58:53Z",
+      "side": 1,
+      "message": "nit: Why add a blank line here?",
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dede8dcc_f01b9533",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:58:53Z",
+      "side": 1,
+      "message": "`If |maxImages| is less than 2, |interval| is ignored.`",
+      "range": {
+        "startLine": 99,
+        "startChar": 59,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3d8ff6_9c01435d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:58:53Z",
+      "side": 1,
+      "message": "Update this comment.",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ee541a_77df79d7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T21:58:53Z",
+      "side": 1,
+      "message": "nit: The example should also include screenshots taken after `Stop` was called.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "d7680d47a6b5b76bbeb88e34e6def31b86994b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
