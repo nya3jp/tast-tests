@@ -7,6 +7,8 @@
 package uitools
 
 import (
+	"regexp"
+
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
@@ -32,7 +34,7 @@ const (
 	PrintersName           = "Printers"
 	ProtocolName           = "Protocol"
 	SettingsPageName       = "osPrinting"
-	ViewPpdName            = "View PPD"
+	ViewPpdName            = "View printer PPD"
 )
 
 // nodewith.Finder objects for items in the UI.
@@ -54,5 +56,6 @@ var (
 	PpdRetrieveErrorFinder   *nodewith.Finder = nodewith.Role(role.StaticText).NameContaining(PpdRetrieveErrorName)
 	PrintersFinder           *nodewith.Finder = nodewith.Role(role.Link).Name(PrintersName)
 	ProtocolFinder           *nodewith.Finder = nodewith.Role(role.ComboBoxSelect).Name(ProtocolName)
-	ViewPpdFinder            *nodewith.Finder = nodewith.Role(role.Button).Name(ViewPpdName)
+	// TODO(https://crrev.com/c/3994300): Change back to .Name(ViewPpdName) after this CL lands and chrome uprevs
+	ViewPpdFinder *nodewith.Finder = nodewith.Role(role.Button).NameRegex(regexp.MustCompile("View.* PPD"))
 )
