@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d84201_5330ab79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557078
+      },
+      "writtenOn": "2022-11-02T20:32:56Z",
+      "side": 1,
+      "message": "I\u0027m an external contributor, so can\u0027t read things like BUG\u003db:257099651 for context.",
+      "revId": "0df5233169550a4fa24f59b35088397fa60aa491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
