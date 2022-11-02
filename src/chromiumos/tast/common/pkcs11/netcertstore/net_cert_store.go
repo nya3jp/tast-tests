@@ -33,17 +33,26 @@ type Store struct {
 	// nextID is the next available object ID.
 	nextID int
 
-	// slot is the PKCS#11 slot in which this user slot is located.
-	slot int
-
 	// username is the user that owns the PKCS#11 slot.
 	username string
 
-	// label is the label of the PKCS#11 slot.
-	label string
+	// Slot is the PKCS#11 slot in which this user slot is located.
+	Slot int
 
-	// pin is the pin to access the PKCS#11 slot.
-	pin string
+	// SystemSlot is the PKCS#11 slot in which the system slot is located.
+	SystemSlot int
+
+	// Label is the label of the user PKCS#11 slot.
+	Label string
+
+	// SystemLabel is the label of the system PKCS#11 slot.
+	SystemLabel string
+
+	// Pin is the pin to access the user PKCS#11 slot.
+	Pin string
+
+	// SystemPin is the pin to access the system PKCS#11 slot.
+	SystemPin string
 }
 
 const (
@@ -125,10 +134,16 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return nil, errors.Wrap(err, "failed to wait for user token")
 	}
 
-	// Get the slot.
-	label, pin, slot, err := cryptohome.GetTokenInfoForUser(ctx, TestUsername)
+	// Get the user slot.
+	Label, Pin, Slot, err := cryptohome.GetTokenInfoForUser(ctx, TestUsername)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user token")
+	}
+
+	// Get the system slot.
+	SystemLabel, SystemPin, SystemSlot, err := cryptohome.GetTokenInfoForUser(ctx, "" /* username */)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get system token")
 	}
 
 	// Create the chaps object that is needed to import keys.
@@ -150,7 +165,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return nil, errors.Wrap(err, "failed to prepare scratchpad")
 	}
 
-	singletonStore = &Store{runner, chaps, cryptohome, startingID, slot, TestUsername, label, pin}
+	singletonStore = &Store{runner, chaps, cryptohome, startingID, TestUsername, Slot, SystemSlot, Label, SystemLabel, Pin, SystemPin}
 	return singletonStore, nil
 }
 
@@ -173,28 +188,14 @@ func (s *Store) Cleanup(ctx context.Context) error {
 		return errors.Wrap(err, "failed to cleanup scratchpad")
 	}
 	cryptohome := singletonStore.cryptohome
-	singletonStore.slot = -1
+	singletonStore.Slot = -1
+	singletonStore.SystemSlot = -1
 	singletonStore.runner = nil
 	singletonStore.chaps = nil
 	singletonStore.cryptohome = nil
 	singletonStore = nil
 	// Note that we are not removing all created objects because we remove the vault that holds them directly.
 	return cleanupVault(ctx, cryptohome)
-}
-
-// Slot returns the slot number to access the PKCS#11 slot/token for testing.
-func (s *Store) Slot() int {
-	return s.slot
-}
-
-// Pin returns the pin to access the PKCS#11 slot/token for testing.
-func (s *Store) Pin() string {
-	return s.pin
-}
-
-// Label returns the label of the PKCS#11 slot/token for testing.
-func (s *Store) Label() string {
-	return s.label
 }
 
 // NextID returns the next object ID that's available for use.
@@ -204,16 +205,61 @@ func (s *Store) NextID() string {
 	return result
 }
 
-// InstallCertKeyPair installs a key and its certificate into the TPM.
+// GetUserHash gets the hash for the currently logged-in user.
+func (s *Store) GetUserHash(ctx context.Context) (string, error) {
+	h, err := s.cryptohome.GetUserHash(ctx, s.username)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get user hash")
+	}
+	return h, nil
+}
+
+// InstallCertKeyPair installs a key and its certificate into the user slot TPM.
 // key is the private key in PEM format; certificate is the certificate in PEM format.
 // The returned identifier is the ID to the object when inserted into the user token.
-func (s *Store) InstallCertKeyPair(ctx context.Context, key, certificate string) (identifier string, retErr error) {
+func (s *Store) InstallCertKeyPair(ctx context.Context, key, certificate string) (string, error) {
 	// Generate the identifier.
-	identifier = s.NextID()
+	id := s.NextID()
 
 	// Call chaps to import the key and cert.
-	if _, err := s.chaps.ImportPEMKeyAndCertBySlot(ctx, scratchpadPath, key, certificate, identifier, s.slot, s.username); err != nil {
+	if _, err := s.chaps.ImportPEMKeyAndCertBySlot(ctx, scratchpadPath, key, certificate, id, s.Slot, s.username); err != nil {
 		return "", errors.Wrap(err, "failed to import")
 	}
-	return identifier, nil
+	return id, nil
+}
+
+// InstallSystemCertKeyPair installs a key and its certificate into the system slot of TPM.
+// key is the private key in PEM format; certificate is the certificate in PEM format.
+// The returned identifier is the ID to the object when inserted into the user token.
+// The caller is responsible to cleanup the installed cert and key.
+func (s *Store) InstallSystemCertKeyPair(ctx context.Context, key, certificate string) (string, func(context.Context), error) {
+	// Generate the identifier.
+	id := s.NextID()
+
+	// Call chaps to import the key and cert.
+	if _, err := s.chaps.ImportPEMKeyAndCertBySlot(ctx, scratchpadPath, key, certificate, id, s.SystemSlot, "" /* username */); err != nil {
+		return "", nil, errors.Wrap(err, "failed to import")
+	}
+	c := func(ctx context.Context) {
+		if err := s.chaps.ClearObjectsOfAllType(ctx, s.SystemSlot, id); err != nil {
+			testing.ContextLog(ctx, "Failed to clear objects with ID: ", id)
+		}
+	}
+	return id, c, nil
+}
+
+// UpdateTokenInfo updates the label, pin and slot values of the store.
+// This is done for both user and system token.
+func (s *Store) UpdateTokenInfo(ctx context.Context) (err error) {
+	// Get the user slot.
+	s.Label, s.Pin, s.Slot, err = s.cryptohome.GetTokenInfoForUser(ctx, TestUsername)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user token")
+	}
+	// Get the system slot.
+	s.SystemLabel, s.SystemPin, s.SystemSlot, err = s.cryptohome.GetTokenInfoForUser(ctx, "" /* username */)
+	if err != nil {
+		return errors.Wrap(err, "failed to get system token")
+	}
+	return nil
 }

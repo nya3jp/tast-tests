@@ -166,8 +166,8 @@ func (c *Config) InstallClientCredentials(ctx context.Context, store *netcertsto
 		return nil
 	}
 
-	c.Pin = store.Pin()
-	c.ClientSlotID = store.Slot()
+	c.Pin = store.Pin
+	c.ClientSlotID = store.Slot
 	netCertID, err := store.InstallCertKeyPair(ctx, c.clientCred.PrivateKey, c.clientCred.Cert)
 	if err != nil {
 		return err

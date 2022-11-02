@@ -98,8 +98,8 @@ type CertVals struct {
 }
 
 func installUserCert(ctx context.Context, certStore *netcertstore.Store) (CertVals, error) {
-	slot := fmt.Sprintf("%d", certStore.Slot())
-	pin := certStore.Pin()
+	slot := fmt.Sprintf("%d", certStore.Slot)
+	pin := certStore.Pin
 	clientCred := certificate.TestCert1().ClientCred
 	id, err := certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
 	return CertVals{id, slot, pin}, err

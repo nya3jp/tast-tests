@@ -119,6 +119,16 @@ func (s *Service) GetSecurity(ctx context.Context) (string, error) {
 	return s.getStringProperty(ctx, shillconst.ServicePropertySecurity)
 }
 
+// GetEAPCertID returns the current service EAP certificate ID.
+func (s *Service) GetEAPCertID(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyEAPCertID)
+}
+
+// GetEAPKeyID returns the current service EAP key ID.
+func (s *Service) GetEAPKeyID(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyEAPKeyID)
+}
+
 // IsConnected returns true if the the service is connected.
 func (s *Service) IsConnected(ctx context.Context) (bool, error) {
 	props, err := s.GetProperties(ctx)
