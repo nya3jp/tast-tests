@@ -40,17 +40,18 @@ const (
 	homescapesPkgName                = "com.playrix.homescapes"
 	skypePkgName                     = "com.skype.raider"
 	toontasticPkgName                = "com.google.toontastic"
+	kahootPkgName                    = "no.mobitroll.kahoot.android"
 	playButtonText                   = "Play"
 	clamshellLaunchTestForToontastic = "Launch app in Clamshell"
 	tabletLaunchTestForToontastic    = "Launch app in Touchview"
-
-	defaultTestCaseTimeout = 2 * time.Minute
-	LaunchTestCaseTimeout  = 5 * time.Minute
-	SignoutTestCaseTimeout = 3 * time.Minute
-	windowTestCaseTimeout  = 3 * time.Minute
-	DefaultUITimeout       = 20 * time.Second
-	ShortUITimeout         = 30 * time.Second
-	LongUITimeout          = 90 * time.Second
+	defaultTestCaseTimeout           = 2 * time.Minute
+	LaunchTestCaseTimeout            = 5 * time.Minute
+	SignoutTestCaseTimeout           = 3 * time.Minute
+	windowTestCaseTimeout            = 3 * time.Minute
+	DefaultUITimeout                 = 20 * time.Second
+	ShortUITimeout                   = 30 * time.Second
+	MediumUITimeout                  = time.Minute
+	LongUITimeout                    = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
