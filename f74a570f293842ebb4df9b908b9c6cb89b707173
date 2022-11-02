@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70cdbf29_c56ed53f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fd40735_0fd68fd8",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "f74a570f293842ebb4df9b908b9c6cb89b707173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99e5906e_0a30fa9b",
@@ -78,6 +102,30 @@
       "writtenOn": "2022-10-24T22:13:35Z",
       "side": 1,
       "message": "Test is behaving as intended but failing on this line since dragging and dropping multiple files into chrome browser opens one item in chrome browser and not all items that were selected when dragging and dropping.",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 74
+      },
+      "revId": "f74a570f293842ebb4df9b908b9c6cb89b707173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c1a960_4b2ced89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e5906e_0a30fa9b",
       "range": {
         "startLine": 246,
         "startChar": 2,

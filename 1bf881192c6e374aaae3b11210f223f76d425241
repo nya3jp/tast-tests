@@ -748,6 +748,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e843ab41_7bac5350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd0f5b0_3634c6e1",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 59
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2915c53_4ed1230f",
@@ -761,6 +785,30 @@
       "writtenOn": "2022-10-31T18:38:18Z",
       "side": 1,
       "message": "These feel like they should be capture mode APIs, not holding space APIs :)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "1bf881192c6e374aaae3b11210f223f76d425241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ffe83a_92447c03",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T01:15:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2915c53_4ed1230f",
       "range": {
         "startLine": 96,
         "startChar": 0,
