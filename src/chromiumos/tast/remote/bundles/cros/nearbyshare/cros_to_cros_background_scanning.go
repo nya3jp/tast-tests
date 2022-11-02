@@ -37,7 +37,7 @@ func init() {
 				// TODO(b/225966067): Replace with companion DUT HWDep for background scanning.
 				ExtraHardwareDepsForAll: map[string]hwdep.Deps{
 					// Companion DUT 1 dependency.
-					"cd1": hwdep.D(hwdep.SkipOnModel("babymega", "barla", "blooglet", "dumo", "fennel", "hana", "kevin", "krane", "soraka", "tomato", "treeya", "treeya360")),
+					"cd1": hwdep.D(hwdep.SkipOnModel("babymega", "barla", "blooglet", "dewatt", "dumo", "fennel", "hana", "hayato", "kevin", "krane", "sentry", "soraka", "tomato", "treeya", "treeya360")),
 				},
 			},
 		},
