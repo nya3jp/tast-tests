@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bde4b41_b4862efd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T22:36:46Z",
+      "side": 1,
+      "message": "also comment that dtim\u003d2 in this case.",
+      "revId": "49592feec04eb5d1a7e52f0ae731b872299bc565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
