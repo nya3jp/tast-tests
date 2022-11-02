@@ -33,6 +33,24 @@
       "message": "is there a more preferred and robust way to ensure capture mode is cleant up? i dont think i can get to it in this cl but i can file a bug and add TODO",
       "revId": "9731137607b1edae4849757e320b56dff6c3198d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2892ea4_e6f6845f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-02T19:56:56Z",
+      "side": 1,
+      "message": "This impl seems fine to me. Other than interacting/checking with UI, probably a autotest api can help?",
+      "parentUuid": "f396b67b_0905c62c",
+      "revId": "9731137607b1edae4849757e320b56dff6c3198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
