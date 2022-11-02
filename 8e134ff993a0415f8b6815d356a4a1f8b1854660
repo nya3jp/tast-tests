@@ -69,6 +69,30 @@
       },
       "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62611a7d_beaf21f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-02T05:14:44Z",
+      "side": 1,
+      "message": "Having a known-good deb in the external data and installing is a good choice here.\n@ashpakov@google.com, WDYT?\n\nSince the test case is to explicitly install and uninstall firefox, pre-installation is probably not a good option for this test.",
+      "parentUuid": "6f696439_36826529",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
