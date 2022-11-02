@@ -553,6 +553,10 @@ type Chameleond interface {
 	// chameleon AV sync probe device.
 	AVSyncProbeDevice() devices.ChameleonDevice
 
+	// BluetoothPeripheralDevice returns the appropriate bluetooth RPC interface
+	// for the provided deviceType, if it is known.
+	BluetoothPeripheralDevice(deviceType bluetooth.DeviceType) (bluetooth.BluezPeripheral, error)
+
 	// BLEFastPair returns an RPC interface for making RPC calls to the
 	// chameleon bluetooth LE fast pair device.
 	BLEFastPair() bluetooth.FastPairPeripheral
@@ -1366,6 +1370,28 @@ func (c *CommonChameleond) MotorBoardDevice() devices.ChameleonDevice {
 // chameleon printer device.
 func (c *CommonChameleond) PrinterDevice() devices.ChameleonDevice {
 	return c.printerDevice
+}
+
+// BluetoothPeripheralDevice returns the appropriate bluetooth RPC interface for
+// the provided deviceType, if it is known.
+func (c *CommonChameleond) BluetoothPeripheralDevice(deviceType bluetooth.DeviceType) (bluetooth.BluezPeripheral, error) {
+	deviceTypeToRPC := map[bluetooth.DeviceType]bluetooth.BluezPeripheral{
+		bluetooth.DeviceTypeKeyboard:   c.bluetoothKeyboardDevice,
+		bluetooth.DeviceTypeLEKeyboard: c.bLEKeyboard,
+		bluetooth.DeviceTypeMouse:      c.bluetoothMouseDevice,
+		bluetooth.DeviceTypeLEMouse:    c.bLEMouse,
+		bluetooth.DeviceTypeLEPhone:    c.bLEPhone,
+		bluetooth.DeviceTypeLEFastPair: c.bLEFastPair,
+	}
+	rpc, ok := deviceTypeToRPC[deviceType]
+	if !ok {
+		var knownDevices []string
+		for dt := range deviceTypeToRPC {
+			knownDevices = append(knownDevices, dt.String())
+		}
+		return nil, errors.Errorf("unknown BluezPeripheral rpc mapping for device type %q; rpc mappings are known only for devices types %v", deviceType.String(), knownDevices)
+	}
+	return rpc, nil
 }
 
 // FetchSupportedPortIDsByType returns all supported port ids (PortID) mapped

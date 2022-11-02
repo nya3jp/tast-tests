@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/chameleon"
 	cbt "chromiumos/tast/common/chameleon/devices/common/bluetooth"
 	"chromiumos/tast/errors"
 	bts "chromiumos/tast/services/cros/bluetooth"
@@ -29,6 +30,33 @@ type emulatedBTPeerDeviceCache struct {
 	port                      string
 }
 
+// The default pairing agent capability for specific device types.
+// Currently, all but Fast Pair are set to NoInputNoOutput since we do not have
+// a way to report the displayed passkey to the device in case of Passkey Entry.
+// Therefore, use 'Just Works'.
+// Fast Pair uses DisplayYesNo because this is expected by that protocol.
+// TODO(b/181945748) update the capabilities when Passkey Entry is supported.
+var defaultPairingAgentCapabilityByDeviceType = map[cbt.DeviceType]cbt.PairingAgentCapability{
+	cbt.DeviceTypeLEMouse:        cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeLEKeyboard:     cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeLEPhone:        cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeBluetoothAudio: cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeMouse:          cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeKeyboard:       cbt.PairingAgentCapabilityNoInputNoOutput,
+	cbt.DeviceTypeFastPair:       cbt.PairingAgentCapabilityDisplayYesNo,
+}
+
+// EmulatedBTPeerDeviceConfig contains configuration settings for creating new
+// EmulatedBTPeerDevice instances.
+type EmulatedBTPeerDeviceConfig struct {
+	// Required. The type of device to emulate.
+	DeviceType cbt.DeviceType
+
+	// Optional. The capability to configure the pairing agent with. Leave unset
+	// to use the default setting based on DeviceType.
+	PairingAgentCapability cbt.PairingAgentCapability
+}
+
 // EmulatedBTPeerDevice is a wrapper around the BluezPeripheral Chameleond
 // bluetooth device interface which can be used to preform common actions
 // related to bluetooth devices at a higher level than the interface.
@@ -38,57 +66,81 @@ type emulatedBTPeerDeviceCache struct {
 // NewEmulatedBTPeerDevice. The cached data can be refreshed by calling
 // RefreshCache manually.
 type EmulatedBTPeerDevice struct {
-	rpc   cbt.BluezPeripheral
-	cache *emulatedBTPeerDeviceCache
+	rpc        cbt.BluezPeripheral
+	cache      *emulatedBTPeerDeviceCache
+	deviceType cbt.DeviceType
 }
 
 // NewEmulatedBTPeerDevice created a new EmulatedBTPeerDevice given the provided
 // RPC interface to the device. The device will be initialized and key data
-// about the device will be cached for later reference.
+// about the device will be cached for later reference. The device will be
+// discoverable afterwards as well.
+//
+// This assumes the btpeer has not yet used in a test to emulate a specific
+// device, or that BluezPeripheral.ResetStack has been called on it since.
 //
 // Note: A btpeer can only act as one device at a time. If you require multiple
 // devices at once, use different btpeers.
-func NewEmulatedBTPeerDevice(ctx context.Context, deviceRPC cbt.BluezPeripheral) (*EmulatedBTPeerDevice, error) {
-	d := &EmulatedBTPeerDevice{
-		rpc: deviceRPC,
+func NewEmulatedBTPeerDevice(ctx context.Context, btpeer chameleon.Chameleond, deviceConfig *EmulatedBTPeerDeviceConfig) (*EmulatedBTPeerDevice, error) {
+	d := &EmulatedBTPeerDevice{}
+	if deviceConfig == nil || deviceConfig.DeviceType == "" {
+		return nil, errors.New("device config is required and must specify a device type")
 	}
-	if err := d.initializeEmulatedBTPeerDevice(ctx); err != nil {
+	var err error
+	d.rpc, err = btpeer.BluetoothPeripheralDevice(deviceConfig.DeviceType)
+	if err != nil {
+		return nil, err
+	}
+	if err := d.initializeEmulatedBTPeerDevice(ctx, deviceConfig); err != nil {
 		return nil, err
 	}
 	return d, nil
 }
 
-func (d *EmulatedBTPeerDevice) initializeEmulatedBTPeerDevice(ctx context.Context) error {
-	testing.ContextLog(ctx, "Preparing device for use")
+func (d *EmulatedBTPeerDevice) initializeEmulatedBTPeerDevice(ctx context.Context, deviceConfig *EmulatedBTPeerDeviceConfig) error {
+	testing.ContextLogf(ctx, "Initializing btpeer emulation of %q device", deviceConfig.DeviceType.String())
 
+	// Make btpeer emulate newDeviceType.
+	if success, err := d.rpc.AdapterPowerOn(ctx); err != nil || !success {
+		if err == nil {
+			err = errors.New("rpc method executed, but returned failure result")
+		}
+		return errors.Wrap(err, "failed to power on bluetooth adapter")
+	}
+	if err := d.rpc.SpecifyDeviceType(ctx, deviceConfig.DeviceType.String()); err != nil {
+		return errors.Wrapf(err, "failed to specify the btpeer to act as a %q device", d.cache.deviceType.String())
+	}
 	if err := d.rpc.Init(ctx, false); err != nil {
-		return errors.Wrap(err, "failed to initialize device")
+		return errors.Wrap(err, "failed to initialize btpeer")
 	}
 
-	connected, err := d.rpc.CheckSerialConnection(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to check serial connection")
+	// Configure pairing agent.
+	// Note: There is no need to stop this later, as starting it will also stop
+	// any running agent and ResetStack restarts the bluetooth service on the
+	// btpeer (and ResetStack is expected to be called before this and after
+	// each test).
+	if deviceConfig.PairingAgentCapability == "" {
+		if capability, ok := defaultPairingAgentCapabilityByDeviceType[deviceConfig.DeviceType]; ok {
+			deviceConfig.PairingAgentCapability = capability
+		}
 	}
-	if !connected {
-		return errors.New("failed serial connection check")
+	if deviceConfig.PairingAgentCapability != "" {
+		if err := d.rpc.StartPairingAgent(ctx, deviceConfig.PairingAgentCapability.String()); err != nil {
+			return errors.Wrapf(err, "failed to start pairing agent with capability %q", deviceConfig.PairingAgentCapability.String())
+		}
 	}
 
-	success, err := d.rpc.EnterCommandMode(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to enter command mode")
-	}
-	if !success {
-		return errors.New("failed to enter command mode")
-	}
-
+	// Cache key data for later use in tests.
 	testing.ContextLog(ctx, "Collecting device info")
 	if err := d.RefreshCache(ctx); err != nil {
 		return errors.Wrap(err, "failed to collect device info")
 	}
 
-	if err := d.rpc.SpecifyDeviceType(ctx, d.cache.deviceType.String()); err != nil {
-		return errors.Wrapf(err, "failed to specify the btpeer to act as a %q device", d.cache.deviceType.String())
+	// Validate emulation.
+	if d.cache.deviceType.BaseDeviceType() != deviceConfig.DeviceType.BaseDeviceType() {
+		return errors.Errorf("attempted to emulate btpeer device as a %s, but the actual device type is %s", deviceConfig.DeviceType.BaseDeviceType(), d.DeviceType().BaseDeviceType())
 	}
+	d.deviceType = deviceConfig.DeviceType
 
 	testing.ContextLogf(ctx, "Successfully initialized %s", d.String())
 	return nil
@@ -141,7 +193,7 @@ func (d *EmulatedBTPeerDevice) RefreshCache(ctx context.Context) error {
 // String returns a string representation of this EmulatedBTPeerDevice with
 // key identifiable information included.
 func (d *EmulatedBTPeerDevice) String() string {
-	return fmt.Sprintf("EmulatedBTPeerDevice(Type=%q,Addr=%q,Name=%q)", d.cache.deviceType, d.cache.localBluetoothAddress, d.cache.advertisedName)
+	return fmt.Sprintf("EmulatedBTPeerDevice(Type=%q,Addr=%q,Name=%q)", d.deviceType, d.cache.localBluetoothAddress, d.cache.advertisedName)
 }
 
 // evaluateCapabilities calls RPC().GetCapabilities and caches the result. It
@@ -345,10 +397,17 @@ func (d *EmulatedBTPeerDevice) AuthenticationMode() cbt.AuthenticationMode {
 	return d.cache.authenticationMode
 }
 
-// DeviceType returns the cached result of
-// RPC().GetDeviceType().
+// DeviceType returns the device type that this btpeer is emulating. Same type
+// as what was passed to NewEmulatedBTPeerDevice.
+//
+// This can differ from the cached result of  RPC().DeviceType(), as that just
+// returns a constant based on the RPC interface and does not return the device
+// type that it was configured with, nor will never include the BLE prefix even
+// if it is emulating a BLE device. What is returned here is the actual device
+// type this btpeer has been configured to emulate instead, which will include
+// the BLE prefix if it is a BLE device.
 func (d *EmulatedBTPeerDevice) DeviceType() cbt.DeviceType {
-	return d.cache.deviceType
+	return d.deviceType
 }
 
 // BTSDevice creates a BTTestService Device from this device's cached
