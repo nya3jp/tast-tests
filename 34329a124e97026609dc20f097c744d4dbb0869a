@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d47066c_682ea794",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:20:20Z",
+      "side": 1,
+      "message": "Restored.",
+      "parentUuid": "9160b955_44ea98e5",
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa4262f_975edc86",
@@ -191,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "309bda16_35f6524f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:20:20Z",
+      "side": 1,
+      "message": "Sounds good, now I restore to `Error` level and add a count. Note here `count` has a type (int) and the previous `const scanTimes` is untyped, so I have to add this ugly type cast between `time.Duration` and `int64`. I searched the `time.Duration` document and didn\u0027t find any APIs for time division/avg (nor other online resources), and found other examples that did the same thing as I do here. If you have other elegant implementation suggestions to avoid type casting, please let me know:)",
+      "parentUuid": "12415f46_f6914a81",
+      "range": {
+        "startLine": 146,
+        "startChar": 108,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24aa7fca_b440fe11",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 1
@@ -202,6 +244,30 @@
       "writtenOn": "2022-11-02T04:07:20Z",
       "side": 1,
       "message": "Same as above, you need to take failed scans into account when computing the average",
+      "range": {
+        "startLine": 183,
+        "startChar": 108,
+        "endLine": 185,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea324702_a63d5dd1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:20:20Z",
+      "side": 1,
+      "message": "/*\nSame issue as the one above https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3996676/comment/0aa4262f_975edc86/\nLeft unresolved as a reminder if the previous one needs improvement.\n*/",
+      "parentUuid": "24aa7fca_b440fe11",
       "range": {
         "startLine": 183,
         "startChar": 108,
