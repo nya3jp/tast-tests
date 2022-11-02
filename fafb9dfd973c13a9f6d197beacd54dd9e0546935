@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f968f80_3f320bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-02T20:01:34Z",
+      "side": 1,
+      "message": "can we use  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/capture.go;l\u003d26?q\u003dscreenshot.capture\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F?",
+      "range": {
+        "startLine": 1014,
+        "startChar": 12,
+        "endLine": 1014,
+        "endChar": 134
+      },
+      "revId": "fafb9dfd973c13a9f6d197beacd54dd9e0546935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
