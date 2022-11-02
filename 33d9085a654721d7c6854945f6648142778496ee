@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c15665_bd9603ae",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "If it is empty, you can use nil for map in golang. Then you don\u0027t need archFieldsMissingPaths, you simply check it at line 255 if fieldName\u003d\u003dnil\n\n```\narchFields \u003d ...{\n    \"amdgpu\": amdgpuFields,\n    ...\n    \"arm\": nil,\n    \"cirrus\": nil,\n    ...\n}\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f289f3ec_7ac501f2",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "tast already have memory library which reads meminfo. Probably we can reuse it?\n\nhttps://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/memory/kernelmeter/kernelmeter.go",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 15
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b86bc19_dda5b90b",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this still holds. I tried to login to grunt(AMD) and neither objects nor bytes appeared in the file.\n\n```\nlocalhost ~ # cat /sys/kernel/debug/dri/0/amdgpu_gem_info | egrep \"(objects|bytes)\"\nlocalhost ~ # cat /sys/kernel/debug/dri/0/amdgpu_gtt_mm | egrep \"(objects|bytes)\"\nlocalhost ~ #\n```",
+      "range": {
+        "startLine": 161,
+        "startChar": 32,
+        "endLine": 161,
+        "endChar": 37
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d239ecba_77b2d269",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "Add the comment \n```\n# When a label has been found, the previous word should be the value. e.g. \"3200 bytes\"\n```\n\nAlso use shorter if statement condition for readability\n```\nif _, exists :\u003d results[word]; exists {\n    testing.ContextLogf(ctx, \"%v is already recorded while parsing sysfs memory\", word)\n    continue\n}\n\nif contains(labels, word) \u0026\u0026 len(prevWord) \u003e 0 {\n    ....\n}\nprevWord \u003d word\n```",
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead6127a_94f60192",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "This returns intel, amd, qualcomm, mediatek.\n\nI\u0027m not sure if we still have cirrus.\nI\u0027ll think about adding virtio but we don\u0027t have to do line 216-243 just to rename amd-\u003eamdgpu and intel-\u003ei915 or intel-\u003ei915_kernel_5. Or am I missing something?",
+      "range": {
+        "startLine": 208,
+        "startChar": 22,
+        "endLine": 208,
+        "endChar": 31
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda7c573_989ab0a2",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "go/crosnames no longer shows the kernel version of each board. \nI\u0027m wondering whether we have a board with version 4.19 and below?",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b44adda_28f96b68",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we have it anymore. Let ihf@ to confirm.",
+      "range": {
+        "startLine": 231,
+        "startChar": 44,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b66dea_b6f9467f",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "Seems like pathOut would use the value from the previous loop if we fail to Stat here. Doesn\u0027t sound correct to me.\n\nProbably skip the loop if we fail to stat the file?",
+      "range": {
+        "startLine": 257,
+        "startChar": 31,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6bfd72_e60092f4",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "Use os.ReadFile and move the file reading into parseSysfsMemory",
+      "range": {
+        "startLine": 258,
+        "startChar": 4,
+        "endLine": 258,
+        "endChar": 111
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015534fc_51c5ccd4",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-02T00:05:08Z",
+      "side": 1,
+      "message": "No need to have extra functions like this. Either export processMemErrors or rename processMemErrors to GetMemErrors",
+      "range": {
+        "startLine": 294,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 19
+      },
+      "revId": "33d9085a654721d7c6854945f6648142778496ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
