@@ -159,6 +159,30 @@
       },
       "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f62c53_3d668345",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-11-02T16:33:07Z",
+      "side": 1,
+      "message": "Per offline discussion we agreed on following #2 instead, since there will be tests for logins with various IdPs, e.g., fake IdP flows, etc.",
+      "parentUuid": "2b209c12_06809c8e",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "f53687dcf67bb1b25376761ad384489b3ef7e567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
