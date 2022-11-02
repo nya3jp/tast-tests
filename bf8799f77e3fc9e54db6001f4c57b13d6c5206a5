@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdcac57e_7633c0fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:59:23Z",
+      "side": 1,
+      "message": "the err that we are ignoring using _, which I guess would be an exception if \"milestone-1\" does not exist in the map.",
+      "parentUuid": "f12c6e1f_b665ee4b",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "bf8799f77e3fc9e54db6001f4c57b13d6c5206a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79a7e616_c9e10056",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Map iteration order is not guaranteed",
       "parentUuid": "79a7e616_c9e10056",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "bf8799f77e3fc9e54db6001f4c57b13d6c5206a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372a64d6_cbdbbfd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-02T13:59:23Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e5e559ff_5565d1f3",
       "range": {
         "startLine": 76,
         "startChar": 0,
