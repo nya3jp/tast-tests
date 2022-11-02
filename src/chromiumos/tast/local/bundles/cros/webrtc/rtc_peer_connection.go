@@ -32,6 +32,10 @@ type rtcTest struct {
 	// using getDisplayMedia() and the value corresponds to the surface type. If
 	// empty, the media to send will be obtained using getUserMedia().
 	displayMediaType peerconnection.DisplayMediaType
+	// The width and height of the video. They are optional and 1280x720 is used
+	// if they are unspecified.
+	width  int
+	height int
 }
 
 func init() {
@@ -87,6 +91,11 @@ func init() {
 		}, {
 			Name:              "vp9_dec",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			Name:              "vp9_dec_1080p",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", width: 1920, height: 1080},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
@@ -182,6 +191,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP9},
 			Fixture:           "chromeCameraPerf",
 		}, {
+			Name:              "vp9_enc_1080p",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", width: 1920, height: 1080},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_enc_svc_l1t2",
@@ -210,7 +224,14 @@ func init() {
 // specified, verifies it uses accelerated encoding / decoding.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast, testOpt.svc, testOpt.displayMediaType); err != nil {
+	if testOpt.width == 0 && testOpt.height == 0 {
+		testOpt.width = 1280
+		testOpt.height = 720
+	}
+
+	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome),
+		s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.width, testOpt.height,
+		testOpt.simulcast, testOpt.svc, testOpt.displayMediaType); err != nil {
 		s.Error("Failed to run RunRTCPeerConnection: ", err)
 	}
 }

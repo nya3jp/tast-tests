@@ -62,12 +62,12 @@ type RTCTestOptions struct {
 	displayMediaType DisplayMediaType
 }
 
-// MakeTestOptions creates RTCTestoptions for profile, width and height and with
-// HW Encoding/Decoding enabled.
-func MakeTestOptions(profile string, width, height int) RTCTestOptions {
+// makeTestOptions creates RTCTestoptions for profile, width and height and
+// verifyHWDecoding and verifyHWEncoding.
+func makeTestOptions(profile string, width, height int, verifyHWDecoding, verifyHWEncoding VerifyHWAcceleratorMode) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
+		verifyHWDecoding:   verifyHWDecoding,
+		verifyHWEncoding:   verifyHWEncoding,
 		profile:            profile,
 		streamWidth:        width,
 		streamHeight:       height,
@@ -78,20 +78,22 @@ func MakeTestOptions(profile string, width, height int) RTCTestOptions {
 	}
 }
 
+// MakeTestOptions creates RTCTestoptions for profile, width and height and with
+// HW Encoding/Decoding enabled.
+func MakeTestOptions(profile string, width, height int) RTCTestOptions {
+	return makeTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+}
+
 // MakeSWTestOptions creates RTCTestoptions for profile, width and height and
 // with HW Encoding/Decoding disabled.
 func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifySWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
+	return makeTestOptions(profile, width, height, VerifySWDecoderUsed, VerifySWEncoderUsed)
+}
+
+// MakeSWEncoderTestOptions creates RTCTestoptions for profile, width and height and
+// with HW Decoding and SW Encoding.
+func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
+	return makeTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifySWEncoderUsed)
 }
 
 // MakeSimulcastTestOptions creates RTCTestOptions for profile, width and height.
@@ -112,22 +114,6 @@ func MakeSimulcastTestOptions(profile string, width, height int, hwEncs []bool) 
 		svc:                "", // L1T3?
 		simulcasts:         len(hwEncs),
 		simulcastHWEncs:    hwEncs,
-		displayMediaType:   "",
-	}
-}
-
-// MakeSWEncoderTestOptions creates RTCTestoptions for profile, width and height and
-// with HW Decoding and SW Encoding.
-func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
 		displayMediaType:   "",
 	}
 }
@@ -378,7 +364,7 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", opts.profile, opts.simulcasts, opts.svc, opts.displayMediaType, opts.streamWidth, opts.streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", opts.profile, opts.streamWidth, opts.streamHeight, opts.simulcasts, opts.svc, opts.displayMediaType); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 

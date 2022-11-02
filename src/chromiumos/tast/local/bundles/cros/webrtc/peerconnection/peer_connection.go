@@ -61,7 +61,7 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, streamWidth, streamHeight int, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
 	if simulcast && svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
@@ -106,7 +106,7 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	if simulcast {
 		simulcasts = simulcastStreams
 	}
-	if err := conn.Call(ctx, nil, "start", profile, simulcasts, svc, displayMediaType); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, streamWidth, streamHeight, simulcasts, svc, displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 
