@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6ec8f832_900d7c8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-02T23:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc18c43d_cb9ae0fd",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "73f521f7_85f82a26",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4624e96_bfba6c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-02T23:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac488c4_ef8c30b0",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98f146df_70497a6d",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-11-02T22:34:02Z",
       "side": 1,
       "message": "`HasClass`",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "d7874d6abec099ea782b4600f41e21f4f3918baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57488ea_71b352db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-11-02T23:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f146df_70497a6d",
       "range": {
         "startLine": 43,
         "startChar": 37,
