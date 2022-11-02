@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213ca21c_bb28f294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T23:08:52Z",
+      "side": 1,
+      "message": "I see `website`, `webpage`, and `web page`. Use one term consistently.",
+      "revId": "f12080a4a70d18f9cea74cae57381c309bb45580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587b25a1_6dbd91d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T23:08:52Z",
+      "side": 1,
+      "message": "nit: `Failed to setup chrome`",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "f12080a4a70d18f9cea74cae57381c309bb45580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5742a62d_d2194ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/example_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-11-02T23:08:52Z",
+      "side": 1,
+      "message": "Also `defer conn.Close()`",
+      "revId": "f12080a4a70d18f9cea74cae57381c309bb45580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
