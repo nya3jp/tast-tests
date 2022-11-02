@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b3a547_f3bbb093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T00:06:00Z",
+      "side": 1,
+      "message": "We shouldn\u0027t sleep to wait for conditions, particularly this long. Please look for a way to poll for this condition to be done",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f471878_a2679e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T00:06:00Z",
+      "side": 1,
+      "message": "We shouldn\u0027t open non-google web pages in a test. If you want to use this content, please use WPR to avoid hitting live sites",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0ede3b_4b547cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-02T00:06:00Z",
+      "side": 1,
+      "message": "What\u0027s the status of this bug? We should fix it rather than adding more workarounds IMO",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
