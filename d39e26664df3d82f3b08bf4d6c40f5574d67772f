@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4efaa471_381dbd32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:42:43Z",
+      "side": 1,
+      "message": "nit: `login: Adding Lacros ...`\n\nIt\u0027s not a hard rule but the CL oneliner description usually starts with the package name",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b9e005_1c6c5388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:42:43Z",
+      "side": 1,
+      "message": "nit: {{ \njoining two lines here",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5bbc4dd_ec08da10",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
         "patchSetId": 1
@@ -19,6 +65,52 @@
         "startChar": 0,
         "endLine": 52,
         "endChar": 32
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482cfe00_226ae422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:42:43Z",
+      "side": 1,
+      "message": "It would be good to add \"informational\" to this variant along with \"group:mainline\" until we are confident enough to promote it to CQ (once it passes in the next 20 consecutive builds).\nSee also https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4711a78_876621e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T20:42:43Z",
+      "side": 1,
+      "message": "}, {",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 4
       },
       "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
