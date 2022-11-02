@@ -32,7 +32,7 @@ const (
 	PrintersName           = "Printers"
 	ProtocolName           = "Protocol"
 	SettingsPageName       = "osPrinting"
-	ViewPpdName            = "View PPD"
+	ViewPpdName            = "View printer PPD"
 )
 
 // nodewith.Finder objects for items in the UI.
