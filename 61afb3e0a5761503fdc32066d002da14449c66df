@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdaecc1e_40c388f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-02T21:40:05Z",
+      "side": 1,
+      "message": "Suppose there are two networks, one is open, the other one is WPA-PSK. A user doesn\u0027t have the password so it tries to connect to the open network. If the device cannot identify the two networks correctly, it may try to connect to the WPA-PSK network and fails. So we need a test to check the ability to connect to the correct network. \nAs for the test on ConnectToBestServices, we can make another test. Does that seem good?",
+      "parentUuid": "7c283b7a_b1b5a284",
+      "revId": "61afb3e0a5761503fdc32066d002da14449c66df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fa16b95_15a8fdf7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 13
