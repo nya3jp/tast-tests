@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b299a99_ea21aaaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-02T04:45:27Z",
+      "side": 1,
+      "message": "Maybe \"checks that a window is created\"? To me rendered implies e.g. checking graphics output whereas this looks like you\u0027re just looking for a window frame with the right title?",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74837db4_198953a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
         "patchSetId": 3
@@ -14,6 +37,30 @@
       "writtenOn": "2022-11-02T04:07:29Z",
       "side": 1,
       "message": "@sophialin@google.com, last time you mentioned that we could install the package from a fixed .deb file, instead of installing from the remote repo, which will break at certain points (e.g., b/255730970). \n\nIs there an easy way we could apply in this test?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f696439_36826529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-02T04:45:27Z",
+      "side": 1,
+      "message": "You can have a known-good deb in external data, gcs, wherever, then apt install \u003cPATH\u003e. Alternatively you can preinstall firefox in the app container image (the way VSCode/etc) are installed.",
+      "parentUuid": "74837db4_198953a7",
       "range": {
         "startLine": 100,
         "startChar": 1,
