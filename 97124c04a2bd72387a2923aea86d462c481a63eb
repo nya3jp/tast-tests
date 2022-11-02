@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05458b8c_2fb11704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T22:16:56Z",
+      "side": 1,
+      "message": "Sounds buenoo",
+      "parentUuid": "68fafcf3_47c56015",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "97124c04a2bd72387a2923aea86d462c481a63eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da310dde_66cd50a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-02T20:14:46Z",
       "side": 1,
       "message": "Why do we need to separate methods, they should both do the same thing?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 88
+      },
+      "revId": "97124c04a2bd72387a2923aea86d462c481a63eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c5a804_9a66a2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-02T22:16:56Z",
+      "side": 1,
+      "message": "I like them separate but that\u0027s not scalable to add a test to dragging more than 2 files. Thank you",
+      "parentUuid": "da310dde_66cd50a3",
       "range": {
         "startLine": 127,
         "startChar": 0,
