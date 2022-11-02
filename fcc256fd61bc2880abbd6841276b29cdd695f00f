@@ -16,6 +16,24 @@
       "message": "The url with `%` does not seem to return the right version sort order.",
       "revId": "fcc256fd61bc2880abbd6841276b29cdd695f00f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8074eaf_2bd33d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/versionutil/versionutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-02T17:44:00Z",
+      "side": 1,
+      "message": "Talked offline that the extra % is added just to escape it in fmt.Sprintf.",
+      "parentUuid": "fc6ce45e_0d2959a9",
+      "revId": "fcc256fd61bc2880abbd6841276b29cdd695f00f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
