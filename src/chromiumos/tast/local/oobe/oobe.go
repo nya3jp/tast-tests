@@ -28,3 +28,9 @@ func IsHidMouseDetected(ctx context.Context, oobeConn *chrome.Conn) error {
 func IsHidKeyboardDetected(ctx context.Context, oobeConn *chrome.Conn) error {
 	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.keyboardDetected()")
 }
+
+// IsHidDetectionContinueButtonEnabled checks if the continue button is enabled
+// in the OOBE HID Detection page.
+func IsHidDetectionContinueButtonEnabled(ctx context.Context, oobeConn *chrome.Conn) error {
+	return oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.HIDDetectionScreen.canClickNext()")
+}
