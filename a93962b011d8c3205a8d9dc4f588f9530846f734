@@ -16,6 +16,24 @@
       "message": "Does this generalise to other platforms besides hana?",
       "revId": "a93962b011d8c3205a8d9dc4f588f9530846f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e7d6a7_dc0a708e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-02T22:48:52Z",
+      "side": 1,
+      "message": "Yes, but you\u0027d usually want to interrogate the EC directly via servo. Have a look at `verifyECPowerInfo` in `remote/bundles/cros/power/boot_with_only_battery.go`.",
+      "parentUuid": "35a29b19_95bfe502",
+      "revId": "a93962b011d8c3205a8d9dc4f588f9530846f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
