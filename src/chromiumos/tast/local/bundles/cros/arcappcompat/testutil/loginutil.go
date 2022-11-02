@@ -256,3 +256,35 @@ func CloseAndRelaunchApp(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	s.Log("Closed and relaunch the app successfully")
 }
+
+// HandleSavePasswordToGoogle to handle save password to google dialog box.
+func HandleSavePasswordToGoogle(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) {
+	const (
+		dismissButtonID = "android:id/button2"
+		mayBeLaterText  = "Maybe later"
+		noThanksID      = "android:id/autofill_save_no"
+
+		DialogTimeout = 10 * time.Second
+	)
+	appVerifier := d.Object(ui.PackageName(appPkgName))
+	dimissButton := d.Object(ui.ID(dismissButtonID))
+	maybeLaterButton := d.Object(ui.ClassName(AndroidButtonClassName), ui.TextMatches("(?i)"+mayBeLaterText))
+	noThanksButton := d.Object(ui.ID(noThanksID))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := dimissButton.WaitForExists(ctx, DialogTimeout); err == nil {
+			s.Log("Click on dimissButton")
+			dimissButton.Click(ctx)
+		}
+		if err := maybeLaterButton.WaitForExists(ctx, DialogTimeout); err == nil {
+			s.Log("Click on maybeLaterButton")
+			maybeLaterButton.Click(ctx)
+		}
+		if err := noThanksButton.WaitForExists(ctx, DialogTimeout); err == nil {
+			s.Log("Click on No thanks button or not now button")
+			noThanksButton.Click(ctx)
+		}
+		return appVerifier.Exists(ctx)
+	}, &testing.PollOptions{Timeout: MediumUITimeout}); err != nil {
+		s.Log("appVerifier doesn't exist: ", err)
+	}
+}
