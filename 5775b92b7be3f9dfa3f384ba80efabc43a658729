@@ -34,6 +34,41 @@
       "parentUuid": "43cb89dc_f53ccdc0",
       "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be32aef1_05704bc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-11-02T22:02:33Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb57867f_dd29b55d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-11-02T22:02:33Z",
+      "side": 1,
+      "message": "Thank you for trying to reproduce this issue!\n\nMy concern of this type of change is that this can hide a real problem/regression. For example, we might introduce a regression later that clicking the profile button fails to change the icon back to the profile image for 100% of the time. The retry logic will hide the regression.",
+      "parentUuid": "a8f3397b_f8fbc58a",
+      "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
