@@ -231,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3f9eaa_ad0e45b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T22:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "309bda16_35f6524f",
+      "range": {
+        "startLine": 146,
+        "startChar": 108,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24aa7fca_b440fe11",
@@ -268,6 +292,30 @@
       "side": 1,
       "message": "/*\nSame issue as the one above https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3996676/comment/0aa4262f_975edc86/\nLeft unresolved as a reminder if the previous one needs improvement.\n*/",
       "parentUuid": "24aa7fca_b440fe11",
+      "range": {
+        "startLine": 183,
+        "startChar": 108,
+        "endLine": 185,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d620a711_3f0cc65d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T22:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea324702_a63d5dd1",
       "range": {
         "startLine": 183,
         "startChar": 108,
