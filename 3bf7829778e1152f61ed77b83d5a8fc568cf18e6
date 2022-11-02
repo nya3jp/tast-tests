@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271fbf86_2d0c43a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T10:28:49Z",
+      "side": 1,
+      "message": "nit: we can use the iota pattern for enum type\ne.g., https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go;l\u003d23\n\nbtw, since the consts defined here are visiable in other files under this folder, perhaps it\u0027s better to make it more specific, e.g., modeNotPresent or whatever makes sense",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b075e2f_aec44acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T10:28:49Z",
+      "side": 1,
+      "message": "does it make sense to extract this part out of the loop since it also appears on L83?",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 70
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c908a6ce_96fc7ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T10:28:49Z",
+      "side": 1,
+      "message": "just to check, `val` is no longer used in this function (since the value will always be overwritten on L83), is it expected?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c046c9b9_93235ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-02T10:28:49Z",
+      "side": 1,
+      "message": "nit: privacySwitch",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "3bf7829778e1152f61ed77b83d5a8fc568cf18e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
