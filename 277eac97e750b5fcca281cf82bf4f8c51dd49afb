@@ -46,6 +46,30 @@
       },
       "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220261ac_829b85ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T22:26:59Z",
+      "side": 1,
+      "message": "Sounds good. I removed the \"Name\" for \"dtim2\" so that the test name keeps \"ScanPerf\" with no postfix.",
+      "parentUuid": "3c35941f_7eb4a6b1",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "277eac97e750b5fcca281cf82bf4f8c51dd49afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
