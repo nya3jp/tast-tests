@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89f9974c_f5035956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-02T23:15:32Z",
+      "side": 1,
+      "message": "I have also searched in code repo, and cannot find one example to use `(HasChrome).Chrome()` and `*arc.PreData` in a same test function. Could you please provide one example if possible? Thanks!",
+      "parentUuid": "980d2b28_02774bae",
+      "revId": "9d6a1b540bda435edf6b3266b29d12062092ef2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c359e59_67fdbc72",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 3
