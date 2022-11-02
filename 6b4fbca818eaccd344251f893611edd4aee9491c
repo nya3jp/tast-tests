@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad004a32_d1b241b7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-11-02T21:00:59Z",
+      "side": 1,
+      "message": "There is also a RestartPrintingSystem after usbprinter.Start in this file:  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go;l\u003d116.  Seems like that file has RestartPrintingSystem twice.  Not sure if that test has failures or not but might be worthwhile to clean that up as well.",
+      "revId": "6b4fbca818eaccd344251f893611edd4aee9491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
