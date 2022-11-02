@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3da8af_a787ee5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:41:15Z",
+      "side": 1,
+      "message": "multiple?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fde3dae_45e57274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:41:15Z",
+      "side": 1,
+      "message": "looks much better thanks!",
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96248d4_cbadca03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:41:15Z",
+      "side": 1,
+      "message": "Is there a reason you decided to move this block here?",
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e1e6c3_07daa0a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-02T03:41:15Z",
+      "side": 1,
+      "message": "nit: there\u0027s no need for this, this is implied.",
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
