@@ -42,7 +42,7 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      4 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
