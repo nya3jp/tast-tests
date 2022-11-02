@@ -31,7 +31,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation smoothness of entering/exiting the overview mode",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(b/255632291): Remove crosbolt after M111.
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
