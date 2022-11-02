@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6106b070_37a733e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T11:29:07Z",
+      "side": 1,
+      "message": "Good catch 😊 Test can now run automatically.",
+      "parentUuid": "8b519452_13066021",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52314d6_c0493006",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-01T02:19:30Z",
       "side": 1,
       "message": "Don\u0027t you want to do some sanity check here too? Not sure what reverse migration does exactly. If it disables Lacros, you could check that running apps.PrimaryBrowser() successfully opens Ash.",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae44fd38_ecfccb27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T11:29:07Z",
+      "side": 1,
+      "message": "Ash successfully starting is enough for now. We will add separate tests to check if backward migration handles data correctly.",
+      "parentUuid": "a52314d6_c0493006",
       "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a556f8_caf27640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T11:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e76627_3a19da86",
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ebdeaf0_7a50485e",
@@ -82,6 +136,30 @@
       "writtenOn": "2022-11-01T02:19:30Z",
       "side": 1,
       "message": "Nit: return",
+      "range": {
+        "startLine": 22,
+        "startChar": 68,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "4def024d59b7fc6c8786d6eab4a0e9c5d0893165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e315ab98_9087f3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/reverse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-02T11:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebdeaf0_7a50485e",
       "range": {
         "startLine": 22,
         "startChar": 68,
