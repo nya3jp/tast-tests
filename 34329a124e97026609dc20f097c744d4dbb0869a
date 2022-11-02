@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12415f46_f6914a81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-02T15:29:47Z",
+      "side": 1,
+      "message": "A fatal error will stop at the first failure, nothing else will run and we won\u0027t get any data. I\u0027m not sure how often that happens, but I think it would be good to be a bit more resilient if we can and handle the error gracefully and upload the data that we have to crosbolt. That way it mitigates the effect of a failure, we still get something out of the test.",
+      "parentUuid": "1205fca9_2631051e",
+      "range": {
+        "startLine": 146,
+        "startChar": 108,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "34329a124e97026609dc20f097c744d4dbb0869a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24aa7fca_b440fe11",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 1
