@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d6cb52_135d33cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:15Z",
+      "side": 1,
+      "message": "Sounds good and thanks for finding this! Removed 211 from list",
+      "parentUuid": "527ea0b2_90d1fc4e",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7cbceed_ca2f5587",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "200acc5a_175ab2dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:15Z",
+      "side": 1,
+      "message": "Thanks! Added both.",
+      "parentUuid": "b7cbceed_ca2f5587",
+      "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a85298_d632de52",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-11-02T03:46:56Z",
       "side": 1,
       "message": "nit: does `else if` work here?",
+      "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb1cad0_672cd496",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:15Z",
+      "side": 1,
+      "message": "You are right. I think else if is better since there\u0027s no guarantee that the two sets are mutual exclusive",
+      "parentUuid": "06a85298_d632de52",
       "revId": "0452bbbb529e6e271a9a1c05b46c39173f693e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

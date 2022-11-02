@@ -337,6 +337,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c008d26b_87aad791",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:15Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "518f7d36_3c49455a",
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312796a7_0184e919",
@@ -469,6 +487,30 @@
       "side": 1,
       "message": "(Note: see reply https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/comment/312796a7_0184e919/)",
       "parentUuid": "cc17106e_dc0243dd",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "a4c21e5846d59d954ff0ce71c81e660979cb16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ecb2f8e_cc41e320",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-02T07:36:15Z",
+      "side": 1,
+      "message": "Since all other chip-related issues are resolved, I mark this as resolving as well :)",
+      "parentUuid": "7c3369f4_1281fb3f",
       "range": {
         "startLine": 87,
         "startChar": 1,
