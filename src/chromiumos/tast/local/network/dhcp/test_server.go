@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package network provides general CrOS network goodies.
-package network
+package dhcp
 
 import (
 	"context"
@@ -109,7 +109,7 @@ func (s *dhcpTestServer) sendResponse(packet *dhcpPacket) error {
 // runLoop is the loop body of the test server. It receives and handles DHCP
 // packets coming from the client and responds to them according to the given
 // handling rules.
-func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) error {
+func (s *dhcpTestServer) runLoop(ctx context.Context, rules []HandlingRule) error {
 	buffer := make([]byte, 2048)
 	for {
 		if len(rules) < 1 {
@@ -140,6 +140,8 @@ func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) 
 			continue
 		}
 
+		testing.ContextLog(ctx, "server got a DHCP packet")
+
 		rule := rules[0]
 		code := rule.handle(packet)
 		if code&popHandler != 0 {
@@ -169,7 +171,7 @@ func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) 
 }
 
 // runTest runs testFunc against a server with the given handling rules.
-func (s *dhcpTestServer) runTest(ctx context.Context, rules []dhcpHandlingRule, testFunc testFunction) error {
+func (s *dhcpTestServer) runTest(ctx context.Context, rules []HandlingRule, testFunc testFunction) error {
 	if err := s.setupAndBindSocket(ctx); err != nil {
 		return err
 	}

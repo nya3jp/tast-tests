@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package network provides general CrOS network goodies.
-package network
+package dhcp
 
 import (
 	"io/ioutil"
