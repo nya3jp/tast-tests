@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dd05b4_a14f1f3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530527
+      },
+      "writtenOn": "2022-11-03T03:40:22Z",
+      "side": 1,
+      "message": "LGTM from cros_healthd.",
+      "revId": "8314daf6cdfc76235acd9d1a03fca393c284793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
