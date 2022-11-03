@@ -30,7 +30,7 @@ func init() {
 		}},
 		// TODO(b/162805199): Track the list of known devices which
 		// support built-in x86_64, but do not support ARM64 yet.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("grunt")),
 	})
 }
 
