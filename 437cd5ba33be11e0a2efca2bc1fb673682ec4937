@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d54260_82d95636",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:05:31Z",
+      "side": 1,
+      "message": "Nit: Could we add one more sentence here that mentions we need these services because we are forced to use this functionality in remote tests (due to us needing to stop servo from enabling a keyboard by default)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add785bf_06296006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:05:31Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way, this LGTM with a couple nits! :)",
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ecff97_966a3eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:05:31Z",
+      "side": 1,
+      "message": "Nit: Can we move this to be the first check in this method?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f278128f_e313aec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:05:31Z",
+      "side": 1,
+      "message": "Nit: Same as above.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
