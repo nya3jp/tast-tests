@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c7a94d4_bb5dab59",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-11-03T16:40:27Z",
+      "side": 1,
+      "message": "The incorrect length occurs when the read from MM fails at coldboot and the test falls back on IMSI to parse the MCCMNC.",
+      "parentUuid": "b1e83215_921bf9e2",
+      "revId": "9c1412edc65d1499ec3ee4280e5d313286a5ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "142e59b9_79d2b870",
         "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
         "patchSetId": 1
