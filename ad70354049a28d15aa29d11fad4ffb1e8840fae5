@@ -16,6 +16,46 @@
       "message": "PTAL\nTY",
       "revId": "ad70354049a28d15aa29d11fad4ffb1e8840fae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb28a8b_171c74b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-03T17:22:49Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ad70354049a28d15aa29d11fad4ffb1e8840fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29dc6e8_da22d8f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-03T17:22:49Z",
+      "side": 1,
+      "message": "`var deploymentType` can be used instead",
+      "range": {
+        "startLine": 555,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 21
+      },
+      "revId": "ad70354049a28d15aa29d11fad4ffb1e8840fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
