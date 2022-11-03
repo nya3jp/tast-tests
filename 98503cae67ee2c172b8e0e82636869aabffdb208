@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda1e259_9b339b93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Updated the device check for PCI and QC SoC modems, verified on: sasukette, vell, and hoglin. For QC devices, It doesn’t look like the helper reboot functions are implemented yet, so nothing will happen but the calls go through without any issue.",
+      "parentUuid": "e7cdf597_3792d982",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8631093_fef602f2",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3baa32a_64637b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ac745af_377d5fa0",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6b4bc58_6d085915",
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b6b920_8c766ade",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6b4bc58_6d085915",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 39
+      },
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35fc0889_098980c6",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-11-01T18:51:47Z",
       "side": 1,
       "message": "this error might look funny for the blank-variant case. Should we special case that where it just returns manifest.Device[0] and errors out with something else if the device list is empty?",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954e978e_df001a1b",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Done, added the check for an empty device list in line 83.",
+      "parentUuid": "35fc0889_098980c6",
       "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55dad04_88e37019",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "3fdb6888_2052c3b8",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95312bf4_16796829",
@@ -158,6 +254,24 @@
       "writtenOn": "2022-11-02T23:04:18Z",
       "side": 1,
       "message": "We should change this to NewModemWithSIM()",
+      "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cc70c0_31333644",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95312bf4_16796829",
       "revId": "98503cae67ee2c172b8e0e82636869aabffdb208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
