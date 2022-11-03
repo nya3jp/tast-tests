@@ -113,6 +113,16 @@ func init() {
 			Name:      "sensitive_sensor",
 			Val:       newRoutineParams(croshealthd.RoutineSensitiveSensor),
 			ExtraAttr: []string{"informational"},
+		}, {
+			Name:              "fingerprint",
+			Val:               newRoutineParams(croshealthd.RoutineFingerprint),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("jinlon")),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "fingerprint_alive",
+			Val:               newRoutineParams(croshealthd.RoutineFingerprintAlive),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("jinlon")),
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
