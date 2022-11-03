@@ -263,6 +263,16 @@ const (
 	DisableWifiInterfaces
 )
 
+// MulticastMode describes how to setup interface multicast for a test.
+type MulticastMode int
+
+const (
+	// DisableMulticast indicates that WiFi interfaces should be disabled.
+	DisableMulticast MulticastMode = iota
+	// DoNotChangeMulticast indicates that WiFi interfaces should be left in the same state.
+	DoNotChangeMulticast
+)
+
 // NightLightMode what setup is needed for a test.
 type NightLightMode int
 
@@ -310,6 +320,7 @@ type PowerTestOptions struct {
 	KeyboardBrightness KbBrightnessMode
 	Audio              AudioMode
 	Bluetooth          BluetoothMode
+	Multicast          MulticastMode
 }
 
 // PowerTest configures a DUT to run a power test by disabling features that add
@@ -342,6 +353,9 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		}
 		if options.Audio == Mute {
 			s.Add(MuteAudio(ctx))
+		}
+		if options.Multicast == DisableMulticast {
+			s.Add(DisableAllMulticast(ctx))
 		}
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiAdaptors(ctx))
