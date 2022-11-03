@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e52a808b_e4100a40",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-03T16:42:13Z",
+      "side": 1,
+      "message": "Ohoo ok, makes sense",
+      "parentUuid": "0c7a94d4_bb5dab59",
+      "revId": "9c1412edc65d1499ec3ee4280e5d313286a5ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "142e59b9_79d2b870",
         "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
         "patchSetId": 1
