@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c880366_5a65adc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T19:58:44Z",
+      "side": 1,
+      "message": "Thank you for adding all of these helpers, LGTM too :)",
+      "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b2ed68_a4922284",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T19:58:44Z",
+      "side": 1,
+      "message": "Nit: Unless we explicitly need a `10 * time.Second` timeout consider condensing this into\n\n    return uiauto.New(tconn).WaitUntilExists(keyboardNotDetectedTextNode)(ctx)\n\nand relying on the built-in timeout.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
