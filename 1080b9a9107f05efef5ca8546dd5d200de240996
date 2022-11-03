@@ -16,6 +16,23 @@
       "message": "Hi Harpreet,\nCan you please review the change?\n\nRegards,\nDinesh",
       "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb96cdb_088f3b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-11-03T18:06:13Z",
+      "side": 1,
+      "message": "Please add the test authors for these tests to the cc so they are aware that their tests are being moved to e2e suite.",
+      "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
