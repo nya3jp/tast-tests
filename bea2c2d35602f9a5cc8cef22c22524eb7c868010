@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cb6785_f70c9512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:38:11Z",
+      "side": 1,
+      "message": "Tast LGTM, please wait Maksim LGTM before submitting",
+      "revId": "bea2c2d35602f9a5cc8cef22c22524eb7c868010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b469b68_0a1a8f11",
@@ -14,6 +31,29 @@
       "writtenOn": "2022-10-31T15:38:38Z",
       "side": 1,
       "message": "Do you think we could reduce the fragmentation of the tests by making one of existing tests parameterized? We already have `cryptohome.KioskWithAuthFactorAPI` and `cryptohome.KioskWithUSS`.",
+      "revId": "bea2c2d35602f9a5cc8cef22c22524eb7c868010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c138d3dc_35c74eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_auth_when_uss_rolledbacked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:38:11Z",
+      "side": 1,
+      "message": "nit: used only once, so just inline it",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 13
+      },
       "revId": "bea2c2d35602f9a5cc8cef22c22524eb7c868010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
