@@ -50,6 +50,24 @@
       "message": "How do you compare this vs using WaitForInstallButton (+ expect error)?",
       "revId": "1498e6e81d4356caa760f3ff56767e5651d4acab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f165f7_c85c2368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-03T20:20:12Z",
+      "side": 1,
+      "message": "This will be updated to use the helper when that CL is submitted",
+      "parentUuid": "a2f51633_0f3086a8",
+      "revId": "1498e6e81d4356caa760f3ff56767e5651d4acab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
