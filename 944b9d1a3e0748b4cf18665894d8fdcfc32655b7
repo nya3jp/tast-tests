@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4a11ad_2949bcb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:44:20Z",
+      "side": 1,
+      "message": "You should be able to just do `avg :\u003d sum / count` here, right? time.Duration can be used in math normally.",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f424ea_be21e2ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:44:20Z",
+      "side": 1,
+      "message": "It feels like we should be able to factor this out, only changing one of the arguments to pollTimedScan and some strings.",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bb48d0_b4a9d261",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:44:20Z",
+      "side": 1,
+      "message": "ditto re: just `avg :\u003d sum / count`",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
