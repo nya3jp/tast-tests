@@ -16,6 +16,23 @@
       "message": "LGTM.",
       "revId": "a16193ec7bc833efa24ac6ea0c3c9414e20a5c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fac267_f4350b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-11-03T16:38:48Z",
+      "side": 1,
+      "message": "+kamesan@, should we keep these logs from media_v4l2_device.cc [1] in stdout? IMO filtering stdout like this could be fragile, so I am thinking maybe we should tweak the source instead.\n\n[1] http://cs/chromeos_public/src/platform2/camera/hal/usb/tests/media_v4l2_device.cc;rcl\u003d58ab12e7b21f02f3e45b231d3f66d5051eda63f5",
+      "revId": "a16193ec7bc833efa24ac6ea0c3c9414e20a5c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
