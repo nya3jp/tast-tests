@@ -15,6 +15,7 @@ import (
 
 // ifconfigRE parses one adapter from the output of ifconfig.
 var ifconfigRE = regexp.MustCompile("([^:]+): .*\n(?: +.*\n)*\n")
+var multicastRE = regexp.MustCompile("flags=.*<.*(ALLMULTI|MULTICAST).*>")
 
 func listUpNetworkInterfaces(ctx context.Context) ([]string, error) {
 	output, err := testexec.CommandContext(ctx, "ifconfig").Output(testexec.DumpLogOnError)
@@ -30,6 +31,24 @@ func listUpNetworkInterfaces(ctx context.Context) ([]string, error) {
 		interfaces = append(interfaces, string(submatch[1]))
 	}
 	return interfaces, nil
+}
+
+func listMulticastOnInterfaces(ctx context.Context) ([]string, error) {
+	output, err := testexec.CommandContext(ctx, "ifconfig").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get interface list")
+	}
+	var multicastInterfaces []string
+	match := ifconfigRE.FindAllSubmatch(output, -1)
+	if match == nil {
+		return nil, errors.Errorf("unable to parse interface list from %q", output)
+	}
+	for _, submatch := range match {
+		if multicastRE.MatchString(string(submatch[0])) {
+			multicastInterfaces = append(multicastInterfaces, string(submatch[1]))
+		}
+	}
+	return multicastInterfaces, nil
 }
 
 func enableNetworkInterface(ctx context.Context, iface string) error {
@@ -83,4 +102,50 @@ func DisableNetworkInterfaces(ctx context.Context, pattern *regexp.Regexp) (Clea
 func DisableWiFiAdaptors(ctx context.Context) (CleanupCallback, error) {
 	var wifiInterfacePattern = regexp.MustCompile(".*wlan\\d+")
 	return DisableNetworkInterfaces(ctx, wifiInterfacePattern)
+}
+
+func enableNetworkMulticast(ctx context.Context, iface string) error {
+	if err := testexec.CommandContext(ctx, "ifconfig", iface, "multicast", "allmulti").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "unable to enable multicast on network interface %q", iface)
+	}
+	return nil
+}
+
+func disableNetworkMulticast(ctx context.Context, iface string) error {
+	if err := testexec.CommandContext(ctx, "ifconfig", iface, "-multicast", "-allmulti").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "unable to disable multicast on network interface %q", iface)
+	}
+	return nil
+}
+
+// DisableNetworkMulticast disables multicast on a single network interface
+func DisableNetworkMulticast(ctx context.Context, iface string) (CleanupCallback, error) {
+	testing.ContextLogf(ctx, "Disabling multicast on network interface %q", iface)
+	if err := disableNetworkMulticast(ctx, iface); err != nil {
+		return nil, err
+	}
+
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Re-enabling multicast on network interface %q", iface)
+		return enableNetworkMulticast(ctx, iface)
+	}, nil
+}
+
+// DisableAllMulticast disables multicast on all ethernet and wlan interfaces.
+func DisableAllMulticast(ctx context.Context) (CleanupCallback, error) {
+	return Nested(ctx, "disable ntwork multicast", func(s *Setup) error {
+		pattern := regexp.MustCompile("(eth|wlan).*")
+		onInterfaces, err := listMulticastOnInterfaces(ctx)
+		if err != nil {
+			return err
+		}
+
+		for _, iface := range onInterfaces {
+			if !pattern.MatchString(iface) {
+				continue
+			}
+			s.Add(DisableNetworkMulticast(ctx, iface))
+		}
+		return nil
+	})
 }
