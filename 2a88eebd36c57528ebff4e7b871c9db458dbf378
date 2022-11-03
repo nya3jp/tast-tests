@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d40dee7_06d1b23c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/spera/google_meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-03T06:34:10Z",
+      "side": 1,
+      "message": "nit: Can you please fix the time format and the rest in this file?\n\nWe do not have the convention to write this as time.Minute * 50. Instead it should be 50*time.Minute for consistency.",
+      "range": {
+        "startLine": 182,
+        "startChar": 24,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "2a88eebd36c57528ebff4e7b871c9db458dbf378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
