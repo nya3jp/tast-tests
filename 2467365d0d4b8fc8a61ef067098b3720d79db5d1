@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7d28d9_8f895681",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-03T20:44:31Z",
+      "side": 1,
+      "message": "Fix go errors\n\n```\ntast-remote-tests-cros-0.0.2-r13317: # chromiumos/tast/remote/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r13317: src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go:148:3: (*chromiumos/tast/internal/testing.globalMixin).Fatalf does not support error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r13317: src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go:162:4: (*chromiumos/tast/internal/testing.globalMixin).Fatalf does not support error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r13317: src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go:167:3: (*chromiumos/tast/internal/testing.globalMixin).Fatalf does not support error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r13317: src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go:200:3: (*chromiumos/tast/internal/testing.globalMixin).Fatalf does not support error-wrapping directive %w\n```",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 75
+      },
+      "revId": "2467365d0d4b8fc8a61ef067098b3720d79db5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
