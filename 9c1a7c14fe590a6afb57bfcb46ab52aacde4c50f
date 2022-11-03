@@ -168,6 +168,24 @@
       "parentUuid": "f41f990d_78382a01",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16107c65_48b2e02a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-11-03T04:23:10Z",
+      "side": 1,
+      "message": "It occurred to me a simple solution is to pass -n to the cp invocation. If the .orig file already exists it will be left as is and the command still succeeds. I\u0027ve added that in patch set 3.",
+      "parentUuid": "7c27da6c_c1c35ff6",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
