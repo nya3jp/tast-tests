@@ -16,6 +16,155 @@
       "message": "Thanks!",
       "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0600a0d7_4628a2f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "Thanks for changes and sorry for delays in review. Added few more comments. Feel free to submit after resolving all of them.",
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3ed94d_edb19307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "nit: firstErr is more useful\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go;l\u003d133?q\u003dtast-tests%20%22cr.Close(ctx)%22%20file:service.go",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb23c026_e8a98dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b7e0ed_102bd070",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_reporting.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "are you sure that you want to run your test in mainline group? if your test won\u0027t be pretty stable, some folks will try to disable it\n\nAlso I am pretty sure you won\u0027t be able to promote this test to CQ because you depend on real infra",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdb14fd_19829079",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_reporting.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "looks like you don\u0027t need all 5 services",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c9638e_e67294d0",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "Can you move this package under src/chromiumos/tast/remote/bundles/cros/policy/ package?",
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9687807_718aad46",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "nit: make them constants",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

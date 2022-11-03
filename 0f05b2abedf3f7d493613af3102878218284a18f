@@ -775,6 +775,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "845a3c80_cd82756e",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-03T10:19:27Z",
+      "side": 1,
+      "message": "if you want to collect all errors, just log them separately and return the first error",
+      "parentUuid": "0e1b2da2_286b9216",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 162
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a790afd4_2e96b7b3",
         "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
         "patchSetId": 13
