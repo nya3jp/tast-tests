@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2634eaf0_400b5242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-03T18:45:56Z",
+      "side": 1,
+      "message": "Feel like we have libdrm on all platforms nowadays. \nWhat about running kmstest/modetst on all platforms then we can decide what to do with the failing one?\n\nWDYT?",
+      "revId": "849b9b5ffa64a37175eef9b27c37a82f0342d6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee67cb4a_2414933b",
@@ -175,6 +192,30 @@
       "writtenOn": "2022-11-03T18:24:48Z",
       "side": 1,
       "message": "If we don\u0027t need stdout, stderr, simply use Run(testexec.DumpLogOnError). \n```\nif err :\u003d testexec.CommandContext(ctx, ...).Run(...); err !\u003d nil {\n    s.Error(\"%v was not found\", test)\n    continue\n}\n\n// Run the command.\n```\n\nAlso do you have any idea where is \"kmstest\" comes from? Can we assume it is on the test image by default?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "849b9b5ffa64a37175eef9b27c37a82f0342d6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e84f142_d5c892fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/lib_drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-03T18:45:56Z",
+      "side": 1,
+      "message": "Ok. kmstest is installed by libdrm ebuild, which is listed as CROS_RDEPEND in target-chromium-os-test-9999.ebuild.\n\nI think we can simply assume it is installed.",
+      "parentUuid": "b509aa9d_b7d7ef69",
       "range": {
         "startLine": 81,
         "startChar": 2,
