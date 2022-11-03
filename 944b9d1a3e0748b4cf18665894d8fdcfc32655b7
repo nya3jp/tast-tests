@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1d4968_7d20ebbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T19:44:30Z",
+      "side": 1,
+      "message": "OK, it looks like the issue is that division works when you divide by a literal:\n\n```\nfunc main() {\n\tt0 :\u003d 3 * time.Minute\n\tfmt.Printf(\"One tenth of 3 minutes is %v.\\n\", t0 / 10)\n}\n```\ngives you\n```\nOne tenth of 3 minutes is 18s.\n```\n\nbut if you replace the `10` with `ten :\u003d 10` and then use `ten` it fails to typecheck. That\u0027s very weird, though I guess that\u0027s also what the const example you put in the playground was doing.\n\nWell, if that\u0027s the case then it is what it is, and I\u0027m not entirely sure what we can do to make that better.",
+      "parentUuid": "557c6905_83ee959b",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58f424ea_be21e2ab",
@@ -73,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18a89c8a_bf921eae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T19:44:30Z",
+      "side": 1,
+      "message": "i.e. have a function that performs the `pollTimedScan` several times and returns the average time, and then just use that here and above when you do it for the foreground scan",
+      "parentUuid": "2773fb2a_ea9e919c",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12bb48d0_b4a9d261",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 7
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "/*\nsame issue as https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3996676/comment/ae4a11ad_2949bcb8/\n*/",
       "parentUuid": "12bb48d0_b4a9d261",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80a7c3c_bd84452d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T19:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adb34ace_f6f0d265",
       "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
