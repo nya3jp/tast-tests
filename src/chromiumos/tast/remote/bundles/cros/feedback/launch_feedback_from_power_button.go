@@ -1,6 +1,7 @@
 // Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+// This test is flasky and we disable it currently.
 
 package feedback
 
@@ -29,7 +30,6 @@ func init() {
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
 		ServiceDeps: []string{
 			"tast.cros.browser.ChromeService",
 			"tast.cros.ui.AutomationService",
