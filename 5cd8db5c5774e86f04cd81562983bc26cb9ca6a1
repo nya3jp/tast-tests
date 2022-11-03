@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c16f43_57752d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-11-03T19:27:33Z",
+      "side": 1,
+      "message": "Would like to know your inputs on optimization of repetitive code and Iperf planned API, not tested yet.",
+      "revId": "5cd8db5c5774e86f04cd81562983bc26cb9ca6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
