@@ -235,6 +235,11 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Mismatch in supported auth factors after adding password (-got, +want): ", err)
 	}
 
+	// Removing the only password factor should fail
+	if err := client.RemoveAuthFactor(ctx, authSessionID, passwordLabel); err == nil {
+		s.Fatal("Should fail RemoveAuthFactor() when the factor is the last one left")
+	}
+
 	// Add a second backup password auth factor to the user.
 	if err := client.AddAuthFactor(ctx, authSessionID, backupLabel, backupPassword); err != nil {
 		s.Fatal("Failed to add password auth factor: ", err)
