@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf4e289_2e5aa2c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-03T06:41:48Z",
+      "side": 1,
+      "message": "Thanks for the reviews. Please check this version.\nAdded tests for IPv4-only case and IPv6-only case.",
+      "revId": "2942f7a5d6f4ead8f8dd3a2965d8c88a3140a2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

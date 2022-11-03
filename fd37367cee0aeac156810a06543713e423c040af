@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332a76d5_9f4ba1a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-03T06:41:48Z",
+      "side": 1,
+      "message": "Thanks, we need to add ::/0 for the client to connect to an IPv6 overlay IP of the server.",
+      "parentUuid": "def1823d_ddce20a3",
+      "range": {
+        "startLine": 149,
+        "startChar": 23,
+        "endLine": 149,
+        "endChar": 32
+      },
+      "revId": "fd37367cee0aeac156810a06543713e423c040af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e10985a3_164886d5",
@@ -37,6 +61,54 @@
       "writtenOn": "2022-11-01T03:09:40Z",
       "side": 1,
       "message": "This mean that for v4-only and v6-only there will be no remote_ts, which does not sound correct to me?",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "fd37367cee0aeac156810a06543713e423c040af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72db60c9_bb95955d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-03T06:41:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e10985a3_164886d5",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "fd37367cee0aeac156810a06543713e423c040af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44833044_23b221b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-03T06:41:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e10985a3_164886d5",
       "range": {
         "startLine": 150,
         "startChar": 14,
