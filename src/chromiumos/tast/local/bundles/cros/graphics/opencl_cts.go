@@ -11869,9 +11869,9 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, filepath.Join(testPath, test.executable), strings.Split(test.args, " ")[0:]...)
 	cmd.Stdout = f
 	cmd.Stderr = f
-	err = cmd.Run(testexec.DumpLogOnError)
-
-	if expErr := expectation.ReportErrorf("\"%s %s\": %v", test.executable, test.args, err); expErr != nil {
-		s.Error("Unexpected error: ", expErr)
+	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
+		if expErr := expectation.ReportErrorf("\"%s %s\": %v", test.executable, test.args, err); expErr != nil {
+			s.Error("Unexpected error: ", expErr)
+		}
 	}
 }
