@@ -59,6 +59,11 @@ func Suspend(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to suspend: ", err)
 	}
 
+	err = testutil.WaitForCameraSocket(ctx)
+	if err != nil {
+		s.Fatal("Failed to wait for Camera Socket after suspend: ", err)
+	}
+
 	cmd = testexec.CommandContext(ctx, "cros_camera_connector_test", "--gtest_filter=ConnectorTest/CaptureTest.OneFrame/NV12_640x480_30fps")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to use camera after suspend: ", err)
