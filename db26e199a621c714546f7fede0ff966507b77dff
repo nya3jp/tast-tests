@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8590855b_fe8c2bf9",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "208c170e_f87ed8f8",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "437d7635_76740b15",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-03T10:06:59Z",
       "side": 1,
       "message": "nit: reflow comments to 80 characters.",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3caa6fc_9f721a53",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "437d7635_76740b15",
       "revId": "db26e199a621c714546f7fede0ff966507b77dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3580b3_51a9bf9d",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7a72413_583c76e0",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "993aa6b7_036a9fad",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-11-03T10:06:59Z",
       "side": 1,
       "message": "nit: reflow comments to 80 characters to be consistent",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73a96b0_259cc3ab",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993aa6b7_036a9fad",
       "revId": "db26e199a621c714546f7fede0ff966507b77dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "963cebfb_1b63154f",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf155324_d97b9b84",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f7afdbd_1294ce0b",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-11-03T10:06:59Z",
       "side": 1,
       "message": "nit: reflow comments to 80 characters",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee85d67_5f2a7ea0",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7afdbd_1294ce0b",
       "revId": "db26e199a621c714546f7fede0ff966507b77dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3645594e_d1b2cf5b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "49538cef_ce9ffd10",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c07fe493_9d76215b",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-11-03T10:06:59Z",
       "side": 1,
       "message": "Use subtests here",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad67d53_ef79b6b1",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c07fe493_9d76215b",
       "revId": "db26e199a621c714546f7fede0ff966507b77dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b01d69f_4f26dab8",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7bee7d_a1bbdf24",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e46d83_3dd2a95c",
@@ -177,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b69766_5307ac96",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e46d83_3dd2a95c",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a09733c_97adede0",
@@ -190,6 +376,30 @@
       "writtenOn": "2022-11-03T10:06:59Z",
       "side": 1,
       "message": "Why not just diff, it should handle nil correctly.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 65
+      },
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739770d4_b82ec738",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a09733c_97adede0",
       "range": {
         "startLine": 113,
         "startChar": 2,

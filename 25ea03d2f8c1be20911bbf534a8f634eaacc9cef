@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf7c693_d4ec1f50",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-03T13:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1b38070_4efaab0a",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 7
+      },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fbe1bce_ba8a6fc8",
