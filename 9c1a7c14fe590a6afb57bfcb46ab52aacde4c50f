@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "850a34bf_acfb6ba1",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-11-03T03:04:07Z",
+      "side": 1,
+      "message": "Yes agreed. We could tackle it in a followup patch, but for now I am not attempting to run the power tests against unreleased firmware.",
+      "parentUuid": "336dcf1d_c3f7e210",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1fc42f_e5fabfcc",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-02T02:46:30Z",
       "side": 1,
       "message": "Don\u0027t we need to add a fixture for stable firmware as well? Otherwise I think it could flash latest first and then run the \"!latest\" tests without flashing stable.",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ec6523_41a10399",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-11-03T03:04:07Z",
+      "side": 1,
+      "message": "So the fixture takes care to put hpsd back to the normal firmware at the teardown. Whenever the fixture is not active, we will be using normal firmware. There is no need for a fixture for that since it\u0027s the configuration that comes in the image already.",
+      "parentUuid": "6d1fc42f_e5fabfcc",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -112,6 +148,24 @@
       "writtenOn": "2022-11-02T02:46:30Z",
       "side": 1,
       "message": "can we abort/fail if overrideOrigFilename already exists? in case we didn\u0027t do proper Teardown before, in order to avoid strange behaviour",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c27da6c_c1c35ff6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-11-03T03:04:07Z",
+      "side": 1,
+      "message": "Good idea.\n\nIn case a test encounters some unexpected state like that, is it preferred for the test to fail with a good error, or should the test actually try to recover back to a good state?\n\nWe could easily do either option here. If the test finds the .orig file already existing it could just assume it is legit and was left by a previous run and thus leave it in place and continue with the tests. Or, we could consider it fatal for the fixture in which case a human will need to see the problem and repair it manually.\n\nI guess the latter option is \"safer\" in the sense of alerting us to unexpected problems, but the former option is easier for maintenance. I\u0027ll try a version of this fixture which does the repair.",
+      "parentUuid": "f41f990d_78382a01",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
