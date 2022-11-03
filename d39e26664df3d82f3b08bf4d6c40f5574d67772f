@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e04b3bb5_e4b32612",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efaa471_381dbd32",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13b9e005_1c6c5388",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-02T20:42:43Z",
       "side": 1,
       "message": "nit: {{ \njoining two lines here",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1388314d_f06c84a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b9e005_1c6c5388",
       "range": {
         "startLine": 42,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc808f13_7a466a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5bbc4dd_ec08da10",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "482cfe00_226ae422",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-02T20:42:43Z",
       "side": 1,
       "message": "It would be good to add \"informational\" to this variant along with \"group:mainline\" until we are confident enough to promote it to CQ (once it passes in the next 20 consecutive builds).\nSee also https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a844c5ee_c26db3f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482cfe00_226ae422",
       "range": {
         "startLine": 56,
         "startChar": 25,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df22ba30_e1fe2fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4711a78_876621e5",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4ae1897_13858877",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-11-02T20:28:47Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 19
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa8d024_1ff3d4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ae1897_13858877",
       "range": {
         "startLine": 198,
         "startChar": 16,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d194dce_0c5d98c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddecfd93_7cbc2652",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 108
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c835f2c_6fcc6d48",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe058dbe_487956e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c835f2c_6fcc6d48",
+      "range": {
+        "startLine": 206,
+        "startChar": 16,
+        "endLine": 206,
+        "endChar": 19
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4f3ba63_1b5a852d",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-11-02T20:23:30Z",
       "side": 1,
       "message": "Here you can open a URL in primary browser.\n\n`conn, _, closeBrowser, err :\u003d browserfixt.SetUpWithURL(ctx, cr, params.bt, url)`\n...\n`defer closeBrowser(cleanupCts)` before `defer conn.Close()`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "d39e26664df3d82f3b08bf4d6c40f5574d67772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645ffd57_68f829cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f3ba63_1b5a852d",
       "range": {
         "startLine": 217,
         "startChar": 0,

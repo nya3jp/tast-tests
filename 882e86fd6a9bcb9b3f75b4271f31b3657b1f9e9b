@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b5b5f5_14b7fa3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-03T18:34:21Z",
+      "side": 1,
+      "message": "Please verify that we should include stress and forever for lacros variant and verify informational and mainline",
+      "revId": "882e86fd6a9bcb9b3f75b4271f31b3657b1f9e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
