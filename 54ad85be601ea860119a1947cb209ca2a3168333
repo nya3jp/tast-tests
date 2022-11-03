@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f453b7_4ccf72f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-03T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04327bc_436e0108",
+      "range": {
+        "startLine": 85,
+        "startChar": 55,
+        "endLine": 85,
+        "endChar": 82
+      },
+      "revId": "54ad85be601ea860119a1947cb209ca2a3168333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a03c3914_ba21da2d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a75353_d99eb28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-03T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03c3914_ba21da2d",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "54ad85be601ea860119a1947cb209ca2a3168333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43f5ad09_fcf6c718",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-03T09:34:18Z",
       "side": 1,
       "message": "Since we moved to buganizer, use the migrated bug instead",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "54ad85be601ea860119a1947cb209ca2a3168333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c122d88_576d8282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-03T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f5ad09_fcf6c718",
       "range": {
         "startLine": 134,
         "startChar": 11,
