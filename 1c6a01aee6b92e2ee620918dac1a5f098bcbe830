@@ -22,6 +22,30 @@
       },
       "revId": "1c6a01aee6b92e2ee620918dac1a5f098bcbe830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bbec02_ee84d3da",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-11-03T11:42:44Z",
+      "side": 1,
+      "message": "Thanks for your 2c.\n\nThe failures are happening on the old step 4: WaitUntilExists(terminalWebArea)\n\nThe esc key is received ok, and the dialog closes, but the tab doesn\u0027t close.  I think the flakiness is unrelated to the a11y tree, but I haven\u0027t ever repro\u0027d to really know what is happening.",
+      "parentUuid": "bc1c2f1d_6865cd08",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "1c6a01aee6b92e2ee620918dac1a5f098bcbe830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
