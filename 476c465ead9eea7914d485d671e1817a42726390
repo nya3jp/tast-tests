@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a650a8_4c946ca0",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T13:21:12Z",
+      "side": 1,
+      "message": "Names should be in lower_snake_case\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "476c465ead9eea7914d485d671e1817a42726390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca14f681_6f3e7c3f",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T13:21:12Z",
+      "side": 1,
+      "message": "Error messages will contain the subtest name automatically. No need to add it by hand.",
+      "range": {
+        "startLine": 134,
+        "startChar": 67,
+        "endLine": 134,
+        "endChar": 74
+      },
+      "revId": "476c465ead9eea7914d485d671e1817a42726390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
