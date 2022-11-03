@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,9 +27,6 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		// TODO(b/162805199): Track the list of known devices which
-		// support built-in x86_64, but do not support ARM64 yet.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
 	})
 }
 
@@ -57,6 +53,20 @@ func CheckAndroidARM64Support(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to get the board name : ", err)
 		}
+
+		// Special-case for Grunt and Zork (AMD) where ARC P or earlier do not support ARM64
+		if strings.Contains(boardName, "grunt") || strings.Contains(boardName, "zork") {
+			sdkVer, err := arc.SDKVersion()
+			if err != nil {
+				s.Fatal("Failed to get the SDK version: ", err)
+			}
+			s.Logf("Checking AMD-based board %s on Android SDK %d", boardName, sdkVer)
+			if sdkVer <= arc.SDKP {
+				s.Logf("Missing ARM64 support on %s is expected for SDK %d ", boardName, sdkVer)
+				return
+			}
+		}
+
 		s.Fatal("Built-in x86_64 support present, but ARM 64 support absent for board - ", boardName)
 	}
 }
