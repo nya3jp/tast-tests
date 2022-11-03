@@ -20,8 +20,8 @@ import (
 )
 
 const (
-	// personName indicates the name of the person chatting.
-	personName = "CUJ Int01"
+	// chatAccount indicates the chatting account.
+	chatAccount = "testuser@gmail.com"
 
 	// defaultUIWaitTime indicates the default time to wait for UI elements to appear.
 	defaultUIWaitTime = 5 * time.Second
@@ -119,10 +119,10 @@ func (g *GoogleChat) StartChat(ctx context.Context) error {
 	chatGroup := nodewith.NameContaining("Chat").Role(role.Group)
 	startChatButton := nodewith.Name("Start a chat").Role(role.Button).Ancestor(chatGroup).Focusable()
 	findContainer := nodewith.Name("Find or start conversations").Role(role.GenericContainer).Focusable()
-	textBox := nodewith.NameContaining("Type person, space, or app name.").Role(role.TextField).Ancestor(findContainer)
+	textBox := nodewith.NameStartingWith("Type person").Role(role.TextField).Ancestor(findContainer)
 	textBoxFocused := textBox.Focused()
-	personOption := nodewith.NameContaining(personName).Role(role.ListBoxOption).Focusable()
-	messageFieldName := fmt.Sprintf("Message %s. History is on.", personName)
+	accountOption := nodewith.NameContaining(chatAccount).Role(role.ListBoxOption).Focusable()
+	messageFieldName := fmt.Sprintf("Message %s. History is on.", chatAccount)
 	messageField := nodewith.Name(messageFieldName).Role(role.TextField).Editable()
 	workSapceDialog := nodewith.Name("Google Workspace tools").Role(role.AlertDialog)
 	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(workSapceDialog)
@@ -133,9 +133,9 @@ func (g *GoogleChat) StartChat(ctx context.Context) error {
 			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(textBoxFocused),
 			g.ui.DoDefault(textBox),
 		),
-		g.kb.TypeAction(personName),
+		g.kb.TypeAction(chatAccount),
 		g.ui.DoDefaultUntil(
-			personOption,
+			accountOption,
 			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(messageField),
 		),
 		uiauto.IfSuccessThen(
