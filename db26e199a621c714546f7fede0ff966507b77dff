@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208c170e_f87ed8f8",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters.",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437d7635_76740b15",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters.",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a72413_583c76e0",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters.",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993aa6b7_036a9fad",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters to be consistent",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf155324_d97b9b84",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters to be consistent",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7afdbd_1294ce0b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "nit: reflow comments to 80 characters",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49538cef_ce9ffd10",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Have multiple test cases instead of one big one to understand failures better.\n\nGive each one a name.",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07fe493_9d76215b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Use subtests here",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7bee7d_a1bbdf24",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e46d83_3dd2a95c",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Fatalf",
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a09733c_97adede0",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Why not just diff, it should handle nil correctly.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 65
+      },
+      "revId": "db26e199a621c714546f7fede0ff966507b77dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

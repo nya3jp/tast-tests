@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1b38070_4efaab0a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T10:06:59Z",
+      "side": 1,
+      "message": "Checking for errors is not that hard. If something ever goes wrong this will be very annoying to track down.",
+      "parentUuid": "b5b799c3_1829efd8",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 7
+      },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fbe1bce_ba8a6fc8",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 5
