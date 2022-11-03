@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a055bc_9e7abd01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-03T19:47:55Z",
+      "side": 1,
+      "message": "Fixed. Thanks!",
+      "parentUuid": "3f2c9944_4a411302",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "92fff0d09603e7d57b215a908f50979a306b5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c01215ed_9f0425ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-03T08:03:47Z",
       "side": 1,
       "message": "an RPC",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "92fff0d09603e7d57b215a908f50979a306b5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe30c83_504c3f82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-03T19:47:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "c01215ed_9f0425ca",
       "range": {
         "startLine": 9,
         "startChar": 4,
@@ -77,6 +125,24 @@
       "writtenOn": "2022-11-03T08:03:47Z",
       "side": 1,
       "message": "Remove trailing whitespace.",
+      "revId": "92fff0d09603e7d57b215a908f50979a306b5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014babca_e6e0abe5",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-03T19:47:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "4ca57e3d_e519edd3",
       "revId": "92fff0d09603e7d57b215a908f50979a306b5bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
