@@ -193,36 +193,16 @@ func IsVividDriverLoaded(ctx context.Context) bool {
 }
 
 // WaitForCameraSocket returns when the camera socket is ready.
-func WaitForCameraSocket(ctx context.Context) (*chrome.Chrome, error) {
-	const exec = "cros_camera_connector_test"
+func WaitForCameraSocket(ctx context.Context) error {
 	const socket = "/run/camera/camera3.sock"
 
-	// TODO(b/151270948): Temporarily disable ARC.
-	// The cros-camera service would kill itself when running the test if
-	// arc_setup.cc is triggered at that time, which will fail the test.
-	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.NoLogin())
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start chrome")
-	}
-
-	setupSuccess := false
-	defer func() {
-		if !setupSuccess {
-			cr.Close(ctx)
-		}
-	}()
-
-	//Leave some time for cr.Close()
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-	defer cancel()
-
 	if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
-		return nil, errors.Wrap(err, "failed to start cros-camera")
+		return errors.Wrap(err, "failed to start cros-camera")
 	}
 
 	arcCameraGID, err := sysutil.GetGID("arc-camera")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get gid of arc-camera")
+		return errors.Wrap(err, "failed to get gid of arc-camera")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -238,11 +218,15 @@ func WaitForCameraSocket(ctx context.Context) (*chrome.Chrome, error) {
 		if st.Gid != arcCameraGID {
 			return testing.PollBreak(errors.Errorf("gid %04o (want %04o)", st.Gid, arcCameraGID))
 		}
+
+		cmd := testexec.CommandContext(ctx, "cros_camera_connector_test", "--gtest_filter=ConnectorTest.GetInfo")
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			return err
+		}
 		return nil
 	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "invalid camera socket")
+		return errors.Wrap(err, "invalid camera socket")
 	}
 
-	setupSuccess = true
-	return cr, nil
+	return nil
 }
