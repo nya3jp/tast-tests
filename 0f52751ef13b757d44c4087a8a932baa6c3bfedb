@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b9760703_f5449db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-03T21:16:35Z",
+      "side": 1,
+      "message": "Got it. Hopefully Play Store side has more detailed tests to cover all the detailed transitions between allowed/blocked/force-installed.",
+      "parentUuid": "fee49d2d_9fffd6d9",
+      "revId": "0f52751ef13b757d44c4087a8a932baa6c3bfedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "465b0e71_b2bce2b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
         "patchSetId": 1
