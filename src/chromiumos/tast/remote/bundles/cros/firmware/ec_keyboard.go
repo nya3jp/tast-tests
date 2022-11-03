@@ -75,14 +75,15 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 	}
 
 	testType := s.Param().(keyboardTest)
-	// Make sure internal keyboard is connected for detachable devices.
+	// Make sure internal keyboard is connected for detachable/convertible devices.
+	// Isn't always required so attempt test anyway if this fails.
 	if testType == detachableKeyboard {
-		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "basestate detach"); err != nil {
-			s.Fatal("Failed to set detachable base state to attached: ", err)
+		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "basestate attach"); err != nil {
+			s.Log("Failed to set detachable base state to attached: ", err)
 		}
 	} else if testType == convertibleKeyboard {
 		if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, "tabletmode off"); err != nil {
-			s.Fatal("Failed to set tabletmode to off: ", err)
+			s.Log("Failed to set tabletmode to off: ", err)
 		}
 	}
 
