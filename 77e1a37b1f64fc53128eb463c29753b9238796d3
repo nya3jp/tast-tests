@@ -16,6 +16,75 @@
       "message": "Opal,\n\nAdded you as reviewer since you created autotest version of it. Thx!",
       "revId": "77e1a37b1f64fc53128eb463c29753b9238796d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2c9d4b_89f58aea",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-03T21:15:57Z",
+      "side": 1,
+      "message": "fix doc",
+      "range": {
+        "startLine": 270,
+        "startChar": 31,
+        "endLine": 270,
+        "endChar": 71
+      },
+      "revId": "77e1a37b1f64fc53128eb463c29753b9238796d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52f00e7_dfc65846",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-03T21:15:57Z",
+      "side": 1,
+      "message": "add comment that you need to disable avahi before multicast",
+      "range": {
+        "startLine": 357,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "77e1a37b1f64fc53128eb463c29753b9238796d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176b97a0_08ba4125",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_network.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-03T21:15:57Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 109,
+        "startChar": 38,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "77e1a37b1f64fc53128eb463c29753b9238796d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
