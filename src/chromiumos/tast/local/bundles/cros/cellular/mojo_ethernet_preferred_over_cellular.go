@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Confirm Ethernet is preferred over cellular when both are enabled and wifi is disabled",
 		Contacts:     []string{"shijinabraham@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:         []string{"group:cellular", "cellular_e2e_unstable", "cellular_sim_active"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "cellular",
 	})

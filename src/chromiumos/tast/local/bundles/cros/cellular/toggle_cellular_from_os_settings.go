@@ -23,7 +23,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:         []string{"group:cellular", "cellular_e2e_unstable", "cellular_sim_active"},
 		Fixture:      "cellular",
 	})
 }
