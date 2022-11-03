@@ -146,15 +146,16 @@ const (
 	ESimStatusWithProfiles = 2
 )
 
-// Modem types
+// ModemType value can have existing modem type
 type ModemType uint32
 
+// Possible values for ModemType
 const (
-	ModemUnspeciefied   ModemType = 0
-    ModemQualcomm7180   ModemType = 1
-	ModemFibocomL850GL  ModemType = 2
-	ModemNL668          ModemType = 3
-	ModemFM350          ModemType = 4
-	ModemFM101          ModemType = 5
-	ModemQualcomm7280   ModemType = 6
+	ModemUnspeciefied  ModemType = 0
+	ModemQualcomm7180  ModemType = 1
+	ModemFibocomL850GL ModemType = 2
+	ModemNL668         ModemType = 3
+	ModemFM350         ModemType = 4
+	ModemFM101         ModemType = 5
+	ModemQualcomm7280  ModemType = 6
 )
