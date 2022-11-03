@@ -191,6 +191,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a95ea9_83f07f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T13:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d889df5_3538ecd9",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeb23fe6_093d1356",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "I really prefer to have the full type there, as the code navigation with tast code doesn\u0027t work and sometimes it\u0027s a pain to figure out what is the type.",
       "parentUuid": "eeb23fe6_093d1356",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f54bbfc_72a702e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T13:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bdbadcb_ee627bb1",
       "range": {
         "startLine": 73,
         "startChar": 1,
