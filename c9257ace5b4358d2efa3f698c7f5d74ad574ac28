@@ -615,6 +615,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5c3841b_c2167cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1535837
+      },
+      "writtenOn": "2022-11-03T08:22:24Z",
+      "side": 1,
+      "message": "Can we select the video node from the DOM of the camera app and test if the image is black in JavaScript? https://stackoverflow.com/questions/13760805/how-to-take-a-snapshot-of-html5-javascript-based-video-player",
+      "parentUuid": "85cb2072_40f76bfb",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b6fa685_7ef148ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
         "patchSetId": 6
