@@ -117,6 +117,30 @@
       },
       "revId": "fd37367cee0aeac156810a06543713e423c040af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a4407c_427bc41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-11-03T08:07:24Z",
+      "side": 1,
+      "message": "Thanks, I misunderstood that the server doesn\u0027t have to support these cases. \nI added v4-only and v6-only in the new patch.",
+      "parentUuid": "72db60c9_bb95955d",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "fd37367cee0aeac156810a06543713e423c040af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
