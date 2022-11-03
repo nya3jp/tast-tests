@@ -152,6 +152,20 @@ func CloseApp(ctx context.Context, cr *chrome.Chrome, appConn *chrome.Conn, useS
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+func filterMediaV4l2TestList(cmdout []byte) []string {
+	var devices []string
+	lines := strings.Split(string(cmdout), "\n")
+
+	for i := range lines {
+		if strings.HasPrefix(lines[i], "<<< ") || len(lines[i]) == 0 {
+			continue
+		}
+		devices = append(devices, lines[i])
+	}
+
+	return devices
+}
+
 // USBCamerasFromV4L2Test returns a list of usb camera paths.
 func USBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_usbcam")
@@ -159,7 +173,8 @@ func USBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run media_v4l2_test")
 	}
-	return strings.Fields(string(out)), nil
+
+	return filterMediaV4l2TestList(out), nil
 }
 
 // CaptureDevicesFromV4L2Test returns a list of usb camera paths.
@@ -169,7 +184,8 @@ func CaptureDevicesFromV4L2Test(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run media_v4l2_test")
 	}
-	return strings.Fields(string(out)), nil
+
+	return filterMediaV4l2TestList(out), nil
 }
 
 // MIPICamerasFromCrOSCameraTool returns a list of MIPI camera information outputted from cros-camera-tool.
