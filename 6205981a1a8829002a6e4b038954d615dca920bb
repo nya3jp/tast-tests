@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f21ff5_3e3dc573",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T09:23:36Z",
+      "side": 1,
+      "message": "Errors don\u0027t start with a capital\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "parentUuid": "59084a9c_4b3c096a",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431f6e72_02334186",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-02T14:48:06Z",
       "side": 1,
       "message": "nit: should start with capital letter.",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23eabf6f_1b03f6d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T09:23:36Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "431f6e72_02334186",
       "range": {
         "startLine": 57,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0915f4cb_a91b7d84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T09:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602d8c54_1119a452",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b9405a6_47c8c667",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-02T14:48:06Z",
       "side": 1,
       "message": "Similar to the other comment. Because this is now a method that goes through every value to find the current stable value, imo it would make sense to create a variable (e.g. `currentStable`) and call it only once, instead of 5 times in the code.",
+      "range": {
+        "startLine": 34,
+        "startChar": 61,
+        "endLine": 34,
+        "endChar": 97
+      },
+      "revId": "6205981a1a8829002a6e4b038954d615dca920bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609efade_12858867",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T09:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b9405a6_47c8c667",
       "range": {
         "startLine": 34,
         "startChar": 61,
