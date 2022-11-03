@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40da7b77_0d8c2a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-03T19:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a006dd14_a956933f",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "703c912deef430b53ae858fe10e5f3bdb1012860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c137bfb_f6698c0b",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3111e1a8_48550a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-03T19:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c137bfb_f6698c0b",
+      "revId": "703c912deef430b53ae858fe10e5f3bdb1012860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29d4a4e7_278557f9",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-11-03T18:19:42Z",
       "side": 1,
       "message": "Nit: full screen?",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "703c912deef430b53ae858fe10e5f3bdb1012860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9adce2c_ca9b590c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-03T19:11:05Z",
+      "side": 1,
+      "message": "I think fullscreen as one word is the correct terminology (when used as an adjective). That\u0027s how it\u0027s spelled at https://fullscreen.spec.whatwg.org/",
+      "parentUuid": "29d4a4e7_278557f9",
       "range": {
         "startLine": 87,
         "startChar": 34,
