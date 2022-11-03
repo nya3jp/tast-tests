@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1e83215_921bf9e2",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-03T16:21:37Z",
+      "side": 1,
+      "message": "In shill_cellular_custom_apn.go, we are getting the operatorID from modemmanager, @aleksandermj@google.com Do you know why we are getting the extra 0 at the end for Docomo and not the other Japanese carriers?",
+      "parentUuid": "f6699f83_fb8e3fea",
+      "revId": "9c1412edc65d1499ec3ee4280e5d313286a5ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "142e59b9_79d2b870",
         "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Just so that the error log accurately reflects the operatorID being used.",
       "parentUuid": "142e59b9_79d2b870",
+      "revId": "9c1412edc65d1499ec3ee4280e5d313286a5ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f5e18e_8a8c5e02",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-03T16:21:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "238cda8d_56ec10f7",
       "revId": "9c1412edc65d1499ec3ee4280e5d313286a5ea6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
