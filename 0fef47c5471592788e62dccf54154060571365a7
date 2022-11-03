@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64433bd9_f98951b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "699ff59c_5c7cd0c6",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b49685a_f8df2f3b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-03T07:50:41Z",
       "side": 1,
       "message": "nit: Wait?\nEnd the sentence with a period.",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "962f8312_6fc85c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b49685a_f8df2f3b",
       "revId": "0fef47c5471592788e62dccf54154060571365a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2958be60_f3d33271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e12813f_4c3dda97",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f69e63_7492792a",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-11-03T07:50:41Z",
       "side": 1,
       "message": "nit: Toggle?\nDitto",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13666e8_9109b1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f69e63_7492792a",
       "revId": "0fef47c5471592788e62dccf54154060571365a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +223,72 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98afda8_82606653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df25c877_a2f1c56e",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bbeed8_a4298b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e901494c_9be88dc5",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b541f70c_2d7a609f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5f7b3d_41e45f87",
+      "range": {
+        "startLine": 25,
+        "startChar": 103,
+        "endLine": 25,
+        "endChar": 110
+      },
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4ab253_bc2d2baf",
@@ -185,6 +323,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e138bf8c_a7998cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce38971f_79454715",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a577e94f_048dcb98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Yes and that depends on resolution. But you are right. What I am trying to say is that I tested it at the VM with default settings. It is possible some more changes will be needed in case this starts to fail on some configurations I was not aware of.",
+      "parentUuid": "ce4ab253_bc2d2baf",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372f9be3_35ea231e",
@@ -198,6 +372,30 @@
       "writtenOn": "2022-11-03T07:50:41Z",
       "side": 1,
       "message": "Does this mean the only part of the captured image is tested? If the near-edge part contains non-black pixels, would the test still pass?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af858c37_60d575bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Yes, but if the switch is off, there will be a colorful test pattern in the middle. If the switch somehow disabled only the center of the camera feed, we would have a false negative, but it seems like a very unlikely scenario.",
+      "parentUuid": "372f9be3_35ea231e",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -225,6 +423,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d4588f_4d944750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6697771a_9b7ec0db",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752fa8bc_3e9e29e5",
@@ -238,6 +454,24 @@
       "writtenOn": "2022-11-03T07:50:41Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01326922_b2b498f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752fa8bc_3e9e29e5",
       "revId": "0fef47c5471592788e62dccf54154060571365a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
