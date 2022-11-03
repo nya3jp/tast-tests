@@ -39,6 +39,30 @@
       },
       "revId": "2a88eebd36c57528ebff4e7b871c9db458dbf378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd92fce_73f6a925",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/spera/google_meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-11-03T09:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d40dee7_06d1b23c",
+      "range": {
+        "startLine": 182,
+        "startChar": 24,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "2a88eebd36c57528ebff4e7b871c9db458dbf378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
