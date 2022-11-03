@@ -16,6 +16,24 @@
       "message": "Hi Seewai,\n\nCan you please help in sharing the CQ failure logs?",
       "revId": "6d7ad850891c75e0cf4955bc9b486ba427a20cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6a581b_6396b35b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-03T16:05:29Z",
+      "side": 1,
+      "message": "The enterprise.ARCProvisioning failure was probably related to a known bug. I think the fix and broken_before changes was made around Nov 3 8:51am PST. I think it should be ok now. Let me try to resend it to CQ.",
+      "parentUuid": "fd80cfc6_152b70c0",
+      "revId": "6d7ad850891c75e0cf4955bc9b486ba427a20cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
