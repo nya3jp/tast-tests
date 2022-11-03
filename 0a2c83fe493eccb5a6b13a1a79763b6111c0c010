@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "404b8807_ee013f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-03T22:15:42Z",
+      "side": 1,
+      "message": "I updated and simplified the implementation. Please check again.",
+      "revId": "0a2c83fe493eccb5a6b13a1a79763b6111c0c010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
