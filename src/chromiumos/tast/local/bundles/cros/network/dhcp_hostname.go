@@ -69,7 +69,7 @@ func DHCPHostname(ctx context.Context, s *testing.State) {
 		if err := svc.Connect(ctx); err != nil {
 			s.Fatal("Failed to reconnect the  service")
 		}
-		if err := svc.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 10*time.Second); err != nil {
+		if err := svc.WaitForConnectedOrError(ctx); err != nil {
 			s.Fatal("Failed to wait for service in test online: ", err)
 		}
 	}
