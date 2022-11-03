@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf53f6c_380060d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-03T23:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd3b076_aa8748b6",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "ed4c5e9d97c8d3c7034772c50639485ecc57460b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a178373_7d5c9883",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-01T19:06:18Z",
       "side": 1,
       "message": "I think we discussed this offline. `avgInputOverlayKeyboardTouchMoveLatency` is better.",
+      "range": {
+        "startLine": 116,
+        "startChar": 73,
+        "endLine": 116,
+        "endChar": 99
+      },
+      "revId": "ed4c5e9d97c8d3c7034772c50639485ecc57460b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de998e97_b5c9f986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-03T23:32:14Z",
+      "side": 1,
+      "message": "Done, sorry about forgetting this",
+      "parentUuid": "8a178373_7d5c9883",
       "range": {
         "startLine": 116,
         "startChar": 73,
