@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee49d2d_9fffd6d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-03T20:26:17Z",
+      "side": 1,
+      "message": "From the code perspective we\u0027re only sending a different value of install type to Play Store and we\u0027re just checking if Play Store honors it. So allowed -\u003e blocked won\u0027t give us additional coverage. We\u0027re just interested in availability change being respected.\n\nWe\u0027ll add separate test for Play Store mode being respected. We\u0027re not testing the permutations. Permutations don\u0027t necessarily give us additional coverage. Play Store mode is a separate concept than app availability.",
+      "parentUuid": "5d64a080_f9b08730",
+      "revId": "0f52751ef13b757d44c4087a8a932baa6c3bfedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "465b0e71_b2bce2b8",
