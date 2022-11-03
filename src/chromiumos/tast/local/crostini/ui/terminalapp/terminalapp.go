@@ -167,13 +167,10 @@ func (ta *TerminalApp) RunSSHCommand(cmd string) uiauto.Action {
 
 // ExitSSH exits the current connection and closes the app.
 func (ta *TerminalApp) ExitSSH() uiauto.Action {
-	exitMsg := nodewith.NameRegex(regexp.MustCompile(`Connection to \S+ closed.`)).Role(role.StaticText)
-	terminalWebArea := nodewith.Name("Terminal").Role(role.RootWebArea)
 	return uiauto.Combine("exit ssh",
 		ta.RunSSHCommand("exit"),
-		ta.ui.WaitUntilExists(exitMsg),
+		ta.ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(`Connection to \S+ closed.`)).Role(role.StaticText)),
 		ta.kb.AccelAction("Esc"),
-		ta.ui.WaitUntilExists(terminalWebArea),
 		ta.kb.AccelAction("Ctrl+Shift+W"),
 	)
 }
