@@ -214,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46db2e2a_452fe175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-03T16:17:12Z",
+      "side": 1,
+      "message": "Okay, I added a comment above Params mentioning this.",
+      "parentUuid": "af80accc_f762a866",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70855ce_598083e2",
@@ -263,6 +281,24 @@
       "side": 1,
       "message": "Ack. Was just asking if you tried deleting this code 😊 And I don\u0027t know off the top of my head why it\u0027s needed, but agreed that investigating this is orthogonal to your CL.",
       "parentUuid": "300fd82e_f977c778",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9d6451_0033912c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-03T16:17:12Z",
+      "side": 1,
+      "message": "There\u0027s code in the user session that prevents you from mounting an ephemeral mount if you are, or would be, the owner.\n\nThere may be other ways of getting around that that I\u0027m not aware of, but making another user the machine owner is the only mechanism I\u0027m aware of (and there is already this handy hwsec helper function for doing it).",
+      "parentUuid": "79fea7f9_f744bbe0",
       "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
