@@ -264,6 +264,11 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	}
 	compareReplyToExpectations("after adding password", listFactorsAfterAddPasswordReply, expectedOnlyPassword, expectedNoKioskSupported, s)
 
+	// Removing the only password factor should fail
+	if err := client.RemoveAuthFactor(ctx, authSessionID, passwordLabel); err == nil {
+		s.Fatal("Should fail RemoveAuthFactor() when the factor is the last one left")
+	}
+
 	if supportsPin {
 		// Add a PIN auth factor.
 		if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
