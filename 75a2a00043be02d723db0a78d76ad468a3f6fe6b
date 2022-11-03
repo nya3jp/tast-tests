@@ -39,6 +39,30 @@
       },
       "revId": "75a2a00043be02d723db0a78d76ad468a3f6fe6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f7a93c_5cc8cd73",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-03T23:57:38Z",
+      "side": 1,
+      "message": "Done. That is tidier. Thanks for the feedback!",
+      "parentUuid": "7880a417_c2d4af6c",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 16
+      },
+      "revId": "75a2a00043be02d723db0a78d76ad468a3f6fe6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
