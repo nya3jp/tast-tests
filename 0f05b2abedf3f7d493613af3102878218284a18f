@@ -797,6 +797,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b5a611_b6fe5134",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845a3c80_cd82756e",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 162
+      },
+      "revId": "0f05b2abedf3f7d493613af3102878218284a18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a790afd4_2e96b7b3",

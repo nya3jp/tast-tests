@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d96abfc_81090f92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Thanks, it was indeed just a bad choice of var name, `lastErr` may be set once and its value never replaced. Renamed to firstErr.",
+      "parentUuid": "1e3ed94d_edb19307",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb23c026_e8a98dc7",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-11-03T10:19:27Z",
       "side": 1,
       "message": "nit: const",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c7456f_15f5f0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb23c026_e8a98dc7",
       "range": {
         "startLine": 97,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8fdd267_fd30ea79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_reporting.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b7e0ed_102bd070",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbdb14fd_19829079",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-11-03T10:19:27Z",
       "side": 1,
       "message": "looks like you don\u0027t need all 5 services",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74081cc_a7f12592",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlp_reporting.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbdb14fd_19829079",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -144,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "543b9d94_f019c387",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c9638e_e67294d0",
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9687807_718aad46",
@@ -157,6 +271,30 @@
       "writtenOn": "2022-11-03T10:19:27Z",
       "side": 1,
       "message": "nit: make them constants",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "953ebdec7396a8e1e097cc4e4492d03f0dbd45f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31916b89_927a6236",
+        "filename": "src/chromiumos/tast/remote/dlputil/dlp_util.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-03T15:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9687807_718aad46",
       "range": {
         "startLine": 86,
         "startChar": 1,
