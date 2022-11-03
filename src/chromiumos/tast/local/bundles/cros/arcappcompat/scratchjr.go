@@ -40,7 +40,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"scratch-jr-home-icon.png"},
+		Data:         []string{"scratch-jr-settings-icon.png"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
@@ -178,14 +178,13 @@ func launchAppForScratchjr(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to find do not ask again: ", err)
 	}
 
-	homeIcon := uidetection.CustomIcon(s.DataPath("scratch-jr-home-icon.png"))
+	settingsIcon := uidetection.CustomIcon(s.DataPath("scratch-jr-settings-icon.png"))
 	ud = uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
-	if err := uiauto.Combine("Check for home icon",
-		ud.WaitUntilExists(homeIcon),
-		ud.Tap(homeIcon),
+	if err := uiauto.Combine("Check for settings icon in the home page",
+		ud.WaitUntilExists(settingsIcon),
 		action.Sleep(waitForActiveInputTime),
 	)(ctx); err != nil {
-		s.Fatal("Failed to find home icon: ", err)
+		s.Fatal("Failed to find settings icon in the home page : ", err)
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
