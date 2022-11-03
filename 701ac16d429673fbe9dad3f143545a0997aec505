@@ -16,6 +16,46 @@
       "message": "lgtm",
       "revId": "701ac16d429673fbe9dad3f143545a0997aec505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edabc99_4ab58c6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-11-03T13:32:58Z",
+      "side": 1,
+      "message": "LGTM with a nit.\nPlease address Eric\u0027s comment as well.",
+      "revId": "701ac16d429673fbe9dad3f143545a0997aec505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a094159_1fde27ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-11-03T13:32:58Z",
+      "side": 1,
+      "message": "nit: maybe move this above chrome.New(). cleanup usually sits together with the caller.\n\nCheck this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250711/comment/6d83eacd_d2136fd6/",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "701ac16d429673fbe9dad3f143545a0997aec505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
