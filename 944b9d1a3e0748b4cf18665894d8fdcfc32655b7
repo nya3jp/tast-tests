@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68baff0d_300eed87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-03T20:26:44Z",
+      "side": 1,
+      "message": "Oh I see. Thanks for your detailed explanation! I think this is a good point and it should be refactored for most cases if there are not too many differences.\nHowever, in this commit we have to pass at least two different error messages as argument (to make a new func) and I think we are already in this trade-off. Also, in the next [commit](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3979160/18?usp\u003drelated-change) (sorry so far this information is not available in this commit) we introduced some more different settings for this two similar chunks, like `threshold` and bug-specific messages. Therefore, I think `pollTimedScan` is the best granularity for wrapping the reused logics. \nWDYT?",
+      "parentUuid": "18a89c8a_bf921eae",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12bb48d0_b4a9d261",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 7
