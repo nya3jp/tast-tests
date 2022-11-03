@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b535cdf_a7bef98f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "nice, this looks pretty good!",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ad46d0_0ec67224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "Should this fatal?",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a87964_3f6fd72d",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "should probably move this up to between L88-89",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd7a41f_acf7a3cd",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "you should also add ` || !errors.Is(err, fs.ErrNotExist)` here",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862581b3_8a64fdba",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "You can also return an error if you see stuff like this to prevent misuse",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 33
+      },
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4f4124_7064d55d",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "any reason not to just use `strings.Trim(pciID, \" \")` here?",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d609a59_a3200b62",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "ditto re: strings.Trim",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919d365b_d9e438cd",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-03T18:36:16Z",
+      "side": 1,
+      "message": "Might even be worth it to extend the interval a little here since we\u0027re calling out to a helper program",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
