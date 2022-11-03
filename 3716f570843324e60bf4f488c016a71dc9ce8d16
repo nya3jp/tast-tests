@@ -51,6 +51,24 @@
       "parentUuid": "db4ac24e_cd6e2fe7",
       "revId": "3716f570843324e60bf4f488c016a71dc9ce8d16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a08b09_ab044d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-11-03T05:53:24Z",
+      "side": 1,
+      "message": "This looks fine to me. Flakiness seems \u003c1%, which is acceptable.",
+      "parentUuid": "6e022dce_9356509c",
+      "revId": "3716f570843324e60bf4f488c016a71dc9ce8d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
