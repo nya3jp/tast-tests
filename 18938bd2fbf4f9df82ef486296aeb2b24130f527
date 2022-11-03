@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9adf3358_9278f94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1524811
+      },
+      "writtenOn": "2022-11-03T13:01:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37456ff9_089fff53",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "176f1c31_735fdd05",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T20:36:17Z",
       "side": 1,
       "message": "Is this different from FirmwareRev?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "18938bd2fbf4f9df82ef486296aeb2b24130f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8a0ccb_a53c0fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1524811
+      },
+      "writtenOn": "2022-11-03T13:01:00Z",
+      "side": 1,
+      "message": "Actually they are from different device type (`firmware_rev` for NVMe / `fwrev` for eMMC \u0026 UFS).\n\nI\u0027ve changed the response structure in cros-health-tool (as mentioned [here](https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3989717/comment/834bbc21_46a3527d/)) to a nested object (e.g, `device_info.nvme_device_info.xxx`) to make it less confusing; this also avoids naming conflicts - that is, enables the ability to test fields with same name but different types.",
+      "parentUuid": "176f1c31_735fdd05",
       "range": {
         "startLine": 23,
         "startChar": 1,
