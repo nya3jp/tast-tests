@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89471f9f_d5ff1f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-11-03T15:51:34Z",
+      "side": 1,
+      "message": "Alexis, want to give this a review? If I don\u0027t hear anything in a couple days I can upgrade my +1 to a +2.",
+      "revId": "7aa39f69fd8fb328bf88e9f3d16e4c6958827183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455bbcc9_68a81075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-11-03T15:51:34Z",
+      "side": 1,
+      "message": "This may be tight if the kernel is logging to serial or the hibervol is being created in this attempt (until Sarthak\u0027s provision primitives land we\u0027re zeroing the disk ourselves). If this is meant to be an \"if it takes this long it\u0027s just silly and is definitely stuck\" time, maybe 2 or 3 minutes is more appropriate.",
+      "range": {
+        "startLine": 22,
+        "startChar": 23,
+        "endLine": 22,
+        "endChar": 25
+      },
+      "revId": "7aa39f69fd8fb328bf88e9f3d16e4c6958827183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6120e319_97571007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-11-03T15:51:34Z",
+      "side": 1,
+      "message": "This is more of a broader comment, as I understand this to be fairly standard practice within ChromeOS, but I\u0027ve always found the idea of grepping for specific logs in the tests to be a bit sketchy. I guess if there were logs that were meant to be read by machines rather than humans, I\u0027d at least make them look more like machine logs, eg log(\"event:wrote_hibernate_image\"). That way a poor developer has a hint if they change or delete this log that a test is likely to break.\n\nWe currently have Alexis\u0027 metrics sprinkled throughout hiberman, which are a lot like machine readable logs. We could hook into that logic and have metrics get emitted somewhere the test could pick up in test mode (even if that just means printing them out to the main logger in a structured way). If the metrics we send out via telemetry don\u0027t cover all the cases we\u0027d want to track in tests, we could add test-specific events that go out this test-only channel but never make it to telemetry.\n\nI\u0027m not an expert in testing, so feel free to disagree and tell me this is what everyone is used to. But I thought I\u0027d throw this out to see if you had any thoughts.",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "7aa39f69fd8fb328bf88e9f3d16e4c6958827183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
