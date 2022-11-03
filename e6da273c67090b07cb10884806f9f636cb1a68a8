@@ -16,6 +16,108 @@
       "message": "Hi Steven,\n\nThis CL is WIP. I am receiving 0 networks back from the GetNetworkList call made to network health. Does the shillReset fixture guarantee a network will be ready?",
       "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9489c252_e1a87a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "This fixture doesn\u0027t seem to do anything?",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e18b97_33bc3e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "This doesn\u0027t exactly match \u0027struct Network\u0027 in the mojom. I\u0027m not sure whether that matters but might be worth looking into (and definitely is worth commenting on).",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71627c8d_0ef93903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "It\u0027s cros-network-health-team@ now (I have a todo item to update the existing tests, I\u0027ll probably get to that today or tomorrow).",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10963aa8_04f0efbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "nit: I realize this is already in the \u0027network\u0027 package, but I still think that NetworkHealt would be more clear here and in the filename.",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1aa9d0b_efc50723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "I would start by getting the shill services and verifying that there is at least 1. I realize that the fixture already ensures that, but we\u0027ll want to verify that the first Service (identified by guid) is in the list of NetworkHealth networks and that the states match.",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e12f40_74b5a23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-03T16:39:02Z",
+      "side": 1,
+      "message": "I don\u0027t see any obvious reason why this shouldn\u0027t match the number of connected services. Perhaps there is a bug in the JS/golang code. I would add some logging.",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
