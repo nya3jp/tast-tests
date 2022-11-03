@@ -21,7 +21,7 @@ func runAndGrepRegex(ctx context.Context, args []string, regexStr string) ([]str
 	re := regexp.MustCompile(regexStr)
 	out, err := testexec.CommandContext(ctx, hardwareProbeBinary, args...).Output(testexec.DumpLogOnError)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to run %v", hardwareProbeBinary)
+		return nil, errors.Wrapf(err, "failed to run %v, output: %v", hardwareProbeBinary, string(out))
 	}
 
 	matches := re.FindAllStringSubmatch(string(out), -1)
