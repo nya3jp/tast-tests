@@ -263,6 +263,16 @@ const (
 	DisableWifiInterfaces
 )
 
+// MulticastMode describes how to setup interface multicast for a test.
+type MulticastMode int
+
+const (
+	// DisableMulticast indicates that multicast on ethernet/wlan should be disabled.
+	DisableMulticast MulticastMode = iota
+	// DoNotChangeMulticast indicates that multicast on ethernet/wlan should be left in the same state.
+	DoNotChangeMulticast
+)
+
 // NightLightMode what setup is needed for a test.
 type NightLightMode int
 
@@ -310,12 +320,14 @@ type PowerTestOptions struct {
 	KeyboardBrightness KbBrightnessMode
 	Audio              AudioMode
 	Bluetooth          BluetoothMode
+	Multicast          MulticastMode
 }
 
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
 func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions, batteryDischarge *BatteryDischarge) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
+		// fwupd should be stopped before powerd
 		if options.Fwupd == DisableFwupd {
 			s.Add(DisableServiceIfExists(ctx, "fwupd"))
 		}
@@ -342,6 +354,10 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		}
 		if options.Audio == Mute {
 			s.Add(MuteAudio(ctx))
+		}
+		// avahi needs to be disabled before disabling multicast
+		if options.Multicast == DisableMulticast {
+			s.Add(DisableAllMulticast(ctx))
 		}
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiAdaptors(ctx))
