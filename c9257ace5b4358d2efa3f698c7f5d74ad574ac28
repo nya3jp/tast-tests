@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f95b41ee_c9df173b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-11-03T10:31:22Z",
+      "side": 1,
+      "message": "In go style guide, we actually prefer `:\u003d` to `var ... \u003d `.\n\nReference: go/go-style/best-practices#vardeclinitialization",
+      "parentUuid": "25ec59a1_219a0a11",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eeb23fe6_093d1356",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
         "patchSetId": 6
