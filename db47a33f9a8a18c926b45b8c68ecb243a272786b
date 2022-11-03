@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f753323_aa174bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ad46d0_0ec67224",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2a87964_3f6fd72d",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ea7038_0e0eb83f",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a87964_3f6fd72d",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd7a41f_acf7a3cd",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-11-03T18:36:16Z",
       "side": 1,
       "message": "you should also add ` || !errors.Is(err, fs.ErrNotExist)` here",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0883693c_75cbb0e9",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd7a41f_acf7a3cd",
       "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd59a9b_8ccd1fbf",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862581b3_8a64fdba",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 33
+      },
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4f4124_7064d55d",
@@ -105,6 +183,24 @@
       "writtenOn": "2022-11-03T18:36:16Z",
       "side": 1,
       "message": "any reason not to just use `strings.Trim(pciID, \" \")` here?",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80884d1e_fd6b0119",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "This isn\u0027t meant to handle whitespace at the end of the `pciID` it\u0027s that the id in the prototxt file can have additional text at the end, e.g. `pci:aaaa:aaaa (External)`.",
+      "parentUuid": "5a4f4124_7064d55d",
       "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "056c6e47_5e61faec",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d609a59_a3200b62",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "919d365b_d9e438cd",
@@ -139,6 +253,24 @@
       "writtenOn": "2022-11-03T18:36:16Z",
       "side": 1,
       "message": "Might even be worth it to extend the interval a little here since we\u0027re calling out to a helper program",
+      "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e655432_8ef68f28",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-03T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919d365b_d9e438cd",
       "revId": "db47a33f9a8a18c926b45b8c68ecb243a272786b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
