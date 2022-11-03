@@ -246,3 +246,27 @@ func VerifyPowerdConfigSuspendValue(ctx context.Context, dut *dut.DUT, expectedC
 	}
 	return nil
 }
+
+// PlugUnplugCharger performs plugging/unplugging of charger via servo.
+func PlugUnplugCharger(ctx context.Context, h *firmware.Helper, isPowerPlugged bool) error {
+	chargerStatus := ""
+	if isPowerPlugged {
+		testing.ContextLog(ctx, "Starting power supply")
+		chargerStatus = "not attached"
+	} else {
+		testing.ContextLog(ctx, "Stopping power supply")
+		chargerStatus = "attached"
+	}
+	if err := h.SetDUTPower(ctx, isPowerPlugged); err != nil {
+		return errors.Wrap(err, "failed to remove charger")
+	}
+	getChargerPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
+			return err
+		} else if isPowerPlugged != attached {
+			return errors.Errorf("charger is still %q - use Servo V4 Type-C or supply RPM vars", chargerStatus)
+		}
+		return nil
+	}, &getChargerPollOptions)
+}
