@@ -436,6 +436,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cce2e4_1b5b149c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_make_rootfs_writable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-11-03T17:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1463921a_1556d0d9",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "4c58eb6cd97273df643dd497d4db55f4ccd487bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98de9ed4_c8e3475a",
