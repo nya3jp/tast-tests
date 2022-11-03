@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21e155e1_332b058f",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "Don\u0027t ignore errors from DecodeString, you should return them so we notice any issues early.",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 7
+      },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fbe1bce_ba8a6fc8",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 5
@@ -26,6 +49,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73bcf432_3eac40fe",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "+1 for the unmarshal naming\nI\u0027m ambivalend about splitting up MarshalJSON.",
+      "parentUuid": "8fbe1bce_ba8a6fc8",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 1
+      },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0826f6_c05cb2f9",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "remote",
+      "range": {
+        "startLine": 306,
+        "startChar": 7,
+        "endLine": 306,
+        "endChar": 19
+      },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0cb20d_0faa2a4b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "Can you add a test where you marshall a blob, unmarshall it and compare the results. It should have multiple test cases that should be easier to write.",
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6eec99a_1dc43b7b",
         "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
         "patchSetId": 5
@@ -43,6 +130,40 @@
         "endLine": 24,
         "endChar": 3
       },
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18e8946_69d55c85",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "I don\u0027t like this type of testing. Any change to the format of the Blob will break it. We don\u0027t need to maintain compatibility with an on-disk format so it\u0027s not really useful.",
+      "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ffb477_c5ef5038",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:39:26Z",
+      "side": 1,
+      "message": "Same as above",
       "revId": "25ea03d2f8c1be20911bbf534a8f634eaacc9cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
