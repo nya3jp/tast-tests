@@ -99,7 +99,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	const printerName = "DavieV Virtual USB Printer (USB)"
 	savePrinterButton := nodewith.ClassName("save-printer-button").NameContaining(printerName).Ancestor(ossettings.WindowFinder)
-	editPrinterButton := nodewith.ClassName("icon-more-vert").Ancestor(ossettings.WindowFinder)
+	editPrinterButton := nodewith.ClassName("icon-more-vert").NameContaining(printerName).Ancestor(ossettings.WindowFinder)
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
