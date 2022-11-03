@@ -123,6 +123,24 @@
       "parentUuid": "d9e04ffc_6303e8a0",
       "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ae82cc_a526b3fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-11-03T18:02:51Z",
+      "side": 1,
+      "message": "Added a comment to explain the possible root cause and why we use `Retry` here.",
+      "parentUuid": "aff014e6_7088e7a6",
+      "revId": "5775b92b7be3f9dfa3f384ba80efabc43a658729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
