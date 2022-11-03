@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89daee53_bf8d3a64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-03T21:51:53Z",
+      "side": 1,
+      "message": "Hi Jaredbennett,\n\nThanks for the CL.\nAs a tast owner, I\u0027ll wait a +2/+1 from your team mate and then review the cl.\n\nRegards,\nJudy",
+      "revId": "7ef38e2153750a1f2aa56995aaa8884f3d7fc05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
