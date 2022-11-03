@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869cbe29_6ebdeb3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-11-03T20:28:13Z",
+      "side": 1,
+      "message": "You got a chance to try this manually. There is usually 2 options Ask in Person and Ask in message.\n\nAlso couldn\u0027t understand the failure the as the failure screenshot doesn\u0027t show the Dialog with \"Ask in Message\" button?",
+      "revId": "508c2c11786ec862a41c61634ce0c1946d3df470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
