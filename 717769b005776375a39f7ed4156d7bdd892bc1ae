@@ -16,6 +16,24 @@
       "message": "LGTM.\n\nWould you worry about the second try not having enough time to finish (5 vs 10 min)?",
       "revId": "717769b005776375a39f7ed4156d7bdd892bc1ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7877e917_01ad2a4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-03T20:21:48Z",
+      "side": 1,
+      "message": "install taking 10 minutes to finish is a rare occurrence. Most of the time it is done within a minute. Two long 10 mins install are even less likely.",
+      "parentUuid": "a5432360_33828fa4",
+      "revId": "717769b005776375a39f7ed4156d7bdd892bc1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
