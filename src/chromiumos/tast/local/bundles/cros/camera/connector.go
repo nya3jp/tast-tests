@@ -7,9 +7,12 @@ package camera
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/camera/testutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
 )
@@ -31,11 +34,23 @@ func init() {
 func Connector(ctx context.Context, s *testing.State) {
 	const exec = "cros_camera_connector_test"
 
-	cr, err := testutil.WaitForCameraSocket(ctx)
+	// TODO(b/151270948): Temporarily disable ARC.
+	// The cros-camera service would kill itself when running the test if
+	// arc_setup.cc is triggered at that time, which will fail the test.
+	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Failed to start chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	// Leave some time for cr.Close.
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+
+	err = testutil.WaitForCameraSocket(ctx)
 	if err != nil {
 		s.Fatal("Failed to wait for Camera Socket: ", err)
 	}
-	defer cr.Close(ctx)
 
 	t := gtest.New(exec, gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")))
 
