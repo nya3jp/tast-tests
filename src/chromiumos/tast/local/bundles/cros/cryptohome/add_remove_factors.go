@@ -278,8 +278,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// TODO(b/254274761) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
-	if supportsSmartCard && !fixture.UssEnabled {
+	if supportsSmartCard {
 		// Add a Smart Card auth factor.
 		if err := client.AddSmartCardAuthFactor(ctx, authSessionID, smartCardLabel, authConfig); err != nil {
 			s.Fatal("Failed to add Smart Card auth factor: ", err)
@@ -311,8 +310,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to remove PIN auth factor: ", err)
 		}
 	}
-	// TODO(b/254274761) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
-	if supportsSmartCard && !fixture.UssEnabled {
+	if supportsSmartCard {
 		if err := client.RemoveAuthFactor(ctx, authSessionID, smartCardLabel); err != nil {
 			s.Fatal("Failed to remove Smart Card auth factor: ", err)
 		}
