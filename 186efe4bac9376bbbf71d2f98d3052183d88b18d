@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81de137_2d3d4bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-11-03T15:10:58Z",
+      "side": 1,
+      "message": "Ack - Thanks. Replacing sgtm to me - I just wanted to avoid us having duplicate tests that test literally same things (via the same D-Bus calls under the hood).",
+      "parentUuid": "60d0f3da_78b7d70f",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829859c8_8683082b",
@@ -180,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af80accc_f762a866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-11-03T15:10:58Z",
+      "side": 1,
+      "message": "Please add a comment about this, because it\u0027s non-trivial to discover that when reading the test.",
+      "parentUuid": "ac379bb6_9b403eb8",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70855ce_598083e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
         "patchSetId": 1
@@ -209,6 +245,24 @@
       "side": 1,
       "message": "I think so? In previous tests I couldn\u0027t create ephemeral users on unmanaged machines.\n\nMaybe there\u0027s some other way to set things up so that they work, but nobody else was able to give me a better working solution for how to do so and this one was already in use in some of the tests, so I\u0027ve reused it elsewhere (maybe I should make it a fixture of its own).",
       "parentUuid": "f70855ce_598083e2",
+      "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fea7f9_f744bbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/verify_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-11-03T15:10:58Z",
+      "side": 1,
+      "message": "Ack. Was just asking if you tried deleting this code 😊 And I don\u0027t know off the top of my head why it\u0027s needed, but agreed that investigating this is orthogonal to your CL.",
+      "parentUuid": "300fd82e_f977c778",
       "revId": "186efe4bac9376bbbf71d2f98d3052183d88b18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
