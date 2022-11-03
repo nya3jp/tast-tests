@@ -113,6 +113,22 @@ func init() {
 			Name:      "sensitive_sensor",
 			Val:       newRoutineParams(croshealthd.RoutineSensitiveSensor),
 			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "fingerprint",
+			Val:  newRoutineParams(croshealthd.RoutineFingerprint),
+			// Jinlon is the first model to enable this feature for
+			// verifying the function and make it stable.
+			// No special reasons.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("jinlon")),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "fingerprint_alive",
+			Val:  newRoutineParams(croshealthd.RoutineFingerprintAlive),
+			// Jinlon is the first model to enable this feature for
+			// verifying the function and make it stable.
+			// No special reasons.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("jinlon")),
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }

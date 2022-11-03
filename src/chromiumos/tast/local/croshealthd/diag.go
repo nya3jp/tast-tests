@@ -47,6 +47,8 @@ const (
 	RoutineHTTPSFirewall                  = "https_firewall"
 	RoutineHTTPSLatency                   = "https_latency"
 	RoutineSensitiveSensor                = "sensitive_sensor"
+	RoutineFingerprint                    = "fingerprint"
+	RoutineFingerprintAlive               = "fingerprint_alive"
 )
 
 // List of possible routine statuses
