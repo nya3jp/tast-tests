@@ -16,6 +16,148 @@
       "message": "LGTM",
       "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2183a1ba_6874d6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "nit: move this type to a separate definition and document the expectations from the function.",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 75
+      },
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596847ab_bf5b5ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "nit: Add yourself to the contact list",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90ffb44_c1be7855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "Is this only used to reduce the number of parameters passed around? If yes, I\u0027d also include the files array. You can also rename it to something like \u003cfunc type\u003eArguments, where func type is the type of testfunc as defined above.",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a801fc8a_51eca785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "nit: move to the top next to the params.",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef6ab18_b983d753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "nit: check and log errors",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d4fbc0_78e0f695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "minor nit: this and other function comments are not saying much more than the function name. You can just remove them.",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b5d8d9_9106684d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "The test file is quite large, can you move these helpers to a separate subpackage?",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed36b5a_88fb9090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-03T08:31:26Z",
+      "side": 1,
+      "message": "nit: Add more details about how this is helpful.",
+      "revId": "fb2e6d8b7750dad5fc3cbe3e5b764a5f4bc50caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
