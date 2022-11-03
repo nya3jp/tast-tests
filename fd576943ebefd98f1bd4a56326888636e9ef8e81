@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73feafe5_ca318696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-03T16:12:44Z",
+      "side": 1,
+      "message": "That comes on the next CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4001871/1",
+      "parentUuid": "6037a763_1bd049ad",
+      "revId": "fd576943ebefd98f1bd4a56326888636e9ef8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0811bc10_c87d7ee2",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a1244d_9be15f55",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-03T16:12:44Z",
+      "side": 1,
+      "message": "ups... copy paste error from the last refactor.\n\nThanks",
+      "parentUuid": "0811bc10_c87d7ee2",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "fd576943ebefd98f1bd4a56326888636e9ef8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224f7b91_f563494f",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-11-03T15:52:50Z",
       "side": 1,
       "message": "Checking the socket file exists with the right group and permission might not be enough for the suspend/resume case. Maybe we need to try connecting to it a few times with `exec` to make sure it\u0027s really working.",
+      "revId": "fd576943ebefd98f1bd4a56326888636e9ef8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f848a1_4d440a38",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-03T16:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224f7b91_f563494f",
       "revId": "fd576943ebefd98f1bd4a56326888636e9ef8e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
