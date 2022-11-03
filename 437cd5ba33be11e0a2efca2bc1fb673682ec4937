@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "81b983a8_752840cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-03T20:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d54260_82d95636",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "add785bf_06296006",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2996f4_7841ad31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-03T20:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ecff97_966a3eba",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f278128f_e313aec2",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-03T20:05:31Z",
       "side": 1,
       "message": "Nit: Same as above.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "437cd5ba33be11e0a2efca2bc1fb673682ec4937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11df5f3_895ac3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-03T20:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f278128f_e313aec2",
       "range": {
         "startLine": 43,
         "startChar": 0,
