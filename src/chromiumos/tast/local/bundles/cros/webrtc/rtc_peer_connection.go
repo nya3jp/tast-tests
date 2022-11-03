@@ -202,6 +202,21 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", svc: "L3T3_KEY"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
+			Name:              "h264_enc_oopve",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamAndOOPVE",
+		}, {
+			Name:              "vp8_enc_oopve",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamAndOOPVE",
+		}, {
+			Name:              "vp9_enc_oopve",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndOOPVE",
 		}},
 	})
 }
