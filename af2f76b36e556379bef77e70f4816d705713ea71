@@ -122,6 +122,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38e8dbac_dc0f7a48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T19:00:09Z",
+      "side": 1,
+      "message": "\u003e You could add a subfixture of wificellFixtWithCapture that configures the AP, and the local test can rely on that fixture and execute the UI automation directly without relying on services.\n\nOh that is really interesting, I had no idea that that was the case! I think this pattern could actually be really helpful for some of the Bluetooth tests as well. Thank you for sharing!\n\n\u003e If you think you\u0027ll re-use these services for other tests in the future, then I think it would be OK to stick with this.\n\nI think these services will definitely be used for other tests, some of which are WiFi but other tests as well, so if it is still okay I would opt to land these as-is and refactor this test if at some point in the future that pattern ends up working better here. WDYT?",
+      "parentUuid": "1a76c38a_66988537",
+      "revId": "af2f76b36e556379bef77e70f4816d705713ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aba0b922_f6924345",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_from_quick_settings.go",
         "patchSetId": 9
