@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d889df5_3538ecd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T13:12:47Z",
+      "side": 1,
+      "message": "The examples show that you should use `i :\u003d 1` instead of `var i \u003d 1`. There is no mention of `var i int \u003d 1`, so I\u0027m not sure the intention of the rule is to forbid explicit typing. But OK, I\u0027ll change ita",
+      "parentUuid": "f95b41ee_c9df173b",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eeb23fe6_093d1356",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/camera_switch.go",
         "patchSetId": 6
