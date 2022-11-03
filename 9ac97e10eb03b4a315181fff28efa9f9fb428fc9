@@ -230,6 +230,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "978ce555_668900f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-11-03T05:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c58696_0c91b7cc",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937f26e1_1f106f6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-11-03T05:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50be8036_b5cbcd7b",
+      "range": {
+        "startLine": 180,
+        "startChar": 19,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "9ac97e10eb03b4a315181fff28efa9f9fb428fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cda6aad_08cf1745",
