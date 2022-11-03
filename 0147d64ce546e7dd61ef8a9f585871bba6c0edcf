@@ -39,6 +39,30 @@
       },
       "revId": "0147d64ce546e7dd61ef8a9f585871bba6c0edcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd82a548_3ce03f64",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1550987
+      },
+      "writtenOn": "2022-11-03T21:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ceac521_db712835",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 34
+      },
+      "revId": "0147d64ce546e7dd61ef8a9f585871bba6c0edcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
