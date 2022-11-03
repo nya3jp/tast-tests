@@ -154,6 +154,30 @@
       },
       "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5688c5c_87f169f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-11-03T21:01:10Z",
+      "side": 1,
+      "message": "Hi Chad,\nThis attribute is created for all UI \u0026 EndtoEnd tests (not part of platform). All tests that fall under this category are expected to be part of e2e_unstable. Once the test proves to be stable, then we can promote the test to \"cellular_e2e\" which will be part of \"cellular_endtoend\" suite. \n\nRegards,\nDinesh",
+      "parentUuid": "462e3b25_90b3b005",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
