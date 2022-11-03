@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8fb8f1_1cce3559",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-03T23:55:16Z",
+      "side": 1,
+      "message": "Done. That is a bit cleaner.",
+      "parentUuid": "3c4e9791_282780bf",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "d840d0c6b5274ee5d2db525d6aa6750f0f429ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a85171_635c1e43",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "994720b8_ac345e96",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-03T23:55:16Z",
+      "side": 1,
+      "message": "Sure. Done!",
+      "parentUuid": "c7a85171_635c1e43",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "d840d0c6b5274ee5d2db525d6aa6750f0f429ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f2a848_a40c06e0",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-02T22:22:58Z",
       "side": 1,
       "message": "nitpicky. How about rename theFileType to typeName? It feel strange to me seeing \"the\" in the variable name.",
+      "range": {
+        "startLine": 181,
+        "startChar": 45,
+        "endLine": 181,
+        "endChar": 56
+      },
+      "revId": "d840d0c6b5274ee5d2db525d6aa6750f0f429ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fa398b_6b32befc",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-03T23:55:16Z",
+      "side": 1,
+      "message": "Renamed as `fp`.",
+      "parentUuid": "f3f2a848_a40c06e0",
       "range": {
         "startLine": 181,
         "startChar": 45,
