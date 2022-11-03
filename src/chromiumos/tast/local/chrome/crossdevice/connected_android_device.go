@@ -428,7 +428,16 @@ func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 		}
 	}
 
-	// Accepting the ToS automatically brings us to an opt-in page for Chrome Sync.
+	// Accepting the ToS starts the chrome sync opt-in flow, starting with account selection on more recent builds.
+	acceptBtn = d.Object(ui.ResourceID("com.android.chrome:id/signin_fre_continue_button"))
+	if err := acceptBtn.WaitForExists(ctx, 3*time.Second); err != nil {
+		testing.ContextLog(ctx, "Failed to find account selection page: ", err)
+		// Fall through to final opt-in step when account selection button is not found.
+	} else if err := acceptBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to select account for Chrome Sync")
+	}
+
+	// After selecting the account there is a final opt-in step.
 	acceptBtn = d.Object(ui.ResourceID("com.android.chrome:id/positive_button"))
 	if err := acceptBtn.WaitForExists(ctx, 3*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find opt-in button for Chrome Sync")
