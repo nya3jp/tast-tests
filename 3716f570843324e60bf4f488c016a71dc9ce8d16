@@ -16,6 +16,23 @@
       "message": "The TPM error logs do not seem related to this test",
       "revId": "3716f570843324e60bf4f488c016a71dc9ce8d16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4ac24e_cd6e2fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-11-03T02:45:40Z",
+      "side": 1,
+      "message": "It looks like this is passing consistently with a few unrelated failures, but there are only 13 runs so far, go/tast-add-test says to wait for 20. So maybe wait another week to submit this change?\n\nI\u0027m just a shadow reviewer though, the main reviewer can probably say for sure.",
+      "revId": "3716f570843324e60bf4f488c016a71dc9ce8d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
