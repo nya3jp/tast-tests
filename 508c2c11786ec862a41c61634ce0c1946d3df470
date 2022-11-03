@@ -16,6 +16,41 @@
       "message": "You got a chance to try this manually. There is usually 2 options Ask in Person and Ask in message.\n\nAlso couldn\u0027t understand the failure the as the failure screenshot doesn\u0027t show the Dialog with \"Ask in Message\" button?",
       "revId": "508c2c11786ec862a41c61634ce0c1946d3df470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53433f81_83b1195f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-11-03T20:39:29Z",
+      "side": 1,
+      "message": "Hey Renuga,\n\nI think this could be withdrawn. Thanks for review.",
+      "revId": "508c2c11786ec862a41c61634ce0c1946d3df470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "269d913f_a29e28a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-11-03T20:39:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "869cbe29_6ebdeb3a",
+      "revId": "508c2c11786ec862a41c61634ce0c1946d3df470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
