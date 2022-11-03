@@ -193,7 +193,7 @@ func init() {
 			// x86 ARC: caroline, asuka
 			// x86-64 ARC: morphius(zork), careena(grunt)
 			// arm64 ARC: krane(kukui), kevin
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline", "asuka", "morphius", "careena", "krane", "kevin")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("caroline", "asuka", "careena", "krane", "kevin")),
 			Val: testParam{
 				vmEnabled:                     false,
 				upload:                        true,
@@ -209,14 +209,14 @@ func init() {
 			// 8GB if possible to match requirement for ureadahead generation.
 			// x86-64 ARC: kohaku(hatch), eve
 			// arm64 ARC: gimble(herobrine), steelix(corsola)
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku", "eve", "gimble", "steelix")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku", "eve", "gimble", "morphius", "steelix", "hoglin")),
 			Val: testParam{
 				vmEnabled:   true,
 				upload:      true,
 				uprevBranch: true,
 				// ARCVM does not have arm64 on branch.
 				// TODO(b/252805449): Include arm64 once we have first ARM device branched.
-				requiredCPUAbisForBranchUprev: []string{"x86_64"},
+				requiredCPUAbisForBranchUprev: []string{"x86_64", "arm64"},
 				dataDir:                       "/tmp/data_collector",
 			},
 		}},
