@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/kerberos"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,6 +34,9 @@ func init() {
 			"alexanderhartl@google.com",
 			"chromeos-commercial-identity@google.com",
 		},
+		// TODO(crbug/1380920): Remove when this bug is fixed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			[]string{"rusty", "steelix", "tentacruel", "lazor", "pompom"}...)),
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
