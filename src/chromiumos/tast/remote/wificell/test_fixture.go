@@ -342,9 +342,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		capturers: make(map[*APIface]*pcap.Capturer),
 		aps:       make(map[*APIface]struct{}),
 		// Set the router's default router type.
-		routerType: support.LegacyT,
+		routerType: support.UnknownT,
 		// Set the pcap capture device's default router type.
-		pcapType: support.LegacyT,
+		pcapType: support.UnknownT,
 		// Set the debug values on the DUT by default.
 		setLogging: true,
 		// Default log level used in WiFi tests.
@@ -1559,16 +1559,13 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	ctx, st := timing.Start(ctx, "NewRouter")
 	defer st.End()
 
-	if rtype == support.UnknownT {
-		if resolvedType, err := resolveRouterTypeFromHost(ctx, host); err != nil {
-			return nil, errors.Wrap(err, "failed to resolve router type from host")
-		} else if resolvedType == support.UnknownT {
-			rtype = support.LegacyT
-			testing.ContextLogf(ctx, "Unable to resolve specific router type from host, defaulting to %q", rtype.String())
-		} else {
-			rtype = resolvedType
-			testing.ContextLogf(ctx, "Resolved host router type to be %q", rtype.String())
-		}
+	if resolvedType, err := resolveRouterTypeFromHost(ctx, host); err != nil {
+		return nil, errors.Wrap(err, "failed to resolve router type from host")
+	} else if resolvedType == support.UnknownT {
+		return nil, errors.Wrapf(err, "Unable to resolve specific router type from host, defaulting to %q", rtype.String())
+	} else {
+		rtype = resolvedType
+		testing.ContextLogf(ctx, "Resolved host router type to be %q", rtype.String())
 	}
 
 	switch rtype {
