@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1c2f1d_6865cd08",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-03T07:50:11Z",
+      "side": 1,
+      "message": "I had a quick look at one of the faillogs, my guess is that the flakiness is a result of:\nExpected order: node exists in a11y tree -\u003e node is ready to receive keyboard events -\u003e send key events.\nFlakiness order: node exists in a11y tree -\u003e send key events -\u003e node is ready to receive keyboard events.\n\n(See the known issue 1.1 in http://go/tast-a11y-flakiness)\n\nIf that is the case, \"Ctrl+Shift+W\" might still not work. Similar to the fix of using `LeftClickUntil`, you may try\n```\nta.ui.WithInterval(500*time.Millisecond).RetryUntil(\n\tta.kb.AccelAction(\"Esc\"),\n\tta.ui.WithTimeout(time.Second).WaitUntilExists(terminalWebArea),\n),\n```\n\nThat\u0027s my cents.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "1c6a01aee6b92e2ee620918dac1a5f098bcbe830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
