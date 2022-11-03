@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "ae37efceb601d0bc07775cbc20bcdb74d887165c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca7df7b_e9b0ad54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-03T21:24:44Z",
+      "side": 1,
+      "message": "will this ever be called with `milestone` as 94? just wondering if the \"skip 95\" case is needed here as well.",
+      "revId": "ae37efceb601d0bc07775cbc20bcdb74d887165c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
