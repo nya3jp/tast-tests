@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a670ea_1721d679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-11-03T20:07:47Z",
+      "side": 1,
+      "message": "CleanupCtx was not directly used in this test, we do have some clean up work in the fixture TearDown() or Reset(). So we just shortened the context 10 seconds here.",
+      "parentUuid": "845d161e_d6a836e3",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2dc7e89_cfab6eeb",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d378127_6eb6c7dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-11-03T20:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2dc7e89_cfab6eeb",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f302dc6_d7c8e13e",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-09-16T14:42:26Z",
       "side": 1,
       "message": "nit: Removing",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbf11e1_a9deec7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-11-03T20:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f302dc6_d7c8e13e",
       "range": {
         "startLine": 82,
         "startChar": 4,
