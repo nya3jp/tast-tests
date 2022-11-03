@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972e49df_2a3bc406",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way, this is already looking really good! :D\n\nCould we also add kyleshima@ to take a look? I am curious about his thoughts/feedback on the CheckIfNodeWithNameExists method that takes a service as a parameter since this was something I was considering doing too-- thank you!",
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7450b3f4_23581ad1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Nit: Consider importing `\"chromiumos/tast/services/cros/ui\"` as `uiService` and leaving this package as a regular import.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3702b89_3a200698",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Nit: Consider regularly importing any packages that don\u0027t have a name collision (inputspb/oobe/util).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2f12b1_7727b925",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Could we reword this to be something like \"Expected the \\\"Continue\\\" button to be disabled:\"?",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e271af4_3a868fb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "WDYT of updating the \"Failed to find node\" messages to describe what we were explicitly checking here, similar to your first error message? E.g.,\n\n    \"Expected a keyboard to be found:\"\n\n    \"Expected to be searching for a keyboard:\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7513616_8b55fccc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/servoutil/servoutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Nit: Off",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bdbde8_57dd99d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/servoutil/servoutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Great job splitting this logic out, super clean and helpful API!",
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf331ec9_7ce1b77b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/servoutil/servoutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Nit: Would we be able to avoid checking if it is on or off and just use lines 30-32 to always/unconditionally turn it off?\n\n    if err :\u003d pxy.Servo().SetOnOff(ctx, servo.USBKeyboard, servo.Off); err !\u003d nil {\n        s.Fatal(\"Failed to turn of servo: \", err)\n    }",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ec2989_d1de28d2",
+        "filename": "src/chromiumos/tast/remote/cros/ui/oobeui/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Could we remove the `ui` part of the `oobeui` path?",
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd93e90_0b6415ee",
+        "filename": "src/chromiumos/tast/remote/cros/ui/oobeui/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-03T20:21:41Z",
+      "side": 1,
+      "message": "Can we get this name from the emulated Bluetooth device itself? If we make this change it will allow us to be resilient to changes in how the device name is determined in the future.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "f1dfc5ddffeaf88b97a56ef7ea11d3d75f836211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
