@@ -359,6 +359,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7f15aa_56880518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1535837
+      },
+      "writtenOn": "2022-11-03T08:51:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a577e94f_048dcb98",
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372f9be3_35ea231e",
@@ -396,6 +414,30 @@
       "side": 1,
       "message": "Yes, but if the switch is off, there will be a colorful test pattern in the middle. If the switch somehow disabled only the center of the camera feed, we would have a false negative, but it seems like a very unlikely scenario.",
       "parentUuid": "372f9be3_35ea231e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "0fef47c5471592788e62dccf54154060571365a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa36c72_bab7d5dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1535837
+      },
+      "writtenOn": "2022-11-03T08:51:53Z",
+      "side": 1,
+      "message": "Ideally, it would be best to test the full picture to catch painting failures of the CrOS Camera Service side, but yes, this test is still able to test if the toggle in PH is connected to the camera service.",
+      "parentUuid": "af858c37_60d575bd",
       "range": {
         "startLine": 28,
         "startChar": 0,
