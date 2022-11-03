@@ -637,6 +637,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d97997_68eb7e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/privacyhubutil/camera.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-11-03T08:45:02Z",
+      "side": 1,
+      "message": "Thank you I\u0027ll try that. However I\u0027d like to get the feedback from the tastboard, so I\u0027ll plan this as a follow up.\n\nticket: http://b/257204880",
+      "parentUuid": "a5c3841b_c2167cd7",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "c9257ace5b4358d2efa3f698c7f5d74ad574ac28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b6fa685_7ef148ed",
