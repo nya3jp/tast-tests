@@ -121,7 +121,7 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 			uiauto.Retry(3, uiauto.Combine(
 				"press left SHIFT key and check VK shifted",
 				vkbCtx.TapNode(leftShiftKey),
-				vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),
+				vkbCtx.WaitForKeysExist([]string{"Z"}),
 			)),
 			vkbCtx.TapKey("Z"), // pwd: x2Z
 			vkbCtx.TapKeysIgnoringCase([]string{"g", "space", "m"}), // pwd: x2Zg m
