@@ -488,7 +488,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 
 	if param.uprevBranch {
-		if err = maybeUprevBranch(ctx, desc, s.OutDir(), param.requiredCPUAbisForBranchUprev); err != nil {
+		if err = maybeUprevBranch(ctx, desc, param.vmEnabled, s.OutDir(), param.requiredCPUAbisForBranchUprev); err != nil {
 			s.Fatal("Failed to uprev branch: ", err)
 		}
 	}
@@ -533,7 +533,7 @@ func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDi
 	return nil
 }
 
-func maybeUprevBranch(ctx context.Context, desc *version.BuildDescriptor, outDir string, requiredCPUAbis []string) error {
+func maybeUprevBranch(ctx context.Context, desc *version.BuildDescriptor, vmEnabled bool, outDir string, requiredCPUAbis []string) error {
 	testing.ContextLog(ctx, "Trying to uprev branch")
 
 	if !desc.Official {
@@ -552,8 +552,15 @@ func maybeUprevBranch(ctx context.Context, desc *version.BuildDescriptor, outDir
 		return nil
 	}
 
+	deploymentType := ""
+	if vmEnabled {
+		deploymentType = "vm"
+	} else {
+		deploymentType = "container"
+	}
+
 	// Read existing pin if possible.
-	pinName := fmt.Sprintf("git_%s-arc-m%d_pin_version", androidBranch, desc.Milestone)
+	pinName := fmt.Sprintf("git_%s-arc-m%d_%s_pin_version", androidBranch, desc.Milestone, deploymentType)
 	// Note, this is URL and not file path.
 	pinURL := fmt.Sprintf("%s/%s", runtimeArtifactsRoot, pinName)
 	existingPinVersion := 0
