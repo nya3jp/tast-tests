@@ -157,6 +157,30 @@
       },
       "revId": "7aa39f69fd8fb328bf88e9f3d16e4c6958827183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de550b62_47465f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-04T00:37:32Z",
+      "side": 1,
+      "message": "I totally agree with using different logs than human readable.\nI\u0027ve added a comment to adapt our codebase to use some sort of enum or structure that will allow us to fetch the state in less fragile way.\nAdditionally, for tests that are not dry_run, I would ideally want to fetch the status from EC to ensure that we are reporting the status correctly.",
+      "parentUuid": "97abe601_418f9562",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "7aa39f69fd8fb328bf88e9f3d16e4c6958827183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
