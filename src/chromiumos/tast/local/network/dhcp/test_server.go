@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package network provides general CrOS network goodies.
-package network
+package dhcp
 
 import (
 	"context"
@@ -19,7 +18,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// dhcpTestServer is a simple DHCP server you can program with expectations of
+// testServer is a simple DHCP server you can program with expectations of
 // future packets and responses to those packets.  The server is basically a
 // thin wrapper around a server socket with some utility logic to make setting
 // up tests easier. To write a test, you start a server, construct a sequence of
@@ -33,7 +32,7 @@ import (
 // Correct style is to write (or reuse) a handler for each packet the server
 // should see, leading us to a happy land where any conceivable packet handler
 // has already been written for us.
-type dhcpTestServer struct {
+type testServer struct {
 	iface     string
 	inAddr    net.IP
 	inPort    int
@@ -45,8 +44,8 @@ type dhcpTestServer struct {
 
 type testFunction func(context.Context) error
 
-func newDHCPTestServer(iface string, inAddr, bcastAddr net.IP, inPort, bcastPort int) *dhcpTestServer {
-	return &dhcpTestServer{
+func newTestServer(iface string, inAddr, bcastAddr net.IP, inPort, bcastPort int) *testServer {
+	return &testServer{
 		iface:     iface,
 		inAddr:    inAddr,
 		inPort:    inPort,
@@ -57,7 +56,7 @@ func newDHCPTestServer(iface string, inAddr, bcastAddr net.IP, inPort, bcastPort
 
 // setupAndBindSocket creates, sets the appropriate socket options for, and
 // binds to the server socket.
-func (s *dhcpTestServer) setupAndBindSocket(ctx context.Context) error {
+func (s *testServer) setupAndBindSocket(ctx context.Context) error {
 	lc := net.ListenConfig{Control: func(network, address string, c syscall.RawConn) error {
 		var err error
 		if cerr := c.Control(func(fd uintptr) {
@@ -91,7 +90,7 @@ func (s *dhcpTestServer) setupAndBindSocket(ctx context.Context) error {
 	return nil
 }
 
-func (s *dhcpTestServer) sendResponse(packet *dhcpPacket) error {
+func (s *testServer) sendResponse(packet *dhcpPacket) error {
 	if packet == nil {
 		return errors.New("handling rule failed to return a packet")
 	}
@@ -109,7 +108,7 @@ func (s *dhcpTestServer) sendResponse(packet *dhcpPacket) error {
 // runLoop is the loop body of the test server. It receives and handles DHCP
 // packets coming from the client and responds to them according to the given
 // handling rules.
-func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) error {
+func (s *testServer) runLoop(ctx context.Context, rules []HandlingRule) error {
 	buffer := make([]byte, 2048)
 	for {
 		if len(rules) < 1 {
@@ -169,7 +168,7 @@ func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) 
 }
 
 // runTest runs testFunc against a server with the given handling rules.
-func (s *dhcpTestServer) runTest(ctx context.Context, rules []dhcpHandlingRule, testFunc testFunction) error {
+func (s *testServer) runTest(ctx context.Context, rules []HandlingRule, testFunc testFunction) error {
 	if err := s.setupAndBindSocket(ctx); err != nil {
 		return err
 	}

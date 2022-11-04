@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package network provides general CrOS network goodies.
-package network
+package dhcp
 
 import (
 	"bytes"
@@ -757,8 +756,11 @@ func getDHCPOptionByNumber(number uint8) option {
 	return nil
 }
 
-type optionMap map[option]interface{}
-type fieldMap map[field]interface{}
+// OptionMap contains a set of DHCP options.
+type OptionMap map[option]interface{}
+
+// FieldMap contains a set of DHCP fields.
+type FieldMap map[field]interface{}
 
 // dhcpPacket is a class that represents a single DHCP packet and contains some
 // logic to create and parse binary strings containing on the wire DHCP packets.
@@ -766,8 +768,8 @@ type fieldMap map[field]interface{}
 // factories to construct packets with reasonable default values in most of
 // the fields, even if those values are zeros.
 type dhcpPacket struct {
-	options optionMap
-	fields  fieldMap
+	options OptionMap
+	fields  FieldMap
 }
 
 // createDiscovery creates a discovery packet.
@@ -908,8 +910,8 @@ func createNAK(txnID uint32, macAddr []byte) (*dhcpPacket, error) {
 // encoding.
 func newDHCPPacket(buf []byte) (*dhcpPacket, error) {
 	var packet dhcpPacket
-	packet.options = make(optionMap)
-	packet.fields = make(fieldMap)
+	packet.options = make(OptionMap)
+	packet.fields = make(FieldMap)
 	if len(buf) == 0 {
 		return &packet, nil
 	}

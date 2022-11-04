@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package network provides general CrOS network goodies.
-package network
+package dhcp
 
 import (
 	"chromiumos/tast/errors"
@@ -50,7 +49,7 @@ const (
 	acceptDecline
 )
 
-// dhcpHandlingRule records expectations for a DhcpTestServer.
+// HandlingRule records expectations for a DhcpTestServer.
 // When a handling rule reaches the front of the dhcpTestServer handling rule
 // queue, the server begins to ask the rule what it should do with each incoming
 // DHCP packet (in the form of a dhcpPacket). The handle() method is expected to
@@ -58,15 +57,15 @@ const (
 // responded to and whether the test failed, succeeded, or is continuing, and an
 // action that refers to whether or not the rule should be be removed from the
 // test server's handling rule queue.
-type dhcpHandlingRule struct {
+type HandlingRule struct {
 	// ruleType describes the handling rule type.
 	ruleType rule
 	// isFinalHandler is true when this rule is the last handler.
 	isFinalHandler bool
 	// options maps the packet options to their values.
-	options optionMap
+	options OptionMap
 	// fields maps the packet fields to their values.
-	fields fieldMap
+	fields FieldMap
 	// forceReplyOptions are options that will be injected into the response.
 	forceReplyOptions []option
 	// msgType is the expected message type
@@ -97,10 +96,15 @@ type dhcpHandlingRule struct {
 	respCounter int
 }
 
+// SetIsFinalHandler sets isFinalHandler in d.
+func (d *HandlingRule) SetIsFinalHandler(val bool) {
+	d.isFinalHandler = val
+}
+
 // handle is called by the test server to ask a handling rule whether it wants
 // to take some action in response to a packet. The handler should return some
 // combination of response* bits as described above.
-func (d *dhcpHandlingRule) handle(queryPacket *dhcpPacket) response {
+func (d *HandlingRule) handle(queryPacket *dhcpPacket) response {
 	if !d.isOurMsgType(queryPacket) {
 		return noAction
 	}
@@ -143,7 +147,7 @@ func (d *dhcpHandlingRule) handle(queryPacket *dhcpPacket) response {
 // respond is called by the test server to generate a packet to send back to the
 // client. This method is called if and only if the response returned from
 // handle() had haveResponse set.
-func (d *dhcpHandlingRule) respond(queryPacket *dhcpPacket) (*dhcpPacket, error) {
+func (d *HandlingRule) respond(queryPacket *dhcpPacket) (*dhcpPacket, error) {
 	if d.ruleType == acceptRelease || d.ruleType == acceptDecline {
 		return nil, errors.Errorf("no response for packet type: %d", d.ruleType)
 	}
@@ -208,7 +212,7 @@ func (d *dhcpHandlingRule) respond(queryPacket *dhcpPacket) (*dhcpPacket, error)
 // injectOptions adds options listed in the intersection of
 // requestedParameters and |d.Options| to packet. Also include the options
 // in the intersection of |d.ForceReplyOptions| and |d.Options|.
-func (d *dhcpHandlingRule) injectOptions(packet *dhcpPacket, requestedParameters []uint8) {
+func (d *HandlingRule) injectOptions(packet *dhcpPacket, requestedParameters []uint8) {
 	for option, value := range d.options {
 		shouldSet := false
 		for _, param := range requestedParameters {
@@ -232,7 +236,7 @@ func (d *dhcpHandlingRule) injectOptions(packet *dhcpPacket, requestedParameters
 }
 
 // injectFields adds fields listed in |d.fields| to packet.
-func (d *dhcpHandlingRule) injectFields(packet *dhcpPacket) {
+func (d *HandlingRule) injectFields(packet *dhcpPacket) {
 	for field, value := range d.fields {
 		packet.setField(field, value)
 	}
@@ -240,16 +244,16 @@ func (d *dhcpHandlingRule) injectFields(packet *dhcpPacket) {
 
 // isOurMsgType checks if the packet's message type matches the message type
 // handled by this rule.
-func (d *dhcpHandlingRule) isOurMsgType(packet *dhcpPacket) bool {
+func (d *HandlingRule) isOurMsgType(packet *dhcpPacket) bool {
 	msgType, err := packet.msgType()
 	return err == nil && msgType == d.msgType
 }
 
-// newRespondToDiscovery creates a handler that accepts any DISCOVER packet
+// NewRespondToDiscovery creates a handler that accepts any DISCOVER packet
 // received by the server. In response to such a packet, the handler will
 // construct an OFFER packet offering intendedIP from a server at svrIP.
-func newRespondToDiscovery(intendedIP, svrIP string, options optionMap, fields fieldMap, shouldRespond bool) *dhcpHandlingRule {
-	return &dhcpHandlingRule{
+func NewRespondToDiscovery(intendedIP, svrIP string, options OptionMap, fields FieldMap, shouldRespond bool) *HandlingRule {
+	return &HandlingRule{
 		ruleType:      respondToDiscovery,
 		options:       options,
 		fields:        fields,
@@ -261,25 +265,25 @@ func newRespondToDiscovery(intendedIP, svrIP string, options optionMap, fields f
 	}
 }
 
-// newRejectRequestRule creates a handler that receives a REQUEST packet and
+// NewRejectRequestRule creates a handler that receives a REQUEST packet and
 // responds with a NAK.
-func newRejectRequestRule() *dhcpHandlingRule {
-	return &dhcpHandlingRule{
+func NewRejectRequestRule() *HandlingRule {
+	return &HandlingRule{
 		ruleType:      rejectRequest,
 		msgType:       request,
 		shouldRespond: true,
 	}
 }
 
-// newRespondToRequest creates a handler that accepts any REQUEST packet that
+// NewRespondToRequest creates a handler that accepts any REQUEST packet that
 // contains options for serverID and requestedIP that match expSvrIP and
 // |expectedRequestIP| respectively. It responds with an ACKNOWLEDGEMENT packet
 // from a DHCP server at responsesvrIP granting responseGrantedIP to a
 // client at the address given in the REQUEST packet. If responsesvrIP or
 // responseGrantedIP are not given, then they default to expSvrIP and
 // expReqIP respectively.
-func newRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responsesvrIP, responseGrantedIP string, expSvrIPSet bool) *dhcpHandlingRule {
-	rule := dhcpHandlingRule{
+func NewRespondToRequest(expReqIP, expSvrIP string, options OptionMap, fields FieldMap, shouldRespond bool, responsesvrIP, responseGrantedIP string, expSvrIPSet bool) *HandlingRule {
+	rule := HandlingRule{
 		ruleType:      respondToRequest,
 		options:       options,
 		fields:        fields,
@@ -301,21 +305,21 @@ func newRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fi
 	return &rule
 }
 
-// newRespondToPostT2Request creates a handler similar to respondToRequest
+// NewRespondToPostT2Request creates a handler similar to respondToRequest
 // except that it expects request packets like those sent after the T2 deadline
 // (see RFC 2131). This is the only time that you can find a request packet
 // without the serverID option. It reseponds to packets in exactly the same way.
-func newRespondToPostT2Request(expReqIP, responseSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responseGrantedIP string) *dhcpHandlingRule {
-	rule := newRespondToRequest(expReqIP, "", options, fields, shouldRespond, responseSvrIP, responseGrantedIP, false)
+func NewRespondToPostT2Request(expReqIP, responseSvrIP string, options OptionMap, fields FieldMap, shouldRespond bool, responseGrantedIP string) *HandlingRule {
+	rule := NewRespondToRequest(expReqIP, "", options, fields, shouldRespond, responseSvrIP, responseGrantedIP, false)
 	rule.ruleType = respondToPostT2Request
 	return rule
 }
 
-// newAcceptRelease creates a handler that accepts any RELEASE packet that
+// NewAcceptRelease creates a handler that accepts any RELEASE packet that
 // contains an option for serverID that matches expSvrIP. There is no
 // response to this packet.
-func newAcceptRelease(expSvrIP string, options optionMap, fields fieldMap) *dhcpHandlingRule {
-	return &dhcpHandlingRule{
+func NewAcceptRelease(expSvrIP string, options OptionMap, fields FieldMap) *HandlingRule {
+	return &HandlingRule{
 		ruleType:   acceptRelease,
 		options:    options,
 		fields:     fields,
@@ -325,24 +329,24 @@ func newAcceptRelease(expSvrIP string, options optionMap, fields fieldMap) *dhcp
 	}
 }
 
-// newRejectAndRespondToRequest creates a handler that accepts any REQUEST
+// NewRejectAndRespondToRequest creates a handler that accepts any REQUEST
 // packet that contains options for serverID and resquestedIP that match
 // expSvrIP and expReqIP respectively. It responds with
 // both an ACKNOWLEDGEMENT packet from a DHCP server as well as a NAK, in order
 // to simulate a network with two conflicting servers.
-func newRejectAndRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, nakFirst bool) *dhcpHandlingRule {
-	rule := newRespondToRequest(expReqIP, expSvrIP, options, fields, true, "", "", true)
+func NewRejectAndRespondToRequest(expReqIP, expSvrIP string, options OptionMap, fields FieldMap, nakFirst bool) *HandlingRule {
+	rule := NewRespondToRequest(expReqIP, expSvrIP, options, fields, true, "", "", true)
 	rule.respPktCnt = 2
 	rule.ruleType = rejectAndRespondToRequest
 	rule.nakFirst = nakFirst
 	return rule
 }
 
-// newAcceptDecline creates a handler that accepts any DECLINE packet that
+// NewAcceptDecline creates a handler that accepts any DECLINE packet that
 // contains an option for serverID that matches expSvrIP. There is no
 // response to this packet.
-func newAcceptDecline(expSvrIP string, options optionMap, fields fieldMap) *dhcpHandlingRule {
-	return &dhcpHandlingRule{
+func NewAcceptDecline(expSvrIP string, options OptionMap, fields FieldMap) *HandlingRule {
+	return &HandlingRule{
 		ruleType:   acceptDecline,
 		options:    options,
 		fields:     fields,
