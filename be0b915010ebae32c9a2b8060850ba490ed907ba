@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e87c47c_5fed6b83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527467
+      },
+      "writtenOn": "2022-11-04T07:53:59Z",
+      "side": 1,
+      "message": "I\u0027m very much not familiar with this SELinux check, so I can\u0027t help with the configuration.\n\nIn terms of other files to add, there\u0027s a few more binaries in `/run/lacros`:\n- `chrome`\n- `chrome_crashpad_handler`\n- `nacl_helper`\n- `nacl_irt_x86_64.nexe`\n- `nacl_irt_arm.nexe`\n\nNot sure if that answers your question.",
+      "parentUuid": "7af6c6b0_b66ddb49",
+      "revId": "be0b915010ebae32c9a2b8060850ba490ed907ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbbd32a9_2d8288ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
