@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087eb8d4_f9b7a510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T11:53:17Z",
+      "side": 1,
+      "message": "Any idea on this should be put in the wifi folder or network folder?\n\nI would prefer network folder since that most of the DHCP tests will be there (but this test cannot be done on Ethernet).\n\nPut it in wifi folder now since it needs wifi/hwsim package, we need to move that package to a common folder if we decide to put this into network.",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
