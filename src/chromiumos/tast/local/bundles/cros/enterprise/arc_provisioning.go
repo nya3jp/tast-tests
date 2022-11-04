@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -24,7 +23,6 @@ import (
 )
 
 const (
-	packagesVar    = "enterprise.ARCProvisioning.packages"
 	withRetries    = true
 	withoutRetries = false
 )
@@ -40,7 +38,6 @@ func init() {
 		Timeout:      15 * time.Minute,
 		VarDeps: []string{
 			arcent.LoginPoolVar,
-			packagesVar,
 		},
 		Params: []testing.Param{
 			{
@@ -92,6 +89,7 @@ func init() {
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout = 4 * time.Minute
+		testPackage = "com.google.android.calculator"
 	)
 
 	rl := &retry.Loop{Attempts: 1,
@@ -106,16 +104,19 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	login := chrome.GAIALogin(creds)
 
-	packages := strings.Split(s.RequiredVar(packagesVar), ",")
+	packages := []string{testPackage}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
 
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeForceInstalled)
 	if err != nil {
 		rl.Exit("setup fake policy server", err)
 	}
-	defer fdms.Stop(ctx)
+	defer fdms.Stop(cleanupCtx)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) (retErr error) {
-		// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 		cr, err := chrome.New(
 			ctx,
 			login,
@@ -126,14 +127,13 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return rl.RetryForAll("connect to Chrome", err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			return rl.RetryForAll("create test API connection", err)
 		}
 
-		// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
 		if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
 			return rl.Exit("verify ArcEnabled in policy", err)
 		}
@@ -146,7 +146,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return rl.Exit("start ARC by policy", err)
 		}
-		defer a.Close(ctx)
+		defer a.Close(cleanupCtx)
 
 		if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
 			return rl.Exit("configure provisioning logs", err)
@@ -155,10 +155,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		if err := arcent.WaitForProvisioning(ctx, a, rl.Attempts); err != nil {
 			return rl.Exit("wait for provisioning", err)
 		}
-
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
-		defer cancel()
 
 		defer arcent.DumpBugReportOnError(cleanupCtx, func() bool {
 			return s.HasError() || retErr != nil
