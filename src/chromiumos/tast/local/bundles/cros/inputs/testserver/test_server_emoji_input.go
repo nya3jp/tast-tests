@@ -58,7 +58,7 @@ func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserConte
 
 // InputEmojiWithEmojiPickerSearch returns a user action to input Emoji with PK emoji picker on E14s test server using search.
 func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.UserContext, inputField InputField, keyboard *input.KeyboardEventWriter, searchString, emojiChar string) uiauto.Action {
-	emojiResultFinder := nodewith.Name(fmt.Sprintf("%s %s", emojiChar, searchString))
+	emojiResultFinder := nodewith.NameStartingWith(emojiChar).Visible().Nth(1)
 	ui := emojipicker.NewUICtx(its.tconn)
 
 	action := uiauto.Combine(fmt.Sprintf("input emoji with emoji picker on field %v", inputField),
