@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -243,13 +244,20 @@ func openAppFromLauncherAs(ctx context.Context, tconn *chrome.TestConn, tabletMo
 		if err := setLaunchAppAs(ctx, tconn, newInstanceMenuItem, instanceType); err != nil {
 			return err
 		}
-		// Setting the app launch type from the app context menu will close the context menu.
-		// Reopen it, and the rest of the method assumes the context menu is open.
-		if err := uiauto.Combine("Right click on the app again to show context menu",
-			ui.RightClick(app),
-			ui.WaitUntilExists(newInstanceMenuItem),
-		)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to open the context menu on %s", app.Pretty())
+
+		// Fallback block to support legacy behavior where the whole menu gets closed.
+		// TODO(crbug.com/844786): Remove once the Chromium change is picked up by ChromeOS.
+		isMenuItemFound, err := ui.IsNodeFound(ctx, newInstanceMenuItem)
+		if err != nil {
+			return errors.Wrapf(err, "error finding the New %s menu item", instanceType)
+		}
+		if !isMenuItemFound {
+			if err := uiauto.Combine("Right click on the app again to show context menu",
+				ui.RightClick(app),
+				ui.WaitUntilExists(newInstanceMenuItem),
+			)(ctx); err != nil {
+				return errors.Wrapf(err, "failed to open the context menu on %s", app.Pretty())
+			}
 		}
 	}
 
@@ -279,11 +287,14 @@ func setLaunchAppAs(ctx context.Context, tconn *chrome.TestConn, newInstanceMenu
 	}
 	submenuArrow := coords.NewPoint(verticalSeparatorLocation.Right()+5, verticalSeparatorLocation.CenterY())
 
+	// `role=menuItemRadio` helps to distinguish between top-level `LAUNCH_NEW` menu item (which has an icon instead) and `USE_LAUNCH_TYPE_*` submenu items.
+	targetSubmenuItem := newInstanceMenuItem.Role(role.MenuItemRadio)
+
 	if err := uiauto.Combine(fmt.Sprintf("Set to open the app as %s in default", instanceType),
 		mouse.Move(tconn, submenuArrow, 0),
-		ui.WaitUntilExists(newInstanceMenuItem),
+		ui.WaitUntilExists(targetSubmenuItem),
 		ui.LeftClick(newInstanceMenuItem),
-		ui.WaitUntilGone(newInstanceMenuItem),
+		ui.WaitUntilGone(targetSubmenuItem),
 	)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to set the default new instance to %s", instanceType)
 	}
