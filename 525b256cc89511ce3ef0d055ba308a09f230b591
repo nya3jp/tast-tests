@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00e95438_f3bc7db5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-04T17:57:59Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "087eb8d4_f9b7a510",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -20,6 +43,47 @@
         "endLine": 15,
         "endChar": 37
       },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e50b157_f7851dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-04T17:57:59Z",
+      "side": 1,
+      "message": "I\u0027m fine with putting it in the wifi folder for now, but agreed that eventually moving this to the network folder and hwsim to somewhere accessible to the network folder makes sense if network tests will need to use it in the future.",
+      "parentUuid": "087eb8d4_f9b7a510",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5516cae6_e576eb55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-04T17:57:59Z",
+      "side": 1,
+      "message": "You may want to explicitly disable MAR (set it to hardware policy) in case default value changes in the future.",
       "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
