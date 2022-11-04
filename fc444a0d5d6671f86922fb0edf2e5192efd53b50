@@ -140,6 +140,24 @@
       "parentUuid": "1652e63b_94151939",
       "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70add4c1_fa451e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-11-04T16:51:58Z",
+      "side": 1,
+      "message": "Yes, I also agree with the assessment that the service should provide a high level functionality and be as stateless as possible, given that each of those functionalities are self contained.   \nMaybe we should have a separate service that groups all these hardware plugging and unplugging simulation methods.",
+      "parentUuid": "b65a9318_b7da7d85",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
