@@ -16,6 +16,29 @@
       "message": "Hi, could you ptal?",
       "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b122fec9_0d198998",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_login_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1549107
+      },
+      "writtenOn": "2022-11-04T16:22:50Z",
+      "side": 1,
+      "message": "I am not sure, whether to make this a utility function, since it might obfuscate that it requires `tast.cros.graphics.ScreenshotService` as `ServiceDeps`.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
