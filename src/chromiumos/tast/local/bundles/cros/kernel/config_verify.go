@@ -434,6 +434,9 @@ func addExtraCheckForChromeOS(kcc *kernelConfigCheck, ver *sysutil.KernelVersion
 	// Security; prevent overflows that can be checked at compile-time.
 	kcc.builtin = append(kcc.builtin, "FORTIFY_SOURCE")
 
+	kcc.builtin = append(kcc.builtin, "SECURITY_CHROMIUMOS_NO_SYMLINK_MOUNT")
+	kcc.builtin = append(kcc.builtin, "SECURITY_CHROMIUMOS_NO_UNPRIVILEGED_UNSAFE_MOUNTS")
+
 	return kcc
 }
 
