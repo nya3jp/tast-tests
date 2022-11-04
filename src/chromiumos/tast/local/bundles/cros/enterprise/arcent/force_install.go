@@ -120,6 +120,7 @@ func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcP
 	arcPolicy := &policy.ArcPolicy{
 		Val: &policy.ArcPolicyValue{
 			Applications:              forceInstalledApps,
+			PlayStoreMode:             PlayStoreModeAllowList,
 			PlayLocalPolicyEnabled:    true,
 			PlayEmmApiInstallDisabled: true,
 		},
@@ -153,6 +154,10 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		emptyPlayStoreText = "No results found."
 		serverErrorText    = "Server error|Error.*server.*"
 		tryAgainButtonText = "Try again"
+		appNodeResourceID1 = "com.android.vending:id/mini_blurb"
+		appNodeClassName1  = "android.widget.FrameLayout"
+		appNodeResourceID2 = "com.android.vending:id/play_card"
+		appNodeClassName2  = "android.view.ViewGroup"
 	)
 
 	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
@@ -181,19 +186,30 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 				return testing.PollBreak(errors.New("Play Store closed"))
 			}
 
-			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-				return errors.New("Play Store is empty")
-			}
-
 			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
 				return testing.PollBreak(err)
+			}
+
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return errors.New("Play Store is empty")
 			}
 
 			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
 				return errors.Wrap(err, "Play Store UI screen not shown")
 			}
 
-			return nil
+			if err := d.Object(ui.ResourceID(appNodeResourceID1), ui.ClassName(appNodeClassName1)).Exists(ctx); err == nil {
+				testing.ContextLog(ctx, "App blurb found")
+				return nil
+			}
+
+			if err := d.Object(ui.ResourceID(appNodeResourceID2), ui.ClassName(appNodeClassName2)).Exists(ctx); err == nil {
+				testing.ContextLog(ctx, "Play card found")
+				return nil
+			}
+
+			testing.ContextLog(ctx, "No app in the catalog")
+			return errors.New("no app in the catalog")
 		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
 	}, &testing.PollOptions{Interval: 10 * time.Second})
 }
