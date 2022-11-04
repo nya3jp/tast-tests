@@ -149,7 +149,7 @@ func Run(ctx context.Context, s *testing.State) {
 		if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
 			s.Fatal("Failed to hit overview key: ", err)
 		}
-		return ash.WaitForOverviewState(ctx, tconn, ash.Shown, 10*time.Second)
+		return ash.WaitForOverviewState(ctx, tconn, ash.Shown, time.Minute)
 	}
 
 	if bt == browser.TypeLacros {

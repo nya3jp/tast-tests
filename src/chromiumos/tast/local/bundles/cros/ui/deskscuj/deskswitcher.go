@@ -98,7 +98,7 @@ func getOverviewWorkflow(tconn *chrome.TestConn, ac *uiauto.Context, setOverview
 				return errors.Wrapf(err, "failed to click on the desk preview for desk %d", toDesk)
 			}
 
-			if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, 10*time.Second); err != nil {
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, time.Minute); err != nil {
 				return errors.Wrap(err, "failed to exit overview mode")
 			}
 
