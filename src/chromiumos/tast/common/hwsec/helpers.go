@@ -27,6 +27,7 @@ import (
 )
 
 const ussFlagFile = "/var/lib/cryptohome/uss_enabled"
+const ussDisabledFlagFile = "/var/lib/cryptohome/uss_disabled"
 
 // CmdHelper provides various helper functions that could be shared across all
 // hwsec integration test base on CmdRunner.
@@ -431,9 +432,13 @@ func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context)
 	return h.ensureTPMIsReset(ctx, true)
 }
 
-// EnableUserSecretStash enables the UserSecretStash experiment by creating a
-// flag file that's checked by cryptohomed.
+// EnableUserSecretStash enables the UserSecretStash experiment by removing the
+// disbale flag file and creating a flag file that's checked by cryptohomed.
 func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func(context.Context) error, error) {
+	if _, err := h.cmdRunner.Run(ctx, "rm", "-f", ussDisabledFlagFile); err != nil {
+		return nil, errors.Wrap(err, "failed to remove the UserSecretStash disable flag file")
+	}
+
 	// Run tmpfiles to restore the removed folders and permissions.
 	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "mkdir", "-p", path.Dir(ussFlagFile)); err != nil {
 		return nil, errors.Wrap(err, "failed to create the UserSecretStash flag file directory")
@@ -450,10 +455,14 @@ func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func(con
 }
 
 // DisableUserSecretStash disables the UserSecretStash experiment by making sure
-// that the flag file checked by cryptohomed does not exist.
+// that the disable flag file checked by cryptohomed exists.
 func (h *CmdTPMClearHelper) DisableUserSecretStash(ctx context.Context) error {
-	if _, err := h.cmdRunner.Run(ctx, "rm", "-f", ussFlagFile); err != nil {
-		return errors.Wrap(err, "failed to remove the UserSecretStash flag file")
+	// Run tmpfiles to restore the removed folders and permissions.
+	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "mkdir", "-p", path.Dir(ussDisabledFlagFile)); err != nil {
+		return errors.Wrap(err, "failed to create the UserSecretStash disable flag file directory")
+	}
+	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "touch", ussDisabledFlagFile); err != nil {
+		return errors.Wrap(err, "failed to write the UserSecretStash disable flag file")
 	}
 	return nil
 }
