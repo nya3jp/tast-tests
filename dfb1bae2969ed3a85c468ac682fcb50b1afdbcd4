@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a420c8e_4b4764cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-04T20:18:00Z",
+      "side": 1,
+      "message": "I know this makes the code shorter but also makes the code harder to compare the difference.\n\nDo you mind just returning RTCTestParams in MakeXXXParms function?",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "dfb1bae2969ed3a85c468ac682fcb50b1afdbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
