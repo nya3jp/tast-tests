@@ -46,6 +46,30 @@
       },
       "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77858ed3_aafbe3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-11-04T21:34:09Z",
+      "side": 1,
+      "message": "Don\u0027t you see `WaitForNextEventTime` has a parameter `waitMS`? It doesn\u0027t affect anything else.",
+      "parentUuid": "2c0f02df_f89a372b",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
