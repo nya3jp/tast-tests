@@ -50,6 +50,24 @@
       "message": "If this only need to verify there is any change in the progress bar (rather than the exact 5 seconds), consider using testing.Poll. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go",
       "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af7d0c5_ed51e6a1",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtube/youtube.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-04T09:03:19Z",
+      "side": 1,
+      "message": "Fixed by applying another approach, we\u0027ll now checking the `dumpsys media_session` instead, through adb.",
+      "parentUuid": "cb766199_a74f7a0a",
+      "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
