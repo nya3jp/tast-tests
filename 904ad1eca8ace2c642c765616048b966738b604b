@@ -16,6 +16,176 @@
       "message": "Thanks Steven! This is now a functional, working test. PTAL!",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0e9a98_c62f78f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "Generally looks great, mostly just nits!\n\n+Michael FYI and for a second pair of eyes on this.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99b9d6b_5db19e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/js_wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "nit: for the network_health mojo API.\n\nI would also add:\n// This is a sparse API wrapper. Only the methods used in tests have been added.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ff8ea3_3bc86e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "s/allows to make/allows/ (Maybe just rephrase this whole comment...)",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d681fcbf_94d5a566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "See note below, I\u0027m not sure I would bother making this simplified, we\u0027re only missing a few fields, but if we do let\u0027s note that in the comments for the structs that are sparse.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f823195_40171577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "Is this true here? If so maybe just call those out in context.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99cd77af_2a9b0895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "No filterfor NetworkHealth, maybe omit this and just note (unused) for the unused types below.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19122c0a_d44931aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "nit: \"Failed to get connected state for: \"",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade3f909_0cc36bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "nit: \"Service is not connected: \"\n(Putting identifiers last is generally simpler, more consistent, and easier to parse)",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32697b4f_d26b848c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "nit: \"Network is not connected, GUID: %v, State: %v\"",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b99672_886c773e",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "Maybe omit this WS only change",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

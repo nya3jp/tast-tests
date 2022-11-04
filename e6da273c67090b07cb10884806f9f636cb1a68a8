@@ -122,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9302d708_39bdf7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T19:34:05Z",
+      "side": 1,
+      "message": "I would say \u0027yes\u0027, the linter is over-aggressive here, but it\u0027s fine as-is, no need to make an exception, it\u0027s clear enough.",
+      "parentUuid": "df3c70d0_01c329c0",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1aa9d0b_efc50723",
