@@ -42,7 +42,7 @@ const (
 
 // makePerfRTCTestParams creates RTCTestParams for profile, width, height,
 // verifyDecoderMode and verifyEncoderMode.
-func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode, verifyEncoderMode VerifyHWAcceleratorMode) RTCTestParams {
+func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode) RTCTestParams {
 	return RTCTestParams{
 		verifyDecoderMode:  verifyDecoderMode,
 		verifyEncoderMode:  verifyEncoderMode,
