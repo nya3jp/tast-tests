@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f0a7e2_67322a1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-04T16:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e299275d_0ad64fa8",
+      "range": {
+        "startLine": 26,
+        "startChar": 104,
+        "endLine": 26,
+        "endChar": 117
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c7f205_7072bf2d",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5862d27_b46809ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-04T16:06:06Z",
+      "side": 1,
+      "message": "I measured 79 executions of the test in grunt and the result was:\n\nConfigBaseline.login. Avg: 24.206000000000003s. Max: 28.683s\nConfigBaseline.oobe. Avg: 13.23054430379747s. Max: 15.071s\n\nAs the worst case scenario seems to be 28.683s and the double of it is around 57s, I think 1 minute is a good timeout, so will leave it at that.",
+      "parentUuid": "86c7f205_7072bf2d",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8715082_b503452d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-28T08:30:58Z",
       "side": 1,
       "message": "Quick question: In oobe, you can only configure device wide networks, but after login, you can configure device wide and user-wide. What does this do after login? I am guessing default it device wide but maybe make it explicit here so the test doesn\u0027t change when default changes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c3ff8d_259a73f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-04T16:06:06Z",
+      "side": 1,
+      "message": "Discussed offline. Added clarification about the `true` parameter passed to `ConfigureNetwork` method below",
+      "parentUuid": "a8715082_b503452d",
       "range": {
         "startLine": 90,
         "startChar": 3,
