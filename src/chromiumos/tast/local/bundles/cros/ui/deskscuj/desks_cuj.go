@@ -203,8 +203,8 @@ func Run(ctx context.Context, s *testing.State) {
 					return errors.Wrapf(err, "failed to switch to the next desk using %s", deskSwitcher.name)
 				}
 
-				if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-					s.Log("Failed to wait for desks animations to stabilize: ", err)
+				if err := ash.WaitUntilDesksFinishAnimating(ctx, tconn); err != nil {
+					return errors.Wrap(err, "failed to wait for desks to finish animating")
 				}
 
 				info, err := ash.GetDesksInfo(ctx, tconn)
@@ -217,6 +217,12 @@ func Run(ctx context.Context, s *testing.State) {
 				// Compare the actual active desk to the expected active desk.
 				if activeDesk != nextDesk {
 					return errors.Errorf("unexpected active desk: desk %d is active, expected %d to be active", activeDesk, nextDesk)
+				}
+
+				// Give a few seconds for the current desk to stabilize
+				// before interacting with it.
+				if err := ac.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+					s.Log("Failed to wait for current desk to stabilize: ", err)
 				}
 
 				if err := onVisitActions[activeDesk](ctx); err != nil {

@@ -101,9 +101,8 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to finish trackpad scroll")
 		}
 
-		// TODO(sammiequon): Add an API to properly wait for the end animation to finish.
-		if err = testing.Sleep(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait: ", err)
+		if err := ash.WaitUntilDesksFinishAnimating(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for desks to finish animating")
 		}
 
 		// Activate the desk at index 0 for the next run.
