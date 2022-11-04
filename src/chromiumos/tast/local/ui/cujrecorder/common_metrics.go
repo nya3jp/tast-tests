@@ -65,7 +65,7 @@ func LacrosCommonMetricConfigs() []MetricConfig {
 	}
 }
 
-// BrowserCommonMetricConfigs returns SEPRA common metrics which are
+// BrowserCommonMetricConfigs returns SPERA common metrics which are
 // required to be collected by CUJ tests from the browser process only
 // (Ash or Lacros).
 func BrowserCommonMetricConfigs() []MetricConfig {
@@ -75,12 +75,15 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.WithSavedFrames", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.NoSavedFrames_NotLoaded", "result", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.NoSavedFrames_Loaded", "result", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.WithSavedFrames", "result", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.WithSavedFrames", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.WithSavedFrames", "ms", perf.SmallerIsBetter),
