@@ -16,6 +16,24 @@
       "message": "optional, maybe try to make this work for both versions - something like\nif (ensureGone() !\u003d error) {\n  // Reshow the context menu\n}\n\nAnd then, once the new logic gets picked up by chromeos, we can remove this block",
       "revId": "b583b15f43af675daf01de9a94a9755057faab26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1786da96_838f0d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-11-04T19:11:57Z",
+      "side": 0,
+      "message": "Done, verified on both versions.",
+      "parentUuid": "e35f4b67_2254b2e1",
+      "revId": "b583b15f43af675daf01de9a94a9755057faab26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
