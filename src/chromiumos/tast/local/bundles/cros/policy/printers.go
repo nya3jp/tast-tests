@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/printmanagementapp"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -112,7 +113,7 @@ func Printers(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("select the printer and print",
 		kb.AccelAction("Ctrl+P"),
-		ui.WaitUntilExists(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
+		ui.WaitUntilExists(printpreview.PrintPreviewNode),
 		ui.DoDefault(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
 		ui.DoDefault(nodewith.Role(role.MenuItem).Name("See more destinations")),
 		ui.DoDefault(nodewith.Role(role.Cell).NameStartingWith(printerName)),
@@ -121,7 +122,7 @@ func Printers(ctx context.Context, s *testing.State) {
 		// may still be in the process of closing when we launch the print
 		// management app, and, once fully closed, steal focus from the print
 		// management app.
-		ui.WaitUntilGone(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
+		ui.WaitUntilGone(printpreview.PrintPreviewNode),
 	)(ctx); err != nil {
 		s.Fatal("Failed to select printer in print destination popup and print: ", err)
 	}
