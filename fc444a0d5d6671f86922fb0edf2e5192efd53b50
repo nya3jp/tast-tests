@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7737b5ef_b64b50e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-11-04T16:44:28Z",
+      "side": 1,
+      "message": "Hi Theo, after taking a look at the new 2 APIs and the usage(of simulating a plugging and unplugging event), I feel that it does not quite fit into the current paradigm. Keyboard service is in a small handful of services where we expose to outside of Tast to Google3 so there is less flexibility of changing it down the road. Can we consider moving 2 the methods else where?",
+      "parentUuid": "d8fbed3c_387a0fb1",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1652e63b_94151939",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
         "patchSetId": 7
