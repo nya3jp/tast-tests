@@ -70,6 +70,30 @@
       },
       "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1dbbec_d0195f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-11-04T22:50:10Z",
+      "side": 1,
+      "message": "+1 for Cici\u0027s suggestion.  `WaitForNextEventTime` is what we use for all the input tast tests.  No explicit sleep.",
+      "parentUuid": "77858ed3_aafbe3de",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
