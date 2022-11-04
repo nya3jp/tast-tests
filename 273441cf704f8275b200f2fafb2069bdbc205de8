@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58de7977_c7b96bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T11:24:28Z",
+      "side": 1,
+      "message": "Ah yea you\u0027re right. LGTM.",
+      "parentUuid": "4f9ae55a_dccd1076",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fec269_df02d659",
