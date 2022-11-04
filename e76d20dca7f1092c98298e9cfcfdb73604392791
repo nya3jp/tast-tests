@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759d4287_51a5d4ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "This CL will conflict with https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3971159\n\nYou will probably need to rebase after it lands.\n\nThanks for updating to work with the new policy_templates.py.",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865efbc1_6f87c3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "nit: make the test informational here",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab66a89_11115870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "Use the constant here",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4736dd89_b85cadee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "retry does not seem to integrate well with testing.Poll, why not use testing.Poll alone?",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83dd92fc_d959ca15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "You need this at the start of the loop to use for Chrome since Arc might time out.",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babc714d_56105a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:00:34Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 126,
+        "startChar": 33,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
