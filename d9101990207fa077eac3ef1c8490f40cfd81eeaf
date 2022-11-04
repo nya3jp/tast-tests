@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3640b4_9fbd1bcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-04T12:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c43dd2_b5ee17c7",
+      "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05292973_f4b389e5",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-04T10:09:04Z",
       "side": 1,
       "message": "Please add `pci.VerifiedFunctionalityOS`.",
+      "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e753ad_ec04849d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-04T12:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05292973_f4b389e5",
       "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f207d2e1_761ec507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-04T12:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f92166_ee1b955c",
+      "range": {
+        "startLine": 85,
+        "startChar": 55,
+        "endLine": 85,
+        "endChar": 82
+      },
+      "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdbf6269_a36deb61",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-11-04T10:09:04Z",
       "side": 1,
       "message": "nit: usually `ctx` is an input parameter of the defered function, and `cleanupCtx` is passed to it.",
+      "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9ab387_4c57ae7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-04T12:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdbf6269_a36deb61",
       "revId": "d9101990207fa077eac3ef1c8490f40cfd81eeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
