@@ -40,7 +40,8 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 
 	// Make sure the temp file is not there.
 	os.Remove(finishFlagFilePath)
-	if err := testexec.CommandContext(ctx, "start", "factory").Run(testexec.DumpLogOnError); err != nil {
+	// TODO(b/205779346): Consider using a config for tast environment instead this kind of special hack.
+	if err := testexec.CommandContext(ctx, "start", "factory", "GOOFY_ARGS=--no-goofy-ui").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to start factory toolkit: ", err)
 	}
 	s.Log("factory toolkit started, waiting for TestList finished")
