@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cd419d_fa30fbaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-04T15:17:56Z",
+      "side": 1,
+      "message": "I see, that seems OK then.",
+      "parentUuid": "68baff0d_300eed87",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bb48d0_b4a9d261",
