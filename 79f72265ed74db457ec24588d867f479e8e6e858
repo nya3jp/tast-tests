@@ -22,6 +22,30 @@
       },
       "revId": "79f72265ed74db457ec24588d867f479e8e6e858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3bedde_da1123d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-04T18:49:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure, honestly - i.e. I\u0027m not sure whether this is smart enough to land the  cl with chrome uprev that contains a specific chromium cl.",
+      "parentUuid": "c00565fc_4e74963d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "79f72265ed74db457ec24588d867f479e8e6e858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
