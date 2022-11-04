@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "134c5f0e_e7f814bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_ec_reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-11-04T13:22:40Z",
+      "side": 1,
+      "message": "Done. I have added a new SW Dep there: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/4004782",
+      "parentUuid": "69f273db_9af52a64",
+      "range": {
+        "startLine": 38,
+        "startChar": 42,
+        "endLine": 38,
+        "endChar": 76
+      },
+      "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8faa8786_879fa29e",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-10-28T16:57:48Z",
       "side": 1,
       "message": "nit: A little confusing over here (and line 150), as we are returning and error when err \u003d\u003d nil. It would be good if we can add a comment here.",
+      "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb2cf60_306068d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_ec_reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-11-04T13:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8faa8786_879fa29e",
       "revId": "ed24a64e9902bbf6a6bc6780030d0be585612fd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
