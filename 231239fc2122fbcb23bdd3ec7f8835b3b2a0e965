@@ -39,6 +39,30 @@
       },
       "revId": "231239fc2122fbcb23bdd3ec7f8835b3b2a0e965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f41200_2348f883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/hardware_probe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-04T21:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3f7792_6b4f98cc",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "231239fc2122fbcb23bdd3ec7f8835b3b2a0e965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
