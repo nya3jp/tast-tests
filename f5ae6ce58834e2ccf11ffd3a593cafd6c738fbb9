@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fc8aa7_0056dcf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-11-04T00:47:38Z",
+      "side": 1,
+      "message": "LGTM from tast-owners, please wait for +1/+2 from jadmanski@",
+      "revId": "f5ae6ce58834e2ccf11ffd3a593cafd6c738fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
