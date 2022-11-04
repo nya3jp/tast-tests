@@ -86,11 +86,11 @@ type RequestData struct {
 	Eid                string            `json:"eid"`
 }
 
-func generateStorkRequestData() (string, error) {
+func generateStorkRequestData(confirmationCode string, maxConfirmationCodeAttempts int) (string, error) {
 	profileListData := &ProfileListData{
 		Eid:                         eidValue,
-		ConfirmationCode:            confirmationCodeValue,
-		MaxConfirmationCodeAttempts: maxConfirmationCodeAttemptsValue,
+		ConfirmationCode:            confirmationCode,
+		MaxConfirmationCodeAttempts: maxConfirmationCodeAttempts,
 		MaxDownloadAttempts:         maxDownloadAttemptsValue,
 		ProfileStatus:               profileStatusValue,
 		ProfileClass:                profileClassValue,
@@ -150,13 +150,7 @@ func getSessionID(storkResponse map[string]json.RawMessage) (string, error) {
 	return sessionID, nil
 }
 
-// FetchStorkProfile fetches a test eSIM profile from Stork.
-func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc, error) {
-	data, err := generateStorkRequestData()
-	if err != nil {
-		return ActivationCode(""), nil, err
-	}
-
+func performFetchStorkProfile(ctx context.Context, data string) (ActivationCode, CleanupProfileFunc, error) {
 	command := testexec.CommandContext(ctx, curlCommandName,
 		cacertArgName, cacertArgValue,
 		hArgName, hArgValue,
@@ -198,4 +192,22 @@ func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc,
 	})
 
 	return activationCode, cleanpProfile, nil
+}
+
+// FetchStorkProfile fetches a test eSIM profile that does not require a confirmation code from Stork.
+func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc, error) {
+	data, err := generateStorkRequestData(confirmationCodeValue, maxConfirmationCodeAttemptsValue)
+	if err != nil {
+		return ActivationCode(""), nil, err
+	}
+	return performFetchStorkProfile(ctx, data)
+}
+
+// FetchStorkProfileWithCustomConfirmationCode fetches a test eSIM profile with a custom confirmation code from Stork.
+func FetchStorkProfileWithCustomConfirmationCode(ctx context.Context, confirmationCode string, maxConfirmationCodeAttempts int) (ActivationCode, CleanupProfileFunc, error) {
+	data, err := generateStorkRequestData(confirmationCode, maxConfirmationCodeAttempts)
+	if err != nil {
+		return ActivationCode(""), nil, err
+	}
+	return performFetchStorkProfile(ctx, data)
 }
