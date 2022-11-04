@@ -16,6 +16,24 @@
       "message": "Would like to know your inputs on optimization of repetitive code and Iperf planned API, not tested yet.",
       "revId": "5cd8db5c5774e86f04cd81562983bc26cb9ca6a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1b554f_f0bb819e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-04T00:16:11Z",
+      "side": 1,
+      "message": "As far as repetitive code goes, you can use test `Params` to pass different arguments to the test and just switch the options for each test configuration, that\u0027s what\u0027s done in: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/cellular/iperf.go;l\u003d42-74;drc\u003d803e68db54091792d1a4ef6e3c84af4a74648b90\n\nIf you wanted, you could just modify that test to fetch the DUT-specific RAT configurations and performance requirements and switch them out at runtime.",
+      "parentUuid": "68c16f43_57752d3c",
+      "revId": "5cd8db5c5774e86f04cd81562983bc26cb9ca6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
