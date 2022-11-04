@@ -132,12 +132,8 @@ func UnlockPinLockedSim(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	refreshProfileText := nodewith.NameStartingWith("Refreshing profile list").Role(role.StaticText)
-	if err := settings.WithTimeout(5 * time.Second).WaitUntilExists(refreshProfileText)(ctx); err == nil {
-		s.Log("Wait until refresh profile finishes")
-		if err := settings.WithTimeout(5 * time.Minute).WaitUntilGone(refreshProfileText)(ctx); err != nil {
-			s.Fatal("Failed to wait until refresh profile complete: ", err)
-		}
+	if err := ossettings.WaitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait until refresh profile complete: ", err)
 	}
 
 	var incorrectPinSublabel = nodewith.NameContaining("Incorrect PIN").Role(role.StaticText)
