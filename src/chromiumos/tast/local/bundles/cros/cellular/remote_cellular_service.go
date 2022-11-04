@@ -294,6 +294,59 @@ func (s *RemoteCellularService) QueryInterface(ctx context.Context, _ *empty.Emp
 	}, nil
 }
 
+// DisableSar disables dynamic SAR on the DUT.
+func (s *RemoteCellularService) DisableSar(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	if err := setSARStatus(ctx, false); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// EnableSar enables dynamic SAR on the DUT.
+func (s *RemoteCellularService) EnableSar(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	if err := setSARStatus(ctx, true); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+func setSARStatus(ctx context.Context, enabled bool) error {
+	modem, err := modemmanager.NewModem(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create modem")
+	}
+
+	modem, err = modem.GetSARInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get modem SAR interface")
+	}
+
+	if modem.EnableSAR(ctx, enabled); err != nil {
+		return errors.Wrap(err, "failed to enable SAR")
+	}
+
+	return nil
+}
+
+// ConfigureSar configures the dynamic SAR power level on the DUT.
+func (s *RemoteCellularService) ConfigureSar(ctx context.Context, req *cellular_pb.ConfigureSarRequest) (*empty.Empty, error) {
+	modem, err := modemmanager.NewModem(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create modem")
+	}
+
+	modem, err = modem.GetSARInterface(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get modem SAR interface")
+	}
+
+	if modem.SetSARPowerLevel(ctx, uint32(req.PowerLevel)); err != nil {
+		return nil, errors.Wrap(err, "failed to enable SAR")
+	}
+
+	return &empty.Empty{}, nil
+}
+
 // WaitForNextSms waits until a single sms added signal is received.
 func (s *RemoteCellularService) WaitForNextSms(ctx context.Context, _ *empty.Empty) (*cellular_pb.WaitForNextSmsResponse, error) {
 	match := dbusutil.MatchSpec{

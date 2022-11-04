@@ -79,6 +79,15 @@ func (m *Modem) EnableSAR(ctx context.Context, enable bool) error {
 	return nil
 }
 
+// SetSARPowerLevel sets the SAR power level.
+func (m *Modem) SetSARPowerLevel(ctx context.Context, power uint32) error {
+	err := m.Call(ctx, "SetPowerLevel", power).Err
+	if err != nil {
+		return errors.Wrap(err, "failed to configure SAR power level")
+	}
+	return nil
+}
+
 // GetSARInterface creates a PropertyHolder for the SAR object.
 func (m *Modem) GetSARInterface(ctx context.Context) (*Modem, error) {
 	modemPath := dbus.ObjectPath(m.String())

@@ -301,3 +301,58 @@ func (s CallboxManagerClient) FetchMaxThroughput(ctx context.Context, requestBod
 
 	return &res, nil
 }
+
+// ConfigureTxMeasurement configures a Tx measurement session on the callbox.
+func (s CallboxManagerClient) ConfigureTxMeasurement(ctx context.Context, requestBody *ConfigureTxMeasurementRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/txmeas/config", nil, requestBody)
+	return err
+}
+
+// RunTxMeasurement starts a Tx measurement session on the callbox and waits for completion.
+func (s CallboxManagerClient) RunTxMeasurement(ctx context.Context, requestBody *RunTxMeasurementRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/txmeas/run", nil, requestBody)
+	return err
+}
+
+// FetchTxMeasurement fetches the most recent Tx measurement results from the callbox.
+func (s CallboxManagerClient) FetchTxMeasurement(ctx context.Context, requestBody *FetchTxMeasurementRequestBody) (*FetchTxMeasurementResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/txmeas/fetch/result", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchTxMeasurementResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+// StopTxMeasurement stops any current Tx measurement session running on the callbox.
+func (s CallboxManagerClient) StopTxMeasurement(ctx context.Context, requestBody *StopTxMeasurementRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/txmeas/stop", nil, requestBody)
+	return err
+}
+
+// CloseTxMeasurement stops any current Tx measurement session running on the callbox and releases any resources held open.
+func (s CallboxManagerClient) CloseTxMeasurement(ctx context.Context, requestBody *CloseTxMeasurementRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/txmeas/close", nil, requestBody)
+	return err
+}

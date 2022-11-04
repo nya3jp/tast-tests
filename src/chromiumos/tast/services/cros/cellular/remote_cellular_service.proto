@@ -39,6 +39,15 @@ service RemoteCellularService {
   // QueryLTESignal returns information about the attached LTE signal.
   rpc QueryLTESignal(google.protobuf.Empty) returns (QueryLTESignalResponse) {}
 
+  // DisableSar disables dynamic SAR on the DUT. 
+  rpc DisableSar(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // EnableSar enables dynamic SAR on the DUT. 
+  rpc EnableSar(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ConfigureSar configures the dynamic SAR power level on the DUT.
+  rpc ConfigureSar(ConfigureSarRequest) returns (google.protobuf.Empty) {}
+
   // WaitForNextSms waits until a single sms added signal is received.
   rpc WaitForNextSms(google.protobuf.Empty) returns (WaitForNextSmsResponse) {}
 }
@@ -76,6 +85,10 @@ message QueryLTESignalResponse {
   double rsrp = 1;
   double rsrq = 2;
   double snr = 3;
+}
+
+message ConfigureSarRequest {
+  int64 power_level = 1;
 }
 
 message SmsMessage {

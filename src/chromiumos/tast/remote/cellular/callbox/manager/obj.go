@@ -187,3 +187,37 @@ type FetchMaxThroughputResponseBody struct {
 	Uplink   float64 `json:"uplink"`
 	Downlink float64 `json:"downlink"`
 }
+
+// ConfigureTxMeasurementRequestBody is the request body for a Tx measurement configuration request.
+type ConfigureTxMeasurementRequestBody struct {
+	Callbox     string `json:"callbox,omitempty"`
+	SampleCount int    `json:"sample_count,omitempty"`
+}
+
+// RunTxMeasurementRequestBody is the request body for a Tx measurement run request.
+type RunTxMeasurementRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchTxMeasurementRequestBody is the request body for a Tx measurement result query requests.
+type FetchTxMeasurementRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchTxMeasurementResponseBody is the response body for a Tx measurement result query requests.
+type FetchTxMeasurementResponseBody struct {
+	Min               float64 `json:"min"`
+	Max               float64 `json:"max"`
+	Average           float64 `json:"average"`
+	StandardDeviation float64 `json:"stdev"`
+}
+
+// StopTxMeasurementRequestBody is the request body for Tx measurement stop requests.
+type StopTxMeasurementRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// CloseTxMeasurementRequestBody is the request body for Tx measurement close requests.
+type CloseTxMeasurementRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
