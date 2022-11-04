@@ -16,6 +16,40 @@
       "message": "LGTM, just one simple thoughts about checking the playback status, is that possible to get those data from logcat where might be more reliable?",
       "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaefea1_b25adec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-11-04T08:31:26Z",
+      "side": 1,
+      "message": "LGTM with comment",
+      "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb766199_a74f7a0a",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtube/youtube.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-11-04T08:31:26Z",
+      "side": 1,
+      "message": "If this only need to verify there is any change in the progress bar (rather than the exact 5 seconds), consider using testing.Poll. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go",
+      "revId": "c9f1d9b1cc97ac1e51ea12952aa4e7c1ff5cb5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
