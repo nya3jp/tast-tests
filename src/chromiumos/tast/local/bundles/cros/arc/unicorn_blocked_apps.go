@@ -102,14 +102,23 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting Play Store")
+
 	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
+	// The open of Play Store is slow in some boards, octopus etc.
+	// We need retry to reopen Play Store.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := act.Start(ctx, tconn); err != nil {
+			act.Stop(ctx, tconn)
+			return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
+		}
 
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed starting Play Store or Play Store is empty: ", err)
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to open Play Store: ", err)
 	}
 
 	d, err := a.NewUIDevice(ctx)
