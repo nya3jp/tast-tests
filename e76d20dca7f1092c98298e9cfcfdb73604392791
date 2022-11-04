@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0f464c_37d1eb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-04T21:48:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07b73039_9dbfb205",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bab66a89_11115870",
@@ -131,6 +149,24 @@
       "side": 1,
       "message": "Retry helper is meant to be used with testing.Poll. It does conditional retry i.e. it does a fatal when retries are disabled. It is a convenient way to split tests into stable/unstable variants. See https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
       "parentUuid": "4736dd89_b85cadee",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44ded01_c9df8786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-04T21:48:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ba46398_ae7f55f7",
       "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
