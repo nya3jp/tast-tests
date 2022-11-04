@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae27fc39_9155d98c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-11-04T16:52:19Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "aa0310af32e42927ec20f993a9421b0e4824f22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a68dc0a_76fdbc95",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "Sorry, We need to remove Browser.Tabs.TotalIncompleteSwitchDuration2. But I\u0027m confirming this with the metric developer in the above mentrioned bug.",
       "parentUuid": "7a68dc0a_76fdbc95",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 85
+      },
+      "revId": "aa0310af32e42927ec20f993a9421b0e4824f22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143387e4_21430f6c",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-11-04T16:52:19Z",
+      "side": 1,
+      "message": "It is confirmed that now we can add all the three metrics.",
+      "parentUuid": "36d29feb_47f301bc",
       "range": {
         "startLine": 78,
         "startChar": 0,
