@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c6f3c0_652d5a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-04T00:01:13Z",
+      "side": 1,
+      "message": "nits",
+      "revId": "231239fc2122fbcb23bdd3ec7f8835b3b2a0e965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3f7792_6b4f98cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/hardware_probe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-04T00:01:13Z",
+      "side": 1,
+      "message": "Do we need this?\n\nAlso run graphics_per-build",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "231239fc2122fbcb23bdd3ec7f8835b3b2a0e965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
