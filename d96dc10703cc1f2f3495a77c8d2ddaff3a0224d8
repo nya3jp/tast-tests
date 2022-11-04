@@ -33,6 +33,24 @@
       "message": "One thing to consider is that restarting Chrome might re-enable multicast. You probably need to test with Test that use Chrome and/or Lacros",
       "revId": "d96dc10703cc1f2f3495a77c8d2ddaff3a0224d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee9f0b2_2d451637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550987
+      },
+      "writtenOn": "2022-11-04T02:57:03Z",
+      "side": 1,
+      "message": "I used power.Idle.ash (initiate an ash Chrome) and power.Idle.lacros (lacros Chrome) and print the flags in the middle/after the test. The disabler works as expected. So disable -\u003e start chrome -\u003e end of the test -\u003e re-enable. Does this cover what you mean by \"restarting Chrome\"?\n\nAlso added this test process to the CL descrpition.",
+      "parentUuid": "93d17021_f13de7bc",
+      "revId": "d96dc10703cc1f2f3495a77c8d2ddaff3a0224d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
