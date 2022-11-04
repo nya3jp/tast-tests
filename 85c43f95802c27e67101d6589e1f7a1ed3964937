@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173b1e40_b9a5e350",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-11-04T21:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d77748_37926d69",
+      "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd0208da_6acfc7f8",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-04T19:53:00Z",
       "side": 1,
       "message": "I would suggest waiting for this first as a separate step so you can fail with a more specific error message if the dialog doesn\u0027t open.  You might also be able to shorten the timeout on the IfSuccessThen above because it won\u0027t have to include the time needed to wait for the dialog.",
+      "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbdb5fe_584ce2a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-11-04T21:41:07Z",
+      "side": 1,
+      "message": "That\u0027s a good idea.  Since this just returns a single action, I think this NamedAction will accomplish what you\u0027re after.  Another idea I had was to nest another Combine inside this one.  Let me know if there\u0027s a simpler way that I missed, though.",
+      "parentUuid": "cd0208da_6acfc7f8",
       "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
