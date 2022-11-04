@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/testing"
 )
@@ -15,6 +16,7 @@ import (
 type memoryPressureParams struct {
 	enableARC    bool
 	useHugePages bool
+	bt           browser.Type
 }
 
 func init() {
@@ -31,29 +33,34 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: &memoryPressureParams{enableARC: false, useHugePages: false},
+			Val: memoryPressureParams{enableARC: false, useHugePages: false, bt: browser.TypeAsh},
 		}, {
 			Name:              "vm",
-			Val:               &memoryPressureParams{enableARC: true, useHugePages: false},
+			Val:               memoryPressureParams{enableARC: true, useHugePages: false, bt: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "huge_pages_vm",
-			Val:               &memoryPressureParams{enableARC: true, useHugePages: true},
+			Val:               memoryPressureParams{enableARC: true, useHugePages: true, bt: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "container",
-			Val:               &memoryPressureParams{enableARC: true, useHugePages: false},
+			Val:               memoryPressureParams{enableARC: true, useHugePages: false, bt: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "lacros",
+			Val:               memoryPressureParams{enableARC: false, useHugePages: false, bt: browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
 
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
-	enableARC := s.Param().(*memoryPressureParams).enableARC
-	useHugePages := s.Param().(*memoryPressureParams).useHugePages
+	enableARC := s.Param().(memoryPressureParams).enableARC
+	useHugePages := s.Param().(memoryPressureParams).useHugePages
+	bt := s.Param().(memoryPressureParams).bt
 
-	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, s.DataPath(mempressure.WPRArchiveName))
+	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, bt, s.DataPath(mempressure.WPRArchiveName))
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
@@ -64,7 +71,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		PageFileCompressionRatio: 0.40,
 	}
 
-	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Chrome(), testEnv.ARC(), p); err != nil {
+	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Browser(), testEnv.ARC(), p); err != nil {
 		s.Fatal("Run failed: ", err)
 	}
 }
