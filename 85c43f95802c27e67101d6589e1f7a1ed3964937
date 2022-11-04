@@ -69,6 +69,24 @@
       "parentUuid": "cd0208da_6acfc7f8",
       "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef8b9a1_924c369d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-04T22:57:57Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "2fbdb5fe_584ce2a0",
+      "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
