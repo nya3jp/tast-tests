@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d80b80_06fc6f8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-04T15:03:35Z",
+      "side": 1,
+      "message": "The commit message needs a lot more description, but because it\u0027s still dummy let\u0027s do something like:\n\n```\nCreate Test that checks the screen resolution between login/logout\n\nThis is a dummy test, it just logs chrome in and out.\nTODO: Add Chameleon operation that checks for the screen resolution.\n\nThis test is a migration of [display_CheckModesAfterSignOutSignIn](src/third_party/autotest/files/server/site_tests/display_CheckModesAfterSignOutSignIn/)",
+      "revId": "88d9fd9500749fffa7b0cfd3609dfa3f059f24b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
