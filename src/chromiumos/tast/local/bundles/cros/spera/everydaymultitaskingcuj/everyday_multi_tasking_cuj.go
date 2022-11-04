@@ -263,8 +263,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		if err := switchWindows(ctx, tconn, params, resources); err != nil {
 			return errors.Wrap(err, "failed to switch windows")
 		}
-
-		return takePhotoAndVideo(ctx, cr, params.ccaScriptPaths, params.outDir)
+		if err := takePhotoAndVideo(ctx, cr, params.ccaScriptPaths, params.outDir); err != nil {
+			return errors.Wrap(err, "failed to take photo and video")
+		}
+		if err := cuj.GenerateADF(ctx, tconn, params.tabletMode); err != nil {
+			return errors.Wrap(err, "failed to generate ADF")
+		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the camera scenario")
 	}

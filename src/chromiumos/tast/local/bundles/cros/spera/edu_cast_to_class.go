@@ -243,11 +243,17 @@ func EDUCastToClass(ctx context.Context, s *testing.State) {
 			uiHandler.SwitchToAppWindowByName(browserApp.Name, slideTab),
 			googleapps.EditSlideTitle(tconn, kb, title, subtitle),
 		)
-		return uiauto.NamedCombine("cast to class",
+		if err := uiauto.NamedCombine("cast to class",
 			castYoutubeVideo,
 			editSlide,
 			youtubeWeb.StopCast(),
-		)(ctx)
+		)(ctx); err != nil {
+			return err
+		}
+		if err := cuj.GenerateADF(ctx, tconn, tabletMode); err != nil {
+			return errors.Wrap(err, "failed to generate ADF")
+		}
+		return nil
 	}); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}

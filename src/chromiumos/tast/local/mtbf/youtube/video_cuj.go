@@ -267,7 +267,13 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				}
 			}(cleanupCtx)
 
-			return videoScenario(ctx, resources, param, br, videoApp, videoSource, tabChecker)
+			if err := videoScenario(ctx, resources, param, br, videoApp, videoSource, tabChecker); err != nil {
+				return errors.Wrap(err, "failed to run video test")
+			}
+			if err := cuj.GenerateADF(ctx, tconn, tabletMode); err != nil {
+				return errors.Wrap(err, "failed to generate ADF")
+			}
+			return nil
 		})
 	}
 

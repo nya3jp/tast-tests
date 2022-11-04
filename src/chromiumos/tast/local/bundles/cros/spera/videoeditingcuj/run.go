@@ -168,6 +168,9 @@ func videoEditingScenario(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 	)(ctx); err != nil {
 		return err
 	}
+	if err := cuj.GenerateADF(ctx, tconn, tabletMode); err != nil {
+		return errors.Wrap(err, "failed to generate ADF")
+	}
 	hasError = false
 	return nil
 }

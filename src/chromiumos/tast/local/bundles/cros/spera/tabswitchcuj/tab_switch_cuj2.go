@@ -587,7 +587,13 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 			}
 		}(cleanupCtx)
 
-		return tabSwitchAction(ctx, cr, tconn, &windows, tsAction, caseLevel)
+		if err := tabSwitchAction(ctx, cr, tconn, &windows, tsAction, caseLevel); err != nil {
+			return errors.Wrap(err, "failed to execute tab switch action")
+		}
+		if err := cuj.GenerateADF(ctx, tconn, isTablet); err != nil {
+			return errors.Wrap(err, "failed to generate ADF")
+		}
+		return nil
 	}); err != nil {
 		s.Fatal("Failed to execute tab switch action: ", err)
 	}

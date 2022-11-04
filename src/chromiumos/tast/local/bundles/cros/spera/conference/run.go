@@ -162,6 +162,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 				return err
 			}
 		}
+		if err := cuj.GenerateADF(ctx, tconn, tabletMode); err != nil {
+			return errors.Wrap(err, "failed to generate ADF")
+		}
 		if !isNoRoom {
 			// Close conference to collect metrics.
 			if err := conf.CloseConference(ctx); err != nil {
