@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -203,7 +204,7 @@ func testPrintingWithHotkey(ctx context.Context, tconn *chrome.TestConn) (bool, 
 	// Check if printing dialog has appeared.
 	printWindowExists := true
 	ui := uiauto.New(tconn)
-	finder := nodewith.Name("Print").ClassName("RootView").Role(role.Window)
+	finder := printpreview.PrintPreviewNode
 	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(finder)(ctx); err != nil {
 		// If function above failed, it could be either a timeout or an actual error. Check once again.
 		printWindowExists, err = ui.IsNodeFound(ctx, finder)
