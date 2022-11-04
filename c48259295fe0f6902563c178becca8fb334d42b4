@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46a2074_75c07f7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T10:08:55Z",
+      "side": 1,
+      "message": "LGTM for style, please wait for the other reviewers to take a look as well.\n\nGreat documentation for the helper!",
+      "revId": "c48259295fe0f6902563c178becca8fb334d42b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732909b3_23944d93",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/chiphelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T10:08:55Z",
+      "side": 1,
+      "message": "nit: add the parameter name",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "c48259295fe0f6902563c178becca8fb334d42b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
