@@ -16,6 +16,24 @@
       "message": "I think we have now enough coverage for removing factors. See AddRemoveFactors, it covers both VK and USS",
       "revId": "a28172683934966ae23eb7d27af4e4cb055e0610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc3e407_2cb3c036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-11-04T19:45:31Z",
+      "side": 1,
+      "message": "Got it. The test was initially only for removing the last auth factor. But I want to test more about remove. Do you think this remove-last-auth-factor test has any value?",
+      "parentUuid": "43a8a286_a77866c9",
+      "revId": "a28172683934966ae23eb7d27af4e4cb055e0610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
