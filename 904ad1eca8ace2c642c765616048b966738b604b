@@ -371,6 +371,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09fc94fa_199b71eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T23:43:34Z",
+      "side": 1,
+      "message": "Apologies if I\u0027m misunderstanding, won\u0027t we be unable to match by Type + GUID if GUID is missing from the shill network properties?",
+      "parentUuid": "0f4a57da_4aeab8de",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19122c0a_d44931aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
@@ -500,6 +524,30 @@
       "side": 1,
       "message": "Agreed that we don\u0027t need to reverify anything that is already ensured.",
       "parentUuid": "e4fe5ee6_87ce6ba2",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf64e9f2_75b351ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T23:43:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3082640_6338f923",
       "range": {
         "startLine": 35,
         "startChar": 1,
