@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944d8388_f35aba9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T18:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71627c8d_0ef93903",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10963aa8_04f0efbe",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-11-03T16:39:02Z",
       "side": 1,
       "message": "nit: I realize this is already in the \u0027network\u0027 package, but I still think that NetworkHealt would be more clear here and in the filename.",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3c70d0_01c329c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T18:48:16Z",
+      "side": 1,
+      "message": "The linter seems to spit out an error about how using \"network.Network...\" causes too much \"stutter\". Is this a case where the linter might be a bit off base?",
+      "parentUuid": "10963aa8_04f0efbe",
       "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f913ee9a_a14cd61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T18:48:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1aa9d0b_efc50723",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39e12f40_74b5a23d",
@@ -116,6 +170,24 @@
       "writtenOn": "2022-11-03T16:39:02Z",
       "side": 1,
       "message": "I don\u0027t see any obvious reason why this shouldn\u0027t match the number of connected services. Perhaps there is a bug in the JS/golang code. I would add some logging.",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45fed95a_f4c7e8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T18:48:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39e12f40_74b5a23d",
       "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
