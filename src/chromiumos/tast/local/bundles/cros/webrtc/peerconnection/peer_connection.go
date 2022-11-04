@@ -59,7 +59,6 @@ const (
 )
 
 const (
-
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
 	LoopbackFile = "loopback_peerconnection.html"
 
@@ -93,14 +92,15 @@ type RTCTestParams struct {
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
-	if simulcast && svc != "" {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, params RTCTestParams) error {
+	// verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType)
+	if params.simulcasts > 1 && params.svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
-	if displayMediaType != "" && (simulcast || svc != "") {
+	if params.displayMediaType != "" && (params.simulcasts > 1 || params.svc != "") {
 		return errors.New("Screen capture can't be used with simulcast or SVC")
 	}
-	if verifyDecoderMode != NoVerifyDecoderMode && verifyEncoderMode != NoVerifyEncoderMode {
+	if params.verifyDecoderMode != NoVerifyDecoderMode && params.verifyEncoderMode != NoVerifyEncoderMode {
 		return errors.New("Decoder and encoder implementation cannot be verified simultaneously")
 	}
 
@@ -137,25 +137,20 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	const simulcastStreams = 3
-	simulcasts := 0
-	if simulcast {
-		simulcasts = simulcastStreams
-	}
-	if err := conn.Call(ctx, nil, "start", profile, simulcasts, svc, displayMediaType); err != nil {
+	if err := conn.Call(ctx, nil, "start", params.profile, params.streamWidth, params.streamHeight, params.simulcasts, params.svc, params.displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	if verifyDecoderMode == NoVerifyDecoderMode && verifyEncoderMode == NoVerifyEncoderMode {
+	if params.verifyDecoderMode == NoVerifyDecoderMode && params.verifyEncoderMode == NoVerifyEncoderMode {
 		return nil
 	}
 
-	decode := verifyDecoderMode != NoVerifyDecoderMode
+	decode := params.verifyDecoderMode != NoVerifyDecoderMode
 	var expectedHW bool
 	if decode {
-		expectedHW = verifyDecoderMode == VerifyHWDecoderUsed
+		expectedHW = params.verifyDecoderMode == VerifyHWDecoderUsed
 	} else {
-		expectedHW = verifyEncoderMode == VerifyHWEncoderUsed
+		expectedHW = params.verifyEncoderMode == VerifyHWEncoderUsed
 	}
 
 	implName, isHWImpl, err := getCodecImplementation(ctx, conn, decode)
@@ -170,9 +165,9 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrapf(err, "expected implementation not found, got %v, looking for %s codec", implName, expectedCodec)
 	}
 
-	if simulcast && verifyEncoderMode == VerifyHWEncoderUsed {
-		isImplHWInAdapter := make([]bool, simulcastStreams)
-		for i := 0; i < simulcastStreams; i++ {
+	if params.simulcasts > 1 && params.verifyEncoderMode == VerifyHWEncoderUsed {
+		isImplHWInAdapter := make([]bool, params.simulcasts)
+		for i := 0; i < params.simulcasts; i++ {
 			isImplHWInAdapter[i] = true
 		}
 		if err := checkSimulcastEncImpl(implName, isImplHWInAdapter); err != nil {

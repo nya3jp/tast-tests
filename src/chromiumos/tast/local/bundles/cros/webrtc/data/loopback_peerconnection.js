@@ -6,8 +6,7 @@ let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
 async function start(
-  profile, simulcasts, svcScalabilityMode = '', displayMediaType = '',
-  width = 1280, height = 720) {
+  profile, width, height, simulcasts, svcScalabilityMode, displayMediaType) {
   let constraints = {audio : false, video : {width : width, height : height}};
   if (displayMediaType !== '') {
     constraints.video.displaySurface = displayMediaType;
