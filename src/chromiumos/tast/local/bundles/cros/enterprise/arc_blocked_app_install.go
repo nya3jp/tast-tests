@@ -53,6 +53,7 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 		maxAttempts           = 2
 		installButtonText     = "install"
 		testPackage           = "com.google.android.calculator"
+		testPackageTitle      = "Calculator"
 		defaultUITimeout      = 1 * time.Minute
 		appUnavailableMessage = "Your administrator has not given you access to this item."
 	)
@@ -127,7 +128,7 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 			return s.HasError() || retErr != nil
 		})
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts, ".*"); err != nil {
 			return rl.Exit("verify Play Store is not empty", err)
 		}
 

@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -24,7 +23,6 @@ import (
 )
 
 const (
-	packagesVar    = "enterprise.ARCProvisioning.packages"
 	withRetries    = true
 	withoutRetries = false
 )
@@ -40,7 +38,6 @@ func init() {
 		Timeout:      15 * time.Minute,
 		VarDeps: []string{
 			arcent.LoginPoolVar,
-			packagesVar,
 		},
 		Params: []testing.Param{
 			{
@@ -91,7 +88,9 @@ func init() {
 // - check that force-installed Android packages cannot be uninstalled.
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
-		bootTimeout = 4 * time.Minute
+		bootTimeout      = 4 * time.Minute
+		testPackage      = "com.google.android.calculator"
+		testPackageTitle = "Caculator"
 	)
 
 	rl := &retry.Loop{Attempts: 1,
@@ -106,7 +105,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	login := chrome.GAIALogin(creds)
 
-	packages := strings.Split(s.RequiredVar(packagesVar), ",")
+	packages := []string{testPackage}
 
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeForceInstalled)
 	if err != nil {
@@ -175,7 +174,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return rl.Exit("verify packages are uninstallable", err)
 		}
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts); err != nil {
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts, testPackageTitle); err != nil {
 			return rl.Exit("verify Play Store is not empty", err)
 		}
 

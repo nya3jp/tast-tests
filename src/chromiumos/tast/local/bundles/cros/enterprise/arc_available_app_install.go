@@ -47,6 +47,7 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 		bootTimeout      = 4 * time.Minute
 		maxAttempts      = 2
 		testPackage      = "com.google.android.calculator"
+		testPackageTitle = "Calculator"
 		defaultUITimeout = 1 * time.Minute
 	)
 
@@ -114,7 +115,7 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 			return exit("wait for provisioning", err)
 		}
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts, testPackageTitle); err != nil {
 			return exit("verify Play Store is not empty", err)
 		}
 

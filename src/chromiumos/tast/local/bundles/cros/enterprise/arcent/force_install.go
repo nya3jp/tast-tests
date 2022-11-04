@@ -117,6 +117,7 @@ func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcP
 	arcPolicy := &policy.ArcPolicy{
 		Val: &policy.ArcPolicyValue{
 			Applications:              forceInstalledApps,
+			PlayStoreMode:             PlayStoreModeAllowList,
 			PlayLocalPolicyEnabled:    true,
 			PlayEmmApiInstallDisabled: true,
 		},
@@ -144,12 +145,16 @@ func WaitForInstallButton(ctx context.Context, d *ui.Device) (*ui.Object, error)
 }
 
 // EnsurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
+func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int, appTitle string) (retErr error) {
 	const (
-		searchBarTextStart = "Search for apps"
-		emptyPlayStoreText = "No results found."
-		serverErrorText    = "Server error|Error.*server.*"
-		tryAgainButtonText = "Try again"
+		searchBarTextStart   = "Search for apps"
+		emptyPlayStoreText   = "No results found."
+		serverErrorText      = "Server error|Error.*server.*"
+		tryAgainButtonText   = "Try again"
+		appNodeResourceID1   = "com.android.vending:id/mini_blurb"
+		appNodeClassName1    = "android.widget.FrameLayout"
+		appNodeClassName2    = "android.view.View"
+		appContentDescPrefix = "(?i)App: "
 	)
 
 	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
@@ -178,19 +183,27 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 				return testing.PollBreak(errors.New("Play Store closed"))
 			}
 
-			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-				return errors.New("Play Store is empty")
-			}
-
 			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
 				return testing.PollBreak(err)
+			}
+
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return errors.New("Play Store is empty")
 			}
 
 			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
 				return errors.Wrap(err, "Play Store UI screen not shown")
 			}
 
-			return nil
+			if err := d.Object(ui.ResourceID(appNodeResourceID1), ui.ClassName(appNodeClassName1), ui.DescriptionMatches(appContentDescPrefix+appTitle)).Exists(ctx); err != nil {
+				return nil
+			}
+
+			if err := d.Object(ui.ClassName(appNodeClassName2), ui.DescriptionMatches(appContentDescPrefix+appTitle)).Exists(ctx); err != nil {
+				return nil
+			}
+
+			return errors.New("Play Store is empty")
 		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
 	}, &testing.PollOptions{Interval: 10 * time.Second})
 }
