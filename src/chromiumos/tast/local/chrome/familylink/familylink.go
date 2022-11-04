@@ -445,3 +445,69 @@ func NavigateExtensionApprovalFlow(ctx context.Context, cr *chrome.Chrome, tconn
 
 	return nil
 }
+
+// NavigateParentAccessDialog chooses the supplied parent account from the dropdown and authenticates by entering the password.
+func NavigateParentAccessDialog(ctx context.Context, tconn *chrome.TestConn, parentEmail, parentPassword string) error {
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+
+	// Ensure the contents of the dialog have loaded
+	parentPasswordField := nodewith.Name("Parent password").Role(role.TextField)
+	if err := ui.WaitUntilExists(parentPasswordField)(ctx); err != nil {
+		return errors.Wrap(err, "Dialog contents failed to load")
+	}
+
+	// Select the supplied parent email
+	if err := maybeSelectParentFromDropdown(ctx, tconn, parentEmail); err != nil {
+		return errors.Wrap(err, "failed to select correct parent")
+	}
+
+	testing.ContextLog(ctx, "Clicking password field")
+	if err := ui.LeftClick(parentPasswordField)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click password field")
+	}
+
+	testing.ContextLog(ctx, "Typing password")
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Type(ctx, parentPassword+"\n"); err != nil {
+		return errors.Wrap(err, "failed to type password")
+	}
+
+	// Proceed to the after screen.
+	testing.ContextLog(ctx, "Clicking Next")
+	nextButton := nodewith.Name("Next").Role(role.Button)
+	if err := ui.LeftClick(nextButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to authenticate")
+	}
+	return nil
+}
+
+// maybeSelectParentFromDropdown ensures that the supplied parent email is selected from the dropdown.
+func maybeSelectParentFromDropdown(ctx context.Context, tconn *chrome.TestConn, parentEmail string) error {
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+
+	selectedParentEmail := nodewith.Name(parentEmail).Role(role.StaticText)
+	if err := ui.Exists(selectedParentEmail)(ctx); err != nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Selecting parent from dropdown")
+	dropdown := nodewith.Name("Parent account selector").Role(role.ComboBoxMenuButton)
+	if err := ui.Exists(dropdown)(ctx); err != nil {
+		return errors.Wrap(err, "failed to select parent email")
+	}
+
+	if err := ui.LeftClick(dropdown)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click account selector")
+	}
+
+	parentEmailOption := nodewith.NameContaining(parentEmail).Role(role.ListBoxOption)
+	if err := ui.LeftClick(parentEmailOption)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click parent account in dropdown")
+	}
+	return nil
+}
