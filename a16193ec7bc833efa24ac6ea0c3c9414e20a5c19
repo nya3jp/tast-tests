@@ -33,6 +33,24 @@
       "message": "+kamesan@, should we keep these logs from media_v4l2_device.cc [1] in stdout? IMO filtering stdout like this could be fragile, so I am thinking maybe we should tweak the source instead.\n\n[1] http://cs/chromeos_public/src/platform2/camera/hal/usb/tests/media_v4l2_device.cc;rcl\u003d58ab12e7b21f02f3e45b231d3f66d5051eda63f5",
       "revId": "a16193ec7bc833efa24ac6ea0c3c9414e20a5c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e47fa8_ca655a0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-11-04T12:46:58Z",
+      "side": 1,
+      "message": "I was not sure if other tests depend on that text, and this is why I chose to implement a filter. Anyway works for me. \n\nIf kamesan change requires a lot of review we could land this now and revert when we have a final solution.",
+      "parentUuid": "18fac267_f4350b1a",
+      "revId": "a16193ec7bc833efa24ac6ea0c3c9414e20a5c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
