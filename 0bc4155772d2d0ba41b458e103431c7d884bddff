@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73086aac_c6ad3de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-11-04T07:54:26Z",
+      "side": 1,
+      "message": "LGTM from tast side. Please get LGTM from team before merging.",
+      "revId": "0bc4155772d2d0ba41b458e103431c7d884bddff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
