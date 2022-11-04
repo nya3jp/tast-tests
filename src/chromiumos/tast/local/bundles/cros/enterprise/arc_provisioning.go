@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -24,7 +23,6 @@ import (
 )
 
 const (
-	packagesVar    = "enterprise.ARCProvisioning.packages"
 	withRetries    = true
 	withoutRetries = false
 )
@@ -40,7 +38,6 @@ func init() {
 		Timeout:      15 * time.Minute,
 		VarDeps: []string{
 			arcent.LoginPoolVar,
-			packagesVar,
 		},
 		Params: []testing.Param{
 			{
@@ -92,6 +89,7 @@ func init() {
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout = 4 * time.Minute
+		testPackage = "com.google.android.calculator"
 	)
 
 	rl := &retry.Loop{Attempts: 1,
@@ -106,7 +104,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	login := chrome.GAIALogin(creds)
 
-	packages := strings.Split(s.RequiredVar(packagesVar), ",")
+	packages := []string{testPackage}
 
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeForceInstalled)
 	if err != nil {
