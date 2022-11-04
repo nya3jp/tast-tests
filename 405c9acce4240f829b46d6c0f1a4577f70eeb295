@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f54c112_1f984df4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Thank you for your help!",
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ea72d6_f52bb79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "I couldn\u0027t get the fsapp.FileExist() to work, unless I selected the file first even though the file did exist before selecting it.I don\u0027t understand why I have to first select the file in order for the fsapp.FileExist() to work, but it works.",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

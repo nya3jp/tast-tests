@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff63f680_5c7c6766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Sounds bueno",
+      "parentUuid": "b15a12b1_0e0ec0f1",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 182
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd96a222_4f0b967e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "What is this line of code doing? :)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40997777_27d67474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "It is printing an error but not returning it. Thank you",
+      "parentUuid": "fd96a222_4f0b967e",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c4e6ed_4ea516df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75077e7a_04ee5c95",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 64
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8628db_eff0846e",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc4757f_1780c0c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8628db_eff0846e",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6478f5d_8d22fb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff84b36_f0e107af",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 89
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76e2f9ec_87cdf0a1",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 120
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e48da37_710cf6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76e2f9ec_87cdf0a1",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003837a4_3889e7cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "8ac45962_09103dfc",
+      "range": {
+        "startLine": 146,
+        "startChar": 16,
+        "endLine": 146,
+        "endChar": 26
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b760b992_6526b697",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 44
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967252aa_21c31ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b760b992_6526b697",
       "range": {
         "startLine": 147,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b8cdbb_339764eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef3f150_b7f38e8b",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec672058_e5b7ad4c",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 70
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69437b35_d87602a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec672058_e5b7ad4c",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d084dfd_32a62122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "829cd2bc_23555be0",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3c9b51_0a068894",
@@ -284,6 +548,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccb2304_f66145ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3c9b51_0a068894",
       "range": {
         "startLine": 159,
         "startChar": 0,
@@ -340,6 +628,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e9a4fe_d87f474a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "I did not know how to use them. Now I do. Thank you",
+      "parentUuid": "20534c92_a926ec64",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632d736c_2c18c1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Let me add a check for that. Thank you",
+      "parentUuid": "3aa07851_7b4884ce",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 122
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d257ed33_9bc08cb8",
@@ -353,6 +689,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "Same question as above :)",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 125
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21802f3_1c0699f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d257ed33_9bc08cb8",
       "range": {
         "startLine": 162,
         "startChar": 0,
@@ -386,6 +746,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef5d8a9_38506719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "I want the verify the holding space bubble is gone so now I\u0027ll check for a holding space tray child bubble. Thank you",
+      "parentUuid": "38149370_12fe8c70",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c56c036_7e779985",
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b202f63_fbd6cf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c56c036_7e779985",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 100
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "822c20cb_2d99295b",
@@ -422,6 +830,30 @@
       "writtenOn": "2022-11-02T23:10:48Z",
       "side": 1,
       "message": "This code may not be reached and we may leak created files?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "ad19ac92b4a464fb81d3022abac8b070b672a433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a9ae61_f2baa5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-04T20:56:16Z",
+      "side": 1,
+      "message": "True true. Let me move it up. Thank you",
+      "parentUuid": "822c20cb_2d99295b",
       "range": {
         "startLine": 171,
         "startChar": 0,
