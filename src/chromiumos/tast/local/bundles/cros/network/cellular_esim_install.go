@@ -30,7 +30,7 @@ func init() {
 		Desc:         "Tests the add eSIM profile via activation code flow in the success and failure cases",
 		Contacts: []string{
 			"hsuregan@google.com",
-			"cros-connectivity@google.com@google.com",
+			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
@@ -84,7 +84,7 @@ func CellularESimInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open mobile data subpage: ", err)
 	}
 
-	if err := waitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
+	if err := ossettings.WaitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait until refresh profile complete: ", err)
 	}
 
@@ -96,7 +96,7 @@ func CellularESimInstall(ctx context.Context, s *testing.State) {
 
 	s.Log("Fetched Stork profile with activation code: ", activationCode)
 
-	// Use an incorrect activation code.
+	s.Log("Flow 1: Use an incorrect activation code for an eSIM profile that does not require a confirmation code")
 	var couldNotInstallProfileText = nodewith.NameContaining("Couldn't install eSIM profile").Role(role.StaticText)
 	var incorrectActivationCode = string(activationCode) + "wrong"
 	if err := addESimWithActivationCode(ctx, tconn, incorrectActivationCode); err != nil {
@@ -109,7 +109,7 @@ func CellularESimInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Incorrect activation code user journey fails: ", err)
 	}
 
-	// Use a correct activation code.
+	s.Log("Flow 2: Use a correct activation code for an eSIM profile that does not require a confirmation code")
 	var networkAddedText = nodewith.NameContaining("Network added").Role(role.StaticText)
 	if err := addESimWithActivationCode(ctx, tconn, string(activationCode)); err != nil {
 		s.Fatal("Failed to add esim profile with correct activation code: ", err)
@@ -124,30 +124,79 @@ func CellularESimInstall(ctx context.Context, s *testing.State) {
 	if err := verifyTestESimProfile(ctx, tconn); err != nil {
 		s.Fatal("Failed to verify newly installed stork profile: ", err)
 	}
-}
 
-func waitUntilRefreshProfileCompletes(ctx context.Context, tconn *chrome.TestConn) error {
-	ui := uiauto.New(tconn).WithTimeout(1 * time.Minute)
-	refreshProfileText := nodewith.NameContaining("This may take a few minutes").Role(role.StaticText)
-	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(refreshProfileText)(ctx); err == nil {
-		if err := ui.WithTimeout(time.Minute).WaitUntilGone(refreshProfileText)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait until refresh profile complete")
-
-		}
+	// Remove any existing profiles on test euicc so that new profile to be installed can be verified.
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
+		s.Fatal("Failed to reset test euicc: ", err)
 	}
-	return nil
-}
 
-func addESimWithActivationCode(ctx context.Context, tconn *chrome.TestConn, activationCode string) error {
-	if err := waitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait until refresh profile complete")
+	confirmationCode := "0909"
+	incorrectConfirmationCode := "9090"
+	maxConfirmationCodeAttempts := 2
+	var confirmationCodeInput = nodewith.NameRegex(regexp.MustCompile("Confirmation code")).Focusable().First()
+	activationCode, cleanupFunc, err = stork.FetchStorkProfileWithCustomConfirmationCode(ctx, confirmationCode, maxConfirmationCodeAttempts)
+	if err != nil {
+		s.Fatal("Failed to fetch Stork profile: ", err)
 	}
+	defer cleanupFunc(ctx)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to open the keyboard")
+		s.Fatal("Failed to open the keyboard: ", err)
 	}
 	defer kb.Close()
+
+	s.Log("Flow 3: Use a correct activation code for an eSIM profile that requires a confirmation code. Proceed to use an incorrect confirmation code, then subsequently the correct confirmation code")
+	if err := addESimWithActivationCode(ctx, tconn, string(activationCode)); err != nil {
+		s.Fatal("Failed to add esim profile with correct activation code: ", err)
+	}
+	if err := uiauto.Combine("Select confirmation code input to enter incorrect code",
+		mdp.WithTimeout(3*time.Minute).WaitUntilExists(confirmationCodeInput),
+		mdp.LeftClick(confirmationCodeInput),
+	)(ctx); err != nil {
+		s.Fatal("Enter incorrect confirmation code user journey fails: ", err)
+	}
+
+	if err := kb.Type(ctx, incorrectConfirmationCode); err != nil {
+		s.Fatal("Failed to type incorrect confirmation code: ", err)
+	}
+
+	var incorrectActivationCodeSubtext = nodewith.NameContaining("Unable to connect to this profile.").Role(role.StaticText)
+	if err := uiauto.Combine("Verify that incorrect confirmation code subtext shows",
+		mdp.LeftClick(ossettings.ConfirmButton.Focusable()),
+		mdp.WithTimeout(3*time.Minute).WaitUntilExists(incorrectActivationCodeSubtext),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify that incorrect confirmation code subtext shows: ", err)
+	}
+
+	if err := uiauto.Combine("Re-select and highlight incorrect confirmation code",
+		mdp.WaitUntilExists(confirmationCodeInput.Focusable()),
+		mdp.DoubleClick(confirmationCodeInput),
+	)(ctx); err != nil {
+		s.Fatal("Failed to highlight incorrect confirmation code: ", err)
+	}
+
+	if err := kb.Type(ctx, confirmationCode); err != nil {
+		s.Fatal("Failed to type confirmation code: ", err)
+	}
+
+	if err := uiauto.Combine("Exit add cellular eSIM flow after using correct confirmation code",
+		mdp.LeftClick(ossettings.ConfirmButton.Focusable()),
+		mdp.WithTimeout(3*time.Minute).WaitUntilExists(networkAddedText),
+		mdp.LeftClick(ossettings.DoneButton.Focusable()),
+	)(ctx); err != nil {
+		s.Fatal("Correct activation code and confirmation code user journey fails: ", err)
+	}
+
+	if err := verifyTestESimProfile(ctx, tconn); err != nil {
+		s.Fatal("Failed to verify newly installed stork profile: ", err)
+	}
+}
+
+func addESimWithActivationCode(ctx context.Context, tconn *chrome.TestConn, activationCode string) error {
+	if err := ossettings.WaitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait until refresh profile complete")
+	}
 
 	ui := uiauto.New(tconn).WithTimeout(1 * time.Minute)
 
@@ -155,35 +204,11 @@ func addESimWithActivationCode(ctx context.Context, tconn *chrome.TestConn, acti
 		return errors.Wrap(err, "failed to click the Add Cellular Button")
 	}
 
-	var setupNewProfile = nodewith.NameContaining("Set up new profile").Role(role.Button).Focusable()
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(setupNewProfile)(ctx); err == nil {
-		if err := ui.LeftClick(setupNewProfile)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click set up new profile button")
-		}
-	}
-
-	var activationCodeInput = nodewith.NameRegex(regexp.MustCompile("Activation code")).Focusable().First()
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(activationCodeInput)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find activation code input field")
-	}
-
-	if err := ui.LeftClick(activationCodeInput)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find activation code input field")
-	}
-
-	if err := kb.Type(ctx, "LPA:"+activationCode); err != nil {
-		return errors.Wrap(err, "could not type activation code")
-	}
-
-	if err := ui.LeftClick(ossettings.NextButton.Focusable())(ctx); err != nil {
-		return errors.Wrap(err, "could not click Next button")
-	}
-
-	return nil
+	return ossettings.AddESimWithActivationCode(ctx, tconn, activationCode)
 }
 
 func verifyTestESimProfile(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := waitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
+	if err := ossettings.WaitUntilRefreshProfileCompletes(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait until refresh profile complete")
 	}
 
