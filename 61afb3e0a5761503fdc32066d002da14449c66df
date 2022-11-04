@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "745f9cb7_11ca9533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-04T03:44:11Z",
+      "side": 1,
+      "message": "There is no existing function to make the DUT select the best service and connect. I can implement this function using the dBus API of manager ScanAndConnectToBestServices(). In MultiAuth test, the DUT \n1. connects to the two APs and disconnect\n2. call ScanAndConnectToBestServices() to select the best service. \n3. Verify the connection to AP1.",
+      "parentUuid": "f458bb21_7ce0df96",
+      "revId": "61afb3e0a5761503fdc32066d002da14449c66df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fa16b95_15a8fdf7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 13
