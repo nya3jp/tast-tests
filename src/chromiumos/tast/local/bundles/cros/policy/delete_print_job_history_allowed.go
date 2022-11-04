@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -124,7 +125,7 @@ func DeletePrintJobHistoryAllowed(ctx context.Context, s *testing.State) {
 			// Print the current page.
 			if err := uiauto.Combine("Select the printer and print",
 				kb.AccelAction("Ctrl+P"),
-				uia.WaitUntilExists(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
+				uia.WaitUntilExists(printpreview.PrintPreviewNode),
 				uia.LeftClick(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
 				uia.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
 				uia.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),

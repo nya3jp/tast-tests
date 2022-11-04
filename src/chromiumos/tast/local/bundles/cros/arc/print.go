@@ -145,7 +145,9 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before selecting a printer.
 	s.Log("Waiting for print preview to load")
-	printpreview.WaitForPrintPreview(tconn)(ctx)
+	if err := printpreview.WaitForPrintPreview(tconn)(ctx); err != nil {
+		s.Fatal("Failed to load print preview: ", err)
+	}
 
 	// Select printer.
 	s.Log("Selecting printer")
@@ -155,7 +157,9 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before changing settings.
 	s.Log("Waiting for print preview to load")
-	printpreview.WaitForPrintPreview(tconn)(ctx)
+	if err := printpreview.WaitForPrintPreview(tconn)(ctx); err != nil {
+		s.Fatal("Failed to load print preview: ", err)
+	}
 
 	s.Log("Changing print settings")
 
@@ -176,7 +180,9 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before starting the print job.
 	s.Log("Waiting for print preview to load")
-	printpreview.WaitForPrintPreview(tconn)(ctx)
+	if err := printpreview.WaitForPrintPreview(tconn)(ctx); err != nil {
+		s.Fatal("Failed to load print preview: ", err)
+	}
 
 	// Click the print button to start the print job.
 	s.Log("Clicking print button")
