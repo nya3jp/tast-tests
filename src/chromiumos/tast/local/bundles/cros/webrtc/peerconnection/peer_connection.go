@@ -59,6 +59,30 @@ const (
 	SimulcastAdapterName = "SimulcastEncoderAdapter"
 )
 
+// RTCTestParams is used to describe the config used to run RTCPeerConnectionPerf.
+type RTCTestParams struct {
+	verifyDecoderMode VerifyHWAcceleratorMode // The verification mode for decoder.
+	verifyEncoderMode VerifyHWAcceleratorMode // The verification mode for encoder.
+	profile           string                  // Codec to try, e.g. VP8, VP9.
+	streamWidth       int                     // Width of video to be sent in the peerconnection.
+	streamHeight      int                     // Height of video to be sent in the peerconnection.
+	// ScalableVideoCodec "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	svc string
+	// The number of video streams in simulcast.
+	simulcasts int
+	// If non-empty, the media to send through the RTC connection will be obtained
+	// using getDisplayMedia() and the value corresponds to the surface type. If
+	// empty, the media to send will be obtained using getUserMedia().
+	displayMediaType DisplayMediaType
+
+	// Below are used only in performance tests.
+	videoGridDimension int    // Dimension of the grid in which to embed the RTCPeerConnection <video>.
+	videoGridFile      string // Name of the video file to fill up the grid with, if needed.
+	// The array each element of which is true iff -th smaller resolution should be a hardware encoder implementation.
+	simulcastHWEncs []bool
+}
+
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
 func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
