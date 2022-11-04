@@ -40,150 +40,79 @@ const (
 	gpuMeasuring = 10 * time.Second
 )
 
-// RTCTestOptions is used to describe the config used to run RTCPeerConnectionPerf.
-type RTCTestOptions struct {
-	verifyHWDecoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware decoding is used.
-	verifyHWEncoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware encoding is used.
-	profile            string                  // Codec to try, e.g. VP8, VP9.
-	streamWidth        int                     // Width of video to be sent in the peerconnection.
-	streamHeight       int                     // Height of video to be sent in the peerconnection.
-	videoGridDimension int                     // Dimension of the grid in which to embed the RTCPeerConnection <video>.
-	videoGridFile      string                  // Name of the video file to fill up the grid with, if needed.
-	// ScalableVideoCodec "scalabilityMode" identifier.
-	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
-	svc string
-	// The number of video streams in simulcast.
-	simulcasts int
-	// The array each element of which is true iff -th smaller resolution should be a hardware encoder implementation.
-	simulcastHWEncs []bool
-	// If non-empty, the media to send through the RTC connection will be obtained
-	// using getDisplayMedia() and the value corresponds to the surface type. If
-	// empty, the media to send will be obtained using getUserMedia().
-	displayMediaType DisplayMediaType
+func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode, verifyEncoderMode VerifyHWAcceleratorMode) RTCTestParams {
+	return RTCTestParams{
+		verifyDecoderMode:  verifyDecoderMode,
+		verifyEncoderMode:  verifyEncoderMode,
+		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
+		videoGridDimension: 1,
+	}
 }
 
-// MakeTestOptions creates RTCTestoptions for profile, width and height and with
+// MakeHWTestParams creates RTCTestParams for profile, width and height and with
 // HW Encoding/Decoding enabled.
-func MakeTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
+func MakeHWTestParams(profile string, width, height int) RTCTestParams {
+	return makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
 }
 
-// MakeSWTestOptions creates RTCTestoptions for profile, width and height and
-// with HW Encoding/Decoding disabled.
-func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifySWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
-}
-
-// MakeSimulcastTestOptions creates RTCTestOptions for profile, width and height.
-// While a hardware decoder is used, if hwEncs[i] is true then a hardware encoder is used for i-th stream in simulcast.
-func MakeSimulcastTestOptions(profile string, width, height int, hwEncs []bool) RTCTestOptions {
-	verifyHWEncoding := VerifySWEncoderUsed
-	if hwEncs[len(hwEncs)-1] {
-		verifyHWEncoding = VerifyHWEncoderUsed
-	}
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   verifyHWEncoding,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "", // L1T3?
-		simulcasts:         len(hwEncs),
-		simulcastHWEncs:    hwEncs,
-		displayMediaType:   "",
-	}
-}
-
-// MakeSWEncoderTestOptions creates RTCTestoptions for profile, width and height and
+// MakeSWEncoderTestParams creates RTCTestParams for profile, width and height and
 // with HW Decoding and SW Encoding.
-func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
+func MakeSWEncoderTestParams(profile string, width, height int) RTCTestParams {
+	return makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifySWEncoderUsed)
 }
 
-// MakeTestOptionsWithSVC creates RTCTestoptions for profile, width and height with HW
-// Decoding enabled and with a layer structure as per svc definition. hwEnc specifies
-// enabling a hardware encoder.
-func MakeTestOptionsWithSVC(profile string, width, height int, svc string, hwEnc bool) RTCTestOptions {
-	verifyHWEncoding := VerifySWEncoderUsed
+// MakeSWTestParams creates RTCTestParams for profile, width and height and
+// with HW Encoding/Decoding disabled.
+func MakeSWTestParams(profile string, width, height int) RTCTestParams {
+	return makePerfRTCTestParams(profile, width, height, VerifySWDecoderUsed, VerifySWEncoderUsed)
+}
+
+// MakeSimulcastTestParams creates RTCTestParams for profile, width and height.
+// While a hardware decoder is used, if hwEncs[i] is true then a hardware encoder is used for i-th stream in simulcast.
+func MakeSimulcastTestParams(profile string, width, height int, hwEncs []bool) RTCTestParams {
+	verifyEncoderMode := VerifySWEncoderUsed
+	if hwEncs[len(hwEncs)-1] {
+		verifyEncoderMode = VerifyHWEncoderUsed
+	}
+
+	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
+	params.svc = "" // L1T3?
+	params.simulcasts = len(hwEncs)
+	params.simulcastHWEncs = hwEncs
+	return params
+}
+
+// MakeHWTestParamsWithSVC creates RTCTestParams for profile, width and height
+// with HW Decoding enabled and with a layer structure as per svc definition.
+// hwEnc specifies enabling a hardware encoder.
+func MakeHWTestParamsWithSVC(profile string, width, height int, svc string, hwEnc bool) RTCTestParams {
+	verifyEncoderMode := VerifySWEncoderUsed
 	if hwEnc {
-		verifyHWEncoding = VerifyHWEncoderUsed
+		verifyEncoderMode = VerifyHWEncoderUsed
 	}
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   verifyHWEncoding,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                svc,
-		displayMediaType:   "",
-	}
+	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
+	params.svc = svc
+	return params
 }
 
-// MakeTestOptionsWithVideoGrid creates RTCTestoptions for profile, width and height with HW
-// Encoding/Decoding enabled and embedding the RTCPeerConnection in a grid of
-// videoGridDimension x videoGridDimension videoGridFiles.
-func MakeTestOptionsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: videoGridDimension,
-		videoGridFile:      videoGridFile,
-		svc:                "",
-		displayMediaType:   "",
-	}
+// MakeHWTestParamsWithVideoGrid creates RTCTestParams for profile, width and
+// height with HW Encoding/Decoding enabled and embedding the RTCPeerConnection
+// in a grid of videoGridDimension x videoGridDimension videoGridFiles.
+func MakeHWTestParamsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestParams {
+	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+	params.videoGridDimension = videoGridDimension
+	params.videoGridFile = videoGridFile
+	return params
 }
 
-// MakeCaptureTestOptions creates RTCTestoptions for profile, width, height and displayMediaType
+// MakeCaptureTestParams creates RTCTestParams for profile, width, height and displayMediaType
 // and with HW Encoding/Decoding enabled.
-func MakeCaptureTestOptions(profile string, width, height int, displayMediaType DisplayMediaType) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   displayMediaType,
-	}
+func MakeCaptureTestParams(profile string, width, height int, displayMediaType DisplayMediaType) RTCTestParams {
+	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+	params.displayMediaType = displayMediaType
+	return params
 }
 
 // WebRTC Stats collected on transmission side.
@@ -356,7 +285,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, streamWidth, stream
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, videoURL, outDir string, opts RTCTestOptions, p *perf.Values) error {
+func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, videoURL, outDir string, params RTCTestParams, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -378,7 +307,7 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", opts.profile, opts.simulcasts, opts.svc, opts.displayMediaType, opts.streamWidth, opts.streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", params.profile, params.simulcasts, params.svc, params.displayMediaType, params.streamWidth, params.streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
@@ -386,10 +315,10 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 	if err != nil {
 		return errors.Wrap(err, "failed to get decoder implementation name")
 	}
-	if opts.verifyHWDecoding == VerifyHWDecoderUsed && !hwDecoderUsed {
+	if params.verifyDecoderMode == VerifyHWDecoderUsed && !hwDecoderUsed {
 		return errors.Errorf("hardware decode accelerator wasn't used, got %s", decImplName)
 	}
-	if opts.verifyHWDecoding == VerifySWDecoderUsed && hwDecoderUsed {
+	if params.verifyDecoderMode == VerifySWDecoderUsed && hwDecoderUsed {
 		return errors.Errorf("software decode wasn't used, got %s", decImplName)
 	}
 
@@ -397,26 +326,26 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 	if err != nil {
 		return errors.Wrap(err, "failed to get encoder implementation name")
 	}
-	if opts.simulcasts > 1 {
-		if err := checkSimulcastEncImpl(encImplName, opts.simulcastHWEncs); err != nil {
+	if params.simulcasts > 1 {
+		if err := checkSimulcastEncImpl(encImplName, params.simulcastHWEncs); err != nil {
 			return err
 		}
 	} else {
-		if opts.verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
+		if params.verifyEncoderMode == VerifyHWEncoderUsed && !hwEncoderUsed {
 			return errors.Errorf("hardware encode accelerator wasn't used, got %s", encImplName)
 		}
-		if opts.verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
+		if params.verifyEncoderMode == VerifySWEncoderUsed && hwEncoderUsed {
 			return errors.Errorf("software encode wasn't used, got %s", encImplName)
 		}
 	}
 
-	if opts.videoGridDimension > 1 {
-		if err := conn.Call(ctx, nil, "makeVideoGrid", opts.videoGridDimension, videoURL); err != nil {
+	if params.videoGridDimension > 1 {
+		if err := conn.Call(ctx, nil, "makeVideoGrid", params.videoGridDimension, videoURL); err != nil {
 			return errors.Wrap(err, "javascript error")
 		}
 	}
 
-	if err := measureRTCStats(shortCtx, conn, opts.streamWidth, opts.streamHeight, opts.displayMediaType, p); err != nil {
+	if err := measureRTCStats(shortCtx, conn, params.streamWidth, params.streamHeight, params.displayMediaType, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
 
@@ -464,7 +393,7 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 
 // RunRTCPeerConnectionPerf starts a Chrome instance (with or without hardware video decoder and encoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir string, opts RTCTestOptions) error {
+func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir string, params RTCTestParams) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -483,11 +412,11 @@ func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem
 	defer cancel()
 
 	var videoGridURL string
-	if opts.videoGridDimension > 1 {
-		videoGridURL = server.URL + "/" + opts.videoGridFile
+	if params.videoGridDimension > 1 {
+		videoGridURL = server.URL + "/" + params.videoGridFile
 	}
 	p := perf.NewValues()
-	if err := peerConnectionPerf(ctx, cr, loopbackURL, videoGridURL, outDir, opts, p); err != nil {
+	if err := peerConnectionPerf(ctx, cr, loopbackURL, videoGridURL, outDir, params, p); err != nil {
 		return err
 	}
 
