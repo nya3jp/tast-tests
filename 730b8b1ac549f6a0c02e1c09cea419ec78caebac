@@ -89,6 +89,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd24ebfd_ed016366",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:07:25Z",
+      "side": 1,
+      "message": "I\u0027d use WithTimeout here. It also gives you a cancel function and you should set an explicit timeout.",
+      "range": {
+        "startLine": 418,
+        "startChar": 37,
+        "endLine": 418,
+        "endChar": 47
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f47ce1_c599f37e",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:07:25Z",
+      "side": 1,
+      "message": "This will be more readable if you use a WaitGroup https://gobyexample.com/waitgroups\n\nretErrChan will then only be used to signal that an error occurred. The context works well for your purpose, but you don\u0027t need to handle the timeout. It gets automatically cancelled.",
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342d5f6b_543d2907",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-04T08:07:25Z",
+      "side": 1,
+      "message": "This is automatic, no need to handle it yourself.",
+      "range": {
+        "startLine": 428,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 17
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1cdcddd_d0f3bd74",
         "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
         "patchSetId": 1
