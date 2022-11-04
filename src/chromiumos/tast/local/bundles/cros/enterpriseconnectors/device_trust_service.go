@@ -80,8 +80,6 @@ func (service *DeviceTrustService) LoginWithFakeIdP(ctx context.Context, req *pb
 	}
 	defer cr.Close(ctx)
 
-	defer takeScreenshotOnError(ctx, cr, func() bool { return retErr != nil }, "deviceTrustLogin")
-
 	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating login test API connection failed")

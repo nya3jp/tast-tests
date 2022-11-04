@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/enterpriseconnectors"
+	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/testing"
 )
 
@@ -42,6 +43,7 @@ func init() {
 			"tast.cros.hwsec.OwnershipService",
 			"tast.cros.tape.Service",
 			"tast.cros.enterpriseconnectors.DeviceTrustService",
+			"tast.cros.graphics.ScreenshotService",
 		},
 		Attr: []string{
 			"group:mainline", "informational",
@@ -104,6 +106,16 @@ func DeviceTrustLoginScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create an account manager and lease an account: ", err)
 	}
 	defer accManager.CleanUp(cleanupCtx)
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "deviceTrustLoginError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	service := enterpriseconnectors.NewDeviceTrustServiceClient(cl.Conn)
 	s.Log("Enrolling device")
