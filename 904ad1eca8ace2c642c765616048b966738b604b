@@ -52,6 +52,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8f2a9e_27cc2836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/js_wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Very cool to see how this comes together!",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9ff8ea3_3bc86e05",
@@ -122,6 +145,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecdb629b_522d6357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Remove unused import",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145dbb22_9b76928f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Will the first service always be consistently the same? I.e is there consistency in the order or are there other services that we need to worry about?\n\nYou could try to just grab the ethernet service as there should only be one. Example here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d45",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19122c0a_d44931aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
@@ -156,6 +225,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13d7437c_83e72aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Is all this necessary for the test (lines 35-59)? This seems like we are verifying that a service is connected in shill, which we concluded there should be an ethernet service that is connected. I think there is an argument to remove all these checks for simplicity as the goal of the test is to get the Network List from the Network Health API. WDYT?\n\nIf we decide not to remove these checks, should we do a comparison of networks in shill vs networks in chrome?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abd393a_6d8e193c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Add some time for cleanup in the ctx if it hangs. For example:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\n\nThen for every defer call, use `defer function(cleanupCtx)`\n\nExample in this file:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;drc\u003db1436500810908098d377e1bf4e693113d9090e2;l\u003d130",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209f8409_6e1883c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Here too, from comment above.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac05200_b5305174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "Will the first network always be consistently the same? I.e is there consistency in the order or are there other networks that we need to worry about?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32697b4f_d26b848c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
@@ -184,6 +345,24 @@
       "writtenOn": "2022-11-04T19:34:05Z",
       "side": 1,
       "message": "Maybe omit this WS only change",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc3c944_fe3fd618",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-04T19:56:16Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "52b99672_886c773e",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
