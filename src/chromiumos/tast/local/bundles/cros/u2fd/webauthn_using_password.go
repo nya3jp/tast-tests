@@ -34,26 +34,23 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:              "tpm1",
-			ExtraSoftwareDeps: []string{"tpm1"},
-			// TODO(b/248652978): Fix the regression caused by WebAuthn site changes.
-			ExtraAttr: []string{"informational"},
-			Fixture:   "chromeLoggedIn",
-			Val:       browser.TypeAsh,
+			Name:              "tpm",
+			ExtraSoftwareDeps: []string{"tpm", "no_gsc"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           "chromeLoggedIn",
+			Val:               browser.TypeAsh,
 		}, {
-			Name:              "tpm1_lacros",
-			ExtraSoftwareDeps: []string{"tpm1", "lacros"},
-			// TODO(b/248652978): Fix the regression caused by WebAuthn site changes.
-			ExtraAttr: []string{"informational"},
-			Fixture:   "lacros",
-			Val:       browser.TypeLacros,
+			Name:              "tpm_lacros",
+			ExtraSoftwareDeps: []string{"tpm", "no_gsc", "lacros"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           "lacros",
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "gsc",
 			ExtraSoftwareDeps: []string{"gsc"},
-			// TODO(b/248652978): Fix the regression caused by WebAuthn site changes.
-			ExtraAttr: []string{"informational"},
-			Fixture:   "chromeLoggedIn",
-			Val:       browser.TypeAsh,
+			ExtraAttr:         []string{"informational"},
+			Fixture:           "chromeLoggedIn",
+			Val:               browser.TypeAsh,
 		}, {
 			Name:              "gsc_lacros",
 			ExtraSoftwareDeps: []string{"gsc", "lacros"},
