@@ -9,6 +9,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -46,6 +47,16 @@ const (
 
 	webRTCEventLogCommandFlag = "--webrtc-event-logging=/tmp"
 	webRTCEventLogFilePattern = "/tmp/event_log_*.log"
+)
+
+// isLocalVar is a runtime variable that specifies whether to skip
+// waiting for the CPU to cooldown and idle, which speeds up overall
+// test runtime. This variable is explicitly made for local testing,
+// when performance data does not matter.
+var isLocalVar = testing.RegisterVarString(
+	"cuj.isLocal",
+	"",
+	"A boolean signifying whether or not to skip certain startup procedures for local testing",
 )
 
 func init() {
@@ -286,6 +297,11 @@ func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestStat
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
+	if strings.ToLower(isLocalVar.Value()) == "true" {
+		s.Log("Skipping CPU cooldown because local testing variable is set")
+		return
+	}
+
 	// Wait for cpu to stabilize before test. Note this only works as expected if
 	// all child fixtures's PreTest and the setup in each test main function do
 	// not do cpu intensive works. Otherwise, this needs to moved into body of
@@ -314,6 +330,11 @@ func (f *cpuIdleForCUJFixture) Reset(ctx context.Context) error {
 }
 
 func (f *cpuIdleForCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if isLocalVar.Value() != "" {
+		s.Log("Skipping waiting until CPU is idle because local testing variable is set")
+		return
+	}
+
 	// Wait for cpu to idle before test.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		// Log the cpu idle wait failure instead of make it fatal.
