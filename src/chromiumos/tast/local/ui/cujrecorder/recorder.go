@@ -49,6 +49,14 @@ const checkInterval = 5 * time.Second
 // SystemTraceConfigFile is a perfetto tracing config.
 const SystemTraceConfigFile = "perfetto/system_trace_config.pbtxt"
 
+// skipDisableWifi forces the Wifi to remain in its initial state,
+// regardless of the options passed to the recorder.
+var skipDisableWifi = testing.RegisterVarString(
+	"cujrecorder.skipDisableWifi",
+	"",
+	"A variable signifying whether to force skipping disabling wifi for the Recorder",
+)
+
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
 	// The name of the histogram to be recorded.
@@ -340,13 +348,13 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
 		DPTF:       setup.DisableDPTF,
 		Audio:      setup.Mute,
 		Bluetooth:  setup.DisableBluetoothInterfaces,
 	}
+
 	// Check recorder options and don't change them when required.
 	if options.DoNotChangeWifi {
 		powerTestOptions.Wifi = setup.DoNotChangeWifiInterfaces
@@ -367,6 +375,20 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 	if options.DischargeThreshold != nil {
 		dischargeThreshold = *options.DischargeThreshold
 	}
+
+	// By default, the recorder will disable wifi interfaces. Disabling
+	// wifi can be problematic in local testing when an SSH connection
+	// is required to connect to a DUT. Use the runtime variable
+	// cujrecorder.skipDisableWifi to allow developers to skip toggling
+	// wifi in the test, ignoring the wifi option passed to the recorder.
+	if skipDisableWifi.Value() != "" {
+		testing.ContextLog(ctx, "Skipping disabling wifi because cujrecorder.skipDisableWifi is set")
+	} else if options.DoNotChangeWifi {
+		powerTestOptions.Wifi = setup.DoNotChangeWifiInterfaces
+	} else {
+		powerTestOptions.Wifi = setup.DisableWifiInterfaces
+	}
+
 	// Create batteryDischarge with both discharge and ignoreErr set to true.
 	batteryDischarge := setup.NewBatteryDischarge(true, true, dischargeThreshold)
 
