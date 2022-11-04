@@ -16,6 +16,40 @@
       "message": "youkichihosoi@: PTAL, thanks!",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c42dd91_437f109e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-11-04T22:59:27Z",
+      "side": 1,
+      "message": "Thanks for your work.",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7878210_df5de9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-11-04T22:59:27Z",
+      "side": 1,
+      "message": "nit: LogoutChrome(ctx, cr)",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
