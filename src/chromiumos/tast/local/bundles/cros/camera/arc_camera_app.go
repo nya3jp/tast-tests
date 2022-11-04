@@ -69,7 +69,7 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 	}
 	defer cleanupFunc(cleanupCtx)
 
-	subTestTimeout := 30 * time.Second
+	subTestTimeout := 60 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, *arc.ARC) error
