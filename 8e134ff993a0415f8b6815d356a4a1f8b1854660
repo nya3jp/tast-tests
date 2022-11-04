@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaf6e2c_900cc286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-04T05:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66bf6293_49598d8e",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb707a8_b7936b24",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-11-02T05:57:54Z",
       "side": 1,
       "message": "better not to ignore the error here.\n\nIf uninstallation is critical, use `s.Fatal`, if not, use `s.Log` to print errors which may be useful for debugging.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdf8e6a_f081684d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-04T05:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bb707a8_b7936b24",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "@alvinjia@google.com I tend to lean towards that option as well, yes.",
       "parentUuid": "69e0584c_034c0168",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "8e134ff993a0415f8b6815d356a4a1f8b1854660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0caec01_50b4c426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-04T05:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1424e754_ea19dd86",
       "range": {
         "startLine": 100,
         "startChar": 1,
