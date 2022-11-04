@@ -44,8 +44,9 @@ const (
 // DesksInfo holds overall desks information.
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
 type DesksInfo struct {
-	ActiveDeskIndex int `json:"activeDeskIndex"`
-	NumDesks        int `json:"numDesks"`
+	ActiveDeskIndex int  `json:"activeDeskIndex"`
+	NumDesks        int  `json:"numDesks"`
+	IsAnimating     bool `json:"isAnimating"`
 }
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
@@ -423,4 +424,19 @@ func ExitAndReenterLibrary(ctx context.Context, ac *uiauto.Context, tconn *chrom
 	}
 
 	return nil
+}
+
+// WaitUntilDesksFinishAnimating waits for any desks animations to
+// finish animating on the Chrome side.
+func WaitUntilDesksFinishAnimating(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		desksInfo, err := GetDesksInfo(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get desks info"))
+		}
+		if !desksInfo.IsAnimating {
+			return nil
+		}
+		return errors.New("desks are still animating")
+	}, defaultPollOptions)
 }
