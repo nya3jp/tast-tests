@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc40baf_80f6d54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-04T19:18:34Z",
+      "side": 1,
+      "message": "nit: I\u0027 worried this may end up being flaky (there may be a slight race between the ui node for the menu getting removed due to activation, and the test checking it\u0027s existence. That\u0027s why I suggested using ensureGone - but what I meant was WaitUntilGone - which will wait until a node disappears)",
+      "revId": "598e450d11f0fe7e7d551df17009c06575327bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
