@@ -147,8 +147,18 @@ func WaitForInstallButton(ctx context.Context, d *ui.Device) (*ui.Object, error)
 	return installButton, nil
 }
 
+// EnsurePlayStoreEmpty ensures that the asset browser displays empty screen.
+func EnsurePlayStoreEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
+	return EnsurePlayStoreState(ctx, tconn, cr, a, outDir, runID, true)
+}
+
 // EnsurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
 func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
+	return EnsurePlayStoreState(ctx, tconn, cr, a, outDir, runID, false)
+}
+
+// EnsurePlayStoreState ensures that the asset browser has expected state.
+func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int, shouldBeEmpty bool) (retErr error) {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -159,6 +169,15 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		appNodeResourceID2 = "com.android.vending:id/play_card"
 		appNodeClassName2  = "android.view.ViewGroup"
 	)
+
+	assertState := func(ctx context.Context, isEmpty bool, message string) error {
+		if isEmpty == shouldBeEmpty {
+			return nil
+		}
+
+		testing.ContextLog(ctx, message)
+		return errors.New(message)
+	}
 
 	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
 		return retErr != nil
@@ -183,6 +202,7 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 			if running, err := act.IsRunning(ctx); err != nil {
 				return testing.PollBreak(err)
 			} else if !running {
+				testing.ContextLog(ctx, "Play Store closed")
 				return testing.PollBreak(errors.New("Play Store closed"))
 			}
 
@@ -190,26 +210,28 @@ func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 				return testing.PollBreak(err)
 			}
 
-			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-				return errors.New("Play Store is empty")
-			}
-
+			// This is to ensure that we're looking at a normal asset browser UI.
 			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
-				return errors.Wrap(err, "Play Store UI screen not shown")
+				return errors.Wrap(err, "Search bar is missing")
 			}
 
+			// Play Store is considered empty if shows the message when there are no available apps.
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return assertState(ctx, true, "Play Store is empty")
+			}
+
+			// Play Store is considered to be not empty when an app blurb (in allowlist mode) is found.
 			if err := d.Object(ui.ResourceID(appNodeResourceID1), ui.ClassName(appNodeClassName1)).Exists(ctx); err == nil {
-				testing.ContextLog(ctx, "App blurb found")
-				return nil
+				return assertState(ctx, false, "App blurb found")
 			}
 
+			// Play Store is also considered to be not empty when an app card (in blocklist mode) is found.
 			if err := d.Object(ui.ResourceID(appNodeResourceID2), ui.ClassName(appNodeClassName2)).Exists(ctx); err == nil {
-				testing.ContextLog(ctx, "Play card found")
-				return nil
+				return assertState(ctx, false, "Play card found")
 			}
 
-			testing.ContextLog(ctx, "No app in the catalog")
-			return errors.New("no app in the catalog")
+			// Play Store is considered to be empty when we didn't find an app blurb or app card.
+			return assertState(ctx, true, "no app in the catalog")
 		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
 	}, &testing.PollOptions{Interval: 10 * time.Second})
 }
