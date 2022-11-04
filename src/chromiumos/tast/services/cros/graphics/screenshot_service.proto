@@ -10,8 +10,15 @@ import "google/protobuf/empty.proto";
 
 option go_package = "chromiumos/tast/services/cros/graphics";
 
+message CaptureScreenshotRequest {
+  string filePrefix = 1;
+}
+
 // ScreenshotService provides ability to capture a screenshot. 
 service ScreenshotService {
   // CaptureScreenAndDelete captures a temporary screenshot, and deletes it immediately. 
   rpc CaptureScreenAndDelete (google.protobuf.Empty) returns (google.protobuf.Empty);
+
+  // CaptureScreenshot captures a screenshot and saves it in the output directory of the test under filePrefix.png. 
+  rpc CaptureScreenshot (CaptureScreenshotRequest) returns (google.protobuf.Empty);
 }
