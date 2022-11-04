@@ -309,7 +309,7 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", params.Profile, params.Simulcasts, params.Svc, params.DisplayMediaType, params.StreamWidth, params.StreamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", params.Profile, params.StreamWidth, params.StreamHeight, params.Simulcasts, params.Svc, params.DisplayMediaType); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
