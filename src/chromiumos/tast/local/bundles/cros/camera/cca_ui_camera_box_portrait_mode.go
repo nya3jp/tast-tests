@@ -22,7 +22,7 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"testing_rsa", "human_face_scene.jpg"},
 		Vars:         []string{"chart"},
-		Fixture:      "ccaLaunched",
+		Fixture:      "ccaLaunchedInCameraBox",
 		Params: []testing.Param{{
 			Name:      "back",
 			ExtraAttr: []string{"camerabox_facing_back"},
