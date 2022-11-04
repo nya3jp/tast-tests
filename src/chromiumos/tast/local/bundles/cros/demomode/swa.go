@@ -65,6 +65,12 @@ func SWA(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(clearUpCtx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn).WithTimeout(100 * time.Second)
 
+	// Verify that splash screen has disappeared before moving mouse.
+	splashScreen := nodewith.ClassName("WallpaperView").Ancestor(nodewith.ClassName("AlwaysOnTopWallpaperContainer"))
+	if err := ui.WaitUntilGone(splashScreen)(ctx); err != nil {
+		s.Fatal("Failed to wait until splash screen is gone: ", err)
+	}
+
 	s.Log("Waiting for Demo Mode App to launch")
 	demoApp := nodewith.Name("Demo Mode App").First()
 	if err := ui.WaitUntilExists(demoApp)(ctx); err != nil {
