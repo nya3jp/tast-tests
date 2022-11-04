@@ -22,6 +22,30 @@
       },
       "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0f02df_f89a372b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-04T21:26:07Z",
+      "side": 1,
+      "message": "The issue is that `WaitForNextEventTime` is a function used in many other performance tests as well. Should I talk with @alanding@chromium.org about adding the wait times in that function?",
+      "parentUuid": "4116261e_840e64ce",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
