@@ -16,6 +16,23 @@
       "message": "LGTM from tast-owners, please wait for +1/+2 from jadmanski@",
       "revId": "f5ae6ce58834e2ccf11ffd3a593cafd6c738fbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a12ac3_691f7c62",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-04T16:09:56Z",
+      "side": 1,
+      "message": "Should this also remove the enabled flag? I guess not necessary if disabled takes priority, but maybe a little cleaner and safer.",
+      "revId": "f5ae6ce58834e2ccf11ffd3a593cafd6c738fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
