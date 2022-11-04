@@ -9,10 +9,15 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/testing"
 )
+
+type memoryPressureModerateParams struct {
+	bt browser.Type
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -34,9 +39,15 @@ func init() {
 		},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               memoryPressureModerateParams{browser.TypeAsh},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               memoryPressureModerateParams{browser.TypeAsh},
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               memoryPressureModerateParams{browser.TypeLacros},
 		}},
 	})
 }
@@ -95,7 +106,7 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	}
 	s.Log("useHugePages: ", useHugePages)
 
-	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, s.DataPath(mempressure.WPRArchiveName))
+	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, useHugePages, s.Param().(memoryPressureModerateParams).bt, s.DataPath(mempressure.WPRArchiveName))
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
@@ -107,7 +118,7 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 		MaxTabCount:              maxTab,
 	}
 
-	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Chrome(), testEnv.ARC(), p); err != nil {
+	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Browser(), testEnv.ARC(), p); err != nil {
 		s.Fatal("Run failed: ", err)
 	}
 }
