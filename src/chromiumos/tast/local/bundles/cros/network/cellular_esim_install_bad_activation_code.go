@@ -12,7 +12,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/stork"
 	"chromiumos/tast/testing"
@@ -20,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CellularESimInstall,
+		Func:         CellularESimInstallBadActivationCode,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests the add eSIM profile via activation code flow in the success and failure cases",
 		Contacts: []string{
@@ -34,7 +36,7 @@ func init() {
 	})
 }
 
-func CellularESimInstall(ctx context.Context, s *testing.State) {
+func CellularESimInstallBadActivationCode(ctx context.Context, s *testing.State) {
 	euicc, slot, err := hermes.GetEUICC(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to get test euicc: ", err)
@@ -91,17 +93,16 @@ func CellularESimInstall(ctx context.Context, s *testing.State) {
 
 	s.Log("Fetched Stork profile with activation code: ", activationCode)
 
-	if err := ossettings.AddESimWithActivationCode(ctx, tconn, string(activationCode)); err != nil {
-		s.Fatal("Failed to add esim profile with correct activation code: ", err)
+	s.Log("Flow 1: Use an incorrect activation code for an eSIM profile that does not require a confirmation code")
+	var couldNotInstallProfileText = nodewith.NameContaining("Couldn't install eSIM profile").Role(role.StaticText)
+	var incorrectActivationCode = string(activationCode) + "wrong"
+	if err := ossettings.AddESimWithActivationCode(ctx, tconn, incorrectActivationCode); err != nil {
+		s.Fatal("Failed to add esim profile with incorrect activation code: ", err)
 	}
-	if err := uiauto.Combine("Exit add cellular eSIM flow after using correct activation code",
-		mdp.WithTimeout(3*time.Minute).WaitUntilExists(ossettings.NetworkAddedText),
+	if err := uiauto.Combine("Exit add cellular eSIM flow after using incorrect activation code",
+		mdp.WithTimeout(3*time.Minute).WaitUntilExists(couldNotInstallProfileText),
 		mdp.LeftClick(ossettings.DoneButton.Focusable()),
 	)(ctx); err != nil {
-		s.Fatal("Correct activation code user journey fails: ", err)
-	}
-
-	if err := ossettings.VerifyTestESimProfile(ctx, tconn); err != nil {
-		s.Fatal("Failed to verify newly installed stork profile: ", err)
+		s.Fatal("Incorrect activation code user journey fails: ", err)
 	}
 }

@@ -164,6 +164,9 @@ var (
 
 	// VisibilityButton is the finder for the show PIN button in the SIM lock dialog UI.
 	VisibilityButton = nodewith.Role(role.Button).HasClass("icon-visibility")
+
+	// NetworkAddedText is the finder for the header to the eSIM cellular setup dialog when an eSIM profile is successfully added.
+	NetworkAddedText = nodewith.NameContaining("Network added").Role(role.StaticText)
 )
 
 // Elements in "Proxy" section of Network page.
