@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf73af48_fc568bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:07:02Z",
+      "side": 1,
+      "message": "I don\u0027t know why we have New* method for Mouse and Keyboard service. I think it should provide higher level API instead of pathing the road for the user to interact with Mouse and Keyboard directly.",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24acd3f3_bb909a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:07:02Z",
+      "side": 1,
+      "message": "Why do we need this? It does not seem like it is used anywhere. Also, what would happend if CloseKeyboard is not called? I would prefer the GRPC server to be stateless if possible.",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1652e63b_94151939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:07:02Z",
+      "side": 1,
+      "message": "I have question here that is similar to what I have for keyboard service. I am not against a mouse service, but I think it should provide higher level functionality such as DragAnDrop, MouseOver, ...",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
