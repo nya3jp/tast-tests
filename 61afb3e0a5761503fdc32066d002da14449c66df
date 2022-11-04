@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edd28685_202e01f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-04T04:57:26Z",
+      "side": 1,
+      "message": "Sure, but you don\u0027t actually need to connect, you just need to configure them by calling e.g. ConfigureServiceForProfile. Please write a new test, the MultiAuth test serves its own purpose.",
+      "parentUuid": "745f9cb7_11ca9533",
+      "revId": "61afb3e0a5761503fdc32066d002da14449c66df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fa16b95_15a8fdf7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 13
