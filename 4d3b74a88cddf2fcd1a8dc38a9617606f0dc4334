@@ -22,6 +22,30 @@
       },
       "revId": "4d3b74a88cddf2fcd1a8dc38a9617606f0dc4334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bcff85_385cb009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-04T16:21:16Z",
+      "side": 1,
+      "message": "Go formatter/presubmit complained when if it was before, so removed the \u003d sign",
+      "parentUuid": "e28c8284_8c60a07a",
+      "range": {
+        "startLine": 95,
+        "startChar": 63,
+        "endLine": 95,
+        "endChar": 73
+      },
+      "revId": "4d3b74a88cddf2fcd1a8dc38a9617606f0dc4334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
