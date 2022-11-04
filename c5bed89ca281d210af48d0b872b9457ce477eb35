@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87f43370_51fb0334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-04T17:54:28Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "2d771496_e735b656",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b2b2c59_0162463b",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
         "patchSetId": 4
@@ -66,6 +90,52 @@
         "startChar": 4,
         "endLine": 189,
         "endChar": 12
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb5a365_abc1bc4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-04T17:54:28Z",
+      "side": 1,
+      "message": "Is this block an extra verification for logout? If it is not very relevant to lacros migration I would suggest putting them up in a separate CL and maybe in a new func like `testChromeLogoutSession`.\n\nAlso I was wondering if it could be a duplicate of an existing logout test (chromiumos/tast/local/bundles/cros/login/logout.go).",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 49
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2993e6aa_c36a1395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-11-04T17:54:28Z",
+      "side": 1,
+      "message": "Generally it\u0027s good to avoid passing testing.State unless necessary. See\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nnit: It is unclear to me how important having this as a separate func would be for readability since it comes down to one select statement used only by `testChromeLoginInSession`. \nI would prefer keeping it embedded, but I\u0027m open to doing this if you want but could be better with returning an error, taking args only needed and having a clear func name. Example:\n```\nfunc waitSessionStateChanged(ctx context.Conntext, sw *dbusutil.SignalWatcher) error {\n  select {\n  case \u003c-sw.Signals:\n    testing.ContextLog(ctx, ...)\n  case \u003c-ctx.Done:\n    return errors.Wrap(ctx.Err(), ...)\n  }\n  return nil\n}\n```",
+      "range": {
+        "startLine": 223,
+        "startChar": 52,
+        "endLine": 223,
+        "endChar": 68
       },
       "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
