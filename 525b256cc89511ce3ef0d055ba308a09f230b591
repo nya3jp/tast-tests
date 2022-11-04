@@ -22,6 +22,29 @@
       },
       "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7704bf8_ef3cfc14",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T11:54:40Z",
+      "side": 1,
+      "message": "Note: put it here now since I don\u0027t have a very clear thought on how other tests will use this OptionMap.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
