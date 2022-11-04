@@ -21,20 +21,28 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// VerifyHWAcceleratorMode is the type of codec to verify hardware acceleration for.
-type VerifyHWAcceleratorMode int
+// VerifyDecoderMode is how to verify decoder implementation.
+type VerifyDecoderMode int
+
+const (
+	// VerifyHWDecoderUsed refers to WebRTC hardware accelerated video decoding.
+	VerifyHWDecoderUsed VerifyDecoderMode = iota
+	// VerifySWDecoderUsed refers to WebRTC software video decoding.
+	VerifySWDecoderUsed
+	// NoVerifyDecoderMode means it doesn't matter if WebRTC uses any video decoder.
+	NoVerifyDecoderMode
+)
+
+// VerifyEncoderMode is how to verify encoder implementation.
+type VerifyEncoderMode int
 
 const (
 	// VerifyHWEncoderUsed refers to WebRTC hardware accelerated video encoding.
-	VerifyHWEncoderUsed VerifyHWAcceleratorMode = iota
-	// VerifyHWDecoderUsed refers to WebRTC hardware accelerated video decoding.
-	VerifyHWDecoderUsed
+	VerifyHWEncoderUsed VerifyEncoderMode = iota
 	// VerifySWEncoderUsed refers to WebRTC software video encoding.
 	VerifySWEncoderUsed
-	// VerifySWDecoderUsed refers to WebRTC software video decoding.
-	VerifySWDecoderUsed
-	// NoVerifyHWAcceleratorUsed means it doesn't matter if WebRTC uses any accelerated video.
-	NoVerifyHWAcceleratorUsed
+	// NoVerifyEncoderMode means it doesn't matter if WebRTC uses any video encoder.
+	NoVerifyEncoderMode
 )
 
 // DisplayMediaType represents displaySurface property in displayMedia constraints.
@@ -61,11 +69,11 @@ const (
 
 // RTCTestParams is used to describe the config used to run RTCPeerConnectionPerf.
 type RTCTestParams struct {
-	verifyDecoderMode VerifyHWAcceleratorMode // The verification mode for decoder.
-	verifyEncoderMode VerifyHWAcceleratorMode // The verification mode for encoder.
-	profile           string                  // Codec to try, e.g. VP8, VP9.
-	streamWidth       int                     // Width of video to be sent in the peerconnection.
-	streamHeight      int                     // Height of video to be sent in the peerconnection.
+	verifyDecoderMode VerifyDecoderMode // The verification mode for decoder.
+	verifyEncoderMode VerifyEncoderMode // The verification mode for encoder.
+	profile           string            // Codec to try, e.g. VP8, VP9.
+	streamWidth       int               // Width of video to be sent in the peerconnection.
+	streamHeight      int               // Height of video to be sent in the peerconnection.
 	// ScalableVideoCodec "scalabilityMode" identifier.
 	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
 	svc string
@@ -85,13 +93,17 @@ type RTCTestParams struct {
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
 	if simulcast && svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
 	if displayMediaType != "" && (simulcast || svc != "") {
 		return errors.New("Screen capture can't be used with simulcast or SVC")
 	}
+	if verifyDecoderMode != NoVerifyDecoderMode && verifyEncoderMode != NoVerifyEncoderMode {
+		return errors.New("Decoder and encoder implementation cannot be verified simultaneously")
+	}
+
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -134,12 +146,18 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	if verifyMode == NoVerifyHWAcceleratorUsed {
+	if verifyDecoderMode == NoVerifyDecoderMode && verifyEncoderMode == NoVerifyEncoderMode {
 		return nil
 	}
 
-	decode := verifyMode == VerifyHWDecoderUsed || verifyMode == VerifySWDecoderUsed
-	expectedHW := verifyMode == VerifyHWDecoderUsed || verifyMode == VerifyHWEncoderUsed
+	decode := verifyDecoderMode != NoVerifyDecoderMode
+	var expectedHW bool
+	if decode {
+		expectedHW = verifyDecoderMode == VerifyHWDecoderUsed
+	} else {
+		expectedHW = verifyEncoderMode == VerifyHWEncoderUsed
+	}
+
 	implName, isHWImpl, err := getCodecImplementation(ctx, conn, decode)
 	if err != nil {
 		return errors.Wrap(err, "failed getCodecImplementation")
@@ -152,7 +170,7 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrapf(err, "expected implementation not found, got %v, looking for %s codec", implName, expectedCodec)
 	}
 
-	if simulcast && verifyMode == VerifyHWEncoderUsed {
+	if simulcast && verifyEncoderMode == VerifyHWEncoderUsed {
 		isImplHWInAdapter := make([]bool, simulcastStreams)
 		for i := 0; i < simulcastStreams; i++ {
 			isImplHWInAdapter[i] = true
