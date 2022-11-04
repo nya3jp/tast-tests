@@ -25,16 +25,12 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
-
-// finder for the print dialog.
-var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
 
 type printingTestParams struct {
 	name                    string
@@ -319,11 +315,11 @@ func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.K
 	ui := uiauto.New(tconn)
 
 	if restriction == restrictionlevel.Allowed || restriction == restrictionlevel.WarnProceeded {
-		if err := ui.WithTimeout(waitTime).WaitUntilExists(printDialog)(ctx); err != nil {
+		if err := ui.WithTimeout(waitTime).WaitUntilExists(printpreview.PrintPreviewNode)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the printing window")
 		}
 	} else {
-		if err := ui.EnsureGoneFor(printDialog, waitTime)(ctx); err != nil {
+		if err := ui.EnsureGoneFor(printpreview.PrintPreviewNode, waitTime)(ctx); err != nil {
 			return errors.Wrap(err, "should not show the printing window")
 		}
 	}

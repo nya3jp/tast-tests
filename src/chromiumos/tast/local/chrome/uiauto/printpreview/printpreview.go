@@ -8,7 +8,6 @@ package printpreview
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -30,6 +29,9 @@ const (
 	// Landscape represents the landscape layout setting.
 	Landscape
 )
+
+// PrintPreviewNode is the node for the top-level dialog.
+var PrintPreviewNode *nodewith.Finder = nodewith.Name("Print").Role(role.Window).ClassName("RootView")
 
 // Print sets focus on the print button in Chrome print preview and injects the
 // ENTER key to start printing. This is more reliable than clicking the print
@@ -93,24 +95,13 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 // the provided layout.
 func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error {
 	// Find and expand the layout list.
-	layoutList := nodewith.Name("Layout").Role(role.PopUpButton)
+	layoutList := nodewith.Name("Layout").Role(role.ComboBoxSelect)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click layout list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(layoutList),
 		ui.LeftClick(layoutList),
 	)(ctx); err != nil {
-		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
-			// TODO(crbug/1365169): Make this the first choice once Chrome is past 107.0.5304.0.
-			layoutListCombo := layoutList.Role(role.ComboBoxSelect)
-			if err := uiauto.Combine("find and click layout list as ComboBox",
-				ui.WithTimeout(1*time.Second).WaitUntilExists(layoutListCombo),
-				ui.LeftClick(layoutListCombo),
-			)(ctx); err != nil {
-				return err
-			}
-		} else {
-			return err
-		}
+		return err
 	}
 
 	// Find the landscape layout option to verify the layout list has expanded.
@@ -144,24 +135,13 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 // SetPages interacts with Chrome print preview to set the selected pages.
 func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	// Find and expand the pages list.
-	pageList := nodewith.Name("Pages").Role(role.PopUpButton)
+	pageList := nodewith.Name("Pages").Role(role.ComboBoxSelect)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click page list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(pageList),
 		ui.LeftClick(pageList),
 	)(ctx); err != nil {
-		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
-			// TODO(crbug/1365169): Make this the first choice once Chrome is past 107.0.5304.0.
-			pageListCombo := pageList.Role(role.ComboBoxSelect)
-			if err := uiauto.Combine("find and click page list as ComboBox",
-				ui.WithTimeout(1*time.Second).WaitUntilExists(pageListCombo),
-				ui.LeftClick(pageListCombo),
-			)(ctx); err != nil {
-				return err
-			}
-		} else {
-			return err
-		}
+		return err
 	}
 
 	// Find the custom pages option to verify the pages list has expanded.
@@ -200,13 +180,15 @@ func WaitForPrintPreview(tconn *chrome.TestConn) uiauto.Action {
 	ui := uiauto.New(tconn)
 	loadingPreviewText := nodewith.Name("Loading preview")
 	printPreviewFailedText := nodewith.Name("Print preview failed")
+	destinationButton := nodewith.Name("Destination").Role(role.StaticText).Ancestor(PrintPreviewNode)
 	emptyAction := func(context.Context) error { return nil }
 	return uiauto.Combine("wait for Print Preview to finish loading",
+		uiauto.NamedAction("wait for Print Preview to appear", ui.WithTimeout(10*time.Second).WaitUntilExists(destinationButton)),
 		// Wait for the loading text to appear to indicate print preview is loading.
 		// Since print preview can finish loading before the loading text is found,
 		// IfSuccessThen() is used with a stub "success" action just so that the
 		// WaitUntilExists() error is ignored and won't fail the test.
-		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(loadingPreviewText), emptyAction),
+		uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(loadingPreviewText), emptyAction),
 		// Wait for the loading text to be removed to indicate print preview is no
 		// longer loading.
 		ui.WithTimeout(30*time.Second).WaitUntilGone(loadingPreviewText),
