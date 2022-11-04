@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf1a679_74bef958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-04T10:17:36Z",
+      "side": 1,
+      "message": "Done (`waitARCWindowShown` is probably not related in recognizing the replacement of ghost window with an ARC ghost window)",
+      "parentUuid": "8559ad4a_ed33a5bd",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 5
+      },
+      "revId": "e1afc2bfa6c722a8eb7a5aa04dc5c873900514b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe72251c_27a5d2cf",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-24T06:44:00Z",
       "side": 1,
       "message": "Why are the tests arc.GhostWindow.general(_r) working without enabling ArcWindowPredictor?",
+      "range": {
+        "startLine": 385,
+        "startChar": 52,
+        "endLine": 385,
+        "endChar": 72
+      },
+      "revId": "e1afc2bfa6c722a8eb7a5aa04dc5c873900514b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfc78ac_750ea78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-04T10:17:36Z",
+      "side": 1,
+      "message": "Done (now it\u0027s enabled on ToT)",
+      "parentUuid": "fe72251c_27a5d2cf",
       "range": {
         "startLine": 385,
         "startChar": 52,
