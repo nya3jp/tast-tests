@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64fb2c5_1d11f5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T10:12:08Z",
+      "side": 1,
+      "message": "need to update?",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ca6015_39877124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T10:12:08Z",
+      "side": 1,
+      "message": "do we want to output this in each loop?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fec269_df02d659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T10:12:08Z",
+      "side": 1,
+      "message": "I think it does not really matter but should this be `true`? we need v4 address right?",
+      "range": {
+        "startLine": 77,
+        "startChar": 64,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be86eee1_4e8d9929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T10:12:08Z",
+      "side": 1,
+      "message": "perhaps Errorf to also verify other addresses on failure?",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
