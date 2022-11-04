@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d771496_e735b656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-04T15:39:37Z",
+      "side": 1,
+      "message": "What\u0027s the reason to re-create server on each iteration?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b2b2c59_0162463b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-04T15:39:37Z",
+      "side": 1,
+      "message": "started",
+      "range": {
+        "startLine": 186,
+        "startChar": 40,
+        "endLine": 186,
+        "endChar": 47
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaabec12_947a5d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-04T15:39:37Z",
+      "side": 1,
+      "message": "\u003e \"Openning\" is a possible misspelling of \"Opening\".\n\nPlease fix.",
+      "parentUuid": "659da05b_7a5d6553",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 12
+      },
+      "revId": "c5bed89ca281d210af48d0b872b9457ce477eb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
