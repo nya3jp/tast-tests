@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1ec17f_a8eef680",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-04T17:04:26Z",
+      "side": 1,
+      "message": "are we missing a return here?",
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
