@@ -254,7 +254,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "familyLinkUnicornLoginWithWebApprovals",
 		Desc:     "Supervised Family Link user login with Unicorn account",
-		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Contacts: []string{"courtneywong@chromium.org", "cros-families-eng+test@google.com"},
 		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true, chrome.EnableFeatures("LocalWebApprovals", "WebFilterInterstitialRefresh")),
 		Vars: []string{
 			"family.parentEmail",

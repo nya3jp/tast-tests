@@ -154,10 +154,8 @@ func NavigateEduCoexistenceFlow(ctx context.Context, cr *chrome.Chrome, tconn *c
 	}
 	defer kb.Close()
 
-	// TODO(chromium:12227440): Reduce typing flakiness and replace \n with a more
-	// consistent way to navigate to the next screen, here and other places.
 	testing.ContextLog(ctx, "Typing the parent password")
-	if err := kb.Type(ctx, parentPass+"\n"); err != nil {
+	if err := kb.Type(ctx, parentPass); err != nil {
 		return errors.Wrap(err, "failed to type parent password")
 	}
 

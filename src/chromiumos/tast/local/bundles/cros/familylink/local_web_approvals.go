@@ -62,7 +62,7 @@ func LocalWebApprovals(ctx context.Context, s *testing.State) {
 
 	testing.ContextLog(ctx, "Clicking ask in person")
 	parentAccess := nodewith.Name("Parent access").Role(role.RootWebArea)
-	if err := ui.WithInterval(500*time.Millisecond).LeftClickUntil(askInPerson, ui.Exists(parentAccess))(ctx); err != nil {
+	if err := ui.LeftClickUntil(askInPerson, ui.Exists(parentAccess))(ctx); err != nil {
 		s.Fatal("Failed to load parent access widget: ", err)
 	}
 
