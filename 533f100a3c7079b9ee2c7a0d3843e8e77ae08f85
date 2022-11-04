@@ -22,6 +22,30 @@
       },
       "revId": "533f100a3c7079b9ee2c7a0d3843e8e77ae08f85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8cb578_b0e207e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-04T03:54:02Z",
+      "side": 1,
+      "message": "Yes, the new containers contain some of the packages needed in this CL. I\u0027ll update the commit message to mention this.",
+      "parentUuid": "4b1d51d6_1b27a253",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "533f100a3c7079b9ee2c7a0d3843e8e77ae08f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
