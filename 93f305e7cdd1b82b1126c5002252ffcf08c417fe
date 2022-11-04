@@ -387,6 +387,30 @@
       },
       "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0103db60_9d4b2c54",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-04T11:56:39Z",
+      "side": 1,
+      "message": "Thanks for the input :)\nThen I\u0027ll take a look at that later (maybe check in this patch at first) since it sounds unusual.",
+      "parentUuid": "f40ecd51_98850a15",
+      "range": {
+        "startLine": 351,
+        "startChar": 63,
+        "endLine": 351,
+        "endChar": 77
+      },
+      "revId": "93f305e7cdd1b82b1126c5002252ffcf08c417fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
