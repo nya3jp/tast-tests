@@ -59,7 +59,6 @@ const (
 )
 
 const (
-
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
 	LoopbackFile = "loopback_peerconnection.html"
 
@@ -93,14 +92,15 @@ type RTCTestParams struct {
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
-	if simulcast && svc != "" {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, params RTCTestParams) error {
+	// verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType)
+	if params.simulcasts > 1 && params.svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
-	if displayMediaType != "" && (simulcast || svc != "") {
+	if params.displayMediaType != "" && (params.simulcasts > 1 || params.svc != "") {
 		return errors.New("Screen capture can't be used with simulcast or SVC")
 	}
-	if verifyDecoderMode != NoVerifyDecoderMode && verifyEncoderMode != NoVerifyEncoderMode {
+	if params.verifyDecoderMode != NoVerifyDecoderMode && params.verifyEncoderMode != NoVerifyEncoderMode {
 		return errors.New("Decoder and encoder implementation cannot be verified simultaneously")
 	}
 
@@ -137,23 +137,14 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	const simulcastStreams = 3
-	simulcasts := 0
-	if simulcast {
-		simulcasts = simulcastStreams
-	}
-	if err := conn.Call(ctx, nil, "start", profile, simulcasts, svc, displayMediaType); err != nil {
+	if err := conn.Call(ctx, nil, "start", params.profile, params.streamWidth, params.streamHeight, params.simulcasts, params.svc, params.displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	simulcastHWEncs := make([]bool, simulcasts)
-	for i := 0; i < simulcasts; i++ {
-		simulcastHWEncs[i] = true
-	}
-	if err := verifyDecoderImplementation(ctx, conn, verifyDecoderMode); err != nil {
+	if err := verifyDecoderImplementation(ctx, conn, params.verifyDecoderMode); err != nil {
 		return err
 	}
-	if err := verifyEncoderImplementation(ctx, conn, verifyEncoderMode, simulcastHWEncs); err != nil {
+	if err := verifyEncoderImplementation(ctx, conn, params.verifyEncoderMode, params.simulcastHWEncs); err != nil {
 		return err
 	}
 
