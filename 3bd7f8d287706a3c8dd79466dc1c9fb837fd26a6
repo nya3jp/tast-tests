@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4116261e_840e64ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-11-04T21:07:43Z",
+      "side": 1,
+      "message": "You don\u0027t have to use a sleep function. WaitForNextEventTime() can assign a different waitMS and you can add time over there. waitMS was also used to give some buffer between each events. Since you will use special waitMS as we discussed. Can you name a different waitMS and add comment and create a bug to explain it?",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "3bd7f8d287706a3c8dd79466dc1c9fb837fd26a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
