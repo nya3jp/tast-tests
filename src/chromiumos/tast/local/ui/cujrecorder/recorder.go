@@ -14,6 +14,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -48,6 +49,14 @@ const checkInterval = 5 * time.Second
 
 // SystemTraceConfigFile is a perfetto tracing config.
 const SystemTraceConfigFile = "perfetto/system_trace_config.pbtxt"
+
+// keepWifi forces the Wifi to remain in its initial state,
+// regardless of the options passed to the Recorder.
+var keepWifi = testing.RegisterVarString(
+	"cujrecorder.keepWifi",
+	"",
+	"A boolean signifying whether to force skipping disabling Wifi for the Recorder",
+)
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
@@ -351,7 +360,6 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
 		DPTF:       setup.DisableDPTF,
@@ -359,9 +367,6 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		Bluetooth:  setup.DisableBluetoothInterfaces,
 	}
 	// Check recorder options and don't change them when required.
-	if options.DoNotChangeWifi {
-		powerTestOptions.Wifi = setup.DoNotChangeWifiInterfaces
-	}
 	if options.DoNotChangePowerd {
 		powerTestOptions.Powerd = setup.DoNotChangePowerd
 	}
@@ -378,6 +383,20 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 	if options.DischargeThreshold != nil {
 		dischargeThreshold = *options.DischargeThreshold
 	}
+
+	// By default, the recorder will disable Wifi interfaces. Disabling
+	// Wifi can be problematic in local testing when an SSH connection
+	// is required to connect to a DUT. Use the runtime variable
+	// cujrecorder.keepWifi to allow developers to skip toggling
+	// Wifi in the test, ignoring the Wifi option passed to the recorder.
+	if strings.ToLower(keepWifi.Value()) == "true" {
+		testing.ContextLog(ctx, "Skipping disabling Wifi because cujrecorder.keepWifi is set")
+	} else if options.DoNotChangeWifi {
+		powerTestOptions.Wifi = setup.DoNotChangeWifiInterfaces
+	} else {
+		powerTestOptions.Wifi = setup.DisableWifiInterfaces
+	}
+
 	// Create batteryDischarge with both discharge and ignoreErr set to true.
 	batteryDischarge := setup.NewBatteryDischarge(true, true, dischargeThreshold)
 
