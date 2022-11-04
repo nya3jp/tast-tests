@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8fbed3c_387a0fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-04T16:26:06Z",
+      "side": 1,
+      "message": "for extra context I did not use this keyboard value in the other methods in this service because after talking to jonfan@ he suggested i keep them separate, this would have meant changing a lot of test that require those functionality.",
+      "parentUuid": "92f19703_ea9c3713",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1652e63b_94151939",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
         "patchSetId": 7
