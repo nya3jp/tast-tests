@@ -40,7 +40,7 @@ const (
 	gpuMeasuring = 10 * time.Second
 )
 
-func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode, verifyEncoderMode VerifyHWAcceleratorMode) RTCTestParams {
+func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode) RTCTestParams {
 	return RTCTestParams{
 		verifyDecoderMode:  verifyDecoderMode,
 		verifyEncoderMode:  verifyEncoderMode,
