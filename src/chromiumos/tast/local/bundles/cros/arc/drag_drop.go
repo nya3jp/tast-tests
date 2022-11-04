@@ -117,12 +117,12 @@ func init() {
 		}, {
 			Name:              "android_to_chrome_lacros",
 			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Val: &dragDropTestArgs{
 				extensionPrefix: "drag_target_",
 				androidSource:   true,
 				androidTarget:   false,
-				bt:              browser.TypeAsh,
+				bt:              browser.TypeLacros,
 			},
 		}, {
 			Name:              "android_to_chrome_vm",
