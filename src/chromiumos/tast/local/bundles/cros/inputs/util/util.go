@@ -89,6 +89,13 @@ func WaitForFieldNotEmpty(tconn *chrome.TestConn, finder *nodewith.Finder) uiaut
 	})
 }
 
+// WaitForFieldEmpty returns an action checking whether the input field value is empty.
+func WaitForFieldEmpty(tconn *chrome.TestConn, finder *nodewith.Finder) uiauto.Action {
+	return WaitForFieldTextToSatisfy(tconn, finder, "empty", func(actualText string) bool {
+		return actualText == ""
+	})
+}
+
 // GetNthCandidateText returns the candidate text in the specified position in the candidates window.
 func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (string, error) {
 	ui := uiauto.New(tconn)
