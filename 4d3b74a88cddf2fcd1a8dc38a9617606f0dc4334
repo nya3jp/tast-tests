@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e28c8284_8c60a07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-04T16:14:31Z",
+      "side": 1,
+      "message": "nit: If you want to have the comment after the value, remove the \"\u003d\" sign. Or put the comment in front of the value.",
+      "range": {
+        "startLine": 95,
+        "startChar": 63,
+        "endLine": 95,
+        "endChar": 73
+      },
+      "revId": "4d3b74a88cddf2fcd1a8dc38a9617606f0dc4334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

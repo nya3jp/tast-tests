@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09033022_3617c3b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-04T16:14:31Z",
+      "side": 1,
+      "message": "Awesome, thank you for doing that!",
+      "parentUuid": "d5862d27_b46809ed",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "1f1d3ffbbf556d00492a820f8d03d4737e483e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8715082_b503452d",
