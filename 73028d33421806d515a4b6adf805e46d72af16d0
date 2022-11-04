@@ -22,6 +22,30 @@
       },
       "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ba4bae_f6c1543b",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-04T10:20:39Z",
+      "side": 1,
+      "message": "What do you think about adding a runtime variable that shows if the test is run manually, which defaults to false? If this variable is true, that restoration step can be skipped.\n\nBTW if this builderPath is empty, shouldn\u0027t the restoration with installation fail?",
+      "parentUuid": "aaf7df92_08bd70fc",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
