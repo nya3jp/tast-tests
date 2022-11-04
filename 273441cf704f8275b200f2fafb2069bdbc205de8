@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a18c6d_10ebb6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-04T11:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64fb2c5_1d11f5bb",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ca6015_39877124",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-04T10:12:08Z",
       "side": 1,
       "message": "do we want to output this in each loop?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9ae55a_dccd1076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-04T11:03:45Z",
+      "side": 1,
+      "message": "This is in the same code branch with `return nil` so it will only be executed once?\n\nOr, are you suggesting we should log output for every failure? I don\u0027t think we\u0027ll need those?",
+      "parentUuid": "21ca6015_39877124",
       "range": {
         "startLine": 70,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dedbe42_66a367e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-04T11:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fec269_df02d659",
+      "range": {
+        "startLine": 77,
+        "startChar": 64,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be86eee1_4e8d9929",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-04T10:12:08Z",
       "side": 1,
       "message": "perhaps Errorf to also verify other addresses on failure?",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "273441cf704f8275b200f2fafb2069bdbc205de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ac5317_50b21dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/crostini_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-04T11:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be86eee1_4e8d9929",
       "range": {
         "startLine": 93,
         "startChar": 5,
