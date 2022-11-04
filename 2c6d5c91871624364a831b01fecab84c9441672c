@@ -16,6 +16,24 @@
       "message": "Did you intend to remove this?",
       "revId": "2c6d5c91871624364a831b01fecab84c9441672c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79721dd7_f4838d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-04T00:25:28Z",
+      "side": 0,
+      "message": "No, thanks for catching that.",
+      "parentUuid": "8e2c6ca6_3cd5de21",
+      "revId": "2c6d5c91871624364a831b01fecab84c9441672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
