@@ -39,6 +39,30 @@
       },
       "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a329e8_fcecd22b",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-11-04T20:59:18Z",
+      "side": 1,
+      "message": "Great suggestion, however I no longer have the code to be able to test this. I will test it whenever I finishing the remote test I\u0027m working on which also depends on the same code. Thanks!",
+      "parentUuid": "63b2ed68_a4922284",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
