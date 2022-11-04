@@ -33,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "reboot"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureTabletModeAngle()),
 		Timeout:      10 * time.Minute,
 	})
 }
