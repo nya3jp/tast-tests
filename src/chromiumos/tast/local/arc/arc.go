@@ -634,12 +634,10 @@ func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 		return err
 	}
 
-	var prop = "ro.vendor.arc.on_boot"
-	var value = "1"
-	if !isVMEnabled {
-		prop = "net.tcp.default_init_rwnd"
-		value = "60"
-	}
+	const prop = "ro.vendor.arc.on_boot"
+	const value = "1"
+
+	testing.ContextLogf(ctx, "Waiting for ARC property %q set", prop)
 
 	if err := waitProp(ctx, prop, value, reportTiming); err != nil {
 		// Check if init/crosvm is still alive at this point.
