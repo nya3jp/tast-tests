@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d77748_37926d69",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-04T19:53:00Z",
+      "side": 1,
+      "message": "The DLP tests seem to have this same finder: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/main:src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go;l\u003d37;drc\u003d0ba40ddd6b261de5326d50a67acbfccf5c72ed1c\n\nI have a feeling there might also be at least one more that\u0027s slightly different in some of the printing tests.  Could you make this exported from the printpreview module and share it instead?",
+      "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0208da_6acfc7f8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-04T19:53:00Z",
+      "side": 1,
+      "message": "I would suggest waiting for this first as a separate step so you can fail with a more specific error message if the dialog doesn\u0027t open.  You might also be able to shorten the timeout on the IfSuccessThen above because it won\u0027t have to include the time needed to wait for the dialog.",
+      "revId": "85c43f95802c27e67101d6589e1f7a1ed3964937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
