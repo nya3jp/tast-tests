@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03607c7_8abf2675",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-04T19:29:57Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "d0cd419d_fa30fbaa",
+      "revId": "944b9d1a3e0748b4cf18665894d8fdcfc32655b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bb48d0_b4a9d261",
