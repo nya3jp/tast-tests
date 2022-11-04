@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00226e0_bcb23d64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-11-04T18:44:43Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e13770_ad03c309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-11-04T18:44:43Z",
+      "side": 1,
+      "message": "Add comment for exported functions.",
+      "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b122fec9_0d198998",
@@ -36,6 +70,53 @@
         "startChar": 1,
         "endLine": 111,
         "endChar": 25
+      },
+      "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efe84cf_fbaddf9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_trust_login_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-11-04T18:44:43Z",
+      "side": 1,
+      "message": "That\u0027s a valid point and I\u0027m not sure how many tests would use it, so I think it makes sense to keep it as it is.",
+      "parentUuid": "b122fec9_0d198998",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd611ae4_ca77fc0b",
+        "filename": "src/chromiumos/tast/services/cros/graphics/screenshot_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-11-04T18:44:43Z",
+      "side": 1,
+      "message": "nit: delete",
+      "range": {
+        "startLine": 22,
+        "startChar": 115,
+        "endLine": 22,
+        "endChar": 116
       },
       "revId": "cb5ff2f013bd9e21bbcf7522801c7a886b125f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
