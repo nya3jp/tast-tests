@@ -438,7 +438,9 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 var androidDeps = []string{
 	"android_vm",
 	"android_vm_r",
+	"android_container",
 	"android_p",
+	"android_r",
 	"arc",
 }
 
@@ -637,9 +639,11 @@ func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 	var prop = "ro.vendor.arc.on_boot"
 	var value = "1"
 	if !isVMEnabled {
-		prop = "net.tcp.default_init_rwnd"
-		value = "60"
+		//prop = "net.tcp.default_init_rwnd"
+		//value = "60"
 	}
+
+	testing.ContextLogf(ctx, "Waiting for ARC property %q set", prop)
 
 	if err := waitProp(ctx, prop, value, reportTiming); err != nil {
 		// Check if init/crosvm is still alive at this point.
