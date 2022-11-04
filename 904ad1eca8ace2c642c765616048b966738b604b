@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cfe59ff1_d436f3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/js_wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99b9d6b_5db19e19",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4f8f2a9e_27cc2836",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health/js_wrapper.go",
         "patchSetId": 9
@@ -94,6 +112,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b67f67b1_ce1ec8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Lmk if the updated comment is better.",
+      "parentUuid": "f9ff8ea3_3bc86e05",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d681fcbf_94d5a566",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
         "patchSetId": 9
@@ -105,6 +141,24 @@
       "writtenOn": "2022-11-04T19:34:05Z",
       "side": 1,
       "message": "See note below, I\u0027m not sure I would bother making this simplified, we\u0027re only missing a few fields, but if we do let\u0027s note that in the comments for the structs that are sparse.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f58496_667475f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "This is a fair point - I didn\u0027t want to add too much initially, risking unnecessary clutter. But as you mention, there are only a few missing fields. If added, they would complete the Network struct. Done.",
+      "parentUuid": "d681fcbf_94d5a566",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +180,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb88dbe_663b2e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Good catch, this was c/p from the cros_network_config code for consistency - it doesn\u0027t really apply here.",
+      "parentUuid": "3f823195_40171577",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99cd77af_2a9b0895",
@@ -139,6 +211,24 @@
       "writtenOn": "2022-11-04T19:34:05Z",
       "side": 1,
       "message": "No filterfor NetworkHealth, maybe omit this and just note (unused) for the unused types below.",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c34c0e_8c2b4923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99cd77af_2a9b0895",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -206,6 +296,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe6d342_8a42935c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19122c0a_d44931aa",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade3f909_0cc36bae",
@@ -219,6 +327,24 @@
       "writtenOn": "2022-11-04T19:34:05Z",
       "side": 1,
       "message": "nit: \"Service is not connected: \"\n(Putting identifiers last is generally simpler, more consistent, and easier to parse)",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62be275a_8e7529f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Good suggestion, thanks!",
+      "parentUuid": "ade3f909_0cc36bae",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -332,6 +458,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6236703d_5cc08cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32697b4f_d26b848c",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52b99672_886c773e",
@@ -362,6 +506,24 @@
       "writtenOn": "2022-11-04T19:56:16Z",
       "side": 1,
       "message": "+1",
+      "parentUuid": "52b99672_886c773e",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d54c16_9f736f7b",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "Whoops!",
       "parentUuid": "52b99672_886c773e",
       "revId": "904ad1eca8ace2c642c765616048b966738b604b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

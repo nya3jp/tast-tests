@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1011d20f_6bc71715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health_types.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T21:04:14Z",
+      "side": 1,
+      "message": "It should be matching now - done.",
+      "parentUuid": "b4e18b97_33bc3e15",
+      "revId": "e6da273c67090b07cb10884806f9f636cb1a68a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71627c8d_0ef93903",
