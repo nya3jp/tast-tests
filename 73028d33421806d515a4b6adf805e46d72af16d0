@@ -46,6 +46,30 @@
       },
       "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0c468e_4f920d24",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-04T10:48:19Z",
+      "side": 1,
+      "message": "It fails before, FillFromLSBRelease is unhappy and crashes if the BuilderPath variable isn\u0027t present.\n\nRuntime variable sounds ok to me, and I think it would also be fine (and a bit easier to use) to have something that checks if builderPath is present, and only if it is, tries to restore the image with installation. Otherwise the test could silently skip that step.",
+      "parentUuid": "d7ba4bae_f6c1543b",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
