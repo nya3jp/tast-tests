@@ -63,6 +63,30 @@
       },
       "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45e8e67_f85611a6",
+        "filename": "src/chromiumos/tast/local/oobe/oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1544392
+      },
+      "writtenOn": "2022-11-04T20:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a329e8_fcecd22b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "697153a86d52eb379fd98a1a1831d8ebe74fea0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
