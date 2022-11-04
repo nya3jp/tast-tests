@@ -16,6 +16,23 @@
       "message": "Thanks, Michael!",
       "revId": "93dd4d464cc9dad634b2961e50ad35caa559dede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81cb767_69b1d234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T23:20:29Z",
+      "side": 1,
+      "message": "We should not assume an Ethernet network, just that there is at least one active network. Apologies if that was unclear.",
+      "revId": "93dd4d464cc9dad634b2961e50ad35caa559dede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

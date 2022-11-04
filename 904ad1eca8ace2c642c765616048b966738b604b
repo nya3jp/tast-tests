@@ -128,6 +128,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc4b8f6_5fff11d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health/network_health.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T23:20:29Z",
+      "side": 1,
+      "message": "lgtm.",
+      "parentUuid": "b67f67b1_ce1ec8eb",
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d681fcbf_94d5a566",
@@ -329,6 +347,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f4a57da_4aeab8de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T23:20:29Z",
+      "side": 1,
+      "message": "Michael makes a good point. What we want to test is that the *network_health* API (specifically the GetNetworkList call) correctly matches the Shill state.\n\nFrom network_health.mojom:\n```\n  // This is a list of networking devices and any associated connections. Only\n  // networking technologies that are present on the device are included.\n  // Networks will be sorted with active connections listed first.\n```\n\nSo the network_health API does not guarantee the order of the active networks (unlike Shill which always lists the default network first).\n\nWe could change the behavior of network_health (or document it if that is already the behavior), OR we can update this test to search |networks| for a network matching the default Shill network. We want to match by Type + GUID (since, as discussed offline, Ethernet networks may have an empty GUID).",
+      "parentUuid": "c8c75eac_4157e66a",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19122c0a_d44931aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
@@ -434,6 +476,30 @@
       "side": 1,
       "message": "Since the assumption is that there should be an ethernet service that is connected (because of the shillReset fixture?), we can just focus the test on the results of the Network Health API. Steven, confirming that this makes sense to you as well?",
       "parentUuid": "13d7437c_83e72aed",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3082640_6338f923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-04T23:20:29Z",
+      "side": 1,
+      "message": "Agreed that we don\u0027t need to reverify anything that is already ensured.",
+      "parentUuid": "e4fe5ee6_87ce6ba2",
       "range": {
         "startLine": 35,
         "startChar": 1,
