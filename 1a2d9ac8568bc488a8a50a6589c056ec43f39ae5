@@ -16,6 +16,75 @@
       "message": "Addressed the comments, PTAL.",
       "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a955d3_21d5e29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-04T05:26:04Z",
+      "side": 1,
+      "message": "better to still use a deferred function for uninstallation, otherwise this uninstallation will not run if the `verify` step fails.\n\nAlternative, you may use `s.Error` for `verify`, so that the test doesn\u0027t return immediately if `verify` fails.",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69ace9a_b9dc3f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-04T05:26:04Z",
+      "side": 1,
+      "message": "why create a new wrapper function instead of directly using `crostini.TransferToContainer`?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c53acea_9bebf093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-04T05:26:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
