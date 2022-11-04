@@ -363,6 +363,10 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 		builtin = append(builtin, "BPF_SYSCALL")
 	}
 
+	if ver.IsOrLater(5, 10) {
+		builtin = append(builtin, "SECURITY_LANDLOCK")
+	}
+
 	if arch == "aarch64" && ver.IsOrLater(5, 0) {
 		// Security: uses a different stack canary for each task.
 		builtin = append(builtin, "STACKPROTECTOR_PER_TASK")
