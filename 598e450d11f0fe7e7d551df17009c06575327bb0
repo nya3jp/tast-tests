@@ -34,6 +34,24 @@
       "parentUuid": "4dc40baf_80f6d54a",
       "revId": "598e450d11f0fe7e7d551df17009c06575327bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c890c6_df76af43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-11-04T20:09:06Z",
+      "side": 1,
+      "message": "yeah, I think you\u0027re right - if we close the whole menu, the main menu and the submenu should be removed at the same time.",
+      "parentUuid": "67512a80_4f8e3825",
+      "revId": "598e450d11f0fe7e7d551df17009c06575327bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
