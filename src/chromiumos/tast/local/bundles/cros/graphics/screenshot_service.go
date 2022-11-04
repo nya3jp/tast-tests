@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/services/cros/graphics"
+	pb "chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +32,7 @@ type ScreenshotService struct {
 	s *testing.ServiceState
 }
 
+// CaptureScreenAndDelete captures a temporary screenshot, and deletes it immediately.
 func (s *ScreenshotService) CaptureScreenAndDelete(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 
 	dir, ok := testing.ContextOutDir(ctx)
@@ -40,6 +42,22 @@ func (s *ScreenshotService) CaptureScreenAndDelete(ctx context.Context, req *emp
 	path := filepath.Join(dir, "screenshotTest.png")
 	defer os.Remove(path)
 	if err := screenshot.CaptureWithStderr(ctx, path); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// CaptureScreenshot captures a screenshot and saves it in the output directory of the test under filePrefix.png.
+func (s *ScreenshotService) CaptureScreenshot(ctx context.Context, req *pb.CaptureScreenshotRequest) (*empty.Empty, error) {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		return nil, errors.New("output directory unavailable")
+	}
+	path := filepath.Join(dir, req.FilePrefix+".png")
+
+	testing.ContextLog(ctx, "Capturing screenshot at ", path)
+
+	if err := screenshot.Capture(ctx, path); err != nil {
 		return nil, err
 	}
 	return &empty.Empty{}, nil
