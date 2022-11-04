@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb4b53d_a25fe2a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:56:31Z",
+      "side": 1,
+      "message": "I disagree with the way this test use GRPC service. I also add Jonathan to the reviewer list for discussion purpose.",
+      "revId": "89b1e57bedf733b78177daec8bb3c0df9cb56377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91c5dca_9849b1bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:56:31Z",
+      "side": 1,
+      "message": "Why do you need to turn off servo keyboard? Please put some comments in here.",
+      "revId": "89b1e57bedf733b78177daec8bb3c0df9cb56377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1ac1d7_9ea555fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/oobe/hid_screen_usb_keyboard_only.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-04T16:56:31Z",
+      "side": 1,
+      "message": "What if s.Fatal is call before keyboardSvc.CloseKeyboard? Will it leave the DUT in bad state? Also, you need 4 GRPC calls to verify one small part of verificaton, and there are a lot of GRPC calls afterward. The test may fail even with a minor network issue and delay. I think it will make test the flaky. UI action is prone to synchronization issue. Laterncy will increase the chance of UI test failure.\n\nAlso, why is it a remote test? Did you suspend the DUT somewhere?  I don\u0027t see it. Please indicate where it is.\n\nIf it has to be a remote tests, here is my suggestion. Instead of using a generic KeyboardService, use a new service called OOBEHidScreenTestService or something more appropriate for the set of tests that you are going to use this service. In that you can have API such KeyboardVerification (or a better name) and MouseVerification.\n\nThen, you will only need to make one or two GRPC calls for your tests. Have the GRPC server on the host do most of the heavy lifting.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "89b1e57bedf733b78177daec8bb3c0df9cb56377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
