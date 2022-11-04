@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee268be9_f281be62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-04T21:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cef16c1_0bf33792",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4736dd89_b85cadee",
@@ -206,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6123147_f366bff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-04T21:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e6b99e_4ba64d6f",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "babc714d_56105a79",
@@ -243,6 +285,30 @@
       "side": 1,
       "message": "Will fix",
       "parentUuid": "babc714d_56105a79",
+      "range": {
+        "startLine": 126,
+        "startChar": 33,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefd21b4_fd18cbe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-04T21:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f174c94_2c04e238",
       "range": {
         "startLine": 126,
         "startChar": 33,
