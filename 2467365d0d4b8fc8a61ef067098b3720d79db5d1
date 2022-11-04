@@ -22,6 +22,30 @@
       },
       "revId": "2467365d0d4b8fc8a61ef067098b3720d79db5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f995e8ab_4beab445",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/update_kernel_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-11-04T10:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f7d28d9_8f895681",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 75
+      },
+      "revId": "2467365d0d4b8fc8a61ef067098b3720d79db5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
