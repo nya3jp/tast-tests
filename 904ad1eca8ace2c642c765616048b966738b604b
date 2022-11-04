@@ -256,6 +256,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab3daf3_9904300d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecdb629b_522d6357",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145dbb22_9b76928f",
@@ -269,6 +293,30 @@
       "writtenOn": "2022-11-04T19:56:16Z",
       "side": 1,
       "message": "Will the first service always be consistently the same? I.e is there consistency in the order or are there other services that we need to worry about?\n\nYou could try to just grab the ethernet service as there should only be one. Example here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d45",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c75eac_4157e66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "For this test, I do believe that the first service should be the active one (Shill maintains an order of services with active ones higher in the list, please correct me if I\u0027m wrong).\n\nThat said, you make a good point below re: how this seems more like a shill check than a network health check. As this test should focus on the Network Health API call, these lines of code shouldn\u0027t be required (I removed them). Steven, WDYT?",
+      "parentUuid": "145dbb22_9b76928f",
       "range": {
         "startLine": 48,
         "startChar": 14,
@@ -374,6 +422,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4fe5ee6_87ce6ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "Since the assumption is that there should be an ethernet service that is connected (because of the shillReset fixture?), we can just focus the test on the results of the Network Health API. Steven, confirming that this makes sense to you as well?",
+      "parentUuid": "13d7437c_83e72aed",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1abd393a_6d8e193c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
@@ -385,6 +457,30 @@
       "writtenOn": "2022-11-04T19:56:16Z",
       "side": 1,
       "message": "Add some time for cleanup in the ctx if it hangs. For example:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\n\nThen for every defer call, use `defer function(cleanupCtx)`\n\nExample in this file:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;drc\u003db1436500810908098d377e1bf4e693113d9090e2;l\u003d130",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae3771d_e8afd4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1abd393a_6d8e193c",
       "range": {
         "startLine": 65,
         "startChar": 1,
@@ -418,6 +514,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a88f41_f42d6c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209f8409_6e1883c2",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac05200_b5305174",
@@ -431,6 +551,30 @@
       "writtenOn": "2022-11-04T19:56:16Z",
       "side": 1,
       "message": "Will the first network always be consistently the same? I.e is there consistency in the order or are there other networks that we need to worry about?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc38e1f_73889d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-04T22:22:54Z",
+      "side": 1,
+      "message": "This baseline test does assume that the first network will be a connected Ethernet network. If that premise doesn\u0027t hold true (e.g., a WiFi network tops the list), then it is unexpected and the test should consequently fail. Lmk if you disagree.",
+      "parentUuid": "6ac05200_b5305174",
       "range": {
         "startLine": 81,
         "startChar": 4,
