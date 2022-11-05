@@ -8,11 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/retry"
 	"chromiumos/tast/testing"
 )
 
@@ -45,40 +45,27 @@ func init() {
 func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout      = 4 * time.Minute
-		maxAttempts      = 2
 		testPackage      = "com.google.android.calculator"
 		defaultUITimeout = time.Minute
 	)
 
 	packages := []string{testPackage}
-	attempts := 1
 
-	// Indicates a failure in the core feature under test so the polling should stop.
-	exit := func(desc string, err error) error {
-		s.Fatalf("Failed to %s: %v", desc, err)
-		return nil
-	}
-
-	// Indicates that the error is retryable and unrelated to core feature under test.
-	retry := func(desc string, err error) error {
-		if attempts < maxAttempts {
-			attempts++
-			err = errors.Wrap(err, "failed to "+desc)
-			s.Logf("%s. Retrying", err)
-			return err
-		}
-		return exit(desc, err)
-	}
+	rl := &retry.Loop{Attempts: 1,
+		MaxAttempts: 2,
+		DoRetries:   true,
+		Fatalf:      s.Fatalf,
+		Logf:        s.Logf}
 
 	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
 	if err != nil {
-		exit("get login creds", err)
+		rl.Exit("get login creds", err)
 	}
 	login := chrome.GAIALogin(creds)
 
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeAvailable)
 	if err != nil {
-		exit("setup fake policy server", err)
+		rl.Exit("setup fake policy server", err)
 	}
 	defer fdms.Stop(ctx)
 
@@ -91,49 +78,49 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 			chrome.DMSPolicy(fdms.URL),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
-			return retry("connect to Chrome", err)
+			return rl.Retry("connect to Chrome", err)
 		}
 		defer cr.Close(ctx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return retry("create test API connection", err)
+			return rl.Retry("create test API connection", err)
 		}
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			return exit("start ARC by policy", err)
+			return rl.Retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
 
 		if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
-			return exit("configure provisioning logs", err)
+			return rl.Exit("configure provisioning logs", err)
 		}
 
-		if err := arcent.WaitForProvisioning(ctx, a, attempts); err != nil {
-			return exit("wait for provisioning", err)
+		if err := arcent.WaitForProvisioning(ctx, a, rl.Attempts); err != nil {
+			return rl.Retry("wait for provisioning", err)
 		}
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
-			return exit("verify Play Store is not empty", err)
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts); err != nil {
+			return rl.Exit("verify Play Store is not empty", err)
 		}
 
 		if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
-			return exit("open app page", err)
+			return rl.Exit("open app page", err)
 		}
 
 		d, err := a.NewUIDevice(ctx)
 		if err != nil {
-			return exit("initialize UI Automator: ", err)
+			return rl.Exit("initialize UI Automator: ", err)
 		}
 		defer d.Close(ctx)
 
 		if installButton, err := arcent.WaitForInstallButton(ctx, d); err != nil {
-			return exit("find the install button", err)
+			return rl.Exit("find the install button", err)
 		} else if enabled, err := installButton.IsEnabled(ctx); err != nil {
-			return exit("check install button state", err)
+			return rl.Exit("check install button state", err)
 		} else if !enabled {
-			return exit("verify install button is enabled", nil)
+			return rl.Exit("verify install button is enabled", nil)
 		}
 
 		return nil
