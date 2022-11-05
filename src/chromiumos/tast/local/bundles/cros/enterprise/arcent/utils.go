@@ -6,6 +6,7 @@ package arcent
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"time"
 
@@ -13,8 +14,39 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
+
+// EnsurePackagesUninstall verifies that packages have desired uninstall behavior.
+func EnsurePackagesUninstall(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string, shouldUninstall bool) error {
+	assertUninstall := func(isUninstalled bool, packageName string) error {
+
+		action := "cannot"
+		if isUninstalled {
+			action = "can"
+		}
+
+		message := fmt.Sprintf("Package %q %s be uninstalled", packageName, action)
+
+		if isUninstalled == shouldUninstall {
+			testing.ContextLog(ctx, message)
+			return nil
+		}
+		return errors.New(message)
+	}
+
+	testing.ContextLog(ctx, "Trying to uninstall packages")
+	for _, p := range packages {
+		err := a.Uninstall(ctx, p)
+		isUninstalled := err == nil
+		if err := assertUninstall(isUninstalled, p); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
 
 // WaitForUninstall waits for package to uninstall.
 func WaitForUninstall(ctx context.Context, a *arc.ARC, blockedPackage string) error {
