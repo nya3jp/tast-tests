@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8a2cfc_fef358f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-05T00:27:51Z",
+      "side": 1,
+      "message": "+2 as long as you\u0027re sure no one is monitoring/using these tests in our lab (removing the attributes will cause it to longer be scheduled)",
+      "revId": "f6805c4628841e672972a73c68027f7776c5d2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
