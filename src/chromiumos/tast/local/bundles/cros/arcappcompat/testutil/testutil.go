@@ -75,32 +75,47 @@ type TestParams struct {
 
 // ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
 var ClamshellCommonTests = []TestCase{
-	// TODO(b/166637700): Remove the commented testcases if the proper solution is found for the issue.
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Orientation", Fn: OrientationSize},
-	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
+	//{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
 	// Commented Clamshell: Largescreen Layout testcase since it is handled by Resize lock feature in ARC-VM.
 	//{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
-	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
+	//{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
+	//{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
-	{Name: "Clamshell: Resize Lock", Fn: ResizeLock},
+	// Commented Clamshell: Resize Lock testcase since it is covered by Clamshell: Resize window test case.
+	//{Name: "Clamshell: Resize Lock", Fn: ResizeLock},
 }
 
 // TouchviewCommonTests is a list of all tests common to all apps in touchview mode.
 var TouchviewCommonTests = []TestCase{
-	// TODO(b/166637700): Remove the commented testcases if the proper solution is found for the issue.
-	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
+	//{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Touchview: Splitscreen", Fn: SplitScreen},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
 	//{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
-	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	// TODO(b/246952676): Uncomment once suite timeout is resolved.
+	//{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
 
