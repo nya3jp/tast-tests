@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/retry"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -77,38 +78,24 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	const (
 		testPackage = "com.google.android.calculator"
 		poolID      = "arc_logging_test"
-		maxAttempts = 2
 	)
 
-	attempts := 1
-
-	// Indicates a failure in the core feature under test so the polling should stop.
-	exit := func(desc string, err error) error {
-		s.Fatalf("Failed to %s: %v", desc, err)
-		return nil
-	}
-
-	// Indicates that the error is retryable and unrelated to core feature under test.
-	retry := func(desc string, err error) error {
-		if attempts < maxAttempts {
-			attempts++
-			err = errors.Wrap(err, "failed to "+desc)
-			s.Logf("%s. Retrying", err)
-			return err
-		}
-		return exit(desc, err)
-	}
+	rl := &retry.Loop{Attempts: 1,
+		MaxAttempts: 2,
+		DoRetries:   true,
+		Fatalf:      s.Fatalf,
+		Logf:        s.Logf}
 
 	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
 	if err != nil {
-		exit("get login creds", err)
+		rl.Exit("get login creds", err)
 	}
 	login := chrome.GAIALogin(creds)
 
 	packages := []string{testPackage}
 	fdms, err := setupPolicyServerWithArcAppsAndEnableLogging(ctx, s.OutDir(), creds.User, packages)
 	if err != nil {
-		exit("setup fake policy server", err)
+		rl.Exit("setup fake policy server", err)
 	}
 	defer fdms.Stop(ctx)
 
@@ -124,34 +111,34 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 			chrome.DMSPolicy(fdms.URL),
 			chrome.ExtraArgs(args...))
 		if err != nil {
-			return retry("connect to Chrome", err)
+			return rl.Retry("connect to Chrome", err)
 		}
 		defer cr.Close(ctx)
 
 		// Ensure that ARC is launched.
 		a, err := arc.New(ctx, s.OutDir())
 		if err != nil {
-			return retry("start ARC by policy", err)
+			return rl.Retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
 
 		_, err = cr.TestAPIConn(ctx)
 		if err != nil {
-			return retry("create test API connection", err)
+			return rl.Retry("create test API connection", err)
 		}
 
 		// Ensure that test app is force-installed by ARC policy.
 		if err := a.WaitForPackages(ctx, []string{testPackage}); err != nil {
-			return retry("force install packages: ", err)
+			return rl.Retry("force install packages: ", err)
 		}
 
 		// Check if required sequence appears in chrome log.
 		if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
-			return exit("log required events: ", err)
+			return rl.Exit("log required events: ", err)
 		}
 		return nil
 	}, nil); err != nil {
-		s.Fatal("Install logging flow failed: ", err)
+		rl.Exit("Install logging flow failed: ", err)
 	}
 }
 
