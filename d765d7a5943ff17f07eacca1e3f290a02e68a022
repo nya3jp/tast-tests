@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f11cf9_594c6b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-11-05T01:28:24Z",
+      "side": 1,
+      "message": "GetWindow requires ID to be an int, and apps.FilesSWA.ID is a string, so I opted to use WaitForAppWindow instead.",
+      "parentUuid": "7f214177_31bf6c69",
+      "revId": "d765d7a5943ff17f07eacca1e3f290a02e68a022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "043dc575_6e029af1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-02T16:41:10Z",
       "side": 1,
       "message": "can we remove this? it\u0027s nice to test the event type is working, but i think the problem would be with wm.go if this were to fail, so it\u0027s not useful to us here. we can add it back later if needed",
+      "revId": "d765d7a5943ff17f07eacca1e3f290a02e68a022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "955d7c6e_55097551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1555377
+      },
+      "writtenOn": "2022-11-05T01:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043dc575_6e029af1",
       "revId": "d765d7a5943ff17f07eacca1e3f290a02e68a022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
