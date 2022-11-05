@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f4542f_955385b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-05T00:12:14Z",
+      "side": 1,
+      "message": "It is not related to the bug. I just want to mention cr is supposed to close.",
+      "revId": "799fc8f5699977f7b165da358f83424abee0872f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab6f572_184ede71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-05T00:12:14Z",
+      "side": 1,
+      "message": "Should you have a \"defer cr.Close(ctx)\" here?",
+      "revId": "799fc8f5699977f7b165da358f83424abee0872f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b436a9b_6aa9ff3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-05T00:12:14Z",
+      "side": 1,
+      "message": "Should you have a \"defer cr.Close(ctx)\" here?",
+      "revId": "799fc8f5699977f7b165da358f83424abee0872f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
