@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "989b4b9e_8d66270e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-05T01:23:31Z",
+      "side": 1,
+      "message": "WIP.",
+      "revId": "1b7fd8aa69daa7cbab067b76199b35f9a134faac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e605626_bdbeff9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-05T01:23:31Z",
+      "side": 1,
+      "message": "Is this what you meant by trying to drag and drop into a simple web app? The drag and drop html works with files from files app but not from items in holdingspace. I\u0027m not sure how else to test it. Any idea to point me in the right direction? Thank you",
+      "range": {
+        "startLine": 271,
+        "startChar": 20,
+        "endLine": 271,
+        "endChar": 35
+      },
+      "revId": "1b7fd8aa69daa7cbab067b76199b35f9a134faac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
