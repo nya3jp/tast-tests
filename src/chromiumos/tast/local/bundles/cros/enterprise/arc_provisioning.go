@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
@@ -167,7 +166,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return rl.Retry("wait for packages", err)
 		}
 
-		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+		if err := arcent.EnsurePackagesUninstall(ctx, cr, a, packages, false); err != nil {
 			return rl.Exit("verify packages are uninstallable", err)
 		}
 
@@ -179,17 +178,4 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
 	}
-}
-
-// ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
-func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
-	// Try uninstalling packages with ADB, should fail.
-	testing.ContextLog(ctx, "Trying to uninstall packages")
-	for _, p := range packages {
-		if a.Uninstall(ctx, p) == nil {
-			return errors.Errorf("Package %q can be uninstalled", p)
-		}
-	}
-
-	return nil
 }
