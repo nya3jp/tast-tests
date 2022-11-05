@@ -61,7 +61,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		},
-			/* Disabled due to <1% pass rate over 30 days. See b/246818647
+
 			{
 				Name: "vm_clamshell_mode_default",
 				Val: testutil.TestParams{
@@ -74,9 +74,7 @@ func init() {
 				// Skip on tablet only models.
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-			},
-			*/
-			{
+			}, {
 
 				Name: "vm_tablet_mode_default",
 				Val: testutil.TestParams{
