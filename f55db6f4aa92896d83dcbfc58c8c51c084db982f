@@ -50,6 +50,29 @@
       "message": "Hi Jun, \nCould you please help to review this CL? Thanks!",
       "revId": "f55db6f4aa92896d83dcbfc58c8c51c084db982f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b7352b_ec6f7a2d",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-05T07:08:07Z",
+      "side": 1,
+      "message": "named return is not good for code readability. There is no reason why you have to do it.",
+      "range": {
+        "startLine": 361,
+        "startChar": 78,
+        "endLine": 361,
+        "endChar": 81
+      },
+      "revId": "f55db6f4aa92896d83dcbfc58c8c51c084db982f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
