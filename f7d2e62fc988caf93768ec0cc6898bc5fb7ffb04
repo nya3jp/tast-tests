@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32995d86_114a4ad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-11-05T01:37:46Z",
+      "side": 1,
+      "message": "lgtm % nits\n\ngood luck with submitting ^^",
+      "revId": "f7d2e62fc988caf93768ec0cc6898bc5fb7ffb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9719d14_d4f9cbf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-11-05T01:37:46Z",
+      "side": 1,
+      "message": "nit: window",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "f7d2e62fc988caf93768ec0cc6898bc5fb7ffb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67dd003_0f52befd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1537137
+      },
+      "writtenOn": "2022-11-05T01:37:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "f7d2e62fc988caf93768ec0cc6898bc5fb7ffb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
