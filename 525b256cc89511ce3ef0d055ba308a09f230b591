@@ -90,6 +90,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "718cc185_fd642643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-11-06T23:46:02Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5516cae6_e576eb55",
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9c1cb8_d1b014c1",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-11-06T23:46:02Z",
+      "side": 1,
+      "message": "We only push a single result into this channel so I guess it is not necessary, but shouldn\u0027t we close the channel ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7704bf8_ef3cfc14",
         "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
         "patchSetId": 4
@@ -101,6 +142,30 @@
       "writtenOn": "2022-11-04T11:54:40Z",
       "side": 1,
       "message": "Note: put it here now since I don\u0027t have a very clear thought on how other tests will use this OptionMap.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a986b48_1c6ea2d1",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-11-06T23:46:02Z",
+      "side": 1,
+      "message": "I think that\u0027s fine to begin with. Maybe just comment about ipLeaseTime unit and hardcoded duration.",
+      "parentUuid": "f7704bf8_ef3cfc14",
       "range": {
         "startLine": 62,
         "startChar": 0,
