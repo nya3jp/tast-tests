@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/crostini/firefox-esr_102.4.0esr-1~deb10u1_amd64_20221104.deb",
+  "size": 59473260,
+  "sha256sum": "e8eab72fa3f77046fc5346101e2feab2254c940dfe2f330a2891fe197edebc43"
+}
