@@ -37,6 +37,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8f09d54_ea108ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "Maybe this `_r` suffix can be removed because fixup is an R-only feature?\nOr does it make sense to keep it (e.g. because there can be non-R fixup test cases in the future)?",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447d0e4d_1f65475b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "How about adding a comment to clarify that fixup is an R-only feature and thus `android_vm_r` should be kept as-is even when other tests (general_r and fullrestore_r) are generalized for ARCVM?",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff87cb6c_2ae9e411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "nit: Looks like this `user` is used only in L367. Maybe you can just call `prepareFixup(ctx, a, cr.NormalizedUser())`.",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7878210_df5de9a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
         "patchSetId": 4
@@ -48,6 +105,63 @@
       "writtenOn": "2022-11-04T22:59:27Z",
       "side": 1,
       "message": "nit: LogoutChrome(ctx, cr)",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d462cda_dd459d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "Nit-picking and not related to your CL, but this seems to be unused. (Possibly it\u0027s intentional and I\u0027m okay to keep it as-is.)",
+      "range": {
+        "startLine": 478,
+        "startChar": 39,
+        "endLine": 478,
+        "endChar": 56
+      },
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1a3c46_4480f8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "How were this number and the timeout duration (1 minute) chosen?",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e91357_83e5c8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-06T22:51:12Z",
+      "side": 1,
+      "message": "Is it possible that fixupXAttr is set to 1 after prepareFixup but before `restart ui`? (Even if it\u0027s possible, I think it\u0027s okay to ignore the possibility if it\u0027s practically negligible.)",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
