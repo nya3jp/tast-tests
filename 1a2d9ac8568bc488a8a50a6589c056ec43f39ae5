@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1da36a9_61427cb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-06T23:35:26Z",
+      "side": 1,
+      "message": "Done.\nReverted back to use `defer`. `s.Error` is rarely used and could confuse readers later.",
+      "parentUuid": "72a955d3_21d5e29a",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d69ace9a_b9dc3f4b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ca9abd_62363255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-06T23:35:26Z",
+      "side": 1,
+      "message": "Hmmm, good catch. I feel, I had something else in mind to put into these functions. No point doing it the way it used to.\nDone.",
+      "parentUuid": "d69ace9a_b9dc3f4b",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c53acea_9bebf093",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-04T05:26:04Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "1a2d9ac8568bc488a8a50a6589c056ec43f39ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6516f715_01b7cac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_firefox_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-06T23:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c53acea_9bebf093",
       "range": {
         "startLine": 125,
         "startChar": 5,
