@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19e9dd5_3e10eb01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:29:01Z",
+      "side": 1,
+      "message": "lgtm with some minor comments.",
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f32ddb_c810dcf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:29:01Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 148,
+        "startChar": 61,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d798d17_ffd0f4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:29:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 44,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7be4da_00bb7323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:29:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 213,
+        "startChar": 24,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
