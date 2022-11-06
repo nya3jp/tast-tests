@@ -16,6 +16,23 @@
       "message": "LGTM from Tast owner perspective.",
       "revId": "75ab0447f17d599a22493bfb4bc86a57cf3b43d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43337bcc_8f098d5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-06T20:52:32Z",
+      "side": 1,
+      "message": "Was Jun reviewing this file as a domain expert for kernal tests or as tast reviewer? If Jun was reviewing this test as a Tast reviewer, we still need one a +1 from a domain expert.  Also, please run tast unit tests and add this line to commit log.\n\nTEST\u003dtast unit tests passed.\n\nThanks.",
+      "revId": "75ab0447f17d599a22493bfb4bc86a57cf3b43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
