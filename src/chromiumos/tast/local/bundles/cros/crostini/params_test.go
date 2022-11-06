@@ -186,6 +186,7 @@ var appTests = []string{
 	"app_android_studio.go",
 	"app_eclipse.go",
 	"app_emacs.go",
+	"app_firefox_install.go",
 	"app_gedit.go",
 	"app_gedit_filesharing.go",
 	"app_gedit_unshare_folder.go",
