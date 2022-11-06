@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dec51fe_dc3f5fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-06T20:04:26Z",
+      "side": 1,
+      "message": "Thanks, Eliot, I found it is ok to remove.",
+      "parentUuid": "71b3a547_f3bbb093",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f471878_a2679e33",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-02T00:06:00Z",
       "side": 1,
       "message": "We shouldn\u0027t open non-google web pages in a test. If you want to use this content, please use WPR to avoid hitting live sites",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4767b705_fb76a175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-06T20:04:26Z",
+      "side": 1,
+      "message": "Thank you so much Eliot, I understand it is safer to use WPR. Some cuj tests will visit live website like reddit. https://source.chromium.org/search?q\u003dreddit%20tast%20f:go",
+      "parentUuid": "8f471878_a2679e33",
       "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
