@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35342efb_aeab1f0a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:26:20Z",
+      "side": 1,
+      "message": "It only returns an error if there is one.\nPlease explain more about the func which takes the authSessionID, like what it could / should do and give some examples.",
+      "range": {
+        "startLine": 1264,
+        "startChar": 3,
+        "endLine": 1264,
+        "endChar": 11
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae0b301_6fd1a2a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:26:20Z",
+      "side": 1,
+      "message": "What about newPassword?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8292cc7c_dcf7cee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-06T22:26:20Z",
+      "side": 1,
+      "message": "Why do this again?",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 28
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
