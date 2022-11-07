@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13b674a_ebd28edc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "nit: let\u0027s mention that it\u0027s a tast test",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "713377bf_1509ebe2",
@@ -32,6 +55,115 @@
       "side": 1,
       "message": "Add @zuan@chromium.org to review chaps related commands.",
       "parentUuid": "713377bf_1509ebe2",
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c5bdec_0c96f586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "The general idea of the test LGTM. \nFor more detailed and language specific review deligating to the owners.",
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee87f7b_eb016a95",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "nit: At least in C++ we usually use `\"\" /*comment*/` (in most cases not prefered) or `/*variable_name\u003d*/\"\"`. Let\u0027s use the latter here.\nDitto in other places.",
+      "range": {
+        "startLine": 144,
+        "startChar": 80,
+        "endLine": 144,
+        "endChar": 96
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9672593_90459168",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "nit: I think it\u0027d be slightly easier to read if we phrase it as `the hash for the currently logged-in user.`",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 54
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ba9e11_c8076ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "To be consistent with other tests, let\u0027s actually describe what we are testing in this test.\nE.g. `Test that shill automatically updates PKCS#11 slot IDs for EAP certificates.`",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eda637e_0be2ec34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-11-07T15:06:03Z",
+      "side": 1,
+      "message": "nit: This probably doesn\u0027t matter that much, but maybe let\u0027s try to avoid having the type and the variable with the same name? \nDon\u0027t have a lot of good ideas, but maybe name the type `slot_t`?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 10
+      },
       "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
