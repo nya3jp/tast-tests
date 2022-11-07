@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016fe69d_74d9def9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-11-07T22:34:45Z",
+      "side": 1,
+      "message": "LGTM as tast owner, please have someone with familiarity of this area also review before submitting.",
+      "revId": "412bed7d7e78621933c640dccc18e3704e767d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
