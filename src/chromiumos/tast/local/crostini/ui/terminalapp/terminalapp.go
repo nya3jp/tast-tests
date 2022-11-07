@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -111,6 +112,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 
 // LaunchSSH launches Terminal App and connects to usernameATHost
 // with the optional sshArgs. An error is returned if the app fails to launch.
+// Sets IME to en-US in order to send @ symbol correctly as Shift-2.
 func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshArgs, password string) (*TerminalApp, error) {
 	// Launch the Terminal App.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
@@ -126,6 +128,7 @@ func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshA
 
 	loggedInPrompt := nodewith.Name(" ~ $").Role(role.StaticText).Ancestor(sshWebArea)
 	if err := uiauto.Combine("launch ssh",
+		ime.EnglishUS.InstallAndActivate(tconn),
 		ta.DeleteSSHConnection(usernameAtHost),
 		ui.LeftClick(nodewith.Name("Add SSH").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Command").Role(role.TextField)),
