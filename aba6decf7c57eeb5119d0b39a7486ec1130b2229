@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6030ee07_cc90c93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-07T14:16:47Z",
+      "side": 1,
+      "message": "These are TPS-only metrics, right?",
+      "revId": "aba6decf7c57eeb5119d0b39a7486ec1130b2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
