@@ -178,7 +178,7 @@ func VerifyEssentialData(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		// Uncheck the share diagnostic data checkbox.
-		diagnosticDataCheckboxContainer := nodewith.Name("Send system and app info and metrics").Role(
+		diagnosticDataCheckboxContainer := nodewith.Name("Send system & app info and metrics").Role(
 			role.GenericContainer).Ancestor(feedbackRootNode)
 		diagnosticDataCheckbox := nodewith.Role(role.CheckBox).Ancestor(diagnosticDataCheckboxContainer)
 		if err := uiauto.Combine("Uncheck the share diagnostic data checkbox",
