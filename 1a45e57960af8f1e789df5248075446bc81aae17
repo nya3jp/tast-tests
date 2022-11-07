@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a64104_4b9ac5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-07T02:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff16f7a_6ac1a1f4",
+      "range": {
+        "startLine": 195,
+        "startChar": 19,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2206687c_c359ced8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-07T02:21:24Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 197,
+        "startChar": 69,
+        "endLine": 197,
+        "endChar": 77
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5446e227_430aaf08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-07T02:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2206687c_c359ced8",
       "range": {
         "startLine": 197,
         "startChar": 69,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c3130a_7d175529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-07T02:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4c63f8_35056fe8",
+      "range": {
+        "startLine": 203,
+        "startChar": 30,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b49f52_3c9a975f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-07T02:21:24Z",
       "side": 1,
       "message": "I\u0027d expect something like searching for a \"command not found\" error message?",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceea0602_bc60388d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-07T02:46:09Z",
+      "side": 1,
+      "message": "It is not always the same. Sometimes it is: -bash: code: command not found. Sometime it is: -bash: /user/bin/code: no such file or directory. The common part is \"-bash: \". No such thing if code is still there.",
+      "parentUuid": "15b49f52_3c9a975f",
       "range": {
         "startLine": 216,
         "startChar": 40,
