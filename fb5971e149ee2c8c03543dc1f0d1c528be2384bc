@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6ce1a6_5f5dd29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-07T03:45:54Z",
+      "side": 1,
+      "message": "See this response to Opal about this; tl;dr I\u0027m one of the test owners and we\u0027re just going to remember it\u0027s wrong.\n\n\u003eYeah, it should. But, we have some dashboards that depend on it, and I decided it would be easier just to remember that it\u0027s package power not whole device power than update the dashboards and lose the existing data for comparison.",
+      "parentUuid": "e113ee75_db27e4f3",
+      "range": {
+        "startLine": 555,
+        "startChar": 51,
+        "endLine": 555,
+        "endChar": 62
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fb4b94_4c605505",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-07T03:39:54Z",
       "side": 1,
       "message": "nit what do you mean by total power here? total SOC power? Total system power? Total SoC power is very different from total system power",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79167336_5fe7bed0",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-07T03:45:54Z",
+      "side": 1,
+      "message": "I think people outside of the power team would assume total power means total power of the entire system. According to https://g3doc.corp.google.com/company/teams/chromeos/subteams/platforms/power/guides/powercap.md?cl\u003dhead package0 power \u003d\u003d total soc power. Let me know if there\u0027s an alternate phrasing you\u0027d like me to use.\n\nUnrelated, but how different can total soc power be from total system power? On the previous page, I saw that it is equal to soc + DRAM + PCH, but I don\u0027t know what PCH is (what is it?), and apparently DRAM power is only estimated. So, since we can\u0027t compute it using only RAPL I\u0027m removing the values entirely.",
+      "parentUuid": "30fb4b94_4c605505",
       "range": {
         "startLine": 100,
         "startChar": 27,
