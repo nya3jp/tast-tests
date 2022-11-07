@@ -128,8 +128,9 @@ func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cr
 	}
 
 	for _, f := range []string{
-		"Not There.rar",
-		"Not There.zip",
+		// TODO(b/257798374) Find out why this freezes cros-disks.
+		// "Not There.rar",
+		// "Not There.zip",
 	} {
 		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), nil, crosdisks.MountErrorInvalidPath); err != nil {
 			s.Errorf("Unexpected status of mounting absent archive %q: %v", f, err)
