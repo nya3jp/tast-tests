@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09bd92f6_4957ab3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-07T04:34:34Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do uninstallation in this test. Probably do it in an independent fixture and independent test, like the in the discussion with James.\n\nDoing uninstallation here breaks the app fixture state (which assumes the app has been pre-installed). E.g., retries of this tests will fail, most importantly, running other VS Code tests (e.g., crostini.AppVscode.tablet.* and future VS code tests) that follows this test will fail.",
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ff16f7a_6ac1a1f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
         "patchSetId": 1
