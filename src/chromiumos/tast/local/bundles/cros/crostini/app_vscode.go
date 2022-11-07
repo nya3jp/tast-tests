@@ -108,6 +108,10 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
 	}
+
+	if err := uninstallVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
+		s.Fatal("Failed to uninstall Visual Studio Code in Terminal: ", err)
+	}
 }
 
 func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
@@ -184,5 +188,34 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		return errors.Wrap(err, "failed to verify the content of the file")
 	}
 
+	return nil
+}
+
+func uninstallVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
+	// Uninstall from ternimal app.
+	if err := terminalApp.RunCommand(keyboard, "sudo apt purge -y --allow-change-held-packages code")(ctx); err != nil {
+		return errors.Wrap(err, "failed to uninstall Visual Studio Code in ternimal app")
+	}
+
+	// Wait for the uninstallation to finish.
+	ui := uiauto.New(tconn)
+	progress := nodewith.NameStartingWith("Progress: [ ").Role(role.StaticText)
+	if err := uiauto.Combine("wait uninstallation to finish",
+		ui.WaitUntilExists(progress),
+		ui.WithTimeout(time.Minute).WaitUntilGone(progress),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait uninstallation command to finish")
+	}
+
+	// Try to launch Visual Studio Code after uninstalling it.
+	if err := terminalApp.RunCommand(keyboard, "code")(ctx); err != nil {
+		return errors.Wrap(err, "failed to run command from terminal app")
+	}
+
+	// Make sure command "code" is not available anymore.
+	codeError := nodewith.NameStartingWith("-bash: ").Role(role.StaticText)
+	if err := ui.WaitUntilExists(codeError)(ctx); err != nil {
+		return errors.Wrap(err, "failed to get error code")
+	}
 	return nil
 }
