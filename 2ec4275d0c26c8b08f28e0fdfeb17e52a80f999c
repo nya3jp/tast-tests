@@ -92,6 +92,30 @@
       },
       "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e395ae21_250c27b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-07T22:56:51Z",
+      "side": 1,
+      "message": "It\u0027s just interesting to me that we introduce a few new variables and then delete them in the next CL.\n\nBut if it makes things easier, sure.",
+      "parentUuid": "705e448f_45a1b365",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
