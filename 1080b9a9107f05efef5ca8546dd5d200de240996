@@ -178,6 +178,30 @@
       },
       "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55606d9_72b662f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:43:28Z",
+      "side": 1,
+      "message": "Okay, thank you for confirming, I will keep that in mind moving forward! Are there any circumstances at all where we would want to use `cellular_unstable` for a UI test, or will it always be `cellular_e2e_unstable` moving forward?",
+      "parentUuid": "b5688c5c_87f169f5",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
