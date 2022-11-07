@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff16f7a_6ac1a1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-07T02:21:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 195,
+        "startChar": 19,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2206687c_c359ced8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-07T02:21:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 197,
+        "startChar": 69,
+        "endLine": 197,
+        "endChar": 77
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4c63f8_35056fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-07T02:21:24Z",
+      "side": 1,
+      "message": "\"wait for\", here and later too",
+      "range": {
+        "startLine": 203,
+        "startChar": 30,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b49f52_3c9a975f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-07T02:21:24Z",
+      "side": 1,
+      "message": "I\u0027d expect something like searching for a \"command not found\" error message?",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
