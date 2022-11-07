@@ -16,6 +16,57 @@
       "message": "Please review, thanks!",
       "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081bc613_755dc752",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-11-07T18:17:42Z",
+      "side": 1,
+      "message": "nit: Let\u0027s call it `isLocal`, saves a bit typing.\n\n```\nvar isLocal \u003d testing.RegisterVarString(\n\t\"cuj.isLocal\",\n```",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b068f6a_70c32573",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-11-07T18:17:42Z",
+      "side": 1,
+      "message": "Do we need a 2nd var, i.e. do we need to run a local test with wifi disabled? If we do, is it possible to put this with the other var?",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0826e273_46ed04a2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-11-07T18:17:42Z",
+      "side": 1,
+      "message": "nit: `skipDisableWifi` -\u003e `keepWifi` to save some typing ?",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
