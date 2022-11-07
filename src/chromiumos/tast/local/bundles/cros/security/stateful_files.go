@@ -90,6 +90,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_restore"), chk.Users("oobe_config_restore"), chk.Groups("oobe_config_restore"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_save"), chk.Users("oobe_config_save"), chk.Groups("oobe_config_save"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/power_manager"), chk.Users("power"), chk.Groups("power"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/private_computing"), chk.Users("private_computing"), chk.Groups("private_computing"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), chk.Users("chronos", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
