@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e47dacb_dd0e45f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T05:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26711dc_91cbd08d",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "5deb46e7b85c440f9d0908fb7ed14fa547453c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6af5daba_9462d39d",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-07T03:32:01Z",
       "side": 1,
       "message": "optional: this can be reformatted to:\n```\nif curMode, err :\u003d ...; err !\u003d nil {\n  ...\n} else if curMode !\u003d vpnMode {\n  ...\n}\n```\n\nNo strong preference here.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "5deb46e7b85c440f9d0908fb7ed14fa547453c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d171f6_7c1a2a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T05:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6af5daba_9462d39d",
       "range": {
         "startLine": 183,
         "startChar": 0,
