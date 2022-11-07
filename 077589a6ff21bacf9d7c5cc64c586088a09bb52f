@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cfe9699_9323c06c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T05:08:00Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "40e24d67_40012845",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a317c68_2446c2f4",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2546ca9d_57528849",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T05:08:00Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "cacd893b_a0902b07",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 74
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11507f9f_f4c37863",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "When running commands, the error is just `the return status is 1`. Without wrap, sometimes it is confusing which step fails.",
       "parentUuid": "11507f9f_f4c37863",
+      "range": {
+        "startLine": 523,
+        "startChar": 17,
+        "endLine": 523,
+        "endChar": 21
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635ee6b8_be9d3308",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T05:08:00Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "c8eeb015_4c44e8f5",
       "range": {
         "startLine": 523,
         "startChar": 17,
