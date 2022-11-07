@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef5a5ae_d090c441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ea60b9_40d48c7c",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f68dc094_d6692d2d",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "optional: I would prefer AuthTypePSK which should be has less dependencies (no need to install cert)",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef81aef_ecde72f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68dc094_d6692d2d",
       "range": {
         "startLine": 55,
         "startChar": 20,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43db1ec_17a104f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ad9343_71270581",
+      "range": {
+        "startLine": 85,
+        "startChar": 46,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb69983_83788314",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "nit: use ConnectToRouterWithPool(), which could simplify this part of code",
+      "range": {
+        "startLine": 141,
+        "startChar": 16,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcfe93f_029d6d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb69983_83788314",
       "range": {
         "startLine": 141,
         "startChar": 16,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c712081c_f383d053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d39307f_4cf897bc",
+      "range": {
+        "startLine": 145,
+        "startChar": 30,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d32619a0_8b3a4481",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "let\u0027s use a more descriptive name, how about physicalAddr?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7ad4fc_802edefe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d32619a0_8b3a4481",
       "range": {
         "startLine": 151,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdc641a_103c895a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da8f65c_28a8ed64",
+      "range": {
+        "startLine": 165,
+        "startChar": 39,
+        "endLine": 165,
+        "endChar": 60
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "345819a2_062126fb",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "Always-on VPN service",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 28
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c346289_21631a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "345819a2_062126fb",
       "range": {
         "startLine": 172,
         "startChar": 25,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79478e4a_bd28f52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e659d97e_df587a81",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e68d1481_e0f757cf",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "nit: outdated?",
+      "range": {
+        "startLine": 191,
+        "startChar": 48,
+        "endLine": 191,
+        "endChar": 62
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4314275e_970e996d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Yes, should be 100 Millisecond, thanks for spotting this!",
+      "parentUuid": "e68d1481_e0f757cf",
       "range": {
         "startLine": 191,
         "startChar": 48,
@@ -318,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22801dee_74ca90c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97de49fe_71f7bd40",
+      "range": {
+        "startLine": 193,
+        "startChar": 21,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5197310a_bce6d88d",
@@ -331,6 +595,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "\"for\"",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 41
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4177e0_7f80ff65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5197310a_bce6d88d",
       "range": {
         "startLine": 203,
         "startChar": 39,
@@ -364,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "452e67d3_98e736ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c1994f_cee3d319",
+      "range": {
+        "startLine": 206,
+        "startChar": 9,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c072cef_6484700c",
@@ -387,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17530d01_18e10fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c072cef_6484700c",
+      "range": {
+        "startLine": 211,
+        "startChar": 9,
+        "endLine": 211,
+        "endChar": 47
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a11f1fb_3cc472f3",
@@ -400,6 +736,30 @@
       "writtenOn": "2022-11-02T12:20:18Z",
       "side": 1,
       "message": "`const user \u003d \"...\"`",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 18
+      },
+      "revId": "686e479166c3b7ef1e51118d7ffe9809e358e43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2eeefc_72eb9538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/host_vpn_always_on.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1547853
+      },
+      "writtenOn": "2022-11-07T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a11f1fb_3cc472f3",
       "range": {
         "startLine": 212,
         "startChar": 1,
