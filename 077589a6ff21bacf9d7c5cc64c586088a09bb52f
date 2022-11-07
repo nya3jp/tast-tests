@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e24d67_40012845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-11-07T04:57:24Z",
+      "side": 1,
+      "message": "Both of them are to initialise the RMA helper. Also `rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)` is called multiple times. So the error details are more helpful.",
+      "parentUuid": "866c3ba9_746ed20f",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a317c68_2446c2f4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacd893b_a0902b07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-11-07T04:57:24Z",
+      "side": 1,
+      "message": "This one is a bit special. Normally, we should immediately `defer disposeResource` after line 130. However, we don\u0027t need to do it since the restart will dispose it. Therefore, I leave a comment to remind people about it.",
+      "parentUuid": "5a317c68_2446c2f4",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 74
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11507f9f_f4c37863",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-07T04:42:39Z",
       "side": 1,
       "message": "The error wrap is not always necessary. You can directly:\n\nreturn uiHelper.Dut.Conn().CommandContext(ctx, \"cryptohome\", \"--action\u003dset_firmware_management_parameters\", flags).Run()",
+      "range": {
+        "startLine": 523,
+        "startChar": 17,
+        "endLine": 523,
+        "endChar": 21
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8eeb015_4c44e8f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-11-07T04:57:24Z",
+      "side": 1,
+      "message": "When running commands, the error is just `the return status is 1`. Without wrap, sometimes it is confusing which step fails.",
+      "parentUuid": "11507f9f_f4c37863",
       "range": {
         "startLine": 523,
         "startChar": 17,
