@@ -251,6 +251,24 @@ func init() {
 		Parent:          fixture.PersistentGellerARC,
 	})
 
+	// TODO(b/202064235): Clean up flags after feature is launched to stable.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornLoginWithWebApprovals",
+		Desc:     "Supervised Family Link user login with Unicorn account and local web approvals enabled",
+		Contacts: []string{"courtneywong@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true, chrome.EnableFeatures("LocalWebApprovals", "WebFilterInterstitialRefresh")),
+		Vars: []string{
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type familyLinkFixture struct {
