@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071263cb_25d9d9ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/utils/logs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-07T17:59:17Z",
+      "side": 1,
+      "message": "Is it possible for msg to have more than one line and more than one expected message in msg? Example: both \"Beginning hibernate\" and \"Mounting hibervol\" are included in msg. Will it cause a problem?",
+      "revId": "ec884251593df5f8829dd421b626fd4b1dfef1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
