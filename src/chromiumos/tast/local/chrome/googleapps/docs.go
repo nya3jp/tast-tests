@@ -6,6 +6,7 @@ package googleapps
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -145,10 +146,10 @@ func waitForDocsSaved(tconn *chrome.TestConn) action.Action {
 }
 
 // WaitUntilDocContentToBe waits for up to 5s until expected content.
-func WaitUntilDocContentToBe(docConn *chrome.Conn, expectedContent string) action.Action {
+func WaitUntilDocContentToBe(tconn *chrome.TestConn, expectedContent string) action.Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			docContent, err := docContent(ctx, docConn)
+			docContent, err := docContent(ctx, tconn)
 			if err != nil {
 				return err
 			}
@@ -156,15 +157,33 @@ func WaitUntilDocContentToBe(docConn *chrome.Conn, expectedContent string) actio
 				return errors.Errorf("unexpected gdoc content: got %q; want %q", docContent, expectedContent)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 5 * time.Second})
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 }
 
-func docContent(ctx context.Context, docConn *chrome.Conn) (string, error) {
-	expr := `shadowPiercingQuery(".docs-texteventtarget-iframe").contentWindow.document.body.textContent`
-	var content string
-	if err := webutil.EvalWithShadowPiercer(ctx, docConn, expr, &content); err != nil {
-		return "", err
+func docContent(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	ui := uiauto.New(tconn)
+	application := nodewith.Role(role.Application).Ancestor(docWebArea) // Google Docs application node.
+	menu := nodewith.Role(role.Menu).Ancestor(application)
+	editButton := nodewith.Name("Edit").Role(role.MenuItem).Ancestor(application)
+	selectAllMenuItem := nodewith.NameContaining("Select all").Role(role.MenuItem)
+	copyMenuItem := nodewith.NameContaining("Copy").Role(role.MenuItem)
+
+	if err := uiauto.NamedCombine("copy document content",
+		cuj.ExpandMenu(tconn, editButton, menu, 200),
+		ui.DoDefaultUntil(selectAllMenuItem, ui.WithTimeout(shortUITimeout).WaitUntilGone(selectAllMenuItem)),
+		cuj.ExpandMenu(tconn, editButton, menu, 200),
+		ui.DoDefaultUntil(copyMenuItem, ui.WithTimeout(shortUITimeout).WaitUntilGone(copyMenuItem)),
+		uiauto.Sleep(100*time.Millisecond), // Wait for clipboard set.
+	)(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to copy doc content to clipboard")
 	}
-	return content, nil
+
+	// Gdoc "Select all" automatically adds a new line in the end.
+	// It needs to be trimmed from clipboard.
+	var clipData string
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+		return "", errors.Wrap(err, "failed to get clipboard content")
+	}
+	return strings.TrimRight(clipData, "\n"), nil
 }
