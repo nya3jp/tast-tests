@@ -186,6 +186,24 @@
       "parentUuid": "7c27da6c_c1c35ff6",
       "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b550d541_bb69ba67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-11-07T01:01:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16107c65_48b2e02a",
+      "revId": "9c1a7c14fe590a6afb57bfcb46ab52aacde4c50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
