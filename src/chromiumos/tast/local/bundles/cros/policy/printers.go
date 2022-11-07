@@ -86,6 +86,24 @@ func Printers(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(cleanupCtx)
 
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_")
+
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Print Management app: ", err)
+	}
+
+	// Be sure we clear the history before we start so when we check the history
+	// at the end of our test it will only have print jobs from this test.
+	if err := printManagementApp.ClearHistory()(ctx); err != nil {
+		s.Fatal("Failed to clear printing history: ", err)
+	}
+
 	// Open a new tab. The print dialog fails to open when invoking CTRL+P
 	// directly after calling `browserfixt.SetUp`, likely because the page
 	// isn't fully loaded yet. It also fails to open on about:blank pages, but
@@ -95,13 +113,6 @@ func Printers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to chrome: ", err)
 	}
 	defer conn.Close()
-
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_")
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -126,11 +137,10 @@ func Printers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select printer in print destination popup and print: ", err)
 	}
 
-	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch Print Management app: ", err)
-	}
-	if err := printManagementApp.VerifyPrintJob()(ctx); err != nil {
+	if err := uiauto.Combine("Verify print job",
+		printManagementApp.Focus(),
+		printManagementApp.VerifyPrintJob(),
+	)(ctx); err != nil {
 		s.Fatal("Failed to check existence of print job: ", err)
 	}
 }
