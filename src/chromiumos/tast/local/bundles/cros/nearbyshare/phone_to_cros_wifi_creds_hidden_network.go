@@ -16,9 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhoneToCrosWifiCredsUnsecureNetwork,
+		Func:         PhoneToCrosWifiCredsHiddenNetwork,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Checks that ChromeOS rejects unsecure Wi-Fi credentials received from Android",
+		Desc:         "Checks that ChromeOS rejects hidden networks received from Wi-Fi credentials sharing from Android",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"crisrael@google.com",
@@ -27,15 +27,15 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
-				Name:    "dataonline_noone_wificreds_unsecure",
+				Name:    "dataonline_noone_wificreds_hidden",
 				Fixture: "nearbyShareDataUsageOnlineNoOne",
 				Val: nearbycommon.WiFiTestData{
 					WiFiName:        "test_network",
-					WiFiPassword:    "",
+					WiFiPassword:    "test_password",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					SecurityType:    nearbycommon.SecurityTypeOpen,
-					IsHiddenNetwork: false,
+					IsHiddenNetwork: true,
 				},
 				Timeout: nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -43,8 +43,8 @@ func init() {
 	})
 }
 
-// PhoneToCrosWifiCredsUnsecureNetwork verifies that ChromeOS will reject Wi-Fi credentials received from Android if it's unsecure.
-func PhoneToCrosWifiCredsUnsecureNetwork(ctx context.Context, s *testing.State) {
+// PhoneToCrosWifiCredsHiddenNetwork verifies that ChromeOS will reject Wi-Fi credentials received from Android if it's a hidden network.
+func PhoneToCrosWifiCredsHiddenNetwork(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*nearbyfixture.FixtData).Chrome
 	tconn := s.FixtValue().(*nearbyfixture.FixtData).TestConn
 	crosDisplayName := s.FixtValue().(*nearbyfixture.FixtData).CrOSDeviceName
@@ -63,6 +63,7 @@ func PhoneToCrosWifiCredsUnsecureNetwork(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Failed to set up control over the receiving surface: ", err)
 	}
+
 	defer receiver.Close(ctx)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -80,6 +81,7 @@ func PhoneToCrosWifiCredsUnsecureNetwork(ctx context.Context, s *testing.State) 
 			if err := androidDevice.CancelSendingFile(ctx); err != nil {
 				s.Error("Failed to cancel sending after the share failed: ", err)
 			}
+
 			if err := androidDevice.AwaitSharingStopped(ctx, testTimeout); err != nil {
 				s.Error("Failed waiting for the Android device to signal that sharing has finished: ", err)
 			}
@@ -115,6 +117,6 @@ func PhoneToCrosWifiCredsUnsecureNetwork(ctx context.Context, s *testing.State) 
 
 	s.Log("Verify we receive a notification that we could not save the network")
 	if err := nearbyshare.VerifyCouldNotSaveWiFiNetwork(ctx, tconn, androidDisplayName, testWiFi, nearbycommon.WiFiNotificationTimeout); err != nil {
-		s.Fatal("Failed to open known Wi-Fi networks from notification")
+		s.Fatal("Failed to receive rejected Wi-Fi network notification")
 	}
 }
