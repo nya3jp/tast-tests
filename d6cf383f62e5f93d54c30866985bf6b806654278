@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5482cc1c_264ca422",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-11-07T23:12:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ccce134_4f2f6286",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0826e273_46ed04a2",
