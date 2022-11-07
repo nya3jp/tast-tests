@@ -70,6 +70,30 @@
       },
       "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7758ed_ee40594c",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:34:21Z",
+      "side": 1,
+      "message": "Can you create a CL with this change?",
+      "parentUuid": "ae0c468e_4f920d24",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "73028d33421806d515a4b6adf805e46d72af16d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
