@@ -174,6 +174,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dc09e09_e697da50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-11-07T13:08:33Z",
+      "side": 1,
+      "message": "Matthew was talking about `WiFi.RandomMACPolicy` property of a Service:\nhttp://cs/chromeos_public/src/platform2/shill/doc/service-api.txt;l\u003d1924;rcl\u003df6093e0998faa668e3d79d9381c7df1081259b0a\n\nThe `MacAddressRandomizationEnabled` is a Device property for randomization of MAC during scans.",
+      "parentUuid": "b4d94986_e17be305",
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf9c1cb8_d1b014c1",
         "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
         "patchSetId": 4
