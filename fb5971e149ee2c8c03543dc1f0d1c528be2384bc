@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12ef188_bcf6a172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2022-11-07T04:32:47Z",
+      "side": 1,
+      "message": "Maybe then comment in the code so that no one forgets that this is hooked into a dashboard",
+      "parentUuid": "7f6ce1a6_5f5dd29a",
+      "range": {
+        "startLine": 555,
+        "startChar": 51,
+        "endLine": 555,
+        "endChar": 62
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fb4b94_4c605505",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think people outside of the power team would assume total power means total power of the entire system. According to https://g3doc.corp.google.com/company/teams/chromeos/subteams/platforms/power/guides/powercap.md?cl\u003dhead package0 power \u003d\u003d total soc power. Let me know if there\u0027s an alternate phrasing you\u0027d like me to use.\n\nUnrelated, but how different can total soc power be from total system power? On the previous page, I saw that it is equal to soc + DRAM + PCH, but I don\u0027t know what PCH is (what is it?), and apparently DRAM power is only estimated. So, since we can\u0027t compute it using only RAPL I\u0027m removing the values entirely.",
       "parentUuid": "30fb4b94_4c605505",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18860805_536a1aa3",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2022-11-07T04:32:47Z",
+      "side": 1,
+      "message": "PCH is probably https://en.wikipedia.org/wiki/Platform_Controller_Hub? \n\nSoC power could be fairly different from total system power. Total system power also includes storage, memory, other peripherals such as display (could be several watts). So SoC and total system power are quite different. RAPL probably do not report total system power, and we usually rely on battery report.",
+      "parentUuid": "79167336_5fe7bed0",
       "range": {
         "startLine": 100,
         "startChar": 27,
