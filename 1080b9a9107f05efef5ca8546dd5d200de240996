@@ -202,6 +202,30 @@
       },
       "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e44ae78_1d8a7678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-11-07T22:47:26Z",
+      "side": 1,
+      "message": "Hi Chad, \n\nI dont think we want to use \"cellular_unstable\" attribute for UI tests.\nPlatform team\u0027s unstable tests use attribute \"cellular_unstable\". One exception could be when: a UI test majorly validates \"Platform\" functions (shill + network layer below) and test is intended to surface on suite:cellular_ota_flaky instead of suite:cellular_endtoend_flaky. :) \n\nHi Harpreet,\nCan you please let us know your thoughts? \n\nRegards,\nDinesh",
+      "parentUuid": "c55606d9_72b662f6",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "1080b9a9107f05efef5ca8546dd5d200de240996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
