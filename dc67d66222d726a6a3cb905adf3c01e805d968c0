@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a592649_2d427b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-07T03:01:03Z",
+      "side": 1,
+      "message": "Just back from a long weekend! Sorry for the late response and thank you for adding the test!\n\nHere are some comments.",
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9293f2da_7441f119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-07T03:01:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this test for primary, which does copy migration.",
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a97d9b_d0505136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-07T03:01:03Z",
+      "side": 1,
+      "message": "If there is no particular reason, could you use \u0027backward\u0027 instead of reverse for consistency?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25622ec9_280de84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-07T03:01:03Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606a37c5_c913a243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/reverse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-07T03:01:03Z",
+      "side": 1,
+      "message": "Please add \u0027backward\u0027 or \u0027reverse\u0027 here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
