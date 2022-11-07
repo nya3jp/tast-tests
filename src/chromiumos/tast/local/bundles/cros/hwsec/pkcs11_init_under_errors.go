@@ -20,13 +20,27 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// pkcs11InitUnderErrorsWithAuthAPIParam contains the test parameters that specifies the type of storage.
+type pkcs11InitUnderErrorsWithAuthAPIParam struct {
+	// Specifies whether to use secret stash.
+	useUserSecretStash bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Pkcs11InitUnderErrors,
 		Desc: "Tests pkcs11 initialization under various system states",
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Val: &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI},
+			Name: "uss",
+			Val: pkcs11InitUnderErrorsWithAuthAPIParam{
+				useUserSecretStash: true,
+			},
+		}, {
+			Name: "vk",
+			Val: pkcs11InitUnderErrorsWithAuthAPIParam{
+				useUserSecretStash: false,
+			},
 		}},
 		Contacts: []string{
 			"chenyian@google.com",
@@ -56,6 +70,8 @@ func testToken(ctx context.Context, r hwsec.CmdRunner, chapsPath string) error {
 
 // Pkcs11InitUnderErrors test the chapsd pkcs11 initialization under various system states.
 func Pkcs11InitUnderErrors(ctx context.Context, s *testing.State) {
+	userParam := s.Param().(pkcs11InitUnderErrorsWithAuthAPIParam)
+
 	r := libhwseclocal.NewCmdRunner()
 
 	helper, err := libhwseclocal.NewHelper(r)
@@ -63,7 +79,17 @@ func Pkcs11InitUnderErrors(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
 	cryptohome := helper.CryptohomeClient()
-	cryptohome.SetMountAPIParam(s.Param().(*hwsec.CryptohomeMountAPIParam))
+	cryptohome.SetMountAPIParam(&hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI})
+
+	if userParam.useUserSecretStash {
+		// Enable the UserSecretStash experiment for the duration of the test by
+		// creating a flag file that's checked by cryptohome.
+		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
+		}
+		defer cleanupUSSExperiment(ctx)
+	}
 
 	// Ensure that the user directory is unmounted and does not exist.
 	if err := util.CleanupUserMount(ctx, cryptohome); err != nil {
