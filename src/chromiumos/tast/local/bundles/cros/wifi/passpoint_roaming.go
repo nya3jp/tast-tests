@@ -10,9 +10,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/wifi/hwsim"
 	"chromiumos/tast/local/bundles/cros/wifi/passpoint"
 	"chromiumos/tast/local/hostapd"
+	"chromiumos/tast/local/network/hwsim"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
