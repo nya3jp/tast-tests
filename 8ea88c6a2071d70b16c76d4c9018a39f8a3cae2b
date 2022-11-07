@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5eb82b6_f9d72c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-07T05:16:02Z",
+      "side": 1,
+      "message": "Please check if you haven\u0027t that it won\u0027t be flaky",
+      "parentUuid": "4dec51fe_dc3f5fe4",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f471878_a2679e33",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Thank you so much Eliot, I understand it is safer to use WPR. Some cuj tests will visit live website like reddit. https://source.chromium.org/search?q\u003dreddit%20tast%20f:go",
       "parentUuid": "8f471878_a2679e33",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969bdfb2_18c8ae80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-07T05:16:02Z",
+      "side": 1,
+      "message": "These tests shouldn\u0027t do that, and we can\u0027t really use those tests as an excuse to add more tests like them.",
+      "parentUuid": "4767b705_fb76a175",
       "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
