@@ -82,7 +82,9 @@ func ExtensionPolicy(ctx context.Context, s *testing.State) {
 
 	// Set the extension policy.
 	pb := policy.NewBlob()
-	pb.AddExtensionPolicy(extID, json.RawMessage(b))
+	if err := pb.AddExtensionPolicy(extID, json.RawMessage(b)); err != nil {
+		s.Fatal("Failed to set the extension policy: ", err)
+	}
 	if err := fdms.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies: ", err)
 	}
