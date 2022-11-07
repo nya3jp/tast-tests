@@ -34,6 +34,24 @@
       "parentUuid": "1bdf3ca8_ed1d12a2",
       "revId": "383b7b43ccf480ac116c5c7b28a47abded731271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f1f933_3c771323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-11-07T01:55:32Z",
+      "side": 1,
+      "message": "I have also verified on public amd64-generic VM that setting EnglishUK and EnglishUS works.",
+      "parentUuid": "9e07cb86_270b4c80",
+      "revId": "383b7b43ccf480ac116c5c7b28a47abded731271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
