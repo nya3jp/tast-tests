@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b980578_7c289aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-07T18:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e964da4e_7f4bf1aa",
+      "range": {
+        "startLine": 115,
+        "startChar": 42,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "871f8d26ff05e5d759132bc36c997fb098a81219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1942b59b_6bb190fc",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0361d76_e1202103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-07T18:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1942b59b_6bb190fc",
+      "range": {
+        "startLine": 143,
+        "startChar": 57,
+        "endLine": 143,
+        "endChar": 59
+      },
+      "revId": "871f8d26ff05e5d759132bc36c997fb098a81219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1734a903_13fcf4df",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-07T17:03:40Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "871f8d26ff05e5d759132bc36c997fb098a81219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680bd0b1_e5f1c987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_available_app_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-07T18:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1734a903_13fcf4df",
       "range": {
         "startLine": 50,
         "startChar": 21,
