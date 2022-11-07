@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b920d42_8827a2d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! This is looking pretty good to me, just added a few questions below.\n\nAlso, I think it would be worthwhile to have someone more familiar with the BlueZ DBus API take a look as well-- would shijinabraham@ be the right person here?",
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c0a00f_a31cce23",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "WDYT of moving the `AgentDelegate` type up before the methods and types that use it, and potentially moving `SimplePinAgentDelegate` and its methods into a separate file?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 1
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febf66fa_411f8288",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Nit: Can we inline the `AgentManager` into the return?\n\n    return \u0026AgentManager{\n        dbus: obj,\n    }, nil",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45330990_49a5882f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Nit: Could we reword this comment to make it clear that this first step is to forget the device if it is paired and `ForceNewPair` is `true`?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 19
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e7a738_ab0cbf73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Nit: Consider rewording to something like \"removal and rediscovery\".",
+      "range": {
+        "startLine": 198,
+        "startChar": 38,
+        "endLine": 198,
+        "endChar": 45
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c635b5cc_4606b21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Nit: pairing",
+      "range": {
+        "startLine": 204,
+        "startChar": 52,
+        "endLine": 204,
+        "endChar": 58
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91987821_aeb349fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Are there circumstances where we would expect multiple agent managers to be returned? WDYT of shifting this logic into a `bluez` method e.g. `GetAgentManager`?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a5acb9_3810218d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Do we need this logic to get `agents` here and below?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 59
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54d6832_fdc16604",
+        "filename": "src/chromiumos/tast/services/cros/bluetooth/bt_test_service.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "WDYT of having this member be the authentication method of the device? That way we could have PIN code, passkey, or no authentication?",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d271290_1a7f84f2",
+        "filename": "src/chromiumos/tast/services/cros/bluetooth/bt_test_service.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-07T18:22:38Z",
+      "side": 1,
+      "message": "Nit: performed",
+      "range": {
+        "startLine": 54,
+        "startChar": 40,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
