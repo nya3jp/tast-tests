@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac43c0d_0652fe19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "For faster review, you can use the tast-owners as a reviewer.",
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec8bcba_76938d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_sensors_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "The unset part should be tested as well.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 4
+      },
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e52d7d4_03000205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_sensors_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "nit: the `Name` part can be dropped in my opinion.",
+      "range": {
+        "startLine": 105,
+        "startChar": 10,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a25068d_234288e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_sensors_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "nit: the usual pattern is `var result string` before a call like this.",
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbfb1eb_0ed5ee85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_sensors_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "nit: this can be done inside the if.",
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f624b7_41b1cd77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_sensors_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:44:56Z",
+      "side": 1,
+      "message": "Please use the usual got want pattern.",
+      "revId": "a56de949065c97ffc9e1bf565df4c33782b7b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
