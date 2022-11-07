@@ -62,128 +62,81 @@ type RTCTestOptions struct {
 	displayMediaType DisplayMediaType
 }
 
-// MakeTestOptions creates RTCTestoptions for profile, width and height and with
-// HW Encoding/Decoding enabled.
-func MakeTestOptions(profile string, width, height int) RTCTestOptions {
+// makePerfRTCTestOptions creates RTCTestOptions for profile, width, height,
+// verifyDecoderMode and verifyEncoderMode.
+func makePerfRTCTestOptions(profile string, width, height int, verifyDecoderMode, verifyEncoderMode VerifyHWAcceleratorMode) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
+		verifyHWDecoding:   verifyDecoderMode,
+		verifyHWEncoding:   verifyEncoderMode,
 		profile:            profile,
 		streamWidth:        width,
 		streamHeight:       height,
 		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
 	}
 }
 
-// MakeSWTestOptions creates RTCTestoptions for profile, width and height and
+// MakeHWTestOptions creates RTCTestOptions for profile, width and height and with
+// HW Encoding/Decoding enabled.
+func MakeHWTestOptions(profile string, width, height int) RTCTestOptions {
+	return makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+}
+
+// MakeSWEncoderTestOptions creates RTCTestOptions for profile, width and height and
+// with HW Decoding and SW Encoding.
+func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
+	return makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifySWEncoderUsed)
+}
+
+// MakeSWTestOptions creates RTCTestOptions for profile, width and height and
 // with HW Encoding/Decoding disabled.
 func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifySWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
+	return makePerfRTCTestOptions(profile, width, height, VerifySWDecoderUsed, VerifySWEncoderUsed)
 }
 
 // MakeSimulcastTestOptions creates RTCTestOptions for profile, width and height.
 // While a hardware decoder is used, if hwEncs[i] is true then a hardware encoder is used for i-th stream in simulcast.
 func MakeSimulcastTestOptions(profile string, width, height int, hwEncs []bool) RTCTestOptions {
-	verifyHWEncoding := VerifySWEncoderUsed
+	verifyEncoderMode := VerifySWEncoderUsed
 	if hwEncs[len(hwEncs)-1] {
-		verifyHWEncoding = VerifyHWEncoderUsed
+		verifyEncoderMode = VerifyHWEncoderUsed
 	}
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   verifyHWEncoding,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "", // L1T3?
-		simulcasts:         len(hwEncs),
-		simulcastHWEncs:    hwEncs,
-		displayMediaType:   "",
-	}
+
+	options := makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
+	options.svc = "" // L1T3?
+	options.simulcasts = len(hwEncs)
+	options.simulcastHWEncs = hwEncs
+	return options
 }
 
-// MakeSWEncoderTestOptions creates RTCTestoptions for profile, width and height and
-// with HW Decoding and SW Encoding.
-func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifySWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   "",
-	}
-}
-
-// MakeTestOptionsWithSVC creates RTCTestoptions for profile, width and height with HW
-// Decoding enabled and with a layer structure as per svc definition. hwEnc specifies
-// enabling a hardware encoder.
-func MakeTestOptionsWithSVC(profile string, width, height int, svc string, hwEnc bool) RTCTestOptions {
-	verifyHWEncoding := VerifySWEncoderUsed
+// MakeHWTestOptionsWithSVC creates RTCTestOptions for profile, width and height
+// with HW Decoding enabled and with a layer structure as per svc definition.
+// hwEnc specifies enabling a hardware encoder.
+func MakeHWTestOptionsWithSVC(profile string, width, height int, svc string, hwEnc bool) RTCTestOptions {
+	verifyEncoderMode := VerifySWEncoderUsed
 	if hwEnc {
-		verifyHWEncoding = VerifyHWEncoderUsed
+		verifyEncoderMode = VerifyHWEncoderUsed
 	}
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   verifyHWEncoding,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                svc,
-		displayMediaType:   "",
-	}
+	options := makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
+	options.svc = svc
+	return options
 }
 
-// MakeTestOptionsWithVideoGrid creates RTCTestoptions for profile, width and height with HW
-// Encoding/Decoding enabled and embedding the RTCPeerConnection in a grid of
-// videoGridDimension x videoGridDimension videoGridFiles.
-func MakeTestOptionsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: videoGridDimension,
-		videoGridFile:      videoGridFile,
-		svc:                "",
-		displayMediaType:   "",
-	}
+// MakeHWTestOptionsWithVideoGrid creates RTCTestOptions for profile, width and
+// height with HW Encoding/Decoding enabled and embedding the RTCPeerConnection
+// in a grid of videoGridDimension x videoGridDimension videoGridFiles.
+func MakeHWTestOptionsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestOptions {
+	options := makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+	options.videoGridDimension = videoGridDimension
+	options.videoGridFile = videoGridFile
+	return options
 }
 
-// MakeCaptureTestOptions creates RTCTestoptions for profile, width, height and displayMediaType
+// MakeCaptureTestOptions creates RTCTestOptions for profile, width, height and displayMediaType
 // and with HW Encoding/Decoding enabled.
 func MakeCaptureTestOptions(profile string, width, height int, displayMediaType DisplayMediaType) RTCTestOptions {
-	return RTCTestOptions{
-		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
-		videoGridFile:      "",
-		svc:                "",
-		displayMediaType:   displayMediaType,
-	}
+	options := makePerfRTCTestOptions(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
+	options.displayMediaType = displayMediaType
+	return options
 }
 
 // WebRTC Stats collected on transmission side.
