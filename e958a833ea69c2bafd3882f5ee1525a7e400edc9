@@ -16,6 +16,23 @@
       "message": "LGTM, defer to Tast owners.",
       "revId": "e958a833ea69c2bafd3882f5ee1525a7e400edc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2401093_f7d3c327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-07T17:13:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e958a833ea69c2bafd3882f5ee1525a7e400edc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
