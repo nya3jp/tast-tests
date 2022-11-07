@@ -16,6 +16,24 @@
       "message": "ime.EnglishUS.InstallAndActivate(tconn) only works on internal boards.\nYou may call it in a non-fatal way, so the test will not be affected on public boards.",
       "revId": "383b7b43ccf480ac116c5c7b28a47abded731271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e07cb86_270b4c80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-07T01:54:03Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ime/input_method.go;l\u003d493;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e\nI was wrong about that, this function should work on public images as well.",
+      "parentUuid": "1bdf3ca8_ed1d12a2",
+      "revId": "383b7b43ccf480ac116c5c7b28a47abded731271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
