@@ -28,6 +28,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// shortUITimeout is the timeout duration of trying various UI actions.
+const shortUITimeout = 20 * time.Second
+
 // AddEduSecondaryAccount opens the EDU Coexistence in-session flow
 // and attempts to add a secondary account for a Family Link (FL)
 // primary user.
@@ -42,7 +45,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	parentUser, parentPass, secondUser, secondPass string,
 	verifyEduSecondaryAddSuccess bool) error {
 
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
 	if err := ui.Exists(nodewith.Name("This account is managed by Family Link").Role(role.Image))(ctx); err != nil {
@@ -90,7 +93,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 // list if there's multiple parents. Otherwise, the EDU Coexistence
 // flow skips directly to the parent password page.
 func maybePressSelectParentOption(ctx context.Context, tconn *chrome.TestConn, selectParentOption, parentPasswordField *nodewith.Finder, parentUser string) error {
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
 
 	if err := ui.Exists(selectParentOption)(ctx); err != nil {
 		return nil
@@ -107,7 +110,7 @@ func maybePressSelectParentOption(ctx context.Context, tconn *chrome.TestConn, s
 // verifyAccountAddition verifies account addition ("School account added"
 // message in the dialog + confirming that new account was added in OS Settings).
 func verifyAccountAddition(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, eduEmail string) error {
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
 
 	testing.ContextLog(ctx, "Clicking next on the final page to wrap up")
 	schoolAccountAddedHeader := nodewith.Name("School account added").Role(role.Heading)
@@ -135,7 +138,7 @@ func verifyAccountAddition(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 // or Unicorn).
 func NavigateEduCoexistenceFlow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
 	parentPass, secondUser, secondPass string) error {
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
 	if err := ui.Exists(nodewith.Name("This account is managed by Family Link").Role(role.Image))(ctx); err != nil {
@@ -154,7 +157,7 @@ func NavigateEduCoexistenceFlow(ctx context.Context, cr *chrome.Chrome, tconn *c
 	}
 	defer kb.Close()
 
-	// TODO(chromium:12227440): Reduce typing flakiness and replace \n with a more
+	// TODO(crbug/1222744): Reduce typing flakiness and replace \n with a more
 	// consistent way to navigate to the next screen, here and other places.
 	testing.ContextLog(ctx, "Typing the parent password")
 	if err := kb.Type(ctx, parentPass+"\n"); err != nil {
@@ -443,5 +446,74 @@ func NavigateExtensionApprovalFlow(ctx context.Context, cr *chrome.Chrome, tconn
 		return errors.Wrap(err, "failed to verify Cancel button enabled")
 	}
 
+	return nil
+}
+
+// NavigateParentAccessDialog chooses the supplied parent account from the dropdown and authenticates by entering the password.
+func NavigateParentAccessDialog(ctx context.Context, tconn *chrome.TestConn, parentEmail, parentPassword string) error {
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
+
+	// Ensure the contents of the dialog have loaded.
+	parentPasswordField := nodewith.Name("Parent password").Role(role.TextField)
+	if err := ui.WaitUntilExists(parentPasswordField)(ctx); err != nil {
+		return errors.Wrap(err, "Dialog contents failed to load")
+	}
+
+	// Select the supplied parent email.
+	if err := maybeSelectParentFromDropdown(ctx, tconn, parentEmail); err != nil {
+		return errors.Wrap(err, "failed to select correct parent")
+	}
+
+	testing.ContextLog(ctx, "Clicking password field")
+	if err := ui.LeftClick(parentPasswordField)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click password field")
+	}
+
+	testing.ContextLog(ctx, "Typing password")
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	// TODO(crbug/1222744): Reduce typing flakiness and replace \n with a more
+	// consistent way to navigate to the next screen, here and other places.
+	testing.ContextLog(ctx, "Typing the parent password")
+	if err := kb.Type(ctx, parentPassword+"\n"); err != nil {
+		return errors.Wrap(err, "failed to type password")
+	}
+
+	// Proceed to the after screen.
+	testing.ContextLog(ctx, "Clicking Next")
+	nextButton := nodewith.Name("Next").Role(role.Button)
+	if err := ui.DoDefault(nextButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to authenticate")
+	}
+	return nil
+}
+
+// maybeSelectParentFromDropdown ensures that the supplied parent email is selected from the dropdown.
+func maybeSelectParentFromDropdown(ctx context.Context, tconn *chrome.TestConn, parentEmail string) error {
+	ui := uiauto.New(tconn).WithTimeout(shortUITimeout)
+
+	selectedParentEmail := nodewith.Name(parentEmail).Role(role.StaticText)
+	if err := ui.Exists(selectedParentEmail)(ctx); err != nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Selecting parent from dropdown")
+	dropdown := nodewith.Name("Parent account selector").Role(role.ComboBoxMenuButton)
+	if err := ui.Exists(dropdown)(ctx); err != nil {
+		return errors.Wrap(err, "failed to select parent email")
+	}
+
+	if err := ui.DoDefault(dropdown)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click account selector")
+	}
+
+	parentEmailOption := nodewith.NameContaining(parentEmail).Role(role.ListBoxOption)
+	if err := ui.DoDefault(parentEmailOption)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click parent account in dropdown")
+	}
 	return nil
 }
