@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d347cb_bdf7f669",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:21:05Z",
+      "side": 1,
+      "message": "I actually had it as a switch originally, but since I wanted to print out the options in an error if an unmapped one was used, I moved to using a map so that it would be less complex (code-wise). Easier to maintain and read IMO, as the validity of the device types is only relevant to this function.\n\nThis function isn\u0027t called very often (maybe once per btpeer emulation) and it\u0027s such a small map that I think the simplicity \u0026 ease of reading this way is more beneficial than optimizing it like that.",
+      "parentUuid": "742f8ab2_fefee325",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1385,
+        "endChar": 2
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da482c82_cb300033",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-03T16:41:22Z",
       "side": 1,
       "message": "Do we use `NoInputNoOutput` here and below since we aren\u0027t able to retrieve what the passkey would be for keyboards?",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c660e1_7315b0e0",
+        "filename": "src/chromiumos/tast/remote/bluetooth/emulated_btpeer_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:21:05Z",
+      "side": 1,
+      "message": "I based this map off of the same data in Autotest: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/bluetooth/bluetooth_adapter_tests.py;l\u003d756?q\u003dautotest%20NoInputNoOutput\n\nI added the same comment here that explains this and added a note to the referenced bug.",
+      "parentUuid": "da482c82_cb300033",
       "range": {
         "startLine": 35,
         "startChar": 35,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f730cb9_565668a2",
+        "filename": "src/chromiumos/tast/remote/bluetooth/emulated_btpeer_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ac64c0_e95b60a9",
+      "range": {
+        "startLine": 99,
+        "startChar": 15,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d536874_10aaddb7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-03T16:41:22Z",
       "side": 1,
       "message": "Nit: I think we may have lost a word here!",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 46
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c455997_7c721b6a",
+        "filename": "src/chromiumos/tast/remote/bluetooth/emulated_btpeer_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:21:05Z",
+      "side": 1,
+      "message": "Found it! (fixed)",
+      "parentUuid": "7d536874_10aaddb7",
       "range": {
         "startLine": 112,
         "startChar": 19,
