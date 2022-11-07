@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80018812_bfd523c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-07T15:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f32ddb_c810dcf1",
+      "range": {
+        "startLine": 148,
+        "startChar": 61,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d798d17_ffd0f4d2",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3c9f7a_8acc25ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-07T15:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d798d17_ffd0f4d2",
+      "range": {
+        "startLine": 197,
+        "startChar": 44,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa7be4da_00bb7323",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-06T22:29:01Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 213,
+        "startChar": 24,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "ff96b1469330278db560587b757ce120b08a2663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd36fb1_567f4a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1548987
+      },
+      "writtenOn": "2022-11-07T15:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7be4da_00bb7323",
       "range": {
         "startLine": 213,
         "startChar": 24,
