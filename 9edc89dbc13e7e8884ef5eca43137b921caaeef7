@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b3eec4_8603c261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-07T21:31:39Z",
+      "side": 1,
+      "message": "Please resolve conflict. Thanks.",
+      "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b904614c_fa593053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-07T21:31:39Z",
+      "side": 1,
+      "message": "Why do we need a share object here? Please put justification in the comment.",
+      "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca3c8af_75c538ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-07T21:31:39Z",
+      "side": 1,
+      "message": "Where will Chrome be instantiated?",
+      "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
