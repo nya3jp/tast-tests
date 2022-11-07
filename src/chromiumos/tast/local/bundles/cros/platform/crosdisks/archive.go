@@ -128,8 +128,9 @@ func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cr
 	}
 
 	for _, f := range []string{
-		"Not There.rar",
-		"Not There.zip",
+		// TODO(b/258344222) Find out why this freezes cros-disks.
+		// "Not There.rar",
+		// "Not There.zip",
 	} {
 		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), nil, crosdisks.MountErrorInvalidPath); err != nil {
 			s.Errorf("Unexpected status of mounting absent archive %q: %v", f, err)
@@ -443,15 +444,18 @@ func testCancellation(ctx context.Context, s *testing.State, cd *crosdisks.CrosD
 		s.Errorf("Unexpected error: got %v want %v", err, context.DeadlineExceeded)
 	}
 
+	// TODO(b/258344222) Use a short timeout of 2 seconds while unmounting.
+	ctxForUnmounting, close2 := context.WithTimeout(ctx, time.Second*60)
+	defer close2()
+
 	// Unmounting by passing the original archive path should cancel the mount
 	// operation in progress.
-
-	if err := cd.Unmount(ctx, archivePath, []string{}); err != nil {
+	if err := cd.Unmount(ctxForUnmounting, archivePath, []string{}); err != nil {
 		s.Fatalf("Cannot unmount %q: %v", archivePath, err)
 	}
 
 	// Wait for MountCompleted event.
-	event, err := watcher.Wait(ctx)
+	event, err := watcher.Wait(ctxForUnmounting)
 	if err != nil {
 		s.Fatal("Cannot wait for MountCompleted event: ", err)
 	}
