@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "346c5bac_4c1cead7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-07T05:47:56Z",
+      "side": 1,
+      "message": "You are right. I\u0027ll move the code to a proper place after we have an agreement on the uninstallation case.",
+      "parentUuid": "09bd92f6_4957ab3f",
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ff16f7a_6ac1a1f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
         "patchSetId": 1
