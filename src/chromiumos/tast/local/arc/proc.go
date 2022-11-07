@@ -23,6 +23,16 @@ func getUserPath() (user, path string, err error) {
 		return "crosvm", "/usr/bin/crosvm", nil
 	}
 
+	sdkVersion, err := SDKVersion()
+	if err != nil {
+		return "", "", errors.Wrap(err, "failed to determine ARC sdk version")
+	}
+
+	if sdkVersion >= SDKR {
+		// In RVC+ /init is symbolic link to /system/bin/init
+		return "android-root", "/system/bin/init", nil
+	}
+
 	return "android-root", "/init", nil
 }
 
