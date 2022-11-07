@@ -438,7 +438,9 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 var androidDeps = []string{
 	"android_vm",
 	"android_vm_r",
+	"android_container",
 	"android_p",
+	"android_r",
 	"arc",
 }
 
@@ -626,14 +628,6 @@ func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 		return diagnoseInitfailure(reader, errors.Wrap(err, "init/crosvm process did not start up"))
 	}
 
-	// Wait for property set by Android init in early stages. For P, wait for net.tcp.default_init_rwnd.
-	// For R and later, wait for ro.vendor.arc.on_boot which is set while bertha device is on boot.
-	// TODO(b/185198563): Replace net.tcp.default_init_rwnd with ro.vendor.arc.on_boot completely.
-	isVMEnabled, err := VMEnabled()
-	if err != nil {
-		return err
-	}
-
 	const prop = "ro.vendor.arc.on_boot"
 	const value = "1"
 
@@ -646,6 +640,7 @@ func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 		}
 		return errors.Wrapf(err, "%s property is not set which shows that Android init did not come up", prop)
 	}
+
 	return nil
 }
 
