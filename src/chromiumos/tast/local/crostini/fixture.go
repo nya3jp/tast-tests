@@ -33,10 +33,16 @@ import (
 const (
 	installationTimeout    = 15 * time.Minute
 	checkContainerTimeout  = time.Minute
+	takeSnapshotTimeout    = 5 * time.Second
+	restoreSnapshotTimeout = 5 * time.Second
 	preTestTimeout         = 30 * time.Second
 	postTestTimeout        = 30 * time.Second
 	uninstallationTimeout  = 2 * time.Minute
 	restartCrostiniTimeout = 30*time.Second + terminalapp.LaunchTerminalTimeout
+
+	// snapshotName is the snapshot name for the container.
+	// It is used in fixtures with snapshot as true.
+	snapshotName = "snapshot2"
 )
 
 func init() {

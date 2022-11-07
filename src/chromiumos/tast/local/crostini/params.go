@@ -144,6 +144,12 @@ type Param struct {
 	// pre-installed.
 	UseLargeContainer bool
 
+	// TakeSnapshot controls whether to use a fixture
+	// which takes and restore snapshot before and after tests
+	// or a normal large container fixture.
+	// It is only considered when UseLargeContainer is set true.
+	TakeSnapshot bool
+
 	// OnlyStableBoards controls whether to only use the stable
 	// board variants and exclude all the unstable variants.
 	OnlyStableBoards bool
@@ -336,7 +342,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					fixture = ""
 				} else if testCase.UseLargeContainer {
 					suffix := ""
-					if testCase.DeviceMode == devicemode.TabletMode {
+					if testCase.TakeSnapshot {
+						suffix = "Snapshot"
+					} else if testCase.DeviceMode == devicemode.TabletMode {
 						suffix = "Tablet"
 					} else if testCase.DeviceMode == devicemode.ClamshellMode {
 						suffix = "Clamshell"

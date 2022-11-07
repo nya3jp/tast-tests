@@ -45,6 +45,19 @@ func init() {
 		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
 		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerSnapshot",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed in clamshell mode, take snapshot before test and restore it after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniAppsFixture{deviceMode: devicemode.ClamshellMode, snapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		PreTestTimeout:  preTestTimeout + takeSnapshotTimeout,
+		PostTestTimeout: postTestTimeout + restartCrostiniTimeout + restoreSnapshotTimeout,
+		Parent:          "crostiniBusterLargeContainer",
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
 }
 
 // crostiniAppsFixture holds the runtime state of the fixture.
@@ -57,6 +70,7 @@ type crostiniAppsFixture struct {
 	revertDeviceMode func(ctx context.Context) error
 	screenRecorder   *uiauto.ScreenRecorder
 	screenDiffer     *Screendiffer
+	snapshot         bool
 }
 
 func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -66,6 +80,14 @@ func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	f.cont = p.Cont
 	f.kb = p.KB
 	f.screenDiffer = &Screendiffer{differ: nil, state: &screenDiffState{fixtState: s}}
+
+	// Take snapshot if required.
+	if f.snapshot {
+		if err := f.cont.VM.LXCCommand(ctx, "snapshot", "penguin", snapshotName); err != nil {
+			s.Fatal("Failed to take snapshot before test: ", err)
+		}
+	}
+
 	return FixtureData{p.Chrome, p.Tconn, p.Cont, p.KB, p.PostData, p.StartupValues, f.screenDiffer, p.DownloadsPath}
 }
 
@@ -138,6 +160,27 @@ func (f *crostiniAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 	}
 	if f.screenRecorder != nil {
 		f.screenRecorder.StopAndSaveOnError(ctx, filepath.Join(s.OutDir(), "record.webm"), s.HasError)
+	}
+
+	if f.snapshot {
+		// If snapshot is true, do the following:
+		// 1. stop the container.
+		// 2. restore the snapshot.
+		// 3. start the container.
+
+		// Stop the container.
+		if err := f.cont.Stop(ctx); err != nil {
+			s.Fatal("Failed to stop the container: ", err)
+		}
+
+		// Restore the snapshot.
+		if err := f.cont.VM.LXCCommand(ctx, "restore", "penguin", snapshotName); err != nil {
+			s.Fatal("Failed to restore snapshot after test: ", err)
+		}
+
+		if err := f.cont.StartAndWait(ctx, s.OutDir()); err != nil {
+			s.Fatal("Failed to start container after restoring snapshot: ", err)
+		}
 	}
 
 	// Restart Crostini in case of test failures to leave a clean env for the
