@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5017ad_4618dedd",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "I like that more. Done.",
+      "parentUuid": "94c0a00f_a31cce23",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 1
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "febf66fa_411f8288",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-07T18:22:38Z",
       "side": 1,
       "message": "Nit: Can we inline the `AgentManager` into the return?\n\n    return \u0026AgentManager{\n        dbus: obj,\n    }, nil",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bfa292_1afb1f0c",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "febf66fa_411f8288",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1798281a_76116941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45330990_49a5882f",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 19
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30e7a738_ab0cbf73",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-07T18:22:38Z",
       "side": 1,
       "message": "Nit: Consider rewording to something like \"removal and rediscovery\".",
+      "range": {
+        "startLine": 198,
+        "startChar": 38,
+        "endLine": 198,
+        "endChar": 45
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b187a6_dfd9207a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "It\u0027s technically still the pairing step. I\u0027ve moved this down though as to make it more clear.",
+      "parentUuid": "30e7a738_ab0cbf73",
       "range": {
         "startLine": 198,
         "startChar": 38,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126c416b_46867266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c635b5cc_4606b21f",
+      "range": {
+        "startLine": 204,
+        "startChar": 52,
+        "endLine": 204,
+        "endChar": 58
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91987821_aeb349fd",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-11-07T18:22:38Z",
       "side": 1,
       "message": "Are there circumstances where we would expect multiple agent managers to be returned? WDYT of shifting this logic into a `bluez` method e.g. `GetAgentManager`?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc75fe5_ab499bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "TBH I don\u0027t know if that is ever a valid scenario. The `bluez.AgentManagers` call returns all AgentManager objects just like all the other similar functions do for the different objects. In this case I opted to keep that function consistent with the others and just handle checking this unexpected scenario here.\n\nI\u0027d prefer to keep it this way. We can refactor all these methods later with the abstraction layer on-top of floss/bluez for all dbus calls when that is made.",
+      "parentUuid": "91987821_aeb349fd",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded8d497_69774fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "Nah these were left over from debugging.\n\nI refactored the logging around this as well, it was a bit too verbose from old debugging.",
+      "parentUuid": "01a5acb9_3810218d",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 59
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54d6832_fdc16604",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a1ebaa_321d34d8",
+        "filename": "src/chromiumos/tast/services/cros/bluetooth/bt_test_service.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "While I do like this idea, for simplicity\u0027s sake I\u0027d like to refactor that as a separate CL as I\u0027m not clear exactly how to determine that yet. For now this just allows pin codes to be specified if the btpeer requests one.",
+      "parentUuid": "f54d6832_fdc16604",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d271290_1a7f84f2",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-11-07T18:22:38Z",
       "side": 1,
       "message": "Nit: performed",
+      "range": {
+        "startLine": 54,
+        "startChar": 40,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "46719797b09cc4fc56b7cc8c3e87e6f72445f0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720e88db_0d12760b",
+        "filename": "src/chromiumos/tast/services/cros/bluetooth/bt_test_service.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d271290_1a7f84f2",
       "range": {
         "startLine": 54,
         "startChar": 40,
