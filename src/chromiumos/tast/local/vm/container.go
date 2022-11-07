@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/godbus/dbus/v5"
 
@@ -19,6 +20,7 @@ import (
 	conciergepb "chromiumos/system_api/vm_concierge_proto"
 	"chromiumos/tast/caller"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/shutil"
@@ -234,6 +236,58 @@ func (c *Container) start(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Started container %q in VM %q", c.containerName, c.VM.name)
+	return nil
+}
+
+// Stop shuts down a Linux container in an existing VM.
+func (c *Container) Stop(ctx context.Context) error {
+	// Use a shortened context for stopping.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopping, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerStopping"))
+	if err != nil {
+		return err
+	}
+	// Always close the LxdContainerStopping watcher regardless of success.
+	defer stopping.Close(cleanupCtx)
+
+	resp := &cpb.StopLxdContainerResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".StopLxdContainer",
+		&cpb.StopLxdContainerRequest{
+			VmName:        c.VM.name,
+			ContainerName: c.containerName,
+			OwnerId:       c.VM.Concierge.ownerID,
+		}, resp); err != nil {
+		return err
+	}
+
+	switch resp.GetStatus() {
+	case cpb.StopLxdContainerResponse_STOPPED:
+		// The container has already stopped, just return.
+		return nil
+	case cpb.StopLxdContainerResponse_STOPPING:
+		// In this case, the code moves on to the next part - LxdContainerStoppingSignal.
+		// It does not go to default.
+	default:
+		return errors.Errorf("failed to stop container: %v", resp.GetStatus())
+	}
+
+	sigResult := &cpb.LxdContainerStoppingSignal{}
+	for sigResult.VmName != c.VM.name ||
+		sigResult.ContainerName != c.containerName ||
+		sigResult.OwnerId != c.VM.Concierge.ownerID {
+		if err := waitForDBusSignal(ctx, stopping, nil, sigResult); err != nil {
+			return err
+		}
+	}
+
+	if sigResult.Status != cpb.LxdContainerStoppingSignal_STOPPED {
+		return errors.Errorf("failed to stop container: %v", resp.GetFailureReason())
+	}
+
+	testing.ContextLogf(ctx, "Stopped container %q in VM %q", c.containerName, c.VM.name)
 	return nil
 }
 
