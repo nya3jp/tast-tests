@@ -22,6 +22,30 @@
       },
       "revId": "601d766ef4256f41cc247bfcaaf3aa93f8aff82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c715068d_cf148277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-07T04:45:02Z",
+      "side": 1,
+      "message": "The variables in RTCTesParams are invisible out of peerconnection.\nDo you think they should be visible? If so, I would capitalize them.",
+      "parentUuid": "0ea8b7e1_8a9211e4",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "601d766ef4256f41cc247bfcaaf3aa93f8aff82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
