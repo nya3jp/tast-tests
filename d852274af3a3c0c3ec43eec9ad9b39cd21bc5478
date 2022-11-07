@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21edc64d_1d8b780f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-07T12:25:27Z",
+      "side": 1,
+      "message": "I\u0027d just inline this constant",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79269d92_2965430c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
         "patchSetId": 3
