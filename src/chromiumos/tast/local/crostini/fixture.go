@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -33,10 +34,15 @@ import (
 const (
 	installationTimeout    = 15 * time.Minute
 	checkContainerTimeout  = time.Minute
+	takeSnapshotTimeout    = 5 * time.Second
+	restoreSnapshotTimeout = 5 * time.Second
 	preTestTimeout         = 30 * time.Second
 	postTestTimeout        = 30 * time.Second
 	uninstallationTimeout  = 2 * time.Minute
 	restartCrostiniTimeout = 30*time.Second + terminalapp.LaunchTerminalTimeout
+
+	// snapshotName is the snapshot name for the container.
+	snapshotName = "snapshot"
 )
 
 func init() {
@@ -222,6 +228,34 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerSnapshot",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBusterLC, snapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout + takeSnapshotTimeout,
+		ResetTimeout:    checkContainerTimeout + restoreSnapshotTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeLargeContainerSnapshot",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC, snapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout + takeSnapshotTimeout,
+		ResetTimeout:    checkContainerTimeout + restoreSnapshotTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseyeWithLacros",
 		Desc:            "Install Crostini with Bullseye and enable Lacros",
 		Contacts:        []string{"clumptini+oncall@google.com"},
@@ -281,6 +315,8 @@ type crostiniFixture struct {
 	postData *PostTestData
 	values   *perf.Values
 	restart  bool
+	snapshot bool
+	logDir   string
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
@@ -323,6 +359,7 @@ func (f FixtureData) Differ() screenshot.Differ {
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.postData = &PostTestData{}
 	f.cr = s.ParentValue().(chrome.HasChrome).Chrome()
+	f.logDir = s.OutDir()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, uninstallationTimeout)
@@ -417,6 +454,20 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to get user's Downloads path: ", err)
 	}
 
+	// Take snapshot if required.
+	if f.snapshot {
+		exists, err := checkSnapshot(ctx, f.cont)
+		if err != nil {
+			s.Fatal("Failed to check snapshot before test: ", err)
+		}
+		if !exists {
+			// Take a snapshot otherwise.
+			if _, err := f.cont.VM.LXCCommand(ctx, "snapshot", "penguin", snapshotName); err != nil {
+				s.Fatal("Failed to take snapshot before test: ", err)
+			}
+		}
+	}
+
 	return FixtureData{
 		Chrome:        f.cr,
 		Tconn:         f.tconn,
@@ -450,6 +501,18 @@ func (f *crostiniFixture) Reset(ctx context.Context) error {
 	if f.cont == nil {
 		return errors.New("There is no container")
 	}
+
+	if f.snapshot {
+		// If snapshot is true, do the following:
+		// 1. stop the container.
+		// 2. restore the snapshot.
+		// 3. start the container.
+		if err := restoreSnapshot(ctx, f.cont, f.logDir); err != nil {
+			return errors.Wrap(err, "failed to restore snapshot")
+		}
+
+	}
+
 	if err := BasicCommandWorks(ctx, f.cont); err != nil {
 		return errors.Wrap(err, "failed to check basic commands in the existing container")
 	}
@@ -558,4 +621,64 @@ func generateChromeOpts(s *testing.FixtState) []chrome.Option {
 	}
 
 	return opts
+}
+
+func restoreSnapshot(ctx context.Context, cont *vm.Container, dir string) error {
+	// Stop the container.
+	if err := cont.Stop(ctx); err != nil {
+		return errors.Wrap(err, "failed to stop the container")
+	}
+
+	// Restore the snapshot.
+	if _, err := cont.VM.LXCCommand(ctx, "restore", "penguin", snapshotName); err != nil {
+		return errors.Wrap(err, "failed to restore snapshot after test")
+	}
+
+	if err := cont.StartAndWait(ctx, dir); err != nil {
+		return errors.Wrap(err, "failed to start container after restoring snapshot")
+	}
+
+	return nil
+}
+
+// checkSnapshot checks whether there is a snapshot of name snapshotName exists.
+func checkSnapshot(ctx context.Context, cont *vm.Container) (bool, error) {
+	// List the snapshots.
+	result, err := cont.VM.LXCCommand(ctx, "list", "penguin", "--format", "json")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to list snapshot")
+	}
+
+	// The first level of the list result is an array.
+	var sp []map[string]interface{}
+	if err := json.Unmarshal([]byte(result), &sp); err != nil {
+		return false, errors.Wrap(err, "failed to parse output into map")
+	}
+	if len(sp) == 0 {
+		return false, errors.New("the output of lxc list penguin is empty")
+	}
+
+	// There is only one item in the array.
+	// The type of sp[0]["snapshots"] is interface{},
+	// but actually it is []interface{}.
+	// Need to convert it.
+	snapshots, ok := sp[0]["snapshots"].([]interface{})
+	if !ok {
+		return false, errors.New("the format of lxc list is not correct")
+	}
+	for i := range len(snapshots) {
+		// Each slice of snapshots is a map[string]interface{}.
+		snpt, ok := snapshots[i].(map[string]interface{})
+		if !ok {
+			return false, errors.New("the format of lxc list is not correct")
+		}
+
+		// Check the snapshot name.
+		// Since snapshot name is unique, return immediately if found.
+		if fmt.Sprintf("%s", snpt["name"]) == snapshotName {
+			return true, nil
+		}
+	}
+
+	return false, nil
 }
