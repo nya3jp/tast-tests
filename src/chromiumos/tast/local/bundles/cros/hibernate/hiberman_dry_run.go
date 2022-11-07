@@ -5,13 +5,11 @@
 package hibernate
 
 import (
-	"bufio"
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/hibernate/utils"
 	"chromiumos/tast/testing"
 )
 
@@ -35,10 +33,10 @@ func HibermanDryRun(ctx context.Context, s *testing.State) {
 		hibernationDeadline = 60 * time.Second
 	)
 
-	s.Log("Start streamLogs()")
-	logCmd, logCh, err := streamLogs(ctx)
+	s.Log("Start utils.StreamLogs()")
+	logCmd, logCh, err := utils.StreamLogs(ctx)
 	if err != nil {
-		s.Fatal("Failed to start streamLogs(): ", err)
+		s.Fatal("Failed to start utils.StreamLogs(): ", err)
 	}
 	defer logCmd.Wait()
 	defer logCmd.Kill()
@@ -58,64 +56,9 @@ func HibermanDryRun(ctx context.Context, s *testing.State) {
 		"Wrote hibernate image in",
 		"Setting hibernate cookie at",
 	}
-	for _, expMsg := range hibermanHibernateLogs {
-		s.Logf("Watching for %q in logs", expMsg)
-		ctx, cancel := context.WithTimeout(ctx, hibernationDeadline)
-		defer cancel()
-		detectLog(ctx, s, logCh, expMsg)
+	shortCtx, cancel := context.WithTimeout(ctx, hibernationDeadline)
+	defer cancel()
+	if err := utils.DetectLogs(shortCtx, s, logCh, hibermanHibernateLogs); err != nil {
+		s.Fatal("Failed to execute utils.DetectLog(): ", err)
 	}
-}
-
-func detectLog(ctx context.Context, s *testing.State, ch <-chan string, expMsg string) bool {
-	for {
-		select {
-		case msg := <-ch:
-			if strings.Contains(msg, expMsg) {
-				return true
-			}
-		case <-ctx.Done():
-			s.Fatalf("Didn't see %q in channel: %v", expMsg, ctx.Err())
-		}
-	}
-	return false
-}
-
-func streamLogs(ctx context.Context) (*testexec.Cmd, <-chan string, error) {
-	// Start a process that writes messages to stdout as they're logged.
-	cmd := testexec.CommandContext(ctx, "tail", "-f", "/var/log/messages")
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		return nil, nil, err
-	}
-	if err := cmd.Start(); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to fetch hiberman logs")
-	}
-
-	// Start a goroutine that just passes lines from dmesg to a channel.
-	ch := make(chan string)
-	go func() {
-		defer close(ch)
-
-		// Writes msg to ch and returns true if more messages should be written.
-		writeMsg := func(ctx context.Context, msg string) bool {
-			select {
-			case ch <- msg:
-				return true
-			case ctx.Done():
-				return false
-			}
-		}
-
-		// The Scan method will return false once the dmesg process is killed.
-		sc := bufio.NewScanner(stdout)
-		for sc.Scan() {
-			if !writeMsg(ctx, sc.Text()) {
-				break
-			}
-		}
-		// Don't bother checking sc.Err(). The test will already fail if the expected
-		// message isn't seen.
-	}()
-
-	return cmd, ch, nil
 }
