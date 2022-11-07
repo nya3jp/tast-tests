@@ -16,6 +16,23 @@
       "message": "ptal, I revised the logic on this one so it\u0027s worth another - hopefully quick - review. Instead of using exclusions, it has logic to allow \"x86_64 but no arm64\" for a specific set of boards, on P or older only\"",
       "revId": "d81623672e9ef4d337511ec510e2f2f2cce5b202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cc4412_7068f72e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2022-11-07T18:09:00Z",
+      "side": 1,
+      "message": "LGTM for Patchset-2.",
+      "revId": "d81623672e9ef4d337511ec510e2f2f2cce5b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
