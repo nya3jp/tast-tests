@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15fca20_b62b23ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-11-07T05:43:11Z",
+      "side": 1,
+      "message": "The subject for this \"check\" is \"server\". It reads \"the server checks if the overlay IP addresses can be configured by the client...\" which is not correct.\n\nOne way of rewriting it could be using \"this patch\" as the subject, such as \"This patch adds dual stack support in test server and checks client IPv6 virtual IP availability by pinging in IPv6.\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "2942f7a5d6f4ead8f8dd3a2965d8c88a3140a2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "acf4e289_2e5aa2c6",
