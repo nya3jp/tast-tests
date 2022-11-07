@@ -173,7 +173,7 @@ func simpleConnectHidden() simpleConnectParams {
 			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()"},
 		},
 		ExtraHardwareDepsDoc: []string{"TODO(b/189972561) Enable this test on Trogdor once active scanning on 5 GHz channel is enabled."},
-		ExtraHardwareDeps:    `hwdep.D(hwdep.SkipOnPlatform("strongbad", "trogdor", "trogdor-kernelnext"))`,
+		ExtraHardwareDeps:    `hwdep.D(hwdep.SkipOnPlatform("strongbad", "strongbad64", "strongbad-kernelnext", "trogdor", "trogdor64", "trogdor-kernelnext"))`,
 	}
 }
 
