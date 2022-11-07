@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866c3ba9_746ed20f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T04:42:39Z",
+      "side": 1,
+      "message": "The error message can be distinguishable from the above with `false`",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a317c68_2446c2f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T04:42:39Z",
+      "side": 1,
+      "message": "Comment is normally used immediately above the code. Not sure about this one and the one above.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 74
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11507f9f_f4c37863",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T04:42:39Z",
+      "side": 1,
+      "message": "The error wrap is not always necessary. You can directly:\n\nreturn uiHelper.Dut.Conn().CommandContext(ctx, \"cryptohome\", \"--action\u003dset_firmware_management_parameters\", flags).Run()",
+      "range": {
+        "startLine": 523,
+        "startChar": 17,
+        "endLine": 523,
+        "endChar": 21
+      },
+      "revId": "077589a6ff21bacf9d7c5cc64c586088a09bb52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
