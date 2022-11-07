@@ -320,6 +320,24 @@
       "parentUuid": "237d1b14_f5d7d925",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f36b80_79506e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T11:23:23Z",
+      "side": 1,
+      "message": "We could, but I\u0027m not sure if it\u0027s something that can happen so often because 1) we can always expect that /data/media/0/Android/data/com.android.vending already has `arc.fixed` set to 1 at L658 because it\u0027s newly created after the device upgrades to R, and 2) `arc.fixed` for /data/media/0/Android is probably set early enough (before L687) because there should be no files/directories to fixup. So I think we can just let the test fail on such cases and add the polling if we observe flakiness.",
+      "parentUuid": "b04555c6_38f5e8b6",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
