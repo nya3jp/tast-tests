@@ -26,6 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"pinweaver"},
+		Timeout:      2 * time.Minute,
 	})
 }
 
