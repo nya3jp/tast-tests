@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02fd9386_6656a8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-07T09:01:44Z",
+      "side": 1,
+      "message": "Maybe that\u0027s the case. I\u0027m okay with `fixup_r`. Thanks!",
+      "parentUuid": "fa18cb55_d318d6a3",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "447d0e4d_1f65475b",
@@ -276,6 +300,24 @@
       "side": 1,
       "message": "Maybe it might be possible that /data/media/0/Android doesn\u0027t have `arc.fixed` set. Should we probably use `attr -r arc.fixed` (instead of `attr -s arc.fixed -V 0`) to make the test fails in such cases?",
       "parentUuid": "a1e91357_83e5c8b7",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04555c6_38f5e8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-11-07T09:01:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we should make the test fail in such cases. Could we wait for the attr to be set by polling with `attr -r` around L658 (after the Play Store path appears but before creating empty directories)?",
+      "parentUuid": "237d1b14_f5d7d925",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
