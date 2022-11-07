@@ -497,8 +497,18 @@ func (uiHelper *UIHelper) umountUSB(ctx context.Context) error {
 
 func (uiHelper *UIHelper) changeEnrollment(toEnroll bool) action.Action {
 	return func(ctx context.Context) error {
-		if _, err := uiHelper.Dut.Conn().CommandContext(ctx, "tpm_manager_client", "take_ownership").Output(); err != nil {
-			return err
+		// I got the following commands from b/245415715#comment5.
+		// More details can be found in the above link.
+		if err := uiHelper.Dut.Conn().CommandContext(ctx, "crossystem", "clear_tpm_owner_request=1").Run(); err != nil {
+			return errors.Wrap(err, "fail to clear_tpm_owner_request")
+		}
+
+		if err := uiHelper.Dut.Reboot(ctx); err != nil {
+			return errors.Wrap(err, "fail to reboot after clear_tpm_owner_request")
+		}
+
+		if err := uiHelper.Dut.Conn().CommandContext(ctx, "tpm_manager_client", "take_ownership").Run(); err != nil {
+			return errors.Wrap(err, "fail to take ownership")
 		}
 
 		var flags string
@@ -508,8 +518,11 @@ func (uiHelper *UIHelper) changeEnrollment(toEnroll bool) action.Action {
 			flags = "--flags=0"
 		}
 
-		_, err := uiHelper.Dut.Conn().CommandContext(ctx, "cryptohome", "--action=set_firmware_management_parameters", flags).Output()
-		return err
+		err := uiHelper.Dut.Conn().CommandContext(ctx, "cryptohome", "--action=set_firmware_management_parameters", flags).Run()
+		if err != nil {
+			return errors.Wrap(err, "fail to set_firmware_management_parameters")
+		}
+		return nil
 	}
 }
 
