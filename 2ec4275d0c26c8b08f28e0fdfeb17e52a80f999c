@@ -68,6 +68,30 @@
       },
       "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705e448f_45a1b365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-07T04:46:19Z",
+      "side": 1,
+      "message": "We can\u0027t because this CL splits VerifyHWAcceleratorMode to encoder one and decoder one. \nBut rtcTest still uses the one type of them.  \nSeparating the type of rtcTest to two types is possible but we would rather replace rtcTest with RTCTestParams in the next CL.",
+      "parentUuid": "70b749a2_cf3aec20",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
