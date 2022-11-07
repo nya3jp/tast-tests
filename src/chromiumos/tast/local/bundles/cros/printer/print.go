@@ -119,6 +119,18 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to save virtual USB printer and open Print Preview: ", err)
 	}
 
+	// Launch Print Management app.
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Print Management app: ", err)
+	}
+
+	// Be sure we clear the history before we start so when we check the history
+	// at the end of our test it will only have print jobs from this test.
+	if err := printManagementApp.ClearHistory()(ctx); err != nil {
+		s.Fatal("Failed to clear printing history: ", err)
+	}
+
 	// Create a browser (either ash or lacros, based on browser type).
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
 	if err != nil {
@@ -168,13 +180,8 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Print job failed to complete: ", err)
 	}
 
-	// Launch Print Management app.
-	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch Print Management app: ", err)
-	}
-
 	if err := uiauto.Combine("Verify print job",
+		printManagementApp.Focus(),
 		printManagementApp.VerifyHistoryLabel(),
 		printManagementApp.VerifyPrintJob(),
 	)(ctx); err != nil {
