@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8745d70_59d7b8a8",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-07T19:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "081bc613_755dc752",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b068f6a_70c32573",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ccce134_4f2f6286",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-07T19:31:14Z",
+      "side": 1,
+      "message": "Basically, yes we would have to run a local test with wifi disabled (and this would only happen locally), if we do the direct connection to the DUT that requires Wifi to keep the SSH connection.\n\nA couple reasons to have 2 vars:\n1. Practically, the `cujrecorder` package can\u0027t import the `cuj` package because of cyclical imports. So, we\u0027d need to have the flag be in the `cujrecorder` file. Since the current `isLocal` flag has only to do with the fixture, I felt weird about adding `isLocal` to the `cujrecorder`, and having cuj import `cujrecorder`.\n2. Not everyone needs to use `keepWifi`, and not everyone needs to shorten the cooldown or idle time. I thought `keepWifi` was explicitly a `Recorder` thing, and `isLocal` was explicitly a fixture thing, so it might be better to keep them separate?\n\ni.e, if we are testing browser crashes over a direct connection, I would want to make sure the computer is completely idle before we start for accurate testing, but I would also want the skip disabling wifi.",
+      "parentUuid": "4b068f6a_70c32573",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0826e273_46ed04a2",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 3
@@ -65,6 +101,24 @@
       "writtenOn": "2022-11-07T18:17:42Z",
       "side": 1,
       "message": "nit: `skipDisableWifi` -\u003e `keepWifi` to save some typing ?",
+      "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5522ee3e_3eeee0c8",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-07T19:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0826e273_46ed04a2",
       "revId": "d6cf383f62e5f93d54c30866985bf6b806654278",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
