@@ -63,6 +63,30 @@
       },
       "revId": "0bc4155772d2d0ba41b458e103431c7d884bddff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fb8f1d_5950b2b6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-07T22:13:30Z",
+      "side": 1,
+      "message": "I think it would be a little cleaner, especially if we end up adding more calls to `UpstartService` in the future.",
+      "parentUuid": "8b3a6ed6_c658d469",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "0bc4155772d2d0ba41b458e103431c7d884bddff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
