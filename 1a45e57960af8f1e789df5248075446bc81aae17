@@ -187,6 +187,30 @@
       },
       "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7779bf7c_105df2d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-07T03:08:05Z",
+      "side": 1,
+      "message": "The former error looks like `bash` is remembering the location `code` was last seen at, so skips straight to execing it instead of searching the path.\n\nI\u0027d rather one of the below, so we can have a more self-explanatory check:\n- `hash -r` to clear the cache, so errors should always be the latter\n- `which`/`command`/etc to search `$PATH` for `code`\n- `dpkg -s code` to see if the package is still installed\n- `code || echo VSCode not found` to have a constant string regardless of error reason.",
+      "parentUuid": "ceea0602_bc60388d",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "1a45e57960af8f1e789df5248075446bc81aae17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
