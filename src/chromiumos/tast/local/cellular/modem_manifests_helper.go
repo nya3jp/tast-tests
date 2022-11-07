@@ -152,8 +152,7 @@ func GetModemFirmwareHelperEntry(ctx context.Context) (*mfwd.HelperEntry, error)
 	return nil, errors.Errorf("variant %q does not contain a helper entry", dutVariant)
 }
 
-// GetDlcIDForVariant gets the dlc id of the variant, otherwise return error.
-// By default, the go proto helper will return an empty string if there is no DlcId value.
+// GetDlcIDForVariant gets the dlc id for the variant. If the variant does not support DLCs, an empty string is returned.
 func GetDlcIDForVariant(ctx context.Context) (string, error) {
 	dutVariant, err := GetDeviceVariant(ctx)
 	if err != nil {
@@ -166,12 +165,13 @@ func GetDlcIDForVariant(ctx context.Context) (string, error) {
 	}
 	for _, device := range manifest.Device {
 		if dutVariant == device.Variant {
-			if device.GetDlc() != nil {
-				return device.GetDlc().GetDlcId(), nil
+			if device.GetDlc() == nil {
+				return "", nil
 			}
+			return device.GetDlc().GetDlcId(), nil
 		}
 	}
-	return "", errors.Errorf("variant %q does not contain a DlcId", dutVariant)
+	return "", errors.Errorf("variant %q not found", dutVariant)
 
 }
 
