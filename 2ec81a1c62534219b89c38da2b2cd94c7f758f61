@@ -22,6 +22,30 @@
       },
       "revId": "2ec81a1c62534219b89c38da2b2cd94c7f758f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fdcea2_e42f7a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_play_store_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-07T20:44:27Z",
+      "side": 1,
+      "message": "This is intentional to easily promote/demote each variation since their stability is very different due to underlying tech being different.",
+      "parentUuid": "ee8f6100_55858ebc",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "2ec81a1c62534219b89c38da2b2cd94c7f758f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
