@@ -22,6 +22,30 @@
       },
       "revId": "14a1964084a189a6a30a331037253935348e5b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8da913_5735b3b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-11-07T05:36:55Z",
+      "side": 0,
+      "message": "There is a real issue, in the sense that it is not possible anymore to cancel the mounting of a slow-mounting archive (eg a big .tar.gz that is in the process of being scanned). There might be other user-visible effects, in case of race condition at the filesystem level.",
+      "parentUuid": "236b0631_942863cc",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "14a1964084a189a6a30a331037253935348e5b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
