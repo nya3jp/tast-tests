@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba8719e_8994e566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-07T23:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21edc64d_1d8b780f",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79269d92_2965430c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-07T12:24:05Z",
       "side": 1,
       "message": "nit: this is useless. Instead i\u0027d recommend to keep your team email + few people emails (including your) who actually will maintain test",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716c3946_499d1cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-07T23:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79269d92_2965430c",
       "range": {
         "startLine": 31,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d46eba7_c06523d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-07T23:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d548272f_3635300b",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9326ab0_15e71844",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-07T12:24:05Z",
       "side": 1,
       "message": "it looks like that instead of sleeping and using default, you can also wait until \"case \u003c-ctx.Done()\"\n\nso you can simplify and remove writeMsg function",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300c7723_3ecb5ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-07T23:02:53Z",
+      "side": 1,
+      "message": "Ack. I have one more change ahead and I will make that change.\n\nBtw. I got inspired by https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#full-code.",
+      "parentUuid": "e9326ab0_15e71844",
       "range": {
         "startLine": 113,
         "startChar": 0,
