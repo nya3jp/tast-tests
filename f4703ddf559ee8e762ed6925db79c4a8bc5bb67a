@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3c5c60_45eec914",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-11-07T21:53:59Z",
+      "side": 1,
+      "message": "Will there be a TODO to enable it later?",
+      "revId": "f4703ddf559ee8e762ed6925db79c4a8bc5bb67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
