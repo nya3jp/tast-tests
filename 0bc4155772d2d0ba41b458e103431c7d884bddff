@@ -39,6 +39,30 @@
       },
       "revId": "0bc4155772d2d0ba41b458e103431c7d884bddff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3a6ed6_c658d469",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-11-07T21:56:22Z",
+      "side": 1,
+      "message": "We could do that, but it would require to change `UpstartService()` return type to (platform.UpstartServiceClient, error) and check if error is nil.\n\nDo you want to change that in this patch?",
+      "parentUuid": "2d8dc4e6_66332404",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "0bc4155772d2d0ba41b458e103431c7d884bddff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
