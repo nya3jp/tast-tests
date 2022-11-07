@@ -108,6 +108,10 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
 	}
+
+	if err := uninstallVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
+		s.Fatal("Failed to uninstall Visual Studio Code in Terminal: ", err)
+	}
 }
 
 func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
@@ -185,4 +189,23 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	}
 
 	return nil
+}
+
+func uninstallVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
+	ui := uiauto.New(tconn)
+	progress := nodewith.NameStartingWith("Progress: [ ").Role(role.StaticText)
+	errorMsg := "VSCode not found"
+	codeError := nodewith.NameContaining(errorMsg).Role(role.StaticText)
+	return uiauto.Combine("uninstall Visual Studio Code",
+		// Run the command to uninstall.
+		terminalApp.RunCommand(keyboard, "sudo apt purge -y --allow-change-held-packages code"),
+		// Make sure the uninstallation progress starts
+		// and wait for it tofinish.
+		ui.WaitUntilExists(progress),
+		ui.WithTimeout(time.Minute).WaitUntilGone(progress),
+		// Run command "code || echo VSCode not found"
+		// to check the uninstallation works.
+		terminalApp.RunCommand(keyboard, "code || "+errorMsg),
+		ui.WaitUntilExists(codeError),
+	)(ctx)
 }
