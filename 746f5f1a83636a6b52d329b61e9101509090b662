@@ -33,6 +33,24 @@
       "message": "Appreciate if the bug and CL has the brief details captured on what is the reason for failure with screenshot and how is it being addressed.",
       "revId": "746f5f1a83636a6b52d329b61e9101509090b662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d07e839_4bdb9af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-11-07T17:30:22Z",
+      "side": 1,
+      "message": "Hi Renuga,\n\nI\u0027ve added some context for the CL. Sorry for the confusing description.\n-Chenghao",
+      "parentUuid": "c31adcab_30599f2e",
+      "revId": "746f5f1a83636a6b52d329b61e9101509090b662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
