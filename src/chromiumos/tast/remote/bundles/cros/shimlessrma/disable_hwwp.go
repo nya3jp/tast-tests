@@ -127,6 +127,12 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 		s.Fatal("Fail to setup init status: ", err)
 	}
 
+	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
+	if err != nil {
+		s.Fatal("Fail to initialize RMA Helper: ", err)
+	}
+	// Restart will dispose resources, so don't dispose resources explicitly.
+
 	if actions := generateActionCombinedToDisableWP(wpOption, enroll, destination, uiHelper); actions == nil {
 		// We don't support this test case yet.
 		s.Fatalf("The test case is not support yet. Enroll: %t, WP: %s, destination: %s ", enroll, wpOption, destination)
@@ -150,7 +156,7 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	// faft-cr50-pool cannot update firmware from USB.
 	// Since we already run Manual test case (removal battery) in skylab and install firmware from USB,
 	// we skip firmware installation in all RSU test cases.
-	if wpOption == rmaweb.Manual {
+	if wpOption == rmaweb.Manual && !skipFlashUSB {
 		if err := action.Combine("navigate to firmware installation page and install firmware",
 			uiHelper.WriteProtectDisabledPageOperation,
 			uiHelper.WaitForFirmwareInstallation,
@@ -197,7 +203,7 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	defer uiHelper.DisposeResource(cleanupCtx)
 
 	storeLogFlag := rmaweb.NotStoreLog
-	if wpOption == rmaweb.Manual {
+	if wpOption == rmaweb.Manual && !skipFlashUSB {
 		storeLogFlag = rmaweb.StoreLog
 	}
 
