@@ -16,6 +16,24 @@
       "message": "naming nit: The Uninstall call seems synchronous. Should this be something like `isUninstalled`?\n\nSame for the `assertUninstall` func.",
       "revId": "e22f3d361db37b6af0f9248fe65f0045ab1caf4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb630fd6_b4c356d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-07T19:15:15Z",
+      "side": 1,
+      "message": "Good point. Renamed in both places.",
+      "parentUuid": "d1026b43_1a44c251",
+      "revId": "e22f3d361db37b6af0f9248fe65f0045ab1caf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
