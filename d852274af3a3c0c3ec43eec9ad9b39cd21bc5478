@@ -204,6 +204,30 @@
       },
       "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e0cbb5_5de7ce6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/hiberman_dry_run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-07T23:03:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "300c7723_3ecb5ed5",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "d852274af3a3c0c3ec43eec9ad9b39cd21bc5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
