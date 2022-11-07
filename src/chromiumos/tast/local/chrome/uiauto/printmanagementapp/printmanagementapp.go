@@ -31,6 +31,16 @@ var printManagementHistoryLabel = nodewith.Name("History").Role(role.StaticText)
 // printManagementPrintJobEntry is used to find all print job entries.
 var printManagementPrintJobEntry = nodewith.ClassName("list-item flex-center")
 
+// printManagementDeleteHistoryButton is used to delete printing history.
+var printManagementDeleteHistoryButton = nodewith.Name("Clear all history").Role(role.Button)
+
+// printManagementDeleteConfirmButton is used to confirm deleting printing
+// history.
+var printManagementDeleteConfirmButton = nodewith.Name("Clear").ClassName("action-button").Role(role.Button)
+
+// printManagementWindow is the main widow for the print management dialog.
+var printManagementWindow = nodewith.Name("Print jobs").Role(role.Window).First()
+
 // Launch Print Management app via default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*PrintManagementApp, error) {
 	if err := apps.Launch(ctx, tconn, apps.PrintManagement.ID); err != nil {
@@ -42,6 +52,26 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*PrintManagementApp, e
 	}
 
 	return &PrintManagementApp{ui: uiauto.New(tconn), tconn: tconn}, nil
+}
+
+// ClearHistory returns an action that clears the print job history.
+func (p *PrintManagementApp) ClearHistory() uiauto.Action {
+	return uiauto.Combine("clear print job history",
+		p.ui.WithTimeout(20*time.Second).WaitUntilExists(printManagementDeleteHistoryButton),
+		// There may not be any jobs in the history, in which case the confirm
+		// dialog won't appear.  Only try and click it if it appears.
+		uiauto.IfSuccessThen(p.VerifyHistoryLabel(),
+			uiauto.Combine("clear print job history and confirm",
+				p.ui.LeftClick(printManagementDeleteHistoryButton),
+				p.ui.WithTimeout(20*time.Second).WaitUntilExists(printManagementDeleteConfirmButton),
+				p.ui.LeftClick(printManagementDeleteConfirmButton),
+				p.ui.EnsureGoneFor(printManagementPrintJobEntry, 20*time.Second))),
+	)
+}
+
+// Focus returns an action that ensures the dialog has focus.
+func (p *PrintManagementApp) Focus() uiauto.Action {
+	return p.ui.EnsureFocused(printManagementWindow)
 }
 
 // VerifyHistoryLabel returns an action that verifies the History section of the
