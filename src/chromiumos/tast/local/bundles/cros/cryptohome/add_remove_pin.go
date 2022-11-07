@@ -32,9 +32,9 @@ func init() {
 			Fixture: "ussAuthSessionFixture",
 		}, {
 			Name:      "with_vk",
+			Fixture:   "vkAuthSessionFixture",
 			ExtraAttr: []string{"informational"},
-		},
-		},
+		}},
 	})
 }
 
