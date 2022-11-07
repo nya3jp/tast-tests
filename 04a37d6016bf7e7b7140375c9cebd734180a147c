@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea0ec88_163349ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-11-07T15:58:32Z",
+      "side": 1,
+      "message": "Thanks for review. this waits for Android CL hits the official builds.",
+      "revId": "04a37d6016bf7e7b7140375c9cebd734180a147c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
