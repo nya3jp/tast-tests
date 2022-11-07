@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf90618_73cabe93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/hdcpsetup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T22:30:18Z",
+      "side": 1,
+      "message": "nit: Allowed hardware models are listed below.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ab5d10_b1ff7c40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/hdcpsetup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T22:30:18Z",
+      "side": 1,
+      "message": "nit: hardware",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc57e1c7_d15a19f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/set_pavp_hdcp_prerequisite.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-07T22:30:18Z",
+      "side": 1,
+      "message": "From what I learned,this is a prerequisite, not a test. It should run in Precondition or fixture of the test cases. \n\nIt sounds very bad if another test case depends on this one.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
