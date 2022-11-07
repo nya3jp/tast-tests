@@ -8,6 +8,7 @@ import (
 	"context"
 	"path/filepath"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/devicemode"
@@ -71,6 +72,58 @@ func init() {
 		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
 		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerSnapshotTablet",
+		Desc:            "Install Crostini with Buster in large container with apps installed in tablet mode, take snapshot before test and restore it after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniAppsFixture{deviceMode: devicemode.TabletMode, restoreSnapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		PreTestTimeout:  preTestTimeout + takeSnapshotTimeout,
+		PostTestTimeout: postTestTimeout + restartCrostiniTimeout + restoreSnapshotTimeout,
+		Parent:          "crostiniBusterLargeContainer",
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerSnapshotClamshell",
+		Desc:            "Install Crostini with Buster in large container with apps installed in clamshell mode, take snapshot before test and restore it after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniAppsFixture{deviceMode: devicemode.ClamshellMode, restoreSnapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		PreTestTimeout:  preTestTimeout + takeSnapshotTimeout,
+		PostTestTimeout: postTestTimeout + restartCrostiniTimeout + restoreSnapshotTimeout,
+		Parent:          "crostiniBusterLargeContainer",
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeLargeContainerSnapshotTablet",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed in tablet mode, take snapshot before test and restore it after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniAppsFixture{deviceMode: devicemode.TabletMode, restoreSnapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		PreTestTimeout:  preTestTimeout + takeSnapshotTimeout,
+		PostTestTimeout: postTestTimeout + restartCrostiniTimeout + restoreSnapshotTimeout,
+		Parent:          "crostiniBullseyeLargeContainer",
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
+		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeLargeContainerSnapshotClamshell",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed in clamshell mode, take snapshot before test and restore it after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniAppsFixture{deviceMode: devicemode.ClamshellMode, restoreSnapshot: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		PreTestTimeout:  preTestTimeout + takeSnapshotTimeout,
+		PostTestTimeout: postTestTimeout + restartCrostiniTimeout + restoreSnapshotTimeout,
+		Parent:          "crostiniBullseyeLargeContainer",
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
+		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+	})
 }
 
 // crostiniAppsFixture holds the runtime state of the fixture.
@@ -83,6 +136,8 @@ type crostiniAppsFixture struct {
 	revertDeviceMode func(ctx context.Context) error
 	screenRecorder   *uiauto.ScreenRecorder
 	screenDiffer     *Screendiffer
+	restoreSnapshot  bool
+	logDir           string
 }
 
 func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -91,7 +146,9 @@ func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	f.cr = p.Chrome
 	f.cont = p.Cont
 	f.kb = p.KB
+	f.logDir = s.OutDir()
 	f.screenDiffer = &Screendiffer{differ: nil, state: &screenDiffState{fixtState: s}}
+
 	return FixtureData{p.Chrome, p.Tconn, p.Cont, p.KB, p.PostData, p.StartupValues, f.screenDiffer, p.DownloadsPath}
 }
 
@@ -185,5 +242,25 @@ func (f *crostiniAppsFixture) TearDown(ctx context.Context, s *testing.FixtState
 }
 
 func (f *crostiniAppsFixture) Reset(ctx context.Context) error {
+	if f.restoreSnapshot {
+		// If restoreSnapshot is true, do the following:
+		// 1. stop the container.
+		// 2. restore the snapshot.
+		// 3. start the container.
+
+		// Stop the container.
+		if err := f.cont.Stop(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop the container")
+		}
+
+		// Restore the snapshot.
+		if err := f.cont.VM.LXCCommand(ctx, "restore", "penguin", snapshotName); err != nil {
+			return errors.Wrap(err, "failed to restore snapshot after test")
+		}
+
+		if err := f.cont.StartAndWait(ctx, f.logDir); err != nil {
+			return errors.Wrap(err, "failed to start container after restoring snapshot")
+		}
+	}
 	return nil
 }

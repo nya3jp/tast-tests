@@ -33,10 +33,15 @@ import (
 const (
 	installationTimeout    = 15 * time.Minute
 	checkContainerTimeout  = time.Minute
+	takeSnapshotTimeout    = 5 * time.Second
+	restoreSnapshotTimeout = 5 * time.Second
 	preTestTimeout         = 30 * time.Second
 	postTestTimeout        = 30 * time.Second
 	uninstallationTimeout  = 2 * time.Minute
 	restartCrostiniTimeout = 30*time.Second + terminalapp.LaunchTerminalTimeout
+
+	// snapshotName is the snapshot name for the container.
+	snapshotName = "snapshot"
 )
 
 func init() {
@@ -197,7 +202,7 @@ func init() {
 		Name:            "crostiniBusterLargeContainer",
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"clumptini+oncall@google.com"},
-		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
+		Impl:            &crostiniFixture{preData: preTestDataBusterLC, snapshot: true},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -211,7 +216,7 @@ func init() {
 		Name:            "crostiniBullseyeLargeContainer",
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"clumptini+oncall@google.com"},
-		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC},
+		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC, snapshot: true},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -281,6 +286,7 @@ type crostiniFixture struct {
 	postData *PostTestData
 	values   *perf.Values
 	restart  bool
+	snapshot bool
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
@@ -415,6 +421,13 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, f.cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user's Downloads path: ", err)
+	}
+
+	// Take snapshot if required.
+	if f.snapshot {
+		if err := f.cont.VM.LXCCommand(ctx, "snapshot", "penguin", snapshotName); err != nil {
+			s.Fatal("Failed to take snapshot before test: ", err)
+		}
 	}
 
 	return FixtureData{
