@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3533b8a_1f5ef90d",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_bluez.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "Nope, didn\u0027t mean to do it twice nice catch. Leftover structure from when I had it returning the error.\n\nNow fixed to only call it once.",
+      "parentUuid": "62365392_1092dcee",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 57
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a8f69a_ea69be53",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-03T16:17:56Z",
       "side": 1,
       "message": "Would it be possible to power the adapter on here instead?",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8eaebf_89338b72",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_bluez.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "No, the intent here is to not have any side effects other than that expected of the ResetStack RPC call. The adapter is already off from the ResetStack RPC call (it calls AdapterPowerOff before resetting), this is just verifying that the chameleond interface is back up and running and able to process device RPC methods again.\n\nIf we wanted to turn on the adapter after a ResetStack call, that would be a separate call outside of this function, as we are just trying to preform the actions of ResetStack here and make sure that it is completed.",
+      "parentUuid": "50a8f69a_ea69be53",
       "range": {
         "startLine": 209,
         "startChar": 17,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ad42a9_fffe0c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "I was originally focusing on unpairing things as that was what I was running into as issues (i.e. things still being paired from previous tests), but I don\u0027t think there is a downside to just removing everything here.\n\nI\u0027ve refactored it to remove them all and renamed things accordingly.",
+      "parentUuid": "b134ed93_3fe4ce3f",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd24ebfd_ed016366",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-04T08:07:25Z",
       "side": 1,
       "message": "I\u0027d use WithTimeout here. It also gives you a cancel function and you should set an explicit timeout.",
+      "range": {
+        "startLine": 418,
+        "startChar": 37,
+        "endLine": 418,
+        "endChar": 47
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639a52a7_a74b27fa",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd24ebfd_ed016366",
       "range": {
         "startLine": 418,
         "startChar": 37,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bffdc3b_a45da143",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "This lead me to errgroup, which is the same but allows you to get the first error if any occur. I refactored it to use errgroup so I don\u0027t need a retErrChan anymore either.\n\nThanks for the tip! This is much nicer.",
+      "parentUuid": "f2f47ce1_c599f37e",
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "342d5f6b_543d2907",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c45072_e5cbd364",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "No longer relevant now that I\u0027m using wait groups. Note that I do still call my cancel function to ensure it doesn\u0027t live beyond my function (plus my IDE warns me about calling it before returning to prevent context leaks).",
+      "parentUuid": "342d5f6b_543d2907",
+      "range": {
+        "startLine": 428,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 17
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1cdcddd_d0f3bd74",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-11-03T16:17:56Z",
       "side": 1,
       "message": "Nit: through",
+      "range": {
+        "startLine": 446,
+        "startChar": 39,
+        "endLine": 446,
+        "endChar": 45
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c8f3f2_4ddc6fb6",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-07T21:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1cdcddd_d0f3bd74",
       "range": {
         "startLine": 446,
         "startChar": 39,
