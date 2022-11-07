@@ -24,10 +24,14 @@ const (
 	cameraAppApk         = "ArcCameraTest.apk"
 	cameraAppPackage     = "chromeos.camera.app.arccameratest"
 	intentSwitchCamera   = "chromeos.camera.app.arccameratest.ACTION_SWITCH_CAMERA"
+	intentSwitchMode     = "chromeos.camera.app.arccameratest.ACTION_SWITCH_MODE"
 	intentTakePhoto      = "chromeos.camera.app.arccameratest.ACTION_TAKE_PHOTO"
 	intentStartRecording = "chromeos.camera.app.arccameratest.ACTION_START_RECORDING"
 	intentStopRecording  = "chromeos.camera.app.arccameratest.ACTION_STOP_RECORDING"
 	keyCameraFacing      = "chromeos.camera.app.arccameratest.KEY_CAMERA_FACING"
+	keyCameraMode        = "chromeos.camera.app.arccameratest.KEY_CAMERA_MODE"
+	valuePhoto           = "Photo"
+	valueVideo           = "Video"
 
 	// Snapshots can be really small if the room is dark, but JPEGs and MP4s are never smaller than 100 bytes.
 	minExpectedFileSize = 100
@@ -37,7 +41,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCCameraApp,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Data:         []string{"ArcCameraApp.apk"},
+		Data:         []string{cameraAppApk},
 		Desc:         "Checks basic Android camera functionalities work under ARC",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -54,7 +58,7 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
-	if err := a.Install(ctx, s.DataPath("ArcCameraApp.apk")); err != nil {
+	if err := a.Install(ctx, s.DataPath(cameraAppApk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
@@ -129,6 +133,10 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 // takePhoto asks ArcCameraFpsTest app to take a photo via intent and ensures
 // that the captured photo is saved successfully.
 func takePhoto(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	if _, err := a.BroadcastIntent(ctx, intentSwitchMode, "--es", keyCameraMode, valuePhoto); err != nil {
+		return errors.Wrap(err, "failed to switch to photo mode")
+	}
+
 	outputFile, err := a.BroadcastIntentGetData(ctx, intentTakePhoto)
 	if err != nil {
 		return errors.Wrap(err, "could not send intent")
@@ -146,6 +154,10 @@ func takePhoto(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
 // recordVideo asks ArcCameraFpsTest app to record a video via intent and
 // ensures that the captured video is saved successfully.
 func recordVideo(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	if _, err := a.BroadcastIntent(ctx, intentSwitchMode, "--es", keyCameraMode, valueVideo); err != nil {
+		return errors.Wrap(err, "failed to switch to video mode")
+	}
+
 	// Start record video
 	if _, err := a.BroadcastIntent(ctx, intentStartRecording); err != nil {
 		return errors.Wrap(err, "could not send intent")
