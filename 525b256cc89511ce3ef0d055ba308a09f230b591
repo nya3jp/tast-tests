@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb9dcd6_0a9c8fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e95438_f3bc7db5",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "087eb8d4_f9b7a510",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeea2644_fe5a28cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:42:44Z",
+      "side": 1,
+      "message": "Thanks for the input! Now that there is no objection, I will just add this test to the network folder directly.",
+      "parentUuid": "5e50b157_f7851dde",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5516cae6_e576eb55",
@@ -108,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d94986_e17be305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:42:44Z",
+      "side": 1,
+      "message": "Good point, thanks for the suggestion!\nNot sure if I understand what does \"set it to hardware policy\" mean here, I added code to set DevicePropertyMACAddrRandomEnabled to false. Let me know if there is any other thing I need to do here.",
+      "parentUuid": "718cc185_fd642643",
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf9c1cb8_d1b014c1",
         "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
         "patchSetId": 4
@@ -119,6 +185,30 @@
       "writtenOn": "2022-11-06T23:46:02Z",
       "side": 1,
       "message": "We only push a single result into this channel so I guess it is not necessary, but shouldn\u0027t we close the channel ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c103b381_00f6f0dc",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:42:44Z",
+      "side": 1,
+      "message": "I think in golang, channel doesn\u0027t have to be closed. Now that we don\u0027t rely on it now, I\u0027ll just leave the code as-is",
+      "parentUuid": "bf9c1cb8_d1b014c1",
       "range": {
         "startLine": 49,
         "startChar": 2,
@@ -166,6 +256,30 @@
       "side": 1,
       "message": "I think that\u0027s fine to begin with. Maybe just comment about ipLeaseTime unit and hardcoded duration.",
       "parentUuid": "f7704bf8_ef3cfc14",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba33075f_fdc37408",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a986b48_1c6ea2d1",
       "range": {
         "startLine": 62,
         "startChar": 0,
