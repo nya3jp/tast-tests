@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7ba06b_b28dd029",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1518333
+      },
+      "writtenOn": "2022-11-07T02:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f71b33cc_ad2ff65d",
+      "revId": "79c61b2a81d02bab9b3a56f9d1b99152590b2499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b325e60_ec890bf7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-07T01:14:55Z",
       "side": 1,
       "message": "Instead, probably we use a comment to show this option probably should be fixed with this bug b:205779346?",
+      "revId": "79c61b2a81d02bab9b3a56f9d1b99152590b2499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf47d719_1d21099f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1518333
+      },
+      "writtenOn": "2022-11-07T02:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b325e60_ec890bf7",
       "revId": "79c61b2a81d02bab9b3a56f9d1b99152590b2499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
