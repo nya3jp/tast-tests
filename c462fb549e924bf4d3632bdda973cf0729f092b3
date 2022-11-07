@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81d2bf9_37aa681a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-11-07T23:41:00Z",
+      "side": 1,
+      "message": "As discussed, this is because \u0027adb logcat\u0027 issue that it doesn\u0027t catch all the events. Adding comment TODO(buganizer#) to explain why.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "c462fb549e924bf4d3632bdda973cf0729f092b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
