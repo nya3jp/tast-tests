@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500c01e3_5e749d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-07T10:11:51Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7b5d7483_a0dbc286",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 101
+      },
+      "revId": "d1ac333055edb7f8b10af6eb2c7266e79e5424fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9c3f8be_e97bdde6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-31T19:32:07Z",
       "side": 1,
       "message": "Will any extension work? Can we use something 1st party?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 127
+      },
+      "revId": "d1ac333055edb7f8b10af6eb2c7266e79e5424fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7fdf1b7_6a977871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-07T10:11:51Z",
+      "side": 1,
+      "message": "Fixed by adding a suspicious file as public test assets, this test won\u0027t rely on third party website now.",
+      "parentUuid": "e9c3f8be_e97bdde6",
       "range": {
         "startLine": 462,
         "startChar": 0,

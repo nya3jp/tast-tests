@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7feb0db_f520c29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-07T10:11:51Z",
+      "side": 1,
+      "message": "Fixed by adding those two files as public test assets, this test won\u0027t rely on third party UI now.",
+      "parentUuid": "ef1cf47a_f409273e",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 117
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ef35db_f7b4dc7c",

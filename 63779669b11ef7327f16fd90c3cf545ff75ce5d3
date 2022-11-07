@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce005ca_603ec93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-11-07T10:11:51Z",
+      "side": 1,
+      "message": "Fixed by removing third party website usages.",
+      "parentUuid": "d1ee102a_029e8fe0",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 44
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d380d1_3da4cc64",
