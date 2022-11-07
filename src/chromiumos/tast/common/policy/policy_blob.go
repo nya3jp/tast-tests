@@ -5,54 +5,58 @@
 package policy
 
 import (
-	"encoding/base64"
 	"encoding/json"
 
-	"google.golang.org/protobuf/proto"
-
-	empb "chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/errors"
 )
 
 const (
-	// DefaultPolicyUser is the username that is used for "policy_user" in a
-	// Blob by default. This username should usually be used to log into
+	// DefaultPolicyUser is the username that will be used for "policy_user" in a
+	// PolicyBlob by default. This username should usually be used to log into
 	// Chrome (i.e. passed in to the Chrome login function).
 	DefaultPolicyUser = "tast-user@managedchrome.com"
-
-	// PolicyTypeUser is the user policy type.
-	PolicyTypeUser = "google/chromeos/user"
-	// PolicyTypeDevice is the device policy type.
-	PolicyTypeDevice = "google/chromeos/device"
-	// PolicyTypePublicAccount is the public account policy type.
-	PolicyTypePublicAccount = "google/chromeos/publicaccount"
-	// PolicyTypeExtension is the extension policy type.
-	PolicyTypeExtension = "google/chrome/extension"
 )
 
 // A Blob is a struct that marshals into what is expected by Chrome's
-// fake_dmserver.
+// policy_testserver.py.
 type Blob struct {
-	userPolicies           []Policy                             `json:"-"` // userPolicies can be added using AddPolicies().
-	devicePolicies         []Policy                             `json:"-"` // devicePolicies can be added using AddPolicies().
-	publicAccountPolicies  map[string][]Policy                  `json:"-"` // publicAccountPolicies can be added using AddPublicAccountPolicies().
-	extensionPM            BlobPolicyMap                        `json:"-"` // extensionPM can be added using AddExtensionPolicy().
-	DeviceProto            *empb.ChromeDeviceSettingsProto      `json:"-"` // DeviceProto is used to manually set legacy device policies.
-	userProto              *empb.CloudPolicySettings            `json:"-"` // userProto is used to manually set user policies for unmarshalling.
-	publicAccountsMapProto map[string]*empb.CloudPolicySettings `json:"-"` // publicAccountsProto is used to manually set public accounts policies for unmarshalling.
-	AllowDeviceAttrs       bool                                 `json:"allow_set_device_attributes,omitempty"`
-	CurrentKeyIdx          int                                  `json:"current_key_index,omitempty"`
-	PolicyUser             string                               `json:"policy_user"`
-	DirectoryAPIID         string                               `json:"directory_api_id,omitempty"`
-	RobotAPIAuthCode       string                               `json:"robot_api_auth_code,omitempty"`
-	ManagedUsers           []string                             `json:"managed_users"`
-	DeviceAffiliationIds   []string                             `json:"device_affiliation_ids,omitempty"`
-	UserAffiliationIds     []string                             `json:"user_affiliation_ids,omitempty"`
-	RequestErrors          map[string]int                       `json:"request_errors,omitempty"`
-	InitialState           map[string]*BlobInitialState         `json:"initial_enrollment_state,omitempty"`
+	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
+	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
+	ExtensionPM          BlobPolicyMap                `json:"-"` // Extension policies are passed via separate files.
+	PublicAccountPs      map[string]*BlobUserPolicies `json:"-"` // Public account policies are identical to user policies.
+	PolicyUser           string                       `json:"policy_user"`
+	ManagedUsers         []string                     `json:"managed_users"`
+	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
+	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
+	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
+	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
+	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
+	AllowDeviceAttrs     bool                         `json:"allow_set_device_attributes,omitempty"`
+	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
+	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
+	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
+	DirectoryAPIID       string                       `json:"directory_api_id,omitempty"`
 }
 
-// A BlobInitialState struct is a sub-struct used in a Blob.
+// A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
+type BlobUserPolicies struct {
+	MandatoryPM   BlobPolicyMap `json:"mandatory,omitempty"`
+	RecommendedPM BlobPolicyMap `json:"recommended,omitempty"`
+}
+
+// A BlobLicenses struct is a sub-struct used in a PolicyBlob.
+type BlobLicenses struct {
+	Annual    int `json:"annual,omitempty"`
+	Perpetual int `json:"perpetual,omitempty"`
+}
+
+// A BlobTokenEnrollment struct is a sub-struct used in a PolicyBlob.
+type BlobTokenEnrollment struct {
+	Token    string `json:"token"`
+	Username string `json:"username"`
+}
+
+// A BlobInitialState struct is a sub-struct used in a PolicyBlob.
 type BlobInitialState struct {
 	EnrollmentMode  int    `json:"initial_enrollment_mode,omitempty"`
 	Domain          string `json:"management_domain,omitempty"`
@@ -62,23 +66,17 @@ type BlobInitialState struct {
 // A BlobPolicyMap is a map of policy names to their JSON values.
 type BlobPolicyMap map[string]json.RawMessage
 
-// NewBlob returns a simple *Blob. Callers are expected to add user
+// NewBlob returns a simple *PolicyBlob. Callers are expected to add user
 // and device policies or modify initial setup as desired.
 func NewBlob() *Blob {
 	return &Blob{
-		ManagedUsers:           []string{"*"},
-		PolicyUser:             DefaultPolicyUser,
-		DeviceProto:            &empb.ChromeDeviceSettingsProto{},
-		userProto:              &empb.CloudPolicySettings{},
-		publicAccountsMapProto: make(map[string]*empb.CloudPolicySettings),
-		publicAccountPolicies:  make(map[string][]Policy),
-		extensionPM:            make(BlobPolicyMap),
-		RequestErrors:          make(map[string]int),
-		InitialState:           make(map[string]*BlobInitialState),
+		ManagedUsers:  []string{"*"},
+		PolicyUser:    DefaultPolicyUser,
+		RequestErrors: make(map[string]int),
 	}
 }
 
-// AddPolicies adds a given slice of Policy to the Blob.
+// AddPolicies adds a given slice of Policy to the PolicyBlob.
 // Where it goes is based on both the Scope() and Status() of the given policy.
 // No action happens if Policy is flagged as Unset or having Default value.
 func (pb *Blob) AddPolicies(ps []Policy) error {
@@ -90,7 +88,7 @@ func (pb *Blob) AddPolicies(ps []Policy) error {
 	return nil
 }
 
-// AddPolicy adds a given Policy to the Blob.
+// AddPolicy adds a given Policy to the PolicyBlob.
 // Where it goes is based on both the Scope() and Status() of the given policy.
 // No action happens if Policy is flagged as Unset or having Default value.
 func (pb *Blob) AddPolicy(p Policy) error {
@@ -99,24 +97,53 @@ func (pb *Blob) AddPolicy(p Policy) error {
 	}
 	switch p.Scope() {
 	case ScopeUser:
-		pb.userPolicies = append(pb.userPolicies, p)
+		if p.Status() == StatusSetRecommended {
+			if err := pb.addRecommendedUserPolicy(p); err != nil {
+				return err
+			}
+		} else {
+			if err := pb.addMandatoryUserPolicy(p); err != nil {
+				return err
+			}
+		}
 	case ScopeDevice:
-		pb.devicePolicies = append(pb.devicePolicies, p)
+		if err := pb.addDevicePolicy(p); err != nil {
+			return err
+		}
 	}
 	return nil
 }
 
-// AddPublicAccountPolicy adds the given policy to the public account policies
-// associated with the account ID. The account ID should match one of the
-// accounts set in the DeviceLocalAccounts policy e.g. tast-user@managedchrome.com.
+// AddPublicAccountPolicy adds the given policy to the public account policies associated with the account ID.
+// The account ID should match one of the accounts set in the DeviceLocalAccounts policy e.g. tast-user@managedchrome.com.
 func (pb *Blob) AddPublicAccountPolicy(accountID string, p Policy) error {
 	if p.Scope() != ScopeUser {
 		return errors.Errorf("%s is a non-user policy which cannot be added to public accounts", p.Name())
 	}
 
-	pb.publicAccountPolicies[accountID] = append(pb.publicAccountPolicies[accountID], p)
+	if pb.PublicAccountPs == nil {
+		pb.PublicAccountPs = make(map[string]*BlobUserPolicies)
+	}
 
-	return nil
+	if _, ok := pb.PublicAccountPs[accountID]; !ok {
+		pb.PublicAccountPs[accountID] = &BlobUserPolicies{}
+	}
+
+	policies := pb.PublicAccountPs[accountID]
+
+	if p.Status() == StatusSetRecommended {
+		if policies.RecommendedPM == nil {
+			policies.RecommendedPM = make(BlobPolicyMap)
+		}
+
+		return addValue(p, policies.RecommendedPM)
+	}
+
+	if policies.MandatoryPM == nil {
+		policies.MandatoryPM = make(BlobPolicyMap)
+	}
+
+	return addValue(p, policies.MandatoryPM)
 }
 
 // AddPublicAccountPolicies adds public policies to the public account policies
@@ -132,115 +159,45 @@ func (pb *Blob) AddPublicAccountPolicies(accountID string, policies []Policy) er
 }
 
 // AddExtensionPolicy sets the policies for a specific extension.
-func (pb *Blob) AddExtensionPolicy(extensionID string, data json.RawMessage) {
-	pb.extensionPM[extensionID] = data
-}
-
-// entry struct is used to serialize various policies in Blob to JSON format
-// accepted by the policy test server.
-type entry struct {
-	PolicyType string `json:"policy_type"`
-	EntityID   string `json:"entity_id,omitempty"`
-	Value      string `json:"value"`
-}
-
-// marshalUserProto iterates over all the user policies and set their
-// corresponding proto message then appends the base64 encoded value to
-// the policies array.
-func (pb *Blob) marshalUserProto(policies *[]entry) error {
-	userProtoMessage := pb.userProto.ProtoReflect()
-	for _, p := range pb.userPolicies {
-		p.SetProto(&userProtoMessage)
+func (pb *Blob) AddExtensionPolicy(extensionID string, data json.RawMessage) error {
+	if pb.ExtensionPM == nil {
+		pb.ExtensionPM = make(BlobPolicyMap)
 	}
-	userOut, err := proto.Marshal(userProtoMessage.Interface())
+
+	pb.ExtensionPM[extensionID] = data
+
+	return nil
+}
+
+// AddLegacyDevicePolicy adds a given one to many legacy device policy to the PolicyBlob.
+func (pb *Blob) AddLegacyDevicePolicy(field string, value interface{}) error {
+	if pb.DevicePM == nil {
+		pb.DevicePM = make(BlobPolicyMap)
+	}
+
+	vJSON, err := json.Marshal(value)
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "could not marshal the %s field", field)
 	}
-	*policies = append(*policies, entry{
-		PolicyType: PolicyTypeUser,
-		Value:      base64.StdEncoding.EncodeToString(userOut),
-	})
+	pb.DevicePM[field] = vJSON
+
 	return nil
 }
 
-// marshalDeviceProto uses the initial DeviceProto (if it's not set in the test
-// it'll be empty), iterats over all the device policies and
-// set their corresponding proto messages, then appends the base64 encoded value
-// to the policies array.
-func (pb *Blob) marshalDeviceProto(policies *[]entry) error {
-	deviceProtoMessage := pb.DeviceProto.ProtoReflect()
-	for _, p := range pb.devicePolicies {
-		p.SetProto(&deviceProtoMessage)
-	}
-	deviceOut, err := proto.Marshal(deviceProtoMessage.Interface())
-	if err != nil {
-		return err
-	}
-	*policies = append(*policies, entry{
-		PolicyType: PolicyTypeDevice,
-		Value:      base64.StdEncoding.EncodeToString(deviceOut),
-	})
-	return nil
-}
-
-// marshalPublicAccountsMapProto iterates over all the user policies associated
-// with the public account id and set their corresponding proto message, then
-// appends the base64 encoded value to the policies array.
-func (pb *Blob) marshalPublicAccountsMapProto(policies *[]entry) error {
-	for k, v := range pb.publicAccountPolicies {
-		var publicAccountProto *empb.CloudPolicySettings
-		if paProto, ok := pb.publicAccountsMapProto[k]; ok {
-			publicAccountProto = paProto
-		} else {
-			publicAccountProto = &empb.CloudPolicySettings{}
-		}
-		publicAccountProtoMessage := publicAccountProto.ProtoReflect()
-		for _, p := range v {
-			p.SetProto(&publicAccountProtoMessage)
-		}
-		pb.publicAccountsMapProto[k] = publicAccountProto
-	}
-	for k, p := range pb.publicAccountsMapProto {
-		paOut, err := proto.Marshal(p.ProtoReflect().Interface())
-		if err != nil {
-			return err
-		}
-		*policies = append(*policies, entry{
-			PolicyType: PolicyTypePublicAccount,
-			EntityID:   k,
-			Value:      base64.StdEncoding.EncodeToString(paOut),
-		})
-	}
-	return nil
-}
-
-// marshalExtensionPM marshals the raw json associated with each extension id,
-// then appends the base64 encoded value to the externalPolicies array.
-func (pb *Blob) marshalExtensionPM(externalPolicies *[]entry) error {
-	for id, pJSON := range pb.extensionPM {
-		exOut, err := pJSON.MarshalJSON()
-		if err != nil {
-			return err
-		}
-		*externalPolicies = append(*externalPolicies, entry{
-			PolicyType: PolicyTypeExtension,
-			EntityID:   id,
-			Value:      base64.StdEncoding.EncodeToString(exOut),
-		})
-	}
-	return nil
-}
-
-// MarshalJSON marshals the policy blob into JSON.
-// userPolicies, devicePolicies and publicAccountPolicies are added to
-// "policies" list. ExternalPolicies are added to "external_policies" list.
-// All the proto values of the policies are encoded to base64.
+// MarshalJSON marshals the policy blob into JSON. PublicAccountPs needs special
+// handling as the key is based on the account ID. To work around this, we first
+// marshal and unmarshal pb into a map which omits PublicAccountPs, and add the
+// public account policies to the map afterwards.
 func (pb *Blob) MarshalJSON() ([]byte, error) {
-	type BlobProxy Blob
+	type PolicyBlobProxy Blob
 
-	b, err := json.Marshal(BlobProxy(*pb))
+	b, err := json.Marshal(PolicyBlobProxy(*pb))
 	if err != nil {
 		return nil, err
+	}
+
+	if pb.PublicAccountPs == nil {
+		return b, nil
 	}
 
 	var m map[string]interface{}
@@ -249,165 +206,65 @@ func (pb *Blob) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	var policies []entry
-	if err := pb.marshalUserProto(&policies); err != nil {
-		return nil, err
-	}
-	if err := pb.marshalDeviceProto(&policies); err != nil {
-		return nil, err
-	}
-	if err := pb.marshalPublicAccountsMapProto(&policies); err != nil {
-		return nil, err
-	}
-	// Add all the user, device and public account policies to "policies" list
-	// in the blob.
-	m["policies"] = policies
-
-	var externalPolicies []entry
-	if err := pb.marshalExtensionPM(&externalPolicies); err != nil {
-		return nil, err
-	}
-	// Add all the extension policies to "external_policies" list in the blob.
-	if len(externalPolicies) > 0 {
-		m["external_policies"] = externalPolicies
+	for k, v := range pb.PublicAccountPs {
+		m["google/chromeos/publicaccount/"+k] = v
 	}
 
 	return json.Marshal(m)
 }
 
-// unmarshalUserProto sets the userProto in the blob for the unmarshalled
-// policies array. There is only one entry with PolicyTypeUser in the array.
-func (pb *Blob) unmarshalUserProto(policies []entry) error {
-	for _, policy := range policies {
-		if policy.PolicyType == PolicyTypeUser {
-			b, err := base64.StdEncoding.DecodeString(policy.Value)
-			if err != nil {
-				return errors.Wrap(err, "failed to decode the user policy value to base64")
-			}
-			userProto := &empb.CloudPolicySettings{}
-			if err := proto.Unmarshal(b, userProto); err != nil {
-				return errors.Wrap(err, "failed to unmarshal the proto for the user policy")
-			}
-			pb.userProto = userProto
-			break
-		}
-	}
-	return nil
-}
-
-// unmarshalDeviceProto sets the DeviceProto in the blob for the unmarshalled
-// policies array. There is only one entry with PolicyTypeDevice in the array.
-func (pb *Blob) unmarshalDeviceProto(policies []entry) error {
-	for _, policy := range policies {
-		if policy.PolicyType == PolicyTypeDevice {
-			b, err := base64.StdEncoding.DecodeString(policy.Value)
-			if err != nil {
-				return errors.Wrap(err, "failed to decode the device policy value to base64")
-			}
-			deviceProto := &empb.ChromeDeviceSettingsProto{}
-			if err := proto.Unmarshal(b, deviceProto); err != nil {
-				return errors.Wrap(err, "failed to unmarshal the proto for the device policy")
-			}
-			pb.DeviceProto = deviceProto
-			break
-		}
-	}
-	return nil
-}
-
-// unmarshalPublicAccountsMapProto sets the publicAccountsMapProto in the blob
-// for the unmarshalled policies array.
-func (pb *Blob) unmarshalPublicAccountsMapProto(policies []entry) error {
-	publicAccountsMapProto := make(map[string]*empb.CloudPolicySettings)
-	for _, policy := range policies {
-		if policy.PolicyType == PolicyTypePublicAccount {
-			b, err := base64.StdEncoding.DecodeString(policy.Value)
-			if err != nil {
-				return errors.Wrap(err, "failed to decode the public account policy value to base64")
-			}
-			publicAccountProto := &empb.CloudPolicySettings{}
-			if err := proto.Unmarshal(b, publicAccountProto); err != nil {
-				return errors.Wrap(err, "failed to unmarshal the proto for the public account policy")
-			}
-			publicAccountsMapProto[policy.EntityID] = publicAccountProto
-		}
-	}
-	pb.publicAccountsMapProto = publicAccountsMapProto
-	return nil
-}
-
-// unmarshalExtensionPM sets the ExtensionPM in the blob for the unmarshalled
-// external_policies array.
-func (pb *Blob) unmarshalExtensionPM(extPolicies []entry) error {
-	pb.extensionPM = make(BlobPolicyMap)
-	for _, policy := range extPolicies {
-		b, err := base64.StdEncoding.DecodeString(policy.Value)
-		if err != nil {
-			return errors.Wrap(err, "failed to decode the external policy value to base64")
-		}
-		var pJSON json.RawMessage
-		if err := json.Unmarshal(b, &pJSON); err != nil {
-			return errors.Wrap(err, "failed to unmarshal the raw json for the external policy")
-		}
-		pb.extensionPM[policy.EntityID] = pJSON
-	}
-	return nil
-}
-
-// UnmarshalJSON unmarshals JSON into the policy blob. Only compatible with JSON
-// generated by the MarshalJSON method above. This is used to transfer generated
-// policies between Tast binaries running on different machines, which is needed
-// for remote tests.
-func (pb *Blob) UnmarshalJSON(jsonData []byte) error {
-	type BlobProxy Blob
-	var proxyBlob BlobProxy
-	err := json.Unmarshal(jsonData, &proxyBlob)
+// addValue tweaks Policy values as needed and then adds them to the given map.
+// FakeDMServer expects "policy": "{value}" not "policy": {value} and
+// "policy": "[{value}]" not "policy": [{value}], so turn anything that is not
+// a bool, int, string, or []string into a string of its JSON representation.
+func addValue(p Policy, pm BlobPolicyMap) error {
+	v := p.UntypedV()
+	vJSON, err := json.Marshal(v)
 	if err != nil {
-		return errors.Wrap(err, "failed to unmarshal jsonData to an initial Blob")
+		return errors.Wrapf(err, "could not add %s policy", p.Name())
 	}
-	pb.AllowDeviceAttrs = proxyBlob.AllowDeviceAttrs
-	pb.CurrentKeyIdx = proxyBlob.CurrentKeyIdx
-	pb.PolicyUser = proxyBlob.PolicyUser
-	pb.DirectoryAPIID = proxyBlob.DirectoryAPIID
-	pb.RobotAPIAuthCode = proxyBlob.RobotAPIAuthCode
-	pb.ManagedUsers = proxyBlob.ManagedUsers
-	pb.DeviceAffiliationIds = proxyBlob.DeviceAffiliationIds
-	pb.UserAffiliationIds = proxyBlob.UserAffiliationIds
-	pb.RequestErrors = proxyBlob.RequestErrors
-	pb.InitialState = proxyBlob.InitialState
-
-	var objmap map[string]*json.RawMessage
-	if err := json.Unmarshal(jsonData, &objmap); err != nil {
-		return errors.Wrap(err, "failed to unmarshal jsonData to a raw map")
-	}
-
-	// Extract the policies array and unmarshal user, device and public accounts
-	// policies protos.
-	if policiesRawJSON, ok := objmap["policies"]; ok {
-		var policies []entry
-		if err := json.Unmarshal(*policiesRawJSON, &policies); err != nil {
-			return errors.Wrap(err, "failed to unmarshal policies array")
-		}
-		if err := pb.unmarshalUserProto(policies); err != nil {
-			return err
-		}
-		if err := pb.unmarshalDeviceProto(policies); err != nil {
-			return err
-		}
-		if err := pb.unmarshalPublicAccountsMapProto(policies); err != nil {
-			return err
+	switch v.(type) {
+	case bool, int, string, []string, []DeviceLocalAccountInfo:
+	default:
+		vJSON, err = json.Marshal(string(vJSON))
+		if err != nil {
+			return errors.Wrapf(err, "could not add %s policy", p.Name())
 		}
 	}
-
-	// Extract the external_policies array and unmarshal external policies raw json.
-	if extPoliciesRawJSON, ok := objmap["external_policies"]; ok {
-		var extPolicies []entry
-		if err := json.Unmarshal(*extPoliciesRawJSON, &extPolicies); err != nil {
-			return errors.Wrap(err, "failed to unmarshal external_policies array")
-		}
-		if err := pb.unmarshalExtensionPM(extPolicies); err != nil {
-			return err
-		}
+	if p.Scope() == ScopeUser {
+		pm[p.Name()] = vJSON
+	} else {
+		pm[p.Field()] = vJSON
 	}
 	return nil
+}
+
+// addMandatoryUserPolicy adds the given policy as a mandatory user policy.
+func (pb *Blob) addMandatoryUserPolicy(p Policy) error {
+	if pb.UserPs == nil {
+		pb.UserPs = &BlobUserPolicies{}
+	}
+	if pb.UserPs.MandatoryPM == nil {
+		pb.UserPs.MandatoryPM = make(BlobPolicyMap)
+	}
+	return addValue(p, pb.UserPs.MandatoryPM)
+}
+
+// addRecommendedUserPolicy adds the given policy as a recommended user policy.
+func (pb *Blob) addRecommendedUserPolicy(p Policy) error {
+	if pb.UserPs == nil {
+		pb.UserPs = &BlobUserPolicies{}
+	}
+	if pb.UserPs.RecommendedPM == nil {
+		pb.UserPs.RecommendedPM = make(BlobPolicyMap)
+	}
+	return addValue(p, pb.UserPs.RecommendedPM)
+}
+
+// addDevicePolicy adds the given policy as a recommended user policy.
+func (pb *Blob) addDevicePolicy(p Policy) error {
+	if pb.DevicePM == nil {
+		pb.DevicePM = make(BlobPolicyMap)
+	}
+	return addValue(p, pb.DevicePM)
 }
