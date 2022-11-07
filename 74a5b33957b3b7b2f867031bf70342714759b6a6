@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bce3176_6d5b4824",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "minor not: `CUJ`",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f5c5ab_2d88ff5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "nit: `lacors: Add`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c401820_4263988e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "nit: use empty lines between the bigger code blocks.",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd2a431_1dd49f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "note: This is exported to the lacros package. As the name is quite general, please take care that it does not interfere with other tests.",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea15c7e_ea5ae6f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "If you open a 2nd second window webpage, it will be opened in a 3rd one if I understand correctly. Can you change the behavior, or the variable names and comments?",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177aaa1c_ae0eea9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "This should be deferred right after the installation.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd7eb78_267de913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "This should be moved before opening any Lacros windows.",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2233f1e_7846e851",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-07T13:33:13Z",
+      "side": 1,
+      "message": "nit: uninstall.\nSame below.",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
