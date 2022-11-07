@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fa0d2f_17be5356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-07T17:37:21Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "5082425fb47ca56ec7f4d2e3c78a81ab96d7c108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bb9ab1_15f6422b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-11-07T17:37:21Z",
+      "side": 1,
+      "message": "\u003e \"Openning\" is a possible misspelling of \"Opening\".\n\nPlease fix.",
+      "parentUuid": "ce046a06_08408f6a",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 12
+      },
+      "revId": "5082425fb47ca56ec7f4d2e3c78a81ab96d7c108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
