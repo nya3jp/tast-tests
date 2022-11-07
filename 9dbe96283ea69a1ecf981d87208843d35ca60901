@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa18cb55_d318d6a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but if we dropped `_r` here, wouldn\u0027t it look like the test case only runs on P...?",
+      "parentUuid": "a8f09d54_ea108ad9",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "447d0e4d_1f65475b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
         "patchSetId": 4
@@ -71,6 +95,24 @@
       "writtenOn": "2022-11-06T22:51:12Z",
       "side": 1,
       "message": "How about adding a comment to clarify that fixup is an R-only feature and thus `android_vm_r` should be kept as-is even when other tests (general_r and fullrestore_r) are generalized for ARCVM?",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8719846e_a9b4db62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447d0e4d_1f65475b",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5745f0f2_8ecf3619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff87cb6c_2ae9e411",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7878210_df5de9a2",
@@ -105,6 +165,24 @@
       "writtenOn": "2022-11-04T22:59:27Z",
       "side": 1,
       "message": "nit: LogoutChrome(ctx, cr)",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31569103_ee0c347e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7878210_df5de9a2",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82316cb8_b65c778d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "Here, we need to choose a number that\u0027s large enough to to successfully capture the fixup ghost window on high-end devices. I\u0027ve cofirmed that 10000 works on hatch (jinlon), so I believe this is okay.\n\nThe timeout duration of `waitGhostWindowShown` is the same as the other test cases.",
+      "parentUuid": "5f1a3c46_4480f8fd",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1e91357_83e5c8b7",
@@ -162,6 +258,24 @@
       "writtenOn": "2022-11-06T22:51:12Z",
       "side": 1,
       "message": "Is it possible that fixupXAttr is set to 1 after prepareFixup but before `restart ui`? (Even if it\u0027s possible, I think it\u0027s okay to ignore the possibility if it\u0027s practically negligible.)",
+      "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237d1b14_f5d7d925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-11-07T07:56:27Z",
+      "side": 1,
+      "message": "Maybe it might be possible that /data/media/0/Android doesn\u0027t have `arc.fixed` set. Should we probably use `attr -r arc.fixed` (instead of `attr -s arc.fixed -V 0`) to make the test fails in such cases?",
+      "parentUuid": "a1e91357_83e5c8b7",
       "revId": "9dbe96283ea69a1ecf981d87208843d35ca60901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
