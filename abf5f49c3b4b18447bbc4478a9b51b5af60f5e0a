@@ -16,6 +16,24 @@
       "message": "It\u0027s a follow up of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3951569",
       "revId": "abf5f49c3b4b18447bbc4478a9b51b5af60f5e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab83921_f963d7aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-11-07T06:52:14Z",
+      "side": 1,
+      "message": "The previous link is wrong. It\u0027s https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4004484",
+      "parentUuid": "ed2aa4a8_6a843ad8",
+      "revId": "abf5f49c3b4b18447bbc4478a9b51b5af60f5e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
