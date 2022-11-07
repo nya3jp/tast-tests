@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -180,7 +181,6 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		continueID           = "com.disney.disneyplus:id/continueLoadingButton"
 		signInID             = "com.disney.disneyplus:id/standardButtonBackground"
 		notNowID             = "android:id/autofill_save_no"
-		neverButtonText      = "Never"
 		profileIconClassName = "android.view.ViewGroup"
 	)
 	var profileIconIndex = 3
@@ -213,6 +213,22 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 	s.Log("Entered emailid")
 
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	deviceMode := "clamshell"
+	if tabletModeEnabled {
+		deviceMode = "tablet"
+		// Press back to make continue button visible.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_BACK: ", err)
+		} else {
+			s.Log("Entered KEYCODE_BACK")
+		}
+	}
+	s.Logf("device %v mode", deviceMode)
+
 	// Click on continue button.
 	continueButton := d.Object(ui.ID(continueID))
 	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -241,6 +257,17 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 	s.Log("Entered password")
 
+	deviceMode = "clamshell"
+	if tabletModeEnabled {
+		deviceMode = "tablet"
+		// Press back to make continue button visible.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_BACK: ", err)
+		} else {
+			s.Log("Entered KEYCODE_BACK")
+		}
+	}
+	s.Logf("device %v mode", deviceMode)
 	// Check for signInButton.
 	signInButton := d.Object(ui.ID(signInID))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -261,19 +288,7 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Log("notNowButton does exist ")
 	}
 
-	// Click on not now button.
-	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("notNowButton doesn't exists: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
-	}
-	// Click on never button.
-	neverButton := d.Object(ui.TextMatches("(?i)" + neverButtonText))
-	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Never Button doesn't exist: ", err)
-	} else if err := neverButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on neverButton: ", err)
-	}
+	testutil.HandleSavePasswordToGoogle(ctx, s, tconn, a, d, appPkgName)
 
 	// Click on profile icon
 	profileIcon := d.Object(ui.ClassName(profileIconClassName), ui.Index(profileIconIndex))
