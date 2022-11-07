@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd0dc0d_de9f9d21",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-07T17:55:10Z",
+      "side": 1,
+      "message": "I expanded the comment and added a simple example of how you might use this.",
+      "parentUuid": "35342efb_aeab1f0a",
+      "range": {
+        "startLine": 1264,
+        "startChar": 3,
+        "endLine": 1264,
+        "endChar": 11
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ae0b301_6fd1a2a2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd966a7_131acdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-07T17:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae0b301_6fd1a2a2",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8292cc7c_dcf7cee3",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-06T22:26:20Z",
       "side": 1,
       "message": "Why do this again?",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 28
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d297d5_ad88f53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-07T17:55:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the best arrangement is here. There\u0027s the an initial UnmountAll before this which is just trying to ensure the user being tested (if for some reason they happen to already exist on the DUT) doesn\u0027t exist. Then there\u0027s this second one from setting up an owner for the DUT, which is again just putting things into a known start for the \"real\" start of the test, which is after this.\n\nI guess I could combine them, at the same time it was also just nice to do the \"make sure the user doesn\u0027t already exist\" and \"give the DUT an owner\" as standalone blocks.",
+      "parentUuid": "8292cc7c_dcf7cee3",
       "range": {
         "startLine": 108,
         "startChar": 18,
