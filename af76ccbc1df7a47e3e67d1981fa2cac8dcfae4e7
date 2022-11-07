@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff07d364_ef469073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:44:22Z",
+      "side": 1,
+      "message": "Thanks for the reviews!\nAnyone would +2 for this patch or is there any other concerns?",
+      "revId": "af76ccbc1df7a47e3e67d1981fa2cac8dcfae4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42716a18_3122ebc5",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-11-04T18:01:15Z",
       "side": 1,
       "message": "would it make sense to do this directly in this function?",
+      "range": {
+        "startLine": 265,
+        "startChar": 10,
+        "endLine": 266,
+        "endChar": 9
+      },
+      "revId": "af76ccbc1df7a47e3e67d1981fa2cac8dcfae4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e28f05ee_c15ea496",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-07T07:44:22Z",
+      "side": 1,
+      "message": "When enabling this kernel module, we need to specify the number of interfaces, so it\u0027s better to do that outside this function then we can call CreateWifiRouterEnv() several times to create multiple APs.",
+      "parentUuid": "42716a18_3122ebc5",
       "range": {
         "startLine": 265,
         "startChar": 10,
