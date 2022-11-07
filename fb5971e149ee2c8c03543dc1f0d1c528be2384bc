@@ -158,6 +158,30 @@
       },
       "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2aff75_7030ed93",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-11-07T04:40:41Z",
+      "side": 1,
+      "message": "Thanks a lot. Let me see if I can make this comment a bit better.",
+      "parentUuid": "18860805_536a1aa3",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
