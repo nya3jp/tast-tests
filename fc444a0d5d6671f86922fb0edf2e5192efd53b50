@@ -176,6 +176,24 @@
       "parentUuid": "70add4c1_fa451e19",
       "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c539daa_e2e4097f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/mouse_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-07T21:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7bcc219_28bda528",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
