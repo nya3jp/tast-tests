@@ -16,6 +16,24 @@
       "message": "Alexey, I started a discussion about how to manage app installation for app tests. We might want to include firefox-esr in the app test image instead. Thread at https://chat.google.com/room/AAAA9sJ5woc/F7O-BSNNoYI",
       "revId": "848f1bb859682402233c986fdead64675bc2c593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a7fa0c_a3b360b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-11-07T04:39:03Z",
+      "side": 1,
+      "message": "Thanks for starting it. Once the test image has Firefox, we will be able to update this test to use the preinstalled version of Firefox.",
+      "parentUuid": "6173558b_4d04d248",
+      "revId": "848f1bb859682402233c986fdead64675bc2c593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
