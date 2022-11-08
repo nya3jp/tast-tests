@@ -16,6 +16,24 @@
       "message": "If you are using this from Tast, you might not need this marker.\nThe marker is mostly for the external usecases (Google3 e.g.) where once the proto is published and migrated to google3, we have to guarantee that future changes are always backward compatible.",
       "revId": "aca9062df99b147cf60b74729e855c5f5fdebe65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e557558_0483a133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-08T21:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09898751_b256dab2",
+      "revId": "aca9062df99b147cf60b74729e855c5f5fdebe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
