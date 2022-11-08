@@ -16,6 +16,23 @@
       "message": "Thanks for the review :) PTAL, thanks!",
       "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2db2300_db40a4e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-11-08T06:20:44Z",
+      "side": 1,
+      "message": "The design of netcertstore is such that we can isolate anything chaps/pkcs11 related into this module, thus I would recommend moving anything that invokes chaps_client into netcertstore.\n\nIdeally some of them should be upstreamed into the pkcs11 package but that might be too much work.\n\nYou can choose to do that in another CL if you prefer.",
+      "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
