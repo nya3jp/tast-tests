@@ -9,23 +9,37 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 // clamshellLaunchForFacebook launches Facebook in clamshell mode.
 var clamshellLaunchForFacebook = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForFacebook},
+	{Name: "Launch app in Clamshell", Fn: launchAppForFacebook, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForFacebook launches Facebook in tablet mode.
 var touchviewLaunchForFacebook = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForFacebook},
+	{Name: "Launch app in Touchview", Fn: launchAppForFacebook, Timeout: testutil.LaunchTestCaseTimeout},
+}
+
+// clamshellAppSpecificTestsForFacebook are placed here.
+var clamshellAppSpecificTestsForFacebook = []testutil.TestCase{
+	{Name: "Clamshell: Signout app", Fn: signOutOfFacebook, Timeout: testutil.SignoutTestCaseTimeout},
+}
+
+// touchviewAppSpecificTestsForFacebook are placed here.
+var touchviewAppSpecificTestsForFacebook = []testutil.TestCase{
+	{Name: "Touchview: Signout app", Fn: signOutOfFacebook, Timeout: testutil.SignoutTestCaseTimeout},
 }
 
 func init() {
@@ -39,8 +53,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForFacebook,
-				CommonTests: testutil.ClamshellSmokeTests,
+				LaunchTests:      clamshellLaunchForFacebook,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -51,8 +66,9 @@ func init() {
 		}, {
 			Name: "tablet_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForFacebook,
-				CommonTests: testutil.TouchviewSmokeTests,
+				LaunchTests:      touchviewLaunchForFacebook,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,8 +79,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForFacebook,
-				CommonTests: testutil.ClamshellSmokeTests,
+				LaunchTests:      clamshellLaunchForFacebook,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -75,8 +92,9 @@ func init() {
 		}, {
 			Name: "vm_tablet_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForFacebook,
-				CommonTests: testutil.TouchviewSmokeTests,
+				LaunchTests:      touchviewLaunchForFacebook,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -87,8 +105,9 @@ func init() {
 		}, {
 			Name: "clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForFacebook,
-				ReleaseTests: testutil.ClamshellReleaseTests,
+				LaunchTests:      clamshellLaunchForFacebook,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
+				AppSpecificTests: clamshellAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -99,8 +118,9 @@ func init() {
 		}, {
 			Name: "tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForFacebook,
-				ReleaseTests: testutil.TouchviewReleaseTests,
+				LaunchTests:      touchviewLaunchForFacebook,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
+				AppSpecificTests: touchviewAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -111,8 +131,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForFacebook,
-				ReleaseTests: testutil.ClamshellReleaseTests,
+				LaunchTests:      clamshellLaunchForFacebook,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
+				AppSpecificTests: clamshellAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -123,8 +144,9 @@ func init() {
 		}, {
 			Name: "vm_tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForFacebook,
-				ReleaseTests: testutil.TouchviewReleaseTests,
+				LaunchTests:      touchviewLaunchForFacebook,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
+				AppSpecificTests: touchviewAppSpecificTestsForFacebook,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -154,28 +176,23 @@ func Facebook(ctx context.Context, s *testing.State) {
 // verify Facebook reached main activity page of the app.
 func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowDes           = "Allow"
-		allowText          = "ALLOW"
-		cancelID           = "com.google.android.gms:id/cancel"
-		dismissButtonText  = "Dismiss"
-		loginPageClassName = "android.view.ViewGroup"
-		loginPageDes       = "•"
-		notNowText         = "Not Now"
-		notNowID           = "android:id/autofill_save_no"
-		okText             = "OK"
-		passwordDes        = "Password"
-		userNameDes        = "Username"
-		textClassName      = "android.widget.EditText"
+		allowDes          = "Allow"
+		allowText         = "ALLOW"
+		addEmailtext      = "Add email"
+		cancelID          = "com.google.android.gms:id/cancel"
+		contInEngDes      = "Continue in English (US)"
+		dismissButtonText = "Dismiss"
+		viewGrpClassName  = "android.view.ViewGroup"
+		notNowText        = "Not Now"
+		okText            = "OK"
+		pwdWord           = "Password"
+		userNameDes       = "Username"
+		skipBtnText       = "Skip"
+		textClassName     = "android.widget.EditText"
+
+		waitForActiveInputTime = time.Second * 10
 	)
 
-	// Check for login page.
-	checkForloginPage := d.Object(ui.ClassName(loginPageClassName), ui.Description(loginPageDes))
-	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("checkForloginButtonPage does not exist: ", err)
-	} else {
-		s.Log("checkForloginButtonPage in web view does exist")
-		return
-	}
 	// Click on cancel button to sign in with google.
 	clickOnCancelButton := d.Object(ui.ID(cancelID))
 	if err := clickOnCancelButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
@@ -184,82 +201,108 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on clickOnCancelButton: ", err)
 	}
 
+	// Click on enter phone or email address field.
+	enterEmailAddr := uidetection.TextBlock([]string{"Phone", "or", "email"})
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for enter phone or email",
+		ud.WaitUntilExists(enterEmailAddr),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(enterEmailAddr),
+		action.Sleep(testutil.DefaultUITimeout),
+	)(ctx); err != nil {
+		s.Log("Failed to find enter phone or email: ", err)
+	}
+
+	// Click on enter mobile number or email address field.
+	enterEmailAddr = uidetection.TextBlock([]string{"Mobile", "number", "or", "email"})
+	ud = uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for enter mobile number or email",
+		ud.WaitUntilExists(enterEmailAddr),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(enterEmailAddr),
+		action.Sleep(testutil.DefaultUITimeout),
+	)(ctx); err != nil {
+		s.Log("Failed to find enter mobile number or email: ", err)
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
 	// Enter email address.
-	FacebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
-	enterEmailAddress := d.Object(ui.ClassName(textClassName), ui.Description(userNameDes))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterEmailAddress doesn't exist: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
-	} else if enterEmailAddress.SetText(ctx, FacebookEmailID); err != nil {
-		s.Fatal("Failed to enterEmailAddress: ", err)
+	facebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
+	if err := kb.Type(ctx, facebookEmailID); err != nil {
+		s.Fatal("Failed to enter enterEmail: ", err)
+	}
+	s.Log("Entered email")
+
+	// Click on password field
+	enterPwd := uidetection.Word(pwdWord).First()
+	ud = uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for enter password",
+		ud.WaitUntilExists(enterPwd),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(enterPwd),
+		action.Sleep(testutil.DefaultUITimeout),
+	)(ctx); err != nil {
+		s.Log("Failed to enter password: ", err)
 	}
 
-	// Enter Password.
-	FacebookPassword := s.RequiredVar("arcappcompat.Facebook.password")
-	enterPassword := d.Object(ui.ClassName(textClassName), ui.Description(passwordDes))
-	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterPassword doesn't exist: ", err)
-	} else if err := enterPassword.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterPassword: ", err)
-	} else if enterPassword.SetText(ctx, FacebookPassword); err != nil {
-		s.Fatal("Failed to enterPassword: ", err)
+	// Enter password.
+	facebookPWD := s.RequiredVar("arcappcompat.Facebook.password")
+	if err := kb.Type(ctx, facebookPWD); err != nil {
+		s.Fatal("Failed to enter enterEmail: ", err)
+	}
+	s.Log("Entered password")
+
+	// Click on Log in button.
+	loginBtn := uidetection.TextBlock([]string{"Log", "In"})
+	ud = uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for login button",
+		ud.WaitUntilExists(loginBtn),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(loginBtn),
+	)(ctx); err != nil {
+		s.Log("Failed to find login button: ", err)
 	}
 
-	// Click on login button.
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Fatal("Failed to press enter button: ", err)
-	}
-
-	// Click on no thanks button.
-	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
-	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnNoThanksButton doesn't exist: ", err)
-	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
-	}
-
-	// Click on dismiss button.
-	clickOnDismissButton := d.Object(ui.Text(dismissButtonText))
-	if err := clickOnDismissButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnDismissButton doesn't exist: ", err)
-	} else if err := clickOnDismissButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnDismissButton: ", err)
-	}
-
-	// Click on not now button for adding contacts.
-	clickOnNotNowButton := d.Object(ui.Text(notNowText))
-	if err := clickOnNotNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnNotNowButton doesn't exist: ", err)
-	} else if err := clickOnNotNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnNotNowButton: ", err)
-	}
+	// Click on skip button or not now button for saving login info.
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on allow button.
-	clickOnAllowButton := d.Object(ui.Description(allowDes))
-	if err := clickOnAllowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	allowButton := d.Object(ui.DescriptionMatches("(?i)" + allowDes))
+	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Allow Button doesn't exist: ", err)
-	} else if err := clickOnAllowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnAllowButton: ", err)
+	} else if err := allowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on allowButton: ", err)
 	}
 
-	// Click on allow button again.
-	clickOnAllowButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowText))
-	if err := clickOnAllowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exist: ", err)
-	} else if err := clickOnAllowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnAllowButton: ", err)
-	}
-
-	// Click on ok button to turn on device location.
-	clickOnOkButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okText))
-	if err := clickOnOkButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnOkButton doesn't exist: ", err)
-	} else if err := clickOnOkButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnOkButton: ", err)
-	}
-
+	// Click on skip button to skip adding a phone number.
+	// Click on allow to enable location.
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
+	// Click on add email.
+	addEmailBtn := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+addEmailtext))
+	if err := addEmailBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("addEmailBtn doesn't exist: ", err)
+	} else if err := addEmailBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on addEmailBtn: ", err)
+	}
+
+	// Click on continue in english.
+	contInEngBtn := d.Object(ui.ClassName(viewGrpClassName), ui.DescriptionMatches("(?i)"+contInEngDes))
+	if err := contInEngBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("contInEngBtn doesn't exist: ", err)
+	} else if err := contInEngBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on contInEngBtn: ", err)
+	}
+
+	// Click on skip button to find friends.
+	// Click on ok button to turn on device location.
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
@@ -271,11 +314,13 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 // signOutOfFacebook verifies app is signed out.
 func signOutOfFacebook(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		logoutText             = "LOG OUT"
 		viewClassName          = "android.view.View"
 		scrollClassName        = "androidx.recyclerview.widget.RecyclerView"
 		logoutClassName        = "android.view.ViewGroup"
-		logoutDes              = "Log Out, Button 1 of 1"
+		logoutDes              = "Log out"
 		hamburgerIconClassName = "android.view.View"
+		notNowText             = "Not Now"
 	)
 	var indexNum = 5
 
@@ -284,14 +329,8 @@ func signOutOfFacebook(ctx context.Context, s *testing.State, tconn *chrome.Test
 	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("hamburgerIcon doesn't exist and skipped logout: ", err)
 		return
-	}
-
-	// Click on menu icon.
-	menuIcon := d.Object(ui.ClassName(viewClassName), ui.Index(indexNum))
-	if err := menuIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("menuIcon doesn't exist: ", err)
-	} else if err := menuIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on menuIcon: ", err)
+	} else if err := hamburgerIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on hamburgerIcon: ", err)
 	}
 
 	// Scroll until logout is visible.
@@ -300,16 +339,33 @@ func signOutOfFacebook(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("LogOutOfFacebook doesn't exist: ", err)
 	}
 
-	logOutOfFacebook := d.Object(ui.ClassName(logoutClassName), ui.Description(logoutDes))
+	logOutOfFacebook := d.Object(ui.ClassName(logoutClassName), ui.DescriptionMatches("(?i)"+logoutDes))
 	scrollLayout.ScrollTo(ctx, logOutOfFacebook)
 	if err := logOutOfFacebook.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("logOutOfFacebook doesn't exist: ", err)
+		s.Log("logOutOfFacebook doesn't exist and skipped logout: ", err)
+		return
 	}
 
 	// Click on log out of Facebook.
-	if err := logOutOfFacebook.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := logOutOfFacebook.Exists(ctx); err != nil {
 		s.Error("LogOutOfFacebook doesn't exist: ", err)
 	} else if err := logOutOfFacebook.Click(ctx); err != nil {
 		s.Fatal("Failed to click on logOutOfFacebook: ", err)
+	}
+
+	// Click on not now button to save login info.
+	notNowButton := d.Object(ui.TextMatches("(?i)" + notNowText))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
+	// Click on log out button.
+	logoutBtn := d.Object(ui.TextMatches("(?i)" + logoutText))
+	if err := logoutBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("logoutBtn doesn't exist: ", err)
+	} else if err := logoutBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on logoutBtn: ", err)
 	}
 }
