@@ -74,7 +74,7 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 	tab := "Tab"
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Error("Failed to wait CPU untile idle: ", err)
+		s.Fatal("Failed to wait CPU untile idle: ", err)
 	}
 
 	// Turning on ChromeVox by keyboard is in a11y/chromevox_toggle_on_shortcut.go
