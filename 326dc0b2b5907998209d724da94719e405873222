@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22a919e_2a81e0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-08T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc1d784_ff657106",
+      "range": {
+        "startLine": 138,
+        "startChar": 13,
+        "endLine": 138,
+        "endChar": 17
+      },
+      "revId": "326dc0b2b5907998209d724da94719e405873222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e95bedc0_19dd4837",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-07T13:59:11Z",
       "side": 1,
       "message": "There is unlocking logic in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go\nPlease check if you can reuse some parts of it, or if you can create a function out of it to use it in both tests.",
+      "revId": "326dc0b2b5907998209d724da94719e405873222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe0d75c_9f42bbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-08T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e95bedc0_19dd4837",
       "revId": "326dc0b2b5907998209d724da94719e405873222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
