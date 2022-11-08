@@ -1182,9 +1182,20 @@ func (u *CryptohomeClient) UpdatePinAuthFactor(ctx context.Context, authSessionI
 }
 
 // PrepareGuestVault prepares vault for guest session.
-func (u *CryptohomeClient) PrepareGuestVault(ctx context.Context) error {
-	_, err := u.binary.prepareGuestVault(ctx)
-	return err
+func (u *CryptohomeClient) PrepareGuestVault(ctx context.Context) (*uda.PrepareGuestVaultReply, error) {
+	binaryMsg, err := u.binary.prepareGuestVault(ctx)
+
+	// Attempt to parse the binaryMsg anyway, we need them to check for the correct error code.
+	reply := &uda.PrepareGuestVaultReply{}
+	if unmarshErr := proto.Unmarshal(binaryMsg, reply); unmarshErr != nil {
+		return nil, errors.Wrap(unmarshErr, "failed to unmarshal PrepareGuestVault reply")
+	}
+
+	if err != nil {
+		return reply, errors.Wrap(err, "PrepareGuestVault failed")
+	}
+
+	return reply, nil
 }
 
 // PrepareEphemeralVault prepares vault for ephemeral session.
