@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		// This test should run only on gaming models.
-		HardwareDeps: hwdep.D(hwdep.Model("taniks", "osiris")),
+		HardwareDeps: hwdep.D(hwdep.Model("taniks")),
 		Fixture:      "chromeLoggedInWithOobe",
 	})
 }
