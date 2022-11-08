@@ -16,6 +16,23 @@
       "message": "Thanks Oleh and Aya for the review!",
       "revId": "f1a145c78586646e5f27661568c06c621dda785a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011037b0_9d7fcf26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-11-08T10:04:47Z",
+      "side": 1,
+      "message": "still lgtm",
+      "revId": "f1a145c78586646e5f27661568c06c621dda785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
