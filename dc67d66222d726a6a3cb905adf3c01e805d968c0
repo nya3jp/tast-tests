@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8122752c_346e0d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:50:18Z",
+      "side": 1,
+      "message": "I\u0027d still test it for completeness. We need to make sure we at least don\u0027t completely break Ash in this case.",
+      "parentUuid": "9293f2da_7441f119",
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6a97d9b_d0505136",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-07T03:01:03Z",
       "side": 1,
       "message": "If there is no particular reason, could you use \u0027backward\u0027 instead of reverse for consistency?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9c136f_2f4b6914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a97d9b_d0505136",
       "range": {
         "startLine": 57,
         "startChar": 5,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba29ca3_1dc83482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/backward_migrate_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25622ec9_280de84f",
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "606a37c5_c913a243",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-11-07T03:01:03Z",
       "side": 1,
       "message": "Please add \u0027backward\u0027 or \u0027reverse\u0027 here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "dc67d66222d726a6a3cb905adf3c01e805d968c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433535d1_8fadea02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/reverse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606a37c5_c913a243",
       "range": {
         "startLine": 64,
         "startChar": 22,
