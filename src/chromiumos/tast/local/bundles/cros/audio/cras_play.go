@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// TODO(b/258112490) : remove "steelix" when b/250468510 is fixed.
+var crasPlayUnstableModels = []string{"sasukette", "steelix"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrasPlay,
@@ -27,14 +30,14 @@ func init() {
 		Params: []testing.Param{{
 			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
 			ExtraSoftwareDeps: []string{"audio_stable"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("sasukette")),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(crasPlayUnstableModels...)),
 		}, {
 			Name:              "unstable_platform",
 			ExtraSoftwareDeps: []string{"audio_unstable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable_model",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("sasukette")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(crasPlayUnstableModels...)),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
