@@ -16,6 +16,23 @@
       "message": "Forgot to mention that I also tested this by killing tast before it ran the cleanup, and then re-running the test. The cp -n solution works well in that case (subsequent test runs recover and clean up correctly).\n\nSo I think this is good to go.",
       "revId": "b474f38b646e3b2d5e24a2aa980f39ccdb3c81d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2758145f_783a3e88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-11-08T05:08:11Z",
+      "side": 1,
+      "message": "guybrush-cq failing to compile chrome was b/257593349, now fixed\n\narcBooted failures are probably b/257844132, it\u0027s demoted now\n\nso let\u0027s retry",
+      "revId": "b474f38b646e3b2d5e24a2aa980f39ccdb3c81d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
