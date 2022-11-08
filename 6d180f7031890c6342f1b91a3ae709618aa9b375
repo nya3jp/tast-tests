@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181317cf_b110dde8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-11-08T12:45:29Z",
+      "side": 1,
+      "message": "do we need the memory limitation still or do we need something else fixed first to allow for \u003c7500MB to work.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 53
+      },
+      "revId": "6d180f7031890c6342f1b91a3ae709618aa9b375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
