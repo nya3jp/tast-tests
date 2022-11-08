@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	// BuildURL is the arg name for the gs directory of the build or a local directory containing the imageBin.
+	// BuildURL is the arg name for the directory of the gs build or full path of the image (local or in gs).
 	BuildURL = "buildurl"
 
 	// Ti50Image fixture downloads the ti50 image bin.
@@ -30,6 +30,9 @@ const (
 
 	// imageBin is the name of the image file, it is the same for both images.
 	imageBin = "ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"
+
+	// branchImageBin is used instead of imageBin on branch builders.
+	branchImageBin = "ti50_Unknown_PrePVT_ti50-accessory-mp.bin"
 
 	gsPrefix = "gs://"
 
@@ -114,12 +117,13 @@ func (i *imageImpl) String() string {
 }
 
 // downloadImage downloads the image from google storage if necessary.
-func (i *imageImpl) downloadImage(ctx context.Context, gsOrDir string) error {
+// inputURL can be a local file, a gs file, or a gs build folder.
+func (i *imageImpl) downloadImage(ctx context.Context, inputURL string) error {
 	if i.image == "" {
 		return nil
 	}
 
-	if gsOrDir == "" {
+	if inputURL == "" {
 		testing.ContextLogf(ctx, "-var=%s= not provided, assuming the devboard has a %s image", BuildURL, i)
 		i.v.imagePath = ""
 		return nil
@@ -135,9 +139,20 @@ func (i *imageImpl) downloadImage(ctx context.Context, gsOrDir string) error {
 		return errors.Errorf("unknown image type: %q", i.image)
 	}
 
-	if gsOrDir[:len(gsPrefix)] == gsPrefix {
-		fullURL := gsPrefix + filepath.Join(gsOrDir[len(gsPrefix):], imageType+".tar.bz2", imageBin)
-
+	if inputURL[:len(gsPrefix)] == gsPrefix {
+		fullURL := inputURL
+		// Assume URL is a build folder if it doesn't end in .bin.
+		if fullURL[len(fullURL)-4:] != ".bin" {
+			// Assume branch builds have a -channel in the URL.
+			var subDir string
+			bin := branchImageBin
+			if !strings.Contains(inputURL, "-channel/") {
+				// Postsubmit builder images are 1 subdir deeper.
+				subDir = imageType + ".tar.bz2"
+				bin = imageBin
+			}
+			fullURL = gsPrefix + filepath.Join(inputURL[len(gsPrefix):], subDir, bin)
+		}
 		f, err := ioutil.TempFile("", imageType+"_")
 		if err != nil {
 			return errors.Wrap(err, "create temp image file")
@@ -155,6 +170,6 @@ func (i *imageImpl) downloadImage(ctx context.Context, gsOrDir string) error {
 		return nil
 	}
 
-	i.v.imagePath = filepath.Join(gsOrDir, imageType, imageBin)
+	i.v.imagePath = inputURL
 	return nil
 }
