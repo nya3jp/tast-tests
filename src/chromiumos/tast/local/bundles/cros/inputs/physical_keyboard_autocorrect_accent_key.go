@@ -75,11 +75,9 @@ func PhysicalKeyboardAutocorrectAccentKey(ctx context.Context, s *testing.State)
 
 	inputMethod := ime.FrenchFrance
 
-	// Install IME and change auto-correct setting both need to wait for warm up.
-	// Performing Install -> Setting -> Activate can save the wait time (15s) to speed up testing.
+	// Install IME needs to wait for warm up.
 	if err := uiauto.NamedCombine("set current input method to: %q with PK autocorrect",
 		inputMethod.Install(tconn),
-		imesettings.SetPKAutoCorrection(uc, inputMethod, imesettings.AutoCorrectionModest),
 		inputMethod.Activate(tconn),
 	)(ctx); err != nil {
 		s.Fatalf("Failed to set current input method to %q: %v", inputMethod, err)
@@ -108,6 +106,7 @@ func PhysicalKeyboardAutocorrectAccentKey(ctx context.Context, s *testing.State)
 	)
 
 	action := uiauto.Combine("validate PK autocorrect with accent keys",
+		imesettings.SetPKAutoCorrection(uc, inputMethod, imesettings.AutoCorrectionModest),
 		its.ClearThenClickFieldAndWaitForActive(inputField),
 		kb.TypeAction(typeKeys),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), inputString),
