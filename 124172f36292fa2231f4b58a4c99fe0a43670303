@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8b7173_f4238f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-11-08T12:07:15Z",
+      "side": 1,
+      "message": "The build error message is:\n```\ntast-remote-tests-cros-0.0.2-r13384: src/chromiumos/tast/local/bundles/cros/wifi/create_wifi_in_shill_by_cmd.go:19:2: cannot find package \"chromiumos/tast/local/bundles/cros/wifi/hwsim\" in any of:\ntast-remote-tests-cros-0.0.2-r13384: \t/usr/lib/go/src/chromiumos/tast/local/bundles/cros/wifi/hwsim (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r13384: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r13384/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/local/bundles/cros/wifi/hwsim (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r13384: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r13384/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/local/bundles/cros/wifi/hwsim\ntast-remote-tests-cros-0.0.2-r13384: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r13384/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/local/bundles/cros/wifi/hwsim\ntast-remote-tests-cros-0.0.2-r13384: \t/usr/lib/gopath/src/chromiumos/tast/local/bundles/cros/wifi/hwsim\n```",
+      "revId": "124172f36292fa2231f4b58a4c99fe0a43670303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
