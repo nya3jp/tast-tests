@@ -51,12 +51,12 @@ func GuestAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Set up a guest session
-	if err := client.PrepareGuestVault(ctx); err != nil {
+	if _, err := client.PrepareGuestVault(ctx); err != nil {
 		s.Fatal("Failed to prepare guest vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	if err := client.PrepareGuestVault(ctx); err == nil {
+	if _, err := client.PrepareGuestVault(ctx); err == nil {
 		s.Fatal("Secondary guest attempt should fail, but succeeded")
 	}
 
@@ -70,7 +70,7 @@ func GuestAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	if err := client.PrepareGuestVault(ctx); err != nil {
+	if _, err := client.PrepareGuestVault(ctx); err != nil {
 		s.Fatal("Failed to prepare guest vault: ", err)
 	}
 
