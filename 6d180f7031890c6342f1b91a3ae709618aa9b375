@@ -22,6 +22,30 @@
       },
       "revId": "6d180f7031890c6342f1b91a3ae709618aa9b375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d705ddaa_7991c05c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-11-08T17:05:53Z",
+      "side": 1,
+      "message": "Even without memory limitation at tast level, the Chrome code also has limits to prevent ureadahead from working \u003c8GB.  \u003c8GB enablement will be done separately as part of another CL (http://b/256064114). \n\nThe purpose of this CL / bug (http://b/254924946) is simply to the experiments and add guest only option.",
+      "parentUuid": "181317cf_b110dde8",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 53
+      },
+      "revId": "6d180f7031890c6342f1b91a3ae709618aa9b375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
