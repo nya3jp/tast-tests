@@ -100,7 +100,6 @@ func JavaScriptBlockedForUrls(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to serve and verify policies: ", err)
 			}
 
-			// TODO(crbug.com/1259615): This should be part of the fixture.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)

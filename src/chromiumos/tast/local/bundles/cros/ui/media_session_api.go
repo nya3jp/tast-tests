@@ -82,7 +82,6 @@ func MediaSessionAPI(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// TODO(crbug.com/1259615): This should be part of the fixture.
 	// Setup browser based on the chrome type.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
 	if err != nil {
