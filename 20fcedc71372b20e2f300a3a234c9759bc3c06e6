@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "401ac879_e371037d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-08T08:18:22Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for a \"tast:\" or \"tast-tests:\" prefix, given that this is going to be a commit in the \"tast-tests\" repository?",
+      "parentUuid": "a6ae7a04_121fefc6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69b9dd7e_52a8f7ca",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
