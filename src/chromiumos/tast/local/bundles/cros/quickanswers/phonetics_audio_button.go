@@ -35,11 +35,11 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Fixture: "chromeLoggedIn",
+			Fixture: "quickAnswersLoggedInFixture",
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
-			Fixture:           "lacros",
+			Fixture:           "quickAnswersLoggedInFixtureLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               browser.TypeLacros,
 		}},
