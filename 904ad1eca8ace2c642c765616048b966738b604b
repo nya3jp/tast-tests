@@ -417,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "182e1b22_7982c048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-08T23:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb60a98_01dfd02c",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19122c0a_d44931aa",
@@ -808,6 +832,30 @@
       "writtenOn": "2022-11-08T19:09:34Z",
       "side": 1,
       "message": "Ah I see, sgtm",
+      "parentUuid": "a260180a_53519b6f",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c89c49b_58b24286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-08T23:18:07Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I was conflating active and connected networks as one and the same. Let me know if the most recent checks make sense.",
       "parentUuid": "a260180a_53519b6f",
       "range": {
         "startLine": 81,
