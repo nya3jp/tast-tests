@@ -749,6 +749,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f058ac0d_9a716240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-11-08T17:03:09Z",
+      "side": 1,
+      "message": "nit: Sorry for late unresolve, but could we add a comment saying something about this assumption?",
+      "parentUuid": "cdae05bb_667f7e4f",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32697b4f_d26b848c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
