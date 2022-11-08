@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4905182e_f86728df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-11-08T04:24:50Z",
+      "side": 1,
+      "message": "Recommend adding this to lines separately as it appears to be for whole block and a comment like below is better.\n\n// TODO(b/246952676): Uncomment once suite timeout is resolved.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 100
+      },
+      "revId": "682c202ed9f9556c55655d0a81fd578cc47eb0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a553f5_4ac7594e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-11-08T04:24:50Z",
+      "side": 1,
+      "message": "Same as above. Add for all disabled tests.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 100
+      },
+      "revId": "682c202ed9f9556c55655d0a81fd578cc47eb0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
