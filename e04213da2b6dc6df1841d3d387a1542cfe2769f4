@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b155df4_bd84ba43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:23:14Z",
+      "side": 1,
+      "message": "Make sure other mainline tests are using this fixture as well.",
+      "revId": "e04213da2b6dc6df1841d3d387a1542cfe2769f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
