@@ -16,6 +16,24 @@
       "message": "Should we rename this, now that it\u0027s just the vanilla pin weaver test? Basically give it the test and file name of the older version being deleted?",
       "revId": "81951a31ba6765c546cd78d973e8f6fcb73edad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d76233c_ea19e71f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-08T20:28:58Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "90a99f40_baf18dfb",
+      "revId": "81951a31ba6765c546cd78d973e8f6fcb73edad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
