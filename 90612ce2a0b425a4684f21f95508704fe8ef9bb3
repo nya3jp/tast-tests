@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2858b33a_c0a91adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-11-08T06:42:31Z",
+      "side": 1,
+      "message": "258112490",
+      "revId": "90612ce2a0b425a4684f21f95508704fe8ef9bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
