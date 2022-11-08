@@ -146,40 +146,57 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	if verifyDecoderMode == NoVerifyDecoderMode && verifyEncoderMode == NoVerifyEncoderMode {
+	simulcastHWEncs := make([]bool, simulcasts)
+	for i := 0; i < simulcasts; i++ {
+		simulcastHWEncs[i] = true
+	}
+	if err := verifyDecoderImplementation(ctx, conn, verifyDecoderMode); err != nil {
+		return err
+	}
+	if err := verifyEncoderImplementation(ctx, conn, verifyEncoderMode, simulcastHWEncs); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func verifyDecoderImplementation(ctx context.Context, conn *chrome.Conn, verifyDecoderMode VerifyDecoderMode) error {
+	if verifyDecoderMode == NoVerifyDecoderMode {
 		return nil
 	}
 
-	decode := verifyDecoderMode != NoVerifyDecoderMode
-	var expectedHW bool
-	if decode {
-		expectedHW = verifyDecoderMode == VerifyHWDecoderUsed
-	} else {
-		expectedHW = verifyEncoderMode == VerifyHWEncoderUsed
-	}
-
-	implName, isHWImpl, err := getCodecImplementation(ctx, conn, decode)
+	decImplName, hwDecoderUsed, err := getCodecImplementation(ctx, conn /*decode=*/, true)
 	if err != nil {
-		return errors.Wrap(err, "failed getCodecImplementation")
+		return errors.Wrap(err, "failed to get decoder implementation name")
 	}
-	if isHWImpl != expectedHW {
-		expectedCodec := "software"
-		if expectedHW {
-			expectedCodec = "hardware"
-		}
-		return errors.Wrapf(err, "expected implementation not found, got %v, looking for %s codec", implName, expectedCodec)
+	if verifyDecoderMode == VerifyHWDecoderUsed && !hwDecoderUsed {
+		return errors.Errorf("hardware decode accelerator wasn't used, got %s", decImplName)
+	}
+	if verifyDecoderMode == VerifySWDecoderUsed && hwDecoderUsed {
+		return errors.Errorf("software decode wasn't used, got %s", decImplName)
+	}
+	return nil
+}
+
+func verifyEncoderImplementation(ctx context.Context, conn *chrome.Conn, verifyEncoderMode VerifyEncoderMode, simulcastHWEncs []bool) error {
+	if verifyEncoderMode == NoVerifyEncoderMode {
+		return nil
 	}
 
-	if simulcast && verifyEncoderMode == VerifyHWEncoderUsed {
-		isImplHWInAdapter := make([]bool, simulcastStreams)
-		for i := 0; i < simulcastStreams; i++ {
-			isImplHWInAdapter[i] = true
-		}
-		if err := checkSimulcastEncImpl(implName, isImplHWInAdapter); err != nil {
-			return err
-		}
+	encImplName, hwEncoderUsed, err := getCodecImplementation(ctx, conn, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to get encoder implementation name")
+	}
+	if len(simulcastHWEncs) > 1 {
+		return checkSimulcastEncImpl(encImplName, simulcastHWEncs)
 	}
 
+	if verifyEncoderMode == VerifyHWEncoderUsed && !hwEncoderUsed {
+		return errors.Errorf("hardware encode accelerator wasn't used, got %s", encImplName)
+	}
+	if verifyEncoderMode == VerifySWEncoderUsed && hwEncoderUsed {
+		return errors.Errorf("software encode wasn't used, got %s", encImplName)
+	}
 	return nil
 }
 

@@ -313,32 +313,11 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "establishing connection")
 	}
 
-	decImplName, hwDecoderUsed, err := getCodecImplementation(ctx, conn /*decode=*/, true)
-	if err != nil {
-		return errors.Wrap(err, "failed to get decoder implementation name")
+	if err := verifyDecoderImplementation(ctx, conn, params.verifyDecoderMode); err != nil {
+		return err
 	}
-	if params.verifyDecoderMode == VerifyHWDecoderUsed && !hwDecoderUsed {
-		return errors.Errorf("hardware decode accelerator wasn't used, got %s", decImplName)
-	}
-	if params.verifyDecoderMode == VerifySWDecoderUsed && hwDecoderUsed {
-		return errors.Errorf("software decode wasn't used, got %s", decImplName)
-	}
-
-	encImplName, hwEncoderUsed, err := getCodecImplementation(ctx, conn /*decode=*/, false)
-	if err != nil {
-		return errors.Wrap(err, "failed to get encoder implementation name")
-	}
-	if params.simulcasts > 1 {
-		if err := checkSimulcastEncImpl(encImplName, params.simulcastHWEncs); err != nil {
-			return err
-		}
-	} else {
-		if params.verifyEncoderMode == VerifyHWEncoderUsed && !hwEncoderUsed {
-			return errors.Errorf("hardware encode accelerator wasn't used, got %s", encImplName)
-		}
-		if params.verifyEncoderMode == VerifySWEncoderUsed && hwEncoderUsed {
-			return errors.Errorf("software encode wasn't used, got %s", encImplName)
-		}
+	if err := verifyEncoderImplementation(ctx, conn, params.verifyEncoderMode, params.simulcastHWEncs); err != nil {
+		return err
 	}
 
 	if params.videoGridDimension > 1 {
