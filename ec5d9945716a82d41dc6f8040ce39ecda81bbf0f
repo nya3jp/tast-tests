@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "258dd429_9c03bc83",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-08T21:23:34Z",
+      "side": 1,
+      "message": "It was there since base64 is a package, so I renamed to to base64Encoded instead.",
+      "parentUuid": "e8961ac1_0ba2d5f8",
+      "range": {
+        "startLine": 213,
+        "startChar": 22,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "ec5d9945716a82d41dc6f8040ce39ecda81bbf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5da5cb82_1f6a0c76",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-08T16:17:47Z",
       "side": 1,
       "message": "nit: fix indentation",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 12
+      },
+      "revId": "ec5d9945716a82d41dc6f8040ce39ecda81bbf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9195fb43_f77c851f",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-08T21:23:34Z",
+      "side": 1,
+      "message": "Done. I think I\u0027m just going to make whitespace always visible in my IDE again...",
+      "parentUuid": "5da5cb82_1f6a0c76",
       "range": {
         "startLine": 540,
         "startChar": 0,
