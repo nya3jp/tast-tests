@@ -165,7 +165,7 @@ func isInNewInstallState(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	}
 
 	if hasDescr != hasDot {
-		return false, errors.New("Accessibility description and new install dot should be in sync")
+		return false, errors.Errorf("Accessibility description and new install dot should be in sync. Got hasDescr=%q, hasDot=%q", hasDescr, hasDot)
 	}
 
 	return hasDescr && hasDot, nil
@@ -178,6 +178,7 @@ func hasNewInstallDescription(ctx context.Context, tconn *chrome.TestConn, view 
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get app item view info")
 	}
+	testing.ContextLogf(ctx, "App item view accessibility description = %q", viewInfo.Description)
 	return viewInfo.Description == newInstallDescription, nil
 }
 
