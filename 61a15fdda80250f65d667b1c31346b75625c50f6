@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622421e5_6b10d73d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1352079
+      },
+      "writtenOn": "2022-11-08T23:59:38Z",
+      "side": 1,
+      "message": "nit: add a comment to explain why we need to turn this on, and why we can turn it off after almost immediately",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "61a15fdda80250f65d667b1c31346b75625c50f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
