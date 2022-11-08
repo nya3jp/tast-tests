@@ -191,6 +191,14 @@ func TestValueString(t *testing.T) {
 		t.Errorf("String() got %q, want %q", sOut, sWant)
 	}
 
+	s = "c29tZSBkYXRh"
+	v = value{Base64: &s}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "(base64)c29tZSBkYXRh"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
 	s1 := "2"
 	s2 := "0"
 	s3 := "2.1"
@@ -264,6 +272,20 @@ func TestNewValue(t *testing.T) {
 	}
 	if *v.Double != expectedDoubleStr {
 		t.Errorf("got %q; want %q", *v.Double, expectedDoubleStr)
+	}
+
+	bytesIn := []byte("some binary data")
+	expectedBytesEncoded := bytesToXMLBase64(bytesIn)
+	v, err = newValue(bytesIn)
+	if err != nil {
+		t.Errorf("input %v gave unexpected error: %v", bytesIn, err)
+		return
+	}
+	if v.Base64 == nil {
+		t.Error("base64 value not set when []byte passed")
+	}
+	if *v.Base64 != expectedBytesEncoded {
+		t.Errorf("got %q; want %q", *v.Base64, expectedBytesEncoded)
 	}
 
 	arrInt := []int{1, 2}
@@ -372,7 +394,8 @@ func TestNewParams(t *testing.T) {
 
 func TestSerializeMethodCall(t *testing.T) {
 	cl := NewCall("TestMethod", 1, false, 2.2, "lucky",
-		[]int{1, 2}, []bool{false, true}, []float64{1.1, 2.2}, []string{"so", "lucky"})
+		[]int{1, 2}, []bool{false, true}, []float64{1.1, 2.2}, []string{"so", "lucky"},
+		[]byte("some data"))
 	body, err := serializeMethodCall(cl)
 	if err != nil {
 		t.Fatal("Failed to serialize call: ", cl)
@@ -389,6 +412,7 @@ func TestSerializeMethodCall(t *testing.T) {
 		`<param><value><array><data><value><boolean>0</boolean></value><value><boolean>1</boolean></value></data></array></value></param>` +
 		`<param><value><array><data><value><double>1.1</double></value><value><double>2.2</double></value></data></array></value></param>` +
 		`<param><value><array><data><value><string>so</string></value><value><string>lucky</string></value></data></array></value></param>` +
+		`<param><value><base64>c29tZSBkYXRh</base64></value></param>` +
 		`</params>` +
 		`</methodCall>`
 
@@ -413,7 +437,8 @@ func TestUnpack(t *testing.T) {
 	arrIntIn := []int{1, 2}
 	strMapIn := map[string]string{"One": "1", "Two": "2"}
 	arrArrStringIn := [][]string{{"v11", "v12"}, {"v21", "v22"}}
-	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn, strMapIn, arrArrStringIn})
+	bytesIn := []byte("some binary data")
+	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn, strMapIn, arrArrStringIn, bytesIn})
 	if err != nil {
 		t.Fatal("creating params: ", err)
 	}
@@ -424,8 +449,9 @@ func TestUnpack(t *testing.T) {
 	var floatOut float64
 	var arrIntOut []int
 	var arrArrStringOut [][]string
+	var bytesOut []byte
 	strMapOut := make(map[string]string)
-	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut, &strMapOut, &arrArrStringOut}); err != nil {
+	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut, &strMapOut, &arrArrStringOut, &bytesOut}); err != nil {
 		t.Fatal("unpacking:", err)
 	}
 	if stringOut != "rutabaga" {
@@ -449,7 +475,9 @@ func TestUnpack(t *testing.T) {
 	if !reflect.DeepEqual(arrArrStringIn, arrArrStringOut) {
 		t.Errorf("unpacking %v: got %v", arrArrStringIn, arrArrStringOut)
 	}
-
+	if !reflect.DeepEqual(bytesIn, bytesOut) {
+		t.Errorf("unpacking %v: got %v", bytesIn, bytesOut)
+	}
 }
 
 func TestXMLResponse(t *testing.T) {
@@ -509,6 +537,9 @@ func TestXMLResponse(t *testing.T) {
 				</array>
 			</value>
 		</param>
+		<param>
+      <value><base64>c29tZSBkYXRh</base64></value>
+    </param>
 	</params>
 	</methodResponse>
 	`
@@ -524,8 +555,9 @@ func TestXMLResponse(t *testing.T) {
 	var arrBoolOut []bool
 	var arrDoubleOut []float64
 	var arrStrOut []string
+	var bytesOut []byte
 	if err := res.unpack([]interface{}{&floatOut, &intOut, &stringOut, &boolOut,
-		&arrIntOut, &arrBoolOut, &arrDoubleOut, &arrStrOut}); err != nil {
+		&arrIntOut, &arrBoolOut, &arrDoubleOut, &arrStrOut, &bytesOut}); err != nil {
 		t.Fatal("response unpack:", err)
 	}
 	if floatOut != 3.14 {
@@ -555,6 +587,10 @@ func TestXMLResponse(t *testing.T) {
 	arrStrIn := []string{"10", "20"}
 	if !reflect.DeepEqual(arrStrIn, arrStrOut) {
 		t.Errorf("unpacking %v: got %v", arrStrIn, arrStrOut)
+	}
+	bytesIn := []byte("some data")
+	if !reflect.DeepEqual(bytesIn, bytesOut) {
+		t.Errorf("unpacking %v: got %v", bytesIn, bytesOut)
 	}
 }
 
