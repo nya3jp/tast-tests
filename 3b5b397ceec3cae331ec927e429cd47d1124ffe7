@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87365b26_6aa7daa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/verify_video_contents.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "just to check: do you need to add something like `Attr: []string{\"group:mainline\", \"informational\"}` to make it sceduled somewhere?",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1033ea_c7d7806e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/verify_video_contents.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 5
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148ec51b_382f9fb6",
+        "filename": "src/chromiumos/tast/local/hdcputils/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "super nit: space before bracket",
+      "range": {
+        "startLine": 5,
+        "startChar": 46,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416d1dc5_5c7b2da4",
+        "filename": "src/chromiumos/tast/local/hdcputils/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "hardware?",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4023c64_d9e3bc60",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "const? or at least for the first two?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c54cc7_de7c6190",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "nit: selects",
+      "range": {
+        "startLine": 63,
+        "startChar": 25,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8119158_425ea5ca",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "Just a suggestion: reflow the comment with line length 80 for the consistency with other tast code\n\nhttp://go/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 57
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dfa0c7_cfcd8cb8",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "does it make sense to wrap this to a helper function since it is used twice?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8c8306_0e2a14b7",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "just to check my understanding, it seems that the current code sets the audio type if it\u0027s not expected in the first check, and then check it again. Does it make sense to skip the first check (just set it and then check)? (Just to simplify the code)",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc8d6ae_b56800f2",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "nit: until?",
+      "range": {
+        "startLine": 170,
+        "startChar": 46,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b347b0b6_bbcff4bc",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "at least",
+      "range": {
+        "startLine": 206,
+        "startChar": 38,
+        "endLine": 206,
+        "endChar": 45
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fea5508_18cce0c9",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "seems that the value does not match with the following sleep?",
+      "range": {
+        "startLine": 206,
+        "startChar": 46,
+        "endLine": 206,
+        "endChar": 55
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a06245_04e8c7f2",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "nit: hovers",
+      "range": {
+        "startLine": 277,
+        "startChar": 20,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5c378d_ce35c6a1",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T01:50:27Z",
+      "side": 1,
+      "message": "just `if expectedAudioNode !\u003d devName`?",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 60
+      },
+      "revId": "3b5b397ceec3cae331ec927e429cd47d1124ffe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
