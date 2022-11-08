@@ -33,69 +33,160 @@ type FlashromProgrammer string
 type FirmwareUpdateMode string
 
 const (
-	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
-	HostProgrammer FlashromProgrammer = "host"
-
-	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
-	ECProgrammer FlashromProgrammer = "ec"
-
-	// BOOTSTUBImageSection is the named section for the Coreboot image (more recent devices use COREBOOT).
-	BOOTSTUBImageSection ImageSection = "BOOT_STUB"
-
-	// COREBOOTImageSection is the named section for the Coreboot image.
-	COREBOOTImageSection ImageSection = "COREBOOT"
-
-	// GBBImageSection is the named section for GBB as output from dump_fmap.
-	GBBImageSection ImageSection = "GBB"
-
-	// ECRWImageSection is the named section for EC writable data as output from dump_fmap.
-	ECRWImageSection ImageSection = "EC_RW"
-
-	// ECRWBImageSection is the named section for a secondary EC writable data for EFS.
-	ECRWBImageSection ImageSection = "EC_RW_B"
-
-	// ROVPDImageSection is the named section for readonly VPD data
-	ROVPDImageSection ImageSection = "RO_VPD"
-
-	// RWVPDImageSection is the named section for writable VPD data
-	RWVPDImageSection ImageSection = "RW_VPD"
-
-	// RECOVERYMRCCACHEImageSection is the named section for recovery MRC cache data
-	RECOVERYMRCCACHEImageSection ImageSection = "RECOVERY_MRC_CACHE"
-
-	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
-	EmptyImageSection ImageSection = ""
-
-	// APROImageSection is the named readonly section for AP writable data as output from dump_fmap.
-	APROImageSection ImageSection = "RO_SECTION"
-
-	// APRWAImageSection is the named section A for AP writable data as output from dump_fmap.
-	APRWAImageSection ImageSection = "RW_SECTION_A"
-
-	// APRWBImageSection is the named section B for AP writable data as output from dump_fmap.
-	APRWBImageSection ImageSection = "RW_SECTION_B"
-
-	// APWPROImageSection is the the entire RO space of the flash chip.
-	APWPROImageSection ImageSection = "WP_RO"
+	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
+	gbbHeaderOffset uint = 12
 
 	// RecoveryMode is the named chromeOS Firmware Updater to perform firmware recovery mode.
 	RecoveryMode FirmwareUpdateMode = "--mode=recovery"
 
+	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
+	HostProgrammer FlashromProgrammer = "host"
+	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
+	ECProgrammer FlashromProgrammer = "ec"
+
+	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
+	EmptyImageSection ImageSection = ""
+	// BOOTSTUBImageSection is the named section for the Coreboot image (more recent devices use COREBOOT).
+	BOOTSTUBImageSection ImageSection = "BOOT_STUB"
+	// COREBOOTImageSection is the named section for the Coreboot image.
+	COREBOOTImageSection ImageSection = "COREBOOT"
+	// SHAREDDATAImageSection is the SHARED_DATA section of the firmware.
+	SHAREDDATAImageSection ImageSection = "SHARED_DATA"
+	// FMAPImageSection is section containing the flash map layout.
+	FMAPImageSection ImageSection = "FMAP"
+	// SMMSTOREImageSection is section containing the SMMSTORE for x86 devices.
+	SMMSTOREImageSection ImageSection = "SMMSTORE"
+
+	// RECOVERYMRCCACHEImageSection is the named section for recovery MRC cache data
+	RECOVERYMRCCACHEImageSection ImageSection = "RECOVERY_MRC_CACHE"
+	// UNIFIEDMRCCACHEImageSection is the UNIFIED_MRC_CACHE section of the firmware.
+	UNIFIEDMRCCACHEImageSection ImageSection = "UNIFIED_MRC_CACHE"
+	// RWMRCCACHEImageSection is the RW_MRC_CACHE section of the firmware.
+	RWMRCCACHEImageSection ImageSection = "RW_MRC_CACHE"
+	// RWELOGImageSection is the RW_ELOG section of the firmware.
+	RWELOGImageSection ImageSection = "RW_ELOG"
+	// RWSHAREDImageSection is the RW_SHARED section of the firmware.
+	RWSHAREDImageSection ImageSection = "RW_SHARED"
+	// RWNVRAMImageSection is the RW_NVRAM section of the firmware.
+	RWNVRAMImageSection ImageSection = "RW_NVRAM"
+
+	// ECRWImageSection is the named section for EC writable data as output from dump_fmap.
+	ECRWImageSection ImageSection = "EC_RW"
+	// ECRWBImageSection is the named section for a secondary EC writable data for EFS.
+	ECRWBImageSection ImageSection = "EC_RW_B"
+	// ECROImageSection is the EC_RO section of the firmware.
+	ECROImageSection ImageSection = "EC_RO"
+
+	// APWPROImageSection is the the entire RO space of the flash chip.
+	APWPROImageSection ImageSection = "WP_RO"
+	// APROImageSection is the named readonly section for AP writable data as output from dump_fmap.
+	APROImageSection ImageSection = "RO_SECTION"
+	// GBBImageSection is the named section for GBB as output from dump_fmap.
+	GBBImageSection ImageSection = "GBB"
+	// FRMAINImageSection is the FR_MAIN section of the firmware.
+	FRMAINImageSection ImageSection = "FR_MAIN"
+	// RWLEGACYImageSection is the RW_LEGACY section of the firmware.
+	RWLEGACYImageSection ImageSection = "RW_LEGACY"
+	// RWMISCImageSection is the RW_MISC section of the firmware.
+	RWMISCImageSection ImageSection = "RW_MISC"
+
+	// ROFRIDImageSection is the RO_FRID section of the firmware.
+	ROFRIDImageSection ImageSection = "RO_FRID"
+	// ROFRIDPADImageSection is the RO_FRID_PAD section of the firmware.
+	ROFRIDPADImageSection ImageSection = "RO_FRID_PAD"
+	// RWFWIDImageSection is the RW_FWID section of the firmware.
+	RWFWIDImageSection ImageSection = "RW_FWID"
+
 	// FWSignAImageSection is the named section for Firmware A Sign as output from dump_fmap.
 	FWSignAImageSection ImageSection = "VBLOCK_A"
+	// FWBodyAImageSection is the named section for Firmware A Body as output from dump_fmap.
+	FWBodyAImageSection ImageSection = "FW_MAIN_A"
+	// APRWAImageSection is the named section A for AP writable data as output from dump_fmap.
+	APRWAImageSection ImageSection = "RW_SECTION_A"
+	// RWFWIDAImageSection is the RW_FWID_A section of the firmware.
+	RWFWIDAImageSection ImageSection = "RW_FWID_A"
 
 	// FWSignBImageSection is the named section for Firmware B Sign as output from dump_fmap.
 	FWSignBImageSection ImageSection = "VBLOCK_B"
-
-	// FWBodyAImageSection is the named section for Firmware A Body as output from dump_fmap.
-	FWBodyAImageSection ImageSection = "FW_MAIN_A"
-
 	// FWBodyBImageSection is the named section for Firmware B Body as output from dump_fmap.
 	FWBodyBImageSection ImageSection = "FW_MAIN_B"
+	// APRWBImageSection is the named section B for AP writable data as output from dump_fmap.
+	APRWBImageSection ImageSection = "RW_SECTION_B"
+	// RWFWIDBImageSection is the RW_FWID_B section of the firmware.
+	RWFWIDBImageSection ImageSection = "RW_FWID_B"
 
-	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
-	gbbHeaderOffset uint = 12
+	// ROVPDImageSection is the named section for readonly VPD data
+	ROVPDImageSection ImageSection = "RO_VPD"
+	// RWVPDImageSection is the RW_VPD section of the firmware.
+	RWVPDImageSection ImageSection = "RW_VPD"
+
+	// IntelCSERWAImageSection is the ME_RW_A section of the firmware in Intel.
+	IntelCSERWAImageSection ImageSection = "ME_RW_A"
+	// IntelCSERWBImageSection is the ME_RW_B section of the firmware in Intel.
+	IntelCSERWBImageSection ImageSection = "ME_RW_B"
+
+	// SIALLImageSection is the SI_ALL section of the firmware.
+	SIALLImageSection ImageSection = "SI_ALL"
+	// SIDESCImageSection is the SI_DESC section of the firmware.
+	SIDESCImageSection ImageSection = "SI_DESC"
+	// SIMEImageSection is the SI_ME section of the firmware.
+	SIMEImageSection ImageSection = "SI_ME"
+	// SIBIOSImageSection is the SI_BIOS section of the firmware.
+	SIBIOSImageSection ImageSection = "SI_BIOS"
 )
+
+// sectionToSectionEnum is a direct inverse of sectionEnumToSection map in bios_service.
+var sectionToSectionEnum = map[ImageSection]pb.ImageSection{
+	EmptyImageSection:      pb.ImageSection_EmptyImageSection,
+	BOOTSTUBImageSection:   pb.ImageSection_BOOTSTUBImageSection,
+	COREBOOTImageSection:   pb.ImageSection_COREBOOTImageSection,
+	SHAREDDATAImageSection: pb.ImageSection_SHAREDDATAImageSection,
+	FMAPImageSection:       pb.ImageSection_FMAPImageSection,
+	SMMSTOREImageSection:   pb.ImageSection_SMMSTOREImageSection,
+
+	RECOVERYMRCCACHEImageSection: pb.ImageSection_RECOVERYMRCCACHEImageSection,
+	UNIFIEDMRCCACHEImageSection:  pb.ImageSection_UNIFIEDMRCCACHEImageSection,
+	RWMRCCACHEImageSection:       pb.ImageSection_RWMRCCACHEImageSection,
+	RWELOGImageSection:           pb.ImageSection_RWELOGImageSection,
+	RWSHAREDImageSection:         pb.ImageSection_RWSHAREDImageSection,
+	RWNVRAMImageSection:          pb.ImageSection_RWNVRAMImageSection,
+
+	ECRWImageSection:  pb.ImageSection_ECRWImageSection,
+	ECRWBImageSection: pb.ImageSection_ECRWBImageSection,
+	ECROImageSection:  pb.ImageSection_ECROImageSection,
+
+	APWPROImageSection:   pb.ImageSection_APWPROImageSection,
+	APROImageSection:     pb.ImageSection_APROImageSection,
+	GBBImageSection:      pb.ImageSection_GBBImageSection,
+	FRMAINImageSection:   pb.ImageSection_FRMAINImageSection,
+	RWLEGACYImageSection: pb.ImageSection_RWLEGACYImageSection,
+	RWMISCImageSection:   pb.ImageSection_RWMISCImageSection,
+
+	ROFRIDImageSection:    pb.ImageSection_ROFRIDImageSection,
+	ROFRIDPADImageSection: pb.ImageSection_ROFRIDPADImageSection,
+	RWFWIDImageSection:    pb.ImageSection_RWFWIDImageSection,
+
+	FWSignAImageSection: pb.ImageSection_FWSignAImageSection,
+	FWBodyAImageSection: pb.ImageSection_FWBodyAImageSection,
+	APRWAImageSection:   pb.ImageSection_APRWAImageSection,
+	RWFWIDAImageSection: pb.ImageSection_RWFWIDAImageSection,
+
+	FWSignBImageSection: pb.ImageSection_FWSignBImageSection,
+	FWBodyBImageSection: pb.ImageSection_FWBodyBImageSection,
+	APRWBImageSection:   pb.ImageSection_APRWBImageSection,
+	RWFWIDBImageSection: pb.ImageSection_RWFWIDBImageSection,
+
+	ROVPDImageSection: pb.ImageSection_ROVPDImageSection,
+	RWVPDImageSection: pb.ImageSection_RWVPDImageSection,
+
+	IntelCSERWAImageSection: pb.ImageSection_IntelCSERWAImageSection,
+	IntelCSERWBImageSection: pb.ImageSection_IntelCSERWBImageSection,
+
+	SIALLImageSection:  pb.ImageSection_SIALLImageSection,
+	SIDESCImageSection: pb.ImageSection_SIDESCImageSection,
+	SIMEImageSection:   pb.ImageSection_SIMEImageSection,
+	SIBIOSImageSection: pb.ImageSection_SIBIOSImageSection,
+}
 
 // defaultChromeosFmapConversion converts dump_fmap names to those recognized by flashrom
 var defaultChromeosFmapConversion = map[ImageSection]string{
@@ -561,4 +652,38 @@ func ChromeosFirmwareUpdate(ctx context.Context, mode FirmwareUpdateMode, option
 		return errors.Wrapf(err, "failed to perform firmware update with %s", string(mode))
 	}
 	return nil
+}
+
+// ParseFMAP reads FMAP for given programmer then parses it into map.
+func ParseFMAP(ctx context.Context, programmer FlashromProgrammer) ([]*pb.FMAP_FMAPEntry, error) {
+	tmpFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return nil, errors.Wrap(err, "creating tmpfile to read FMAP")
+	}
+	defer os.Remove(tmpFile.Name())
+
+	frArgs := []string{"-p", string(programmer), "-r", "-i", fmt.Sprintf("FMAP:%s", tmpFile.Name())}
+	if err = testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "could not read FMAP with flashrom")
+	}
+
+	fmapDump, err := testexec.CommandContext(ctx, "dump_fmap", "-p", tmpFile.Name()).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
+	}
+
+	fmap, err := ParseSections(string(fmapDump))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse dump_fmap output")
+	}
+
+	var fmapArr []*pb.FMAP_FMAPEntry
+	// Convert to output format suitable for proto message.
+	for section, info := range fmap {
+		fmapArr = append(fmapArr, &pb.FMAP_FMAPEntry{
+			Section: sectionToSectionEnum[section],
+			Range:   &pb.Range{Start: int64(info.Start), Length: int64(info.Length)},
+		})
+	}
+	return fmapArr, nil
 }

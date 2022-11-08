@@ -28,6 +28,8 @@ service BiosService {
   rpc WriteImageFromMultiSectionFile (FWSectionInfo) returns (google.protobuf.Empty) {}
   // ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
   rpc ChromeosFirmwareUpdate (FirmwareUpdateModeRequest) returns (google.protobuf.Empty) {}
+  // ParseFMAP reads and parses FMAP section for given programmer.
+  rpc ParseFMAP (FMAP) returns (FMAP) {}
 }
 
 // GBBFlag bit positions. These must match what is in src/platform/vboot_reference/firmware/2lib/include/2gbb_flags.h.
@@ -92,6 +94,29 @@ enum ImageSection {
   APRWBImageSection = 15;
   APWPROImageSection = 16;
   BOOTSTUBImageSection = 17;
+  FMAPImageSection = 18;
+  ECROImageSection = 19;
+  FRMAINImageSection = 20;
+  ROFRIDImageSection = 21;
+  RWFWIDImageSection = 22;
+  RWFWIDAImageSection = 23;
+  RWFWIDBImageSection = 24;
+  IntelCSERWAImageSection = 25;
+  IntelCSERWBImageSection = 26;
+  SIALLImageSection = 27;
+  SIDESCImageSection = 28;
+  SIMEImageSection = 29;
+  SIBIOSImageSection = 30;
+  RWLEGACYImageSection = 31;
+  RWMISCImageSection = 32;
+  RWMRCCACHEImageSection = 33;
+  RWELOGImageSection = 34;
+  RWSHAREDImageSection = 35;
+  RWNVRAMImageSection = 36;
+  ROFRIDPADImageSection = 37;
+  SHAREDDATAImageSection = 38;
+  UNIFIEDMRCCACHEImageSection = 39;
+  SMMSTOREImageSection = 40;
 }
 
 enum UpdateMode {
@@ -113,20 +138,32 @@ message FWSectionInfo {
   Programmer Programmer = 3;
 }
 
-// FirmwareUpdateModeRequest represents the string containing the mode and options to performe the update.
+// FirmwareUpdateModeRequest represents the string containing the mode and options to perform the update.
 message FirmwareUpdateModeRequest {
   UpdateMode Mode = 1;
   string Options = 2;
 }
 
+// Range holds the start (offset) and length (size) of a section in fw.
+message Range {
+  int64 start = 1;
+  int64 length = 2;
+}
+
 // WPRequest provides args for enabling/disabling software write protect.
 message WPRequest {
   bool enable = 1;
-  message Range { // Skip instantiating this message to use default values.
-    int64 start = 1;
-    int64 length = 2;
-  }
-  Range range = 2;
+  Range range = 2;   // Skip instantiating this message to use default values.
   ImageSection section = 3;  // Don't set to use default value.
 }
 
+// FMAP parses flash map to a map of image section to range (start, length).
+message FMAP {
+  // FMAPEntry holds each value for each section in fmap.
+  message FMAPEntry {
+    ImageSection section = 1;
+    Range range = 2;
+  }
+  Programmer programmer = 1;
+  repeated FMAPEntry fmap = 2;
+}
