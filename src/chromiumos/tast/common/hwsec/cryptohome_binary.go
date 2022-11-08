@@ -445,7 +445,7 @@ func (c *cryptohomeBinary) updatePinAuthFactor(ctx context.Context, authSessionI
 
 // prepareGuestVault calls "cryptohome --action=prepare_guest_vault"
 func (c *cryptohomeBinary) prepareGuestVault(ctx context.Context) ([]byte, error) {
-	return c.call(ctx, "--action=prepare_guest_vault")
+	return c.call(ctx, "--output-format=binary-protobuf", "--action=prepare_guest_vault")
 }
 
 // prepareEphemeralVault calls "cryptohome --action=prepare_ephemeral_vault" with "--auth_session_id".
