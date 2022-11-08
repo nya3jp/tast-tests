@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b09b4a_e12fdd20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-08T22:16:40Z",
+      "side": 1,
+      "message": "Good. Please also add graphics.chameleon_ip, which is what we need for the RC file.",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "d671f43572dcca2be653b91e3aef9026b8161b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194255d1_5cf1db47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-08T22:16:40Z",
+      "side": 1,
+      "message": "We need graphics.chameleon_ip.\n\nMaybe you can ensure that it is an IP address and or can be pinged?",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "d671f43572dcca2be653b91e3aef9026b8161b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54528c0a_ba1bbb37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-08T22:16:40Z",
+      "side": 1,
+      "message": "We don\u0027t need this.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "d671f43572dcca2be653b91e3aef9026b8161b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a2e32a_7c7aca8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-08T22:16:40Z",
+      "side": 1,
+      "message": "We want to write graphics.chameleon_ip here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "d671f43572dcca2be653b91e3aef9026b8161b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
