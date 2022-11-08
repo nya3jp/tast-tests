@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "796e58a5_0d7b5259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-11-08T20:47:28Z",
+      "side": 1,
+      "message": "Hello Toni, this cl updates the tast test to use the result with shelf-drag-to-pin disabled. Please take a look. Thank you!",
+      "revId": "40a5191bb4665e3891b309487b5c730ad4ae4055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
