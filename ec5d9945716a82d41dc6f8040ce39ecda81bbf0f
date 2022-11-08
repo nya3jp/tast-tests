@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147ddb5b_93fe0e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-08T16:17:47Z",
+      "side": 1,
+      "message": "LGMT % nits",
+      "revId": "ec5d9945716a82d41dc6f8040ce39ecda81bbf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8961ac1_0ba2d5f8",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-08T16:17:47Z",
+      "side": 1,
+      "message": "nit: remove Str suffix",
+      "range": {
+        "startLine": 213,
+        "startChar": 22,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "ec5d9945716a82d41dc6f8040ce39ecda81bbf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da5cb82_1f6a0c76",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-08T16:17:47Z",
+      "side": 1,
+      "message": "nit: fix indentation",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 12
+      },
+      "revId": "ec5d9945716a82d41dc6f8040ce39ecda81bbf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
