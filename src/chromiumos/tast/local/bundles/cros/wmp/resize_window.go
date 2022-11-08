@@ -36,7 +36,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const resizeWindowArcAppApkFileName = "ArcNotificationTest2.apk"
+const (
+	resizeWindowArcAppApkFileName = "ArcNotificationTest2.apk"
+	// resizeTimeout is the timeout for the entire resize operations(i.e., eight directions) for single application.
+	// Depends on the number of applications tested, more resizeTimeout might be applied.
+	resizeTimeout = 4 * time.Minute
+)
 
 // subTestType indicates the type of sub test.
 type subTestType int
@@ -78,7 +83,7 @@ func init() {
 					caseType:    browserCase,
 					browserType: browser.TypeAsh,
 				},
-				Timeout: 2 * time.Minute,
+				Timeout: resizeTimeout, // 1 resize timeout for 1 app (i.e., Chrome browser)
 			},
 			{
 				Name: "lacros",
@@ -87,7 +92,7 @@ func init() {
 					browserType: browser.TypeLacros,
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
-				Timeout:           2 * time.Minute,
+				Timeout:           resizeTimeout, // 1 resize timeout for 1 app (i.e., Lacros Chrome browser)
 			},
 			{
 				Name: "apps",
@@ -95,7 +100,7 @@ func init() {
 					caseType:    appCase,
 					browserType: browser.TypeAsh,
 				},
-				Timeout: 4*time.Minute + cws.InstallationTimeout,
+				Timeout: 2*resizeTimeout + cws.InstallationTimeout, // 2 resize timeout for 2 apps (i.e., Files and CWS)
 			},
 			{
 				Name: "arc",
@@ -105,7 +110,7 @@ func init() {
 				},
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraData:         []string{resizeWindowArcAppApkFileName},
-				Timeout:           2*time.Minute + apputil.InstallationTimeout,
+				Timeout:           resizeTimeout + apputil.InstallationTimeout, // 1 resize timeout for 1 app (i.e., ARC app)
 			},
 		},
 	})
