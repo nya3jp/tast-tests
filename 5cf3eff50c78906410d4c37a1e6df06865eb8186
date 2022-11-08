@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b127172c_3424c4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-11-08T07:05:54Z",
+      "side": 1,
+      "message": "Moving these lines to the very first of the function didn\u0027t help. The missing element issue occurred again.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "5cf3eff50c78906410d4c37a1e6df06865eb8186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
