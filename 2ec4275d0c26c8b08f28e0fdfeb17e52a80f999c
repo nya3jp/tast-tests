@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f0f2a3_0bdd6874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-08T02:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171ccef9_5a971a26",
+      "range": {
+        "startLine": 24,
+        "startChar": 46,
+        "endLine": 24,
+        "endChar": 59
+      },
+      "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111f1b92_c859950f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-04T18:32:15Z",
       "side": 1,
       "message": "Do you mind putting this into a separate function? It is clearer to see why you need a if statement in line 149.\n\n```\nif verifyDecoderMode \u003d\u003d NoVerifyDecoderMode \u0026\u0026... {\n}\nreturn verifyEncoderDecoderMode()\n```\nor even create two functions, one for encoder one for decoder.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "2ec4275d0c26c8b08f28e0fdfeb17e52a80f999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527b6df6_87af9181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-08T02:32:11Z",
+      "side": 1,
+      "message": "Done in the next CL.",
+      "parentUuid": "111f1b92_c859950f",
       "range": {
         "startLine": 153,
         "startChar": 1,
