@@ -16,6 +16,230 @@
       "message": "Hello, could you please review my code for google workspace demo? thanks",
       "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1907749_e056409f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "I will continue to review after rebase and diff base fixed.",
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcee421_51a50260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "This is not required I believe.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48f2419_41646c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "It would be better to make the validation a function instead of hardcoded string, it allows flexibility in validation.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2082b22_41d0e597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "This is a redundant implementation.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 1
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6586ca_196ef7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "1. This function is doing a PK key press, not VK. The description is wrong.\n2. I do not think it is required either.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 1
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4952d85_806f9445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "nit: Comment should finish with full stop.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 126
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c775a656_e36b0026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "Regarding accent key input, I would suggest to create a function in vkb.go\n\nvkbCtx.InputAccentKey(baseKey, accentKey string) action.Action\n\nThen you can input \"hèllo\" as below:\n\nuiauto.Combine(\"input hèllo\",\n    vkbCtx.TapKey(\"h\"),\n    vkbCtx.InputAccentKey(\"e\",\"è\"),\n    vkbCtx.TapKeys(strings.Split(\"llo\", \"\")),\n)",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 43
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4229166_3a68bca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "This function should not be used in user behavior. You\u0027d better completely simulate a user behavior to trigger VK such as clicking an input field.",
+      "range": {
+        "startLine": 259,
+        "startChar": 9,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e1d38b_173b6cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "I do not think glide typing has anything special across IMEs. It should just be used directly in test.",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 39
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692640c5_1f5dd601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T05:23:42Z",
+      "side": 1,
+      "message": "Such kind of methods should not be duplicated.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 0
+      },
+      "revId": "de05ce217a47ad137cd6f36711ad024917b71216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
