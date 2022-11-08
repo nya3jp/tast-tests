@@ -6,6 +6,7 @@ package graphics
 
 import (
 	"context"
+	"net"
 	"os"
 	"path/filepath"
 	"time"
@@ -14,10 +15,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var chameleonHostVar = testing.RegisterVarString(
-	"graphics.chameleonhostname",
-	"",
-	"Chameleon Host Name",
+var (
+	chameleonHostVar = testing.RegisterVarString(
+		"graphics.chameleon_host",
+		"",
+		"Hostname for Chameleon (optional/not currently used)")
+
+	chameleonIPVar = testing.RegisterVarString(
+		"graphics.chameleon_ip",
+		"",
+		"IP address of Chameleon (required)")
+
+	chameleonSSHPortVar = testing.RegisterVarString(
+		"graphics.chameleon_ssh_port",
+		"22",
+		"SSH port for Chameleon (optional/not currently used)")
+
+	chameleonPortVar = testing.RegisterVarString(
+		"graphics.chameleon_port",
+		"9992",
+		"Port for chameleond on Chameleon (optional/used)")
 )
 
 func init() {
@@ -29,6 +46,7 @@ func init() {
 			"markyacoub@google.com",
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
+		VarDeps:      []string{"graphics.chameleon_ip"},
 		Attr:         []string{"group:graphics", "graphics_chameleon_igt"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
@@ -51,27 +69,17 @@ func setIgtrcFile(s *testing.State) {
 	}
 	defer igtFile.Close()
 
-	// Get Chameleon Hostname
-	// 1. Check if it's a runtime value. This is used for local dev env.
+	// Get Chameleon IP
+	// This is used for local dev env.
 	s.Log("Got testing.RegisterVarString")
-	chameleonHostName := ""
-	if chameleonHostVar != nil {
-		chameleonHostName = chameleonHostVar.Value()
+	addr := net.ParseIP(chameleonIPVar.Value())
+	if addr == nil {
+		s.Fatal("Failed to get chameleon IP. The Chameleon IP: ", chameleonIPVar.Value())
 	}
+	chameleonIP := chameleonIPVar.Value()
+	chameleonPort := chameleonPortVar.Value()
 
-	// 2. If it's not assigned, get the DUT hostname value and append the suffix.
-	if chameleonHostName == "" {
-		if s.DUT() == nil {
-			s.Fatal("Failed to get the DUT.")
-			return
-		}
-		dutHostName := s.DUT().HostName()
-		if dutHostName == "" {
-			s.Fatal("Failed to get the DUT's hostname.")
-			return
-		}
-		chameleonHostName = dutHostName + "-chameleon"
-	}
+	url := net.JoinHostPort(chameleonIP, chameleonPort)
 
 	content := `
 [Common]
@@ -82,7 +90,7 @@ FrameDumpPath=/tmp
 SuspendResumeDelay=15
 
 [Chamelium]
-URL=` + chameleonHostName + `
+URL=` + url + `
 
 `
 
@@ -95,6 +103,9 @@ URL=` + chameleonHostName + `
 
 	// Set the file path as env variable for IGT to find it.
 	os.Setenv("IGT_CONFIG_PATH", igtFilePath)
+
+	s.Log("IGT_CONFIG_PATH = ", igtFilePath)
+	s.Log("Chameleon Device URL = ", url)
 }
 
 func IgtChamelium(ctx context.Context, s *testing.State) {
