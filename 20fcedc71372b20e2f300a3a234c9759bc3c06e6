@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ae7a04_121fefc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-08T08:09:01Z",
+      "side": 1,
+      "message": "You should use one prefix. It should be either `tast-tests:` or the package name, in this case `wifi`. If only one package was modified, the package name is preferred.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cf8d6f_c3008ae7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-08T08:09:01Z",
+      "side": 1,
+      "message": "nit: ideally the subject line should not be longer than 50 characters, and it should be definitely no longer than 72 characters.\nE.g. instead of board names, use \"64-bit platforms\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b9dd7e_52a8f7ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-08T08:09:01Z",
+      "side": 1,
+      "message": "nit: commit message lines should not be longer than 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 127
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b561c198_9fada03e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-08T08:09:01Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
