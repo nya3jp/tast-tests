@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -37,7 +38,7 @@ func SSH(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("TerminalAlternativeEmulator"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -49,19 +50,26 @@ func SSH(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	// Open Terminal apps, first creating port forward for second to use.
-	ta1, err := terminalapp.LaunchSSH(ctx, tconn, "chronos@localhost", "-L 8822:localhost:22", "test0000")
+	ta1, err := terminalapp.LaunchSSH(ctx, tconn, "-L 8822:localhost:22", "test0000")
 	if err != nil {
 		s.Fatal("Failed to open ssh1: ", err)
 	}
-	ta2, err := terminalapp.LaunchSSH(ctx, tconn, "chronos@localhost", "-p 8822", "test0000")
+	if err := uiauto.Combine("change PS1 before opening 2nd terminal",
+		ta1.RunSSHCommand("PS1='ssh1$ '"),
+		ta1.RunSSHCommand("clear"),
+	)(ctx); err != nil {
+		s.Fatal("Failed to run command in ssh1: ", err)
+	}
+	ta2, err := terminalapp.LaunchSSH(ctx, tconn, "-p 8822", "test0000")
 	if err != nil {
 		s.Fatal("Failed to open ssh2: ", err)
 	}
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("pwd command",
 		ta2.RunSSHCommand("pwd"),
-		ui.WaitUntilExists(nodewith.Name("/home/chronos/user").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("/home/chronos/user").Role(role.StaticText).First()),
 		ta2.ExitSSH(),
 	)(ctx); err != nil {
 		s.Fatal("Failed to run command in ssh2: ", err)
