@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d854f5b6_ffab0868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-08T09:56:34Z",
+      "side": 1,
+      "message": "I am curious about the justification to remove it? It is in the original test and the original test is passing. Is it broken? Scanning through the logs we need to audit all the flags and update them, possibly for different kernel versions?\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard\u0026col\u003dtest\u0026first_date\u003d2022-11-02\u0026last_date\u003d2022-11-08\u0026test\u003dgraphics.KernelConfig\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/graphics_KernelConfig/graphics_KernelConfig.py?q\u003dgraphics_KernelConfig",
+      "revId": "ae4ab6caea768a2ea12ea5ab6e6298d9942c5632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
