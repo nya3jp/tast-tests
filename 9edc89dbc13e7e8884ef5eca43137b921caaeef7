@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c80eaff_9c184436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-08T05:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b904614c_fa593053",
+      "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ca3c8af_75c538ca",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-07T21:31:39Z",
       "side": 1,
       "message": "Where will Chrome be instantiated?",
+      "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85ee64e_56884ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-08T05:34:14Z",
+      "side": 1,
+      "message": "each test that uses this service should instantiate chrome. similar to what the automation service does here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/automation_service.go;l\u003d48?q\u003dautomation_service",
+      "parentUuid": "7ca3c8af_75c538ca",
       "revId": "9edc89dbc13e7e8884ef5eca43137b921caaeef7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
