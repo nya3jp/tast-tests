@@ -8,6 +8,7 @@ package xmlrpc
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
@@ -74,6 +75,7 @@ type value struct {
 	Double  *string    `xml:"double,omitempty"`
 	Int     *string    `xml:"int,omitempty"`
 	Str     *string    `xml:"string,omitempty"`
+	Base64  *string    `xml:"base64,omitempty"`
 	Array   *xmlArray  `xml:"array,omitempty"`
 	Struct  *xmlStruct `xml:"struct,omitempty"`
 }
@@ -121,6 +123,9 @@ func (v value) String() string {
 			values = append(values, fmt.Sprintf("%s: %s", m.Name, m.Value.String()))
 		}
 		return "{" + strings.Join(values, ", ") + "}"
+	}
+	if v.Base64 != nil {
+		return "(base64)" + *v.Base64
 	}
 	return "<empty>"
 }
@@ -199,10 +204,23 @@ func float64ToXMLDouble(f float64) string {
 	return strconv.FormatFloat(f, 'f', -1, 64)
 }
 
+// bytesToXMLBase64 converts a Go []byte to an XML-RPC base64-encoded string.
+func bytesToXMLBase64(b []byte) string {
+	return base64.StdEncoding.EncodeToString(b)
+}
+
+// xmlBase64ToBytes converts an XML-RPC base64-encoded string to Go []byte.
+func xmlBase64ToBytes(base64Encoded string) ([]byte, error) {
+	return base64.StdEncoding.DecodeString(base64Encoded)
+}
+
 // newValue creates an XML-RPC <value>.
 func newValue(in interface{}) (value, error) {
 	// TODO(crbug.com/1201727): Support more data types, such as Golang map to XML-RPC struct.
-	if reflect.TypeOf(in).Kind() == reflect.Slice || reflect.TypeOf(in).Kind() == reflect.Array {
+	inType := reflect.TypeOf(in)
+	if (inType.Kind() == reflect.Slice || inType.Kind() == reflect.Array) &&
+		inType.Elem().Kind() != reflect.Uint8 {
+		// This is a slice or array, but not a []byte (aka a []uint8).
 		v := reflect.ValueOf(in)
 		var a xmlArray
 		for i := 0; i < v.Len(); i++ {
@@ -230,6 +248,9 @@ func newValue(in interface{}) (value, error) {
 	case float64:
 		f := float64ToXMLDouble(v)
 		return value{Double: &f}, nil
+	case []byte:
+		b := bytesToXMLBase64(v)
+		return value{Base64: &b}, nil
 	case map[string]string:
 		var s xmlStruct
 		for key, obj := range v {
@@ -393,6 +414,15 @@ func unpackValue(val value, out interface{}) error {
 			}
 			*o = append(*o, i)
 		}
+	case *[]byte:
+		if val.Base64 == nil {
+			return errors.Errorf("value %s is not a []byte (read as a base64 encoded string) value", val)
+		}
+		i, err := xmlBase64ToBytes(*val.Base64)
+		if err != nil {
+			return err
+		}
+		*o = i
 	case *map[string]string:
 		if val.Struct == nil {
 			return errors.Errorf("value %s is not a map", val)
