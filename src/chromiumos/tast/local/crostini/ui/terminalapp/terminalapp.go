@@ -42,7 +42,6 @@ var (
 	linuxTab            = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
 	rootWindow          = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
 	homeTab             = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
-	sshWebArea          = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
 	terminalLeaveButton = nodewith.Name("Leave").Role(role.Button).HasClass("MdTextButton")
 )
 
@@ -110,10 +109,10 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	return terminalApp, nil
 }
 
-// LaunchSSH launches Terminal App and connects to usernameATHost
+// LaunchSSH launches Terminal App and connects to chronos@localhost.
 // with the optional sshArgs. An error is returned if the app fails to launch.
 // Sets IME to en-US in order to send @ symbol correctly as Shift-2.
-func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshArgs, password string) (*TerminalApp, error) {
+func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, sshArgs string) (*TerminalApp, error) {
 	// Launch the Terminal App.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch the Terminal App through package apps")
@@ -126,21 +125,20 @@ func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshA
 	ui := uiauto.New(tconn)
 	var ta = &TerminalApp{tconn: tconn, ui: ui, kb: kb}
 
-	loggedInPrompt := nodewith.Name(" ~ $").Role(role.StaticText).Ancestor(sshWebArea)
 	if err := uiauto.Combine("launch ssh",
 		ime.EnglishUS.InstallAndActivate(tconn),
-		ta.DeleteSSHConnection(usernameAtHost),
+		ta.DeleteSSHConnection("chronos@localhost"),
 		ui.LeftClick(nodewith.Name("Add SSH").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Command").Role(role.TextField)),
-		kb.TypeAction(usernameAtHost+" -o StrictHostKeyChecking=no "+sshArgs),
+		kb.TypeAction("chronos@localhost -o StrictHostKeyChecking=no "+sshArgs),
 		ui.LeftClick(nodewith.Name("SSH relay server options").Role(role.TextField)),
 		kb.TypeAction("--ssh-client-version=pnacl"),
 		ui.LeftClick(nodewith.Name("Save").Role(role.Button)),
-		ui.LeftClick(nodewith.Name(usernameAtHost).Role(role.Link)),
-		ui.LeftClick(nodewith.Name("("+usernameAtHost+") Password:").Role(role.TextField)),
-		kb.TypeAction(password),
+		ui.LeftClick(nodewith.Name("chronos@localhost").Role(role.Link)),
+		ui.LeftClick(nodewith.Name("(chronos@localhost) Password:").Role(role.TextField)),
+		kb.TypeAction("test0000"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(loggedInPrompt),
+		ui.WaitUntilExists(nodewith.Name("chronos@localhost ~ $").Role(role.StaticText).First()),
 	)(ctx); err != nil {
 		return nil, err
 	}
@@ -162,7 +160,6 @@ func (ta *TerminalApp) DeleteSSHConnection(name string) uiauto.Action {
 // RunSSHCommand runs command in Terminal SSH tab.
 func (ta *TerminalApp) RunSSHCommand(cmd string) uiauto.Action {
 	return uiauto.Combine("run command "+cmd,
-		ta.ui.LeftClick(sshWebArea.First()),
 		ta.kb.TypeAction(cmd),
 		ta.kb.AccelAction("Enter"),
 	)
@@ -172,7 +169,7 @@ func (ta *TerminalApp) RunSSHCommand(cmd string) uiauto.Action {
 func (ta *TerminalApp) ExitSSH() uiauto.Action {
 	return uiauto.Combine("exit ssh",
 		ta.RunSSHCommand("exit"),
-		ta.ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(`Connection to \S+ closed.`)).Role(role.StaticText)),
+		ta.ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(`Connection to \S+ closed.`)).Role(role.StaticText).First()),
 		ta.kb.AccelAction("Esc"),
 		ta.kb.AccelAction("Ctrl+Shift+W"),
 	)
