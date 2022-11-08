@@ -165,7 +165,7 @@ func isInNewInstallState(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	}
 
 	if hasDescr != hasDot {
-		return false, errors.New("Accessibility description and new install dot should be in sync")
+		return false, errors.Errorf("accessibility description (%q) and new install dot (%q) should be equal", hasDescr, hasDot)
 	}
 
 	return hasDescr && hasDot, nil
