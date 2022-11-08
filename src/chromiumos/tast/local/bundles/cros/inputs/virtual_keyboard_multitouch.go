@@ -36,7 +36,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -78,7 +78,7 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 	}
 	defer tsw.Close()
 
-	inputMethod := ime.EnglishUS
+	inputMethod := ime.EnglishUSWithInternationalKeyboard
 	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
@@ -121,7 +121,11 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	waitUntilLowercase := vkbCtx.WaitForKeysExist([]string{"a"})
+	waitUntilUppercase := vkbCtx.WaitForKeysExist([]string{"A"})
+
 	shiftKeyFinder := nodewith.Name("shift").Ancestor(vkb.NodeFinder.HasClass("key_pos_shift_left"))
+	backspaceKeyFinder := nodewith.Name("backspace")
 	zKeyFinder := vkb.KeyByNameIgnoringCase("z")
 	xKeyFinder := vkb.KeyByNameIgnoringCase("x")
 	vKeyFinder := vkb.KeyByNameIgnoringCase("v")
@@ -143,11 +147,39 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 
 		// Holding shift while typing.
 		touchAndHold(shiftKeyFinder),
-		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),
+		waitUntilUppercase,
 		vkbCtx.TapKeys(strings.Split("AB", "")),
 		releaseTouch(),
-		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),
+		waitUntilLowercase,
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "ZxvAB"),
+
+		// Holding shift while typing with caps lock on.
+		vkbCtx.TapKey("caps lock"),
+		waitUntilUppercase,
+		touchAndHold(shiftKeyFinder),
+		waitUntilLowercase,
+		vkbCtx.TapKeys(strings.Split("cd", "")),
+		releaseTouch(),
+		waitUntilUppercase,
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "ZxvABcd"),
+		vkbCtx.TapKey("caps lock"),
+		waitUntilLowercase,
+
+		vkbCtx.HideVirtualKeyboard(),
+		its.Clear(inputField),
+		its.ClickFieldUntilVKShown(inputField),
+
+		// Holding backspace while typing other keys.
+		vkbCtx.TapKey("A"),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "A"),
+		touchAndHold(backspaceKeyFinder),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), ""),
+		vkbCtx.TapKey("B"),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "B"),
+		// Backspace should be cancelled and not delete any more characters.
+		uiauto.Sleep(2*time.Second),
+		releaseTouch(),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "B"),
 	)
 
 	if err := uiauto.UserAction("Multitouch typing on virtual keyboard",
