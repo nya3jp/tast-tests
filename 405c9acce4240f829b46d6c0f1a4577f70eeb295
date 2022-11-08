@@ -20,6 +20,305 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70b47d96_debf8bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: revise, dragging to the Files app is not pinning :)",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 55,
+        "endChar": 69
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a385300_9bc2ce0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: remove, this test does more than just verify pinning now :)",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e75522_acf38317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: move closer to use",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6397f69e_01a8c490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 103,
+        "startChar": 38,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5d5792_b903ac05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "This seems ambiguous, how do we know this is the Files app?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10adccd7_269e9190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: q",
+      "range": {
+        "startLine": 126,
+        "startChar": 38,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80dbd28b_84d70135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: file(s)",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32bbbe3_f9b021e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: remove, the name of the failed file will already be printed",
+      "range": {
+        "startLine": 132,
+        "startChar": 34,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1569f8a7_571feefe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 145,
+        "startChar": 34,
+        "endLine": 145,
+        "endChar": 35
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df51b2e_83a0d4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: q",
+      "range": {
+        "startLine": 145,
+        "startChar": 33,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0c929a_fb31f9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "This will break if we change L100 above. Can this be made more resilient?",
+      "range": {
+        "startLine": 155,
+        "startChar": 45,
+        "endLine": 155,
+        "endChar": 48
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd21b551_59c9cfdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: q",
+      "range": {
+        "startLine": 157,
+        "startChar": 45,
+        "endLine": 157,
+        "endChar": 46
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041bffea_0859e709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "nit: q",
+      "range": {
+        "startLine": 160,
+        "startChar": 50,
+        "endLine": 160,
+        "endChar": 51
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63ea72d6_f52bb79c",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
         "patchSetId": 13
@@ -36,6 +335,99 @@
         "startChar": 4,
         "endLine": 161,
         "endChar": 5
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d478fec_8ee4179d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "Can we just call `WaitForFile()`?",
+      "parentUuid": "63ea72d6_f52bb79c",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f58627b_85fdee92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "This should be done earlier or it may not be called :)",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a700ee29_37ac7af2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "Seems odd to have callers construct a space delimited list only to then deconstruct it again. Why not add an API that accepts a more strongly typed list of file names?",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 50
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1420d97a_a88f81e1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-08T19:18:29Z",
+      "side": 1,
+      "message": "HoldingSpaceTrayChildBubble !\u003d the holding space tray bubble :)",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
       },
       "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
