@@ -41,6 +41,7 @@ func init() {
 			"cwd@google.com",
 			"arcvm-memory@google.com",
 		},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "tab_host",
