@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9f0832_a49e3fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:20:18Z",
+      "side": 1,
+      "message": "Please also add a reviewer from your team",
+      "revId": "72051239d5f489c21f3f98994190e6597480186d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331aac4e_b32ede03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:20:18Z",
+      "side": 1,
+      "message": "This seems racy. If the test is slow enough it will completely miss the splash screen.\n\nI\u0027m not sure the current approach is correct. Is there a different way to check if the splash screen is done? Maybe using js?",
+      "revId": "72051239d5f489c21f3f98994190e6597480186d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
