@@ -40,8 +40,7 @@ func Crosh(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Start Chrome with CroshSWA flag.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("CroshSWA"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("TerminalAlternativeEmulator"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -61,6 +60,13 @@ func Crosh(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove public IME extension: ", err)
 	}
 
+	setA11y := func(enabled bool) {
+		if err = tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAllowedPref)`, "settings.accessibility", enabled); err != nil {
+			s.Fatal("Failed to set a11y pref: ", err)
+		}
+	}
+	setA11y(true)
+
 	// Launch Crosh.
 	if err := apps.Launch(ctx, tconn, apps.Crosh.ID); err != nil {
 		s.Fatal("Failed to launch: ", err)
@@ -77,10 +83,10 @@ func Crosh(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	err = uiauto.Combine("run crosh shell",
 		ui.LeftClick(nodewith.Name("crosh").Role(role.Window).ClassName("BrowserFrame")),
-		ui.WaitUntilExists(nodewith.Name("crosh>").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("crosh>").Role(role.StaticText).First()),
 		kb.TypeAction("shell"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Name("chronos@localhost").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("chronos@localhost / $").Role(role.StaticText).First()),
 		kb.TypeAction("exit"),
 		kb.AccelAction("Enter"),
 		kb.TypeAction("exit"),
@@ -90,4 +96,5 @@ func Crosh(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed: ", err)
 	}
+	setA11y(false)
 }
