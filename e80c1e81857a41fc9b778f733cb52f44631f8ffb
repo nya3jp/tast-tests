@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc916d31_d0d40d02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-08T12:21:43Z",
+      "side": 1,
+      "message": "Overall looks good to me, but I have a concern about using external websites.",
+      "revId": "e80c1e81857a41fc9b778f733cb52f44631f8ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f407bb9d_b51989df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/end_process.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-11-08T12:21:43Z",
+      "side": 1,
+      "message": "Why do you use external websites? If for some reason these websites are down, it\u0027ll cause unnecessary flakiness. WDYT?",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 1
+      },
+      "revId": "e80c1e81857a41fc9b778f733cb52f44631f8ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
