@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5fdc2b_fdaf5fbf",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-08T06:12:30Z",
+      "side": 1,
+      "message": "nit: you can move this up one level",
+      "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2458a8f_4c9adce7",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-08T06:12:30Z",
+      "side": 1,
+      "message": "just curious: Is there a possibility that we might switch to the esim on dual sim systems after a failure?",
+      "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
