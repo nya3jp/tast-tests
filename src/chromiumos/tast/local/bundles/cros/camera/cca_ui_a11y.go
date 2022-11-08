@@ -42,6 +42,10 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait CPU untile idle: ", err)
+	}
+
 	// Mute the device to avoid noisiness.
 	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute: ", err)
@@ -72,10 +76,6 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 
 	visited := make(map[string]bool)
 	tab := "Tab"
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Error("Failed to wait CPU untile idle: ", err)
-	}
 
 	// Turning on ChromeVox by keyboard is in a11y/chromevox_toggle_on_shortcut.go
 	// Connect to ChromeVox using NewChromeVoxConn.
