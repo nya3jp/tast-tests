@@ -48,11 +48,19 @@ func init() {
 			// These are skipped because they either don't support S0ix
 			// Or they incorrectly report that they do
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+				// asurada
+				"spherion",
+
 				// atlas
 				"atlas",
 
+				// brya
+				"primus",
+				"redrix",
+
 				// coral
 				"babymega",
+				"babytiger",
 
 				// elm
 				"elm",
@@ -65,6 +73,7 @@ func init() {
 				"cret",
 				"cret360",
 				"drawlat",
+				"drawman",
 				"gallop",
 				"galith",
 				"lantis",
@@ -74,7 +83,9 @@ func init() {
 				"maglith",
 				"magma",
 				"magolor",
+				"magpie",
 				"metaknight",
+				"pirika",
 				"sasuke",
 				"storo",
 				"storo360",
@@ -87,13 +98,19 @@ func init() {
 				"kasumi",
 				"kasumi360",
 				"treeya",
+				"treeya360",
+
+				// hana
+				"hana",
 
 				// hatch
 				"akemi",
+				"dragonair",
 				"dratini",
 				"helios",
 				"jinlon",
 				"kindred",
+				"kled",
 				"kohaku",
 				"nightfury",
 
@@ -102,23 +119,30 @@ func init() {
 				"esche",
 				"burnet",
 				"fennel",
+				"fennel14",
 				"juniper",
 				"kappa",
 				"willow",
 
 				// kukui
 				"kodama",
+				"krane",
 
 				// octopus
 				"apel",
 				"blooglet",
 				"blooguard",
 				"casta",
+				"foob360",
 				"garg360",
 				"grabbiter",
 				"laser14",
 				"mimrock",
 				"orbatrix",
+				"sparky360",
+
+				// sentry
+				"sentry",
 
 				// scarlet
 				"dumo",
@@ -130,11 +154,14 @@ func init() {
 				// volteer
 				"chronicler",
 				"collis",
+				"copano",
+				"delbin",
 				"drobit",
 				"eldrid",
 				"elemi",
 				"lillipup",
 				"voema",
+				"volet",
 				"volta",
 				"voxel",
 
