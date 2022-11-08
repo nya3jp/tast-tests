@@ -38,23 +38,66 @@ var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
 
 // sectionEnumToSection maps the enum from FWSectionInfo to a bios ImageSection.
 var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
-	pb.ImageSection_BOOTSTUBImageSection:         bios.BOOTSTUBImageSection,
-	pb.ImageSection_COREBOOTImageSection:         bios.COREBOOTImageSection,
-	pb.ImageSection_GBBImageSection:              bios.GBBImageSection,
-	pb.ImageSection_ECRWImageSection:             bios.ECRWImageSection,
-	pb.ImageSection_ECRWBImageSection:            bios.ECRWBImageSection,
-	pb.ImageSection_EmptyImageSection:            bios.EmptyImageSection,
-	pb.ImageSection_APROImageSection:             bios.APROImageSection,
+	pb.ImageSection_EmptyImageSection: bios.EmptyImageSection,
+
+	pb.ImageSection_BOOTSTUBImageSection:        bios.BOOTSTUBImageSection,
+	pb.ImageSection_COREBOOTImageSection:        bios.COREBOOTImageSection,
+	pb.ImageSection_SHAREDDATAImageSection:      bios.SHAREDDATAImageSection,
+	pb.ImageSection_FMAPImageSection:            bios.FMAPImageSection,
+	pb.ImageSection_SMMSTOREImageSection:        bios.SMMSTOREImageSection,
+	pb.ImageSection_FPFSTATUSImageSection:       bios.FPFSTATUSImageSection,
+	pb.ImageSection_DEVICEEXTENSIONImageSection: bios.DEVICEEXTENSIONImageSection,
+	pb.ImageSection_UNUSEDHOLEImageSection:      bios.UNUSEDHOLEImageSection,
+	pb.ImageSection_IFWIImageSection:            bios.IFWIImageSection,
+
 	pb.ImageSection_RECOVERYMRCCACHEImageSection: bios.RECOVERYMRCCACHEImageSection,
-	pb.ImageSection_ROVPDImageSection:            bios.ROVPDImageSection,
-	pb.ImageSection_RWVPDImageSection:            bios.RWVPDImageSection,
-	pb.ImageSection_FWSignAImageSection:          bios.FWSignAImageSection,
-	pb.ImageSection_FWSignBImageSection:          bios.FWSignBImageSection,
-	pb.ImageSection_FWBodyAImageSection:          bios.FWBodyAImageSection,
-	pb.ImageSection_FWBodyBImageSection:          bios.FWBodyBImageSection,
-	pb.ImageSection_APRWAImageSection:            bios.APRWAImageSection,
-	pb.ImageSection_APRWBImageSection:            bios.APRWBImageSection,
-	pb.ImageSection_APWPROImageSection:           bios.APWPROImageSection,
+	pb.ImageSection_UNIFIEDMRCCACHEImageSection:  bios.UNIFIEDMRCCACHEImageSection,
+	pb.ImageSection_RWMRCCACHEImageSection:       bios.RWMRCCACHEImageSection,
+	pb.ImageSection_RWVARMRCCACHEImageSection:    bios.RWVARMRCCACHEImageSection,
+
+	pb.ImageSection_RWELOGImageSection:   bios.RWELOGImageSection,
+	pb.ImageSection_RWSHAREDImageSection: bios.RWSHAREDImageSection,
+	pb.ImageSection_RWNVRAMImageSection:  bios.RWNVRAMImageSection,
+
+	pb.ImageSection_ECRWImageSection:  bios.ECRWImageSection,
+	pb.ImageSection_ECRWBImageSection: bios.ECRWBImageSection,
+	pb.ImageSection_ECROImageSection:  bios.ECROImageSection,
+
+	pb.ImageSection_APWPROImageSection:       bios.APWPROImageSection,
+	pb.ImageSection_APROImageSection:         bios.APROImageSection,
+	pb.ImageSection_GBBImageSection:          bios.GBBImageSection,
+	pb.ImageSection_FRMAINImageSection:       bios.FRMAINImageSection,
+	pb.ImageSection_RWLEGACYImageSection:     bios.RWLEGACYImageSection,
+	pb.ImageSection_RWMISCImageSection:       bios.RWMISCImageSection,
+	pb.ImageSection_MISCRWImageSection:       bios.MISCRWImageSection,
+	pb.ImageSection_BIOSUNUSABLEImageSection: bios.BIOSUNUSABLEImageSection,
+	pb.ImageSection_RWPRESERVEImageSection:   bios.RWPRESERVEImageSection,
+	pb.ImageSection_VBLOCKDEVImageSection:    bios.VBLOCKDEVImageSection,
+
+	pb.ImageSection_ROFRIDImageSection:    bios.ROFRIDImageSection,
+	pb.ImageSection_ROFRIDPADImageSection: bios.ROFRIDPADImageSection,
+	pb.ImageSection_RWFWIDImageSection:    bios.RWFWIDImageSection,
+
+	pb.ImageSection_FWSignAImageSection: bios.FWSignAImageSection,
+	pb.ImageSection_FWBodyAImageSection: bios.FWBodyAImageSection,
+	pb.ImageSection_APRWAImageSection:   bios.APRWAImageSection,
+	pb.ImageSection_RWFWIDAImageSection: bios.RWFWIDAImageSection,
+
+	pb.ImageSection_FWSignBImageSection: bios.FWSignBImageSection,
+	pb.ImageSection_FWBodyBImageSection: bios.FWBodyBImageSection,
+	pb.ImageSection_APRWBImageSection:   bios.APRWBImageSection,
+	pb.ImageSection_RWFWIDBImageSection: bios.RWFWIDBImageSection,
+
+	pb.ImageSection_ROVPDImageSection: bios.ROVPDImageSection,
+	pb.ImageSection_RWVPDImageSection: bios.RWVPDImageSection,
+
+	pb.ImageSection_IntelCSERWAImageSection: bios.IntelCSERWAImageSection,
+	pb.ImageSection_IntelCSERWBImageSection: bios.IntelCSERWBImageSection,
+
+	pb.ImageSection_SIALLImageSection:  bios.SIALLImageSection,
+	pb.ImageSection_SIDESCImageSection: bios.SIDESCImageSection,
+	pb.ImageSection_SIMEImageSection:   bios.SIMEImageSection,
+	pb.ImageSection_SIBIOSImageSection: bios.SIBIOSImageSection,
 }
 
 // updateModeEnumtoMode maps the enum from FirmwareUpdateModeRequest to a bios FirmwareUpdateMode.
@@ -183,4 +226,13 @@ func (*BiosService) ChromeosFirmwareUpdate(ctx context.Context, req *pb.Firmware
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+func (bs *BiosService) ParseFMAP(ctx context.Context, req *pb.FMAP) (*pb.FMAP, error) {
+	fmap, err := bios.ParseFMAP(ctx, programmerEnumToProgrammer[req.Programmer])
+	if err != nil {
+		return nil, err
+	}
+	req.Fmap = fmap
+	return req, nil
 }

@@ -82,6 +82,7 @@ type Config struct {
 	HasKeyboard          bool              `json:"has_keyboard"`
 	RawUSBEnablePins     []json.RawMessage `json:"custom_usb_enable_pins"`
 	USBAPortCount        int               `json:"usb_a_port_count"`
+	SMMStore             bool              `json:"smm_store"`
 
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
