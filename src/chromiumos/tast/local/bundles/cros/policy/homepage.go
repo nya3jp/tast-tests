@@ -185,7 +185,6 @@ func Homepage(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// TODO(crbug.com/1259615): This should be part of the fixture.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, tc.browserType)
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
