@@ -140,6 +140,30 @@
       },
       "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210fe37b_51806d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-08T02:31:36Z",
+      "side": 1,
+      "message": "Then please explain it in a comment.",
+      "parentUuid": "e2d297d5_ad88f53e",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 28
+      },
+      "revId": "591e5757e8a93fd8036e846f70a676e411ea1ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
