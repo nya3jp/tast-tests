@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -80,6 +81,8 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
