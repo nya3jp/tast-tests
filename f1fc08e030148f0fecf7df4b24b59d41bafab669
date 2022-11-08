@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "f1fc08e030148f0fecf7df4b24b59d41bafab669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2a4d4a_524c767f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-08T09:36:51Z",
+      "side": 1,
+      "message": "nit: also add `Timeout` field.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f1fc08e030148f0fecf7df4b24b59d41bafab669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
