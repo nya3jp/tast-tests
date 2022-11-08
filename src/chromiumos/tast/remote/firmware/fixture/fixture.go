@@ -275,16 +275,31 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	if common.GBBFlagsStatesEqual(i.value.GBBFlags, curr) {
 		s.Log("GBBFlags are already proper")
 	} else {
-		s.Log("Disabling write protect to allow GBB flags to be set")
-		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
-			s.Fatal("Failed to disable write protect: ", err)
-		}
-		if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to disable software WP: ", err)
-		}
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
-			s.Fatal("SetGBBFlags failed: ", err)
+			s.Log("Disabling write protect to allow GBB flags to be set")
+			// Read the hardware WP state, and disable if necessary
+			if val, err := i.value.Helper.Servo.GetString(ctx, servo.FWWPState); err != nil {
+				s.Fatal("Failed to query write protect: ", err)
+			} else if val == "on" || val == string(servo.FWWPStateOn) {
+				if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+					s.Fatal("Failed to disable write protect: ", err)
+				}
+				// A reboot is required after changing the wp state.
+				ms, err := firmware.NewModeSwitcher(ctx, i.value.Helper)
+				if err != nil {
+					s.Fatal("Failed to create mode switcher: ", err)
+				}
+				if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+					s.Fatal("Failed to warm reboot: ", err)
+				}
+			}
+			if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to disable software WP: ", err)
+			}
+			if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
+				s.Fatal("SetGBBFlags failed: ", err)
+			}
 		}
 		if common.GBBFlagsChanged(curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
