@@ -16,6 +16,7 @@ import (
 	mfwd "chromiumos/modemfwd"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
@@ -199,8 +200,16 @@ func RestartModemWithHelper(ctx context.Context) error {
 	}
 
 	// Wait for MM to export the modem after rebooting
-	if _, err = modemmanager.NewModemWithSim(ctx); err != nil {
-		return errors.Wrap(err, "failed to get modem after reboot")
+	if _, err = modemmanager.NewModemWithSim(ctx); err == nil {
+		return nil
 	}
-	return nil
+	if _, _, err := hermes.WaitForEUICC(ctx, true); err == nil {
+		// If a test EUICC exists, then don't worry if the SIM is valid and only check if MM exports a modem
+		if _, err = modemmanager.NewModem(ctx); err != nil {
+			return errors.Wrap(err, "failed to get modem after reboot")
+		}
+		return nil
+	}
+	// Return original error from NewModemWithSim
+	return errors.Wrap(err, "failed to get modem after reboot")
 }
