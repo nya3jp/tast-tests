@@ -170,6 +170,15 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 		if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
+
+		// Also test that duplicate calls to PreparePersistentVault results in recommendation to reboot.
+		reply, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/)
+		if err == nil {
+			return errors.New("duplicate call to PreparePersistentVault succeeded")
+		}
+		if !hwsec.ContainsPossibleAction(reply.ErrorInfo, uda.PossibleAction_POSSIBLY_REBOOT) {
+			return errors.New("duplicate call to PreparePersistentVault doesn't recommend reboot")
+		}
 		return nil
 	}()
 	if err != nil {
