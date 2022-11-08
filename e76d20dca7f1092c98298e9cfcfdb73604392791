@@ -213,6 +213,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a67c47_23ad7309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_blocked_app_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T08:56:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d44ded01_c9df8786",
+      "revId": "e76d20dca7f1092c98298e9cfcfdb73604392791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83dd92fc_d959ca15",
