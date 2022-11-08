@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d95053_e41c4363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T22:59:00Z",
+      "side": 1,
+      "message": "Actually, I would leave this as arc, assuming that covers both ARC++ and ARCVM, then rename the test to ArcAppPower (or ArcYoutubePower) to get coverage for both cases.",
+      "parentUuid": "9c0bf1c2_b972efee",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7556acc3_9c04f4d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
         "patchSetId": 1
