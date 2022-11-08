@@ -92,6 +92,30 @@
       },
       "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce17b00d_02aaafdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/set_pavp_hdcp_prerequisite.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-08T08:56:30Z",
+      "side": 1,
+      "message": "I do not know if a local test can use remote fixture honestly but I guess not. You may probably need to transfer these tests to remote tests, alternatively wrap up functions invoked by a remote test.",
+      "parentUuid": "327e1263_caed9322",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
