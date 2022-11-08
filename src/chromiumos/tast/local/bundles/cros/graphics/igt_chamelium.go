@@ -6,6 +6,7 @@ package graphics
 
 import (
 	"context"
+	"net"
 	"os"
 	"path/filepath"
 	"time"
@@ -14,10 +15,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var chameleonHostVar = testing.RegisterVarString(
-	"graphics.chameleonhostname",
-	"",
-	"Chameleon Host Name",
+var (
+	chameleonHostVar = testing.RegisterVarString(
+		"graphics.chameleon_host",
+		"localhost",
+		"Hostname for Chameleon")
+
+	chameleonIPVar = testing.RegisterVarString(
+		"graphics.chameleon_ip",
+		"localhost",
+		"IP address of Chameleon")
+
+	chameleonSSHPortVar = testing.RegisterVarString(
+		"graphics.chameleon_ssh_port",
+		"22",
+		"SSH port for Chameleon")
+
+	chameleonPortVar = testing.RegisterVarString(
+		"graphics.chameleon_port",
+		"9992",
+		"Port for chameleond on Chameleon")
 )
 
 func init() {
@@ -51,26 +68,20 @@ func setIgtrcFile(s *testing.State) {
 	}
 	defer igtFile.Close()
 
-	// Get Chameleon Hostname
-	// 1. Check if it's a runtime value. This is used for local dev env.
+	// Get Chameleon IP
+	// This is used for local dev env.
 	s.Log("Got testing.RegisterVarString")
-	chameleonHostName := ""
-	if chameleonHostVar != nil {
-		chameleonHostName = chameleonHostVar.Value()
+	chameleonIP := ""
+	if chameleonIPVar != nil {
+		addr := net.ParseIP(chameleonIPVar.Value())
+		if addr != nil {
+			chameleonIP = chameleonIPVar.Value()
+		}
 	}
 
-	// 2. If it's not assigned, get the DUT hostname value and append the suffix.
-	if chameleonHostName == "" {
-		if s.DUT() == nil {
-			s.Fatal("Failed to get the DUT.")
-			return
-		}
-		dutHostName := s.DUT().HostName()
-		if dutHostName == "" {
-			s.Fatal("Failed to get the DUT's hostname.")
-			return
-		}
-		chameleonHostName = dutHostName + "-chameleon"
+	chameleonPort := ""
+	if chameleonPortVar != nil {
+		chameleonPort = chameleonPortVar.Value()
 	}
 
 	content := `
@@ -82,7 +93,7 @@ FrameDumpPath=/tmp
 SuspendResumeDelay=15
 
 [Chamelium]
-URL=` + chameleonHostName + `
+URL=` + chameleonIP + `:` + chameleonPort + `
 
 `
 
