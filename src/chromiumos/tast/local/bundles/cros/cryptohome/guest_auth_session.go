@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
@@ -29,6 +30,12 @@ func init() {
 }
 
 func GuestAuthSession(ctx context.Context, s *testing.State) {
+	const (
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		passwordLabel = "password"
+	)
+
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -49,6 +56,8 @@ func GuestAuthSession(ctx context.Context, s *testing.State) {
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for preparation: ", err)
 	}
+
+	// Phase 1: Check that guest vaults are non-persistent.
 
 	// Set up a guest session
 	if _, err := client.PrepareGuestVault(ctx); err != nil {
@@ -77,5 +86,18 @@ func GuestAuthSession(ctx context.Context, s *testing.State) {
 	// Verify non-persistence.
 	if err := cryptohome.VerifyFileUnreadability(ctx, cryptohome.GuestUser); err != nil {
 		s.Fatal("File is persisted across guest session boundary")
+	}
+
+	// Phase 2: Check that guest vaults are not mounted when another session is active.
+	if err := client.MountVault(ctx, passwordLabel, hwsec.NewPassAuthConfig(userName, userPassword), true, hwsec.NewVaultConfig()); err != nil {
+		s.Fatal("Failed to create user: ", err)
+	}
+
+	reply, err := client.PrepareGuestVault(ctx)
+	if err == nil {
+		s.Fatal("PrepareGuestVault succeeded when there are active sessions")
+	}
+	if err := hwsec.CheckForPossibleAction(reply.ErrorInfo, uda.PossibleAction_POSSIBLY_REBOOT); err != nil {
+		s.Error("PrepareGuestVault() when there are active sessions doesn't recommend reboot: ", err)
 	}
 }
