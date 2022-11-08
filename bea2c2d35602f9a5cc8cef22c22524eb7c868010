@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d473f6b6_471c0afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_auth_when_uss_rolledbacked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-08T20:31:06Z",
+      "side": 1,
+      "message": "I followed the existing structure of the kiosk tests, but I think this could easily be added to uss test, without parametrization. I\u0027ll do the change and update the CL.",
+      "parentUuid": "6b469b68_0a1a8f11",
+      "revId": "bea2c2d35602f9a5cc8cef22c22524eb7c868010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c138d3dc_35c74eac",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_auth_when_uss_rolledbacked.go",
         "patchSetId": 3
