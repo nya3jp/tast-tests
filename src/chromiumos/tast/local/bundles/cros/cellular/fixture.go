@@ -121,7 +121,7 @@ func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
 func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// If ModemManager isn't exporting a modem, it's possible that the modem has stopped responding due to
 	// b/247984538, attempt to force a restart of the modem on devices that support modemfwd-helpers.
-	if _, err := modemmanager.NewModemWithSim(ctx); err != nil && cellular.ModemHelperPathExists() {
+	if modemNeedsRestart(ctx) && cellular.ModemHelperPathExists() {
 		testing.ContextLog(ctx, "No modem exported by ModemManager, attempting to restart the modem")
 		if err := cellular.RestartModemWithHelper(ctx); err != nil {
 			s.Fatal("Failed to restart modem: ", err)
@@ -203,4 +203,20 @@ func stopJob(ctx context.Context, job string) (bool, error) {
 	}
 	return true, nil
 
+}
+
+func modemNeedsRestart(ctx context.Context) bool {
+	// Check if modem with a valid SIM exists first as this is the most probable scenario
+	// and we don't want to wait on an EUICC that likely doesn't exist.
+	if _, err := modemmanager.NewModemWithSim(ctx); err == nil {
+		return false
+	}
+
+	if _, _, err := hermes.WaitForEUICC(ctx, true); err == nil {
+		// If a test EUICC exists, then don't worry if the SIM is valid and only check if MM exports a modem.
+		_, err := modemmanager.NewModem(ctx)
+		return err != nil
+	}
+	// No modem or no valid SIM, restart either way.
+	return true
 }
