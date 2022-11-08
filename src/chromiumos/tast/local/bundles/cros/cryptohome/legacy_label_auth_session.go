@@ -101,7 +101,7 @@ func LegacyLabelAuthSession(ctx context.Context, s *testing.State) {
 	defer client.InvalidateAuthSession(cleanupCtx, authSessionID)
 
 	// Verify mounting succeeds.
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(cleanupCtx)

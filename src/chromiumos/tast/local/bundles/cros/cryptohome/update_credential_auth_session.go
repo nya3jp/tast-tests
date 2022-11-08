@@ -88,7 +88,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -276,7 +276,7 @@ func loginWithCorrectAndIncorrectCredentials(ctx context.Context, client *hwsec.
 // that the file we wrote earlier still exists.
 func mountAndVerifyFilePersistence(ctx context.Context, client *hwsec.CryptohomeClient, username, authSessionID string) error {
 	// Write a test file to verify persistence.
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*=ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*=ecryptfs*/); err != nil {
 		return errors.Wrap(err, "failed to prepare persistent vault with given credential")
 	}
 

@@ -56,7 +56,7 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -94,7 +94,7 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Fatal("Unexpected AuthSession authorized intents: ", err)
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 
@@ -121,7 +121,7 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	if _, err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
 		s.Fatal("Failed to authenticate with auth session: ", err)
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 

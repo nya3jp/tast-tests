@@ -167,7 +167,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 		if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, util.Password2Label, util.FirstPassword2); err != nil {
 			return errors.Wrap(err, "password failed to authenticate")
 		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+		if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
 		return nil
@@ -200,7 +200,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 		if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, util.Password1Label, util.FirstPassword1); err != nil {
 			return errors.Wrap(err, "password failed to authenticate")
 		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+		if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
 		return nil
@@ -313,7 +313,7 @@ func testUpdateFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf *f
 		if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, util.Password1Label, util.FirstChangedPassword); err != nil {
 			return errors.Wrap(err, "new password failed to authenticate")
 		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+		if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
 		if err := testMountState(ctx, client, hf, true /*shouldBeMounted*/); err != nil {
@@ -415,7 +415,7 @@ func CryptohomeAuthFactorValidity(ctx context.Context, s *testing.State) {
 		if err := client.AddAuthFactor(ctx, authSessionID, util.Password1Label, util.FirstPassword1); err != nil {
 			s.Fatal("Failed to add password auth factor: ", err)
 		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+		if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			s.Fatal("Failed to prepare persistent vault: ", err)
 		}
 

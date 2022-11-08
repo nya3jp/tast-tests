@@ -96,7 +96,7 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 

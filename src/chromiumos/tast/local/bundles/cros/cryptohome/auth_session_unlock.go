@@ -116,7 +116,7 @@ func createUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeC
 	if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
 		return nil, errors.Wrap(err, "create user")
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		return nil, errors.Wrap(err, "prepare user vault")
 	}
 	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, password); err != nil {
@@ -138,7 +138,7 @@ func mountUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeCl
 	if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, password); err != nil {
 		return errors.Wrap(err, "authenticate using correct password")
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
 		return errors.Wrap(err, "prepare persistent vault")
 	}
 	return nil
