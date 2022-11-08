@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a70f3d8_1b47c8bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-08T00:36:53Z",
+      "side": 1,
+      "message": "After recent changes this test needed a few more change. Please take a look, +2s are gone",
+      "revId": "ec16b638361ec7cddcfcb6c775fb209b9e1de72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
