@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6b5a7c_5ae2c381",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-08T23:40:41Z",
+      "side": 1,
+      "message": "There are other ways for the command to fail. I would change it to use a regex Password:\\s*(\\S+) and similar for State, and combine them into one ccd call.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 68
+      },
+      "revId": "30b5b79883b1133df0131060441371cccc62228e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
