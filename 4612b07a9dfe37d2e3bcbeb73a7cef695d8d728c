@@ -16,6 +16,193 @@
       "message": "Opal, can you take a look at the code before I send it to tast owners?",
       "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c973e248_f6dd8f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "Where does power measurement happen?",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df865774_0d59317a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "please add chromeos-platform-power@google.com",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0bf1c2_b972efee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "I think this should be android_vm, not arc.",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7556acc3_9c04f4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "I think you should add this line before this one:\nFixture: \"arcBooted\",",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a463e2e6_9d8bb7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "Do you plan to use other apps than Youtube? If not, please name this arcvm_youtube_power.",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045c9b8d_e5ccf96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "nit: remove blank line.",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0e61dc_2585c4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9321555_0d2732b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "nit: I think this can just be \"err\"",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7113bb_139fc37f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae46278_683aa817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "This is not needed since cancel is already deferred above.",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254e63bc_b20929eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/arcvm_app_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-08T03:25:37Z",
+      "side": 1,
+      "message": "app.Close should be deferred immediately after the call that it\u0027s needed for, whether that\u0027s after app.Launch or somewhere else.",
+      "revId": "4612b07a9dfe37d2e3bcbeb73a7cef695d8d728c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
