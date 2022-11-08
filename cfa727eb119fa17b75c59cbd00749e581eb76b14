@@ -22,6 +22,30 @@
       },
       "revId": "cfa727eb119fa17b75c59cbd00749e581eb76b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a181b2_32637b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/ssh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-11-08T22:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b432b25a_b484ec67",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "cfa727eb119fa17b75c59cbd00749e581eb76b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
