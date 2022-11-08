@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e7c8bb_4b727e3e",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-11-08T23:43:11Z",
+      "side": 1,
+      "message": "Does it need a reboot after setting fwwpstate?",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 4
+      },
+      "revId": "903bf8cde613021c3bed6a5f0738d6fcb8ba2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
