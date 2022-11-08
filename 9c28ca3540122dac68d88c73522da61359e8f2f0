@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d01048f_b29c8fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-08T19:55:29Z",
+      "side": 1,
+      "message": "Thanks! A lot nicer.",
+      "revId": "9c28ca3540122dac68d88c73522da61359e8f2f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fd9686_81bbd24b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-08T19:55:29Z",
+      "side": 1,
+      "message": "Nit. I would suggest making the width and height as a variable.",
+      "range": {
+        "startLine": 359,
+        "startChar": 23,
+        "endLine": 359,
+        "endChar": 27
+      },
+      "revId": "9c28ca3540122dac68d88c73522da61359e8f2f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
