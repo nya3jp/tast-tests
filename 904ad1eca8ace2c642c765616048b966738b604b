@@ -773,6 +773,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a260180a_53519b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-08T18:14:50Z",
+      "side": 1,
+      "message": "As discussed elsewhere, the network_health GetNetworkList API does *not* guarantee order. The first active network could be connecting or portaled. Also, a developer might be running this test on a DUT connected by WiFi. We should just look for *a* connected network.",
+      "parentUuid": "f058ac0d_9a716240",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "904ad1eca8ace2c642c765616048b966738b604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32697b4f_d26b848c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
         "patchSetId": 9
