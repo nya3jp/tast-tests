@@ -8,6 +8,8 @@ import (
 	"context"
 	"strconv"
 
+	"github.com/godbus/dbus/v5"
+
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
@@ -44,6 +46,27 @@ func NewEUICC(ctx context.Context, euiccNum int) (*EUICC, error) {
 	return &EUICC{obj}, nil
 }
 
+func (e *EUICC) filterProfiles(ctx context.Context, paths []dbus.ObjectPath, desiredStates []int) ([]Profile, error) {
+	var profiles []Profile
+	for _, profilePath := range paths {
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to get dbus object for profile")
+		}
+		p := Profile{obj}
+		s := hermesconst.ProfileStatePending
+		if err = p.Property(ctx, hermesconst.ProfilePropertyState, &s); err != nil {
+			return nil, errors.Wrap(err, "unable to get profile state")
+		}
+		for _, desiredState := range desiredStates {
+			if s == desiredState {
+				profiles = append(profiles, p)
+			}
+		}
+	}
+	return profiles, nil
+}
+
 // InstalledProfiles reads the eSIM, and returns the installed profiles in the eSIM.
 func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
 	if err := e.Call(ctx, hermesconst.EuiccMethodRefreshInstalledProfiles, shouldNotSwitchSlot).Err; err != nil {
@@ -57,15 +80,7 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get installed profiles")
 	}
-	profiles := make([]Profile, len(profilePaths))
-	for i, profilePath := range profilePaths {
-		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
-		if err != nil {
-			return nil, errors.Wrap(err, "unable to get dbus object for profile")
-		}
-		profiles[i] = Profile{obj}
-	}
-	return profiles, nil
+	return e.filterProfiles(ctx, profilePaths, []int{hermesconst.ProfileStateEnabled, hermesconst.ProfileStateDisabled})
 }
 
 // PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
@@ -78,19 +93,11 @@ func (e *EUICC) PendingProfiles(ctx context.Context) ([]Profile, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get euicc properties")
 	}
-	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyPendingProfiles)
+	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyInstalledProfiles)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get pending profiles")
 	}
-	profiles := make([]Profile, len(profilePaths))
-	for i, profilePath := range profilePaths {
-		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
-		if err != nil {
-			return nil, errors.Wrap(err, "unable to get dbus object for profile")
-		}
-		profiles[i] = Profile{obj}
-	}
-	return profiles, nil
+	return e.filterProfiles(ctx, profilePaths, []int{hermesconst.ProfileStatePending})
 }
 
 // EnabledProfile reads the eSIM, and returns the enabled Profile of the eSIM if found.
