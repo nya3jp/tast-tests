@@ -210,6 +210,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7afe022_9c873c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-08T02:18:46Z",
+      "side": 1,
+      "message": "Thanks for the explanation! Done.\n\nJust to check my understanding (sorry for my poor knowledge about WiFi): Are these two properties totally independent? If both of them are disabled, will scan and connection use the same address (hardware address)?",
+      "parentUuid": "b1a82441_8050dd27",
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf9c1cb8_d1b014c1",
         "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
         "patchSetId": 4
