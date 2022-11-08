@@ -275,16 +275,18 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	if common.GBBFlagsStatesEqual(i.value.GBBFlags, curr) {
 		s.Log("GBBFlags are already proper")
 	} else {
-		s.Log("Disabling write protect to allow GBB flags to be set")
-		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
-			s.Fatal("Failed to disable write protect: ", err)
-		}
-		if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to disable software WP: ", err)
-		}
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
-			s.Fatal("SetGBBFlags failed: ", err)
+			s.Log("Disabling write protect to allow GBB flags to be set")
+			if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+				s.Fatal("Failed to disable write protect: ", err)
+			}
+			if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to disable software WP: ", err)
+			}
+			if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
+				s.Fatal("SetGBBFlags failed: ", err)
+			}
 		}
 		if common.GBBFlagsChanged(curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
