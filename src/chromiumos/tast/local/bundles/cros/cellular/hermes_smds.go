@@ -47,7 +47,7 @@ func HermesSMDS(ctx context.Context, s *testing.State) {
 	s.Log("EID of the euicc: ", eid)
 
 	const numProfiles = 2
-	pendingProfiles, err := euicc.PendingProfiles(ctx)
+	pendingProfiles, err := euicc.PendingProfiles(ctx, false)
 	if err != nil {
 		s.Fatal("Failed to get pending profiles: ", err)
 	}

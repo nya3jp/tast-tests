@@ -34,6 +34,7 @@ const (
 	EuiccMethodInstallProfileFromActivationCode = "InstallProfileFromActivationCode"
 	EuiccMethodIsTestEuicc                      = "IsTestEuicc"
 	EuiccMethodRefreshInstalledProfiles         = "RefreshInstalledProfiles"
+	EuiccMethodRefreshSmdxProfiles              = "RefreshSmdxProfiles"
 	EuiccMethodRequestPendingProfiles           = "RequestPendingProfiles"
 	EuiccMethodResetMemory                      = "ResetMemory"
 	EuiccMethodUseTestCerts                     = "UseTestCerts"

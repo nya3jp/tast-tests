@@ -84,8 +84,8 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 }
 
 // PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
-func (e *EUICC) PendingProfiles(ctx context.Context) ([]Profile, error) {
-	if err := e.Call(ctx, hermesconst.EuiccMethodRequestPendingProfiles, hermesconst.RootSmdsAddress).Err; err != nil {
+func (e *EUICC) PendingProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
+	if err := e.Call(ctx, hermesconst.EuiccMethodRefreshSmdxProfiles, hermesconst.RootSmdsAddress, shouldNotSwitchSlot).Err; err != nil {
 		return nil, errors.Wrap(err, "unable to request pending profiles")
 	}
 
