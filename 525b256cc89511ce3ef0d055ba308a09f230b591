@@ -262,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8619fcf6_2aa9c996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/dhcp_init_bound.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-08T02:48:15Z",
+      "side": 1,
+      "message": "Ah yes good point. lgtm",
+      "parentUuid": "9461b74e_c6267bf2",
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf9c1cb8_d1b014c1",
