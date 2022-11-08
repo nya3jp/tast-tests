@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2add5a85_d75ad630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-08T04:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13b674a_ebd28edc",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "713377bf_1509ebe2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4452dfc_c9e48e47",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-08T04:44:40Z",
+      "side": 1,
+      "message": "`gofmt` is actually not happy with `/*variable_name\u003d*/\"\"` and wants to have the comment on the right side of the variable. The former SGTM though (and also looks like is used elsewhere). Done!",
+      "parentUuid": "dee87f7b_eb016a95",
+      "range": {
+        "startLine": 144,
+        "startChar": 80,
+        "endLine": 144,
+        "endChar": 96
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9672593_90459168",
@@ -112,6 +160,30 @@
       "writtenOn": "2022-11-07T15:06:03Z",
       "side": 1,
       "message": "nit: I think it\u0027d be slightly easier to read if we phrase it as `the hash for the currently logged-in user.`",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 54
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8708586a_c501063b",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-08T04:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9672593_90459168",
       "range": {
         "startLine": 208,
         "startChar": 20,
@@ -145,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d87e69_6d594fac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-08T04:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ba9e11_c8076ba7",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eda637e_0be2ec34",
@@ -158,6 +254,30 @@
       "writtenOn": "2022-11-07T15:06:03Z",
       "side": 1,
       "message": "nit: This probably doesn\u0027t matter that much, but maybe let\u0027s try to avoid having the type and the variable with the same name? \nDon\u0027t have a lot of good ideas, but maybe name the type `slot_t`?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "8a49d6d8e4d4a6ad32dc9ec9220762f7af781a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c0c1978_ae5a2d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-08T04:44:40Z",
+      "side": 1,
+      "message": "I\u0027ll go with `slotT` for now to keep golang happy.",
+      "parentUuid": "1eda637e_0be2ec34",
       "range": {
         "startLine": 60,
         "startChar": 1,
