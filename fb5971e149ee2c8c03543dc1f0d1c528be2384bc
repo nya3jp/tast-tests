@@ -108,6 +108,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19aa4480_f77a1323",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-08T01:18:22Z",
+      "side": 1,
+      "message": "All of the RAPL metrics are an estimate. Not just the DRAM.",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30fb4b94_4c605505",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 6
@@ -196,6 +219,29 @@
         "startChar": 27,
         "endLine": 100,
         "endChar": 38
+      },
+      "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205a2533_106a52d6",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-11-08T01:18:22Z",
+      "side": 1,
+      "message": "What do you mean by \"slightly\" different? Why it is slightly?",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 11
       },
       "revId": "fb5971e149ee2c8c03543dc1f0d1c528be2384bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
