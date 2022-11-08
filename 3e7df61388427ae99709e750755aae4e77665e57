@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba0fbf8_4d32cc0d",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-08T09:22:39Z",
+      "side": 1,
+      "message": "use a defer cancelResetCtx()\n\nThis will make sure it\u0027s cancelled if the code is ever refactored.",
+      "range": {
+        "startLine": 419,
+        "startChar": 11,
+        "endLine": 419,
+        "endChar": 25
+      },
+      "revId": "3e7df61388427ae99709e750755aae4e77665e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
