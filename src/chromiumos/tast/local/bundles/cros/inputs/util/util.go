@@ -18,10 +18,12 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
@@ -48,6 +50,16 @@ type InputEval struct {
 	TestName     string
 	InputFunc    uiauto.Action
 	ExpectedText string
+}
+
+// AppCompatTestCase is a data structure to define accent key test case for app compat test.
+type AppCompatTestCase struct {
+	TestName      string
+	LanguageLabel string
+	InputFunc     uiauto.Action
+	InputMethod   ime.InputMethod
+	TypeKeys      string
+	ExpectedText  string
 }
 
 // WaitForFieldTextToBe returns an action checking whether the input field value equals given text.
@@ -213,26 +225,97 @@ func IMESearchFlags(imes []ime.InputMethod) []*testing.StringPair {
 }
 
 // VerifyTextShownFromScreenshot returns an action checking whether the text is shown on the screenshot or not
-func VerifyTextShownFromScreenshot(tconn *chrome.TestConn, vkbCtx *vkb.VirtualKeyboardContext, text string, needExtreTextAssit bool) uiauto.Action {
+func VerifyTextShownFromScreenshot(tconn *chrome.TestConn, text string) uiauto.Action {
 	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
 
-	if needExtreTextAssit {
-		return uiauto.Combine("Add ACUITI string to verify text shown one the screen",
-			vkbCtx.TapKeys(strings.Split(acuitiString, "")),
-			vkbCtx.HideVirtualKeyboard(),
-			ud.WaitUntilExists(uidetection.Word(text+acuitiString, uidetection.MaxEditDistance(1), uidetection.DisableApproxMatch(true))),
-		)
-	}
 	return uiauto.Combine("verify text shown on the screen",
-		vkbCtx.HideVirtualKeyboard(),
-		ud.WaitUntilExists(uidetection.Word(text, uidetection.MaxEditDistance(1), uidetection.DisableApproxMatch(true))),
+		ud.WaitUntilExists(uidetection.Word(text, uidetection.MaxEditDistance(1), uidetection.DisableApproxMatch(true)).First()),
 	)
 
 }
 
 // ClickEnterToStartNewLine return an action clicking the enter button on vk
-func ClickEnterToStartNewLine(ctx context.Context, vkbCtx *vkb.VirtualKeyboardContext) {
+func ClickEnterToStartNewLine(ctx context.Context) error {
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		// s.Fatal("Failed to get keyboard: ", err)
+		return errors.Wrap(err, "failed to get text location")
+	}
+	defer keyboard.Close()
 	uiauto.Combine("Click enter button on vk to start new line",
-		vkbCtx.TapKey("enter"),
+		keyboard.AccelAction("Enter"),
 	)(ctx)
+	return nil
+}
+
+// TypingAccentKeyAccordingToLanguageOnVK return an action for typing an accent key with specific language on virtual keyboard
+func TypingAccentKeyAccordingToLanguageOnVK(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, vkbCtx *vkb.VirtualKeyboardContext, languageLable, exptectedResult, keyName string) uiauto.Action {
+	languageLabelFinder := vkb.NodeFinder.Name(languageLable).First()
+	accentContainerFinder := nodewith.HasClass("accent-container")
+	accentKeyFinder := nodewith.Ancestor(accentContainerFinder).Name(exptectedResult).Role(role.StaticText)
+	keyFinder := vkb.KeyByNameIgnoringCase(keyName)
+
+	return uiauto.Combine("input accent letter with virtual keyboard",
+		vkbCtx.ShowVirtualKeyboard(),
+		ui.WaitUntilExists(languageLabelFinder),
+		ui.MouseMoveTo(keyFinder, 500*time.Millisecond),
+		mouse.Press(tconn, mouse.LeftButton),
+		// Popup accent window sometimes flash on showing, so using Retry instead of WaitUntilExist.
+		ui.WithInterval(time.Second).RetrySilently(10, ui.WaitForLocation(accentContainerFinder)),
+		ui.MouseMoveTo(accentKeyFinder, 500*time.Millisecond),
+		mouse.Release(tconn, mouse.LeftButton),
+		vkbCtx.HideVirtualKeyboard(),
+		VerifyTextShownFromScreenshot(tconn, exptectedResult),
+	)
+}
+
+// TypingLettersAccordingToLanguageOnVK return an action for typing letter with specific language on virtual keyboard
+func TypingLettersAccordingToLanguageOnVK(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, vkbCtx *vkb.VirtualKeyboardContext, languageLable, exptectedResult string) uiauto.Action {
+	languageLabelFinder := vkb.NodeFinder.Name(languageLable).First()
+	return uiauto.Combine("input accent letter with virtual keyboard",
+		vkbCtx.ShowVirtualKeyboard(),
+		ui.WaitUntilExists(languageLabelFinder),
+		vkbCtx.TapKeys(strings.Split(exptectedResult, "")),
+		vkbCtx.HideVirtualKeyboard(),
+		VerifyTextShownFromScreenshot(tconn, exptectedResult),
+	)
+}
+
+// GlideTypingAccordingToLanguageOnVK return an action for typing letter with specific language on virtual keyboard
+func GlideTypingAccordingToLanguageOnVK(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, vkbCtx *vkb.VirtualKeyboardContext, languageLable, exptectedResult string) uiauto.Action {
+	languageLabelFinder := vkb.NodeFinder.Name(languageLable).First()
+
+	validateAction := uiauto.Combine("hide virtual keyboard and do ACUITI verification",
+		vkbCtx.HideVirtualKeyboard(),
+		VerifyTextShownFromScreenshot(tconn, exptectedResult),
+	)
+
+	return uiauto.Combine("glide typing with virtual keyboard",
+		vkbCtx.ShowVirtualKeyboard(),
+		ui.WaitUntilExists(languageLabelFinder),
+		vkbCtx.GlideTyping(strings.Split(exptectedResult, ""), validateAction),
+	)
+}
+
+// InstallIME install the given input method
+func InstallIME(ctx context.Context, uc *useractions.UserContext, inputMethod ime.InputMethod) error {
+	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
+		return errors.Wrap(err, "fail to set input method")
+	}
+
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
+	return nil
+}
+
+// TypingKeysAccordingToLanguageOnPK return an action for typing dead key with specific language on phyical keyboard
+func TypingKeysAccordingToLanguageOnPK(ctx context.Context, tconn *chrome.TestConn, inputMethod ime.InputMethod, typingKeys, exptectedResult string) (uiauto.Action, error) {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "fail to get keyboard")
+	}
+
+	return uiauto.Combine("validate dead keys typing",
+		kb.TypeAction(typingKeys),
+		VerifyTextShownFromScreenshot(tconn, exptectedResult),
+	), nil
 }

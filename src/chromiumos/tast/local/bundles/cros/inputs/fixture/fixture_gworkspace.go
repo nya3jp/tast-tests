@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
@@ -41,8 +40,6 @@ type appFixtureImpl struct {
 	tconn       *chrome.TestConn
 	recorder    *uiauto.ScreenRecorder
 	uc          *useractions.UserContext
-	vx          *vkb.VirtualKeyboardContext
-	conn        *chrome.Conn
 }
 
 func init() {
@@ -74,6 +71,20 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{"ui.gaiaPoolDefault", "keepState"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: GoogleSheets,
+		Desc: "Test Google Sheets with different inputs method",
+		Contacts: []string{
+			"xiuwen@google.com",
+		},
+		Impl:            appFixture(tabletMode, true, true, browser.TypeAsh, GoogleSheets),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{"ui.gaiaPoolDefault", "keepState"},
+	})
 
 }
 
@@ -88,13 +99,11 @@ func appFixture(dm deviceMode, vkEnabled, restart bool, browserType browser.Type
 	}
 }
 
-// AppFixtData is the data returned by SetUp and passed to tests.
-type AppFixtData struct {
-	Chrome                 *chrome.Chrome
-	TestAPIConn            *chrome.TestConn
-	UserContext            *useractions.UserContext
-	VirtualKeyboardContext *vkb.VirtualKeyboardContext
-	ChromeConn             *chrome.Conn
+// GworkspaceFixtData is the data returned by SetUp and passed to tests.
+type GworkspaceFixtData struct {
+	Chrome      *chrome.Chrome
+	TestAPIConn *chrome.TestConn
+	UserContext *useractions.UserContext
 }
 
 func (f *appFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -130,14 +139,10 @@ func (f *appFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interf
 	}
 	f.uc = uc
 
-	vkbCtx := vkb.NewContext(cr, tconn)
+	openGoogleWorkspace(ctx, s, uc, f, tconn, cr, opts)
 
-	f.vx = vkbCtx
-	// openGoogleWorkspace(ctx, s, uc, f, tconn, cr, opts)
-	conn, err := cr.NewConn(ctx, cuj.NewGoogleDocsURL)
-	// f.conn = conn
 	chrome.Lock()
-	return AppFixtData{f.cr, f.tconn, f.uc, f.vx, conn}
+	return GworkspaceFixtData{f.cr, f.tconn, f.uc}
 }
 
 func (f *appFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
@@ -156,12 +161,7 @@ func (f *appFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) 
 }
 
 func (f *appFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	vkbCtx := vkb.NewContext(f.cr, f.tconn)
-	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
-	}
-
-	util.ClickEnterToStartNewLine(ctx, vkbCtx)
+	util.ClickEnterToStartNewLine(ctx)
 }
 
 func (f *appFixtureImpl) Reset(ctx context.Context) error {
@@ -180,8 +180,9 @@ func openGoogleWorkspace(ctx context.Context, s *testing.FixtState, uc *useracti
 	switch f.appName {
 	case GoogleDocs:
 		conn, err = cr.NewConn(ctx, cuj.NewGoogleDocsURL)
-	// case GoogleSheets:
-	// 	conn, err = cr.NewConn(ctx, cuj.NewGoogleSheetURL)
+	case GoogleSheets:
+		conn, err = cr.NewConn(ctx, cuj.NewGoogleSheetsURL)
+
 	case GoogleSlides:
 		conn, err = cr.NewConn(ctx, cuj.NewGoogleSlidesURL)
 
@@ -192,8 +193,6 @@ func openGoogleWorkspace(ctx context.Context, s *testing.FixtState, uc *useracti
 			ui.DoubleClick(titleNode),
 		)(ctx)
 	}
-
-	f.conn = conn
 
 	if err != nil {
 		s.Error(fmt.Sprintf("Failed to open %s: ", f.appName), err)
