@@ -68,6 +68,30 @@
       },
       "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327e1263_caed9322",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/set_pavp_hdcp_prerequisite.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-08T08:29:16Z",
+      "side": 1,
+      "message": "We agree with you. We had below doubt, hence we proceeded with this approach.\n\nWe need to remove the rootfs verification only once and reboot the DUT as a pre-requisite before running the HDCP related tests. If we implement this logic in fixture, it will be a remote side Fixture (since reboot is involved) and HDCP tests using this remote fixture also should be remote tests right? Can a local test use a remote Fixture?",
+      "parentUuid": "dc57e1c7_d15a19f5",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
