@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b01bc5_d8abdf31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/local_web_approvals.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-11-08T22:26:52Z",
+      "side": 1,
+      "message": "Changed this to DoDefault + WaitUntilGone, as discussed offline.",
+      "parentUuid": "8fe93f54_17c1e0d4",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "ddd26c5914037cec87c008c5654df2dfbc1805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f0d1b16_b9bbb23b",
@@ -272,6 +296,30 @@
       "writtenOn": "2022-11-08T19:59:30Z",
       "side": 1,
       "message": "Could you add a comment explaining this timeout length?",
+      "range": {
+        "startLine": 449,
+        "startChar": 25,
+        "endLine": 449,
+        "endChar": 36
+      },
+      "revId": "ddd26c5914037cec87c008c5654df2dfbc1805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277dd208_8b5e9d34",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-11-08T22:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8257059_15048601",
       "range": {
         "startLine": 449,
         "startChar": 25,
@@ -352,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4904fd_151365b1",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-11-08T22:26:52Z",
+      "side": 1,
+      "message": "Edited in the last patch",
+      "parentUuid": "df06987d_a65d3fdb",
+      "range": {
+        "startLine": 474,
+        "startChar": 39,
+        "endLine": 474,
+        "endChar": 43
+      },
+      "revId": "ddd26c5914037cec87c008c5654df2dfbc1805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a1e1ea5_0963f123",
@@ -365,6 +437,30 @@
       "writtenOn": "2022-11-08T19:59:30Z",
       "side": 1,
       "message": "You could make this a well named constant like \"shortUiTimeout\" and share it with above.",
+      "range": {
+        "startLine": 489,
+        "startChar": 37,
+        "endLine": 489,
+        "endChar": 53
+      },
+      "revId": "ddd26c5914037cec87c008c5654df2dfbc1805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "259f74d5_23476302",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-11-08T22:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a1e1ea5_0963f123",
       "range": {
         "startLine": 489,
         "startChar": 37,
