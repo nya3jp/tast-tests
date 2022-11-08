@@ -43,7 +43,7 @@ var defaultPairingAgentCapabilityByDeviceType = map[cbt.DeviceType]cbt.PairingAg
 	cbt.DeviceTypeBluetoothAudio: cbt.PairingAgentCapabilityNoInputNoOutput,
 	cbt.DeviceTypeMouse:          cbt.PairingAgentCapabilityNoInputNoOutput,
 	cbt.DeviceTypeKeyboard:       cbt.PairingAgentCapabilityNoInputNoOutput,
-	cbt.DeviceTypeFastPair:       cbt.PairingAgentCapabilityDisplayYesNo,
+	cbt.DeviceTypeLEFastPair:     cbt.PairingAgentCapabilityDisplayYesNo,
 }
 
 // EmulatedBTPeerDeviceConfig contains configuration settings for creating new

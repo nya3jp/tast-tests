@@ -85,10 +85,8 @@ const (
 	// DeviceTypeBluetoothAudio is the DeviceType for audio devices.
 	DeviceTypeBluetoothAudio DeviceType = "BLUETOOTH_AUDIO"
 
-	// DeviceTypeFastPair is the DeviceType for fast pair devices.
-	DeviceTypeFastPair DeviceType = "FAST_PAIR"
-
-	// DeviceTypeLEFastPair is the DeviceType for LE fast pair devices.
+	// DeviceTypeLEFastPair is the DeviceType for fast pair devices.
+	// Note: Fast pair is always LE.
 	DeviceTypeLEFastPair DeviceType = "BLE_FAST_PAIR"
 )
 

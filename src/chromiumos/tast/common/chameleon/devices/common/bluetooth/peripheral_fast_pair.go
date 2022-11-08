@@ -21,11 +21,11 @@ type FastPairPeripheral interface {
 
 	// SetAntispoofingKeyPem calls the Chameleond RPC method of the same name.
 	// Sets the anti-spoofing key for the Fast Pair GATT service.
-	SetAntispoofingKeyPem(ctx context.Context, keyPem string) error
+	SetAntispoofingKeyPem(ctx context.Context, keyPem []byte) error
 
 	// AddAccountKey calls the Chameleond RPC method of the same name.
 	// Adds an account key to the Fast Pair GATT service.
-	AddAccountKey(ctx context.Context, accountKey string) error
+	AddAccountKey(ctx context.Context, accountKey []byte) error
 }
 
 // CommonFastPairPeripheral is a base implementation of FastPairPeripheral that
@@ -46,12 +46,12 @@ func NewCommonFastPairPeripheral(xmlrpcClient *xmlrpc.XMLRpc, methodNamePrefix s
 // SetAntispoofingKeyPem calls the Chameleond RPC method of the same name.
 // This implements FastPairPeripheral.SetAntispoofingKeyPem, see that for more
 // details.
-func (c *CommonFastPairPeripheral) SetAntispoofingKeyPem(ctx context.Context, keyPem string) error {
+func (c *CommonFastPairPeripheral) SetAntispoofingKeyPem(ctx context.Context, keyPem []byte) error {
 	return c.RPC("SetAntispoofingKeyPem").Args(keyPem).Call(ctx)
 }
 
 // AddAccountKey calls the Chameleond RPC method of the same name.
 // This implements FastPairPeripheral.AddAccountKey, see that for more details.
-func (c *CommonFastPairPeripheral) AddAccountKey(ctx context.Context, accountKey string) error {
+func (c *CommonFastPairPeripheral) AddAccountKey(ctx context.Context, accountKey []byte) error {
 	return c.RPC("AddAccountKey").Args(accountKey).Call(ctx)
 }
