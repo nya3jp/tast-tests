@@ -122,7 +122,7 @@ func PasswordAuthFactorExistingVaultKeyset(ctx context.Context, s *testing.State
 	}); err != nil {
 		s.Fatal("Unexpected AuthSession authorized intents: ", err)
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer cryptohome.UnmountVault(ctx, userName)

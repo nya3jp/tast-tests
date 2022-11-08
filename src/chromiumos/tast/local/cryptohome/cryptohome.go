@@ -533,7 +533,7 @@ func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username,
 			return nil, errors.Wrap(err, "failed to create persistent user")
 		}
 
-		if err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+		if _, err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 			cleanup(ctx)
 			return nil, errors.Wrap(err, "failed to prepare persistent vault")
 		}
@@ -567,7 +567,7 @@ func CreateAndMountUserWithAuthSession(ctx context.Context, username, password, 
 		return errors.Wrap(err, "failed to create persistent user")
 	}
 
-	if err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if _, err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		return errors.Wrap(err, "failed to prepare persistent vault")
 	}
 
@@ -727,7 +727,7 @@ func MountAndVerify(ctx context.Context, userName, authSessionID string, ecryptF
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
-	if err := cryptohome.PreparePersistentVault(ctx, authSessionID, ecryptFs); err != nil {
+	if _, err := cryptohome.PreparePersistentVault(ctx, authSessionID, ecryptFs); err != nil {
 		return errors.Wrap(err, "prepare persistent vault")
 	}
 

@@ -70,7 +70,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -134,7 +134,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 	if err := client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, response); err != nil {
 		s.Fatal("Failed to authenticate recovery auth factor: ", err)
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 

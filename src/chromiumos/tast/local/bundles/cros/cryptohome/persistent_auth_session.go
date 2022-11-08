@@ -118,12 +118,12 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err == nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err == nil {
 		s.Fatal("Secondary prepare attempt for the same user should fail, but succeeded")
 	}
 
@@ -153,7 +153,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 
