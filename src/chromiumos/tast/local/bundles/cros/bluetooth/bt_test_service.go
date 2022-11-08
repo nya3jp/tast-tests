@@ -292,3 +292,53 @@ func (bts *BTTestService) PairAndConnectDevice(ctx context.Context, request *pb.
 
 	return &emptypb.Empty{}, nil
 }
+
+func (bts *BTTestService) DeviceStatus(ctx context.Context, request *pb.DeviceStatusRequest) (*pb.DeviceStatusResponse, error) {
+	if request.Device == nil || request.Device.MacAddress == "" || request.Device.AdvertisedName == "" {
+		return nil, errors.New("incomplete DeviceStatus request")
+	}
+
+	// Find the first device that matches the address.
+	devices, err := bluez.Devices(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device list")
+	}
+	var matchingDevice *bluez.Device
+	for _, d := range devices {
+		ad, err := d.Address(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get device address property")
+		}
+		if ad == request.Device.MacAddress {
+			matchingDevice = d
+			break
+		}
+	}
+	if matchingDevice == nil {
+		// No matching device found.
+		return &pb.DeviceStatusResponse{
+			IsDiscovered: false,
+			IsPaired:     false,
+		}, nil
+	}
+
+	// Validate the name of the device matches too.
+	deviceName, err := matchingDevice.Name(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device name property")
+	}
+	if deviceName != request.Device.AdvertisedName {
+		return nil, errors.Errorf("found a matching device with address %q, but its name, %q, does not match the expected name %q", request.Device.MacAddress, deviceName, request.Device.AdvertisedName)
+	}
+
+	// Check pairing status.
+	isPaired, err := matchingDevice.Paired(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if device is paired")
+	}
+
+	return &pb.DeviceStatusResponse{
+		IsDiscovered: true,
+		IsPaired:     isPaired,
+	}, nil
+}

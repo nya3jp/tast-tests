@@ -27,18 +27,24 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// fixtureVarBTPeers is the name of the tast var that specifies a
-// comma-separated list of btpeer host addresses.
-//
-// This is an optional override to the usual btpeer addresses which are normally
-// resolved based on the DUT hostname.
-const fixtureVarBTPeers = "btpeers"
+// Fixture variable keys.
+const (
+	// fixtureVarBTPeers is the name of the tast var that specifies a
+	// comma-separated list of btpeer host addresses.
+	//
+	// This is an optional override to the usual btpeer addresses which are normally
+	// resolved based on the DUT hostname.
+	fixtureVarBTPeers = "btpeers"
 
-const fixtureVarSigninKey = "ui.signinProfileTestExtensionManifestKey"
+	fixtureVarSigninKey = "ui.signinProfileTestExtensionManifestKey"
+
+	fixtureVarChromeUsername = "chrome_username"
+	fixtureVarChromePassword = "chrome_password"
+)
 
 const (
-	defaultUsername = "testuser@gmail.com"
-	defaultPassword = "testpass"
+	defaultChromeUsername = "testuser@gmail.com"
+	defaultChromePassword = "testpass"
 )
 
 const (
@@ -183,6 +189,33 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInAsUserWithFastPairAnd1BTPeer",
+		Desc: "Logs into a chrome as a specific user and enables Bluetooth, FastPair, and connects to 1 btpeer",
+		Contacts: []string{
+			"jaredbennett@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl: newFixture(&fixtureFeatures{
+			BTPeerCount:             1,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"FastPair"},
+			DisableFeatures:         []string{},
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_GAIA_LOGIN,
+			RequireChromeUserVars:   true,
+			EnableFastPairVars:      true,
+		}),
+		Vars: []string{
+			fixtureVarBTPeers,
+			fixtureVarChromeUsername,
+			fixtureVarChromePassword,
+		},
+		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
+		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
+		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
+		PostTestTimeout: postTestTimeout,
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
+	})
 }
 
 type fixtureFeatures struct {
@@ -207,6 +240,13 @@ type fixtureFeatures struct {
 
 	// EnableHidScreenOnOobe enables HID detection screen when in OOBE.
 	EnableHidScreenOnOobe bool
+
+	// RequireChromeUserVars enables retrieving chrome user credentials from
+	// fixture vars, and requires that they are provided.
+	RequireChromeUserVars bool
+
+	// EnableFastPairVars enabled to retrieval of fast pair fixture vars.
+	EnableFastPairVars bool
 }
 
 // FixtValue is the value of the test fixture accessible within a test. All
@@ -275,13 +315,21 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	}
 
 	// Start Chrome with the features and login mode provided by the test fixture.
+	var chromeUsername, chromePassword string
+	if tf.features.RequireChromeUserVars {
+		chromeUsername = s.RequiredVar(fixtureVarChromeUsername)
+		chromePassword = s.RequiredVar(fixtureVarChromePassword)
+	} else {
+		chromeUsername = defaultChromeUsername
+		chromePassword = defaultChromePassword
+	}
 	if _, err := tf.fv.ChromeService.New(ctx, &chromeService.NewRequest{
 		LoginMode:       tf.features.LoginMode,
 		EnableFeatures:  tf.features.EnableFeatures,
 		DisableFeatures: tf.features.DisableFeatures,
 		Credentials: &chromeService.NewRequest_Credentials{
-			Username: defaultUsername,
-			Password: defaultPassword,
+			Username: chromeUsername,
+			Password: chromePassword,
 		},
 		EnableHidScreenOnOobe:        tf.features.EnableHidScreenOnOobe,
 		SigninProfileTestExtensionId: signinProfileTestExtensionID,
