@@ -96,7 +96,6 @@ const (
 	IPConfigPropertyMtu                       = "Mtu"
 	IPConfigPropertyPeerAddress               = "PeerAddress"
 	IPConfigPropertyPrefixlen                 = "Prefixlen"
-	IPConfigPropertySearchDomains             = "SearchDomains"
 	IPConfigPropertyVendorEncapsulatedOptions = "VendorEncapsulatedOptions"
 	IPConfigPropertyWebProxyAutoDiscoveryURL  = "WebProxyAutoDiscoveryUrl"
 	IPConfigPropertyiSNSOptionData            = "iSNSOptionData"
