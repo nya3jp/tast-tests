@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c04a850_4861b4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_under_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-08T02:27:01Z",
+      "side": 1,
+      "message": "It usually starts with the type name.",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "3b247c5d317b8039025d5efd0ac633af498b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a079a1_9845edc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_under_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-08T02:27:01Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "3b247c5d317b8039025d5efd0ac633af498b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
