@@ -83,21 +83,13 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	return e.filterProfiles(ctx, profilePaths, []int{hermesconst.ProfileStateEnabled, hermesconst.ProfileStateDisabled})
 }
 
-// PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
-func (e *EUICC) PendingProfiles(ctx context.Context) ([]Profile, error) {
-	if err := e.Call(ctx, hermesconst.EuiccMethodRequestPendingProfiles, hermesconst.RootSmdsAddress).Err; err != nil {
-		return nil, errors.Wrap(err, "unable to request pending profiles")
+// RefreshSmdxProfiles contacts the SMDX, and returns newly found pending profiles.
+func (e *EUICC) RefreshSmdxProfiles(ctx context.Context, rootSMDX string, shouldNotSwitchSlot bool) ([]Profile, error) {
+	response := e.Call(ctx, hermesconst.EuiccMethodRefreshSmdxProfiles, rootSMDX, shouldNotSwitchSlot)
+	if response.Err != nil {
+		return nil, errors.Wrap(response.Err, "unable to refresh SMDX profiles")
 	}
-
-	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to get euicc properties")
-	}
-	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyInstalledProfiles)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to get pending profiles")
-	}
-	return e.filterProfiles(ctx, profilePaths, []int{hermesconst.ProfileStatePending})
+	return e.filterProfiles(ctx, response.Body[0].([]dbus.ObjectPath), []int{hermesconst.ProfileStatePending})
 }
 
 // EnabledProfile reads the eSIM, and returns the enabled Profile of the eSIM if found.

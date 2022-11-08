@@ -47,7 +47,7 @@ func HermesSMDS(ctx context.Context, s *testing.State) {
 	s.Log("EID of the euicc: ", eid)
 
 	const numProfiles = 2
-	pendingProfiles, err := euicc.PendingProfiles(ctx)
+	pendingProfiles, err := euicc.RefreshSmdxProfiles(ctx, hermesconst.RootSmdsAddress, false)
 	if err != nil {
 		s.Fatal("Failed to get pending profiles: ", err)
 	}
@@ -57,5 +57,12 @@ func HermesSMDS(ctx context.Context, s *testing.State) {
 
 	for _, profile := range pendingProfiles {
 		s.Logf("Pending profile %s", profile.String())
+		c, err := profile.ActivationCode(ctx)
+		if err != nil {
+			s.Fatal("Failed to get activation code: ", err)
+		}
+		if c == "" {
+			s.Fatal("Activation code is empty")
+		}
 	}
 }

@@ -41,6 +41,11 @@ func (p *Profile) IsTestProfile(ctx context.Context) (bool, error) {
 	return class == hermesconst.ProfileClassTest, nil
 }
 
+// ActivationCode returns the profile's activation code.
+func (p *Profile) ActivationCode(ctx context.Context) (string, error) {
+	return p.getStringProperty(ctx, hermesconst.ProfilePropertyActivationCode)
+}
+
 // Iccid returns the profile's ICCID.
 func (p *Profile) Iccid(ctx context.Context) (string, error) {
 	return p.getStringProperty(ctx, hermesconst.ProfilePropertyIccid)
