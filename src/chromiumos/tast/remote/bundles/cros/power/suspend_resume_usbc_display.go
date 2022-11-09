@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,7 +29,8 @@ func init() {
 		Func:         SuspendResumeUSBCDisplay,
 		Desc:         "Verifies suspend-resume with USB type-C display functionality check",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		Vars:         []string{"servo"},
 		Timeout:      8 * time.Minute,

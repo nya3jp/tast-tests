@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Functionality of multi-camera after suspend-resume scenario",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Vars:         []string{"servo"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
 		Data:         []string{"cca_ui.js"},
 		ServiceDeps:  []string{"tast.cros.camera.CCAService"},
 		HardwareDeps: hwdep.D(hwdep.X86()),
