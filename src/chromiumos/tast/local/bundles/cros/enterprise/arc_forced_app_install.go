@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/retry"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -28,7 +27,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCProvisioning,
+		Func:         ARCForcedAppInstall,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC is launched when policy is set",
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
@@ -41,16 +40,12 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
-				// TODO(b/254838300): Memory pressure on kukui-arc-r causes test to fail.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu", "katsu", "kodama", "krane")),
-				Val:               withRetries,
+				Val:               withoutRetries,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
-				// TODO(b/254838300): Memory pressure on kukui-arc-r causes test to fail.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu", "katsu", "kodama", "krane")),
-				Val:               withRetries,
+				Val:               withoutRetries,
 			},
 			{
 				Name:              "betty",
@@ -63,29 +58,17 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm", "qemu"},
 				Val:               withRetries,
 				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "unstable",
-				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               withoutRetries,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "vm_unstable",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               withoutRetries,
-				ExtraAttr:         []string{"informational"},
 			}},
 	})
 }
 
-// ARCProvisioning runs the provisioning smoke test:
+// ARCForcedAppInstall runs the app force install test:
 // - login with managed account,
 // - check that ARC is launched by user policy,
 // - check that chrome://policy page shows ArcEnabled and ArcPolicy force-installed apps list,
 // - check that force-installed by policy Android packages are installed,
 // - check that force-installed Android packages cannot be uninstalled.
-func ARCProvisioning(ctx context.Context, s *testing.State) {
+func ARCForcedAppInstall(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout = 4 * time.Minute
 		testPackage = "com.google.android.calculator"
@@ -124,13 +107,13 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			chrome.DMSPolicy(fdms.URL),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
-			return rl.RetryForAll("connect to Chrome", err)
+			return rl.Retry("connect to Chrome", err)
 		}
 		defer cr.Close(cleanupCtx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return rl.RetryForAll("create test API connection", err)
+			return rl.Retry("create test API connection", err)
 		}
 
 		if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
@@ -162,8 +145,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		installCtx, cancel := context.WithTimeout(ctx, arcent.InstallTimeout)
 		defer cancel()
 		if err := a.WaitForPackages(installCtx, packages); err != nil {
-			// TODO(b/242902484): Switch to exit when unstable variant is removed.
-			return rl.Retry("wait for packages", err)
+			return rl.Exit("wait for packages", err)
 		}
 
 		if err := arcent.EnsurePackagesUninstall(ctx, cr, a, packages, false); err != nil {
