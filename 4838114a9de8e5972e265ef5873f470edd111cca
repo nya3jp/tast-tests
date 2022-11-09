@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad925a1_41ebec3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T19:59:27Z",
+      "side": 1,
+      "message": "I have a chat with Theo on Nov 8th to discuss this test. First thing I want to mention is that I misunderstood what the test was for at the beginning. I thought the test would simulation a hibernation for the DUT which would make the DUT to be disconnected for a period of time. That\u0027s why I have suggested to use a remote test at the beginning because a local test is running on the DUT and any disruption will make the test fail. However, Theo clarified the objective of the test and I realized that I misunstood the nature of the test. Sorry about it.\n\nNow, come back the discussion of various topic regarding this test.\n\n1. Remote Test vs Local Test\n\nA remote test is inside a remote test bundle which is running on the drone/desktop/cloudtop which is in the same machine where you run Tast. A local test is inside a local test bundle which is running on DUT.\n\nhttps://docs.google.com/presentation/d/17SIeaC-8XhGD-NjcYCiv7DuPLMKR0LgdEeIK335BiZc/preview?slide\u003did.g142b8b30304_1_293\n\nWe usually prefer to write local test because it can have direct access to the Chrome and DUT. Also, it can be run with minimal network latency. We usually use remote tests when there is a possible disruption in the connectivity of the DUT. One good example is that a test requires a DUT to be reboot. Since local tests are running in a local bundle process which will be terminated during reboot. Therefore, remote tests are the only option in case like this.\n\n2. GRPC services\n\nIn many cases, remote tests have to run some Go functions on the DUT, possibly calling some support libraries for local tests (e.g. the chrome package). For this purpose, Tast supports defining, implementing, and calling into gRPC services.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#remote-procedure-calls-with-grpc\n\nSince each GRPC api call requires sending of a request to the DUT and waiting for a response, it can be volunerable to the network disruption and latency. Therefore, IMHO, we should limit the number of GRPC calls. If a remote test wants the DUT to do 10 things, it is will better to have a GRPC API to do 10 things instead of making 10 GPRC calls to do 10 things.\n\n3. Stateless vs Stateful\n\nA GRPC server can serve multiple clients. It will be much better to make the API to be stateless. Let use this CL as an example. If the APIs are stateful, we need to consider following questions. Which test/fixture is going to create the Chrome connection? Who is going to do the cleanup? What happen if the service crash in the middle? Let\u0027s say we have 5 tests depending on this service and they are running one after another. If the service crash and test fail, who is going to take care of the clean and restart. Also, what happen to those tests running after these 5 tests? If the chrome session does not clean up correctly, will it affect those tests to get consistent result.\n\nAfter my discussion with Theo, I think making this test local would avoid a lot of issues that we need to deal with. Also, it will make the test less flaky.\n\nWe can have a meeting to discuss further.\n\nI also CC @jessemcguire@google.com and @nya@chromium.org just in case they have any opinions. Thanks.",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43d70ba1_028b92d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
         "patchSetId": 14
