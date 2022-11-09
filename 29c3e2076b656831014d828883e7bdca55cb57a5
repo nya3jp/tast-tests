@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7211215f_b3fa8316",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-09T20:26:06Z",
+      "side": 1,
+      "message": "nit: rename this, too, for consistency",
+      "revId": "29c3e2076b656831014d828883e7bdca55cb57a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
