@@ -16,6 +16,24 @@
       "message": "LGTM\n\n\nhmmm... my gwsq added 2 reviewers?",
       "revId": "4f50ca91132286efc8b15ff814668061ee5e22f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd53121_550bfb6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-09T17:33:09Z",
+      "side": 1,
+      "message": "No, Victor was just CC. He became a review when he added a +1.",
+      "parentUuid": "f3e45010_4a789e73",
+      "revId": "4f50ca91132286efc8b15ff814668061ee5e22f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
