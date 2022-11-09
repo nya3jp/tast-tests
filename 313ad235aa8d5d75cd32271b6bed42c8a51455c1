@@ -16,6 +16,57 @@
       "message": "lgtm",
       "revId": "313ad235aa8d5d75cd32271b6bed42c8a51455c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b707b9_d47359c9",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T00:41:43Z",
+      "side": 1,
+      "message": "Should it be true/false?",
+      "revId": "313ad235aa8d5d75cd32271b6bed42c8a51455c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b789814_8bb61626",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T00:41:43Z",
+      "side": 1,
+      "message": "How about \n\n```\nstring.ToLower(isLocalVar.Value()) \u003d\u003d \"true\"\n```",
+      "revId": "313ad235aa8d5d75cd32271b6bed42c8a51455c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67da106f_9e4033a3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T00:41:43Z",
+      "side": 1,
+      "message": "I think true/false will be clearer.",
+      "revId": "313ad235aa8d5d75cd32271b6bed42c8a51455c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
