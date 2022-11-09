@@ -21,12 +21,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Parameters that control test behavior.
-type updatePasswordParams struct {
-	// Specifies whether to use user secret stash.
-	useUserSecretStash bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: UpdatePassword,
@@ -37,15 +31,11 @@ func init() {
 		},
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "with_vk",
-			Val: updatePasswordParams{
-				useUserSecretStash: false,
-			},
+			Name:    "with_vk",
+			Fixture: "vkAuthSessionFixture",
 		}, {
-			Name: "with_uss",
-			Val: updatePasswordParams{
-				useUserSecretStash: true,
-			},
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
 		}},
 	})
 }
@@ -61,7 +51,6 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		testFileContent = "content"
 	)
 
-	userParam := s.Param().(updatePasswordParams)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -85,16 +74,6 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 	}
 	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
-	}
-
-	if userParam.useUserSecretStash {
-		// Enable the UserSecretStash experiment for the duration of the test by
-		// creating a flag file that's checked by cryptohomed.
-		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-		if err != nil {
-			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-		}
-		defer cleanupUSSExperiment(ctxForCleanUp)
 	}
 
 	// Create and mount the persistent user.

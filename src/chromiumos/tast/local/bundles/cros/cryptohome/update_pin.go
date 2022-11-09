@@ -19,12 +19,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// Parameters that control test behavior.
-type updatePinParams struct {
-	// Specifies whether to use user secret stash.
-	useUserSecretStash bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: UpdatePin,
@@ -38,15 +32,11 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
 		SoftwareDeps: []string{"pinweaver"},
 		Params: []testing.Param{{
-			Name: "with_vk",
-			Val: updatePinParams{
-				useUserSecretStash: false,
-			},
+			Name:    "with_vk",
+			Fixture: "vkAuthSessionFixture",
 		}, {
-			Name: "with_uss",
-			Val: updatePinParams{
-				useUserSecretStash: true,
-			},
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
 		}},
 	})
 }
@@ -61,7 +51,6 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 		pinLabel      = "test-pin"
 	)
 
-	userParam := s.Param().(updatePinParams)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -85,16 +74,6 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 	}
 	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
-	}
-
-	if userParam.useUserSecretStash {
-		// Enable the UserSecretStash experiment for the duration of the test by
-		// creating a flag file that's checked by cryptohomed.
-		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-		if err != nil {
-			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-		}
-		defer cleanupUSSExperiment(ctxForCleanUp)
 	}
 
 	// Create and mount the persistent user.

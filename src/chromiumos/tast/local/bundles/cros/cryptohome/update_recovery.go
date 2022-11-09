@@ -32,6 +32,7 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		// TODO(b/195385797): Run on gooey when the bug is fixed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
+		Fixture:      "ussAuthSessionFixture",
 	})
 }
 
@@ -72,14 +73,6 @@ func UpdateRecovery(ctx context.Context, s *testing.State) {
 	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
-
-	// Enable the UserSecretStash experiment for the duration of the test by
-	// creating a flag file that's checked by cryptohomed.
-	cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-	if err != nil {
-		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-	}
-	defer cleanupUSSExperiment(ctxForCleanUp)
 
 	// Create and mount the persistent user.
 	_, authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
