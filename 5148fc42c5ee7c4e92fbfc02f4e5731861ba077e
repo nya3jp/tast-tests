@@ -87,6 +87,24 @@
       "parentUuid": "39509f5f_c50e6c76",
       "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b789e5_b136cc4e",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-11-09T00:46:06Z",
+      "side": 1,
+      "message": "Do you think it would be better to just switch to `modemmanager.NewModem` instead then, and let the individual tests worry about if they have a valid SIM present? Additionally, I could add a separate `SwitchToValidSimSlot` method to try to find a valid SIM but not raise an error here if one doesn\u0027t exist.",
+      "parentUuid": "901d458c_0bb24bb1",
+      "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
