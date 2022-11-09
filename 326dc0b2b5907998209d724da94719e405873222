@@ -81,6 +81,24 @@
       "parentUuid": "e95bedc0_19dd4837",
       "revId": "326dc0b2b5907998209d724da94719e405873222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d00de97_9370b70e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-09T09:37:59Z",
+      "side": 1,
+      "message": "Thanks for this change!",
+      "parentUuid": "abe0d75c_9f42bbca",
+      "revId": "326dc0b2b5907998209d724da94719e405873222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

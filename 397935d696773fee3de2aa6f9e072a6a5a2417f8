@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d113fb0c_0194f9fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-09T09:37:59Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549dcf16_47354ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-09T09:37:59Z",
+      "side": 1,
+      "message": "Please add yourself as an author as well.\nOr if you are the owner of the policy, you can add yourself and your team as owner, and you can remove me from here.",
+      "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
