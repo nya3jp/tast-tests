@@ -22,6 +22,30 @@
       },
       "revId": "903bf8cde613021c3bed6a5f0738d6fcb8ba2685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d159146c_fac612af",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-09T19:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e7c8bb_4b727e3e",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 4
+      },
+      "revId": "903bf8cde613021c3bed6a5f0738d6fcb8ba2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
