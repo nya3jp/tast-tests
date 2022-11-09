@@ -199,7 +199,7 @@ func RestartModemWithHelper(ctx context.Context) error {
 	}
 
 	// Wait for MM to export the modem after rebooting
-	if _, err = modemmanager.NewModemWithSim(ctx); err != nil {
+	if _, err = modemmanager.NewModem(ctx); err != nil {
 		return errors.Wrap(err, "failed to get modem after reboot")
 	}
 	return nil

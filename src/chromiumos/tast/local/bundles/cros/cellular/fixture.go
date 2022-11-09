@@ -121,7 +121,7 @@ func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
 func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// If ModemManager isn't exporting a modem, it's possible that the modem has stopped responding due to
 	// b/247984538, attempt to force a restart of the modem on devices that support modemfwd-helpers.
-	if _, err := modemmanager.NewModemWithSim(ctx); err != nil && cellular.ModemHelperPathExists() {
+	if _, err := modemmanager.NewModem(ctx); err != nil && cellular.ModemHelperPathExists() {
 		testing.ContextLog(ctx, "No modem exported by ModemManager, attempting to restart the modem")
 		if err := cellular.RestartModemWithHelper(ctx); err != nil {
 			s.Fatal("Failed to restart modem: ", err)
