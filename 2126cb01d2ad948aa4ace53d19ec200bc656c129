@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919453e5_445a0fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T23:06:49Z",
+      "side": 1,
+      "message": "reserve time for all cleanup tasks, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 72,
+        "startChar": 17,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "2126cb01d2ad948aa4ace53d19ec200bc656c129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
