@@ -46,6 +46,30 @@
       },
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f942ef3_eea51834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T22:57:34Z",
+      "side": 1,
+      "message": "I still think the reason why we got confused is that there was a failing test, and we were investigating the failure. OTOH I don\u0027t have strong opposition if you find value in keeping this test. This can stay informational and don\u0027t add up to the Cq time.",
+      "parentUuid": "b8d23ecb_25b7f34c",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
