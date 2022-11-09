@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -35,9 +34,11 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: browser.TypeAsh,
+			Fixture: "quickAnswersLoggedInFixture",
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
+			Fixture:           "quickAnswersLoggedInFixtureLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               browser.TypeLacros,
 		}},
@@ -51,29 +52,25 @@ func DefinitionWithSimpleWord(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	bt := s.Param().(browser.Type)
-	opt := chrome.EnableFeatures("QuickAnswersAlwaysTriggerForSingleWord")
-	if bt == browser.TypeLacros {
-		opt = chrome.LacrosEnableFeatures("QuickAnswersAlwaysTriggerForSingleWord")
-	}
-	// Setup chrome session with the Quick Answers always trigger for single word feature flag enabled for any browser.
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opt)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-	defer closeBrowser(cleanupCtx)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-
 	if err := quickanswers.SetPrefValue(ctx, tconn, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
+
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
+	ui := uiauto.New(tconn)
 
 	// Open page with the simple query word on it.
 	const queryWord = "dog"
