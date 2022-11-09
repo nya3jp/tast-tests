@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc97421_53b9edb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-09T19:54:21Z",
+      "side": 1,
+      "message": "The DUT I\u0027m working with is now failing to connect to the lacros browser, line 205. Not sure what I\u0027m doing wrong. What step do I take to debug this? The ash browser tests are working.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "49f16ab542cadfc229a5a5ee98d8b916a6285550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
