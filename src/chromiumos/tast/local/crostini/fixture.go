@@ -208,6 +208,20 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeLargeContainer",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseyeWithLacros",
 		Desc:            "Install Crostini with Bullseye and enable Lacros",
 		Contacts:        []string{"clumptini+oncall@google.com"},
@@ -294,6 +308,11 @@ var preTestDataBullseye = &preTestData{
 var preTestDataBusterLC = &preTestData{
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
+}
+
+var preTestDataBullseyeLC = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBullseye,
 }
 
 // Differ returns an instance implementing the interface screenshot.Differ.
