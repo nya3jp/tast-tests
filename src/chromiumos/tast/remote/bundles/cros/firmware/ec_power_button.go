@@ -104,6 +104,7 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(shortPowerKeyPressDur)); err != nil {
 		return errors.Wrap(err, "failed to press power key on DUT")
 	}
+	h.DisconnectDUT(ctx)
 
 	testing.ContextLog(ctx, "Checking for S5 or G3 powerstate")
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S5", "G3"); err != nil {
@@ -170,6 +171,7 @@ func shutdownAndWake(ctx context.Context, h *firmware.Helper, shutDownDur time.D
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(shutDownDur)); err != nil {
 		return errors.Wrap(err, "failed to press power key on DUT")
 	}
+	h.DisconnectDUT(ctx)
 
 	testing.ContextLogf(ctx, "Checking for %v powerstates", expStates)
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, expStates...); err != nil {
@@ -219,9 +221,8 @@ func enablePowerd(ctx context.Context, h *firmware.Helper, status bool) error {
 		for scanner.Scan() {
 			errMsg = fmt.Sprintf("%s\n%s", errMsg, scanner.Text())
 		}
-		testing.ContextLogf(ctx, "Error message from %v %v cmd: %v", startOrStop, job, errMsg)
-		if errMsg != "" && !strings.Contains(errMsg, "Job is already running") {
-			return errors.Errorf("failed to %s job %v, got error: %s", startOrStop, job, errMsg)
+		if err := cmd.Wait(); err != nil && !strings.Contains(errMsg, "Job is already running") {
+			return errors.Wrapf(err, "failed to %s job %v, got error: %s", startOrStop, job, errMsg)
 		}
 		return nil
 	}
@@ -249,8 +250,21 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 
 	// Make sure fwupd and powerd are running again after test.
 	defer func() {
+		if err := h.EnsureDUTBooted(ctx); err != nil {
+			if reterr != nil {
+				testing.ContextLog(ctx, "Failed to ensure dut booted: ", err)
+			} else {
+				reterr = errors.Wrap(err, "failed to ensure dut booted")
+			}
+			return
+		}
 		if err := enablePowerd(ctx, h, true); err != nil {
-			reterr = errors.Wrap(err, "failed to restart powerd after test end")
+			if reterr != nil {
+				testing.ContextLog(ctx, "Failed to restart powerd after test end: ", err)
+			} else {
+				reterr = errors.Wrap(err, "failed to restart powerd after test end")
+			}
+			return
 		}
 	}()
 
@@ -266,10 +280,6 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 		return errors.Wrap(err, "failed shut down and wake with powerd")
 	}
 
-	if err := h.WaitConnect(ctx); err != nil {
-		return errors.Wrap(err, "failed to reconnect to DUT")
-	}
-
 	testing.ContextLog(ctx, "stopping powerd")
 	if err := enablePowerd(ctx, h, false); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
@@ -278,36 +288,6 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 	if err := shutdownAndWake(ctx, h, noPowerdDur, "G3"); err != nil {
 		return errors.Wrap(err, "failed shut down and wake with no powerd")
 	}
-
-	if err := h.WaitConnect(ctx); err != nil {
-		return errors.Wrap(err, "failed to reconnect to DUT")
-	}
-
-	testing.ContextLog(ctx, "starting powerd")
-	if err := enablePowerd(ctx, h, true); err != nil {
-		return errors.Wrap(err, "failed to start powerd")
-	}
-
-	if err := shutdownAndWake(ctx, h, powerdDur, "G3"); err != nil {
-		return errors.Wrap(err, "failed shut down and wake with powerd")
-	}
-
-	if err := h.WaitConnect(ctx); err != nil {
-		return errors.Wrap(err, "failed to reconnect to DUT")
-	}
-
-	testing.ContextLog(ctx, "stopping powerd")
-	if err := enablePowerd(ctx, h, false); err != nil {
-		return errors.Wrap(err, "failed to stop powerd")
-	}
-
-	if err := shutdownAndWake(ctx, h, noPowerdDur, "S5", "G3"); err != nil {
-		return errors.Wrap(err, "failed shut down and wake with no powerd")
-	}
-
-	if err := h.WaitConnect(ctx); err != nil {
-		return errors.Wrap(err, "failed to reconnect to DUT")
-	}
 	return nil
 }
 
@@ -315,6 +295,7 @@ func testRebootWithSettingPowerState(ctx context.Context, h *firmware.Helper) er
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateOff); err != nil {
 		return errors.Wrap(err, "failed to set 'power_state' to 'off'")
 	}
+	h.DisconnectDUT(ctx)
 
 	testing.ContextLog(ctx, "Waiting for G3 or S5 powerstate")
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
