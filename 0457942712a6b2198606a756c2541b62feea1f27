@@ -169,6 +169,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12e5d7ba_ade42c94",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T22:02:52Z",
+      "side": 1,
+      "message": "This is intel specific If I read the name correctly.\n\nCan we separate this function into multiple subfunction to increase readability?\n\n\nCan we either have pass soc to this function and call corresponding function accordingly or adjust archFields so that it remembers which function should be used to parse?\n\n```\nfunc parseSysfsMemory(...) (map[string]int, error){\n   result :\u003d ...\n   ...\n   output, err :\u003d os.ReadFile(file)\n   if err !\u003d nil {...}\n   soc, err :\u003d graphics.CPUFamily()\n   if err !\u003d nil {...}\n   if soc \u003d\u003d \"intel\" { return parseIntel(ctx, file) }\n   else if soc \u003d\u003d \"amd\" {return parseAmd(ctx, file) }\n   else if ...\n} \n```\nor \n```\nsocVal, parseFunc, ok :\u003d archFields[soc]\nif !ok {...}\n\nfor _, fieldName :\u003d range socVal {\n    ...\n    parsedResults, err :\u003d parseFunc(ctx, filePath)\n    if err !\u003d nil {...}\n    if byte, exists :\u003d ... {\n    }\n}\n```",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13445b3e_a19a9d72",
         "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
         "patchSetId": 11
@@ -180,6 +203,30 @@
       "writtenOn": "2022-11-09T21:47:34Z",
       "side": 1,
       "message": "reads the memory file",
+      "range": {
+        "startLine": 245,
+        "startChar": 16,
+        "endLine": 245,
+        "endChar": 90
+      },
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ef5b60_4fd3c8fa",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T22:02:52Z",
+      "side": 1,
+      "message": "Sorry, please ignore this.",
+      "parentUuid": "13445b3e_a19a9d72",
       "range": {
         "startLine": 245,
         "startChar": 16,
