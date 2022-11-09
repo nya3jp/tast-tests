@@ -325,17 +325,11 @@ func testFileAttachedForBrowserAndFile(
 		s.Fatal("Failed to get window of picker: ", err)
 	}
 
-	// The scanning label (scan in progress) and the scan allowed labels quickly disappear after they are
-	// shown (after 2, resp. 1 second), so we asynchronously check for their existence.
-	scanLabelShownChan := make(chan error, 1)
+	// The scan allowed label quickly disappears after it is shown (after 1 second), so we asynchronously check for its existence.
 	scanAllowedShownChan := make(chan error, 1)
-	if !testParams.AllowsImmediateDelivery && testParams.ScansEnabled {
-		// 30 seconds to give time for opening file.
-		go checkWaitUntilExists(ctx, ui, 30*time.Second, scanLabelShownChan, scanningLabelFinder())
-		if !shouldBlockUpload {
-			// This dialog is shown only after scanning is complete, so we add ScanningTimeOut.
-			go checkWaitUntilExists(ctx, ui, helpers.ScanningTimeOut+30*time.Second, scanAllowedShownChan, scanAllowedLabelFinder())
-		}
+	if !testParams.AllowsImmediateDelivery && testParams.ScansEnabled && !shouldBlockUpload {
+		// This dialog is shown only after scanning is complete, so we add ScanningTimeOut.
+		go checkWaitUntilExists(ctx, ui, helpers.ScanningTimeOut, scanAllowedShownChan, scanAllowedLabelFinder())
 	}
 
 	// Open file in test_dir.
@@ -355,7 +349,7 @@ func testFileAttachedForBrowserAndFile(
 		s.Fatal("Failed to wait for File picker to close: ", err)
 	}
 
-	verifyUIForFileAttached(ctx, scanLabelShownChan, scanAllowedShownChan, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui)
+	verifyUIForFileAttached(ctx, scanAllowedShownChan, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Ensure file was or was not attached, by checking javascript output.
@@ -401,10 +395,6 @@ func scanningDialogFinder() *nodewith.Finder {
 	return nodewith.HasClass("DialogClientView").First()
 }
 
-func scanningLabelFinder() *nodewith.Finder {
-	return nodewith.Role(role.StaticText).HasClass("Label").NameStartingWith("Checking").Ancestor(scanningDialogFinder())
-}
-
 func scanAllowedLabelFinder() *nodewith.Finder {
 	return nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder()).NameContaining("file will be uploaded")
 }
@@ -421,7 +411,6 @@ func getErrorFromChannel(ctx context.Context, channel <-chan error) error {
 
 func verifyUIForFileAttached(
 	ctx context.Context,
-	scanLabelShownChan,
 	scanAllowedShownChan <-chan error,
 	shouldBlockUpload bool,
 	params helpers.TestFileParams,
@@ -433,20 +422,10 @@ func verifyUIForFileAttached(
 	ui *uiauto.Context) {
 	// Check whether the scanning dialog is shown correctly.
 	if !testParams.AllowsImmediateDelivery && testParams.ScansEnabled {
-		// Wait for scanning dialog to show and complete scanning.
-		// 1. Wait until scanning has started.
-		if err := getErrorFromChannel(ctx, scanLabelShownChan); err != nil {
-			s.Fatal("Did not show scanning dialog: ", err)
-		}
-		// 2. Wait until scanning is finished.
-		if err := ui.WithTimeout(helpers.ScanningTimeOut).WithInterval(200 * time.Millisecond).WaitUntilGone(scanningLabelFinder())(ctx); err != nil {
-			s.Fatal("Scanning is not yet complete: ", err)
-		}
-
 		if shouldBlockUpload {
 			// Check that a blocked verdict is shown.
 			blockedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder()).NameContaining(params.UlBlockLabel)
-			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(blockedLabelTextFinder)(ctx); err != nil {
+			if err := ui.WithTimeout(helpers.ScanningTimeOut).WaitUntilExists(blockedLabelTextFinder)(ctx); err != nil {
 				s.Fatal("Did not show scan blocked message: ", err)
 			}
 
