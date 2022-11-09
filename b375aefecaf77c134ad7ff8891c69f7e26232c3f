@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36cf462_58c366b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-11-09T06:41:21Z",
+      "side": 1,
+      "message": "The test is pretty hard for me to follow. I don\u0027t get the paraemterization difference and the flow through the test. Could you add a bit more of an explainer about the flow of the test",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
