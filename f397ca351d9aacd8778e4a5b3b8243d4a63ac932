@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509961f5_96f7322a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T21:50:51Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3969643 should be reason of the merge conflict.\nThough, here vkAuthSessionFixture fits better because this tests aims to test that VK users are not impacted by USS.\nNow with the above change it explicitly disables USS in the beginning. This is needed now because USS is enabled by default now.",
+      "revId": "f397ca351d9aacd8778e4a5b3b8243d4a63ac932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
