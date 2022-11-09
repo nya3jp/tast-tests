@@ -33,6 +33,24 @@
       "message": "nit: rename this, too, for consistency",
       "revId": "29c3e2076b656831014d828883e7bdca55cb57a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee52e3d_1bc3d6e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T21:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7211215f_b3fa8316",
+      "revId": "29c3e2076b656831014d828883e7bdca55cb57a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
