@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd98ddea_a969ad17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-09T00:11:13Z",
+      "side": 1,
+      "message": "nit: This seems fine, but it might be more clear and scalable to add a helper in health.go to return the NetworkType for a shill type instead, e.g.\n  defaultType \u003d health.NetworkTypeFronShillType(sType)\n  ...\n  if n.Type \u003d\u003d defaultType { ... }",
+      "revId": "199c41e329c79151be25aa2c59314534c538a441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a453bf_4210199e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-09T00:11:13Z",
+      "side": 1,
+      "message": "I think this would be more clear if we add a helper to find the matching entry in networks, then verify that it is connected, i.e.\n\nerr, network :\u003d findNetwork(networks, health.NetworkTypeFronShillType(sType), guid);\nif err !\u003d nil {\n  s.Fatal(\u0027No matching active network found for %v: %v\u0027, name, err);\n}\nif network.State !\u003d health.OnlineNS \u0026\u0026 network.State !\u003d health.ConnectedNS {\n  s.Fatal(\u0027Active network not connected, network: %v, State: %v\u0027, network.Name, network.State)\n}",
+      "revId": "199c41e329c79151be25aa2c59314534c538a441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
