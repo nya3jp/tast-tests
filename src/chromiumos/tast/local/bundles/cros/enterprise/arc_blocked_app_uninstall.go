@@ -122,10 +122,8 @@ func ARCBlockedAppUninstall(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Waiting for packages to uninstall")
-		for _, packageName := range packages {
-			if err := waitForUninstall(ctx, a, packageName); err != nil {
-				return rl.Exit("package not uninstalled", err)
-			}
+		if err := waitForUninstall(ctx, a, testPackage); err != nil {
+			return rl.Exit("package not uninstalled", err)
 		}
 
 		return nil
