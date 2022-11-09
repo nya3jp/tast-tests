@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81edcf29_ea966d48",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T08:17:30Z",
+      "side": 1,
+      "message": "I like \"expectation\" here, but I wonder if this has to be \"graphics\" by the Tast rulez?",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "8ad3eda92e77e64da32d3924f34ddd2ad046be05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
