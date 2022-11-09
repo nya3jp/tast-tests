@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "057f324e_871731f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T06:08:23Z",
+      "side": 1,
+      "message": "tast run -var\u003dgraphics.chameleon_ip\u003d1.2.3.4 $DUT graphics.IgtChamelium.kms_chamelium\ncheck /tmp/.igtrc on DUT",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7fafdd20_0d5a008f",
