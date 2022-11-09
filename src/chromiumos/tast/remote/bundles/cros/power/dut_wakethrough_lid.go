@@ -28,7 +28,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"servo"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
-		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      4 * time.Minute,
 	})
 }
