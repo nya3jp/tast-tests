@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -108,18 +109,18 @@ func makeList(packages map[string]bool) []string {
 	return packagesList
 }
 
-// CreateArcPolicyWithApps creates a policy with specified packages as force installs.
+// CreateArcPolicyWithApps creates a policy with specified packages with given install type.
 func CreateArcPolicyWithApps(packages []string, installType string) *policy.ArcPolicy {
-	var forceInstalledApps []policy.Application
+	var appsInPolicy []policy.Application
 	for _, packageName := range packages {
-		forceInstalledApps = append(forceInstalledApps, policy.Application{
+		appsInPolicy = append(appsInPolicy, policy.Application{
 			PackageName: packageName,
 			InstallType: installType,
 		})
 	}
 	arcPolicy := &policy.ArcPolicy{
 		Val: &policy.ArcPolicyValue{
-			Applications:              forceInstalledApps,
+			Applications:              appsInPolicy,
 			PlayStoreMode:             PlayStoreModeAllowList,
 			PlayLocalPolicyEnabled:    true,
 			PlayEmmApiInstallDisabled: true,
@@ -145,6 +146,23 @@ func WaitForInstallButton(ctx context.Context, d *ui.Device) (*ui.Object, error)
 		return nil, err
 	}
 	return installButton, nil
+}
+
+// PollAppPageState polls the Play Store app detail page for desired state.
+func PollAppPageState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, testPackage string, assertFn func(ctx context.Context) error, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
+			return testing.PollBreak(err)
+		}
+
+		err := assertFn(ctx)
+
+		if err != nil {
+			optin.ClosePlayStore(ctx, tconn)
+			testing.ContextLogf(ctx, "App page for %q not in desired state: %s", testPackage, err)
+		}
+		return err
+	}, &testing.PollOptions{Timeout: timeout, Interval: 10 * time.Second})
 }
 
 // EnsurePlayStoreEmpty ensures that the asset browser displays empty screen.
@@ -198,7 +216,7 @@ func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		}
 		defer act.Close()
 
-		return testing.Poll(ctx, func(ctx context.Context) error {
+		err = testing.Poll(ctx, func(ctx context.Context) error {
 			if running, err := act.IsRunning(ctx); err != nil {
 				return testing.PollBreak(err)
 			} else if !running {
@@ -232,6 +250,11 @@ func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 
 			// Play Store is considered to be empty when we didn't find an app blurb or app card.
 			return assertState(ctx, true, "no app in the catalog")
-		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
+		}, &testing.PollOptions{Interval: time.Second, Timeout: 30 * time.Second})
+
+		if err != nil {
+			optin.ClosePlayStore(ctx, tconn)
+		}
+		return err
 	}, &testing.PollOptions{Interval: 10 * time.Second})
 }
