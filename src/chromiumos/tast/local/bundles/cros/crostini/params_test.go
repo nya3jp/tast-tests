@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/crostini"
 )
 
-var testFilesFix = []string{
+var standardTests = []string{
 	"audio_basic.go",
 	"audio_playback_configurations.go",
 	"basic.go",
@@ -73,15 +73,15 @@ var testFilesFix = []string{
 	"xattrs.go",
 }
 
-var testFilesFixCustomTimeout = map[string]time.Duration{
+var standardTestsCustomTimeout = map[string]time.Duration{
 	// Audio playback configurations took about 6 minutes on model with echo reference
 	"audio_playback_configurations.go": 10 * time.Minute,
 }
 
 func TestFixTestParams(t *testing.T) {
-	for _, filename := range testFilesFix {
+	for _, filename := range standardTests {
 		var customTimeout time.Duration
-		if timeout, ok := testFilesFixCustomTimeout[filename]; ok {
+		if timeout, ok := standardTestsCustomTimeout[filename]; ok {
 			customTimeout = timeout
 		}
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
@@ -132,7 +132,6 @@ func TestExpensiveParams(t *testing.T) {
 	for filename, duration := range perfTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:       duration,
-			MinimalSet:    true,
 			IsNotMainline: true,
 			UseFixture:    true,
 			ExtraData:     perfTestsExtraData[filename],
@@ -142,9 +141,9 @@ func TestExpensiveParams(t *testing.T) {
 
 	for filename, duration := range mainlineExpensiveTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Timeout:    duration,
-			MinimalSet: true,
-			UseFixture: true,
+			Timeout:               duration,
+			UseFixture:            true,
+			BullseyeInformational: true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -159,10 +158,10 @@ var restartTests = map[string]time.Duration{
 func TestRestartParams(t *testing.T) {
 	for filename, duration := range restartTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Timeout:    duration,
-			MinimalSet: true,
-			Restart:    true,
-			UseFixture: true,
+			Timeout:               duration,
+			Restart:               true,
+			UseFixture:            true,
+			BullseyeInformational: true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -183,22 +182,24 @@ func TestAppTestParams(t *testing.T) {
 	for _, filename := range appTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{
 			{
-				Timeout:             15 * time.Minute,
-				MinimalSet:          true,
-				StableHardwareDep:   "crostini.CrostiniAppStable",
-				UnstableHardwareDep: "crostini.CrostiniAppUnstable",
-				UseLargeContainer:   true,
-				UseFixture:          true,
-				DeviceMode:          devicemode.TabletMode,
+				Timeout:               15 * time.Minute,
+				StableHardwareDep:     "crostini.CrostiniAppStable",
+				UnstableHardwareDep:   "crostini.CrostiniAppUnstable",
+				UseLargeContainer:     true,
+				UseFixture:            true,
+				DeviceMode:            devicemode.TabletMode,
+				NoBusterInTestName:    true,
+				BullseyeInformational: true,
 			},
 			{
-				Timeout:             15 * time.Minute,
-				MinimalSet:          true,
-				StableHardwareDep:   "crostini.CrostiniAppStable",
-				UnstableHardwareDep: "crostini.CrostiniAppUnstable",
-				UseLargeContainer:   true,
-				UseFixture:          true,
-				DeviceMode:          devicemode.ClamshellMode,
+				Timeout:               15 * time.Minute,
+				StableHardwareDep:     "crostini.CrostiniAppStable",
+				UnstableHardwareDep:   "crostini.CrostiniAppUnstable",
+				UseLargeContainer:     true,
+				UseFixture:            true,
+				DeviceMode:            devicemode.ClamshellMode,
+				NoBusterInTestName:    true,
+				BullseyeInformational: true,
 			}})
 		genparams.Ensure(t, filename, params)
 	}
