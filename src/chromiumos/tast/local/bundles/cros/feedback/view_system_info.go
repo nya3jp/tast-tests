@@ -60,7 +60,7 @@ func ViewSystemInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Click system and app info link.
-	systemAndAppInfo := nodewith.Name("system and app info").Role(
+	systemAndAppInfo := nodewith.Name("system & app info").Role(
 		role.Link).Ancestor(feedbackRootNode)
 	if err := ui.DoDefault(systemAndAppInfo)(ctx); err != nil {
 		s.Fatal("Failed to find and click system and app info link: ", err)
