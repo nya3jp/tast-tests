@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2132b6_c784de5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-09T20:48:24Z",
+      "side": 1,
+      "message": "LGTM\nThanks for splitting the CL into 2.",
+      "revId": "29c3e2076b656831014d828883e7bdca55cb57a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7211215f_b3fa8316",
