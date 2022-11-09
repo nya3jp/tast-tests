@@ -20,9 +20,11 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -43,7 +45,11 @@ func init() {
 		SetUpTimeout:    enrollmentSetupTimeout,
 		TearDownTimeout: 5 * time.Minute,
 		ResetTimeout:    15 * time.Second,
-		ServiceDeps:     []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
+		ServiceDeps: []string{
+			"tast.cros.policy.PolicyService",
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.graphics.ScreenshotService",
+		},
 	})
 }
 
@@ -206,11 +212,16 @@ func (*enrolledFixt) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
 func (*enrolledFixt) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func enroll(ctx context.Context, attemptDir string, dut *dut.DUT, rpcHint *testing.RPCHint, fdmsDir string, vpdOK bool) (retErr error) {
+	// Reserve time for cleaning up and copying the logs from the DUT.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cl, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
-	defer cl.Close(ctx)
+	defer cl.Close(cleanupCtx)
 
 	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
@@ -221,7 +232,7 @@ func enroll(ctx context.Context, attemptDir string, dut *dut.DUT, rpcHint *testi
 	}
 
 	ok := false
-	defer func() {
+	defer func(ctx context.Context) {
 		if !ok {
 			if _, err := policyClient.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
 				Path: fdmsDir,
@@ -233,7 +244,7 @@ func enroll(ctx context.Context, attemptDir string, dut *dut.DUT, rpcHint *testi
 				}
 			}
 		}
-	}()
+	}(cleanupCtx)
 
 	// Always dump the logs.
 	defer func(ctx context.Context) {
@@ -258,7 +269,19 @@ func enroll(ctx context.Context, attemptDir string, dut *dut.DUT, rpcHint *testi
 		if err := linuxssh.GetFile(ctx, dut.Conn(), fdmsDir, fdmsDirHost, linuxssh.DereferenceSymlinks); err != nil {
 			testing.ContextLog(ctx, "Failed to dump FakeDMS dir: ", err)
 		}
-	}(ctx)
+	}(cleanupCtx)
+
+	defer func(ctx context.Context) {
+		if !ok {
+			screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+			attemptNumber := path.Base(attemptDir)
+			if _, err := screenshotService.CaptureScreenshot(ctx,
+				&graphics.CaptureScreenshotRequest{FilePrefix: "enrollment" + attemptNumber},
+			); err != nil {
+				testing.ContextLog(ctx, "Failed to capture screenshot: ", err)
+			}
+		}
+	}(cleanupCtx)
 
 	pJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
