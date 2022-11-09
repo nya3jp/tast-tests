@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5224fdd7_066ec726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T01:07:16Z",
+      "side": 1,
+      "message": "Can we do \n\n```\ncr, err :\u003d chrome.New(ctx, ..)\ndefer cr.Close(ctx)\n```\n\nhere and yield the desired result?",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f98ec9ba_b8c20130",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
         "patchSetId": 14
