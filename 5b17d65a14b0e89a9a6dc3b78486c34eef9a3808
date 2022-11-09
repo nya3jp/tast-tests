@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58f0d181_29b14775",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T23:45:31Z",
+      "side": 1,
+      "message": "This is exactly what I concern. I will add automation core team to review this CL to see if there is anyway to limit this function to be only used for a shortlisted tests.",
+      "parentUuid": "6c4167fe_93cb1795",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60063b8_a6f22a35",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
         "patchSetId": 5

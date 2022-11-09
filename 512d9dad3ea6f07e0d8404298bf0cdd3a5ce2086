@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81797408_0a47989c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T23:45:31Z",
+      "side": 1,
+      "message": "Hi Seewai, can you help review this CL?\n\nIn the fixture it disables rootfs permanently, causing the following tests running in a different setup. If `disable rootfs` is not default in Tast (I feel it should be), it can potentially hide issues from other teams.",
+      "revId": "512d9dad3ea6f07e0d8404298bf0cdd3a5ce2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
