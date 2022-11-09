@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4dab1b_4222f314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T02:27:17Z",
+      "side": 1,
+      "message": "Thanks. Can you please mark this cl as WIP or revert it?",
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cf90618_73cabe93",
