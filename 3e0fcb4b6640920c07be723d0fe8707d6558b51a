@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981fc06d_ff5c3a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T02:30:33Z",
+      "side": 1,
+      "message": "Make Alvin review new Inputs changes. Thanks.",
+      "revId": "3e0fcb4b6640920c07be723d0fe8707d6558b51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
