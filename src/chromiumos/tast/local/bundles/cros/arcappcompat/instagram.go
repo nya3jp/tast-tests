@@ -9,13 +9,16 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -30,6 +33,16 @@ var touchviewLaunchForInstagram = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForInstagram},
 }
 
+// clamshellAppSpecificTestsForInstagram are placed here.
+var clamshellAppSpecificTestsForInstagram = []testutil.TestCase{
+	{Name: "Clamshell: Signout app", Fn: signOutOfInstagram, Timeout: testutil.SignoutTestCaseTimeout},
+}
+
+// touchviewAppSpecificTestsForInstagram are placed here.
+var touchviewAppSpecificTestsForinstagram = []testutil.TestCase{
+	{Name: "Touchview: Signout app", Fn: signOutOfInstagram, Timeout: testutil.SignoutTestCaseTimeout},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Instagram,
@@ -41,8 +54,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForInstagram,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:      clamshellLaunchForInstagram,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForInstagram,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -53,8 +67,9 @@ func init() {
 		}, {
 			Name: "tablet_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForInstagram,
-				CommonTests: testutil.TouchviewCommonTests,
+				LaunchTests:      touchviewLaunchForInstagram,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForinstagram,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -65,8 +80,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForInstagram,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:      clamshellLaunchForInstagram,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForInstagram,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -77,8 +93,9 @@ func init() {
 		}, {
 			Name: "vm_tablet_mode_default",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForInstagram,
-				CommonTests: testutil.TouchviewCommonTests,
+				LaunchTests:      touchviewLaunchForInstagram,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForinstagram,
 			},
 			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -89,8 +106,9 @@ func init() {
 		}, {
 			Name: "clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForInstagram,
-				ReleaseTests: testutil.ClamshellReleaseTests,
+				LaunchTests:      clamshellLaunchForInstagram,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
+				AppSpecificTests: clamshellAppSpecificTestsForInstagram,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -101,8 +119,9 @@ func init() {
 		}, {
 			Name: "tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForInstagram,
-				ReleaseTests: testutil.TouchviewReleaseTests,
+				LaunchTests:      touchviewLaunchForInstagram,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
+				AppSpecificTests: touchviewAppSpecificTestsForinstagram,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -113,8 +132,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForInstagram,
-				ReleaseTests: testutil.ClamshellReleaseTests,
+				LaunchTests:      clamshellLaunchForInstagram,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
+				AppSpecificTests: clamshellAppSpecificTestsForInstagram,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -125,8 +145,9 @@ func init() {
 		}, {
 			Name: "vm_tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForInstagram,
-				ReleaseTests: testutil.TouchviewReleaseTests,
+				LaunchTests:      touchviewLaunchForInstagram,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
+				AppSpecificTests: touchviewAppSpecificTestsForinstagram,
 			},
 			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -155,45 +176,29 @@ func Instagram(ctx context.Context, s *testing.State) {
 // launchAppForInstagram verifies Instagram is logged in and
 // verify Instagram reached main activity page of the app.
 func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		captchaID           = "recaptcha-anchor"
-		dismissButtonID     = "android:id/button2"
-		enterEmailAddressID = "com.instagram.android:id/login_username"
-		loginButtonID       = "com.instagram.android:id/log_in_button"
-		loginID             = "com.instagram.android:id/button_text"
-		notNowID            = "android:id/autofill_save_no"
-		passwordID          = "com.instagram.android:id/password"
-	)
+	const waitForActiveInputTime = time.Second * 10
 
-	// Check for login button.
-	loginButton := d.Object(ui.ID(loginButtonID))
-	if err := loginButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("LoginButton doesn't exist: ", err)
-	} else if err := loginButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on loginButton: ", err)
+	// Click on Log in button.
+	loginBtn := uidetection.TextBlock([]string{"Log", "in"})
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for login button",
+		ud.WaitUntilExists(loginBtn),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(loginBtn),
+		action.Sleep(testutil.DefaultUITimeout),
+	)(ctx); err != nil {
+		s.Log("Failed to find login button: ", err)
 	}
 
-	// Enter email id.
-	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("EnterEmailAddress does not exist: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
-	}
-
-	// Click on emailid text field until the emailid text field is focused.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
-			return errors.New("email text field not focused yet")
-		} else if !emailIDFocused {
-			enterEmailAddress.Click(ctx)
-			return errors.New("email text field not focused yet")
+	// Press tab key three times to click on enter phone number, email or username.
+	for count := 0; count < 3; count++ {
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_TAB: ", err)
+		} else {
+			s.Log("Entered KEYCODE_TAB")
+			d.WaitForIdle(ctx, testutil.DefaultUITimeout)
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Fatal("Failed to focus EmailId: ", err)
 	}
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -206,24 +211,13 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	s.Log("Entered username")
 
-	// Enter password.
-	enterPassword := d.Object(ui.ID(passwordID))
-	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("EnterPassword does not exist: ", err)
-	} else if err := enterPassword.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterPassword: ", err)
-	}
-	// Click on password text field until the password text field is focused.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
-			return errors.New("password text field not focused yet")
-		} else if !pwdFocused {
-			enterPassword.Click(ctx)
-			return errors.New("password text field not focused yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Fatal("Failed to focus password: ", err)
+	// Press tab to click on password field
+	d.WaitForIdle(ctx, testutil.DefaultUITimeout)
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_TAB: ", err)
+	} else {
+		s.Log("Entered KEYCODE_TAB")
+		d.WaitForIdle(ctx, testutil.DefaultUITimeout)
 	}
 
 	password := s.RequiredVar("arcappcompat.Instagram.password")
@@ -232,47 +226,109 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	s.Log("Entered password")
 
-	// Check for signInButton.
-	signInButton := d.Object(ui.ID(loginID))
-	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("signInButton does not exist")
-	}
-	// Click on signIn Button until not now button exist.
-	signInButton = d.Object(ui.ID(loginID))
-	notNowButton := d.Object(ui.ID(notNowID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := notNowButton.Exists(ctx); err != nil {
-			signInButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Log("notNowButton doesn't exist: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
+	// Press enter button to click on sign in button.
+	d.WaitForIdle(ctx, testutil.DefaultUITimeout)
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ENTER")
+		d.WaitForIdle(ctx, testutil.DefaultUITimeout)
 	}
 
 	// Click on dimiss button to save password.
-	dimissButton := d.Object(ui.ID(dismissButtonID))
-	if err := dimissButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("dimissButton doesn't exists: ", err)
-	} else if err := dimissButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on dimissButton: ", err)
-	}
+	testutil.HandleSavePasswordToGoogle(ctx, s, tconn, a, d, appPkgName)
 
-	// Check for captcha.
-	checkForCaptcha := d.Object(ui.ID(captchaID))
-	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("CheckForCaptcha does not exist")
-	} else {
-		s.Log("CheckForCaptcha does exist")
-		return
-	}
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
+}
+
+// signOutOfInstagram verifies app is signed out.
+func signOutOfInstagram(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		avatarIconID      = "com.instagram.android:id/tab_avatar"
+		optionsIconDes    = "Options"
+		settingsDes       = "Settings"
+		textViewClassName = "android.widget.TextView"
+		logoutText        = "Log out"
+		scrollID          = "com.instagram.android:id/recycler_view"
+		notNowText        = "Not Now"
+	)
+
+	// Check for avatarIcon.
+	avatarIcon := d.Object(ui.ID(avatarIconID))
+	if err := avatarIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("avatarIcon doesn't exist and skipped logout: ", err)
+		return
+	} else if err := avatarIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on avatarIcon: ", err)
+	}
+
+	// Click on hambergerIcon.
+	hamburgerIcon := d.Object(ui.DescriptionMatches("(?i)" + optionsIconDes))
+	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("hamburgerIcon doesn't exist and skipped logout: ", err)
+		return
+	} else if err := hamburgerIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on hamburgerIcon: ", err)
+	}
+
+	// Click on settings icon.
+	settingsIcon := d.Object(ui.DescriptionMatches("(?i)" + settingsDes))
+	if err := settingsIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("settingsIcon doesn't exist: ", err)
+	} else if err := settingsIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on settingsIcon: ", err)
+	}
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Scroll until logout is visible.
+	scrollLayout := d.Object(ui.ID(scrollID), ui.Scrollable(true))
+	deviceMode := "clamshell"
+	if tabletModeEnabled {
+		deviceMode = "tablet"
+		scrollLayout = d.Object(ui.ID(scrollID))
+	}
+	s.Logf("device %v mode", deviceMode)
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("scrollLayout doesn't exist and skipped logout: ", err)
+		return
+	}
+
+	logOutOfInstagram := d.Object(ui.ClassName(textViewClassName), ui.TextMatches("(?i)"+logoutText))
+	scrollLayout.ScrollTo(ctx, logOutOfInstagram)
+	if err := logOutOfInstagram.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("logOutOfInstagram doesn't exist: ", err)
+	} else if err := logOutOfInstagram.Click(ctx); err != nil {
+		s.Fatal("Failed to click on logOutOfInstagram: ", err)
+	}
+	// Click on not now button to save login info.
+	notNowButton := d.Object(ui.TextMatches("(?i)" + notNowText))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
+	// Click on log out button again.
+	logoutBtn := d.Object(ui.TextMatches("(?i)" + logoutText))
+	if err := logoutBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("logoutBtn doesn't exist: ", err)
+	} else if err := logoutBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on logoutBtn: ", err)
+	}
+
+	// Click on not now button to save login info again.
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 }
