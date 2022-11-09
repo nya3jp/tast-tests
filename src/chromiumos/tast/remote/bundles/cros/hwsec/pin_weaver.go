@@ -33,7 +33,7 @@ type pinWeaverWithAuthAPIParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PINWeaverWithAuthAPI,
+		Func: PINWeaver,
 		Desc: "Checks that LE credentials work with AuthSession, AuthFactor and USS",
 		Contacts: []string{
 			"hardikgoyal@chromium.org", // Test author
@@ -89,7 +89,7 @@ const (
 	testUser2                = "testUser2@example.com"
 )
 
-func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
+func PINWeaver(ctx context.Context, s *testing.State) {
 	userParam := s.Param().(pinWeaverWithAuthAPIParam)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
