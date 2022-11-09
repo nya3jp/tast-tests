@@ -274,7 +274,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 				tconnAsh,
 				helpers.ScanningTimeOut,
 				ash.WaitIDContains("notification-ui-manager"),
-				ash.WaitMessageContains(dlFileName),
+				ash.WaitTitleDoesntContain("Scanning"),
 			)
 			if err != nil {
 				s.Fatalf("Failed to wait for notification with title %q: %v", "", err)

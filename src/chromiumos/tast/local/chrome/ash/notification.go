@@ -74,6 +74,13 @@ func WaitTitleContains(titleContains string) waitPredicate {
 	}
 }
 
+// WaitTitleDoesntContain creates a predicate that checks whether the notification's title doesn't contain the given text.
+func WaitTitleDoesntContain(excludeTitleContains string) waitPredicate {
+	return func(n *Notification) bool {
+		return !strings.Contains(n.Title, excludeTitleContains)
+	}
+}
+
 // WaitMessageContains creates a predicate that checks whether the notification's message contains the given text.
 func WaitMessageContains(messageContains string) waitPredicate {
 	return func(n *Notification) bool {

@@ -40,10 +40,10 @@ type TestFileParams struct {
 }
 
 // ScanningTimeOut describes the typical time out for a scan.
-const ScanningTimeOut = 5 * time.Minute
+const ScanningTimeOut = 30 * time.Second
 
 // DmTokenTimeOut describes how long we wait for a valid dm token.
-const DmTokenTimeOut = 10 * time.Minute
+const DmTokenTimeOut = 1 * time.Minute
 
 // GetTestFileParams returns the list of parameters for the files that should be tested.
 func GetTestFileParams() []TestFileParams {
@@ -51,28 +51,28 @@ func GetTestFileParams() []TestFileParams {
 		{
 			TestName:      "Encrypted malware",
 			FileName:      "unknown_malware_encrypted.zip",
-			UlBlockLabel:  "encrypted",
+			UlBlockLabel:  "This file is encrypted. Ask its owner to decrypt.",
 			IsBad:         true,
 			IsUnscannable: true,
 		},
 		{
 			TestName:      "Unknown malware",
 			FileName:      "unknown_malware.zip",
-			UlBlockLabel:  "try again",
+			UlBlockLabel:  "This file or your device doesn’t meet some of your organization’s security policies. Check with your admin on what needs to be fixed.",
 			IsBad:         true,
 			IsUnscannable: false,
 		},
 		{
 			TestName:      "Known malware",
 			FileName:      "content.exe",
-			UlBlockLabel:  "try again",
+			UlBlockLabel:  "This file or your device doesn’t meet some of your organization’s security policies. Check with your admin on what needs to be fixed.",
 			IsBad:         true,
 			IsUnscannable: false,
 		},
 		{
 			TestName:      "DLP clear text",
 			FileName:      "10ssns.txt",
-			UlBlockLabel:  "try again",
+			UlBlockLabel:  "This file or your device doesn’t meet some of your organization’s security policies. Check with your admin on what needs to be fixed.",
 			IsBad:         true,
 			IsUnscannable: false,
 		},
