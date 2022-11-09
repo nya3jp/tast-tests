@@ -16,6 +16,52 @@
       "message": "This test case was mostly based off crostini.AppVscode .\n\nAfter https://crrev.com/c/3868653 is merged I will need to change the buster fixtures to be bullseye before submitting",
       "revId": "c8ce3ee55fd0f09e416d3fa84c8ad4efbbcc22cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8802c40_8c17d01b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_from_file_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T04:30:41Z",
+      "side": 1,
+      "message": "I am assuming you add this yourself?\nyou need to add it to this list: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/params_test.go;l\u003d185;drc\u003dc43f8e7eb654ec48311f029d4721a165211c503a\n\nand run `TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini/` in chroot.\n\nSee",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "c8ce3ee55fd0f09e416d3fa84c8ad4efbbcc22cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c224c0_0f538a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_from_file_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T04:30:41Z",
+      "side": 1,
+      "message": "you may also need to close the app in the end of the test, otherwise it may affect other tests.\n\nCurrently we don\u0027t have a better way for cleanup. Maybe after restoring `lxd snapshot` is proved usable?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "c8ce3ee55fd0f09e416d3fa84c8ad4efbbcc22cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
