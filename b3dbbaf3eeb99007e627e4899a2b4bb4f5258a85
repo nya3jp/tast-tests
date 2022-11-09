@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5291e6ad_13df3c2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T08:14:16Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "b3dbbaf3eeb99007e627e4899a2b4bb4f5258a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1ebbf3_675b6fca",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T08:14:16Z",
+      "side": 1,
+      "message": "Ah, here you have it. I think it might be best to move this at the beginning of the function and always spew.",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 23
+      },
+      "revId": "b3dbbaf3eeb99007e627e4899a2b4bb4f5258a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
