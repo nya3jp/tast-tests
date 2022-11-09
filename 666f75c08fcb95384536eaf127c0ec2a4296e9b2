@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf616b0_6a7e52d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T07:42:07Z",
+      "side": 1,
+      "message": "LGTM for tast with one nit",
+      "revId": "666f75c08fcb95384536eaf127c0ec2a4296e9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931bb00e_e70af3b5",
+        "filename": "src/chromiumos/tast/local/hdcputils/shaka_player_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T07:42:07Z",
+      "side": 1,
+      "message": "nit: this should just be `m` and `s` below since there is no `m2` any more?",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 3
+      },
+      "revId": "666f75c08fcb95384536eaf127c0ec2a4296e9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
