@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf50f2f_8fa842ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-11-09T17:25:15Z",
+      "side": 1,
+      "message": "Removed previous tast owners b/c OOO",
+      "revId": "0c3904ff7e7778403f43527638bb6251badfeeae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
