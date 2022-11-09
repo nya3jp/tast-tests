@@ -2,31 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+package enterprise
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
-const (
-	loginPoolVar = "arc.managedAccountPool"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OptinManaged,
+		Func:         ARCProvisioning,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "A functional test that verifies OptIn flow for managed user",
+		Desc:         "A functional test that verifies provisioning flow for managed user",
 		Contacts: []string{
 			"arc-commercial@google.com",
 			"mhasank@chromium.org",
@@ -34,7 +29,7 @@ func init() {
 		},
 		Attr: []string{"group:mainline", "group:arc-functional"},
 		VarDeps: []string{
-			loginPoolVar,
+			arcent.LoginPoolVar,
 		},
 		SoftwareDeps: []string{
 			"chrome",
@@ -57,21 +52,19 @@ func init() {
 	})
 }
 
-func OptinManaged(ctx context.Context, s *testing.State) {
+// ARCProvisioning verifies that ARC can successfully provision with a managed account.
+func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout         = 4 * time.Minute
 		provisioningTimeout = 3 * time.Minute
 	)
 
-	// Actual username and password are read from vars/arc.yaml.
-	creds, err := chrome.PickRandomCreds(s.RequiredVar(loginPoolVar))
+	creds, err := chrome.PickRandomCreds(s.RequiredVar(arcent.LoginPoolVar))
 	if err != nil {
 		s.Fatal("Failed to get login creds: ", err)
 	}
 
-	// The policy means to force ARC to be enabled.
 	policies := []policy.Policy{&policy.ArcEnabled{Val: true, Stat: policy.StatusSet}}
-
 	fdms, err := policyutil.SetUpFakePolicyServer(ctx, s.OutDir(), creds.User, policies)
 	if err != nil {
 		s.Fatal("Failed to setup fake policy server: ", err)
@@ -79,7 +72,12 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 	defer fdms.Stop(ctx)
 
 	gaiaLogin := chrome.GAIALogin(creds)
-	cr, err := setupManagedChrome(ctx, gaiaLogin, fdms)
+	cr, err := chrome.New(ctx,
+		gaiaLogin,
+		chrome.DMSPolicy(fdms.URL),
+		chrome.ARCSupported(),
+		chrome.UnRestrictARCCPU(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -99,20 +97,4 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 		}
 		s.Fatal("Managed provisioning failed: ", err)
 	}
-}
-
-func setupManagedChrome(ctx context.Context, gaiaLogin chrome.Option, fdms *fakedms.FakeDMS) (*chrome.Chrome, error) {
-	// If fdms forces ARC opt-in, then ARC opt-in will start in background, right after chrome is created.
-	cr, err := chrome.New(ctx,
-		gaiaLogin,
-		chrome.DMSPolicy(fdms.URL),
-		chrome.ARCSupported(),
-		chrome.UnRestrictARCCPU(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...))
-	if err != nil {
-		err = errors.Wrap(err, "failed to create Chrome")
-		return nil, err
-	}
-
-	return cr, nil
 }
