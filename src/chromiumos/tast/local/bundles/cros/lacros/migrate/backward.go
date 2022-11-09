@@ -20,7 +20,7 @@ import (
 
 // BackwardRun migrates user profile from Lacros to Ash and waits until migration is marked as completed by Ash.
 // Once the migration is completed, it will relaunch Ash Chrome and return the new `chrome.Chrome` instance.
-func BackwardRun(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
+func BackwardRun(ctx context.Context, chromeOpts []chrome.Option, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -31,12 +31,11 @@ func BackwardRun(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome,
 	// In order to obtain a valid *Chrome value for the test to continue
 	// with, we restart Chrome once more after profile migration.
 	testing.ContextLog(ctx, "Restarting for profile migration")
-	chromeOpts := []chrome.Option{
+	chromeOpts = append(chromeOpts,
 		chrome.KeepState(),
 		chrome.RemoveNotification(false),
-		chrome.EnableFeatures("LacrosProfileBackwardMigration"),
-		chrome.DisableFeatures("LacrosSupport"),
-	}
+		chrome.DisableFeatures("LacrosSupport")
+	)
 
 	crDoNotUse, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {

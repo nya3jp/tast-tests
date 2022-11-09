@@ -23,9 +23,9 @@ import (
 // LacrosFirstRunPath is the path to `First Run` sentinel file in Lacros profile dir.
 const LacrosFirstRunPath = "/home/chronos/user/lacros/First Run"
 
-// Run migrates user profile from Ash to Lacros and wait until migration is marked as completed by Ash.
+// RunWithOptions migrates user profile from Ash to Lacros and wait until migration is marked as completed by Ash.
 // Once the migration is completed, it will relaunch Ash Chrome and returns the new `chrome.Chrome` instance.
-func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
+func RunWithOptions(ctx context.Context, chromeOpts []chrome.Option, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -36,11 +36,11 @@ func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) 
 	// In order to obtain a valid *Chrome value for the test to continue
 	// with, we restart Chrome once more after profile migration.
 	testing.ContextLog(ctx, "Restarting for profile migration")
-	chromeOpts := []chrome.Option{
+	chromeOpts = append(chromeOpts,
 		chrome.KeepState(),
 		chrome.RemoveNotification(false),
 		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
-	}
+	)
 	opts = append(opts, lacrosfixt.ChromeOptions(chromeOpts...))
 	chromeOpts, err := lacrosfixt.NewConfig(opts...).Opts()
 	if err != nil {
@@ -81,6 +81,11 @@ func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) 
 	crDoNotUse = nil
 	testing.ContextLog(ctx, "Restarting after profile migration")
 	return chrome.New(ctx, chromeOpts...)
+}
+
+// Run calls RunWithOptions without any chrome options.
+func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
+	return RunWithOptions(ctx, []chrome.Option{}, opts)
 }
 
 // ClearMigrationState resets profile migration by running Ash with Lacros disabled.

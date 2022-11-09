@@ -7,6 +7,9 @@ package lacros
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/bundles/cros/lacros/migrate"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
@@ -16,37 +19,42 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BackwardMigrateBasic,
+		Func:         BackwardMigratePolicy,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test basic functionality of Lacros-to-Ash profile migration",
+		Desc:         "Test policy triggering of Lacros-to-Ash profile migration",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"lacros-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Params: []testing.Param{{
-			Name: "primary",
-			Val:  []lacrosfixt.Option{lacrosfixt.Mode(lacros.LacrosPrimary)},
-		}, {
-			Name: "only",
-			Val:  []lacrosfixt.Option{lacrosfixt.Mode(lacros.LacrosOnly)},
-		}},
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
-// BackwardMigrateBasic tests forward and then backward lacros migration.
-func BackwardMigrateBasic(ctx context.Context, s *testing.State) {
+func BackwardMigratePolicy(ctx context.Context, s *testing.State) {
+	fdms := s.FixtData().(*fakedms.FakeDMS)
+
 	if err := migrate.ClearMigrationState(ctx); err != nil {
 		s.Fatal("Failed to run Chrome to clear migration state: ", err)
 	}
 
-	forwardMigrate(ctx, s)
-	backwardMigrate(ctx, s)
+	blob := policy.NewBlob()
+
+	// TODO: blob.AddPolicy(policy.Lacros)
+
+	if err := fdms.WritePolicyBlob(blob); err != nil {
+		s.Fatal("Failed to write policy blob: ", err)
+	}
+
+	forwardMigrate(ctx, fdms, s)
+	backwardMigrate(ctx, fdms, s)
 }
 
-func forwardMigrate(ctx context.Context, s *testing.State) {
-	cr, err := migrate.Run(ctx, s.Param().([]lacrosfixt.Option))
+func forwardMigrate(ctx context.Context, fdms *fakedms.FakeDMS, s *testing.State) {
+	cr, err := migrate.RunWithOptions(ctx, []chrome.Options{
+		chrome.DMSPolicy(fdms.URL),
+	}, lacrosfixt.Mode(lacros.LacrosOnly))
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
 	}
@@ -55,10 +63,10 @@ func forwardMigrate(ctx context.Context, s *testing.State) {
 	migrate.VerifyLacrosLaunch(ctx, s, cr)
 }
 
-func backwardMigrate(ctx context.Context, s *testing.State) {
-	cr, err := migrate.BackwardRun(ctx,
-		[]chrome.Option{chrome.EnableFeatures("LacrosProfileBackwardMigration")},
-		s.Param().([]lacrosfixt.Option))
+func backwardMigrate(ctx context.Context, fdms *fakedms.FakeDMS, s *testing.State) {
+	cr, err := migrate.BackwardRun(ctx, []chrome.Options{
+		chrome.DMSPolicy(fdms.URL),
+	}, lacrosfixt.Mode(lacros.LacrosOnly))
 	if err != nil {
 		s.Fatal("Failed to backward migrate profile: ", err)
 	}
