@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc2e41f_0d2eeaff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:56:25Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "c0d17cd5_d115406b",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f97a0b8a_1b8ae345",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af636b5b_80c884e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:56:25Z",
+      "side": 1,
+      "message": "Thanks for checking and updating the comment!",
+      "parentUuid": "a648236e_cc67c463",
+      "range": {
+        "startLine": 23,
+        "startChar": 34,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95efad88_57f1cd1a",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "This code is actually still used. Look at line 234.",
       "parentUuid": "95efad88_57f1cd1a",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc670e2_66409df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:56:25Z",
+      "side": 1,
+      "message": "Ah I see it once I expand the rest of the file. Ack.",
+      "parentUuid": "aa92ed83_2db6efb3",
       "range": {
         "startLine": 38,
         "startChar": 0,
