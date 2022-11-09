@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808c6e2e_c4573441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-11-09T11:19:40Z",
+      "side": 1,
+      "message": "LGTM assuming that the merge conflict can be resolved trivially.\n(This Change is just adding one file. So hopefully the mechanical rebasing would work)",
+      "revId": "50d942431cd30eb8b199da1347135516c69d0ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
