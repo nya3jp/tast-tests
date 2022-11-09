@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "426239d7_924fa3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-09T04:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6781c80f_d1a69001",
+      "range": {
+        "startLine": 64,
+        "startChar": 145,
+        "endLine": 64,
+        "endChar": 191
+      },
+      "revId": "0a8977fc7f586003610cac3cd645e6b7a719d603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cdb4b0a_71e5f130",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-02T21:33:16Z",
       "side": 1,
       "message": "Looks very similar to RTCTestOptions. Can we consolidate it into one?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "0a8977fc7f586003610cac3cd645e6b7a719d603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fbff8d_ff4ec9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-11-09T04:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cdb4b0a_71e5f130",
       "range": {
         "startLine": 18,
         "startChar": 5,
