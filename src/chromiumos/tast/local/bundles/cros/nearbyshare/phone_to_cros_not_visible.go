@@ -27,7 +27,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"kyleshima@chromium.org",
 		},
-		Attr:         []string{"group:nearby-share"},
+		Attr:         []string{"group:cross-device", "cross-device_nearbyshare"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{

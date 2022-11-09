@@ -20,7 +20,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:    []string{"group:nearby-share"},
+		Attr:    []string{"group:cross-device", "cross-device_nearbyshare"},
 		Data:    []string{nearbysnippet.ZipName},
 		Timeout: 3 * time.Minute,
 	})
