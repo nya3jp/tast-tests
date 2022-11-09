@@ -39,6 +39,29 @@
       },
       "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af8b74f_b29e23c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:15:10Z",
+      "side": 1,
+      "message": "The commit message says this is used \"to test that the tethered connection is working\", but you just disconnected from the Tether hotspot above? I\u0027m not the best at reading go/Tast, can you clarify what\u0027s happening here?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
