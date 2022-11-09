@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170da144_302d580d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T21:47:33Z",
+      "side": 1,
+      "message": "I think in the test flow it makes more sense to have these lines after removing other factors, on line 337",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 0
+      },
+      "revId": "a99aec3a7aabb59fd382b35fdfd6f0dd56bad563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
