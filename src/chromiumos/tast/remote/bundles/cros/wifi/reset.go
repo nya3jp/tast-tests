@@ -23,7 +23,7 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_suspend"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Fixture:     "wificellFixt",
+		Fixture:     "wificellFixtWithCapture",
 		// For some Marvell DUT, this test may take more than 25 minutes.
 		// For WCN3990 device, this test may take more than 39 minutes.
 		Timeout: time.Minute * 45,
