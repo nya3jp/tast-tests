@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66566c6_2e1f00e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Nice work! You called out all the important questions I would have raised. Passing over to Kyle, who should be able to answer them.",
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e7593c7_18cfa86c",
@@ -36,6 +53,145 @@
         "startChar": 2,
         "endLine": 34,
         "endChar": 39
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58586e05_6f7d170f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Kyle, what do you think here?",
+      "parentUuid": "2e7593c7_18cfa86c",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b76628c_4ffc890b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "I keep using the word \"System Tray\", but given the existence of //chromiumos/tast/local/chrome/uiauto/quicksettings, perhaps \"QuickSettings\" is more apt/self-consistent here.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218d186d_e5222d58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Are you clicking the label or button here? https://screenshot.googleplex.com/9ngX8HnPGpvQ5SQ.png\n\nIf wifi is off, clicking the label or button will have the same effect: opening the Network quick settings.\n\nHowever, if wifi is on, clicking the label will open the Network quick settings, while clicking the button will turn off wifi.\n\nPlease clarify which one you\u0027re clicking here (it should most likely be the label).",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3fac47c_76654910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Networks",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b27624e_9c94769f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "nit: Please capitalize.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1cae12_90449cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Let\u0027s just say \"phone\" to be explicit?",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 61
       },
       "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -66,6 +222,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b793544_db394173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Nice callout Mark, thanks for keeping an eye out for brittle patterns. I will defer to Kyle and David here on what is best.\n\nIf we do keep this, I suggest printing the value of `deviceName` and the button text being search for so that test debuggers can easily see if there\u0027s a mismatch. (unless that is already provided by a failed build of `mobileNetworkView`, or a failed call to `ui.WaitUntilExists(mobileNetworkView)`?)",
+      "parentUuid": "4697117e_8cb584c8",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73e5b0e_815c22e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "same nit: please capitalize.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9371696_afaf4fab",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -77,6 +280,30 @@
       "writtenOn": "2022-11-09T01:00:44Z",
       "side": 1,
       "message": "Since the UITree also doesn\u0027t seem to have any exposure to the \"Connected\" label, this simply confirms that the connection has been successfully established by the change in Label to describe it as network settings. \n\nI think an improvement here could be to introduce a check for actual connection using a ping command on terminal like we do for .Basic.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82ec7ca_3d015445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:32:32Z",
+      "side": 1,
+      "message": "Nice callout again ;) I believe Kyle added an actual connection check in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4014816 so I\u0027ll let him chime in here.",
+      "parentUuid": "f9371696_afaf4fab",
       "range": {
         "startLine": 77,
         "startChar": 1,
