@@ -14,10 +14,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
@@ -142,9 +140,7 @@ func WindowCycleAllDesks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to cycle all desks windows: ", err)
 	}
 
-	// TODO(b/246782864): Use a proper wait for the desk animation.
-	// Make sure the desk animiation is finished.
-	if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for desk animation finished: ", err)
+	if err := ash.WaitUntilDesksFinishAnimating(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for desks to finish animating: ", err)
 	}
 }
