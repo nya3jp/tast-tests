@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4918296_3c2c28fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T21:54:51Z",
+      "side": 1,
+      "message": "nit: Core72 according to the bug?",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81662b8_9e90f00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T21:54:51Z",
+      "side": 1,
+      "message": "+2 with nits",
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83da1ef2_9ae0395b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T21:54:51Z",
+      "side": 1,
+      "message": "Both structures have the exact same comment. Can you explain the difference? I assume it depends on the chipset?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
