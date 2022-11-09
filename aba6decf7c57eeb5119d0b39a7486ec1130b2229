@@ -33,6 +33,42 @@
       "message": "nit: if you want, maybe run a shortened version of DesksCUJ to see if at least some of the metrics are populated?",
       "revId": "aba6decf7c57eeb5119d0b39a7486ec1130b2229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1b0db2_45d0a471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-09T22:43:41Z",
+      "side": 1,
+      "message": "Yes only collected in TPS CUJ tests.",
+      "parentUuid": "6030ee07_cc90c93b",
+      "revId": "aba6decf7c57eeb5119d0b39a7486ec1130b2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb38ffa_13c7b004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-09T22:43:41Z",
+      "side": 1,
+      "message": "I can see EventLatency data for MousePressed/MouseReleased/KeyPressed/KeyReleased, thanks!",
+      "parentUuid": "9652d4a6_5a69cdba",
+      "revId": "aba6decf7c57eeb5119d0b39a7486ec1130b2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
