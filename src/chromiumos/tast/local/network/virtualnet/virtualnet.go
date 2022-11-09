@@ -370,12 +370,6 @@ func CreateWifiRouterEnv(ctx context.Context, apIf string, m *shill.Manager, poo
 
 	// Trigger a scan and wait for shill to find this service. This may take some
 	// time.
-	if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
-		return nil, errors.Wrap(err, "failed to request an active scan")
-	}
-
-	// Trigger a scan and wait for shill to find this service. This may take some
-	// time.
 	testing.ContextLogf(ctx, "Waiting for WiFi service for %s in shill", ssid)
 	if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
 		return nil, errors.Wrap(err, "failed to request an active scan")
