@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ce335b_6f5df17d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T23:16:00Z",
+      "side": 1,
+      "message": "nit: can you be more specific? My understanding is that it\u0027s for StP2 and before, correct? Relative terms like \"old\" and \"new\" change meaning over time, so it\u0027s good to avoid them if possible.\n\nI see that if you follow the code to the definition of memoryAPIMagic you\u0027ll eventually find that information, but it\u0027s nice for the reader to just get the information directly.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9b600e_e94f57e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T23:16:00Z",
+      "side": 1,
+      "message": "same as above, can you be a bit more specific about what \"new\" means? JfP2 and more recent? Something like that?",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
