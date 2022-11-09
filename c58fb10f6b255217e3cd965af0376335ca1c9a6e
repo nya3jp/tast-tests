@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a8e008_3e64b71d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-09T17:34:46Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c58fb10f6b255217e3cd965af0376335ca1c9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bee703_5fb42b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-09T17:34:46Z",
+      "side": 1,
+      "message": "nit: maybe?\n\n```\nerrors.Errorf(\"accessibility description (%q) and new install dot (%q) should be equal\", hasDescr, hasDot)\n```\n\nsentences in error message is a bit weird\n\n\nalso don\u0027t start errors with capital letter",
+      "range": {
+        "startLine": 168,
+        "startChar": 16,
+        "endLine": 168,
+        "endChar": 142
+      },
+      "revId": "c58fb10f6b255217e3cd965af0376335ca1c9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2288ce76_b47302bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-09T17:34:46Z",
+      "side": 1,
+      "message": "nit: remove\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 95
+      },
+      "revId": "c58fb10f6b255217e3cd965af0376335ca1c9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02422e8_f1710b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-09T17:34:46Z",
+      "side": 1,
+      "message": "nit: use cleanupCtx?",
+      "range": {
+        "startLine": 85,
+        "startChar": 47,
+        "endLine": 85,
+        "endChar": 50
+      },
+      "revId": "c58fb10f6b255217e3cd965af0376335ca1c9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
