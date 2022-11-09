@@ -44,7 +44,7 @@ func init() {
 // open the pairing dialog from the "Pair new device" button in the detailed
 // Bluetooth view within the Quick Settings.
 func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -55,7 +55,7 @@ func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed to navigate to the detailed Bluetooth view: ", err)
 	}
 
-	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+	bt := s.FixtValue().(bluetooth.HasBluetoothImpl).BluetoothImpl()
 
 	if err := bt.PollForEnabled(ctx); err != nil {
 		s.Fatal("Expected Bluetooth to be enabled: ", err)

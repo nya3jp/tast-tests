@@ -39,12 +39,7 @@ func init() {
 // PairNewDeviceFromOSSettings tests that a user can successfully open the
 // pairing dialog from the "Pair new device" button on the OS Settings page.
 func PairNewDeviceFromOSSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	tconn := s.FixtValue().(bluetooth.HasTconn).Tconn()
 
 	app, err := ossettings.Launch(ctx, tconn)
 	defer app.Close(ctx)
@@ -53,7 +48,7 @@ func PairNewDeviceFromOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch OS Settings: ", err)
 	}
 
-	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+	bt := s.FixtValue().(bluetooth.HasBluetoothImpl).BluetoothImpl()
 
 	if err := bt.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)

@@ -40,12 +40,7 @@ func init() {
 // the Bluetooth state using the Bluetooth feature pod icon button within the
 // Quick Settings.
 func ToggleBluetoothFromQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	tconn := s.FixtValue().(bluetooth.HasTconn).Tconn()
 
 	// The Quick Settings is collapsed to avoid being taken to the detailed
 	// Bluetooth view when we press the Bluetooth feature pod icon button
@@ -55,7 +50,7 @@ func ToggleBluetoothFromQuickSettings(ctx context.Context, s *testing.State) {
 	}
 	defer quicksettings.Expand(ctx, tconn)
 
-	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+	bt := s.FixtValue().(bluetooth.HasBluetoothImpl).BluetoothImpl()
 
 	if err := bt.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)

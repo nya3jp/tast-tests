@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -14,4 +14,5 @@ type Bluetooth interface {
 	Enable(ctx context.Context) error
 	PollForAdapterState(ctx context.Context, exp bool) error
 	PollForEnabled(ctx context.Context) error
+	PollForAdapterAvailable(ctx context.Context) error
 }

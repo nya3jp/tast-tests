@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -43,7 +44,7 @@ func init() {
 // the pairing dialog from the "Pair new device" button on the Bluetooth
 // Settings sub-page.
 func PairNewDeviceFromBluetoothSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -55,7 +56,7 @@ func PairNewDeviceFromBluetoothSettings(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+	bt := s.FixtValue().(bluetooth.HasBluetoothImpl).BluetoothImpl()
 
 	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn, bt)
 	defer app.Close(cleanupCtx)

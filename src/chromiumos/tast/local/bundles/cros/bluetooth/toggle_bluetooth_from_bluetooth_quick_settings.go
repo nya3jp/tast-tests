@@ -21,6 +21,8 @@ func init() {
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
+			"alfredyu@cienet.com",
+			"cienet-development@googlegroups.com",
 		},
 		Attr:         []string{"group:bluetooth"},
 		SoftwareDeps: []string{"chrome"},
@@ -32,6 +34,14 @@ func init() {
 			Name:      "floss_enabled",
 			Fixture:   "bluetoothEnabledWithFloss",
 			ExtraAttr: []string{"bluetooth_floss"},
+		}, {
+			Name:      "floss_disabled_oobe",
+			Fixture:   "bluetoothEnabledInOobeWithBlueZ",
+			ExtraAttr: []string{"bluetooth_flaky"},
+		}, {
+			Name:      "floss_enabled_oobe",
+			Fixture:   "bluetoothEnabledInOobeWithFloss",
+			ExtraAttr: []string{"bluetooth_floss"},
 		}},
 	})
 }
@@ -40,18 +50,13 @@ func init() {
 // toggle the Bluetooth state using the toggle in the detailed Bluetooth view
 // within the Quick Settings.
 func ToggleBluetoothFromBluetoothQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	tconn := s.FixtValue().(bluetooth.HasTconn).Tconn()
 
 	if err := quicksettings.NavigateToBluetoothDetailedView(ctx, tconn); err != nil {
 		s.Fatal("Failed to navigate to the detailed Bluetooth view: ", err)
 	}
 
-	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+	bt := s.FixtValue().(bluetooth.HasBluetoothImpl).BluetoothImpl()
 
 	if err := bt.PollForEnabled(ctx); err != nil {
 		s.Fatal("Expected Bluetooth to be enabled: ", err)

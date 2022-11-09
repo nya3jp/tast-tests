@@ -7,7 +7,6 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -44,7 +43,7 @@ func init() {
 // navigate through to the Bluetooth sub-page within the OS Settings from the
 // Settings button in the Bluetooth detailed view within the Quick Settings.
 func OpenBluetoothSettingsFromQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
