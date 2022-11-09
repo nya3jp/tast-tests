@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406ca53a_a4abb32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T22:06:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good reason to have a dedicated tast test, because even if cryptohome adds this feature Chrome won\u0027t use it.",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
