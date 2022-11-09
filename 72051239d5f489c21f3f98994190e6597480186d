@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d013410_9a406986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-09T01:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9f0832_a49e3fee",
+      "revId": "72051239d5f489c21f3f98994190e6597480186d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "331aac4e_b32ede03",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-08T09:20:18Z",
       "side": 1,
       "message": "This seems racy. If the test is slow enough it will completely miss the splash screen.\n\nI\u0027m not sure the current approach is correct. Is there a different way to check if the splash screen is done? Maybe using js?",
+      "revId": "72051239d5f489c21f3f98994190e6597480186d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d1649c_4e2aa2cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-11-09T01:54:45Z",
+      "side": 1,
+      "message": "That\u0027s a good point, we shouldn\u0027t assert the presence of something that\u0027s timer-based.\n\nWe could likely expose an API through JS to verify the splash screen has been shown, but my priority is keeping the demomode.SWA test from failing, so for right now I\u0027ll just remove the WaitUntilExists() call and we can just WaitUntilGone to make sure we\u0027re ready to move the mouse.",
+      "parentUuid": "331aac4e_b32ede03",
       "revId": "72051239d5f489c21f3f98994190e6597480186d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
