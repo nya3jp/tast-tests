@@ -16,6 +16,46 @@
       "message": "Finished adding minor changes to log messages and error message",
       "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f214a2f7_b647a252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T23:11:28Z",
+      "side": 1,
+      "message": "You don\u0027t have to check nil here. A testing.RegisterVarString failure would show \"bundle initialization failed\" in tast initialization.\n\nditto to chameleonPortVar",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b921978_a0dca36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T23:11:28Z",
+      "side": 1,
+      "message": "How about using net.JoinHostPort()?",
+      "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
