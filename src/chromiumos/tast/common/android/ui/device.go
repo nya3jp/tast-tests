@@ -335,3 +335,17 @@ func (d *Device) Click(ctx context.Context, x, y int) error {
 	}
 	return nil
 }
+
+// OpenNotification opens the notification shade.
+// This method corresponds to UiDevice.openNotification()
+// https://developer.android.com/reference/androidx/test/uiautomator/UiDevice#openNotification()
+func (d *Device) OpenNotification(ctx context.Context) error {
+	var success bool
+	if err := d.call(ctx, "openNotification", &success); err != nil {
+		return err
+	}
+	if !success {
+		return errors.New("failed to open notifications")
+	}
+	return nil
+}

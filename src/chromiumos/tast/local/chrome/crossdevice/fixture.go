@@ -260,7 +260,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		"*blue*=3",
 		"ble_*=3",
 	}
-	opts = append(opts, chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")))
+	opts = append(opts, chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ","), "--tether-host-scans-ignore-wired-connections"))
 	opts = append(opts, chrome.EnableFeatures("PhoneHubCameraRoll", "SmartLockUIRevamp", "OobeQuickStart"))
 
 	customUser, userOk := s.Var(customCrOSUsername)
@@ -567,6 +567,24 @@ func ConnectToWifi(ctx context.Context) error {
 		return nil
 	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 3 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to connect to wifi")
+	}
+	return nil
+}
+
+// DisconnectFromWifi disconnects the chromebook from the Wifi network in its RF box.
+func DisconnectFromWifi(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := testexec.CommandContext(ctx, "/usr/local/autotest/cros/scripts/wifi", "disconnect", "nearbysharing_1").CombinedOutput(testexec.DumpLogOnError)
+		if err != nil {
+			if strings.Contains(string(out), "Service is not active") {
+				testing.ContextLog(ctx, "Already disconnected from wifi network")
+				return nil
+			}
+			return errors.Wrap(err, "failed to disconnect CrOS device from Wifi")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 3 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to disconnect from wifi")
 	}
 	return nil
 }

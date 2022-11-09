@@ -7,10 +7,8 @@ package instanttether
 import (
 	"context"
 	"regexp"
-	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -35,11 +33,19 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-cross-device-eng@google.com",
 		},
-		// Enable once the lab is equipped to run tethering tests.
-		// Attr:         []string{"group:cross-device"},
+		Attr:         []string{"group:cross-device-cellular"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "crossdeviceOnboarded",
-		Timeout:      3 * time.Minute,
+		Params: []testing.Param{
+			{
+				Val: false,
+			},
+			{
+				Name: "connect_with_notification",
+				Val:  true,
+			},
+		},
+		Fixture: "crossdeviceOnboardedAllFeatures",
+		Timeout: 5 * time.Minute,
 	})
 }
 
@@ -49,6 +55,7 @@ const tetherURL = "networks?type=Tether"
 func Basic(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*crossdevice.FixtData).Chrome
 	tconn := s.FixtValue().(*crossdevice.FixtData).TestConn
+	androidDevice := s.FixtValue().(*crossdevice.FixtData).AndroidDevice
 
 	// Clear all notifications so we can easily surface the Instant Tether one.
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
@@ -59,42 +66,16 @@ func Basic(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*shill.EnableWaitTime+10*time.Second)
 	defer cancel()
 
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		s.Fatal("Failed creating shill manager proxy: ", err)
-	}
-
-	// Disable ethernet and wifi to ensure the tethered connection is being used.
-	ethEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
-	if err != nil {
-		s.Fatal("Unable to disable ethernet: ", err)
-	}
-	defer ethEnableFunc(cleanupCtx)
-	wifiEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyWifi)
-	if err != nil {
-		s.Fatal("Unable to disable wifi: ", err)
-	}
-	defer wifiEnableFunc(cleanupCtx)
-
-	// Confirm the network is unavailable before connecting with instant tethering.
-	if networkAvailable(ctx) {
-		s.Fatal("Network unexectedly available after disabling ethernet and wifi")
-	}
-
-	// Launch OS settings to the Instant Tether page, initiate tethering with the notification, and verify the Chromebook has network access.
 	tethered := false
 	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, tetherURL, func(context.Context) error { return nil })
 	if err != nil {
 		s.Fatal("Failed to launch OS settings to the tethered networks page: ", err)
 	}
 
-	detailsBtn := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)network 1 of 1.*connected"))
+	disconnectBtn := nodewith.NameRegex(regexp.MustCompile("(?i)disconnect")).Role(role.Button)
 	defer func() {
 		if tethered {
-			if err := uiauto.Combine("disconnecting from the mobile network",
-				settings.LeftClick(detailsBtn),
-				settings.LeftClick(nodewith.NameRegex(regexp.MustCompile("(?i)disconnect")).Role(role.Button)),
-			)(cleanupCtx); err != nil {
+			if err := settings.LeftClick(disconnectBtn)(cleanupCtx); err != nil {
 				s.Log("Failed to click Instant Tether disconnect button: ", err)
 			}
 		}
@@ -102,39 +83,85 @@ func Basic(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := connectUsingNotification(ctx, tconn); err != nil {
-		s.Fatal("Failed to connect to Instant Tether via notification: ", err)
+	// Initiate Instant Tethering while WiFi is still connected
+	// so we still have ADB access to accept the mobile data provisioning notification.
+	if err := uiauto.Combine("connecting to the mobile network",
+		settings.LeftClick(nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)details")).ClassName("subpage-arrow")),
+		settings.LeftClick(nodewith.NameRegex(regexp.MustCompile("(?i)connect")).Role(role.Button)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to connect via button: ", err)
 	}
 
-	if err := handleFirstUseDialog(ctx, cr, settings); err != nil {
+	if err := handleFirstUseDialog(ctx, cr, settings, androidDevice); err != nil {
 		s.Fatal("Failed to accept first-use dialog: ", err)
 	}
 
 	tethered = true
 
-	if err := settings.WaitUntilExists(detailsBtn)(ctx); err != nil {
-		s.Fatal("Failed to find network detail button confirming Instant Tethering is connected: ", err)
+	if err := settings.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(`(?i)instant tethering network, signal strength \d+%`)))(ctx); err != nil {
+		s.Fatal("Failed to find text confirming Instant Tethering is connected: ", err)
 	}
 
-	if !networkAvailable(ctx) {
+	// Disable ethernet and wifi to ensure the tethered connection can be used.
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed creating shill manager proxy: ", err)
+	}
+	ethEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		s.Fatal("Unable to disable ethernet: ", err)
+	}
+	defer ethEnableFunc(cleanupCtx)
+
+	// Disconnect Instant Tether if we want to test the Instant Tether prompt notification.
+	useNotif := s.Param().(bool)
+	if useNotif {
+		if err := settings.LeftClick(disconnectBtn)(ctx); err != nil {
+			s.Fatal("Failed to click Instant Tether disconnect button: ", err)
+		}
+	}
+
+	// Just disconnect from the WiFi network, since the adapter still needs to be on to use tethering.
+	if err := crossdevice.DisconnectFromWifi(ctx); err != nil {
+		s.Fatal("Failed to disconnect wifi: ", err)
+	}
+	defer crossdevice.ConnectToWifi(cleanupCtx)
+
+	if useNotif {
+		if err := connectUsingNotification(ctx, tconn); err != nil {
+			s.Fatal("Failed to connect with notification: ", err)
+		}
+	}
+
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if err := networkAvailable(ctx, tconn, cr); err != nil {
+			return errors.Wrap(err, "still waiting for network to be available")
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Fatal("Network not available after connecting with Instant Tethering")
 	}
 }
 
-// networkAvailable returns whether or not the network is available.
-func networkAvailable(ctx context.Context) bool {
-	out, err := testexec.CommandContext(ctx, "ping", "-c", "3", "google.com").Output(testexec.DumpLogOnError)
-	// An error is expected if we can't ping, so log it and return false.
+// networkAvailable checks if the network is available by navigating to a simple website.
+func networkAvailable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	c, err := cr.NewConn(ctx, "https://www.chromium.org/")
 	if err != nil {
-		testing.ContextLog(ctx, "ping command failed: ", err)
-		return false
+		return errors.Wrap(err, "failed to open browser")
 	}
-	return strings.Contains(string(out), "3 received")
+	defer c.Close()
+	defer c.CloseTarget(ctx)
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(nodewith.Name("The Chromium Projects").Role(role.Heading))(ctx); err != nil {
+		return errors.Wrap(err, "page did not load")
+	}
+	return nil
 }
 
 // connectUsingNotification connects to the phone's mobile data by accepting the Instant Tether notification.
 func connectUsingNotification(ctx context.Context, tconn *chrome.TestConn) error {
-	if _, err := ash.WaitForNotification(ctx, tconn, 10*time.Second,
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second,
 		ash.WaitTitleContains("Wi-Fi available via phone"),
 		ash.WaitMessageContains("Data connection available from your"),
 	); err != nil {
@@ -151,7 +178,7 @@ func connectUsingNotification(ctx context.Context, tconn *chrome.TestConn) error
 }
 
 // handleFirstUseDialog accepts the first-use dialog for Instant Tether if it appears.
-func handleFirstUseDialog(ctx context.Context, cr *chrome.Chrome, sconn *ossettings.OSSettings) error {
+func handleFirstUseDialog(ctx context.Context, cr *chrome.Chrome, sconn *ossettings.OSSettings, ad *crossdevice.AndroidDevice) error {
 	testing.ContextLog(ctx, "Waiting to see if first-use dialog is shown")
 	firstUseText := nodewith.Role(role.StaticText).NameRegex(regexp.MustCompile("(?i)connect to new hotspot?"))
 	if err := sconn.WithTimeout(10 * time.Second).WaitUntilExists(firstUseText)(ctx); err != nil {
@@ -162,6 +189,11 @@ func handleFirstUseDialog(ctx context.Context, cr *chrome.Chrome, sconn *ossetti
 	connectBtn := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)connect")).Ancestor(nodewith.Role(role.Dialog))
 	if err := sconn.LeftClick(connectBtn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click first-use dialog's connect button")
+	}
+
+	// We need to accept a notification on the phone to initiate tethering for the first time.
+	if err := ad.AcceptTetherNotification(ctx); err != nil {
+		return errors.Wrap(err, "failed to accept tethering notification on the phone")
 	}
 
 	// Make sure OS settings is on the page we expect it to be on afterwards.
