@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec977cc_fd303b5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-11-09T16:19:47Z",
+      "side": 1,
+      "message": "lgtm from a tast/golang perspective, let me know when the other comments are resolved",
+      "revId": "6c563066db5e94afcaf8ce40ba3a7af62e8b1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
