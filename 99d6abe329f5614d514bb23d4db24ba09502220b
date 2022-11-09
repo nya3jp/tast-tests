@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0d17cd5_d115406b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-09T22:52:59Z",
+      "side": 1,
+      "message": "This should be tacked by this comment:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d32\n\nI will submit a CL to move it to matfunc stable.",
+      "parentUuid": "ed3c1398_01149c21",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f97a0b8a_1b8ae345",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a648236e_cc67c463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-09T22:52:59Z",
+      "side": 1,
+      "message": "I just tested a brya/gimble, so I added it to the list of yoyoMagic.",
+      "parentUuid": "f97a0b8a_1b8ae345",
+      "range": {
+        "startLine": 23,
+        "startChar": 34,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95efad88_57f1cd1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-09T22:33:09Z",
       "side": 1,
       "message": "This is dead code now right? If so, I recommend removing it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa92ed83_2db6efb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-09T22:52:59Z",
+      "side": 1,
+      "message": "This code is actually still used. Look at line 234.",
+      "parentUuid": "95efad88_57f1cd1a",
       "range": {
         "startLine": 38,
         "startChar": 0,
