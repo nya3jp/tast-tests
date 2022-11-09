@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7593c7_18cfa86c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T01:00:44Z",
+      "side": 1,
+      "message": "This test breaks if it is run consecutively after .Basic, since the Instant Tether connection is not torn down between the two, given they\u0027re in the same fixture. Two approaches to fixing this for this test: \n\n- We introduce a local function that is called at the top to teardown a connection if it exists, but this assumes that this test is always run second, which I don\u0027t think is a safe assumption.\n- We introduce a new sub-classed Fixture which tears the Instant Tether connection between tests in the same Fixture. Probably the cleanest approach, especially if we\u0027re planning on more InstantTether tests in the long term. Not sure if there\u0027s any way to drop the connection not involving the UI, but that\u0027s an implementation detail TBD.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4697117e_8cb584c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T01:00:44Z",
+      "side": 1,
+      "message": "This is probably brittle, but since the UITree does not have any distinguishing feature for what is an Instant Tether connection and what is a Wifi network, this is the easiest way forward. Some alternatives, albeit with more effort, include: \n\n- Finding the \"Mobile Data\" header and finding its next sibling. This would require checking that the next element under the parent is not a label (\"no mobile devices found\"), but a button (ie, the device), and then clicking it. This has its own issues with being brittle, as any changes to the UI, similar to this regex match, will break it.\n\n- We introduce some additional metadata to the Mobile data rows in the Quick Settings network panel. This would be most beneficial for future tests, but would touch other parts of the codebase. \n\nA note that this has the potential to break if a nearby network happens to be named the same as the testing device, but I doubt this is an immediate concern for our DUT + lab purposes.\n\nThread discussing is in our Chat space + https://paste.googleplex.com/6004716487049216 for UITree reference.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9371696_afaf4fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T01:00:44Z",
+      "side": 1,
+      "message": "Since the UITree also doesn\u0027t seem to have any exposure to the \"Connected\" label, this simply confirms that the connection has been successfully established by the change in Label to describe it as network settings. \n\nI think an improvement here could be to introduce a check for actual connection using a ping command on terminal like we do for .Basic.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
