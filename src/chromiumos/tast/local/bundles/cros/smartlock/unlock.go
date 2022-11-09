@@ -26,7 +26,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-cross-device-eng@google.com",
 		},
-		Attr:         []string{"group:cross-device"},
+		Attr:         []string{"group:cross-device", "smartlock"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "crossdeviceOnboarded",
 	})
