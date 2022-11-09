@@ -20,12 +20,13 @@ import (
 )
 
 const (
-	yoyoMagic      = 0x14789633 // HrP2, CcP2, JfP2, ThP2
-	memoryAPIMagic = 0x14789632 // StP2
-	dumpInfoType   = 1 << 31
-	csrFile        = "csr"
-	monitorFile    = "monitor"
-	lmacDccmFile   = "dccm_lmac"
+	yoyoMagic           = 0x14789633 // HrP2, CcP2, JfP2, ThP2
+	memoryAPIMagic      = 0x14789632 // StP2
+	dumpInfoType        = 0
+	dumpInfoReservedBit = 0x80
+	csrFile             = "csr"
+	monitorFile         = "monitor"
+	lmacDccmFile        = "dccm_lmac"
 )
 
 // DevcoreHeader is a struct that contains the fw dump header information.
@@ -34,10 +35,21 @@ type DevcoreHeader struct {
 	FileSize uint32
 }
 
-// TLHeader is a struct that contains the type and length of a TLV header.
+// TLHeader is a struct that contains the type and length of a TLV header
+// for old Intel WiFi chips which have memoryAPIMagic fw dump type.
 type TLHeader struct {
 	Type   uint32
 	Length uint32
+}
+
+// TSSRLHeader is a struct that contains the type, subtype, subtypeVersion, reserved
+// and length of a TLV header for new Intel WiFi chips which have yoyoMagic fw dump type.
+type TSSRLHeader struct {
+	Type           uint8
+	Subtype        uint8
+	SubtypeVersion uint8
+	Reserved       uint8
+	Length         uint32
 }
 
 // VHeader is a struct that contains the memory type and address of a value in a  TLV header.
@@ -143,34 +155,28 @@ func ValidateFWDump(ctx context.Context, file string) error {
 
 func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer) error {
 	// Parse the fw dump.
-	tlHeader := TLHeader{}
+	tssrlHeader := TSSRLHeader{}
 	var yoyoExpectedFileRegionIDs []int
 	var yoyoFoundFileRegionIDs []int
 
 	for fwDumpBuffer.Len() > 0 {
 		// Read a TLV header.
-		err := binary.Read(fwDumpBuffer, binary.LittleEndian, &tlHeader)
+		err := binary.Read(fwDumpBuffer, binary.LittleEndian, &tssrlHeader)
 		if err != nil {
 			return errors.Wrap(err, "failed to read the header of the fw dump")
 		}
 
-		// Continue if the TLV header type is 0.
-		if tlHeader.Type == 0 {
-			fwDumpBuffer.Next(4)
-			continue
-		}
-
-		if tlHeader.Length > 0 {
+		if tssrlHeader.Length > 0 {
 			// Read the TLV header value.
-			if tlHeader.Type == dumpInfoType {
+			if (tssrlHeader.Type == dumpInfoType) && (tssrlHeader.Reserved == dumpInfoReservedBit) {
 				// If the header is dumpInfoType then it should have the Region IDs for the
 				// files the should be in the fw dump. For more info refer to http://b/169152720#comment78
 				// The expected region IDs are saved in the slice yoyoExpectedFileRegionIDs that is used
 				// to check if all expected files exists in the fw dump.
 
-				// Extract the value from the buffer using the tlHeader.Length.
+				// Extract the value from the buffer using the tssrlHeader.Length.
 				value := bytes.NewBuffer(fwDumpBuffer.Bytes())
-				value.Truncate(int(tlHeader.Length))
+				value.Truncate(int(tssrlHeader.Length))
 				vYoYoInfoHeader := VYoYoInfoHeader{}
 				// Read the VYoYoInfoHeader to get the file name length.
 				err = binary.Read(value, binary.LittleEndian, &vYoYoInfoHeader)
@@ -185,10 +191,10 @@ func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer) error {
 					}
 					i++
 				}
-			} else {
-				// Extract the value from the buffer using the tlHeader.Length.
+			} else if tssrlHeader.Type != dumpInfoType {
+				// Extract the value from the buffer using the tssrlHeader.Length.
 				value := bytes.NewBuffer(fwDumpBuffer.Bytes())
-				value.Truncate(int(tlHeader.Length))
+				value.Truncate(int(tssrlHeader.Length))
 				vYoYoMemHeader := VYoYoMemHeader{}
 				// Read the VYoYoMemHeader to get the file name length.
 				err = binary.Read(value, binary.LittleEndian, &vYoYoMemHeader)
@@ -199,7 +205,7 @@ func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer) error {
 				yoyoFoundFileRegionIDs = append(yoyoFoundFileRegionIDs, int(vYoYoMemHeader.RegionID))
 			}
 		}
-		fwDumpBuffer.Next(int(tlHeader.Length))
+		fwDumpBuffer.Next(int(tssrlHeader.Length))
 	}
 
 	// Check that all expected files exists in the fw dump.
