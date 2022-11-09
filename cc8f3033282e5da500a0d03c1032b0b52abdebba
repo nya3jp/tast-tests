@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1ef352_e9e34e07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-11-09T00:24:28Z",
+      "side": 1,
+      "message": "tast-wise: +2 \n\nwait for +1 from someone of your team before landing it",
+      "revId": "cc8f3033282e5da500a0d03c1032b0b52abdebba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
