@@ -83,6 +83,21 @@ func init() {
 	})
 }
 
+/*
+RoamFT tests the ability to perform fast roaming, where the DUT doesn’t go
+through the whole regular association process during roaming. The ordering of
+RoamFT is as follows:
+1. Set up the bridge for the communication between ap0 and ap1.
+2. Start ap0 and the DHCP server.
+3. Connect the DUT to ap0 and verify the connection.
+4. Start a property watcher on the DUT.
+5. Start ap1.
+6. ap0 sends a BSS transition management (TM) request to the DUT.
+7. Upon the reception of the BSS TM request, the DUT scans and transitions to ap1.
+8. Check the property watcher and see if the DUT stays connected during the roaming.
+9. Verify the connection to ap1.
+*/
+
 func RoamFT(ctx context.Context, s *testing.State) {
 	/*
 		Roaming using FT is different from standard roaming in that there
@@ -343,9 +358,6 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 		roamSucceeded = true
 		defer func(ctx context.Context) {
-			if roamSucceeded {
-				return
-			}
 			if err := tf.CleanDisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect from the AP: ", err)
 			}
