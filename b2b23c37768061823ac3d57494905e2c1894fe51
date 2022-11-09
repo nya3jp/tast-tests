@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "878c1c18_f2274d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T02:36:46Z",
+      "side": 1,
+      "message": "I found crash dumps from shill, according to which I have run into https://b.corp.google.com/issues/257353938.",
+      "parentUuid": "fefdc8b8_92fa2b2f",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c00cf0d8_38463bec",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 6
