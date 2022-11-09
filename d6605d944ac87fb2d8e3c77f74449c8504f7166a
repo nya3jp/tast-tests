@@ -110,6 +110,30 @@
       },
       "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e85995a_0ae9bb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-09T22:20:00Z",
+      "side": 1,
+      "message": "I meant that it would be good if the comment in the code mentioned the difference between the 2, for example explaining that one is for old chipsets and the other one is for new ones.",
+      "parentUuid": "4bf21a44_315a03bb",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
