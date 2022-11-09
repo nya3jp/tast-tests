@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43d70ba1_028b92d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-09T00:44:45Z",
+      "side": 1,
+      "message": "My question was \"why\"? Why can\u0027t we just a new one for all API call? Also, if we have to have one for all APIs, the service should have APIs responsible for create and destroy.",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f98ec9ba_b8c20130",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
         "patchSetId": 14
