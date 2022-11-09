@@ -366,6 +366,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a722bae2_97cf3966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:58:06Z",
+      "side": 1,
+      "message": "Jumping in with another comment - ``WaitUntilExists`` outputs a message with the name of the expected button (and thus the device name) if it fails to find a matching mobile device:\n\n```last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /Connect to .*This is a test device/, role: button, ancestor: {className: /\\\\bNetworkDetailedNetworkViewImpl\\\\b/, ancestor: {className: \\\"UnifiedSystemTrayView\\\"}}}\"```\n\nI think this should provide enough info for debug, unless we want to be more specific.",
+      "parentUuid": "4b793544_db394173",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a73e5b0e_815c22e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
