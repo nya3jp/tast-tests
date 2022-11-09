@@ -43,7 +43,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Touchscreen: suspend-resume with operation for 10 cycles",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
 		Data:         []string{"canvas.html"},
 		HardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.X86()),
 		Fixture:      "chromeLoggedIn",

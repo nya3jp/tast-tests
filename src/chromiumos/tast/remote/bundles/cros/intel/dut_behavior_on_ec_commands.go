@@ -27,9 +27,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies DUT behavior on executing various EC commands",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome", "reboot"},
+		SoftwareDeps: []string{"chrome", "reboot", "pmc_cstate_show"},
 		VarDeps:      []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.Battery()),
+		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.X86()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      12 * time.Minute,
 	})

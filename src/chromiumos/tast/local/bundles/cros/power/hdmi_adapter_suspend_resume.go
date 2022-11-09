@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 var (
@@ -71,7 +72,8 @@ func init() {
 		Func:         HdmiAdapterSuspendResume,
 		Desc:         "Verifies USB type-C single port adapter functionality with suspend-resume cycles",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		Vars: []string{
 			"power.chameleon_addr",         // Only needed when using chameleon board as extended display.
 			"power.chameleon_display_port", // The port connected as extended display. Default is 3.

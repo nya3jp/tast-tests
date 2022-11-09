@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,7 +28,8 @@ func init() {
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		// Disabled due to <1% pass rate over 30 days. See b/241943556
 		//Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		Vars: []string{
 			"power.chameleon_addr",
 			"power.chameleon_display_port",
