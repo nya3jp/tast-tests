@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,7 +25,8 @@ func init() {
 		Desc:         "Verifies that system comes back after from sleep after AC insertion",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
-		SoftwareDeps: []string{"chrome", "reboot"},
+		SoftwareDeps: []string{"chrome", "reboot", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Vars:         []string{"servo"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
