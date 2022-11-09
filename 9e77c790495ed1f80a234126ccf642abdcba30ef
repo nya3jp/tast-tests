@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d507b6d_d50c0595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T23:04:16Z",
+      "side": 1,
+      "message": "I wish there\u0027s consensus on this.",
+      "parentUuid": "4eb58911_ce6c7058",
+      "revId": "9e77c790495ed1f80a234126ccf642abdcba30ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b69d9dc_3b9f88f8",
