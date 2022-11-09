@@ -131,11 +131,11 @@ func DeviceAdvancedBatteryChargeMode(ctx context.Context, s *testing.State) {
 					Val: &policy.DeviceAdvancedBatteryChargeModeDayConfigValue{
 						Entries: []*policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntries{{
 							Day: "MONDAY",
-							ChargeStartTime: &policy.RefTime{
+							ChargeStartTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeStartTime{
 								Hour:   18,
 								Minute: 0,
 							},
-							ChargeEndTime: &policy.RefTime{
+							ChargeEndTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeEndTime{
 								Hour:   22,
 								Minute: 0,
 							},
@@ -153,11 +153,11 @@ func DeviceAdvancedBatteryChargeMode(ctx context.Context, s *testing.State) {
 					Val: &policy.DeviceAdvancedBatteryChargeModeDayConfigValue{
 						Entries: []*policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntries{{
 							Day: "MONDAY",
-							ChargeStartTime: &policy.RefTime{
+							ChargeStartTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeStartTime{
 								Hour:   10,
 								Minute: 0,
 							},
-							ChargeEndTime: &policy.RefTime{
+							ChargeEndTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeEndTime{
 								Hour:   18,
 								Minute: 0,
 							},
@@ -175,11 +175,11 @@ func DeviceAdvancedBatteryChargeMode(ctx context.Context, s *testing.State) {
 					Val: &policy.DeviceAdvancedBatteryChargeModeDayConfigValue{
 						Entries: []*policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntries{{
 							Day: "MONDAY",
-							ChargeStartTime: &policy.RefTime{
+							ChargeStartTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeStartTime{
 								Hour:   1,
 								Minute: 0,
 							},
-							ChargeEndTime: &policy.RefTime{
+							ChargeEndTime: &policy.DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeEndTime{
 								Hour:   2,
 								Minute: 0,
 							},

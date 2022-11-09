@@ -137,15 +137,15 @@ func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 						Entries: []*policy.DevicePowerPeakShiftDayConfigValueEntries{
 							{
 								Day: "MONDAY",
-								StartTime: &policy.RefTime{
+								StartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesStartTime{
 									Hour:   21,
 									Minute: 0,
 								},
-								EndTime: &policy.RefTime{
+								EndTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesEndTime{
 									Hour:   22,
 									Minute: 0,
 								},
-								ChargeStartTime: &policy.RefTime{
+								ChargeStartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime{
 									Hour:   23,
 									Minute: 0,
 								},
@@ -167,15 +167,15 @@ func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 						Entries: []*policy.DevicePowerPeakShiftDayConfigValueEntries{
 							{
 								Day: "MONDAY",
-								StartTime: &policy.RefTime{
+								StartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesStartTime{
 									Hour:   1,
 									Minute: 0,
 								},
-								EndTime: &policy.RefTime{
+								EndTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesEndTime{
 									Hour:   22,
 									Minute: 0,
 								},
-								ChargeStartTime: &policy.RefTime{
+								ChargeStartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime{
 									Hour:   23,
 									Minute: 0,
 								},
@@ -196,15 +196,15 @@ func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 						Entries: []*policy.DevicePowerPeakShiftDayConfigValueEntries{
 							{
 								Day: "MONDAY",
-								StartTime: &policy.RefTime{
+								StartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesStartTime{
 									Hour:   1,
 									Minute: 0,
 								},
-								EndTime: &policy.RefTime{
+								EndTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesEndTime{
 									Hour:   5,
 									Minute: 0,
 								},
-								ChargeStartTime: &policy.RefTime{
+								ChargeStartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime{
 									Hour:   23,
 									Minute: 0,
 								},
@@ -225,15 +225,15 @@ func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 						Entries: []*policy.DevicePowerPeakShiftDayConfigValueEntries{
 							{
 								Day: "MONDAY",
-								StartTime: &policy.RefTime{
+								StartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesStartTime{
 									Hour:   1,
 									Minute: 0,
 								},
-								EndTime: &policy.RefTime{
+								EndTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesEndTime{
 									Hour:   5,
 									Minute: 0,
 								},
-								ChargeStartTime: &policy.RefTime{
+								ChargeStartTime: &policy.DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime{
 									Hour:   6,
 									Minute: 0,
 								},
