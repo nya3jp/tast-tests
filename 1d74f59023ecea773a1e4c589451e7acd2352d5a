@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7c8808_eaf200d4",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T21:54:52Z",
+      "side": 1,
+      "message": "why `xxx2`? maybe a more meaningful name?",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fc2efb_042d1462",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T21:54:52Z",
+      "side": 1,
+      "message": "Apps fixtures need to be explicitly in both `clamshell` and `tablet`.\n\nWe also need `Bullseye` fixtures as in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4016001",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf4f3fe_6a6f5ad1",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T21:54:52Z",
+      "side": 1,
+      "message": "the implementation of `snapshot` is better in `fixture.go` instead of `fixture_apps.go`, so we don\u0027t have to dup it in `fixture.go`.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46ccf3f_36bf4ffe",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T21:54:52Z",
+      "side": 1,
+      "message": "Move this to `Reset`, so that if an error happens, the fixture will restart for rest of the tests.\n\nFailures in `PostTest` won\u0027t trigger fixture restart.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca332d4_cdbc099b",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T21:54:52Z",
+      "side": 1,
+      "message": "nit: delete this line? The snapshot will be used in non-apps tests as well.",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 61
+      },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
