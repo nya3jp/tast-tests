@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ddae2f2_08f6980b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "\"UnifiedSystemTray\" refers to the chip on the bottom bar with the time, but clicking it opens the Quick Settings menu - so I\u0027ve changed the naming in the desc field for this test and will rename file once we land on a more concrete iteration so comments aren\u0027t moved around. :)",
+      "parentUuid": "6b76628c_4ffc890b",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218d186d_e5222d58",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -151,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d9e221_37f3b99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3fac47c_76654910",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c007f61c_61d8203d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "The call is to the PodIconButton, so the icon itself. Noted that this does have the behavior as described, so moving to click the label instead.",
+      "parentUuid": "218d186d_e5222d58",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b27624e_9c94769f",
@@ -174,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5683669e_3ec2b7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b27624e_9c94769f",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1cae12_90449cb7",
@@ -187,6 +283,30 @@
       "writtenOn": "2022-11-09T18:32:32Z",
       "side": 1,
       "message": "Let\u0027s just say \"phone\" to be explicit?",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 61
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002bc297_96e42839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1cae12_90449cb7",
       "range": {
         "startLine": 60,
         "startChar": 48,
@@ -267,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0601969_31f0f1c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a73e5b0e_815c22e4",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9371696_afaf4fab",
@@ -304,6 +448,30 @@
       "side": 1,
       "message": "Nice callout again ;) I believe Kyle added an actual connection check in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4014816 so I\u0027ll let him chime in here.",
       "parentUuid": "f9371696_afaf4fab",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5210675_ba1174e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-09T19:47:12Z",
+      "side": 1,
+      "message": "Sounds good! I did see that\u0027s being tested now. Is there any reason we\u0027re no longer pinging google.com and rather rendering the Chromium website?",
+      "parentUuid": "b82ec7ca_3d015445",
       "range": {
         "startLine": 77,
         "startChar": 1,
