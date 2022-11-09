@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370fea97_a540fcda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T05:30:16Z",
+      "side": 1,
+      "message": "Made this following changes to patch 1:\n1, preserve name \"Crostini.App*.(clamshell)|(tablet)*\" for buster tests.\n2, make all new bullseye tests informational for now, and will promote them later, for CQ safety.\n3, rename `testFilesFix` list to `nonAppTests` list in param_test.go.",
+      "revId": "3bbd60d6b1b5e0850b9f58e85e3262abdf2e0bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
