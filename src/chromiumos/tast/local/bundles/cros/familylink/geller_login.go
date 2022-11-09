@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      time.Minute,
+		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
 			Fixture: "familyLinkGellerLogin",
 			Val:     browser.TypeAsh,
@@ -42,6 +42,11 @@ func init() {
 func GellerLogin(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+
+	// TODO(b/254891227): Remove this when chrome.New() doesn't have a race condition.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to wait for Login to complete: ", err)
+	}
 
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")
