@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd5fd5e0_de91382f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T20:27:33Z",
+      "side": 1,
+      "message": "added a bunch of comments, let me know if it\u0027s clearer now. the flow of the test is necessarily a bit more complicated now due to the ADB-over-wifi and local test constraints. in the future we should refactor this to be a remote test so we can control the Android phone independent of the CrOS device\u0027s network status",
+      "parentUuid": "b36cf462_58c366b9",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4af8b74f_b29e23c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-09T18:15:10Z",
       "side": 1,
       "message": "The commit message says this is used \"to test that the tethered connection is working\", but you just disconnected from the Tether hotspot above? I\u0027m not the best at reading go/Tast, can you clarify what\u0027s happening here?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99f5093_f57653d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T20:27:33Z",
+      "side": 1,
+      "message": "I added some more commentary as David requested above.\n\nAbove, I turned off Tethering only in the case where we want to test connecting using the notification. The first step in the test is to connect with Instant Tether and step through all onboarding flows on CrOS and Android while all networks are connected (this is necessary due to the ADB-over-wifi setup used in the lab).\n\nIf we want to test the notification, we need to trigger it by not being connected to any networks. To that end I disconnect from the Tethered hotspot, the box\u0027s WiFi AP, and disable the ethernet adapter. This should prompt the \"Wi-Fi available via phone\" notification, which we will use to reconnect Instant Tether in `connectUsingNotification`, and then test that the tethered connection works while no other networks are active.",
+      "parentUuid": "4af8b74f_b29e23c3",
       "range": {
         "startLine": 124,
         "startChar": 1,
