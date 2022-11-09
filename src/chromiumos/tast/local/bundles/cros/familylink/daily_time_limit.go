@@ -79,19 +79,40 @@ func DailyTimeLimit(ctx context.Context, s *testing.State) {
 	oneDayBackward := -time.Hour * 24
 	switch weekday := reset.Add(oneDayBackward).Weekday(); weekday {
 	case time.Sunday:
-		usageLimitPolicy.Val.TimeUsageLimit.Sunday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Sunday = &policy.UsageTimeLimitValueTimeUsageLimitSunday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Monday:
-		usageLimitPolicy.Val.TimeUsageLimit.Monday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Monday = &policy.UsageTimeLimitValueTimeUsageLimitMonday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Tuesday:
-		usageLimitPolicy.Val.TimeUsageLimit.Tuesday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Tuesday = &policy.UsageTimeLimitValueTimeUsageLimitTuesday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Wednesday:
-		usageLimitPolicy.Val.TimeUsageLimit.Wednesday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Wednesday = &policy.UsageTimeLimitValueTimeUsageLimitWednesday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Thursday:
-		usageLimitPolicy.Val.TimeUsageLimit.Thursday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Thursday = &policy.UsageTimeLimitValueTimeUsageLimitThursday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Friday:
-		usageLimitPolicy.Val.TimeUsageLimit.Friday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Friday = &policy.RefTimeUsageLimitEntry{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	case time.Saturday:
-		usageLimitPolicy.Val.TimeUsageLimit.Saturday = dailyLimitEntry
+		usageLimitPolicy.Val.TimeUsageLimit.Saturday = &policy.UsageTimeLimitValueTimeUsageLimitSaturday{
+			LastUpdatedMillis: dailyLimitEntry.LastUpdatedMillis,
+			UsageQuotaMins:    dailyLimitEntry.UsageQuotaMins,
+		}
 	}
 
 	policies := []policy.Policy{

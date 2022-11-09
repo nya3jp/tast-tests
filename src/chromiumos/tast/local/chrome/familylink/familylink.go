@@ -231,14 +231,35 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 		Val: &policy.UsageTimeLimitValue{
 			Overrides: []*policy.UsageTimeLimitValueOverrides{},
 			TimeUsageLimit: &policy.UsageTimeLimitValueTimeUsageLimit{
-				Friday:    &dailyTimeUsageLimit,
-				Monday:    &dailyTimeUsageLimit,
-				ResetAt:   &resetTime,
-				Saturday:  &dailyTimeUsageLimit,
-				Sunday:    &dailyTimeUsageLimit,
-				Thursday:  &dailyTimeUsageLimit,
-				Tuesday:   &dailyTimeUsageLimit,
-				Wednesday: &dailyTimeUsageLimit,
+				Friday: &policy.RefTimeUsageLimitEntry{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				Monday: &policy.UsageTimeLimitValueTimeUsageLimitMonday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				ResetAt: &resetTime,
+				Saturday: &policy.UsageTimeLimitValueTimeUsageLimitSaturday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				Sunday: &policy.UsageTimeLimitValueTimeUsageLimitSunday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				Thursday: &policy.UsageTimeLimitValueTimeUsageLimitThursday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				Tuesday: &policy.UsageTimeLimitValueTimeUsageLimitTuesday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
+				Wednesday: &policy.UsageTimeLimitValueTimeUsageLimitWednesday{
+					LastUpdatedMillis: dailyTimeUsageLimit.LastUpdatedMillis,
+					UsageQuotaMins:    dailyTimeUsageLimit.UsageQuotaMins,
+				},
 			},
 			TimeWindowLimit: &policy.UsageTimeLimitValueTimeWindowLimit{
 				Entries: []*policy.UsageTimeLimitValueTimeWindowLimitEntries{},

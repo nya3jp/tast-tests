@@ -61,11 +61,11 @@ func BedTimeLimit(ctx context.Context, s *testing.State) {
 	bedTimeLimitEntry := &policy.UsageTimeLimitValueTimeWindowLimitEntries{
 		EffectiveDay:      strings.ToUpper(startAt.Weekday().String()),
 		LastUpdatedMillis: strconv.FormatInt(now.Unix(), 10 /*base*/),
-		EndsAt: &policy.RefTime{
+		EndsAt: &policy.UsageTimeLimitValueTimeWindowLimitEntriesEndsAt{
 			Hour:   endAt.Local().Hour(),
 			Minute: endAt.Local().Minute(),
 		},
-		StartsAt: &policy.RefTime{
+		StartsAt: &policy.UsageTimeLimitValueTimeWindowLimitEntriesStartsAt{
 			Hour:   startAt.Local().Hour(),
 			Minute: startAt.Local().Minute(),
 		},
