@@ -39,6 +39,30 @@
       },
       "revId": "3e0fcb4b6640920c07be723d0fe8707d6558b51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41db3453_8a0a2832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-11-09T05:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9512e1_61ee313a",
+      "range": {
+        "startLine": 39,
+        "startChar": 58,
+        "endLine": 39,
+        "endChar": 67
+      },
+      "revId": "3e0fcb4b6640920c07be723d0fe8707d6558b51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
