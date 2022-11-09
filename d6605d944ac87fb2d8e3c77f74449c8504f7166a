@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0210d4d9_ffba5189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-09T22:14:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4918296_3c2c28fe",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a81662b8_9e90f00a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-09T21:54:51Z",
       "side": 1,
       "message": "Both structures have the exact same comment. Can you explain the difference? I assume it depends on the chipset?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "d6605d944ac87fb2d8e3c77f74449c8504f7166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf21a44_315a03bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-09T22:14:37Z",
+      "side": 1,
+      "message": "Yes there are two types of FW dump parsing `yoyoMagic` and `memoryAPIMagic`. The parsing for `yoyoMagic`is the one that has changed (it uses the Reserved value in the header).\n\n```\nyoyoMagic           \u003d 0x14789633 // HrP2, CcP2, JfP2, ThP2\nmemoryAPIMagic      \u003d 0x14789632 // StP2\n```\n\nFrom fw-dump-extractor.pl:\nyoyoMagic\n```\nsub yoyo_parse_dump {\n\tmy ($data, $file_size) \u003d @_;\n\n\twhile ($data ne \u0027\u0027) {\n\t\tmy ($type, $subtype, $subtype_ver, $reserved, $length) \u003d unpack(\u0027C4 L\u0027, $data);\n```\nmemoryAPIMagic\n```\n# Parse\nwhile ($data ne \u0027\u0027) {\n\tmy ($type, $length) \u003d unpack(\u0027L L\u0027, $data);\n```",
+      "parentUuid": "83da1ef2_9ae0395b",
       "range": {
         "startLine": 38,
         "startChar": 0,
