@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac67ae57_f62efb48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/cryptohome_recovery_failure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-11-09T16:45:17Z",
+      "side": 1,
+      "message": "should this check that there\u0027s only one meta file? or do we expect this to sometimes generate multiple reports?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "760d0009af472defe2b0c57272f20c0ab3052eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
