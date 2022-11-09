@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d39310b_3909da34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:30:22Z",
+      "side": 1,
+      "message": "LGTM with just these last nits/comments!",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f98ec9ba_b8c20130",
@@ -59,6 +76,76 @@
         "startChar": 1,
         "endLine": 86,
         "endChar": 34
+      },
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c503dc50_3c0bad7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:30:22Z",
+      "side": 1,
+      "message": "As discussed offline I was thinking we had wanted them to be left open in some of the methods, but since we added the checks we would have performed had they been left open we are able to close before returning.",
+      "parentUuid": "167a7a5a_beb8f311",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c59fce_a6520c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:30:22Z",
+      "side": 1,
+      "message": "Nit: Remove since we explicitly close on line 100.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525bcf85_3e83920b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:30:22Z",
+      "side": 1,
+      "message": "Nit: Same as above.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 26
       },
       "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
