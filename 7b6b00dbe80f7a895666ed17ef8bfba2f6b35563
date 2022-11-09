@@ -22,6 +22,30 @@
       },
       "revId": "7b6b00dbe80f7a895666ed17ef8bfba2f6b35563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "114093dc_f04fa527",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-09T05:33:25Z",
+      "side": 0,
+      "message": "Done. MinimalSet is still needed for backward-compatibility.",
+      "parentUuid": "fb0ca17a_f3203ad1",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 261,
+        "endChar": 65
+      },
+      "revId": "7b6b00dbe80f7a895666ed17ef8bfba2f6b35563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
