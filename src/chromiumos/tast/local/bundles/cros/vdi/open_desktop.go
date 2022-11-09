@@ -68,7 +68,7 @@ func init() {
 					DesktopName:   "WindowsServer2019",
 					RunDialogKeys: "Search+R",
 				},
-				ExtraAttr: []string{"group:mainline", "informational"},
+				ExtraAttr: []string{"group:vdi_limited"},
 			},
 			{
 				Name:    "mgs_vmware",
