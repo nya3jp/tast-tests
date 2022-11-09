@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29553260_83c2b890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-11-09T18:05:24Z",
+      "side": 1,
+      "message": "FYI Mark who is working on testing Tether in System Tray https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4013531",
+      "revId": "b375aefecaf77c134ad7ff8891c69f7e26232c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b36cf462_58c366b9",
