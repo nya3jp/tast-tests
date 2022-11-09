@@ -188,9 +188,9 @@ func SmartCardWithAuthAPI(ctx context.Context, s *testing.State) {
 
 	// Remount the specific vault, remount should succeed.
 	// Ensure we can reauthenticate with correct Smart Card.
-	authSessionID, err := authenticateWithSmartCard(ctx, testUser, userParam, authConfig)
+	authSessionID, err := authenticateWithSmartCard(ctx, testUser, userParam, authConfig, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
-		s.Fatal("Failed to run authenticateWithCorrectSmartCard with error: ", err)
+		s.Fatal("Failed to run authenticateWithSmartCard with error: ", err)
 	}
 
 	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
@@ -202,6 +202,24 @@ func SmartCardWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read back test file: ", err)
 	}
 
+	// Invalidate AuthSession.
+	defer client.InvalidateAuthSession(ctx, authSessionID)
+
+	// Reauthenticate success using the lightweight in-session key check.
+	authSessionID, err = authenticateWithSmartCard(ctx, testUser, userParam, authConfig, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	if err != nil {
+		s.Fatal("Failed to run authenticateWithSmartCard with error: ", err)
+	}
+
+	// Invalidate AuthSession.
+	client.InvalidateAuthSession(ctx, authSessionID)
+
+	// Reauthenticate failure using the lightweight in-session key check.
+	authSessionID, err = authenticateWithSmartCard(ctx, "corrupted_user", userParam, authConfig, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	if err == nil {
+		s.Fatal("authenticateWithSmartCard succeeded with wrong credentials: ", err)
+	}
+
 	// Clear AuthSession and unmount previously mounted vault.
 	client.InvalidateAuthSession(ctx, authSessionID)
 	if err := client.UnmountAll(ctx); err != nil {
@@ -210,13 +228,28 @@ func SmartCardWithAuthAPI(ctx context.Context, s *testing.State) {
 
 	// Remount should fail.
 	// Failure occurs because of manually "corrputed_user".
-	if _, err = authenticateWithSmartCard(ctx, "corrputed_user", userParam, authConfig); err == nil {
+	if _, err = authenticateWithSmartCard(ctx, "corrupted_user", userParam, authConfig, uda.AuthIntent_AUTH_INTENT_DECRYPT); err == nil {
 		s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
 	}
 
 	// Verify that file is still there, but should not be readable.
 	if err := cryptohomelocal.VerifyFileUnreadability(ctx, testUser); err != nil {
 		s.Fatal("File is readable after unsuccessful authentication, but it expected to be unreadable: ", err)
+	}
+
+	// Test for rollback in USS
+	if userParam.useUserSecretStash {
+		// Disable UserSecretStash.
+		cleanupUSSDisabled, err := helper.DisableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to disable UserSecretStash: ", err)
+		}
+		defer cleanupUSSDisabled(ctx)
+
+		// Authenticate with existing backup VaultKeyset
+		if _, err = authenticateWithSmartCard(ctx, testUser, userParam, authConfig, uda.AuthIntent_AUTH_INTENT_DECRYPT); err != nil {
+			s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
+		}
 	}
 }
 
@@ -274,11 +307,11 @@ func setupUserWithSmartCard(ctx context.Context, testUser string, isEphemeral bo
 }
 
 // authenticateWithSmartCard authenticates a given user with the correct Smart Card.
-func authenticateWithSmartCard(ctx context.Context, testUser string, userParam smartCardWithAuthAPIParam, authConfig *hwsec.AuthConfig) (string, error) {
+func authenticateWithSmartCard(ctx context.Context, testUser string, userParam smartCardWithAuthAPIParam, authConfig *hwsec.AuthConfig, authIntent uda.AuthIntent) (string, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	// Authenticate a new auth session via the new added Smart Card auth factor.
-	_, authSessionID, err := cryptohome.StartAuthSession(ctx, testUser /*isEphemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohome.StartAuthSession(ctx, testUser /*isEphemeral=*/, false, authIntent)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start auth session for Smart Card authentication")
 	}
