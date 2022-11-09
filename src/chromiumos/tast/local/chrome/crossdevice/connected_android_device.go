@@ -439,3 +439,37 @@ func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 
 	return nil
 }
+
+// AcceptTetherNotification accepts the notification on the phone that's needed
+// to enable Instant Tether on CrOS.
+func (c *AndroidDevice) AcceptTetherNotification(ctx context.Context) error {
+	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.Device)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the UI Automator server")
+	}
+	defer uiDevice.Close(ctx)
+
+	if err := uiDevice.OpenNotification(ctx); err != nil {
+		return errors.Wrap(err, "failed to show notifications on Android")
+	}
+
+	provideDataBtn := uiDevice.Object(ui.ResourceID("android:id/title"))
+	if err := provideDataBtn.WaitForExists(ctx, 30*time.Second); err != nil {
+		testing.ContextLog(ctx, "notification to provide data did not appear, assuming first-time setup has been completed")
+		return nil
+	}
+
+	if err := provideDataBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click notification")
+	}
+
+	continueBtn := uiDevice.Object(ui.ClassName("android.widget.Button"))
+	if err := continueBtn.WaitForExists(ctx, 30*time.Second); err != nil {
+		return errors.Wrap(err, "continue button did not appear")
+	}
+
+	if err := continueBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click continue button")
+	}
+	return nil
+}
