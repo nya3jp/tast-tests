@@ -39,6 +39,30 @@
       },
       "revId": "7adfa1801803eb89febe946e2931e2c81fb40b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b074d818_ff58b1b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dlp_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-11-09T09:37:46Z",
+      "side": 1,
+      "message": "Ops most likely things have been mixed up during a rebase. Thanks for spotting it!",
+      "parentUuid": "5fe894eb_42e2425b",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "7adfa1801803eb89febe946e2931e2c81fb40b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
