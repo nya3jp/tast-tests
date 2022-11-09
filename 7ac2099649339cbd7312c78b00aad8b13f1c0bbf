@@ -16,6 +16,69 @@
       "message": "Hi Judy, could you do a ownership CR? weird the ownership was overwriten when I uploaded a new patch.",
       "revId": "7ac2099649339cbd7312c78b00aad8b13f1c0bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b40569f8_da044885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-09T09:16:31Z",
+      "side": 1,
+      "message": "Couple nits, thanks for taking over this CL :).",
+      "revId": "7ac2099649339cbd7312c78b00aad8b13f1c0bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469a9044_161aeec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-09T09:16:31Z",
+      "side": 1,
+      "message": "There are other non-app tests (gaia, restart). Maybe something like `standardTests`?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "7ac2099649339cbd7312c78b00aad8b13f1c0bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832ea31b_4ae63e65",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-11-09T09:16:31Z",
+      "side": 1,
+      "message": "`NoBusterInTestName` maybe?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 14
+      },
+      "revId": "7ac2099649339cbd7312c78b00aad8b13f1c0bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
