@@ -24,7 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks we can successfully send files from one Cros device to another",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:nearby-share-remote"},
+		Attr:         []string{"group:cross-device-remote", "nearbyshare"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
@@ -32,7 +32,7 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				ExtraAttr: []string{"group:nearby-share-cq"},
+				ExtraAttr: []string{"cq"},
 				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -40,7 +40,7 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				ExtraAttr: []string{"group:nearby-share-cq"},
+				ExtraAttr: []string{"cq"},
 				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -48,7 +48,7 @@ func init() {
 			{
 				Name:      "dataonline_noone_txt30mb",
 				Fixture:   "nearbyShareRemoteDataUsageOnlineNoOne",
-				ExtraAttr: []string{"group:nearby-share-cq"},
+				ExtraAttr: []string{"cq"},
 				Val: nearbycommon.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},

@@ -36,7 +36,7 @@ func init() {
 			"chromeos-cross-device-eng@google.com",
 		},
 		// Enable once the lab is equipped to run tethering tests.
-		// Attr:         []string{"group:cross-device"},
+		Attr:         []string{"group:cross-device", "instanttether", "cellular"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "crossdeviceOnboarded",
 		Timeout:      3 * time.Minute,

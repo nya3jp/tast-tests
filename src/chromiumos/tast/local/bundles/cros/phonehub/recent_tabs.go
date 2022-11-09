@@ -30,7 +30,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-cross-device-eng@google.com",
 		},
-		Attr:         []string{"group:cross-device"},
+		Attr:         []string{"group:cross-device", "phonehub"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "crossdeviceOnboardedAllFeatures",
@@ -38,6 +38,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Fixture:           "lacrosCrossdeviceOnboardedAllFeatures",
+			ExtraAttr:         []string{"lacros"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               browser.TypeLacros,
 		}},
