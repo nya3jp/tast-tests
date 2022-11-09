@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b88eb23_14229aac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T02:04:53Z",
+      "side": 1,
+      "message": "Just a note, you could/should also run `../platform/tast/fast_build.sh -T` locally before uploading the patch.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "c93eba8363d254cff92ee9321f6b890e508b17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6385374_9a188352",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T02:04:53Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c93eba8363d254cff92ee9321f6b890e508b17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
