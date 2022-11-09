@@ -60,7 +60,7 @@ func VerifySystemInfoAndAppAndMetricsCheckboxState(ctx context.Context, s *testi
 	}
 
 	// Verify the system info and app and metrics checkbox is checked by default.
-	checkboxAncestor := nodewith.Name("Send system and app info and metrics").Role(
+	checkboxAncestor := nodewith.Name("Send system & app info and metrics").Role(
 		role.GenericContainer).Ancestor(feedbackRootNode)
 	checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxAncestor)
 	if err := ui.WaitUntilExists(checkbox.Attribute("checked", "true"))(ctx); err != nil {

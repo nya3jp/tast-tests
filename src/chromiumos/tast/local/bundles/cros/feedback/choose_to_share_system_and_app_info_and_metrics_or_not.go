@@ -85,7 +85,7 @@ func ChooseToShareSystemAndAppInfoAndMetricsOrNot(ctx context.Context, s *testin
 
 	// Uncheck the share diagnostic data checkbox if needed.
 	if !shareData {
-		checkboxContainer := nodewith.Name("Send system and app info and metrics").Role(
+		checkboxContainer := nodewith.Name("Send system & app info and metrics").Role(
 			role.GenericContainer).Ancestor(feedbackRootNode)
 		checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxContainer)
 		if err := uiauto.Combine("Uncheck the share diagnostic data checkbox",
