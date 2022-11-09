@@ -26,7 +26,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
-		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
+		}, {
+			Name:    "with_vk",
+			Fixture: "vkAuthSessionFixture",
+		}},
+		Timeout: 4 * time.Minute,
 	})
 }
 
@@ -56,6 +63,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 
 	attestation := helper.AttestationClient()
 	cryptohome := helper.CryptohomeClient()
+	cryptohome.SetMountAPIParam(&hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI})
 	mountInfo := hwsec.NewCryptohomeMountInfo(r, cryptohome)
 
 	const username = "test@crashwsec.bigr.name"
