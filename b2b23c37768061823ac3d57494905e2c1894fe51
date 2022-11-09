@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "946592a7_262e7274",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "Did you actually run this?",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c47c0d20_a42e1c22",
@@ -14,6 +31,120 @@
       "writtenOn": "2022-11-08T19:35:07Z",
       "side": 1,
       "message": "I created a bug here b/258250572 for hidehiko@.",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00cf0d8_38463bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "Nit: 2 * time.Minute :)",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ad6bcb_620e7639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "Create",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f117601f_bf062fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "This will always fail in the Lacros variant. You\u0027ll have to use apps.PrimaryBrowser instead.",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4b1ea2_5eeb60f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "Nit: remove empty line to group the appsList definition with its only use.",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc28d39_55180ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "errors.Errorf\n\nAlso in other places below.",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51654d4_2c809d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-09T01:37:14Z",
+      "side": 1,
+      "message": "Please put this into a separate function and reuse it in line 174.",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
