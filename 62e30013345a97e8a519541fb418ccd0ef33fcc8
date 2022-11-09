@@ -39,6 +39,30 @@
       },
       "revId": "62e30013345a97e8a519541fb418ccd0ef33fcc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c725ffe3_bbbed114",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-11-09T16:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0996ab_ca6d3593",
+      "range": {
+        "startLine": 199,
+        "startChar": 39,
+        "endLine": 199,
+        "endChar": 94
+      },
+      "revId": "62e30013345a97e8a519541fb418ccd0ef33fcc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
