@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98a1b2e5_ceaaa44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-09T23:47:12Z",
+      "side": 1,
+      "message": "Is it possible to decide whether snapshots should be restored in a different parameter while using the regular fixtures?",
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c7c8808_eaf200d4",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
@@ -72,6 +89,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d78a761_4f1153dd",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-09T23:47:12Z",
+      "side": 1,
+      "message": "Agree with Alvin, let\u0027s move this to fixture.go. IMO, let\u0027s take the snapshot always, and for we can decide whether to restore it on a test-by-test basis.",
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a46ccf3f_36bf4ffe",
         "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
         "patchSetId": 4
@@ -112,6 +146,23 @@
         "endLine": 150,
         "endChar": 61
       },
+      "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c88c821_8b95acd6",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-09T23:47:12Z",
+      "side": 1,
+      "message": "I think this doesn\u0027t need to be in the test name.",
       "revId": "1d74f59023ecea773a1e4c589451e7acd2352d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
