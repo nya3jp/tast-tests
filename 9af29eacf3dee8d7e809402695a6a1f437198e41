@@ -22,6 +22,30 @@
       },
       "revId": "9af29eacf3dee8d7e809402695a6a1f437198e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d23c490_17b71c01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-11-09T22:23:05Z",
+      "side": 1,
+      "message": "It may matter if we want to do an A/B comparison of test results",
+      "parentUuid": "9497a1c5_fa9b89c9",
+      "range": {
+        "startLine": 174,
+        "startChar": 105,
+        "endLine": 174,
+        "endChar": 112
+      },
+      "revId": "9af29eacf3dee8d7e809402695a6a1f437198e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
