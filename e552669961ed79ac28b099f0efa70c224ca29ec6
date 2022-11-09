@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8be4094_93d06cfe",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-09T00:10:43Z",
+      "side": 1,
+      "message": "window",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "e552669961ed79ac28b099f0efa70c224ca29ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963f6467_3b4524dc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-09T00:10:43Z",
+      "side": 1,
+      "message": "This seems very long.  Since the app is already open when you call this, does it really take up to 20s for the clear button to appear?",
+      "range": {
+        "startLine": 60,
+        "startChar": 19,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "e552669961ed79ac28b099f0efa70c224ca29ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66f3c1f_ba3aa0f2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-11-09T00:10:43Z",
+      "side": 1,
+      "message": "nit: I think this is an app window, not a dialog.",
+      "range": {
+        "startLine": 72,
+        "startChar": 44,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "e552669961ed79ac28b099f0efa70c224ca29ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
