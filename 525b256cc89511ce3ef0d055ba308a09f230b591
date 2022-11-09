@@ -327,6 +327,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b99ae3_a00bbf61",
+        "filename": "src/chromiumos/tast/local/network/dhcp/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-11-09T01:55:38Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "c103b381_00f6f0dc",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "525b256cc89511ce3ef0d055ba308a09f230b591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7704bf8_ef3cfc14",
