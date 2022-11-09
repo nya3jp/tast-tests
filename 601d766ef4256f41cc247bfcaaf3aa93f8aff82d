@@ -46,6 +46,30 @@
       },
       "revId": "601d766ef4256f41cc247bfcaaf3aa93f8aff82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5fcd40f_678a2219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T01:41:59Z",
+      "side": 1,
+      "message": "Oh. I see why we want MakeRTCTestParams.\n\nBut why don\u0027t we simply expose the fields? Those packages are within the same package, exposing the fields shouldn\u0027t do us much harm. \nIf you don\u0027t feel comfortable about exposing the fields, can we simply use MakeRTCTestParams without noVerifyCodecTest , hwDecoderTest, hwEncoderTest?",
+      "parentUuid": "c715068d_cf148277",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "601d766ef4256f41cc247bfcaaf3aa93f8aff82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
