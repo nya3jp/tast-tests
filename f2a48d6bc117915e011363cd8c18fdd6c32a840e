@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6423268b_d1cf855f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-11-09T01:50:09Z",
+      "side": 1,
+      "message": "Sent https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4005105 to mark these tests to LacrosVariantExists.",
+      "parentUuid": "555047bb_34bfc1f2",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "f2a48d6bc117915e011363cd8c18fdd6c32a840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d47597_dd0f8f15",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-06T03:42:05Z",
       "side": 1,
       "message": "nit: LacrosVariantExists\n\nHi Vovo, I just came across this while reviewing the migration progress and thought this could be set to \"Exists\" since this CL added the lacros variants. If it is okay can you update this and one in another test in a follow up? Thanks,",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "f2a48d6bc117915e011363cd8c18fdd6c32a840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20a49a9_8b82910e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-11-09T01:50:09Z",
+      "side": 1,
+      "message": "Sent https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4005105 to mark these tests to LacrosVariantExists.",
+      "parentUuid": "02d47597_dd0f8f15",
       "range": {
         "startLine": 25,
         "startChar": 24,
