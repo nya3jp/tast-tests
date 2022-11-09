@@ -62,15 +62,15 @@ func SetUpHostVPNWithConfig(ctx context.Context, config vpn.Config) (*vpn.Connec
 // expected default state afterwards. Since no state is persisted, new ARC instances will initialize
 // with the default state.
 func SetARCVPNEnabled(ctx context.Context, a *arc.ARC, enabled bool) error {
-	testing.ContextLogf(ctx, "Setting cros-vpn-as-arc-vpn flag to %t", enabled)
-	cmd := a.Command(ctx, "dumpsys", "wifi", "set-cros-vpn-as-arc-vpn", fmt.Sprintf("%t", enabled))
+	testing.ContextLogf(ctx, "Setting arc-host-vpn flag to %t", enabled)
+	cmd := a.Command(ctx, "dumpsys", "wifi", "set-arc-host-vpn", fmt.Sprintf("%t", enabled))
 	o, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		return errors.Wrap(err, "failed to execute 'set-cros-vpn-as-arc-vpn' commmand")
+		return errors.Wrap(err, "failed to execute 'set-arc-host-vpn' commmand")
 	}
 
-	if !strings.Contains(string(o), "sEnableCrosVpnAsArcVpn="+fmt.Sprintf("%t", enabled)) {
-		return errors.New("unable to set sEnableCrosVpnAsArcVpn to " + fmt.Sprintf("%t", enabled))
+	if !strings.Contains(string(o), "sEnableArcHostVpnAdbFlag="+fmt.Sprintf("%t", enabled)) {
+		return errors.New("unable to set sEnableArcHostVpnAdbFlag to " + fmt.Sprintf("%t", enabled))
 	}
 	return nil
 }
