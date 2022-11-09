@@ -85,8 +85,16 @@ func AllowWakeLocks(ctx context.Context, s *testing.State) {
 	}
 
 	var powerManagementIdleSettingsPolicy = &policy.PowerManagementIdleSettings{Val: &policy.PowerManagementIdleSettingsValue{
-		AC:      powerManagementSettingsJSON,
-		Battery: powerManagementSettingsJSON,
+		AC: powerManagementSettingsJSON,
+		Battery: &policy.PowerManagementIdleSettingsValueBattery{
+			IdleAction: powerManagementSettingsJSON.IdleAction,
+			Delays: &policy.PowerManagementIdleSettingsValueBatteryDelays{
+				Idle:        powerManagementSettingsJSON.Delays.Idle,
+				IdleWarning: powerManagementSettingsJSON.Delays.IdleWarning,
+				ScreenDim:   powerManagementSettingsJSON.Delays.ScreenDim,
+				ScreenOff:   powerManagementSettingsJSON.Delays.ScreenOff,
+			},
+		},
 	}}
 
 	for _, param := range []struct {

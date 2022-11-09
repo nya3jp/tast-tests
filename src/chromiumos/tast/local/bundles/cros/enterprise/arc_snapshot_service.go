@@ -127,16 +127,16 @@ func (service *ArcSnapshotService) WaitForPackagesInMgs(origCtx context.Context,
 			return nil, errors.Wrap(err, "failed to verify ArcEnabled")
 		}
 
-		interval := policy.RefWeeklyTimeIntervals{
-			End: &policy.RefWeeklyTime{
+		interval := policy.DeviceArcDataSnapshotHoursValueIntervals{
+			End: &policy.DeviceArcDataSnapshotHoursValueIntervalsEnd{
 				DayOfWeek: "SATURDAY",
 				Time:      0,
 			},
-			Start: &policy.RefWeeklyTime{
+			Start: &policy.DeviceArcDataSnapshotHoursValueIntervalsStart{
 				DayOfWeek: "MONDAY",
 				Time:      0,
 			}}
-		intervals := []*policy.RefWeeklyTimeIntervals{&interval}
+		intervals := []*policy.DeviceArcDataSnapshotHoursValueIntervals{&interval}
 
 		// Ensure chrome://policy shows correct DeviceArcDataSnapshotHours value.
 		if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.DeviceArcDataSnapshotHours{Val: &policy.DeviceArcDataSnapshotHoursValue{

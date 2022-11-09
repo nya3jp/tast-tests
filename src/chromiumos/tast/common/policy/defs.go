@@ -4443,10 +4443,21 @@ type DeviceLoginScreenPowerManagement struct {
 }
 
 type DeviceLoginScreenPowerManagementValue struct {
-	AC                              *RefDeviceLoginScreenPowerSettings `json:"AC"`
-	Battery                         *RefDeviceLoginScreenPowerSettings `json:"Battery"`
-	LidCloseAction                  string                             `json:"LidCloseAction"`
-	UserActivityScreenDimDelayScale int                                `json:"UserActivityScreenDimDelayScale"`
+	AC                              *RefDeviceLoginScreenPowerSettings            `json:"AC"`
+	Battery                         *DeviceLoginScreenPowerManagementValueBattery `json:"Battery"`
+	LidCloseAction                  string                                        `json:"LidCloseAction"`
+	UserActivityScreenDimDelayScale int                                           `json:"UserActivityScreenDimDelayScale"`
+}
+
+type DeviceLoginScreenPowerManagementValueBattery struct {
+	Delays     *DeviceLoginScreenPowerManagementValueBatteryDelays `json:"Delays"`
+	IdleAction string                                              `json:"IdleAction"`
+}
+
+type DeviceLoginScreenPowerManagementValueBatteryDelays struct {
+	Idle      int `json:"Idle"`
+	ScreenDim int `json:"ScreenDim"`
+	ScreenOff int `json:"ScreenOff"`
 }
 
 func (p *DeviceLoginScreenPowerManagement) Name() string { return "DeviceLoginScreenPowerManagement" }
@@ -5147,8 +5158,20 @@ type PowerManagementIdleSettings struct {
 }
 
 type PowerManagementIdleSettingsValue struct {
-	AC      *RefPowerManagementDelays `json:"AC"`
-	Battery *RefPowerManagementDelays `json:"Battery"`
+	AC      *RefPowerManagementDelays                `json:"AC"`
+	Battery *PowerManagementIdleSettingsValueBattery `json:"Battery"`
+}
+
+type PowerManagementIdleSettingsValueBattery struct {
+	Delays     *PowerManagementIdleSettingsValueBatteryDelays `json:"Delays"`
+	IdleAction string                                         `json:"IdleAction"`
+}
+
+type PowerManagementIdleSettingsValueBatteryDelays struct {
+	Idle        int `json:"Idle"`
+	IdleWarning int `json:"IdleWarning"`
+	ScreenDim   int `json:"ScreenDim"`
+	ScreenOff   int `json:"ScreenOff"`
 }
 
 func (p *PowerManagementIdleSettings) Name() string          { return "PowerManagementIdleSettings" }
@@ -8566,28 +8589,6 @@ type UsageTimeLimitValue struct {
 	TimeWindowLimit *UsageTimeLimitValueTimeWindowLimit `json:"time_window_limit"`
 }
 
-type UsageTimeLimitValueTimeWindowLimit struct {
-	Entries []*UsageTimeLimitValueTimeWindowLimitEntries `json:"entries,omitempty"`
-}
-
-type UsageTimeLimitValueTimeWindowLimitEntries struct {
-	EffectiveDay      string   `json:"effective_day"`
-	EndsAt            *RefTime `json:"ends_at"`
-	LastUpdatedMillis string   `json:"last_updated_millis"`
-	StartsAt          *RefTime `json:"starts_at"`
-}
-
-type UsageTimeLimitValueTimeUsageLimit struct {
-	Friday    *RefTimeUsageLimitEntry `json:"friday"`
-	Monday    *RefTimeUsageLimitEntry `json:"monday"`
-	ResetAt   *RefTime                `json:"reset_at"`
-	Saturday  *RefTimeUsageLimitEntry `json:"saturday"`
-	Sunday    *RefTimeUsageLimitEntry `json:"sunday"`
-	Thursday  *RefTimeUsageLimitEntry `json:"thursday"`
-	Tuesday   *RefTimeUsageLimitEntry `json:"tuesday"`
-	Wednesday *RefTimeUsageLimitEntry `json:"wednesday"`
-}
-
 type UsageTimeLimitValueOverrides struct {
 	Action             string                                          `json:"action"`
 	ActionSpecificData *UsageTimeLimitValueOverridesActionSpecificData `json:"action_specific_data"`
@@ -8596,6 +8597,68 @@ type UsageTimeLimitValueOverrides struct {
 
 type UsageTimeLimitValueOverridesActionSpecificData struct {
 	DurationMins int `json:"duration_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimit struct {
+	Friday    *RefTimeUsageLimitEntry                     `json:"friday"`
+	Monday    *UsageTimeLimitValueTimeUsageLimitMonday    `json:"monday"`
+	ResetAt   *RefTime                                    `json:"reset_at"`
+	Saturday  *UsageTimeLimitValueTimeUsageLimitSaturday  `json:"saturday"`
+	Sunday    *UsageTimeLimitValueTimeUsageLimitSunday    `json:"sunday"`
+	Thursday  *UsageTimeLimitValueTimeUsageLimitThursday  `json:"thursday"`
+	Tuesday   *UsageTimeLimitValueTimeUsageLimitTuesday   `json:"tuesday"`
+	Wednesday *UsageTimeLimitValueTimeUsageLimitWednesday `json:"wednesday"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitMonday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitSaturday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitSunday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitThursday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitTuesday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeUsageLimitWednesday struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
+}
+
+type UsageTimeLimitValueTimeWindowLimit struct {
+	Entries []*UsageTimeLimitValueTimeWindowLimitEntries `json:"entries,omitempty"`
+}
+
+type UsageTimeLimitValueTimeWindowLimitEntries struct {
+	EffectiveDay      string                                             `json:"effective_day"`
+	EndsAt            *UsageTimeLimitValueTimeWindowLimitEntriesEndsAt   `json:"ends_at"`
+	LastUpdatedMillis string                                             `json:"last_updated_millis"`
+	StartsAt          *UsageTimeLimitValueTimeWindowLimitEntriesStartsAt `json:"starts_at"`
+}
+
+type UsageTimeLimitValueTimeWindowLimitEntriesEndsAt struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type UsageTimeLimitValueTimeWindowLimitEntriesStartsAt struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *UsageTimeLimit) Name() string          { return "UsageTimeLimit" }
@@ -8715,8 +8778,14 @@ type DeviceAutoUpdateTimeRestrictions struct {
 }
 
 type DeviceAutoUpdateTimeRestrictionsValue struct {
-	End   *RefDisallowedTimeInterval `json:"end"`
-	Start *RefDisallowedTimeInterval `json:"start"`
+	End   *RefDisallowedTimeInterval                  `json:"end"`
+	Start *DeviceAutoUpdateTimeRestrictionsValueStart `json:"start"`
+}
+
+type DeviceAutoUpdateTimeRestrictionsValueStart struct {
+	DayOfWeek string `json:"day_of_week"`
+	Hours     int    `json:"hours"`
+	Minutes   int    `json:"minutes"`
 }
 
 func (p *DeviceAutoUpdateTimeRestrictions) Name() string { return "DeviceAutoUpdateTimeRestrictions" }
@@ -8968,37 +9037,6 @@ func (p *NetworkFileSharesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 	return v, nil
 }
 func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
-// 463. DeviceLocalAccountManagedSessionEnabled
-// This policy can be modified without rebooting.
-// ****************************************************************************
-type DeviceLocalAccountManagedSessionEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *DeviceLocalAccountManagedSessionEnabled) Name() string {
-	return "DeviceLocalAccountManagedSessionEnabled"
-}
-func (p *DeviceLocalAccountManagedSessionEnabled) Field() string         { return "" }
-func (p *DeviceLocalAccountManagedSessionEnabled) Scope() Scope          { return ScopeUser }
-func (p *DeviceLocalAccountManagedSessionEnabled) Status() Status        { return p.Stat }
-func (p *DeviceLocalAccountManagedSessionEnabled) UntypedV() interface{} { return p.Val }
-func (p *DeviceLocalAccountManagedSessionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -9932,9 +9970,21 @@ type ParentAccessCodeConfig struct {
 }
 
 type ParentAccessCodeConfigValue struct {
-	CurrentConfig *RefConfig   `json:"current_config"`
-	FutureConfig  *RefConfig   `json:"future_config"`
-	OldConfigs    []*RefConfig `json:"old_configs,omitempty"`
+	CurrentConfig *RefConfig                               `json:"current_config"`
+	FutureConfig  *ParentAccessCodeConfigValueFutureConfig `json:"future_config"`
+	OldConfigs    []*ParentAccessCodeConfigValueOldConfigs `json:"old_configs,omitempty"`
+}
+
+type ParentAccessCodeConfigValueFutureConfig struct {
+	AccessCodeTtl       int    `json:"access_code_ttl"`
+	ClockDriftTolerance int    `json:"clock_drift_tolerance"`
+	SharedSecret        string `json:"shared_secret"`
+}
+
+type ParentAccessCodeConfigValueOldConfigs struct {
+	AccessCodeTtl       int    `json:"access_code_ttl"`
+	ClockDriftTolerance int    `json:"clock_drift_tolerance"`
+	SharedSecret        string `json:"shared_secret"`
 }
 
 func (p *ParentAccessCodeConfig) Name() string          { return "ParentAccessCodeConfig" }
@@ -10541,10 +10591,25 @@ type DevicePowerPeakShiftDayConfigValue struct {
 }
 
 type DevicePowerPeakShiftDayConfigValueEntries struct {
-	ChargeStartTime *RefTime `json:"charge_start_time"`
-	Day             string   `json:"day"`
-	EndTime         *RefTime `json:"end_time"`
-	StartTime       *RefTime `json:"start_time"`
+	ChargeStartTime *DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime `json:"charge_start_time"`
+	Day             string                                                    `json:"day"`
+	EndTime         *DevicePowerPeakShiftDayConfigValueEntriesEndTime         `json:"end_time"`
+	StartTime       *DevicePowerPeakShiftDayConfigValueEntriesStartTime       `json:"start_time"`
+}
+
+type DevicePowerPeakShiftDayConfigValueEntriesChargeStartTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type DevicePowerPeakShiftDayConfigValueEntriesEndTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type DevicePowerPeakShiftDayConfigValueEntriesStartTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *DevicePowerPeakShiftDayConfig) Name() string          { return "DevicePowerPeakShiftDayConfig" }
@@ -10763,9 +10828,19 @@ type DeviceAdvancedBatteryChargeModeDayConfigValue struct {
 }
 
 type DeviceAdvancedBatteryChargeModeDayConfigValueEntries struct {
-	ChargeEndTime   *RefTime `json:"charge_end_time"`
-	ChargeStartTime *RefTime `json:"charge_start_time"`
-	Day             string   `json:"day"`
+	ChargeEndTime   *DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeEndTime   `json:"charge_end_time"`
+	ChargeStartTime *DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeStartTime `json:"charge_start_time"`
+	Day             string                                                               `json:"day"`
+}
+
+type DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeEndTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type DeviceAdvancedBatteryChargeModeDayConfigValueEntriesChargeStartTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Name() string {
@@ -10988,10 +11063,15 @@ type DeviceScheduledUpdateCheck struct {
 }
 
 type DeviceScheduledUpdateCheckValue struct {
-	DayOfMonth      int      `json:"day_of_month"`
-	DayOfWeek       string   `json:"day_of_week"`
-	Frequency       string   `json:"frequency"`
-	UpdateCheckTime *RefTime `json:"update_check_time"`
+	DayOfMonth      int                                             `json:"day_of_month"`
+	DayOfWeek       string                                          `json:"day_of_week"`
+	Frequency       string                                          `json:"frequency"`
+	UpdateCheckTime *DeviceScheduledUpdateCheckValueUpdateCheckTime `json:"update_check_time"`
+}
+
+type DeviceScheduledUpdateCheckValueUpdateCheckTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *DeviceScheduledUpdateCheck) Name() string { return "DeviceScheduledUpdateCheck" }
@@ -13065,37 +13145,6 @@ func (p *PaymentMethodQueryEnabled) Equal(iface interface{}) bool {
 }
 
 // ****************************************************************************
-// 652. StricterMixedContentTreatmentEnabled
-// This policy can be modified without rebooting.
-// ****************************************************************************
-type StricterMixedContentTreatmentEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *StricterMixedContentTreatmentEnabled) Name() string {
-	return "StricterMixedContentTreatmentEnabled"
-}
-func (p *StricterMixedContentTreatmentEnabled) Field() string         { return "" }
-func (p *StricterMixedContentTreatmentEnabled) Scope() Scope          { return ScopeUser }
-func (p *StricterMixedContentTreatmentEnabled) Status() Status        { return p.Stat }
-func (p *StricterMixedContentTreatmentEnabled) UntypedV() interface{} { return p.Val }
-func (p *StricterMixedContentTreatmentEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *StricterMixedContentTreatmentEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
 // 653. NTPCustomBackgroundEnabled
 // This policy has a default value of True.
 // This policy can be modified without rebooting.
@@ -13984,15 +14033,11 @@ type OnFileAttachedEnterpriseConnectorValue struct {
 	Verification             *OnFileAttachedEnterpriseConnectorValueVerification     `json:"verification"`
 }
 
-type OnFileAttachedEnterpriseConnectorValueVerification struct {
-	Linux   []string `json:"linux,omitempty"`
-	Mac     []string `json:"mac,omitempty"`
-	Windows []string `json:"windows,omitempty"`
-}
-
-type OnFileAttachedEnterpriseConnectorValueEnable struct {
-	Tags    []string `json:"tags,omitempty"`
-	UrlList []string `json:"url_list,omitempty"`
+type OnFileAttachedEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
 }
 
 type OnFileAttachedEnterpriseConnectorValueDisable struct {
@@ -14000,11 +14045,15 @@ type OnFileAttachedEnterpriseConnectorValueDisable struct {
 	UrlList []string `json:"url_list,omitempty"`
 }
 
-type OnFileAttachedEnterpriseConnectorValueCustomMessages struct {
-	Language     string `json:"language"`
-	LearnMoreUrl string `json:"learn_more_url"`
-	Message      string `json:"message"`
-	Tag          string `json:"tag"`
+type OnFileAttachedEnterpriseConnectorValueEnable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnFileAttachedEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 func (p *OnFileAttachedEnterpriseConnector) Name() string          { return "OnFileAttachedEnterpriseConnector" }
@@ -14082,15 +14131,11 @@ type OnFileDownloadedEnterpriseConnectorValue struct {
 	Verification             *OnFileDownloadedEnterpriseConnectorValueVerification     `json:"verification"`
 }
 
-type OnFileDownloadedEnterpriseConnectorValueVerification struct {
-	Linux   []string `json:"linux,omitempty"`
-	Mac     []string `json:"mac,omitempty"`
-	Windows []string `json:"windows,omitempty"`
-}
-
-type OnFileDownloadedEnterpriseConnectorValueEnable struct {
-	Tags    []string `json:"tags,omitempty"`
-	UrlList []string `json:"url_list,omitempty"`
+type OnFileDownloadedEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
 }
 
 type OnFileDownloadedEnterpriseConnectorValueDisable struct {
@@ -14098,11 +14143,15 @@ type OnFileDownloadedEnterpriseConnectorValueDisable struct {
 	UrlList []string `json:"url_list,omitempty"`
 }
 
-type OnFileDownloadedEnterpriseConnectorValueCustomMessages struct {
-	Language     string `json:"language"`
-	LearnMoreUrl string `json:"learn_more_url"`
-	Message      string `json:"message"`
-	Tag          string `json:"tag"`
+type OnFileDownloadedEnterpriseConnectorValueEnable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnFileDownloadedEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 func (p *OnFileDownloadedEnterpriseConnector) Name() string {
@@ -14147,15 +14196,11 @@ type OnBulkDataEntryEnterpriseConnectorValue struct {
 	Verification             *OnBulkDataEntryEnterpriseConnectorValueVerification     `json:"verification"`
 }
 
-type OnBulkDataEntryEnterpriseConnectorValueVerification struct {
-	Linux   []string `json:"linux,omitempty"`
-	Mac     []string `json:"mac,omitempty"`
-	Windows []string `json:"windows,omitempty"`
-}
-
-type OnBulkDataEntryEnterpriseConnectorValueEnable struct {
-	Tags    []string `json:"tags,omitempty"`
-	UrlList []string `json:"url_list,omitempty"`
+type OnBulkDataEntryEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
 }
 
 type OnBulkDataEntryEnterpriseConnectorValueDisable struct {
@@ -14163,11 +14208,15 @@ type OnBulkDataEntryEnterpriseConnectorValueDisable struct {
 	UrlList []string `json:"url_list,omitempty"`
 }
 
-type OnBulkDataEntryEnterpriseConnectorValueCustomMessages struct {
-	Language     string `json:"language"`
-	LearnMoreUrl string `json:"learn_more_url"`
-	Message      string `json:"message"`
-	Tag          string `json:"tag"`
+type OnBulkDataEntryEnterpriseConnectorValueEnable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnBulkDataEntryEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 func (p *OnBulkDataEntryEnterpriseConnector) Name() string {
@@ -16547,10 +16596,6 @@ type DataLeakPreventionRulesListValue struct {
 	Sources      *DataLeakPreventionRulesListValueSources        `json:"sources"`
 }
 
-type DataLeakPreventionRulesListValueSources struct {
-	Urls []string `json:"urls,omitempty"`
-}
-
 type DataLeakPreventionRulesListValueDestinations struct {
 	Components []string `json:"components,omitempty"`
 	Urls       []string `json:"urls,omitempty"`
@@ -16559,6 +16604,10 @@ type DataLeakPreventionRulesListValueDestinations struct {
 type DataLeakPreventionRulesListValueRestrictions struct {
 	Class string `json:"class"`
 	Level string `json:"level"`
+}
+
+type DataLeakPreventionRulesListValueSources struct {
+	Urls []string `json:"urls,omitempty"`
 }
 
 func (p *DataLeakPreventionRulesList) Name() string          { return "DataLeakPreventionRulesList" }
@@ -16771,8 +16820,23 @@ type DeviceArcDataSnapshotHours struct {
 }
 
 type DeviceArcDataSnapshotHoursValue struct {
-	Intervals []*RefWeeklyTimeIntervals `json:"intervals,omitempty"`
-	Timezone  string                    `json:"timezone"`
+	Intervals []*DeviceArcDataSnapshotHoursValueIntervals `json:"intervals,omitempty"`
+	Timezone  string                                      `json:"timezone"`
+}
+
+type DeviceArcDataSnapshotHoursValueIntervals struct {
+	End   *DeviceArcDataSnapshotHoursValueIntervalsEnd   `json:"end"`
+	Start *DeviceArcDataSnapshotHoursValueIntervalsStart `json:"start"`
+}
+
+type DeviceArcDataSnapshotHoursValueIntervalsEnd struct {
+	DayOfWeek string `json:"day_of_week"`
+	Time      int    `json:"time"`
+}
+
+type DeviceArcDataSnapshotHoursValueIntervalsStart struct {
+	DayOfWeek string `json:"day_of_week"`
+	Time      int    `json:"time"`
 }
 
 func (p *DeviceArcDataSnapshotHours) Name() string { return "DeviceArcDataSnapshotHours" }
@@ -17299,56 +17363,6 @@ func (p *GaiaOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage) (interfa
 }
 func (p *GaiaOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
-// 822. SendDownloadToCloudEnterpriseConnector
-// This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
-// ****************************************************************************
-type SendDownloadToCloudEnterpriseConnector struct {
-	Stat Status
-	Val  []*SendDownloadToCloudEnterpriseConnectorValue
-}
-
-type SendDownloadToCloudEnterpriseConnectorValue struct {
-	Disable         []*SendDownloadToCloudEnterpriseConnectorValueDisable `json:"disable,omitempty"`
-	Domain          string                                                `json:"domain"`
-	Enable          []*SendDownloadToCloudEnterpriseConnectorValueEnable  `json:"enable,omitempty"`
-	EnterpriseId    string                                                `json:"enterprise_id"`
-	ServiceProvider string                                                `json:"service_provider"`
-}
-
-type SendDownloadToCloudEnterpriseConnectorValueEnable struct {
-	MimeTypes []string `json:"mime_types,omitempty"`
-	UrlList   []string `json:"url_list,omitempty"`
-}
-
-type SendDownloadToCloudEnterpriseConnectorValueDisable struct {
-	MimeTypes []string `json:"mime_types,omitempty"`
-	UrlList   []string `json:"url_list,omitempty"`
-}
-
-func (p *SendDownloadToCloudEnterpriseConnector) Name() string {
-	return "SendDownloadToCloudEnterpriseConnector"
-}
-func (p *SendDownloadToCloudEnterpriseConnector) Field() string         { return "" }
-func (p *SendDownloadToCloudEnterpriseConnector) Scope() Scope          { return ScopeUser }
-func (p *SendDownloadToCloudEnterpriseConnector) Status() Status        { return p.Stat }
-func (p *SendDownloadToCloudEnterpriseConnector) UntypedV() interface{} { return p.Val }
-func (p *SendDownloadToCloudEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []*SendDownloadToCloudEnterpriseConnectorValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []*SendDownloadToCloudEnterpriseConnectorValue", m)
-	}
-	return v, nil
-}
-func (p *SendDownloadToCloudEnterpriseConnector) Equal(iface interface{}) bool {
-	v, ok := iface.([]*SendDownloadToCloudEnterpriseConnectorValue)
 	if !ok {
 		return ok
 	}
@@ -18044,8 +18058,13 @@ type RelaunchWindowValue struct {
 }
 
 type RelaunchWindowValueEntries struct {
-	DurationMins int      `json:"duration_mins"`
-	Start        *RefTime `json:"start"`
+	DurationMins int                              `json:"duration_mins"`
+	Start        *RelaunchWindowValueEntriesStart `json:"start"`
+}
+
+type RelaunchWindowValueEntriesStart struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *RelaunchWindow) Name() string          { return "RelaunchWindow" }
@@ -18195,10 +18214,15 @@ type DeviceScheduledReboot struct {
 }
 
 type DeviceScheduledRebootValue struct {
-	DayOfMonth int      `json:"day_of_month"`
-	DayOfWeek  string   `json:"day_of_week"`
-	Frequency  string   `json:"frequency"`
-	RebootTime *RefTime `json:"reboot_time"`
+	DayOfMonth int                                   `json:"day_of_month"`
+	DayOfWeek  string                                `json:"day_of_week"`
+	Frequency  string                                `json:"frequency"`
+	RebootTime *DeviceScheduledRebootValueRebootTime `json:"reboot_time"`
+}
+
+type DeviceScheduledRebootValueRebootTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (p *DeviceScheduledReboot) Name() string { return "DeviceScheduledReboot" }
@@ -18602,36 +18626,6 @@ func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) UnmarshalAs(m 
 }
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
-// 880. DisplayCapturePermissionsPolicyEnabled
-// ****************************************************************************
-type DisplayCapturePermissionsPolicyEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *DisplayCapturePermissionsPolicyEnabled) Name() string {
-	return "DisplayCapturePermissionsPolicyEnabled"
-}
-func (p *DisplayCapturePermissionsPolicyEnabled) Field() string         { return "" }
-func (p *DisplayCapturePermissionsPolicyEnabled) Scope() Scope          { return ScopeUser }
-func (p *DisplayCapturePermissionsPolicyEnabled) Status() Status        { return p.Stat }
-func (p *DisplayCapturePermissionsPolicyEnabled) UntypedV() interface{} { return p.Val }
-func (p *DisplayCapturePermissionsPolicyEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *DisplayCapturePermissionsPolicyEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -19076,37 +19070,6 @@ func (p *ReportDeviceSecurityStatus) UnmarshalAs(m json.RawMessage) (interface{}
 	return v, nil
 }
 func (p *ReportDeviceSecurityStatus) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// ****************************************************************************
-// 901. EnableDeviceGranularReporting
-// This policy can be modified without rebooting.
-// ****************************************************************************
-type EnableDeviceGranularReporting struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *EnableDeviceGranularReporting) Name() string { return "EnableDeviceGranularReporting" }
-func (p *EnableDeviceGranularReporting) Field() string {
-	return "device_reporting.enable_granular_reporting"
-}
-func (p *EnableDeviceGranularReporting) Scope() Scope          { return ScopeDevice }
-func (p *EnableDeviceGranularReporting) Status() Status        { return p.Stat }
-func (p *EnableDeviceGranularReporting) UntypedV() interface{} { return p.Val }
-func (p *EnableDeviceGranularReporting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *EnableDeviceGranularReporting) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -19816,7 +19779,6 @@ func (p *ChromadToCloudMigrationEnabled) Equal(iface interface{}) bool {
 // ****************************************************************************
 // 928. CopyPreventionSettings
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type CopyPreventionSettings struct {
 	Stat Status
@@ -19916,7 +19878,6 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{})
 // ****************************************************************************
 // 931. OnPrintEnterpriseConnector
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type OnPrintEnterpriseConnector struct {
 	Stat Status
@@ -19934,15 +19895,11 @@ type OnPrintEnterpriseConnectorValue struct {
 	Verification             *OnPrintEnterpriseConnectorValueVerification     `json:"verification"`
 }
 
-type OnPrintEnterpriseConnectorValueVerification struct {
-	Linux   []string `json:"linux,omitempty"`
-	Mac     []string `json:"mac,omitempty"`
-	Windows []string `json:"windows,omitempty"`
-}
-
-type OnPrintEnterpriseConnectorValueEnable struct {
-	Tags    []string `json:"tags,omitempty"`
-	UrlList []string `json:"url_list,omitempty"`
+type OnPrintEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
 }
 
 type OnPrintEnterpriseConnectorValueDisable struct {
@@ -19950,11 +19907,15 @@ type OnPrintEnterpriseConnectorValueDisable struct {
 	UrlList []string `json:"url_list,omitempty"`
 }
 
-type OnPrintEnterpriseConnectorValueCustomMessages struct {
-	Language     string `json:"language"`
-	LearnMoreUrl string `json:"learn_more_url"`
-	Message      string `json:"message"`
-	Tag          string `json:"tag"`
+type OnPrintEnterpriseConnectorValueEnable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnPrintEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 func (p *OnPrintEnterpriseConnector) Name() string          { return "OnPrintEnterpriseConnector" }
@@ -20456,6 +20417,7 @@ func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Equal(iface inte
 
 // ****************************************************************************
 // 948. FirstPartySetsEnabled
+// This policy can be modified without rebooting.
 // This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type FirstPartySetsEnabled struct {
@@ -21021,18 +20983,18 @@ type FirstPartySetsOverridesValue struct {
 	Replacements []*FirstPartySetsOverridesValueReplacements `json:"replacements,omitempty"`
 }
 
-type FirstPartySetsOverridesValueReplacements struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+type FirstPartySetsOverridesValueAdditions struct {
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
-type FirstPartySetsOverridesValueAdditions struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+type FirstPartySetsOverridesValueReplacements struct {
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
 func (p *FirstPartySetsOverrides) Name() string          { return "FirstPartySetsOverrides" }
@@ -21473,7 +21435,6 @@ func (p *OsColorMode) Equal(iface interface{}) bool {
 // ****************************************************************************
 // 991. OnFileTransferEnterpriseConnector
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type OnFileTransferEnterpriseConnector struct {
 	Stat Status
@@ -21486,7 +21447,7 @@ type OnFileTransferEnterpriseConnectorValue struct {
 	BlockUntilVerdict        int                                                     `json:"block_until_verdict"`
 	CustomMessages           []*OnFileTransferEnterpriseConnectorValueCustomMessages `json:"custom_messages,omitempty"`
 	Disable                  []*Reffile_transfer_enable_disable_schema               `json:"disable,omitempty"`
-	Enable                   []*Reffile_transfer_enable_disable_schema               `json:"enable,omitempty"`
+	Enable                   []*OnFileTransferEnterpriseConnectorValueEnable         `json:"enable,omitempty"`
 	RequireJustificationTags []string                                                `json:"require_justification_tags,omitempty"`
 	ServiceProvider          string                                                  `json:"service_provider"`
 }
@@ -21496,6 +21457,24 @@ type OnFileTransferEnterpriseConnectorValueCustomMessages struct {
 	LearnMoreUrl string `json:"learn_more_url"`
 	Message      string `json:"message"`
 	Tag          string `json:"tag"`
+}
+
+type OnFileTransferEnterpriseConnectorValueEnable struct {
+	SourceDestinationList []*OnFileTransferEnterpriseConnectorValueEnableSourceDestinationList `json:"source_destination_list,omitempty"`
+	Tags                  []string                                                             `json:"tags,omitempty"`
+}
+
+type OnFileTransferEnterpriseConnectorValueEnableSourceDestinationList struct {
+	Destinations []*OnFileTransferEnterpriseConnectorValueEnableSourceDestinationListDestinations `json:"destinations,omitempty"`
+	Sources      []*OnFileTransferEnterpriseConnectorValueEnableSourceDestinationListSources      `json:"sources,omitempty"`
+}
+
+type OnFileTransferEnterpriseConnectorValueEnableSourceDestinationListDestinations struct {
+	FileSystemType string `json:"file_system_type"`
+}
+
+type OnFileTransferEnterpriseConnectorValueEnableSourceDestinationListSources struct {
+	FileSystemType string `json:"file_system_type"`
 }
 
 func (p *OnFileTransferEnterpriseConnector) Name() string          { return "OnFileTransferEnterpriseConnector" }
@@ -21512,6 +21491,34 @@ func (p *OnFileTransferEnterpriseConnector) UnmarshalAs(m json.RawMessage) (inte
 }
 func (p *OnFileTransferEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileTransferEnterpriseConnectorValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 993. WebSQLNonSecureContextEnabled
+// ****************************************************************************
+type WebSQLNonSecureContextEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *WebSQLNonSecureContextEnabled) Name() string          { return "WebSQLNonSecureContextEnabled" }
+func (p *WebSQLNonSecureContextEnabled) Field() string         { return "" }
+func (p *WebSQLNonSecureContextEnabled) Scope() Scope          { return ScopeUser }
+func (p *WebSQLNonSecureContextEnabled) Status() Status        { return p.Stat }
+func (p *WebSQLNonSecureContextEnabled) UntypedV() interface{} { return p.Val }
+func (p *WebSQLNonSecureContextEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *WebSQLNonSecureContextEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -21671,7 +21678,6 @@ func (p *KerberosDefaultConfiguration) Equal(iface interface{}) bool {
 // ****************************************************************************
 // 1003. DeviceLoginScreenContextAwareAccessSignalsAllowlist
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type DeviceLoginScreenContextAwareAccessSignalsAllowlist struct {
 	Stat Status
@@ -21696,6 +21702,64 @@ func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) UnmarshalAs(m json
 }
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1004. PrefixedStorageInfoEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type PrefixedStorageInfoEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *PrefixedStorageInfoEnabled) Name() string          { return "PrefixedStorageInfoEnabled" }
+func (p *PrefixedStorageInfoEnabled) Field() string         { return "" }
+func (p *PrefixedStorageInfoEnabled) Scope() Scope          { return ScopeUser }
+func (p *PrefixedStorageInfoEnabled) Status() Status        { return p.Stat }
+func (p *PrefixedStorageInfoEnabled) UntypedV() interface{} { return p.Val }
+func (p *PrefixedStorageInfoEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *PrefixedStorageInfoEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1006. HighEfficiencyModeEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type HighEfficiencyModeEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *HighEfficiencyModeEnabled) Name() string          { return "HighEfficiencyModeEnabled" }
+func (p *HighEfficiencyModeEnabled) Field() string         { return "" }
+func (p *HighEfficiencyModeEnabled) Scope() Scope          { return ScopeUser }
+func (p *HighEfficiencyModeEnabled) Status() Status        { return p.Stat }
+func (p *HighEfficiencyModeEnabled) UntypedV() interface{} { return p.Val }
+func (p *HighEfficiencyModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *HighEfficiencyModeEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -21769,19 +21833,566 @@ func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Equal(iface interface{}
 }
 
 // ****************************************************************************
+// 1009. BatterySaverModeAvailability
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type BatterySaverModeAvailability struct {
+	Stat Status
+	Val  int
+}
+
+func (p *BatterySaverModeAvailability) Name() string          { return "BatterySaverModeAvailability" }
+func (p *BatterySaverModeAvailability) Field() string         { return "" }
+func (p *BatterySaverModeAvailability) Scope() Scope          { return ScopeUser }
+func (p *BatterySaverModeAvailability) Status() Status        { return p.Stat }
+func (p *BatterySaverModeAvailability) UntypedV() interface{} { return p.Val }
+func (p *BatterySaverModeAvailability) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *BatterySaverModeAvailability) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1010. TabDiscardingExceptions
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type TabDiscardingExceptions struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *TabDiscardingExceptions) Name() string          { return "TabDiscardingExceptions" }
+func (p *TabDiscardingExceptions) Field() string         { return "" }
+func (p *TabDiscardingExceptions) Scope() Scope          { return ScopeUser }
+func (p *TabDiscardingExceptions) Status() Status        { return p.Stat }
+func (p *TabDiscardingExceptions) UntypedV() interface{} { return p.Val }
+func (p *TabDiscardingExceptions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *TabDiscardingExceptions) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1011. AssistantWebEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type AssistantWebEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AssistantWebEnabled) Name() string          { return "AssistantWebEnabled" }
+func (p *AssistantWebEnabled) Field() string         { return "" }
+func (p *AssistantWebEnabled) Scope() Scope          { return ScopeUser }
+func (p *AssistantWebEnabled) Status() Status        { return p.Stat }
+func (p *AssistantWebEnabled) UntypedV() interface{} { return p.Val }
+func (p *AssistantWebEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AssistantWebEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1012. LacrosDataBackwardMigrationMode
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type LacrosDataBackwardMigrationMode struct {
+	Stat Status
+	Val  string
+}
+
+func (p *LacrosDataBackwardMigrationMode) Name() string          { return "LacrosDataBackwardMigrationMode" }
+func (p *LacrosDataBackwardMigrationMode) Field() string         { return "" }
+func (p *LacrosDataBackwardMigrationMode) Scope() Scope          { return ScopeUser }
+func (p *LacrosDataBackwardMigrationMode) Status() Status        { return p.Stat }
+func (p *LacrosDataBackwardMigrationMode) UntypedV() interface{} { return p.Val }
+func (p *LacrosDataBackwardMigrationMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *LacrosDataBackwardMigrationMode) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1013. StrictMimetypeCheckForWorkerScriptsEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type StrictMimetypeCheckForWorkerScriptsEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Name() string {
+	return "StrictMimetypeCheckForWorkerScriptsEnabled"
+}
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Field() string         { return "" }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Scope() Scope          { return ScopeUser }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Status() Status        { return p.Stat }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) UntypedV() interface{} { return p.Val }
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *StrictMimetypeCheckForWorkerScriptsEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1014. RecoveryFactorBehavior
+// This policy has a default value of False.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type RecoveryFactorBehavior struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *RecoveryFactorBehavior) Name() string          { return "RecoveryFactorBehavior" }
+func (p *RecoveryFactorBehavior) Field() string         { return "" }
+func (p *RecoveryFactorBehavior) Scope() Scope          { return ScopeUser }
+func (p *RecoveryFactorBehavior) Status() Status        { return p.Stat }
+func (p *RecoveryFactorBehavior) UntypedV() interface{} { return p.Val }
+func (p *RecoveryFactorBehavior) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *RecoveryFactorBehavior) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1015. CalendarIntegrationEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type CalendarIntegrationEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *CalendarIntegrationEnabled) Name() string          { return "CalendarIntegrationEnabled" }
+func (p *CalendarIntegrationEnabled) Field() string         { return "" }
+func (p *CalendarIntegrationEnabled) Scope() Scope          { return ScopeUser }
+func (p *CalendarIntegrationEnabled) Status() Status        { return p.Stat }
+func (p *CalendarIntegrationEnabled) UntypedV() interface{} { return p.Val }
+func (p *CalendarIntegrationEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *CalendarIntegrationEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1016. DeviceReportXDREvents
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeviceReportXDREvents struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceReportXDREvents) Name() string          { return "DeviceReportXDREvents" }
+func (p *DeviceReportXDREvents) Field() string         { return "device_report_xdr_events.enabled" }
+func (p *DeviceReportXDREvents) Scope() Scope          { return ScopeDevice }
+func (p *DeviceReportXDREvents) Status() Status        { return p.Stat }
+func (p *DeviceReportXDREvents) UntypedV() interface{} { return p.Val }
+func (p *DeviceReportXDREvents) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceReportXDREvents) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1017. TrashEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type TrashEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *TrashEnabled) Name() string          { return "TrashEnabled" }
+func (p *TrashEnabled) Field() string         { return "" }
+func (p *TrashEnabled) Scope() Scope          { return ScopeUser }
+func (p *TrashEnabled) Status() Status        { return p.Stat }
+func (p *TrashEnabled) UntypedV() interface{} { return p.Val }
+func (p *TrashEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *TrashEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1018. ShoppingListEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type ShoppingListEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ShoppingListEnabled) Name() string          { return "ShoppingListEnabled" }
+func (p *ShoppingListEnabled) Field() string         { return "" }
+func (p *ShoppingListEnabled) Scope() Scope          { return ScopeUser }
+func (p *ShoppingListEnabled) Status() Status        { return p.Stat }
+func (p *ShoppingListEnabled) UntypedV() interface{} { return p.Val }
+func (p *ShoppingListEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ShoppingListEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1019. DeskAPIThirdPartyAccessEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeskAPIThirdPartyAccessEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeskAPIThirdPartyAccessEnabled) Name() string          { return "DeskAPIThirdPartyAccessEnabled" }
+func (p *DeskAPIThirdPartyAccessEnabled) Field() string         { return "" }
+func (p *DeskAPIThirdPartyAccessEnabled) Scope() Scope          { return ScopeUser }
+func (p *DeskAPIThirdPartyAccessEnabled) Status() Status        { return p.Stat }
+func (p *DeskAPIThirdPartyAccessEnabled) UntypedV() interface{} { return p.Val }
+func (p *DeskAPIThirdPartyAccessEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeskAPIThirdPartyAccessEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1021. DefaultHandlersForFileExtensions
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DefaultHandlersForFileExtensions struct {
+	Stat Status
+	Val  []*DefaultHandlersForFileExtensionsValue
+}
+
+type DefaultHandlersForFileExtensionsValue struct {
+	FileExtensions []string `json:"file_extensions,omitempty"`
+	PolicyId       string   `json:"policy_id"`
+}
+
+func (p *DefaultHandlersForFileExtensions) Name() string          { return "DefaultHandlersForFileExtensions" }
+func (p *DefaultHandlersForFileExtensions) Field() string         { return "" }
+func (p *DefaultHandlersForFileExtensions) Scope() Scope          { return ScopeUser }
+func (p *DefaultHandlersForFileExtensions) Status() Status        { return p.Stat }
+func (p *DefaultHandlersForFileExtensions) UntypedV() interface{} { return p.Val }
+func (p *DefaultHandlersForFileExtensions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*DefaultHandlersForFileExtensionsValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*DefaultHandlersForFileExtensionsValue", m)
+	}
+	return v, nil
+}
+func (p *DefaultHandlersForFileExtensions) Equal(iface interface{}) bool {
+	v, ok := iface.([]*DefaultHandlersForFileExtensionsValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1022. IsolatedWebAppInstallForceList
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type IsolatedWebAppInstallForceList struct {
+	Stat Status
+	Val  []*IsolatedWebAppInstallForceListValue
+}
+
+type IsolatedWebAppInstallForceListValue struct {
+	UpdateManifestUrl string `json:"update_manifest_url"`
+	WebBundleId       string `json:"web_bundle_id"`
+}
+
+func (p *IsolatedWebAppInstallForceList) Name() string          { return "IsolatedWebAppInstallForceList" }
+func (p *IsolatedWebAppInstallForceList) Field() string         { return "" }
+func (p *IsolatedWebAppInstallForceList) Scope() Scope          { return ScopeUser }
+func (p *IsolatedWebAppInstallForceList) Status() Status        { return p.Stat }
+func (p *IsolatedWebAppInstallForceList) UntypedV() interface{} { return p.Val }
+func (p *IsolatedWebAppInstallForceList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*IsolatedWebAppInstallForceListValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*IsolatedWebAppInstallForceListValue", m)
+	}
+	return v, nil
+}
+func (p *IsolatedWebAppInstallForceList) Equal(iface interface{}) bool {
+	v, ok := iface.([]*IsolatedWebAppInstallForceListValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1023. DeskAPIThirdPartyAllowlist
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeskAPIThirdPartyAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *DeskAPIThirdPartyAllowlist) Name() string          { return "DeskAPIThirdPartyAllowlist" }
+func (p *DeskAPIThirdPartyAllowlist) Field() string         { return "" }
+func (p *DeskAPIThirdPartyAllowlist) Scope() Scope          { return ScopeUser }
+func (p *DeskAPIThirdPartyAllowlist) Status() Status        { return p.Stat }
+func (p *DeskAPIThirdPartyAllowlist) UntypedV() interface{} { return p.Val }
+func (p *DeskAPIThirdPartyAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *DeskAPIThirdPartyAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1025. HindiInscriptLayoutEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type HindiInscriptLayoutEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *HindiInscriptLayoutEnabled) Name() string          { return "HindiInscriptLayoutEnabled" }
+func (p *HindiInscriptLayoutEnabled) Field() string         { return "" }
+func (p *HindiInscriptLayoutEnabled) Scope() Scope          { return ScopeUser }
+func (p *HindiInscriptLayoutEnabled) Status() Status        { return p.Stat }
+func (p *HindiInscriptLayoutEnabled) UntypedV() interface{} { return p.Val }
+func (p *HindiInscriptLayoutEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *HindiInscriptLayoutEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1026. DeviceKeyboardBacklightColor
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type DeviceKeyboardBacklightColor struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DeviceKeyboardBacklightColor) Name() string          { return "DeviceKeyboardBacklightColor" }
+func (p *DeviceKeyboardBacklightColor) Field() string         { return "keyboard_backlight_color.color" }
+func (p *DeviceKeyboardBacklightColor) Scope() Scope          { return ScopeDevice }
+func (p *DeviceKeyboardBacklightColor) Status() Status        { return p.Stat }
+func (p *DeviceKeyboardBacklightColor) UntypedV() interface{} { return p.Val }
+func (p *DeviceKeyboardBacklightColor) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DeviceKeyboardBacklightColor) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1027. LensDesktopNTPSearchEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type LensDesktopNTPSearchEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *LensDesktopNTPSearchEnabled) Name() string          { return "LensDesktopNTPSearchEnabled" }
+func (p *LensDesktopNTPSearchEnabled) Field() string         { return "" }
+func (p *LensDesktopNTPSearchEnabled) Scope() Scope          { return ScopeUser }
+func (p *LensDesktopNTPSearchEnabled) Status() Status        { return p.Stat }
+func (p *LensDesktopNTPSearchEnabled) UntypedV() interface{} { return p.Val }
+func (p *LensDesktopNTPSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *LensDesktopNTPSearchEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1028. AccessControlAllowMethodsInCORSPreflightSpecConformant
+// ****************************************************************************
+type AccessControlAllowMethodsInCORSPreflightSpecConformant struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) Name() string {
+	return "AccessControlAllowMethodsInCORSPreflightSpecConformant"
+}
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) Field() string         { return "" }
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) Scope() Scope          { return ScopeUser }
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) Status() Status        { return p.Stat }
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) UntypedV() interface{} { return p.Val }
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AccessControlAllowMethodsInCORSPreflightSpecConformant) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
 // Reference values (used via '$ref' in JSON Schema).
 // ****************************************************************************
 
-type RefPowerManagementDelays struct {
-	Delays     *RefPowerManagementDelaysDelays `json:"Delays"`
-	IdleAction string                          `json:"IdleAction"`
+type RefTimeUsageLimitEntry struct {
+	LastUpdatedMillis string `json:"last_updated_millis"`
+	UsageQuotaMins    int    `json:"usage_quota_mins"`
 }
 
-type RefPowerManagementDelaysDelays struct {
-	Idle        int `json:"Idle"`
-	IdleWarning int `json:"IdleWarning"`
-	ScreenDim   int `json:"ScreenDim"`
-	ScreenOff   int `json:"ScreenOff"`
+type RefTime struct {
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
+}
+
+type RefConfig struct {
+	AccessCodeTtl       int    `json:"access_code_ttl"`
+	ClockDriftTolerance int    `json:"clock_drift_tolerance"`
+	SharedSecret        string `json:"shared_secret"`
 }
 
 type RefDeviceLoginScreenPowerSettings struct {
@@ -21795,16 +22406,22 @@ type RefDeviceLoginScreenPowerSettingsDelays struct {
 	ScreenOff int `json:"ScreenOff"`
 }
 
-type RefBookmarkType struct {
-	Children     []*RefBookmarkType `json:"children,omitempty"`
-	Name         string             `json:"name"`
-	ToplevelName string             `json:"toplevel_name"`
-	Url          string             `json:"url"`
+type Reffile_transfer_enable_disable_schema struct {
+	SourceDestinationList []*Reffile_transfer_enable_disable_schemaSourceDestinationList `json:"source_destination_list,omitempty"`
+	Tags                  []string                                                       `json:"tags,omitempty"`
 }
 
-type RefUsbDeviceId struct {
-	ProductId int `json:"product_id"`
-	VendorId  int `json:"vendor_id"`
+type Reffile_transfer_enable_disable_schemaSourceDestinationList struct {
+	Destinations []*Reffile_transfer_source_destination_schema                         `json:"destinations,omitempty"`
+	Sources      []*Reffile_transfer_enable_disable_schemaSourceDestinationListSources `json:"sources,omitempty"`
+}
+
+type Reffile_transfer_enable_disable_schemaSourceDestinationListSources struct {
+	FileSystemType string `json:"file_system_type"`
+}
+
+type Reffile_transfer_source_destination_schema struct {
+	FileSystemType string `json:"file_system_type"`
 }
 
 type RefUsbDeviceIdInclusive struct {
@@ -21812,9 +22429,26 @@ type RefUsbDeviceIdInclusive struct {
 	VendorId  int `json:"vendor_id"`
 }
 
+type RefBookmarkType struct {
+	Children     []*RefBookmarkType `json:"children,omitempty"`
+	Name         string             `json:"name"`
+	ToplevelName string             `json:"toplevel_name"`
+	Url          string             `json:"url"`
+}
+
+type RefDomainFiletypePair struct {
+	Domains       []string `json:"domains,omitempty"`
+	FileExtension string   `json:"file_extension"`
+}
+
 type RefWeeklyTimeIntervals struct {
-	End   *RefWeeklyTime `json:"end"`
-	Start *RefWeeklyTime `json:"start"`
+	End   *RefWeeklyTime               `json:"end"`
+	Start *RefWeeklyTimeIntervalsStart `json:"start"`
+}
+
+type RefWeeklyTimeIntervalsStart struct {
+	DayOfWeek string `json:"day_of_week"`
+	Time      int    `json:"time"`
 }
 
 type RefWeeklyTime struct {
@@ -21822,14 +22456,21 @@ type RefWeeklyTime struct {
 	Time      int    `json:"time"`
 }
 
-type RefTime struct {
-	Hour   int `json:"hour"`
-	Minute int `json:"minute"`
+type RefUsbDeviceId struct {
+	ProductId int `json:"product_id"`
+	VendorId  int `json:"vendor_id"`
 }
 
-type RefTimeUsageLimitEntry struct {
-	LastUpdatedMillis string `json:"last_updated_millis"`
-	UsageQuotaMins    int    `json:"usage_quota_mins"`
+type RefPowerManagementDelays struct {
+	Delays     *RefPowerManagementDelaysDelays `json:"Delays"`
+	IdleAction string                          `json:"IdleAction"`
+}
+
+type RefPowerManagementDelaysDelays struct {
+	Idle        int `json:"Idle"`
+	IdleWarning int `json:"IdleWarning"`
+	ScreenDim   int `json:"ScreenDim"`
+	ScreenOff   int `json:"ScreenOff"`
 }
 
 type RefDisallowedTimeInterval struct {
@@ -21841,31 +22482,6 @@ type RefDisallowedTimeInterval struct {
 type RefDayPercentagePair struct {
 	Days       int `json:"days"`
 	Percentage int `json:"percentage"`
-}
-
-type RefConfig struct {
-	AccessCodeTtl       int    `json:"access_code_ttl"`
-	ClockDriftTolerance int    `json:"clock_drift_tolerance"`
-	SharedSecret        string `json:"shared_secret"`
-}
-
-type Reffile_transfer_enable_disable_schema struct {
-	SourceDestinationList []*Reffile_transfer_enable_disable_schemaSourceDestinationList `json:"source_destination_list,omitempty"`
-	Tags                  []string                                                       `json:"tags,omitempty"`
-}
-
-type Reffile_transfer_enable_disable_schemaSourceDestinationList struct {
-	Destinations []*Reffile_transfer_source_destination_schema `json:"destinations,omitempty"`
-	Sources      []*Reffile_transfer_source_destination_schema `json:"sources,omitempty"`
-}
-
-type Reffile_transfer_source_destination_schema struct {
-	FileSystemType string `json:"file_system_type"`
-}
-
-type RefDomainFiletypePair struct {
-	Domains       []string `json:"domains,omitempty"`
-	FileExtension string   `json:"file_extension"`
 }
 
 // ****************************************************************************
