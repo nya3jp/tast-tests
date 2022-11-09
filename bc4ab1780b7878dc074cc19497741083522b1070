@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1288477f_f79fd459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-09T05:39:34Z",
+      "side": 1,
+      "message": "Maybe, but this is a direct copy from `configure_service_for_user_profile.go`. Would prefer to keep it as-is if you don\u0027t mind.",
+      "parentUuid": "95fe3a6e_a3ce9073",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c29a631_aa93730a",
@@ -89,6 +113,30 @@
       "writtenOn": "2022-11-09T04:39:04Z",
       "side": 1,
       "message": "I think it\u0027s safe to just `defer unlock()`?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 4
+      },
+      "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2bc559_4371c9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-09T05:39:34Z",
+      "side": 1,
+      "message": "Ah, good point! Done.",
+      "parentUuid": "5c29a631_aa93730a",
       "range": {
         "startLine": 190,
         "startChar": 1,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86eb60f6_89b4de36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-09T05:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e80d68b_57e96432",
+      "range": {
+        "startLine": 219,
+        "startChar": 36,
+        "endLine": 219,
+        "endChar": 39
+      },
+      "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946f7961_d50dc34b",
@@ -135,6 +207,30 @@
       "writtenOn": "2022-11-09T04:39:04Z",
       "side": 1,
       "message": "testexec.DumpLogOnError?",
+      "range": {
+        "startLine": 329,
+        "startChar": 96,
+        "endLine": 329,
+        "endChar": 97
+      },
+      "revId": "bc4ab1780b7878dc074cc19497741083522b1070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f6ec65_876b67b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-09T05:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946f7961_d50dc34b",
       "range": {
         "startLine": 329,
         "startChar": 96,
