@@ -25,7 +25,7 @@ func init() {
 			"amehfooz@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		// kakadu audio is currently broken: https://crbug.com/1153016
