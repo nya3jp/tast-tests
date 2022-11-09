@@ -22,6 +22,30 @@
       },
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d23ecb_25b7f34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-09T22:14:30Z",
+      "side": 1,
+      "message": "What feature are you referring to here? We wouldn\u0027t add a kiosk verifier, that doesn\u0027t actually make sense (as outlined above).\n\nI think you can argue that there\u0027s no point in having a test that just verifies that this doesn\u0027t work, but given the whole bug we went through with this (thinking it should work and then realizing it shouldn\u0027t) I can also see some value in having something that explicitly says that this isn\u0027t supposed to work and verifies that this is the case. If someone does try and add a kiosk verifier later they\u0027ll at least have to deal with this test case and produce a good answer for why their design actually makes sense.\n\nThat said if it\u0027s generally agreed that this test isn\u0027t worthwhile I can just drop it, but I do think there\u0027s a bit of value of explicitly covering this use case with _something_.",
+      "parentUuid": "406ca53a_a4abb32e",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
