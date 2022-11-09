@@ -343,9 +343,6 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 		roamSucceeded = true
 		defer func(ctx context.Context) {
-			if roamSucceeded {
-				return
-			}
 			if err := tf.CleanDisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect from the AP: ", err)
 			}
