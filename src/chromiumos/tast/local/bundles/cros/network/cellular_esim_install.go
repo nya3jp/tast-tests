@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/hermes"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/stork"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +29,7 @@ func init() {
 		Desc:         "Tests the add eSIM profile via activation code flow in the success and failure cases",
 		Contacts: []string{
 			"hsuregan@google.com",
-			"cros-connectivity@google.com@google.com",
+			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
@@ -143,43 +142,13 @@ func addESimWithActivationCode(ctx context.Context, tconn *chrome.TestConn, acti
 		return errors.Wrap(err, "failed to wait until refresh profile complete")
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open the keyboard")
-	}
-	defer kb.Close()
-
 	ui := uiauto.New(tconn).WithTimeout(1 * time.Minute)
 
 	if err := ui.LeftClick(ossettings.AddCellularButton.Focusable())(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the Add Cellular Button")
 	}
 
-	var setupNewProfile = nodewith.NameContaining("Set up new profile").Role(role.Button).Focusable()
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(setupNewProfile)(ctx); err == nil {
-		if err := ui.LeftClick(setupNewProfile)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click set up new profile button")
-		}
-	}
-
-	var activationCodeInput = nodewith.NameRegex(regexp.MustCompile("Activation code")).Focusable().First()
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(activationCodeInput)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find activation code input field")
-	}
-
-	if err := ui.LeftClick(activationCodeInput)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find activation code input field")
-	}
-
-	if err := kb.Type(ctx, "LPA:"+activationCode); err != nil {
-		return errors.Wrap(err, "could not type activation code")
-	}
-
-	if err := ui.LeftClick(ossettings.NextButton.Focusable())(ctx); err != nil {
-		return errors.Wrap(err, "could not click Next button")
-	}
-
-	return nil
+	return ossettings.AddESimWithActivationCode(ctx, tconn, activationCode)
 }
 
 func verifyTestESimProfile(ctx context.Context, tconn *chrome.TestConn) error {
