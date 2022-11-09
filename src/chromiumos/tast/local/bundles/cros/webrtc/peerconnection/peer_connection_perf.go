@@ -44,12 +44,12 @@ const (
 // verifyDecoderMode and verifyEncoderMode.
 func makePerfRTCTestParams(profile string, width, height int, verifyDecoderMode VerifyDecoderMode, verifyEncoderMode VerifyEncoderMode) RTCTestParams {
 	return RTCTestParams{
-		verifyDecoderMode:  verifyDecoderMode,
-		verifyEncoderMode:  verifyEncoderMode,
-		profile:            profile,
-		streamWidth:        width,
-		streamHeight:       height,
-		videoGridDimension: 1,
+		VerifyDecoderMode:  verifyDecoderMode,
+		VerifyEncoderMode:  verifyEncoderMode,
+		Profile:            profile,
+		StreamWidth:        width,
+		StreamHeight:       height,
+		VideoGridDimension: 1,
 	}
 }
 
@@ -80,9 +80,9 @@ func MakeSimulcastTestParams(profile string, width, height int, hwEncs []bool) R
 	}
 
 	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
-	params.svc = "" // L1T3?
-	params.simulcasts = len(hwEncs)
-	params.simulcastHWEncs = hwEncs
+	params.Svc = "" // L1T3?
+	params.Simulcasts = len(hwEncs)
+	params.SimulcastHWEncs = hwEncs
 	return params
 }
 
@@ -95,7 +95,7 @@ func MakeHWTestParamsWithSVC(profile string, width, height int, svc string, hwEn
 		verifyEncoderMode = VerifyHWEncoderUsed
 	}
 	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, verifyEncoderMode)
-	params.svc = svc
+	params.Svc = svc
 	return params
 }
 
@@ -104,8 +104,8 @@ func MakeHWTestParamsWithSVC(profile string, width, height int, svc string, hwEn
 // in a grid of videoGridDimension x videoGridDimension videoGridFiles.
 func MakeHWTestParamsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestParams {
 	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
-	params.videoGridDimension = videoGridDimension
-	params.videoGridFile = videoGridFile
+	params.VideoGridDimension = videoGridDimension
+	params.VideoGridFile = videoGridFile
 	return params
 }
 
@@ -113,7 +113,7 @@ func MakeHWTestParamsWithVideoGrid(profile string, width, height, videoGridDimen
 // and with HW Encoding/Decoding enabled.
 func MakeCaptureTestParams(profile string, width, height int, displayMediaType DisplayMediaType) RTCTestParams {
 	params := makePerfRTCTestParams(profile, width, height, VerifyHWDecoderUsed, VerifyHWEncoderUsed)
-	params.displayMediaType = displayMediaType
+	params.DisplayMediaType = displayMediaType
 	return params
 }
 
@@ -309,24 +309,24 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", params.profile, params.simulcasts, params.svc, params.displayMediaType, params.streamWidth, params.streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", params.Profile, params.Simulcasts, params.Svc, params.DisplayMediaType, params.StreamWidth, params.StreamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
-	if err := verifyDecoderImplementation(ctx, conn, params.verifyDecoderMode); err != nil {
+	if err := verifyDecoderImplementation(ctx, conn, params.VerifyDecoderMode); err != nil {
 		return err
 	}
-	if err := verifyEncoderImplementation(ctx, conn, params.verifyEncoderMode, params.simulcastHWEncs); err != nil {
+	if err := verifyEncoderImplementation(ctx, conn, params.VerifyEncoderMode, params.SimulcastHWEncs); err != nil {
 		return err
 	}
 
-	if params.videoGridDimension > 1 {
-		if err := conn.Call(ctx, nil, "makeVideoGrid", params.videoGridDimension, videoURL); err != nil {
+	if params.VideoGridDimension > 1 {
+		if err := conn.Call(ctx, nil, "makeVideoGrid", params.VideoGridDimension, videoURL); err != nil {
 			return errors.Wrap(err, "javascript error")
 		}
 	}
 
-	if err := measureRTCStats(shortCtx, conn, params.streamWidth, params.streamHeight, params.displayMediaType, p); err != nil {
+	if err := measureRTCStats(shortCtx, conn, params.StreamWidth, params.StreamHeight, params.DisplayMediaType, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
 
@@ -393,8 +393,8 @@ func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem
 	defer cancel()
 
 	var videoGridURL string
-	if params.videoGridDimension > 1 {
-		videoGridURL = server.URL + "/" + params.videoGridFile
+	if params.VideoGridDimension > 1 {
+		videoGridURL = server.URL + "/" + params.VideoGridFile
 	}
 	p := perf.NewValues()
 	if err := peerConnectionPerf(ctx, cr, loopbackURL, videoGridURL, outDir, params, p); err != nil {
