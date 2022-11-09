@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/graphics/expectations"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -100,9 +101,21 @@ func init() {
 }
 
 func Idle(ctx context.Context, s *testing.State) {
+	e, err := expectations.GetTestExpectation(ctx, s.TestName())
+	if err != nil {
+		s.Fatal("Unable to get test expectation: ", err)
+	}
+	defer func() {
+		if err := e.HandleFinalExpectation(); err != nil {
+			s.Error("Unmet expectation: ", err)
+		}
+	}()
+
 	check := s.Param().(func(context.Context) error)
 	if err := check(ctx); err != nil {
-		s.Error("Failed with: ", err)
+		if expErr := e.ReportError("Failed with: ", err); expErr != nil {
+			s.Error("Failed with: ", expErr)
+		}
 	}
 }
 
