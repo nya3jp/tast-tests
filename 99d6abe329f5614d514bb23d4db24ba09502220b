@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3c1398_01149c21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:33:09Z",
+      "side": 1,
+      "message": "This test looks to have been moved to unstable. Can we track the task to bring it back into stable once the fw extractor is fixed?",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97a0b8a_1b8ae345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:33:09Z",
+      "side": 1,
+      "message": "Do we have anything for GfP2?",
+      "range": {
+        "startLine": 23,
+        "startChar": 34,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95efad88_57f1cd1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-11-09T22:33:09Z",
+      "side": 1,
+      "message": "This is dead code now right? If so, I recommend removing it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "99d6abe329f5614d514bb23d4db24ba09502220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
