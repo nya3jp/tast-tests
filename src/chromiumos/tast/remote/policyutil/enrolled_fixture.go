@@ -29,7 +29,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const enrollmentRunTimeout = 8 * time.Minute
+const (
+	enrollmentSetupTimeout = 15 * time.Minute
+	enrollmentRunTimeout   = 8 * time.Minute
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -37,7 +40,7 @@ func init() {
 		Desc:            "Fixture providing enrollment",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &enrolledFixt{},
-		SetUpTimeout:    15 * time.Minute,
+		SetUpTimeout:    enrollmentSetupTimeout,
 		TearDownTimeout: 5 * time.Minute,
 		ResetTimeout:    15 * time.Second,
 		ServiceDeps:     []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
@@ -94,6 +97,15 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 }
 
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	// Make sure we have enough time left from the global timeout.
+	// Deadline returns with the time remaining until the global timeout
+	// if it is closer than the SetUp timeout.
+	if deadline, ok := ctx.Deadline(); !ok {
+		s.Fatal("Missing deadline for context: ", ctx)
+	} else if diff := deadline.Sub(time.Now()); diff < (enrollmentSetupTimeout - time.Minute) {
+		s.Fatalf("Not enough time until global timeout: have %s; need %s", diff, enrollmentSetupTimeout)
+	}
+
 	if !s.DUT().Connected(ctx) {
 		s.Fatal("Failed DUT connection check at the beginning")
 	}
@@ -134,9 +146,9 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		// Make sure we have enough time to perform enrollment.
 		// This helps differentiate real issues from timeout hitting different components.
 		if deadline, ok := ctx.Deadline(); !ok {
-			s.Fatal("missing deadline for context: ", ctx)
+			s.Fatal("Missing deadline for context: ", ctx)
 		} else if diff := deadline.Sub(time.Now()); diff < enrollmentRunTimeout {
-			s.Fatalf("not enought time to perform setup and enrollment: have %s; need %s", diff, enrollmentRunTimeout)
+			s.Fatalf("Not enought time to perform setup and enrollment: have %s; need %s", diff, enrollmentRunTimeout)
 		}
 
 		s.Logf("Attempting enrollment, try %d", tries)
