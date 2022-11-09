@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8a8afc_e1ed2929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-09T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd4115b_b46ec838",
+      "revId": "bf43ecb320ee22589faa19b562be6d4a158cec07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3324ce3e_acb15b36",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-09T20:09:05Z",
       "side": 1,
       "message": "Should we add \"App page for %q not in desired state: %s\" to the error message?",
+      "revId": "bf43ecb320ee22589faa19b562be6d4a158cec07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1524c746_28fe289c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-09T21:02:52Z",
+      "side": 1,
+      "message": "The message is only intended for helping understand the execution while polling/retry is happening. The final error is only for control flow so message is not very helpful there.",
+      "parentUuid": "3324ce3e_acb15b36",
       "revId": "bf43ecb320ee22589faa19b562be6d4a158cec07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
