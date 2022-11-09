@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type s0ixCheckTestParams struct {
@@ -33,7 +34,8 @@ func init() {
 		Func:         S0ixStabilityCheck,
 		Desc:         "Verifies S0ix stability with suspend-resume",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		Vars:         []string{"servo"},
 		Attr:         []string{"group:mainline", "informational"},

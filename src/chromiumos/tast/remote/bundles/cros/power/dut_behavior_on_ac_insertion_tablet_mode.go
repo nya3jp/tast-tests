@@ -28,9 +28,9 @@ func init() {
 		Desc:         "Verifies that system comes back from sleep after AC insertion in tabletmode",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
-		SoftwareDeps: []string{"chrome", "reboot"},
+		SoftwareDeps: []string{"chrome", "reboot", "pmc_cstate_show"},
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.X86()),
 		Timeout:      10 * time.Minute,
 		Fixture:      fixture.NormalMode,
 	})

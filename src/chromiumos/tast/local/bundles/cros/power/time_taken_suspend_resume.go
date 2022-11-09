@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,7 +32,8 @@ func init() {
 			"ambalavanan.m.m@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "pmc_cstate_show"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		Vars: []string{
 			"power.TimeTakenSuspendResume.defaultSuspendTime",
 			"power.TimeTakenSuspendResume.defaultResumeTime",
