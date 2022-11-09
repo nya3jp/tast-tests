@@ -62,6 +62,20 @@ func init() {
 			Val:     peerconnection.MakeSWTestParams("VP9", 1280, 720),
 			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
+			Name:              "vp9_hw_1080p",
+			Val:               peerconnection.MakeHWTestParams("VP9", 1920, 1080),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			Name:              "vp9_hw_dec_1080p",
+			Val:               peerconnection.MakeSWEncoderTestParams("VP9", 1920, 1080),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSWEncoding",
+		}, {
+			Name:    "vp9_sw_1080p",
+			Val:     peerconnection.MakeSWTestParams("VP9", 1920, 1080),
+			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
+		}, {
 			Name:              "vp8_hw_capture_monitor",
 			Val:               peerconnection.MakeCaptureTestParams("VP8", 1280, 720, peerconnection.CaptureMonitor),
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),

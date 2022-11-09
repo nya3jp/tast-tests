@@ -141,6 +141,17 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			Fixture:           "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		}, {
+			Name: "vp9_dec_1080p",
+			Val: peerconnection.RTCTestParams{
+				VerifyDecoderMode: peerconnection.VerifyHWDecoderUsed,
+				VerifyEncoderMode: peerconnection.NoVerifyEncoderMode,
+				Profile:           "VP9",
+				StreamWidth:       1920,
+				StreamHeight:      1080,
+			},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
 			// This is a decoding test of 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name: "vp9_dec_svc_l1t2",
@@ -312,6 +323,16 @@ func init() {
 				Profile:           "VP9",
 				StreamWidth:       defaultRTCStreamWidth,
 				StreamHeight:      defaultRTCStreamHeight,
+			},
+			Fixture: "chromeVideoWithFakeWebcam",
+		}, {
+			Name: "vp9_enc_1080p",
+			Val: peerconnection.RTCTestParams{
+				VerifyDecoderMode: peerconnection.NoVerifyDecoderMode,
+				VerifyEncoderMode: peerconnection.VerifyHWEncoderUsed,
+				Profile:           "VP9",
+				StreamWidth:       1920,
+				StreamHeight:      1080,
 			},
 			Fixture: "chromeVideoWithFakeWebcam",
 		}, {
