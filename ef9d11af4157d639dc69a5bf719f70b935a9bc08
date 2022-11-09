@@ -39,6 +39,30 @@
       },
       "revId": "ef9d11af4157d639dc69a5bf719f70b935a9bc08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e49c04e_7c1705f8",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-09T22:58:04Z",
+      "side": 1,
+      "message": "As you noticed, this is in the next CL in the series. Done.",
+      "parentUuid": "0eb53342_beabab2a",
+      "range": {
+        "startLine": 338,
+        "startChar": 5,
+        "endLine": 338,
+        "endChar": 23
+      },
+      "revId": "ef9d11af4157d639dc69a5bf719f70b935a9bc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
