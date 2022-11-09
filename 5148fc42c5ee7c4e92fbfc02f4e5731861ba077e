@@ -69,6 +69,24 @@
       "parentUuid": "c2458a8f_4c9adce7",
       "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901d458c_0bb24bb1",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-11-09T00:07:29Z",
+      "side": 1,
+      "message": "Nice catch Madhav. And thanks Jason for trying to fix the issue.\n\nI think the assumption that all tests need a modem with a sim needs to change. We may have tests without a SIM in the future.  Calling modemmanager.NewModem should be sufficient for all tests irrespective of the eSIM status.",
+      "parentUuid": "39509f5f_c50e6c76",
+      "revId": "5148fc42c5ee7c4e92fbfc02f4e5731861ba077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
