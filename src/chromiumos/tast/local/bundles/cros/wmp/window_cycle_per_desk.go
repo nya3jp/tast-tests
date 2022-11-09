@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
@@ -116,10 +115,9 @@ func WindowCyclePerDesk(ctx context.Context, s *testing.State) {
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 5); err != nil {
 		s.Fatal("Failed to activate desk 5: ", err)
 	}
-	// TODO(b/246782864): Use a proper wait for the desk animation.
-	// Make sure the desk animiation is finished.
-	if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait desk animation finished: ", err)
+
+	if err := ash.WaitUntilDesksFinishAnimating(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for desks to finish animating: ", err)
 	}
 
 	// Get the keyboard
