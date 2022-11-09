@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c4773a_d3db9fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T22:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be410e34_be6b06c9",
+      "range": {
+        "startLine": 79,
+        "startChar": 61,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "da22e73b019c1f3d2a41ade4c739a31c23041aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc146b05_01be5be4",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585679df_bcbe1a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T22:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc146b05_01be5be4",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "da22e73b019c1f3d2a41ade4c739a31c23041aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97caffb8_376c63af",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-11-09T21:06:29Z",
       "side": 1,
       "message": "Chameleon device url\u003d",
+      "range": {
+        "startLine": 114,
+        "startChar": 8,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "da22e73b019c1f3d2a41ade4c739a31c23041aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c51e9a_2ada3a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T22:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97caffb8_376c63af",
       "range": {
         "startLine": 114,
         "startChar": 8,
