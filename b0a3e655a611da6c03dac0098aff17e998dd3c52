@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13105816_629d0d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-09T12:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b01ae20_7a1c511d",
+      "revId": "b0a3e655a611da6c03dac0098aff17e998dd3c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd2f35c3_dd298dda",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-09T03:08:13Z",
       "side": 1,
       "message": "make sure it works as expected\n\nNote that setup is an noun so \"it is setup\" is incorrect.",
+      "range": {
+        "startLine": 26,
+        "startChar": 108,
+        "endLine": 26,
+        "endChar": 137
+      },
+      "revId": "b0a3e655a611da6c03dac0098aff17e998dd3c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43364cb0_2efe7a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/config_baseline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-11-09T12:28:41Z",
+      "side": 1,
+      "message": "I have changed the description to use \"set\" instead, as we do not check it works, just that it was configured correctly.",
+      "parentUuid": "bd2f35c3_dd298dda",
       "range": {
         "startLine": 26,
         "startChar": 108,
