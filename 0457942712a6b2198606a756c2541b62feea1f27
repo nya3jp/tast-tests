@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0056cc_c2ed213a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T05:57:15Z",
+      "side": 1,
+      "message": "Thank you for this big port!\n\nPo-Hsien, would it not make sense to use hardware_probe to identify different chipsets?",
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c97a99_ccd9f4d1",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T05:57:15Z",
+      "side": 1,
+      "message": "You can delete all references to exynos.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb2faa6_e5e1c75e",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T05:57:15Z",
+      "side": 1,
+      "message": "You can delete all references to tegra.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3991a6d_b6bc5d16",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T05:57:15Z",
+      "side": 1,
+      "message": "Can we use Po-Hsiens hardware_probe binary to obtain these?",
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93e70e1_f17b9be6",
+        "filename": "src/chromiumos/tast/local/kernel/kernel_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-09T05:57:15Z",
+      "side": 1,
+      "message": "Also here, can we use hardware_probe?",
+      "revId": "0457942712a6b2198606a756c2541b62feea1f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
