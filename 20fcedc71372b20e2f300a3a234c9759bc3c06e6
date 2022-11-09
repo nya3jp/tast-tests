@@ -95,6 +95,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "656786c8_385abae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-11-09T04:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32cf8d6f_c3008ae7",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76375ce1_d92405d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-11-09T04:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "412febcc_ab45176e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b9dd7e_52a8f7ca",
@@ -108,6 +156,30 @@
       "writtenOn": "2022-11-08T08:09:01Z",
       "side": 1,
       "message": "nit: commit message lines should not be longer than 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 127
+      },
+      "revId": "20fcedc71372b20e2f300a3a234c9759bc3c06e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e817883_aa7555d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-11-09T04:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b9dd7e_52a8f7ca",
       "range": {
         "startLine": 9,
         "startChar": 0,
