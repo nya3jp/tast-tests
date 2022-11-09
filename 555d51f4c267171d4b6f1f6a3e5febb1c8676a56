@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0caf03_df0fd0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "nit: baseURL?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d56245e_17dd5ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 71,
+        "startChar": 35,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe85196_9c995bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "nit: `, err`",
+      "range": {
+        "startLine": 136,
+        "startChar": 39,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b93121a_254ef44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "nit: inline?",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 17
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0504340e_b9bb5bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "Is this used?",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 84
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5aca496_95c29dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "What is being accomplished by testing a big file that likely won\u0027t finish as opposed to a smaller file that will?",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 1
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c2d600_cab77b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "Can we use a left-click download approach in all cases so we can remove these one-offs and associated types?",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 68
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257a8047_039159fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-09T00:55:51Z",
+      "side": 1,
+      "message": "How do we know this is a notification and if so that the notification is related to the download sample?",
+      "range": {
+        "startLine": 381,
+        "startChar": 35,
+        "endLine": 381,
+        "endChar": 50
+      },
+      "revId": "555d51f4c267171d4b6f1f6a3e5febb1c8676a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
