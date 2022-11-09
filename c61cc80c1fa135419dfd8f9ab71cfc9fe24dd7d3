@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff36acf_a93756f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_forced_app_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T19:08:28Z",
+      "side": 1,
+      "message": "Remove these `withRetries` Val, since they are no longer used?",
+      "revId": "c61cc80c1fa135419dfd8f9ab71cfc9fe24dd7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
