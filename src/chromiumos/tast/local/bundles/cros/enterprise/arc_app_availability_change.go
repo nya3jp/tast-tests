@@ -14,8 +14,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
@@ -112,20 +110,27 @@ func ARCAppAvailabilityChange(ctx context.Context, s *testing.State) {
 
 		d, err := a.NewUIDevice(ctx)
 		if err != nil {
-			return rl.Exit("initialize UI Automator", err)
+			return rl.Exit("created UIAutomator", err)
 		}
 		defer d.Close(cleanupCtx)
 
-		if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
-			return rl.Exit("open app page", err)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			rl.Exit("create test API Connection", err)
 		}
 
-		if installButton, err := arcent.WaitForInstallButton(ctx, d); err != nil {
-			return rl.Exit("find the install button", err)
-		} else if enabled, err := installButton.IsEnabled(ctx); err != nil {
-			return rl.Exit("check install button state", err)
-		} else if !enabled {
-			return rl.Exit("verify install button is enabled", nil)
+		if err := arcent.PollAppPageState(ctx, tconn, a, testPackage, func(ctx context.Context) error {
+			result := error(nil)
+			if installButton, err := arcent.WaitForInstallButton(ctx, d); err != nil {
+				result = errors.Wrap(err, "failed to find the install button")
+			} else if enabled, err := installButton.IsEnabled(ctx); err != nil {
+				result = errors.Wrap(err, "failed to check the install button state")
+			} else if !enabled {
+				result = errors.Wrap(err, "install button is disabled")
+			}
+			return result
+		}, time.Minute); err != nil {
+			rl.Exit("confirm availability", err)
 		}
 
 		s.Log("Changing the policy to block the installed app")
@@ -137,22 +142,21 @@ func ARCAppAvailabilityChange(ctx context.Context, s *testing.State) {
 			return rl.Exit("update policies", err)
 		}
 
-		tconn, err := cr.TestAPIConn(ctx)
+		if err := arcent.PollAppPageState(ctx, tconn, a, testPackage, func(ctx context.Context) error {
+			// UIAutomator connection breaks due to policy change causing automator to be uninstalled.
+			d, err := a.NewUIDevice(ctx)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer d.Close(ctx)
 
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if err := arcent.WaitForAppUnavailableMessage(ctx, d, time.Minute); err == nil {
 				return nil
 			}
 
-			optin.ClosePlayStore(ctx, tconn)
-
-			if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
-				return testing.PollBreak(err)
-			}
-
 			return errors.New("App unavailable message not found")
-		}, &testing.PollOptions{Timeout: 5 * time.Minute}); err != nil {
-			return testing.PollBreak(err)
+		}, 5*time.Minute); err != nil {
+			return rl.Exit("confirm unavailability", err)
 		}
 
 		return nil
