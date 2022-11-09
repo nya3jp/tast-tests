@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
@@ -129,18 +129,20 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 			return rl.Exit("verify Play Store is not empty", err)
 		}
 
-		if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
-			return rl.Exit("open app page", err)
-		}
-
 		d, err := a.NewUIDevice(ctx)
 		if err != nil {
-			return rl.Exit("initialize UI Automator: ", err)
+			return testing.PollBreak(err)
 		}
 		defer d.Close(cleanupCtx)
 
-		if err := arcent.WaitForAppUnavailableMessage(ctx, d, defaultUITimeout); err != nil {
-			return rl.Exit("verify install block message is visible", err)
+		if err := arcent.PollAppPageState(ctx, tconn, a, testPackage, func(ctx context.Context) error {
+			if err := arcent.WaitForAppUnavailableMessage(ctx, d, time.Minute); err == nil {
+				return nil
+			}
+
+			return errors.New("App unavailable message not found")
+		}, 5*time.Minute); err != nil {
+			return rl.Exit("confirm unavailability", err)
 		}
 
 		return nil
