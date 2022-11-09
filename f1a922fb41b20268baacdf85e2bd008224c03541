@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b07243d_c9f95951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T01:03:22Z",
+      "side": 1,
+      "message": "sorry for the delay, LGTM from Tast style perspective",
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd402dc_815bea9e",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent_delegate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T01:03:22Z",
+      "side": 1,
+      "message": "take care with logging, especially if there\u0027s a chance this can get called repeatedly in a polling scenario or the like\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d971d2c6_84ff28f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T01:03:22Z",
+      "side": 1,
+      "message": "consider splitting this up into separate cases (wrapping a nil error is kind of awkward)",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 4
+      },
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca356b7_56deb825",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/simple_btpeer_pair.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-09T01:03:22Z",
+      "side": 1,
+      "message": "seems short compared to the default (3 minutes)",
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
