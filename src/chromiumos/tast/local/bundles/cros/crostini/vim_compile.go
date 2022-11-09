@@ -30,7 +30,7 @@ func init() {
 			{
 				ExtraData:         []string{"vim.tar.gz"},
 				ExtraSoftwareDeps: []string{"dlc"},
-				Fixture:           "crostiniBuster",
+				Fixture:           "crostiniBullseye",
 				Timeout:           20 * time.Minute,
 			},
 		},
