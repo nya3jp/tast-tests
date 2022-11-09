@@ -70,6 +70,30 @@
       },
       "revId": "14a1964084a189a6a30a331037253935348e5b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44092e8d_a0230506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-11-09T01:08:30Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "f2eed39e_e7156f7c",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "14a1964084a189a6a30a331037253935348e5b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
