@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/lacros/migrate"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
@@ -55,7 +56,9 @@ func forwardMigrate(ctx context.Context, s *testing.State) {
 }
 
 func backwardMigrate(ctx context.Context, s *testing.State) {
-	cr, err := migrate.BackwardRun(ctx, s.Param().([]lacrosfixt.Option))
+	cr, err := migrate.BackwardRun(ctx,
+		[]chrome.Option{chrome.EnableFeatures("LacrosProfileBackwardMigration")},
+		s.Param().([]lacrosfixt.Option))
 	if err != nil {
 		s.Fatal("Failed to backward migrate profile: ", err)
 	}
