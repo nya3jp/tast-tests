@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6b2c41_822f9160",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T07:04:42Z",
+      "side": 1,
+      "message": "We can have local tests/fixtures depend on remote fixtures as per https://groups.google.com/a/chromium.org/g/tast-users/c/XBE9Yf86YK0/m/jhon9g-gBQAJ. Hence we\u0027ve modified the code appropriately.",
+      "parentUuid": "be4dab1b_4222f314",
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cf90618_73cabe93",
@@ -54,6 +72,54 @@
       "writtenOn": "2022-11-07T22:30:18Z",
       "side": 1,
       "message": "nit: hardware",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ec31c0_160d507a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/hdcpsetup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T07:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf90618_73cabe93",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb8572e_098995a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/hdcpsetup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T07:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ab5d10_b1ff7c40",
       "range": {
         "startLine": 13,
         "startChar": 11,
@@ -149,6 +215,30 @@
       "side": 1,
       "message": "ok, Thanks.. We will re-work on modifying this test to a Fixture.",
       "parentUuid": "ce17b00d_02aaafdc",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "f96074e44be67bb9295b58a01e8c5c31d709fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fee032_f19a692d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/set_pavp_hdcp_prerequisite.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T07:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604d32a0_c6b9106f",
       "range": {
         "startLine": 32,
         "startChar": 5,
