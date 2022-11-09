@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f924bde_77c448f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Double checked, repeat the tests 10 times.",
+      "parentUuid": "a5eb82b6_f9d72c9f",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f471878_a2679e33",
@@ -179,6 +197,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e45d53_c8e8cd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Thanks everyone, I removed non-google web pages.",
+      "parentUuid": "a170d92c_b0e25b7f",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0ede3b_4b547cb5",
@@ -192,6 +228,24 @@
       "writtenOn": "2022-11-02T00:06:00Z",
       "side": 1,
       "message": "What\u0027s the status of this bug? We should fix it rather than adding more workarounds IMO",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7c0283_91d12eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "I am still trying to figure out what\u0027s the cause. I removed the webpages that cause this issue. Once the bug is fixed. I will add the pages back.",
+      "parentUuid": "8c0ede3b_4b547cb5",
       "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

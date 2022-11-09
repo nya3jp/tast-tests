@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0d54263_42d0405f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4bce3176_6d5b4824",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7adf63_9f339ccb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "49f5c5ab_2d88ff5a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c401820_4263988e",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-11-07T13:33:13Z",
       "side": 1,
       "message": "nit: use empty lines between the bigger code blocks.",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa45bd5_a45d8b7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c401820_4263988e",
       "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55806d6b_5a2a1ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fd2a431_1dd49f13",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ea15c7e_ea5ae6f5",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-11-07T13:33:13Z",
       "side": 1,
       "message": "If you open a 2nd second window webpage, it will be opened in a 3rd one if I understand correctly. Can you change the behavior, or the variable names and comments?",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a2a82b_b820b94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Thanks Gabor. Actually, the first few pages are open in the first window which is the one in `lacros.Launch(ctx, tconn)`. `l.NewConn(ctx, t.URL)` is used here. The second window open another page with `l.NewConn(ctx, t.URL, browser.WithNewWindow())`.",
+      "parentUuid": "5ea15c7e_ea5ae6f5",
       "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcb35fa_f34c0a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "177aaa1c_ae0eea9f",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdd7eb78_267de913",
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18988093_6867c4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fdd7eb78_267de913",
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2233f1e_7846e851",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-11-07T13:33:13Z",
       "side": 1,
       "message": "nit: uninstall.\nSame below.",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "74a5b33957b3b7b2f867031bf70342714759b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942cb44e_e2ecdd9e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-09T19:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2233f1e_7846e851",
       "range": {
         "startLine": 117,
         "startChar": 32,
