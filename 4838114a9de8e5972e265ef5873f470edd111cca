@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee5ccc1_e5be584e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T16:07:08Z",
+      "side": 1,
+      "message": "Adding a couple comments to some of the open questions :) please let me know if anything is unclear!",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43d70ba1_028b92d8",
@@ -54,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfe7677a_61477887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T16:07:08Z",
+      "side": 1,
+      "message": "The reason we have to use `sharedObject` here is that we are not instantiating Chrome and without this reference I don\u0027t believe that we would be able to access the running instance of Chrome. We had opted to use the existing ChromeService [1] for instantiating Chrome and go this route after observing other services doing similar things [2]. I think that if we went the route of having this service instantiate/destroy Chrome we would end up duplicating the logic for managing Chrome-- WDYT?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go\n[2] https://source.chromium.org/search?q\u003dfile:_service.go%20%22sharedObject%20*common.SharedObjectsForService%22\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F",
+      "parentUuid": "43d70ba1_028b92d8",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5224fdd7_066ec726",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
         "patchSetId": 14
@@ -65,6 +100,24 @@
       "writtenOn": "2022-11-09T01:07:16Z",
       "side": 1,
       "message": "Can we do \n\n```\ncr, err :\u003d chrome.New(ctx, ..)\ndefer cr.Close(ctx)\n```\n\nhere and yield the desired result?",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a708bd7f_c4df9176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T16:07:08Z",
+      "side": 1,
+      "message": "Would this result in Chrome being instantiated/destroyed with each of these method calls? Since these will be called multiple times in a single test this might be a significant slowdown compared to instantiating once and re-using (via ChromeService).",
+      "parentUuid": "5224fdd7_066ec726",
       "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
