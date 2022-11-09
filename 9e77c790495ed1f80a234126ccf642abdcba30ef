@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9713b767_6ce01c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T19:03:49Z",
+      "side": 1,
+      "message": "For readability, how about a few independent if-statements, each with a `return` for error case?\n\n```\nif _, err :\u003d func1(); err !\u003d nil {\n   return errors.Wrap(err, \"bla\")\n}\nif _, err :\u003d func2(); err !\u003d nil {\n   return errors.Wrap(err, \"bla\")\n}\nreturn nil\n```",
+      "revId": "9e77c790495ed1f80a234126ccf642abdcba30ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa76ef1_6627f8e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T19:03:49Z",
+      "side": 1,
+      "message": "nit: `1*time.Minute`",
+      "revId": "9e77c790495ed1f80a234126ccf642abdcba30ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b69d9dc_3b9f88f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T19:03:49Z",
+      "side": 1,
+      "message": "Also replace \"force install\" in comment?",
+      "revId": "9e77c790495ed1f80a234126ccf642abdcba30ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8375b4d_b1116dd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_app_availability_change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-09T19:03:49Z",
+      "side": 0,
+      "message": "`5 * time.Minute` vs `5*time.Minute`:\nThe later seems to be the standard by gofmt. I wish Gerrit or repo tool could enforce the code format.",
+      "revId": "1d60a4887fb82cd2b6fd1ef38a564ad65a174894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
