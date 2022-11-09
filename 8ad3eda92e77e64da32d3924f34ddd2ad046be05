@@ -22,6 +22,30 @@
       },
       "revId": "8ad3eda92e77e64da32d3924f34ddd2ad046be05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b34d7d_a7d5d396",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-09T17:18:08Z",
+      "side": 1,
+      "message": "tast asks variables to start with package name, expectations in this case.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/vars.go;l\u003d53;rcl\u003d26a71673bce7c6aab0e35ac8ed4b00b64d00f51e",
+      "parentUuid": "81edcf29_ea966d48",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "8ad3eda92e77e64da32d3924f34ddd2ad046be05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
