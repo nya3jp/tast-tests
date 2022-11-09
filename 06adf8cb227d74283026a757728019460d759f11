@@ -16,6 +16,46 @@
       "message": "PTAL, thanks!",
       "revId": "06adf8cb227d74283026a757728019460d759f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bb9c43_ede81940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T06:04:39Z",
+      "side": 1,
+      "message": "LGTM for tast",
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87110188_60871f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-09T06:04:39Z",
+      "side": 1,
+      "message": "nit: reformat the comment with line width of 80 chars if possible.\nhttp://g3doc/go/g3doc/style/decisions#comment-line-length",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
