@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07fd3b67_64b7f3f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T09:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a67fa7fd_3a82e3fc",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0da956_49acba10",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-09T08:07:00Z",
       "side": 1,
       "message": "Any changes that make the device into a non-default state, should be reverted in the teardown. Otherwise it can permanently breaks the DUT or affect following test cases.\n\nThe same rule applies to following config changes.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4167fe_93cb1795",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T09:19:52Z",
+      "side": 1,
+      "message": "Removing the rootfs verification in a DUT is an irreversible process. It needs to be done with caution. Only by flashing the OS again, it can be reverted. Hence, we\u0027re not having anything in the teardown.",
+      "parentUuid": "bc0da956_49acba10",
       "range": {
         "startLine": 73,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e09c4b_4ffe407d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T09:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60063b8_a6f22a35",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9147dd1e_bdd7cbce",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac1551e6_7cd04783",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T09:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9147dd1e_bdd7cbce",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f348856_12de633a",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-11-09T08:07:00Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2fbecf_bf753dca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-09T09:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f348856_12de633a",
       "range": {
         "startLine": 109,
         "startChar": 4,
