@@ -20,7 +20,6 @@ import (
 func TestCheckValidUsersParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 		Timeout:            20 * time.Minute,
-		MinimalSet:         true,
 		SelfManagedInstall: true,
 	}})
 	genparams.Ensure(t, "check_valid_users.go", params)
