@@ -33,6 +33,7 @@ func init() {
 
 func BatteryCharging(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
+	ecTool := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
@@ -98,35 +99,42 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify that DUT's charger was plugged/unplugged as expected.
-		var checkACInformation bool
+		s.Log("Checking for charger")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			checkACInformation = false
 			currentCharger, err := h.Servo.GetChargerAttached(ctx)
 			if err != nil {
 				return err
 			} else if currentCharger != hasPluggedAC {
-				checkACInformation = true
 				return errors.Errorf("expected charger attached: %t, but got: %t", hasPluggedAC, currentCharger)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
-			if checkACInformation {
-				// For debugging purposes, log charger information if the charger
-				// state is unexpected and before failing the test.
-				s.Log("Running host command to check charger information")
-				if ac, err := checkACInfo(ctx, h); err != nil {
-					s.Fatal("Unable to read ac information: ", err)
-				} else {
-					s.Logf("Line power %s", ac)
-				}
-				s.Log("Running ec command to check for charger state")
-				if err := checkECChgState(ctx, h); err != nil {
-					s.Fatal("Failed to query ec chgstate: ", err)
-				}
+			// For debugging purposes, log charger and usb port information if the charger
+			// state is unexpected, before failing the test.
+			s.Log("Running host command to check charger information")
+			if ac, err := checkACInfo(ctx, h); err != nil {
+				s.Log("Unable to read ac information: ", err)
+			} else {
+				s.Logf("Line power %s", ac)
+			}
+			s.Log("Running ec command to check for charger state")
+			if err := checkECChgState(ctx, h); err != nil {
+				s.Log("Failed to query ec chgstate: ", err)
+			}
+			s.Log("Checking for usb pd power info")
+			if port, err := findUSBPortWithState(ctx, h, ecTool, "usbpdpower", "SNK Charger PD"); err != nil {
+				s.Log("Failed to query usb pd: ", err)
+			} else {
+				s.Logf("Charger is connected to port %s", port)
+			}
+			s.Log("Checking for usb pd mux info")
+			if port, err := findUSBPortWithState(ctx, h, ecTool, "usbpdmuxinfo", "USB=1"); err != nil {
+				s.Log("Failed to query usb mux: ", err)
+			} else {
+				s.Logf("Detected USB=1 on port %s", port)
 			}
 			s.Fatal("While determining charger state: ", err)
 		}
-
 		// For debugging purposes, log kernal output to check if hibernation is supported,
 		// prior to suspending DUT.
 		memSleep, err := h.DUT.Conn().CommandContext(ctx, "cat", "/sys/power/mem_sleep").Output()
@@ -387,4 +395,26 @@ func checkECChgState(ctx context.Context, h *firmware.Helper) error {
 	}
 	testing.ContextLog(ctx, chgStateInfo)
 	return nil
+}
+
+// findUSBPortWithState runs ectool command to find usb port(s) with the matching state.
+func findUSBPortWithState(ctx context.Context, h *firmware.Helper, ecTool *firmware.ECTool, cmd, state string) ([]string, error) {
+	out, err := ecTool.Command(ctx, cmd).Output()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to run %s", cmd)
+	}
+	re := regexp.MustCompile(`Port (\d): [^\n\r]*`)
+	matches := re.FindAllStringSubmatch(string(out), -1)
+	if len(matches) == 0 {
+		return nil, errors.New("could not find any usb ports")
+	}
+	var ports []string
+	for _, data := range matches {
+		portInfo := data[0]
+		if strings.Contains(portInfo, state) {
+			ports = append(ports, data[1])
+		}
+		testing.ContextLogf(ctx, "Found: %s", portInfo)
+	}
+	return ports, nil
 }
