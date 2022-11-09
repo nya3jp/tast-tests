@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8d92f8_6760e128",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "I\u0027ve run the command successfully on my local machine. How do I go",
+      "parentUuid": "057f324e_871731f4",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7fafdd20_0d5a008f",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "317a7c88_38ead53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a02d34f_b80f22c1",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77abdbf1_e55d5ab6",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-09T05:42:42Z",
       "side": 1,
       "message": "the Chameleon device (optional/not currently used)",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 25
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda953fb_c7999afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77abdbf1_e55d5ab6",
       "range": {
         "startLine": 22,
         "startChar": 16,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc606f59_e3079db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946f088f_7015d4c0",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42cea98a_ebc48d8f",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-11-09T05:42:42Z",
       "side": 1,
       "message": "the Chameleon device (required)",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5b49d0_d15bc8a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42cea98a_ebc48d8f",
       "range": {
         "startLine": 27,
         "startChar": 16,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511185c1_02aa2117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049d7378_41dfd813",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58df3429_5d1bc2da",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-11-09T05:42:42Z",
       "side": 1,
       "message": "the Chameleon device (optional/used)",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abf22cc_185cb50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58df3429_5d1bc2da",
       "range": {
         "startLine": 37,
         "startChar": 26,
@@ -196,6 +364,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90948447_0fca0e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aedd46da_975ed6f4",
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07ff27fb_9cf9602b",
@@ -209,6 +395,30 @@
       "writtenOn": "2022-11-09T05:42:42Z",
       "side": 1,
       "message": "You need to fail the test here if addr is nil. Also output chameleonIpVar.Value() in the error message.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d04a3b5_8aecbb4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ff27fb_9cf9602b",
       "range": {
         "startLine": 77,
         "startChar": 2,
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "481b85c2_1a55f603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed30392c_d51f1b6c",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be6423de_e8822ed7",
@@ -259,6 +493,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f264e114_0e400ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6423de_e8822ed7",
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19a8e817_c2b2464b",
@@ -272,6 +524,24 @@
       "writtenOn": "2022-11-09T05:42:42Z",
       "side": 1,
       "message": "Can you please print igtFilePath and url (chameleonIP:chameleonPort) for the logs?",
+      "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77125876_cbabfecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T19:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19a8e817_c2b2464b",
       "revId": "a2f716a9b92e928bc49af81d2ca8c5f492cd7b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
