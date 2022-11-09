@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd48099_d4eb7240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:00:16Z",
+      "side": 1,
+      "message": "Overall this is LGTM, just have a couple questions whenever you have a moment! :)",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98ec9ba_b8c20130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:00:16Z",
+      "side": 1,
+      "message": "Can we move this logic into a simple helper method (can define this method on line 36) and use it here and in the other methods?\n\n    func (svc *HidScreenService) getOOBEConnection(ctx context.Context) (*chrome.Conn, error) {\n        cr :\u003d svc.sharedObject.Chrome\n        if cr \u003d\u003d nil {\n            return nil, errors.New(\"Chrome is not instantiated\")\n        }\n        return cr.WaitForOOBEConnection(ctx)\n    }\n        \n    ...\n    \n    oobeConn, err :\u003d svc.getOOBEConnection(ctx)\n    if err !\u003d nil {\n        return \u0026empty.Empty{}, errors.Wrap(err, \"failed to create OOBE connection\")\n    }",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167a7a5a_beb8f311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:00:16Z",
+      "side": 1,
+      "message": "Will this create a new mouse, or does it actually find the previously created mouse? If it creates a new mouse it seems like we might hit a situation where we cannot close a mouse opened via `ConnectAndVerifyMouse`?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ba127a_aff84321",
+        "filename": "src/chromiumos/tast/services/cros/oobe/hid_screen_service.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-09T00:00:16Z",
+      "side": 1,
+      "message": "Nit: Remove extra line here and on line 14.",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
