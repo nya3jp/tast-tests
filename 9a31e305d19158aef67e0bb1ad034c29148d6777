@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c633948_63f4475e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/swa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-09T09:16:08Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "9a31e305d19158aef67e0bb1ad034c29148d6777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
