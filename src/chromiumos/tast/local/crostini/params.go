@@ -173,6 +173,16 @@ type Param struct {
 	// The fixtures will force enable the given display mode in PreTest and
 	// reset in PostTest.
 	DeviceMode devicemode.DeviceMode
+
+	// Do not attach "buster" to the test name if true.
+	// Add this for backward-compatibility to preserve names when removing
+	// MinimalSet to add bullseye coverage.
+	NoBusterInTestName bool
+
+	// DO NOT USE.
+	// This flag is only used for b/234390590 to increase coverage for bullseye
+	// tests and will be deleted after the migration.
+	BullseyeInformational bool
 }
 
 type generatedParam struct {
@@ -239,11 +249,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	var itLacros = []iterator{{debianVersion: vm.DebianBullseye, stable: true}}
 
 	for _, testCase := range baseCases {
-
-		if testCase.UseLargeContainer && !testCase.MinimalSet {
-			t.Fatalf("Test %q: Testing apps is supported with minimal testsets", testCase.Name)
-		}
-
 		// Check here if it's possible for any iteration of
 		// this test to be critical, i.e. if it doesn't
 		// already have the "informational" attribute, and is
@@ -268,7 +273,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			name := testCase.Name
-			if !testCase.MinimalSet {
+			if !testCase.MinimalSet && (i.debianVersion == vm.DebianBullseye || !testCase.NoBusterInTestName) {
 				// If we're generating a minimal set
 				// then the debian version is always
 				// the same and we don't need to
@@ -292,8 +297,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
+			// TODO(b/234390590) Remove BullseyeInformational when the new bullseye tests are promoted to critical.
 			var extraAttr []string
-			if (!i.stable && canBeCritical) || bt == browser.TypeLacros || testCase.DeviceMode == devicemode.TabletMode {
+			if (!i.stable && canBeCritical) || bt == browser.TypeLacros || testCase.DeviceMode == devicemode.TabletMode || (i.debianVersion == vm.DebianBullseye && testCase.BullseyeInformational) {
 				extraAttr = append(extraAttr, "informational")
 			}
 
