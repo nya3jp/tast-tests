@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0176490_cd152cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-11-09T11:58:20Z",
+      "side": 1,
+      "message": "nit: start with a small letter - it is a package name.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "349c4e6d11c8189bc85c90ca8aec3c2c7bdff21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e29d36_7ea14c99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-11-09T11:58:20Z",
+      "side": 1,
+      "message": "nit: please break the line.",
+      "revId": "349c4e6d11c8189bc85c90ca8aec3c2c7bdff21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b0f3ec_9b081a5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-11-09T11:58:20Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "349c4e6d11c8189bc85c90ca8aec3c2c7bdff21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
