@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a036ba_6dd75f16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-11-09T22:59:46Z",
+      "side": 1,
+      "message": "Am I missing something here, the linked bug (b/258344222) doesn\u0027t seem to have any information on how this was fixed?",
+      "revId": "dc4a9aba9237998711312618544bf9356d9e46ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
