@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611f0485_f8a80b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-09T20:14:04Z",
+      "side": 1,
+      "message": "Confirmation that the parameters have been written to /tmp/.igtrc on DUT",
+      "revId": "da22e73b019c1f3d2a41ade4c739a31c23041aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
