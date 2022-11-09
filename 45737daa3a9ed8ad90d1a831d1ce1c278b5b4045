@@ -16,6 +16,24 @@
       "message": "If this code is similar to facebook, Can we make some reusable methods?",
       "revId": "45737daa3a9ed8ad90d1a831d1ce1c278b5b4045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf33d3e_866ab8ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-11-09T17:42:03Z",
+      "side": 1,
+      "message": "There are no common code between facebook and instagram. So we can\u0027t make reusable methods.",
+      "parentUuid": "f11358bf_01515429",
+      "revId": "45737daa3a9ed8ad90d1a831d1ce1c278b5b4045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
