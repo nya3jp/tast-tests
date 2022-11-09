@@ -21,9 +21,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// pinWeaverWithAuthAPIParam contains the test parameters which are different
+// pinWeaverParam contains the test parameters which are different
 // between the types of backing store.
-type pinWeaverWithAuthAPIParam struct {
+type pinWeaverParam struct {
 	// Specifies whether to use user secret stash.
 	useUserSecretStash hwsec.UserSecretStashStatus
 	// Specifies whether to use AuthFactor.
@@ -33,7 +33,7 @@ type pinWeaverWithAuthAPIParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PINWeaverWithAuthAPI,
+		Func: PINWeaver,
 		Desc: "Checks that LE credentials work with AuthSession, AuthFactor and USS",
 		Contacts: []string{
 			"hardikgoyal@chromium.org", // Test author
@@ -43,33 +43,33 @@ func init() {
 		SoftwareDeps: []string{"pinweaver", "reboot"},
 		Params: []testing.Param{{
 			Name: "pin_weaver_with_auth_factor_with_no_uss",
-			Val: pinWeaverWithAuthAPIParam{
+			Val: pinWeaverParam{
 				useUserSecretStash: hwsec.NotEnabled,
 				useAuthFactor:      true,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session",
-			Val: pinWeaverWithAuthAPIParam{
+			Val: pinWeaverParam{
 				useUserSecretStash: hwsec.NotEnabled,
 				useAuthFactor:      false,
 			},
 		}, {
 			Name: "pin_weaver_with_auth_session_legacy_pin_add",
-			Val: pinWeaverWithAuthAPIParam{
+			Val: pinWeaverParam{
 				useUserSecretStash: hwsec.NotEnabled,
 				useAuthFactor:      false,
 			},
 		},
 			{
 				Name: "pin_weaver_with_auth_factor_with_uss",
-				Val: pinWeaverWithAuthAPIParam{
+				Val: pinWeaverParam{
 					useUserSecretStash: hwsec.Enabled,
 					useAuthFactor:      true,
 				},
 			},
 			{
 				Name: "pin_weaver_with_auth_factor_after_uss_rollback",
-				Val: pinWeaverWithAuthAPIParam{
+				Val: pinWeaverParam{
 					useUserSecretStash: hwsec.Rolledback,
 					useAuthFactor:      true,
 				},
@@ -89,8 +89,8 @@ const (
 	testUser2                = "testUser2@example.com"
 )
 
-func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
-	userParam := s.Param().(pinWeaverWithAuthAPIParam)
+func PINWeaver(ctx context.Context, s *testing.State) {
+	userParam := s.Param().(pinWeaverParam)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -317,7 +317,7 @@ func getLeCredsFromDisk(ctx context.Context, r *hwsecremote.CmdRunnerRemote) ([]
 }
 
 // setupUserWithPIN sets up a user with a password and a PIN auth factor.
-func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRunner *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam) error {
+func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRunner *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverParam) error {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Start an Auth session and get an authSessionID.
@@ -373,7 +373,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 }
 
 // attemptWrongPIN attempts to try wrong PIN for authentication for given number of attempts.
-func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, numberOfWrongAttempts int) (*uda.AuthenticateAuthFactorReply, error) {
+func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverParam, numberOfWrongAttempts int) (*uda.AuthenticateAuthFactorReply, error) {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
@@ -400,7 +400,7 @@ func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hws
 }
 
 // authenticateWithCorrectPIN authenticates a given user with the correct PIN.
-func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, shouldAuthenticate bool) (*uda.AuthenticateAuthFactorReply, error) {
+func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverParam, shouldAuthenticate bool) (*uda.AuthenticateAuthFactorReply, error) {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
@@ -423,7 +423,7 @@ func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser str
 }
 
 // authenticateWithCorrectPassword authenticates a given user with the correct password.
-func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam) error {
+func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverParam) error {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new password auth factor and mount the user.
@@ -459,7 +459,7 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 }
 
 // removeLeCredential removes testUser and checks to see if the leCreds on disk was updated.
-func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser, label string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam) error {
+func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser, label string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverParam) error {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
