@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67fa7fd_3a82e3fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T08:07:00Z",
+      "side": 1,
+      "message": "Can you pls name the fixture and the file more meaningful? There is no way to know it is a fixture until looking into the code.",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0da956_49acba10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T08:07:00Z",
+      "side": 1,
+      "message": "Any changes that make the device into a non-default state, should be reverted in the teardown. Otherwise it can permanently breaks the DUT or affect following test cases.\n\nThe same rule applies to following config changes.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60063b8_a6f22a35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T08:07:00Z",
+      "side": 1,
+      "message": "nit: The rootfs is already writable.",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9147dd1e_bdd7cbce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T08:07:00Z",
+      "side": 1,
+      "message": "Will fixture automatically check s.HasError in the end of Setup? \nOtherwise s.Errorf will not terminate the test and you should use s.Fatal.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f348856_12de633a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-09T08:07:00Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
