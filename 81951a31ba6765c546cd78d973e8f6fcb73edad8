@@ -52,6 +52,24 @@
       "parentUuid": "7d76233c_ea19e71f",
       "revId": "81951a31ba6765c546cd78d973e8f6fcb73edad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbc12ab_6fd12b82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-09T19:57:04Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "20e3a91c_ad71962b",
+      "revId": "81951a31ba6765c546cd78d973e8f6fcb73edad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
