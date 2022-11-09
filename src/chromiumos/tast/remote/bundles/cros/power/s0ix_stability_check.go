@@ -36,7 +36,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: s0ixCheckTestParams{
