@@ -9,6 +9,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/godbus/dbus/v5"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -74,4 +76,31 @@ func PollForAdapterState(ctx context.Context, exp bool) error {
 // PollForEnabled polls the bluetooth adapter state until the adapter is enabled.
 func PollForEnabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, true)
+}
+
+// PollForAdapterAvailable polls at least one bluetooth adapter is available.
+func PollForAdapterAvailable(ctx context.Context) error {
+	mgr, err := newManagerDBusObject(ctx)
+	if err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		c := mgr.Call(ctx, "GetAvailableAdapters")
+		if c.Err != nil {
+			return testing.PollBreak(errors.Wrap(c.Err, "failed to get available adapters"))
+		}
+
+		var adapters []map[string]dbus.Variant
+		if err := c.Store(&adapters); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to store GetAvailableAdapters response"))
+		}
+
+		if len(adapters) == 0 {
+			return errors.New("no available adapter found")
+		}
+
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
 }

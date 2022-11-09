@@ -44,12 +44,8 @@ func init() {
 // navigate through to the Bluetooth sub-page within the OS Settings from the
 // Settings button in the Bluetooth detailed view within the Quick Settings.
 func OpenBluetoothSettingsFromQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(bluetooth.HasTconn).Tconn()
 
 	if err := quicksettings.NavigateToBluetoothDetailedView(ctx, tconn); err != nil {
 		s.Fatal("Failed to navigate to the detailed Bluetooth view: ", err)

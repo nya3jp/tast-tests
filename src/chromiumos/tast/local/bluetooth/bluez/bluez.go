@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -28,4 +28,9 @@ func (b *BlueZ) PollForAdapterState(ctx context.Context, exp bool) error {
 // PollForEnabled polls the bluetooth adapter state until the adapter is powered on.
 func (b *BlueZ) PollForEnabled(ctx context.Context) error {
 	return PollForBTEnabled(ctx)
+}
+
+// PollForAdapterAvailable polls at least one bluetooth adapter is available.
+func (b *BlueZ) PollForAdapterAvailable(ctx context.Context) error {
+	return PollForAdapterAvailable(ctx)
 }

@@ -187,3 +187,19 @@ func PollForAdapterState(ctx context.Context, exp bool) error {
 
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
 }
+
+// PollForAdapterAvailable polls at least one bluetooth adapter is available.
+func PollForAdapterAvailable(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		adapters, err := Adapters(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "unable to get Bluetooth adapters"))
+		}
+		if len(adapters) == 0 {
+			return errors.New("no available adapter found")
+		}
+
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
+}

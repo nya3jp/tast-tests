@@ -28,3 +28,8 @@ func (f *Floss) PollForAdapterState(ctx context.Context, exp bool) error {
 func (f *Floss) PollForEnabled(ctx context.Context) error {
 	return PollForEnabled(ctx)
 }
+
+// PollForAdapterAvailable polls at least one bluetooth adapter is available.
+func (f *Floss) PollForAdapterAvailable(ctx context.Context) error {
+	return PollForAdapterAvailable(ctx)
+}
