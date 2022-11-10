@@ -16,6 +16,23 @@
       "message": "Removed previous tast owners b/c OOO",
       "revId": "0c3904ff7e7778403f43527638bb6251badfeeae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4895500b_a8eb1ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T00:08:56Z",
+      "side": 1,
+      "message": "is this used somewhere?",
+      "revId": "0c3904ff7e7778403f43527638bb6251badfeeae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
