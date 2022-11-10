@@ -52,6 +52,24 @@
       "parentUuid": "8e688376_546a2a80",
       "revId": "8cc0233291341e9900ce26cfd4517909ec39aaf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c49734b_94b5acbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-10T11:11:19Z",
+      "side": 1,
+      "message": "I am trying to update codelab2 code. Please check for example for writeMsg function:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/4020432",
+      "parentUuid": "2707bcbd_799ca2d1",
+      "revId": "8cc0233291341e9900ce26cfd4517909ec39aaf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
