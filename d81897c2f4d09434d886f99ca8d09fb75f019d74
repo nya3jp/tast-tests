@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9da217_b1ba2b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116032
+      },
+      "writtenOn": "2022-11-10T07:02:16Z",
+      "side": 1,
+      "message": "Hey Derek, I\u0027m not sure which is your preference, so this is option A: disable all power tests which depend on Intel-only debugfs features.\n\nI\u0027ll send another patch with option B.",
+      "revId": "d81897c2f4d09434d886f99ca8d09fb75f019d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
