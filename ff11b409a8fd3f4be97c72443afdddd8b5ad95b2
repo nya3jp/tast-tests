@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fedb60f_d5202f4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd51c16_f8a2d948",
+      "revId": "ff11b409a8fd3f4be97c72443afdddd8b5ad95b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13390d4a_f6ca76f3",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-09T23:01:14Z",
       "side": 1,
       "message": "update",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "ff11b409a8fd3f4be97c72443afdddd8b5ad95b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e252a287_44e2d1d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13390d4a_f6ca76f3",
       "range": {
         "startLine": 10,
         "startChar": 33,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a4d795_b5fb446e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78c3bd05_dd77f07f",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 83
+      },
+      "revId": "ff11b409a8fd3f4be97c72443afdddd8b5ad95b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36ba3b33_5d53e873",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-11-09T23:01:14Z",
       "side": 1,
       "message": "Can we use `filesapp.WindowFinder()`?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 117
+      },
+      "revId": "ff11b409a8fd3f4be97c72443afdddd8b5ad95b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ce2ebb_efa69672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "36ba3b33_5d53e873",
       "range": {
         "startLine": 109,
         "startChar": 0,

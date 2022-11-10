@@ -253,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea7f720_24058abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e7eccb1_9aef417c",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10adccd7_269e9190",
@@ -818,6 +842,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62967b2_01506244",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb8d9019_18700d2f",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 50
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1420d97a_a88f81e1",
@@ -879,6 +927,30 @@
       "side": 1,
       "message": "Can we lookup the bubble with the expected accessibility name? Note sure we need any Chromium changes to do so...",
       "parentUuid": "124e8f37_691de24a",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defa4b44_ea753853",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:54:12Z",
+      "side": 1,
+      "message": "Accessibility name is either \"Tote\" or \"Quick files\".",
+      "parentUuid": "95d108f3_f6e82e60",
       "range": {
         "startLine": 77,
         "startChar": 0,
