@@ -68,6 +68,23 @@
       "parentUuid": "1512104e_2a4b3984",
       "revId": "625ab5ae1607522aae6262dabad65c61cd6fade1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff967bc5_bcccc410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/check_mtd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-11-10T05:41:35Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/howto.md#checking-files\nUsing os.Stat() is a preferred way.",
+      "revId": "625ab5ae1607522aae6262dabad65c61cd6fade1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
