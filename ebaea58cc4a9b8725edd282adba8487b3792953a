@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77045796_def17559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-11-10T14:52:00Z",
+      "side": 1,
+      "message": "To make the case more stable, we ported this feature to the SPERA V1 case. For related changes, please refer to \"3971763: video cuj: Install YouTube app using apk | https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3971763\"",
+      "revId": "ebaea58cc4a9b8725edd282adba8487b3792953a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
