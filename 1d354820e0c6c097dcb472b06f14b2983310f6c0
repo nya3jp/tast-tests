@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c31903a9_4472ae8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-11-10T12:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ce190a_281c5ac2",
+      "revId": "1d354820e0c6c097dcb472b06f14b2983310f6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2b23c482_3eb3b291",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-09T22:24:45Z",
       "side": 1,
       "message": "why is this?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 98
+      },
+      "revId": "1d354820e0c6c097dcb472b06f14b2983310f6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cc7b10_7d4632ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_auth_factor_validity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-11-10T12:58:08Z",
+      "side": 1,
+      "message": "Added comments on why there\u0027s the need to test for that recommendation.",
+      "parentUuid": "731999a9_57a09281",
       "range": {
         "startLine": 174,
         "startChar": 2,
