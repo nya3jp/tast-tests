@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3fa49e_74d1c2a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-10T07:10:59Z",
+      "side": 1,
+      "message": "LGTM with one nit",
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6a2030_b74be976",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-10T07:10:59Z",
+      "side": 1,
+      "message": "DNSProxy, let\u0027s follow the go naming convention here.",
+      "range": {
+        "startLine": 336,
+        "startChar": 25,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c62bfe_c6aef921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_to_host_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-11-10T07:10:59Z",
+      "side": 1,
+      "message": "just a question, what does this do?",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
