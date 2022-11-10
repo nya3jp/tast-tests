@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57cbe2f_6978828f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-10T22:35:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b92de7d3_c3540bb1",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c929364b_fb9d9a98",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2b25512_8162ff09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-10T22:35:55Z",
+      "side": 1,
+      "message": "When running the test manually, it always succeeds.",
+      "parentUuid": "c929364b_fb9d9a98",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42ba3913_16c337a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-10T05:46:09Z",
       "side": 1,
       "message": "Can you add a step by step description of this test?",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f52763f_e221b32e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-11-10T22:35:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42ba3913_16c337a3",
       "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
