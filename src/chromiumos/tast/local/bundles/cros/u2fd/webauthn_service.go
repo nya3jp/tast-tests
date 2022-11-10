@@ -81,6 +81,8 @@ func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empt
 	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		keyboard.Close()
+		closeBrowser(ctx)
+		cr.Close(ctx)
 		return nil, errors.Wrapf(err, "failed to log in by Chrome with %v browser", bt)
 	}
 	c.keyboard = keyboard

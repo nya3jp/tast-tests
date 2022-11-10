@@ -491,26 +491,30 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	f.cr = cr
 
-	f.tconn, err = f.cr.TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
+		cr.Close(ctx)
 		s.Fatal("Failed to get test API connection: ", err)
 	}
 
 	if f.vkEnabled && f.dm == clamshellMode {
 		// Enable a11y virtual keyboard.
-		if err := vkb.NewContext(f.cr, f.tconn).EnableA11yVirtualKeyboard(true)(ctx); err != nil {
+		if err := vkb.NewContext(cr, tconn).EnableA11yVirtualKeyboard(true)(ctx); err != nil {
+			cr.Close(ctx)
 			s.Fatal("Failed to enable a11y virtual keyboard: ", err)
 		}
 	}
 
-	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), f.cr, f.tconn, nil)
+	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), cr, tconn, nil)
 	if err != nil {
+		cr.Close(ctx)
 		s.Fatal("Failed to create new inputs user context: ", err)
 	}
-	f.uc = uc
 
+	f.cr = cr
+	f.tconn = tconn
+	f.uc = uc
 	chrome.Lock()
 	return FixtData{f.cr, f.tconn, f.uc, f.browserType}
 }

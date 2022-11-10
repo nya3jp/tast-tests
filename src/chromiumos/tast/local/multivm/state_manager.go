@@ -175,17 +175,24 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 
 		testing.ContextLog(ctx, "Creating Chrome")
 		var err error
-		s.cr, err = browserfixt.NewChrome(ctx, s.crOptions.BrowserType, lacrosfixt.NewConfig(), opts...)
+		cr, err := browserfixt.NewChrome(ctx, s.crOptions.BrowserType, lacrosfixt.NewConfig(), opts...)
 		if err != nil {
 			return errors.Wrap(err, "failed to create Chrome")
 		}
 		chrome.Lock()
-		if s.tconn, err = s.cr.TestAPIConn(ctx); err != nil {
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			cr.Close(ctx)
 			return errors.Wrap(err, "failed to create test API connection")
 		}
-		if s.keyboard, err = input.Keyboard(ctx); err != nil {
+		keyboard, err := input.Keyboard(ctx)
+		if err != nil {
+			cr.Close(ctx)
 			return errors.Wrap(err, "failed to create keyboard device")
 		}
+		s.cr = cr
+		s.tconn = tconn
+		s.keyboard = keyboard
 		return nil
 	}(); err != nil {
 		return err

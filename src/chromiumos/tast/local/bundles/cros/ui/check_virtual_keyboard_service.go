@@ -68,13 +68,15 @@ func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, r
 		return nil, err
 	}
 
+	tconn, err := cvk.cr.TestAPIConn(ctx)
+	if err != nil {
+		closeBrowser(ctx)
+		cr.Close(ctx)
+		return nil, err
+	}
 	cvk.cr = cr
 	cvk.br = br
 	cvk.closeBrowser = closeBrowser
-	tconn, err := cvk.cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, err
-	}
 	cvk.tconn = tconn
 	// Store the newly created chrome in the shared object so UtilsService or other services can use it.
 	cvk.sharedObject.Chrome = cr

@@ -832,18 +832,25 @@ func NewTestEnv(ctx context.Context, outDir string, enableARC, useHugePages bool
 		opts = append(opts, chrome.HugePagesEnabled())
 	}
 
-	te.cr, te.br, te.closeBrowser, err = browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot start chrome")
 	}
 
+	var a *arc.ARC
 	if enableARC {
-		te.arc, err = arc.New(ctx, outDir)
+		a, err = arc.New(ctx, outDir)
 		if err != nil {
+			closeBrowser(ctx)
+			cr.Close(ctx)
 			return nil, errors.Wrap(err, "failed to start ARC")
 		}
 	}
 
+	te.cr = cr
+	te.br = br
+	te.closeBrowser = closeBrowser
+	te.arc = a
 	success = true
 	return te, nil
 }

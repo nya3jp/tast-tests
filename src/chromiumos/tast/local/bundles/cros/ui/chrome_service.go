@@ -93,6 +93,7 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 	if bt == browser.TypeLacros {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
+			cr.Close(ctx)
 			return nil, errors.Wrap(err, "failed to create test API connection")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -105,6 +106,7 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 			}
 			return nil
 		}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
+			cr.Close(ctx)
 			return nil, errors.Wrapf(err, "lacros is not enabled but requested in %v", req)
 		}
 	}
