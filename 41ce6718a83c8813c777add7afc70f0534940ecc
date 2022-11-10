@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a1406a_3e606824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-11-10T21:22:58Z",
+      "side": 1,
+      "message": "Zoraiz, please review :) (The screenshot before moving the file window: https://screenshot.googleplex.com/BJZoizZ93mK4vSd)",
+      "revId": "41ce6718a83c8813c777add7afc70f0534940ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
