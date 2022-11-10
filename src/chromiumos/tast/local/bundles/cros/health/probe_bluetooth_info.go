@@ -26,6 +26,7 @@ type deviceInfo struct {
 	MTU               int16    `json:"mtu"`
 	RSSI              uint16   `json:"rssi"`
 	UUIDs             []string `json:"uuids"`
+	Class             uint32   `json:"bluetooth_class"`
 	BatteryPercentage []string `json:"battery_percentage"`
 }
 
