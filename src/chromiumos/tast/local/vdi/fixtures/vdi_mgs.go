@@ -55,8 +55,8 @@ func init() {
 		},
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		TearDownTimeout: time.Minute,
+		PostTestTimeout: 25 * time.Second,
 		Data:            citrix.CitrixData,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
@@ -86,8 +86,8 @@ func init() {
 		},
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		TearDownTimeout: time.Minute,
+		PostTestTimeout: 25 * time.Second,
 		Data:            vmware.VmwareData,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
@@ -237,7 +237,7 @@ func (v *mgsFixtureState) SetUp(ctx context.Context, s *testing.FixtState) inter
 func (v *mgsFixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Use a shortened context to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	if v.useTape {
@@ -296,14 +296,27 @@ func (v *mgsFixtureState) PostTest(ctx context.Context, s *testing.FixtTestState
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get all open windows: ", err)
-	}
-	for _, w := range ws {
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Errorf("Warning: Failed to close window (%+v): %v", w, err)
+	testing.ContextLog(ctx, "VDI mgs: Closing all windows")
+	// Closing windows sometimes causes error
+	// (Error: No app window was found : id=-10004)
+	//  Keep retrying closing until all closed with no error.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get all open windows")
 		}
+
+		for _, w := range ws {
+			if err := w.CloseWindow(ctx, tconn); err != nil {
+				return errors.Wrapf(err, "warning: Failed to close window (%+v)", w)
+			}
+		}
+		return nil
+
+	}, &testing.PollOptions{
+		Timeout: 10 * time.Second,
+	}); err != nil {
+		s.Error("There was an error when closing windows: ", err)
 	}
 
 	testing.ContextLog(ctx, "VDI mgs: Restarting VDI app")

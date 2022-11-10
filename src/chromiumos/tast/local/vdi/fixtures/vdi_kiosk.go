@@ -51,7 +51,7 @@ func init() {
 		},
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		TearDownTimeout: time.Minute,
 		PostTestTimeout: time.Minute,
 		Data:            citrix.CitrixData,
 		Parent:          fixture.FakeDMSEnrolled,
@@ -82,7 +82,7 @@ func init() {
 		},
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		TearDownTimeout: time.Minute,
 		PostTestTimeout: time.Minute,
 		Data:            vmware.VmwareData,
 		Parent:          fixture.FakeDMSEnrolled,
@@ -230,7 +230,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 func (v *kioskFixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Use a shortened context to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	if v.useTape {
