@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a46c05_88f8bc43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T21:06:56Z",
+      "side": 1,
+      "message": "I have two comments. Please take a look.\n\nAlso, please run tast unit tests: fast_build.sh -T\n\nthen add this line to commit log\n\nTEST\u003dtast unit tests passed.\n\nThanks.",
+      "revId": "1e9d54c91f2a47c949c22655a7c2d3117106fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3e7662_848cad2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T21:06:56Z",
+      "side": 1,
+      "message": "Should it be google.com?",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "1e9d54c91f2a47c949c22655a7c2d3117106fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb19d4f_997132bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T21:06:56Z",
+      "side": 1,
+      "message": "Not everyone has access to go/lacros-audit-cujs. I think you should add a few words for the objective of this test.",
+      "revId": "1e9d54c91f2a47c949c22655a7c2d3117106fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
