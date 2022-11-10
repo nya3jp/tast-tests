@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e4683d_ca68bd5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-10T17:48:09Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "7d562e8aef3f380904852e6f4e4570b43354f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7be60e8_4f33b77d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/geller_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-10T17:48:09Z",
+      "side": 1,
+      "message": "nit: handler returned error",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "7d562e8aef3f380904852e6f4e4570b43354f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
