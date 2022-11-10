@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e438945_df444854",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T22:04:16Z",
+      "side": 1,
+      "message": "We should probably use the crossdevice credentials instead of this shared pool that\u0027s used all over the place. Also crossdevice ones are set up per RF box to avoid collisions, `ui.gaiaPoolDefault` will be much more subject to collisions with tests running in parallel",
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3880898_1600b99c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T22:04:16Z",
+      "side": 1,
+      "message": "why not use the crossdevice credentials?",
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24522433_a606f67b",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
         "patchSetId": 3
@@ -37,6 +71,23 @@
         "endLine": 309,
         "endChar": 38
       },
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd938d6_a77cdcf5",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T22:04:16Z",
+      "side": 1,
+      "message": "does `DumpUITreeWithScreenshotOnError` not work in this case?",
       "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
