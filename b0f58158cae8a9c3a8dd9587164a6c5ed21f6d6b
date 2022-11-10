@@ -70,6 +70,30 @@
       },
       "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eadb04a_4dffee7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-10T20:46:53Z",
+      "side": 1,
+      "message": "I don\u0027t see how that would solve it? Terminating an AuthSession doesn\u0027t unmount. It wouldn\u0027t even fail this code, since this test never has more than one AuthSession active at once.\n\nI think we\u0027d need an explicit check in PreparePresistentVault that prevents you from mounting a vault if there\u0027s already one mounted.",
+      "parentUuid": "3f2a5a54_bd8c1d01",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 81
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
