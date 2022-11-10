@@ -16,6 +16,24 @@
       "message": "Should we return an error instead and consider this a failed run?",
       "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3148ca_2662e232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-10T23:26:38Z",
+      "side": 1,
+      "message": "I think that should be fine since we have 3 tries:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/network/iperf/session.go;rcl\u003d4d3baaa5d8bebcefb57c4c4ce6586053e32ecf5b;l\u003d48\n\n@kglund@google.com, WDYT?",
+      "parentUuid": "979ca868_2065c755",
+      "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
