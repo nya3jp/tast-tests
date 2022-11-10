@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
@@ -75,7 +76,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -96,7 +97,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -117,7 +118,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -143,9 +144,15 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
+
+	// Allocate time for saving logs in case of failure.d
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// We want to ensure we have logs even if the Android device setup fails.
 	fixtureLogcatPath := filepath.Join(s.OutDir(), "fixture_setup_logcat.txt")
-	defer adbDevice.DumpLogcat(ctx, fixtureLogcatPath)
+	defer adbDevice.DumpLogcat(cleanupCtx, fixtureLogcatPath)
 
 	if err := crossdevice.ConfigureDevice(ctx, adbDevice, rooted); err != nil {
 		s.Fatal("Failed to do basic Android device preparation: ", err)
@@ -276,7 +283,7 @@ func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysn
 		}
 
 		return nil
-	}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 2 * time.Minute}); err != nil {
 		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
 	}
 
