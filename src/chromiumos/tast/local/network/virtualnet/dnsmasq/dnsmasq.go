@@ -28,19 +28,19 @@ interface={{.ifname}}
 dhcp-range={{.pool_start}},{{.pool_end}},{{.netmask}},12h
 dhcp-option=option:netmask,{{.netmask}}
 dhcp-option=option:router,{{.gateway}}
-{{end}}
-{{if .address}}
-address={{.address}}
-{{end}}
+{{end -}}
+{{range .address}}
+address={{. -}}
+{{end -}}
 {{if .dns}}
 dhcp-option=option:dns-server,{{.dns}}
-{{end}}
+{{end -}}
 {{if .classless_static_routes}}
 dhcp-option=121,{{.classless_static_routes}}
-{{end}}
+{{end -}}
 {{if .wpad}}
 dhcp-option=252,{{.wpad}}
-{{end}}
+{{end -}}
 `
 
 // Paths in chroot.
@@ -58,13 +58,18 @@ type Route struct {
 	Gateway net.IP
 }
 
+// ResolvedHost represents a host name and the IP it get resolved to.
+type ResolvedHost struct {
+	HostName string
+	ToIP     net.IP
+}
+
 type dnsmasq struct {
 	env *env.Env
 
 	subnet                *net.IPNet
 	classlessStaticRoutes []Route
-	resolvedHost          string
-	resolveHostToIP       net.IP
+	resolvedHosts         []ResolvedHost
 	dns                   []string
 	enableDNS             bool
 	ifname                string
@@ -125,8 +130,7 @@ func WithInterface(ifname string) Option {
 func WithResolveHost(host string, ip net.IP) Option {
 	return func(d *dnsmasq) {
 		d.enableDNS = true
-		d.resolvedHost = host
-		d.resolveHostToIP = ip
+		d.resolvedHosts = append(d.resolvedHosts, ResolvedHost{HostName: host, ToIP: ip})
 	}
 }
 
@@ -149,7 +153,7 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	}
 
 	// Prepare config file.
-	confVals := map[string]string{
+	confVals := map[string]interface{}{
 		"ifname": d.ifname,
 		"port":   "0", // disable DNS
 	}
@@ -204,25 +208,28 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		confVals["wpad"] = d.wpad
 	}
 
-	var resolvedIP, resolvedHost string
+	var addressLines []string
+	for _, resolvedHost := range d.resolvedHosts {
+		var toIP, hostName string
+		if resolvedHost.ToIP != nil {
+			toIP = resolvedHost.ToIP.String()
+		} else if gateway != nil {
+			toIP = gateway.String()
+		} else {
+			// Defaults to localhost address.
+			toIP = "127.0.0.1"
+		}
 
-	if d.resolveHostToIP != nil {
-		resolvedIP = d.resolveHostToIP.String()
-	} else if gateway != nil {
-		resolvedIP = gateway.String()
-	} else {
-		// Defaults to localhost address.
-		resolvedIP = "127.0.0.1"
-	}
-
-	if d.resolvedHost == "" {
-		resolvedHost = "#" // '#' matches any domain in dnsmasq configuration.
-	} else {
-		resolvedHost = d.resolvedHost
+		if resolvedHost.HostName == "" {
+			hostName = "#" // '#' matches any domain in dnsmasq configuration.
+		} else {
+			hostName = resolvedHost.HostName
+		}
+		addressLines = append(addressLines, fmt.Sprintf("/%v/%v", hostName, toIP))
 	}
 
 	if d.enableDNS {
-		confVals["address"] = fmt.Sprintf("/%v/%v", resolvedHost, resolvedIP)
+		confVals["address"] = addressLines
 		confVals["port"] = dnsPort // enable DNS if needed for address forwarding
 	}
 	b := &bytes.Buffer{}
