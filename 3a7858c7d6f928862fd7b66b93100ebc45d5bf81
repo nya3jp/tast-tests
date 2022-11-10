@@ -52,6 +52,24 @@
       "parentUuid": "52b33aaa_5821d7fc",
       "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f00a20_fef7c4cd",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:24:12Z",
+      "side": 1,
+      "message": "A few weeks ago I had some bug that actually had me dive into the reopening windows from previous tests, and I found that the issues were much deeper and more complex than I expected.\n\nLet\u0027s say a Lacros test had 2 windows open (Google Slides and Google Sheets) in `Test 1`, and Lacros crashes. When the next test (`Test 2`) launches a new window, since the previous test crashed and never properly closed, it might reopen one of the Windows, like Google Slides. Great, I thought , I\u0027ll use `browser.ReplaceAllTabsWithSingleNewTab()` and continue with the test. However, on the _second_ opening of a window using `NewConn`, the browser still thinks we are reopening from a crash (which technically we are), and it reopens the second window, i.e. Google Sheets. That\u0027s where simply replacing all tabs doesn\u0027t work -- every time we open a new connection, we\u0027d have to verify that what actually opened was what we expected.\n\nIn a nutshell, Lacros should act the same way Ash does in these tests, or else I think the Lacros team would be breaking the promises they make to us for our tast tests. Ash will never reopen windows; Lacros shouldn\u0027t require separate cleanup that Ash will never use.",
+      "parentUuid": "4fbc479b_18e4701f",
+      "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
