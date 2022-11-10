@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406a4b69_98dbfde8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-10T17:53:31Z",
+      "side": 1,
+      "message": "let\u0027s not use this call. Alex has reported that this function doesn\u0027t work properly on ARM devices.\nInstead, let\u0027s do `Plug()` then `IsPlugged` - we should deprecate `IsPhysicalPlugged` imho.",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802b3008_60490559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-10T17:53:31Z",
+      "side": 1,
+      "message": "instead of doing `if isPlugged` and have everything nested underneath, just do \n\n`if !isPlugged(port) continue;`",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20804ed9_1f816616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-10T17:53:31Z",
+      "side": 1,
+      "message": "why are you doing this? is there no `DetectResolution` in the lib? if not, please add it. i think golang allows it, instead of returning an array, return 2 vars, x and y",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d11f6c_3a8125e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-10T17:53:31Z",
+      "side": 1,
+      "message": "what\u0027s that?",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
