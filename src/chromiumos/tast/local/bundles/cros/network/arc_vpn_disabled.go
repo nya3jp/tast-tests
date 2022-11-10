@@ -17,17 +17,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ARCVPNDisabled,
-		Desc:     "ARC VPN doesn't start when flag is off",
-		Contacts: []string{"cassiewang@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "shillResetWithArcBooted",
-		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}},
+		Func:         ARCVPNDisabled,
+		Desc:         "ARC VPN doesn't start when flag is off",
+		Contacts:     []string{"cassiewang@google.com", "cros-networking@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "shillResetWithArcBooted",
+		SoftwareDeps: []string{"arc"},
 	})
 }
 
@@ -54,8 +49,8 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 	}
 	// Currently, ARC VPN is disabled by default.
 	// TODO(b/147256449): Explicitly disable ARC VPN once the feature becomes enabled-by-defalt
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
-		s.Fatalf("Failed to stop %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
+		s.Fatalf("Failed to stop %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIPv4); err == nil {
 		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIPv4)

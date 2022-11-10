@@ -16,30 +16,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	apk = "ArcVpnTest.apk"
-	pkg = "org.chromium.arc.testapp.arcvpn"
-	act = "org.chromium.arc.testapp.arcvpn.MainActivity"
-	svc = "org.chromium.arc.testapp.arcvpn.ArcTestVpnService"
-
-	// This value comes from the address being set in
-	// //platform/tast-tests/android/ArcVpnTest/src/org/chromium/arc/testapp/arcvpn/ArcTestVpnService.java
-	tunIP = "192.168.2.2"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HostToARCVPN,
-		Desc:     "Switch from a host VPN to an ARC VPN",
-		Contacts: []string{"cassiewang@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "arcBooted",
-		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}},
+		Func:         HostToARCVPN,
+		Desc:         "Switch from a host VPN to an ARC VPN",
+		Contacts:     []string{"cassiewang@google.com", "cros-networking@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "arcBooted",
+		SoftwareDeps: []string{"arc"},
 	})
 }
 
@@ -70,8 +54,8 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, true); err != nil {
-		s.Fatalf("Failed to start %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIPv4, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIPv4, err)
@@ -82,38 +66,38 @@ func HostToARCVPN(ctx context.Context, s *testing.State) {
 
 	// Install and start the test app.
 	testing.ContextLog(ctx, "Installing ArcVpnTest.apk")
-	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(arcvpn.VPNTestAppAPK)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 	defer func() {
 		testing.ContextLog(cleanupCtx, "Uninstalling ArcVpnTest.apk")
-		if err := a.Uninstall(cleanupCtx, pkg); err != nil {
+		if err := a.Uninstall(cleanupCtx, arcvpn.VPNTestAppPkg); err != nil {
 			s.Fatal("Failed to uninstall ArcVpnTest.apk: ", err)
 		}
 	}()
 
 	testing.ContextLog(ctx, "Preauthorizing ArcVpnTest")
-	if _, err := a.Command(ctx, "dumpsys", "wifi", "authorize-vpn", pkg).Output(testexec.DumpLogOnError); err != nil {
+	if _, err := a.Command(ctx, "dumpsys", "wifi", "authorize-vpn", arcvpn.VPNTestAppPkg).Output(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to execute authorize-vpn command: ", err)
 	}
 
 	testing.ContextLog(ctx, "Starting ArcVpnTest app")
-	if _, err := a.Command(ctx, "am", "start", pkg+"/"+act).Output(testexec.DumpLogOnError); err != nil {
+	if _, err := a.Command(ctx, "am", "start", arcvpn.VPNTestAppPkg+"/"+arcvpn.VPNTestAppAct).Output(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to start ArcVpnTest app activity: ", err)
 	}
 
 	// Make sure the host is disconnected.
-	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.Pkg, arcvpn.Svc, false); err != nil {
-		s.Fatalf("Failed to stop %s: %v", arcvpn.Svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.FacadeVPNPkg, arcvpn.FacadeVPNSvc, false); err != nil {
+		s.Fatalf("Failed to stop %s: %v", arcvpn.FacadeVPNSvc, err)
 	}
 
 	// Make sure our test app is connected.
-	if err := arcvpn.WaitForARCServiceState(ctx, a, pkg, svc, true); err != nil {
-		s.Fatalf("Failed to start %s: %v", svc, err)
+	if err := arcvpn.WaitForARCServiceState(ctx, a, arcvpn.VPNTestAppPkg, arcvpn.VPNTestAppSvc, true); err != nil {
+		s.Fatalf("Failed to start %s: %v", arcvpn.VPNTestAppSvc, err)
 	}
 
 	// Host traffic gets routed to the ARC VPN correctly.
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, tunIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping %s from host: %v", tunIP, err)
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, arcvpn.TunIP, "chronos", 10*time.Second); err != nil {
+		s.Fatalf("Failed to ping %s from host: %v", arcvpn.TunIP, err)
 	}
 }
