@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/go-cmp/cmp"
@@ -72,13 +73,25 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 
 	// Only verify screenshot captured, without screen diff validation.
-	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{Finder: chromeAppShelfButtonFinder}); err != nil {
+	// The size of the png image is above the 4MB limit imposed by the GRPC server.
+	maxSizeOption := grpc.MaxCallRecvMsgSize(32 * 10e6)
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{Finder: chromeAppShelfButtonFinder}, maxSizeOption); err != nil {
 		s.Fatal("Failed to take screenshot of the Chrome app shelf button : ", err)
 	}
 
 	// Only verify screenshot captured, without screen diff validation.
-	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{}); err != nil {
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{}, maxSizeOption); err != nil {
 		s.Fatal("Failed to take screenshot: ", err)
+	}
+
+	// Get UI Tree string and perform basic check.
+	uiTreeResponse, err := uiautoSvc.GetUITree(ctx, &pb.GetUITreeRequest{})
+	if err != nil {
+		s.Fatal("Failed to get UI Tree string: ", err)
+	}
+
+	if !strings.Contains(uiTreeResponse.UiTree, "className=RootWindow-0") {
+		s.Fatal("Failed to find RootWindow-0 in : ", uiTreeResponse.UiTree)
 	}
 
 	// Open Files App and close it by clicking the cross on the window.
@@ -89,7 +102,7 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	// Wait for search button on the files app to show up.
 	filesAppWindowFinder := &pb.Finder{
 		NodeWiths: []*pb.NodeWith{
-			{Value: &pb.NodeWith_HasClass{HasClass: "Widget"}},
+			{Value: &pb.NodeWith_HasClass{HasClass: "BrowserFrame"}},
 			{Value: &pb.NodeWith_Name{Name: "Files - My files"}},
 		},
 	}
