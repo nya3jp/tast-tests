@@ -70,6 +70,30 @@
       },
       "revId": "49f16ab542cadfc229a5a5ee98d8b916a6285550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d58e72_0067ad91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-11-10T19:08:43Z",
+      "side": 1,
+      "message": "Have you tried building and deploying the lacros binary to your DUT?",
+      "parentUuid": "ffe85378_ef2e54bb",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "49f16ab542cadfc229a5a5ee98d8b916a6285550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
