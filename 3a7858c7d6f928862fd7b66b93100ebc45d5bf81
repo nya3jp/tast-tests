@@ -16,6 +16,24 @@
       "message": "Using `lacrosfixt.KeepAlive` is the wrong way of keeping the test alive at the end of recorder.Run, and essentially breaks the performance team\u0027s CUJs. If `KeepAlive` is enabled, the lacros fixture skips resetting the lacros state in between tests[1]. By skipping resetting state, tabs from old tests are reopening in later tests within the same lacros fixture. \n\nLooking at the documentation of `lacrosfixt.KeepAlive`[2], it says \n```\nFor example, this should /not/ be used to get around lacros dying when its final tab is closed.\n```\n\nThe proper way of keeping lacros alive should be replacing all tabs with a single new tab[3].\n\nWe would like to revert this CL as it is breaking our current tests.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/lacros/lacros.go;drc\u003d69a41a16971beee6765d1950a5001d7a45c02f79;l\u003d74\n\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d46\n\n[3] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/browser/tabs.go;drc\u003d89285cdd4b2a59939373bfec4c868b1014b3f0c3;l\u003d70",
       "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b33aaa_5821d7fc",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-11-10T04:00:44Z",
+      "side": 1,
+      "message": "Got it, thanks for letting me know this situation.\nAlready created a revert for this change.",
+      "parentUuid": "541adb55_b469f781",
+      "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
