@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3754f45_ec650105",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wwcb/utils/ippower_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-11-10T21:20:17Z",
+      "side": 1,
+      "message": "Please create command line option for wwcbIP rather than hard-coded. \nAlso the name should WWCB_IPPOWER_IP or wwcbIPPowerIp \n\nLike \"tast run -var\u003dutils.WWCBIP\u003d192.168.86.48 ...\" for last prototype.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "61b60dc4db3fe1ea0307a738ca6d5ce106355d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
