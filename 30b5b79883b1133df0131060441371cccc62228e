@@ -22,6 +22,30 @@
       },
       "revId": "30b5b79883b1133df0131060441371cccc62228e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a04035_69b58db1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-11-10T19:28:18Z",
+      "side": 1,
+      "message": "Done for the entire code.",
+      "parentUuid": "1c6b5a7c_5ae2c381",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 68
+      },
+      "revId": "30b5b79883b1133df0131060441371cccc62228e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
