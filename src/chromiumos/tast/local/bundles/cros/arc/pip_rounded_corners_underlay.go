@@ -24,7 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that ARC++ PIP rounded corners are implemented with a hardware underlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
-		Attr:         []string{"group:mainline", "group:informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		// Video playback doesn't work well on VM boards.
 		SoftwareDeps: []string{"chrome", "no_qemu", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
