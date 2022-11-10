@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bab4b3b_cfbb5dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T00:51:05Z",
+      "side": 1,
+      "message": "Please run tast unit tests: fast_build.sh -T\n\nThen add this line to commit log:\n\nTEST\u003dtast unit tests passed.\n\nThanks.",
+      "revId": "6bfdf9d3cebf31d7581ce5c30b2a29d3f3165254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959bfbe7_1f31c674",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T00:51:05Z",
+      "side": 1,
+      "message": "nit: \"A boolean string (true/false) ...\"",
+      "revId": "6bfdf9d3cebf31d7581ce5c30b2a29d3f3165254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
