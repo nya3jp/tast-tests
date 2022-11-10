@@ -16,6 +16,24 @@
       "message": "nit: It would be better if we use regexp over here.",
       "revId": "36632cd5d80c8dddd0a6d6f94c70c3be94ce0c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6ee6eb_1591b256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-10T01:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187e7f9f_6ec096c6",
+      "revId": "36632cd5d80c8dddd0a6d6f94c70c3be94ce0c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
