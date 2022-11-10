@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b5f04f0_dcdd6f10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Yes, I run this test some days ago. And it also passed the CQ Dry run in Nov 03.",
+      "parentUuid": "946592a7_262e7274",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c47c0d20_a42e1c22",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -72,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "840f55e5_db480591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Did you connect your test device with GoogleGuest wifi? If so, it had the network problem. `2022-11-09T02:03:08.449987Z [02:03:06.759] Retry failed attempt 1: failed action load terms of service: Couldn’t connect with the server. Check your network connection and try again. If you\u0027re still having trouble, try restarting your Chromebook.` Since this fixture will start google play. I usually connected my test device to phone\u0027s hotspot instead of GoogleGuest wifi.\n\nhttps://stainless.corp.google.com/search?test\u003d%5Etast%5C.ui%5C.QuickCheckCUJ%24\u0026exclude_cts\u003dtrue\u0026exclude_non_release\u003dtrue\u0026view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-11-03\u0026last_date\u003d2022-11-09 \nThis fixture can work.",
+      "parentUuid": "878c1c18_f2274d0f",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c00cf0d8_38463bec",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
         "patchSetId": 6
@@ -83,6 +119,24 @@
       "writtenOn": "2022-11-09T01:37:14Z",
       "side": 1,
       "message": "Nit: 2 * time.Minute :)",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12fbabce_ff84f70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c00cf0d8_38463bec",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb2dfea_99055c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ad6bcb_620e7639",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f117601f_bf062fa2",
@@ -127,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f219553b_07ad819d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f117601f_bf062fa2",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4b1ea2_5eeb60f5",
@@ -140,6 +236,24 @@
       "writtenOn": "2022-11-09T01:37:14Z",
       "side": 1,
       "message": "Nit: remove empty line to group the appsList definition with its only use.",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb066ca2_9fb5a81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4b1ea2_5eeb60f5",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4761ba_39b426f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc28d39_55180ec6",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51654d4_2c809d12",
@@ -180,6 +318,24 @@
       "writtenOn": "2022-11-09T01:37:14Z",
       "side": 1,
       "message": "Please put this into a separate function and reuse it in line 174.",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161d39d5_a573f1cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-10T00:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51654d4_2c809d12",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
