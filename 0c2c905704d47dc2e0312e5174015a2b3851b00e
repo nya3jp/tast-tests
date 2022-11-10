@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddfa21f_38fdd53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T01:02:39Z",
+      "side": 1,
+      "message": "can you maybe make a bug for this? I\u0027ll pull this code later, but I think we should have a place to discuss this issue. It might be a bigger issue.",
+      "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee37bd5_fdd488d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T01:02:39Z",
+      "side": 1,
+      "message": "Is there a reason a new function is needed over ash.WaitUntilDesksFinishAnimating? It looks pretty similar/redundant maybe?",
+      "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
