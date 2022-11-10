@@ -151,6 +151,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b824ac_29317c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T09:27:07Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s easier to understand now.",
+      "parentUuid": "98231380_a5b4afe8",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d478cf_350baeb2",
@@ -182,6 +206,24 @@
       "side": 1,
       "message": "Correct! I also added this to the func description.",
       "parentUuid": "d0d478cf_350baeb2",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6a8989_53f20607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T09:27:07Z",
+      "side": 1,
+      "message": "Appreciated.",
+      "parentUuid": "15a0c754_60ce3aaf",
       "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
