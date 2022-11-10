@@ -23,6 +23,8 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+const youtubeApkName = "youtube_1531188672.apk"
+
 type videoCUJParam struct {
 	tier        cuj.Tier
 	app         string
@@ -39,6 +41,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
+			"ui.install_apk",  // Optional. Whether to install the youtube app via apk, the default is "false".
 			"ui.cuj_mode",     // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 			"ui.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 			"ui.checkPIP",
@@ -102,9 +105,10 @@ func init() {
 					app:  youtube.YoutubeWeb,
 				},
 			}, {
-				Name:    "basic_youtube_app",
-				Fixture: "loggedInAndKeepState",
-				Timeout: 10 * time.Minute,
+				Name:      "basic_youtube_app",
+				Fixture:   "loggedInAndKeepState",
+				Timeout:   10 * time.Minute,
+				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  youtube.YoutubeApp,
@@ -114,6 +118,7 @@ func init() {
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier:        cuj.Basic,
 					app:         youtube.YoutubeApp,
@@ -125,14 +130,16 @@ func init() {
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  youtube.YoutubeApp,
 				},
 			}, {
-				Name:    "premium_youtube_app",
-				Fixture: "loggedInAndKeepState",
-				Timeout: 10 * time.Minute,
+				Name:      "premium_youtube_app",
+				Fixture:   "loggedInAndKeepState",
+				Timeout:   10 * time.Minute,
+				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Premium,
 					app:  youtube.YoutubeApp,
@@ -142,6 +149,7 @@ func init() {
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier:        cuj.Premium,
 					app:         youtube.YoutubeApp,
@@ -153,6 +161,7 @@ func init() {
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				ExtraData:         []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  youtube.YoutubeApp,
@@ -182,6 +191,21 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the keyboard: ", err)
 	}
 	defer kb.Close()
+
+	videoCUJParams := s.Param().(videoCUJParam)
+	app := videoCUJParams.app
+	youtubeApkPath := ""
+	if app == youtube.YoutubeApp {
+		if v, ok := s.Var("ui.install_apk"); ok {
+			installApk, err := strconv.ParseBool(v)
+			if err != nil {
+				s.Fatalf("Failed to parse ui.installApk value %v: %v", v, err)
+			}
+			if installApk {
+				youtubeApkPath = s.DataPath(youtubeApkName)
+			}
+		}
+	}
 
 	var checkPIP bool
 	if v, ok := s.Var("ui.checkPIP"); ok {
@@ -236,7 +260,6 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		UIHandler: uiHandler,
 	}
 
-	videoCUJParams := s.Param().(videoCUJParam)
 	testParams := youtube.TestParams{
 		Tier:            videoCUJParams.tier,
 		App:             videoCUJParams.app,
@@ -245,6 +268,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		ExtendedDisplay: false,
 		CheckPIP:        checkPIP,
 		TraceConfigPath: traceConfigPath,
+		YoutubeApkPath:  youtubeApkPath,
 	}
 
 	if err := youtube.Run(ctx, testResources, testParams); err != nil {
