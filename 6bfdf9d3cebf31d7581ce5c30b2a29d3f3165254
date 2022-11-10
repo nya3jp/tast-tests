@@ -33,6 +33,24 @@
       "message": "nit: \"A boolean string (true/false) ...\"",
       "revId": "6bfdf9d3cebf31d7581ce5c30b2a29d3f3165254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7f155d_0eecdb2b",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T01:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959bfbe7_1f31c674",
+      "revId": "6bfdf9d3cebf31d7581ce5c30b2a29d3f3165254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
