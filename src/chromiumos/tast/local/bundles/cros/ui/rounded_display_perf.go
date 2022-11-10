@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/ui"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -88,6 +90,39 @@ func RoundedDisplayPerf(ctx context.Context, s *testing.State) {
 	pc := pointer.NewMouse(tconn)
 	defer pc.Close()
 
+	// Open 4 chrome windows to cover the whole screen.
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 4); err != nil {
+		s.Fatal("Failed to open 4 browser windows: ", err)
+	}
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	}
+	if len(ws) != 4 {
+		s.Fatalf("Unexpected number of windows: got %d; want 4", len(ws))
+	}
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info: ", err)
+	}
+	workArea := displayInfo.WorkArea
+	displayBounds := displayInfo.Bounds
+	s.Log("Display bounds: ", displayBounds)
+	windowBounds := []coords.Rect{
+		coords.NewRectLTRB(workArea.Left, workArea.Top, workArea.CenterX(), workArea.CenterY()),
+		coords.NewRectLTRB(workArea.CenterX(), workArea.Top, workArea.Right(), workArea.CenterY()),
+		coords.NewRectLTRB(workArea.Left, workArea.CenterY(), workArea.CenterX(), workArea.Bottom()),
+		coords.NewRectLTRB(workArea.CenterX(), workArea.CenterY(), workArea.Right(), workArea.Bottom()),
+	}
+	for i, bound := range windowBounds {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, ws[i].ID, ash.WindowStateNormal); err != nil {
+			s.Fatal("Failed to set window state normal: ", err)
+		}
+		if _, _, err := ash.SetWindowBounds(ctx, tconn, ws[i].ID, bound, displayInfo.ID); err != nil {
+			s.Fatal("Failed to set window bounds: ", err)
+		}
+	}
+
 	// Open a Files window.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
@@ -102,22 +137,14 @@ func RoundedDisplayPerf(ctx context.Context, s *testing.State) {
 	startDragPt := titleBar.Location.CenterPoint()
 
 	// Verify that there is only one window, and get its ID.
-	ws, err := ash.GetAllWindows(ctx, tconn)
+	ws, err = ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the windows: ", err)
 	}
-	if len(ws) != 1 {
-		s.Fatalf("Unexpected number of windows: got %d; want 1", len(ws))
+	if len(ws) != 5 {
+		s.Fatalf("Unexpected number of windows: got %d; want 5", len(ws))
 	}
 	wID := ws[0].ID
-
-	// Get display info.
-	displayInfo, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to obtain internal display info: ", err)
-	}
-	displayBounds := displayInfo.Bounds
-	s.Log("Display bounds: ", displayBounds)
 
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
