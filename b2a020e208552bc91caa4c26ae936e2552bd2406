@@ -94,6 +94,30 @@
       },
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b85cbda_919352c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-11-10T21:58:33Z",
+      "side": 1,
+      "message": "I think let\u0027s keep it. We\u0027re already trimming some tests to reduce CQ load. One of our previous postmortems actually called for us to have more negative tests -- meaning we write more tests that ensure something that should not work one way actually does not work.",
+      "parentUuid": "1cbb434f_c680ff19",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
