@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59f7afb_937434d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-10T03:49:18Z",
+      "side": 1,
+      "message": "The latest patch resolves a conflict with the latest merged test: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3996370",
+      "revId": "3e36429452313a723fbde80f866f3076f98d9043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
