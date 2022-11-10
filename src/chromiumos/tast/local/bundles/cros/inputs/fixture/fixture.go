@@ -491,6 +491,11 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	defer func() {
+		if s.HasError() {
+			cr.Close(ctx)
+		}
+	}()
 	f.cr = cr
 
 	f.tconn, err = f.cr.TestAPIConn(ctx)
@@ -505,11 +510,10 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 	}
 
-	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), f.cr, f.tconn, nil)
+	f.uc, err = inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), f.cr, f.tconn, nil)
 	if err != nil {
 		s.Fatal("Failed to create new inputs user context: ", err)
 	}
-	f.uc = uc
 
 	chrome.Lock()
 	return FixtData{f.cr, f.tconn, f.uc, f.browserType}

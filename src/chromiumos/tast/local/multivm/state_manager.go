@@ -163,6 +163,11 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 	}()
 
 	// Chrome.
+	defer func() {
+		if errRet != nil && s.cr != nil {
+			s.cr.Close(ctx)
+		}
+	}()
 	if err := func() error {
 		ctx, cancel := context.WithTimeout(ctx, s.crOptions.Timeout)
 		defer cancel()
