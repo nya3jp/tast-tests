@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa6cfa6_8f8021b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:35:43Z",
+      "side": 1,
+      "message": "`Use an API`",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "db677ff9_f014d799",
@@ -14,6 +31,74 @@
       "writtenOn": "2022-11-10T18:26:14Z",
       "side": 1,
       "message": "ramsaroop: Could you help review? Thanks!",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf4bfdf_65745fb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:35:43Z",
+      "side": 1,
+      "message": "What state is the device left in after the test is done? Are the two windows cleaned up and closed properly?",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b0e34e_984985d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:35:43Z",
+      "side": 1,
+      "message": "IMO, \"ensuring no window\" is open would be more like you doing \"GetAllWindows\" and checking the length is 0. Maybe the error message could be more related to CloseAllWindows, like \"Failed to close any existing windows\"",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac3fb67_2139bacb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:35:43Z",
+      "side": 1,
+      "message": "Is there a reason you moved this further down? I would presume having it before `CloseAllWndows` would be important, because if that fails, we\u0027d love to see what windows were open from a previous test.\n\n`filesapp.Launch` sounds like something that could fail too, so seeing the screenshot would be nice.",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8ed6f6_60dfc915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T18:35:43Z",
+      "side": 1,
+      "message": "nit: `\"Failed to wait for files app to be visible and stop animating\"` because opening it happened on a previous line with `filesapp.Launch`",
       "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
