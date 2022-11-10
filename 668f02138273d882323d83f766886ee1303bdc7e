@@ -16,6 +16,24 @@
       "message": "just curious: For the devices in the lab, won\u0027t this always be the ethernet interface?",
       "revId": "668f02138273d882323d83f766886ee1303bdc7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db4d012_794a341e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-11-10T19:19:24Z",
+      "side": 1,
+      "message": "Developers run tests too, sometimes over WiFi. It is always practice to make as few assumptions as necessary. In this case we just need to verify one active Service, the type doesn\u0027t matter.",
+      "parentUuid": "20507a02_98aa3145",
+      "revId": "668f02138273d882323d83f766886ee1303bdc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
