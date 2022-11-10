@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42fa72a_e2ca6688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T15:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f214a2f7_b647a252",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b921978_a0dca36f",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-11-09T23:11:28Z",
       "side": 1,
       "message": "How about using net.JoinHostPort()?",
+      "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1667c2a_43003779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt_chamelium.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T15:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b921978_a0dca36f",
       "revId": "264be7045520d792ad98adb79f63e2bd7b1bf5e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
