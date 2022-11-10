@@ -331,6 +331,26 @@ func init() {
 		PostTestTimeout: ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithoutDnsProxy",
+		Desc: "ARC is booted with kEnableDnsProxy feature disabled",
+		Contacts: []string{
+			"cassiewang@google.com",
+			"cros-networking@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
+				chrome.DisableFeatures("EnableDnsProxy"), // b/253545481
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 type bootedFixture struct {
