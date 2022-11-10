@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8099683_65888894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T20:36:53Z",
+      "side": 1,
+      "message": "Please fix Tricium warning:\n\n\"requried\" is a possible misspelling of \"required\".\n\nAlso, I just realized I had a bug in my suggestion. Please take a look. thanks.",
+      "revId": "1b9920863603954016e91381533807a13fe0e18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5269e31d_2acdb963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/utils/logs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T20:36:53Z",
+      "side": 1,
+      "message": "Very sorry. I just realized my suggestion had a bug. It will not work if the msg has more than one line and include 2 or monr expMsgs.\n\nThis may work.\n\n```\n\nfor msgCount \u003c len(expMsgs) { \n    if strings.Contains(msg, expMsgs[msgCount]) {\n\tmsgCount \u003d msgCount + 1\n\tcontinue\n    }\n    break\n}\nif msgCount \u003d\u003d len(expMsgs) {\n\treturn nil\n}\n\n```",
+      "revId": "1b9920863603954016e91381533807a13fe0e18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
