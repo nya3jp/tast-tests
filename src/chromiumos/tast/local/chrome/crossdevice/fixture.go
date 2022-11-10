@@ -125,6 +125,7 @@ func init() {
 			customCrOSUsername,
 			customCrOSPassword,
 			KeepStateVar,
+			GaiaLoginPool,
 			SignInProfileTestExtensionManifestKey,
 		},
 		SetUpTimeout:    10*time.Minute + BugReportDuration,
@@ -274,6 +275,10 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	if f.noSignIn {
 		opts = append(opts, chrome.DontSkipOOBEAfterLogin())
+		opts = append(opts, chrome.NoLogin())
+		opts = append(opts, chrome.DeferLogin())
+		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar(GaiaLoginPool)))
+		opts = append(opts, chrome.LoadSigninProfileExtension(s.RequiredVar(SignInProfileTestExtensionManifestKey)))
 	} else {
 		opts = append(opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
 	}
@@ -297,12 +302,21 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	f.cr = cr
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
+	var tconn *chrome.TestConn = nil
+	if f.noSignIn {
+		tconn, err = cr.SigninProfileTestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create the sigin profile test API connection: ", err)
+		}
+		defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	} else {
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Creating test API connection failed: ", err)
+		}
+		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
 	}
 	f.tconn = tconn
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
 
 	// Capture a bug report on the Android phone if any onboarding/setup fails.
 	defer func() {

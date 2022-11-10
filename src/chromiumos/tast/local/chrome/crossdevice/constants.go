@@ -25,6 +25,9 @@ const KeepStateVar = "keepState"
 // SignInProfileTestExtensionManifestKey is id required for signin screen autotestPrivate.
 const SignInProfileTestExtensionManifestKey = "ui.signinProfileTestExtensionManifestKey"
 
+// GaiaLoginPool is required for deferred login that will happen during Quick Start tests.
+const GaiaLoginPool = "ui.gaiaPoolDefault"
+
 // Feature defines the Cross Device feature we are testing.
 type Feature struct {
 	Name       FeatureName
