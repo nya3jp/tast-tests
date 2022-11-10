@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eceedf1d_813461c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T03:22:34Z",
+      "side": 1,
+      "message": "Yes, as of now we\u0027re planning to have this only in manual testing and later we will create groups for Intel HDCP/PAVP(Content protection) related tests and will use this fixture only there.",
+      "parentUuid": "8cc4650b_01ac3048",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60063b8_a6f22a35",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
         "patchSetId": 5
