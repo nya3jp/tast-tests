@@ -16,6 +16,23 @@
       "message": "Notice that the file doesn\u0027t show as move and instead delete/add because there is significant change in the file content.",
       "revId": "881763db6446db8d23c734d93d14b84ada755e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6091532_f6cee63c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-11-10T19:07:29Z",
+      "side": 1,
+      "message": "The CL shows that you deleted one file and created another file as new.\nDid you do `git mv`?",
+      "revId": "881763db6446db8d23c734d93d14b84ada755e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
