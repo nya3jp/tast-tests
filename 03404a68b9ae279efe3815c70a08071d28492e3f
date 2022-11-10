@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c126ff57_9c39e37b",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:35:08Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that `\"destination\u003d\u0027org.chromium.bluetooth\u0027\"` should match Floss messages. This monitors both bluez and floss as dbus-monitor should treat separate arguments as ORs for matching purposes (ANDs are comma separated single CLI args).",
+      "parentUuid": "88fa7609_88f46d09",
+      "revId": "03404a68b9ae279efe3815c70a08071d28492e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ab134b_f38c603e",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-10T18:51:24Z",
       "side": 1,
       "message": "should we close if logDBusMonitorBluetoothMessages and resetBTPeers fail? If so, I think we should put into defer()?",
+      "revId": "03404a68b9ae279efe3815c70a08071d28492e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d16507_7d54e3b8",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:35:08Z",
+      "side": 1,
+      "message": "I\u0027ve switched these to `s.Error` instead of `s.Fatal` to allow for close to always be preformed instead of a defer.",
+      "parentUuid": "90ab134b_f38c603e",
       "revId": "03404a68b9ae279efe3815c70a08071d28492e3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
