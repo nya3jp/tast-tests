@@ -105,7 +105,7 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			return rl.Exit("start ARC by policy", err)
+			return rl.Retry("start ARC by policy", err)
 		}
 		defer a.Close(cleanupCtx)
 
@@ -118,7 +118,7 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", rl.Attempts)))
 
 		if err := arcent.WaitForProvisioning(ctx, a, rl.Attempts); err != nil {
-			return rl.Exit("wait for provisioning", err)
+			return rl.Retry("wait for provisioning", err)
 		}
 
 		defer a.DumpUIHierarchyOnError(cleanupCtx, s.OutDir(), func() bool {
