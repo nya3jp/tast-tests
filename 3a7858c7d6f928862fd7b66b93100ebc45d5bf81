@@ -34,6 +34,24 @@
       "parentUuid": "541adb55_b469f781",
       "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbc479b_18e4701f",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-11-10T04:48:13Z",
+      "side": 1,
+      "message": "Hi Navin, also FYI: Jane mentioned that at the beginning of each CUJ, we have preventive code to:\n- call browser.CloseAllTabs() for ash\n- call browser.ReplaceAllTabsWithSingleNewTab() for lacros\n\nYou may want to add that piece of code in your tests to handle unexpected left-over tabs caused by whatever reasons.",
+      "parentUuid": "52b33aaa_5821d7fc",
+      "revId": "3a7858c7d6f928862fd7b66b93100ebc45d5bf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
