@@ -15,10 +15,8 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -36,8 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "ash",
-			Val:  browser.TypeAsh,
+			Val: browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
@@ -66,15 +63,15 @@ func FloatWindow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
 
-	ui := uiauto.New(tconn)
-
-	// If we are in lacros-chrome, there is Chrome window open that should be closed.
-	if bt == browser.TypeLacros {
-		if err := ui.LeftClick(nodewith.Name("Close").First())(ctx); err != nil {
-			s.Fatal("Failed to close Lacros browser: ", err)
-		}
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
 	}
 
 	filesApp, err := filesapp.Launch(ctx, tconn)
@@ -83,34 +80,41 @@ func FloatWindow(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	window, err := ash.WaitForAnyWindow(ctx, tconn, func(w *ash.Window) bool { return w.AppID == apps.FilesSWA.ID && w.IsVisible && !w.IsAnimating })
+	if err != nil {
+		s.Fatal("Failed to open and wait for files app to be visible and stop animating: ", err)
+	}
+
+	// Set the app to normal state before testing the caption button actions.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to set files app window state to \"Normal\": ", err)
+	}
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to initialize keyboard: ", err)
 	}
+	defer kb.Close()
+
 	if err := kb.Accel(ctx, "Search+Alt+F"); err != nil {
 		s.Fatal("Failed to input float accelerator: ", err)
 	}
 
-	// Get files app window (should be the only window open).
-	window, err := ash.WaitForAppWindow(ctx, tconn, apps.FilesSWA.ID)
-	if err != nil {
-		s.Fatal("Failed to fetch app windows: ", err)
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.ID == window.ID && w.State == ash.WindowStateFloated && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatalf("Unexpected files app window state: got %s, want %s", window.State, ash.WindowStateFloated)
 	}
 
-	if window.State != ash.WindowStateFloated {
-		s.Fatal("Window is not in the floated state: ", err)
+	if err := kb.Accel(ctx, "Search+Alt+F"); err != nil {
+		s.Fatal("Failed to input unfloat accelerator: ", err)
 	}
 
-	if err := ui.LeftClick(nodewith.Name("Restore"))(ctx); err != nil {
-		s.Fatal("Failed to unfloat the window: ", err)
-	}
-
-	window, err = ash.WaitForAppWindow(ctx, tconn, apps.FilesSWA.ID)
-	if err != nil {
-		s.Fatal("Failed to fetch app windows: ", err)
-	}
-
-	if window.State != ash.WindowStateNormal {
-		s.Fatal("Failed to return window to the normal state: ", err)
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.ID == window.ID && w.State == ash.WindowStateNormal && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatalf("Unexpected files app window state: got %s, want %s", window.State, ash.WindowStateNormal)
 	}
 }
