@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56de311_ba63ea3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-10T16:12:26Z",
+      "side": 1,
+      "message": "There is one more scenario I don\u0027t know what will happen, so I\u0027m curious.\n\nWith lid open, and booted to OS.\nSet GBB flag on or off.\nPower off\nclose lid\nset power state to recovery\nWait the firmware screen time\n\nExpectation:\nStay in S0 for some time with GBB flag set, quickly go back to G3 if flag is off.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "d304dd7c73f2a5a5441fd4af13d122ac226ea5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2b99f7_683cf139",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-10T16:12:26Z",
+      "side": 1,
+      "message": "None of this is required. We never close the lid while booted, so the powerd lid setting doesn\u0027t matter.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "d304dd7c73f2a5a5441fd4af13d122ac226ea5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
