@@ -69,6 +69,24 @@
       "parentUuid": "8ee37bd5_fdd488d7",
       "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d07fc21_15a3d6f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-10T21:27:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "53251a23_ed3837fc",
+      "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
