@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df6decae_21c5c177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/utils/logs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512414
+      },
+      "writtenOn": "2022-11-10T02:48:24Z",
+      "side": 1,
+      "message": "Can you provide an example, please?\n\nHow would I match the entire expMsg[] if I have only string msg coming from \u003c-ch?",
+      "parentUuid": "fa574482_c292dc5a",
+      "revId": "ec884251593df5f8829dd421b626fd4b1dfef1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53405bf9_4642fc6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hibernate/utils/logs.go",
         "patchSetId": 1
