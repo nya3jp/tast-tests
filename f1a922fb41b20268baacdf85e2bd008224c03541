@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72fc287_fcfab562",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/agent_delegate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:35:21Z",
+      "side": 1,
+      "message": "That\u0027s fair, I removed these method call logs from the agent delegate.",
+      "parentUuid": "4dd402dc_815bea9e",
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d971d2c6_84ff28f4",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e720bd7f_c14745ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:35:21Z",
+      "side": 1,
+      "message": "Done. Nice catch.",
+      "parentUuid": "d971d2c6_84ff28f4",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 4
+      },
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ca356b7_56deb825",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-11-09T01:03:22Z",
       "side": 1,
       "message": "seems short compared to the default (3 minutes)",
+      "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78b2c11_ae950507",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/simple_btpeer_pair.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:35:21Z",
+      "side": 1,
+      "message": "It should be more than enough time for the test though really. Most tests I saw finished well under 30s, and anything too much more than 90s could be a concern that would be nice to flag with a test fail. Most of the heavy lifting is done in the fixture, which has its own timeouts.\n\nThese tests will go through a review process in the flaky suite until they are added to the main suite and if we see flake because of timeouts I suggest we change this later and keep it tight for now.",
+      "parentUuid": "9ca356b7_56deb825",
       "revId": "f1a922fb41b20268baacdf85e2bd008224c03541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
