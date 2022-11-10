@@ -1256,11 +1256,15 @@ func (c *CommonChameleond) ComputePixelChecksum(ctx context.Context, portID Port
 // DetectResolution calls the Chameleond RPC method of the same name.
 // This implements Chameleond.DetectResolution, see that for more details.
 func (c *CommonChameleond) DetectResolution(ctx context.Context, portID PortID) (width, height int, err error) {
-	err = c.RPC("DetectResolution").Args(portID.Int()).Returns(&width, &height).Call(ctx)
+	var resolution []int
+	err = c.RPC("DetectResolution").Args(portID.Int()).Returns(&resolution).Call(ctx)
 	if err != nil {
 		return 0, 0, err
 	}
-	return width, height, nil
+	if len(resolution) != 2 {
+		return 0, 0, errors.Errorf("unexpected return value %v, expected a tuple of width and height", resolution)
+	}
+	return resolution[0], resolution[1], nil
 }
 
 // GetVideoParams calls the Chameleond RPC method of the same name.
