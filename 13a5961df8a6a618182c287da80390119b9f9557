@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11930f6_528b57cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-11-10T13:45:12Z",
+      "side": 1,
+      "message": "Tast owners PTAL, thanks.\n\nbetty-arc-r-tast-gce still requires retries to pass, but this should be good enough.",
+      "revId": "13a5961df8a6a618182c287da80390119b9f9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
