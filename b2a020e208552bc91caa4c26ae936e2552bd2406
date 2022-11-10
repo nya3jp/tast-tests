@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc094b8_2055326a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-11-10T22:24:58Z",
+      "side": 1,
+      "message": "2 nits up to your discretion but otherwise LGTM",
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "406ca53a_a4abb32e",
@@ -116,6 +133,40 @@
         "endLine": 94,
         "endChar": 48
       },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9daa6c1b_12ba93d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-11-10T22:24:58Z",
+      "side": 1,
+      "message": "nit: use the \u0027failed...\u0027 pattern for consistency, i.e. `failed to ensure ephemeral users can\u0027t have kiosk credentials added\u0027?",
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b3dadf_87ce9d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-11-10T22:24:58Z",
+      "side": 1,
+      "message": "nit: same thing here, how about `failed to ensure file is not verified`?",
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
