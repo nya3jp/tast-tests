@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -39,18 +40,19 @@ func init() {
 
 // SharedManagedGuestSessionCleanup tests that chrome.login.endSession performs
 // its cleanup operations correctly. The following cleanups are tested:
-// 1. Browsing data: This is tested by opening a browser page, setting a
-//    cookie, and checking that both the browser history and cookie are cleared
-//    after cleanup.
-// 2. Open windows: This is tested by opening a browser tab and checking that
-//    the tab is closed.
-// 3. Extensions: This is tested by checking that the background page
-//   connection is closed after cleanup. This is not a direct check since we
-//   cannot test if an extension has been reinstalled.
-//   The RestrictedManagedGuestSessionExtensionCleanupExemptList policy is also
-//   tested here.
-// 4. Clipboard: This is tested by setting clipboard data and checking that it
-//    is cleared.
+//  1. Browsing data: This is tested by opening a browser page, setting a
+//     cookie, and checking that both the browser history and cookie are cleared
+//     after cleanup.
+//  2. Open windows: This is tested by opening a browser tab and checking that
+//     the tab is closed.
+//  3. Extensions: This is tested by checking that the background page
+//     connection is closed after cleanup. This is not a direct check since we
+//     cannot test if an extension has been reinstalled.
+//     The RestrictedManagedGuestSessionExtensionCleanupExemptList policy is also
+//     tested here.
+//  4. Clipboard: This is tested by setting clipboard data and checking that it
+//     is cleared.
+//
 // Printing is not tested due to the set up needed and will be covered in a
 // browser test in Chrome instead.
 func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
@@ -166,16 +168,15 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set localStorage for Google Keep: ", err)
 	}
 
-	pageConn, err := cr.NewConn(ctx, "https://www.example.com")
+	// Open a non-trivial webpage that takes longer to unload.
+	pageConn, err := cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
-		s.Fatal("Failed to open www.example.com: ", err)
+		s.Fatal("Failed to open www.google.com: ", err)
 	}
 	defer pageConn.Close()
-
-	// Set the cookie for www.example.com. www.example.com itself does not set
-	// any cookies, so this is safe.
-	if err := pageConn.Eval(ctx, "document.cookie = 'abcdef'", nil); err != nil {
-		s.Fatal("Failed to set cookie: ", err)
+	// Make sure the webpage has a cookie.
+	if err := pageConn.Eval(ctx, "document.cookie = document.cookie || 'abcdef'", nil); err != nil {
+		s.Fatal("Failed to ensure a cookie: ", err)
 	}
 
 	tConn, err := cr.TestAPIConn(ctx)
@@ -282,6 +283,25 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	// Cleanup should have closed all open browser windows.
 	if err := pageConn.Eval(ctx, "undefined", nil); err == nil {
 		s.Fatal("Page conn was not closed: ", err)
+	}
+
+	// Try to restore browser tabs from previous session.
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+	if err := keyboard.Accel(ctx, "Ctrl+Shift+t"); err != nil {
+		s.Fatal("Failed to run keyboard command for restoring tabs: ", err)
+	}
+
+	// Check that no browser tabs from previous session got restored.
+	pages, err := cr.FindTargets(ctx, chrome.MatchAllPages())
+	if err != nil {
+		s.Fatal("Failed to collect info about Chrome webpages: ", err)
+	}
+	if len(pages) > 0 {
+		s.Fatal("Expected no restored tabs but found ", len(pages))
 	}
 
 	// Open the browsing history page.
