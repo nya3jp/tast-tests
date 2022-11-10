@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65cc058e_e9163352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:04:22Z",
+      "side": 1,
+      "message": "%d (same for the other)",
+      "range": {
+        "startLine": 275,
+        "startChar": 35,
+        "endLine": 275,
+        "endChar": 36
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5415db30_59590028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:04:22Z",
+      "side": 1,
+      "message": "Since this function can return an error, check for error here instead of a panic.",
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c51a5f8_4723ac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:04:22Z",
+      "side": 1,
+      "message": "Why do you need the Sprintf?",
+      "range": {
+        "startLine": 288,
+        "startChar": 26,
+        "endLine": 288,
+        "endChar": 37
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2fb7802_c3085584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:04:22Z",
+      "side": 1,
+      "message": "Why not pass the regex around instead of strings? It makes the intent clearer.",
+      "range": {
+        "startLine": 153,
+        "startChar": 139,
+        "endLine": 153,
+        "endChar": 145
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
