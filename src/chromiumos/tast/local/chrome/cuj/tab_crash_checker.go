@@ -20,8 +20,8 @@ type TabCrashChecker struct {
 
 // NewTabCrashChecker creates a TabCrashChecker and starts recording tab-crash metrics.
 func NewTabCrashChecker(ctx context.Context, tconn *chrome.TestConn) (*TabCrashChecker, error) {
-	recorder, err := metrics.StartRecorder(ctx, tconn, "Tabs.SadTab.CrashCreated",
-		"Tabs.SadTab.OomCreated", "Tabs.SadTab.KillCreated.OOM", "Tabs.SadTab.KillCreated")
+	recorder, err := metrics.StartRecorder(ctx, tconn, "Tabs.SadTab.Reload.Event",
+		"Tabs.SadTab.Feedback.Event")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start histogram recorder for sad tabs")
 	}

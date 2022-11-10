@@ -481,9 +481,28 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, bTconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
+	// Ensure that even if the Meet call crashes outside of our direct
+	// crash checks, we still log that the crash happened.
+	caughtTabCrash := false
+	defer func(ctx context.Context) {
+		if caughtTabCrash {
+			return
+		}
+		if err := tabChecker.Check(ctx); err != nil {
+			s.Log("Tab renderer crashed: ", err)
+		}
+	}(ctx)
+
+	assertTabActive := func(ctx context.Context) {
+		if err := tabChecker.Check(ctx); err != nil {
+			caughtTabCrash = true
+			s.Fatal("Tab renderer crashed: ", err)
+		}
 	}
 
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
@@ -671,6 +690,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := inputsimulations.RepeatKeyPress(ctx, kw, "Ctrl+-", 3*time.Second, 3); err != nil {
 		s.Fatal("Failed to repeatedly press Ctrl+Minus to zoom out: ", err)
 	}
+
+	// Sometimes on some devices, after granting camera permissions,
+	// the Meet tab will crash. This crash is caught by calling
+	// ui.Info(zoomNode), as we are checking for a node that doesn't
+	// exist, since the page already crashed. Instead of failing the
+	// test for failing to find the zoom node, check that the tab is
+	// active, and properly log a crash if it occurred.
+	assertTabActive(ctx)
 
 	// Verify that we zoomed correctly.
 	zoomInfo, err := ui.Info(ctx, zoomNode)
@@ -985,9 +1012,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Before recording the metrics, check if there is any tab crashed.
-	if err := tabChecker.Check(ctx); err != nil {
-		s.Fatal("Tab renderer crashed: ", err)
-	}
+	assertTabActive(ctx)
 
 	// Report info from chrome://webrtc-internals.
 	webRTCUI := ui.WithTimeout(10 * time.Minute)
