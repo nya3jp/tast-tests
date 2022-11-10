@@ -33,6 +33,46 @@
       "message": "still lgtm",
       "revId": "f1a145c78586646e5f27661568c06c621dda785a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce41f8b_93e305d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-10T10:35:45Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f1a145c78586646e5f27661568c06c621dda785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9dec33f_b9fa1e0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dlputil/dlp_util.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-11-10T10:35:45Z",
+      "side": 1,
+      "message": "nit: i\u0027d simplify code a bit and return more info in the error (same as in the log message)\n\n```\nif want :\u003d 0; len(events.report) !\u003d want {\n  testing.ContextLogf(\n    ctx, \"Unexpected REPORT events \u003d got %d, want %d\",\n    len(events.report), want) // can be in 1 line\n  if firstErr \u003d\u003d nil {\n    firstErr \u003d errors.New(\n      \"unexpected number of REPORT events \u003d got %d, want %d\",\n      len(events.report), want) // can be in 1 line\n  }\n```",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "f1a145c78586646e5f27661568c06c621dda785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
