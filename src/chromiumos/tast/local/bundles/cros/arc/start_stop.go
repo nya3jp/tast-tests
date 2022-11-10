@@ -50,8 +50,9 @@ func init() {
 				},
 			},
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name: "vm",
+			// TODO(b/257844132): Re-enable on betty/ARCVM once root cause is fixed.
+			ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
 			Val: testArgs{
 				subtests: []startstop.Subtest{
 					&startstop.TestMidis{},
