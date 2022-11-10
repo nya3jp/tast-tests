@@ -176,14 +176,14 @@ func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 }
 
 // LXCCommand runs lxc inside the VM with the specified args.
-func (vm *VM) LXCCommand(ctx context.Context, lxcArgs ...string) error {
+func (vm *VM) LXCCommand(ctx context.Context, lxcArgs ...string) (string, error) {
 	envLXC := []string{"env", "LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf", "lxc"}
 	cmd := vm.Command(ctx, append(envLXC, lxcArgs...)...)
-	err := cmd.Run(testexec.DumpLogOnError)
+	result, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		return errors.Wrapf(err, "failed to run %q", strings.Join(cmd.Args, " "))
+		return "", errors.Wrapf(err, "failed to run %q", strings.Join(cmd.Args, " "))
 	}
-	return nil
+	return string(result), nil
 }
 
 // ShareDownloadsPath shares a path relative to Downloads with the VM.
