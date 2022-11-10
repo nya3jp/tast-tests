@@ -22,6 +22,30 @@
       },
       "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c501943_af7ce51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-10T20:39:36Z",
+      "side": 1,
+      "message": "That\u0027s reasonable, I assume for the same reasons it doesn\u0027t make sense to allow multiple ephemeral users to exist at once. But if so, should we be enforcing this?",
+      "parentUuid": "b5a404f7_84435afc",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 81
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
