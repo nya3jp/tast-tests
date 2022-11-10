@@ -27,6 +27,7 @@ type deviceInfo struct {
 	RSSI              uint16   `json:"rssi"`
 	UUIDs             []string `json:"uuids"`
 	BatteryPercentage []string `json:"battery_percentage"`
+	Class             uint32   `json:"bluetooth_class"`
 }
 
 type capabilitiesInfo struct {
