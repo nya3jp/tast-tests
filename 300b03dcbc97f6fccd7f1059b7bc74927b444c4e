@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ac5a68_0f40a8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-10T00:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78193e64_80770f65",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c9b600e_e94f57e1",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I updated the comment with ThP2 and more recent.",
       "parentUuid": "0c9b600e_e94f57e1",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a98e4b_6dabf4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-10T00:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57ed5c8_5463c50d",
       "range": {
         "startLine": 46,
         "startChar": 34,
