@@ -33,6 +33,24 @@
       "message": "The CL shows that you deleted one file and created another file as new.\nDid you do `git mv`?",
       "revId": "881763db6446db8d23c734d93d14b84ada755e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea9d2e8_89f5e5ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-10T19:17:41Z",
+      "side": 1,
+      "message": "Yep already tried. Hence the comment https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/4021391/comments/dcefd8f8_29b4711e",
+      "parentUuid": "a6091532_f6cee63c",
+      "revId": "881763db6446db8d23c734d93d14b84ada755e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
