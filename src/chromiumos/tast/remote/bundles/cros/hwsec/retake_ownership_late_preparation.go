@@ -15,6 +15,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// retakeOwnershipLatePreparationWithAuthAPIParam contains the test parameters which are different
+// between the types of backing store.
+type retakeOwnershipLatePreparationWithAuthAPIParam struct {
+	// Specifies whether to use user secret stash.
+	useUserSecretStash bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RetakeOwnershipLatePreparation,
@@ -23,10 +30,21 @@ func init() {
 		SoftwareDeps: []string{"reboot", "tpm"},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		ServiceDeps:  []string{"tast.cros.hwsec.AttestationDBusService"},
-	})
+		Params: []testing.Param{{
+			Name: "uss",
+			Val: retakeOwnershipLatePreparationWithAuthAPIParam{
+				useUserSecretStash: true,
+			},
+		}, {
+			Name: "vk",
+			Val: retakeOwnershipLatePreparationWithAuthAPIParam{
+				useUserSecretStash: false,
+			},
+		}}})
 }
 
 func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
+	userParam := s.Param().(retakeOwnershipLatePreparationWithAuthAPIParam)
 	r := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewFullHelper(r, s.DUT(), s.RPCHint())
@@ -35,6 +53,17 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 
 	tpmManager := helper.TPMManagerClient()
+	cryptohome := helper.CryptohomeClient()
+	cryptohome.SetMountAPIParam(&hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI})
+	if userParam.useUserSecretStash {
+		// Enable the UserSecretStash experiment for the duration of the test by
+		// creating a flag file that's checked by cryptohomed.
+		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
+		}
+		defer cleanupUSSExperiment(ctx)
+	}
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
