@@ -46,6 +46,7 @@ const (
 	EuiccPropertyEid                         = "Eid"
 	EuiccPropertyInstalledProfiles           = "InstalledProfiles"
 	EuiccPropertyPendingProfiles             = "PendingProfiles"
+	EuiccPropertyProfiles                    = "Profiles"
 	EuiccPropertyProfileRefreshedAtLeastOnce = "ProfilesRefreshedAtLeastOnce"
 )
 

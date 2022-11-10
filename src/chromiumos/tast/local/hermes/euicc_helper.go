@@ -76,7 +76,7 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get euicc properties")
 	}
-	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyInstalledProfiles)
+	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyProfiles)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get installed profiles")
 	}
