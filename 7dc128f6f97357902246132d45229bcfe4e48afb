@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1606fe66_8408342e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-10T06:32:47Z",
+      "side": 1,
+      "message": "Thanks, Dean!",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bbd161f_023b6c01",
@@ -65,6 +82,24 @@
       "writtenOn": "2022-11-10T03:53:12Z",
       "side": 1,
       "message": "Please give a function comment about what the function is matching and the brief description of the parameters.",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2951ee9_148da8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-10T06:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbd161f_023b6c01",
       "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98231380_a5b4afe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-10T06:32:47Z",
+      "side": 1,
+      "message": "Hmm, thinking about some more, I think adding the \"default\" prefix reduces clarity. Changed to networkType. It was used here since the shill type (sType) passed to this function was the default shill type.",
+      "parentUuid": "23d53089_aa96c14b",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d478cf_350baeb2",
@@ -109,6 +168,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a0c754_60ce3aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-10T06:32:47Z",
+      "side": 1,
+      "message": "Correct! I also added this to the func description.",
+      "parentUuid": "d0d478cf_350baeb2",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc768013_01e11ba0",
@@ -122,6 +199,30 @@
       "writtenOn": "2022-11-10T03:53:12Z",
       "side": 1,
       "message": "Network %s not found: %v",
+      "range": {
+        "startLine": 102,
+        "startChar": 12,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1cc2e4_a9147b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-11-10T06:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc768013_01e11ba0",
       "range": {
         "startLine": 102,
         "startChar": 12,
