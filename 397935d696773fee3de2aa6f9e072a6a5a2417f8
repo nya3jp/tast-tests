@@ -51,6 +51,24 @@
       "parentUuid": "549dcf16_47354ac1",
       "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58eaada0_4db9e376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-10T10:04:03Z",
+      "side": 1,
+      "message": "added myself as an author, still keeping your email there since our team is not the owner of the policy",
+      "parentUuid": "003ee462_68c78165",
+      "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
