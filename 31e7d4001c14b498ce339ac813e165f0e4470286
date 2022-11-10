@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c25fbae_2e3d9d6d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-11-10T10:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6a2030_b74be976",
+      "range": {
+        "startLine": 336,
+        "startChar": 25,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cff31ebd_542c5470",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15c6bb1_18f6c37c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_to_host_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-11-10T10:41:15Z",
+      "side": 1,
+      "message": "Ah unneeded, thanks!\n\nAlso backported this to the previous patch as part of some refactoring, as an fyi to jiejiang@",
+      "parentUuid": "cff31ebd_542c5470",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9c62bfe_c6aef921",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-10T07:10:59Z",
       "side": 1,
       "message": "just a question, what does this do?",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5cac14_dc70573b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_to_host_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-11-10T10:41:15Z",
+      "side": 1,
+      "message": "Android usually requires user consent (through a pop up UI) so that users acknowledge there\u0027s some VPN package starting in the background. We\u0027re getting around this UI consent by calling an Android system API to \"preauthorize\" the VPN package.",
+      "parentUuid": "d9c62bfe_c6aef921",
       "range": {
         "startLine": 73,
         "startChar": 49,
