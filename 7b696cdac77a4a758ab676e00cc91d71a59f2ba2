@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084d1570_4091d78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1517267
+      },
+      "writtenOn": "2022-11-10T18:10:37Z",
+      "side": 1,
+      "message": "Should this  be \"accept fast pair half sheet\"? Same comment for inside if block below.",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ff9567_8517c1f2",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1517267
+      },
+      "writtenOn": "2022-11-10T18:10:37Z",
+      "side": 1,
+      "message": "Is waking+unlocking the screen, enabling bluetooth, and extending the screen-off timeout specific to only Nearby Sharing here?\n\nCan you please update this comment?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a772c54_b4448524",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1517267
+      },
+      "writtenOn": "2022-11-10T18:10:37Z",
+      "side": 1,
+      "message": "Perhaps this is a dump question, but what does it mean to \"close the wallpaper editing overlay\"?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
