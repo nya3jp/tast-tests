@@ -50,6 +50,86 @@
       "message": "Hi Renuga,\n\nWould you be able to grant owners approval? Thanks!",
       "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbd161f_023b6c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T03:53:12Z",
+      "side": 1,
+      "message": "Please give a function comment about what the function is matching and the brief description of the parameters.",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d53089_aa96c14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T03:53:12Z",
+      "side": 1,
+      "message": "Is this the type converted from sType (sorry I don\u0027t exactly know what this is)? If so, what does \"default\" mean here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d478cf_350baeb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T03:53:12Z",
+      "side": 1,
+      "message": "Does that mean types other than EthernetNT should match GUID?",
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc768013_01e11ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/health_get_network_list.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-11-10T03:53:12Z",
+      "side": 1,
+      "message": "Network %s not found: %v",
+      "range": {
+        "startLine": 102,
+        "startChar": 12,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "7dc128f6f97357902246132d45229bcfe4e48afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
