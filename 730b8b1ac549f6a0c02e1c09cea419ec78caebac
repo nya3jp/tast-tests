@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c93f1210_763dfe5d",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_bluez.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-10T02:01:49Z",
+      "side": 1,
+      "message": "Ah gotcha, I recall you had mentioned that we use a method to wait until chameleond is back up and running but didn\u0027t realize this was it-- thank you for clarifying. WDYT of adding a comment here calling this out?",
+      "parentUuid": "ed8eaebf_89338b72",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b134ed93_3fe4ce3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
         "patchSetId": 1
