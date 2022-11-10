@@ -33,6 +33,23 @@
       "message": "Seems everything was taken care off.",
       "revId": "bb0ee1450122c81fa2e0d4bc4e40438e16bf3257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c6a6a0_949e2449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-10T20:46:30Z",
+      "side": 1,
+      "message": "Failure seems unrelated\n\nerror(s) in registered tests: /build/nami/tmp/portage/chromeos-base/tast-local-tests-cros-0.0.2-r13316/work/tast-local-tests-cros-0.0.2/src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go:22: group \"informational\" is invalid; see chromiumos/tast/internal/testing/attr.go for the full list of valid groups, /build/nami/tmp/portage/chromeos-base/tast-local-tests-cros-0.0.2-r13316/work/tast-local-tests-cros-0.0.2/src/chromiumos/tast/local/bundles/cros/hwsec/attestation_enroll_only.go:16: group \"informational\" is invalid; see chromiumos/tast/internal/testing/attr.go for the full list of valid groups, /build/nami/tmp/portage/chromeos-base/tast-local-tests-cros-0.0.2-r13316/work/tast-local-tests-cros-0.0.2/src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go:21: group \"informational\" is invalid; see chromiumos/tast/internal/testing/attr.go for the full list of valid groups",
+      "revId": "bb0ee1450122c81fa2e0d4bc4e40438e16bf3257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
