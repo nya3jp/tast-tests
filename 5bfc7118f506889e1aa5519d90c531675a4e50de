@@ -33,6 +33,24 @@
       "message": "nit: Can we use `defaultPollOptions`?",
       "revId": "5bfc7118f506889e1aa5519d90c531675a4e50de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20d03de_e001aed6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2022-11-10T21:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3073fa64_0a4ee5fd",
+      "revId": "5bfc7118f506889e1aa5519d90c531675a4e50de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
