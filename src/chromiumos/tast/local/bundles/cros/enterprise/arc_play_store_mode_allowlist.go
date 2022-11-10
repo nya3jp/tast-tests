@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
+	"chromiumos/tast/local/arc/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/retry"
 	"chromiumos/tast/testing"

@@ -12,10 +12,10 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
+	"chromiumos/tast/local/arc/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
@@ -34,7 +34,7 @@ func init() {
 			"chrome_internal",
 			"play_store",
 		},
-		Timeout: 6 * time.Minute,
+		Timeout: 7 * time.Minute,
 		VarDeps: []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -48,99 +48,78 @@ func init() {
 
 func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	const (
-		DefaultUITimeout     = 1 * time.Minute
-		installButtonText    = "install"
-		provisioningTimeout  = 3 * time.Minute
-		maxAttempts          = 2
-		playStorePackage     = "com.android.vending"
-		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
-		logcatBufferSize     = "10M"
-		blockedPackage       = "com.google.android.apps.youtube.creator"
+		bootTimeout         = 4 * time.Minute
+		provisioningTimeout = 3 * time.Minute
+		blockedPackage      = "com.google.android.apps.youtube.creator"
 	)
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+
+	packages := []string{blockedPackage}
+
+	arcPolicy := arcent.CreateArcPolicyWithApps(packages, arcent.InstallTypeBlocked)
+	arcPolicy.Val.PlayStoreMode = arcent.PlayStoreModeBlockList
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
-	blockedApps := []policy.Application{
-		{
-			PackageName: blockedPackage,
-			InstallType: "BLOCKED",
-		},
-	}
-	blockedAppsPolicy := &policy.ArcPolicy{
-		Val: &policy.ArcPolicyValue{
-			Applications: blockedApps,
-		},
-	}
-	policies := []policy.Policy{blockedAppsPolicy, arcEnabledPolicy}
+	policies := []policy.Policy{arcEnabledPolicy, arcPolicy}
+
 	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(familylink.HasPolicyUser).PolicyUser()
 	pb.AddPolicies(policies)
-
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		s.Fatal("Failed to serve policies: ", err)
 	}
 
-	// Setup ARC.
-	a, err := arc.New(ctx, s.OutDir())
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
+	a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 	if err != nil {
 		s.Fatal("Failed to connect to ARC: ", err)
 	}
-	defer a.Close(ctx)
+	defer a.Close(cleanupCtx)
 
-	verboseTags := []string{"clouddpc", "Finsky", "Volley", "PlayCommon"}
-	if err := a.EnableVerboseLogging(ctx, verboseTags...); err != nil {
-		s.Fatal("Unable to change log level: ", err)
-	}
-
-	if err := a.Command(ctx, "logcat", "-G", logcatBufferSize).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Unable to increase buffer size: ", err)
+	if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
+		s.Fatal("Failed to configure provisioning logs: ", err)
 	}
 
 	if err := a.WaitForProvisioning(ctx, provisioningTimeout); err != nil {
 		s.Fatal("Failed to wait for provisioning: ", err)
 	}
 
-	s.Log("Starting Play Store")
-
-	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-	// The open of Play Store is slow in some boards, octopus etc.
-	// We need retry to reopen Play Store.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := act.Start(ctx, tconn); err != nil {
-			act.Stop(ctx, tconn)
-			return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to open Play Store: ", err)
-	}
-
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close(ctx)
+	defer d.Close(cleanupCtx)
 
-	playstore.OpenAppPage(ctx, a, blockedPackage)
+	defer arcent.DumpBugReportOnError(cleanupCtx, s.HasError, a, filepath.Join(s.OutDir(), "bugreport.zip"))
 
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText))
-	if err := installButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
-		s.Fatal("Failed to find the install button for blocked app: ", err)
-	}
+	if err := arcent.PollAppPageState(ctx, tconn, a, blockedPackage, func(ctx context.Context) error {
+		installButton, err := arcent.WaitForInstallButton(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "failed to find the install button")
+		}
 
-	if enabled, err := installButton.IsEnabled(ctx); err != nil {
-		s.Fatal("Failed to check install button state")
-	} else if !enabled {
-		testing.ContextLog(ctx, "Install button is disabled")
-	} else if err := validateAutoUninstall(ctx, a, installButton, blockedPackage); err != nil {
-		dumpBugReport(ctx, a, s.OutDir())
-		s.Fatal("Blocked package did not uninstall: ", err)
+		enabled, err := installButton.IsEnabled(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to check the install button state")
+		}
+
+		if !enabled {
+			testing.ContextLog(ctx, "Install button is disabled")
+			return nil
+		}
+
+		if err := validateAutoUninstall(ctx, a, installButton, blockedPackage); err != nil {
+			testing.PollBreak(err)
+		}
+
+		testing.ContextLog(ctx, "Blocked app uninstalled")
+		return nil
+	}, time.Minute); err != nil {
+		s.Fatal("Blocked app verification failed: ", err)
 	}
 }
 
@@ -171,10 +150,4 @@ func waitForUninstall(ctx context.Context, a *arc.ARC, blockedPackage string) er
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second})
-}
-
-func dumpBugReport(ctx context.Context, a *arc.ARC, outDir string) {
-	if err := a.BugReport(ctx, filepath.Join(outDir, "bugreport.zip")); err != nil {
-		testing.ContextLog(ctx, "Failed to get bug report: ", err)
-	}
 }
