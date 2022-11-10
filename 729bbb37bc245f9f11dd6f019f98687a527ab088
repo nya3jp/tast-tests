@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5b0162_b83a6722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/assign_to_new_desk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-10T00:59:27Z",
+      "side": 1,
+      "message": "This bug was closed yesterday, sounds like you can use this function?\n    tast-tests: Add ash.WaitUntilDesksFinishAnimating",
+      "revId": "729bbb37bc245f9f11dd6f019f98687a527ab088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6803bcbf_173129fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-10T00:59:27Z",
+      "side": 1,
+      "message": "My point is that the lacros variant was failing.\n\nI think CQ dry run won\u0027t run your test as it\u0027s informational.",
+      "parentUuid": "4b5f04f0_dcdd6f10",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c47c0d20_a42e1c22",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Did you connect your test device with GoogleGuest wifi? If so, it had the network problem. `2022-11-09T02:03:08.449987Z [02:03:06.759] Retry failed attempt 1: failed action load terms of service: Couldn’t connect with the server. Check your network connection and try again. If you\u0027re still having trouble, try restarting your Chromebook.` Since this fixture will start google play. I usually connected my test device to phone\u0027s hotspot instead of GoogleGuest wifi.\n\nhttps://stainless.corp.google.com/search?test\u003d%5Etast%5C.ui%5C.QuickCheckCUJ%24\u0026exclude_cts\u003dtrue\u0026exclude_non_release\u003dtrue\u0026view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-11-03\u0026last_date\u003d2022-11-09 \nThis fixture can work.",
       "parentUuid": "878c1c18_f2274d0f",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1770c2d_3d314075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-10T00:59:27Z",
+      "side": 1,
+      "message": "See my previous message - there was a ChromeOS bug causing trouble.",
+      "parentUuid": "840f55e5_db480591",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
