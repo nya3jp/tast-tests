@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/go-cmp/cmp"
@@ -72,13 +73,25 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 
 	// Only verify screenshot captured, without screen diff validation.
-	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{Finder: chromeAppShelfButtonFinder}); err != nil {
+	// The size of the png image is above the 4MB limited imposed by the GRPC server.
+	maxSizeOption := grpc.MaxCallRecvMsgSize(32 * 10e6)
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{Finder: chromeAppShelfButtonFinder}, maxSizeOption); err != nil {
 		s.Fatal("Failed to take screenshot of the Chrome app shelf button : ", err)
 	}
 
 	// Only verify screenshot captured, without screen diff validation.
-	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{}); err != nil {
+	if _, err := uiautoSvc.CaptureScreenshot(ctx, &pb.CaptureScreenshotRequest{}, maxSizeOption); err != nil {
 		s.Fatal("Failed to take screenshot: ", err)
+	}
+
+	// Get UI Tree string and perform basic check.
+	uiTreeResponse, err := uiautoSvc.GetUITree(ctx, &pb.GetUITreeRequest{})
+	if err != nil {
+		s.Fatal("Failed to get UI Tree string: ", err)
+	}
+
+	if !strings.Contains(uiTreeResponse.UiTree, "className=RootWindow-0") {
+		s.Fatal("Failed to find RootWindow-0 in : ", uiTreeResponse.UiTree)
 	}
 
 	// Open Files App and close it by clicking the cross on the window.
@@ -89,7 +102,7 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	// Wait for search button on the files app to show up.
 	filesAppWindowFinder := &pb.Finder{
 		NodeWiths: []*pb.NodeWith{
-			{Value: &pb.NodeWith_HasClass{HasClass: "Widget"}},
+			{Value: &pb.NodeWith_HasClass{HasClass: "BrowserFrame"}},
 			{Value: &pb.NodeWith_Name{Name: "Files - My files"}},
 		},
 	}
@@ -159,6 +172,7 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 	if _, err := uiautoSvc.MouseClickAtLocation(ctx, mouseClickReq); err != nil {
 		s.Fatalf("Failed to click at location %d,%d : %v", x, y, err)
 	}
+
 	// Verify that Files App window is gone.
 	if res, err := uiautoSvc.IsNodeFound(ctx, &pb.IsNodeFoundRequest{Finder: filesAppWindowFinder}); err != nil || res.Found {
 		s.Fatal("Files App window should have been gone: ", err)
@@ -179,7 +193,6 @@ func AutomationServiceGRPC(ctx context.Context, s *testing.State) {
 			{Value: &pb.NodeWith_Role{Role: pb.Role_ROLE_MENU_ITEM}},
 		},
 	}
-
 	if _, err := uiautoSvc.WaitUntilExists(ctx, &pb.WaitUntilExistsRequest{Finder: closeButton}); err != nil {
 		s.Fatal("Failed to wait for close button from context menu: ", err)
 	}
