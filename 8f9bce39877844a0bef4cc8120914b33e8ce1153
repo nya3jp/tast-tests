@@ -22,6 +22,30 @@
       },
       "revId": "8f9bce39877844a0bef4cc8120914b33e8ce1153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c859f40_69bd22a4",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1550987
+      },
+      "writtenOn": "2022-11-10T20:33:08Z",
+      "side": 1,
+      "message": "It doesn\u0027t. For golang I cannot `repo load` if I don\u0027t pass `gofmt`.",
+      "parentUuid": "7480d006_a4f4983a",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 128
+      },
+      "revId": "8f9bce39877844a0bef4cc8120914b33e8ce1153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
