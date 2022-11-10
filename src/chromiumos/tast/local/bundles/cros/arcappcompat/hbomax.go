@@ -9,11 +9,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -46,7 +49,8 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
+		// TODO(b/254308076): Remove the skipped models once the solution is found for the issue.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve"), hwdep.SkipOnModel("nocturne")),
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
@@ -154,6 +158,7 @@ func init() {
 		}},
 		Timeout: 30 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		VarDeps: []string{"arcappcompat.Hbomax.emailid", "arcappcompat.Hbomax.password"},
 	})
 }
 
@@ -172,6 +177,87 @@ func Hbomax(ctx context.Context, s *testing.State) {
 // launchAppForHbomax verifies Hbomax is launched and
 // verify Hbomax reached main activity page of the app.
 func launchAppForHbomax(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		signupBtnID      = "HeroNavigateButton"
+		enterEmailAddrID = "EmailTextInput"
+		notNowID         = "android:id/autofill_save_no"
+		pwdID            = "PasswordTextInput"
+		profileID        = "AvatarContentPressableContainer"
+		profileBtnID     = "ProfileButton"
+		profileNameDes   = "appcompat"
+		signInBtnID      = "SignInButton"
+
+		waitForActiveInputTime = time.Second * 10
+	)
+	// Click on sign up button.
+	signupBtn := d.Object(ui.ID(signupBtnID))
+	if err := signupBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("signupBtn doesn't exist and skipped login")
+		return
+	} else if err := signupBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on signupBtn: ", err)
+	}
+
+	// Click on sign in to your account button.
+	signInBtn := uidetection.TextBlock([]string{"SIGN", "IN", "TO", "YOUR", "ACCOUNT"})
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for sign in button",
+		ud.WaitUntilExists(signInBtn),
+		action.Sleep(waitForActiveInputTime),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(signInBtn),
+		action.Sleep(testutil.DefaultUITimeout),
+	)(ctx); err != nil {
+		s.Log("Failed to find signInBtn: ", err)
+	}
+
+	// Enter email id.
+	enterEmailAddr := d.Object(ui.ID(enterEmailAddrID))
+	if err := enterEmailAddr.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("EnterEmailAddress doesn't exists: ", err)
+	} else if err := enterEmailAddr.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	}
+	// Click on emailid text field until the emailid text field is focused.
+	testutil.ClickUntilFocused(ctx, s, tconn, a, d, enterEmailAddr)
+
+	emailAddress := s.RequiredVar("arcappcompat.Hbomax.emailid")
+	if err := enterEmailAddr.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Failed to enter EmailAddress: ", err)
+	}
+	s.Log("Entered EmailAddress")
+
+	// Enter password.
+	enterPassword := d.Object(ui.ID(pwdID))
+	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("EnterPassword doesn't exists: ", err)
+	} else if err := enterPassword.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterPassword: ", err)
+	}
+
+	// Click on password text field until the password text field is focused.
+	testutil.ClickUntilFocused(ctx, s, tconn, a, d, enterPassword)
+
+	password := s.RequiredVar("arcappcompat.Hbomax.password")
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
+	}
+	s.Log("Entered password")
+
+	signInButton := d.Object(ui.ID(signInBtnID))
+	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("signInButton doesn't exist")
+	}
+
+	// Click on sign in button until not now button exists.
+	notNowButton := d.Object(ui.ID(notNowID))
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signInButton, notNowButton)
+	testutil.HandleSavePasswordToGoogle(ctx, s, tconn, a, d, appPkgName)
+
+	// Click on profile name until home icon exists.
+	profileName := d.Object(ui.ID(profileID), ui.DescriptionStartsWith(profileNameDes))
+	profileBtn := d.Object(ui.ID(profileBtnID))
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, profileName, profileBtn)
+
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
