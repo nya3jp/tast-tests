@@ -491,6 +491,11 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	defer func() {
+		if s.HasError() {
+			cr.Close(ctx)
+		}
+	}()
 	f.cr = cr
 
 	f.tconn, err = f.cr.TestAPIConn(ctx)

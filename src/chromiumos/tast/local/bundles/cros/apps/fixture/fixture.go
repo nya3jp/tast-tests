@@ -187,11 +187,16 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	defer func() {
+		if s.HasError() {
+			cr.Close(ctx)
+		}
+	}()
 	f.cr = cr
 
 	f.tconn, err = f.cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get test API connection")
+		s.Fatal("Failed to get test API connection: ", err)
 	}
 
 	chrome.Lock()
