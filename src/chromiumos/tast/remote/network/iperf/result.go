@@ -89,11 +89,15 @@ func newResultFromOutput(ctx context.Context, output string, config *Config) (*R
 		return nil, errors.Wrapf(allErrors, "missing data: got %v lines, want %v", count, expectedCount)
 	}
 
-	totalDuration = totalDuration / float64(config.PortCount)
+	var calcTput BitRate = 0.0
+	if totalDuration != 0.0 {
+		totalDuration = totalDuration / float64(config.PortCount)
+		calcTput = 8 * BitRate(totalByteCount/totalDuration)
+	}
 	return &Result{
 		Duration:    time.Duration(totalDuration / float64(count)),
 		PercentLoss: totalLoss / float64(count),
-		Throughput:  8 * BitRate(totalByteCount/totalDuration),
+		Throughput:  calcTput,
 	}, allErrors
 }
 
