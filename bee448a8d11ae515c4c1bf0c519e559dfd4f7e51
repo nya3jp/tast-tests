@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92de7d3_c3540bb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-10T05:46:09Z",
+      "side": 1,
+      "message": "I would go about this a little differently:\n\n1. explain why that was added in the first place (that\u0027s not immediately clear) and link to the CL.\n2. explain why the way it was added was wrong and how we were seeing evidence of that.\n3. explain how this CL resolves that.",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c929364b_fb9d9a98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-10T05:46:09Z",
+      "side": 1,
+      "message": "Can you also specify that you ran this x times and before it failed y out of x times, whereas now it doesn\u0027t fail?",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ba3913_16c337a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-10T05:46:09Z",
+      "side": 1,
+      "message": "Can you add a step by step description of this test?",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
