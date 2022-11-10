@@ -39,14 +39,14 @@ type EnvOptions struct {
 	// EnableDHCP enables the DHCP server in the Env. IPv4 address can be obtained
 	// on the interface by DHCP.
 	EnableDHCP bool
-	// EnableDNS enables the DNS functionality. It only support resolving ResolvedHost
-	// to a single IP address ResolveHostToIP provided during configuration.
-	EnableDNS bool
 	// IPv4DNSServers specifies the IPv4 DNS servers to be advertised by the router (dnsmasq).
 	IPv4DNSServers []string
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
+	// IPv6DNSServers specifies the DNS servers to be advertised by RDNSS through
+	// RA. If not specified, an IP of router itself will be used.
+	IPv6DNSServers []string
 	// HTTPServerResponseHandler is the handler function for the HTTP server
 	// to customize how the server should respond to requests. If the handler is
 	// set, then this enables the HTTP server in the Env.
@@ -57,6 +57,9 @@ type EnvOptions struct {
 	HTTPSServerResponseHandler func(rw http.ResponseWriter, req *http.Request)
 	// HTTPS certs is the cert directory and a cert store to be used by HTTPS server.
 	HTTPSCerts *certs.Certs
+	// EnableDNS enables the DNS functionality. It only support resolving ResolvedHost
+	// to a single IP address ResolveHostToIP provided during configuration.
+	EnableDNS bool
 	// ResolvedHost is the hostname to force a specific IPv4 or IPv6 address.
 	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
 	// If resolvedHost is not set, it matches any domain in dnsmasq configuration.
@@ -162,16 +165,19 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 }
 
 func startServersInRouter(ctx context.Context, router *env.Env, pool *subnet.Pool, opts EnvOptions) error {
+	var dnsmasqOpts []dnsmasq.Option
 	if opts.EnableDHCP {
 		v4Subnet, err := pool.AllocNextIPv4Subnet()
 		if err != nil {
 			return errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(
-			dnsmasq.WithDHCPServer(v4Subnet),
-			dnsmasq.WithDHCPNameServers(opts.IPv4DNSServers),
-			dnsmasq.WithResolveHost(opts.ResolvedHost, opts.ResolveHostToIP),
-		)
+		dnsmasqOpts = append(dnsmasqOpts, dnsmasq.WithDHCPServer(v4Subnet), dnsmasq.WithDHCPNameServers(opts.IPv4DNSServers))
+	}
+	if opts.EnableDNS {
+		dnsmasqOpts = append(dnsmasqOpts, dnsmasq.WithResolveHost(opts.ResolvedHost, opts.ResolveHostToIP))
+	}
+	if len(dnsmasqOpts) > 0 {
+		dnsmasq := dnsmasq.New(dnsmasqOpts...)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return errors.Wrap(err, "failed to start dnsmasq")
 		}
@@ -180,14 +186,27 @@ func startServersInRouter(ctx context.Context, router *env.Env, pool *subnet.Poo
 	if opts.RAServer {
 		v6Prefix, err := pool.AllocNextIPv6Subnet()
 		if err != nil {
-			return errors.Wrap(err, "failed to allocate v4 prefix for DHCP")
+			return errors.Wrap(err, "failed to allocate v6 prefix for RA server")
 		}
 
-		// Note that in the current implementation, shill requires an IPv6
-		// connection has both address and DNS servers, and thus we need to provide
-		// it here even though it is not reachable.
-		const googleIPv6DNSServer = "2001:4860:4860::8888"
-		radvd := radvd.New(v6Prefix, []string{googleIPv6DNSServer})
+		// Set up a fix address in the subnet for the router
+		ipv6Addr := v6Prefix.IP.To16()
+		var selfIPv6Addr net.IP
+		selfIPv6Addr = append([]byte{}, ipv6Addr...)
+		selfIPv6Addr[14] = 16 // (prefix)::1000
+		if err := router.ConfigureInterface(ctx, router.VethInName, selfIPv6Addr, v6Prefix); err != nil {
+			return errors.Wrapf(err, "failed to configure static IPv6 address on %s", router.VethInName)
+		}
+
+		var rdnssServers []string
+		rdnssServers = append(rdnssServers, opts.IPv6DNSServers...)
+		if len(rdnssServers) == 0 {
+			// Note that in the current implementation, shill requires an IPv6
+			// connection has both address and DNS servers. Therefore if not
+			// explictliy provided we'll use our own address as DNS server.
+			rdnssServers = append(rdnssServers, selfIPv6Addr.String())
+		}
+		radvd := radvd.New(v6Prefix, rdnssServers)
 		if err := router.StartServer(ctx, "radvd", radvd); err != nil {
 			return errors.Wrap(err, "failed to start radvd")
 		}
