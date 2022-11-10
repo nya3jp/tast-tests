@@ -71,7 +71,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	// We delete most files before backup and restore to speed the process.
 	// Create an lxc copy before we change anything, then restore at the end.
 	lxc := func(ctx context.Context, args ...string) {
-		err := cont.VM.LXCCommand(ctx, args...)
+		_, err := cont.VM.LXCCommand(ctx, args...)
 		if err != nil {
 			s.Fatal("LXC: ", err)
 		}
