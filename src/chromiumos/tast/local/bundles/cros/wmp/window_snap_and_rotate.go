@@ -24,8 +24,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
-
 type windowSnapAndRotateTestParam struct {
 	portrait bool
 	bt       browser.Type
