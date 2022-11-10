@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dde57e_ac9aef5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-10T19:10:57Z",
+      "side": 1,
+      "message": "Is it possible to move this function to a shared package so it can be accessed by other InstantTether tests?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 93
+      },
+      "revId": "f8d6a08e06d0cdf0d6393ac0354437ef9add8337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
