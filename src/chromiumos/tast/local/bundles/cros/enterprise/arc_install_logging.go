@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
+	"chromiumos/tast/local/arc/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/retry"
@@ -128,7 +128,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		}
 
 		// Ensure that test app is force-installed by ARC policy.
-		if err := a.WaitForPackages(ctx, []string{testPackage}); err != nil {
+		if err := a.WaitForPackages(ctx, packages); err != nil {
 			return rl.Retry("force install packages: ", err)
 		}
 
