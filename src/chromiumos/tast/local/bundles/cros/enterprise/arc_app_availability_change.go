@@ -92,7 +92,7 @@ func ARCAppAvailabilityChange(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			return rl.Exit("start ARC by policy", err)
+			return rl.Retry("start ARC by policy", err)
 		}
 		defer a.Close(cleanupCtx)
 
@@ -101,7 +101,7 @@ func ARCAppAvailabilityChange(ctx context.Context, s *testing.State) {
 		}
 
 		if err := arcent.WaitForProvisioning(ctx, a, rl.Attempts); err != nil {
-			return rl.Exit("wait for provisioning", err)
+			return rl.Retry("wait for provisioning", err)
 		}
 
 		defer arcent.DumpBugReportOnError(cleanupCtx, func() bool {
