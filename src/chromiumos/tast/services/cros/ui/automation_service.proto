@@ -51,6 +51,9 @@ service AutomationService {
 
   // CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
   rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse) {}
+
+  // GetUITree returns the assessibility tree in string representation.
+  rpc GetUITree(GetUITreeRequest) returns (GetUITreeResponse) {}
 }
 
 message LeftClickRequest {
@@ -104,6 +107,13 @@ message CaptureScreenshotRequest {
 
 message CaptureScreenshotResponse {
   bytes png_base64 = 1;
+}
+
+message GetUITreeRequest {
+}
+
+message GetUITreeResponse {
+  string ui_tree = 1;
 }
 
 // NodeInfo is a wrapper around chrome.automation API AutomationNode.

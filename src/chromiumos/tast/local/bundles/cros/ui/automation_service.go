@@ -336,6 +336,37 @@ func (svc *AutomationService) CaptureScreenshot(ctx context.Context, req *pb.Cap
 	}, nil
 }
 
+// GetUITree returns the assessibility tree in string representation.
+func (svc *AutomationService) GetUITree(ctx context.Context, req *pb.GetUITreeRequest) (*pb.GetUITreeResponse, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	cr := svc.sharedObject.Chrome
+	if cr == nil {
+		return nil, errors.New("Chrome is not instantiated")
+	}
+
+	// When in OOBE, use SigninProfileTestAPIConn to create the test connection.
+	var tconn *chrome.TestConn
+	var err error
+	if cr.LoginMode() == "NoLogin" {
+		tconn, err = cr.SigninProfileTestAPIConn(ctx)
+	} else {
+		tconn, err = cr.TestAPIConn(ctx)
+	}
+
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	uiTreeStr, err := uiauto.RootDebugInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get UI Tree strring")
+	}
+
+	return &pb.GetUITreeResponse{UiTree: uiTreeStr}, nil
+}
+
 func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Context, error) {
 	cr := svc.sharedObject.Chrome
 	if cr == nil {
