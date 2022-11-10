@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -101,7 +102,7 @@ func init() {
 			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -139,7 +140,7 @@ func init() {
 			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -176,7 +177,7 @@ func init() {
 			crossDevicePerBoxUsername17,
 			crossDevicePerBoxPassword,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    4 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -200,9 +201,15 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
 	f.adbDevice = adbDevice
+
+	// Allocate time for saving logs in case of failure.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// We want to ensure we have logs even if the Android device setup fails.
 	fixtureLogcatPath := filepath.Join(s.OutDir(), "android_base_fixture_logcat.txt")
-	defer adbDevice.DumpLogcat(ctx, fixtureLogcatPath)
+	defer adbDevice.DumpLogcat(cleanupCtx, fixtureLogcatPath)
 
 	// Do some basic device set up like waking the screen and clearing logcat.
 	if err := ConfigureDevice(ctx, adbDevice, rooted); err != nil {
