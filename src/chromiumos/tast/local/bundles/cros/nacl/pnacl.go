@@ -81,8 +81,8 @@ func Pnacl(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer closeBrowser(ctx)
 	defer cr.Close(ctx)
+	defer closeBrowser(ctx)
 
 	s.Log("Connecting to background page")
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)

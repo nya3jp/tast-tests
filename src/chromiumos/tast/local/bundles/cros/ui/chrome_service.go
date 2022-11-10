@@ -45,7 +45,7 @@ var defaultCreds = chrome.Creds{
 }
 
 // New logs into Chrome with the supplied chrome options.
-func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.Empty, error) {
+func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (_ *empty.Empty, errRet error) {
 	svc.sharedObject.ChromeMutex.Lock()
 	defer svc.sharedObject.ChromeMutex.Unlock()
 
@@ -88,6 +88,11 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 		testing.ContextLog(ctx, "Failed to start Chrome")
 		return nil, err
 	}
+	defer func() {
+		if errRet != nil {
+			cr.Close(ctx)
+		}
+	}()
 
 	// Check that Lacros is enabled only if requested.
 	if bt == browser.TypeLacros {

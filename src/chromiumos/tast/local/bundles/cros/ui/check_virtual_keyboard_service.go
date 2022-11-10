@@ -49,7 +49,7 @@ type CheckVirtualKeyboardService struct {
 }
 
 // NewChromeLoggedIn Logs into a user session.
-func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, req *pb.NewBrowserRequest) (*empty.Empty, error) {
+func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, req *pb.NewBrowserRequest) (_ *empty.Empty, errRet error) {
 	cvk.sharedObject.ChromeMutex.Lock()
 	defer cvk.sharedObject.ChromeMutex.Unlock()
 
@@ -67,6 +67,12 @@ func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, r
 	if err != nil {
 		return nil, err
 	}
+	defer func() {
+		if errRet != nil {
+			closeBrowser(ctx)
+			cr.Close(ctx)
+		}
+	}()
 
 	cvk.cr = cr
 	cvk.br = br
