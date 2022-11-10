@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cff31ebd_542c5470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_to_host_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-11-10T07:34:12Z",
+      "side": 1,
+      "message": "qq: do you care about differentiating the two? if not, you can use `arc` as the test\u0027s software deps and remove the param.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "31e7d4001c14b498ce339ac813e165f0e4470286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9c62bfe_c6aef921",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_to_host_vpn.go",
         "patchSetId": 4
