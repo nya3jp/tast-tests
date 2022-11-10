@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf54dc62_6e811db8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-11-10T01:24:02Z",
+      "side": 1,
+      "message": "I really  do not trust CQ to get this right. There is a problem with some package and prebuilts which I think is not showing up in CQ builds.",
+      "revId": "421b533e375bae3bb3fa349e3109065bdcbcbd7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
