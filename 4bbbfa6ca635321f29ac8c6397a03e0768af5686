@@ -16,6 +16,23 @@
       "message": "This helps with devices that don\u0027t support `cros_config` for one reason or another.\n\nOther tests check the `crossystem hwid`, but don\u0027t use it to generate the model name. It could be the case that we don\u0027t want to use `crossystem`, but would rather file tickets to make sure cros_config works on devices where it doesn\u0027t. WDYT?",
       "revId": "4bbbfa6ca635321f29ac8c6397a03e0768af5686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca02620_52ff8ea7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-11-10T20:05:39Z",
+      "side": 1,
+      "message": "Maybe we need to think of reven. I wonder if reven has model",
+      "revId": "4bbbfa6ca635321f29ac8c6397a03e0768af5686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
