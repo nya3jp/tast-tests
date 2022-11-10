@@ -33,6 +33,24 @@
       "message": "The change from json to yaml changed how refs work. We need a bunch of code changes to fix it.",
       "revId": "ded7d8d0c735caab05d5ddf4744aaacda9507988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85772090_30dead8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T15:01:08Z",
+      "side": 1,
+      "message": "Updated all tests that are affected by the changes to policy_templates.json",
+      "parentUuid": "9ea4268b_f037525f",
+      "revId": "ded7d8d0c735caab05d5ddf4744aaacda9507988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
