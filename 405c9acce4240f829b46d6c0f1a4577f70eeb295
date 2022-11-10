@@ -983,6 +983,30 @@
       },
       "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7c172a_33ee0baf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T20:25:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22d61a84_551c0bf5",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "405c9acce4240f829b46d6c0f1a4577f70eeb295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
