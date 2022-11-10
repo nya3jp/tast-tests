@@ -119,10 +119,7 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 // including setting whether to use fake camera and lacros browser.
 func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath string, bt browser.Type) (cr *chrome.Chrome, err error) {
 	opts := confereceChromeOpts(accountPool, cameraVideoPath)
-	lacrosCfg := lacrosfixt.NewConfig(
-		// Close all tabs in the recorder requires Lacros to be alive.
-		lacrosfixt.KeepAlive(true),
-		lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("WebUITabStrip")))
+	lacrosCfg := lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("WebUITabStrip")))
 	cr, err = browserfixt.NewChrome(ctx, bt, lacrosCfg, opts...)
 	if err != nil {
 		return cr, errors.Wrap(err, "failed to restart Chrome")
