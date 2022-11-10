@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae26d9ca_f47079c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-11-10T21:59:13Z",
+      "side": 1,
+      "message": "LGTM. We already have enough USS tests. Apologies forgot to respond to the thread.",
+      "revId": "95cb88b2e72b711e4ab308afa11976879407f126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
