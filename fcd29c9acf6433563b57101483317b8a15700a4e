@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67b9138_357ea873",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-10T02:06:44Z",
+      "side": 1,
+      "message": "Okay, definitely don\u0027t feel strongly on this but wanted to mention it. Leaving it alone SGTM!",
+      "parentUuid": "f8d347cb_bdf7f669",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1385,
+        "endChar": 2
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da482c82_cb300033",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I based this map off of the same data in Autotest: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/bluetooth/bluetooth_adapter_tests.py;l\u003d756?q\u003dautotest%20NoInputNoOutput\n\nI added the same comment here that explains this and added a note to the referenced bug.",
       "parentUuid": "da482c82_cb300033",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "fcd29c9acf6433563b57101483317b8a15700a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bce6c3_9c69b608",
+        "filename": "src/chromiumos/tast/remote/bluetooth/emulated_btpeer_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-10T02:06:44Z",
+      "side": 1,
+      "message": "SGTM, thank you for adding that comment for context! :D",
+      "parentUuid": "92c660e1_7315b0e0",
       "range": {
         "startLine": 35,
         "startChar": 35,

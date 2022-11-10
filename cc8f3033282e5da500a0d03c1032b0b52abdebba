@@ -16,6 +16,23 @@
       "message": "tast-wise: +2 \n\nwait for +1 from someone of your team before landing it",
       "revId": "cc8f3033282e5da500a0d03c1032b0b52abdebba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b41528_8c8d76e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-10T02:06:44Z",
+      "side": 1,
+      "message": "This change LGTM too!",
+      "revId": "cc8f3033282e5da500a0d03c1032b0b52abdebba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
