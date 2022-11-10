@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf9e379_f0cad4a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2022-11-10T19:37:25Z",
+      "side": 1,
+      "message": "Yep, done.",
+      "parentUuid": "eddfa21f_38fdd53c",
+      "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee37bd5_fdd488d7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-10T01:02:39Z",
       "side": 1,
       "message": "Is there a reason a new function is needed over ash.WaitUntilDesksFinishAnimating? It looks pretty similar/redundant maybe?",
+      "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53251a23_ed3837fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2022-11-10T19:37:25Z",
+      "side": 1,
+      "message": "So two reasons - first I want it as an action so that it can be used neatly in `Combine` blocks. Otherwise each call needs a separate `err !\u003d nil` blah blah.\n\nSecond is that I want to wait for a specific desk, not just any desk. If I used WaitUntilDesksFinishAnimating then I feel I would need a second check to verify that we are on the expected desk.",
+      "parentUuid": "8ee37bd5_fdd488d7",
       "revId": "0c2c905704d47dc2e0312e5174015a2b3851b00e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
