@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a0f892_d8d36ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1557797
+      },
+      "writtenOn": "2022-11-10T17:45:36Z",
+      "side": 1,
+      "message": "\u003e \"reapper\" is a possible misspelling of \"reappear\".\n\nPlease fix.",
+      "parentUuid": "78dce590_e6605df5",
+      "range": {
+        "startLine": 13,
+        "startChar": 63,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "a4899044f9f1da592cd9c80c82f501c3d2dbc3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
