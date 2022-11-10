@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2ce5cb_7ca975e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-11-10T21:53:31Z",
+      "side": 1,
+      "message": "This looks reasonable to me, but I don\u0027t have much context on why you need to add those options to the fixture.\n\nYou might need to set Verified +1 before Kyle will think this is ready for review.",
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24522433_a606f67b",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-11-10T21:53:31Z",
+      "side": 1,
+      "message": "*signin",
+      "range": {
+        "startLine": 309,
+        "startChar": 33,
+        "endLine": 309,
+        "endChar": 38
+      },
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
