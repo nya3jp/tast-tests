@@ -89,6 +89,10 @@ func newResultFromOutput(ctx context.Context, output string, config *Config) (*R
 		return nil, errors.Wrapf(allErrors, "missing data: got %v lines, want %v", count, expectedCount)
 	}
 
+	if totalDuration == 0.0 {
+		return nil, errors.Wrapf(allErrors, "invalid total duration: got %f, want > 0.0", totalDuration)
+	}
+
 	totalDuration = totalDuration / float64(config.PortCount)
 	return &Result{
 		Duration:    time.Duration(totalDuration / float64(count)),
