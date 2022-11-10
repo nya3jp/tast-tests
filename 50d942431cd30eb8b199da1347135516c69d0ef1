@@ -33,6 +33,24 @@
       "message": "Should this be some sort of error?\n\nUnexpected action of sorts",
       "revId": "50d942431cd30eb8b199da1347135516c69d0ef1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e617d2_b3cd796a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_error_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-11-10T12:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f752044b_19c8f3c5",
+      "revId": "50d942431cd30eb8b199da1347135516c69d0ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
