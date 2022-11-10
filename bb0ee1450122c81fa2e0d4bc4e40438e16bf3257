@@ -16,6 +16,23 @@
       "message": "Cleaned up error handling and used net.JoinHostPort",
       "revId": "bb0ee1450122c81fa2e0d4bc4e40438e16bf3257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590c08a7_5bbde939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-10T19:06:58Z",
+      "side": 1,
+      "message": "Seems everything was taken care off.",
+      "revId": "bb0ee1450122c81fa2e0d4bc4e40438e16bf3257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
