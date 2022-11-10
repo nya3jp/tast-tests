@@ -233,6 +233,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd54d1b_fbb2a91e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-11-10T18:21:34Z",
+      "side": 1,
+      "message": "I followed the guidance in go/lacros-audit-cujs to design the cuj tests. I think we do need to visit live website to test the performance.",
+      "parentUuid": "7b1aeff5_de5805b8",
+      "revId": "8ea88c6a2071d70b16c76d4c9018a39f8a3cae2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0ede3b_4b547cb5",
