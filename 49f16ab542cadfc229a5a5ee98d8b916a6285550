@@ -46,6 +46,30 @@
       },
       "revId": "49f16ab542cadfc229a5a5ee98d8b916a6285550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe85378_ef2e54bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/chrome_browser_drag_and_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-11-10T02:59:19Z",
+      "side": 1,
+      "message": "Running `tast run \u003c$DUT\u003e holdingspace.Download.lacros*` is failing too. I am not able to open a lacros browser on DUT manually either.",
+      "parentUuid": "c261613f_01e5049e",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "49f16ab542cadfc229a5a5ee98d8b916a6285550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
