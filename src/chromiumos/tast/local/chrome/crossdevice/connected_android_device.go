@@ -439,3 +439,29 @@ func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 
 	return nil
 }
+
+// Accept FastPair Halfsheet on the Android for QuickStart testing using the UI.
+func (c *AndroidDevice) AcceptFastPairHalfsheet(ctx context.Context) error {
+	d, err := ui.NewDeviceWithRetry(ctx, c.Device)
+	if err != nil {
+		return errors.Wrap(err, "failed initializing UI automator")
+	}
+	defer d.Close(ctx)
+
+	// Verify that the Halfsheet showed up on the phone.
+	pairingPic := d.Object(ui.ResourceID("com.google.android.gms:id/pairing_pic"))
+	card := d.Object(ui.ResourceID("com.google.android.gms:id/card"))
+	if err := card.WaitForExists(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to find a card displaying the Halfsheet")
+	}
+	if err = pairingPic.WaitForExists(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to find a Fast Pair Halfsheet with a pairing pic")
+	}
+
+	// Click on the Connect button after verifying the pair.
+	connectBtn := d.Object(ui.ResourceID("com.google.android.gms:id/connect_btn"))
+	if err = connectBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the Connect button for Fast Pair")
+	}
+	return nil
+}
