@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00722fe3_3ce755eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-10T19:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65cc058e_e9163352",
+      "range": {
+        "startLine": 275,
+        "startChar": 35,
+        "endLine": 275,
+        "endChar": 36
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5415db30_59590028",
@@ -66,6 +90,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8468a0c_fc433889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-10T19:31:32Z",
+      "side": 1,
+      "message": "It says here [1] that it returns an object of type `*Regexp`; am I misunderstanding?\n\n[1] https://pkg.go.dev/regexp#MustCompile",
+      "parentUuid": "5415db30_59590028",
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba2840a_c2e98479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-10T19:31:32Z",
+      "side": 1,
+      "message": "I\u0027ve only ever seen regex with backticks, but I\u0027ll remove it",
+      "parentUuid": "2c51a5f8_4723ac1d",
+      "range": {
+        "startLine": 288,
+        "startChar": 26,
+        "endLine": 288,
+        "endChar": 37
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2fb7802_c3085584",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
         "patchSetId": 8
@@ -77,6 +143,30 @@
       "writtenOn": "2022-11-10T09:04:22Z",
       "side": 1,
       "message": "Why not pass the regex around instead of strings? It makes the intent clearer.",
+      "range": {
+        "startLine": 153,
+        "startChar": 139,
+        "endLine": 153,
+        "endChar": 145
+      },
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6ab0d5_6bad58a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-11-10T19:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2fb7802_c3085584",
       "range": {
         "startLine": 153,
         "startChar": 139,
