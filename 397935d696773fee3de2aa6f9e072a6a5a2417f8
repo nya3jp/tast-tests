@@ -33,6 +33,24 @@
       "message": "Please add yourself as an author as well.\nOr if you are the owner of the policy, you can add yourself and your team as owner, and you can remove me from here.",
       "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003ee462_68c78165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1556467
+      },
+      "writtenOn": "2022-11-10T10:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549dcf16_47354ac1",
+      "revId": "397935d696773fee3de2aa6f9e072a6a5a2417f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
