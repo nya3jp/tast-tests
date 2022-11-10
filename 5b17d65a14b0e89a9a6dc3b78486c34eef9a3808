@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cc4650b_01ac3048",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-10T00:22:13Z",
+      "side": 1,
+      "message": "Is this test only for manual testing?",
+      "parentUuid": "58f0d181_29b14775",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "5b17d65a14b0e89a9a6dc3b78486c34eef9a3808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60063b8_a6f22a35",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rootfs_removed.go",
         "patchSetId": 5
