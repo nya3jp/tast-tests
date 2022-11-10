@@ -154,6 +154,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "703661e6_565fd4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-10T23:30:08Z",
+      "side": 1,
+      "message": "I get the idea but I\u0027ve not written them that way because I think describing the \"unexpectedly succeeded\" results as failures makes it somewhat hard to parse, as a reader.\n\nI asked around a bit in the team and while I didn\u0027t get a ton of response, the feedback I did get generally preferred the existing style here, so I\u0027m going to keep it as-is.",
+      "parentUuid": "9daa6c1b_12ba93d4",
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b3dadf_87ce9d13",
@@ -167,6 +185,24 @@
       "writtenOn": "2022-11-10T22:24:58Z",
       "side": 1,
       "message": "nit: same thing here, how about `failed to ensure file is not verified`?",
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714da084_eb234ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-10T23:30:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99b3dadf_87ce9d13",
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
