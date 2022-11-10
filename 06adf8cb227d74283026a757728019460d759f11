@@ -35,6 +35,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb148a5_1af7cf78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-11-10T12:01:40Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a06c0fd_92a88373",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-11-10T12:01:40Z",
+      "side": 1,
+      "message": "Would it make sense to have a struct Slot that contains the id (int), label (string), pin (string) and then have two members of that type: UserSlot and SystemSlot ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe0cd40_bbe92686",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-11-10T12:01:40Z",
+      "side": 1,
+      "message": "nit question: me being a golang newbie: What does it mean that this does not have a type?",
+      "range": {
+        "startLine": 235,
+        "startChar": 62,
+        "endLine": 235,
+        "endChar": 65
+      },
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87110188_60871f45",
@@ -53,6 +116,52 @@
         "startChar": 1,
         "endLine": 101,
         "endChar": 60
+      },
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9500e53f_93036c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-11-10T12:01:40Z",
+      "side": 1,
+      "message": "nit: Could this be in a utility function?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "06adf8cb227d74283026a757728019460d759f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc08b24_207dc7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stable_shill_eap_slot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-11-10T12:01:40Z",
+      "side": 1,
+      "message": "Would you mind elaborating on the name, as opposed to getShillPKCSID?\n\nThis name is not very good IMO because it suggests that chaps uses/exposes a slot_id:obj_id format somewhere, which IIUC is not the case.\n\nHow is this related to chaps?\n\nShould this be called getActualPKCSID or getCurrentPKCSID something like that?",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 19
       },
       "revId": "06adf8cb227d74283026a757728019460d759f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
