@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04575384_c363343a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T17:43:14Z",
+      "side": 1,
+      "message": ".Basic should disconnect the Instant Tether connection at least, at least when testing crrev.com/c/4014816 I was able to run both of the subtests consecutively. What specifically is broken when running this test afterwards? If cleanup is an issue though, we can definitely add a new fixture or cleanup steps to the existing one to handle Instant Tether connection cleanup",
+      "parentUuid": "58586e05_6f7d170f",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b76628c_4ffc890b",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -390,6 +414,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f87e2ef_ebb3515c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T17:43:14Z",
+      "side": 1,
+      "message": "To make it less brittle, can we simply remove the `.Ancestor`? `Role` + `Name` is usually pretty good/stable in my experience. Not perfect since the node names can easily change, but that tends to change less than the node hierarchy and class names from what I\u0027ve seen.\n\nAlso another possibly more reliable way to get the device name could be to extract it from the `Connected devices` section in OS settings rather than the Fixture\u0027s attributes (we just pull those in with ADB commands and don\u0027t do any real verification on them).",
+      "parentUuid": "a722bae2_97cf3966",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a73e5b0e_815c22e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -496,6 +544,30 @@
       "side": 1,
       "message": "Sounds good! I did see that\u0027s being tested now. Is there any reason we\u0027re no longer pinging google.com and rather rendering the Chromium website?",
       "parentUuid": "b82ec7ca_3d015445",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205b377f_525496af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-10T17:43:14Z",
+      "side": 1,
+      "message": "Ah yeah I forgot to look back into that. For some reason after updating the test the way I did, `ping` would time out even though the connection was good. Not sure why, my guess would be that `ping` wasn\u0027t using the right interface or something like that, maybe since that CL no longer completely disables the WiFi adapter.\n\nI didn\u0027t think it was a big deal, `ping` is probably more reliable but I just wanted to get it working since I\u0027ve been stuck on those test changes for a while.",
+      "parentUuid": "a5210675_ba1174e8",
       "range": {
         "startLine": 77,
         "startChar": 1,
