@@ -21,12 +21,15 @@ import (
 )
 
 const (
-	dutReconnectionTimeout      = 30
-	firstSuspendDuration        = 10
-	secondSuspendDuration       = 60
-	keyboardAvailabilityTimeout = 10
-	inputWakeSourceRegex        = `Wakeup\s+type\:\s+input`
-	otherWakeSourceRegex        = `Wakeup\s+type\:\s+other`
+	dutReconnectionTimeout       = 30
+	firstSuspendDuration         = 10
+	secondSuspendDuration        = 60
+	keyboardDisconnectRetryCount = 5
+	keyboardConnectionDelay      = 10
+	keyboardAvailabilityTimeout  = 10
+	keyboardReconnectionTimeout  = 60
+	inputWakeSourceRegex         = `Wakeup\s+type\:\s+input`
+	otherWakeSourceRegex         = `Wakeup\s+type\:\s+other`
 )
 
 func init() {
@@ -95,7 +98,7 @@ func HidWake(ctx context.Context, s *testing.State) {
 	}
 
 	// Suspend/Resume the DUT and check the wake source
-	if err := attemptSuspendAndWake(ctx, d, firstSuspendDuration, otherWakeSourceRegex, pxy); err != nil {
+	if err := attemptSuspendAndWake(ctx, d, firstSuspendDuration, otherWakeSourceRegex, pxy, fs, dir); err != nil {
 		s.Fatal("Failed during first suspend: ", err)
 	}
 
@@ -118,7 +121,7 @@ func HidWake(ctx context.Context, s *testing.State) {
 	}
 
 	// Suspend/Resume the DUT and check the wake source
-	if err := attemptSuspendAndWake(ctx, d, secondSuspendDuration, inputWakeSourceRegex, pxy); err != nil {
+	if err := attemptSuspendAndWake(ctx, d, secondSuspendDuration, inputWakeSourceRegex, pxy, fs, dir); err != nil {
 		s.Fatal("Failed during second suspend: ", err)
 	}
 
@@ -143,44 +146,81 @@ func HidWake(ctx context.Context, s *testing.State) {
 
 // attemptSuspendAndWake suspends the DUT, tries to wake it with a servo key press, then checks the output of powerd_dbus_suspend for a particular wake source.
 // If there is an error during suspend/resume or the wake source does not match wakeSourceRegex, attemptSuspendAndWake will return an error.
-func attemptSuspendAndWake(ctx context.Context, d *dut.DUT, suspendDuration int, wakeSourceRegex string, pxy *servo.Proxy) error {
+// If the keyboard emulator disconnects and reconnects during suspend/resume, it will retry up to keyboardDisconnectRetryCount times.
+func attemptSuspendAndWake(ctx context.Context, d *dut.DUT, suspendDuration int, wakeSourceRegex string, pxy *servo.Proxy, fs *dutfs.Client, servoKeyboardDir string) error {
 
-	// Create channel
-	suspendErr := make(chan error, 1)
-	defer close(suspendErr)
+	attemptCount := 0
+	for attemptCount < keyboardDisconnectRetryCount {
 
-	// Suspend the DUT in go routine, and return once an error is found or powerd_dbus_suspend output is checked
-	go func(ctx context.Context, d *dut.DUT, suspendDuration int, wakeSourceRegex string, suspendErr chan error) {
-		out, err := d.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--print_wakeup_type", "--suspend_for_sec="+strconv.Itoa(suspendDuration)).CombinedOutput()
-		if err != nil {
-			suspendErr <- errors.Wrap(err, "Unable to suspend the DUT")
-			return
+		// Confirm servo keyboard connection time exceeds keyboardConnectionDelay
+		baseConnectedDuration, err := getServoKeyboardConnectedDuration(ctx, fs, servoKeyboardDir)
+		if baseConnectedDuration < keyboardConnectionDelay*1000 {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				baseConnectedDuration, err = getServoKeyboardConnectedDuration(ctx, fs, servoKeyboardDir)
+				if baseConnectedDuration > keyboardConnectionDelay*1000 {
+					return nil
+				}
+				return errors.Wrap(err, "Waiting for baseConnectedDuration to reach keyboardConnectionDelay")
+			}, &testing.PollOptions{Timeout: keyboardReconnectionTimeout * time.Second}); err != nil {
+				return errors.Wrap(err, "Servo keyboard connected_duration was unable to reach keyboardConnectionDelay")
+			}
 		}
 
-		if match, err := regexp.MatchString(wakeSourceRegex, string(out)); err != nil {
-			suspendErr <- errors.Wrap(err, "Unable to check wake source")
-			return
-		} else if !match {
-			suspendErr <- errors.Wrap(err, "Wake source did not match "+wakeSourceRegex)
-			return
+		// Create channel
+		suspendErr := make(chan error, 1)
+		defer close(suspendErr)
+
+		// Suspend the DUT in go routine, and return once an error is found or powerd_dbus_suspend output is checked
+		go func(ctx context.Context, d *dut.DUT, suspendDuration int, wakeSourceRegex string, suspendErr chan error) {
+			out, err := d.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--print_wakeup_type", "--suspend_for_sec="+strconv.Itoa(suspendDuration)).CombinedOutput()
+			if err != nil {
+				suspendErr <- errors.Wrap(err, "Unable to suspend the DUT")
+				return
+			}
+
+			if match, err := regexp.MatchString(wakeSourceRegex, string(out)); err != nil {
+				suspendErr <- errors.Wrap(err, "Unable to check wake source")
+				return
+			} else if !match {
+				suspendErr <- errors.Wrap(err, "Wake source did not match "+wakeSourceRegex)
+				return
+			}
+
+			suspendErr <- nil
+		}(ctx, d, suspendDuration, wakeSourceRegex, suspendErr)
+
+		// Wait for DUT to suspend
+		if err := d.WaitUnreachable(ctx); err != nil {
+			return errors.Wrap(err, "unable to verify DUT is unreachable")
 		}
 
-		suspendErr <- nil
-	}(ctx, d, suspendDuration, wakeSourceRegex, suspendErr)
+		// Send HID event from servo keyboard
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.USBEnter, servo.DurPress); err != nil {
+			return errors.Wrap(err, "unable to send key press press from servo")
+		}
 
-	// Wait for DUT to suspend
-	if err := d.WaitUnreachable(ctx); err != nil {
-		return errors.Wrap(err, "unable to verify DUT is unreachable")
+		// Wait for the DUT to resume
+		err = <-suspendErr
+
+		// Check ConnectedDuration
+		currConnectedDuration, reconnectErr := getServoKeyboardConnectedDuration(ctx, fs, servoKeyboardDir)
+		if reconnectErr != nil {
+			return errors.Wrap(err, "unable to check for servo keyboard connected_duration")
+		}
+
+		// If the current connected_duration is greater than the initial connected_duration, there was no disconnection
+		// Return valid suspendErr result
+		if currConnectedDuration > baseConnectedDuration {
+			return err
+		}
+
+		// Otherwise, the servo keyboard disconnected and reconnected during the test
+		// Increment attemptCount and repeat suspend/resume if limit has not been reached
+		attemptCount = attemptCount + 1
 	}
 
-	// Send HID event from servo keyboard
-	if err := pxy.Servo().KeypressWithDuration(ctx, servo.USBEnter, servo.DurPress); err != nil {
-		return errors.Wrap(err, "unable to send key press press from servo")
-	}
-
-	// Wait for the DUT to resume
-	err := <-suspendErr
-	return err
+	// keyboardDisconnectRetryCount has been reached
+	return errors.New("attemptSuspendAndWake retry limit has been reached")
 }
 
 // getServoKeyboardDir returns the linux device directory for the servo keyboard emulator on the DUT.
@@ -229,4 +269,14 @@ func setServoKeyboardRemoteWakeup(ctx context.Context, fs *dutfs.Client, servoKe
 	}
 
 	return fs.WriteFile(ctx, filepath.Join(servoKeyboardDir, "power/wakeup"), []byte(remoteWake), 0644)
+}
+
+// getServoKeyboardConnectedDuration returns the time in miliseconds that the servo keyboard has been connected
+func getServoKeyboardConnectedDuration(ctx context.Context, fs *dutfs.Client, servoKeyboardDir string) (int, error) {
+	out, err := fs.ReadFile(ctx, filepath.Join(servoKeyboardDir, "power/connected_duration"))
+	if err != nil {
+		return -1, errors.Wrap(err, "could not read servo keyboard connection_duration on DUT")
+	}
+
+	return strconv.Atoi(strings.TrimSpace(string(out)))
 }
