@@ -81,7 +81,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, true /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, true /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare ecryptfs vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -121,7 +121,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare fscrypt vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)

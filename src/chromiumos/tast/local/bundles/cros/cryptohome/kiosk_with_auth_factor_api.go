@@ -73,7 +73,7 @@ func KioskWithAuthFactorAPI(ctx context.Context, s *testing.State) {
 	}
 	defer cryptohome.RemoveVault(cleanupCtx, cryptohome.KioskUser)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
 	defer client.UnmountAll(cleanupCtx)

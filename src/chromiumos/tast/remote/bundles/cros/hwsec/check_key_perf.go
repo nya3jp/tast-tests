@@ -164,7 +164,7 @@ func setupUser(ctx context.Context, useLegacyMountFlow bool, helper *hwsecremote
 			return errors.Wrap(err, "failed to create persistent user")
 		}
 
-		if err := utility.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+		if _, err := utility.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
 

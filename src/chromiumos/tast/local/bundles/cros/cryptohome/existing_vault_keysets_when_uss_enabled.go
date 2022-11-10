@@ -108,7 +108,7 @@ func ExistingVaultKeysetsWhenUssEnabled(ctx context.Context, s *testing.State) {
 	}
 	defer client.RemoveVault(ctxForCleanup, userName)
 	// Mount user home directories and daemon-store directories.
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to mount user profile after creation: ", err)
 	}
 	defer client.Unmount(ctxForCleanup, userName)
@@ -146,7 +146,7 @@ func ExistingVaultKeysetsWhenUssEnabled(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to authenticate with password AuthFactor: ", err)
 	}
 	// Mount user home directories and daemon-store directories.
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to mount user profile: ", err)
 	}
 	// Add PIN AuthFactor and authenticate with it.
@@ -184,7 +184,7 @@ func ExistingVaultKeysetsWhenUssEnabled(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to authenticate with password AuthFactor: ", err)
 	}
 	// Mount user home directories and daemon-store directories.
-	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+	if _, err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to mount user profile after authenticating with password: ", err)
 	}
 	// Update PIN AuthFactor.

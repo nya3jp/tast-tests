@@ -456,7 +456,7 @@ func (c *cryptohomeBinary) prepareEphemeralVault(ctx context.Context, authSessio
 // preparePersistentVault calls "cryptohome --action=prepare_persistent_vault" with "--auth_session_id"
 // and optionally "--ecryptfs".
 func (c *cryptohomeBinary) preparePersistentVault(ctx context.Context, authSessionID string, ecryptfs bool) ([]byte, error) {
-	args := []string{"--action=prepare_persistent_vault", "--auth_session_id=" + authSessionID}
+	args := []string{"--output-format=binary-protobuf", "--action=prepare_persistent_vault", "--auth_session_id=" + authSessionID}
 	if ecryptfs {
 		args = append(args, "--ecryptfs")
 	}

@@ -323,7 +323,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 		return errors.Wrap(err, "failed to create persistent user with auth session")
 	}
 
-	if err = cryptohomeHelper.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if _, err = cryptohomeHelper.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		return errors.Wrap(err, "failed to prepare persistent user with auth session")
 	}
 	defer cryptohomeHelper.Unmount(ctx, userName)
