@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0840df43_fafd88de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T21:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406a4b69_98dbfde8",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "802b3008_60490559",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-10T17:53:31Z",
       "side": 1,
       "message": "instead of doing `if isPlugged` and have everything nested underneath, just do \n\n`if !isPlugged(port) continue;`",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02e48ca_7bd3ea45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T21:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "802b3008_60490559",
       "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d87d5566_eaf3da6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T21:18:34Z",
+      "side": 1,
+      "message": "Whenever I use the DetectResolution in the lib, I get this error.\n\n2022-11-10T21:02:55.925319Z [21:02:55.813] Failed to unpack XML-RPC response for request {DetectResolution [0] 10000000000}: \u003c?xml version\u003d\u00271.0\u0027?\u003e\n\u003cmethodResponse\u003e\n\u003cparams\u003e\n\u003cparam\u003e\n\u003cvalue\u003e\u003carray\u003e\u003cdata\u003e\n\u003cvalue\u003e\u003cint\u003e3840\u003c/int\u003e\u003c/value\u003e\n\u003cvalue\u003e\u003cint\u003e2160\u003c/int\u003e\u003c/value\u003e\n\u003c/data\u003e\u003c/array\u003e\u003c/value\u003e\n\u003c/param\u003e\n\u003c/params\u003e\n\u003c/methodResponse\u003e\n : err: response contains 1 arg(s); want 2\n2022-11-10T21:02:55.925374Z [21:02:55.813] Here 0, 0\n\nWhere it tells me that the error response contains 1 arg but I am asking for 2 by asking for it for two when I call width, height, err \u003d ch.DetectResolution(ctx, port). The original seems to try to unpack two variables https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/chameleon/chameleond.go?q\u003ddetectResolution",
+      "parentUuid": "20804ed9_1f816616",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50d11f6c_3a8125e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
         "patchSetId": 7
@@ -71,6 +131,24 @@
       "writtenOn": "2022-11-10T17:53:31Z",
       "side": 1,
       "message": "what\u0027s that?",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c2bff9_e5a11b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T21:18:34Z",
+      "side": 1,
+      "message": "This is a connection to the test API\u0027s extension\u0027s background page (used to access various APIs). This is used for the quicksettings library which allows us to signout similarly to https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/logout.go",
+      "parentUuid": "50d11f6c_3a8125e5",
       "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338d2371_5cae3bae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-10T21:18:34Z",
+      "side": 1,
+      "message": "Refactored code by removing isPhysicallyPlugged function",
+      "revId": "b33922f384781a489e44c7a64fd929cdad008e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
