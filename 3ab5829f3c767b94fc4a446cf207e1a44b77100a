@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f75fd7_c2e2ae5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T10:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc37dfa_f0114843",
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466c3e3c_3320c719",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80480b1_d8e57b1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T10:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466c3e3c_3320c719",
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63de342f_ce339494",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-11-04T18:50:44Z",
       "side": 1,
       "message": "This should use testing.Poll instead.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 2
+      },
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23b6bbd_3c8b8dd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T10:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63de342f_ce339494",
       "range": {
         "startLine": 230,
         "startChar": 0,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1cd916_4dadec8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T10:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde6c5b8_2b3c8b65",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1ec17f_a8eef680",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-11-04T17:04:26Z",
       "side": 1,
       "message": "are we missing a return here?",
+      "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9274841_dd06c16a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/ways_to_suspend_dut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-11-10T10:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1ec17f_a8eef680",
       "revId": "3ab5829f3c767b94fc4a446cf207e1a44b77100a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
