@@ -339,16 +339,17 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		}
 
 		// Fetch coverage from syz-manager before stopping syz-manager.
-		if isLocal.Value() != "true" {
-			if err := saveCoverage(
-				ctx,
-				s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
-				s.OutDir(),
-				board,
-				kernelCommit,
-			); err != nil {
-				s.Fatal("Failed to upload coverage info: ", err)
-			}
+		// Upload coverage only if the test is not running locally.
+		uploadCover := isLocal.Value() != "true"
+		if err := saveCoverage(
+			ctx,
+			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+			s.OutDir(),
+			board,
+			kernelCommit,
+			uploadCover,
+		); err != nil {
+			s.Fatal("Failed to upload coverage info: ", err)
 		}
 
 		managerCmd.Process.Signal(os.Interrupt)
@@ -446,7 +447,7 @@ func saveCorpus(ctx context.Context, cred, board, corpusPath string) error {
 }
 
 // saveCoverage should only be used when running the test as scheduled in the lab.
-func saveCoverage(ctx context.Context, cred, outDir, board, kernelCommit string) error {
+func saveCoverage(ctx context.Context, cred, outDir, board, kernelCommit string, uploadCover bool) error {
 	timestamp := time.Now().Format("2006-01-02-15:04:05")
 	coverName := fmt.Sprintf("rawcover-%v-%v-%v", board, timestamp, kernelCommit)
 	coverFile := filepath.Join(outDir, coverName)
@@ -457,13 +458,15 @@ func saveCoverage(ctx context.Context, cred, outDir, board, kernelCommit string)
 		return errors.Wrap(err, "unable to retrieve rawcover")
 	}
 
-	// Note: No coverage is uploaded when running this test locally.
-	uploadURL := fmt.Sprintf("%s/rawcover32/%s", gsURL, coverName)
-	testing.ContextLog(ctx, "Uploading to ", uploadURL)
-	if err := gsutilCmd(ctx, cred, "copy", coverFile, uploadURL).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to save coverage file")
+	if uploadCover {
+		// Note: No coverage is uploaded when running this test locally.
+		uploadURL := fmt.Sprintf("%s/rawcover32/%s", gsURL, coverName)
+		testing.ContextLog(ctx, "Uploading to ", uploadURL)
+		if err := gsutilCmd(ctx, cred, "copy", coverFile, uploadURL).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to save coverage file")
+		}
+		testing.ContextLog(ctx, "Uploaded to ", uploadURL)
 	}
-	testing.ContextLog(ctx, "Uploaded to ", uploadURL)
 	return nil
 }
 
