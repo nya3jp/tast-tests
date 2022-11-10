@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604e14fc_240a87ee",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_bluez.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-11-10T22:34:46Z",
+      "side": 1,
+      "message": "Sure. Added an additional comment clarifying this.",
+      "parentUuid": "c93f1210_763dfe5d",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "730b8b1ac549f6a0c02e1c09cea419ec78caebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b134ed93_3fe4ce3f",
