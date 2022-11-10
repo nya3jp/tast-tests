@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78193e64_80770f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-10T00:06:25Z",
+      "side": 1,
+      "message": "That makse sense, I updated the comment.",
+      "parentUuid": "69ce335b_6f5df17d",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c9b600e_e94f57e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-09T23:16:00Z",
       "side": 1,
       "message": "same as above, can you be a bit more specific about what \"new\" means? JfP2 and more recent? Something like that?",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "300b03dcbc97f6fccd7f1059b7bc74927b444c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57ed5c8_5463c50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-10T00:06:25Z",
+      "side": 1,
+      "message": "I updated the comment with ThP2 and more recent.",
+      "parentUuid": "0c9b600e_e94f57e1",
       "range": {
         "startLine": 46,
         "startChar": 34,
