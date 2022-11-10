@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcefd8f8_29b4711e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-11-10T18:45:00Z",
+      "side": 1,
+      "message": "Notice that the file doesn\u0027t show as move and instead delete/add because there is significant change in the file content.",
+      "revId": "881763db6446db8d23c734d93d14b84ada755e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
