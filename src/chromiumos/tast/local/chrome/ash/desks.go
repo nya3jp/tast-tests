@@ -440,3 +440,24 @@ func WaitUntilDesksFinishAnimating(ctx context.Context, tconn *chrome.TestConn) 
 		return errors.New("desks are still animating")
 	}, defaultPollOptions)
 }
+
+// WaitForDesk waits until a given desk is active and animations have stopped.
+func WaitForDesk(tconn *chrome.TestConn, deskIndex int) uiauto.Action {
+	return func(ctx context.Context) error {
+		start := time.Now()
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			di, err := GetDesksInfo(ctx, tconn)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get desks info"))
+			}
+			if di.ActiveDeskIndex != deskIndex || di.IsAnimating {
+				elapsed := time.Since(start)
+				return errors.Errorf("At desk=%d, animating=%d. Waiting for desk=%d and no animation (elapsed %s)", di.ActiveDeskIndex, di.IsAnimating, deskIndex, elapsed)
+			}
+			return nil
+		}, &testing.PollOptions{}); err != nil {
+			return err
+		}
+		return nil
+	}
+}

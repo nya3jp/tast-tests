@@ -51,11 +51,6 @@ func init() {
 	})
 }
 
-// deskFinder is used to wait until a given desk container window becomes visible.
-func deskFinder(deskContainerName string) *nodewith.Finder {
-	return nodewith.ClassName(deskContainerName).State("invisible", false)
-}
-
 // deskMiniViewFinder finds a desk mini view for a given desk.
 func deskMiniViewFinder(deskName string) *nodewith.Finder {
 	return nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", deskName))
@@ -109,6 +104,9 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	// activated, an animation plays out and the new desks's container window becomes visible. The
 	// test uses this to know when a desk switch has completed.
 
+	// Populate UI tree. TODO(b/258688744): Why is this needed?
+	uiauto.RootDebugInfo(ctx, tconn)
+
 	// First we go through shortcuts to create and switch desks.
 	//   * Create a new desk. This places us on desk 2.
 	//   * Switch back to desk 1.
@@ -116,8 +114,8 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine(
 		"create new virtual desk using keyboard shortcut",
 		kb.AccelAction("Search+Shift+="),
-		// This will wait until the container for desk 2 has become visible.
-		ac.WaitForLocation(deskFinder("Desk_Container_B")),
+		// This will wait until we have switched to desk 2.
+		ash.WaitForDesk(tconn, 1),
 	)(ctx); err != nil {
 		s.Fatal("Failed to create desk 2: ", err)
 	}
@@ -125,7 +123,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine(
 		"activate virtual desk on the left",
 		kb.AccelAction("Search+["),
-		ac.WaitForLocation(deskFinder("Desk_Container_A")),
+		ash.WaitForDesk(tconn, 0),
 	)(ctx); err != nil {
 		s.Fatal("Failed to switch to desk 1: ", err)
 	}
@@ -133,7 +131,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine(
 		"activate virtual desk on the right",
 		kb.AccelAction("Search+]"),
-		ac.WaitForLocation(deskFinder("Desk_Container_B")),
+		ash.WaitForDesk(tconn, 1),
 	)(ctx); err != nil {
 		s.Fatal("Failed to switch to desk 2: ", err)
 	}
@@ -248,7 +246,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine(
 		"remove the current virtual desk",
 		kb.AccelAction("Search+Shift+-"),
-		ac.WaitForLocation(deskFinder("Desk_Container_A")),
+		ash.WaitForDesk(tconn, 0),
 	)(ctx); err != nil {
 		s.Fatal("Failed to remove desk 2: ", err)
 	}
