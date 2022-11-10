@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6020171a_93c27d61",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:07:30Z",
+      "side": 1,
+      "message": "nit: be consistent. Either use if ok return everywhere or use the same if !ok { ... }",
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c1faf5_e5ee35cb",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:07:30Z",
+      "side": 1,
+      "message": "nit: this is confusing, can you add a comment?",
+      "range": {
+        "startLine": 281,
+        "startChar": 27,
+        "endLine": 281,
+        "endChar": 48
+      },
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddaef66_8ccfae58",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-10T09:07:30Z",
+      "side": 1,
+      "message": "Don\u0027t pass ok by value, it needs to be taken by reference.",
+      "range": {
+        "startLine": 288,
+        "startChar": 15,
+        "endLine": 288,
+        "endChar": 17
+      },
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
