@@ -40,7 +40,8 @@ service AutomationService {
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
 
-  // MousePress presses a mouse button and holds it on the node. The press needs to be released by caller.
+  // MousePress presses a mouse button and holds it on the node. The press needs
+  // to be released by caller.
   rpc MousePress(MousePressRequest) returns (google.protobuf.Empty) {}
 
   // MouseRelease releases the certain mouse button.
@@ -49,8 +50,13 @@ service AutomationService {
   // MouseMoveTo moves the mouse to hover the requested node.
   rpc MouseMoveTo(MouseMoveToRequest) returns (google.protobuf.Empty) {}
 
-  // CaptureScreenshot captures the screenshot of the whole screen or a stable UI node.
-  rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse) {}
+  // CaptureScreenshot captures the screenshot of the whole screen or a stable
+  // UI node.
+  rpc CaptureScreenshot(CaptureScreenshotRequest)
+      returns (CaptureScreenshotResponse) {}
+
+  // GetUITree returns the assessibility tree in string representation.
+  rpc GetUITree(GetUITreeRequest) returns (GetUITreeResponse) {}
 }
 
 message LeftClickRequest {
@@ -104,6 +110,12 @@ message CaptureScreenshotRequest {
 
 message CaptureScreenshotResponse {
   bytes png_base64 = 1;
+}
+
+message GetUITreeRequest {}
+
+message GetUITreeResponse {
+  string ui_tree = 1;
 }
 
 // NodeInfo is a wrapper around chrome.automation API AutomationNode.
@@ -278,7 +290,7 @@ enum Restriction {
   RESTRICTION_UNSPECIFIED = 0;
   RESTRICTION_DISABLED = 1;   // disallows input in itself + any descendants
   RESTRICTION_READ_ONLY = 2;  // allow focus/selection but not input
-  RESTRICTION_NONE = 3;       // enable control or other object that is not disabled
+  RESTRICTION_NONE = 3;  // enable control or other object that is not disabled
 }
 
 // State describes the characteristics of the node
