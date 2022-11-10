@@ -162,8 +162,13 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 		}
 	}()
 
-	// Chrome.
-	if err := func() error {
+	testing.ContextLog(ctx, "Creating Chrome")
+	defer func() {
+		if errRet != nil && s.cr != nil {
+			s.cr.Close(ctx)
+		}
+	}()
+	if err := func() (resultErr error) {
 		ctx, cancel := context.WithTimeout(ctx, s.crOptions.Timeout)
 		defer cancel()
 
@@ -173,7 +178,6 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 			opts = append(opts, v.ChromeOpts()...)
 		}
 
-		testing.ContextLog(ctx, "Creating Chrome")
 		var err error
 		s.cr, err = browserfixt.NewChrome(ctx, s.crOptions.BrowserType, lacrosfixt.NewConfig(), opts...)
 		if err != nil {

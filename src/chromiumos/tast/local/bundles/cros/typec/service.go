@@ -32,13 +32,17 @@ type Service struct {
 }
 
 // NewChromeLoginWithPeripheralDataAccess logs in to Chrome as a fake user, but before that, enables the DevicePciPeripheralDataAccess setting.
-func (c *Service) NewChromeLoginWithPeripheralDataAccess(ctx context.Context, req *typec.KeyPath) (*empty.Empty, error) {
+func (c *Service) NewChromeLoginWithPeripheralDataAccess(ctx context.Context, req *typec.KeyPath) (_ *empty.Empty, resultErr error) {
 	// Get to the Chrome login screen.
-	cr, err := chrome.New(ctx,
-		chrome.DeferLogin())
+	cr, err := chrome.New(ctx, chrome.DeferLogin())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome at login screen")
 	}
+	defer func() {
+		if resultErr != nil {
+			cr.Close(ctx)
+		}
+	}()
 
 	// Enable the setting.
 	if err := typecutils.EnablePeripheralDataAccess(ctx, req.Path); err != nil {

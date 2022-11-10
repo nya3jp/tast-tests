@@ -103,7 +103,7 @@ func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url s
 // The caller is responsible for calling the closure first, then Close() on the chrome instance for cleanup.
 // Note that it opens an extra default tab page for Lacros, but not for ash-chrome.
 // TODO(crbug.com/1357886): Fix the behavior inconsistency of SetUp and SetUpWithNewChrome for both browsers.
-func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context) error, error) {
+func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (_ *chrome.Chrome, _ *browser.Browser, _ func(ctx context.Context) error, resultErr error) {
 	switch bt {
 	case browser.TypeAsh:
 		cr, err := chrome.New(ctx, opts...)
@@ -123,6 +123,12 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
 		}
+		defer func() {
+			if resultErr != nil {
+				cr.Close(ctx)
+			}
+		}()
+
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome test API")

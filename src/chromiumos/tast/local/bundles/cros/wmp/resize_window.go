@@ -141,6 +141,7 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up chrome and browser: ", err)
 	}
+	defer cr.Close(cleanupCtx)
 	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)

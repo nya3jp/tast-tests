@@ -49,7 +49,7 @@ type CheckVirtualKeyboardService struct {
 }
 
 // NewChromeLoggedIn Logs into a user session.
-func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, req *pb.NewBrowserRequest) (*empty.Empty, error) {
+func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, req *pb.NewBrowserRequest) (_ *empty.Empty, resultErr error) {
 	cvk.sharedObject.ChromeMutex.Lock()
 	defer cvk.sharedObject.ChromeMutex.Unlock()
 
@@ -67,14 +67,21 @@ func (cvk *CheckVirtualKeyboardService) NewChromeLoggedIn(ctx context.Context, r
 	if err != nil {
 		return nil, err
 	}
+	defer func() {
+		if resultErr != nil {
+			closeBrowser(ctx)
+			cr.Close(ctx)
+		}
+	}()
 
-	cvk.cr = cr
-	cvk.br = br
-	cvk.closeBrowser = closeBrowser
 	tconn, err := cvk.cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, err
 	}
+
+	cvk.cr = cr
+	cvk.br = br
+	cvk.closeBrowser = closeBrowser
 	cvk.tconn = tconn
 	// Store the newly created chrome in the shared object so UtilsService or other services can use it.
 	cvk.sharedObject.Chrome = cr
