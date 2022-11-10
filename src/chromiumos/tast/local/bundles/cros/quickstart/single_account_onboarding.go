@@ -29,12 +29,25 @@ func init() {
 }
 
 func SingleAccountOnboarding(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*crossdevice.FixtData).TestConn
-	if tconn == nil {
-		s.Fatal("test connection is empty")
-	}
 	androidDevice := s.FixtValue().(*crossdevice.FixtData).AndroidDevice
 	if androidDevice == nil {
-		s.Fatal("fixture not associated with an android device")
+		s.Fatal("Fixture not associated with an android device")
+	}
+	cr := s.FixtValue().(*crossdevice.FixtData).Chrome
+	if cr == nil {
+		s.Fatal("Fixture not associated with Chrome")
+	}
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	if err != nil {
+		s.Fatal("Failed to create OOBE connection: ", err)
+	}
+	defer oobeConn.Close()
+	s.Log("Waiting for the welcome screen")
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
+		s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
+	}
+	s.Log("Navigating to the quickstart screen")
+	if err := oobeConn.Eval(ctx, "OobeAPI.advanceToScreen('quick-start')", nil); err != nil {
+		s.Fatal("Failed to activate Quick Start onboarding: ", err)
 	}
 }
