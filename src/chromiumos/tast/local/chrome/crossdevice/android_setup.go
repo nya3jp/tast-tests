@@ -286,6 +286,10 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_MENU))); err != nil {
 		return errors.Wrap(err, "failed to wake screen")
 	}
+	// Close the wallpaper editing overlay on the phone.
+	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_BACK))); err != nil {
+		return errors.Wrap(err, "failed to close wallpaper overlay on phone")
+	}
 
 	if rooted {
 		if err := d.EnableBluetooth(ctx); err != nil {

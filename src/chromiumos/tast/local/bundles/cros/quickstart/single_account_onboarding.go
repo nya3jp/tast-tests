@@ -30,11 +30,12 @@ func init() {
 
 func SingleAccountOnboarding(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*crossdevice.FixtData).TestConn
-	if tconn == nil {
-		s.Fatal("test connection is empty")
-	}
 	androidDevice := s.FixtValue().(*crossdevice.FixtData).AndroidDevice
 	if androidDevice == nil {
 		s.Fatal("fixture not associated with an android device")
+	}
+	s.Log("Calling accept half pair sheet")
+	if err := androidDevice.AcceptFastPairHalfsheet(ctx); err != nil {
+		s.Fatal("Failed to accept half pair sheet: ", err)
 	}
 }
