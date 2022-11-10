@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "52acd586_5a70dc0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-10T07:32:18Z",
+      "side": 1,
+      "message": "Should be \"chromium:\", not \"chromiumos:\"",
+      "revId": "12ee863d4584109241b66197cf25e32c8022a47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a4965dfd_a1357034",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-11-10T07:04:40Z",
       "side": 1,
       "message": "Here\u0027s option B: limit tests that depend on pmc_state_show to boards and configs that have it.\n\nLet me know which way you prefer.",
+      "revId": "12ee863d4584109241b66197cf25e32c8022a47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06bbabb_7f5cc95b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-11-10T07:32:18Z",
+      "side": 1,
+      "message": "x86 !\u003d Intel.",
       "revId": "12ee863d4584109241b66197cf25e32c8022a47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
