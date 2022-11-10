@@ -70,6 +70,30 @@
       },
       "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbb434f_c680ff19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-10T15:31:10Z",
+      "side": 1,
+      "message": "I\u0027ll leave it to Hardik to be the deciding vote on that then.",
+      "parentUuid": "7f942ef3_eea51834",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "b2a020e208552bc91caa4c26ae936e2552bd2406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
