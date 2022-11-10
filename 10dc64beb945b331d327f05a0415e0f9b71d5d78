@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc12ab90_c6034364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-10T19:10:35Z",
+      "side": 1,
+      "message": "Ah, perfect. I\u0027m running the current CL before any changes, so if it works correctly, then that sgtm! Maybe we can circle back around on that if there\u0027s more work needed in future for InstantTether?",
+      "parentUuid": "04575384_c363343a",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b76628c_4ffc890b",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -438,6 +462,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfaa7861_fdb8fe6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-10T19:10:35Z",
+      "side": 1,
+      "message": "Since we\u0027re referencing the ``quicksettings`` package, any change to the quicksettings menu should be reflected here. I imagine any UI change would also be reflected in that package (lest it breaks other tests too)?\n\nMy main concern re. brittle patterns here would be that the regex matching here, especially since there\u0027s a wildcard operator to fit the manufacturer in the name. I don\u0027t have enough exposure to Instant Tether\u0027s behavior to know if this is an issue, though! \n\nIf the connected devices menu has matching names with the menu, that could be another option :D! Is there any reference for existing code that I can refer to?",
+      "parentUuid": "3f87e2ef_ebb3515c",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a73e5b0e_815c22e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
         "patchSetId": 1
@@ -568,6 +616,30 @@
       "side": 1,
       "message": "Ah yeah I forgot to look back into that. For some reason after updating the test the way I did, `ping` would time out even though the connection was good. Not sure why, my guess would be that `ping` wasn\u0027t using the right interface or something like that, maybe since that CL no longer completely disables the WiFi adapter.\n\nI didn\u0027t think it was a big deal, `ping` is probably more reliable but I just wanted to get it working since I\u0027ve been stuck on those test changes for a while.",
       "parentUuid": "a5210675_ba1174e8",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 155
+      },
+      "revId": "10dc64beb945b331d327f05a0415e0f9b71d5d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5eb6892_7ae04510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/systemtray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1558097
+      },
+      "writtenOn": "2022-11-10T19:10:35Z",
+      "side": 1,
+      "message": "Ah, sgtm! Totally relate to these tests being tricky. Leaving this open to resolve once this test has a network connection verification step.",
+      "parentUuid": "205b377f_525496af",
       "range": {
         "startLine": 77,
         "startChar": 1,
