@@ -33,6 +33,24 @@
       "message": "I already have changes pending or in for s0ix_stability_check and dut_wake_on_power_button_tablet_mode. Also, please verify on each of the tests that you modify with an Intel platform that passes the test. These tests are still used by Intel it seems, and we don\u0027t want to break them unnecessarily.",
       "revId": "d81897c2f4d09434d886f99ca8d09fb75f019d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24fa8a99_9d28648c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116032
+      },
+      "writtenOn": "2022-11-11T11:09:24Z",
+      "side": 1,
+      "message": "Ah, got it -- I\u0027ve dropped s0ix_stability_check and dut_wake_on_power_button_tablet_mode from this patch.\n\nI\u0027ve verified on a brya that the remaining two tests still pass.",
+      "parentUuid": "4f8d39df_53fad227",
+      "revId": "d81897c2f4d09434d886f99ca8d09fb75f019d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
