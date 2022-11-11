@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e78e29_be12f703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-11T21:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfaa8cb0_deb691f5",
+      "revId": "fc444a0d5d6671f86922fb0edf2e5192efd53b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1652e63b_94151939",
