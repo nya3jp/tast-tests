@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28f9041_eaff8a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-11-11T01:22:49Z",
+      "side": 1,
+      "message": "Oh that\u0027s unexpected. Let me try to reproduce and understand.",
+      "parentUuid": "fa6ec33f_7237abde",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c47c0d20_a42e1c22",
