@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ed0090_b3efdfd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T00:01:55Z",
+      "side": 1,
+      "message": "nit: with the introduction of the new fail cases I think renaming this as wrongPassword would make it easier to follow.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5a404f7_84435afc",
@@ -132,6 +155,53 @@
         "startChar": 0,
         "endLine": 101,
         "endChar": 81
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2549d2c_371563d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T00:01:55Z",
+      "side": 1,
+      "message": "Sounds good, lets keep this and remove after the feature is deprecated.",
+      "parentUuid": "79ac52a7_2151f62d",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 81
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa08d87_63379535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T00:01:55Z",
+      "side": 1,
+      "message": "nit: authentication with the other user\u0027s password should have failed, but succeeded.",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 71
       },
       "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
