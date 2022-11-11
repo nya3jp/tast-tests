@@ -16,6 +16,23 @@
       "message": "Kyle, could you take a tast-owner review? Thanks!\nElijah, just FYI",
       "revId": "611cc6e93dbfb833186e2540abc6686fedfbccb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21abfff_16fa8723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/float_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T21:36:39Z",
+      "side": 1,
+      "message": "If `filesApp.Close` actually closes the window, the screenshot+ui dump won\u0027t capture it since defers are executed LIFO. You may want to add an additional one of these calls after the deferred `filesApp.Close` to ensure you can capture the failed test state before any other cleanup operations are performed.",
+      "revId": "611cc6e93dbfb833186e2540abc6686fedfbccb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
