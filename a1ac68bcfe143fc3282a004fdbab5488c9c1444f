@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a96b8b_42bc82a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "Wrong test name?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a782ff_ba2c48a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "For new tests I think we should include `buster_` here. Does this mean we have to create a new set of entries in `params_test.go`?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ab7e9e_85e5c543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "This test isn\u0027t taking any screenshots, drop this?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522d02e9_bb4d9f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "Drop `--allow-change-held-packages`, we no longer mark code as held.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45071cb4_11f26f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "The test script doesn\u0027t specify, but I think the more interesting test case for us is to uninstall through the launcher. I\u0027m not sure we need to test uninstall using apt for every app.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5c7192_049a06f0",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "Maybe 10 seconds? Might be a little less fast on slower DUTs. Let\u0027s revisit this once we have data.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07487122_7b500472",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "`name, ok :\u003d snpt.(string)`?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fab06ca_dd47185a",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32bf332_aea9c86a",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:20:23Z",
+      "side": 1,
+      "message": "Maybe \"Snapshot\" can be last? e.g. \"crostiniBullseyeLargeContainerTabletWithSnapshot\". Or maybe it is too long?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
