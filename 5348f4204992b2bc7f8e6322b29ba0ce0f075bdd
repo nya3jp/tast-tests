@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006f5cd1_6f03b13f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T16:34:10Z",
+      "side": 1,
+      "message": "1. Please manually run this test on primus. Then, add this line to the commit log\n\nTEST\u003dmanual testing on primus passed.\n\n2. Please run tast unit tests: fast_build.sh -T \n\nThen add this line to the commit log.\n\nTEST\u003dtast unit tests passed.\n\n3. Please add somebody that is familiar with camera test as reviewer.\n\nThanks.",
+      "revId": "5348f4204992b2bc7f8e6322b29ba0ce0f075bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
