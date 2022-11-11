@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ff212f_d27ef631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T19:41:08Z",
+      "side": 1,
+      "message": "here, please use completed words like `supportedPorts`",
+      "revId": "1987973669122a562c5718a128b20e58c1911124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230ee7e9_118bc535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T19:41:08Z",
+      "side": 1,
+      "message": "if it\u0027s a boolean, gotta use grammar that feel like a question. general examples such as `isOpen`, `canUsePort`, `isItemIncluded`, `doesAContainB`, `shouldUseX` ,...",
+      "revId": "1987973669122a562c5718a128b20e58c1911124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68423266_69459120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T19:41:08Z",
+      "side": 1,
+      "message": "make your error messages more comprehensive. here you can add the Port name. give as much info as possible so when it\u0027s read it can be understood what went wrong.",
+      "revId": "1987973669122a562c5718a128b20e58c1911124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37347069_9c60fe3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T19:41:08Z",
+      "side": 1,
+      "message": "`usePort` can never be false cause you continue on L76 if it\u0027s false.\n\nlet\u0027s put random logs without context. You can insteead saying something like `starting test on PortX`",
+      "revId": "1987973669122a562c5718a128b20e58c1911124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
