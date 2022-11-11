@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a10619_03dff151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T20:43:21Z",
+      "side": 1,
+      "message": "More detailed logs and renamed file to include chameleon",
+      "revId": "f2257fed6effe03c13532c21d040daf973d23b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
