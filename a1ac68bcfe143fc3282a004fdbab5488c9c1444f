@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce075a48_85674016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T05:01:05Z",
+      "side": 1,
+      "message": "In my WIP audacity test, I made this change:\n```\nvar oldAppTests \u003d []string{\n        // current tests without buster name go here\n        // NoBusterInTestName: true\n}\n\n...\n\nvar appTests \u003d []string{\n        // new tests with buster name go here\n}\n```\n\nso existing tests should not change.",
+      "parentUuid": "96a0dfe1_00f1d3d2",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96ab7e9e_85e5c543",
@@ -325,6 +343,24 @@
       "side": 1,
       "message": "Any difference?",
       "parentUuid": "07487122_7b500472",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60fa2eaa_740af7fe",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T05:01:05Z",
+      "side": 1,
+      "message": "Just avoids the unnecessary sprintf call. Should be more efficient but doesn\u0027t matter too much. Also I made a mistake, it should be `snpt[\"name\"].(string)`.",
+      "parentUuid": "8f588414_4d75625c",
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
