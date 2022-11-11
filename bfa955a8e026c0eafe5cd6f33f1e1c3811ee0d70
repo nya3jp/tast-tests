@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb5578d_3202f653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557797
+      },
+      "writtenOn": "2022-11-11T08:42:23Z",
+      "side": 1,
+      "message": "Some CQ tests failed but they are not related to my changes. So I will keep rerunning them until they succeed.",
+      "revId": "bfa955a8e026c0eafe5cd6f33f1e1c3811ee0d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
