@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8c04e3_ef6fef2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a86a5f_5eac2d99",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6550f496_7e2342a3",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-11T16:46:35Z",
       "side": 1,
       "message": "please rename to `chameleon`",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8358e25_e358fa2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Chameleon is already a library so I used cham instead",
+      "parentUuid": "6550f496_7e2342a3",
       "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89eb871a_9367485d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b775b087_2df151e8",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0de141f9_1f0a79bc",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-11-11T16:46:35Z",
       "side": 1,
       "message": "you probably wanna check for `err`",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fbc3f22_6b8cb1f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de141f9_1f0a79bc",
       "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c5e86e_ff92149b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b6eec4d_8e693b63",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4feb4f06_0e4813b9",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-11-11T16:46:35Z",
       "side": 1,
       "message": "ditto, use `post`",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce7da33_29a4fcf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4feb4f06_0e4813b9",
       "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8240a519_f34c578f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5c985d_62d54d4d",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e3f55b_062ebaeb",
@@ -156,6 +288,24 @@
       "writtenOn": "2022-11-11T16:46:35Z",
       "side": 1,
       "message": "if this is used for logout, move the logout comment on L125 above it so we can tell this is all for logout",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69196c11_bad91e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e3f55b_062ebaeb",
       "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +327,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c230b5_88dd17f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e74a423_cd05096d",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fc768d8_8c59d131",
@@ -190,6 +358,24 @@
       "writtenOn": "2022-11-11T16:46:35Z",
       "side": 1,
       "message": "ditto as above.",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166a92a1_ee50573a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_check_modes_after_sign_out_sign_in.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T19:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc768d8_8c59d131",
       "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
