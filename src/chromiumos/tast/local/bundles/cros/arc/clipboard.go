@@ -16,8 +16,13 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -31,7 +36,7 @@ func init() {
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Data:         []string{"clipboard_image.html"},
+		Data:         []string{"clipboard_image.html", "clipboard_copy.html"},
 		Params: []testing.Param{{
 			// b:238260020 - disable aged (>1y) unpromoted informational tests
 			// ExtraAttr:         []string{"group:mainline", "informational"},
@@ -58,19 +63,61 @@ type pasteFunc func(context.Context) (string, error)
 
 // prepareCopyInChrome sets up a copy operation with Chrome as the source
 // clipboard.
-func prepareCopyInChrome(tconn *chrome.TestConn, format, data string) copyFunc {
+func prepareCopyInChrome(cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, format, data, baseURL string) copyFunc {
 	return func(ctx context.Context) error {
-		return tconn.Call(ctx, nil, `
-		  (format, data) => {
-		    document.addEventListener('copy', (event) => {
-		      event.clipboardData.setData(format, data);
-		      event.preventDefault();
-		    }, {once: true});
-		    if (!document.execCommand('copy')) {
-		      throw new Error('Failed to execute copy');
-		    }
-		  }`, format, data,
-		)
+		// TODO(b/246024883): Add TypeLacros case.
+		conn, browser, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, browser.TypeAsh, baseURL+"/clipboard_copy.html")
+		if err != nil {
+			return errors.Wrap(err, "failed to open the browser window")
+		}
+		defer closeBrowser(ctx)
+		defer conn.Close()
+
+		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for the page loaded")
+		}
+
+		tconn, err := browser.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get Test API conn")
+		}
+
+		ui := uiauto.New(tconn)
+
+		dataBoxNode := nodewith.HasClass("data").Role(role.TextField).State(state.Editable, true).First()
+		formatBoxNode := nodewith.HasClass("format").Role(role.TextField).State(state.Editable, true).First()
+		copyButtonNode := nodewith.HasClass("copy").Role(role.Button).First()
+
+		// Put the copying data to the field
+		if err := uiauto.Combine("Copying the data to the text field",
+			ui.WaitUntilExists(dataBoxNode.Visible()),
+			ui.LeftClick(dataBoxNode),
+			ui.WaitUntilExists(dataBoxNode.Focused()),
+			keyboard.TypeAction(data),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to type the data")
+		}
+		// Put the format info to the field
+		if err := uiauto.Combine("Typing the format to the text field",
+			ui.WaitUntilExists(formatBoxNode.Visible()),
+			ui.LeftClick(formatBoxNode),
+			ui.WaitUntilExists(formatBoxNode.Focused()),
+			keyboard.TypeAction(format),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to type the format")
+		}
+
+		// Click the copy button
+		if err := uiauto.Combine("Clicking the copy button",
+			ui.WaitUntilExists(copyButtonNode.Visible()),
+			ui.LeftClick(copyButtonNode),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the copy button")
+		}
+
+		conn.CloseTarget(ctx)
+
+		return nil
 	}
 }
 
@@ -145,7 +192,7 @@ func preparePasteInAndroid(d *ui.Device, viewIDForGetText string) pasteFunc {
 	}
 }
 
-func testCopyImageFromChromeToAndroid(ctx context.Context, p *arc.PreData, tconn *chrome.TestConn, fs http.FileSystem) error {
+func testCopyImageFromChromeToAndroid(ctx context.Context, p *arc.PreData, tconn *chrome.TestConn, baseURL string) error {
 	const (
 		apk = "ArcClipboardTest.apk"
 		pkg = "org.chromium.arc.testapp.clipboard"
@@ -167,11 +214,8 @@ func testCopyImageFromChromeToAndroid(ctx context.Context, p *arc.PreData, tconn
 	}
 	defer keyboard.Close()
 
-	server := httptest.NewServer(http.FileServer(fs))
-	defer server.Close()
-
 	// Open the html with an image.
-	conn, err := cr.NewConn(ctx, server.URL+"/clipboard_image.html")
+	conn, err := cr.NewConn(ctx, baseURL+"/clipboard_image.html")
 	if err != nil {
 		return errors.Wrap(err, "failed to open clipboard_image.html")
 	}
@@ -248,13 +292,22 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
 	// Copy image from Chrome to Android.
 	s.Run(ctx, "CopyImageFromChromeToAndroid", func(ctx context.Context, s *testing.State) {
-		if err := testCopyImageFromChromeToAndroid(ctx, p, tconn, s.DataFileSystem()); err != nil {
+		if err := testCopyImageFromChromeToAndroid(ctx, p, tconn, server.URL); err != nil {
 			s.Fatal("Failed to verify copying an image from a browser to an app: ", err)
 		}
 	})
@@ -304,7 +357,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 
 		// Copy in Chrome, so the registered observer should paste the clipboard content in Android.
 		const content = "<b>observer</b> should paste this"
-		chromeCopy := prepareCopyInChrome(tconn, "text/html", content)
+		chromeCopy := prepareCopyInChrome(cr, keyboard, "text/html", content, server.URL)
 		if err := chromeCopy(ctx); err != nil {
 			s.Fatal("Failed to copy in Chrome: ", err)
 		}
@@ -340,7 +393,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		wantPastedData string
 	}{{
 		"CopyTextFromChromeToAndroid",
-		prepareCopyInChrome(tconn, "text/plain", testTextFromChrome),
+		prepareCopyInChrome(cr, keyboard, "text/plain", testTextFromChrome, server.URL),
 		preparePasteInAndroid(d, editTextID),
 		testTextFromChrome,
 	}, {
@@ -350,7 +403,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		expectedTextFromAndroid,
 	}, {
 		"CopyHTMLFromChromeToAndroid",
-		prepareCopyInChrome(tconn, "text/plain", testHTMLFromChrome),
+		prepareCopyInChrome(cr, keyboard, "text/plain", testHTMLFromChrome, server.URL),
 		preparePasteInAndroid(d, textViewID),
 		testHTMLFromChrome,
 	}, {

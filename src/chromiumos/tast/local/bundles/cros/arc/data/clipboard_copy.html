@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset=utf-8>
+    <script>
+      function onClick(event) {
+          console.log('onclick');
+          document.addEventListener('copy', (event) => {
+              console.log('copy');
+              console.log(getData('format'));
+              console.log(getData('data'));
+              event.clipboardData.setData(getData('format'), getData('data'));
+              event.preventDefault();
+          }, {once: true});
+          if (!document.execCommand('copy')) {
+              throw new Error('Failed to execute copy');
+          }
+      }
+
+      function getData(id) {
+          return document.getElementById(id).value;
+      }
+
+      window.addEventListener('load', function() {
+          console.log('load');
+          document.getElementById('copy_button').addEventListener('click', onClick);
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="data" class="data" >
+    <input type="text" id="format" class="format" >
+    <input type="button" id="copy_button" class="copy" value="Copy" >
+  </body>
+</html>
