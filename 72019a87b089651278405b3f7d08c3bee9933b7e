@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad600906_cb570e77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T23:40:52Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look.\n\nAlso, I don\u0027t see any manual testing in TEST\u003d section. I think it is important to do a manual testing. Jeremy just wrote a good example on how to run tests with servo on a leased DUT manually. Please try.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#googlers-only_running-tests-on-a-leased-dut-from-the-lab\n\nThanks.",
+      "revId": "72019a87b089651278405b3f7d08c3bee9933b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9385833b_a9e3279f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_usb_mouse_only.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T23:40:52Z",
+      "side": 1,
+      "message": "I don\u0027t know if this \"defer\" is valide after line 81. I think it will be better to put each mouse creat/close block to be a function.\n\nSomething like \n\n```\nfunc() {\n\tmouse, err :\u003d input.Mouse(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to create a virtual mouse: \", err)\n\t}\n\n\tdefer mouse.Close()\n\n\t// Check that a mouse is detected.\n\tif err :\u003d oobeHelper.IsHidDetectionSearchingForMouse(ctx, oobeConn, tconn); err \u003d\u003d nil {\n\t\ts.Fatal(\"Expected mouse device to be found: \", err)\n\t}\n\n\tif err :\u003d oobeHelper.IsHidDetectionContinueButtonEnabled(ctx, oobeConn); err !\u003d nil {\n\t\ts.Fatal(\"Expected continue button to be enabled: \", err)\n\t}\n\n}()\n```\n\nIn this case, we can ensure mouse is probably close and you don\u0027t need the Close in line 81.\n\nAlso, I think there are a lot duplicate code in HidScreenUsbMouseOnly, but I don\u0027t have a good idea to clean it up. If you figure out something, please try. If not, don\u0027t worry about it in this CL.",
+      "revId": "72019a87b089651278405b3f7d08c3bee9933b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
