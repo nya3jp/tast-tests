@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf79c3ec_3d384e1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T21:36:42Z",
+      "side": 1,
+      "message": "Check with the OOBE team (rrsilva@), but I\u0027d prefer we land that CL first to unblock the test from actually passing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b2ce5cb_7ca975e1",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-11-10T21:53:31Z",
       "side": 1,
       "message": "This looks reasonable to me, but I don\u0027t have much context on why you need to add those options to the fixture.\n\nYou might need to set Verified +1 before Kyle will think this is ready for review.",
+      "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d374b7_06ea473f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T21:36:42Z",
+      "side": 1,
+      "message": "This looks good overall, but I\u0027ll again let Kyle take the lead.",
       "revId": "8951d5e69988df471b5dd9e2b29f7149dfd9b668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
