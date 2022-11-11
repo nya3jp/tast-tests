@@ -24,6 +24,7 @@ func init() {
 		Contacts: []string{"pathan.jilani@intel.com",
 			"cros-tdm-tpe-eng@google.com",
 			"intel-chrome-system-automation-team@intel.com"},
+		BugComponent: "b:982097",
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

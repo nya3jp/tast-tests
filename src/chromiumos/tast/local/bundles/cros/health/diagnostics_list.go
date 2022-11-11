@@ -19,6 +19,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests getting supported dignostic routines from cros_healthd",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
+		BugComponent: "b:982097",
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",

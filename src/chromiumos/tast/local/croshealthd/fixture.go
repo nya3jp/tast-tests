@@ -25,10 +25,11 @@ func init() {
 		Name: "crosHealthdRunning",
 		Desc: "The croshealthd daemon is available and running",
 		Contacts: []string{
+			"cros-tdm-tpe-eng@google.com", // team mailing list
 			"kerker@google.com",           // Fixture maintainer
 			"menghuan@google.com",         // Fixture maintainer
-			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
+		BugComponent:    "b:982097",
 		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  5 * time.Second,

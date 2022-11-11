@@ -19,6 +19,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Monitors the USB event detected properly or not",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
+		BugComponent: "b:982097",
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

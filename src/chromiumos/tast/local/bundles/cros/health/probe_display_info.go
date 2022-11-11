@@ -26,6 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for display info",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
+		BugComponent: "b:982097",
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

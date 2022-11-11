@@ -47,6 +47,7 @@ func init() {
 			"khegde@google.com",
 			"cros-network-health@google.com",
 		},
+		BugComponent: "b:982097",
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

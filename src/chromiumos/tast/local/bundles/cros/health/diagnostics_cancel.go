@@ -28,6 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the supported cros_healthd diagnostic routines can be canceled",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
+		BugComponent: "b:982097",
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",

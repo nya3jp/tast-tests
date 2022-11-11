@@ -31,6 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the cros_healthd diagnostic routines can be run without errors",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
+		BugComponent: "b:982097",
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",

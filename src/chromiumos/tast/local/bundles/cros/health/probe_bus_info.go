@@ -43,6 +43,7 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
+		BugComponent: "b:982097",
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
