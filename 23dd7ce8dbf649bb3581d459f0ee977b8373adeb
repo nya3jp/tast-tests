@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fe6f80_1cfa33a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:22:30Z",
+      "side": 1,
+      "message": "I only one nit comment. \n\nPlease have somebody familiar with syzkaller to review and give you +2.\n\nThanks.",
+      "revId": "23dd7ce8dbf649bb3581d459f0ee977b8373adeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8451efed_e0e433ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:22:30Z",
+      "side": 1,
+      "message": "nit:\n\nHow about\n\n```\nstrings.ToLower(isLocal.Value()) !\u003d \"true\"\n```\nI think it will be more flexible this way.",
+      "revId": "23dd7ce8dbf649bb3581d459f0ee977b8373adeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
