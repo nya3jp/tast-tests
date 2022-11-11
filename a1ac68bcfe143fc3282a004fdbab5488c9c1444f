@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad4e4f6_b038f70b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a96b8b_42bc82a6",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a782ff_ba2c48a4",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a0dfe1_00f1d3d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Modification of params.go will impact all tests. I\u0027d prefer to do it in a separate cl.",
+      "parentUuid": "2d8b41a1_73be1ef0",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96ab7e9e_85e5c543",
@@ -84,6 +120,24 @@
       "writtenOn": "2022-11-11T03:20:23Z",
       "side": 1,
       "message": "This test isn\u0027t taking any screenshots, drop this?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869ecca7_00f2092f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ab7e9e_85e5c543",
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b688ac5c_c56decfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Unfortunately, without this, it does not uninstalled.",
+      "parentUuid": "522d02e9_bb4d9f22",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45071cb4_11f26f2f",
@@ -122,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fac672d_749d3de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s do it in a separate cl.",
+      "parentUuid": "45071cb4_11f26f2f",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5c7192_049a06f0",
@@ -135,6 +225,24 @@
       "writtenOn": "2022-11-11T03:20:23Z",
       "side": 1,
       "message": "Maybe 10 seconds? Might be a little less fast on slower DUTs. Let\u0027s revisit this once we have data.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ec475c_096909d3",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5c7192_049a06f0",
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -205,6 +313,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f588414_4d75625c",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Any difference?",
+      "parentUuid": "07487122_7b500472",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fab06ca_dd47185a",
         "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
         "patchSetId": 6
@@ -216,6 +342,24 @@
       "writtenOn": "2022-11-11T03:20:23Z",
       "side": 1,
       "message": "Remove this.",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "142818d0_387631aa",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fab06ca_dd47185a",
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -237,6 +381,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08706778_f9e6f765",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "I also think it is too long. One way is to use LC to replace LargeContainer. But shortening this would have impact on all tests.",
+      "parentUuid": "b32bf332_aea9c86a",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968dc290_502d9eff",
@@ -250,6 +412,30 @@
       "writtenOn": "2022-11-11T03:34:43Z",
       "side": 1,
       "message": "you may need to reserve some time for this.",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b3ffa8_1d41f7f8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968dc290_502d9eff",
       "range": {
         "startLine": 247,
         "startChar": 1,
@@ -297,6 +483,30 @@
       "side": 1,
       "message": "STOPPING is not a failure condition, it should continue to waiting for LxdContainerStoppingSignal below.\n\nThis is a bit confusing as in other languages this syntax would be fall-through but this is not the case in go. I\u0027d suggest adding a comment here that execution continues below.",
       "parentUuid": "46487990_b51d6965",
+      "range": {
+        "startLine": 263,
+        "startChar": 10,
+        "endLine": 263,
+        "endChar": 43
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31b0429_a7d063cd",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T04:40:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52b67a36_1f6c7de2",
       "range": {
         "startLine": 263,
         "startChar": 10,
