@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34b0e47_c6dcca02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-11-11T10:53:04Z",
+      "side": 1,
+      "message": "You can use https://pkg.go.dev/regexp#Compile\n\nMustCompile panics on error. Since you are now using a constant string it\u0027s no longer a concern.",
+      "parentUuid": "f8468a0c_fc433889",
+      "revId": "ac0eb06df8d547f787b8344c81cb80059b38042b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2fb7802_c3085584",
