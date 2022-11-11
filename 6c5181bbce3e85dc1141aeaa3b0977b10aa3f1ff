@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa8824c_2e75b87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-11-11T19:58:36Z",
+      "side": 1,
+      "message": "Wonder if it\u0027s worth referencing the bug here?",
+      "revId": "6c5181bbce3e85dc1141aeaa3b0977b10aa3f1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
