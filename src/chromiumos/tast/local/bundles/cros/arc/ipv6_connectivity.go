@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
 	"chromiumos/tast/local/network/routing"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -39,6 +40,16 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	shillManager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create shill client: ", err)
+	}
+	hiddenIfs, err := arc.HideUnusedEthernet(ctx, shillManager)
+	if err != nil {
+		s.Fatal("Failed to hide unused ethernet: ", err)
+	}
+	defer arc.RestoreHiddenEthernet(cleanupCtx, shillManager, hiddenIfs)
 
 	testEnv := routing.NewTestEnv()
 	if err := testEnv.SetUp(ctx); err != nil {

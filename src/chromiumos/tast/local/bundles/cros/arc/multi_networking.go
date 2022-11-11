@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -63,6 +64,16 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 
 	startARC()
 
+	shillManager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create shill client: ", err)
+	}
+	hiddenIfs, err := arc.HideUnusedEthernet(ctx, shillManager)
+	if err != nil {
+		s.Fatal("Failed to hide unused ethernet: ", err)
+	}
+	defer arc.RestoreHiddenEthernet(ctx, shillManager, hiddenIfs)
+
 	s.Log("Testing multinet behavior on device addition")
 
 	// Create a virtual interface and verify that corresponding data path is set up.
@@ -96,7 +107,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 
 		testing.Poll(ctx, func(ctx context.Context) error {
 			if err := arc.BootstrapCommand(ctx, "/system/bin/ip", "link", "show", ifName).Run(); err != nil {
-				return errors.Wrapf(err, "failed verifying interface %s in ARC (%s)", ifName, err)
+				return errors.Wrapf(err, "failed verifying interface %s in ARC", ifName)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})

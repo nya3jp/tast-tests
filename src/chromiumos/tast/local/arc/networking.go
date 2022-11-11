@@ -10,8 +10,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -92,5 +94,60 @@ func ExpectPingSuccess(ctx context.Context, a *ARC, network, addr string) error 
 		return errors.Wrap(err, "no response received in ARC")
 	}
 
+	return nil
+}
+
+// HideUnusedEthernet finds all Ethernet devices that's not being used and hide them
+// from shill (thus patchpanel, and ARC) by Manager ClaimInterface API. This helps to
+// workaround the current limitation of ARCVM that at most two ethernet devices can
+// be supported. Returns the ifnames of devices hidden.
+func HideUnusedEthernet(ctx context.Context, manager *shill.Manager) ([]string, error) {
+	devices, err := manager.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var toBeHidden []string
+	for _, device := range devices {
+		p, err := device.GetProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+		tech, err := p.GetString(shillconst.DevicePropertyType)
+		if err != nil {
+			return nil, err
+		} else if tech != shillconst.TypeEthernet {
+			continue
+		}
+		ips, err := p.GetObjectPaths(shillconst.DevicePropertyIPConfigs)
+		if err != nil {
+			return nil, err
+		} else if len(ips) > 0 {
+			// Do not hide device with an active IPConfig object to avoid break SSH to DUT
+			continue
+		}
+		ifname, err := p.GetString(shillconst.DevicePropertyName)
+		toBeHidden = append(toBeHidden, ifname)
+	}
+
+	for _, ifname := range toBeHidden {
+		err := manager.Call(ctx, "ClaimInterface", "tast", ifname).Err
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to claim interface %s", ifname)
+		}
+	}
+	return toBeHidden, nil
+
+}
+
+// RestoreHiddenEthernet undos the change done in HideUnusedEthernet by calling shill
+// ReleaseInterface API.
+func RestoreHiddenEthernet(ctx context.Context, manager *shill.Manager, ifnames []string) error {
+	for _, ifname := range ifnames {
+		err := manager.Call(ctx, "ReleaseInterface", "tast", ifname).Err
+		if err != nil {
+			return errors.Wrapf(err, "failed to release interface %s", ifname)
+		}
+	}
 	return nil
 }

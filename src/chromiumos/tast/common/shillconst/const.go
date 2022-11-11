@@ -39,6 +39,7 @@ const (
 	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
 	DevicePropertyIPConfigs       = "IPConfigs"
+	DevicePropertyName            = "Name"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
