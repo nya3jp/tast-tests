@@ -99,6 +99,9 @@ message NewRequest {
   // |ui.signinProfileTestExtensionManifestKey| is used to start chrome
   // in OOBE, by passing the value into chrome options |LoadSigninProfileExtension|.
   string signin_profile_test_extension_id = 14;
+
+  // Pass directories of unpacked extensions to be loaded by Chrome.
+  repeated string unpacked_extensions = 15;
 }
 
 // LoginMode describes the user mode for the login.

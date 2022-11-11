@@ -199,6 +199,12 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 		options = append(options, chrome.LoadSigninProfileExtension(req.SigninProfileTestExtensionId))
 	}
 
+	if len(req.UnpackedExtensions) > 0 {
+		for _, extDir := range req.UnpackedExtensions {
+			options = append(options, chrome.UnpackedExtension(extDir))
+		}
+	}
+
 	return options, nil
 }
 
