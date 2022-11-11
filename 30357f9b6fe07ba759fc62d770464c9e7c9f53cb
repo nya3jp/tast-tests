@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a86cd8_eab98116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T16:46:35Z",
+      "side": 1,
+      "message": "also, please rename the file",
+      "revId": "30357f9b6fe07ba759fc62d770464c9e7c9f53cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "406a4b69_98dbfde8",
