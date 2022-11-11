@@ -1108,14 +1108,20 @@ func argsVpxenc(ctx context.Context, testName, exe, yuvFile string, size coords.
 	command = append(command, "--end-usage=cbr" /* Constant BitRate */)
 	command = append(command, "--error-resilient=0" /* Off. */)
 	command = append(command, "--buf-sz=1000", "--buf-initial-sz=500", "--buf-optimal-sz=600")
-	command = append(command, "--cpu-used=-6")
+	command = append(command, "--rt")
+	command = append(command, "--lag-in-frames=0")
+
 	// Under/Overshoot are the only differences between VP8 and VP9.
 	if strings.Contains(testName, "vp8") {
 		command = append(command, "--codec=vp8")
 		command = append(command, "--undershoot-pct=100", "--overshoot-pct=15")
+		command = append(command, "--cpu-used=-6")
 	} else if strings.Contains(testName, "vp9") {
 		command = append(command, "--codec=vp9")
 		command = append(command, "--undershoot-pct=50", "--overshoot-pct=50")
+		command = append(command, "--cpu-used=7")
+		// Set adaptive quantization mode to cyclic refresh.
+		command = append(command, "--aq-mode=3")
 	} else {
 		return nil, "", 0, errors.New("unrecognized codec name in testname: " + testName)
 	}
