@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fa6ec33f_7237abde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-11T01:12:58Z",
+      "side": 1,
+      "message": "When I run `wmp.AssignToNewDesk` and `wmp.AssignToNewDesk.lacros` seperately, all of them can pass. But when I run `wmp.AssignToNewDesk*`, the one for lacros will fail. Do you suggest to replace the fixture one more suitable for this test to support arc? Thanks!",
+      "parentUuid": "6803bcbf_173129fa",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c47c0d20_a42e1c22",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "See my previous message - there was a ChromeOS bug causing trouble.",
       "parentUuid": "840f55e5_db480591",
+      "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da89746_1efd4d16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-11-11T01:12:58Z",
+      "side": 1,
+      "message": "Yeah, I see.",
+      "parentUuid": "b1770c2d_3d314075",
       "revId": "b2b23c37768061823ac3d57494905e2c1894fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
