@@ -98,6 +98,24 @@
       "parentUuid": "ddb19d4f_997132bf",
       "revId": "1e9d54c91f2a47c949c22655a7c2d3117106fdfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90343691_f7cb2bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/edu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:17:42Z",
+      "side": 1,
+      "message": "Let me take a look at go/lacros-audit-cujs. Waiting for permission to view at the moment.",
+      "parentUuid": "226af095_a18676e2",
+      "revId": "1e9d54c91f2a47c949c22655a7c2d3117106fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
