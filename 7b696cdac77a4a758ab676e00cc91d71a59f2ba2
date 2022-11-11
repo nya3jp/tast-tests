@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67827c11_50f5a1fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T22:36:58Z",
+      "side": 1,
+      "message": "Android UI automation isn\u0027t ideal but I\u0027m good with it if directly controlling the Android with Java code through a snippet wasn\u0027t possible (though it would be good to investigate what is needed to enable this)",
+      "parentUuid": "c3995a95_b271a1bc",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bed9fb3_304e8309",
         "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-11T19:28:28Z",
       "side": 1,
       "message": "Super nit: It looks like in some places we use all lowercase, but other cases we capitalize. Let\u0027s standardize the capitalization scheme for these logs.",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10628462_f14f58ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T22:36:58Z",
+      "side": 1,
+      "message": "guideline is that s.Log/Fatal, testing.ContextLog should be capitalized, error.New/Wrap/Error etc. should not be (since these ones will be preceded by other error messages)",
+      "parentUuid": "60d17b8a_383f3ecf",
       "range": {
         "startLine": 35,
         "startChar": 11,
@@ -94,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0301de56_60fbf185",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T22:36:58Z",
+      "side": 1,
+      "message": "+1 this comment is just left over from when we originally only had NS tests. It\u0027s useful for everything though",
+      "parentUuid": "13ff9567_8517c1f2",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a772c54_b4448524",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
         "patchSetId": 1
@@ -129,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b52b3358_27105448",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T22:36:58Z",
+      "side": 1,
+      "message": "yeah it would be good to mention that the `ui.KEYCODE_MENU` can cause various tap+hold triggered menus to appear. I\u0027d also suggest not returning and error and just logging it in case it has some unintended interactions that affect other tests.\n\n(even better would be to explicitly set the UI state at the beginning of QS tests that depend on it)",
+      "parentUuid": "7a772c54_b4448524",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f636d1b5_1f77cbf6",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
         "patchSetId": 1
@@ -140,6 +218,24 @@
       "writtenOn": "2022-11-11T19:28:28Z",
       "side": 1,
       "message": "Check: Why isn\u0027t `defer d.Close(ctx)` at the top of the function?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b255814_1b4960fc",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T22:36:58Z",
+      "side": 1,
+      "message": "This is the normal pattern to my knowledge, it needs to be initialized first before there\u0027s a need to close it, and if `ui.NewDevicewWithRetry` returns a non-nil error we assume its initialization did not proceed enough to warrant being closed.",
+      "parentUuid": "f636d1b5_1f77cbf6",
       "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
