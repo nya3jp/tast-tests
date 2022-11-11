@@ -104,24 +104,20 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		},
-			/* Disabled due to <1% pass rate over 30 days. See b/246818647
-			{
-				Name: "clamshell_mode_top_apps",
-				Val: testutil.TestParams{
-					LaunchTests:      clamshellLaunchForNetflix,
-					TopAppTests:      testutil.ClamshellTopAppTests,
-					AppSpecificTests: clamshellAppSpecificTestsForNetflix,
-				},
-				ExtraAttr:         []string{"appcompat_top_apps"},
-				ExtraSoftwareDeps: []string{"android_p"},
-				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-				// Skip on tablet only models.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "clamshell_mode_top_apps",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForNetflix,
+				TopAppTests:      testutil.ClamshellTopAppTests,
+				AppSpecificTests: clamshellAppSpecificTestsForNetflix,
 			},
-			*/
-			/* Disabled due to <1% pass rate over 30 days. See b/246818647
+			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		},
 			{
 
 				Name: "tablet_mode_top_apps",
@@ -136,10 +132,7 @@ func init() {
 				// Skip on clamshell only models.
 				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-			}
-			*/
-			/* Disabled due to <1% pass rate over 30 days. See b/246818647
-			{
+			}, {
 				Name: "vm_clamshell_mode_top_apps",
 				Val: testutil.TestParams{
 					LaunchTests:      clamshellLaunchForNetflix,
@@ -152,9 +145,7 @@ func init() {
 				// Skip on tablet only models.
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 				Pre:               pre.AppCompatBootedUsingTestAccountPool,
-			},
-			*/
-			{
+			}, {
 
 				Name: "vm_tablet_mode_top_apps",
 				Val: testutil.TestParams{
