@@ -39,6 +39,30 @@
       },
       "revId": "a3ded7c88eaf61f1202b941a3a6d066d86d252b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54085605_c427166d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1536939
+      },
+      "writtenOn": "2022-11-11T01:53:35Z",
+      "side": 1,
+      "message": "Thanks for your comments. Since disabling these tests is temporary, and they will be added back to the group mainline and/or informational, how about we keep this line for now? If it sounds good to you, could you please also verify this CL to meet the merge requirements?",
+      "parentUuid": "6f6ffec3_92bdc141",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "a3ded7c88eaf61f1202b941a3a6d066d86d252b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
