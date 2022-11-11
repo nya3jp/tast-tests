@@ -652,7 +652,7 @@ func prepareFixup(ctx context.Context, a *arc.ARC, user string) (func(context.Co
 			return errors.Wrapf(err, "path %s still does not exist", playStoreDataDir)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return nil, errors.Wrapf(err, "failed to wait for path %s", playStoreDataDir)
 	}
 
