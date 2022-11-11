@@ -16,6 +16,74 @@
       "message": "Hi Seewai and Benson,\ncan you help take a look at this update for the HidWake test? I am seeing in tastboard logs that sometimes the servo keyboard disconnects before checking the wake count causing a test failure. This looks to be downstream of an IO error logged in messages. But, an IO error on resume is not in the scope of this test which is meant to check HID events wake the DUT. This CL will allow HidWake to retry suspend/resume up to 5 times if it sees that the servo keyboard disconnected during one of the checks. Let me know if you have any questions.",
       "revId": "b84db6dd6214518484ae906de96b42646ddd19e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d43912_fba86921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:45:17Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "b84db6dd6214518484ae906de96b42646ddd19e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd16e13_248e4058",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:45:17Z",
+      "side": 1,
+      "message": "```\n\n\tfor attemptCount :\u003d 0; attemptCount \u003c keyboardDisconnectRetryCount; attemptCount++ {\n```",
+      "revId": "b84db6dd6214518484ae906de96b42646ddd19e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c71e06b_e941133d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:45:17Z",
+      "side": 1,
+      "message": "You meant reconnectErr instead of err here, right?",
+      "revId": "b84db6dd6214518484ae906de96b42646ddd19e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff2ce49_99d011d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-11T00:45:17Z",
+      "side": 1,
+      "message": "Please see comment above. I don\u0027t see attemptCount used outside the for loop and I don\u0027t see any other place may affect the count. I think we can define in the \"for\" statment. Please let me know if I miss anything. Thanks.",
+      "revId": "b84db6dd6214518484ae906de96b42646ddd19e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
