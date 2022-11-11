@@ -86,6 +86,30 @@
       },
       "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dba43e3_82bba708",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-11T23:26:55Z",
+      "side": 1,
+      "message": "Ack, we can keep it, it was just a nit :-)",
+      "parentUuid": "d68a1515_7bf129bc",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
