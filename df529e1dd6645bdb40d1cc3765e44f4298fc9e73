@@ -34,6 +34,24 @@
       "parentUuid": "c8316944_23fae599",
       "revId": "df529e1dd6645bdb40d1cc3765e44f4298fc9e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef28342_f53a04ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-11-11T18:17:40Z",
+      "side": 0,
+      "message": "Oh, the fixtures are named differently! I noticed this only now - I thought there\u0027s some kind of string pattern matching happening on the test name 😊 In that case it\u0027s fine, agreed.",
+      "parentUuid": "8e017724_14474028",
+      "revId": "df529e1dd6645bdb40d1cc3765e44f4298fc9e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
