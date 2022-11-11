@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de40c8b_18d91803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-11T18:08:12Z",
+      "side": 1,
+      "message": "I changed the name to userPasswordAfterUpdate.",
+      "parentUuid": "06ed0090_b3efdfd7",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5a404f7_84435afc",
@@ -207,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b245053_1e28f17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-11T18:08:12Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "6aa08d87_63379535",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d19941_4e057ace",
@@ -220,6 +268,24 @@
       "writtenOn": "2022-11-11T00:20:34Z",
       "side": 1,
       "message": "nit: This block of code looks like a mostly copy-paste of the block above. In principle, the only differences can be parameterized as a tuple `(userName, password, wrongPassword, otherUserPassword)`.\n\nShould we extract this code into a helper function with these parameters and just call it twice (or actually three times, assuming that the code below after the password change does the same)? I think it\u0027ll significantly improve the readability.",
+      "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "955e19d3_530ffd76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-11T18:08:12Z",
+      "side": 1,
+      "message": "I did a refactor into a helper function for this.",
+      "parentUuid": "64d19941_4e057ace",
       "revId": "b0f58158cae8a9c3a8dd9587164a6c5ed21f6d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

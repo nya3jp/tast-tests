@@ -16,6 +16,24 @@
       "message": "nit: I\u0027d suggest to keep this last sentence of the comment, because without it it\u0027s pretty mysterious how is VK or USS triggered in the test.",
       "revId": "df529e1dd6645bdb40d1cc3765e44f4298fc9e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e017724_14474028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-11-11T18:08:12Z",
+      "side": 0,
+      "message": "I\u0027m a bit wary of this. I added the more extensive comment because the parameterization was more complex, but got rid of it when I simplified it down to just the fixtures.\n\nI feel like having every single test using the USS/VK text fixtures including a comment explaining what the fixtures do is...not really right? It feels akin to putting the explanation for what a class or function does at all the call sites.",
+      "parentUuid": "c8316944_23fae599",
+      "revId": "df529e1dd6645bdb40d1cc3765e44f4298fc9e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
