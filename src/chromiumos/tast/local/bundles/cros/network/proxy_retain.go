@@ -42,7 +42,7 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell/cellular/network_e2e_unstable", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Fixture:      "shillReset",

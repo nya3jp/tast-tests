@@ -28,6 +28,7 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell/cellular/network_e2e_unstable", "informational"},
 		ServiceDeps:  []string{"tast.cros.network.ProxySettingService"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
