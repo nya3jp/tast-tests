@@ -36,6 +36,7 @@ func init() {
 			{
 				// Default case, DTIM = 2
 				// See https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/next/src/ap/ap_config.c;rcl=20a522b9ebe52bac34cc4ecfc1a9722cc1e77cdc;l=88
+				// Since crrev.com/c/3996676, averages of full scan times are recorded in stead of one full scan.
 				Val: []ap.Option{},
 			},
 			{
@@ -159,7 +160,6 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	logDuration := func(label string, duration time.Duration) {
 		pv.Set(perf.Metric{
 			Name:      label,
-			Variant:   "Average",
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, duration.Seconds())
