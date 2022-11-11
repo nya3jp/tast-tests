@@ -275,6 +275,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 				helpers.ScanningTimeOut,
 				ash.WaitIDContains("notification-ui-manager"),
 				ash.WaitTitleDoesntContain("Scanning"),
+				ash.WaitTitleDoesntContain("Downloading"),
 			)
 			if err != nil {
 				s.Fatalf("Failed to wait for notification with title %q: %v", "", err)
