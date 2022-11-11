@@ -28,6 +28,7 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
+		Attr:         []string{"group:mainline", "informational", "group:network", "network_e2e_unstable"},
 		ServiceDeps:  []string{"tast.cros.network.ProxySettingService"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
