@@ -48,6 +48,7 @@ const (
 	LaunchTestCaseTimeout            = 5 * time.Minute
 	SignoutTestCaseTimeout           = 3 * time.Minute
 	windowTestCaseTimeout            = 3 * time.Minute
+	AppInstallationTimeout           = 5 * time.Minute
 	DefaultUITimeout                 = 20 * time.Second
 	ShortUITimeout                   = 30 * time.Second
 	MediumUITimeout                  = time.Minute
@@ -359,7 +360,7 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
-	if err := playstore.InstallApp(ctx, a, d, appPkgName, &playstore.Options{}); err != nil {
+	if err := playstore.InstallApp(ctx, a, d, appPkgName, &playstore.Options{InstallationTimeout: AppInstallationTimeout}); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 	versionName, err := GetAppVersion(ctx, s, a, d, appPkgName)
