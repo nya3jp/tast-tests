@@ -16,6 +16,24 @@
       "message": "Have you run this test locally? IIRC, \"informational\" attr only works for group:mainline",
       "revId": "451d203c96ee3d51518bf3ef5bc3a23e704a7532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a269460c_e16a69d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536939
+      },
+      "writtenOn": "2022-11-11T01:01:09Z",
+      "side": 1,
+      "message": "Yes you\u0027re right. Just uploaded a new patch to fix this issue. Thank you!",
+      "parentUuid": "16d8ced9_f924cbbe",
+      "revId": "451d203c96ee3d51518bf3ef5bc3a23e704a7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
