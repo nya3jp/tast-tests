@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98b9b8f4_adbe069d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-11T00:31:34Z",
+      "side": 1,
+      "message": "please explain that this is because AP1\u0027s teardown is deferred when it is configured, which is after the roam happens, so that means it will be torn down before we disconnect.",
+      "parentUuid": "f7731897_64a66863",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "d48dc3618347f0d1f1e22d1ac22091a47c71caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c607c2b2_3bcd8614",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4

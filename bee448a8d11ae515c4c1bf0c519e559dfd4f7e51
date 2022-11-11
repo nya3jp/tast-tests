@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13e347b0_244ae326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-11T00:31:34Z",
+      "side": 1,
+      "message": "do you have any idea why? it\u0027s okay if not, but in that case you should specify here that this is a speculative fix because you weren\u0027t able to verify this actually fixes $BUG, and that you will check stainless to make sure that this worked after it lands.",
+      "parentUuid": "88b5aaae_299a6398",
+      "revId": "bee448a8d11ae515c4c1bf0c519e559dfd4f7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42ba3913_16c337a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
         "patchSetId": 3
