@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/arcent"
 	"chromiumos/tast/local/arc/playstore"
@@ -63,11 +64,15 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 	}
 	login := chrome.GAIALogin(creds)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	fdms, err := arcent.SetupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages, arcent.InstallTypeAvailable)
 	if err != nil {
 		rl.Exit("setup fake policy server", err)
 	}
-	defer fdms.Stop(ctx)
+	defer fdms.Stop(cleanupCtx)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) (retErr error) {
 		cr, err := chrome.New(
@@ -80,7 +85,7 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return rl.Retry("connect to Chrome", err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
@@ -91,7 +96,7 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return rl.Retry("start ARC by policy", err)
 		}
-		defer a.Close(ctx)
+		defer a.Close(cleanupCtx)
 
 		if err := arcent.ConfigureProvisioningLogs(ctx, a); err != nil {
 			return rl.Exit("configure provisioning logs", err)
@@ -101,19 +106,19 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 			return rl.Retry("wait for provisioning", err)
 		}
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts); err != nil {
+		d, err := a.NewUIDevice(ctx)
+		if err != nil {
+			return rl.Exit("initialize UI Automator", err)
+		}
+		defer d.Close(cleanupCtx)
+
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, d, s.OutDir(), rl.Attempts); err != nil {
 			return rl.Exit("verify Play Store is not empty", err)
 		}
 
 		if err := playstore.OpenAppPage(ctx, a, testPackage); err != nil {
 			return rl.Exit("open app page", err)
 		}
-
-		d, err := a.NewUIDevice(ctx)
-		if err != nil {
-			return rl.Exit("initialize UI Automator: ", err)
-		}
-		defer d.Close(ctx)
 
 		if installButton, err := arcent.WaitForInstallButton(ctx, d); err != nil {
 			return rl.Exit("find the install button", err)
@@ -125,6 +130,6 @@ func ARCAvailableAppInstall(ctx context.Context, s *testing.State) {
 
 		return nil
 	}, nil); err != nil {
-		s.Fatal("Allow install test failed: ", err)
+		s.Fatal("Available app install test failed: ", err)
 	}
 }

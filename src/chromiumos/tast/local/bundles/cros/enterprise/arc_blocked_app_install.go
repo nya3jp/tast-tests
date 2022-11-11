@@ -125,15 +125,15 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 			return s.HasError() || retErr != nil
 		})
 
-		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts); err != nil {
-			return rl.Exit("verify Play Store is not empty", err)
-		}
-
 		d, err := a.NewUIDevice(ctx)
 		if err != nil {
 			return rl.Exit("initialize UI Automator", err)
 		}
 		defer d.Close(cleanupCtx)
+
+		if err := arcent.EnsurePlayStoreNotEmpty(ctx, tconn, cr, a, d, s.OutDir(), rl.Attempts); err != nil {
+			return rl.Exit("verify Play Store is not empty", err)
+		}
 
 		if err := arcent.PollAppPageState(ctx, tconn, a, testPackage, func(ctx context.Context) error {
 			if err := arcent.WaitForAppUnavailableMessage(ctx, d, time.Minute); err == nil {
@@ -147,6 +147,6 @@ func ARCBlockedAppInstall(ctx context.Context, s *testing.State) {
 
 		return nil
 	}, nil); err != nil {
-		rl.Exit("verify blocked app cannot be installed: ", err)
+		s.Fatal("Blocked app install test failed: ", err)
 	}
 }
