@@ -395,7 +395,7 @@ func testFixupPlayStore(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the fixup ghost window is popped up.
-	if err := waitGhostWindowShown(ctx, tconn, time.Minute, apps.PlayStore.ID, fixupGhostWindowMessagePrefix); err != nil {
+	if err := waitGhostWindowShown(ctx, tconn, 2*time.Minute, apps.PlayStore.ID, fixupGhostWindowMessagePrefix); err != nil {
 		s.Fatal("Failed to wait for Ghost Window of Play Store: ", err)
 	}
 
@@ -652,7 +652,7 @@ func prepareFixup(ctx context.Context, a *arc.ARC, user string) (func(context.Co
 			return errors.Wrapf(err, "path %s still does not exist", playStoreDataDir)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return nil, errors.Wrapf(err, "failed to wait for path %s", playStoreDataDir)
 	}
 
