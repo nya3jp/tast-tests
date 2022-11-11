@@ -34,6 +34,24 @@
       "parentUuid": "16d8ced9_f924cbbe",
       "revId": "451d203c96ee3d51518bf3ef5bc3a23e704a7532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246a856a_1a2156ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-11-11T01:29:25Z",
+      "side": 1,
+      "message": "Since these tests fail consistently, they should not run on mainline either wasting DUT resources. Please remove both mainline and informational.",
+      "parentUuid": "a269460c_e16a69d5",
+      "revId": "451d203c96ee3d51518bf3ef5bc3a23e704a7532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
