@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd16c8b_d576b8b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T10:41:18Z",
+      "side": 1,
+      "message": "I\u0027d prefer we have a separate cl for this as an unified change.",
+      "parentUuid": "ce075a48_85674016",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96ab7e9e_85e5c543",
@@ -209,6 +227,24 @@
       "side": 1,
       "message": "Try rebasing?",
       "parentUuid": "b688ac5c_c56decfc",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab9c17c_1943e754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-11-11T10:41:18Z",
+      "side": 1,
+      "message": "Yes, just rebased again and it did not uninstall without --allow-change-held-packages",
+      "parentUuid": "f6b4cfca_0418cabb",
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
