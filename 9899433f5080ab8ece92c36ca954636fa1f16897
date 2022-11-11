@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb928582_71515b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-11-11T21:21:54Z",
+      "side": 1,
+      "message": "If test isolation is an issue, you could also choose to not use this fixture, and simply have the test start its own session with `chrome.New`. Using a fixture is preferred when there\u0027s some shared setup as it saves a lot of time, but tests needing a guaranteed clean slate (or tests that have a strong possibility of not cleaning up the state) are a valid use case for not using a fixture. Another option could be to set up your own fixture for `wmp` tests that have similar needs",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "9899433f5080ab8ece92c36ca954636fa1f16897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
