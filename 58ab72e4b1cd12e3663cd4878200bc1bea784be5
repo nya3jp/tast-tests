@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979619de_1a837182",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T16:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46bf20ff_3db4b4cc",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "58ab72e4b1cd12e3663cd4878200bc1bea784be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d6582c7_fee57fe7",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-11T15:55:38Z",
       "side": 1,
       "message": "if this is an accidental formatting, please remove it. Keep your changes within the code your change so future git blames stay coherent.",
+      "revId": "58ab72e4b1cd12e3663cd4878200bc1bea784be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64ac7c7_0ffc41bd",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1557413
+      },
+      "writtenOn": "2022-11-11T16:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6582c7_fee57fe7",
       "revId": "58ab72e4b1cd12e3663cd4878200bc1bea784be5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
