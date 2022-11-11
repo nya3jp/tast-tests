@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a031a23f_667dde92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-11-11T00:10:08Z",
+      "side": 1,
+      "message": "nvm: defer files.Close should do that.",
+      "parentUuid": "5cf4bfdf_65745fb2",
+      "revId": "e601b48fb116a5d9f38024a7ac31f2babc4af6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b0e34e_984985d4",
