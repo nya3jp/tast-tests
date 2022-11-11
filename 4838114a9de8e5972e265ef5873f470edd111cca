@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1db5cb_2503a2dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-11T17:15:20Z",
+      "side": 1,
+      "message": "Thanks for the clarification i went ahead and updated this cl to use a remote fixture!",
+      "parentUuid": "dad925a1_41ebec3f",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43d70ba1_028b92d8",
@@ -104,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d93b340_f02e1baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-11T17:15:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dfe7677a_61477887",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5224fdd7_066ec726",
@@ -135,6 +171,24 @@
       "side": 1,
       "message": "Would this result in Chrome being instantiated/destroyed with each of these method calls? Since these will be called multiple times in a single test this might be a significant slowdown compared to instantiating once and re-using (via ChromeService).",
       "parentUuid": "5224fdd7_066ec726",
+      "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbceaa78_2de73e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-11-11T17:15:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a708bd7f_c4df9176",
       "revId": "4838114a9de8e5972e265ef5873f470edd111cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
