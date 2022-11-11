@@ -62,6 +62,30 @@
       },
       "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68a1515_7bf129bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-11-11T23:13:46Z",
+      "side": 1,
+      "message": "I asked yichen to include a comment here - I think there\u0027s still value in understanding why a graph looks the way it is, even if it improved. It doesn\u0027t cost anything, and it helps people looking at the graph/at the code gain better historical context.",
+      "parentUuid": "9d0b04c9_5e5afd35",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
