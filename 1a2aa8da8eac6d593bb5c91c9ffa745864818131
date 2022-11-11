@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731beb7a_d4e5b421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-11T22:54:12Z",
+      "side": 1,
+      "message": "s/tast-tests/wifi.ScanPerf/",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0b04c9_5e5afd35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-11-11T22:54:12Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you really need that comment tbh. It\u0027s an interesting fact, but what\u0027s the actual impact? Either the scan times measured by the test become more stable and the graph is more readable -\u003e people are happy and assume that whatever improved the measurement is good. On the other hand if the scan times become less accurate because of the averaging, that\u0027s a bug that we need to fix anyway",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
