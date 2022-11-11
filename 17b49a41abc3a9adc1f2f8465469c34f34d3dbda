@@ -16,6 +16,24 @@
       "message": "just thinking that it might be good to add some more time while you\u0027re here, since the cleanupCtx will remove 10 seconds of our setup time so timeouts could become slightly more frequent.",
       "revId": "17b49a41abc3a9adc1f2f8465469c34f34d3dbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c816d5bd_ae148108",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-11-11T02:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da7d8b2_05e7f34c",
+      "revId": "17b49a41abc3a9adc1f2f8465469c34f34d3dbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
