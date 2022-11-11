@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460e38c8_639261ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-11-11T02:34:34Z",
+      "side": 1,
+      "message": "Hi Eliot,\n\nCan you take a look at this patch?\n\nI need this to load power test extension used by power_LoadTest.\n\nThanks,\nYuta",
+      "revId": "63c35cd13252d135f89cfe9630c719850c58a467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
