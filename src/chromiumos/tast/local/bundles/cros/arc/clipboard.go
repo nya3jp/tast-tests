@@ -123,8 +123,26 @@ func prepareCopyInChrome(cr *chrome.Chrome, keyboard *input.KeyboardEventWriter,
 
 // preparePasteInChrome sets up a paste operation with Chrome as the
 // destination clipboard.
-func preparePasteInChrome(tconn *chrome.TestConn, format string) pasteFunc {
+func preparePasteInChrome(cr *chrome.Chrome, format string) pasteFunc {
 	return func(ctx context.Context) (string, error) {
+		// TODO(b/246024883): Add TypeLacros case.
+		browser, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeAsh)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to open the browser window")
+		}
+		defer closeBrowser(ctx)
+
+		tconn, err := browser.TestAPIConn(ctx)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to get Test API conn")
+		}
+
+		conn, err := browser.NewConn(ctx, "about:blank")
+		if err != nil {
+			return "", errors.Wrap(err, "failed to open the browser window")
+		}
+		defer conn.Close()
+
 		var result string
 		if err := tconn.Call(ctx, &result, `
 		  (format) => {
@@ -140,6 +158,9 @@ func preparePasteInChrome(tconn *chrome.TestConn, format string) pasteFunc {
 		); err != nil {
 			return "", err
 		}
+
+		conn.CloseTarget(ctx)
+
 		return result, nil
 	}
 }
@@ -399,7 +420,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	}, {
 		"CopyTextFromAndroidToChrome",
 		prepareCopyInAndroid(d, writeTextBtnID, editTextID, expectedTextFromAndroid),
-		preparePasteInChrome(tconn, "text/plain"),
+		preparePasteInChrome(cr, "text/plain"),
 		expectedTextFromAndroid,
 	}, {
 		"CopyHTMLFromChromeToAndroid",
@@ -409,7 +430,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	}, {
 		"CopyHTMLFromAndroidToChrome",
 		prepareCopyInAndroid(d, writeHTMLBtnID, textViewID, expectedHTMLFromAndroid),
-		preparePasteInChrome(tconn, "text/html"),
+		preparePasteInChrome(cr, "text/html"),
 		expectedHTMLFromAndroid,
 	}} {
 		s.Run(ctx, row.name, func(ctx context.Context, s *testing.State) {
