@@ -77,10 +77,10 @@ func Crosh(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	err = uiauto.Combine("run crosh shell",
 		ui.LeftClick(nodewith.Name("crosh").Role(role.Window).ClassName("BrowserFrame")),
-		ui.WaitUntilExists(nodewith.Name("crosh>").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("crosh>").Role(role.StaticText).First()),
 		kb.TypeAction("shell"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Name("chronos@localhost").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("chronos@localhost").Role(role.StaticText).First()),
 		kb.TypeAction("exit"),
 		kb.AccelAction("Enter"),
 		kb.TypeAction("exit"),
