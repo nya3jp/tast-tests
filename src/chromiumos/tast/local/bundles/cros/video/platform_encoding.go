@@ -1116,6 +1116,8 @@ func argsVpxenc(ctx context.Context, testName, exe, yuvFile string, size coords.
 	} else if strings.Contains(testName, "vp9") {
 		command = append(command, "--codec=vp9")
 		command = append(command, "--undershoot-pct=50", "--overshoot-pct=50")
+		// Set adaptive quantization mode to cyclic refresh.
+		command = append(command, "--aq-mode=3")
 	} else {
 		return nil, "", 0, errors.New("unrecognized codec name in testname: " + testName)
 	}
