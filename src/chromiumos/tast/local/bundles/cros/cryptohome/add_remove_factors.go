@@ -330,6 +330,11 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Mismatch in supported auth factors after removing most factors (-got, +want): ", err)
 	}
 
+	// Removing the only password factor should fail
+	if err := client.RemoveAuthFactor(ctx, authSessionID, passwordLabel); err == nil {
+		s.Fatal("Should fail RemoveAuthFactor() when the factor is the last one left")
+	}
+
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults: ", err)
