@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "392c5c36_bda5af77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-11-11T18:50:45Z",
+      "side": 1,
+      "message": "Wow! Thank you so much for finding this!! I didn\u0027t know that golang compiler/formatter doesn\u0027t check the unused arguments...",
+      "revId": "7561fe44c93d2cf613a018da8e416962477e1917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
