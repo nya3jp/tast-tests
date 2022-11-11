@@ -34,6 +34,24 @@
       "parentUuid": "979ca868_2065c755",
       "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "574b12cc_61cd87b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-11-11T18:07:33Z",
+      "side": 1,
+      "message": "So, just to be totally sure, returning an error will still allow more retries?",
+      "parentUuid": "2b3148ca_2662e232",
+      "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a5ae9c_9cc9f360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-11-11T18:07:33Z",
+      "side": 1,
+      "message": "Assuming that the answer to my question below is yes, then LGTM.",
+      "revId": "1977fa3a45ea2668e7bb4fcbe59c7f702a2b0c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
