@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4153113f_1be87b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-11T20:06:27Z",
+      "side": 1,
+      "message": "I am not sure if we ought include these along with `\"group:network\", \"network_e2e_unstable\"`, I will defer to shijinabraham@ on the right attributes to use here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "949bcac51a9ffc8b49869852429f05d865a34f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
