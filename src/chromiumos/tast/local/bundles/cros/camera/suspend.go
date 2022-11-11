@@ -22,9 +22,10 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the camera stack works after a suspend",
 		Contacts: []string{
-			"ribalda@chromium.org",
 			"chromeos-camera-eng@google.com",
+			"ribalda@chromium.org",
 		},
+		BugComponent: "b:167281",
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"arc_camera3", "chrome", caps.BuiltinCamera},
 	})

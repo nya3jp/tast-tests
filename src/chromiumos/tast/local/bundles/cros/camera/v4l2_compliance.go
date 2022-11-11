@@ -18,10 +18,12 @@ func init() {
 		Func: V4L2Compliance,
 		Desc: "Runs V4L2Compliance in all the Capture Devices",
 		Contacts: []string{
-			"ribalda@chromium.org",
+			"chromeos-camera-kernel@google.com",
 			"chromeos-camera-eng@google.com",
+			"ribalda@chromium.org",
 		},
-		Attr: []string{"group:mainline", "group:camera-usb-qual", "informational"},
+		BugComponent: "b:1093480",
+		Attr:         []string{"group:mainline", "group:camera-usb-qual", "informational"},
 	})
 }
 

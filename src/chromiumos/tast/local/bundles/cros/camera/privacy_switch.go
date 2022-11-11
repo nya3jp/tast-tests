@@ -24,9 +24,11 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the privacy switch",
 		Contacts: []string{
-			"ribalda@chromium.org",
+			"chromeos-camera-kernel@google.com",
 			"chromeos-camera-eng@google.com",
+			"ribalda@chromium.org",
 		},
+		BugComponent: "b:1093480",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{caps.BuiltinUSBCamera},
 		// Primus camera module's privacy switch is not connected to the shutter b/236661871
