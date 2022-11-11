@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d8b41a1_73be1ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:42:30Z",
+      "side": 1,
+      "message": "I\u0027d like to have all new tests to have the container version to be consistent, but I am OK with having the exception for tests that already exist.",
+      "parentUuid": "2c06fc64_f86bc76b",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96ab7e9e_85e5c543",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
         "patchSetId": 6
@@ -134,6 +152,30 @@
       "writtenOn": "2022-11-11T03:34:43Z",
       "side": 1,
       "message": "we probably should not fail the tests because of snapshot failures. \n\nIn `Reset`, if `f.snaoshot` is true and `restoreSnapshot` fails, the fixture will just re-install Linux.",
+      "range": {
+        "startLine": 461,
+        "startChar": 3,
+        "endLine": 466,
+        "endChar": 57
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731c7fa8_8eca7c47",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:42:30Z",
+      "side": 1,
+      "message": "Is there a way to monitor fixture failures if we fail gracefully as you suggest? Otherwise I think we should fail fast and hard, so that the fixture isn\u0027t silently failing and nobody notices it.",
+      "parentUuid": "034e0b65_47aa104b",
       "range": {
         "startLine": 461,
         "startChar": 3,
@@ -231,6 +273,30 @@
       "writtenOn": "2022-11-11T03:34:43Z",
       "side": 1,
       "message": "what happens with `STOPPING`? should we just wait here?",
+      "range": {
+        "startLine": 263,
+        "startChar": 10,
+        "endLine": 263,
+        "endChar": 43
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b67a36_1f6c7de2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T03:42:30Z",
+      "side": 1,
+      "message": "STOPPING is not a failure condition, it should continue to waiting for LxdContainerStoppingSignal below.\n\nThis is a bit confusing as in other languages this syntax would be fall-through but this is not the case in go. I\u0027d suggest adding a comment here that execution continues below.",
+      "parentUuid": "46487990_b51d6965",
       "range": {
         "startLine": 263,
         "startChar": 10,
