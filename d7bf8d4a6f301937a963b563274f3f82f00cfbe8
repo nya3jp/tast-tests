@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e752374c_7afce4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T23:03:55Z",
+      "side": 1,
+      "message": "It could be invalidated directly rather than deferring.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "d7bf8d4a6f301937a963b563274f3f82f00cfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d6a261_26d69c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T23:03:55Z",
+      "side": 1,
+      "message": "It\u0027ll be more robust if you check the reply value and see whether the lightweight path is taken?",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 2
+      },
+      "revId": "d7bf8d4a6f301937a963b563274f3f82f00cfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
