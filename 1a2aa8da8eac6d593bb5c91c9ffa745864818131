@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "541fbe62_0d529150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-11T23:32:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "731beb7a_d4e5b421",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44531100_3c29946b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Ack, we can keep it, it was just a nit :-)",
       "parentUuid": "d68a1515_7bf129bc",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "1a2aa8da8eac6d593bb5c91c9ffa745864818131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccb2ee7_0f6f35aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1556272
+      },
+      "writtenOn": "2022-11-11T23:32:48Z",
+      "side": 1,
+      "message": "thanks for the opinions from both side!",
+      "parentUuid": "3dba43e3_82bba708",
       "range": {
         "startLine": 39,
         "startChar": 13,
