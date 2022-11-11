@@ -128,7 +128,7 @@ func ARCBlockedAppUninstall(ctx context.Context, s *testing.State) {
 
 		return nil
 	}, nil); err != nil {
-		s.Fatal("Failed to very blocked app is uninstalled: ", err)
+		s.Fatal("Blocked app uninstall test failed: ", err)
 	}
 }
 

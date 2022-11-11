@@ -129,16 +129,16 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 
 		// Ensure that test app is force-installed by ARC policy.
 		if err := a.WaitForPackages(ctx, packages); err != nil {
-			return rl.Retry("force install packages: ", err)
+			return rl.Retry("force install packages", err)
 		}
 
 		// Check if required sequence appears in chrome log.
 		if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
-			return rl.Exit("log required events: ", err)
+			return rl.Exit("log required events", err)
 		}
 		return nil
 	}, nil); err != nil {
-		rl.Exit("Install logging flow failed: ", err)
+		s.Fatal("Install logging flow failed: ", err)
 	}
 }
 

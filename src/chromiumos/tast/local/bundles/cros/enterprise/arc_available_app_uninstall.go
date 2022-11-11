@@ -127,6 +127,6 @@ func ARCAvailableAppUninstall(ctx context.Context, s *testing.State) {
 			return arcent.EnsurePackagesUninstall(ctx, cr, a, packages, true)
 		}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 1 * time.Second})
 	}, nil); err != nil {
-		s.Fatal("Availability transition test failed: ", err)
+		s.Fatal("Available app uninstall test failed: ", err)
 	}
 }
