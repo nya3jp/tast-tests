@@ -70,6 +70,30 @@
       },
       "revId": "b246ca2185838311d3fe8929c336d019248eeaad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e18985_c59366ef",
+        "filename": "src/chromiumos/tast/local/graphics/expectations/expectations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-11-11T18:17:14Z",
+      "side": 1,
+      "message": "Done. I also added a debug log to note when we fall back from cros_config.",
+      "parentUuid": "66a044b0_62fd7430",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "b246ca2185838311d3fe8929c336d019248eeaad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
