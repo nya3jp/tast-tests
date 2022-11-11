@@ -52,6 +52,24 @@
       "parentUuid": "2b3148ca_2662e232",
       "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98c9476_6dd0b7da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-11T18:11:41Z",
+      "side": 1,
+      "message": "Yes, that\u0027s true, tast/iperf will try 3 times before failure.",
+      "parentUuid": "574b12cc_61cd87b0",
+      "revId": "3edd899a01324e1033a76e1221db300bf54bd475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
