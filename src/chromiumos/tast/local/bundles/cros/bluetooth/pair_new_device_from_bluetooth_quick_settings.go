@@ -25,6 +25,8 @@ func init() {
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
+			"alfredyu@cienet.com",
+			"cienet-development@googlegroups.com",
 		},
 		Attr:         []string{"group:bluetooth"},
 		SoftwareDeps: []string{"chrome"},
@@ -35,6 +37,14 @@ func init() {
 		}, {
 			Name:      "floss_enabled",
 			Fixture:   "bluetoothEnabledWithFloss",
+			ExtraAttr: []string{"bluetooth_floss"},
+		}, {
+			Name:      "floss_disabled_oobe",
+			Fixture:   "bluetoothEnabledInOobeWithBlueZ",
+			ExtraAttr: []string{"bluetooth_flaky"},
+		}, {
+			Name:      "floss_enabled_oobe",
+			Fixture:   "bluetoothEnabledInOobeWithFloss",
 			ExtraAttr: []string{"bluetooth_floss"},
 		}},
 	})
