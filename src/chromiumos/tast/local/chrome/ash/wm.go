@@ -197,7 +197,7 @@ type Window struct {
 	AppID                      string              `json:"appId"`
 }
 
-var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
+var defaultPollOptions = &testing.PollOptions{Timeout: 30 * time.Second}
 
 var stateToWmTypes = map[WindowStateType]WMEventType{
 	WindowStateNormal:       WMEventNormal,
