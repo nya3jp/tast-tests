@@ -24,8 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Run Chrome jpeg_encode_accelerator_unittest",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		// TODO(b/234744001): remove "informational" once the issue is fixed.
-		Attr:         []string{"group:mainline", "group:camera-libcamera", "informational"},
+		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x368_P420.yuv"},
 	})
