@@ -35,6 +35,9 @@ const (
 	InputWithPK          InputModality = "Physical Keyboard"
 )
 
+// String for ACUITI detection
+const acuitiString string = "acuiti"
+
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
 var PKCandidatesFinder = nodewith.Role(role.ImeCandidate).Onscreen()
 
@@ -43,6 +46,13 @@ type InputEval struct {
 	TestName     string
 	InputFunc    uiauto.Action
 	ExpectedText string
+}
+
+// AppCompatTestCase is a data structure to define test case for app compat test.
+type AppCompatTestCase struct {
+	TestName    string
+	Description string
+	UserActions uiauto.Action
 }
 
 // WaitForFieldTextToBe returns an action checking whether the input field value equals given text.

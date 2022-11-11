@@ -693,3 +693,21 @@ func (vkbCtx *VirtualKeyboardContext) GlideTyping(keys []string, validateResultF
 		)(ctx)
 	}
 }
+
+// TapAccentKey return a user action to simulate typing an accent key on virtual keyboard.
+func (vkbCtx *VirtualKeyboardContext) TapAccentKey(key, accentKey string) uiauto.Action {
+	return func(ctx context.Context) error {
+		accentContainerFinder := nodewith.HasClass("accent-container")
+		keyFinder := KeyByNameIgnoringCase(key)
+		accentKeyFinder := nodewith.Ancestor(accentContainerFinder).Name(accentKey).Role(role.StaticText)
+
+		return uiauto.Combine("input accent letter with virtual keyboard",
+			vkbCtx.ui.MouseMoveTo(keyFinder, 500*time.Millisecond),
+			mouse.Press(vkbCtx.tconn, mouse.LeftButton),
+			// Popup accent window sometimes flash on showing, so using Retry instead of WaitUntilExist.
+			vkbCtx.ui.WithInterval(time.Second).RetrySilently(10, vkbCtx.ui.WaitForLocation(accentContainerFinder)),
+			vkbCtx.ui.MouseMoveTo(accentKeyFinder, 500*time.Millisecond),
+			mouse.Release(vkbCtx.tconn, mouse.LeftButton),
+		)(ctx)
+	}
+}
