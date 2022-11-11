@@ -496,6 +496,7 @@ func init() {
 				// Different decoders may use different film grain synthesis methods while producing a visually correct output (AV1 spec 7.2). Thus we validate the decoding of film-grain streams using SSIM.
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("cherry")),
 				ExtraData:         appendJSONFiles(av1FilmGrainFiles),
 				Val: chromeStackDecoderVerificationTestParam{
 					videoFiles:    av1FilmGrainFiles,
