@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c51197_3dbfe2cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-11-11T01:02:32Z",
+      "side": 1,
+      "message": "\u003e \"caculation\" is a possible misspelling of \"calculation\".\n\nPlease fix.",
+      "parentUuid": "4e25dafd_311ef5c3",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "dffc1c654255a46754a5cb34575f72bfcf4f784e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
