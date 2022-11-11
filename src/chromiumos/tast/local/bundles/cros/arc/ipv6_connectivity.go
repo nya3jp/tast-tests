@@ -6,10 +6,10 @@ package arc
 
 import (
 	"context"
-	"net"
 	"time"
 
 	pp "chromiumos/system_api/patchpanel_proto"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -19,6 +19,10 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
+
+type ipv6TestParams struct {
+	v6Only bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -30,11 +34,20 @@ func init() {
 		SoftwareDeps: []string{"arc", "chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
+		Params: []testing.Param{{
+			Val: ipv6TestParams{},
+		}, {
+			Name: "v6only",
+			Val: ipv6TestParams{
+				v6Only: true,
+			},
+		}},
 	})
 }
 
 func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
+	v6only := s.Param().(ipv6TestParams).v6Only
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -51,7 +64,8 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	}
 	defer arc.RestoreHiddenEthernet(cleanupCtx, shillManager, hiddenIfs)
 
-	testEnv := routing.NewTestEnv()
+	// Set up test topology
+	testEnv := routing.NewSimpleNetworkEnv(!v6only, true, !v6only, true)
 	if err := testEnv.SetUp(ctx); err != nil {
 		s.Fatal("Failed to set up routing test env: ", err)
 	}
@@ -61,7 +75,35 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	vethName := testEnv.BaseRouter.VethOutName
+	// Wait for online and verify topology in host
+	if err := testEnv.ShillService.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 10*time.Second); err != nil {
+		s.Error("Failed to wait for service online: ", err)
+	}
+
+	routerAddrs, err := testEnv.Router.WaitForVethInAddrs(ctx, false, true)
+	if err != nil {
+		s.Fatal("Failed to get inner addrs from router env: ", err)
+	}
+	serverAddrs, err := testEnv.Server.WaitForVethInAddrs(ctx, false, true)
+	if err != nil {
+		s.Fatal("Failed to get inner addrs from server env: ", err)
+	}
+	var pingAddrs []string
+	for _, ip := range routerAddrs.IPv6Addrs {
+		pingAddrs = append(pingAddrs, ip.String())
+	}
+	for _, ip := range serverAddrs.IPv6Addrs {
+		pingAddrs = append(pingAddrs, ip.String())
+	}
+	pingAddrs = append(pingAddrs, "v6.foo.bar")
+
+	for _, target := range pingAddrs {
+		if err := routing.ExpectPingSuccessWithTimeout(ctx, target, "chronos", 10*time.Second); err != nil {
+			s.Errorf("Network verification failed: %v is not reachable as user %s on host: %v", target, "chronos", err)
+		}
+	}
+
+	vethName := testEnv.Router.VethOutName
 	arcIfname, err := getARCInterfaceName(ctx, vethName)
 	if err != nil {
 		s.Fatalf("Failed to get ARC interface name corresponding to %s: %v", vethName, err)
@@ -84,27 +126,14 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	}
 
 	// ping virtual router address and virtual server address from ARC.
-	routerAddrs, err := testEnv.BaseRouter.WaitForVethInAddrs(ctx, false, true)
-	if err != nil {
-		s.Fatal("Failed to get inner addrs from router env: ", err)
-	}
-	serverAddrs, err := testEnv.BaseServer.WaitForVethInAddrs(ctx, false, true)
-	if err != nil {
-		s.Fatal("Failed to get inner addrs from server env: ", err)
-	}
-
-	var pingAddrs []net.IP
-	pingAddrs = append(pingAddrs, routerAddrs.IPv6Addrs...)
-	pingAddrs = append(pingAddrs, serverAddrs.IPv6Addrs...)
-	for _, ip := range pingAddrs {
-		if err := arc.ExpectPingSuccess(ctx, a, arcIfname, ip.String()); err != nil {
-			s.Fatalf("Failed to ping %s from ARC over %q: %v", ip.String(), arcIfname, err)
+	for _, target := range pingAddrs {
+		if err := arc.ExpectPingSuccess(ctx, a, arcIfname, target); err != nil {
+			s.Errorf("Failed to ping %s from ARC over %q: %v", target, arcIfname, err)
 		}
-		if err := arc.ExpectPingSuccess(ctx, a, "", ip.String()); err != nil {
-			s.Fatalf("Failed to ping %s from ARC over default network: %v", ip.String(), err)
+		if err := arc.ExpectPingSuccess(ctx, a, "", target); err != nil {
+			s.Errorf("Failed to ping %s from ARC over default network: %v", target, err)
 		}
 	}
-
 }
 
 func getARCInterfaceName(ctx context.Context, hostIfname string) (string, error) {

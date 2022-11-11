@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -86,7 +85,7 @@ func ExpectPingSuccess(ctx context.Context, a *ARC, network, addr string) error 
 		}
 		if o, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to execute 'reach' commmand, output: %s", string(o))
-		} else if !strings.Contains(string(o), fmt.Sprintf("%s: reachable", addr)) {
+		} else if !strings.Contains(string(o), ": reachable") {
 			return errors.Errorf("ping was unreachable, output: %s", string(o))
 		}
 		return nil
