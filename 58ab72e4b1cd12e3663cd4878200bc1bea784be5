@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bf20ff_3db4b4cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T15:55:38Z",
+      "side": 1,
+      "message": "Write the bug of the task you\u0027re working on. more awesome ways to have your work documented.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "58ab72e4b1cd12e3663cd4878200bc1bea784be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6582c7_fee57fe7",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T15:55:38Z",
+      "side": 1,
+      "message": "if this is an accidental formatting, please remove it. Keep your changes within the code your change so future git blames stay coherent.",
+      "revId": "58ab72e4b1cd12e3663cd4878200bc1bea784be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
