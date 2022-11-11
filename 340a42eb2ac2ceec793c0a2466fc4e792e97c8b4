@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aae3d2a_2d3077bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-11T08:40:19Z",
+      "side": 1,
+      "message": "Thanks for adding this! It\u0027s certainly useful (I\u0027d use it), but as I said, I have neither experience with Python, nor am I 100% convinced that reading logs from test output is good enough to encourage people to do so by uploading a script.\n\nI would follow whatever people who maintain these tool scripts say.\n\nWas just checking whether \"tast run\" has a parameter that gives you the test\u0027s run time in machine readable format, but it doesn\u0027t, and I guess it wouldn\u0027t be straightforward to add.",
+      "revId": "340a42eb2ac2ceec793c0a2466fc4e792e97c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5795a2b_3ebb9461",
+        "filename": "tools/test_time_calculation.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-11T08:40:19Z",
+      "side": 1,
+      "message": "You could read from stdin instead of a file, then one can chose whether to use a file or directly use output from repeat-test.sh?",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 84
+      },
+      "revId": "340a42eb2ac2ceec793c0a2466fc4e792e97c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb59bcd_0d9d774c",
+        "filename": "tools/test_time_calculation.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-11T08:40:19Z",
+      "side": 1,
+      "message": "num_test_runs?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "340a42eb2ac2ceec793c0a2466fc4e792e97c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5555fb1f_5cd71273",
+        "filename": "tools/test_time_calculation.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-11-11T08:40:19Z",
+      "side": 1,
+      "message": "Shorten this line?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 131
+      },
+      "revId": "340a42eb2ac2ceec793c0a2466fc4e792e97c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
