@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3995a95_b271a1bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "I had a few questions and comments, but this looks good to me overall as long as Kyle is good with this approach. Giving a +1 since I\u0027ll be OOO next week.",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bed9fb3_304e8309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "Can we remove this line as well?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d17b8a_383f3ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "Super nit: It looks like in some places we use all lowercase, but other cases we capitalize. Let\u0027s standardize the capitalization scheme for these logs.",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "084d1570_4091d78d",
@@ -48,6 +105,104 @@
       "writtenOn": "2022-11-10T18:10:37Z",
       "side": 1,
       "message": "Perhaps this is a dump question, but what does it mean to \"close the wallpaper editing overlay\"?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9b5e26_ce33b518",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "+1. Please add more context in the comment if this is required. Is this something that needs to happen on all versions of Android?",
+      "parentUuid": "7a772c54_b4448524",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f636d1b5_1f77cbf6",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "Check: Why isn\u0027t `defer d.Close(ctx)` at the top of the function?",
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c040570_206c70da",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "Just curious, what does `pic` mean?",
+      "range": {
+        "startLine": 461,
+        "startChar": 73,
+        "endLine": 461,
+        "endChar": 76
+      },
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec00bdc_210fe437",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "How did you choose 10s? Is that enough time? Can you find the median discovery latency for Fast Pair on Android as a gut check for this?",
+      "range": {
+        "startLine": 463,
+        "startChar": 35,
+        "endLine": 463,
+        "endChar": 37
+      },
+      "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0391b5_f907ec19",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-11-11T19:28:28Z",
+      "side": 1,
+      "message": "Can we create `pairingPic` just above this if statement?",
       "revId": "7b696cdac77a4a758ab676e00cc91d71a59f2ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
