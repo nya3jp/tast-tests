@@ -39,6 +39,30 @@
       },
       "revId": "124d88ad4866b6a0498fe41dcba9ac79ded1106a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28ad95a_3fd7b519",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wwcb/dock1_persistent_grpc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-11-11T09:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95af9fe0_865ff594",
+      "range": {
+        "startLine": 31,
+        "startChar": 50,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "124d88ad4866b6a0498fe41dcba9ac79ded1106a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
