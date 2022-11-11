@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/reportingutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +32,7 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service", "tast.cros.graphics.ScreenshotService"},
 		Timeout:      7 * time.Minute,
 		VarDeps: []string{
 			"policy.HeartbeatReporting.user_name",
@@ -66,6 +67,16 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 	defer reportingutil.Deprovision(ctx, cl.Conn, sa, cID)
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "reportingError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	policyClient := ps.NewPolicyServiceClient(cl.Conn)
 

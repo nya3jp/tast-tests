@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	kspb "chromiumos/tast/services/cros/kiosk"
 	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
@@ -32,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:dmserver-enrollment-daily"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service", "tast.cros.graphics.ScreenshotService"},
 		Timeout:      gaiaKioskEnrollmentTimeout,
 		Params: []testing.Param{
 			{
@@ -74,6 +75,16 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(cleanupCtx)
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "enrollmentError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 	kc := kspb.NewKioskServiceClient(cl.Conn)

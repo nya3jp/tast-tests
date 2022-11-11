@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -34,6 +35,7 @@ func init() {
 			"tast.cros.hwsec.OwnershipService",
 			"tast.cros.policy.PolicyService",
 			"tast.cros.tape.Service",
+			"tast.cros.graphics.ScreenshotService",
 		},
 		Timeout: gaiaEnrollmentTimeout,
 		Params: []testing.Param{
@@ -83,6 +85,16 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(cleanupCtx)
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "enrollmentError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 

@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -34,7 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:dmserver-zteenrollment-daily"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService", "tast.cros.graphics.ScreenshotService"},
 		Timeout:      7 * time.Minute,
 		SearchFlags: []*testing.StringPair{{
 			Key: "feature_id",
@@ -123,6 +124,16 @@ func GAIAZTEEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(ctx)
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "enrollmentError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 

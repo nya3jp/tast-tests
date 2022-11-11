@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/reportingutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/graphics"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -46,7 +47,7 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service", "tast.cros.graphics.ScreenshotService"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -188,6 +189,16 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 			return
 		}
 	}
+
+	screenshotService := graphics.NewScreenshotServiceClient(cl.Conn)
+	captureScreenshotOnError := func(ctx context.Context, hasError func() bool) {
+		if !hasError() {
+			return
+		}
+
+		screenshotService.CaptureScreenshot(ctx, &graphics.CaptureScreenshotRequest{FilePrefix: "reportingError"})
+	}
+	defer captureScreenshotOnError(ctx, s.HasError)
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
