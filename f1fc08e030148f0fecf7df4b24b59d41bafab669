@@ -39,6 +39,30 @@
       },
       "revId": "f1fc08e030148f0fecf7df4b24b59d41bafab669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cea6cc_51139032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-11-11T22:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2a4d4a_524c767f",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f1fc08e030148f0fecf7df4b24b59d41bafab669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
