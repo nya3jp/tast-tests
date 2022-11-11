@@ -39,6 +39,7 @@ func init() {
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureTabletModeAngle()),
 		Vars: []string{"servo",
 			"firmware.mode", // Optional. Expecting "tablet". By default firmware.mode will be "clamshell".
 		},
