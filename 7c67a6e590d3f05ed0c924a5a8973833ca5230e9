@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68214d0c_d06477cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-11T16:19:09Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way-- this LGTM with just one comment :D I went ahead and added chharry@ as a reviewer to take a look at the Floss changes since I am not as familiar with the DBus calls.",
+      "revId": "7c67a6e590d3f05ed0c924a5a8973833ca5230e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be037bad_ec9a5a0a",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-11-11T16:19:09Z",
+      "side": 1,
+      "message": "What do you think of combining these methods into a single method that accepts a boolean for whether we should be in OOBE or logged in? Thinking that this might help keep the fixtures defined above a bit more understandable due to a consistent method used to create them.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 1
+      },
+      "revId": "7c67a6e590d3f05ed0c924a5a8973833ca5230e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
