@@ -188,6 +188,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eea239d0_f261b73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/lib_drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-11T03:42:56Z",
+      "side": 1,
+      "message": "We are running these binaries to ensure that a libdrm uprev doesn\u0027t break things.",
+      "parentUuid": "fa1227ed_bd243473",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 77
+      },
+      "revId": "849b9b5ffa64a37175eef9b27c37a82f0342d6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7747736b_7c04a3bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/lib_drm.go",
         "patchSetId": 1
@@ -199,6 +223,24 @@
       "writtenOn": "2022-11-11T02:07:29Z",
       "side": 1,
       "message": "Use Param for different tests, plus hwdeps for different devices.\n\nequery-volteer f libdrm | grep test\n/usr/bin/kmstest\n/usr/bin/modetest\n/usr/bin/proptest\n/usr/bin/vbltest\n\nOne problem is that vbltest doesn\u0027t terminate except when failing. And it needs Chrome.",
+      "revId": "849b9b5ffa64a37175eef9b27c37a82f0342d6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62933774_11de93f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/lib_drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-11-11T03:42:56Z",
+      "side": 1,
+      "message": "I was thinking you could patch bltest in third_party/libdrm to accept a command line option and terminate after n iterations. Then upstream that patch. Or we could leave this as a TODO/starter bug and not add vbltest for now.",
+      "parentUuid": "7747736b_7c04a3bc",
       "revId": "849b9b5ffa64a37175eef9b27c37a82f0342d6af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
