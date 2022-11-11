@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureTabletModeAngle()),
 		Vars: []string{"servo",
 			"power.iterations",
 			"power.mode", // Optional. Expecting "tablet". By defaault power.mode will be "clamshell".

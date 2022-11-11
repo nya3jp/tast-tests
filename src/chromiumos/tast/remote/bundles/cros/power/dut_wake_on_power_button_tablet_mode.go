@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureTabletModeAngle()),
 		VarDeps:      []string{"servo"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
