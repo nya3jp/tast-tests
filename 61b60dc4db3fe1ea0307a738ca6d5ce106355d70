@@ -57,6 +57,30 @@
       },
       "revId": "61b60dc4db3fe1ea0307a738ca6d5ce106355d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c74dfd8_232b8227",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wwcb/utils/ippower_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1557698
+      },
+      "writtenOn": "2022-11-11T07:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3754f45_ec650105",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "61b60dc4db3fe1ea0307a738ca6d5ce106355d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
