@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c06fc64_f86bc76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-11T03:34:43Z",
+      "side": 1,
+      "message": "This may be out of the scope for this CL. Does it make sense to remove buster in the name for all Apps tests? or we could add them all back to be consistent in the future, but that will be different discussion.",
+      "parentUuid": "a1a782ff_ba2c48a4",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96ab7e9e_85e5c543",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
         "patchSetId": 6
@@ -105,6 +123,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "034e0b65_47aa104b",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-11T03:34:43Z",
+      "side": 1,
+      "message": "we probably should not fail the tests because of snapshot failures. \n\nIn `Reset`, if `f.snaoshot` is true and `restoreSnapshot` fails, the fixture will just re-install Linux.",
+      "range": {
+        "startLine": 461,
+        "startChar": 3,
+        "endLine": 466,
+        "endChar": 57
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07487122_7b500472",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 6
@@ -150,6 +191,52 @@
       "writtenOn": "2022-11-11T03:20:23Z",
       "side": 1,
       "message": "Maybe \"Snapshot\" can be last? e.g. \"crostiniBullseyeLargeContainerTabletWithSnapshot\". Or maybe it is too long?",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968dc290_502d9eff",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-11T03:34:43Z",
+      "side": 1,
+      "message": "you may need to reserve some time for this.",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46487990_b51d6965",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-11-11T03:34:43Z",
+      "side": 1,
+      "message": "what happens with `STOPPING`? should we just wait here?",
+      "range": {
+        "startLine": 263,
+        "startChar": 10,
+        "endLine": 263,
+        "endChar": 43
+      },
       "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
