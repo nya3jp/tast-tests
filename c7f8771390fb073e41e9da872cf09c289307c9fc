@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f463b6_2dcd29c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-11-11T16:47:56Z",
+      "side": 1,
+      "message": "and let\u0027s have `chameleon` as prefix for all file names that use it. so this would be `chameleon_check_modes_for_login_logout.go`",
+      "revId": "c7f8771390fb073e41e9da872cf09c289307c9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34a86a5f_5eac2d99",
