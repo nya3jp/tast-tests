@@ -245,8 +245,9 @@ func ClickUntilFocused(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 // ClickUntilButtonExists func click on until specified button exists.
 func ClickUntilButtonExists(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, checkElement, targetElement *ui.Object) {
+	const DialogTimeout = 10 * time.Second
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := checkElement.Exists(ctx); err == nil {
+		if err := checkElement.WaitForExists(ctx, DialogTimeout); err == nil {
 			s.Log("Click on check element")
 			checkElement.Click(ctx)
 		}
