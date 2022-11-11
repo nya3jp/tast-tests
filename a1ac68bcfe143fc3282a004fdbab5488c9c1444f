@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6b4cfca_0418cabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-11-11T05:03:35Z",
+      "side": 1,
+      "message": "Try rebasing?",
+      "parentUuid": "b688ac5c_c56decfc",
+      "revId": "a1ac68bcfe143fc3282a004fdbab5488c9c1444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45071cb4_11f26f2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode_uninstall.go",
         "patchSetId": 6
