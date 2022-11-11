@@ -22,6 +22,30 @@
       },
       "revId": "949bcac51a9ffc8b49869852429f05d865a34f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e084fc_c1d37464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-11-11T20:13:26Z",
+      "side": 1,
+      "message": "+1 This attribute controls test scheduling and we want the connectivity tests to belong only to group:network. Please remove group:mainline and informational",
+      "parentUuid": "4153113f_1be87b47",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "949bcac51a9ffc8b49869852429f05d865a34f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
