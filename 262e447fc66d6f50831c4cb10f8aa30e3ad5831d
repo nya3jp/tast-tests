@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c25c75d_4115331a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-11-11T22:58:09Z",
+      "side": 1,
+      "message": "nit: end with period.",
+      "range": {
+        "startLine": 333,
+        "startChar": 45,
+        "endLine": 333,
+        "endChar": 49
+      },
+      "revId": "262e447fc66d6f50831c4cb10f8aa30e3ad5831d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
