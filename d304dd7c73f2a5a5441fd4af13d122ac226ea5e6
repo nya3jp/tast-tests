@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d7e1fb4_48e1bf99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-11T17:24:12Z",
+      "side": 1,
+      "message": "Oh right, power_state:rec switches the EC to RO, causing the emulated lid state to be lost. Ok, don\u0027t put in the new test case.",
+      "parentUuid": "7d5f0838_86cfa3b2",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "d304dd7c73f2a5a5441fd4af13d122ac226ea5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa2b99f7_683cf139",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
         "patchSetId": 1
