@@ -166,17 +166,17 @@ func PollAppPageState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, t
 }
 
 // EnsurePlayStoreEmpty ensures that the asset browser displays empty screen.
-func EnsurePlayStoreEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
-	return EnsurePlayStoreState(ctx, tconn, cr, a, outDir, runID, true)
+func EnsurePlayStoreEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, d *ui.Device, outDir string, runID int) (retErr error) {
+	return EnsurePlayStoreState(ctx, tconn, cr, a, d, outDir, runID, true)
 }
 
 // EnsurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
-	return EnsurePlayStoreState(ctx, tconn, cr, a, outDir, runID, false)
+func EnsurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, d *ui.Device, outDir string, runID int) (retErr error) {
+	return EnsurePlayStoreState(ctx, tconn, cr, a, d, outDir, runID, false)
 }
 
 // EnsurePlayStoreState ensures that the asset browser has expected state.
-func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int, shouldBeEmpty bool) (retErr error) {
+func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, d *ui.Device, outDir string, runID int, shouldBeEmpty bool) (retErr error) {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -200,12 +200,6 @@ func EnsurePlayStoreState(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
 		return retErr != nil
 	}, fmt.Sprintf("play_store_%d.png", runID))
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize UI Automator")
-	}
-	defer d.Close(ctx)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		// if GMS Core updates after launch, it can cause Play Store to be closed so we have to

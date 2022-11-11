@@ -112,12 +112,18 @@ func ARCPlayStoreModeAllowlist(ctx context.Context, s *testing.State) {
 			return s.HasError() || retErr != nil
 		})
 
-		if err := arcent.EnsurePlayStoreEmpty(ctx, tconn, cr, a, s.OutDir(), rl.Attempts); err != nil {
+		d, err := a.NewUIDevice(ctx)
+		if err != nil {
+			return rl.Exit("initialize UI Automator", err)
+		}
+		defer d.Close(cleanupCtx)
+
+		if err := arcent.EnsurePlayStoreEmpty(ctx, tconn, cr, a, d, s.OutDir(), rl.Attempts); err != nil {
 			return rl.Exit("verify Play Store is not empty", err)
 		}
 
 		return nil
 	}, nil); err != nil {
-		rl.Exit("verify blocked app cannot be installed: ", err)
+		s.Fatal("Play Store mode allowlist test failed: ", err)
 	}
 }
