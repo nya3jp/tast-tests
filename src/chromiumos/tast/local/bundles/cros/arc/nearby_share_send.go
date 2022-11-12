@@ -268,7 +268,7 @@ func init() {
 // directory is cleaned after sharing is completed.
 func NearbyShareSend(ctx context.Context, s *testing.State) {
 	const (
-		nearbyChipLabel    = "NEARBY"
+		nearbyChipLabel    = "Nearby"
 		nearbySharingTitle = "Nearby Share"
 
 		// Class name of text view.
