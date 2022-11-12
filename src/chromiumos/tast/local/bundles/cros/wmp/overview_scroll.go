@@ -39,8 +39,13 @@ func init() {
 		Func:         OverviewScroll,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that scrolling in tablet mode overview works properly",
-		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts: []string{
+			"chromeos-wmp@google.com",
+			"chromeos-sw-engprod@google.com",
+			"sammiequon@chromium.org",
+		},
+		BugComponent: "b:1252584",
+		Attr:         []string{"group:mainline", "informational", "group:hw_agnostic"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{

@@ -29,11 +29,12 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that overview mode works correctly",
 		Contacts: []string{
-			"sammiequon@chromium.org",
 			"chromeos-wmp@google.com",
 			"chromeos-sw-engprod@google.com",
+			"sammiequon@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		BugComponent: "b:1252584",
+		Attr:         []string{"group:mainline", "informational", "group:hw_agnostic"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
