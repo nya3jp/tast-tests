@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e4ff01_73a766d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-12T05:08:06Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "963142b251f649e0150f8fecdc3db7bd4f6c6142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49b881f_33db1627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stack_sampled_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-11-12T05:08:06Z",
+      "side": 1,
+      "message": "nit: Please add a TODO bug to track reenabling this test once the feature is reactivated.",
+      "revId": "963142b251f649e0150f8fecdc3db7bd4f6c6142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
