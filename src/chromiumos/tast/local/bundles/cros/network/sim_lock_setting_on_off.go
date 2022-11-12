@@ -11,9 +11,7 @@ import (
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -64,11 +62,6 @@ func SimLockSettingOnOff(ctx context.Context, s *testing.State) {
 
 	defer app.Close(ctx)
 
-	networkName, err := helper.GetCurrentNetworkName(ctx)
-	if err != nil {
-		s.Fatal("Could not get name: ", err)
-	}
-
 	iccid, err := helper.GetCurrentICCID(ctx)
 	if err != nil {
 		s.Fatal("Could not get current ICCID: ", err)
@@ -83,7 +76,6 @@ func SimLockSettingOnOff(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to find PUK code for ICCID : %s, skipping the test", iccid)
 	}
 
-	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button).ClassName("subpage-arrow").First()
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to open the keyboard: ", err)
@@ -92,7 +84,7 @@ func SimLockSettingOnOff(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 	if err := uiauto.Combine("Toggle on the SIM Lock setting",
-		ui.LeftClick(networkNameDetail),
+		ui.LeftClick(ossettings.ActiveCellularBtn),
 		ui.WaitUntilExists(ossettings.ConnectedStatus),
 		ui.WithTimeout(90*time.Second).LeftClick(ossettings.CellularAdvanced),
 		ui.LeftClick(ossettings.LockSimToggle),

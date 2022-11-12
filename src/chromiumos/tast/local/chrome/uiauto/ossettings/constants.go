@@ -130,10 +130,25 @@ var AddCellularButton = nodewith.NameStartingWith("Add Cellular").Role(role.Butt
 // UnlockButton is the finder for the Unlock button in cellular network list or settings home page.
 var UnlockButton = nodewith.NameContaining("Unlock").Role(role.Button)
 
+// NotActiveCellularRows is the finder for non-active cellular network rows in the Mobile data subpage.
+var NotActiveCellularRows = nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Signal Strength 0%, .*Connect")).HasClass("horizontal")
+
+// NotActiveCellularBtn is the finder for the button to access the details view of the first non-active cellular network in the Mobile data subpage.
+var NotActiveCellularBtn = nodewith.HasClass("subpage-arrow").Role(role.Button).Ancestor(NotActiveCellularRows.First())
+
+// ActiveCellularRows is the finder for the active cellular network's row in the Mobile data subpage. There should only be one.
+var ActiveCellularRows = nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Details")).HasClass("horizontal")
+
+// ActiveCellularBtn is the finder for the button to access the details view of the active cellular network in the Mobile data subpage.
+var ActiveCellularBtn = nodewith.HasClass("subpage-arrow").Role(role.Button).Ancestor(ActiveCellularRows.First()).Focusable()
+
 // Elements in "Cellular detail page"
 var (
 	// ConnectedStatus is the finder for the connected status text UI in the cellular detail page.
 	ConnectedStatus = nodewith.Name("Connected").Role(role.StaticText)
+
+	// SignInToNetwork is the finder for the sign in to network status text UI in the cellular detail page.
+	SignInToNetwork = nodewith.NameContaining("Sign in to network").Role(role.StaticText)
 
 	// DisconnectedStatus is the finder for the disconnected status text UI in the cellular detail page.
 	DisconnectedStatus = nodewith.Name("Not Connected").Role(role.StaticText)

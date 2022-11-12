@@ -136,7 +136,8 @@ func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 func OpenMobileDataSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*OSSettings, error) {
 	ui := uiauto.New(tconn)
 
-	if _, err := LaunchAtPageURL(ctx, tconn, cr, "Network", ui.Exists(networkFinder)); err != nil {
+	NetworkPage, err := LaunchAtPageURL(ctx, tconn, cr, "Network", ui.Exists(networkFinder))
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings page")
 	}
 
@@ -144,7 +145,11 @@ func OpenMobileDataSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chro
 		ui.LeftClick(networkFinder),
 		ui.LeftClick(mobileButton),
 	)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to go to mobile data page")
+		mobileDataLinkNode := nodewith.HasClass("cr-title-text").Name("Mobile data").Role(role.Heading)
+		if err := NetworkPage.NavigateToPageURL(ctx, cr, "networks?type=Cellular", ui.WaitUntilExists(mobileDataLinkNode)); err != nil {
+			return nil, errors.Wrap(err, "failed to go to mobile data page")
+		}
+		return NetworkPage, nil
 	}
 	return &OSSettings{tconn: tconn, ui: ui}, nil
 }
