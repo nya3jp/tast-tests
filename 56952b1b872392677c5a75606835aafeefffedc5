@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f065e6_093ec5e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-11-12T06:36:23Z",
+      "side": 1,
+      "message": "PTAL, thanks!\n\nI have some other follow-up CLs for FuseBox experiment and using new APK 250MB xlarge file capabilities.",
+      "revId": "56952b1b872392677c5a75606835aafeefffedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
