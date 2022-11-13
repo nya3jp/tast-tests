@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889aa400_dbef7f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-11-13T19:27:06Z",
+      "side": 1,
+      "message": "LGTM, please have somebody familiar with camera test to review and give you +2. Thanks.",
+      "revId": "735176779c974307690636166c3170c5b33c436c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
