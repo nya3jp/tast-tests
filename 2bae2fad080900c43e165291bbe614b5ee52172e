@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b513b9f7_ccbe17ef",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-13T10:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6020171a_93c27d61",
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c1faf5_e5ee35cb",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ccff01_bd2e1596",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-13T10:03:39Z",
+      "side": 1,
+      "message": "I restructured it.",
+      "parentUuid": "a7c1faf5_e5ee35cb",
+      "range": {
+        "startLine": 281,
+        "startChar": 27,
+        "endLine": 281,
+        "endChar": 48
+      },
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ddaef66_8ccfae58",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-10T09:07:30Z",
       "side": 1,
       "message": "Don\u0027t pass ok by value, it needs to be taken by reference.",
+      "range": {
+        "startLine": 288,
+        "startChar": 15,
+        "endLine": 288,
+        "endChar": 17
+      },
+      "revId": "2bae2fad080900c43e165291bbe614b5ee52172e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b98318_836c403d",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-11-13T10:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddaef66_8ccfae58",
       "range": {
         "startLine": 288,
         "startChar": 15,
